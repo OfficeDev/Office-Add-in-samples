@@ -9,6 +9,9 @@
   <DisplayName DefaultValue="Context"/>
   <Description DefaultValue="Context Owa App"/>
   <IconUrl DefaultValue="https://localhost:8443/content/OfficeDev.png"/>
+  <AppDomains>
+    <AppDomain>https://login.microsoftonline.com</AppDomain>
+  </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
   </Hosts>
