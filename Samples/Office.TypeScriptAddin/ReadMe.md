@@ -48,24 +48,9 @@ The key source code files in this project are the following:
 - `Office.TypeScriptAddinWeb\AddIn\App.ts` - contains the common add-in functionality.
 - `Office.TypeScriptAddinWeb\AddIn\Home\Home.ts` - contains the logic for the home page of the add-in.
 
-## Sub level 1.1 ##
-Description:
-Code snippet:
-```C#
-string textAndDate = String.Format("Some text to modify - {0}", DateTime.Now.Ticks);
-```
-
-## Sub level 1.2 ##
-
-# Doc scenario 2 #
-
-## Sub level 2.1 ##
-
-## Sub level 2.2 ##
-
-### Note: ###
-
-## Sub level 2.3 ##
-
-# Doc scenario 3#
-
+## More Resouces ##
+Find more information and resources at:
+- Learn more about building for Office and Office 365 at: <http://dev.office.com/>
+- Get started with TypeScript at: <http://www.typescriptlang.org/>
+- Find lots of TypeScript type definitions at: <https://github.com/DefinitelyTyped/DefinitelyTyped>
+- Read more about this sample at: <http://simonjaeger.com/use-typescript-in-a-visual-studio-office-add-in-project>
