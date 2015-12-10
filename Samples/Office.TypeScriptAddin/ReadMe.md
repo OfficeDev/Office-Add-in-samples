@@ -3,6 +3,8 @@
 ### Summary ###
 This is a sample project extending the Visual Studio 2015 template for an Office task pane add-in with TypeScript and TypeScript type definitions.
 
+It’s a great way to help you ensure the quality and code maintainability of your project. Also, if you’re coming from a more strongly typed programming language (like C#, Java, etc.), TypeScript can be your way into the world of JavaScript.
+
 Read more about this sample at: http://simonjaeger.com/use-typescript-in-a-visual-studio-office-add-in-project
 
 ### Applies to ###
@@ -38,6 +40,13 @@ You can also customize your build phase and debugging experience in a few ways. 
 ![](http://simonjaeger.com/wp-content/uploads/2015/12/tsprops.png)
 
 When your code grows larger, investing in using something like TypeScript really proves to be valuable. At some point you will surely refactor code, hunt bugs and debug – and with TypeScript your life gets a bit easier! You can use Visual Studio to debug your TypeScript code and not have to deal with the plain JavaScript itself (this is what the *.js.map files are good for, mapping between the TypeScript and JavaScript).
+
+## Source Code Files ##
+
+The key source code files in this project are the following:
+
+- `Office.TypeScriptAddinWeb\AddIn\App.ts` - contains the common add-in functionality.
+- `Office.TypeScriptAddinWeb\AddIn\Home\Home.ts` - contains the logic for the home page of the add-in.
 
 ## Sub level 1.1 ##
 Description:
