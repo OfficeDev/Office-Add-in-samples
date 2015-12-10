@@ -73,7 +73,7 @@ class App {
 
 var app = new App();
 ```
-Below is the generatds JavaScript code, compiled from the TypeScript file as App.js. Included is also a source mapping reference - used when debugging (mapping the two files).
+Below is the JavaScript code, compiled from the App.ts (TypeScript) file as App.js. Included by the bottom is also a source mapping reference - used when debugging (mapping the two files, App.ts and App.js).
 
 ```JS
 /* Common app functionality */
