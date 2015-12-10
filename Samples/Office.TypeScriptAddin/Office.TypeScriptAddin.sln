@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office.TypeScriptAddin", "Office.TypeScriptAddin\Office.TypeScriptAddin.csproj", "{121624F2-CAFA-405E-8EB9-CC38AA6FAE41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office.TypeScriptAddinWeb", "Office.TypeScriptAddinWeb\Office.TypeScriptAddinWeb.csproj", "{A496088B-6369-40D9-AD02-EF0D1234A78B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{121624F2-CAFA-405E-8EB9-CC38AA6FAE41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{121624F2-CAFA-405E-8EB9-CC38AA6FAE41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{121624F2-CAFA-405E-8EB9-CC38AA6FAE41}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{121624F2-CAFA-405E-8EB9-CC38AA6FAE41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{121624F2-CAFA-405E-8EB9-CC38AA6FAE41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{121624F2-CAFA-405E-8EB9-CC38AA6FAE41}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A496088B-6369-40D9-AD02-EF0D1234A78B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A496088B-6369-40D9-AD02-EF0D1234A78B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A496088B-6369-40D9-AD02-EF0D1234A78B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A496088B-6369-40D9-AD02-EF0D1234A78B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
