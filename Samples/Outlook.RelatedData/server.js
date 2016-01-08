@@ -25,15 +25,6 @@ app.use('/template', express.static(__dirname + '/bower_components/ui.bootstrap/
 var server = https.createServer(https_options, app)
                   .listen(PORT, HOST);
 
-
-var httpServer = http.createServer(app);
-var httpOptions = {
-	port: 80,
-	host: 'localhost'
-};
-
-httpServer.listen(httpOptions);
-
 console.log('+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+');
 console.log('HTTPS Server listening @ https://%s:%s', HOST, PORT);
 console.log('+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+');
