@@ -1,0 +1,24 @@
+﻿<side-nav></side-nav>
+<div class="crmBody">
+    <h1>Associates at {{ contact.domain }}</h1>
+    <div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Work</th>
+                    <th>Cell</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="item in contact.associates">
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.work_phone}}</td>
+                    <td>{{item.cell_phone}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

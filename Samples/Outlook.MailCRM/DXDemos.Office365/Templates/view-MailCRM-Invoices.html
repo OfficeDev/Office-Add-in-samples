@@ -1,0 +1,25 @@
+﻿<side-nav></side-nav>
+<div class="crmBody">
+    <h1>Invoices</h1>
+    <div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Journal #</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="item in contact.invoices">
+                    <td>{{item.number}}</td>
+                    <td>{{item.date}}</td>
+                    <td>{{item.amount | currency}}</td>
+                    <td>{{item.status}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>*Invoice data is randomly generated to illustrate concept</p>
+    </div>
+</div>
