@@ -25,7 +25,7 @@ In order to play with this add-in, you need to:
 
 -  Sign up for a developer subscription for Office 365 [Office Dev Center](http://dev.office.com/), if you don't have one
 -  Register the custom add-in as an Azure Active Directory application
--  Configure the following delegated permissions for the Azure AD application: Read user files, Read user contacts
+-  Configure the Azure AD application with the following delegated permissions for Microsoft Graph: Read user files, Read user contacts
 -  Enable OAuth 2.0 implicit flow capability for the Azure AD application
 -  Configure the AzureADTenant and azureADClientID variable in the [MessageRead.js](./Outlook.AddInSampleWeb/MessageRead.js) file of the solution
 
