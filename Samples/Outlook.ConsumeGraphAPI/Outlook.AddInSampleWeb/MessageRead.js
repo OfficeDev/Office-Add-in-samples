@@ -2,8 +2,8 @@
 
 // Create ADAL.JS config and 
 // get the AuthenticationContext
-var azureADTenant = "<Tenant>"; // Target Azure AD tenant 
-var azureADClientID = "<ClientID>"; // App ClientID
+var azureADTenant = "<your tenant>"; // Target Azure AD tenant 
+var azureADClientID = "<your client ID>"; // App ClientID
 
 // General settings for ADAL.JS
 window.config = {
