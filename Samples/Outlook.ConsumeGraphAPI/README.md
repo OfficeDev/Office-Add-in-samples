@@ -5,7 +5,7 @@ This is a sample Outlook Add-in - built using Microsoft Visual Studio 2015 - tha
 
 The sample add-in is triggered by any email message received and with some specific keywords in the subject (*[Offer Request]*). The add-in searches for the email sender in the Contacts of the current tenant, and if there is any matching, it shows some related information. Moreover, it searches for documents in OneDrive for Business containing the sender's name in their content.
 
-This sample is part of the code samples related to the book ["Programming Office 365"](https://www.microsoftpressstore.com/store/programming-microsoft-office-365-includes-current-book-9781509300914) written by [Paolo Pialorsi](https://twitter.com/PaoloPia) and published by Microsoft Press.
+This sample is part of the code samples related to the book ["Programming Microsoft Office 365"](https://www.microsoftpressstore.com/store/programming-microsoft-office-365-includes-current-book-9781509300914) written by [Paolo Pialorsi](https://twitter.com/PaoloPia) and published by Microsoft Press.
 
 ### Applies to ###
 -  Outlook 2013/2016, Outlook Web App, Outlook Mobile on Microsoft Office 365
