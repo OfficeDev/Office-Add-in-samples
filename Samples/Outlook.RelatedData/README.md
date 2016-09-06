@@ -89,4 +89,4 @@ Note:
 1. You will need to replace server.js with content from server-production.js. 
 2. For the rest you should follow this article [Build and deploy a Node.js web app in Azure App Service](https://azure.microsoft.com/en-us/documentation/articles/web-sites-nodejs-develop-deploy-mac/?utm_content=buffer1e07e&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
  
-
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Outlook.RelatedData" />

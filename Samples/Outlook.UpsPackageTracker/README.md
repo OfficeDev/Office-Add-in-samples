@@ -100,3 +100,5 @@ $('#trackingTable > tbody:last').append($("<tr>" +
 The Azure Storage emulator must be started before running the solution. A simple method for starting development storage for Azure is to open Server Explorer, expand Azure, then Storage, then Development.
 
 Once the storage emulator has started, press F5 to run the project. 
+
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Outlook.UPSPackageTracker" />

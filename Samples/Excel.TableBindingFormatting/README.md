@@ -67,3 +67,5 @@ The key source code files in this project are the following
 ## More Information ##
 
 For more information see the [JavaScript API for Office](https://msdn.microsoft.com/en-us/library/office/fp142185.aspx "JavaScript API for Office").
+
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Excel.TableBindingFormatting" />

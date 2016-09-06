@@ -125,3 +125,6 @@ protected void btnSubmit2_Click(object sender, EventArgs e)
     }
 }
 ```
+
+
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Excel.JsonToOfficeTable" />

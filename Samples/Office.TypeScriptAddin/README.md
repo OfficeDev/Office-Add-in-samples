@@ -128,3 +128,5 @@ Find more information and resources at:
 - Get started with TypeScript at: <http://www.typescriptlang.org/>
 - Find lots of TypeScript type definitions at: <https://github.com/DefinitelyTyped/DefinitelyTyped>
 - Read more about this sample at: <http://simonjaeger.com/use-typescript-in-a-visual-studio-office-add-in-project>
+
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Office.TypeScriptAddin" />
