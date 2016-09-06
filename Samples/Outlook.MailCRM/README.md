@@ -26,3 +26,6 @@ This section will outline all the apps and add-ins contained in the DXDemos.Offi
 DXDemos.Office365.MailCRM is a Read Outlook Mail Add-in that functions as a CRM solution with mail. This follows a popular scenario of providing a mail add-in that looks up contact details in another system.
 
 The solution is hosted in a ASP.NET MVC project, but is built as a single-page application (SPA) with AngularJS. Web APIs provide the back-end services and integration with DocumentDB. A single OAuth controller provides the sign-in logic and helps cache the users refresh tokens.
+
+
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Outlook.MailCRM" />
