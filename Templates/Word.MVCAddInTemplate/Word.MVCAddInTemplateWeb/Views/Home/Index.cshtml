@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<div id="content-main">
+    <div class="padding">
+        <br />
+        <p class="ms-font-xxl ms-fontColor-neutralSecondary ms-fontWeight-semilight">Sample</p>
+        <br /><br />
+        <div class="ms-font-xl ms-fontColor-neutralTertiary">Select some text</div>
+        <p class="ms-font-m-plus ms-fontColor-neutralTertiary" id="template-description"></p>
+        <div class="ms-font-m"><a target="_blank" class="ms-Link ms-Link--hero" href="https://go.microsoft.com/fwlink/?LinkId=276812">Find more samples online...</a></div>
+        <br /><br />
+
+        <button class="ms-Button ms-Button--primary" id="highlight-button">
+            <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+            <span class="ms-Button-label" id="button-text"></span>
+            <span class="ms-Button-description" id="button-desc"></span>
+        </button>
+    </div>
+</div>
+<div class="footer">
+    <div class="ms-Grid ms-bgColor-themeSecondary">
+        <div class="ms-Grid-row">
+            <div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12"> <div class="ms-font-xl ms-fontColor-white">Contoso</div></div>
+        </div>
+    </div>
+</div>
+
+@section pageStyles {
+    <link href="~/Content/PageSpecificStyles/Home.css" rel="stylesheet" />
+}
+
+@section pageScripts {
+    <script src="~/Scripts/Home/Home.js"></script>
+}
