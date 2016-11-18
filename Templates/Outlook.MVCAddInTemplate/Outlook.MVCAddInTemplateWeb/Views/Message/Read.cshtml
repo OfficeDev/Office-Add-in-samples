@@ -1,0 +1,101 @@
+﻿@model Outlook.MVCAddInTemplateWeb.Models.MessageReadViewModel
+
+@{
+    ViewBag.Title = "Read";
+}
+
+<div id="content-header">
+    <div class="padding">
+        <p class="ms-font-xl ms-fontColor-themeDarkAlt ms-fontWeight-semilight">All properties</p>
+    </div>
+</div>
+<div id="content-main" class="ms-Grid">
+    <div class="ms-Grid-row">
+        <div class="ms-Grid-col ms-u-sm12">
+            <h2 class="ms-font-l">Office.context.mailbox.Item properties</h2>
+            <div class="ms-Table">
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell">Property</span>
+                    <span class="ms-Table-cell">Value</span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">dateTimeCreated</span>
+                    <span id="dateTimeCreated" class="ms-Table-cell"></span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">dateTimeModified</span>
+                    <span id="dateTimeModified" class="ms-Table-cell"></span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">itemClass</span>
+                    <span id="itemClass" class="ms-Table-cell"></span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">itemId</span>
+                    <span id="itemId" class="ms-Table-cell"></span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">itemType</span>
+                    <span id="itemType" class="ms-Table-cell"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="message-props" class="ms-Grid-row hidden">
+        <div class="ms-Grid-col ms-u-sm12">
+            <h2 class="ms-font-l">Office.context.mailbox.Message properties</h2>
+            <div class="ms-Table">
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell">Property</span>
+                    <span class="ms-Table-cell">Value</span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">attachments</span>
+                    <span id="attachments" class="ms-Table-cell"></span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">cc</span>
+                    <span id="cc" class="ms-Table-cell"></span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">conversationId</span>
+                    <span id="conversationId" class="ms-Table-cell"></span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">from</span>
+                    <span id="from" class="ms-Table-cell"></span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">internetMessageId</span>
+                    <span id="internetMessageId" class="ms-Table-cell"></span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">normalizedSubject</span>
+                    <span id="normalizedSubject" class="ms-Table-cell"></span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">sender</span>
+                    <span id="sender" class="ms-Table-cell"></span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">subject</span>
+                    <span id="subject" class="ms-Table-cell"></span>
+                </div>
+                <div class="ms-Table-row">
+                    <span class="ms-Table-cell ms-fontWeight-semibold">to</span>
+                    <span id="to" class="ms-Table-cell"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section pageStyles {
+    <link href="~/Content/PageSpecificStyles/MessageRead.css" rel="stylesheet" />
+}
+
+@section pageScripts {
+    <script src="~/Scripts/Message/MessageRead.js"></script>
+}
