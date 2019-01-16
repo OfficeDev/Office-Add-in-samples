@@ -14,7 +14,7 @@
   </Hosts>
   <DefaultSettings>
   <!-- interesting -->
-    <SourceLocation DefaultValue="https://https://localhost:8081/index.html"/>
+    <SourceLocation DefaultValue="https://localhost:8081/index.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -123,7 +123,6 @@
         <bt:String id="Contoso.TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane" />
         <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started." />
       </bt:LongStrings>
-    </Resources>
     </Resources>
   </VersionOverrides>
 </OfficeApp>
