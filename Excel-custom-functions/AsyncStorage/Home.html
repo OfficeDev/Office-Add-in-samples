@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Excel Add-In with Commands Sample</title>
+
+    <script src="node_modules/jquery/dist/jquery.js" type="text/javascript"></script>
+    <!-- <script src="Scripts/FabricUI/MessageBanner.js" type="text/javascript"></script> -->
+    <script src="node_modules/office-ui-fabric-js/dist/js/fabric.js" type="text/javascript"></script>
+    <script src="https://officedev.github.io/custom-functions/lib/office.js" type="text/javascript"></script>
+
+    <!-- To enable offline debugging using a local reference to Office.js, use:                        -->
+    <!-- <script src="Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>  -->
+    <!-- <script src="Scripts/Office/1/office.js" type="text/javascript"></script>  -->
+
+    <link href="Home.css" rel="stylesheet" type="text/css" />
+    <script src="Home.js" type="text/javascript"></script>
+
+    <!-- For the Office UI Fabric, go to https://aka.ms/office-ui-fabric to learn more. -->
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.min.css">
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.components.min.css">
+
+    <!-- To enable the offline use of Office UI Fabric, use: -->
+    <!-- link rel="stylesheet" href="Content/fabric.min.css" -->
+    <!-- link rel="stylesheet" href="Content/fabric.components.min.css" -->
+
+    <script type="text/javascript">
+        // Private functions
+        function SendTokenToCustomFunction() {
+            var token = document.getElementById('tokenTextBox').value;
+            var tokenSendStatus = document.getElementById('tokenSendStatus');
+            var key = "token";
+
+            OfficeRuntime.AsyncStorage.setItem(key, token).then(function () {
+                tokenSendStatus.value = "Success: Item with key '" + key + "' saved to AsyncStorage.";
+            }, function (error) {
+                tokenSendStatus.value = "Error: Unable to save item with key '" + key + "' to AsyncStorage. " + error;
+            });
+        }
+
+        function ReceiveTokenFromCustomFunction() {
+            var key = "token";
+            var tokenSendStatus = document.getElementById('tokenSendStatus');
+
+            OfficeRuntime.AsyncStorage.getItem(key).then(function (result) {
+                tokenSendStatus.value = "Success: Item with key '" + key + "' read from AsyncStorage.";
+                document.getElementById('tokenTextBox2').value = result;
+            }, function (error) {
+                tokenSendStatus.value = "Error: Unable to read item with key '" + key + "' from AsyncStorage. " + error;
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="content-main">
+        <div class="padding">
+            <br />
+            
+        </div>
+    </div>
+    <div class="footer">
+        <div class="ms-Grid ms-bgColor-themeSecondary">
+            <div class="ms-Grid-row">
+                <div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12"> <div class="ms-font-xl ms-fontColor-white">AsyncStorage sample</div></div>
+            </div>
+        </div>
+    </div>
+   
+    Send token to custom function (key = "token")
+    <div>
+        <input type="text" id="tokenTextBox" />
+        <button onclick="SendTokenToCustomFunction()">Send</button>
+    </div>
+
+    Receive token from custom function (key = "token")
+    <div>
+        <input type="text" id="tokenTextBox2" />
+        <button onclick="ReceiveTokenFromCustomFunction()">Receive</button>
+    </div>
+
+    <div id="tokenSendStatus" />
+    <ol><li>Enter a value to send to the custom function and select <strong>Send</strong>.</li>. 
+        <li>Enter =CONTOSO.GETVALUE("token") into a cell to retrieve it.</li>
+    <li>To send data to the task pane, in a cell, enter <strong>=CONTOSO.STOREVALUE("token","my value")</strong></li>
+    <li>Select <strong>Receive</strong> to receive the value in the task pane.</li>
+    </ol>
+    <p>To change the functions, edit <b>customfunctions.js</b> and <b>customfunctions.json</b>. To change the prefix, edit <b>manifest.xml</b>.
+    For more information, see <a href=https://aka.ms/customfunctions>https://aka.ms/customfunctions</a>.</p>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "excel-custom-functions",
+  "version": "2.0.0",
+  "main": "./src/customfunctions.js",
+  "scripts": {
+    "start": "concurrently \"npm run dev-server\" \"npm run watch\" \"npm run sideload\"",
+    "start-web": "concurrently \"npm run dev-server\" \"npm run watch\"",
+    "build": "webpack -p --mode production",
+    "dev-server": "webpack-dev-server --mode development --https --key ./certs/server.key --cert ./certs/server.crt --cacert ./certs/ca.crt --port 8081 --hotOnly",
+    "sideload": "office-toolbox sideload -m manifest.xml -a excel",
+    "watch": "webpack -p --mode development --watch"
+  },
+  "devDependencies": {
+    "@types/custom-functions-runtime": "^1.4.8",
+    "concurrently": "^4.0.1",
+    "file-loader": "^1.1.11",
+    "html-loader": "^0.5.5",
+    "office-addin-node-debugger": "^0.1.0",
+    "office-toolbox": "^0.1.0",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.1"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "office-ui-fabric-js": "^1.5.0"
+  }
+}
