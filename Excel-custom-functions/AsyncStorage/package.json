@@ -1,7 +1,7 @@
 {
   "name": "excel-custom-functions",
   "version": "2.0.0",
-  "main": "./src/customfunctions.js",
+  "main": "./src/functions.js",
   "scripts": {
     "start": "concurrently \"npm run dev-server\" \"npm run watch\" \"npm run sideload\"",
     "start-web": "concurrently \"npm run dev-server\" \"npm run watch\"",

@@ -1,8 +1,10 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 const path = require('path');
 
 module.exports = {
     mode: 'development',
-    entry: './src/customfunctions.js',
+    entry: './src/functions/functions.js',
     output: {
         path: path.resolve(__dirname, 'dist/win32/ship'),
         filename: 'index.win32.bundle'

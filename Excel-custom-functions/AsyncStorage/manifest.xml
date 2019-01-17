@@ -14,7 +14,7 @@
   </Hosts>
   <DefaultSettings>
   <!-- interesting -->
-    <SourceLocation DefaultValue="https://localhost:8081/index.html"/>
+    <SourceLocation DefaultValue="https://localhost:8081/src/functions/functions.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -102,13 +102,13 @@
         <bt:Image id="Contoso.tpicon_80x80" DefaultValue="https://localhost:8081/assets/icon-80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="https://localhost:8081/index.html" />
-        <bt:Url id="Contoso.Taskpane.Url" DefaultValue="https://localhost:8081/Home.html" />
+        <bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="https://localhost:8081/src/functions/functions.html" />
+        <bt:Url id="Contoso.Taskpane.Url" DefaultValue="https://localhost:8081/src/taskpane/taskpane.html" />
         <bt:Url id="Contoso.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
         
-        <bt:Url id="JSON-URL" DefaultValue="https://localhost:8081/config/customfunctions.json" />
-        <bt:Url id="JS-URL" DefaultValue="https://localhost:8081/src/customfunctions.js" />
-        <bt:Url id="HTML-URL" DefaultValue="https://localhost:8081/index.html" />
+        <bt:Url id="JSON-URL" DefaultValue="https://localhost:8081/src/functions/functions.json" />
+        <bt:Url id="JS-URL" DefaultValue="https://localhost:8081/src/functions/functions.js" />
+        <bt:Url id="HTML-URL" DefaultValue="https://localhost:8081/src/functions/functions.html" />
       </bt:Urls>
       <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
