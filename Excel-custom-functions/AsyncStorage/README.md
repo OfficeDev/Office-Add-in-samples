@@ -16,9 +16,9 @@ On a machine with a valid instance of an Excel Insider build installed, follow t
 
 1. On the machine where your custom functions project is installed, follow the instructions to install the self-signed certificates (https://github.com/OfficeDev/generator-office/blob/master/src/docs/ssl.md) . 
 2. From a command prompt from within your custom functions project directory...
-    - Run `npm install`.
-    - Run `npm build`.
-    - And finally run `npm start` to start a localhost server instance. 
+    - Enter `npm install`.
+    - Enter `npm run build`.
+    - And finally enter `npm run start` to start a localhost server instance. 
 4. After Excel launches, you will need to register the custom-functions add-in to work around a bug:
     a. On the upper-left-hand side of Excel, there is a small hexagon icon with a dropdown arrow. The icon is to right of the Save icon.
     b. Click on this dropdown arrow and then click on the Custom Functions Sample add-in to register it.
