@@ -13,7 +13,6 @@
     <Host Name="Workbook"/>
   </Hosts>
   <DefaultSettings>
-  <!-- interesting -->
     <SourceLocation DefaultValue="https://localhost:8081/src/functions/functions.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
