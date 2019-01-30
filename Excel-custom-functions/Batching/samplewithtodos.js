@@ -1,6 +1,6 @@
-//Custom Functions Batching Sample with TODO items
+//Custom Functions batching sample with TODO items
 
-//TODO #1: Create custom functions for adding and multiplying numbers.
+//TODO #1: Create custom functions to add and multiply numbers.
 
 function _pushOperation(op, args) {
     var invocationEntry = {
@@ -30,8 +30,8 @@ function _pushOperation(op, args) {
   var _batch = [];
   var _isBatchedRequestScheduled = false;
   
-  // TODO #3: Write a function which creates a copy of the batch array, empty the batch array,
-  // and create a new array containing only the raw information to be processed by the API. 
+  // TODO #3: Write a function which creates a copy of the batch array, empties the batch array,
+  // and creates a new array containing only the raw information to be processed by the API. 
   
   // TODO #4: In the same function for TODO #3, make the request to the API and match the values
   // from the returned results to the corresponding invocation entry from the request batch. 
@@ -40,7 +40,7 @@ function _pushOperation(op, args) {
   // --------------------- A public API ------------------------------
   
   // This function simulates the work of a remote service and is here for your reference only. Because each service
-  // differs, you will need to modify this function appropriately to work with the service you are using. 
+  // differs, you'll need to modify this function appropriately to work with the service you're using. 
   // This function takes a batch of argument sets and returns a [promise of] batch of values.
   function _fetchFromRemoteService(requestBatch) {
     var responseBatch = [];
