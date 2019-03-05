@@ -8,7 +8,7 @@ Learn how to use pass data values from custom functions to task panes, or from t
 
 ## Prerequisites
 
-* Install Office 2016 for Windows and join the [Office Insider](https://products.office.com/en-us/office-insider) program. You must have Office build number 10827 or later.
+Custom functions are currently in developer preview. To get set up and using custom functions, see [Custom functions requirements](https://docs.microsoft.com/en-us/office/dev/add-ins/excel/custom-functions-requirements)
 
 ## To use the project
 
