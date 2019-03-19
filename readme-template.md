@@ -3,6 +3,8 @@
 ### Summary ###
 Short summary.
 
+[picture of the web part in action]
+
 ### Applies to ###
 -  Outlook on Office 365 (outlook.office365.com) 
 -  Excel 2013
@@ -10,10 +12,11 @@ Short summary.
 -  Word 2013
 -  Word 2016
 
--> Remove/add platforms as needed
+> Remove/add platforms as needed
 
 ### Prerequisites ###
-Any special pre-requisites?
+
+> Any special pre-requisites?
 
 ### Solution ###
 Solution | Author(s)
@@ -32,29 +35,21 @@ Version  | Date | Comments
 
 ----------
 
-# Doc scenario 1 #
-Description
-Image
+## Minimal Path to Awesome
 
+- Clone this repository
+- in the command line run:
+  - `npm install`
+  - `npm start`
 
-## Sub level 1.1 ##
-Description:
-Code snippet:
-```C#
-string textAndDate = String.Format("Some text to modify - {0}", DateTime.Now.Ticks);
-```
+> Include any additional steps as needed.
 
-## Sub level 1.2 ##
+## Features
+Description of the web part with possible additional details than in short summary. 
+This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-# Doc scenario 2 #
+- topic 1
+- topic 2
+- topic 3
 
-## Sub level 2.1 ##
-
-## Sub level 2.2 ##
-
-### Note: ###
-
-## Sub level 2.3 ##
-
-# Doc scenario 3#
-
+<img src="https://telemetry.sharepointpnp.com/officedev/samples/readme-template" />
