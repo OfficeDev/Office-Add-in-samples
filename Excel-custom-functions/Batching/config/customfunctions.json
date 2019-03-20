@@ -1,0 +1,95 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/office-js/custom-functions.schema.json",
+  "functions": [
+    {
+      "id": "SUM",
+      "name": "SUM",
+      "description": "Add two numbers",
+      "helpUrl": "http://www.contoso.com",
+      "result": {
+        "dimensionality": "scalar"
+      },
+      "parameters": [
+        {
+          "name": "first",
+          "description": "first number to add",
+          "type": "number",
+          "dimensionality": "scalar"
+        },
+        {
+          "name": "second",
+          "description": "second number to add",
+          "type": "number",
+          "dimensionality": "scalar"
+        }
+      ]
+    },
+    {
+      "id": "MUL",
+      "name": "MUL",
+      "description": "Add two numbers",
+      "helpUrl": "http://www.contoso.com",
+      "result": {
+        "dimensionality": "scalar"
+      },
+      "parameters": [
+        {
+          "name": "first",
+          "description": "first number to add",
+          "type": "number",
+          "dimensionality": "scalar"
+        },
+        {
+          "name": "second",
+          "description": "second number to add",
+          "type": "number",
+          "dimensionality": "scalar"
+        }
+      ]
+    },
+    {
+      "id": "ADD",
+      "name": "ADD",
+      "description": "Add two numbers",
+      "helpUrl": "http://www.contoso.com",
+      "result": {
+        "dimensionality": "scalar"
+      },
+      "parameters": [
+        {
+          "name": "first",
+          "description": "first number to add",
+          "type": "number",
+          "dimensionality": "scalar"
+        },
+        {
+          "name": "second",
+          "description": "second number to add",
+          "type": "number",
+          "dimensionality": "scalar"
+        }
+      ]
+    },
+    {
+      "id": "INCREMENT",
+      "name": "INCREMENT",
+      "description": "Periodically increment a value",
+      "helpUrl": "http://www.contoso.com",
+      "result": {
+          "dimensionality": "scalar"
+    },
+    "parameters": [
+        {
+            "name": "increment",
+            "description": "Amount to increment",
+            "type": "number",
+            "dimensionality": "scalar"
+        }
+    ],
+    "options": {
+        "cancelable": true,
+        "stream": true
+      }
+    }
+  ]
+}
