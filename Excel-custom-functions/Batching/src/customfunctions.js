@@ -2,14 +2,14 @@
 // Licensed under the MIT License.
 
 // Custom functions for adding and multiplying numbers.
-function addtwo() {
+function add2() {
   return _pushOperation(
     "add2",
     // The last argument is an InvocationContext. Skip it.
     Array.from(arguments).slice(0, -1));
 }
 
-function multwo() {
+function mul2() {
   return _pushOperation(
     "mul2",
     // The last argument is an InvocationContext. Skip it.

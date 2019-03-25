@@ -39,7 +39,7 @@
         <bt:Url id="HTML-URL" DefaultValue="https://localhost:8081/index.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="namespace" DefaultValue="CONTOSO4"/>
+        <bt:String id="namespace" DefaultValue="CONTOSO"/>
       </bt:ShortStrings>
     </Resources>
   </VersionOverrides>
