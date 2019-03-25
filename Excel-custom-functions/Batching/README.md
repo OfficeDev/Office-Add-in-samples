@@ -1,81 +1,72 @@
-# Custom functions in Excel (Preview)
+# Custom function batching pattern #
 
-Learn how to use custom functions in Excel (similar to user-defined functions, or UDFs). Custom functions are JavaScript functions that you can add to Excel, and then use them like any native Excel function (for example =Sum). This sample accompanies the [Custom Functions Overview](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-overview) topic.
+### Summary ###
+If your custom functions call a remote service you may want to use a batching pattern to reduce the number of network calls to the remote service. This is useful when a spreadsheet recalculates and it contains many of your custom functions. Recalculate will result in many calls to your custom functions, but you can batch them into one or a few calls to the remote service. 
 
-## Table of Contents
-* [Change History](#change-history)
-* [Prerequisites](#prerequisites)
-* [To use the project](#to-use-the-project)
-* [Making changes](#making-changes)
-* [Debugging](#debugging)
-* [IntelliSense for the JSON file in Visual Studio Code](#intellisense-for-the-json-file-in-visual-studio-code)
-* [Questions and comments](#questions-and-comments)
-* [Additional resources](#additional-resources)
+### Applies to ###
+-  Custom functions on Excel desktop and online
 
-## Change History
+### Prerequisites ###
+Custom functions are currently in developer preview. To get set up and using custom functions, see [Custom functions requirements](https://docs.microsoft.com/en-us/office/dev/add-ins/excel/custom-functions-requirements)
 
-* Oct 27, 2017: Initial version.
-* April 23, 2018: Revised and expanded.
-* June 1, 2018: Bug fixes.
-* March 21, 2019: Revised sample. 
+### Solution ###
+Solution | Author(s)
+---------|----------
+Custom function batching | Microsoft
 
-## Prerequisites for creating Excel custom functions
+### Version history ###
+Version  | Date | Comments
+---------| -----| --------
+1.0  | March 26th 2019 | Initial release
 
-* Install Office 2016 for Windows and join the [Office Insider](https://products.office.com/en-us/office-insider) program. You must have Office build number 10827 or later.
+### Disclaimer ###
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-## Using the Excel custom functions project
 
-On a computer with a valid instance of an Excel Insider build installed, follow these instructions to use this custom function sample add-in:
+----------
 
-1. On the computer where your custom functions project is installed, follow the instructions to install the self-signed certificates (https://github.com/OfficeDev/generator-office/blob/master/src/docs/ssl.md).
-2. From a command prompt from within your custom functions project directory, run `npm run start` to start a localhost server instance.
-3. Run `npm run sideload` to launch Excel and load the custom functions add-in. For additonal information on sideloading, see [Sideload Office Add-ins for Testing](https://aka.ms/sideload-addins).
-4. After Excel launches, you'll need to register the custom-functions add-in to work around a bug:
-    a. On the upper-left-hand side of Excel, there is a small hexagon icon with a dropdown arrow. The icon is to right of the Save icon.
-    b. Click on this dropdown arrow and then click on the Custom Functions Sample add-in to register it.
-5. Test a custom function by entering `=CONTOSO.ADD(num1, num2)` in a cell.
-6. Try the other functions in the sample: `=CONTOSO.ADDASYNC(num1, num2)`, `CONTOSO.INCREMENTVALUE(increment)`.
-7. If you make changes to the sample add-in, copy the updated files to your website, and then close and reopen Excel. If your functions are not available in Excel, re-insert the add-in using **Insert** > **My Add-ins**.
+# Scenario: Custom function batching #
+In this scenario your custom functions call a remote service. To reduce network round trips you will batch all the calls and send them in a single call to the web service. This is ideal when the spreadsheet is recalculated. For example, if someone used your custom function in 100 cells in a spreadsheet, and then recalculates the spreadsheet, your custom function would run 100 times and make 100 network calls. By using this batching pattern, the calls can be combined to make all 100 calculations in a single network call.
 
-## Making code changes in the custom functions project
-If you make changes to the sample functions code (in the JS file), close and reopen Excel to test them.
+Image
 
-If you change the functions metadata (in the JSON file), close Excel and delete your cache folder `Users/<user>/AppData/Local/Microsoft/Office/16.0/Wef/CustomFunctions`. Then re-insert the add-in using **Insert** > **My Add-ins**.
+## Custom functions that use the pattern
+The code pattern contains two custom functions named `ADD2` and `MUL2`. Instead of performing the calculation, each of them calls a `_pushOperation` function to push the operation into a batch queue to be passed to a web service.
 
-## Debugging your Excel custom function
-Currently, the best method for debugging Excel custom functions is to first [sideload](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing) your add-in within **Excel Online**. Then you can debug your custom functions by using the [F12 debugging tool native to your browser](https://docs.microsoft.com/office/dev/add-ins/testing/debug-add-ins-in-office-online). Use `console.log` statements within your custom functions code to send output to the console in real time.
+```js
+function addtwo() {
+  return _pushOperation(
+    "add2",
+    // The last argument is an InvocationContext. Skip it.
+    Array.from(arguments).slice(0, -1));
+}
+```
 
-If your add-in fails to register, [verify that SSL certificates are correctly configured](https://github.com/OfficeDev/generator-office/blob/master/src/docs/ssl.md) for the web server that's hosting your add-in application.
+## Batching the operation
+The `_pushOperation` function pushes each operation into a _batch variable. It schedules the batch call to be made within 2 seconds. You can adjust this when using the code in your own solution.
 
-If you're testing your add-in in Office 2016 desktop you can enable [runtime logging](https://docs.microsoft.com/office/dev/add-ins/testing/troubleshoot-manifest#use-runtime-logging-to-debug-your-add-in) to debug issues with your add-in's XML manifest file as well as several installation and runtime conditions.
+```js
+if (!_isBatchedRequestScheduled) {
+    setTimeout(_makeRemoteRequest, 2000);
+    _isBatchedRequestScheduled = true;
+  }
+```
 
-## IntelliSense for the JSON file in Visual Studio Code	
-For intelliSense to help you edit the JSON file, follow these steps:
+## Making the remote request
+The `_makeRemoteRequest` function prepares the batch request and passes it to the `_fetchFromRemoteService` function. If you are adapting this code to your own solution you need to modify `_makeRemoteRequest` to actually call your remote service.
 
-1. Open the JSON file (it has a .json extension) in Visual Studio Code.	
-2. If you're starting a new file from scratch, add the following to the top of the file:	
-	
-     ```js	
-    {	
-        "$schema": "https://developer.microsoft.com/en-us/json-schemas/office-js/custom-functions.schema.json",	
-    ```	
-3. Press **Ctrl+Space** and intelliSense will prompt you with a list of all items that are valid at the cursor point. For example, if you pressed **Ctrl+Space** immediately after the `"$schema"` line, you're prompted to enter `functions`, which is the only key that is valid at that point. Select it and the `"functions": []` array is entered. If the cursor is between the `[]`, then you're prompted to enter an empty object as a member of the array. If the cursor is in the object, then you're prompted with a list of the keys that are valid in the object.
+## The remote service
+The `_fetchFromRemoteService` function processes the batch of operations, performs the operations, and then returns the results. In this sample, `_fetchFromRemoteService` is just another function to demonstrate the pattern. When adapting this code to your solution, use this method on the server-side to respond to the client call over the network.
 
-## Questions and comments
+## How to apply batching in your own solution
+You can copy and paste this code into your own solution. When using this pattern, you'll need to evaluate and update the following areas of code.
 
-We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
+### _pushOperation
+Adjust the timeout value as needed. A longer time will be more noticable to the user. A shorter time may result in more calls to the remote service.
 
-Questions about Microsoft Office 365 development in general should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/office-js+API). If your question is about the Office JavaScript APIs, make sure that your questions are tagged with [office-js] and [API].
+### _makeRemoteRequest
+Modify this function to actually make a network call to your remote service and pass the batch operations in a single call.
 
-## Additional resources
+### _fetchFromRemoteService
+Place this function in your remote service to handle the network call from the client. You'll want to modify this to perform the actual operations of your custom functions (or call the correct methods to do so.)
 
-* [Custom functions overview](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-overview)
-* [Custom functions best practices](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-best-practices)
-* [Custom functions runtime](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-runtime) 
-* [Office add-in documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
-* More Office Add-in samples at [OfficeDev on Github](https://github.com/officedev)
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-## Copyright
-Copyright (c) 2017 Microsoft Corporation. All rights reserved.

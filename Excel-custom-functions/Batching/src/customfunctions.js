@@ -1,41 +1,23 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-function add(first, second){
-  return first + second;
-}
-
-function increment(incrementBy, callback) {
-  var result = 0;
-  var timer = setInterval(function() {
-    result += incrementBy;
-    callback.setResult(result);
-  }, 1000);
-
-  callback.onCanceled = function() {
-    clearInterval(timer);
-  };
-}
-
 // Custom functions for adding and multiplying numbers.
-function sum() {
+function addtwo() {
   return _pushOperation(
-    "sum",
+    "add2",
     // The last argument is an InvocationContext. Skip it.
     Array.from(arguments).slice(0, -1));
 }
 
-function mul() {
+function multwo() {
   return _pushOperation(
-    "mul",
+    "mul2",
     // The last argument is an InvocationContext. Skip it.
     Array.from(arguments).slice(0, -1));
 }
 
-CustomFunctions.associate("ADD", add);
-CustomFunctions.associate("INCREMENT", increment);
-CustomFunctions.associate("SUM", sum);
-CustomFunctions.associate("MUL", mul);
+CustomFunctions.associate("ADD2", add2);
+CustomFunctions.associate("MUL2", mul2);
 
 
 // This function encloses your custom functions as individual entries, 
@@ -120,14 +102,14 @@ function _fetchFromRemoteService(requestBatch) {
     var args = requestBatch[i].arguments;
     var result;
 
-    if (operation == "sum") {
+    if (operation == "add2") {
       // Sum up the arguments for the given entry.
       result = 0;
       for (var j = 0; j < args.length; j++) {
         result += args[j];
       }
     }
-    else if (operation == "mul") {
+    else if (operation == "mul2") {
       // Multiply the arguments for the given entry.
       result = 1;
       for (var j = 0; j < args.length; j++) {
