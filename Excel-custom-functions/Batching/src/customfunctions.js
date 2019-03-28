@@ -95,6 +95,8 @@ function _makeRemoteRequest() {
 // This function simulates the work of a remote service. Because each service
 // differs, you will need to modify this function appropriately to work with the service you are using. 
 // This function takes a batch of argument sets and returns a [promise of] batch of values.
+// NOTE: When implementing this function on a server, also apply an appropriate authentication mechanism
+//       to ensure only the correct callers can access it.
 function _fetchFromRemoteService(requestBatch) {
   var responseBatch = [];
   for (var i = 0; i < requestBatch.length; i++) {
