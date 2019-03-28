@@ -70,7 +70,7 @@ Modify this function to actually make a network call to your remote service and 
 ### _fetchFromRemoteService
 Place this function in your remote service to handle the network call from the client. You'll want to modify this to perform the actual operations of your custom functions (or call the correct methods to do so.)
 
-### Security notes
+## Security notes
 When implementing the **_fetchFromRemoteService** function on a server, apply an appropriate authentication mechanism. Ensure that only the correct callers can access the function.
 
 The certificates provided in this sample are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
