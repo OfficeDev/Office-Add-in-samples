@@ -1,14 +1,32 @@
-﻿// Copyright (c) Microsoft Corporation. All rights reserved.
-// Licensed under the MIT License.
+﻿/**
+ * Adds two numbers without using batching
+ * @param first First number
+ * @param second Second number
+ * @returns The sum of the two numbers.
+ */
+function addnobatch(first: number, second: number): number {
+  return first + second;
+}
 
-// Custom functions for adding and multiplying numbers.
-function add2() {
+/**
+ * Adds two numbers together using batching
+ * @param first First number to add
+ * @param second Second number to add 
+ * @returns The sum of the two numbers
+ */
+function add2(first: number, second: number) {
   return _pushOperation(
     "add2",
     // The last argument is an InvocationContext. Skip it.
     Array.from(arguments).slice(0, -1));
 }
 
+/**
+ * Multiplies two numbers together using batching
+ * @param first First number to multiply
+ * @param second Second number to multiply 
+ * @returns The product of the two numbers
+ */
 function mul2() {
   return _pushOperation(
     "mul2",
@@ -16,6 +34,11 @@ function mul2() {
     Array.from(arguments).slice(0, -1));
 }
 
+/**
+ * Defines the implementation of the custom functions
+ * for the function id defined in the metadata file (functions.json).
+ */
+CustomFunctions.associate("ADDNOBATCH", addnobatch);
 CustomFunctions.associate("ADD2", add2);
 CustomFunctions.associate("MUL2", mul2);
 
@@ -23,7 +46,7 @@ CustomFunctions.associate("MUL2", mul2);
 // This function encloses your custom functions as individual entries, 
 // which have some additional properties so you can keep track of whether or not
 // a request has been resolved or rejected.  
-function _pushOperation(op, args) {
+function _pushOperation(op:string, args:string[]) {
   // Create an entry for your custom function.
   var invocationEntry = {
     "operation": op, // e.g. sum
@@ -126,4 +149,3 @@ function _fetchFromRemoteService(requestBatch) {
   // Return a promise that is resolved with the value of the response batch.
   return Promise.resolve(responseBatch);
 }
-
