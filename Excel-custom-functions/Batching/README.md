@@ -73,4 +73,11 @@ Place this function in your remote service to handle the network call from the c
 ## Security notes
 When implementing the **_fetchFromRemoteService** function on a server, apply an appropriate authentication mechanism. Ensure that only the correct callers can access the function.
 
-The certificates provided in this sample are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
+You will be prompted to install self-signed certificates when you run this sample on your development computer. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
+
+You can install or uninstall the self-signed certificates by running the following commands in the project folder.
+
+```cli
+npx office-addin-dev-certs install
+npx office-addin-dev-certs uninstall
+```
