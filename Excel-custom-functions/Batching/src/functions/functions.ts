@@ -4,7 +4,7 @@
  * @param second Second number
  * @returns The sum of the two numbers.
  */
-function addnobatch(first: number, second: number): number {
+function addNoBatch(first: number, second: number): number {
   return first + second;
 }
 
@@ -17,8 +17,8 @@ function addnobatch(first: number, second: number): number {
 function add2(first: number, second: number) {
   return _pushOperation(
     "add2",
-    // The last argument is an InvocationContext. Skip it.
-    Array.from(arguments).slice(0, -1));
+    [first, second],
+  );
 }
 
 /**
@@ -27,38 +27,55 @@ function add2(first: number, second: number) {
  * @param second Second number to multiply 
  * @returns The product of the two numbers
  */
-function mul2() {
+function mul2(first: number, second: number) {
   return _pushOperation(
     "mul2",
-    // The last argument is an InvocationContext. Skip it.
-    Array.from(arguments).slice(0, -1));
+    [first, second],
+  );
 }
 
 /**
  * Defines the implementation of the custom functions
  * for the function id defined in the metadata file (functions.json).
  */
-CustomFunctions.associate("ADDNOBATCH", addnobatch);
+CustomFunctions.associate("ADDNOBATCH", addNoBatch);
 CustomFunctions.associate("ADD2", add2);
 CustomFunctions.associate("MUL2", mul2);
 
+///////////////////////////////////////
 
-// This function encloses your custom functions as individual entries, 
+// Next batch
+interface IBatchEntry {
+  operation: string;
+  args: any[];
+  resolve: (data: any) => void;
+  reject: (error: Error) => void;
+}
+
+interface IServerResponse {
+  result?: any;
+  error?: string;
+}
+
+const _batch: IBatchEntry[] = [];
+let _isBatchedRequestScheduled = false;
+
+// This function encloses your custom functions as individual entries,
 // which have some additional properties so you can keep track of whether or not
-// a request has been resolved or rejected.  
-function _pushOperation(op:string, args:string[]) {
+// a request has been resolved or rejected.
+function _pushOperation(op: string, args: any[]) {
   // Create an entry for your custom function.
-  var invocationEntry = {
-    "operation": op, // e.g. sum
-    "arguments": args,
-    "resolve": undefined,
-    "reject": undefined
+  const invocationEntry: IBatchEntry = {
+    operation: op, // e.g. sum
+    args: args,
+    resolve: undefined,
+    reject: undefined,
   };
 
-  // Create a unique promise for this invocation, 
+  // Create a unique promise for this invocation,
   // and save its resolve and reject functions into the invocation entry.
-  var promise = new Promise((resolve, reject) => { 
-    invocationEntry.resolve = resolve; 
+  const promise = new Promise((resolve, reject) => {
+    invocationEntry.resolve = resolve;
     invocationEntry.reject = reject;
   });
 
@@ -66,52 +83,46 @@ function _pushOperation(op:string, args:string[]) {
   _batch.push(invocationEntry);
 
   // If a remote request hasn't been scheduled yet,
-  // schedule it after a certain timeout, e.g. 2 sec.
+  // schedule it after a certain timeout, e.g. 100 ms.
   if (!_isBatchedRequestScheduled) {
-    setTimeout(_makeRemoteRequest, 2000);
     _isBatchedRequestScheduled = true;
+    setTimeout(_makeRemoteRequest, 100);
   }
 
-  //Return the promise for this invocation.
+  // Return the promise for this invocation.
   return promise;
 }
 
-
-// Next batch
-var _batch = [];
-var _isBatchedRequestScheduled = false;
-
-
-// This is a private function, used only within your custom function add-in. 
-// You wouldn't call _makeRemoteRequest in Excel, for example. 
+// This is a private helper function, used only within your custom function add-in.
+// You wouldn't call _makeRemoteRequest in Excel, for example.
 // This function makes a request for remote processing of the whole batch,
 // and matches the response batch to the request batch.
 function _makeRemoteRequest() {
   // Copy the shared batch and allow the building of a new batch while you are waiting for a response.
-  var batchCopy = _batch.slice();
-  _batch = [];
+  // Note the use of "splice" rather than "slice", which will modify the original _batch array
+  // to empty it out.
+  const batchCopy = _batch.splice(0, _batch.length);
   _isBatchedRequestScheduled = false;
 
   // Build a simpler request batch that only contains the arguments for each invocation.
-  var requestBatch = [];
-  for (var i = 0; i < batchCopy.length; i++) {
-    requestBatch[i] = {
-      "operation": batchCopy[i].operation,
-      "arguments": batchCopy[i].arguments
-    };
-  }
+  const requestBatch = batchCopy.map((item) => {
+    return { operation: item.operation, args: item.args };
+  });
 
   // Make the remote request.
   _fetchFromRemoteService(requestBatch)
-    .then(function (responseBatch) {
-    // Match each value from the response batch to its corresponding invocation entry from the request batch,
-    // and resolve the invocation promise with its corresponding response value.
-    for (var i = 0; i < responseBatch.length; i++) {
-      batchCopy[i].resolve(responseBatch[i]);
-    }
-  });
+    .then((responseBatch) => {
+      // Match each value from the response batch to its corresponding invocation entry from the request batch,
+      // and resolve the invocation promise with its corresponding response value.
+      responseBatch.forEach((response, index) => {
+        if (response.error) {
+          batchCopy[index].reject(new Error(response.error));
+        } else {
+          batchCopy[index].resolve(response);
+        }
+      });
+    });
 }
-
 
 // --------------------- A public API ------------------------------
 
@@ -120,32 +131,41 @@ function _makeRemoteRequest() {
 // This function takes a batch of argument sets and returns a [promise of] batch of values.
 // NOTE: When implementing this function on a server, also apply an appropriate authentication mechanism
 //       to ensure only the correct callers can access it.
-function _fetchFromRemoteService(requestBatch) {
-  var responseBatch = [];
-  for (var i = 0; i < requestBatch.length; i++) {
-    var operation = requestBatch[i].operation;
-    var args = requestBatch[i].arguments;
-    var result;
+async function _fetchFromRemoteService(
+  requestBatch: Array<{ operation: string, args: any[] }>
+): Promise<IServerResponse[]> {
+  // Simulate a slow network request to the server;
+  await pause(1000);
 
-    if (operation == "add2") {
+  return requestBatch.map((request): IServerResponse => {
+    const {operation, args} = request;
+
+    if (operation === "add2") {
       // Sum up the arguments for the given entry.
-      result = 0;
-      for (var j = 0; j < args.length; j++) {
-        result += args[j];
+      let result = 0;
+      for (let i = 0; i < args.length; i++) {
+        result += args[i];
       }
-    }
-    else if (operation == "mul2") {
+      return {
+        result: result
+      };
+    } else if (operation === "mul2") {
       // Multiply the arguments for the given entry.
-      result = 1;
-      for (var j = 0; j < args.length; j++) {
-        result *= args[j];
+      let result = 1;
+      for (let i = 0; i < args.length; i++) {
+        result *= args[i];
       }
+      return {
+        result: result
+      };
+    } else {
+      return {
+        error: `Invalid operation ${operation}`
+      };
     }
+  });
+}
 
-    // Set the result on the responseBatch.
-    responseBatch[i] = result;
-  }
-
-  // Return a promise that is resolved with the value of the response batch.
-  return Promise.resolve(responseBatch);
+function pause(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }

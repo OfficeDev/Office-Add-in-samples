@@ -1,0 +1,37 @@
+{
+	"defaultSeverity": "warning",
+	"extends": [
+		"tslint:recommended"
+	],
+	"linterOptions": {
+		"exclude": [
+			"node_modules/**/*"
+		]
+	},
+	"rules": {
+		// Rationale for disabling "object-literal-sort-keys":
+		//   The alphabet isn't always the semantically-cleanest way of ordering keys within an object.
+		"object-literal-sort-keys": false,
+
+		// Rationale for specifying a "variable-name" rule:
+		//   "allow-leading-underscores":
+		//     Without "allow-leading-underscores", a name like "_state" is disallowed.
+		//     An underscore, however, is what tells tslint that it's OK that the variable
+		//     will be unused, and it still seems useful (esp. in a callback) to give
+		//     sensical names for the parameters, even if they're not used. Thus, want
+		//     to have "allow-leading-underscore", but keep the rest of the strictness.
+		//   "allow-pascale-case":
+		//     PascalCase is used by functional React components
+		"variable-name": [
+			true,
+			"ban-keywords",
+			"check-format",
+			"allow-leading-underscore",
+			"allow-pascal-case"
+		],
+
+		"trailing-comma": false,
+		"object-literal-shorthand": false,
+		"prefer-for-of": false
+	}
+}
