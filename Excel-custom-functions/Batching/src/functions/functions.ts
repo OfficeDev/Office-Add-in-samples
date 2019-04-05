@@ -121,7 +121,8 @@ function _makeRemoteRequest() {
         if (response.error) {
           batchCopy[index].reject(new Error(response.error));
         } else {
-          batchCopy[index].resolve(response);
+          console.log(response);
+          batchCopy[index].resolve(response.result);
         }
       });
     });
@@ -151,8 +152,10 @@ async function _fetchFromRemoteService(
         };
       } else if (operation === "mul2") {
         // Multiply the arguments for the given entry.
+        const myresult = args[0] * args[1];
+        console.log(myresult);
         return {
-          result: args[0] * args[1]
+          result: myresult
         };
       } else {
         return {
