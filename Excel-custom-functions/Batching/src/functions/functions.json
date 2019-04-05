@@ -26,23 +26,23 @@
       ]
     },
     {
-      "id": "ADD2",
-      "name": "ADD2",
-      "description": "Add two numbers",
+      "id": "DIV2",
+      "name": "DIV2",
+      "description": "Divides two numbers",
       "helpUrl": "http://www.contoso.com",
       "result": {
         "dimensionality": "scalar"
       },
       "parameters": [
         {
-          "name": "first",
-          "description": "first number to add",
+          "name": "dividend",
+          "description": "The number being divided",
           "type": "number",
           "dimensionality": "scalar"
         },
         {
-          "name": "second",
-          "description": "second number to add",
+          "name": "divisor",
+          "description": "The number to divide the dividend with",
           "type": "number",
           "dimensionality": "scalar"
         }

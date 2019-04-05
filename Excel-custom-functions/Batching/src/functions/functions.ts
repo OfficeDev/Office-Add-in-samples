@@ -1,4 +1,5 @@
 ﻿/**
+ * @CustomFunction
  * Adds two numbers without using batching
  * @param first First number
  * @param second Second number
@@ -9,28 +10,30 @@ function addNoBatch(first: number, second: number): number {
 }
 
 /**
- * Adds two numbers together using batching
- * @param first First number to add
- * @param second Second number to add 
+ * @CustomFunction
+ * Divides two numbers using batching
+ * @param dividend The number being divided
+ * @param divisor The number to divide the dividend with
  * @returns The sum of the two numbers
  */
-function add2(first: number, second: number) {
+function div2(dividend: number, divisor: number) {
   return _pushOperation(
-    "add2",
-    [first, second],
+    "div2",
+    [dividend, divisor]
   );
 }
 
 /**
+ * @CustomFunction
  * Multiplies two numbers together using batching
  * @param first First number to multiply
- * @param second Second number to multiply 
+ * @param second Second number to multiply
  * @returns The product of the two numbers
  */
 function mul2(first: number, second: number) {
   return _pushOperation(
     "mul2",
-    [first, second],
+    [first, second]
   );
 }
 
@@ -39,7 +42,7 @@ function mul2(first: number, second: number) {
  * for the function id defined in the metadata file (functions.json).
  */
 CustomFunctions.associate("ADDNOBATCH", addNoBatch);
-CustomFunctions.associate("ADD2", add2);
+CustomFunctions.associate("DIV2", add2);
 CustomFunctions.associate("MUL2", mul2);
 
 ///////////////////////////////////////
@@ -138,29 +141,27 @@ async function _fetchFromRemoteService(
   await pause(1000);
 
   return requestBatch.map((request): IServerResponse => {
-    const {operation, args} = request;
+    const { operation, args } = request;
 
-    if (operation === "add2") {
-      // Sum up the arguments for the given entry.
-      let result = 0;
-      for (let i = 0; i < args.length; i++) {
-        result += args[i];
+    try {
+      if (operation === "div2") {
+        // Divide the first argument by the second argument.
+        return {
+          result: args[0] / args[1]
+        };
+      } else if (operation === "mul2") {
+        // Multiply the arguments for the given entry.
+        return {
+          result: args[0] * args[1]
+        };
+      } else {
+        return {
+          error: `Operation not supported: ${operation}`
+        };
       }
+    } catch (error) {
       return {
-        result: result
-      };
-    } else if (operation === "mul2") {
-      // Multiply the arguments for the given entry.
-      let result = 1;
-      for (let i = 0; i < args.length; i++) {
-        result *= args[i];
-      }
-      return {
-        result: result
-      };
-    } else {
-      return {
-        error: `Invalid operation ${operation}`
+        error: `Operation failed: ${operation}`
       };
     }
   });
