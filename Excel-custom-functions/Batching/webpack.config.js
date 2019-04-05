@@ -72,6 +72,9 @@ module.exports = async (env, options) => {
       }),
     ],
     devServer: {
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      },
       https: await devCerts.getHttpsServerOptions(),
       port: 3000
     }

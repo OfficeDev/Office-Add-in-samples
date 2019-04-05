@@ -42,7 +42,7 @@ function mul2(first: number, second: number) {
  * for the function id defined in the metadata file (functions.json).
  */
 CustomFunctions.associate("ADDNOBATCH", addNoBatch);
-CustomFunctions.associate("DIV2", add2);
+CustomFunctions.associate("DIV2", div2);
 CustomFunctions.associate("MUL2", mul2);
 
 ///////////////////////////////////////
