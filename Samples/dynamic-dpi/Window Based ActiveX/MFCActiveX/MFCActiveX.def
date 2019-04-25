@@ -1,0 +1,9 @@
+; MFCActiveX.def : Declares the module parameters.
+
+LIBRARY      "MFCActiveX.OCX"
+
+EXPORTS
+	DllCanUnloadNow     PRIVATE
+	DllGetClassObject   PRIVATE
+	DllRegisterServer   PRIVATE
+	DllUnregisterServer PRIVATE

@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="SharedModule.WPFUserControl1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SharedModule"
+             mc:Ignorable="d" 
+             d:DesignHeight="195.728" d:DesignWidth="200.606">
+    <Grid Margin="0">
+        <TabControl Margin="10" RenderTransformOrigin="0.849,0.486">
+            <TabItem Header="Controls">
+                <Grid Background="#FFE5E5E5">
+                    <Border BorderBrush="Black" BorderThickness="1" Padding="10" CornerRadius="5" Opacity="0.8"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Height="22" Margin="10,22,0,0" VerticalAlignment="Top" Width="68" Click="Button_Click"/>
+                    <CheckBox Content="CheckBox" HorizontalAlignment="Left" Height="17" Margin="83,27,0,0" VerticalAlignment="Top" Width="80" Checked="CheckBox_Checked"/>
+                    <TextBlock HorizontalAlignment="Left" Height="18" Margin="10,49,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="133"/>
+                    <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="20" Margin="10,73,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="152"/>
+                    <ComboBox HorizontalAlignment="Left" Height="19" Margin="10,100,0,0" VerticalAlignment="Top" Width="152" IsEditable="True" DropDownClosed="ComboBox_DropDownClosed" SelectionChanged="ComboBox_SelectionChanged">
+                        <CheckBox Content="Check box"/>
+                        <Button Content="Button"/>
+                    </ComboBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Image">
+                <Image Source="Resources/dpipic.jpg"/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</UserControl>
