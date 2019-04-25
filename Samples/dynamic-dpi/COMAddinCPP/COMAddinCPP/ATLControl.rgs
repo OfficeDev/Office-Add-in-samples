@@ -1,0 +1,23 @@
+HKCR
+{
+	ForceRemove COMAddinCPP.ATLControl.1 = s 'ATLControl Class'
+	{
+		CLSID = s '{a8fe7cbc-49c4-402f-97cc-754f0f8956df}'
+	}
+	ForceRemove COMAddinCPP.ATLControl = s 'ATLControl Class'
+	{
+		CLSID = s '{a8fe7cbc-49c4-402f-97cc-754f0f8956df}'
+		CurVer = s 'COMAddinCPP.ATLControl.1'
+	}
+
+	NoRemove CLSID
+	{
+		ForceRemove {a8fe7cbc-49c4-402f-97cc-754f0f8956df} = s 'ATLControl class'
+		{
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

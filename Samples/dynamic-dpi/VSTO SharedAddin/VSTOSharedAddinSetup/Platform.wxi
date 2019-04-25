@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+	<!-- Product name as you want it to appear in Add/Remove Programs-->
+	<?if $(var.Platform) = x64 ?>
+	<?define ProductName = "DDPI VSTO Shared Add-ins (64 bit)" ?>
+	<?define Win64 = "yes" ?>
+	<?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+	<?else ?>
+	<?define ProductName = "DDPI VSTO Shared Add-ins" ?>
+	<?define Win64 = "no" ?>
+	<?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+	<?endif ?>
+</Include>

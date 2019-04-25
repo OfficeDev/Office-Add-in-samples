@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{371EACE7-19F0-43AE-AC18-0E543D2A354F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SharedModule</RootNamespace>
+    <AssemblyName>SharedModule</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Office.Tools, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Tools.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DPIContextBlock.cs" />
+    <Compile Include="DPIHelper.cs" />
+    <Compile Include="DpiAwareWindowsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HtmlHelpHelper.cs" />
+    <Compile Include="InputBox.cs" />
+    <Compile Include="ProcessCreator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RECT.cs" />
+    <Compile Include="SharedApp.cs" />
+    <Compile Include="SharedResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SharedResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ShowHelp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShowHelp.Designer.cs">
+      <DependentUpon>ShowHelp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TaskPanes.cs" />
+    <Compile Include="TempForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TempForm.Designer.cs">
+      <DependentUpon>TempForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Top Level Forms.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Top Level Forms.Designer.cs">
+      <DependentUpon>Top Level Forms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlWBC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlWBC.Designer.cs">
+      <DependentUpon>UserControlWBC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlMain.Designer.cs">
+      <DependentUpon>UserControlMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlWPFHostElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlWPFHostElement.Designer.cs">
+      <DependentUpon>UserControlWPFHostElement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TopLevelWinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TopLevelWinForm.Designer.cs">
+      <DependentUpon>TopLevelWinForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WPFUserControl1.xaml.cs">
+      <DependentUpon>WPFUserControl1.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SharedResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowHelp.resx">
+      <DependentUpon>ShowHelp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TempForm.resx">
+      <DependentUpon>TempForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Top Level Forms.resx">
+      <DependentUpon>Top Level Forms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlWBC.resx">
+      <DependentUpon>UserControlWBC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlMain.resx">
+      <DependentUpon>UserControlMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlWPFHostElement.resx">
+      <DependentUpon>UserControlWPFHostElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TopLevelWinForm.resx">
+      <DependentUpon>TopLevelWinForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Content Include="samplehelp.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="WPFUserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dpipic.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\MaryQueenOfScots.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backbutton.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

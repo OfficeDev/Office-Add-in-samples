@@ -1,0 +1,56 @@
+// MFCActiveX.idl : type library source for ActiveX Control project.
+
+// This file will be processed by the MIDL compiler tool to
+// produce the type library (MFCActiveX.tlb) that will become a resource in
+// MFCActiveX.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(DFFC673C-E5FE-4D0D-99CA-6FB4BDCF0A50), version(1.0),
+  helpfile("MFCActiveX.hlp"),
+  helpstring("MFCActiveX ActiveX Control module"),
+  control ]
+library MFCActiveXLib
+{
+	importlib(STDOLE_TLB);
+
+	//  Primary dispatch interface for CMFCActiveXCtrl
+
+	[ uuid(0327DD42-7A9E-415B-B9A0-4AEEE1A3319E),
+	  helpstring("Dispatch interface for MFCActiveX Control")]
+	dispinterface _DMFCActiveX
+	{
+		properties:
+			[id(2), helpstring("property FloatProperty")] FLOAT FloatProperty;
+			[id(4)] VARIANT_BOOL UseDynamicDPIAwareCode;
+	methods:
+			[id(1), helpstring("method HelloWorld")] BSTR HelloWorld(void);
+			[id(3), helpstring("method GetProcessThreadID")] void GetProcessThreadID(LONG* pdwProcessId, LONG* pdwThreadId);
+	};
+
+	//  Event dispatch interface for CMFCActiveXCtrl
+
+	[ uuid(97B9B2F3-E95A-49D4-ACA3-E2A181424FD8),
+	  helpstring("Event interface for MFCActiveX Control") ]
+	dispinterface _DMFCActiveXEvents
+	{
+		properties:
+            //  Event interface has no properties
+
+        methods:
+			[id(1)] void FloatPropertyChanging(FLOAT NewValue, VARIANT_BOOL* Cancel);
+			[id(2)] void UseDynamicDPIAwareCodeChanging(VARIANT_BOOL newValue, VARIANT_BOOL* cancel);
+	};
+
+	//  Class information for CMFCActiveXCtrl
+
+	[ uuid(E389AD6C-4FB6-47AF-B03A-A5A5C6B2B820), licensed,
+	  helpstring("MFCActiveX Control"), control ]
+	coclass MFCActiveX
+	{
+		[default] dispinterface _DMFCActiveX;
+		[default, source] dispinterface _DMFCActiveXEvents;
+	};
+
+};

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<?include $(sys.CURRENTDIR)\Platform.wxi?>
+	<Product Id="*" Name="$(var.ProductName)" Language="1033" Version="1.0.0.0" Manufacturer="Microsoft" UpgradeCode="e60337a0-60c2-42c2-9c0a-27ab8a41e4f0">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="$(var.Platform)" Description="$(var.ProductName)"/>
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<!--<MediaTemplate />-->
+
+		<Media Id="1" Cabinet="ExcelAddin1.cab" EmbedCab="yes"/>
+
+		<Property Id="VSTORUNTIMEREDIST">
+			<RegistrySearch
+				Id="VSTORuntimeRedist"
+				Root="HKLM"
+				Win64="no"
+				Key="SOFTWARE\Microsoft\VSTO Runtime Setup\v4R"
+				Name="Version"
+				Type="raw"/>
+		</Property>
+		<Property Id="VSTORUNTIMEOFFICE">
+			<RegistrySearch
+				Id="VSTORuntimeOffice"
+				Root="HKLM"
+				Win64="no"
+				Key="SOFTWARE\Microsoft\VSTO Runtime Setup\v4"
+				Name="Version"
+				Type="raw"/>
+		</Property>
+		<Condition
+		  Message="The Visual Studio 2010 Tools for Office Runtime is not installed. 
+		  Please download and install from 
+		  http://www.microsoft.com/en-us/download/details.aspx?id=20479.">
+			<![CDATA[Installed OR VSTORUNTIMEREDIST>="10.0.30319" OR VSTORUNTIMEOFFICE>="10.0.30319"]]>
+		</Condition>
+
+		<PropertyRef Id="NETFRAMEWORK40FULL"/>
+		<Condition Message="This application requires .NET Framework 4.0.">
+			<![CDATA[Installed OR NETFRAMEWORK40FULL]]>
+		</Condition>
+
+		<Property Id="ApplicationFolderName" Value="$(var.ProductName)"/>
+		<Property Id="WixAppFolder" Value="WixPerMachineFolder"/>
+
+		<Feature Id="ProductFeature" Title="Excel Add-in" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentRef Id="ExcelAddinRegistry" />
+		</Feature>
+
+		<UIRef Id="WixUI_Advanced" />
+		<WixVariable Id="WixUILicenseRtf" Value="EULA.rtf" />
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="$(var.PlatformProgramFilesFolder)">
+				<Directory Id="INSTALLFOLDER" Name="ExcelAddin1Wix" />
+				<!--Currently writing addins registry entries for 64-bit only. Since installer is 32-bit, registry will write to Wow3264Node.-->
+				<Component Id="ExcelAddinRegistry">
+					<RegistryKey Id="ExcelAddinsKey" Root="HKLM" Key="Software\Microsoft\Office\Excel\AddIns\ExcelAddIn1Wix" ForceCreateOnInstall="yes" ForceDeleteOnUninstall="yes">
+						<RegistryValue Id="RegKey_FriendlyName"
+										 Name="FriendlyName"
+										 Value="DDPI Excel Add-In"
+										 Type="string" KeyPath="no" />
+						<RegistryValue Id="RegKey_Description"
+										 Name="Description"
+										 Value="Dynamic DPI example Excel Add-In"
+										 Type="string" KeyPath="no" />
+						<RegistryValue Id="RegKey_Manifest"
+										 Name="Manifest" Value="[INSTALLFOLDER]ExcelAddIn1.vsto|vstolocal"
+										 Type="string" KeyPath="yes" />
+						<RegistryValue Id="RegKey_LoadBehavior"
+										 Name="LoadBehavior" Value="3"
+										 Type="integer" KeyPath="no" />
+					</RegistryKey>
+				</Component>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<Component Id="ExcelAddin1_vsto_Component">
+				<File Id="ExcelAddin1_vsto" KeyPath="yes"
+					  Name="ExcelAddin1.vsto" Source="$(var.ExcelAddinFiles)"></File>
+			</Component>
+			<Component Id="ExcelAddIn1_dll_manifest_Component">
+				<File Id="ExcelAddIn1_dll_manifest" KeyPath="yes"
+					  Name="ExcelAddIn1.dll.manifest" Source="$(var.ExcelAddinFiles)"></File>
+			</Component>
+			<Component Id="MSOfficeToolsCommon_dll_Component">
+				<File Id="MSOfficeToolsCommon_dll" KeyPath="yes"
+					  Name="Microsoft.Office.Tools.Common.v4.0.Utilities.dll"
+					  Source="$(var.ExcelAddinFiles)"></File>
+			</Component>
+			<Component Id="MSOfficeToolsExcel_dll_Component">
+				<File Id="MSOfficeToolsExcel_dll" KeyPath="yes"
+					  Name="Microsoft.Office.Tools.Excel.dll"
+					  Source="$(var.ExcelAddinFiles)"></File>
+			</Component>
+			<Component Id="ExcelAddIn1_dll_Component" >
+				<File Id="ExcelAddIn1_dll" KeyPath="yes"
+					  Name="ExcelAddIn1.dll" Source="$(var.ExcelAddinFiles)" />
+			</Component>
+			<Component Id="SharedModule_dll_Component" >
+				<File Id="SharedModule_dll" KeyPath="yes"
+					  Name="SharedModule.dll" Source="$(var.SharedModuleFiles)" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
