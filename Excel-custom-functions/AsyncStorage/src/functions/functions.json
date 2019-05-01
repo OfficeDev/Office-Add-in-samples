@@ -28,7 +28,7 @@
     {
       "id": "STOREVALUE",
       "name": "STOREVALUE",
-      "description": "Sets a key-value pair in AsyncStorage",
+      "description": "Sets a key-value pair in storage",
       "helpUrl": "http://www.contoso.com",
       "result": {
         "type": "string",
@@ -52,7 +52,7 @@
     {
       "id": "GETVALUE",
       "name": "GETVALUE",
-      "description": "Gets a value from AsyncStorage",
+      "description": "Gets a value from storage",
       "helpUrl": "http://www.contoso.com",
       "result": {
         "type": "string",

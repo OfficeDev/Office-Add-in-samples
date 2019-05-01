@@ -35,7 +35,7 @@
             var tokenSendStatus = document.getElementById('tokenSendStatus');
             var key = "token";
 
-            OfficeRuntime.AsyncStorage.setItem(key, token).then(function () {
+            Office.Storage.setItem(key, token).then(function () {
                 tokenSendStatus.value = "Success: Item with key '" + key + "' saved to AsyncStorage.";
             }, function (error) {
                 tokenSendStatus.value = "Error: Unable to save item with key '" + key + "' to AsyncStorage. " + error;
@@ -46,7 +46,7 @@
             var key = "token";
             var tokenSendStatus = document.getElementById('tokenSendStatus');
 
-            OfficeRuntime.AsyncStorage.getItem(key).then(function (result) {
+            Office.Storage.getItem(key).then(function (result) {
                 tokenSendStatus.value = "Success: Item with key '" + key + "' read from AsyncStorage.";
                 document.getElementById('tokenTextBox2').value = result;
             }, function (error) {
