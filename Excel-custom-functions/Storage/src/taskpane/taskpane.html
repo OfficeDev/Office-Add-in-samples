@@ -1,0 +1,80 @@
+<!-- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contoso Task Pane Add-in</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+    <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+    
+    <script type="text/javascript">
+        // Private functions
+        function SendTokenToCustomFunction() {
+            var token = document.getElementById('tokenTextBox').value;
+            var tokenSendStatus = document.getElementById('tokenSendStatus');
+            var key = "token";
+
+            OfficeRuntime.storage.setItem(key, token).then(function () {
+                tokenSendStatus.value = "Success: Item with key '" + key + "' saved to Storage.";
+            }, function (error) {
+                tokenSendStatus.value = "Error: Unable to save item with key '" + key + "' to Storage. " + error;
+            });
+        }
+
+        function ReceiveTokenFromCustomFunction() {
+            var key = "token";
+            var tokenSendStatus = document.getElementById('tokenSendStatus');
+
+            OfficeRuntime.storage.getItem(key).then(function (result) {
+                tokenSendStatus.value = "Success: Item with key '" + key + "' read from Storage.";
+                document.getElementById('tokenTextBox2').value = result;
+            }, function (error) {
+                tokenSendStatus.value = "Error: Unable to read item with key '" + key + "' from Storage. " + error;
+            });
+        }
+    </script>
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <h1 class="ms-font-xl">Welcome!</h1>
+    </header>
+    <main id="app-body" class="ms-welcome__main" style="display:inline">
+        <ol><li>Enter a value to send to the custom function and select <strong>Send</strong>.</li>
+            <li>Enter =CONTOSO.GETVALUE("token") into a cell to retrieve it.</li>
+        <li>To send data to the task pane, in a cell, enter <strong>=CONTOSO.STOREVALUE("token","my value")</strong></li>
+        <li>Select <strong>Receive</strong> to receive the value in the task pane.</li>
+        </ol>
+        <p>To change the functions, edit <b>functions.js</b>. To change the prefix, edit <b>manifest.xml</b>.
+        For more information, see <a href=https://aka.ms/customfunctions>https://aka.ms/customfunctions</a>.</p>
+
+        Send token to custom function (key = "token")
+        <div>
+            <input type="text" id="tokenTextBox" />
+            <button onclick="SendTokenToCustomFunction()">Send</button>
+        </div>
+    
+        Receive token from custom function (key = "token")
+        <div>
+            <input type="text" id="tokenTextBox2" />
+            <button onclick="ReceiveTokenFromCustomFunction()">Receive</button>
+        </div>
+    
+        <div id="tokenSendStatus" />
+      
+    </main>
+</body>
+
+</html>
