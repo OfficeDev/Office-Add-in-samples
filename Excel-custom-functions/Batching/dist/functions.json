@@ -1,0 +1,75 @@
+﻿{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/office-js/custom-functions.schema.json",
+  "functions": [
+    {
+      "id": "ADDNOBATCH",
+      "name": "ADD",
+      "description": "Add two numbers",
+      "helpUrl": "http://www.contoso.com/help",
+      "result": {
+        "type": "number",
+        "dimensionality": "scalar"
+      },
+      "parameters": [
+        {
+          "name": "first",
+          "description": "first number to add",
+          "type": "number",
+          "dimensionality": "scalar"
+        },
+        {
+          "name": "second",
+          "description": "second number to add",
+          "type": "number",
+          "dimensionality": "scalar"
+        }
+      ]
+    },
+    {
+      "id": "DIV2",
+      "name": "DIV2",
+      "description": "Divides two numbers",
+      "helpUrl": "http://www.contoso.com",
+      "result": {
+        "dimensionality": "scalar"
+      },
+      "parameters": [
+        {
+          "name": "dividend",
+          "description": "The number being divided",
+          "type": "number",
+          "dimensionality": "scalar"
+        },
+        {
+          "name": "divisor",
+          "description": "The number to divide the dividend with",
+          "type": "number",
+          "dimensionality": "scalar"
+        }
+      ]
+    },
+    {
+      "id": "MUL2",
+      "name": "MUL2",
+      "description": "Add two numbers",
+      "helpUrl": "http://www.contoso.com",
+      "result": {
+        "dimensionality": "scalar"
+      },
+      "parameters": [
+        {
+          "name": "first",
+          "description": "first number to add",
+          "type": "number",
+          "dimensionality": "scalar"
+        },
+        {
+          "name": "second",
+          "description": "second number to add",
+          "type": "number",
+          "dimensionality": "scalar"
+        }
+      ]
+    }
+  ]
+}
