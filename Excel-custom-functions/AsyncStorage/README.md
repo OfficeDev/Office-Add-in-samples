@@ -1,4 +1,4 @@
-# Using AsyncStorage in custom functions
+# Using the Storage object in custom functions
 
 Learn how to use pass data values from custom functions to task panes, or from task panes to custom functions.
 
@@ -22,7 +22,7 @@ On a machine with a valid instance of an Excel Insider build installed, follow t
 4. After Excel launches, you will need to register the custom-functions add-in to work around a bug:
     a. On the upper-left-hand side of Excel, there is a small hexagon icon with a dropdown arrow. The icon is to right of the Save icon.
     b. Click on this dropdown arrow and then click on the Custom Functions Sample add-in to register it.
-5. The task pane has further instructions on how to store and retrieve values in AsyncStorage.
+5. The task pane has further instructions on how to store and retrieve values by using the Storage object.
 
 ## Making changes
 If you make changes to the sample functions code (in the JS file), close and reopen Excel to test them.

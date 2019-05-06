@@ -36,9 +36,9 @@
             var key = "token";
 
             Office.Storage.setItem(key, token).then(function () {
-                tokenSendStatus.value = "Success: Item with key '" + key + "' saved to AsyncStorage.";
+                tokenSendStatus.value = "Success: Item with key '" + key + "' saved to Storage.";
             }, function (error) {
-                tokenSendStatus.value = "Error: Unable to save item with key '" + key + "' to AsyncStorage. " + error;
+                tokenSendStatus.value = "Error: Unable to save item with key '" + key + "' to Storage. " + error;
             });
         }
 
@@ -47,10 +47,10 @@
             var tokenSendStatus = document.getElementById('tokenSendStatus');
 
             Office.Storage.getItem(key).then(function (result) {
-                tokenSendStatus.value = "Success: Item with key '" + key + "' read from AsyncStorage.";
+                tokenSendStatus.value = "Success: Item with key '" + key + "' read from Storage.";
                 document.getElementById('tokenTextBox2').value = result;
             }, function (error) {
-                tokenSendStatus.value = "Error: Unable to read item with key '" + key + "' from AsyncStorage. " + error;
+                tokenSendStatus.value = "Error: Unable to read item with key '" + key + "' from Storage. " + error;
             });
         }
     </script>
@@ -65,7 +65,7 @@
     <div class="footer">
         <div class="ms-Grid ms-bgColor-themeSecondary">
             <div class="ms-Grid-row">
-                <div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12"> <div class="ms-font-xl ms-fontColor-white">AsyncStorage sample</div></div>
+                <div class="ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12"> <div class="ms-font-xl ms-fontColor-white">Custom function storage sample</div></div>
             </div>
         </div>
     </div>

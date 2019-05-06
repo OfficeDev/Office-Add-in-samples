@@ -4,7 +4,7 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="AsyncStorage sample"/>
+  <DisplayName DefaultValue="Custom function storage sample"/>
   <Description DefaultValue="See how to pass data values between custom functions and task panes"/>
   <IconUrl DefaultValue="https://localhost:8081/assets/icon-32.png"/>
   <SupportUrl DefaultValue="http://www.contoso.com"/>
