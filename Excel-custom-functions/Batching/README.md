@@ -1,29 +1,94 @@
-# Custom functions in Excel (Preview)
+# Custom function batching pattern #
 
-Custom functions enable you to add new functions to Excel by defining those functions in JavaScript as part of an add-in. Users within Excel can access custom functions just as they would any native function in Excel, such as `SUM()`.  
+### Summary ###
+If your custom functions call a remote service you may want to use a batching pattern to reduce the number of network calls to the remote service. This is useful when a spreadsheet recalculates and it contains many of your custom functions. Recalculate will result in many calls to your custom functions, but you can batch them into one or a few calls to the remote service. 
 
-This repository contains the source code used by the [Yo Office generator](https://github.com/OfficeDev/generator-office) when you create a new custom functions project. You can also use this repository as a sample to base your own custom functions project from if you choose not to use the generator. For more detailed information about custom functions in Excel, see the [Custom functions overview](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-overview) article in the Office Add-ins documentation or see the [additional resources](#additional-resources) section of this repository.
+### Applies to ###
+-  Custom functions on Excel desktop and online
 
-## Debugging custom functions
+### Prerequisites ###
+Custom functions are currently in developer preview. To get set up and working with custom functions, see [Custom functions requirements](https://docs.microsoft.com/en-us/office/dev/add-ins/excel/custom-functions-requirements)
 
-This template supports debugging custom functions from [Visual Studio Code](https://code.visualstudio.com/). For more information see [Custom functions debugging](https://aka.ms/custom-functions-debug). For general information on debugging task panes and other Office Add-in parts, see [Test and debug Office Add-ins](https://docs.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins).
+### Solution ###
+Solution | Author(s)
+---------|----------
+Custom function batching | Microsoft
 
-## Questions and comments
+### Version history ###
+Version  | Date | Comments
+---------| -----| --------
+1.0  | April 5, 2019 | Initial release
 
-We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
+### Disclaimer ###
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-Questions about Microsoft Office 365 development in general should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/office-js+API).  If your question is about the Office JavaScript APIs, make sure it's tagged with  [office-js].
 
-## Additional resources
+----------
 
-* [Custom functions overview](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-overview)
-* [Custom functions best practices](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-best-practices)
-* [Custom functions runtime](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-runtime)
-* [Office add-in documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
-* More Office Add-in samples at [OfficeDev on Github](https://github.com/officedev)
+# Scenario: Custom function batching #
+In this scenario your custom functions call a remote service. To reduce network round trips you will batch all the calls and send them in a single call to the web service. This is ideal when the spreadsheet is recalculated. For example, if someone used your custom function in 100 cells in a spreadsheet, and then recalculates the spreadsheet, your custom function would run 100 times and make 100 network calls. By using this batching pattern, the calls can be combined to make all 100 calculations in a single network call.
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+## Run the sample
+To run this sample, download the code and go to the **Batching** folder in a command prompt window.
 
-## Copyright
+1. Run `npm install`.
+2. Run `npm run build`.
+3. Run `npm run start`. The sample will now sideload into Excel on desktop.
 
-Copyright (c) 2017 Microsoft Corporation. All rights reserved.
+## Key parts of the sample
+The code pattern contains two custom functions named `DIV2` and `MUL2`. Instead of performing the calculation, each of them calls a `_pushOperation` function to push the operation into a batch queue to be passed to a web service.
+
+```typescript
+function mul2(first: number, second: number) {
+  return _pushOperation(
+    "mul2",
+    [first, second]
+  );
+}
+```
+
+### Batching the operation
+The `_pushOperation` function pushes each operation into a _batch variable. It schedules the batch call to be made within 100 milliseconds. You can adjust this when using the code in your own solution.
+
+```typescript
+  // If a remote request hasn't been scheduled yet,
+  // schedule it after a certain timeout, e.g. 100 ms.
+  if (!_isBatchedRequestScheduled) {
+    _isBatchedRequestScheduled = true;
+    setTimeout(_makeRemoteRequest, 100);
+  }
+```
+
+### Making the remote request
+The `_makeRemoteRequest` function prepares the batch request and passes it to the `_fetchFromRemoteService` function. If you are adapting this code to your own solution you need to modify `_makeRemoteRequest` to actually call your remote service.
+
+### The remote service
+The `_fetchFromRemoteService` function processes the batch of operations, performs the operations, and then returns the results. In this sample, `_fetchFromRemoteService` is just another function to demonstrate the pattern. When adapting this code to your solution, use this method on the server-side to respond to the client call over the network.
+
+## How to apply batching in your own solution
+You can copy and paste this code into your own solution. When using this pattern, you'll need to evaluate and update the following areas of code.
+
+### _pushOperation
+Adjust the timeout value as needed. A longer time will be more noticable to the user. A shorter time may result in more calls to the remote service.
+
+### _makeRemoteRequest
+Modify this function to actually make a network call to your remote service and pass the batch operations in a single call. For example, you may want to serialize the batch entries into a JSON body to be passed in the netwwork call to the remote service.
+
+### _fetchFromRemoteService
+Place this function in your remote service to handle the network call from the client. You'll want to modify this to perform the actual operations of your custom functions (or call the correct methods to do so.)
+
+**Note**: You should remove the call to `pause(1000)` which simulates network latency in the sample.
+
+## Security notes
+When implementing the **_fetchFromRemoteService** function on a server, apply an appropriate authentication mechanism. Ensure that only the correct callers can access the function.
+
+In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. You should lock this header down to only allowed domains in production code.
+
+You will be prompted to install self-signed certificates when you run this sample on your development computer. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
+
+You can install or uninstall the self-signed certificates by running the following commands in the project folder.
+
+```cli
+npx office-addin-dev-certs install
+npx office-addin-dev-certs uninstall
+```
