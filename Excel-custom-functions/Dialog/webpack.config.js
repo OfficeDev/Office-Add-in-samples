@@ -14,6 +14,7 @@ module.exports = async (env, options) => {
       functions: "./src/functions/functions.ts",
       polyfill: "@babel/polyfill",
       taskpane: "./src/taskpane/taskpane.ts",
+      dialog: "./dialog.ts",
       commands: "./src/commands/commands.ts"
     },
     resolve: {
@@ -59,6 +60,11 @@ module.exports = async (env, options) => {
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
         chunks: ["polyfill", "taskpane"]
+      }),
+      new HtmlWebpackPlugin({
+        filename: "dialog.html",
+        template: "./dialog.html",
+        chunks: ["polyfill", "dialog"]
       }),
       new CopyWebpackPlugin([
         {

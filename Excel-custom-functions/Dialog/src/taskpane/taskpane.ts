@@ -23,7 +23,8 @@ async function run() {
 
       // Update the fill color
       range.format.fill.color = "yellow";
-
+      Office.context.ui.messageParent("test");
+      
       await context.sync();
       console.log(`The range address was ${range.address}.`);
     });
