@@ -1,6 +1,7 @@
 const devCerts = require("office-addin-dev-certs");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CustomFunctionsMetadataPlugin = require("custom-functions-metadata-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const fs = require("fs");
 const webpack = require("webpack");
@@ -11,7 +12,7 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       functions: "./src/functions/functions.ts",
-      polyfill: 'babel-polyfill',
+      polyfill: "@babel/polyfill",
       taskpane: "./src/taskpane/taskpane.ts",
       commands: "./src/commands/commands.ts"
     },
@@ -23,7 +24,7 @@ module.exports = async (env, options) => {
         {
           test: /\.ts$/,
           exclude: /node_modules/,
-          use: 'babel-loader'
+          use: "babel-loader"
         },
         {
           test: /\.tsx?$/,
@@ -42,22 +43,22 @@ module.exports = async (env, options) => {
       ]
     },
     plugins: [
-      new CleanWebpackPlugin(dev ? [] : ["dist"]),
-      new CopyWebpackPlugin([
-        {
-          to: "functions.json",
-          from: "./src/functions/functions.json"
-        }
-      ]),
+      new CleanWebpackPlugin({
+        cleanOnceBeforeBuildPatterns: dev ? [] : ["**/*"]
+      }),
+      new CustomFunctionsMetadataPlugin({
+        output: "functions.json",
+        input: "./src/functions/functions.ts"
+      }),
       new HtmlWebpackPlugin({
         filename: "functions.html",
         template: "./src/functions/functions.html",
-        chunks: ['polyfill', 'functions']
+        chunks: ["polyfill", "functions"]
       }),
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
-        chunks: ['polyfill', 'taskpane']
+        chunks: ["polyfill", "taskpane"]
       }),
       new CopyWebpackPlugin([
         {
@@ -69,7 +70,7 @@ module.exports = async (env, options) => {
         filename: "commands.html",
         template: "./src/commands/commands.html",
         chunks: ["polyfill", "commands"]
-      }),
+      })
     ],
     devServer: {
       headers: {

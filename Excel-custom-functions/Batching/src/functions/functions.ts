@@ -1,6 +1,6 @@
 ﻿/**
- * @CustomFunction
  * Adds two numbers without using batching
+ * @CustomFunction
  * @param first First number
  * @param second Second number
  * @returns The sum of the two numbers.
@@ -10,8 +10,8 @@ function addNoBatch(first: number, second: number): number {
 }
 
 /**
- * @CustomFunction
  * Divides two numbers using batching
+ * @CustomFunction
  * @param dividend The number being divided
  * @param divisor The number to divide the dividend with
  * @returns The sum of the two numbers
@@ -24,8 +24,8 @@ function div2(dividend: number, divisor: number) {
 }
 
 /**
- * @CustomFunction
  * Multiplies two numbers together using batching
+ * @CustomFunction
  * @param first First number to multiply
  * @param second Second number to multiply
  * @returns The product of the two numbers

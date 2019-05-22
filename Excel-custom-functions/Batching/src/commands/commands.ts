@@ -3,11 +3,29 @@
  * See LICENSE in the project root for license information.
  */
 
-(() => {
-  // The initialize function must be run each time a new page is loaded
-  Office.initialize = () => {
+Office.onReady(info => {
+  // If needed, Office.js is ready to be called
+});
 
-  };
+/**
+ * Shows a notification when the add-in command is executed.
+ * @param event 
+ */
+function action(event: Office.AddinCommands.Event) {
+  // Your code goes here
 
-  // Add any ui-less function here
-})();
+  // Be sure to indicate when the add-in command function is complete
+  event.completed();
+}
+
+function getGlobal() { 
+  return (typeof self !== "undefined") ? self :
+    (typeof window !== "undefined") ? window : 
+    (typeof global !== "undefined") ? global :
+    undefined;
+}
+
+const g = getGlobal() as any;
+
+// the add-in command functions need to be available in global scope
+g.action = action;
