@@ -4,7 +4,7 @@ This is the community source code location for PnP Office Add-Ins. This repo con
 <img src="office365p&p.svg" alt="Office 365 Developer Patterns and Practices" width="200">
 
 ## List of recent samples
-- [AsyncStorage](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Excel-custom-functions/AsyncStorage) for custom functions - Custom functions and task panes cannot directly communicate with each other. See how to use AsyncStorage to send data between custom functions and task panes. This is especially useful for sharing an access token.
+- [Custom function storage](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Excel-custom-functions/Storage) for custom functions - Custom functions and task panes cannot directly communicate with each other. See how to use the Storage object to send data between custom functions and task panes. This is especially useful for sharing an access token.
 
 ## More information
 Please use [http://aka.ms/OfficeDevPnP](http://aka.ms/OfficeDevPnP) for getting latest information around the whole *Office 365 Developer Patterns and Practices program*. 
