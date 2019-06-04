@@ -1,3 +1,17 @@
+---
+topic: sample
+products:
+- Excel
+- Office 365
+languages:
+- TypeScript
+extensions:
+  contentType: samples
+  technologies:
+  - Add-ins
+  createdDate: 5/1/2019 1:25:00 PM
+---
+
 # Custom function batching pattern #
 
 ### Summary ###
