@@ -12,32 +12,115 @@ extensions:
   createdDate: 5/1/2019 1:25:00 PM
 ---
 
-# Custom functions in Excel (Preview)
+# Using storage to share data between custom functions and the task pane
 
-Custom functions enable you to add new functions to Excel by defining those functions in JavaScript as part of an add-in. Users within Excel can access custom functions just as they would any native function in Excel, such as `SUM()`.  
+## Summary
 
-This repository contains the source code used by the [Yo Office generator](https://github.com/OfficeDev/generator-office) when you create a new custom functions project. You can also use this repository as a sample to base your own custom functions project from if you choose not to use the generator. For more detailed information about custom functions in Excel, see the [Custom functions overview](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-overview) article in the Office Add-ins documentation or see the [additional resources](#additional-resources) section of this repository.
+If you need to share data values between your custom functions and the task pane, you can use the OfficeRuntime.storage object. Custom functions and task do not share the same runtime and cannot access the same data. OfficeRuntime.storage saves simple key/value pairs that you can access from both custom functions and the task pane.
 
-## Debugging custom functions
+This sample accompanies the article [Save and share state in custom functions](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-save-state)
 
-This template supports debugging custom functions from [Visual Studio Code](https://code.visualstudio.com/). For more information see [Custom functions debugging](https://aka.ms/custom-functions-debug). For general information on debugging task panes and other Office Add-in parts, see [Test and debug Office Add-ins](https://docs.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins).
+## Applies to
 
-## Questions and comments
+- Custom functions on Excel desktop and online
 
-We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
+## Prerequisites
 
-Questions about Microsoft Office 365 development in general should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/office-js+API).  If your question is about the Office JavaScript APIs, make sure it's tagged with  [office-js].
+To get set up and working with custom functions, see [Custom functions requirements](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-requirements)
 
-## Additional resources
+### Solution ###
 
-* [Custom functions overview](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-overview)
-* [Custom functions best practices](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-best-practices)
-* [Custom functions runtime](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-runtime)
-* [Office add-in documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
-* More Office Add-in samples at [OfficeDev on Github](https://github.com/officedev)
+Solution | Author(s)
+---------|----------
+Using storage to share data between custom functions and the task pane | Microsoft
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+### Version history ###
 
-## Copyright
+Version  | Date | Comments
+---------| -----| --------
+1.0  | May 1, 2019 | Initial release
 
-Copyright (c) 2019 Microsoft Corporation. All rights reserved.
+### Disclaimer ###
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+## Sample: Sharing data between custom functions and the task pane
+
+This sample code shows how to share data between custom functions and the task pane. The task pane allows the user to enter a key/value pair and save it to storage. Then in a custom function, the value can be retrieved using the `GETVALUE(key)` custom function. Or the user can use the `STOREVALUE(key,value)` custom function to store a value, and then retrieve it in the task pane.
+
+## Run the sample
+
+To run this sample, download the code and go to the **Storage** folder in a command prompt window.
+
+1. Run `npm install`.
+2. Run `npm run build`.
+3. Run `npm run start`. The sample will now sideload into Excel on desktop.
+
+### How the custom functions work with storage
+
+The /src/functions/functions.js file contains two custom functions named `StoreValue` and `GetValue`.
+
+`StoreValue` takes a key and value from the user and stores them by calling the `OfficeRuntime.storage.setItem` method as shown in the following sample code.
+
+```js
+function StoreValue(key, value) {
+  return OfficeRuntime.storage.setItem(key, value).then(function (result) {
+      return "Success: Item with key '" + key + "' saved to storage.";
+  }, function (error) {
+      return "Error: Unable to save item with key '" + key + "' to storage. " + error;
+  });
+}
+```
+
+`GetValue` retrieves a value for a given key by calling the `OfficeRuntime.storage.getItem` method as shown in the following sample code.
+
+```js
+function GetValue(key) {
+  return OfficeRuntime.storage.getItem(key);
+}
+```
+
+### How the task pane works with storage
+
+The /src/taskpane/taskpane.html has two JavaScript functions that are called from buttons on the UI. The `SendTokenToCustomFunction` function retrieves the key and token from text boxes on the task pane. Then it calls the `OfficeRuntime.storage.setItem` method to store the key/value pair as shown in the following sample code.
+
+```js
+function SendTokenToCustomFunction() {
+  var token = document.getElementById('tokenTextBox').value;
+  var tokenSendStatus = document.getElementById('tokenSendStatus');
+  var key = "token";
+  OfficeRuntime.storage.setItem(key, token).then(function () {
+    tokenSendStatus.value = "Success: Item with key '" + key + "' saved to Storage.";
+  }, function (error) {
+    tokenSendStatus.value = "Error: Unable to save item with key '" + key + "' to Storage. " + error;
+  });
+}
+```
+
+The `ReceiveTokenFromCustomFunction` function retrieves the key from a text box on the task pane. Then it calls the `OfficeRuntime.storage.getItem` method to get value for the key and display it on the page.
+
+```js
+function ReceiveTokenFromCustomFunction() {
+  var key = "token";
+  var tokenSendStatus = document.getElementById('tokenSendStatus');
+  OfficeRuntime.storage.getItem(key).then(function (result) {
+    tokenSendStatus.value = "Success: Item with key '" + key + "' read from Storage.";
+    document.getElementById('tokenTextBox2').value = result;
+  }, function (error) {
+    tokenSendStatus.value = "Error: Unable to read item with key '" + key + "' from Storage. " + error;
+  });
+}
+```
+
+## Security notes
+
+In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. You should lock this header down to only allowed domains in production code.
+
+You will be prompted to install self-signed certificates when you run this sample on your development computer. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
+
+You can install or uninstall the self-signed certificates by running the following commands in the project folder.
+
+```cli
+npx office-addin-dev-certs install
+npx office-addin-dev-certs uninstall
+```
