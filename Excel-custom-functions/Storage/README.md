@@ -4,7 +4,7 @@ products:
 - Excel
 - Office 365
 languages:
-- TypeScript
+- JavaScript
 extensions:
   contentType: samples
   technologies:
