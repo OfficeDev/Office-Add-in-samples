@@ -30,7 +30,7 @@
     <ProjectGuid>{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}</ProjectGuid>
     <RootNamespace>MFCActiveX</RootNamespace>
     <Keyword>MFCActiveXProj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -353,7 +353,6 @@
     <ResourceCompile Include="MFCActiveX.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\Users\shawnmc\OneDrive\Pictures\BW Two Palms.png" />
     <Image Include="bitmap1.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

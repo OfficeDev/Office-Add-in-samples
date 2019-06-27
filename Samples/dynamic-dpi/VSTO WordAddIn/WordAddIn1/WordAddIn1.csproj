@@ -31,10 +31,10 @@
     <IsWebBootstrapper>False</IsWebBootstrapper>
     <TargetFrameworkProfile />
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <PublishUrl>\\officefile\public\shawnmc\vstoaddin\vstosharedaddin\wordaddin1\</PublishUrl>
-    <InstallUrl>\\officefile\public\shawnmc\vstoaddin\vstosharedaddin\wordaddin1\</InstallUrl>
+    <PublishUrl>C:\publish\vstosharedaddin\vstoaddin\wordaddin1\</PublishUrl>
+    <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.0.0.46</ApplicationVersion>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
     <AutoIncrementApplicationRevision>true</AutoIncrementApplicationRevision>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateInterval>7</UpdateInterval>
@@ -50,6 +50,11 @@
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -212,9 +217,6 @@
       <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
     </Compile>
     <AppDesigner Include="Properties\" />
-    <None Include="WordAddIn1_1_TemporaryKey.pfx" />
-    <None Include="WordAddIn1_2_TemporaryKey.pfx" />
-    <None Include="WordAddIn1_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\VSTO SharedAddin\SharedModule\SharedModule.csproj">
