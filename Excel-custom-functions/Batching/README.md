@@ -106,3 +106,5 @@ You can install or uninstall the self-signed certificates by running the followi
 npx office-addin-dev-certs install
 npx office-addin-dev-certs uninstall
 ```
+
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/excel-custom-functions/batching" />
