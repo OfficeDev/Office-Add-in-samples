@@ -25,7 +25,9 @@
     "validate": "office-toolbox validate -m manifest.xml",
     "watch": "webpack --mode development --watch"
   },
-  "dependencies": {},
+  "dependencies": {
+    "http-server": "^0.11.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/polyfill": "^7.4.4",
