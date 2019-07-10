@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp           
+          xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+          xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" 
+          xsi:type="MailApp">
+<!-- BeginBasicSettings: Add-in metadata used for all versions of Office unless override provided -->
+  
+  <!--IMPORTANT! Id must be unique for your add-in. If you clone this manifest ensure that you change this id to your own GUID -->
+  <Id>481a32a9-ab8a-4579-ac9f-df1a11a64e52</Id>
+  
+  <!--Version. Updates from the store only get triggered if there is a version change -->
+  <Version>1.0.0.0</Version>
+  <ProviderName>Office Developer Education</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <!-- The display name of your add-in. Used on the store and in various places of the Office UI such as the add-ins dialog -->
+  <DisplayName DefaultValue="Microsoft Graph Data" />
+  <Description DefaultValue="Get files from OneDrive by using the Microsoft Graph APIs."/>
+  
+  <!--Icon for your add-in. Used on installation screens and the add-ins dialog -->
+  <IconUrl DefaultValue="https://localhost:44301/Content/Onedrive_Charts_icon_80x80px.png" />
+  
+     
+  
+  <!--BeginTaskpaneMode integration. Office 2013 and any client that doesn't understand commands will use this section.
+    This section will also be used if there are no VersionOverrides -->
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1" />
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://localhost:44301/Home/Index"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>  
+
+  <!--EndTaskpaneMode integration -->
+  
+  <Permissions>ReadWriteItem</Permissions>
+    <Rule xsi:type="RuleCollection" Mode="Or">
+      <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
+    </Rule>
+    <DisableEntityHighlighting>false</DisableEntityHighlighting>
+
+    
+    <!--BeginAddinCommandsMode integration-->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.3">
+        <bt:Set Name="Mailbox" />
+      </bt:Sets>
+    </Requirements>
+    <!--Required, hosts node. Each host can have a different set of commands -->
+    <Hosts>
+      <!--Specific host. Workbook=Excel, Document=Word, Presentation=PowerPoint -->
+      <Host xsi:type="MailHost">
+        <!-- Form factor. Currenly only DesktopFormFactor is supported. We will add TabletFormFactor and PhoneFormFactor in the future-->
+        <DesktopFormFactor>
+          <!-- Location of the Functions that UI-less buttons can trigger (ExecuteFunction Actions). -->
+          <FunctionFile resid="functionFile" />
+
+          <!-- Message Read -->
+          <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+            <!-- Use the default tab of the ExtensionPoint or create your own with <CustomTab id="myTab"> -->
+            <OfficeTab id="TabDefault">
+              <!-- Up to 6 Groups added per Tab -->
+              <Group id="msgComposeCmdGroup">
+                <Label resid="groupLabel" />
+                <!-- Launch the add-in : task pane button -->
+                <Control xsi:type="Button" id="msgComposeInsertFilenamesButton">
+                  <Label resid="TaskpaneButton.Label" />
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Title" />
+                    <Description resid="TaskpaneButton.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon16" />
+                    <bt:Image size="32" resid="icon32" />
+                    <bt:Image size="80" resid="icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="Taskpane.Url" />
+                  </Action>
+                </Control>
+                <!-- Go to http://aka.ms/ButtonCommands to learn how to add more Controls: ExecuteFunction and Menu -->
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+          <!-- Go to http://aka.ms/ExtensionPointsCommands to learn how to add more Extension Points: MessageRead, AppointmentOrganizer, AppointmentAttendee -->
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+       <bt:Images>
+        <bt:Image id="icon16" DefaultValue="https://localhost:44301/Content/Onedrive_Charts_icon_16x16px.png"/>
+        <bt:Image id="icon32" DefaultValue="https://localhost:44301/Content/Onedrive_Charts_icon_32x32px.png"/>
+        <bt:Image id="icon80" DefaultValue="https://localhost:44301/Content/Onedrive_Charts_icon_80x80px.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:44301/Home/Index"/>
+        <bt:Url id="residDesktopFuncUrl" DefaultValue="https://notusedinthissample">
+        </bt:Url>
+        <bt:Url id="residImageHomeUrl" DefaultValue="https://localhost:44301/Home/Index">
+        </bt:Url>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://github.com/OfficeDev/Outlook-Add-in-Microsoft-Graph-ASPNET">
+        </bt:Url>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="OneDrive Files"/>
+        <bt:String id="customTabLabel"  DefaultValue="My Add-in Tab"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Open Add-in"/>
+        <bt:String id="TaskpaneButton.Title" DefaultValue="Get files stored on OneDrive"/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Open Add-in">
+        </bt:String>
+        <bt:String id="GetStarted.Title" DefaultValue="Microsoft Graph data add-in has loaded successfully.">
+        </bt:String>
+        <bt:String id="residLabel4" DefaultValue="OneDrive Files">
+        </bt:String>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Choose Open add-in, then Connect to OneDrive to get started."/>
+        <bt:String id="TaskpaneButton.Title" DefaultValue="Get files stored on OneDrive">
+        </bt:String>
+        <bt:String id="GetStarted.Description" DefaultValue="Choose Open add-in, then Connect to OneDrive to get started.">
+        </bt:String>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+  </OfficeApp>
+
