@@ -32,11 +32,11 @@ Version  | Date | Comments
 
 ----------
 # Scenario: Caching data using offline storage techniques
-This sample add-in displays a table of NBA players' stats, retrieved from a local file named sampleData.js. In this sample code, data from the add-in is cached in local storage to allow users to access the table of stats even when offline. 
+This sample add-in displays a table of basketball players' stats, retrieved from a local file named ``sampleData.js``. In this sample code, data from the add-in is cached in local storage to allow users who previously opened the add-in with online connection to access the table of stats offline.
 
 While this add-in gets its data from a local server, implementation of local storage as shown in this sample can be extended to add-ins that get their data from online sources. Furthermore, although this sample runs only in Excel, local storage can be used to offline data across Word, Excel, and PowerPoint.
 
-Note: Depending on the type and size of data you wish to offline, you may wish to look into other offline storage options. If you'd like offline capabilities to persist in the file, you may wish to store your add-in's data in [Office Settings](https://docs.microsoft.com/en-us/javascript/api/office/office.settings?view=office-js). Local storage is also limited in that it can only cache up to 5 MB of information. To store larger amounts of data offline, you may wish to consider using [IndexedDB] (https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API); however, as of now, IndexedDB is not supported by all browsers used by Office add-ins, and may cause your add-in to fail on some computers.
+**Note**: Depending on the type and size of data you wish to offline, you may wish to look into other offline storage options. If you'd like offline capabilities to persist in the file, you may wish to store your add-in's data in [Office Settings](https://docs.microsoft.com/en-us/javascript/api/office/office.settings?view=office-js). Local storage is also limited in that it can only cache up to 5 MB of information. To store larger amounts of data offline, you may wish to consider using [IndexedDB] (https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API); however, as of now, IndexedDB is not supported by all browsers used by Office add-ins, and may cause your add-in to fail on some computers.
 
 ## Build and run the sample
 
@@ -63,8 +63,36 @@ $ npm run start:web
 ```
 ## Key parts of this sample
 
-### Implementing local storage to offline data
+Navigate to ``Excel.OfflineStorageAddin/src/taskpane/taskpane.js`` to find the implementation of local storage described below. 
 
+### Implementing local storage to offline data
+The ``Excel.OfflineStorageAddin/src/taskpane/taskpane.js`` file contains the `loadTable()` function, which makes use of local storage to display a table of basketball player stats when a user loses connection.
+
+In the sample code, the `loadTable()` function first checks if the basketball player data was previously cached into local storage, as shown in the code below. If it exists, the data is parsed from JSON into a readable text format before being passed to `createTable()`, a function which creates a table from the given data. 
+
+```
+        if (localStorage.DraftPlayerData) {
+            var dataObject = JSON.parse(localStorage.DraftPlayerData);
+            createTable(dataObject);
+        }
+```
+
+If the data was not previously cached, `loadTable()` attempts to access ``sampleData.js``, which is the file containing the data, through an AJAX call. If this attempt is successful, the function passes the data returned from the file to `createTable()` to produce a table. The data is also converted into a JSON object, which is cached into local storage. However, if the function is unable to access the ``sampleData.js`` file, the function returns an error to the console, notifying the add-in. This process is shown in the following code:
+```
+        else {
+            $.ajax({
+                dataType: "json",
+                url: "sampleData.js",
+                success: function (result, status, xhr) {
+                    localStorage.DraftPlayerData = JSON.stringify(result);
+                    createTable(result);
+                },
+                error: function (xhr, status, error) {
+                    console.log("Player data failed to load with error: " + error);
+                }
+            });
+        }
+```
 
 ## Security notes
 
