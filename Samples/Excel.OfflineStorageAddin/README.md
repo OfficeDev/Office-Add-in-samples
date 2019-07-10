@@ -12,7 +12,7 @@ This sample demonstrates how you can implement local storage to enable limited f
 
 ## Prerequisites
 
-None
+Before running this sample, make sure you have npm and Node.js installed on your computer. You can check by running the commands `node -v` and `npm -v` in your terminal. To get this software, go to https://www.npmjs.com/get-npm.
 
 ## Solution
 
@@ -31,13 +31,19 @@ Version  | Date | Comments
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ----------
-# Scenario: Offlining data using offline storage techniques
+# Scenario: Caching data using offline storage techniques
+This sample add-in displays a table of NBA players' stats, retrieved from a local file named sampleData.js. In this sample code, data from the add-in is cached in local storage to allow users to access the table of stats even when offline. 
+
+While this add-in gets its data from a local server, implementation of local storage as shown in this sample can be extended to add-ins that get their data from online sources. Furthermore, although this sample runs only in Excel, local storage can be used to offline data across Word, Excel, and PowerPoint.
+
+Note: Depending on the type and size of data you wish to offline, you may wish to look into other offline storage options. If you'd like offline capabilities to persist in the file, you may wish to store your add-in's data in [Office Settings](https://docs.microsoft.com/en-us/javascript/api/office/office.settings?view=office-js). Local storage is also limited in that it can only cache up to 5 MB of information. To store larger amounts of data offline, you may wish to consider using [IndexedDB] (https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API); however, as of now, IndexedDB is not supported by all browsers used by Office add-ins, and may cause your add-in to fail on some computers.
 
 ## Build and run the sample
 
-To get this sample, clone or download this repository and in the command line, navigate to the **Excel.OfflineStorageAddin** folder.
+To get this sample, clone or download this repository. In the command line, navigate to the **Excel.OfflineStorageAddin** folder from your root directory.
 ```
 $ git clone https://github.com/OfficeDev/PnP-OfficeAddins.git
+$ cd PnP-OfficeAddins
 $ cd Samples
 $ cd Excel.OfflineStorageAddin
 ```
@@ -56,7 +62,9 @@ $ npm run start
 $ npm run start:web
 ```
 ## Key parts of this sample
-This sample displays a table of NBA players' stats, retrieved from a local file named sampleData.js. 
+
+### Implementing local storage to offline data
+
 
 ## Security notes
 
@@ -72,11 +80,5 @@ npx office-addin-dev-certs uninstall
 ```
 <img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/excel-custom-functions/storage" />
 
-Description of the sample with additional details beyond the summary.
-This sample illustrates the following concepts on top of the Office platform:
-
-- topic 1
-- topic 2
-- topic 3
 
 <img src="https://telemetry.sharepointpnp.com/officedev/samples/readme-template" />
