@@ -162,8 +162,8 @@ UpgradeLog*.XML
 UpgradeLog*.htm
 
 # SQL Server files
-*.mdf
-*.ldf
+#*.mdf
+#*.ldf
 
 # Business Intelligence projects
 *.rdl.data
@@ -172,9 +172,6 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
-
-# App.Config files
-[Aa]pp.[Cc]onfig
 
 # Visual Studio 2015 cache/options directory
 .vs/

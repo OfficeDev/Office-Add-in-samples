@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+<!-- BeginBasicSettings: Add-in metadata used for all versions of Office unless override provided -->
+  
+  <!--IMPORTANT! Id must be unique for your add-in. If you clone this manifest ensure that you change this id to your own GUID -->
+  <Id>481a32a9-ab8a-4579-ac9f-df1a11a64e52</Id>
+  
+  <!--Version. Updates from the store only get triggered if there is a version change -->
+  <Version>1.0.0.0</Version>
+  <ProviderName>Office Developer Education</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <!-- The display name of your add-in. Used on the store and in various places of the Office UI such as the add-ins dialog -->
+  <DisplayName DefaultValue="Microsoft Graph Data" />
+  <Description DefaultValue="Get files from OneDrive by using the Microsoft Graph APIs."/>
+  
+  <!--Icon for your add-in. Used on installation screens and the add-ins dialog -->
+  <IconUrl DefaultValue="https://localhost:44301/Content/Onedrive_Charts_icon_80x80px.png" />
+  
+     
+  
+  <!--BeginTaskpaneMode integration. Office 2013 and any client that doesn't understand commands will use this section.
+    This section will also be used if there are no VersionOverrides -->
+  <Hosts>
+    <Host Name="Workbook" />
+  </Hosts>
+  
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:44301/home/index" />
+  </DefaultSettings>
+  <!--EndTaskpaneMode integration -->
+  
+  <Permissions>ReadWriteDocument</Permissions>
+
+<!--BeginAddinCommandsMode integration-->
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <!-- Optional, override the description of the Add-in -->
+    <Description resid="residToolTip" />
+    <!--Required, hosts node. Each host can have a different set of commands -->
+    <Hosts>
+      <!--Specific host. Workbook=Excel, Document=Word, Presentation=PowerPoint -->
+      <Host xsi:type="Workbook">
+        <!-- Form factor. Currenly only DesktopFormFactor is supported. We will add TabletFormFactor and PhoneFormFactor in the future-->
+        <DesktopFormFactor>
+          <GetStarted>
+            <!--Title of the Getting Started callout. resid points to a ShortString resource -->
+            <Title resid="GetStarted.Title"/>
+
+           <!--Description of the Getting Started callout. resid points to a LongString resource -->
+            <Description resid="GetStarted.Description"/>
+
+           <!--Not used right now but you need to provide a valid resource. We will add code in the future to consume this URL. 
+							resid points to a Url resource -->
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          
+           <!--Function file is an html page that includes the JavaScript where functions for ExecuteAction will be called. 
+            Think of the FunctionFile as the "code behind" ExecuteFunction 
+            This sample doesn't use this file; just adding the element for reference-->
+          <FunctionFile resid="residDesktopFuncUrl" />
+          
+          <!--PrimaryCommandSurface==Main Office Ribbon-->
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            
+            <!--Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab -->
+            <!-- Documentation includes all the IDs currently tested to work -->
+            <OfficeTab id="TabInsert">
+               <!--Group. Ensure you provide a unique id. Recommendation for any IDs is to namespace using your companyname-->
+              <Group id="Contoso.Image.Group1Id1">
+                <!--Label for your group. resid must point to a ShortString resource -->
+                <Label resid="residLabel4" />
+                <!--Icons. Required sizes 16,31,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX -->
+                <!--Use PNG icons and remember that all URLs on the resources section must use HTTPS -->
+                <Icon>
+                  <bt:Image size="16" resid="icon1_16x16" />
+                  <bt:Image size="32" resid="icon1_32x32" />
+                  <bt:Image size="80" resid="icon1_80x80" />
+                </Icon>
+                 <!--Control. It can be of type "Button" or "Menu" -->
+                <Control xsi:type="Button" id="Button3Id1">
+                  <!--Label for your button. resid must point to a ShortString resource -->
+                  <Label resid="residLabel3" />
+                  <Supertip>
+                    <!--ToolTip title. resid must point to a ShortString resource -->
+                    <Title resid="residLabel3" />
+                     <!--ToolTip description. resid must point to a LongString resource -->
+                    <Description resid="residToolTip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon1_16x16" />
+                    <bt:Image size="32" resid="icon1_32x32" />
+                    <bt:Image size="80" resid="icon1_80x80" />
+                  </Icon>
+                  <!--This is what happens when the command is triggered (e.g., click on the ribbon). Supported actions are ExecuteFuncion or ShowTaskpane-->
+                  <Action xsi:type="ShowTaskpane">
+                    <!--Provide a url resource id for the location that will be displayed on the task pane -->
+                    <SourceLocation resid="residImageHomeUrl" />
+                  </Action>
+                </Control>
+              </Group>             
+            </OfficeTab>
+          </ExtensionPoint>
+		    </DesktopFormFactor>
+      </Host>
+
+      <Host xsi:type="Document">
+        <!-- Form factor. Currenly only DesktopFormFactor is supported. We will add TabletFormFactor and PhoneFormFactor in the future-->
+        <DesktopFormFactor>
+          <GetStarted>
+            <!--Title of the Getting Started callout. resid points to a ShortString resource -->
+            <Title resid="GetStarted.Title"/>
+
+            <!--Description of the Getting Started callout. resid points to a LongString resource -->
+            <Description resid="GetStarted.Description"/>
+
+            <!--Not used right now but you need to provide a valid resource. We will add code in the future to consume this URL. 
+							resid points to a Url resource -->
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+
+          <!--Function file is an html page that includes the JavaScript where functions for ExecuteAction will be called. 
+            Think of the FunctionFile as the "code behind" ExecuteFunction 
+            This sample doesn't use this file; just adding the element for reference-->
+          <FunctionFile resid="residDesktopFuncUrl" />
+
+          <!--PrimaryCommandSurface==Main Office Ribbon-->
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+
+            <!--Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab -->
+            <!-- Documentation includes all the IDs currently tested to work -->
+            <OfficeTab id="TabInsert">
+              <!--Group. Ensure you provide a unique id. Recommendation for any IDs is to namespace using your companyname-->
+              <Group id="Contoso.Image.Group1Id1">
+                <!--Label for your group. resid must point to a ShortString resource -->
+                <Label resid="residLabel4" />
+                <!--Icons. Required sizes 16,31,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX -->
+                <!--Use PNG icons and remember that all URLs on the resources section must use HTTPS -->
+                <Icon>
+                  <bt:Image size="16" resid="icon1_16x16" />
+                  <bt:Image size="32" resid="icon1_32x32" />
+                  <bt:Image size="80" resid="icon1_80x80" />
+                </Icon>
+                <!--Control. It can be of type "Button" or "Menu" -->
+                <Control xsi:type="Button" id="Button3Id1">
+                  <!--Label for your button. resid must point to a ShortString resource -->
+                  <Label resid="residLabel3" />
+                  <Supertip>
+                    <!--ToolTip title. resid must point to a ShortString resource -->
+                    <Title resid="residLabel3" />
+                    <!--ToolTip description. resid must point to a LongString resource -->
+                    <Description resid="residToolTip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon1_16x16" />
+                    <bt:Image size="32" resid="icon1_32x32" />
+                    <bt:Image size="80" resid="icon1_80x80" />
+                  </Icon>
+                  <!--This is what happens when the command is triggered (e.g., click on the ribbon). Supported actions are ExecuteFuncion or ShowTaskpane-->
+                  <Action xsi:type="ShowTaskpane">
+                    <!--Provide a url resource id for the location that will be displayed on the task pane -->
+                    <SourceLocation resid="residImageHomeUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+
+      <Host xsi:type="Presentation">
+        <!-- Form factor. Currenly only DesktopFormFactor is supported. We will add TabletFormFactor and PhoneFormFactor in the future-->
+        <DesktopFormFactor>
+          <GetStarted>
+            <!--Title of the Getting Started callout. resid points to a ShortString resource -->
+            <Title resid="GetStarted.Title"/>
+
+            <!--Description of the Getting Started callout. resid points to a LongString resource -->
+            <Description resid="GetStarted.Description"/>
+
+            <!--Not used right now but you need to provide a valid resource. We will add code in the future to consume this URL. 
+							resid points to a Url resource -->
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+
+          <!--Function file is an html page that includes the JavaScript where functions for ExecuteAction will be called. 
+            Think of the FunctionFile as the "code behind" ExecuteFunction 
+            This sample doesn't use this file; just adding the element for reference-->
+          <FunctionFile resid="residDesktopFuncUrl" />
+
+          <!--PrimaryCommandSurface==Main Office Ribbon-->
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+
+            <!--Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab -->
+            <!-- Documentation includes all the IDs currently tested to work -->
+            <OfficeTab id="TabInsert">
+              <!--Group. Ensure you provide a unique id. Recommendation for any IDs is to namespace using your companyname-->
+              <Group id="Contoso.Image.Group1Id1">
+                <!--Label for your group. resid must point to a ShortString resource -->
+                <Label resid="residLabel4" />
+                <!--Icons. Required sizes 16,31,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX -->
+                <!--Use PNG icons and remember that all URLs on the resources section must use HTTPS -->
+                <Icon>
+                  <bt:Image size="16" resid="icon1_16x16" />
+                  <bt:Image size="32" resid="icon1_32x32" />
+                  <bt:Image size="80" resid="icon1_80x80" />
+                </Icon>
+                <!--Control. It can be of type "Button" or "Menu" -->
+                <Control xsi:type="Button" id="Button3Id1">
+                  <!--Label for your button. resid must point to a ShortString resource -->
+                  <Label resid="residLabel3" />
+                  <Supertip>
+                    <!--ToolTip title. resid must point to a ShortString resource -->
+                    <Title resid="residLabel3" />
+                    <!--ToolTip description. resid must point to a LongString resource -->
+                    <Description resid="residToolTip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon1_16x16" />
+                    <bt:Image size="32" resid="icon1_32x32" />
+                    <bt:Image size="80" resid="icon1_80x80" />
+                  </Icon>
+                  <!--This is what happens when the command is triggered (e.g., click on the ribbon). Supported actions are ExecuteFuncion or ShowTaskpane-->
+                  <Action xsi:type="ShowTaskpane">
+                    <!--Provide a url resource id for the location that will be displayed on the task pane -->
+                    <SourceLocation resid="residImageHomeUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>      
+    </Hosts>
+    <Resources>
+       <bt:Images>
+        <bt:Image id="icon1_16x16" DefaultValue="https://localhost:44301/Content/Onedrive_Charts_icon_16x16px.png">
+        </bt:Image>
+        <bt:Image id="icon1_32x32" DefaultValue="https://localhost:44301/Content/Onedrive_Charts_icon_32x32px.png">
+        </bt:Image>
+        <bt:Image id="icon1_80x80" DefaultValue="https://localhost:44301/Content/Onedrive_Charts_icon_80x80px.png">
+        </bt:Image>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="residDesktopFuncUrl" DefaultValue="https://notusedinthissample">
+        </bt:Url>
+        <bt:Url id="residImageHomeUrl" DefaultValue="https://localhost:44301/Home/Index">
+        </bt:Url>
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://github.com/OfficeDev/Office-Add-in-Microsoft-Graph-ASPNET">
+        </bt:Url>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="residLabel3" DefaultValue="Open Add-in">
+        </bt:String>
+        <bt:String id="GetStarted.Title" DefaultValue="Microsoft Graph data add-in has loaded successfully.">
+        </bt:String>
+        <bt:String id="residLabel4" DefaultValue="OneDrive Files">
+        </bt:String>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="residToolTip" DefaultValue="Get files stored on OneDrive">
+        </bt:String>
+        <bt:String id="GetStarted.Description" DefaultValue="Choose Insert, then Connect to OneDrive to get started.">
+        </bt:String>
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+  </OfficeApp>
+
