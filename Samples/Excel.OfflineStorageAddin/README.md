@@ -1,8 +1,8 @@
-# Using offline storage techniques to cache add-in data
+# Using offline storage techniques to cache Office add-in data
 
 ## Summary
 
-This sample demonstrates how you can implement local storage to enable limited functionality for your add-in when a user experiences lost connection.
+This sample demonstrates how you can implement local storage to enable limited functionality for your Office add-in when a user experiences lost connection.
 
 ## Applies to
 
@@ -12,7 +12,7 @@ This sample demonstrates how you can implement local storage to enable limited f
 
 ## Prerequisites
 
-Before running this sample, make sure you have npm and Node.js installed on your computer. You can check by running the commands `node -v` and `npm -v` in your terminal. To get this software, go to https://www.npmjs.com/get-npm.
+Before running this sample, make sure you have installed a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) on your computer. To check if you have already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
 ## Solution
 
@@ -40,15 +40,18 @@ While this add-in gets its data from a local server, implementation of local sto
 
 ## Build and run the sample
 
-To get this sample, clone or download this repository. In the command line, navigate to the **Excel.OfflineStorageAddin** folder from your root directory.
+1. Clone or download this repository. 
+2. In the command line, navigate to the **Excel.OfflineStorageAddin** folder from your root directory.
+
+The following code sample shows you how to do these two steps: 
 ```
 $ git clone https://github.com/OfficeDev/PnP-OfficeAddins.git
 $ cd PnP-OfficeAddins
 $ cd Samples
 $ cd Excel.OfflineStorageAddin
 ```
-You can try out this sample by running the following commands in the command line:
-```
+You can try out this sample by running the following commands:
+```command&nbsp;line
 # this will download the node modules needed to run this add-in
 $ npm install
 
@@ -63,21 +66,21 @@ $ npm run start:web
 ```
 ## Key parts of this sample
 
-Navigate to ``Excel.OfflineStorageAddin/src/taskpane/taskpane.js`` to find the implementation of local storage described below. 
+Navigate to *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* to find the implementation of local storage described below. 
 
 ### Implementing local storage to offline data
-The ``Excel.OfflineStorageAddin/src/taskpane/taskpane.js`` file contains the `loadTable()` function, which makes use of local storage to display a table of basketball player stats when a user loses connection.
+The *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* file contains the `loadTable()` function, that uses local storage to display a table of basketball player stats when a user loses connection.
 
 In the sample code, the `loadTable()` function first checks if the basketball player data was previously cached into local storage, as shown in the code below. If it exists, the data is parsed from JSON into a readable text format before being passed to `createTable()`, a function which creates a table from the given data. 
 
-```
+```js
         if (localStorage.DraftPlayerData) {
             var dataObject = JSON.parse(localStorage.DraftPlayerData);
             createTable(dataObject);
         }
 ```
 
-If the data was not previously cached, `loadTable()` attempts to access ``sampleData.js``, which is the file containing the data, through an AJAX call. If this attempt is successful, the function passes the data returned from the file to `createTable()` to produce a table. The data is also converted into a JSON object, which is cached into local storage. However, if the function is unable to access the ``sampleData.js`` file, the function returns an error to the console, notifying the add-in. This process is shown in the following code:
+If the data wasn't previously cached, `loadTable()` attempts to access the offline data file, *sampleData.js*, through an AJAX call. If this attempt is successful, the function passes the data returned from the file to `createTable()` to produce a table. The data is also converted into a JSON object, which is cached into local storage. However, if the function is unable to access the *sampleData.js* file, the function returns an error to the console. This process is shown in the following code:
 ```
         else {
             $.ajax({
@@ -102,7 +105,7 @@ You will be prompted to install self-signed certificates when you run this sampl
 
 You can install or uninstall the self-signed certificates by running the following commands in the project folder.
 
-```cli
+```command&nbsp;line
 npx office-addin-dev-certs install
 npx office-addin-dev-certs uninstall
 ```
