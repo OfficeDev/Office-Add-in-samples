@@ -75,27 +75,27 @@ The *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* file contains the `load
 In the sample code, the `loadTable()` function first checks if the basketball player data was previously cached into local storage, as shown in the code below. If it exists, the data is parsed from JSON into a readable text format before being passed to `createTable()`, a function which creates a table from the given data. 
 
 ```js
-        if (localStorage.DraftPlayerData) {
-            var dataObject = JSON.parse(localStorage.DraftPlayerData);
-            createTable(dataObject);
-        }
+if (localStorage.DraftPlayerData) {
+    var dataObject = JSON.parse(localStorage.DraftPlayerData);
+    createTable(dataObject);
+}
 ```
 
 If the data wasn't previously cached, `loadTable()` attempts to access the offline data file, *sampleData.js*, through an AJAX call. If this attempt is successful, the function passes the data returned from the file to `createTable()` to produce a table. The data is also converted into a JSON object, which is cached into local storage. However, if the function is unable to access the *sampleData.js* file, the function returns an error to the console. This process is shown in the following code:
 ```
-        else {
-            $.ajax({
-                dataType: "json",
-                url: "sampleData.js",
-                success: function (result, status, xhr) {
-                    localStorage.DraftPlayerData = JSON.stringify(result);
-                    createTable(result);
-                },
-                error: function (xhr, status, error) {
-                    console.log("Player data failed to load with error: " + error);
-                }
-            });
+else {
+    $.ajax({
+        dataType: "json",
+        url: "sampleData.js",
+        success: function (result, status, xhr) {
+            localStorage.DraftPlayerData = JSON.stringify(result);
+            createTable(result);
+        },
+        error: function (xhr, status, error) {
+            console.log("Player data failed to load with error: " + error);
         }
+    });
+}
 ```
 
 ## Security notes
