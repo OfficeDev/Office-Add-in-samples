@@ -67,7 +67,7 @@ Version  | Date | Comments
  - REDIRCT URI: https://localhost:44301/AzureADAuth/Authorize
  - SUPPORTED ACCOUNT TYPES: "Accounts in this organizational directory only"
  - IMPLICIT GRANT: Do not enable any Implicit Grant options
- - API PERMISSIONS: **Files.Read.All** and **User.Read**
+ - API PERMISSIONS (Delegated permissions, not Application permissions): **Files.Read.All** and **User.Read**
 
 	> Note: After you register your application, copy the **Application (client) ID** and the **Directory (tenant) ID** on the **Overview** blade of the App Registration in the Azure Management Portal. When you create the client secret on the **Certificates & secrets** blade, copy it too. 
 	 
