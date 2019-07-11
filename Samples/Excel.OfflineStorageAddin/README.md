@@ -32,7 +32,7 @@ Version  | Date | Comments
 
 ----------
 # Scenario: Caching data using offline storage techniques
-This sample add-in displays a table of basketball players' stats, retrieved from a local file named ``sampleData.js``. In this sample code, data from the add-in is cached in local storage to allow users who previously opened the add-in with online connection to access the table of stats offline.
+This sample Office add-in inserts a table of basketball players' stats in your file, retrieved from a local file named `sampleData.js`. In this sample code, data from the add-in is stored in `localStorage` to allow users who previously opened the add-in with online connection to insert the table of stats offline.
 
 While this add-in gets its data from a local server, implementation of local storage as shown in this sample can be extended to add-ins that get their data from online sources. Furthermore, although this sample runs only in Excel, local storage can be used to offline data across Word, Excel, and PowerPoint.
 
@@ -44,7 +44,8 @@ While this add-in gets its data from a local server, implementation of local sto
 2. In the command line, navigate to the **Excel.OfflineStorageAddin** folder from your root directory.
 
 The following code sample shows you how to do these two steps: 
-```
+```command&nbsp;line
+
 $ git clone https://github.com/OfficeDev/PnP-OfficeAddins.git
 $ cd PnP-OfficeAddins
 $ cd Samples
