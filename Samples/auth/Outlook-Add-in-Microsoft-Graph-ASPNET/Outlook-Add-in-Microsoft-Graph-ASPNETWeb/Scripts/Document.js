@@ -23,7 +23,7 @@ function getFileNamesFromGraph() {
         type: "GET"
     })
     .done(function (result) {
-        writeFileNamesToOfficeDocument(result)
+        writeFileNamesToMessage(result)
             .then(function () {
                 $("#waitContainer").hide();
                 $("#finishedContainer").show();
@@ -37,74 +37,82 @@ function getFileNamesFromGraph() {
     });
 }
 
-function writeFileNamesToOfficeDocument(result) {
+function writeFileNamesToMessage(graphData) {
 
+    // Office.Promise is an alias of OfficeExtension.Promise. Only the alias
+    // can be used in an Outlook add-in.
     return new Office.Promise(function (resolve, reject) {
         try {
-            switch (Office.context.host) {
-                case "Excel":
-                    writeFileNamesToWorksheet(result);
-                    break;
-                case "Word":
-                    writeFileNamesToDocument(result);
-                    break;
-                case "PowerPoint":
-                    writeFileNamesToPresentation(result);
-                    break;
-                default:
-                    throw "Unsupported Office host application: This add-in only runs on Excel, PowerPoint, or Word.";
-            }
+            Office.context.mailbox.item.body.getTypeAsync(
+                function (result) {
+                    if (result.status === Office.AsyncResultStatus.Failed) {
+                        app.showNotification(result.error.message);
+                    }
+                    else {
+                        // Successfully got the type of item body.
+                        if (result.value === Office.MailboxEnums.BodyType.Html) {
+
+                            // Body is of type HTML.
+                            var htmlContent = createHtmlContent(graphData);
+
+                            Office.context.mailbox.item.body.setSelectedDataAsync(
+                                htmlContent, { coercionType: Office.CoercionType.Html },
+                                function (asyncResult) {
+                                    if (asyncResult.status ===
+                                        Office.AsyncResultStatus.Failed) {
+                                        console.log(asyncResult.error.message);
+                                    }
+                                    else {
+                                        console.log("Successfully set HTML data in item body.");
+                                    }
+                                });
+                        }
+                        else {
+                            // Body is of type text. 
+                            var textContent = createTextContent(graphData);
+
+                            Office.context.mailbox.item.body.setSelectedDataAsync(
+                                textContent, { coercionType: Office.CoercionType.Text },
+                                function (asyncResult) {
+                                    if (asyncResult.status ===
+                                        Office.AsyncResultStatus.Failed) {
+                                        console.log(asyncResult.error.message);
+                                    }
+                                    else {
+                                        console.log("Successfully set text data in item body.");
+                                    }
+                                });
+                        }
+                    }
+                });
             resolve();
         }
         catch (error) {
-            reject(Error("Unable to add filenames to document. " + error.toString()));
+            reject(Error("Unable to add filenames to document. " + error));
         }
-    });    
-}
-
-function writeFileNamesToWorksheet(result) {
-    
-     return Excel.run(function (context) {
-        const sheet = context.workbook.worksheets.getActiveWorksheet();
-
-        const data = [
-             [result[0]],
-             [result[1]],
-             [result[2]]];
-
-        const range = sheet.getRange("B5:B7");
-        range.values = data;
-        range.format.autofitColumns();
-
-        return context.sync();
     });
 }
 
-function writeFileNamesToDocument(result) {
+function createHtmlContent(data) {
 
-     return Word.run(function (context) {
+    var bodyContent = "<html><head></head><body>";
 
-        const documentBody = context.document.body;
-        for (let i = 0; i < result.length; i++) {
-            documentBody.insertParagraph(result[i], "End");
-        }
+    for (var i = 0; i < data.length; i++) {
+        bodyContent += "<p>" + data[i] + "</p>";
+    }
+    bodyContent += "</body></html >";
 
-        return context.sync();
-    });
+    return bodyContent;
 }
 
-function writeFileNamesToPresentation(result) {
+function createTextContent(data) {
 
-    const fileNames = result[0] + '\n' + result[1] + '\n' + result[2];
+    var bodyContent = "";
+    for (var i = 0; i < data.length; i++) {
+        bodyContent += data[i] + "\n";
+    }
 
-    Office.context.document.setSelectedDataAsync(
-        fileNames,
-        function (asyncResult) {
-            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                throw asyncResult.error.message;
-            }
-        }
-    );
+    return bodyContent;
 }
 
 function logout() {
