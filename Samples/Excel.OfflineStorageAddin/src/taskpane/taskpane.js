@@ -11,7 +11,10 @@
             $('#create-table').click(loadTable);
         });
     });
-
+    
+    /* load table from local file or localStorage
+    * NOTE: localStorage is not secure and should only be used for data that can be made publicly available
+    */
     function loadTable() {
         if (localStorage.DraftPlayerData) {
             var dataObject = JSON.parse(localStorage.DraftPlayerData);
