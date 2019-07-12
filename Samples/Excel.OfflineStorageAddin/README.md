@@ -1,8 +1,8 @@
-# Using offline storage techniques to cache Office add-in data
+# Using storage techniques to access Office add-in data offline
 
 ## Summary
 
-This sample demonstrates how you can implement local storage to enable limited functionality for your Office add-in when a user experiences lost connection.
+This sample demonstrates how you can implement `localStorage` to enable limited functionality for your Office add-in when a user experiences lost connection.
 
 ## Applies to
 
@@ -34,9 +34,11 @@ Version  | Date | Comments
 # Scenario: Caching data using offline storage techniques
 This sample Office add-in inserts a table of basketball players' stats in your file, retrieved from a local file named `sampleData.js`. In this sample code, data from the add-in is stored in `localStorage` to allow users who previously opened the add-in with online connection to insert the table of stats offline.
 
-While this add-in gets its data from a local server, implementation of local storage as shown in this sample can be extended to add-ins that get their data from online sources. Furthermore, although this sample runs only in Excel, local storage can be used to offline data across Word, Excel, and PowerPoint.
+While this add-in gets its data from a local server, implementation of `localStorage` as shown in this sample can be extended to add-ins that get their data from online sources. Furthermore, although this sample runs only in Excel, `localStorage can be used to offline data across Word, Excel, and PowerPoint.
 
-**Note**: Depending on the type and size of data you wish to offline, you may wish to look into other offline storage options. If you'd like offline capabilities to persist in the file, you may wish to store your add-in's data in [Office Settings](https://docs.microsoft.com/en-us/javascript/api/office/office.settings?view=office-js). Local storage is also limited in that it can only cache up to 5 MB of information. To store larger amounts of data offline, you may wish to consider using [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API); however, as of now, IndexedDB is not supported by all browsers used by Office add-ins, and may cause your add-in to fail on some computers.
+**Note**: `localStorage` can store up to 5MB of data. To store larger amounts of data offline and for improved performance, consider using [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). Note that as of now, IndexedDB isn't supported by all browsers used by Office add-ins and may cause your add-in to fail on some computers. 
+Furthermore, `localStorage` is not secure and should only be used for data that can be made publicly available. To protect add-in data while offline, consider using offline cookies.
+As another option, you can store your add-in's data in [`Office.Settings`](https://docs.microsoft.com/en-us/javascript/api/office/office.settings?view=office-js). Using Office.Settings will enable your add-in's offline capabilities to persist within the file (e.g. if you'd like to share your file with others).
 
 ## Build and run the sample
 
@@ -67,12 +69,12 @@ $ npm run start:web
 ```
 ## Key parts of this sample
 
-Navigate to *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* to find the implementation of local storage described below. 
+Navigate to *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* to find the implementation of `localStorage` described below. 
 
-### Implementing local storage to offline data
-The *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* file contains the `loadTable()` function, that uses local storage to display a table of basketball player stats when a user loses connection.
+### Implementing `localStorage` to offline data
+The *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* file contains the `loadTable()` function, that uses `localStorage` to display a table of basketball player stats when a user loses connection.
 
-In the sample code, the `loadTable()` function first checks if the basketball player data was previously cached into local storage, as shown in the code below. If it exists, the data is parsed from JSON into a readable text format before being passed to `createTable()`, a function which creates a table from the given data. 
+In the sample code, the `loadTable()` function first checks if the basketball player data was previously stored in `localStorage`, as shown in the code below. If it exists, the data is parsed from a JSON object back into readable text format before being passed to `createTable()`, a function which creates a table from the given data. 
 
 ```js
 if (localStorage.DraftPlayerData) {
@@ -81,7 +83,7 @@ if (localStorage.DraftPlayerData) {
 }
 ```
 
-If the data wasn't previously cached, `loadTable()` attempts to access the offline data file, *sampleData.js*, through an AJAX call. If this attempt is successful, the function passes the data returned from the file to `createTable()` to produce a table. The data is also converted into a JSON object, which is cached into local storage. However, if the function is unable to access the *sampleData.js* file, the function returns an error to the console. This process is shown in the following code:
+If the data wasn't previously stored, `loadTable()` attempts to access the offline data file, *sampleData.js*, through an AJAX call. If this attempt is successful, the function passes the data returned from the file to `createTable()` to produce a table. Before being stored into `localStorage`, the data is also converted into a JSON object so that it can be easily parsed when `localStorage` is accessed. However, if the function is unable to access the *sampleData.js* file, the function returns an error to the console. This process is shown in the following code:
 ```
 else {
     $.ajax({
