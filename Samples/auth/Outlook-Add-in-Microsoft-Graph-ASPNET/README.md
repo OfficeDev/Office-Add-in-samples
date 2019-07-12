@@ -91,7 +91,7 @@ The remaining steps depend on whether you are running the add-in in desktop Outl
 ### Run the solution with Outlook on the web
 
 1. Outlook for Web will open in a browser window. In Outlook, click **New** to create a new email message. 
-2. Below the compose form is a tool bar with buttons for **Send**, **Discard**, and other utilities. If you are logged in with a Work or School account, the icon for the add-in is near the far right end of this tool bar, near to the right end of the window. If you are logged in with a Microsoft Account, the icon is on a drop down menu that opens when you click the **...** button on this tool bar.
+2. Below the compose form is a tool bar with buttons for **Send**, **Discard**, and other utilities. Depending on which **Outlook on the web** experience you are using, the icon for the add-in is either near the far right end of this tool bar or it is on the drop down down menu that opens when you click the **...** button on this tool bar.
 
    ![Icon for Insert Files Add-in](images/Onedrive_Charts_icon_16x16px.png)
 
