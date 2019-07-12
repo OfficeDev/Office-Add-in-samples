@@ -66,6 +66,7 @@ $ npm run start
 
 # this will start the server to run your add-in on Excel on the web
 $ npm run start:web
+
 ```
 ## Key parts of this sample
 
@@ -74,7 +75,11 @@ Navigate to *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* to find the imp
 ### Implementing `localStorage` to offline data
 The *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* file contains the `loadTable()` function, that uses `localStorage` to display a table of basketball player stats when a user loses connection.
 
+<<<<<<< Updated upstream
 In the sample code, the `loadTable()` function first checks if the basketball player data was previously stored in `localStorage`, as shown in the code below. If it exists, the data is parsed from a JSON object back into readable text format before being passed to `createTable()`, a function which creates a table from the given data. 
+=======
+In the sample code, the `loadTable()` function first checks if the basketball player data was previously cached into local storage, as shown in the code below. If it exists, the data is parsed from JSON into a readable text format before being passed to `createTable()`, a function which creates a table from the given data. To simulate the add-in in offline mode, keep the add-in open in the taskpane and shut down the server by closing the terminal window running the server.
+>>>>>>> Stashed changes
 
 ```js
 if (localStorage.DraftPlayerData) {
@@ -99,6 +104,8 @@ else {
     });
 }
 ```
+
+To simulate the add-in in offline mode, keep the add-in open in the taskpane and shut down the server by closing the terminal window that is running the server. You will see that you can still create the table of basketball player stats without an online connection, indicating that the data has been stored successfully into `localStorage`.
 
 ## Security notes
 
