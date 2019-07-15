@@ -12,7 +12,7 @@
         });
     });
     
-    // Loades data for a table from the server if connected
+    // Loads data for a table from the server if connected
     // or local storage if disconnected and had been loaded before
     function loadTable() {
         $.ajax({
