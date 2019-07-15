@@ -126,4 +126,17 @@ You can install or uninstall the certificates by running the following commands 
 npx office-addin-dev-certs install
 npx office-addin-dev-certs uninstall
 ```
+
+## Questions and comments
+We'd love to get your feedback about this sample. You can send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to Stack Overflow. Ensure your questions are tagged with [office-js].
+
+## Additional resources
+* [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+
+## Copyright
+Copyright (c) 2019 Microsoft Corporation. All rights reserved.
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 <img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Excel.OfflineStorageAddin" />
+
+
