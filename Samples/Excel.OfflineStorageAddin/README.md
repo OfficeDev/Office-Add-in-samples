@@ -61,6 +61,9 @@ $ npm install
 # this will build the add-in 
 $ npm run build
 
+# this will update any security vulnerabilities in dependencies
+$ npm audit fix
+
 # this will start the server to run your add-in on Excel on your desktop
 $ npm run start
 
