@@ -64,10 +64,10 @@ $ npm run build
 # this will update any security vulnerabilities in dependencies
 $ npm audit fix
 
-# this will start the server to run your add-in on Excel on your desktop
+# this will start the server on your desktop and launch your add-in on Excel
 $ npm run start
 
-# this will start the server to run your add-in on Excel on the web
+# this will start the server and launch your add-in on Excel on the web
 $ npm run start:web
 
 ```
@@ -118,9 +118,9 @@ error: function (xhr, status, error) {
 
 In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. You should lock this header down to only allowed domains in production code.
 
-You will be prompted to install self-signed certificates when you run this sample on your development computer. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
+You will be prompted to install certificates for trusted access to https://localhost.”   The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
 
-You can install or uninstall the self-signed certificates by running the following commands in the project folder.
+You can install or uninstall the certificates by running the following commands in the project folder.
 
 ```command&nbsp;line
 npx office-addin-dev-certs install
