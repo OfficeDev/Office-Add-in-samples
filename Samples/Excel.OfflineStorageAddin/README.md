@@ -118,7 +118,7 @@ error: function (xhr, status, error) {
 
 In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. You should lock this header down to only allowed domains in production code.
 
-You will be prompted to install certificates for trusted access to https://localhost.”   The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
+You will be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
 
 You can install or uninstall the certificates by running the following commands in the project folder.
 
