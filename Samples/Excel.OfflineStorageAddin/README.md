@@ -94,7 +94,7 @@ $.ajax({
 ```
 If the function fails to successfully get the data from the AJAX call, the function first checks if the basketball player data was previously cached into local storage, as shown in the code below. If it exists, the data is parsed from JSON into a readable text format before being passed to `createTable()`, a function which creates a table from the given data. Otherwise, the function returns an error back to the console.
 
-```
+```js
 error: function (xhr, status, error) {
     // If the connections fails, checks if "PlayerData" was previously stored in local storage
     if (localStorage.PlayerData) {
@@ -123,7 +123,4 @@ You can install or uninstall the self-signed certificates by running the followi
 npx office-addin-dev-certs install
 npx office-addin-dev-certs uninstall
 ```
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/excel-custom-functions/storage" />
-
-
-<img src="https://telemetry.sharepointpnp.com/officedev/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Excel.OfflineStorageAddin" />
