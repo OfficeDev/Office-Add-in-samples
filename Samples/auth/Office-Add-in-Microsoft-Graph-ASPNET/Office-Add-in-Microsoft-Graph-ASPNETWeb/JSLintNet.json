@@ -1,0 +1,19 @@
+﻿{
+  "version": "2.2.1",
+  "output": "Error",
+  "ignore": [],
+  "options": {},
+  "globalVariables": [
+    "global",
+    "window",
+    "$",
+    "jQuery",
+    "document",
+    "Office",
+    "app",
+    "console",
+    "location",
+    "Microsoft",
+    "fabric"
+  ]
+}
