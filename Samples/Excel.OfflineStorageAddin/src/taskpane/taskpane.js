@@ -1,4 +1,6 @@
-﻿'use strict';
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+'use strict';
 
 (function () {
 
@@ -42,7 +44,8 @@
             }
         });
     }
-
+    
+    // Creates and populates table of stats from sampleData.json
     function createTable(playerData) {
         Excel.run(function (context) {
             let currentWorksheet = context.workbook.worksheets.getActiveWorksheet();
