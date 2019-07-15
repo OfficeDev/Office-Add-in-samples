@@ -32,9 +32,9 @@ Version  | Date | Comments
 
 ----------
 # Scenario: Storing data using local storage
-This sample Office add-in inserts a table of basketball players' stats in your file, retrieved from a local file named `sampleData.js`. In this sample code, data from the add-in is stored in `localStorage` to allow users who previously opened the add-in with online connection to insert the table of stats offline.
+This sample Office add-in inserts a table of fictitious basketball players' stats in your file, retrieved from a local file named `sampleData.json`. In this sample code, data from the add-in is stored in `localStorage` to allow users who previously opened the add-in with online connection to insert the table of stats offline.
 
-While this add-in gets its data from a local server, implementation of `localStorage` as shown in this sample can be extended to add-ins that get their data from online sources. Furthermore, although this sample runs only in Excel, `localStorage can be used to offline data across Word, Excel, and PowerPoint.
+While this add-in gets its data from a local server, implementation of `localStorage` as shown in this sample can be extended to add-ins that get their data from online sources. Furthermore, although this sample runs only in Excel, `localStorage` can be used to offline data across Word, Excel, and PowerPoint.
 
 **Note**: `localStorage` can store up to 5MB of data. To store larger amounts of data offline and for improved performance, consider using [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). Note that as of now, IndexedDB isn't supported by all browsers used by Office add-ins and may cause your add-in to fail on some computers. 
 Furthermore, `localStorage` is not secure and should only be used for data that can be made publicly available. To protect add-in data while offline, consider using offline cookies.
@@ -68,44 +68,48 @@ $ npm run start
 $ npm run start:web
 
 ```
+To simulate the add-in in offline mode, keep the add-in open in the taskpane and shut down the server by closing the terminal window running the server. You will see that you can still create the table of basketball player stats without an online connection, indicating that the data has been stored successfully into `localStorage`.
+
 ## Key parts of this sample
 
 Navigate to *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* to find the implementation of `localStorage` described below. 
 
 ### Implementing `localStorage` to offline data
-The *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* file contains the `loadTable()` function, that uses `localStorage` to display a table of basketball player stats when a user loses connection.
+The *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* file contains the `loadTable()` function, that uses `localStorage` to display a table of fictitious basketball player stats when a user loses connection.
 
-<<<<<<< Updated upstream
-In the sample code, the `loadTable()` function first checks if the basketball player data was previously stored in `localStorage`, as shown in the code below. If it exists, the data is parsed from a JSON object back into readable text format before being passed to `createTable()`, a function which creates a table from the given data. 
-=======
-In the sample code, the `loadTable()` function first checks if the basketball player data was previously cached into local storage, as shown in the code below. If it exists, the data is parsed from JSON into a readable text format before being passed to `createTable()`, a function which creates a table from the given data. To simulate the add-in in offline mode, keep the add-in open in the taskpane and shut down the server by closing the terminal window running the server.
->>>>>>> Stashed changes
+In the sample code, the `loadTable()` function first attempts to perform an AJAX call to retrieve information from  the offline data file, `sampleData.json`. In this example, the data from our local file does not ever change; however, performing the AJAX call allows the add-in to always retrieve the most up to date information. If the AJAX call is successful, the function passes the data returned from the file to `createTable()` to produce a table. Before being stored into `localStorage`, the data is also converted into a JSON object so that it can be easily parsed when `localStorage` is accessed. This process is shown in the following code:
 
 ```js
-if (localStorage.DraftPlayerData) {
-    var dataObject = JSON.parse(localStorage.DraftPlayerData);
-    createTable(dataObject);
+$.ajax({
+    dataType: "json",
+    url: "sampleData.json",
+    success: function (result, status, xhr) {
+        // Stores the JSON retrieved from the AJAX call as a string in
+        // local storage under the key "PlayerData"
+        localStorage.PlayerData = JSON.stringify(result);
+
+        // Sends the new data to the table
+        createTable(result);
+    },
+```
+If the function fails to successfully get the data from the AJAX call, the function first checks if the basketball player data was previously cached into local storage, as shown in the code below. If it exists, the data is parsed from JSON into a readable text format before being passed to `createTable()`, a function which creates a table from the given data. Otherwise, the function returns an error back to the console.
+
+```
+error: function (xhr, status, error) {
+    // If the connections fails, checks if "PlayerData" was previously stored in local storage
+    if (localStorage.PlayerData) {
+        // Retrieves the string saved earlied under the key "PlayerData"
+        // and parses it into an object
+        let dataObject = JSON.parse(localStorage.PlayerData);
+
+        // Sends the saved data to the table
+        createTable(dataObject);
+    }
+    else {
+        console.log("Player data failed to load with error: " + error);
+    }
 }
 ```
-
-If the data wasn't previously stored, `loadTable()` attempts to access the offline data file, *sampleData.js*, through an AJAX call. If this attempt is successful, the function passes the data returned from the file to `createTable()` to produce a table. Before being stored into `localStorage`, the data is also converted into a JSON object so that it can be easily parsed when `localStorage` is accessed. However, if the function is unable to access the *sampleData.js* file, the function returns an error to the console. This process is shown in the following code:
-```
-else {
-    $.ajax({
-        dataType: "json",
-        url: "sampleData.js",
-        success: function (result, status, xhr) {
-            localStorage.DraftPlayerData = JSON.stringify(result);
-            createTable(result);
-        },
-        error: function (xhr, status, error) {
-            console.log("Player data failed to load with error: " + error);
-        }
-    });
-}
-```
-
-To simulate the add-in in offline mode, keep the add-in open in the taskpane and shut down the server by closing the terminal window that is running the server. You will see that you can still create the table of basketball player stats without an online connection, indicating that the data has been stored successfully into `localStorage`.
 
 ## Security notes
 
