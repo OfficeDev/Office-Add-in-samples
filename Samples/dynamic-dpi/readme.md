@@ -59,7 +59,6 @@ A custom task pane will appear titled **COM Add-in C++**. It will show rectangle
 ### DPI code
 
 You can find more info about the DPI code in the ATLControl.cpp file.
-<TBD: why does DPIHelper.cpp exist and is empty?>
 
 ## VSTO SharedAddin
 
@@ -75,38 +74,29 @@ This shows how to handle DPI changes in a VSTO Add-in. It contains folders for e
 1. Clone or download this repo.
 2. Run Visual Studio 2017 (or later) as administrator.
 3. Open the **VSTOSharedAddin.sln** file.
-4. On the menu bar choose **Build** > **Build Solution**.
+
+You'll need to create a test certificate for each project. To do so:
+1. Right-click on a project, such as **OutlookAddIn1** and choose **Properties**.
+2. Choose the **Signing** category in the properties.
+3. Choose **Sign the ClickOnce manifests** and then chose **Create Test Certificate**.
+4. In the **Create Test Certificate** dialog, enter and confirm a password. Then choose **OK**.
+> **Note:** You'll need to create a test certificate for each host project in the solution.
+
+Now you can build and run the solution
+1. On the menu bar choose **Build** > **Build Solution**.
     > **Note:** Set your build target to **Win32** or **x64** to match the version of Microsoft Excel you will run (32-bit or 64-bit).
-5. Set one of the projects as the startup project. For example, right-click the **ExcelAddin1** project and choose **Set as StartUp Project**.
-6. Choose **Start** (or press F5). The debugger will launch Excel and load the add-in.
+2. Set one of the projects as the startup project. For example, right-click the **ExcelAddin1** project and choose **Set as StartUp Project**.
+3. Choose **Start** (or press F5). The debugger will launch Excel and load the add-in.
 
 The task pane for the VSTO Add-in will appear. You can drag Excel to a monitor with a different DPI to see displayed information change.
 
 ### DPI code
 
 You can find more info about the DPI code in the DPIContextBlock.cs and DPIHelper.cs files.
-<TBD: Can you change it from system aware?>
-<TBD: Why won't it launch Word or other hosts in debug mode? Only Excel seems to launch correctly.>
-<TBD: You have to create a test certificate for each project manually. is there an easier way to do this?>
-<TBD: Following draw scenario draws incorrectly: 
-1. set to per monitor aware
-2.  click open top-level form
-3. drag to window set to 150%>
-<TBD: should the button1 label have a different name?>
-
-## MFC ActiveX Not DPI Aware
-
-This is an ActiveX control created from the MFC template that uses the DPI of the window to determine how to scale its contents.
-
-<TBD: Can build and register, but cannot insert it. Get "Cannot insert object" error. >
 
 ## MFCApplicationDPIAware
 
 This is an ActiveX control created from the MFC template that is dynamic DPI aware.
-
-<TBD: Can we rename folder to "MFC ActiveX DPI Aware" since this appears to be counterpart of "ActiveX Not DPI Aware" folder?>
-
-
 
 ### To run the sample
 
@@ -174,9 +164,6 @@ The control will display some DPI information. You can drag Excel to a monitor w
 
 ### DPI code
 
-This is an MFC Windowless ActiveX control that supports dynamic DPI on WM_PAINT. It gets the HWND of the host window from HDC. <TBD: does this need more info?>
-
-
-You can find more info about the DPI code in the ODActiveXCtrl.cpp file.
+This is an MFC Windowless ActiveX control that supports dynamic DPI on WM_PAINT. It gets the HWND of the host window from HDC. You can find more info about the DPI code in the ODActiveXCtrl.cpp file.
 
 <img src="https://telemetry.sharepointpnp.com/officedev/samples/dynamic-dpi" />
