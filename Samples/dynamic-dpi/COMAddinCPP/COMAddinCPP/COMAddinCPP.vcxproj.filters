@@ -27,9 +27,6 @@
     <ClCompile Include="ATLControl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DPIHelper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="AddIn.def">
