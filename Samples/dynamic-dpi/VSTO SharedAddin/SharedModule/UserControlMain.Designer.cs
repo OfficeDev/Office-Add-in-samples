@@ -52,6 +52,7 @@ namespace SharedModule
             this.txtProcessAwareness = new System.Windows.Forms.TextBox();
             this.txtThreadAwareness = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnSetHeight = new System.Windows.Forms.Button();
             this.btnSetWidth = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
@@ -66,7 +67,6 @@ namespace SharedModule
             this.label10 = new System.Windows.Forms.Label();
             this.cboDpiContext = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -314,6 +314,16 @@ namespace SharedModule
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Create";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 80);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 20);
+            this.button1.TabIndex = 54;
+            this.button1.Text = "Open Temp Form";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnSetHeight
             // 
             this.btnSetHeight.Location = new System.Drawing.Point(6, 132);
@@ -413,7 +423,7 @@ namespace SharedModule
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboNewDockLocation.FormattingEnabled = true;
             this.cboNewDockLocation.Location = new System.Drawing.Point(245, 54);
-            this.cboNewDockLocation.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.cboNewDockLocation.Margin = new System.Windows.Forms.Padding(1);
             this.cboNewDockLocation.Name = "cboNewDockLocation";
             this.cboNewDockLocation.Size = new System.Drawing.Size(159, 21);
             this.cboNewDockLocation.TabIndex = 42;
@@ -434,7 +444,7 @@ namespace SharedModule
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboDpiContext.FormattingEnabled = true;
             this.cboDpiContext.Location = new System.Drawing.Point(245, 80);
-            this.cboDpiContext.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.cboDpiContext.Margin = new System.Windows.Forms.Padding(1);
             this.cboDpiContext.Name = "cboDpiContext";
             this.cboDpiContext.Size = new System.Drawing.Size(159, 21);
             this.cboDpiContext.TabIndex = 44;
@@ -448,16 +458,6 @@ namespace SharedModule
             this.label9.Size = new System.Drawing.Size(33, 13);
             this.label9.TabIndex = 43;
             this.label9.Text = "Dock";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 80);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 20);
-            this.button1.TabIndex = 54;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // UserControlMain
             // 
