@@ -15,10 +15,14 @@ The code samples included here will help you with handling DPI changes in your c
 
 ## Prerequisites
 
-- Visual Studio 2017 or later
-    - latest version of Windows SDK (not you may have to retarget steps to do so)
-- An Office 365 account which you can get by joining the Office 365 Developer Program that includes a free 1 year subscription to Office 365.
-- Many of the samples use the **Developer** tab in Microsoft Excel. If you haven't enabled the **Developer** tab, follow these instructions in the article [Show the Developer tab](https://support.office.com/article/show-the-developer-tab-e1192344-5e56-4d45-931b-e5fd9bea2d45)
+- Visual Studio 2017 or later with the following workloads
+    - .NET desktop development
+    - Desktop development with C++
+    - Office/SharePoint development
+    - latest version of Windows SDK
+    > **Note:** Some samples may not compile because they might target an older Windows SDK. If this happens you can right-click the solution and choose **Retarget solution**. Then choose the version of the Windows SDK you have installed.
+- An Office 365 account which you can get by joining the [Office 365 Developer Program](https://aka.ms/devprogramsignup) that includes a free 1 year subscription to Office 365.
+> **Note:** Many of the samples use the **Developer** tab in Microsoft Excel. If you haven't enabled the **Developer** tab, follow these instructions in the article [Show the Developer tab](https://support.office.com/article/show-the-developer-tab-e1192344-5e56-4d45-931b-e5fd9bea2d45)
 
 ## Solution
 
@@ -87,7 +91,7 @@ Now you can build and run the solution
 2. Set one of the projects as the startup project. For example, right-click the **ExcelAddin1** project and choose **Set as StartUp Project**.
 3. Choose **Start** (or press F5). The debugger will launch Excel and load the add-in.
 
-The task pane for the VSTO Add-in will appear. You can drag Excel to a monitor with a different DPI to see displayed information change.
+The task pane for the VSTO Add-in will appear. You can drag Excel to a monitor with a different DPI to see displayed information change. You can explore different scnearios by changing the **Template** and **Context** fields. Then choose **Open Top-level Form** and a top-level form will open using the settings you specified. You can drag it to monitors with different DPI settings to see how it handles the DPI changes.
 
 ### DPI code
 
@@ -110,8 +114,6 @@ This is an ActiveX control created from the MFC template that is dynamic DPI awa
 5. Insert the control on the workbook by drawing a rectangle representing the size it should be.
 6. You can right-click on the control an dchoose **MFCActiveX Control Object** > **Properties**.
 7. On the **MFCActiveX Control Properties** box, enable the **Utilize Dynamic DPI Code** checkbox.
-
-<TBD: is there a way to show how this works with an example text or something?>
 
 ### DPI code
 
