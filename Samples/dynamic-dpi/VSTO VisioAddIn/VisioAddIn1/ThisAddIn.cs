@@ -1,4 +1,7 @@
-﻿using SharedModule;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using SharedModule;
 using System.Windows.Forms;
 
 namespace VisioAddIn1

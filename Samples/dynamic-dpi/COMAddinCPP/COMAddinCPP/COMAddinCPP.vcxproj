@@ -267,9 +267,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\Projects\ATLProject1\ATLProject1\ATLControl.htm">
-      <DeploymentContent>true</DeploymentContent>
-    </None>
     <None Include="AddIn.def" />
     <None Include="AddIn.rgs" />
     <None Include="ATLControl.htm">
@@ -284,7 +281,6 @@
     <ClInclude Include="AddIn.h" />
     <ClInclude Include="ATLControl.h" />
     <ClInclude Include="Connect.h" />
-    <ClInclude Include="DPIHelper.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

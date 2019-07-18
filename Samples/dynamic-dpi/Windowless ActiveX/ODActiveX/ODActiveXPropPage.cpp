@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 // ODActiveXPropPage.cpp : Implementation of the CODActiveXPropPage property page class.
 
 #include "stdafx.h"

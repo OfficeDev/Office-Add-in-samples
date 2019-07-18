@@ -1,4 +1,7 @@
-﻿namespace WordAddIn1
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+namespace WordAddIn1
 {
     partial class TaskPaneRibbon : Microsoft.Office.Tools.Ribbon.RibbonBase
     {

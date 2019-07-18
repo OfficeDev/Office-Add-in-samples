@@ -1,3 +1,5 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 // AddIn.cpp : Implementation of DLL Exports.
 
 #include "stdafx.h"

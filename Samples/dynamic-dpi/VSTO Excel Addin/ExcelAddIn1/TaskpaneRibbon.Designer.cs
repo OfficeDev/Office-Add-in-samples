@@ -1,4 +1,7 @@
-﻿namespace ExcelAddIn1
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+namespace ExcelAddIn1
 {
     partial class TaskpaneRibbon : Microsoft.Office.Tools.Ribbon.RibbonBase
     {

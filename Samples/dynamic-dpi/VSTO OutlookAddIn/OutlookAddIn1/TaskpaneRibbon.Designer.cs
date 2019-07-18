@@ -1,4 +1,7 @@
-﻿namespace OutlookAddIn1
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+namespace OutlookAddIn1
 {
     partial class TaskpaneRibbon : Microsoft.Office.Tools.Ribbon.RibbonBase
     {

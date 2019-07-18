@@ -1,3 +1,5 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
 // MFCApplication1.cpp : Defines the class behaviors for the application.
 //

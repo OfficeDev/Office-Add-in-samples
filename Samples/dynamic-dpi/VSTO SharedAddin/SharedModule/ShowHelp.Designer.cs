@@ -1,4 +1,7 @@
-﻿namespace SharedModule
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+namespace SharedModule
 {
 	partial class ShowHelp
 	{

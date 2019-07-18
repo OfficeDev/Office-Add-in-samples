@@ -1,3 +1,5 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
 // MFCApplication1.h : main header file for the PROJECT_NAME application
 //

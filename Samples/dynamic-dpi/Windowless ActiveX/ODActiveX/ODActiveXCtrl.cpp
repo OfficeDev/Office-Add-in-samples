@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 // ODActiveXCtrl.cpp : Implementation of the CODActiveXCtrl ActiveX Control class.
 
 #include "stdafx.h"

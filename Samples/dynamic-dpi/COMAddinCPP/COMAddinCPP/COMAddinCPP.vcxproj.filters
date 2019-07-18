@@ -35,7 +35,6 @@
     <None Include="AddIn.rgs">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\..\..\Projects\ATLProject1\ATLProject1\ATLControl.htm" />
     <None Include="ATLControl.htm" />
     <None Include="ATLControl.rgs">
       <Filter>Resource Files</Filter>
@@ -60,9 +59,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ATLControl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DPIHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

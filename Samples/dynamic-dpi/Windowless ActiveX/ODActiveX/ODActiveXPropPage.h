@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
 #pragma once
 
 // ODActiveXPropPage.h : Declaration of the CODActiveXPropPage property page class.

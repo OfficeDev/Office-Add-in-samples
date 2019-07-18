@@ -1,4 +1,7 @@
-﻿namespace PowerPointAddIn1
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+namespace PowerPointAddIn1
 {
     partial class TaskpaneRibbon : Microsoft.Office.Tools.Ribbon.RibbonBase
     {
