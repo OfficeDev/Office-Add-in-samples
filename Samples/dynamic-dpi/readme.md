@@ -15,11 +15,14 @@ The code samples included here will help you with handling DPI changes in your c
 
 ## Prerequisites
 
-- Visual Studio 2017 or later
-    - latest version of Windows SDK (not you may have to retarget steps to do so)
-    - Visual Basic (for the VB one)<TBD>
-- An Office 365 account which you can get by joining the Office 365 Developer Program that includes a free 1 year subscription to Office 365.
-- Many of the samples use the **Developer** tab in Microsoft Excel. If you haven't enabled the **Developer** tab, follow these instructions in the article [Show the Developer tab](https://support.office.com/article/show-the-developer-tab-e1192344-5e56-4d45-931b-e5fd9bea2d45)
+- Visual Studio 2017 or later with the following workloads
+    - .NET desktop development
+    - Desktop development with C++
+    - Office/SharePoint development
+    - latest version of Windows SDK
+    > **Note:** Some samples may not compile because they might target an older Windows SDK. If this happens you can right-click the solution and choose **Retarget solution**. Then choose the version of the Windows SDK you have installed.
+- An Office 365 account which you can get by joining the [Office 365 Developer Program](https://aka.ms/devprogramsignup) that includes a free 1 year subscription to Office 365.
+> **Note:** Many of the samples use the **Developer** tab in Microsoft Excel. If you haven't enabled the **Developer** tab, follow these instructions in the article [Show the Developer tab](https://support.office.com/article/show-the-developer-tab-e1192344-5e56-4d45-931b-e5fd9bea2d45)
 
 ## Solution
 
@@ -59,7 +62,6 @@ A custom task pane will appear titled **COM Add-in C++**. It will show rectangle
 ### DPI code
 
 You can find more info about the DPI code in the ATLControl.cpp file.
-<TBD: why does DPIHelper.cpp exist and is empty?>
 
 ## VSTO SharedAddin
 
@@ -75,38 +77,29 @@ This shows how to handle DPI changes in a VSTO Add-in. It contains folders for e
 1. Clone or download this repo.
 2. Run Visual Studio 2017 (or later) as administrator.
 3. Open the **VSTOSharedAddin.sln** file.
-4. On the menu bar choose **Build** > **Build Solution**.
-    > **Note:** Set your build target to **Win32** or **x64** to match the version of Microsoft Excel you will run (32-bit or 64-bit).
-5. Set one of the projects as the startup project. For example, right-click the **ExcelAddin1** project and choose **Set as StartUp Project**.
-6. Choose **Start** (or press F5). The debugger will launch Excel and load the add-in.
 
-The task pane for the VSTO Add-in will appear. You can drag Excel to a monitor with a different DPI to see displayed information change.
+You'll need to create a test certificate for each project. To do so:
+1. Right-click on a project, such as **OutlookAddIn1** and choose **Properties**.
+2. Choose the **Signing** category in the properties.
+3. Choose **Sign the ClickOnce manifests** and then chose **Create Test Certificate**.
+4. In the **Create Test Certificate** dialog, enter and confirm a password. Then choose **OK**.
+> **Note:** You'll need to create a test certificate for each host project in the solution.
+
+Now you can build and run the solution
+1. On the menu bar choose **Build** > **Build Solution**.
+    > **Note:** Set your build target to **Win32** or **x64** to match the version of Microsoft Excel you will run (32-bit or 64-bit).
+2. Set one of the projects as the startup project. For example, right-click the **ExcelAddin1** project and choose **Set as StartUp Project**.
+3. Choose **Start** (or press F5). The debugger will launch Excel and load the add-in.
+
+The task pane for the VSTO Add-in will appear. You can drag Excel to a monitor with a different DPI to see displayed information change. You can explore different scnearios by changing the **Template** and **Context** fields. Then choose **Open Top-level Form** and a top-level form will open using the settings you specified. You can drag it to monitors with different DPI settings to see how it handles the DPI changes.
 
 ### DPI code
 
 You can find more info about the DPI code in the DPIContextBlock.cs and DPIHelper.cs files.
-<TBD: Can you change it from system aware?>
-<TBD: Why won't it launch Word or other hosts in debug mode? Only Excel seems to launch correctly.>
-<TBD: You have to create a test certificate for each project manually. is there an easier way to do this?>
-<TBD: Following draw scenario draws incorrectly: 
-1. set to per monitor aware
-2.  click open top-level form
-3. drag to window set to 150%>
-<TBD: should the button1 label have a different name?>
-
-## MFC ActiveX Not DPI Aware
-
-This is an ActiveX control created from the MFC template that uses the DPI of the window to determine how to scale its contents.
-
-<TBD: Can build and register, but cannot insert it. Get "Cannot insert object" error. >
 
 ## MFCApplicationDPIAware
 
 This is an ActiveX control created from the MFC template that is dynamic DPI aware.
-
-<TBD: Can we rename folder to "MFC ActiveX DPI Aware" since this appears to be counterpart of "ActiveX Not DPI Aware" folder?>
-
-
 
 ### To run the sample
 
@@ -121,8 +114,6 @@ This is an ActiveX control created from the MFC template that is dynamic DPI awa
 5. Insert the control on the workbook by drawing a rectangle representing the size it should be.
 6. You can right-click on the control an dchoose **MFCActiveX Control Object** > **Properties**.
 7. On the **MFCActiveX Control Properties** box, enable the **Utilize Dynamic DPI Code** checkbox.
-
-<TBD: is there a way to show how this works with an example text or something?>
 
 ### DPI code
 
@@ -174,9 +165,6 @@ The control will display some DPI information. You can drag Excel to a monitor w
 
 ### DPI code
 
-This is an MFC Windowless ActiveX control that supports dynamic DPI on WM_PAINT. It gets the HWND of the host window from HDC. <TBD: does this need more info?>
-
-
-You can find more info about the DPI code in the ODActiveXCtrl.cpp file.
+This is an MFC Windowless ActiveX control that supports dynamic DPI on WM_PAINT. It gets the HWND of the host window from HDC. You can find more info about the DPI code in the ODActiveXCtrl.cpp file.
 
 <img src="https://telemetry.sharepointpnp.com/officedev/samples/dynamic-dpi" />
