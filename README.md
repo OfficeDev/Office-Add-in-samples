@@ -4,6 +4,9 @@ Office Add-ins PnP is a community driven effort that helps developers extend, bu
 
 ## List of recent samples
 
+- **Authentication and authorization:** We're adding a new auth section and have two new samples.
+  - [Office Add-in auth to Microsoft Graph](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/auth/Office-Add-in-Microsoft-Graph-ASPNET). Learn how to build a Microsoft Office Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into an Office document using Office.js.
+  - [Outlook Add-in auth to Microsoft Graph](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/auth/Outlook-Add-in-Microsoft-Graph-ASPNET). Learn how to build a Microsoft Outlook Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into a new message compose form in Outlook.
 - [Custom function batching pattern](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Excel-custom-functions/Batching). If your custom functions call a remote service you may want to use a batching pattern to reduce the number of network calls to the remote service. This is useful when a spreadsheet recalculates and it contains many of your custom functions. Recalculate will result in many calls to your custom functions, but you can batch them into one or a few calls to the remote service.
 - [Custom function storage](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Excel-custom-functions/Storage) for custom functions. Custom functions and task panes cannot directly communicate with each other. See how to use the Storage object to send data between custom functions and task panes. This is especially useful for sharing an access token.
 
