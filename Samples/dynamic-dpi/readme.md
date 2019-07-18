@@ -18,6 +18,7 @@ The code samples included here will help you with handling DPI changes in your c
 - Visual Studio 2017 or later
     - latest version of Windows SDK (not you may have to retarget steps to do so)
     - Visual Basic (for the VB one)<TBD>
+- Visual Basic 6.0 (if working with the Visual Basic sample code).  
 - An Office 365 account which you can get by joining the Office 365 Developer Program that includes a free 1 year subscription to Office 365.
 - Many of the samples use the **Developer** tab in Microsoft Excel. If you haven't enabled the **Developer** tab, follow these instructions in the article [Show the Developer tab](https://support.office.com/article/show-the-developer-tab-e1192344-5e56-4d45-931b-e5fd9bea2d45)
 
