@@ -6,9 +6,7 @@ This sample demonstrates how you can implement `localStorage` to enable limited 
 
 ## Applies to
 
--  Office on Windows (Word, Excel, PowerPoint)
--  Office on Mac (Word, Excel, PowerPoint)
--  Office on the web (Word, Excel, PowerPoint)
+-  Excel, PowerPoint, Word on Windows, Mac, and in a browser.
 
 ## Prerequisites
 
