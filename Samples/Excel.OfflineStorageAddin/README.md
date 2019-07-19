@@ -43,7 +43,7 @@ As another option, you can store your add-in's data in [`Office.Settings`](https
 ## Build and run the sample
 
 1. Clone or download this repository. 
-2. In the command line, navigate to the **Excel.OfflineStorageAddin** folder from your root directory.
+2. In the command line, go to the **Excel.OfflineStorageAddin** folder from your root directory.
 
 The following code sample shows you how to do these two steps: 
 ```command&nbsp;line
@@ -75,7 +75,7 @@ To simulate the add-in in offline mode, keep the add-in open in the taskpane and
 
 ## Key parts of this sample
 
-Navigate to *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* to find the implementation of `localStorage` described below. 
+Go to *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* to find the implementation of `localStorage` described below. 
 
 ### Implementing `localStorage` to offline data
 The *Excel.OfflineStorageAddin/src/taskpane/taskpane.js* file contains the `loadTable()` function, that uses `localStorage` to display a table of fictitious basketball player stats when a user loses connection.

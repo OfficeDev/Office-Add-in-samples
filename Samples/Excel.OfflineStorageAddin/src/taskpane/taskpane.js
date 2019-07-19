@@ -31,7 +31,7 @@
             error: function (xhr, status, error) {
                 // If the connections fails, checks if "PlayerData" was previously stored in local storage
                 if (localStorage.PlayerData) {
-                    // Retrieves the string saved earlied under the key "PlayerData"
+                    // Retrieves the string saved earlier under the key "PlayerData"
                     // and parses it into an object
                     let dataObject = JSON.parse(localStorage.PlayerData);
 
