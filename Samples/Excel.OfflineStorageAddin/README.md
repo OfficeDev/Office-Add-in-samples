@@ -1,8 +1,22 @@
-# Using storage techniques to access Office add-in data offline
+---
+topic: sample
+products:
+- Excel
+- Office 365
+languages:
+- JavaScript
+extensions:
+  contentType: samples
+  technologies:
+  - Add-ins
+  createdDate: 7/19/2019 1:25:00 PM
+---
+
+# Use storage techniques to access data from an Office Add-in when offline
 
 ## Summary
 
-This sample demonstrates how you can implement `localStorage` to enable limited functionality for your Office add-in when a user experiences lost connection.
+This sample demonstrates how you can implement `localStorage` to enable limited functionality for your Office Add-in when a user experiences lost connection.
 
 ## Applies to
 
@@ -22,7 +36,7 @@ Excel.OfflineStorageAddin | Nancy Wang, Albert Dotson (**Microsoft**)
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | (update later) | Initial release
+1.0  | July 19, 2019 | Initial release
 
 ## Disclaimer
 
@@ -30,11 +44,11 @@ Version  | Date | Comments
 
 ----------
 # Scenario: Storing data using local storage
-This sample Office add-in inserts a table of fictitious basketball players' stats in your file, retrieved from a local file named `sampleData.json`. In this sample code, data from the add-in is stored in `localStorage` to allow users who previously opened the add-in with online connection to insert the table of stats offline.
+This sample Office Add-in inserts a table of fictitious basketball players' stats in your file, retrieved from a local file named `sampleData.json`. In this sample code, data from the add-in is stored in `localStorage` to allow users who previously opened the add-in with online connection to insert the table of stats offline.
 
 While this add-in gets its data from a local server, implementation of `localStorage` as shown in this sample can be extended to add-ins that get their data from online sources. Furthermore, although this sample runs only in Excel, `localStorage` can be used to offline data across Word, Excel, and PowerPoint.
 
-**Note**: `localStorage` can store up to 5MB of data. To store larger amounts of data offline and for improved performance, consider using [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). Note that as of now, IndexedDB isn't supported by all browsers used by Office add-ins. Check [here](https://docs.microsoft.com/en-us/office/dev/add-ins/concepts/browsers-used-by-office-web-add-ins) to see which browsers are supported by Office add-ins and [here](https://caniuse.com/#search=indexedDB) to see which browsers can support IndexedDB.
+**Note**: `localStorage` can store up to 5MB of data. To store larger amounts of data offline and for improved performance, consider using [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). Note that as of now, IndexedDB isn't supported by all browsers used by Office Add-ins. Check [here](https://docs.microsoft.com/en-us/office/dev/add-ins/concepts/browsers-used-by-office-web-add-ins) to see which browsers are supported by Office Add-ins and [here](https://caniuse.com/#search=indexedDB) to see which browsers can support IndexedDB.
 As another option, you can store your add-in's data in [`Office.Settings`](https://docs.microsoft.com/en-us/javascript/api/office/office.settings?view=office-js). Using Office.Settings will enable your add-in's offline capabilities to persist within the file (e.g. if you'd like to share your file with others).
 
 ## Build and run the sample
@@ -134,6 +148,5 @@ We'd love to get your feedback about this sample. You can send your feedback to 
 Copyright (c) 2019 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
 <img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Excel.OfflineStorageAddin" />
-
-
