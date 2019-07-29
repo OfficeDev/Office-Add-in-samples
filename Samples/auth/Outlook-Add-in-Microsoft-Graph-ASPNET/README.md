@@ -117,7 +117,7 @@ Questions about Office 365 development in general should be posted to [Stack Ove
 ## Additional resources
 
 * [Microsoft Graph documentation](https://docs.microsoft.com/graph/)
-* [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-inss)
+* [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Copyright
 Copyright (c) 2019 Microsoft Corporation. All rights reserved.
