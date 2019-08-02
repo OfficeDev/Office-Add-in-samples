@@ -11,9 +11,9 @@ Office Add-ins PnP is a community driven effort that helps developers extend, bu
 - [Custom function batching pattern](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Excel-custom-functions/Batching). If your custom functions call a remote service you may want to use a batching pattern to reduce the number of network calls to the remote service. This is useful when a spreadsheet recalculates and it contains many of your custom functions. Recalculate will result in many calls to your custom functions, but you can batch them into one or a few calls to the remote service.
 - [Custom function storage](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Excel-custom-functions/Storage) for custom functions. Custom functions and task panes cannot directly communicate with each other. See how to use the Storage object to send data between custom functions and task panes. This is especially useful for sharing an access token.
 
-## More information
+## Learn more
 
-Please use [http://aka.ms/OfficeDevPnP](http://aka.ms/OfficeDevPnP) for getting latest information around the whole *Office 365 Developer Patterns and Practices program*.
+To learn more about Office Add-ins, see the [Office Add-ins documentation](https://aka.ms/office-add-ins-docs).
 
 ## Code of conduct
 
