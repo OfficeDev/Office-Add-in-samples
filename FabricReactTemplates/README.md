@@ -26,7 +26,7 @@ These templates can be used to create Office Add-ins that use [Office UI Fabric 
 1. Copy the templates from this repo to %UserProfile%\Documents\Visual Studio 2019\Templates\ProjectTemplates
 2. Start Visual Studio 2019.
 3. Choose **Create a new project**.
-4. Enter "Excel" into the search box
+4. Enter "excel" into the search box
 5. Choose the **Excel Web Add-in** project template, then choose **Next**.
 6. The **Configure your new project** page has options to name your project (and solution), choose a disk location, and select a Framework version. Set the values you want for your new project and then choose **Create**.
 7. On the **choose the add-in type** page, select **Add new functionalities to Excel**. Then choose **Finish**.
