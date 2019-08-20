@@ -1,4 +1,4 @@
-# Custom functions in Excel (Preview)
+# Custom functions in Excel
 
 Custom functions enable you to add new functions to Excel by defining those functions in JavaScript as part of an add-in. Users within Excel can access custom functions just as they would any native function in Excel, such as `SUM()`.  
 
