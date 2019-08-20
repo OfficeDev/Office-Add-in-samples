@@ -1,8 +1,8 @@
 ---
-topic: sample
+page_type: sample
 products:
-- Excel
-- Office 365
+- office-excel
+- office-365
 languages:
 - JavaScript
 extensions:
