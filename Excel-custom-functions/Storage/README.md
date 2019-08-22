@@ -4,7 +4,7 @@ products:
 - office-excel
 - office-365
 languages:
-- JavaScript
+- javascript
 extensions:
   contentType: samples
   technologies:
