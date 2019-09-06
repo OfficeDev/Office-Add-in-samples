@@ -26,7 +26,7 @@ You will also need the following:
 
 Solution | Author(s)
 ---------|----------
-Azure function itegration | David Chesnut (**Microsoft**)
+Azure function integration | David Chesnut (**Microsoft**)
 
 ## Version history
 
@@ -39,7 +39,7 @@ Version  | Date | Comments
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ----------
-## Scenario: Try out an Azure function from localhost
+## Try out the Azure function from localhost
 
 This sample moves the `Add` custom function to an Azure function named `AddTwo()`. The Azure function adds the two numbers and returns the result. The next steps will run the sample. If you want to know how it works, jump down to the explanation section.
 
@@ -56,7 +56,7 @@ This sample moves the `Add` custom function to an Azure function named `AddTwo()
 >Note: You may see an alert to allow func access through the firewall.
 
 You can test that the Azure function is working by calling it from a browser. Enter the following URL to add two numbers.
-`http://localhost:7071/api/AddTwo?first=1&second=2`. You should see the result 3 returned to the browser.
+`http://localhost:7071/api/AddTwo?first=1&second=2`. You should see the result `{ "answer": 3}` returned to the browser.
 
 ### Build and run the custom function
 
@@ -83,7 +83,7 @@ $ npm run start:web
 
 4. Try out the custom function by entering `=CONTOSO.ADD(1,2)` into a cell. The cell should call the custom function, which then calls the Azure function, and returns the result of 3.
 
-## Scenario: Deploy to an Azure function app
+## Deploy to an Azure function app
 
 You can also deploy and run the Azure function from your own Azure account.
 
@@ -102,8 +102,26 @@ You can also deploy and run the Azure function from your own Azure account.
     - **Function app**: Your project is deployed to and runs in this new function app.
     
     A notification is displayed after your function app is created and the deployment package is applied. Select **View Output** in this notification to view the creation and deployment results, including the Azure resources that you created.
-6. Back in the **Azure: Functions** area, expand the new function app under your subscription. Expand **Functions**, right-click **HttpTrigger**, and then choose **Copy function URL**.
+6. Select the Azure icon on the Activity bar. You should see an Azure Functioons area in the Side Bar.
+    ![Screenshot of the Azure icon on the Activity bar.](images/azure-icon.png)
+7. In the **Azure: Functions** area, expand the new function app under your subscription. Expand **Functions**, right-click **AddTwo**, and then choose **Copy function URL**.
 
+## Update the Excel custom function to call into the Azure function app
+
+Once the Azure function is deployed you can update the custom function to call the cloud version of the Azure function instead of the localhost version.
+
+1. Start Visual Studio Code and open the **CustomFunctionProject/src/functions/functions.js** file in the project.
+2. Go to the add function which sets the url string. The code appears as the following:
+    ```js
+    function add(first, second) {
+      //If you publish the Azure function online, update the following URL to use the correct URL location.
+      let url = "http://localhost:7071/api/AddTwo";
+      ...
+    ```
+3. Change the url assignment to assign the Azure function URL you copied from the previous exercise.
+4. Rebuild the project with `npm run build`.
+5. Start the project with `npm run start`.
+6. Try out the custom function by entering `=CONTOSO.ADD(1,2)` into a cell. The cell should call the custom function, which then calls the Azure function, and returns the result of 3.
 
 ## Key parts of this sample
 

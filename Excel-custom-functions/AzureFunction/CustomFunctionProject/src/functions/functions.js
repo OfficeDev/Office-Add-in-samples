@@ -8,7 +8,7 @@
 function add(first, second) {
   //If you publish the Azure function online, update the following URL to use the correct URL location.
   let url = "http://localhost:7071/api/AddTwo";
-  
+ 
   return new Promise(function(resolve,reject){
     fetch(url, {
       method: 'POST',
