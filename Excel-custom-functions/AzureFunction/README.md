@@ -106,6 +106,17 @@ You can also deploy and run the Azure function from your own Azure account.
     ![Screenshot of the Azure icon on the Activity bar.](images/azure-icon.png)
 7. In the **Azure: Functions** area, expand the new function app under your subscription. Expand **Functions**, right-click **AddTwo**, and then choose **Copy function URL**.
 
+### Add CORS support for the custom function 
+
+1. Open the Azure portal and sign in. You can do this by right-clicking the function app in Visual Studio Code and choosing **Open in Portal**.
+2. In the Azure portal, select the function app.
+3. Choose Platform features
+4. Choose **CORS** in the **API** section.
+5. Add a new entry in the **Allowed Origins** list for `https://localhost:3000`. This will enable the custom function to call into the Azure function app. 
+6. Choose **Save**.
+
+>**Note:** If you deploy the Excel custom function add-in, be sure to update the Allowed Origins list to support the new domain location.
+
 ## Update the Excel custom function to call into the Azure function app
 
 Once the Azure function is deployed you can update the custom function to call the cloud version of the Azure function instead of the localhost version.
