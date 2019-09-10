@@ -114,7 +114,11 @@ function ReceiveTokenFromCustomFunction() {
 
 ## Security notes
 
+### webpack.config.js
+
 In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. You should lock this header down to only allowed domains in production code.
+
+### Self-signed certificates
 
 You will be prompted to install self-signed certificates when you run this sample on your development computer. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
 
