@@ -37,7 +37,7 @@ Use the following steps to submit a pull request for your new code sample.
 4. Add your code sample to the folder.
 5. Commit the new code using descriptive commit message. Commit messages are used to track changes on the repositories for monthly communications.
 6. Push the changes up to your fork.
-7. Create a pull request in your own fork and target the `dev` branch on OfficeDev org.
+7. Create a pull request in your own fork and target the `master` branch on OfficeDev org.
 8. Fill up the provided PR template with the requested details.
 
 > **Note:** If you haven't signed a contributor license agreement (CLA), then you will automatically be asked to sign a CLA as part of submitting the PR.
