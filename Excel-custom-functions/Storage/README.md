@@ -14,8 +14,6 @@ extensions:
 
 # Using storage to share data between custom functions and the task pane
 
-## Summary
-
 If you need to share data values between your custom functions and the task pane, you can use the OfficeRuntime.storage object. Custom functions and task do not share the same runtime and cannot access the same data. OfficeRuntime.storage saves simple key/value pairs that you can access from both custom functions and the task pane.
 
 This sample accompanies the article [Save and share state in custom functions](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-save-state)
