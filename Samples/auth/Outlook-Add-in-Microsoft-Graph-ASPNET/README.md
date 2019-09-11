@@ -1,6 +1,17 @@
+---
+page_type: sample
+products:
+- office-outlook
+- office-365
+languages:
+- javascript
+extensions:
+  contentType: samples
+  technologies:
+  - Add-ins
+  createdDate: 5/1/2019 1:25:00 PM
+---
 # Get Excel workbooks using Microsoft Graph and MSAL in an Outlook Add-in 
-
-## Summary
 
 Learn how to build a Microsoft Outlook Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into a new message compose form in Outlook.
 
