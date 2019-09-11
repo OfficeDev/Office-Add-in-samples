@@ -1,0 +1,64 @@
+{
+  "name": "asp.net_core_react_office_web_addin_javascript_sample",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "core-js": "^3.1.4",
+    "es6-promise": "^4.2.6",
+    "jquery": "^3.4.1",
+    "office-ui-fabric-react": "^6.139.0",
+    "react": "^16.8.2",
+    "react-bootstrap": "^0.31.5",
+    "react-dom": "^16.8.2",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "^3.0.1",
+    "reactstrap": "^6.3.0",
+    "rimraf": "^2.6.2"
+  },
+  "devDependencies": {
+    "@types/core-js": "^2.5.2",
+    "@types/es6-collections": "^0.5.29",
+    "@types/es6-promise": "0.0.32",
+    "@types/office-js": "^1.0.9",
+    "@types/office-runtime": "^1.0.8",
+    "@types/react": "^16.8.3",
+    "@types/react-dom": "^16.8.1",
+    "@types/react-hot-loader": "^4.1.0",
+    "ajv": "^6.0.0",
+    "babel-eslint": "10.0.2",
+    "cross-env": "^5.2.0",
+    "eslint": "^6.1.0",
+    "eslint-config-react-app": "^4.0.1",
+    "eslint-plugin-flowtype": "^2.50.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "react-hot-loader": "^4.12.8"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "scripts": {
+    "start": "rimraf ./build && react-scripts start",
+    "build": "react-scripts build",
+    "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src/"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all",
+      "ie 11"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version",
+      "ie 11"
+    ]
+  }
+}
