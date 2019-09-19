@@ -58,6 +58,10 @@ Add ASP.NET Core with Office UI Fabric React to your Office Add-in | Microsoft
 
 > **Note:** npm install should run and install the packages prior to building the ASP.NET Core web project but you may need to watch the output window for errors.  If errors occur, please try running npm install from the ./ClientApp folder.
 
+## Known Issues
+
+If you’re using Visual Studio 2019 Update 3 on Windows 10 version 1903 or later and Office version 16.0.11424.10000 or later, there is a known issue that effects your ability to hit breakpoints in JavaScript files.   For more information and instructions on how to work around this please see https://developercommunity.visualstudio.com/content/problem/740413/office-development-inconsistent-script-debugging-b.html
+
 ## Version history
 
 Version  | Date | Comments
