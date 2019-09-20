@@ -1,7 +1,5 @@
 # ASP .NET Core, React.js and Office UI Fabric React sample task pane web projects for Visual Studio 2019
 
-## Summary
-
 These are sample web projects for Office task pane add-ins. These samples use [ASP.NET Core](https://github.com/aspnet/AspNetCore), [React.js](https://reactjs.org/) and [Office UI Fabric React](https://github.com/OfficeDev/office-ui-fabric-react).
 
 ## Sample Web Projects
@@ -24,13 +22,13 @@ These are sample web projects for Office task pane add-ins. These samples use [A
 
 - Node.js, install from https://nodejs.org
 
->**Note:** Update 3 is currently in Preview.  It can be downloaded from https://visualstudio.microsoft.com/vs/preview/
+>**Note:** Visual Studio 2019 can be downloaded from https://visualstudio.microsoft.com/downloads/
 
 ## Solution
 
 Solution | Author(s)
 ---------|----------
-Add ASP.NET Core with Office UI Fabric React to your Office Add-in | Microsoft
+Add ASP .NET Core with Office UI Fabric React to your Office Add-in | Microsoft
 
 ## Instructions
 
@@ -43,7 +41,7 @@ Add ASP.NET Core with Office UI Fabric React to your Office Add-in | Microsoft
 5. Give the new project a name on the **Configure your new project** page and use the default values for the remaining fields and then choose **Create**.
 6. On the choose the add-in type page, select **Add new functionalities to Excel**. Then choose Finish.
 
-### Add the ASP.NET Core React.js web project to the solution
+### Add the ASP .NET Core React.js web project to the solution
 
 1. Download or clone this repo. This will create a **PnP-OfficeAddins** folder.
 2. In Visual Studio, right-click the solution in **Solution Explorer** and choose **Add > Existing Project**.
@@ -52,21 +50,24 @@ Add ASP.NET Core with Office UI Fabric React to your Office Add-in | Microsoft
 5. Select the add-in project in Solution Explorer. It will have the name you gave the project when you created it and a Manifest entry under it (i.e. ExcelWebAddin1).
 6. Press F4 to view the **Properties** window for the project (if it is not already visible).
 7. Change the **Web Project** property to the name of ASP .NET Core web project you just added to the solution.
+   **Note:**: The ASP .NET Core web project must be on the same local drive as the Excel Web Add-in project.
 8. In the **Solution Explorer** open the manifest.xml file under the Office Add-in project (the project only contains a manifest file). Copy and save the <Id> that has the GUID for your project.
-8. Copy the contents of the manifest.xml file in the ASP .NET Core project and replace all of the contents in the maninfest file in the Web Add-in project (i.e. ExcelWebAddin1Manifest.xml) with it.
-9. Press F5 to debug the Office Web Add-in project.
+9. Copy the contents of the manifest.xml file in the ASP .NET Core project and replace all of the contents in the maninfest file in the Web Add-in project (i.e. ExcelWebAddin1Manifest.xml) with it.
+10. Press F5 to debug the Office Web Add-in project.
 
 > **Note:** npm install should run and install the packages prior to building the ASP.NET Core web project but you may need to watch the output window for errors.  If errors occur, please try running npm install from the ./ClientApp folder.
 
 ## Known Issues
 
-If you’re using Visual Studio 2019 Update 3 on Windows 10 version 1903 or later and Office version 16.0.11424.10000 or later, there is a known issue that effects your ability to hit breakpoints in JavaScript files.   For more information and instructions on how to work around this please see https://developercommunity.visualstudio.com/content/problem/740413/office-development-inconsistent-script-debugging-b.html
+1. If you are using Visual Studio 2019 Update 3 on Windows 10 version 1903 or later and Office version 16.0.11424.10000 or later, there is a known issue that effects your ability to hit breakpoints in JavaScript files. For more information and instructions on how to work around this please see https://developercommunity.visualstudio.com/content/problem/740413/office-development-inconsistent-script-debugging-b.html
+
+2. The ASP .NET Core web project must be on the same local drive as the Office Manifest project. If it is not you will see the error "Property value is not valid" when trying to switch the Web Project property.
 
 ## Version history
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0 | September 10, 2019 | Initial Release
+1.0 | September 23, 2019 | Initial Release
 
 ### Disclaimer ###
 
