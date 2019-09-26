@@ -16,6 +16,7 @@ To set up your development environment:
 2. Install version 2.x of the [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2).
 3. Install the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 4. Install the [Azure Functions extension](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code#install-the-azure-functions-extension).
+5. Download and install [.NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core) which is the required version for Azure functions to build correctly.
 
 You will also need the following:
 
