@@ -102,11 +102,11 @@ namespace SharedModule
                 }
 
             cboTemplate.Text = this.Name;
-            if (this.Handle != null)
-            {
-                cboDpiContext.Text =
-                    GetWindowDpiAwarenessContext(this.Handle).ToString();
-            }
+            //if (this.Handle != null)
+            //{
+            //    cboDpiContext.Text =
+            //        GetWindowDpiAwarenessContext(this.Handle).ToString();
+            //}
 
             AutoRefreshValues(true);
         }

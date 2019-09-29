@@ -217,6 +217,7 @@
       <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
     </Compile>
     <AppDesigner Include="Properties\" />
+    <None Include="WordAddIn1_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\VSTO SharedAddin\SharedModule\SharedModule.csproj">
@@ -236,11 +237,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>WordAddIn1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>45841CAE10EBEDA9B60F139A0C464D48B57AE1CF</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>3CEDB51531F58F17D5542DEA21CCF3175D5F8E20</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>office.ico</ApplicationIcon>

@@ -32,11 +32,11 @@ namespace SharedModule
             // Set cbo defaults
             cboTemplate.Text = this.Name;
 
-            if (this.Handle != null)
-            {
-                cboDpiContext.Text =
-                    DPIHelper.GetWindowDpiAwarenessContext(this.Handle).ToString();
-            }
+            //if (this.Handle != null)
+            //{
+            //    cboDpiContext.Text =
+            //        DPIHelper.GetWindowDpiAwarenessContext(this.Handle).ToString();
+            //}
 
             cboHostingBehavior.Text =
                 DPIHelper.GetThreadDpiHostingBehavior().ToString();

@@ -12,7 +12,7 @@
                 <Grid Background="#FFE5E5E5">
                     <Border BorderBrush="Black" BorderThickness="1" Padding="10" CornerRadius="5" Opacity="0.8"/>
                     <Button Content="Button" HorizontalAlignment="Left" Height="22" Margin="10,22,0,0" VerticalAlignment="Top" Width="68" Click="Button_Click"/>
-                    <CheckBox Content="CheckBox" HorizontalAlignment="Left" Height="17" Margin="83,27,0,0" VerticalAlignment="Top" Width="80" Checked="CheckBox_Checked"/>
+                    <CheckBox Content="CheckBox" HorizontalAlignment="Left" Height="17" Margin="83,27,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
                     <TextBlock HorizontalAlignment="Left" Height="18" Margin="10,49,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="133"/>
                     <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="20" Margin="10,73,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="152"/>
                     <ComboBox HorizontalAlignment="Left" Height="19" Margin="10,100,0,0" VerticalAlignment="Top" Width="152" IsEditable="True" DropDownClosed="ComboBox_DropDownClosed" SelectionChanged="ComboBox_SelectionChanged">

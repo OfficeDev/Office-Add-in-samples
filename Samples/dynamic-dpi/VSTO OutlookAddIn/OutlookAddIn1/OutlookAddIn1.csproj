@@ -204,6 +204,7 @@
     <EmbeddedResource Include="TaskpaneRibbon.resx">
       <DependentUpon>TaskpaneRibbon.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="OutlookAddIn1_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -241,13 +242,13 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>OutlookAddIn1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>EE79069352E188B4513485D28054536E39BE7554</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>A701E04DFEA4C1A226812E2C216134572C8E1C8C</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>

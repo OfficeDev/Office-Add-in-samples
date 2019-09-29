@@ -115,12 +115,6 @@
     <Compile Include="Top Level Forms.Designer.cs">
       <DependentUpon>Top Level Forms.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlWBC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlWBC.Designer.cs">
-      <DependentUpon>UserControlWBC.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControlMain.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -165,9 +159,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Top Level Forms.resx">
       <DependentUpon>Top Level Forms.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlWBC.resx">
-      <DependentUpon>UserControlWBC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlMain.resx">
       <DependentUpon>UserControlMain.cs</DependentUpon>
