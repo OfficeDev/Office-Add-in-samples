@@ -34,7 +34,7 @@ Dynamic DPI samples | Shawn McDowell (Microsoft)
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | July 15 2019 | Initial release
+1.0  | September 30 2019 | Initial release
 
 ## Disclaimer
 
