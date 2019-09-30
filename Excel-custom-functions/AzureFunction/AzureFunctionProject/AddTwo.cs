@@ -23,7 +23,7 @@ namespace Contoso.Functions
             string first = req.Query["first"];
             string second = req.Query["second"];
 
-            //Check if parameters were passed in body JSON.
+            //Check if parameters were passed in body text.
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
             first = first ?? data?.first; 
@@ -37,8 +37,8 @@ namespace Contoso.Functions
                  return new BadRequestObjectResult("Please pass two number parameters in the query string or in the request body");
             }
 
-            //add and return the result as JSON
-            return new OkObjectResult("{ \"answer\": "+(n1+n2).ToString()+"}");
+            //add and return the result as a string
+            return new OkObjectResult((n1+n2).ToString());
 
         }
     }

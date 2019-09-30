@@ -162,35 +162,38 @@ if (!int.TryParse(first,out n1)||!int.TryParse(second,out n2))
 }
 ```
 
-Finally the function returns the sum of the two numbers as JSON in an `OkObjectResult`. An example of the JSON returned is `{ "answer": 3}`. Later you'll see how the custom function finds the `answer` property for the correct value to return.
+Finally the function returns the sum of the two numbers in an `OkObjectResult`.
 
 ```csharp
-return new OkObjectResult("{ \"answer\": "+(n1+n2).ToString()+"}");
+//add and return the result as a string
+return new OkObjectResult((n1+n2).ToString());
 ```
 
 ### The custom function
 
-The Excel custom function is named `Add` and is in the **CustomFunctionProject/src/functions/functions.js** file. The `Add` function calls the `AddTwo` Azure function and just passes along the `first` and `second` parameters. The fetch function is used to call the Azure function, and the returned JSON is parsed to retrieve the `answer` property. The entire fetch function is returned as a promise to Excel.
+The Excel custom function is named `Add` and is in the **CustomFunctionProject/src/functions/functions.js** file. The `Add` function calls the `AddTwo` Azure function and just passes along the `first` and `second` parameters. The fetch function is used to call the Azure function, and the returned answer string is returned to Excel.
 
 ```js
 function add(first, second) {
   //If you publish the Azure function online, update the following URL to use the correct URL location.
   let url = "http://localhost:7071/api/AddTwo";
-  
+ 
   return new Promise(function(resolve,reject){
+  
+    //Note that POST uses text/plain because custom functions runtime does not support full CORS
     fetch(url, {
       method: 'POST',
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'text/plain'
       },
       body: JSON.stringify({"first": first ,"second": second})
     })
       .then(function (response){
-        return response.json();
+        return response.text();
         }
       )
-      .then(function (json) {
-       resolve(JSON.stringify(json.answer));
+      .then(function (textanswer) {
+       resolve(textanswer);
       })
       .catch(function (error) {
         console.log('error', error.message);

@@ -10,19 +10,21 @@ function add(first, second) {
   let url = "http://localhost:7071/api/AddTwo";
  
   return new Promise(function(resolve,reject){
+  
+    //Note that POST uses text/plain because custom functions runtime does not support full CORS
     fetch(url, {
       method: 'POST',
       headers:{
-        'Content-Type': 'application/json'
+        'Content-Type': 'text/plain'
       },
       body: JSON.stringify({"first": first ,"second": second})
     })
       .then(function (response){
-        return response.json();
+        return response.text();
         }
       )
-      .then(function (json) {
-       resolve(JSON.stringify(json.answer));
+      .then(function (textanswer) {
+       resolve(textanswer);
       })
       .catch(function (error) {
         console.log('error', error.message);
