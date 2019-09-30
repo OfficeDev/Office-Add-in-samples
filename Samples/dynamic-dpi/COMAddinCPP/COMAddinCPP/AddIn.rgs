@@ -1,0 +1,62 @@
+HKCR
+{
+	COMAddinCPP.Connect.1 = s 'Connect Class'
+	{
+		CLSID = s '{9B8BAEF3-92D8-4A34-BBAE-3159857D1ADD}'
+	}
+	COMAddinCPP.Connect = s 'Connect Class'
+	{
+		CLSID = s '{9B8BAEF3-92D8-4A34-BBAE-3159857D1ADD}'
+		CurVer = s 'COMAddinCPP.Connect.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove '{9B8BAEF3-92D8-4A34-BBAE-3159857D1ADD}' = s 'Connect Class'
+		{
+			ProgID = s 'COMAddinCPP.Connect.1'
+			VersionIndependentProgID = s 'COMAddinCPP.Connect'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{7B2B42E3-BA6D-41FE-97A9-94F473C1B2A6}'
+		}
+	}
+}
+HKCU
+{
+	NoRemove Software
+	{
+		NoRemove Microsoft
+		{
+			NoRemove Office
+			{
+				NoRemove Excel
+				{
+					NoRemove Addins
+					{
+						ForceRemove COMAddinCPP.Connect.1
+						{
+							val Description = s 'COM Add-in C++, with Custom TaskPane, created in VS 2005'
+							val FriendlyName = s 'COM Add-in C++ with Custom TaskPane'
+							val LoadBehavior = d '3'
+						}
+					}
+				}
+				NoRemove Word
+				{
+					NoRemove Addins
+					{
+						ForceRemove COMAddinCPP.Connect.1
+						{
+							val Description = s 'COM Add-in C++, with Custom TaskPane, created in VS 2005'
+							val FriendlyName = s 'COM Add-in C++ with Custom TaskPane'
+							val LoadBehavior = d '3'
+						}
+					}
+				}
+			}
+		}
+	}
+}

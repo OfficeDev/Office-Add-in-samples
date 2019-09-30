@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFCApplication1", "MFCApplication1\MFCApplication1.vcxproj", "{E8BAE46B-2683-4477-9B95-E9B21423572B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328} = {4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E} = {F9E7A7E2-7609-4B14-84DB-85E4B998E72E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFCActiveX", "..\Window Based ActiveX\MFCActiveX\MFCActiveX.vcxproj", "{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ODActiveX", "..\Windowless ActiveX\ODActiveX\ODActiveX.vcxproj", "{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+		Template|x64 = Template|x64
+		Template|x86 = Template|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E8BAE46B-2683-4477-9B95-E9B21423572B}.Debug|x64.ActiveCfg = Debug|x64
+		{E8BAE46B-2683-4477-9B95-E9B21423572B}.Debug|x64.Build.0 = Debug|x64
+		{E8BAE46B-2683-4477-9B95-E9B21423572B}.Debug|x86.ActiveCfg = Debug|Win32
+		{E8BAE46B-2683-4477-9B95-E9B21423572B}.Debug|x86.Build.0 = Debug|Win32
+		{E8BAE46B-2683-4477-9B95-E9B21423572B}.Release|x64.ActiveCfg = Release|x64
+		{E8BAE46B-2683-4477-9B95-E9B21423572B}.Release|x64.Build.0 = Release|x64
+		{E8BAE46B-2683-4477-9B95-E9B21423572B}.Release|x86.ActiveCfg = Release|Win32
+		{E8BAE46B-2683-4477-9B95-E9B21423572B}.Release|x86.Build.0 = Release|Win32
+		{E8BAE46B-2683-4477-9B95-E9B21423572B}.Template|x64.ActiveCfg = Release|x64
+		{E8BAE46B-2683-4477-9B95-E9B21423572B}.Template|x64.Build.0 = Release|x64
+		{E8BAE46B-2683-4477-9B95-E9B21423572B}.Template|x86.ActiveCfg = Release|Win32
+		{E8BAE46B-2683-4477-9B95-E9B21423572B}.Template|x86.Build.0 = Release|Win32
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}.Debug|x64.ActiveCfg = Debug|x64
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}.Debug|x64.Build.0 = Debug|x64
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}.Debug|x86.ActiveCfg = Debug|Win32
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}.Debug|x86.Build.0 = Debug|Win32
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}.Release|x64.ActiveCfg = Release|x64
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}.Release|x64.Build.0 = Release|x64
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}.Release|x86.ActiveCfg = Release|Win32
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}.Release|x86.Build.0 = Release|Win32
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}.Template|x64.ActiveCfg = Template|x64
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}.Template|x64.Build.0 = Template|x64
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}.Template|x86.ActiveCfg = Template|Win32
+		{4DA41212-2B4D-4DEF-A3FF-54DC5AFF3328}.Template|x86.Build.0 = Template|Win32
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}.Debug|x64.ActiveCfg = Debug|x64
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}.Debug|x64.Build.0 = Debug|x64
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}.Debug|x86.ActiveCfg = Debug|Win32
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}.Debug|x86.Build.0 = Debug|Win32
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}.Release|x64.ActiveCfg = Release|x64
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}.Release|x64.Build.0 = Release|x64
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}.Release|x86.ActiveCfg = Release|Win32
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}.Release|x86.Build.0 = Release|Win32
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}.Template|x64.ActiveCfg = Release|x64
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}.Template|x64.Build.0 = Release|x64
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}.Template|x86.ActiveCfg = Release|Win32
+		{F9E7A7E2-7609-4B14-84DB-85E4B998E72E}.Template|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

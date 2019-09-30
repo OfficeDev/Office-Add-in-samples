@@ -1,0 +1,49 @@
+// ODActiveX.idl : type library source for ActiveX Control project.
+
+// This file will be processed by the MIDL compiler tool to
+// produce the type library (ODActiveX.tlb) that will become a resource in
+// ODActiveX.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(8007A0C4-12BA-44FF-A275-DAE81D2FE54D), version(1.0),
+  control ]
+library ODActiveXLib
+{
+	importlib(STDOLE_TLB);
+
+	//  Primary dispatch interface for CODActiveXCtrl
+	[ 
+		uuid(79F0A437-A95A-4B96-A95E-2E84006F8F93)	
+	]
+	dispinterface _DODActiveX
+	{
+		properties:
+		methods:
+	};
+
+	//  Event dispatch interface for CODActiveXCtrl
+
+	[ 
+		uuid(F3EE2BA1-0CC2-4B96-A133-054F6A2605B5)	
+	]
+	dispinterface _DODActiveXEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+	};
+
+	//  Class information for CODActiveXCtrl
+	[
+		uuid(DC5950E1-9A17-4D9E-B813-7D7BFAE7CE7E)
+	]
+	coclass ODActiveX
+	{
+		[default] dispinterface _DODActiveX;
+		[default, source] dispinterface _DODActiveXEvents;
+	};
+
+};
