@@ -1,0 +1,135 @@
+/* 
+ * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+.ms-welcome {
+    position: relative;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    min-height: 500px;
+    min-width: 320px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.ms-welcome__header {
+    min-height: 250px;
+    padding: 20px;
+    padding-bottom: 30px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+}
+
+.ms-welcome__header > h1 {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.ms-welcome__main {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-flex: 1 0 0;
+    flex: 1 0 0;
+    padding: 30px 20px;
+}
+
+.ms-welcome__main > h2 {
+    width: 100%;
+    text-align: center;
+}
+
+.ms-welcome__features {
+    list-style-type: none;
+    margin-top: 30px;
+}
+
+.ms-welcome__features.ms-List .ms-ListItem {
+    padding: 0px;
+    padding-bottom: 20px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.ms-welcome__features.ms-List .ms-ListItem > .ms-Icon {
+    font-size: 14pt;
+}
+
+.ms-welcome__features.ms-List .ms-ListItem > .ms-Icon {
+    margin-right: 10px;
+}
+
+.ms-welcome__action.ms-Button--hero {
+    margin-top: 30px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.ms-welcome__action.ms-Button--hero .ms-Button-icon .ms-Icon {
+    margin-left: 5px;
+    margin-top: 4px;
+    border: none;
+    font-size: 14pt;
+}
+
+.ms-welcome__action.ms-Button--hero:hover .ms-Button-icon .ms-Icon {
+    border: none;
+}
+
+@media (min-width: 0) and (max-width: 350px) {
+    .ms-welcome__features {
+        width: 100%;
+    }
+}
