@@ -13,8 +13,8 @@ This sample shows how to move the code from the `Add` custom function into an Az
 To set up your development environment:
 
 1. Install [Visual Studio Code](https://code.visualstudio.com) on one of the supported platforms.
-2. Install version 2.x of the [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2).
-3. Install the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). You can also search for the C# extension in the VS Code Extensions view (Ctrl + Shift + X) and typing 'C# for Visual Studio Code'.
+2. Install version 2.x of the [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2). Note: The sample does not use extension bundles so you will install the .NET Core 2.x SDK in a later step.
+3. Install the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). You can also search for the C# extension in the VS Code Extensions view (Ctrl + Shift + X) and typing 'C# for Visual Studio Code'. Note: You will be notified to install the .NET Core 3.0 SDK, but this is not needed for this sample.
 4. Install the [Azure Functions extension](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code#install-the-azure-functions-extension). You can also search for the Azure Functions extension in the VS Code Extensions view (Ctrl + Shift + X) and typing 'Azure Functions'.
 5. Download and install [.NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core) which is the required version for Azure functions to build projects correctly.
 
@@ -48,7 +48,7 @@ This sample moves the `Add` custom function to an Azure function named `AddTwo()
 
 1. Clone or download this repository to a local project folder.
 2. Start Visual Studio Code and open the **AzureFunction/AzureFunctionProject** folder in the project.
-3. Open the tasks.json file and locate the entry for "type": "func".
+3. Open the **.vscode/tasks.json** file and locate the entry for "type": "func".
 4. Modify the `"command": "host start"` entry so that it reads as follows.
     ```json
     "command": "host start --cors https://localhost:3000",
@@ -71,11 +71,16 @@ This sample moves the `Add` custom function to an Azure function named `AddTwo()
     
     # this will build the add-in 
     $ npm run build
-        
-    # this will start the server on your desktop and launch your add-in on Excel
+    ```
+3. If you want to run the custom function add-in in Excel on Windows, use the following command to automatically start Excel and sideload the custom function add-in.
+    ```command&nbsp;line
     $ npm run start
+    ```
     
-    # this will start the server. Then you can sideload the add-in to Excel online using the guidance at https://docs.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing
+    -- or --
+    
+    If you want to run the custom function add-in in Excel on the web, use the following command to start the web server. Then you can sideload the add-in to Excel on the web using the guidance at https://docs.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing
+    ```command&nbsp;line
     $ npm run start:web
     ```
 3. In Excel with the add-in loaded, try out the custom function by entering `=CONTOSO.ADD(1,2)` into a cell. The cell should call the custom function, which then calls the Azure function, and returns the result of 3.
@@ -86,11 +91,12 @@ This sample moves the `Add` custom function to an Azure function named `AddTwo()
 You can also deploy and run the Azure function from your own Azure account.
 
 1. Start Visual Studio Code and open the **AzureFunction/AzureFunctionProject** folder in the project.
-2. In Visual Studio Code, press F1 to open the command palette. In the command palette, search for and select **Azure Functions: Deploy to function app....**
-    ![Screnshot of selecting Azure Functions: Deploy to function app in the command palette](images/azure-deploy-task.png)
+2. In Visual Studio Code, press F1 to open the command palette. In the command palette, search for and select **Azure Functions: Deploy to function app....** and then choose your subscription.
+    ![Screenshot of selecting Azure Functions: Deploy to function app in the command palette](images/azure-deploy-task.png)
     >Note: If you are not signed-in, you are prompted to **Sign in to Azure**. You can also **Create a free Azure account**. After successful sign in from the browser, go back to Visual Studio Code.
 4. Choose **+ Create New Function App in Azure**.
 5. Type a globally unique name that identifies your function app and press Enter. Valid characters for a function app name are `a-z`, `0-9`, and `-`.
+6. Choose the location where you want the function app to deploy.
     
     When you press Enter, the following Azure resources are created in your subscription:
     
@@ -100,16 +106,16 @@ You can also deploy and run the Azure function from your own Azure account.
     - **Function app**: Your project is deployed to and runs in this new function app.
     
     A notification is displayed after your function app is created and the deployment package is applied. Select **View Output** in this notification to view the creation and deployment results, including the Azure resources that you created.
-6. Select the Azure icon on the Activity bar. You should see an Azure Functions area in the Side Bar.
+7. Select the Azure icon on the Activity bar. You should see an Azure Functions area in the Side Bar.
     ![Screenshot of the Azure icon on the Activity bar.](images/azure-icon.png)
-7. In the **Azure: Functions** area, expand the new function app under your subscription. Expand **Functions**, right-click **AddTwo**, and then choose **Copy function URL**.
-8. You can test that the Azure function is working by calling it from a browser. Open a browser window and enter the URL you just copied. If you want to add numbers, append the following query string to the URL `?first=1&second=2`. You should see the result `{ "answer": 3}` returned to the browser.
+8. In the **Azure: Functions** area, expand the new function app under your subscription. Expand **Functions**, right-click **AddTwo**, and then choose **Copy function URL**.
+9. You can test that the Azure function is working by calling it from a browser. Open a browser window and enter the URL you just copied. If you want to add numbers, append the following query string to the URL `?first=1&second=2`. You should see the result `{ "answer": 3}` returned to the browser.
 
 ### Add CORS support for the custom function 
 
 You'll need to enable CORS support for the Office Add-in before it can call the Azure function online.
 
-1. Open the Azure portal and sign in. You can do this by right-clicking the function app in Visual Studio Code and choosing **Open in Portal**.
+1. Open the Azure portal and sign in. You can do this by selecting the Azure icon on the Activity bar in Visual Studio Code. Then right-click your Azure subscription for the Azure function and choose **Open in Portal**.
 2. In the Azure portal, select the function app.
 3. Choose **Platform features**.
 4. Choose **CORS** in the **API** section.
@@ -131,9 +137,20 @@ Once the Azure function is deployed you can update the custom function to call t
       ...
     ```
 3. In the `let url` assignment replace the localhost URL with the Azure function URL you copied from the previous exercise.
-4. Rebuild the project with `npm run build`.
-5. Start the project with `npm run start`.
-6. Try out the custom function by entering `=CONTOSO.ADD(1,2)` into a cell. The cell should call the custom function, which then calls the Azure function, and returns the result of 3.
+4. Run the following commands to build and start the custom function add-in on Excel on Windows. If the project was still running from a previous step, stop it and close Excel before restarting it.
+    ```command&nbsp;line
+    $ npm run build
+    $ npm run start
+    ```
+    
+    -- or --
+    
+    If you want to run the custom function add-in in Excel on the web, use the following command to start the web server. Then you can sideload the add-in to Excel on the web using the guidance at https://docs.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing
+    ```command&nbsp;line
+    $ npm run build
+    $ npm run start:web
+    ```
+2. Try out the custom function by entering `=CONTOSO.ADD(1,2)` into a cell. The cell should call the custom function, which then calls the Azure function, and returns the result of 3.
 
 ## Key parts of this sample
 
