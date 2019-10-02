@@ -20,7 +20,7 @@ You can expand the capabilities of Excel custom functions by integrating with Az
 
 This sample shows how to move the code from the `Add` custom function into an Azure function.
 
-![Overview diagram of Excel custom function calling an Azure function that returns a result.](/images/azure-function-overview.png)
+![Overview diagram of Excel custom function calling an Azure function that returns a result.](images/azure-function-overview.png)
 
 ## Applies to
 
