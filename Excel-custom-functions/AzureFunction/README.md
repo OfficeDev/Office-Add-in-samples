@@ -33,7 +33,7 @@ Azure function integration | David Chesnut (**Microsoft**)
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | September 20, 2019 | Initial release
+1.0  | October 2, 2019 | Initial release
 
 ## Disclaimer
 
@@ -244,7 +244,7 @@ We'd love to get your feedback about this sample. You can send your feedback to 
 
 ## Additional resources
 * [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
-Azure tutorial
+* [Create your first function using Visual Studio Code](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code)
 
 
 ## Copyright
