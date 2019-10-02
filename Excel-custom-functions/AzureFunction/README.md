@@ -1,8 +1,26 @@
-# Integrate an Azure function with your custom function
+---
+page_type: sample
+products:
+- office-excel
+- office-365
+- azure-functions
+languages:
+- javascript
+extensions:
+  contentType: samples
+  technologies:
+  - Add-ins
+  createdDate: 10/2/2019 1:25:00 PM
+description: "You can expand the capabilities of Excel custom functions by integrating with Azure functions."
+---
 
-You can expand the capabilities of Excel custom functions by integration with Azure functions. An Azure function allows you to move your code to the cloud so it is not visible from the browser, and you can choose additional languages to run in besides JavaScript. Also an Azure function can integrate with other Azure services such as message queues and storage. And you can share the function with other clients.
+# Integrate an Azure function with your Excel custom function
+
+You can expand the capabilities of Excel custom functions by integrating with Azure functions. An Azure function allows you to move your code to the cloud so it is not visible from the browser, and you can choose additional languages to run in besides JavaScript. Also an Azure function can integrate with other Azure services such as message queues and storage. And you can share the function with other clients.
 
 This sample shows how to move the code from the `Add` custom function into an Azure function.
+
+![Overview diagram of Excel custom function calling an Azure function that returns a result.](/images/azure-function-overview.png)
 
 ## Applies to
 
