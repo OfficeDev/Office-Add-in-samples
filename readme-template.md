@@ -58,4 +58,4 @@ This sample illustrates the following concepts on top of the Office platform:
 - topic 2
 - topic 3
 
-<img src="https://telemetry.sharepointpnp.com/officedev/samples/readme-template" />
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/name-of-sample" />
