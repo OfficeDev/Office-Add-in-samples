@@ -1,6 +1,6 @@
-# Export your add-in into an Office document on creation
+# Inject your add-in into an Office document
 
-If you have a scenario where a user can open an Office document from your web site, you may want to simplify the scenario by exporting your add-in into the document so it is ready to run once the document opens. This simplifies the experience for the user because they don't have to find and install the add-in themselves.
+If you have a scenario where a user can open an Office document from your web site, you may want to simplify the scenario by injecting your add-in into the document so that when it is opened, the add-in is already available and the user is signed in. This simplifies the experience for the user because they don't have to find and install the add-in themselves, or sign in separately.
 
 ## Applies to
 
