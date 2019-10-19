@@ -10,12 +10,14 @@ extensions:
   technologies:
   - Add-ins
   createdDate: 5/1/2019 1:25:00 PM
+description: "Learn how to build a Microsoft Outlook Add-in that connects to Microsoft Graph."
 ---
+
 # Get Excel workbooks using Microsoft Graph and MSAL in an Outlook Add-in 
 
 Learn how to build a Microsoft Outlook Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into a new message compose form in Outlook.
 
-# Features
+## Features
 
 Integrating data from online service providers increases the value and adoption of your add-ins. This code sample shows you how to connect your Outlook add-in to Microsoft Graph. Use this code sample to:
 
