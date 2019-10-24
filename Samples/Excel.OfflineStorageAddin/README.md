@@ -10,9 +10,11 @@ extensions:
   technologies:
   - Add-ins
   createdDate: 7/19/2019 1:25:00 PM
+description: "See how you can implement localStorage to enable limited functionality for your Office Add-in when a user experiences lost connection."
+urlFragment: use-storage-techniques-to-access-data-from-an-office-add-in-when-offline
 ---
 
-# Use storage techniques to access data from an Office Add-in when offline
+# Techniques to access data from an Office Add-in when offline
 
 This sample demonstrates how you can implement `localStorage` to enable limited functionality for your Office Add-in when a user experiences lost connection.
 
