@@ -11,7 +11,7 @@ import * as msal from 'msal';
 
     const config: msal.Configuration = {
       auth: {
-        clientId: 'THE APPLICATION (CLIENT) ID GOES HERE',
+        clientId: 'fc19440a-334e-471e-af53-a1c1f53c9226',
         authority: 'https://login.microsoftonline.com/common',
         redirectUri: 'https://localhost:3000/login/login.html'
       },
@@ -27,17 +27,7 @@ import * as msal from 'msal';
 
       if (!error) {
         if (response.tokenType === 'id_token') {
-          /*
-            If the O365 tenancy is configured to require two-factor authentication, AAD
-            sends an ID token and *REDIRECTS BACK TO THIS PAGE* immediately after the user
-            provides a password, but before the user has been prompted for the 2nd factor.
-            So, this immediately invoked function expression (IIFE) runs again. When
-            acquireTokenRedirect runs a second time, AAD prompts the user for the 2nd factor
-            and then returns the access token. This happens so fast that the user gets the
-            2nd factor prompt immediately after providing a password. But this code needs to
-            test for the case when only an ID token is returned and DO NOTHING, so that the
-            IIFE runs again.
-          */
+         localStorage.setItem("loggedIn", "yes");
         }
         else {
           // The tokenType is access_token, so send success message and token.
@@ -58,6 +48,15 @@ import * as msal from 'msal';
       scopes: ['user.read', 'files.read.all'],
     };
 
-    userAgentApp.acquireTokenRedirect(request);
+    if (localStorage.getItem("loggedIn") === "yes") {
+      userAgentApp.acquireTokenRedirect(request);
+    }
+    else {
+        // This will login the user and then the (response.tokenType === "id_token")
+        // path in authCallback below will run, which sets localStorage.loggedIn to "yes"
+        // and then the dialog is redirected back to this script, so the 
+        // acquireTokenRedirect above runs.
+        userAgentApp.loginRedirect(request);
+    }
   };
 })();
