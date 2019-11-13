@@ -1,0 +1,191 @@
+﻿/* Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information. */
+
+#notification-message {
+    background-color: #818285;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    min-height: 80px;
+    right: 0;
+    z-index: 100;
+    bottom: 0;
+    display: none; /* Hidden until invoked */
+}
+
+    #notification-message #notification-message-header {
+        font-size: medium;
+        margin-bottom: 10px;
+    }
+
+    #notification-message #notification-message-close {
+        background-image: url("Close.png");
+        background-repeat: no-repeat;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        cursor: pointer;
+    }
+
+#contentCharts {
+    margin-bottom: 100px;
+    z-index: 1;
+}
+
+.homefooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    display: block;
+    box-sizing: border-box;
+    font-family: 'Segoe UI';
+}
+
+.onedrivefilesfooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+    display: block;
+    box-sizing: border-box;
+    font-family: 'Segoe UI';
+}
+
+    .footer .brand-text {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin: 10px;
+        margin-left: 5px;
+        margin-bottom: 20px;
+    }
+
+
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 40px;
+    display: block;
+    box-sizing: border-box;
+    font-family: 'Segoe UI';
+    z-index: 5;
+}
+
+.cancelDefaultBrowserIndentation {
+    margin:0;
+    margin-top:-14px
+}
+
+.indentFromPaneEdge {
+    padding:20px
+}
+
+.centeredText {
+    text-align:center;
+}
+
+.headerText {    
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.headerGap {
+    padding-top:70px;
+}
+
+.pointerCursor {
+    cursor:pointer
+}
+
+/* Overriding Fabric styles to format the Welcome page and workbook list page. */
+ul.ordered-list {
+    list-style-type: none;
+}
+
+/* Overriding Fabric styles to format the Welcome page and workbook list page. */
+.ordered-list.ms-List .ms-ListItem {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+    
+}
+
+/* Overriding Fabric styles to format the Welcome page and workbook list page. */
+.ordered-list .ms-ListItem-primaryText {
+    color: rgba(0, 119, 214, 1);
+    background-color: rgba(198, 223, 243, 1);
+    border-radius: 100%;
+    font-size: 12pt;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+    text-align: center;
+
+    position: absolute; /* override fabric positioning */
+}
+
+/* Overriding Fabric styles to format the Welcome page and workbook list page. */
+.ordered-list .ms-ListItem-secondaryText {
+    color: rgba(51, 51, 51, 1);
+    margin-bottom: 10px;
+    position: inherit;
+    top: 0; /* override fabric positioning */
+    padding-left: 40px; /* offset by 30px + 10px so that large bullet sits in that place */
+    white-space: normal;
+    overflow: auto;
+    line-height: normal;
+}
+
+/* Similar to ms-ListItem-secondaryText, but does inherit parent style from Fabric. 
+    This prevents unnecessary scrollbars appearing next to each file name.
+*/
+.ordered-list .ms-ListItem-fileName {
+    color: rgba(51, 51, 51, 1);
+    margin-bottom: 10px;
+
+    position: inherit;
+    top: 0; /* override fabric positioning */
+    padding-left: 0px; 
+    white-space: normal;
+    overflow: auto;
+}
+
+.clearfix {
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+.welcome{  
+    padding: 20px;
+    padding-top: 30px;
+    padding-left: 20px;
+}
+
+.welcome-body{  
+    padding-left: 20px;
+}
+
+.welcome-intro {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.file-item-intro {
+    margin-bottom: 20px;
+}
+
+.back-icon {
+    float:left;
+    padding-left:15px;
+}
+
+
+.file-item-status{
+    padding-bottom: 20px;
+}
