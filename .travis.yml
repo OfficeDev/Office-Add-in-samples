@@ -1,0 +1,12 @@
+language: node_js
+
+node_js:
+  -10
+
+branches:
+  only:
+    - travis
+
+script:
+  - cd Excel-custom-functions/Batching
+  - npm run build
