@@ -1,0 +1,120 @@
+﻿/*Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license.*/
+/**
+ * Button styles
+ *
+ */
+.Button {
+    color: #333333;
+    font-family: 'Segoe UI Regular WestEuropean', 'Segoe UI', Tahoma, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    background-color: #f4f4f4;
+    border: 1px solid #f4f4f4;
+    cursor: pointer;
+    display: inline-block;
+    height: 32px;
+    min-width: 80px;
+    padding: 4px 20px 6px;
+}
+
+.Button:hover {
+    background-color: #eaeaea;
+    border-color: #eaeaea;
+    outline: 1px solid transparent;
+}
+
+.Button:hover .Button-label {
+    color: #000000;
+}
+
+.Button:focus {
+    background-color: #eaeaea;
+    border-color: #0078d7;
+    outline: 1px solid transparent;
+}
+
+.Button:focus .Button-label {
+    color: #000000;
+}
+
+.Button:active {
+    background-color: #0078d7;
+    border-color: #0078d7;
+}
+
+.Button:active .Button-label {
+    color: #ffffff;
+}
+
+.Button:disabled,
+.Button.is-disabled {
+    background-color: #f4f4f4;
+    border-color: #f4f4f4;
+    cursor: default;
+}
+
+    .Button:disabled .Button-label,
+    .Button.is-disabled .Button-label {
+        color: #a6a6a6;
+    }
+
+    .Button:disabled:hover,
+    .Button:disabled:focus,
+    .Button.is-disabled:hover,
+    .Button.is-disabled:focus {
+        outline: 0;
+    }
+
+.Button + .Button {
+    margin-left: 6px;
+}
+
+.Button-label {
+    color: #333333;
+    font-family: 'Segoe UI Semibold WestEuropean', 'Segoe UI Semibold', 'Segoe UI', Tahoma, Arial, sans-serif;
+    font-size: 14px;
+}
+
+.Button-icon,
+.Button-description {
+    display: none;
+}
+
+.Button.Button--primary {
+    background-color: #0078d7;
+    border-color: #0078d7;
+}
+
+.Button.Button--primary .Button-label {
+    color: #ffffff;
+}
+
+.Button.Button--primary:hover {
+    background-color: #005a9e;
+    border-color: #005a9e;
+}
+
+.Button.Button--primary:focus {
+    background-color: #005a9e;
+    border-color: #004578;
+}
+
+.Button.Button--primary:active {
+    background-color: #0078d7;
+    border-color: #0078d7;
+}
+
+.Button.Button--primary:disabled,
+.Button.Button--primary.is-disabled {
+    background-color: #f4f4f4;
+    border-color: #f4f4f4;
+}
+
+.Button.Button--primary:disabled .Button-label,
+.Button.Button--primary.is-disabled .Button-label {
+    color: #a6a6a6;
+}

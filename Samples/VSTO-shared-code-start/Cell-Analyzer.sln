@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cell-Analyzer", "Cell-Analyzer\Cell-Analyzer.csproj", "{943B5DB9-830A-4ABA-ADD8-1F0C3B3961DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CellAnalyzerSharedLibrary", "CellAnalyzerSharedLibrary\CellAnalyzerSharedLibrary.csproj", "{F53729A2-99B5-4DAB-9E84-B619177C1FE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CellAnalyzerRESTAPI", "CellAnalyzerRESTAPI\CellAnalyzerRESTAPI.csproj", "{CCA54C2C-AFEF-4B5F-BA81-701BC81691E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CellAnalyzerWebAddin", "CellAnalyzerWebAddin\CellAnalyzerWebAddin.csproj", "{54F53584-69B2-4B20-9DB1-59E505A5FD5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CellAnalyzerWebAddinWeb", "CellAnalyzerWebAddinWeb\CellAnalyzerWebAddinWeb.csproj", "{A5C156F7-A503-42D6-BF1E-31C8A810499F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{943B5DB9-830A-4ABA-ADD8-1F0C3B3961DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{943B5DB9-830A-4ABA-ADD8-1F0C3B3961DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{943B5DB9-830A-4ABA-ADD8-1F0C3B3961DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{943B5DB9-830A-4ABA-ADD8-1F0C3B3961DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F53729A2-99B5-4DAB-9E84-B619177C1FE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F53729A2-99B5-4DAB-9E84-B619177C1FE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F53729A2-99B5-4DAB-9E84-B619177C1FE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F53729A2-99B5-4DAB-9E84-B619177C1FE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCA54C2C-AFEF-4B5F-BA81-701BC81691E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCA54C2C-AFEF-4B5F-BA81-701BC81691E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCA54C2C-AFEF-4B5F-BA81-701BC81691E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCA54C2C-AFEF-4B5F-BA81-701BC81691E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F53584-69B2-4B20-9DB1-59E505A5FD5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F53584-69B2-4B20-9DB1-59E505A5FD5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F53584-69B2-4B20-9DB1-59E505A5FD5F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{54F53584-69B2-4B20-9DB1-59E505A5FD5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F53584-69B2-4B20-9DB1-59E505A5FD5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F53584-69B2-4B20-9DB1-59E505A5FD5F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A5C156F7-A503-42D6-BF1E-31C8A810499F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5C156F7-A503-42D6-BF1E-31C8A810499F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5C156F7-A503-42D6-BF1E-31C8A810499F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5C156F7-A503-42D6-BF1E-31C8A810499F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B09FDBB0-9131-4B91-9400-B68A1122EA27}
+	EndGlobalSection
+EndGlobal
