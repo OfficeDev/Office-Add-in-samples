@@ -39,7 +39,7 @@
             this.btnUnicode.Name = "btnUnicode";
             this.btnUnicode.Size = new System.Drawing.Size(101, 23);
             this.btnUnicode.TabIndex = 0;
-            this.btnUnicode.Text = "Show unicode";
+            this.btnUnicode.Text = "Show Unicode";
             this.btnUnicode.UseVisualStyleBackColor = true;
             this.btnUnicode.Click += new System.EventHandler(this.btnUnicode_Click);
             // 

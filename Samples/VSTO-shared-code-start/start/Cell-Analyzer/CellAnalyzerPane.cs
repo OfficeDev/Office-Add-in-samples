@@ -29,7 +29,7 @@ namespace Cell_Analyzer
                 cellValue = rangeCell.Value.ToString();
             }
 
-            //convert string to unicode listing
+            //convert string to Unicode listing
             string result = "";
             foreach (char c in cellValue)
             {
