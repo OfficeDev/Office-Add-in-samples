@@ -71,6 +71,17 @@ The first step to migration is to analyze the code in your VSTO add-in. You'll w
 
 UI code and document interaction code will need to be rewritten for the Office web add-in. However, business logic code can be shared between the VSTO add-in and Office web add-in.
 
+## Prepare the solution to run
+
+You'll need to isntall the required NuGet packages, and add test certificates for the solution to build and run correctly.
+
+1. Start Visual Studio 2019 and open the **/completed/Cell-Analyzer.sln** solution.
+2. In **Solution Explorer**, right-click **Solution 'Cell-Analyzer'**, and choose **Restore NuGet Packages**.
+3. In **Solution Explorer**, right-click the **Cell-Analyzer** project, and choose **Properties**.
+4. Choose the **Signing** category in the properties.
+5. Choose **Sign the ClickOnce manifests**, and then chose **Create Test Certificate**.
+6. In the **Create Test Certificate** dialog, enter and confirm a password. Then choose **OK**.
+
 ## Part 1: Share code in a class library
 
 To share the business logic code, you create a class library. Then refactor the business logic and relocate it into the shared library. The advantage is that you will not need to rewrite the code in JavaScript for the Office web add-in. Later the Office web add-in will access the shared library through REST API calls.
