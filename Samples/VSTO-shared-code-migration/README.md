@@ -5,29 +5,32 @@ products:
 - office-365
 languages:
 - javascript
+- csharp
 extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 12/2/2019 1:25:00 PM
+  createdDate: 12/30/2019 1:25:00 PM
 description: ""
 ---
 
 # Use a shared library to migrate your Visual Studio Tools for Office add-in to an Office web add-in
 
-Visual Studio Tools for Office (VSTO) add-ins can only run in Office on Windows. By migrating your code to an Office web add-in, you can expand the reach of your add-in to mobile and online platforms. Migrating the code will involve rewriting it in the JavaScript language, and also updating it to use the Office.js APIs. However, you can save on migration cost by creating a shared library and keeping some of your existing add-in code in its current language.
+![Sharing code between a VSTO Add-in and an Office Web Add-in](shared-code-library-migration.png)
 
-This sample includes a start folder that accompanies the article TBD... If you want to learn how to go through the steps over creating a shared library for an existing VSTO add-in, follow this article.
+Visual Studio Tools for Office (VSTO) add-ins can only run in Office on Windows. By migrating your code to an Office web add-in, you can expand the reach of your add-in to mobile and online platforms. Migrating the code will involve rewriting it in the JavaScript language, and also updating it to use the Office JavaScript APIs. However, you can reduce migration cost by creating a shared library and keeping some of your existing add-in code in its current language.
 
-And the sample contains a complete folder that contains the completed solution. If you want to explore each section of the completed solution, follow the steps in this readme to learn more.
+This sample includes a **/start** folder that accompanies the [Tutorial: Migrate your VSTO Add-in to an Office web add-in with a shared code library](https://docs.microsoft.com/office/dev/add-ins/pnp/migrate-vsto-to-office-web-add-in-shared-code-library-tutorial). If you want to learn how to go through the steps for creating a shared library for an existing VSTO add-in, follow the tutorial.
+
+The sample contains a **/completed** folder that contains the completed solution. If you want to explore each section of the completed solution, follow the steps in this readme to learn more.
 
 The sample starts with an Excel VSTO add-in that provides functionality for the user to analyze a cell of text. They can view the unicode values of the text characters. The logic to convert the text to unicode is what will be shared to the web add-in.
 
-![Overview diagram of Excel custom function calling an Azure function that returns a result.](images/azure-function-overview.png)
+![The Cell Analyzer VSTO Add-in running in Excel](cell-analyzer.png)
 
 ## Applies to
 
--  Excel, Outlook, PowerPoint, Word on Windows, Mac, and in a browser.
+-  Excel, Outlook, Word, and PowerPoint, on Windows, Mac, and in a browser.
 
 ## Prerequisites
 
@@ -35,14 +38,12 @@ To set up your development environment:
 
 1. Install [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
 2. Install the following workloads:
-    a. ASP.NET and web development
-    b. .NET Core cross-platform development
-    c. Office/SharePoint development
-    d. Visual Studio Tools for Office (VSTO) Note that this is an Individual component.
+    - ASP.NET and web development
+    - .NET Core cross-platform development. **Note:** You need at least .NET Core version 2.2 or later to run the completed sample.
+    - Office/SharePoint development
+    - Visual Studio Tools for Office (VSTO). **Note:** This is an **Individual** component.
 
-You will also need the following:
-
-- An Office 365 account. You can join the [Office 365 Developer Program](https://aka.ms/devprogramsignup) that includes a free 1 year subscription to Office 365.
+You will also need an Office 365 account. You can join the [Office 365 Developer Program](https://aka.ms/devprogramsignup) that includes a free 1 year subscription to Office 365.
 
 ## Solution
 
@@ -67,13 +68,13 @@ The first step to migration is to analyze the code in your VSTO add-in. You'll w
 
 1. UI code that interacts with the user, such as task pane code that uses a WinForm.
 2. Document code that interacts with the document through the Office APIs, such as updating Excel range values.
-3. Business logic, such as algorithms or helper functions that can work independently from the UI or document.
+3. Business logic, such as algorithms or helper functions, that can work independently from the UI or document.
 
 UI code and document interaction code will need to be rewritten for the Office web add-in. However, business logic code can be shared between the VSTO add-in and Office web add-in.
 
 ## Prepare the solution to run
 
-You'll need to isntall the required NuGet packages, and add test certificates for the solution to build and run correctly.
+You'll need to install the required NuGet packages, and add test certificates for the solution to build and run correctly.
 
 1. Start Visual Studio 2019 and open the **/completed/Cell-Analyzer.sln** solution.
 2. In **Solution Explorer**, right-click **Solution 'Cell-Analyzer'**, and choose **Restore NuGet Packages**.
@@ -123,7 +124,7 @@ You should see the list of characters returned along with each unicode value.
 
 ## Part 3: The Office web add-in
 
-The Office web add-in must be created and then modified to match the VSTO add-in UI and document interactions as much as possible. For UI you will need to create similar controls using HTML, CSS, or your favorite library. The UI will look more modern! Also you will need to rewrite code that interacts with the document to use the Office.js API.
+The Office web add-in must be created and then modified to match the VSTO add-in UI and document interactions as much as possible. For UI you will need to create similar controls using HTML, CSS, or your favorite library. You will also need to rewrite code that interacts with the document to use the Office JavaScript API.
 
 ### Explore the Office web add-in project
 

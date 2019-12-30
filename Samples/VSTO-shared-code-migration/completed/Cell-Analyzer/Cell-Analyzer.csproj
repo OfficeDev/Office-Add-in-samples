@@ -177,6 +177,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Cell-Analyzer_1_TemporaryKey.pfx" />
     <None Include="Cell-Analyzer_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -211,10 +212,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Cell-Analyzer_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Cell-Analyzer_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>2BC501A9CBA63F1DDDD4CC61E4B2A62C7D45809A</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>B54E8695B1FB6E03AEDA4BCE875604CAD5F59339</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
