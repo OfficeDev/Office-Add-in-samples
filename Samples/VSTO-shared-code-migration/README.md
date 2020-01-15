@@ -129,7 +129,7 @@ The Office web add-in must be created and then modified to match the VSTO add-in
 ### Explore the Office web add-in project
 
 1. Start Visual Studio 2019 and open the **/completed/Cell-Analyzer.sln** solution.
-2. Expand the **CellAnalyzer** project in the solution explorer and open the **/Controllers/AnalyzeUnicodeController.cs** file.
+2. Expand the **CellAnalyzerRESTAPI** project in the solution explorer and open the **/Controllers/AnalyzeUnicodeController.cs** file.
 
 The method **AnalyzeUnicode** is a wrapper that calls into the shared class library to perform the actual operation.
 
@@ -149,6 +149,14 @@ Excel will run and sideload the Office web add-in.
 
 ## Security notes
 
+### Cell-Analyzer notes
+
+This readme file has you create test certificates to run the Cell-Analyzer project. These are for testing and development purposes only. Do not reuse them in your own code solutions or in production environments.
+
+### CellAnalyzerRESTAPI notes
+
+In the **Startup.cs** file, the **ConfigureServices** method updates the CORS policy to allow port **localhost:44397**. This is for development purposes. In production code you should update this to use the appropriate allowed domains.
+
 ### CellAnalyzerRESTAPI notes
 
 The Cell analyzer REST API project is configured to support CORS requests from https://localhost:44397 (the Office web add-in.) This is only for development purposes. In production code, you should configure CORS to support your deployed Office web add-in endpoint.
@@ -163,7 +171,7 @@ We'd love to get your feedback about this sample. You can send your feedback to 
 
 ## Copyright
 
-Copyright (c) 2019 Microsoft Corporation. All rights reserved.
+Copyright (c) 2020 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 

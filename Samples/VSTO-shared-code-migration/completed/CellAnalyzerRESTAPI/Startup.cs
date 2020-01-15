@@ -22,7 +22,9 @@ namespace CellAnalyzerRESTAPI
         readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // NOTE: The following code configures CORS for the localhost:44397 port.
+        // This is for development purposes. In production code you should update this to 
+        // use the appropriate allowed domains.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(options =>

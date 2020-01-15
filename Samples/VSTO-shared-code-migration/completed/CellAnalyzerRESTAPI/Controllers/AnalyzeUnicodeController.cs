@@ -12,7 +12,7 @@ namespace CellAnalyzerRESTAPI.Controllers
     public class AnalyzeUnicodeController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<string> e(string value)
+        public ActionResult<string> AnalyzeUnicode(string value)
         {
             if (value == null)
             {
