@@ -51,7 +51,7 @@ Here's a high level process for submitting new samples or updates to existing on
 1. Create a new branch off the `master` branch for your fork for the contribution.
 1. Include your changes to your branch.
 1. Commit your changes using descriptive commit message * These are used to track changes on the repositories for monthly communications
-1. Create a pull request in your own fork and target `dev` branch.
+1. Create a pull request in your own fork and target `master` branch.
 1. Fill up the provided PR template with the requested details.
 
 Before you submit your pull request consider the following guidelines:
@@ -121,7 +121,7 @@ If the sample you wish to contribute is stored in your own Github repository, yo
 
     ```shell
     git remote add origin https://github.com/yourgitaccount/pnp-officeaddins.git
-    git pull origin dev
+    git pull origin master
     ```
 
 * Pull your other project from github into the samples folder of your local copy of pnp-officeaddins
@@ -133,7 +133,7 @@ If the sample you wish to contribute is stored in your own Github repository, yo
 * Push the changes up to your forked repository
 
     ```shell
-    git push origin dev
+    git push origin master
     ```
 
 Thank you for your contribution!
