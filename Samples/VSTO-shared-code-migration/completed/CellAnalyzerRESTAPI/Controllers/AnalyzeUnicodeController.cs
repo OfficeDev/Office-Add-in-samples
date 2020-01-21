@@ -18,7 +18,7 @@ namespace CellAnalyzerRESTAPI.Controllers
             {
                 return BadRequest();
             }
-            return new JsonResult(CellAnalyzerSharedLibrary.CellOperations.GetUnicodeFromText(value));
+            return CellAnalyzerSharedLibrary.CellOperations.GetUnicodeFromText(value);
         }
     }
 }

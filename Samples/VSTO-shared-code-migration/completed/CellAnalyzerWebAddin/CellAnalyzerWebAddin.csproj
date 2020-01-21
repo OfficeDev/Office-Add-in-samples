@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{54F53584-69B2-4B20-9DB1-59E505A5FD5F}</ProjectGuid>
+    <ProjectGuid>{54F4AEF7-0CD7-4571-A51B-5370D224EBF2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CellAnalyzerWebAddin</RootNamespace>
@@ -13,11 +13,11 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
-    <AppFeaturePartId>{1cc72e1d-b1f6-41f1-8891-34145f82eb88}</AppFeaturePartId>
-    <WspPartId>{75789d8f-c506-45df-9184-4db6a2bc78a6}</WspPartId>
-    <WorkflowPartId>{598772cf-fd43-4b3b-9b39-b21a8f8cf15c}</WorkflowPartId>
-    <CspkgPartId>{9dcdef38-cd18-42c7-a61d-7086bc560589}</CspkgPartId>
-    <SqlPackagePartId>{9aad8cd2-f804-453e-a661-14e40f874424}</SqlPackagePartId>
+    <AppFeaturePartId>{1a906cf1-b85a-4fe7-9bba-a8fcef4aeacc}</AppFeaturePartId>
+    <WspPartId>{fdd9ef26-7c9b-49f8-accf-0ee5f9844609}</WspPartId>
+    <WorkflowPartId>{f6f42f56-92e7-4199-8c65-1147769d1859}</WorkflowPartId>
+    <CspkgPartId>{014452f1-e311-4e61-b177-abe13e1f0e93}</CspkgPartId>
+    <SqlPackagePartId>{6b51d412-e9e7-4814-ab35-4b77ee13064c}</SqlPackagePartId>
     <ProjectMode>OfficeApp</ProjectMode>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <MinimumOfficeToolsVersion>14.0</MinimumOfficeToolsVersion>
@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="CellAnalyzerWebAddinManifest\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{2ed8c355-d5cb-4dbb-8530-96301e170f42}</SharePointProjectItemId>
+      <SharePointProjectItemId>{aa63f94e-6dde-4212-aafa-66cf516181d2}</SharePointProjectItemId>
     </None>
     <Content Include="CellAnalyzerWebAddinManifest\CellAnalyzerWebAddin.xml">
       <OpcRelationship>manifest-oemanifest</OpcRelationship>
@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CellAnalyzerWebAddinWeb\CellAnalyzerWebAddinWeb.csproj">
-      <Project>{A5C156F7-A503-42D6-BF1E-31C8A810499F}</Project>
+      <Project>{FE772B99-8400-40A8-8AED-E9F82E8FEFB9}</Project>
       <Name>CellAnalyzerWebAddinWeb</Name>
       <Private>True</Private>
       <RoleType>Web</RoleType>
