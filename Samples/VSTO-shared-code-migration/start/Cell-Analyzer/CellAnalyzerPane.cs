@@ -41,15 +41,6 @@ namespace Cell_Analyzer
             //Output the result
             txtResult.Text = result;
         }
-        private int spacecounter(string value)
-        {
-            int spaceCount = 0;
-            foreach (char c in value)
-            {
-                if (c == ' ') spaceCount += 1;
-            }
-            return spaceCount;
-        }
 
     }
 
