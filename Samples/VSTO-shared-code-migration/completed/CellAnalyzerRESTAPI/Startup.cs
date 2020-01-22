@@ -34,7 +34,7 @@ namespace CellAnalyzerRESTAPI
                 options.AddPolicy(MyAllowSpecificOrigins,
                 builder =>
                 {
-                    builder.WithOrigins("https://localhost:44397")
+                    builder.WithOrigins("https://localhost:44368")
                     .AllowAnyMethod()
                     .AllowAnyHeader();
                 });
@@ -49,7 +49,7 @@ namespace CellAnalyzerRESTAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
