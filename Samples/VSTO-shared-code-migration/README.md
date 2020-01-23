@@ -155,11 +155,11 @@ This readme file has you create test certificates to run the Cell-Analyzer proje
 
 ### CellAnalyzerRESTAPI notes
 
-In the **Startup.cs** file, the **ConfigureServices** method updates the CORS policy to allow port **localhost:44397**. This is for development purposes. In production code you should update this to use the appropriate allowed domains.
+In the **Startup.cs** file, the **ConfigureServices** method updates the CORS policy to allow port **localhost:44368**. This is for development purposes. In production code you should update this to use the appropriate allowed domains.
 
 ### CellAnalyzerRESTAPI notes
 
-The Cell analyzer REST API project is configured to support CORS requests from https://localhost:44397 (the Office web add-in.) This is only for development purposes. In production code, you should configure CORS to support your deployed Office web add-in endpoint.
+The Cell analyzer REST API project is configured to support CORS requests from https://localhost:44368 (the Office web add-in.) This is only for development purposes. In production code, you should configure CORS to support your deployed Office web add-in endpoint.
 
 ## Questions and comments
 
