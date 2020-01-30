@@ -4,6 +4,8 @@ Office Add-ins PnP is a community driven effort that helps developers extend, bu
 
 ## List of recent samples
 
+- [Use a shared library to migrate your Visual Studio Tools for Office add-in to an Office web add-in](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/VSTO-shared-code-migration). Provides a strategy for code reuse when migrating from VSTO Add-ins to Office Add-ins.
+- [Dynamic DPI code samples](https://github.com/OfficeDev/PnP-OfficeAddins/tree/vstoshared/Samples/dynamic-dpi)A collection of samples for handling DPI changes in COM, VSTO, and Office Add-ins.
 - [Use storage techniques to access data from an Office Add-in when offline](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/Excel.OfflineStorageAddin). Demonstrates how you can implement localStorage to enable limited functionality for your Office Add-in when a user experiences lost connection.
 - **Authentication and authorization:** We're adding a new auth section and have two new samples.
   - [Office Add-in auth to Microsoft Graph](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/auth/Office-Add-in-Microsoft-Graph-ASPNET). Learn how to build a Microsoft Office Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into an Office document using Office.js.
