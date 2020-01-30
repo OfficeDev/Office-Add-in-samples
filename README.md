@@ -2,7 +2,7 @@
 
 Office Add-ins PnP is a community driven effort that helps developers extend, build, and provision customizations for the Office platform. The source is maintained on this GitHub repo where anyone can participate. You can provide contributions to the samples, reusable components, and documentation. Office Add-ins PnP is owned and coordinated by Office engineering teams, but the work is done by the community for the community.
 
-## List of recent samples
+## List of samples
 
 | Date               | Name           | Description  |
 | ------------------ | -------------- | ------------ |
