@@ -10,7 +10,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 12/30/2019 1:25:00 PM
+  createdDate: 01/29/2020 1:25:00 PM
 description: ""
 ---
 
@@ -20,7 +20,7 @@ description: ""
 
 Visual Studio Tools for Office (VSTO) add-ins can only run in Office on Windows. By migrating your code to an Office web add-in, you can expand the reach of your add-in to mobile and online platforms. Migrating the code will involve rewriting it in the JavaScript language, and also updating it to use the Office JavaScript APIs. However, you can reduce migration cost by creating a shared library and keeping some of your existing add-in code in its current language.
 
-This sample includes a **/start** folder that accompanies the [Tutorial: Migrate your VSTO Add-in to an Office web add-in with a shared code library](https://docs.microsoft.com/office/dev/add-ins/pnp/migrate-vsto-to-office-web-add-in-shared-code-library-tutorial). If you want to learn how to go through the steps for creating a shared library for an existing VSTO add-in, follow the tutorial.
+This sample includes a **/start** folder that accompanies the [Tutorial: Migrate your VSTO Add-in to an Office web add-in with a shared code library](https://docs.microsoft.com/office/dev/add-ins/tutorials/migrate-vsto-to-office-add-in-shared-code-library-tutorial). If you want to learn how to go through the steps for creating a shared library for an existing VSTO add-in, follow the tutorial.
 
 The sample contains a **/completed** folder that contains the completed solution. If you want to explore each section of the completed solution, follow the steps in this readme to learn more.
 
@@ -175,4 +175,4 @@ Copyright (c) 2020 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/vsto-shared-library-excel-start" />
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/vsto-shared-library-excel" />
