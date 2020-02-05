@@ -105,7 +105,7 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>appCmdSetStateVisible</FunctionName>
+										<FunctionName>action</FunctionName>
 									</Action>
 								</Control>
 								<Control xsi:type="Button" id="TaskpaneButton">
@@ -153,14 +153,14 @@
 				<bt:String id="Group1Label" DefaultValue="OneDrive Files" />
 				<bt:String id="GetStarted.Title" DefaultValue="Microsoft Graph data add-in has loaded successfully." />
 				<bt:String id="Functions.Namespace" DefaultValue="CONTOSO"/>
-				<bt:String id="BtnShared.Label" DefaultValue="Update Value"/>
+				<bt:String id="BtnShared.Label" DefaultValue="Sign in"/>
 				<bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
 			</bt:ShortStrings>
 			<!-- LongStrings max characters==250. -->
 			<bt:LongStrings>
 				<bt:String id="TaskpaneButton.Tooltip" DefaultValue="Get files stored on OneDrive" />
 				<bt:String id="GetStarted.Description" DefaultValue="Choose Open Add-in, then Connect to Office 365 to get started." />
-				<bt:String id="BtnShared.Tooltip" DefaultValue="Test AppCmd Button"/>
+				<bt:String id="BtnShared.Tooltip" DefaultValue="Sign in to Microsoft Graph"/>
 			</bt:LongStrings>
 		</Resources>
 	</VersionOverrides>

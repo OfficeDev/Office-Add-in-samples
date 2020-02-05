@@ -134,3 +134,52 @@ const processDialogEvent = (arg: {error: number, type: string},
     }
 };
 
+
+// sign in commands (without task pane)
+
+class SignApp {
+    appstate: AppState;
+    accessToken: string;
+
+   setToken = (accesstoken: string) => {
+    this.accessToken = accesstoken;
+   }
+
+   setState = (nState: AppState) => {
+       this.appstate = nState;
+   }
+
+   displayError = (error: string) => {
+    this.setState({ errorMessage: error });
+   }
+}
+
+
+function action(event: Office.AddinCommands.Event) {
+    // Your code goes here
+  console.log('action called');
+
+  let signapp = new SignApp();
+  signInO365(signapp.setState, signapp.setToken, signapp.displayError);
+
+    // Be sure to indicate when the add-in command function is complete
+    event.completed();
+  }
+  
+  function getGlobal() {
+    return typeof self !== "undefined"
+      ? self
+      : typeof window !== "undefined"
+      ? window
+      : typeof global !== "undefined"
+      ? global
+      : undefined;
+  }
+  
+  const g = getGlobal() as any;
+  
+  // the add-in command functions need to be available in global scope
+  g.action = action;
+
+
+  
