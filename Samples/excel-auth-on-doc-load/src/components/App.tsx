@@ -10,7 +10,6 @@ import OfficeAddinMessageBar from './OfficeAddinMessageBar';
 import { getGraphData } from '../../utilities/microsoft-graph-helpers';
 import { writeFileNamesToWorksheet, logoutFromO365, signInO365 } from '../../utilities/office-apis-helpers';
 
-
 export interface AppProps {
     title: string;
     isOfficeInitialized: boolean;
@@ -27,7 +26,8 @@ export default class App extends React.Component<AppProps, AppState> {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            authStatus: 'notLoggedIn',
+            //authStatus: 'notLoggedIn',
+            authStatus: 'loggedIn',
             fileFetch: 'notFetched',
             headerMessage: 'Welcome',
             errorMessage: ''
@@ -40,6 +40,14 @@ export default class App extends React.Component<AppProps, AppState> {
         this.setToken = this.setToken.bind(this);
         this.displayError = this.displayError.bind(this);
         this.login = this.login.bind(this);
+        console.log('the token value is:');
+        const theToken = localStorage.getItem('mytoken');
+        console.log(theToken);
+        console.log('and that is it!');
+        if (theToken != null) {
+            this.setToken(theToken);
+           
+        }
     }
 
     /*
@@ -72,6 +80,7 @@ export default class App extends React.Component<AppProps, AppState> {
     boundSetState: () => {};
 
     setToken = (accesstoken: string) => {
+        console.log ('setting token');
         this.accessToken = accesstoken;
     }
 

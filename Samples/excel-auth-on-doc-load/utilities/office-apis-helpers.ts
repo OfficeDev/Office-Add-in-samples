@@ -135,6 +135,19 @@ const processDialogEvent = (arg: {error: number, type: string},
 };
 
 
+
+function getGlobal() {
+    return typeof self !== "undefined"
+      ? self
+      : typeof window !== "undefined"
+      ? window
+      : typeof global !== "undefined"
+      ? global
+      : undefined;
+  }
+  
+  const g = getGlobal() as any;
+
 // sign in commands (without task pane)
 
 class SignApp {
@@ -143,6 +156,8 @@ class SignApp {
 
    setToken = (accesstoken: string) => {
     this.accessToken = accesstoken;
+    localStorage.setItem('mytoken',accesstoken);
+//    g.token = accesstoken;
    }
 
    setState = (nState: AppState) => {
@@ -166,17 +181,6 @@ function action(event: Office.AddinCommands.Event) {
     event.completed();
   }
   
-  function getGlobal() {
-    return typeof self !== "undefined"
-      ? self
-      : typeof window !== "undefined"
-      ? window
-      : typeof global !== "undefined"
-      ? global
-      : undefined;
-  }
-  
-  const g = getGlobal() as any;
   
   // the add-in command functions need to be available in global scope
   g.action = action;
