@@ -216,7 +216,7 @@ function action(event: Office.AddinCommands.Event) {
 
     let signapp = new SignApp();
     signInO365(signapp.setState, signapp.setToken, signapp.displayError);
-    SetRuntimeVisibleHelper(true);
+    //SetRuntimeVisibleHelper(true);
     // Be sure to indicate when the add-in command function is complete
     event.completed();
 }
