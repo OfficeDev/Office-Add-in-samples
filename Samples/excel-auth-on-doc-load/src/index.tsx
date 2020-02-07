@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+import { SetRuntimeVisibleHelper,SetStartupBehaviorHelper } from '../utilities/office-apis-helpers';
 
 import App from './components/App';
 
@@ -26,6 +27,10 @@ const render = (Component) => {
 /* Render application after Office initializes */
 Office.initialize = () => {
     isOfficeInitialized = true;
+    SetRuntimeVisibleHelper(true);
+    // @ts-ignore
+    SetStartupBehaviorHelper(Office.StartupBehavior.load);
+    console.log('task pane running');
     render(App);
 };
 
