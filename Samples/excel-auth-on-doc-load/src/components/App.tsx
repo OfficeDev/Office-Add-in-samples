@@ -25,13 +25,6 @@ export interface AppState {
 export default class App extends React.Component<AppProps, AppState> {
     constructor(props, context) {
         super(props, context);
-        this.state = {
-            //authStatus: 'notLoggedIn',
-            authStatus: 'loggedIn',
-            fileFetch: 'notFetched',
-            headerMessage: 'Welcome',
-            errorMessage: ''
-        };
 
         // Bind the methods that we want to pass to, and call in, a separate
         // module to this component. And rename setState to boundSetState
@@ -40,13 +33,26 @@ export default class App extends React.Component<AppProps, AppState> {
         this.setToken = this.setToken.bind(this);
         this.displayError = this.displayError.bind(this);
         this.login = this.login.bind(this);
-        console.log('the token value is:');
         const theToken = localStorage.getItem('mytoken');
-        console.log(theToken);
-        console.log('and that is it!');
         if (theToken != null) {
+             // Initialize state for signed in
+             console.log('signed in');
+             this.state = {
+                authStatus: 'loggedIn',
+                fileFetch: 'notFetched',
+                headerMessage: 'Welcome',
+                errorMessage: ''
+            };
             this.setToken(theToken);
-           
+        } else {
+            // Initialize state for not signed in
+            console.log('signed out');
+            this.state = {
+                authStatus: 'notLoggedIn',
+                fileFetch: 'notFetched',
+                headerMessage: 'Welcome',
+                errorMessage: ''
+            };
         }
     }
 
