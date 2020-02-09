@@ -1,13 +1,16 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require("webpack");
 
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const CustomFunctionsMetadataPlugin = require("custom-functions-metadata-plugin");
+
+
 module.exports = {
     devtool: 'source-map',
     entry: {
         app: './src/index.ts',
-        'function-file': './function-file/function-file.ts',
-
-
+        functions: "./src/functions/functions.ts",
+        polyfill: "@babel/polyfill",
         'login': './login/login.ts',
         'logout': './logout/logout.ts',
     },
@@ -16,6 +19,11 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.ts$/,
+                exclude: /node_modules/,
+                use: "babel-loader"
+              },
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
@@ -33,14 +41,21 @@ module.exports = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: dev ? [] : ["**/*"]
+          }),
+          new CustomFunctionsMetadataPlugin({
+            output: "functions.json",
+            input: "./src/functions/functions.ts"
+          }),
+          new HtmlWebpackPlugin({
+            filename: "functions.html",
+            template: "./src/functions/functions.html",
+            chunks: ["polyfill", "functions"]
+          }),
         new HtmlWebpackPlugin({
             template: './index.html',
             chunks: ['app']
-        }),
-        new HtmlWebpackPlugin({
-            template: './function-file/function-file.html',
-            filename: 'function-file/function-file.html',
-            chunks: ['function-file']
         }),
         new HtmlWebpackPlugin({
             template: './login/login.html',

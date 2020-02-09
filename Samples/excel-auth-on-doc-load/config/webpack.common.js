@@ -4,6 +4,11 @@ const package = require('../package.json');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const CustomFunctionsMetadataPlugin = require("custom-functions-metadata-plugin");
+
+
 const autoprefixer = require('autoprefixer');
 
 const build = (() => {
@@ -27,12 +32,13 @@ const entry = {
         'react-hot-loader/patch',
         './index.tsx',
     ],
-    'function-file': '../function-file/function-file.ts',
+    'functions': './functions/functions.ts',
     'login': '../login/login.ts',
     'logout': '../logout/logout.ts'
 };
 
 const rules = [
+    
     {
         test: /\.tsx?$/,
         use: [
@@ -114,11 +120,15 @@ module.exports = {
             template: './index.html',
             chunks: ['app', 'vendor', 'polyfills']
         }),
+        new CustomFunctionsMetadataPlugin({
+            output: "functions.json",
+            input: "./src/functions/functions.ts"
+          }),
         new HtmlWebpackPlugin({
             title: 'Office-Add-in-Microsoft-Graph-React',
-            filename: 'function-file/function-file.html',
-            template: '../function-file/function-file.html',
-            chunks: ['function-file']
+            filename: './functions/functions.html',
+            template: './functions/functions.html',
+            chunks: ['functions']
         }),
         new HtmlWebpackPlugin({
             title: 'Office-Add-in-Microsoft-Graph-React',

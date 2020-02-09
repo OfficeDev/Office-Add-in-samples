@@ -5,6 +5,7 @@ import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 //import { SetRuntimeVisibleHelper,SetStartupBehaviorHelper } from '../utilities/office-apis-helpers';
 
 import App from './components/App';
+import {add} from './functions/functions';
 
 import './styles.less';
 import 'office-ui-fabric-react/dist/css/fabric.min.css';
@@ -31,6 +32,7 @@ Office.initialize = () => {
     // @ts-ignore
     //SetStartupBehaviorHelper(Office.StartupBehavior.load);
     console.log('task pane running');
+    CustomFunctions.associate('ADD',add);
     render(App);
 };
 

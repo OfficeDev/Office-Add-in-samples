@@ -142,8 +142,8 @@
 				<bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
 			
 				<bt:Url id="Functions.Script.Url" DefaultValue="https://localhost:3000/dist/functions.js"/>
-				<bt:Url id="Functions.Metadata.Url" DefaultValue="https://localhost:3000/dist/functions.json"/>
-				<bt:Url id="Functions.Page.Url" DefaultValue="https://localhost:3000/dist/functions.html"/>
+				<bt:Url id="Functions.Metadata.Url" DefaultValue="https://localhost:3000/functions.json"/>
+				
 				<bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
 				<bt:Url id="TaskPaneAndCustomFunction.Url" DefaultValue="https://localhost:3000/index.html"/>
 			</bt:Urls>
@@ -152,7 +152,7 @@
 				<bt:String id="TaskpaneButton.Label" DefaultValue="Open Add-in" />
 				<bt:String id="Group1Label" DefaultValue="OneDrive Files" />
 				<bt:String id="GetStarted.Title" DefaultValue="Microsoft Graph data add-in has loaded successfully." />
-				<bt:String id="Functions.Namespace" DefaultValue="CONTOSO"/>
+				<bt:String id="Functions.Namespace" DefaultValue="CONTOSOSHARE"/>
 				<bt:String id="BtnShared.Label" DefaultValue="Sign in"/>
 				<bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
 			</bt:ShortStrings>
