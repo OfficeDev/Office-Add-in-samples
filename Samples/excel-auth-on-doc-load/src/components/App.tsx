@@ -34,6 +34,7 @@ export default class App extends React.Component<AppProps, AppState> {
         this.displayError = this.displayError.bind(this);
         this.login = this.login.bind(this);
         const theToken = localStorage.getItem('mytoken');
+        console.log("token from session storage is: " + theToken);
         if (theToken != null) {
              // Initialize state for signed in
              console.log('signed in');

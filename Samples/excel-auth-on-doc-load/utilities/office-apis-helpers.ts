@@ -220,3 +220,9 @@ function action(event: Office.AddinCommands.Event) {
     // Be sure to indicate when the add-in command function is complete
     event.completed();
 }
+
+export async function cfAction() {
+    let signapp = new SignApp();
+    await signInO365(signapp.setState, signapp.setToken, signapp.displayError);
+    return;
+}

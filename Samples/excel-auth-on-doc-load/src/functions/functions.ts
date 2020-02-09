@@ -1,4 +1,4 @@
-
+import { cfAction } from '../../utilities/office-apis-helpers';
 
 /**
  * Adds two numbers.
@@ -9,6 +9,7 @@
  */
 /* global clearInterval, console, setInterval */
 
-export function add(first: number, second: number): number {
+export async function add(first: number, second: number): Promise <number> {
+  await cfAction();
     return first + second;
-  }
+    }
