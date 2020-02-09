@@ -9,7 +9,13 @@ import { cfAction } from '../../utilities/office-apis-helpers';
  */
 /* global clearInterval, console, setInterval */
 
-export async function add(first: number, second: number): Promise <number> {
-  await cfAction();
+export function add(first: number, second: number): number {
+  const myState = localStorage.getItem('loggedIn');
+  if (myState !== 'yes') {
+    cfAction();
+    // @ts-ignore
+    throw new CustomFunctions.Error(CustomFunctions.ErrorCode.notAvailable);
+  } else {
     return first + second;
-    }
+  };
+}

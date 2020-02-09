@@ -168,6 +168,7 @@ class SignApp {
 
     setState = (nState: AppState) => {
         this.appstate = nState;
+        localStorage.setItem("loggedIn", "yes");
     }
 
     displayError = (error: string) => {
@@ -221,8 +222,10 @@ function action(event: Office.AddinCommands.Event) {
     event.completed();
 }
 
-export async function cfAction() {
+export async function cfAction(): Promise<void> {
+    
     let signapp = new SignApp();
-    await signInO365(signapp.setState, signapp.setToken, signapp.displayError);
-    return;
+    return signInO365(signapp.setState, signapp.setToken, signapp.displayError).then();
+    
+    
 }
