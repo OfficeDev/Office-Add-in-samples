@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
-//import { SetRuntimeVisibleHelper,SetStartupBehaviorHelper } from '../utilities/office-apis-helpers';
+import { getGlobal } from '../utilities/office-apis-helpers';
 
 import App from './components/App';
 import {add} from './functions/functions';
@@ -26,14 +26,23 @@ const render = (Component) => {
 };
 
 /* Render application after Office initializes */
-Office.initialize = () => {
+Office.initialize = async () => {
+    let g = getGlobal() as any;
+    g.isStartOnDocOpen = false;
+
+    // @ts-ignore
+    let addinState = await Office.addin._getState();
+    console.log ("load state is:");
+    console.log ("load state" + addinState);
+    if (addinState === 'Background'){
+        g.isStartOnDocOpen = true;
+        run();
+    }
+
     isOfficeInitialized = true;
    // SetRuntimeVisibleHelper(true);
     // @ts-ignore
     //SetStartupBehaviorHelper(Office.StartupBehavior.load);
-
-    // init the xls
-    run();
 
 
     console.log('task pane running');
@@ -48,17 +57,18 @@ async function run() {
         /**
          * Insert your Excel code here
          */
-        const range = context.workbook.getSelectedRange();
-  
-        // Read the range address
-        range.load("address");
-  
-        // Update the fill color
-        range.format.fill.color = "yellow";
-  
-        await context.sync();
-        console.log(`The range address was ${range.address}.`);
-      });
+        const ws = context.workbook.worksheets.getActiveWorksheet();
+        let range = ws.getRange('A1');
+        range.load('values');
+        return context.sync(range).then( (range) => {
+            let v = range.values[0][0];
+            v+=1;
+            range.values = [[ 'Start count: ' + v ]];
+            range.format.autofitColumns();
+
+            return context.sync();
+        });
+    });
     } catch (error) {
       console.error(error);
     }

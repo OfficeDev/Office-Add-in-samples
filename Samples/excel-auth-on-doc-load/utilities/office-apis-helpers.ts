@@ -1,6 +1,18 @@
 import { AppState } from '../src/components/App';
 import { AxiosResponse } from 'axios';
 
+
+export function getGlobal() {
+    console.log('init globals for command buttons');
+    return typeof self !== "undefined"
+        ? self
+        : typeof window !== "undefined"
+            ? window
+            : typeof global !== "undefined"
+                ? global
+                : undefined;
+}
+
 /*
      Interacting with the Office document
 */
@@ -193,6 +205,8 @@ export const SetStartupBehaviorHelper = (isStarting: boolean) => {
         // @ts-ignore
         Office.addin.setStartupBehavior(Office.StartupBehavior.none);
     }
+    let g = getGlobal() as any;
+        g.isStartOnDocOpen = isStarting;
 };
 
 export async function cfAction(): Promise<void> {

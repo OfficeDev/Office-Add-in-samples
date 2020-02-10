@@ -1,19 +1,6 @@
-import { SignApp, signInO365, SetStartupBehaviorHelper } from '../../utilities/office-apis-helpers';
-
-
-function getGlobal() {
-    console.log('init globals for command buttons');
-    return typeof self !== "undefined"
-        ? self
-        : typeof window !== "undefined"
-            ? window
-            : typeof global !== "undefined"
-                ? global
-                : undefined;
-}
+import { SignApp, signInO365, SetStartupBehaviorHelper, getGlobal } from '../../utilities/office-apis-helpers';
 
 const g = getGlobal() as any;
-
 
 // the add-in command functions need to be available in global scope
 g.btnsignin = btnSignIn;
