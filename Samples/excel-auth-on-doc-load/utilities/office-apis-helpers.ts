@@ -142,21 +142,10 @@ const processDialogEvent = (arg: { error: number, type: string },
 
 
 
-function getGlobal() {
-    return typeof self !== "undefined"
-        ? self
-        : typeof window !== "undefined"
-            ? window
-            : typeof global !== "undefined"
-                ? global
-                : undefined;
-}
-
-const g = getGlobal() as any;
 
 // sign in commands (without task pane)
 
-class SignApp {
+export class SignApp {
     appstate: AppState;
     accessToken: string;
 
@@ -177,8 +166,6 @@ class SignApp {
 }
 
 
-// the add-in command functions need to be available in global scope
-g.action = action;
 
 export const SetRuntimeVisibleHelper = (visible: boolean) => {
     let p: any;
@@ -211,16 +198,6 @@ export const SetStartupBehaviorHelper = (state: any) => {
         });
 };
 
-function action(event: Office.AddinCommands.Event) {
-    // Your code goes here
-    console.log('action called');
-
-    let signapp = new SignApp();
-    signInO365(signapp.setState, signapp.setToken, signapp.displayError);
-    //SetRuntimeVisibleHelper(true);
-    // Be sure to indicate when the add-in command function is complete
-    event.completed();
-}
 
 export async function cfAction(): Promise<void> {
     

@@ -105,7 +105,7 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>action</FunctionName>
+										<FunctionName>btnsignin</FunctionName>
 									</Action>
 								</Control>
 								<Control xsi:type="Button" id="TaskpaneButton">

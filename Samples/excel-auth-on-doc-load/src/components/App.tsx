@@ -9,6 +9,7 @@ import SuccessPageBody from './SuccessPageBody';
 import OfficeAddinMessageBar from './OfficeAddinMessageBar';
 import { getGraphData } from '../../utilities/microsoft-graph-helpers';
 import { writeFileNamesToWorksheet, logoutFromO365, signInO365 } from '../../utilities/office-apis-helpers';
+import { btnSignIn } from '../commands/commands';
 
 export interface AppProps {
     title: string;
@@ -34,6 +35,7 @@ export default class App extends React.Component<AppProps, AppState> {
         this.displayError = this.displayError.bind(this);
         this.login = this.login.bind(this);
         const theToken = localStorage.getItem('mytoken');
+        console.log(btnSignIn);
         console.log("token from session storage is: " + theToken);
         if (theToken != null) {
              // Initialize state for signed in
