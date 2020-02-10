@@ -90,13 +90,13 @@
 									<bt:Image size="32" resid="Icon.32x32"/>
 									<bt:Image size="80" resid="Icon.80x80"/>
 								</Icon>
-								<Control xsi:type="Button" id="BtnSharedId">
-									<Label resid="BtnShared.Label" />
+								<Control xsi:type="Button" id="BtnSignIn">
+									<Label resid="BtnSignIn.Label" />
 									<Supertip>
 										<!-- ToolTip title. resid must point to a ShortString resource. -->
-										<Title resid="BtnShared.Label" />
+										<Title resid="BtnSignIn.Label" />
 										<!-- ToolTip description. resid must point to a LongString resource. -->
-										<Description resid="BtnShared.Tooltip" />
+										<Description resid="BtnSignIn.Tooltip" />
 									</Supertip>
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
@@ -108,6 +108,64 @@
 										<FunctionName>btnsignin</FunctionName>
 									</Action>
 								</Control>
+
+								<Control xsi:type="Button" id="BtnSignOut">
+									<Label resid="BtnSignOut.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnSignOut.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnSignOut.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnsignout</FunctionName>
+									</Action>
+								</Control>
+
+									<Control xsi:type="Button" id="BtnEnableAddinStart">
+									<Label resid="BtnEnableAddinStart.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnEnableAddinStart.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnEnableAddinStart.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnenableaddinstart</FunctionName>
+									</Action>
+								</Control>
+
+								<Control xsi:type="Button" id="BtnDisableAddinStart">
+									<Label resid="BtnDisableAddinStart.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnDisableAddinStart.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnDisableAddinStart.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btndisableaddinstart</FunctionName>
+									</Action>
+								</Control>
+
 								<Control xsi:type="Button" id="TaskpaneButton">
 									<Label resid="TaskpaneButton.Label"/>
 									<Supertip>
@@ -153,14 +211,20 @@
 				<bt:String id="Group1Label" DefaultValue="OneDrive Files" />
 				<bt:String id="GetStarted.Title" DefaultValue="Microsoft Graph data add-in has loaded successfully." />
 				<bt:String id="Functions.Namespace" DefaultValue="CONTOSOSHARE"/>
-				<bt:String id="BtnShared.Label" DefaultValue="Sign in"/>
+				<bt:String id="BtnSignIn.Label" DefaultValue="Sign in"/>
+				<bt:String id="BtnSignOut.Label" DefaultValue="Sign out"/>
+				<bt:String id="BtnEnableAddinStart.Label" DefaultValue="Enable startup"/>
+				<bt:String id="BtnDisableAddinStart.Label" DefaultValue="Disable startup"/>
 				<bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
 			</bt:ShortStrings>
 			<!-- LongStrings max characters==250. -->
 			<bt:LongStrings>
 				<bt:String id="TaskpaneButton.Tooltip" DefaultValue="Get files stored on OneDrive" />
 				<bt:String id="GetStarted.Description" DefaultValue="Choose Open Add-in, then Connect to Office 365 to get started." />
-				<bt:String id="BtnShared.Tooltip" DefaultValue="Sign in to Microsoft Graph"/>
+				<bt:String id="BtnSignIn.Tooltip" DefaultValue="Sign in to Microsoft Graph"/>
+				<bt:String id="BtnSignOut.Tooltip" DefaultValue="Sign out of Microsoft Graph"/>
+				<bt:String id="BtnEnableAddinStart.Tooltip" DefaultValue="Enable add-in start on doc open"/>
+				<bt:String id="BtnDisableAddinStart.Tooltip" DefaultValue="Disable add-in start on doc open"/>
 			</bt:LongStrings>
 		</Resources>
 	</VersionOverrides>
