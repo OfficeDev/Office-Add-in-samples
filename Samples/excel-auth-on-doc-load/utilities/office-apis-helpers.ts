@@ -165,8 +165,6 @@ export class SignApp {
     }
 }
 
-
-
 export const SetRuntimeVisibleHelper = (visible: boolean) => {
     let p: any;
     if (visible) {
@@ -186,23 +184,18 @@ export const SetRuntimeVisibleHelper = (visible: boolean) => {
         });
 };
 
-
-export const SetStartupBehaviorHelper = (state: any) => {
-    // @ts-ignore
-    return Office.addin.setStartupBehavior(state)
-        .then( () => {
-            return state;
-        })
-        .catch( (error) => {
-            return error.code;
-        });
+export const SetStartupBehaviorHelper = (isStarting: boolean) => {
+    if (isStarting) {
+        // @ts-ignore
+        Office.addin.setStartupBehavior(Office.StartupBehavior.load);
+    }
+    else {
+        // @ts-ignore
+        Office.addin.setStartupBehavior(Office.StartupBehavior.none);
+    }
 };
 
-
 export async function cfAction(): Promise<void> {
-    
     let signapp = new SignApp();
     return signInO365(signapp.setState, signapp.setToken, signapp.displayError).then();
-    
-    
 }

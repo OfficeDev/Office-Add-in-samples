@@ -1,4 +1,4 @@
-import { SignApp, signInO365 } from '../../utilities/office-apis-helpers';
+import { SignApp, signInO365, SetStartupBehaviorHelper } from '../../utilities/office-apis-helpers';
 
 
 function getGlobal() {
@@ -42,13 +42,13 @@ export function btnSignOut(event: Office.AddinCommands.Event) {
 export function btnEnableAddinStart(event: Office.AddinCommands.Event) {
     console.log('Enable add-in start button pressed');
     // Your code goes here
-
+    SetStartupBehaviorHelper(true)
     event.completed();
 }
 
 export function btnDisableAddinStart(event: Office.AddinCommands.Event) {
     console.log('Disable add-in start button pressed');
     // Your code goes here
-
+    SetStartupBehaviorHelper(false);
     event.completed();
 }
