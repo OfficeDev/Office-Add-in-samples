@@ -169,7 +169,7 @@ export class SignApp {
 
     setState = (nState: AppState) => {
         this.appstate = nState;
-        localStorage.setItem("loggedIn", "yes");
+        //localStorage.setItem("loggedIn", "yes");
     }
 
     displayError = (error: string) => {

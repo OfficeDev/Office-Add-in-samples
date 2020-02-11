@@ -8,12 +8,14 @@ import GetDataPageBody from './GetDataPageBody';
 import SuccessPageBody from './SuccessPageBody';
 import OfficeAddinMessageBar from './OfficeAddinMessageBar';
 import { getGraphData } from '../../utilities/microsoft-graph-helpers';
-import { writeFileNamesToWorksheet, logoutFromO365, signInO365 } from '../../utilities/office-apis-helpers';
+import { writeFileNamesToWorksheet, logoutFromO365, signInO365, getGlobal } from '../../utilities/office-apis-helpers';
 import { btnSignIn } from '../commands/commands';
 
 export interface AppProps {
     title: string;
     isOfficeInitialized: boolean;
+    isStartOnDocOpen: boolean;
+    isSignedIn: boolean;
 }
 
 export interface AppState {
@@ -36,7 +38,8 @@ export default class App extends React.Component<AppProps, AppState> {
         this.login = this.login.bind(this);
         const theToken = localStorage.getItem('mytoken');
         console.log(btnSignIn);
-        console.log("token from session storage is: " + theToken);
+        console.log('token from session storage is: ' + theToken);
+        
         if (theToken != null) {
              // Initialize state for signed in
              console.log('signed in');
@@ -147,6 +150,8 @@ export default class App extends React.Component<AppProps, AppState> {
     render() {
         const { title, isOfficeInitialized } = this.props;
 
+        const g = getGlobal() as any;
+
         if (!isOfficeInitialized) {
             return (
                 <Progress
@@ -159,6 +164,7 @@ export default class App extends React.Component<AppProps, AppState> {
 
         // Set the body of the page based on where the user is in the workflow.
         let body;
+        //let statusBody = ( <StatusBody isSignedIn={true} isStartOnDocOpen={true} />);
 
         if (this.state.authStatus === 'notLoggedIn') {
             body = ( <StartPageBody login={this.login} listItems={this.listItems}/> );
@@ -177,6 +183,7 @@ export default class App extends React.Component<AppProps, AppState> {
                 body = ( <SuccessPageBody getFileNames={this.getFileNames} logout={this.logout} /> );
             }
         }
+        //body += statusBody;
 
         return (
             <div>
@@ -188,6 +195,12 @@ export default class App extends React.Component<AppProps, AppState> {
                     <Header logo='assets/Onedrive_Charts_icon_80x80px.png' title={this.props.title} message={this.state.headerMessage} />
                     {body}
                 </div>
+                 <div className='ms-welcome'>
+                <div>
+                    <p>Is Signed In: {String(g.isSignedIn)}</p>
+                    <p>Is Start on Doc Open: {String(g.isStartOnDocOpen)}</p>
+                </div>
+            </div>
             </div>
         );
     }

@@ -19,5 +19,6 @@ import * as msal from 'msal';
 
     const userAgentApplication = new msal.UserAgentApplication(config);
     userAgentApplication.logout();
+    localStorage.setItem('loggedIn', 'no');
   };
 })();

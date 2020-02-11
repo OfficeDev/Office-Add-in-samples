@@ -29,6 +29,7 @@ const render = (Component) => {
 Office.initialize = async () => {
     let g = getGlobal() as any;
     g.isStartOnDocOpen = false;
+    g.isSignedIn = false;
 
     // @ts-ignore
     let addinState = await Office.addin._getState();
@@ -37,6 +38,9 @@ Office.initialize = async () => {
     if (addinState === 'Background'){
         g.isStartOnDocOpen = true;
         run();
+    }
+    if (localStorage.getItem('loggedIn') === 'yes'){
+        g.isSignedIn = true;
     }
 
     isOfficeInitialized = true;
@@ -62,8 +66,8 @@ async function run() {
         range.load('values');
         return context.sync(range).then( (range) => {
             let v = range.values[0][0];
-            v+=1;
-            range.values = [[ 'Start count: ' + v ]];
+            v += 1;
+            range.values = [[ v ]];
             range.format.autofitColumns();
 
             return context.sync();
