@@ -225,6 +225,7 @@ export function updateRibbon() {
                 tabs: [
                     {
                         id: 'AuthGroup',
+                        visible: 'true',
                         controls: [
                             {
                                 id: 'BtnSignIn',
@@ -239,6 +240,7 @@ export function updateRibbon() {
                     },
                     {
                         id: 'ServiceGroup',
+                        visible: 'true',
                         controls: [
                             {
                                 id: 'BtnConnectService',
@@ -257,6 +259,7 @@ export function updateRibbon() {
                     },
                     {
                         id: 'StartupGroup',
+                        visible: 'true',
                         controls: [
                             {
                                 id: 'BtnEnableAddinStart',
@@ -271,6 +274,7 @@ export function updateRibbon() {
                     },
                     {
                         id: 'TaskpaneGroup',
+                        visible: 'true',
                         controls: [
                             {
                                 id: 'BtnOpenTaskpane',

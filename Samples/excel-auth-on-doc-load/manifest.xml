@@ -125,7 +125,7 @@
 									
 										<FunctionName>btnsignout</FunctionName>
 									</Action>
-									<Enabled>false</Enabled>
+									
 								</Control>
 							</Group>
 
@@ -173,7 +173,7 @@
 									
 										<FunctionName>btndisconnectservice</FunctionName>
 									</Action>
-									<Enabled>False</Enabled>
+									
 								</Control>
 
 								<Control xsi:type="Button" id="BtnInsertData">
@@ -195,7 +195,7 @@
 										<FunctionName>btninsertdata</FunctionName>
 										
 									</Action>
-									<Enabled>false</Enabled>
+									
 								</Control>
 							</Group>
 
@@ -244,7 +244,7 @@
 									
 										<FunctionName>btndisableaddinstart</FunctionName>
 									</Action>
-									<Enabled>false</Enabled>
+									
 								</Control>
 							</Group>
 
@@ -292,7 +292,7 @@
 									
 										<FunctionName>btnclosetaskpane</FunctionName>
 									</Action>
-									<Enabled>false</Enabled>
+									
 								</Control>
 			
 							</Group>
