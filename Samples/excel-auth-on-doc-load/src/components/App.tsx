@@ -25,6 +25,7 @@ export interface AppState {
     errorMessage?: string;
 }
 
+
 export default class App extends React.Component<AppProps, AppState> {
     constructor(props, context) {
         super(props, context);
@@ -41,9 +42,9 @@ export default class App extends React.Component<AppProps, AppState> {
         console.log('token from session storage is: ' + theToken);
 
         if (theToken != null) {
-             // Initialize state for signed in
-             console.log('signed in');
-             this.state = {
+            // Initialize state for signed in
+            console.log('signed in');
+            this.state = {
                 authStatus: 'loggedIn',
                 fileFetch: 'notFetched',
                 headerMessage: 'Welcome',
@@ -77,7 +78,7 @@ export default class App extends React.Component<AppProps, AppState> {
     boundSetState: () => {};
 
     setToken = (accesstoken: string) => {
-        console.log ('setting token');
+        console.log('setting token');
         this.accessToken = accesstoken;
     }
 
@@ -94,10 +95,10 @@ export default class App extends React.Component<AppProps, AppState> {
         // the action didn't complete, so return the UI to the preceding state/view.
         this.setState((prevState) => {
             if (prevState.authStatus === 'loginInProcess') {
-                return {authStatus: 'notLoggedIn'};
+                return { authStatus: 'notLoggedIn' };
             }
             else if (prevState.fileFetch === 'fetchInProcess') {
-                return {fileFetch: 'notFetched'};
+                return { fileFetch: 'notFetched' };
             }
             return null;
         });
@@ -115,16 +116,18 @@ export default class App extends React.Component<AppProps, AppState> {
         this.setState({ fileFetch: 'fetchInProcess' });
         getGraphData(
 
-                // Get the `name` property of the first 3 Excel workbooks in the user's OneDrive.
-                "https://graph.microsoft.com/v1.0/me/drive/root/microsoft.graph.search(q = '.xlsx')?$select=name&top=3",
-                this.accessToken
-            )
-            .then( async (response) => {
+            // Get the `name` property of the first 3 Excel workbooks in the user's OneDrive.
+            "https://graph.microsoft.com/v1.0/me/drive/root/microsoft.graph.search(q = '.xlsx')?$select=name&top=3",
+            this.accessToken
+        )
+            .then(async (response) => {
                 await writeFileNamesToWorksheet(response, this.displayError);
-                this.setState({ fileFetch: 'fetched',
-                                headerMessage: 'Success' });
+                this.setState({
+                    fileFetch: 'fetched',
+                    headerMessage: 'Success'
+                });
             })
-            .catch ( (requestError) => {
+            .catch((requestError) => {
                 // If this runs, then the `then` method did not run, so this error must be
                 // from the Axios request in getGraphData, not the Office.js in 
                 // writeFileNamesToWorksheet
@@ -158,7 +161,7 @@ export default class App extends React.Component<AppProps, AppState> {
         } else {
             //disconnected UI
             //just a connect button
-            body = ( <ConnectButton login={this.login}/> );
+            body = (<ConnectButton login={this.login} />);
         }
         // if (this.state.authStatus === 'notLoggedIn') {
         //     body = ( <StartPageBody login={this.login} listItems={this.listItems}/> );
@@ -181,21 +184,30 @@ export default class App extends React.Component<AppProps, AppState> {
 
         return (
             <div>
-                { this.state.errorMessage ?
-                  (<OfficeAddinMessageBar onDismiss={this.errorDismissed} message={this.state.errorMessage + ' '} />)
-                : null }
+                {this.state.errorMessage ?
+                    (<OfficeAddinMessageBar onDismiss={this.errorDismissed} message={this.state.errorMessage + ' '} />)
+                    : null}
 
                 <div className='ms-welcome'>
                     <Header logo='assets/Onedrive_Charts_icon_80x80px.png' title={this.props.title} message={this.state.headerMessage} />
                     {body}
                 </div>
-                 <div className='ms-welcome'>
-                <div>
-                    <p>Is Signed In: {String(g.isSignedIn)}</p>
-                    <p>Is Start on Doc Open: {String(g.isStartOnDocOpen)}</p>
+                <div className='ms-welcome'>
+                    <div>
+                        <p>Is Signed In: {String(g.isSignedIn)}</p>
+                        <p>Is Start on Doc Open: {String(g.isStartOnDocOpen)}</p>
+                    </div>
                 </div>
-            </div>
             </div>
         );
     }
+
+    componentDidMount() {
+        let g = getGlobal() as any;
+        g.state.updateRct = (data: string) => {
+            // `this` refers to our react component
+            this.setState({ authStatus: data });
+        };
+    }
+
 }

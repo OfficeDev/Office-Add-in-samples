@@ -9,6 +9,7 @@ import {add, getData} from './functions/functions';
 
 import './styles.less';
 import 'office-ui-fabric-react/dist/css/fabric.min.css';
+//import { registerOnThemeChangeCallback } from 'office-ui-fabric-react';
 
 initializeIcons();
 
@@ -32,7 +33,17 @@ Office.initialize = async () => {
         'isStartOnDocOpen': false,
         'isSignedIn': false,
         'isTaskpaneOpen': false,
-        'isConnected': false
+        'isConnected': false,
+        updateRct: () => {},
+        setConnected: (connected: boolean) => {
+            g.state.isConnected = connected;
+
+            if (connected){
+                g.state.updateRct('true');
+            } else {
+                g.state.updateRct('false');
+            }
+        }
     };
 //    g.isStartOnDocOpen = false;
   //  g.isSignedIn = false;

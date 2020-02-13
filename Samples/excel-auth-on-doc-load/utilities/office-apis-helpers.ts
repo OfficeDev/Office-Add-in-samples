@@ -285,16 +285,20 @@ export async function connectService() {
 //pop up a dialog
 let connectDialog: Office.Dialog;
 
+
 const processMessage = () => {
+    g.state.setConnected(true);
     connectDialog.close();
 };
 
+let g = getGlobal() as any;
 await Office.context.ui.displayDialogAsync(
     dialogConnectUrl,
     { height: 40, width: 30 },
     (result) => {
         if (result.status === Office.AsyncResultStatus.Failed) {
             console.log(`${result.error.code} ${result.error.message}`);
+            g.state.setConnected(false);
         }
         else {
             connectDialog = result.value;
