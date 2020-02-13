@@ -206,10 +206,86 @@ export const SetStartupBehaviorHelper = (isStarting: boolean) => {
         Office.addin.setStartupBehavior(Office.StartupBehavior.none);
     }
     let g = getGlobal() as any;
-        g.isStartOnDocOpen = isStarting;
+    g.isStartOnDocOpen = isStarting;
 };
 
 export async function cfAction(): Promise<void> {
     let signapp = new SignApp();
     return signInO365(signapp.setState, signapp.setToken, signapp.displayError).then();
+}
+
+export function updateRibbon() {
+    // Update ribbon based on state tracking
+   // const g = getGlobal() as any;
+
+    // @ts-ignore
+    OfficeRuntime.ui.getRibbon()
+        .then((ribbon) => {
+            ribbon.requestUpdate({
+                tabs: [
+                    {
+                        id: 'AuthGroup',
+                        controls: [
+                            {
+                                id: 'BtnSignIn',
+                                enabled: true
+                            },
+                            {
+                                id: 'BtnSignOut',
+                                enabled: true
+                            }
+
+                        ]
+                    },
+                    {
+                        id: 'ServiceGroup',
+                        controls: [
+                            {
+                                id: 'BtnConnectService',
+                                enabled: true
+                            },
+                            {
+                                id: 'BtnDisConnectService',
+                                enabled: true
+                            },
+                            {
+                                id: 'BtnInsertData',
+                                enabled: true
+                            }
+
+                        ]
+                    },
+                    {
+                        id: 'StartupGroup',
+                        controls: [
+                            {
+                                id: 'BtnEnableAddinStart',
+                                enabled: true
+                            },
+                            {
+                                id: 'BtnDisableAddinStart',
+                                enabled: true
+                            }
+
+                        ]
+                    },
+                    {
+                        id: 'TaskpaneGroup',
+                        controls: [
+                            {
+                                id: 'BtnOpenTaskpane',
+                                enabled: true
+                            },
+                            {
+                                id: 'BtnCloseTaskpane',
+                                enabled: true
+                            }
+
+                        ]
+                    },
+
+                ]
+            });
+        });
+
 }

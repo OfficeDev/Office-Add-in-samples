@@ -28,19 +28,25 @@ const render = (Component) => {
 /* Render application after Office initializes */
 Office.initialize = async () => {
     let g = getGlobal() as any;
-    g.isStartOnDocOpen = false;
-    g.isSignedIn = false;
+    g.state = {
+        'isStartOnDocOpen': false,
+        'isSignedIn': false,
+        'isTaskpaneOpen': false,
+        'isConnected': false
+    }
+//    g.isStartOnDocOpen = false;
+  //  g.isSignedIn = false;
 
     // @ts-ignore
     let addinState = await Office.addin._getState();
     console.log ("load state is:");
     console.log ("load state" + addinState);
     if (addinState === 'Background'){
-        g.isStartOnDocOpen = true;
+        g.state.isStartOnDocOpen = true;
         run();
     }
     if (localStorage.getItem('loggedIn') === 'yes'){
-        g.isSignedIn = true;
+        g.state.isSignedIn = true;
     }
 
     isOfficeInitialized = true;
@@ -53,7 +59,6 @@ Office.initialize = async () => {
     CustomFunctions.associate('ADD',add);
     render(App);
 };
-
 
 async function run() {
     try {

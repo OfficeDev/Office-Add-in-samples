@@ -122,8 +122,10 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
+									
 										<FunctionName>btnsignout</FunctionName>
 									</Action>
+									<Enabled>false</Enabled>
 								</Control>
 							</Group>
 
@@ -168,8 +170,10 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
+									
 										<FunctionName>btndisconnectservice</FunctionName>
 									</Action>
+									<Enabled>False</Enabled>
 								</Control>
 
 								<Control xsi:type="Button" id="BtnInsertData">
@@ -187,8 +191,11 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
+									
 										<FunctionName>btninsertdata</FunctionName>
+										
 									</Action>
+									<Enabled>false</Enabled>
 								</Control>
 							</Group>
 
@@ -234,8 +241,10 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
+									
 										<FunctionName>btndisableaddinstart</FunctionName>
 									</Action>
+									<Enabled>false</Enabled>
 								</Control>
 							</Group>
 
@@ -261,7 +270,7 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btndisableaddinstart</FunctionName>
+										<FunctionName>btnopentaskpane</FunctionName>
 									</Action>
 								</Control>
 
@@ -280,9 +289,12 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
+									
 										<FunctionName>btnclosetaskpane</FunctionName>
 									</Action>
+									<Enabled>false</Enabled>
 								</Control>
+			
 							</Group>
 							<Label resid="CommandsGroup.Label"/>
 						</CustomTab>
