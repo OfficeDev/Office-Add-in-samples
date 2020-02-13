@@ -216,7 +216,7 @@ export async function cfAction(): Promise<void> {
 
 export function updateRibbon() {
     // Update ribbon based on state tracking
-   // const g = getGlobal() as any;
+    const g = getGlobal() as any;
 
     // @ts-ignore
     OfficeRuntime.ui.getRibbon()
@@ -228,11 +228,11 @@ export function updateRibbon() {
                         controls: [
                             {
                                 id: 'BtnSignIn',
-                                enabled: true
+                                enabled: !g.state.isSignedIn
                             },
                             {
                                 id: 'BtnSignOut',
-                                enabled: true
+                                enabled: g.state.isSignedIn
                             }
 
                         ]
@@ -242,15 +242,15 @@ export function updateRibbon() {
                         controls: [
                             {
                                 id: 'BtnConnectService',
-                                enabled: true
+                                enabled: !g.state.isConnected
                             },
                             {
                                 id: 'BtnDisConnectService',
-                                enabled: true
+                                enabled: g.state.isConnected
                             },
                             {
                                 id: 'BtnInsertData',
-                                enabled: true
+                                enabled: g.state.isConnected
                             }
 
                         ]
@@ -260,11 +260,11 @@ export function updateRibbon() {
                         controls: [
                             {
                                 id: 'BtnEnableAddinStart',
-                                enabled: true
+                                enabled: !g.state.isStartOnDocOpen
                             },
                             {
                                 id: 'BtnDisableAddinStart',
-                                enabled: true
+                                enabled: g.state.isStartOnDocOpen
                             }
 
                         ]
@@ -274,11 +274,11 @@ export function updateRibbon() {
                         controls: [
                             {
                                 id: 'BtnOpenTaskpane',
-                                enabled: true
+                                enabled: !g.state.isTaskpaneOpen
                             },
                             {
                                 id: 'BtnCloseTaskpane',
-                                enabled: true
+                                enabled: g.state.isTaskpaneOpen
                             }
 
                         ]

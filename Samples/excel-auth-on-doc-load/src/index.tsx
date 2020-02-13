@@ -32,8 +32,27 @@ Office.initialize = async () => {
         'isStartOnDocOpen': false,
         'isSignedIn': false,
         'isTaskpaneOpen': false,
-        'isConnected': false
-    }
+        'isConnected': false,
+        'csvData': {
+            'july': {
+                'apples': 5,
+                'pears': 10,
+                'oranges': 20
+            },
+            'august': {
+                'apples': 7,
+                'pears': 12,
+                'oranges': 30
+
+            },
+            'september': {
+                'apples': 10,
+                'pears': 8,
+                'oranges': 20
+
+            }
+        }
+    };
 //    g.isStartOnDocOpen = false;
   //  g.isSignedIn = false;
 
