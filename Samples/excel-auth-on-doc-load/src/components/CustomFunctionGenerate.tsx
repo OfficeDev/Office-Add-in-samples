@@ -18,8 +18,13 @@ export default class ConnectButton extends React.Component<CustomFunctionGenerat
     constructor(props, context) {
         super(props, context);
 
+        this.boundSetState = this.setState.bind(this);
+
         this.state = {selectedOption: 'communication'};
     }
+
+    boundSetState: () => {};
+    
     render() {
         const { login } = this.props;
 
@@ -40,7 +45,7 @@ export default class ConnectButton extends React.Component<CustomFunctionGenerat
       </label>
       
                 <div className='ms-welcome__main'>
-                    <Button className='ms-welcome__action' buttonType={ButtonType.hero} iconProps={{ iconName: 'ChevronRight' }} onClick={generateCustomFunction}>Insert data functiuon</Button>
+                    <Button className='ms-welcome__action' buttonType={ButtonType.hero} iconProps={{ iconName: 'ChevronRight' }} onClick={generateCustomFunction}>Insert data function</Button>
                 </div>
             </div>
         );

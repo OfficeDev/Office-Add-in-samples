@@ -81,7 +81,7 @@
 					<ExtensionPoint xsi:type="PrimaryCommandSurface">
 						<!-- Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab. -->
 						<CustomTab id="ShareTime">
-							
+
 
 							<Group id="ServiceGroup">
 								<Label resid="ServiceGroup.Label"/>
@@ -124,10 +124,10 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-									
+
 										<FunctionName>btndisconnectservice</FunctionName>
 									</Action>
-									
+									<Enabled>false</Enabled>
 								</Control>
 
 								<Control xsi:type="Button" id="BtnInsertData">
@@ -145,11 +145,11 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-									
+
 										<FunctionName>btninsertdata</FunctionName>
-										
+
 									</Action>
-									
+
 								</Control>
 							</Group>
 
@@ -195,10 +195,10 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-									
+
 										<FunctionName>btndisableaddinstart</FunctionName>
 									</Action>
-									
+
 								</Control>
 							</Group>
 
@@ -223,8 +223,9 @@
 										<bt:Image size="80" resid="Icon.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
-									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btnopentaskpane</FunctionName>
+									<Action xsi:type="ShowTaskpane">
+										<TaskpaneId>ButtonId1</TaskpaneId>
+										<SourceLocation resid="TaskPaneAndCustomFunction.Url"/>
 									</Action>
 								</Control>
 
@@ -243,12 +244,12 @@
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-									
+
 										<FunctionName>btnclosetaskpane</FunctionName>
 									</Action>
-									
+
 								</Control>
-			
+
 							</Group>
 							<Label resid="CommandsGroup.Label"/>
 						</CustomTab>
@@ -259,9 +260,9 @@
 		<!-- You can use resources across hosts and form factors. -->
 		<Resources>
 			<bt:Images>
-				<bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
-				<bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-				<bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+				<bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_16x16px.png"/>
+				<bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_32x32px.png"/>
+				<bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png"/>
 			</bt:Images>
 			<bt:Urls>
 				<bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/index.html" />

@@ -1,4 +1,4 @@
-import { SignApp, signInO365, SetStartupBehaviorHelper, SetRuntimeVisibleHelper, updateRibbon, getGlobal } from '../../utilities/office-apis-helpers';
+import { SignApp, signInO365, SetStartupBehaviorHelper, SetRuntimeVisibleHelper, updateRibbon, getGlobal, connectService } from '../../utilities/office-apis-helpers';
 
 const g = getGlobal() as any;
 
@@ -18,6 +18,7 @@ export function btnConnectService(event: Office.AddinCommands.Event) {
     // Your code goes here
     g.state.setConnected(true);
     updateRibbon();
+    connectService();
     event.completed();
 }
 export function btnDisconnectService(event: Office.AddinCommands.Event) {

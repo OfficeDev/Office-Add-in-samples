@@ -221,13 +221,14 @@ export function updateRibbon() {
 
     // @ts-ignore
     OfficeRuntime.ui.getRibbon()
-        .then((ribbon) => {
+    // @ts-ignore
+        .then(function(ribbon) {
             ribbon.requestUpdate({
                 tabs: [
 
                     {
-                        id: 'ServiceGroup',
-                        visible: 'true',
+                        id: 'ShareTime',
+                        // visible: 'true',
                         controls: [
                             {
                                 id: 'BtnConnectService',
@@ -245,8 +246,8 @@ export function updateRibbon() {
                         ]
                     },
                     {
-                        id: 'StartupGroup',
-                        visible: 'true',
+                        id: 'ShareTime',
+                        // visible: 'true',
                         controls: [
                             {
                                 id: 'BtnEnableAddinStart',
@@ -260,8 +261,8 @@ export function updateRibbon() {
                         ]
                     },
                     {
-                        id: 'TaskpaneGroup',
-                        visible: 'true',
+                        id: 'ShareTime',
+                        // visible: 'true',
                         controls: [
                             {
                                 id: 'BtnOpenTaskpane',
@@ -316,9 +317,9 @@ export async function generateCustomFunction() {
             const ws = context.workbook.worksheets.getActiveWorksheet();
             let range = ws.getRange('D1');
 
-            let selectedOption = "Communication";
+            let selectedOption = 'Communications';
 
-            range.values = [['=CONTOSOSHARED.GETDATA("' + selectedOption + '")']];
+            range.values = [['=CONTOSOSHARE.GETDATA("' + selectedOption + '")']];
             range.format.autofitColumns();
             return context.sync();
 
