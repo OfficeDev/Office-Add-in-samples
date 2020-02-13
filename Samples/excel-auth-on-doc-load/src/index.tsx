@@ -5,7 +5,7 @@ import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 import { getGlobal } from '../utilities/office-apis-helpers';
 
 import App from './components/App';
-import {add} from './functions/functions';
+import {add, getData} from './functions/functions';
 
 import './styles.less';
 import 'office-ui-fabric-react/dist/css/fabric.min.css';
@@ -75,7 +75,8 @@ Office.initialize = async () => {
 
 
     console.log('task pane running');
-    CustomFunctions.associate('ADD',add);
+    CustomFunctions.associate('ADD', add);
+    CustomFunctions.associate('GETDATA', getData);
     render(App);
 };
 

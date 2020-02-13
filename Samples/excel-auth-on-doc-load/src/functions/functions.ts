@@ -19,3 +19,18 @@ export function add(first: number, second: number): number {
     return first + second;
   };
 }
+
+/**
+ * Returns data for a given category.
+ * @customfunction
+ * @param category The category to filter the data with
+* @returns {string[][]} A dynamic array with multiple results.
+*/
+export function getData(category: string): string[][] {
+  console.log(category);
+  return [
+    ['apples', '1', 'pounds'],
+    ['oranges', '3', 'pounds'],
+    ['pears', '5', 'crates']
+  ];
+}
