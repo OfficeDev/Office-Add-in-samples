@@ -137,6 +137,7 @@ export default class App extends React.Component<AppProps, AppState> {
     }
 
     render() {
+
         const { title, isOfficeInitialized } = this.props;
        
         if (!isOfficeInitialized) {
@@ -154,6 +155,7 @@ export default class App extends React.Component<AppProps, AppState> {
         //let statusBody = ( <StatusBody isSignedIn={true} isStartOnDocOpen={true} />);
 
         const g = getGlobal() as any;
+        g.state.setTaskpaneStatus(true);
         if (g.state.isConnected) {
             //connected UI
             // filter text button

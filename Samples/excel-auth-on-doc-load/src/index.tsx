@@ -35,6 +35,10 @@ Office.initialize = async () => {
         'isTaskpaneOpen': false,
         'isConnected': false,
         updateRct: () => { },
+        setTaskpaneStatus: (opened: boolean) => {
+            g.state.isTaskpaneOpen = opened;
+            updateRibbon();
+        },
         setConnected: (connected: boolean) => {
             g.state.isConnected = connected;
 
