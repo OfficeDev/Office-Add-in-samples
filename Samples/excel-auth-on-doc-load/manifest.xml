@@ -81,53 +81,7 @@
 					<ExtensionPoint xsi:type="PrimaryCommandSurface">
 						<!-- Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab. -->
 						<CustomTab id="ShareTime">
-							<Group id="AuthGroup">
-								<Label resid="AuthGroup.Label"/>
-								<Icon>
-									<bt:Image size="16" resid="Icon.16x16"/>
-									<bt:Image size="32" resid="Icon.32x32"/>
-									<bt:Image size="80" resid="Icon.80x80"/>
-								</Icon>
-								<Control xsi:type="Button" id="BtnSignIn">
-									<Label resid="BtnSignIn.Label" />
-									<Supertip>
-										<!-- ToolTip title. resid must point to a ShortString resource. -->
-										<Title resid="BtnSignIn.Label" />
-										<!-- ToolTip description. resid must point to a LongString resource. -->
-										<Description resid="BtnSignIn.Tooltip" />
-									</Supertip>
-									<Icon>
-										<bt:Image size="16" resid="Icon.16x16"/>
-										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
-									</Icon>
-									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
-									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btnsignin</FunctionName>
-									</Action>
-								</Control>
-
-								<Control xsi:type="Button" id="BtnSignOut">
-									<Label resid="BtnSignOut.Label" />
-									<Supertip>
-										<!-- ToolTip title. resid must point to a ShortString resource. -->
-										<Title resid="BtnSignOut.Label" />
-										<!-- ToolTip description. resid must point to a LongString resource. -->
-										<Description resid="BtnSignOut.Tooltip" />
-									</Supertip>
-									<Icon>
-										<bt:Image size="16" resid="Icon.16x16"/>
-										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
-									</Icon>
-									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
-									<Action xsi:type="ExecuteFunction">
-									
-										<FunctionName>btnsignout</FunctionName>
-									</Action>
-									
-								</Control>
-							</Group>
+							
 
 							<Group id="ServiceGroup">
 								<Label resid="ServiceGroup.Label"/>

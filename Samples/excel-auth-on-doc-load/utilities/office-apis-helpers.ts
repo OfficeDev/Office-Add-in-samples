@@ -224,21 +224,7 @@ export function updateRibbon() {
         .then((ribbon) => {
             ribbon.requestUpdate({
                 tabs: [
-                    {
-                        id: 'AuthGroup',
-                        visible: 'true',
-                        controls: [
-                            {
-                                id: 'BtnSignIn',
-                                enabled: !g.state.isSignedIn
-                            },
-                            {
-                                id: 'BtnSignOut',
-                                enabled: g.state.isSignedIn
-                            }
-
-                        ]
-                    },
+                    
                     {
                         id: 'ServiceGroup',
                         visible: 'true',
