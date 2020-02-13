@@ -308,15 +308,15 @@ export async function connectService() {
         });
 }
 
-export async function generateCustomFunction() {
+export function generateCustomFunction(selectedOption: string) {
     try {
-        await Excel.run(async context => {
+        Excel.run(async context => {
             /**
              * Insert your Excel code here
              */
             let range = context.workbook.getSelectedRange();
 
-            let selectedOption = 'Communications';
+            //let selectedOption = 'Communications';
 
             range.values = [['=CONTOSOSHARE.GETDATA("' + selectedOption + '")']];
             range.format.autofitColumns();

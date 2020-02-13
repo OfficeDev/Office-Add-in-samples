@@ -32,20 +32,20 @@ export default class CustomFunctionGenerate extends React.Component<CustomFuncti
         return (
             <div className='ms-welcome'>
                   <label>
-        <input type="radio" value="communication" 
-                      checked={this.state.selectedOption === 'communication'}
+        <input type="radio" value="Communications" 
+                      checked={this.state.selectedOption === 'Communications'}
                       onChange={this.handleOptionChange.bind(this)} />
         Communication
       </label>
       <label>
-        <input type="radio" value="groceries" 
-                      checked={this.state.selectedOption === 'groceries'}
+        <input type="radio" value="Groceries" 
+                      checked={this.state.selectedOption === 'Groceries'}
                       onChange={this.handleOptionChange.bind(this)} />
         Groceries
       </label>
       
                 <div className='ms-welcome__main'>
-                    <Button className='ms-welcome__action' buttonType={ButtonType.hero} iconProps={{ iconName: 'ChevronRight' }} onClick={generateCustomFunction}>Insert data function</Button>
+                    <Button className='ms-welcome__action' buttonType={ButtonType.hero} iconProps={{ iconName: 'ChevronRight' }} onClick={this.handleCustomFunctionPress.bind(this, this.state.selectedOption)}>Insert data function</Button>
                 </div>
             </div>
         );
@@ -55,5 +55,9 @@ export default class CustomFunctionGenerate extends React.Component<CustomFuncti
         this.setState({
           selectedOption: changeEvent.target.value
         });
+      }
+
+      handleCustomFunctionPress (selectedOption: string){
+          generateCustomFunction(selectedOption);
       }
 }
