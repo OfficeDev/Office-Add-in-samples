@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
-import { getGlobal } from '../utilities/office-apis-helpers';
+import { getGlobal, updateRibbon } from '../utilities/office-apis-helpers';
 
 import App from './components/App';
 import { add, getData } from './functions/functions';
@@ -47,6 +47,7 @@ Office.initialize = async () => {
                     g.state.updateRct('false');
                 }
             }
+            updateRibbon();
         }
     };
     //    g.isStartOnDocOpen = false;
