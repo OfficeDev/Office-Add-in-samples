@@ -221,8 +221,8 @@ export function updateRibbon() {
 
     // @ts-ignore
     OfficeRuntime.ui.getRibbon()
-    // @ts-ignore
-        .then(function(ribbon) {
+        // @ts-ignore
+        .then(function (ribbon) {
             ribbon.requestUpdate({
                 tabs: [
 
@@ -310,12 +310,11 @@ export async function connectService() {
 
 export async function generateCustomFunction() {
     try {
-    await  Excel.run(async context => {
+        await Excel.run(async context => {
             /**
              * Insert your Excel code here
              */
-            const ws = context.workbook.worksheets.getActiveWorksheet();
-            let range = ws.getRange('D1');
+            let range = context.workbook.getSelectedRange();
 
             let selectedOption = 'Communications';
 

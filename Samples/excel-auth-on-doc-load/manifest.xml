@@ -149,6 +149,7 @@
 										<FunctionName>btninsertdata</FunctionName>
 
 									</Action>
+									<Enabled>false</Enabled>
 
 								</Control>
 							</Group>
@@ -198,6 +199,7 @@
 
 										<FunctionName>btndisableaddinstart</FunctionName>
 									</Action>
+									<Enabled>false</Enabled>
 
 								</Control>
 							</Group>
@@ -247,7 +249,7 @@
 
 										<FunctionName>btnclosetaskpane</FunctionName>
 									</Action>
-
+									<Enabled>false</Enabled>
 								</Control>
 
 							</Group>

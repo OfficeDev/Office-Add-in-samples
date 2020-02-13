@@ -138,7 +138,7 @@ export default class App extends React.Component<AppProps, AppState> {
 
     render() {
         const { title, isOfficeInitialized } = this.props;
-
+       
         if (!isOfficeInitialized) {
             return (
                 <Progress

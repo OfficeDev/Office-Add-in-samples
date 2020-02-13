@@ -14,16 +14,16 @@ export interface CustomFunctionGenerateState {
 }
 
 
-export default class ConnectButton extends React.Component<CustomFunctionGenerateProps, CustomFunctionGenerateState> {
+export default class CustomFunctionGenerate extends React.Component<CustomFunctionGenerateProps, CustomFunctionGenerateState> {
     constructor(props, context) {
         super(props, context);
 
-        this.boundSetState = this.setState.bind(this);
+  //      this.boundSetState = this.setState.bind(this);
 
-        this.state = {selectedOption: 'communication'};
+        this.state = {selectedOption: 'communications'};
     }
 
-    boundSetState: () => {};
+//    boundSetState: (newState: any) => {};
     
     render() {
         const { login } = this.props;
@@ -34,13 +34,13 @@ export default class ConnectButton extends React.Component<CustomFunctionGenerat
                   <label>
         <input type="radio" value="communication" 
                       checked={this.state.selectedOption === 'communication'}
-                      onChange={this.handleOptionChange} />
+                      onChange={this.handleOptionChange.bind(this)} />
         Communication
       </label>
       <label>
         <input type="radio" value="groceries" 
                       checked={this.state.selectedOption === 'groceries'}
-                      onChange={this.handleOptionChange} />
+                      onChange={this.handleOptionChange.bind(this)} />
         Groceries
       </label>
       
