@@ -224,7 +224,7 @@ export function updateRibbon() {
         .then((ribbon) => {
             ribbon.requestUpdate({
                 tabs: [
-                    
+
                     {
                         id: 'ServiceGroup',
                         visible: 'true',
@@ -282,27 +282,48 @@ export function updateRibbon() {
 }
 
 export async function connectService() {
-//pop up a dialog
-let connectDialog: Office.Dialog;
+    //pop up a dialog
+    let connectDialog: Office.Dialog;
 
 
-const processMessage = () => {
-    g.state.setConnected(true);
-    connectDialog.close();
-};
+    const processMessage = () => {
+        g.state.setConnected(true);
+        connectDialog.close();
+    };
 
-let g = getGlobal() as any;
-await Office.context.ui.displayDialogAsync(
-    dialogConnectUrl,
-    { height: 40, width: 30 },
-    (result) => {
-        if (result.status === Office.AsyncResultStatus.Failed) {
-            console.log(`${result.error.code} ${result.error.message}`);
-            g.state.setConnected(false);
-        }
-        else {
-            connectDialog = result.value;
-            connectDialog.addEventHandler(Office.EventType.DialogMessageReceived, processMessage);
-        }
-    });
+    let g = getGlobal() as any;
+    await Office.context.ui.displayDialogAsync(
+        dialogConnectUrl,
+        { height: 40, width: 30 },
+        (result) => {
+            if (result.status === Office.AsyncResultStatus.Failed) {
+                console.log(`${result.error.code} ${result.error.message}`);
+                g.state.setConnected(false);
+            }
+            else {
+                connectDialog = result.value;
+                connectDialog.addEventHandler(Office.EventType.DialogMessageReceived, processMessage);
+            }
+        });
+}
+
+export async function generateCustomFunction() {
+    try {
+    await  Excel.run(async context => {
+            /**
+             * Insert your Excel code here
+             */
+            const ws = context.workbook.worksheets.getActiveWorksheet();
+            let range = ws.getRange('D1');
+
+            let selectedOption = "Communication";
+
+            range.values = [['=CONTOSOSHARED.GETDATA("' + selectedOption + '")']];
+            range.format.autofitColumns();
+            return context.sync();
+
+        });
+    } catch (error) {
+        console.error(error);
+    }
 }

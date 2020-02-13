@@ -10,6 +10,7 @@ import OfficeAddinMessageBar from './OfficeAddinMessageBar';
 import { getGraphData } from '../../utilities/microsoft-graph-helpers';
 import { writeFileNamesToWorksheet, logoutFromO365, signInO365, getGlobal } from '../../utilities/office-apis-helpers';
 import { btnSignIn } from '../commands/commands';
+import CustomFunctionGenerate from './CustomFunctionGenerate';
 
 export interface AppProps {
     title: string;
@@ -158,6 +159,7 @@ export default class App extends React.Component<AppProps, AppState> {
             // filter text button
             // preview data view
             // insert cf button
+            body = (<CustomFunctionGenerate login={this.login} />);
         } else {
             //disconnected UI
             //just a connect button
@@ -209,5 +211,7 @@ export default class App extends React.Component<AppProps, AppState> {
             this.setState({ authStatus: data });
         };
     }
+
+
 
 }

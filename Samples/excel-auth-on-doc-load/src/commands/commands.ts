@@ -16,14 +16,14 @@ g.btndisconnectservice = btnDisconnectService;
 export function btnConnectService(event: Office.AddinCommands.Event) {
     console.log('Connect service button pressed');
     // Your code goes here
-    g.state.isConnected = true;
+    g.state.setConnected(true);
     updateRibbon();
     event.completed();
 }
 export function btnDisconnectService(event: Office.AddinCommands.Event) {
     console.log('Disconnect service button pressed');
     // Your code goes here
-    g.state.isConnected = false;
+    g.state.setConnected(false);
     updateRibbon();
     event.completed();
 }
