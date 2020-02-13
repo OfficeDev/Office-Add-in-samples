@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Spinner, SpinnerType } from 'office-ui-fabric-react';
+//import { Spinner, SpinnerType } from 'office-ui-fabric-react';
 import Header from './Header';
-import { HeroListItem } from './HeroList';
+import ConnectButton from './ConnectButton';
 import Progress from './Progress';
-import StartPageBody from './StartPageBody';
-import GetDataPageBody from './GetDataPageBody';
-import SuccessPageBody from './SuccessPageBody';
+//import StartPageBody from './StartPageBody';
+//import GetDataPageBody from './GetDataPageBody';
+//import SuccessPageBody from './SuccessPageBody';
 import OfficeAddinMessageBar from './OfficeAddinMessageBar';
 import { getGraphData } from '../../utilities/microsoft-graph-helpers';
 import { writeFileNamesToWorksheet, logoutFromO365, signInO365, getGlobal } from '../../utilities/office-apis-helpers';
@@ -39,7 +39,7 @@ export default class App extends React.Component<AppProps, AppState> {
         const theToken = localStorage.getItem('mytoken');
         console.log(btnSignIn);
         console.log('token from session storage is: ' + theToken);
-        
+
         if (theToken != null) {
              // Initialize state for signed in
              console.log('signed in');
@@ -69,21 +69,6 @@ export default class App extends React.Component<AppProps, AppState> {
     // The access token is not part of state because React is all about the
     // UI and the token is not used to affect the UI in any way.
     accessToken: string;
-
-    listItems: HeroListItem[] = [
-        {
-            icon: 'PlugConnected',
-            primaryText: 'Connects to OneDrive for Business.'
-        },
-        {
-            icon: 'ExcelDocument',
-            primaryText: 'Gets the names of the first three workbooks in OneDrive for Business.'
-        },
-        {
-            icon: 'AddNotes',
-            primaryText: 'Adds the names to the current document.'
-        }
-    ];
 
     /*
         Methods
@@ -150,8 +135,6 @@ export default class App extends React.Component<AppProps, AppState> {
     render() {
         const { title, isOfficeInitialized } = this.props;
 
-        const g = getGlobal() as any;
-
         if (!isOfficeInitialized) {
             return (
                 <Progress
@@ -166,23 +149,34 @@ export default class App extends React.Component<AppProps, AppState> {
         let body;
         //let statusBody = ( <StatusBody isSignedIn={true} isStartOnDocOpen={true} />);
 
-        if (this.state.authStatus === 'notLoggedIn') {
-            body = ( <StartPageBody login={this.login} listItems={this.listItems}/> );
+        const g = getGlobal() as any;
+        if (g.state.isConnected) {
+            //connected UI
+            // filter text button
+            // preview data view
+            // insert cf button
+        } else {
+            //disconnected UI
+            //just a connect button
+            body = ( <ConnectButton login={this.login}/> );
         }
-        else if (this.state.authStatus === 'loginInProcess') {
-            body = ( <Spinner className='spinner' type={SpinnerType.large} label='Please sign-in on the pop-up window.' /> );
-        }
-        else {
-            if (this.state.fileFetch === 'notFetched') {
-                body = ( <GetDataPageBody getFileNames={this.getFileNames} logout={this.logout}/> );
-            }
-            else if (this.state.fileFetch === 'fetchInProcess') {
-                body = ( <Spinner className='spinner' type={SpinnerType.large} label='We are getting the data for you.' /> );
-            }
-            else {
-                body = ( <SuccessPageBody getFileNames={this.getFileNames} logout={this.logout} /> );
-            }
-        }
+        // if (this.state.authStatus === 'notLoggedIn') {
+        //     body = ( <StartPageBody login={this.login} listItems={this.listItems}/> );
+        // }
+        // else if (this.state.authStatus === 'loginInProcess') {
+        //     body = ( <Spinner className='spinner' type={SpinnerType.large} label='Please sign-in on the pop-up window.' /> );
+        // }
+        // else {
+        //     if (this.state.fileFetch === 'notFetched') {
+        //         body = ( <GetDataPageBody getFileNames={this.getFileNames} logout={this.logout}/> );
+        //     }
+        //     else if (this.state.fileFetch === 'fetchInProcess') {
+        //         body = ( <Spinner className='spinner' type={SpinnerType.large} label='We are getting the data for you.' /> );
+        //     }
+        //     else {
+        //         body = ( <SuccessPageBody getFileNames={this.getFileNames} logout={this.logout} /> );
+        //     }
+        // }
         //body += statusBody;
 
         return (

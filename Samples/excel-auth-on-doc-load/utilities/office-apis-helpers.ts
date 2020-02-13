@@ -45,6 +45,7 @@ export const writeFileNamesToWorksheet = async (result: AxiosResponse,
 
 let loginDialog: Office.Dialog;
 const dialogLoginUrl: string = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/login/login.html';
+const dialogConnectUrl: string = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/login/connect.html';
 
 export const signInO365 = async (setState: (x: AppState) => void,
     setToken: (x: string) => void,
@@ -292,4 +293,26 @@ export function updateRibbon() {
             });
         });
 
+}
+
+export async function connectService() {
+//pop up a dialog
+let connectDialog: Office.Dialog;
+
+const processMessage = () => {
+    connectDialog.close();
+};
+
+await Office.context.ui.displayDialogAsync(
+    dialogConnectUrl,
+    { height: 40, width: 30 },
+    (result) => {
+        if (result.status === Office.AsyncResultStatus.Failed) {
+            console.log(`${result.error.code} ${result.error.message}`);
+        }
+        else {
+            connectDialog = result.value;
+            connectDialog.addEventHandler(Office.EventType.DialogMessageReceived, processMessage);
+        }
+    });
 }

@@ -34,7 +34,8 @@ const entry = {
     ],
     'functions': './functions/functions.ts',
     'login': '../login/login.ts',
-    'logout': '../logout/logout.ts'
+    'logout': '../logout/logout.ts',
+    'connect': '../login/connect.ts'
 };
 
 const rules = [
@@ -141,6 +142,12 @@ module.exports = {
             filename: 'logout/logout.html',
             template: '../logout/logout.html',
             chunks: ['logout']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Office-Add-in-Microsoft-Graph-React',
+            filename: 'login/connect.html',
+            template: '../login/connect.html',
+            chunks: ['connect']
         }),
         new HtmlWebpackPlugin({
             title: 'Office-Add-in-Microsoft-Graph-React',
