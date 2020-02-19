@@ -6,7 +6,7 @@
     "scripts": {
         "clean": "rimraf dist && rimraf .awcache",
         "lint": "tslint --project tsconfig.json",
-        "start": "webpack-dev-server --inline --mode development --config config/webpack.dev.js --progress",
+        "start": "webpack-dev-server --inline --mode development --config config/webpack.dev.js --progress --watch",
         "sideload": "office-toolbox sideload -m manifest.xml -a Excel",
         "build": "npm run clean && webpack --mode production --config config/webpack.prod.js --colors --progress --bail",
         "validate": "office-toolbox validate -m manifest.xml"

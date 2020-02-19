@@ -8,7 +8,7 @@ import Progress from './Progress';
 //import SuccessPageBody from './SuccessPageBody';
 import OfficeAddinMessageBar from './OfficeAddinMessageBar';
 import { getGraphData } from '../../utilities/microsoft-graph-helpers';
-import { writeFileNamesToWorksheet, logoutFromO365, signInO365, getGlobal } from '../../utilities/office-apis-helpers';
+import { writeFileNamesToWorksheet, logoutFromO365, signInO365, getGlobal, ensureStateInitialized } from '../../utilities/office-apis-helpers';
 import { btnSignIn } from '../commands/commands';
 import CustomFunctionGenerate from './CustomFunctionGenerate';
 
@@ -139,7 +139,7 @@ export default class App extends React.Component<AppProps, AppState> {
     render() {
 
         const { title, isOfficeInitialized } = this.props;
-       
+
         if (!isOfficeInitialized) {
             return (
                 <Progress
@@ -196,20 +196,16 @@ export default class App extends React.Component<AppProps, AppState> {
                     <Header logo='assets/Onedrive_Charts_icon_80x80px.png' title={this.props.title} message={this.state.headerMessage} />
                     {body}
                 </div>
-                <div className='ms-welcome'>
-                    <div>
-                        <p>Is Signed In: {String(g.isSignedIn)}</p>
-                        <p>Is Start on Doc Open: {String(g.isStartOnDocOpen)}</p>
-                    </div>
-                </div>
+              
             </div>
         );
     }
 
     componentDidMount() {
-        //let glob = getGlobal() as any;
-        let glob = window as any;
-        glob.state.updateRct = (data: string) => {
+        ensureStateInitialized();
+        let g = getGlobal() as any;
+
+        g.state.updateRct = (data: string) => {
             // `this` refers to our react component
             this.setState({ authStatus: data });
         };

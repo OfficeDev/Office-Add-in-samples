@@ -1,4 +1,4 @@
-import { SignApp, signInO365, SetStartupBehaviorHelper, SetRuntimeVisibleHelper, updateRibbon, getGlobal, connectService } from '../../utilities/office-apis-helpers';
+import { SignApp, signInO365, SetStartupBehaviorHelper, SetRuntimeVisibleHelper, updateRibbon, getGlobal, connectService, monitorSheetChanges } from '../../utilities/office-apis-helpers';
 
 const g = getGlobal() as any;
 
@@ -21,6 +21,7 @@ export function btnConnectService(event: Office.AddinCommands.Event) {
     g.state.isConnectInProgress = true;
     updateRibbon();
     connectService();
+    monitorSheetChanges();
     event.completed();
 }
 export function btnDisconnectService(event: Office.AddinCommands.Event) {
@@ -92,6 +93,7 @@ export function btnInsertData(event: Office.AddinCommands.Event) {
     
     // Mock code that pretends to insert data from a data source
     insertData();
+    
     event.completed();
 }
 
@@ -127,7 +129,11 @@ async function insertData() {
                 sheet.getUsedRange().format.autofitColumns();
                 sheet.getUsedRange().format.autofitRows();
             }
-            return context.sync();
+            context.sync().then(() => {
+                monitorSheetChanges();
+                return context.sync();
+            })
+            
         });
     }
     catch (error) {
