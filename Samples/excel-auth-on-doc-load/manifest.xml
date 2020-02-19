@@ -99,9 +99,9 @@
 										<Description resid="BtnConnectService.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Icon.16x16"/>
-										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
+										<bt:Image size="16" resid="Enable.16x16"/>
+										<bt:Image size="32" resid="Enable.32x32"/>
+										<bt:Image size="80" resid="Connect.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
@@ -120,7 +120,7 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
+										<bt:Image size="80" resid="Disconnect.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
@@ -141,12 +141,34 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
+										<bt:Image size="80" resid="Insert.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
 
 										<FunctionName>btninsertdata</FunctionName>
+
+									</Action>
+									<Enabled>false</Enabled>
+
+								</Control>
+								<Control xsi:type="Button" id="BtnSyncData">
+									<Label resid="BtnSyncData.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnSyncData.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnSyncData.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Insert.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+
+										<FunctionName>btnsyncdata</FunctionName>
 
 									</Action>
 									<Enabled>false</Enabled>
@@ -173,7 +195,7 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
+										<bt:Image size="80" resid="Enable.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
@@ -192,7 +214,7 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
+										<bt:Image size="80" resid="Disable.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
@@ -222,12 +244,12 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
+										<bt:Image size="80" resid="Open.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ShowTaskpane">
 										<TaskpaneId>ButtonId1</TaskpaneId>
-										<SourceLocation resid="TaskPaneAndCustomFunction.Url"/>
+										<SourceLocation resid="Taskpane.Url"/>
 									</Action>
 								</Control>
 
@@ -242,7 +264,7 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
+										<bt:Image size="80" resid="Close.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
@@ -265,6 +287,16 @@
 				<bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_16x16px.png"/>
 				<bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_32x32px.png"/>
 				<bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png"/>
+				<bt:Image id="Enable.32x32" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png"/>
+				<bt:Image id="Enable.16x16" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png"/>
+				<bt:Image id="Connect.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png"/>
+				<bt:Image id="Disconnect.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png" />
+				<bt:Image id="Insert.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png" />
+				<bt:Image id="Enable.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png" />
+				<bt:Image id="Disable.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png" />
+				<bt:Image id="Open.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png" />
+				<bt:Image id="Close.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png" />
+
 			</bt:Images>
 			<bt:Urls>
 				<bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/index.html" />
@@ -294,6 +326,7 @@
 				<bt:String id='TaskpaneGroup.Label' DefaultValue='Task pane'/>
 				<bt:String id="BtnOpenTaskpane.Label" DefaultValue="Open task pane"/>
 				<bt:String id="BtnCloseTaskpane.Label" DefaultValue="Close task pane"/>
+				<bt:String id="BtnSyncData.Label" DefaultValue="Sync data"/>
 			</bt:ShortStrings>
 			<!-- LongStrings max characters==250. -->
 			<bt:LongStrings>
@@ -308,6 +341,7 @@
 				<bt:String id="BtnInsertData.Tooltip" DefaultValue="Insert data from backend data service"/>
 				<bt:String id="BtnOpenTaskpane.Tooltip" DefaultValue="Open the task pane"/>
 				<bt:String id="BtnCloseTaskpane.Tooltip" DefaultValue="Close the task pane"/>
+				<bt:String id="BtnSyncData.Tooltip" DefaultValue="Sync changes to source data"/>
 			</bt:LongStrings>
 		</Resources>
 	</VersionOverrides>

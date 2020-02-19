@@ -241,6 +241,10 @@ export function updateRibbon() {
                             {
                                 id: 'BtnInsertData',
                                 enabled: g.state.isConnected
+                            },
+                            {
+                                id: 'BtnSyncData',
+                                enabled: g.state.isSyncEnabled
                             }
 
                         ]
@@ -289,6 +293,7 @@ export async function connectService() {
 
     const processMessage = () => {
         g.state.setConnected(true);
+        g.state.isConnectInProgress = false;
         connectDialog.close();
     };
 

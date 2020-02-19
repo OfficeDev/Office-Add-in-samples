@@ -155,7 +155,7 @@ export default class App extends React.Component<AppProps, AppState> {
         //let statusBody = ( <StatusBody isSignedIn={true} isStartOnDocOpen={true} />);
 
         const g = getGlobal() as any;
-        g.state.setTaskpaneStatus(true);
+        //g.state.setTaskpaneStatus(true);
         if (g.state.isConnected) {
             //connected UI
             // filter text button
@@ -207,8 +207,9 @@ export default class App extends React.Component<AppProps, AppState> {
     }
 
     componentDidMount() {
-        let g = getGlobal() as any;
-        g.state.updateRct = (data: string) => {
+        //let glob = getGlobal() as any;
+        let glob = window as any;
+        glob.state.updateRct = (data: string) => {
             // `this` refers to our react component
             this.setState({ authStatus: data });
         };

@@ -12,11 +12,13 @@ g.btnopentaskpane = btnOpenTaskpane;
 g.btnclosetaskpane = btnCloseTaskpane;
 g.btnconnectservice = btnConnectService;
 g.btndisconnectservice = btnDisconnectService;
+g.btnsyncdata = btnSyncData;
 
 export function btnConnectService(event: Office.AddinCommands.Event) {
     console.log('Connect service button pressed');
     // Your code goes here
     g.state.setConnected(true);
+    g.state.isConnectInProgress = true;
     updateRibbon();
     connectService();
     event.completed();
@@ -87,11 +89,19 @@ export function btnDisableAddinStart(event: Office.AddinCommands.Event) {
 
 export function btnInsertData(event: Office.AddinCommands.Event) {
     console.log('Insert data button pressed');
+    
     // Mock code that pretends to insert data from a data source
     insertData();
     event.completed();
 }
 
+export function btnSyncData(event: Office.AddinCommands.Event) {
+    console.log('Insert sync button pressed');
+    // Mock code that pretends to insert data from a data source
+    g.state.isSyncEnabled = false;
+    updateRibbon();
+    event.completed();
+}
 
 
 async function insertData() {

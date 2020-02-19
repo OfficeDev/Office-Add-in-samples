@@ -34,6 +34,9 @@ Office.initialize = async () => {
         'isSignedIn': false,
         'isTaskpaneOpen': false,
         'isConnected': false,
+        'isSyncEnabled': false,
+        'isConnectInProgress': false,
+        'isFirstSyncCall': true,
         updateRct: () => { },
         setTaskpaneStatus: (opened: boolean) => {
             g.state.isTaskpaneOpen = opened;
@@ -41,6 +44,7 @@ Office.initialize = async () => {
         },
         setConnected: (connected: boolean) => {
             g.state.isConnected = connected;
+
 
             if (connected) {
                 if (g.state.updateRct !== null) {
@@ -63,7 +67,7 @@ Office.initialize = async () => {
     console.log("load state" + addinState);
     if (addinState === 'Background') {
         g.state.isStartOnDocOpen = true;
-        run();
+        //run();
     }
     if (localStorage.getItem('loggedIn') === 'yes') {
         g.state.isSignedIn = true;
@@ -78,27 +82,40 @@ Office.initialize = async () => {
     console.log('task pane running');
     CustomFunctions.associate('ADD', add);
     CustomFunctions.associate('GETDATA', getData);
+    monitorSheetChanges();
     render(App);
 };
 
-async function run() {
-    try {
-        await Excel.run(async context => {
-            /**
-             * Insert your Excel code here
-             */
-            const ws = context.workbook.worksheets.getActiveWorksheet();
-            let range = ws.getRange('A1');
-            range.load('values');
-            return context.sync(range).then((range) => {
-                let v = range.values[0][0];
-                v += 1;
-                range.values = [[v]];
-                range.format.autofitColumns();
+async function onChange(event) {
+    return Excel.run((context) => {
+        return context.sync()
+            .then(() => {
+                console.log("Change type of event: " + event.changeType);
+                console.log("Address of event: " + event.address);
+                console.log("Source of event: " + event.source);
+                let g = getGlobal() as any;
+                if (g.state.isConnected && !g.state.isFirstSyncCall) {
+                    g.state.isSyncEnabled = true;
 
-                return context.sync();
+                    updateRibbon();
+
+                }
+                g.state.isFirstSyncCall = false;
             });
+
+    });
+}
+
+async function monitorSheetChanges() {
+    try {
+        await Excel.run(async (context) => {
+            let sheet = context.workbook.worksheets.getActiveWorksheet();
+            sheet.onChanged.add(onChange);
+
+            await context.sync();
+            console.log("A handler has been registered for the onChanged event.");
         });
+
     } catch (error) {
         console.error(error);
     }
