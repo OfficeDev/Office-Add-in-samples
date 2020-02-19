@@ -413,6 +413,7 @@ export async function ensureStateInitialized() {
       g.state.isSignedIn = true;
     }
   }
+  updateRibbon();
 }
 
 async function onTableChange(event) {
