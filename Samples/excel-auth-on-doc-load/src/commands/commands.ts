@@ -13,6 +13,7 @@ g.btnclosetaskpane = btnCloseTaskpane;
 g.btnconnectservice = btnConnectService;
 g.btndisconnectservice = btnDisconnectService;
 g.btnsyncdata = btnSyncData;
+g.btnsumdata = btnSumData;
 
 export function btnConnectService(event: Office.AddinCommands.Event) {
     console.log('Connect service button pressed');
@@ -96,6 +97,41 @@ export function btnInsertData(event: Office.AddinCommands.Event) {
     
     event.completed();
 }
+
+export async function btnSumData(event: Office.AddinCommands.Event) {
+    console.log('Insert data button pressed');
+    
+    // Mock code that pretends to insert data from a data source
+    let address = g.state.selectionAddress as string;
+    await Excel.run( (context) => {
+        let sheet = context.workbook.worksheets.getActiveWorksheet();
+        let range = sheet.getRange(address);
+        range.load("values");
+    
+        let sum: number = 0;
+        return context.sync()
+            .then( () => {
+                range.values.forEach ((v) => {
+                    let vnumber: number = +v.toString();
+                    sum += vnumber;
+                });
+
+                return context.sync().then( () => {
+                let sheet = context.workbook.worksheets.getActiveWorksheet();
+
+                let range = sheet.getRange("F1");
+                range.values = [[ sum ]];
+                range.format.autofitColumns();
+                event.completed();
+                console.log(sum);
+                return context.sync();
+                
+                });
+            });
+    });
+    event.completed();
+}
+
 
 export function btnSyncData(event: Office.AddinCommands.Event) {
     console.log('Insert sync button pressed');

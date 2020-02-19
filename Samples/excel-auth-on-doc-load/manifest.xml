@@ -152,6 +152,28 @@
 									<Enabled>false</Enabled>
 
 								</Control>
+									<Control xsi:type="Button" id="BtnSumData">
+									<Label resid="BtnSumData.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnSumData.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnSumData.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Insert.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+
+										<FunctionName>btnsumdata</FunctionName>
+
+									</Action>
+									<Enabled>false</Enabled>
+
+								</Control>
 								<Control xsi:type="Button" id="BtnSyncData">
 									<Label resid="BtnSyncData.Label" />
 									<Supertip>
@@ -306,6 +328,7 @@
 				<bt:String id="BtnOpenTaskpane.Label" DefaultValue="Open task pane"/>
 				<bt:String id="BtnCloseTaskpane.Label" DefaultValue="Close task pane"/>
 				<bt:String id="BtnSyncData.Label" DefaultValue="Sync data"/>
+				<bt:String id="BtnSumData.Label" DefaultValue="Sum"/>
 			</bt:ShortStrings>
 			<!-- LongStrings max characters==250. -->
 			<bt:LongStrings>
@@ -321,6 +344,7 @@
 				<bt:String id="BtnOpenTaskpane.Tooltip" DefaultValue="Open the task pane"/>
 				<bt:String id="BtnCloseTaskpane.Tooltip" DefaultValue="Close the task pane"/>
 				<bt:String id="BtnSyncData.Tooltip" DefaultValue="Sync changes to source data"/>
+				<bt:String id="BtnSumData.Tooltip" DefaultValue="Sum selected data"/>
 			</bt:LongStrings>
 		</Resources>
 	</VersionOverrides>

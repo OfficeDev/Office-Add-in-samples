@@ -275,7 +275,12 @@ export function updateRibbon() {
               {
                 id: "BtnSyncData",
                 enabled: g.state.isSyncEnabled
+              },
+              {
+                id: "BtnSumData",
+                enabled: g.state.isSumEnabled
               }
+
             ]
           },
           {
@@ -374,6 +379,7 @@ export async function ensureStateInitialized() {
       isSyncEnabled: false,
       isConnectInProgress: false,
       isFirstSyncCall: true,
+      isSumEnabled: false,
       updateRct: () => {},
       setTaskpaneStatus: (opened: boolean) => {
         g.state.isTaskpaneOpen = opened;
@@ -409,39 +415,61 @@ export async function ensureStateInitialized() {
   }
 }
 
-
 async function onTableChange(event) {
-    return Excel.run((context) => {
-        return context.sync()
-            .then(() => {
-                console.log("Change type of event: " + event.changeType);
-                console.log("Address of event: " + event.address);
-                console.log("Source of event: " + event.source);
-                let g = getGlobal() as any;
-                if (g.state.isConnected) {
-                    g.state.isSyncEnabled = true;
-                    updateRibbon();
-                }
-                });
-            });
-    }
+  return Excel.run(context => {
+    return context.sync().then(() => {
+      console.log("Change type of event: " + event.changeType);
+      console.log("Address of event: " + event.address);
+      console.log("Source of event: " + event.source);
+      let g = getGlobal() as any;
+      if (g.state.isConnected) {
+        g.state.isSyncEnabled = true;
+        updateRibbon();
+      }
+    });
+  });
+}
 
+async function onTableSelectionChange(event) {
+    let g = getGlobal() as any;
+  return Excel.run(context => {
+
+    return context.sync().then(() => {
+        console.log("Table section changed...");
+      console.log("Change type of event: " + event.changeType);
+      console.log("Address of event: " + event.address);
+      console.log("Source of event: " + event.source);
+     g.state.selectionAddress = event.address;
+     if (event.address === '' && g.state.isSumEnabled === true){
+         g.state.isSumEnabled = false;
+         updateRibbon();
+     } else if (g.state.isSumEnabled === false && event.address !== '') {
+         g.state.isSumEnabled = true;
+         updateRibbon();
+     }
+
+    });
+  });
+}
 
 export async function monitorSheetChanges() {
-    try {
-        await Excel.run(async (context) => {
-            let table = context.workbook.tables.getItem('ExpensesTable');
-            if (table !== undefined) {
-            table.onChanged.add(onTableChange);
-
-            await context.sync();
-            console.log("A handler has been registered for the onChanged event.");
-            } else {
-                console.log("Expense table not present to add handler to.");
-            }
-        });
-
-    } catch (error) {
-        console.error(error);
-    }
+  try {
+      let g = getGlobal() as any;
+    await Excel.run(async context => {
+      let table = context.workbook.tables.getItem("ExpensesTable");
+      if (table !== undefined) {
+        table.onChanged.add(onTableChange);
+        table.onSelectionChanged.add(onTableSelectionChange);
+        await context.sync();
+        updateRibbon();
+        console.log("A handler has been registered for the onChanged event.");
+      } else {
+          g.state.isSumEnabled = false;
+          updateRibbon();
+        console.log("Expense table not present to add handler to.");
+      }
+    });
+  } catch (error) {
+    console.error(error);
+  }
 }
