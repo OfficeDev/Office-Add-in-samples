@@ -279,14 +279,7 @@ export function updateRibbon() {
               {
                 id: "BtnSumData",
                 enabled: g.state.isSumEnabled
-              }
-
-            ]
-          },
-          {
-            id: "ShareTime",
-            // visible: 'true',
-            controls: [
+              },
               {
                 id: "BtnEnableAddinStart",
                 enabled: !g.state.isStartOnDocOpen
@@ -294,20 +287,6 @@ export function updateRibbon() {
               {
                 id: "BtnDisableAddinStart",
                 enabled: g.state.isStartOnDocOpen
-              }
-            ]
-          },
-          {
-            id: "ShareTime",
-            // visible: 'true',
-            controls: [
-              {
-                id: "BtnOpenTaskpane",
-                enabled: !g.state.isTaskpaneOpen
-              },
-              {
-                id: "BtnCloseTaskpane",
-                enabled: g.state.isTaskpaneOpen
               }
             ]
           }
