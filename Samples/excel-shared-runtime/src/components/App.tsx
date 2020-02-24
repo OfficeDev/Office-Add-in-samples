@@ -118,7 +118,7 @@ export default class App extends React.Component<AppProps, AppState> {
         getGraphData(
 
             // Get the `name` property of the first 3 Excel workbooks in the user's OneDrive.
-            "https://graph.microsoft.com/v1.0/me/drive/root/microsoft.graph.search(q = '.xlsx')?$select=name&top=3",
+            'https://graph.microsoft.com/v1.0/me/drive/root/microsoft.graph.search(q = \'.xlsx\')?$select=name&top=3',
             this.accessToken
         )
             .then(async (response) => {
@@ -130,7 +130,7 @@ export default class App extends React.Component<AppProps, AppState> {
             })
             .catch((requestError) => {
                 // If this runs, then the `then` method did not run, so this error must be
-                // from the Axios request in getGraphData, not the Office.js in 
+                // from the Axios request in getGraphData, not the Office.js in
                 // writeFileNamesToWorksheet
                 this.displayError(requestError);
             });
@@ -196,7 +196,7 @@ export default class App extends React.Component<AppProps, AppState> {
                     <Header logo='assets/Onedrive_Charts_icon_80x80px.png' title={this.props.title} message={this.state.headerMessage} />
                     {body}
                 </div>
-              
+
             </div>
         );
     }

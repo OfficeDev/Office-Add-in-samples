@@ -27,7 +27,7 @@ import * as msal from 'msal';
 
       if (!error) {
         if (response.tokenType === 'id_token') {
-         localStorage.setItem("loggedIn", "yes");
+         localStorage.setItem('loggedIn', 'yes');
         }
         else {
           // The tokenType is access_token, so send success message and token.
@@ -48,13 +48,13 @@ import * as msal from 'msal';
       scopes: ['user.read', 'files.read.all'],
     };
 
-    if (localStorage.getItem("loggedIn") === "yes") {
+    if (localStorage.getItem('loggedIn') === 'yes') {
       userAgentApp.acquireTokenRedirect(request);
     }
     else {
         // This will login the user and then the (response.tokenType === "id_token")
         // path in authCallback below will run, which sets localStorage.loggedIn to "yes"
-        // and then the dialog is redirected back to this script, so the 
+        // and then the dialog is redirected back to this script, so the
         // acquireTokenRedirect above runs.
         userAgentApp.loginRedirect(request);
     }

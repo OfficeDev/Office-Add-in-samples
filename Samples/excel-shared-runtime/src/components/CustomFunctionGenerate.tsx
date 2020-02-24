@@ -8,7 +8,7 @@ import { generateCustomFunction } from '../../utilities/office-apis-helpers';
      login: () => {};
  }
 
- 
+
 export interface CustomFunctionGenerateState {
     selectedOption?: string;
 }
@@ -24,7 +24,7 @@ export default class CustomFunctionGenerate extends React.Component<CustomFuncti
     }
 
 //    boundSetState: (newState: any) => {};
-    
+
     render() {
         const { login } = this.props;
 
@@ -32,18 +32,18 @@ export default class CustomFunctionGenerate extends React.Component<CustomFuncti
         return (
             <div className='ms-welcome'>
                   <label>
-        <input type="radio" value="Communications" 
+        <input type='radio' value='Communications'
                       checked={this.state.selectedOption === 'Communications'}
                       onChange={this.handleOptionChange.bind(this)} />
         Communication
       </label>
       <label>
-        <input type="radio" value="Groceries" 
+        <input type='radio' value='Groceries'
                       checked={this.state.selectedOption === 'Groceries'}
                       onChange={this.handleOptionChange.bind(this)} />
         Groceries
       </label>
-      
+
                 <div className='ms-welcome__main'>
                     <Button className='ms-welcome__action' buttonType={ButtonType.hero} iconProps={{ iconName: 'ChevronRight' }} onClick={this.handleCustomFunctionPress.bind(this, this.state.selectedOption)}>Insert data function</Button>
                 </div>
@@ -57,7 +57,7 @@ export default class CustomFunctionGenerate extends React.Component<CustomFuncti
         });
       }
 
-      handleCustomFunctionPress (selectedOption: string){
+      handleCustomFunctionPress (selectedOption: string) {
           generateCustomFunction(selectedOption);
       }
 }

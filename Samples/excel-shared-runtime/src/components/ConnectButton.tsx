@@ -4,7 +4,7 @@ import { connectService } from '../../utilities/office-apis-helpers';
 
 
  export interface ConnectButtonProps {
- 
+
      login: () => {};
  }
 
@@ -15,7 +15,7 @@ export default class ConnectButton extends React.Component<ConnectButtonProps> {
         console.log(login);
         return (
             <div className='ms-welcome'>
-     
+
                 <div className='ms-welcome__main'>
                     <Button className='ms-welcome__action' buttonType={ButtonType.hero} iconProps={{ iconName: 'ChevronRight' }} onClick={connectService}>Connect to service</Button>
                 </div>
