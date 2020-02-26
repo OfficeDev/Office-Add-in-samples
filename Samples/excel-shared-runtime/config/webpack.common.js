@@ -33,9 +33,7 @@ const entry = {
         './index.tsx',
     ],
     'functions': './functions/functions.ts',
-    'login': '../login/login.ts',
-    'logout': '../logout/logout.ts',
-    'connect': '../login/connect.ts'
+    'connect': './connect/connect.ts'
 };
 
 const rules = [
@@ -131,30 +129,15 @@ module.exports = {
             template: './functions/functions.html',
             chunks: ['functions']
         }),
+      
+      
         new HtmlWebpackPlugin({
             title: 'Office-Add-in-Microsoft-Graph-React',
-            filename: 'login/login.html',
-            template: '../login/login.html',
-            chunks: ['login']
-        }),
-        new HtmlWebpackPlugin({
-            title: 'Office-Add-in-Microsoft-Graph-React',
-            filename: 'logout/logout.html',
-            template: '../logout/logout.html',
-            chunks: ['logout']
-        }),
-        new HtmlWebpackPlugin({
-            title: 'Office-Add-in-Microsoft-Graph-React',
-            filename: 'login/connect.html',
-            template: '../login/connect.html',
+            filename: './connect/connect.html',
+            template: './connect/connect.html',
             chunks: ['connect']
         }),
-        new HtmlWebpackPlugin({
-            title: 'Office-Add-in-Microsoft-Graph-React',
-            filename: 'logoutcomplete/logoutcomplete.html',
-            template: '../logoutcomplete/logoutcomplete.html',
-            chunks: ['logoutcomplete']
-        }),
+      
         new CopyWebpackPlugin([
             {
                 from: '../assets',

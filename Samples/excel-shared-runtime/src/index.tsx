@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
-import { ensureStateInitialized, updateRibbon } from '../utilities/office-apis-helpers';
+import { ensureStateInitialized, updateRibbon } from './utilities/office-apis-helpers';
 
 import App from './components/App';
 import { add, getData } from './functions/functions';
@@ -18,6 +18,7 @@ let isOfficeInitialized = false;
 const title = 'Office-Add-in-Microsoft-Graph-React';
 
 const render = (Component) => {
+    console.log('gonna render');
     ReactDOM.render(
         <AppContainer>
             <Component title={title} isOfficeInitialized={isOfficeInitialized} />
@@ -28,9 +29,10 @@ const render = (Component) => {
 
 /* Render application after Office initializes */
 Office.initialize = async () => {
+    console.log('initialize was called');
+    isOfficeInitialized = true;
     ensureStateInitialized();
 
-    isOfficeInitialized = true;
     // SetRuntimeVisibleHelper(true);
     // @ts-ignore
     //SetStartupBehaviorHelper(Office.StartupBehavior.load);

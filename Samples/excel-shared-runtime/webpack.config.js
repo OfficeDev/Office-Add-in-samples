@@ -11,8 +11,6 @@ module.exports = {
         app: './src/index.ts',
         functions: "./src/functions/functions.ts",
         polyfill: "@babel/polyfill",
-        'login': './login/login.ts',
-        'logout': './logout/logout.ts',
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.html', '.js']
@@ -56,11 +54,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './index.html',
             chunks: ['app']
-        }),
-        new HtmlWebpackPlugin({
-            template: './login/login.html',
-            filename: 'login/login.html',
-            chunks: ['login']
         }),
         new HtmlWebpackPlugin({
             template: './logout/logout.html',
