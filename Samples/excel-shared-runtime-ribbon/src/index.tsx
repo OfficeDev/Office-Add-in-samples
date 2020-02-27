@@ -9,7 +9,6 @@ import { add, getData } from './functions/functions';
 
 import './styles.less';
 import 'office-ui-fabric-react/dist/css/fabric.min.css';
-//import { registerOnThemeChangeCallback } from 'office-ui-fabric-react';
 
 initializeIcons();
 
@@ -28,8 +27,7 @@ const render = (Component) => {
 
 /* Render application after Office initializes */
 Office.initialize = async () => {
-    ensureStateInitialized();
-
+    ensureStateInitialized(true);
     isOfficeInitialized = true;
     // SetRuntimeVisibleHelper(true);
     // @ts-ignore

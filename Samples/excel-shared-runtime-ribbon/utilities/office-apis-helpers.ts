@@ -48,7 +48,7 @@ export function updateRibbon() {
   OfficeRuntime.ui
     .getRibbon()
     // @ts-ignore
-    .then( (ribbon) => {
+    .then(ribbon => {
       ribbon.requestUpdate({
         tabs: [
           {
@@ -89,7 +89,6 @@ export function updateRibbon() {
       });
     });
 }
-
 
 /*
     Managing the dialogs.
@@ -152,9 +151,21 @@ export function generateCustomFunction(selectedOption: string) {
 
 //This will check if state is initialized, and if not, initialize it.
 //Useful as there are multiple entry points that need the state and it is not clear which one will get called first.
-export async function ensureStateInitialized() {
+export async function ensureStateInitialized(isOfficeInitializing: boolean) {
   let g = getGlobal() as any;
   monitorSheetChanges();
+  let initValue = false;
+  if (isOfficeInitializing) {
+    //we are being called in response to Office Initialize
+    if (g.state !== undefined) {
+      if (g.state.isInitialized === false) {
+        g.state.isInitialized = true;
+      }
+    }
+    if (g.state === undefined) {
+      initValue = true;
+    }
+  }
 
   if (g.state === undefined) {
     g.state = {
@@ -166,6 +177,7 @@ export async function ensureStateInitialized() {
       isConnectInProgress: false,
       isFirstSyncCall: true,
       isSumEnabled: false,
+      isInitialized: initValue,
       updateRct: () => {},
       setTaskpaneStatus: (opened: boolean) => {
         g.state.isTaskpaneOpen = opened;
@@ -240,20 +252,22 @@ async function onTableSelectionChange(event) {
 export async function monitorSheetChanges() {
   try {
     let g = getGlobal() as any;
-    await Excel.run(async context => {
-      let table = context.workbook.tables.getItem('ExpensesTable');
-      if (table !== undefined) {
-        table.onChanged.add(onTableChange);
-        table.onSelectionChanged.add(onTableSelectionChange);
-        await context.sync();
-        updateRibbon();
-        console.log('A handler has been registered for the onChanged event.');
-      } else {
-        g.state.isSumEnabled = false;
-        updateRibbon();
-        console.log('Expense table not present to add handler to.');
-      }
-    });
+    if (g.state.isInitialized) {
+      await Excel.run(async context => {
+        let table = context.workbook.tables.getItem('ExpensesTable');
+        if (table !== undefined) {
+          table.onChanged.add(onTableChange);
+          table.onSelectionChanged.add(onTableSelectionChange);
+          await context.sync();
+          updateRibbon();
+          console.log('A handler has been registered for the onChanged event.');
+        } else {
+          g.state.isSumEnabled = false;
+          updateRibbon();
+          console.log('Expense table not present to add handler to.');
+        }
+      });
+    }
   } catch (error) {
     console.error(error);
   }

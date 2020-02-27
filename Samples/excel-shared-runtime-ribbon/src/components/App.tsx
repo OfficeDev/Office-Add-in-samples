@@ -101,7 +101,7 @@ export default class App extends React.Component<AppProps, AppState> {
   }
 
   componentDidMount() {
-    ensureStateInitialized();
+    ensureStateInitialized(false);
     let g = getGlobal() as any;
 
     g.state.updateRct = (data: string) => {
