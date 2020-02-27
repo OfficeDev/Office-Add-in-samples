@@ -66,10 +66,6 @@ export function updateRibbon() {
                 enabled: g.state.isConnected
               },
               {
-                id: 'BtnSyncData',
-                enabled: g.state.isSyncEnabled
-              },
-              {
                 id: 'BtnSumData',
                 enabled: g.state.isSumEnabled
               },
@@ -80,6 +76,14 @@ export function updateRibbon() {
               {
                 id: 'BtnDisableAddinStart',
                 enabled: g.state.isStartOnDocOpen
+              },
+              {
+                id: 'BtnOpenTaskpane',
+                enabled: !g.state.isTaskpaneOpen
+              },
+              {
+                id: 'BtnCloseTaskpane',
+                enabled: g.state.isTaskpaneOpen
               }
             ]
           }

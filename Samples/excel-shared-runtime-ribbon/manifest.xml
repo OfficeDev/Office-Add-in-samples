@@ -231,11 +231,32 @@
 										<bt:Image size="80" resid="Icon.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
-									<Action xsi:type="ShowTaskpane">
-										<TaskpaneId>ButtonId1</TaskpaneId>
-										<SourceLocation resid="ContosoAddin.Url"/>
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnopentaskpane</FunctionName>
 									</Action>
+									
 								</Control>
+
+									<Control xsi:type="Button" id="BtnCloseTaskpane">
+									<Label resid="BtnCloseTaskpane.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnCloseTaskpane.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnCloseTaskpane.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnclosetaskpane</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
+
 							</Group>
 							<Label resid="CommandsGroup.Label"/>
 						</CustomTab>
