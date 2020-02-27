@@ -11,11 +11,11 @@
 	<ProviderName>Office Developer Education Team</ProviderName>
 	<DefaultLocale>en-US</DefaultLocale>
 	<!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-	<DisplayName DefaultValue="Microsoft Graph Data" />
-	<Description DefaultValue="Uses Implicit Flow to get an access token to Microsoft Graph and then gets some Graph data."/>
+	<DisplayName DefaultValue="Contoso Data Importer" />
+	<Description DefaultValue="Uses a shared runtime to share global state across all parts of the add-in and provide a responsive ribbon UI."/>
 	<!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
-	<IconUrl DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_32x32px.png" />
-	<HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/hi-res-icon.png"/>
+	<IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
+    <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
 	<!--If you plan to submit this add-in to the Office Store, uncomment the SupportUrl element below-->
 	<!--<SupportUrl DefaultValue="[Insert the URL of a page that provides support information for the app]">-->
 	<!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
@@ -47,15 +47,15 @@
 			<!-- Make sure the hosts you override match the hosts declared in the top section of the manifest. -->
 			<Host xsi:type="Workbook">
 				<Runtimes>
-					<Runtime resid="TaskPaneAndCustomFunction.Url" lifetime="long" />
+					<Runtime resid="ContosoAddin.Url" lifetime="long" />
 				</Runtimes>
 				<AllFormFactors>
 					<ExtensionPoint xsi:type="CustomFunctions">
 						<Script>
-							<SourceLocation resid="TaskPaneAndCustomFunction.Url"/>
+							<SourceLocation resid="ContosoAddin.Url"/>
 						</Script>
 						<Page>
-							<SourceLocation resid="TaskPaneAndCustomFunction.Url"/>
+							<SourceLocation resid="ContosoAddin.Url"/>
 						</Page>
 						<Metadata>
 							<SourceLocation resid="Functions.Metadata.Url"/>
@@ -76,13 +76,11 @@
 					</GetStarted>
 					<!-- Function file is a HTML page that includes the JavaScript where functions for ExecuteAction will be called.
             Think of the FunctionFile as the code behind ExecuteFunction. -->
-					<FunctionFile resid="TaskPaneAndCustomFunction.Url" />
+					<FunctionFile resid="ContosoAddin.Url" />
 					<!-- PrimaryCommandSurface is the main Office Ribbon. -->
 					<ExtensionPoint xsi:type="PrimaryCommandSurface">
 						<!-- Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab. -->
 						<CustomTab id="ShareTime">
-
-
 							<Group id="ServiceGroup">
 								<Label resid="ServiceGroup.Label"/>
 								<Icon>
@@ -99,16 +97,15 @@
 										<Description resid="BtnConnectService.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Enable.16x16"/>
-										<bt:Image size="32" resid="Enable.32x32"/>
-										<bt:Image size="80" resid="Connect.80x80"/>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
 										<FunctionName>btnconnectservice</FunctionName>
 									</Action>
 								</Control>
-
 								<Control xsi:type="Button" id="BtnDisConnectService">
 									<Label resid="BtnDisConnectService.Label" />
 									<Supertip>
@@ -120,16 +117,14 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Disconnect.80x80"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-
 										<FunctionName>btndisconnectservice</FunctionName>
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
-
 								<Control xsi:type="Button" id="BtnInsertData">
 									<Label resid="BtnInsertData.Label" />
 									<Supertip>
@@ -141,18 +136,15 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Insert.80x80"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-
 										<FunctionName>btninsertdata</FunctionName>
-
 									</Action>
 									<Enabled>false</Enabled>
-
 								</Control>
-									<Control xsi:type="Button" id="BtnSumData">
+								<Control xsi:type="Button" id="BtnSumData">
 									<Label resid="BtnSumData.Label" />
 									<Supertip>
 										<!-- ToolTip title. resid must point to a ShortString resource. -->
@@ -163,16 +155,13 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Insert.80x80"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-
 										<FunctionName>btnsumdata</FunctionName>
-
 									</Action>
 									<Enabled>false</Enabled>
-
 								</Control>
 								<Control xsi:type="Button" id="BtnSyncData">
 									<Label resid="BtnSyncData.Label" />
@@ -185,19 +174,15 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Insert.80x80"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-
 										<FunctionName>btnsyncdata</FunctionName>
-
 									</Action>
 									<Enabled>false</Enabled>
-
 								</Control>
 							</Group>
-
 							<Group id="StartupGroup">
 								<Label resid="StartupGroup.Label"/>
 								<Icon>
@@ -205,7 +190,6 @@
 									<bt:Image size="32" resid="Icon.32x32"/>
 									<bt:Image size="80" resid="Icon.80x80"/>
 								</Icon>
-
 								<Control xsi:type="Button" id="BtnEnableAddinStart">
 									<Label resid="BtnEnableAddinStart.Label" />
 									<Supertip>
@@ -217,14 +201,13 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Enable.80x80"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
 										<FunctionName>btnenableaddinstart</FunctionName>
 									</Action>
 								</Control>
-
 								<Control xsi:type="Button" id="BtnDisableAddinStart">
 									<Label resid="BtnDisableAddinStart.Label" />
 									<Supertip>
@@ -236,18 +219,15 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Disable.80x80"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
 									<Action xsi:type="ExecuteFunction">
-
 										<FunctionName>btndisableaddinstart</FunctionName>
 									</Action>
 									<Enabled>false</Enabled>
-
 								</Control>
 							</Group>
-
 							<Group id="TaskpaneGroup">
 								<Label resid="TaskpaneGroup.Label"/>
 								<Icon>
@@ -266,15 +246,14 @@
 									<Icon>
 										<bt:Image size="16" resid="Icon.16x16"/>
 										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Open.80x80"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
 									</Icon>
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
-									 <Action xsi:type="ShowTaskpane">
-                    <TaskpaneId>ButtonId1</TaskpaneId>
-                    <SourceLocation resid="TaskPaneAndCustomFunction.Url"/>
-                  </Action>
+									<Action xsi:type="ShowTaskpane">
+										<TaskpaneId>ButtonId1</TaskpaneId>
+										<SourceLocation resid="ContosoAddin.Url"/>
+									</Action>
 								</Control>
-
 							</Group>
 							<Label resid="CommandsGroup.Label"/>
 						</CustomTab>
@@ -285,27 +264,16 @@
 		<!-- You can use resources across hosts and form factors. -->
 		<Resources>
 			<bt:Images>
-				<bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_16x16px.png"/>
-				<bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_32x32px.png"/>
-				<bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png"/>
-				<bt:Image id="Enable.32x32" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png"/>
-				<bt:Image id="Enable.16x16" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png"/>
-				<bt:Image id="Connect.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png"/>
-				<bt:Image id="Disconnect.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png" />
-				<bt:Image id="Insert.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png" />
-				<bt:Image id="Enable.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png" />
-				<bt:Image id="Disable.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png" />
-				<bt:Image id="Open.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png" />
-				<bt:Image id="Close.80x80" DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_80x80px.png" />
-
+				<bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icond-16.png"/>
+				<bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+				<bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
 			</bt:Images>
 			<bt:Urls>
 				<bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/index.html" />
 				<bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
-				<bt:Url id="Functions.Script.Url" DefaultValue="https://localhost:3000/dist/functions.js"/>
 				<bt:Url id="Functions.Metadata.Url" DefaultValue="https://localhost:3000/functions.json"/>
 				<bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
-				<bt:Url id="TaskPaneAndCustomFunction.Url" DefaultValue="https://localhost:3000/index.html"/>
+				<bt:Url id="ContosoAddin.Url" DefaultValue="https://localhost:3000/index.html"/>
 			</bt:Urls>
 			<!-- ShortStrings max characters==125. -->
 			<bt:ShortStrings>
