@@ -163,25 +163,7 @@
 									</Action>
 									<Enabled>false</Enabled>
 								</Control>
-								<Control xsi:type="Button" id="BtnSyncData">
-									<Label resid="BtnSyncData.Label" />
-									<Supertip>
-										<!-- ToolTip title. resid must point to a ShortString resource. -->
-										<Title resid="BtnSyncData.Label" />
-										<!-- ToolTip description. resid must point to a LongString resource. -->
-										<Description resid="BtnSyncData.Tooltip" />
-									</Supertip>
-									<Icon>
-										<bt:Image size="16" resid="Icon.16x16"/>
-										<bt:Image size="32" resid="Icon.32x32"/>
-										<bt:Image size="80" resid="Icon.80x80"/>
-									</Icon>
-									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
-									<Action xsi:type="ExecuteFunction">
-										<FunctionName>btnsyncdata</FunctionName>
-									</Action>
-									<Enabled>false</Enabled>
-								</Control>
+							
 							</Group>
 							<Group id="StartupGroup">
 								<Label resid="StartupGroup.Label"/>
