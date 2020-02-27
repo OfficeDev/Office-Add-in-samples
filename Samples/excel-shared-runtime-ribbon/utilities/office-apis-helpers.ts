@@ -62,7 +62,7 @@ export const signInO365 = async (
   setToken: (x: string) => void,
   displayError: (x: string) => void
 ) => {
-  setState({ authStatus: "loginInProcess" });
+  setState({ headerMessage: "loginInProcess" });
 
   await Office.context.ui.displayDialogAsync(
     dialogLoginUrl,
@@ -91,7 +91,7 @@ export const signInO365 = async (
       loginDialog.close();
       setToken(messageFromDialog.result);
       setState({
-        authStatus: "loggedIn",
+       
         headerMessage: "Get Data"
       });
     } else {
@@ -141,7 +141,7 @@ export const logoutFromO365 = async (
   const processLogoutMessage = () => {
     logoutDialog.close();
     setState({
-      authStatus: "notLoggedIn",
+    
       headerMessage: "Welcome"
     });
   };
@@ -173,7 +173,7 @@ const processDialogEvent = (
       // logged out and revert to the app's starting state. It does no harm for a user to
       // press the login button again even if the user is logged in.
       setState({
-        authStatus: "notLoggedIn",
+       
         headerMessage: "Welcome"
       });
       break;
