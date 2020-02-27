@@ -12,10 +12,8 @@ export function getGlobal() {
 export const SetRuntimeVisibleHelper = (visible: boolean) => {
   let p: any;
   if (visible) {
-    // @ts-ignore
     p = Office.addin.showAsTaskpane();
   } else {
-    // @ts-ignore
     p = Office.addin.hide();
   }
 
