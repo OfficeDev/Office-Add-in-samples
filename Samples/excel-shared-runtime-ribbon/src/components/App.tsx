@@ -8,7 +8,7 @@ import Progress from './Progress';
 //import SuccessPageBody from './SuccessPageBody';
 import OfficeAddinMessageBar from './OfficeAddinMessageBar';
 import { getGraphData } from '../../utilities/microsoft-graph-helpers';
-import { writeFileNamesToWorksheet, logoutFromO365, signInO365, getGlobal, ensureStateInitialized } from '../../utilities/office-apis-helpers';
+import { writeFileNamesToWorksheet, getGlobal, ensureStateInitialized } from '../../utilities/office-apis-helpers';
 import { btnSignIn } from '../commands/commands';
 import CustomFunctionGenerate from './CustomFunctionGenerate';
 
@@ -37,7 +37,7 @@ export default class App extends React.Component<AppProps, AppState> {
         this.boundSetState = this.setState.bind(this);
         this.setToken = this.setToken.bind(this);
         this.displayError = this.displayError.bind(this);
-        this.login = this.login.bind(this);
+        //this.login = this.login.bind(this);
         const theToken = localStorage.getItem('mytoken');
         console.log(btnSignIn);
         console.log('token from session storage is: ' + theToken);
@@ -105,12 +105,12 @@ export default class App extends React.Component<AppProps, AppState> {
         });
     }
 
-    login = async () => {
-        await signInO365(this.boundSetState, this.setToken, this.displayError);
+    dummy1 = async () => {
+        
     }
 
-    logout = async () => {
-        await logoutFromO365(this.boundSetState, this.displayError);
+    dummy2 = async () => {
+        
     }
 
     getFileNames = async () => {
@@ -161,11 +161,11 @@ export default class App extends React.Component<AppProps, AppState> {
             // filter text button
             // preview data view
             // insert cf button
-            body = (<CustomFunctionGenerate login={this.login} />);
+            body = (<CustomFunctionGenerate login={this.dummy1} />);
         } else {
             //disconnected UI
             //just a connect button
-            body = (<ConnectButton login={this.login} />);
+            body = (<ConnectButton login={this.dummy2} />);
         }
         // if (this.state.authStatus === 'notLoggedIn') {
         //     body = ( <StartPageBody login={this.login} listItems={this.listItems}/> );
