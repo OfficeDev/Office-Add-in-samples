@@ -10,7 +10,8 @@ import OfficeAddinMessageBar from './OfficeAddinMessageBar';
 import { getGraphData } from '../../utilities/microsoft-graph-helpers';
 import { writeFileNamesToWorksheet, getGlobal, ensureStateInitialized } from '../../utilities/office-apis-helpers';
 import { btnSignIn } from '../commands/commands';
-import CustomFunctionGenerate from './CustomFunctionGenerate';
+//import CustomFunctionGenerate from './CustomFunctionGenerate';
+import DataFilter from './DataFilter';
 
 export interface AppProps {
     title: string;
@@ -161,30 +162,13 @@ export default class App extends React.Component<AppProps, AppState> {
             // filter text button
             // preview data view
             // insert cf button
-            body = (<CustomFunctionGenerate login={this.dummy1} />);
+            body = (<DataFilter />);
         } else {
             //disconnected UI
             //just a connect button
             body = (<ConnectButton login={this.dummy2} />);
         }
-        // if (this.state.authStatus === 'notLoggedIn') {
-        //     body = ( <StartPageBody login={this.login} listItems={this.listItems}/> );
-        // }
-        // else if (this.state.authStatus === 'loginInProcess') {
-        //     body = ( <Spinner className='spinner' type={SpinnerType.large} label='Please sign-in on the pop-up window.' /> );
-        // }
-        // else {
-        //     if (this.state.fileFetch === 'notFetched') {
-        //         body = ( <GetDataPageBody getFileNames={this.getFileNames} logout={this.logout}/> );
-        //     }
-        //     else if (this.state.fileFetch === 'fetchInProcess') {
-        //         body = ( <Spinner className='spinner' type={SpinnerType.large} label='We are getting the data for you.' /> );
-        //     }
-        //     else {
-        //         body = ( <SuccessPageBody getFileNames={this.getFileNames} logout={this.logout} /> );
-        //     }
-        // }
-        //body += statusBody;
+       
 
         return (
             <div>
