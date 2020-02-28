@@ -1,4 +1,4 @@
-import { getGlobal } from '../../utilities/office-apis-helpers';
+import { getGlobal } from '../commands/commands';
 
 /**
  * Adds two numbers.

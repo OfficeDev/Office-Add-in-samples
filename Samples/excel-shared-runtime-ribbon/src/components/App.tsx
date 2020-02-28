@@ -4,10 +4,9 @@ import ConnectButton from './ConnectButton';
 import Progress from './Progress';
 import OfficeAddinMessageBar from './OfficeAddinMessageBar';
 import {
-  getGlobal,
   ensureStateInitialized
 } from '../../utilities/office-apis-helpers';
-import { btnConnectService } from '../commands/commands';
+import { getGlobal } from '../commands/commands';
 import DataFilter from './DataFilter';
 
 export interface AppProps {
@@ -31,8 +30,7 @@ export default class App extends React.Component<AppProps, AppState> {
     // so code that passes boundSetState is more self-documenting.
     this.boundSetState = this.setState.bind(this);
     this.displayError = this.displayError.bind(this);
-    console.log(btnConnectService);
-
+    
     this.state = {
       headerMessage: 'Welcome',
       errorMessage: ''
@@ -57,7 +55,7 @@ export default class App extends React.Component<AppProps, AppState> {
       return (
         <Progress
           title={title}
-          logo="assets/Onedrive_Charts_icon_80x80px.png"
+          logo="assets/icon-80.png"
           message="Please sideload your add-in to see app body."
         />
       );
@@ -90,7 +88,7 @@ export default class App extends React.Component<AppProps, AppState> {
 
         <div className="ms-welcome">
           <Header
-            logo="assets/Onedrive_Charts_icon_80x80px.png"
+            logo="assets/icon-80.png"
             title={this.props.title}
             message={this.state.headerMessage}
           />
@@ -106,7 +104,11 @@ export default class App extends React.Component<AppProps, AppState> {
 
     g.state.updateRct = (data: string) => {
       // `this` refers to our react component
-      this.setState({ headerMessage: data });
+      if (data === 'true') {
+      this.setState({ headerMessage: 'Connected to data service' });
+      } else {
+        this.setState({ headerMessage: 'Welcome'});
+      }
     };
   }
 }
