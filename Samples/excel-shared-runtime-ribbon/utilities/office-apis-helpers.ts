@@ -1,21 +1,10 @@
-export function getGlobal() {
-  console.log('init globals for command buttons');
-  return typeof self !== 'undefined'
-    ? self
-    : typeof window !== 'undefined'
-    ? window
-    : typeof global !== 'undefined'
-    ? global
-    : undefined;
-}
+import { getGlobal } from '../src/commands/commands';
 
 export const SetRuntimeVisibleHelper = (visible: boolean) => {
   let p: any;
   if (visible) {
-    // @ts-ignore
     p = Office.addin.showAsTaskpane();
   } else {
-    // @ts-ignore
     p = Office.addin.hide();
   }
 
@@ -68,10 +57,6 @@ export function updateRibbon() {
                 enabled: g.state.isConnected
               },
               {
-                id: 'BtnSyncData',
-                enabled: g.state.isSyncEnabled
-              },
-              {
                 id: 'BtnSumData',
                 enabled: g.state.isSumEnabled
               },
@@ -82,6 +67,14 @@ export function updateRibbon() {
               {
                 id: 'BtnDisableAddinStart',
                 enabled: g.state.isStartOnDocOpen
+              },
+              {
+                id: 'BtnOpenTaskpane',
+                enabled: !g.state.isTaskpaneOpen
+              },
+              {
+                id: 'BtnCloseTaskpane',
+                enabled: g.state.isTaskpaneOpen
               }
             ]
           }
