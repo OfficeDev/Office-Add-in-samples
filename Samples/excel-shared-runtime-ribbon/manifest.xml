@@ -286,8 +286,8 @@
 				<bt:String id="Functions.Namespace" DefaultValue="CONTOSOSHARE"/>
 				<bt:String id="BtnSignIn.Label" DefaultValue="Sign in"/>
 				<bt:String id="BtnSignOut.Label" DefaultValue="Sign out"/>
-				<bt:String id="BtnEnableAddinStart.Label" DefaultValue="Enable startup"/>
-				<bt:String id="BtnDisableAddinStart.Label" DefaultValue="Disable startup"/>
+				<bt:String id="BtnEnableAddinStart.Label" DefaultValue="Load on doc open"/>
+				<bt:String id="BtnDisableAddinStart.Label" DefaultValue="No load behavior"/>
 				<bt:String id="BtnConnectService.Label" DefaultValue="Connect service"/>
 				<bt:String id="BtnDisConnectService.Label" DefaultValue="Disconnect service"/>
 				<bt:String id="BtnInsertData.Label" DefaultValue="Insert data"/>
@@ -305,8 +305,8 @@
 			<bt:LongStrings>
 				<bt:String id="TaskpaneButton.Tooltip" DefaultValue="Get files stored on OneDrive" />
 				<bt:String id="GetStarted.Description" DefaultValue="Choose Open Add-in, then Connect to Office 365 to get started." />
-				<bt:String id="BtnEnableAddinStart.Tooltip" DefaultValue="Enable add-in start on doc open"/>
-				<bt:String id="BtnDisableAddinStart.Tooltip" DefaultValue="Disable add-in start on doc open"/>
+				<bt:String id="BtnEnableAddinStart.Tooltip" DefaultValue="Add-in will load and start running as soon as document opens."/>
+				<bt:String id="BtnDisableAddinStart.Tooltip" DefaultValue="Add-in will have no load document load beahvior."/>
 				<bt:String id="BtnConnectService.Tooltip" DefaultValue="Connect to backend data service"/>
 				<bt:String id="BtnDisConnectService.Tooltip" DefaultValue="Disconnect from backend data service"/>
 				<bt:String id="BtnInsertData.Tooltip" DefaultValue="Insert data from backend data service"/>

@@ -72,12 +72,71 @@ The add-in's ribbon buttons have the following behavior:
 - **Disconnect service:** Disonnects from the mock Contoso data service.
 - **Insert data:** Inserts a table from the mock Contoso data service.
 - **Sum:** Enabled when you are in the table. Select a range of numerical cells and it will output the sum of those cells.
-- **Enable startup:** Choose this to enable the add-in to run the next time the document is opened. The `Sum` button will work immediately when in the table the next time the document is opened. Note that you need to save the document first to save this change.
-- **Disable startup:** Choose this to disable the add-in from running on document open. The Sum button will not work until you activate the add-in in some way (ribbon, task pane or custom function action).
+- **Load on doc open:** Choose this to enable the add-in to run the next time the document is opened. The `Sum` button will work immediately when in the table the next time the document is opened. Note that you need to save the document first to save this change.
+- **No load behavior:** Choose this to disable the add-in from running on document open. The Sum button will not work until you activate the add-in in some way (ribbon, task pane or custom function action).
 - **Open task pane:** Opens the task pane.
 - **Close task pane:** Closes the task pane. The task pane is not shut down and will remember its state.
 
 If the add-in is not connected to a service, the task pane will show a button to connect. Once connected, the task pane lets you choose a category from the data and insert a custom function. The custom function will filter data displayed to the selected category.
+
+
+## Key parts of this sample
+
+Global state is tracked in a window object retrieved using a `getGlobal()` function. This is accessible to custom functions, the task pane, and the ribbon (because all the code is running in the same JavaScript runtime.) The `ensureStateInitialized()` method initializes global state on startup. The global state tracks many items such as whether the add-in is connected to a service, and whether the task pane is open or closed.
+
+### Enable and disable ribbon buttons
+
+To enable and disable ribbon buttons the add-in uses the `Office.ribbon.requestUpdate` method and passes a JSON description of the buttons. Anytime there is a state change that requires the ribbon buttons to change, the `updateRibbon()` is called which sets if buttons are enabled based on global state variables.
+
+### Open and close the task pane
+
+To open or close the task pane, the add-in uses the `Office.addin.showAsTaskpane()` and `Office.addin.hide()` methods.
+
+### Set runtime load behavior
+
+If the `Load on doc open` button is chosen, the add-in configures the document so that the add-in begins running as soon as the document is opened. This allows the add-in to start running and monitoring Office events before the task pane is displayed. To configure the document to load the add-in on open, the add-in uses the `Office.addin.setStartupBehavior(Office.StartupBehavior.load)` method. To turn off the document load behavior, the add-in uses the `Office.addin.setStartupBehavior(Office.StartupBehavior.none)` method.
+
+### Run code in the background
+
+When the document is configured to load the add-in on doc open, the Office.Initialize method is called. The add-in calls ensureInitialize to set up the initial global state
+
+```typescript
+Office.initialize = async () => {
+    ensureStateInitialized(true);
+    isOfficeInitialized = true;
+    ...
+```
+
+The `ensureStateInitialized()` method will call the `monitorSheetCHanges()` method which will then search for the expense table. If the expenses table was inserted, it adds an event handler for the `onTableSelectionChange` event.
+
+```typescript
+export async function monitorSheetChanges() {
+  try {
+    let g = getGlobal() as any;
+    if (g.state.isInitialized) {
+      await Excel.run(async context => {
+        let table = context.workbook.tables.getItem('ExpensesTable');
+        if (table !== undefined) {
+          table.onSelectionChanged.add(onTableSelectionChange);
+          await context.sync();
+          updateRibbon();
+        } else {
+          g.state.isSumEnabled = false;
+          updateRibbon();
+        }
+      ...
+```
+
+## Security notes
+
+You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
+
+You can install or uninstall the certificates by running the following commands in the project folder.
+
+```
+npx office-addin-dev-certs install
+npx office-addin-dev-certs uninstall
+```
 
 ## Copyright
 

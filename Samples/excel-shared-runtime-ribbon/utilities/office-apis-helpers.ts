@@ -19,10 +19,8 @@ export const SetRuntimeVisibleHelper = (visible: boolean) => {
 
 export const SetStartupBehaviorHelper = (isStarting: boolean) => {
   if (isStarting) {
-    // @ts-ignore
     Office.addin.setStartupBehavior(Office.StartupBehavior.load);
   } else {
-    // @ts-ignore
     Office.addin.setStartupBehavior(Office.StartupBehavior.none);
   }
   let g = getGlobal() as any;
@@ -33,54 +31,48 @@ export function updateRibbon() {
   // Update ribbon based on state tracking
   const g = getGlobal() as any;
 
-  // @ts-ignore
-  OfficeRuntime.ui
-    .getRibbon()
-    // @ts-ignore
-    .then(ribbon => {
-      ribbon.requestUpdate({
-        tabs: [
+  Office.ribbon.requestUpdate({
+    tabs: [
+      {
+        id: 'ShareTime',
+        // visible: 'true',
+        controls: [
           {
-            id: 'ShareTime',
-            // visible: 'true',
-            controls: [
-              {
-                id: 'BtnConnectService',
-                enabled: !g.state.isConnected
-              },
-              {
-                id: 'BtnDisConnectService',
-                enabled: g.state.isConnected
-              },
-              {
-                id: 'BtnInsertData',
-                enabled: g.state.isConnected
-              },
-              {
-                id: 'BtnSumData',
-                enabled: g.state.isSumEnabled
-              },
-              {
-                id: 'BtnEnableAddinStart',
-                enabled: !g.state.isStartOnDocOpen
-              },
-              {
-                id: 'BtnDisableAddinStart',
-                enabled: g.state.isStartOnDocOpen
-              },
-              {
-                id: 'BtnOpenTaskpane',
-                enabled: !g.state.isTaskpaneOpen
-              },
-              {
-                id: 'BtnCloseTaskpane',
-                enabled: g.state.isTaskpaneOpen
-              }
-            ]
+            id: 'BtnConnectService',
+            enabled: !g.state.isConnected
+          },
+          {
+            id: 'BtnDisConnectService',
+            enabled: g.state.isConnected
+          },
+          {
+            id: 'BtnInsertData',
+            enabled: g.state.isConnected
+          },
+          {
+            id: 'BtnSumData',
+            enabled: g.state.isSumEnabled
+          },
+          {
+            id: 'BtnEnableAddinStart',
+            enabled: !g.state.isStartOnDocOpen
+          },
+          {
+            id: 'BtnDisableAddinStart',
+            enabled: g.state.isStartOnDocOpen
+          },
+          {
+            id: 'BtnOpenTaskpane',
+            enabled: !g.state.isTaskpaneOpen
+          },
+          {
+            id: 'BtnCloseTaskpane',
+            enabled: g.state.isTaskpaneOpen
           }
         ]
-      });
-    });
+      }
+    ]
+  });
 }
 
 /*
@@ -192,13 +184,11 @@ export async function ensureStateInitialized(isOfficeInitializing: boolean) {
       }
     };
 
-    // @ts-ignore
-    let addinState = await Office.addin._getState();
+    let addinState = await Office.addin.getStartupBehavior();
     console.log('load state is:');
     console.log('load state' + addinState);
-    if (addinState === 'Background') {
+    if (addinState === Office.StartupBehavior.load) {
       g.state.isStartOnDocOpen = true;
-      //run();
     }
     if (localStorage.getItem('loggedIn') === 'yes') {
       g.state.isSignedIn = true;
@@ -253,11 +243,9 @@ export async function monitorSheetChanges() {
           table.onSelectionChanged.add(onTableSelectionChange);
           await context.sync();
           updateRibbon();
-          console.log('A handler has been registered for the onChanged event.');
         } else {
           g.state.isSumEnabled = false;
           updateRibbon();
-          console.log('Expense table not present to add handler to.');
         }
       });
     }
