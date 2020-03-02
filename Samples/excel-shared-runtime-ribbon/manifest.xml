@@ -11,13 +11,8 @@
 	<ProviderName>Office Developer Education Team</ProviderName>
 	<DefaultLocale>en-US</DefaultLocale>
 	<!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-<<<<<<< HEAD
-	<DisplayName DefaultValue="Contoso Data" />
-	<Description DefaultValue="Shows shared runtime features of enable/disable ribbon buttons, share global data between task pane and custom functions, and show/hide task pane."/>
-=======
 	<DisplayName DefaultValue="Contoso Data Importer" />
 	<Description DefaultValue="Uses a shared runtime to share global state across all parts of the add-in and provide a responsive ribbon UI."/>
->>>>>>> 57317563a25857d5b776239d5009d1933c64a16c
 	<!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
 	<IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
     <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
