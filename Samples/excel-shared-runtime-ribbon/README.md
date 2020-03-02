@@ -21,7 +21,7 @@ Shared runtime sample
 
 Solution | Author(s)
 ---------|----------
-Office Add-in Microsoft Graph React | Microsoft
+Office Add-in Shared Runtime Ribbon/Task pane APIs | Microsoft
 
 ## Version history
 

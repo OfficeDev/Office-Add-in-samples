@@ -11,8 +11,8 @@
 	<ProviderName>Office Developer Education Team</ProviderName>
 	<DefaultLocale>en-US</DefaultLocale>
 	<!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-	<DisplayName DefaultValue="Microsoft Graph Data" />
-	<Description DefaultValue="Uses Implicit Flow to get an access token to Microsoft Graph and then gets some Graph data."/>
+	<DisplayName DefaultValue="Contoso Data" />
+	<Description DefaultValue="Shows shared runtime features of enable/disable ribbon buttons, share global data between task pane and custom functions, and show/hide task pane."/>
 	<!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
 	<IconUrl DefaultValue="https://localhost:3000/assets/Onedrive_Charts_icon_32x32px.png" />
 	<HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/hi-res-icon.png"/>
@@ -311,7 +311,7 @@
 			<bt:ShortStrings>
 				<bt:String id="TaskpaneButton.Label" DefaultValue="Open Add-in" />
 				<bt:String id="Group1Label" DefaultValue="OneDrive Files" />
-				<bt:String id="GetStarted.Title" DefaultValue="Microsoft Graph data add-in has loaded successfully." />
+				<bt:String id="GetStarted.Title" DefaultValue="Contoso data add-in has loaded successfully." />
 				<bt:String id="Functions.Namespace" DefaultValue="CONTOSOSHARE"/>
 				<bt:String id="BtnSignIn.Label" DefaultValue="Sign in"/>
 				<bt:String id="BtnSignOut.Label" DefaultValue="Sign out"/>
@@ -334,8 +334,6 @@
 			<bt:LongStrings>
 				<bt:String id="TaskpaneButton.Tooltip" DefaultValue="Get files stored on OneDrive" />
 				<bt:String id="GetStarted.Description" DefaultValue="Choose Open Add-in, then Connect to Office 365 to get started." />
-				<bt:String id="BtnSignIn.Tooltip" DefaultValue="Sign in to Microsoft Graph"/>
-				<bt:String id="BtnSignOut.Tooltip" DefaultValue="Sign out of Microsoft Graph"/>
 				<bt:String id="BtnEnableAddinStart.Tooltip" DefaultValue="Enable add-in start on doc open"/>
 				<bt:String id="BtnDisableAddinStart.Tooltip" DefaultValue="Disable add-in start on doc open"/>
 				<bt:String id="BtnConnectService.Tooltip" DefaultValue="Connect to backend data service"/>

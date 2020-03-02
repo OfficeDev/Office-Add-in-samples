@@ -14,7 +14,7 @@ initializeIcons();
 
 let isOfficeInitialized = false;
 
-const title = 'Office-Add-in-Microsoft-Graph-React';
+const title = 'Office-Add-in-Contoso-Data-Importer';
 
 const render = (Component) => {
     ReactDOM.render(
