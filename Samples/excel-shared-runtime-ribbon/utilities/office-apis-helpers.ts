@@ -31,48 +31,53 @@ export function updateRibbon() {
   // Update ribbon based on state tracking
   const g = getGlobal() as any;
 
-  Office.ribbon.requestUpdate({
-    tabs: [
-      {
-        id: 'ShareTime',
-        // visible: 'true',
-        controls: [
+  // @ts-ignore
+  OfficeRuntime.ui
+    .getRibbon()
+    // @ts-ignore
+    .then(ribbon => {
+      ribbon.requestUpdate({
+        tabs: [
           {
-            id: 'BtnConnectService',
-            enabled: !g.state.isConnected
-          },
-          {
-            id: 'BtnDisConnectService',
-            enabled: g.state.isConnected
-          },
-          {
-            id: 'BtnInsertData',
-            enabled: g.state.isConnected
-          },
-          {
-            id: 'BtnSumData',
-            enabled: g.state.isSumEnabled
-          },
-          {
-            id: 'BtnEnableAddinStart',
-            enabled: !g.state.isStartOnDocOpen
-          },
-          {
-            id: 'BtnDisableAddinStart',
-            enabled: g.state.isStartOnDocOpen
-          },
-          {
-            id: 'BtnOpenTaskpane',
-            enabled: !g.state.isTaskpaneOpen
-          },
-          {
-            id: 'BtnCloseTaskpane',
-            enabled: g.state.isTaskpaneOpen
+            id: 'ShareTime',
+            controls: [
+              {
+                id: 'BtnConnectService',
+                enabled: !g.state.isConnected
+              },
+              {
+                id: 'BtnDisConnectService',
+                enabled: g.state.isConnected
+              },
+              {
+                id: 'BtnInsertData',
+                enabled: g.state.isConnected
+              },
+              {
+                id: 'BtnSumData',
+                enabled: g.state.isSumEnabled
+              },
+              {
+                id: 'BtnEnableAddinStart',
+                enabled: !g.state.isStartOnDocOpen
+              },
+              {
+                id: 'BtnDisableAddinStart',
+                enabled: g.state.isStartOnDocOpen
+              },
+              {
+                id: 'BtnOpenTaskpane',
+                enabled: !g.state.isTaskpaneOpen
+              },
+              {
+                id: 'BtnCloseTaskpane',
+                enabled: g.state.isTaskpaneOpen
+              }
+            ]
           }
         ]
-      }
-    ]
-  });
+      });
+    });
 }
 
 /*
@@ -138,7 +143,6 @@ export function generateCustomFunction(selectedOption: string) {
 //Useful as there are multiple entry points that need the state and it is not clear which one will get called first.
 export async function ensureStateInitialized(isOfficeInitializing: boolean) {
   let g = getGlobal() as any;
-  monitorSheetChanges();
   let initValue = false;
   if (isOfficeInitializing) {
     //we are being called in response to Office Initialize
@@ -183,6 +187,9 @@ export async function ensureStateInitialized(isOfficeInitializing: boolean) {
         updateRibbon();
       }
     };
+    // console.log("init value:" + initValue);
+    // console.log("is initialized: " + g.state.isInitialized);
+    // monitorSheetChanges();
 
     let addinState = await Office.addin.getStartupBehavior();
     console.log('load state is:');
@@ -195,21 +202,6 @@ export async function ensureStateInitialized(isOfficeInitializing: boolean) {
     }
   }
   updateRibbon();
-}
-
-async function onTableChange(event) {
-  return Excel.run(context => {
-    return context.sync().then(() => {
-      console.log('Change type of event: ' + event.changeType);
-      console.log('Address of event: ' + event.address);
-      console.log('Source of event: ' + event.source);
-      let g = getGlobal() as any;
-      if (g.state.isConnected) {
-        g.state.isSyncEnabled = true;
-        updateRibbon();
-      }
-    });
-  });
 }
 
 async function onTableSelectionChange(event) {
@@ -235,11 +227,13 @@ async function onTableSelectionChange(event) {
 export async function monitorSheetChanges() {
   try {
     let g = getGlobal() as any;
+    if (g.state === undefined) {
+      return;
+    }
     if (g.state.isInitialized) {
       await Excel.run(async context => {
         let table = context.workbook.tables.getItem('ExpensesTable');
         if (table !== undefined) {
-          table.onChanged.add(onTableChange);
           table.onSelectionChanged.add(onTableSelectionChange);
           await context.sync();
           updateRibbon();

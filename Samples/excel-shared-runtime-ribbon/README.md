@@ -54,7 +54,7 @@ Version  | Date | Comments
 
 ## Scenario: A contextual add-in
 
-This sample demonstrates a fictional scenario where the add-in connects to a backend data service to help the user import and work with Contoso data. There is no actual data service and the add-in mocks the data you see.
+This sample demonstrates a fictional scenario where the add-in connects to a backend data service to help the user import and work with Contoso data. To keep things simple, the data is mock data and the sample does not require an actual backend data service.
 
 The add-in is aware of whether it is connected. When connected you will see the task pane update to allow you to import data, and also the ribbon buttons will be enabled to let you insert a table and work with the data. 
 
@@ -98,16 +98,18 @@ If the `Load on doc open` button is chosen, the add-in configures the document s
 
 ### Run code in the background
 
-When the document is configured to load the add-in on doc open, the Office.Initialize method is called. The add-in calls ensureInitialize to set up the initial global state
+The add-in has a `Sum` button that is enabled when you move the range selection inside the expenses table. An event in the table is used to detect when the range selction is in or out of the table. If the add-in was configured to load on doc open, the event code will be operational as soon as the document is opened, and the `Sum` button will work even though the task pane is not yet opened.
+
+To run code when the document opens, the add-in relies on the `Office.Initialize` event. This event is called when the document is opened and the load behavior is set for doc open. The add-in calls `ensureInitialize()` to set up the initial global state.
 
 ```typescript
 Office.initialize = async () => {
     ensureStateInitialized(true);
-    isOfficeInitialized = true;
+    
     ...
 ```
 
-The `ensureStateInitialized()` method will call the `monitorSheetCHanges()` method which will then search for the expense table. If the expenses table was inserted, it adds an event handler for the `onTableSelectionChange` event.
+The `ensureStateInitialized()` method will call the `monitorSheetCHanges()` method which will then search for the expenses table. If the expenses table was inserted, it adds an event handler for the `onTableSelectionChange` event. This is how the event handler code is set up on doc open.
 
 ```typescript
 export async function monitorSheetChanges() {
