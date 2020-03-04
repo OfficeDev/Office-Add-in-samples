@@ -7,6 +7,9 @@ const commonConfig = require('./webpack.common.js');
 module.exports = webpackMerge(commonConfig, {
     devtool: 'eval-source-map',
     devServer: {
+        headers: {
+            "Access-Control-Allow-Origin": "*"
+          },  
         publicPath: '/',
         contentBase: path.resolve('dist'),
         hot: true,
