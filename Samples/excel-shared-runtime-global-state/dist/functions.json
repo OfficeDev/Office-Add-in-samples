@@ -16,6 +16,25 @@
             }
         },
         {
+            "description": "Get value for key",
+            "id": "SETVALUEFORKEY",
+            "name": "SETVALUEFORKEY",
+            "parameters": [
+                {
+                    "description": "The key",
+                    "name": "key",
+                    "type": "string"
+                },
+                {
+                    "name": "value",
+                    "type": "string"
+                }
+            ],
+            "result": {
+                "type": "string"
+            }
+        },
+        {
             "description": "Adds two numbers.",
             "id": "ADD",
             "name": "ADD",

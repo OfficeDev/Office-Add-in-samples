@@ -20,6 +20,18 @@ export function getValueForKey(key: string): string {
   return answer;
 }
 
+/**
+ * Get value for key
+ * @customfunction
+ * @param key The key
+ * @returns The value for the key.
+ */
+export function setValueForKey(key: string, value: string): string {
+  let g = getGlobal() as any;
+  g.state.keys.push(key);
+  g.state.values.push(value);
+  return "Stored key/value pair";
+}
 
 /**
  * Adds two numbers.

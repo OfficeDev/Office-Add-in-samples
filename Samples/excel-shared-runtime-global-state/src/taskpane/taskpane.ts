@@ -1,4 +1,4 @@
-import { add, clock, currentTime, logMessage, getValueForKey } from '../functions/functions';
+import { add, clock, currentTime, logMessage, getValueForKey, setValueForKey } from '../functions/functions';
 import { getGlobal } from '../commands/commands';
 
 
@@ -38,6 +38,9 @@ Office.initialize = () => {
   
   // eslint-disable-next-line no-undef
   CustomFunctions.associate('getValueForKey', getValueForKey);
+
+  // eslint-disable-next-line no-undef
+  CustomFunctions.associate('SETVALUEFORKEY', setValueForKey);
 };
 
 function btnStoreValue() {
