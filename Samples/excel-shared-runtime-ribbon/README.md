@@ -132,6 +132,8 @@ export async function monitorSheetChanges() {
 
 ## Security notes
 
+In the webpack.dev.js file, a header is set to `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
+
 You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
 
 You can install or uninstall the certificates by running the following commands in the project folder.
