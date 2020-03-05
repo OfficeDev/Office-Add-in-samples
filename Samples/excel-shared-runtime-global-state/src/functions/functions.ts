@@ -1,4 +1,27 @@
-﻿/**
+﻿import { getGlobal } from '../commands/commands';
+
+/* global clearInterval, console, setInterval */
+
+/**
+ * Get value for key
+ * @customfunction
+ * @param key The key
+ * @returns The value for the key.
+ */
+export function getValueForKey(key: string): string {
+  let g = getGlobal() as any;
+  let answer = "";
+  g.state.keys.forEach((element, index) => {
+    if (element === key)
+    {
+     answer = g.state.values[index];
+    }
+  });
+  return answer;
+}
+
+
+/**
  * Adds two numbers.
  * @customfunction
  * @param first First number

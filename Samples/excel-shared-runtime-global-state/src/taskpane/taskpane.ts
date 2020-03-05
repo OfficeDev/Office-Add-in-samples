@@ -1,5 +1,6 @@
-import { add, clock, currentTime, logMessage } from '../functions/functions';
+import { add, clock, currentTime, logMessage, getValueForKey } from '../functions/functions';
 import { getGlobal } from '../commands/commands';
+
 
 /*
  * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
@@ -35,6 +36,8 @@ Office.initialize = () => {
   // eslint-disable-next-line no-undef
   CustomFunctions.associate('LOGMESSAGE', logMessage);
   
+  // eslint-disable-next-line no-undef
+  CustomFunctions.associate('getValueForKey', getValueForKey);
 };
 
 function btnStoreValue() {
