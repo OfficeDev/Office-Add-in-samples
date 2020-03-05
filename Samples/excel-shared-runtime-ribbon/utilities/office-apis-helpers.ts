@@ -104,7 +104,7 @@ export async function connectService() {
   let g = getGlobal() as any;
   await Office.context.ui.displayDialogAsync(
     dialogConnectUrl,
-    { height: 40, width: 30 },
+    { height: 40, width: 30, promptBeforeOpen: false },
     result => {
       if (result.status === Office.AsyncResultStatus.Failed) {
         console.log(`${result.error.code} ${result.error.message}`);
@@ -142,6 +142,7 @@ export function generateCustomFunction(selectedOption: string) {
 //This will check if state is initialized, and if not, initialize it.
 //Useful as there are multiple entry points that need the state and it is not clear which one will get called first.
 export async function ensureStateInitialized(isOfficeInitializing: boolean) {
+  console.log('ensureInitialize called');
   let g = getGlobal() as any;
   let initValue = false;
   if (isOfficeInitializing) {
