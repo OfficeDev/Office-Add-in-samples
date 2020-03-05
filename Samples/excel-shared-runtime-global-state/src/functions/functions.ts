@@ -1,6 +1,4 @@
-﻿import { getGlobal } from '../commands/commands';
-
-/* global clearInterval, console, setInterval */
+﻿import { getGlobal } from "../commands/commands";
 
 /**
  * Get value for key
@@ -8,16 +6,8 @@
  * @param key The key
  * @returns The value for the key.
  */
-export function getValueForKey(key: string): string {
-  let g = getGlobal() as any;
-  let answer = "";
-  g.state.keys.forEach((element, index) => {
-    if (element === key)
-    {
-     answer = g.state.values[index];
-    }
-  });
-  return answer;
+export function getValueForKeyCF(key: string): string {
+  return getValueForKey(key);
 }
 
 /**
@@ -26,10 +16,8 @@ export function getValueForKey(key: string): string {
  * @param key The key
  * @returns The value for the key.
  */
-export function setValueForKey(key: string, value: string): string {
-  let g = getGlobal() as any;
-  g.state.keys.push(key);
-  g.state.values.push(value);
+export function setValueForKeyCF(key: string, value: string): string {
+  setValueForKey(key, value);
   return "Stored key/value pair";
 }
 
@@ -40,62 +28,28 @@ export function setValueForKey(key: string, value: string): string {
  * @param second Second number
  * @returns The sum of the two numbers.
  */
-/* global clearInterval, console, setInterval */
 
-export function add(first: number, second: number): number {
-  return first + second;
+export function setValueForKey(key: string, value: string) {
+  let g = getGlobal() as any;
+  if (g.state.storageType === "globalvar") {
+    g.state.keys.push(key);
+    g.state.values.push(value);
+  } else {
+    g.window.localStorage.setItem(key, value);
+  }
 }
 
-/**
- * Displays the current time once a second.
- * @customfunction
- * @param invocation Custom function handler
- */
-export function clock(invocation: CustomFunctions.StreamingInvocation<string>): void {
-  const timer = setInterval(() => {
-    const time = currentTime();
-    invocation.setResult(time);
-  }, 1000);
-
-  invocation.onCanceled = () => {
-    clearInterval(timer);
-  };
-}
-
-/**
- * Returns the current time.
- * @returns String with the current time formatted for the current locale.
- */
-export function currentTime(): string {
-  return new Date().toLocaleTimeString();
-}
-
-/**
- * Increments a value once a second.
- * @customfunction
- * @param incrementBy Amount to increment
- * @param invocation Custom function handler
- */
-export function increment(incrementBy: number, invocation: CustomFunctions.StreamingInvocation<number>): void {
-  let result = 0;
-  const timer = setInterval(() => {
-    result += incrementBy;
-    invocation.setResult(result);
-  }, 1000);
-
-  invocation.onCanceled = () => {
-    clearInterval(timer);
-  };
-}
-
-/**
- * Writes a message to console.log().
- * @customfunction LOG
- * @param message String to write.
- * @returns String to write.
- */
-export function logMessage(message: string): string {
-  console.log(message);
-
-  return message;
+export function getValueForKey(key: string): string {
+  let g = getGlobal() as any;
+  let answer = "";
+  if (g.state.storageType === "globalvar") {
+    g.state.keys.forEach((element, index) => {
+      if (element === key) {
+        answer = g.state.values[index];
+      }
+    });
+  } else {
+    answer = g.window.localStorage.getItem(key);
+  }
+  return answer;
 }
