@@ -31,6 +31,7 @@ This sample shows how to create contextual ribbon buttons that are enabled based
 
 ## Prerequisites
 
+The features used in this sample are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you will need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is by using an Office 365 subscription. If you don't already have an Office 365 subscription, you can get one by joining the [Office 365 Developer Program](https://developer.microsoft.com/office/dev-program).
 
 Before running this sample, make sure you have installed a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) on your computer. To check if you have already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
