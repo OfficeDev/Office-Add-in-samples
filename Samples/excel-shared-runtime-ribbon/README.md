@@ -19,7 +19,7 @@ description: "This sample shows how to create contextual ribbon buttons that are
 
 This sample shows how to create contextual ribbon buttons that are enabled based on the state of your add-in. It also shows how to use the Office.js API to show or hide the task pane. This sample also demonstrates how to run code when the task pane is closed, such as on document open.
 
-![Screen shot of the add-in with ribbon buttons enabled and disabled](excel.shared-runtime.png)
+![Screen shot of the add-in with ribbon buttons enabled and disabled](excel-shared-runtime.png)
 
 ## Features
 
