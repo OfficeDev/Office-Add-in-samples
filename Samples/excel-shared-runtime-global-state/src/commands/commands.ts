@@ -20,7 +20,7 @@ function action(event: Office.AddinCommands.Event) {
   event.completed();
 }
 
-function getGlobal() {
+export function getGlobal() {
   return typeof self !== "undefined"
     ? self
     : typeof window !== "undefined"

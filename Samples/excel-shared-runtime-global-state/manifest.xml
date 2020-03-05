@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
   <Id>00d559b8-5760-4756-ab89-dee3a8ef4cf2</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
@@ -17,7 +20,7 @@
   </Hosts>
   <Requirements>
     <Sets DefaultMinVersion="1.1">
-      <Set Name="CustomFunctionsRuntime" MinVersion="1.1"/>
+      <Set Name="SharedRuntime" MinVersion="1.1"/>
     </Sets>
   </Requirements>
   <DefaultSettings>
@@ -27,13 +30,16 @@
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
     <Hosts>
       <Host xsi:type="Workbook">
+        <Runtimes>
+          <Runtime resid="Shared.Url" lifetime="long" />
+        </Runtimes>
         <AllFormFactors>
           <ExtensionPoint xsi:type="CustomFunctions">
             <Script>
               <SourceLocation resid="Functions.Script.Url"/>
             </Script>
             <Page>
-              <SourceLocation resid="Functions.Page.Url"/>
+              <SourceLocation resid="Shared.Url"/>
             </Page>
             <Metadata>
               <SourceLocation resid="Functions.Metadata.Url"/>
@@ -47,7 +53,7 @@
             <Description resid="GetStarted.Description"/>
             <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
           </GetStarted>
-          <FunctionFile resid="Commands.Url"/>
+          <FunctionFile resid="Shared.Url"/>
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <OfficeTab id="TabHome">
               <Group id="CommandsGroup">
@@ -70,7 +76,7 @@
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>ButtonId1</TaskpaneId>
-                    <SourceLocation resid="Taskpane.Url"/>
+                    <SourceLocation resid="Shared.Url"/>
                   </Action>
                 </Control>
               </Group>
@@ -88,13 +94,12 @@
       <bt:Urls>
         <bt:Url id="Functions.Script.Url" DefaultValue="https://localhost:3000/dist/functions.js"/>
         <bt:Url id="Functions.Metadata.Url" DefaultValue="https://localhost:3000/dist/functions.json"/>
-        <bt:Url id="Functions.Page.Url" DefaultValue="https://localhost:3000/dist/functions.html"/>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
+
+        <bt:Url id="Shared.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="Functions.Namespace" DefaultValue="CONTOSO"/>
+        <bt:String id="Functions.Namespace" DefaultValue="CONTOSODCSHARE"/>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Show Taskpane"/>

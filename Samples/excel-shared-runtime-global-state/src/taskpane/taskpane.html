@@ -18,6 +18,34 @@
 
     <!-- Template styles -->
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        // Private functions
+        function SendTokenToCustomFunction() {
+            var token = document.getElementById('tokenTextBox').value;
+            var tokenSendStatus = document.getElementById('tokenSendStatus');
+            var key = "token";
+
+            OfficeRuntime.storage.setItem(key, token).then(function () {
+                tokenSendStatus.value = "Success: Item with key '" + key + "' saved to Storage.";
+            }, function (error) {
+                tokenSendStatus.value = "Error: Unable to save item with key '" + key + "' to Storage. " + error;
+            });
+        }
+
+        function ReceiveTokenFromCustomFunction() {
+            var key = "token";
+            var tokenSendStatus = document.getElementById('tokenSendStatus');
+
+            OfficeRuntime.storage.getItem(key).then(function (result) {
+                tokenSendStatus.value = "Success: Item with key '" + key + "' read from Storage.";
+                document.getElementById('tokenTextBox2').value = result;
+            }, function (error) {
+                tokenSendStatus.value = "Error: Unable to read item with key '" + key + "' from Storage. " + error;
+            });
+        }
+    </script>
+
 </head>
 
 <body class="ms-font-m ms-welcome ms-Fabric">
@@ -28,25 +56,15 @@
     <section id="sideload-msg" class="ms-welcome__main">
         <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
     </section>
-    <main id="app-body" class="ms-welcome__main" style="display: none;">
-        <h2 class="ms-font-xl"> Discover what Office Add-ins can do for you today! </h2>
-        <ul class="ms-List ms-welcome__features">
-            <li class="ms-ListItem">
-                <i class="ms-Icon ms-Icon--Ribbon ms-font-xl"></i>
-                <span class="ms-font-m">Achieve more with Office integration</span>
-            </li>
-            <li class="ms-ListItem">
-                <i class="ms-Icon ms-Icon--Unlock ms-font-xl"></i>
-                <span class="ms-font-m">Unlock features and functionality</span>
-            </li>
-            <li class="ms-ListItem">
-                <i class="ms-Icon ms-Icon--Design ms-font-xl"></i>
-                <span class="ms-font-m">Create and visualize like a pro</span>
-            </li>
-        </ul>
-        <p class="ms-font-l">Modify the source files, then click <b>Run</b>.</p>
-        <div role="button" id="run" class="ms-welcome__action ms-Button ms-Button--hero ms-font-xl">
-            <span class="ms-Button-label">Run</span>
+    <main id="app-body" class="ms-welcome__main" style="display:inline">
+       <p>Enter a key/value pair to store or retrieve.</p>
+
+        Send token to custom function (key = "token")
+        <div>
+            <input type="text" id="txtKey" />
+            <input type="text" id="txtValue" />
+            <button id="btnStoreValue" onclick="storeKeyValuePair()">Store key/value pair</button>
+            <button id="btnGetValue" onclick="getValueForKey()">Get value for key</button>
         </div>
     </main>
 </body>
