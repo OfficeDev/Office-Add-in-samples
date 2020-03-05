@@ -101,7 +101,7 @@ If the `Load on doc open` button is chosen, the add-in configures the document s
 
 ### Run code in the background
 
-The add-in has a `Sum` button that is enabled when you move the range selection inside the expenses table. An event in the table is used to detect when the range selction is in or out of the table. If the add-in was configured to load on doc open, the event code will be operational as soon as the document is opened, and the `Sum` button will work even though the task pane is not yet opened.
+The add-in has a `Sum` button that is enabled when you move the range selection inside the expenses table. An event in the table is used to detect when the range selection is in or out of the table. If the add-in was configured to load on doc open, the event code will be operational as soon as the document is opened, and the `Sum` button will work even though the task pane is not yet opened.
 
 To run code when the document opens, the add-in relies on the `Office.Initialize` event. This event is called when the document is opened and the load behavior is set for doc open. The add-in calls `ensureInitialize()` to set up the initial global state.
 
