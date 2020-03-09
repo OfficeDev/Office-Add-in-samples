@@ -3,49 +3,48 @@
 
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Contoso Task Pane Add-in</title>
 
     <!-- Office JavaScript API -->
-    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    <script type="text/javascript" src="https://appsforoffice.edog.officeapps.live.com/lib/beta/hosted/office.debug.js" ></script>
 
     <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
-    <link rel="stylesheet"
-        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"
+    />
 
     <!-- Template styles -->
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
+  </head>
 
-</head>
-
-<body class="ms-font-m ms-welcome ms-Fabric">
+  <body class="ms-font-m ms-welcome ms-Fabric">
     <header class="ms-welcome__header ms-bgColor-neutralLighter">
-        <img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" />
-        <h1 class="ms-font-su">Welcome</h1>
+      <img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" />
+      <h1 class="ms-font-su">Welcome</h1>
     </header>
     <section id="sideload-msg" class="ms-welcome__main">
-        <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
+      <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
     </section>
-    <main id="app-body" class="ms-welcome__main" style="display:inline">
+    <main id="app-body" class="ms-welcome__main" style="display: none;">
+      <div>
         <p>Enter a key/value pair to store or retrieve:</p>
         <div>
-            <input type="text" id="txtKey" />
-            <input type="text" id="txtValue" />
-            <button id="btnStoreValue" onclick="storeKeyValuePair()">Store key/value pair</button>
-            <button id="btnGetValue" onclick="getValueForKey()">Get value for key</button>
+          <label>Key: </label><br />
+          <input type="text" id="txtKey" /><br />
+          <label>Value:</label><br />
+          <input type="text" id="txtValue" /><br />
+          <button id="btnStoreValue" onclick="storeKeyValuePair()">Store key/value pair</button>
+          <button id="btnGetValue" onclick="getValueForKey()">Get value for key</button>
         </div>
         <p>Select type of storage to use:</p>
-        <label>
-            <input type='radio' name='storage' value='globalvar' id='globalvar' />Global variable
-        </label>
-        <label>
-            <input type='radio' name='storage' value='localstorage' id='localstorage' />Local storage
-        </label>
+        <label> <input type="radio" name="storage" value="globalvar" id="globalvar" checked />Global variable </label>
+        <label> <input type="radio" name="storage" value="localstorage" id="localstorage" />Local storage </label>
+      </div>
     </main>
-</body>
-
+  </body>
 </html>

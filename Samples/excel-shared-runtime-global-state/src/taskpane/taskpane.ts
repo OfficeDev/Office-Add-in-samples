@@ -1,14 +1,16 @@
-import { getValueForKeyCF, setValueForKeyCF, getValueForKey, setValueForKey } from "../functions/functions";
+import { getValueForKey, setValueForKey } from "./helpers";
 import { getGlobal } from "../commands/commands";
+//import { setValueForKeyCF, getValueForKeyCF } from '../functions/functions';
 
 /*
  * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
  * See LICENSE in the project root for license information.
  */
-/* global document, Office */
+/* global document, console, Office,  */
 
 // The initialize function must be run each time a new page is loaded
 Office.initialize = () => {
+  console.log("initializing");
   let g = getGlobal() as any;
   let keys: any[] = [];
   let values: any[] = [];
@@ -18,6 +20,7 @@ Office.initialize = () => {
     storageType: "globalvar"
   } as any;
 
+  console.log("state initialized");
   document.getElementById("sideload-msg").style.display = "none";
   document.getElementById("app-body").style.display = "flex";
   document.getElementById("btnStoreValue").onclick = btnStoreValue;
@@ -25,11 +28,10 @@ Office.initialize = () => {
   document.getElementById("globalvar").onclick = btnStorageChanged;
   document.getElementById("localstorage").onclick = btnStorageChanged;
 
-  // eslint-disable-next-line no-undef
-  CustomFunctions.associate("GETVALUEFORKEY", getValueForKeyCF);
+  //CustomFunctions.associate('GETVALUEFORKEY', getValueForKeyCF);
 
-  // eslint-disable-next-line no-undef
-  CustomFunctions.associate("SETVALUEFORKEY", setValueForKeyCF);
+  console.log("initializing done");
+  //CustomFunctions.associate("SETVALUEFORKEY", setValueForKeyCF);
 };
 
 function btnStoreValue() {

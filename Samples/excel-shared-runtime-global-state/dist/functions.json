@@ -33,22 +33,6 @@
             "result": {
                 "type": "string"
             }
-        },
-        {
-            "description": "Adds two numbers.",
-            "id": "SETVALUEFORKEY",
-            "name": "SETVALUEFORKEY",
-            "parameters": [
-                {
-                    "name": "key",
-                    "type": "string"
-                },
-                {
-                    "name": "value",
-                    "type": "string"
-                }
-            ],
-            "result": {}
         }
     ]
 }
