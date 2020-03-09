@@ -9,7 +9,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 3/02/2020 1:25:00 PM
+  createdDate: 3/09/2020 1:25:00 PM
 description: "This sample shows how to create contextual ribbon buttons that are enabled based on the state of your add-in. It also shows how to use the Office.js API to show or hide the task pane. This sample also demonstrates how to run code when the task pane is closed, such as on document open."
 ---
 
@@ -49,7 +49,7 @@ Office Add-in Shared Runtime Ribbon/Task pane APIs | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0 | 3-2-2020 | Initial release
+1.0 | 3-9-2020 | Initial release
 
 ## Disclaimer
 
