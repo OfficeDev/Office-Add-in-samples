@@ -33,9 +33,11 @@ This sample shows how to create contextual ribbon buttons that are enabled based
 
 ## Applies to
 
--  Excel on Windows (one-time purchase and subscription)
+-  Excel on Windows, Mac, and in a browser.
 
 ## Prerequisites
+
+To try the preview features used by this sample, you will need to [join Office Insider](https://insider.office.com/join).
 
 Before running this sample, make sure you have installed a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) on your computer. To check if you have already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
