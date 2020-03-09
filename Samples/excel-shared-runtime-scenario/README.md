@@ -151,4 +151,4 @@ Copyright (c) 2020 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://telemetry.sharepointpnp.com/officedev/samples/shared-runtime-ribbon" />
+<img src="https://telemetry.sharepointpnp.com/officedev/samples/excel-shared-runtime-scenario" />
