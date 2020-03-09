@@ -1,0 +1,134 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.flex-align(@mainAxis: center; @crossAxis: center) {
+    justify-content: @mainAxis;
+    align-items: @crossAxis;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+
+    .flex-column;
+
+    &>div {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.ms-welcome {
+    position: relative;
+
+    .flex-column;
+
+    min-height: 500px;
+    min-width: 320px;
+    overflow: auto;
+    overflow-x: hidden;
+
+    &__progress,
+    &__header {
+        padding: 5px;
+        padding-bottom: 15px;
+
+        .flex-column;
+        .flex-align(flex-end, center);
+
+        h1 {
+            margin-top: 20px;
+            text-align: center;
+        }
+    }
+
+    &__progress {
+        height: 100vh;
+        
+        .flex-column;
+        .flex-align(center, center);
+
+        h1 {
+            margin-bottom: 80px;
+        }
+
+        & .ms-Spinner {
+            .ms-Spinner-label {
+                color: #999;
+            }
+
+            .ms-Spinner-circle{
+                color: #333333;
+                border: 1.5px solid #CCC;
+                border-top-color: #333333;
+            }
+        }
+    }
+
+    &__main {
+        .flex-column;
+        .flex-align(flex-start, center);
+
+        flex: 1 0 0;
+        padding: 10px 20px;
+
+        h2 {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    &__features {
+        list-style-type: none;
+        margin-top: 30px;
+        margin-bottom: 30px;
+
+        &.ms-List .ms-ListItem {
+            padding: 0px;
+            padding-bottom: 20px;
+            .flex-row;
+            .flex-align(flex-start, center);
+
+            & > .ms-Icon {
+                font-size: 14pt;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    &__action {
+        margin-top: 30px;
+    }
+}
+
+.spinner {
+    padding: 20px;
+}
+
+@media (min-width: 0) and (max-width: 350px) {
+    .ms-welcome__features {
+        width: 100%;
+    }
+}
