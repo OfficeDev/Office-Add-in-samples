@@ -24,6 +24,8 @@ This sample shows how to create contextual ribbon buttons that are enabled based
 ## Features
 
 - Contextual ribbon UI that enables or disables the buttons.
+- Set load behavior to load the add-in and run code when the document is opened.
+- Open and close the task pane through the Office.js API.
 - Handle Office.js events even when the task pane is closed.
 - Share data globally, such as between custom functions and the task pane.
 
