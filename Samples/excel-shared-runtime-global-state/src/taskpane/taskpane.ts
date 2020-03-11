@@ -1,12 +1,12 @@
 import { getValueForKey, setValueForKey } from "./helpers";
 import { getGlobal } from "../commands/commands";
-//import { setValueForKeyCF, getValueForKeyCF } from '../functions/functions';
+import { setValueForKeyCF, getValueForKeyCF } from '../functions/functions';
 
 /*
  * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
  * See LICENSE in the project root for license information.
  */
-/* global document, console, Office,  */
+/* global document, CustomFunctions, console, Office,  */
 
 // The initialize function must be run each time a new page is loaded
 Office.initialize = () => {
@@ -28,10 +28,10 @@ Office.initialize = () => {
   document.getElementById("globalvar").onclick = btnStorageChanged;
   document.getElementById("localstorage").onclick = btnStorageChanged;
 
-  //CustomFunctions.associate('GETVALUEFORKEY', getValueForKeyCF);
+  CustomFunctions.associate('GETVALUEFORKEY', getValueForKeyCF);
 
   console.log("initializing done");
-  //CustomFunctions.associate("SETVALUEFORKEY", setValueForKeyCF);
+  CustomFunctions.associate("SETVALUEFORKEY", setValueForKeyCF);
 };
 
 function btnStoreValue() {
