@@ -1,3 +1,5 @@
+/* Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. */
+
 import { getGlobal } from '../commands/commands';
 
 export function setValueForKey(key: string, value: string) {
