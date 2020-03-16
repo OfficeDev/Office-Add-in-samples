@@ -1,4 +1,9 @@
-﻿import { getValueForKey, setValueForKey } from "../taskpane/helpers";
+﻿/*
+ * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
+
+ import { getValueForKey, setValueForKey } from "../taskpane/helpers";
 
 /**
  * Get value for key
@@ -20,11 +25,3 @@ export function setValueForKeyCF(key: string, value: string): string {
   setValueForKey(key, value);
   return "Stored key/value pair";
 }
-
-/**
- * Adds two numbers.
- * @customfunction
- * @param first First number
- * @param second Second number
- * @returns The sum of the two numbers.
- */

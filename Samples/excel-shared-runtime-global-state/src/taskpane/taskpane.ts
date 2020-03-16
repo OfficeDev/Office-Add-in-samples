@@ -1,26 +1,28 @@
-import { getValueForKey, setValueForKey } from "./helpers";
-import { getGlobal } from "../commands/commands";
-import { setValueForKeyCF, getValueForKeyCF } from '../functions/functions';
-
 /*
  * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
  * See LICENSE in the project root for license information.
  */
-/* global document, CustomFunctions, console, Office,  */
 
-// The initialize function must be run each time a new page is loaded
+import { getValueForKey, setValueForKey } from "./helpers";
+import { getGlobal } from "../commands/commands";
+import { setValueForKeyCF, getValueForKeyCF } from '../functions/functions';
+
+ /* global document, CustomFunctions, Office,  */
+
 Office.initialize = () => {
-  console.log("initializing");
+  // Initialize global state.
   let g = getGlobal() as any;
   let keys: any[] = [];
   let values: any[] = [];
+
+  // state object is used to track key/value pairs, and which storage type is in use
   g.state = {
     keys: keys,
     values: values,
     storageType: "globalvar"
   } as any;
 
-  console.log("state initialized");
+  // Connect handlers
   document.getElementById("sideload-msg").style.display = "none";
   document.getElementById("app-body").style.display = "flex";
   document.getElementById("btnStoreValue").onclick = btnStoreValue;
@@ -28,33 +30,40 @@ Office.initialize = () => {
   document.getElementById("globalvar").onclick = btnStorageChanged;
   document.getElementById("localstorage").onclick = btnStorageChanged;
 
+  //Connect custom functions
   CustomFunctions.associate('GETVALUEFORKEY', getValueForKeyCF);
-
-  console.log("initializing done");
   CustomFunctions.associate("SETVALUEFORKEY", setValueForKeyCF);
 };
 
+/***
+ * Handles the Store button press event and calls helper method to store the key/value pair from the user in storage.
+ */
 function btnStoreValue() {
-  // @ts-ignore
-  let key = document.getElementById("txtKey").value;
-  // @ts-ignore
-  let value = document.getElementById("txtValue").value;
-  setValueForKey(key, value);
+  const keyElement = document.getElementById("txtKey") as HTMLInputElement;
+  const valueElement = document.getElementById("txtValue") as HTMLInputElement;
+  setValueForKey(keyElement.value, valueElement.value);
 }
 
+/***
+ * Handles the Get button press and calls helper method to retrieve the value from storage for the given key.
+ */
 function btnGetValue() {
-  // @ts-ignore
-  let key = document.getElementById("txtKey").value;
-  // @ts-ignore
-  document.getElementById("txtValue").value = getValueForKey(key);
+  const keyElement = document.getElementById("txtKey") as HTMLInputElement;
+  (document.getElementById("txtValue") as HTMLInputElement).value = getValueForKey(keyElement.value);
 }
 
 // Handle updating storage mechanism when the user choose the global variable or
 // local storage radio buttons.
+
+
+/***
+ * Handles when the radio buttons are selected for local storage or global variable storage.
+ * Updates a global variable that tracks which storage type is in use.
+ */
 function btnStorageChanged() {
   let g = getGlobal() as any;
-  // @ts-ignore
-  if (document.getElementById("globalvar").checked) {
+  
+  if ((document.getElementById("globalvar") as HTMLInputElement).checked) {
     g.state.storageType = "globalvar";
   } else {
     g.state.storageType = "localstorage";
