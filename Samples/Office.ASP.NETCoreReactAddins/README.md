@@ -65,6 +65,10 @@ Add ASP .NET Core with Office UI Fabric React to your Office Add-in | Microsoft
 
 2. The ASP .NET Core web project must be on the same local drive as the Office Manifest project. If it is not you will see the error "Property value is not valid" when trying to switch the Web Project property.
 
+## Feedback
+Fill out this form to let us know your experience with this sample: [Developing with the ASP.NET Core + Fabric React Office Add-in sample](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9Kwcf15u95EqS7NUgPuo5xUN0dYSFdQNVhFRDBaMjI1SDNXNFlKSkFNMC4u)
+
+
 ## Version history
 
 Version  | Date | Comments
