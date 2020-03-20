@@ -10,7 +10,7 @@ extensions:
   technologies:
   - Add-ins
   createdDate: 3/15/2020 1:25:00 PM
-description: "This sample shows a simple project using the shared runtime to shared global data with the ribbon, task pane, and custom functions."
+description: "This sample shows how to share data across the ribbon, task pane, and custom functions."
 ---
 
 # (preview) Share global data with a shared runtime
