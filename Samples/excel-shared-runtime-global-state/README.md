@@ -26,7 +26,7 @@ This sample shows how to set up a basic project that uses the shared runtime. Th
 ## Features
 
 - Share data globally with ribbon buttons, the task pane, and custom functions.
-- Use a provided manifest XML file to quick start a new project with a shared runtime.
+- To get started, use a provided manifest XML file to create a new project with a shared runtime.
 
 ## Applies to
 
