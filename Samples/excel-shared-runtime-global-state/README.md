@@ -13,7 +13,7 @@ extensions:
 description: "This sample shows how to share data across the ribbon, task pane, and custom functions."
 ---
 
-# (preview) Share global data with a shared runtime
+# (Preview) Share global data with a shared runtime
 
 ## Summary
 
