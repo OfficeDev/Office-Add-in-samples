@@ -62,7 +62,9 @@ This sample enables a user to store and retrieve key/value pairs by using the ta
 
 ## Build and run the solution
 
-In the command prompt, run the command `npm run start`. This starts the node server, and opens Excel on the desktop.
+1. In the command prompt, run the command `npm install`.
+2. Run the command `npm run start`. This starts the node server, and opens Excel on the desktop.
+
 If you're running Excel on the web or Mac, see the following articles for instructions on how to sideload:
 
 - [Sideload Office Add-ins in Office on the web for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing) 
