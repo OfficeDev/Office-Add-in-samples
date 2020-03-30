@@ -13,7 +13,6 @@ Office.initialize = () => {
   // Connect handlers
   document.getElementById("sideload-msg").style.display = "none";
   document.getElementById("app-body").style.display = "flex";
-console.log("add-in initialized");
 };
 
 async function run() {
