@@ -1,0 +1,56 @@
+{
+  "name": "excel-custom-functions-js",
+  "version": "2.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/Excel-Custom-Functions-JS.git"
+  },
+  "license": "MIT",
+  "config": {
+    "app-to-debug": "excel",
+    "app-type-to-debug": "desktop",
+    "dev-server-port": 3000,
+    "source-bundle-url-path": "index.win32"
+  },
+  "scripts": {
+    "build": "webpack -p --mode production --https false",
+    "build:dev": "webpack --mode development --https false",
+    "build-dev": "webpack --mode development --https false && echo . && echo . && echo . && echo Please use 'build:dev' instead of 'build-dev'.",
+    "dev-server": "webpack-dev-server --mode development",
+    "start": "office-addin-debugging start manifest.xml",
+    "start:desktop": "office-addin-debugging start manifest.xml desktop",
+    "start:web": "office-addin-debugging start manifest.xml web",
+    "stop": "office-addin-debugging stop manifest.xml",
+    "validate": "office-addin-manifest validate manifest.xml",
+    "watch": "webpack --mode development --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "@types/custom-functions-runtime": "^1.5.1",
+    "@types/office-js": "^1.0.89",
+    "@types/office-runtime": "^1.0.13",
+    "babel-loader": "^8.1.0",
+    "babel-polyfill": "^6.26.0",
+    "clean-webpack-plugin": "^2.0.1",
+    "copy-webpack-plugin": "^5.1.1",
+    "custom-functions-metadata-plugin": "^1.0.24",
+    "file-loader": "^4.3.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "office-addin-cli": "^1.0.7",
+    "office-addin-debugging": "^3.0.23",
+    "office-addin-dev-certs": "^1.4.14",
+    "office-addin-lint": "^1.0.19",
+    "office-addin-prettier-config": "^1.0.12",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "prettier": "office-addin-prettier-config"
+}
