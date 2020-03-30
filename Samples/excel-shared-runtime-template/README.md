@@ -10,7 +10,7 @@ extensions:
   technologies:
   - Add-ins
   createdDate: 3/30/2020 1:25:00 PM
-description: "This sample shows how to share data across the ribbon, task pane, and custom functions."
+description: "A starter template for creating add-ins that use preview shared runtime features."
 ---
 
 # (Preview) Shared runtime starter template
