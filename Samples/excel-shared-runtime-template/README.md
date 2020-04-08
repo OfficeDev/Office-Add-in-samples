@@ -9,7 +9,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 3/30/2020 1:25:00 PM
+  createdDate: 04/07/2020 1:25:00 PM
 description: "A starter template for creating add-ins that use preview shared runtime features."
 ---
 
@@ -17,7 +17,7 @@ description: "A starter template for creating add-ins that use preview shared ru
 
 ## Summary
 
-This template creates a new project similar to running `yo office` but instead it will use a shared runtime. You can use this template to start trying out features in the shared runtime. 
+This template creates a new project similar to running `yo office` but instead it will use a shared runtime. You can use this template to start trying out features in the shared runtime. For more information, see [Overview: Run your add-in code in a shared JavaScript runtime](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-shared-overview)
 
 > **Note:** The shared runtime features are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you'll need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is to sign up for an Office 365 subscription. If you don't already have an Office 365 subscription, get one by joining the [Office 365 Developer Program](https://developer.microsoft.com/office/dev-program).
 
@@ -27,7 +27,7 @@ This template creates a new project similar to running `yo office` but instead i
 
 ## Applies to
 
--  Excel on Windows, Mac, and in a browser.
+- Excel on Windows, Mac, and in a browser.
 
 ## Prerequisites
 
