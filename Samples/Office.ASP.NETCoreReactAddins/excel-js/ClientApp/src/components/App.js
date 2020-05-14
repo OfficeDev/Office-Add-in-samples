@@ -4,7 +4,7 @@
  */
 
 /// <reference types="office-js" />
-/* global Excel */  //Required for these to be found.  see: https://github.com/OfficeDev/office-js-docs-pr/issues/691
+/* global Excel */ //Required for these to be found.  see: https://github.com/OfficeDev/office-js-docs-pr/issues/691
 
 import * as React from 'react';
 import { Button, ButtonType } from 'office-ui-fabric-react';
@@ -82,7 +82,7 @@ export default class App extends React.Component {
         return (
             <div className='ms-welcome'>
                 <Header logo={logo} title={this.props.title} message='Welcome' />
-                <HeroList message='Discover what Office Add-ins can do for you today!' items={this.state.listItems}>
+                <HeroList message='Discover what Office .NET Core 3.1 Add-ins can do for you today!' items={this.state.listItems}>
                     <p className='ms-font-l'>Modify the source files, then click <b>Run</b>.</p>
                     <Button className='ms-welcome__action' buttonType={ButtonType.hero} iconProps={{ iconName: 'ChevronRight' }} onClick={this.click}>Run</Button>
                 </HeroList>
