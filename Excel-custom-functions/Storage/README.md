@@ -12,15 +12,17 @@ extensions:
   createdDate: 5/1/2019 1:25:00 PM
 ---
 
-# Using storage to share data between custom functions and the task pane
+# Using storage to share data between UI-less custom functions and the task pane
 
-If you need to share data values between your custom functions and the task pane, you can use the OfficeRuntime.storage object. Custom functions and task do not share the same runtime and cannot access the same data. OfficeRuntime.storage saves simple key/value pairs that you can access from both custom functions and the task pane.
+If you need to share data values between your UI-less custom functions and the task pane, you can use the OfficeRuntime.storage object. UI-less ustom functions and task do not share the same runtime and cannot access the same data. OfficeRuntime.storage saves simple key/value pairs that you can access from both UI-less custom functions and the task pane.
 
-This sample accompanies the article [Save and share state in custom functions](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-save-state)
+This sample accompanies the article [Save and share state in UI-less custom functions](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-save-state)
 
 ## Applies to
 
-- Custom functions on Excel desktop and online
+- UI-less custom functions on Excel desktop and online
+
+**Note:** Shared runtime is now recommended for most custom functions scenarios. This sample applies to UI-less custom functions only. 
 
 ## Prerequisites
 
@@ -30,7 +32,7 @@ To get set up and working with custom functions, see [Custom functions requireme
 
 Solution | Author(s)
 ---------|----------
-Using storage to share data between custom functions and the task pane | Microsoft
+Using storage to share data between UI-less custom functions and the task pane | Microsoft
 
 ### Version history ###
 
@@ -44,7 +46,7 @@ Version  | Date | Comments
 
 ## Sample: Sharing data between custom functions and the task pane
 
-This sample code shows how to share data between custom functions and the task pane. The task pane allows the user to enter a key/value pair and save it to storage. Then in a custom function, the value can be retrieved using the `GETVALUE(key)` custom function. Or the user can use the `STOREVALUE(key,value)` custom function to store a value, and then retrieve it in the task pane.
+This sample code shows how to share data between UI-less custom functions and the task pane. The task pane allows the user to enter a key/value pair and save it to storage. Then in a UI-less custom function, the value can be retrieved using the `GETVALUE(key)` custom function. Or the user can use the `STOREVALUE(key,value)` custom function to store a value, and then retrieve it in the task pane.
 
 ## Run the sample
 
@@ -114,7 +116,7 @@ function ReceiveTokenFromCustomFunction() {
 
 ### webpack.config.js
 
-In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. You should lock this header down to only allowed domains in production code.
+In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. You should lock this header down to only allowed domains in production code. 
 
 ### Self-signed certificates
 
