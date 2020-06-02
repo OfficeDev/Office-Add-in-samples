@@ -69,7 +69,9 @@ Additionally the add-in has a custom function that can display a filtered view o
 
 ## Build and run the solution
 
-In the command prompt, run the command `start npm start`. This will open a second command prompt, build the project and then start a server (with dev mode settings). It takes from 5 to 30 seconds. When it finishes, the last line should say `Compiled successfully`. Minimize this command prompt.
+In the command prompt in the root of the project, run the command `npm install`.
+
+When the installation completes, run the command `start npm start`. This will open a second command prompt, build the project and then start a server (with dev mode settings). It takes from 5 to 30 seconds. When it finishes, the last line should say `Compiled successfully`. Minimize this command prompt.
 
 Back in the original command prompt, run the command `npm run sideload`. This will launch Excel and sideload the add-in. After a few seconds, a ribbon named `Contoso Data` will appear.
 
