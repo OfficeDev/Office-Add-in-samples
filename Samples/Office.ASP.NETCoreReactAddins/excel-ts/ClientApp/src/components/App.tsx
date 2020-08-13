@@ -62,7 +62,7 @@ export default class App extends React.Component<AppProps, AppState> {
         range.load('address');
 
         // Update the fill color
-        range.format.fill.color = 'yellow';
+        range.format.fill.color = 'red';
 
         await context.sync();
         console.log(`The range address was ${range.address}.`);
@@ -87,7 +87,7 @@ export default class App extends React.Component<AppProps, AppState> {
 
     return (
       <div className="ms-welcome">
-        <Header logo={logo} title={this.props.title} message="Welcome" />
+        <Header logo={logo} title={this.props.title} message="Welcome TypeScript" />
         <HeroList
           message="Discover what Office .NET Core 3.1 Add-ins can do for you today!"
           items={this.state.listItems}
