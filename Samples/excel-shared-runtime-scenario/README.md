@@ -67,6 +67,10 @@ The add-in is aware of whether it is connected. When connected you will see the 
 
 Additionally the add-in has a custom function that can display a filtered view of the data. The custom function is aware of the connection status, so that when connected, it will display the mock data. When disconnected, it will show `#N/A`.
 
+## Create certificate files
+
+The addin needs HTTPS website. Please run `npx office-addin-dev-certs install --days 365` to install dev certificates.
+
 ## Build and run the solution
 
 In the command prompt in the root of the project, run the command `npm install`.
