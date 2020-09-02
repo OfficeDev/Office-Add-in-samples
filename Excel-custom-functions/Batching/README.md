@@ -83,7 +83,7 @@ The `_fetchFromRemoteService` function processes the batch of operations, perfor
 You can copy and paste this code into your own solution. When using this pattern, you'll need to evaluate and update the following areas of code.
 
 #### _pushOperation
-Adjust the timeout value as needed. A longer time will be more noticable to the user. A shorter time may result in more calls to the remote service.
+Adjust the timeout value as needed. A longer time will be more noticeable to the user. A shorter time may result in more calls to the remote service.
 
 #### _makeRemoteRequest
 Modify this function to actually make a network call to your remote service and pass the batch operations in a single call. For example, you may want to serialize the batch entries into a JSON body to be passed in the netwwork call to the remote service.
