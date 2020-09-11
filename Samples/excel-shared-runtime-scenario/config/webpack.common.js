@@ -125,12 +125,6 @@ module.exports = {
           }),
         new HtmlWebpackPlugin({
             title: 'Office-Add-in-Microsoft-Graph-React',
-            filename: './functions/functions.html',
-            template: './functions/functions.html',
-            chunks: ['functions']
-        }),
-        new HtmlWebpackPlugin({
-            title: 'Office-Add-in-Microsoft-Graph-React',
             filename: 'login/connect.html',
             template: '../login/connect.html',
             chunks: ['connect']
