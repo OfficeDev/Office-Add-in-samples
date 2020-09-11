@@ -129,12 +129,16 @@ module.exports = {
             template: '../login/connect.html',
             chunks: ['connect']
         }),
-        new CopyWebpackPlugin([
-            {
-                from: '../assets',
-                ignore: ['*.scss'],
-                to: 'assets',
-            }
-        ])
+        new CopyWebpackPlugin({
+            patterns: [
+              { 
+                from: '../assets', 
+                globOptions: {
+                    ignore: ['*.scss']
+                },
+                to: 'assets' 
+              },
+            ],
+          }),
     ]
 };
