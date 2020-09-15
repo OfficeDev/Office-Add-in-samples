@@ -5,7 +5,6 @@
 
 import { getValueForKey, setValueForKey } from "./helpers";
 import { getGlobal } from "../commands/commands";
-//import { setValueForKeyCF, getValueForKeyCF } from '../functions/functions';
 
  /* global document,  Office  */
 
@@ -29,11 +28,6 @@ Office.initialize = () => {
   document.getElementById("btnGetValue").onclick = btnGetValue;
   document.getElementById("globalvar").onclick = btnStorageChanged;
   document.getElementById("localstorage").onclick = btnStorageChanged;
- 
-  //Connect custom functions
- // CustomFunctions.associate('GETVALUEFORKEY', getValueForKeyCF);
- // CustomFunctions.associate("SETVALUEFORKEY", setValueForKeyCF);
- 
 };
 
 /***
@@ -52,10 +46,6 @@ function btnGetValue() {
   const keyElement = document.getElementById("txtKey") as HTMLInputElement;
   (document.getElementById("txtValue") as HTMLInputElement).value = getValueForKey(keyElement.value);
 }
-
-// Handle updating storage mechanism when the user choose the global variable or
-// local storage radio buttons.
-
 
 /***
  * Handles when the radio buttons are selected for local storage or global variable storage.
