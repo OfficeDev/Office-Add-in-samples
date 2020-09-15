@@ -5,9 +5,9 @@
 
 import { getValueForKey, setValueForKey } from "./helpers";
 import { getGlobal } from "../commands/commands";
-import { setValueForKeyCF, getValueForKeyCF } from '../functions/functions';
+//import { setValueForKeyCF, getValueForKeyCF } from '../functions/functions';
 
- /* global document, CustomFunctions, Office,  */
+ /* global document,  Office  */
 
 Office.initialize = () => {
   // Initialize global state.
@@ -29,10 +29,11 @@ Office.initialize = () => {
   document.getElementById("btnGetValue").onclick = btnGetValue;
   document.getElementById("globalvar").onclick = btnStorageChanged;
   document.getElementById("localstorage").onclick = btnStorageChanged;
-
+ 
   //Connect custom functions
-  CustomFunctions.associate('GETVALUEFORKEY', getValueForKeyCF);
-  CustomFunctions.associate("SETVALUEFORKEY", setValueForKeyCF);
+ // CustomFunctions.associate('GETVALUEFORKEY', getValueForKeyCF);
+ // CustomFunctions.associate("SETVALUEFORKEY", setValueForKeyCF);
+ 
 };
 
 /***
