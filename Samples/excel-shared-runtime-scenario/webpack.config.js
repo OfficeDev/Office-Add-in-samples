@@ -50,7 +50,7 @@ module.exports = {
           }),
         new HtmlWebpackPlugin({
             template: './index.html',
-            chunks: ['app', 'functions']
+            chunks: ['app']
         }),
         new HtmlWebpackPlugin({
             template: './login/login.html',

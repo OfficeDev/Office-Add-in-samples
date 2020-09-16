@@ -5,6 +5,7 @@ import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 import { ensureStateInitialized, updateRibbon, monitorSheetChanges } from '../utilities/office-apis-helpers';
 
 import App from './components/App';
+import { add, getData } from './functions/functions';
 
 import './styles.less';
 import 'office-ui-fabric-react/dist/css/fabric.min.css';
@@ -31,6 +32,8 @@ Office.initialize = async () => {
     isOfficeInitialized = true;
     monitorSheetChanges();
 
+    CustomFunctions.associate('ADD', add);
+    CustomFunctions.associate('GETDATA', getData);
     render(App);
     updateRibbon();
 };

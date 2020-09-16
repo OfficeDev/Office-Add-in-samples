@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
+    "@types/custom-functions-runtime": "^1.5.0",
     "@babel/polyfill": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
     "@types/office-js-preview": "^1.0.159",
