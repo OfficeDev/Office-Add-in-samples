@@ -52,14 +52,16 @@ module.exports = async (env, options) => {
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
-        chunks: ["polyfill", "taskpane"]
+        chunks: ["polyfill", "taskpane", "functions"]
       }),
-      new CopyWebpackPlugin([
-        {
-          to: "taskpane.css",
-          from: "./src/taskpane/taskpane.css"
-        }
-      ])
+      new CopyWebpackPlugin({
+        patterns: [
+          { 
+            from: './src/taskpane/taskpane.css', 
+            to: 'taskpane.css' 
+          },
+        ],
+      })
     ],
     devServer: {
       headers: {
