@@ -32,8 +32,6 @@ Office.initialize = async () => {
     isOfficeInitialized = true;
     monitorSheetChanges();
 
-
-
     CustomFunctions.associate('ADD', add);
     CustomFunctions.associate('GETDATA', getData);
     render(App);

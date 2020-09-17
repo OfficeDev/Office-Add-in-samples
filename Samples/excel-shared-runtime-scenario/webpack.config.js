@@ -48,11 +48,6 @@ module.exports = {
             output: "functions.json",
             input: "./src/functions/functions.ts"
           }),
-          new HtmlWebpackPlugin({
-            filename: "functions.html",
-            template: "./src/functions/functions.html",
-            chunks: ["polyfill", "functions"]
-          }),
         new HtmlWebpackPlugin({
             template: './index.html',
             chunks: ['app']

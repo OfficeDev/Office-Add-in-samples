@@ -19,10 +19,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.6.3",
+    "@types/custom-functions-runtime": "^1.5.0",
     "@babel/polyfill": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
-    "@types/office-js-preview": "^1.0.85",
-    "@types/custom-functions-runtime": "^1.5.0",
+    "@types/office-js-preview": "^1.0.159",
     "@types/react": "^16.8.2",
     "@types/react-dom": "^16.8.0",
     "@types/react-hot-loader": "^4.1.0",
@@ -32,7 +32,7 @@
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "^2.0.1",
-    "copy-webpack-plugin": "^5.0.4",
+    "copy-webpack-plugin": "^6.1.0",
     "css-loader": "^3.2.0",
     "custom-functions-metadata-plugin": "^1.0.20",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
@@ -57,7 +57,7 @@
     "typescript": "^3.6.4",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3",
+    "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2"
   }
 }
