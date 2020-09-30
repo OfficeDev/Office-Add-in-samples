@@ -64,5 +64,6 @@ packages/**
 typings/**
 .vscode/**
 .awcache/**
+certs/**
 
 dist/**

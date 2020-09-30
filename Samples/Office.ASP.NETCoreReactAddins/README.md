@@ -1,4 +1,4 @@
-# ASP .NET Core, React.js and Office UI Fabric React sample task pane web projects for Visual Studio 2019
+# ASP.NET Core, React.js and Office UI Fabric React sample task pane web projects for Visual Studio 2019
 
 This sample shows how to add Office UI Fabric React to an Excel Web Add-in project in Visual Studio 2019. You can build great cross-platform UI using the style and controls of Office UI Fabric React. This sample uses [React.js](https://reactjs.org/), [Office UI Fabric React](https://github.com/OfficeDev/office-ui-fabric-react), and the [React project template with ASP.NET Core](https://docs.microsoft.com/aspnet/core/client-side/spa/react). The template is equivalent to creating both an ASP.NET Core project and a standard create-react-app (CRA) React project to act as a UI, but with the convenience of hosting both in a single app project that you can build and publish as a single unit. To develop an add-in from the template, you can either add a Web API to the ASP.NET Core project or you can develop the project as a single-page React add-in. Since the project uses React as the UI, you should not attempt to use UI features of ASP.NET Core.
 
@@ -11,7 +11,7 @@ We'd like to hear about your experience with this sample and using ASP.NET Core 
 
 ## Applies to
 
-- Office 365
+- Microsoft 365
 - Visual Studio 2019
 
 ## Prerequisites
@@ -21,7 +21,7 @@ We'd like to hear about your experience with this sample and using ASP.NET Core 
   - ASP.NET and web development
   - Node.js development
   - Office/SharePoint development
-  - Net Core 2.2 Runtime (individual component)
+  - Net Core 3.1 Runtime (individual component)
 
 - Node.js, install from https://nodejs.org
 
@@ -29,9 +29,9 @@ We'd like to hear about your experience with this sample and using ASP.NET Core 
 
 ## Solution
 
-| Solution                                                            | Author(s) |
-| ------------------------------------------------------------------- | --------- |
-| Add ASP .NET Core with Office UI Fabric React to your Office Add-in | Microsoft |
+| Solution                                                           | Author(s) |
+| ------------------------------------------------------------------ | --------- |
+| Add ASP.NET Core with Office UI Fabric React to your Office Add-in | Microsoft |
 
 ## Instructions
 
@@ -44,7 +44,7 @@ We'd like to hear about your experience with this sample and using ASP.NET Core 
 5. Give the new project a name on the **Configure your new project** page (for example, `MyWebAddin`). Use the default values for the remaining fields and then choose **Create**.
 6. On the choose the add-in type page, select **Add new functionalities to Excel**. Then choose Finish.
 
-### Add the ASP .NET Core React.js web project to the solution
+### Add the ASP.NET Core React.js web project to the solution
 
 1. Download or clone this repo. This will create a **PnP-OfficeAddins** folder.
 2. In Visual Studio, right-click the solution in **Solution Explorer** and choose **Add > Existing Project**.
@@ -87,7 +87,7 @@ We'd like to hear about your experience with this sample and using ASP.NET Core 
 
 1. If you are using Visual Studio 2019 Update 3 on Windows 10 version 1903 or later and Office version 16.0.11424.10000 or later, there is a known issue that effects your ability to hit breakpoints in JavaScript files. For more information and instructions on how to work around this please see https://developercommunity.visualstudio.com/content/problem/740413/office-development-inconsistent-script-debugging-b.html
 
-2. The ASP .NET Core web project must be on the same local drive as the Office Manifest project. If it is not you will see the error "Property value is not valid" when trying to switch the Web Project property.
+2. The ASP.NET Core web project must be on the same local drive as the Office Manifest project. If it is not you will see the error "Property value is not valid" when trying to switch the Web Project property.
 
 ## Feedback
 
@@ -95,9 +95,10 @@ Fill out this form to let us know your experience with this sample: [Developing 
 
 ## Version history
 
-| Version | Date               | Comments        |
-| ------- | ------------------ | --------------- |
-| 1.0     | September 23, 2019 | Initial Release |
+| Version | Date               | Comments                           |
+| ------- | ------------------ | ---------------------------------- |
+| 1.0     | September 23, 2019 | Initial Release                    |
+| 2.0     | May 14, 2020       | Upgraded from .NET Core 2.2 to 3.1 |
 
 ### Disclaimer
 

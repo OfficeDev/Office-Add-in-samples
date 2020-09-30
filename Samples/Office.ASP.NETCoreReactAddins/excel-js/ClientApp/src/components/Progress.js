@@ -4,22 +4,24 @@
  */
 
 import * as React from 'react';
+import Header from './Header';
+import HeroList from './HeroList';
 import { Spinner, SpinnerType } from 'office-ui-fabric-react';
 
 export default class Progress extends React.Component {
-    render() {
-        const {
-            logo,
-            message,
-            title,
-        } = this.props;
+  render() {
+    const { logo, message, title } = this.props;
 
-        return (
-            <section className='ms-welcome__progress ms-u-fadeIn500'>
-                <img width='90' height='90' src={logo} alt={title} title={title} />
-                <h1 className='ms-fontSize-su ms-fontWeight-light ms-fontColor-neutralPrimary'>{title}</h1>
+    return (
+        <section className="ms-welcome__progress ms-u-fadeIn500">
+            <Header logo={logo} title={title} message="Welcome JavaScript" />
+            <HeroList
+                message="Discover what Office .NET Core 3.1 Add-ins can do for you today!"
+                items={[]}
+            >
                 <Spinner type={SpinnerType.large} label={message} />
-            </section>
-        );
-    }
+            </HeroList>
+      </section>
+    );
+  }
 }
