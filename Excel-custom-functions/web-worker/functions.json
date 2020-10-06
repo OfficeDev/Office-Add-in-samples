@@ -1,0 +1,36 @@
+{
+    "functions": [
+        {
+            "id": "TEST",
+            "parameters": [
+                {
+                    "name": "n"
+                }
+            ]
+        },
+        {
+            "id": "TEST_PROMISE",
+            "parameters": [
+                {
+                    "name": "n"
+                }
+            ]
+        },
+        {
+            "id": "TEST_ERROR",
+            "parameters": [
+                {
+                    "name": "n"
+                }
+            ]
+        },
+        {
+            "id": "TEST_ERROR_PROMISE",
+            "parameters": [
+                {
+                    "name": "n"
+                }
+            ]
+        }
+    ]
+}
