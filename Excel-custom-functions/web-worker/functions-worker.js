@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 self.addEventListener('message',
     function(event) {
         var data = event.data;
