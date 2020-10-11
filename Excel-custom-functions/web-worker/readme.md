@@ -1,15 +1,74 @@
-# Custom Function Sample using Web Worker
+---
+page_type: sample
+products:
+- office-excel
+- office-365
+languages:
+- javascript
+extensions:
+  contentType: samples
+  technologies:
+  - Add-ins
+  createdDate: 10/06/2020 1:25:00 PM
+description: "This sample shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in."
+---
 
-# Purpose
-This add-in is used to show how to use web worker for custom function.
+# Custom function sample using web worker
 
-The add-in contains:
-- Custom Function
+## Summary
 
-# Steps to run the addin
-On Excel Online, insert addin using file upload. The manifest is `manifest.xml`. The agave is servered by https://officedev.github.io/testing-assets/addins/webworker-customfunction/. No need to run any "npm" commands.
+This sample shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in.
 
-Now, you could uee the following functions
+## Features
+
+- Custom Functions
+- Web workers
+
+## Applies to
+
+- Excel on Windows, Mac, and in a browser.
+
+## Solution
+
+Solution | Author(s)
+---------|----------
+Office Add-in Custom Function Using Web Workers | Microsoft
+
+## Version history
+
+Version  | Date | Comments
+---------| -----| --------
+1.0 | 10-06-2020 | Initial release
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+----------
+
+## Scenario
+
+Custom functions block the UI of your Office Add-in when they run. If you have long-running custom functions, this can cause poor performance in your Office Add-in UI when the spreadsheet is calculated. For example, if someone has a table with thousands of rows, each of which is calling a long-running custom function, this can lead to the UI being blocked during a recalculation.
+
+You can unblock the UI by using web workers to do the calculations for your custom functions.
+
+## Run the sample
+
+You can run this sample in Excel in a browser. The add-in web files are served from this repo on GitHub.
+
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Open [Office on the web](https://office.live.com/).
+1. Choose **Excel**, and then open a new document.
+1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
+1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](images/office-add-ins-my-account.png)
+1. Browse to the add-in manifest file, and then select **Upload**.
+   ![The upload add-in dialog with buttons for browse, upload, and cancel.
+](images/upload-add-in.png)
+1. Verify that the add-in loaded successfully. You will see a **Web worker task pane** button on the **Home** tab on the ribbon.
+
+Now you can use the following custom functions:
+
 ```
 =WebWorkerSample.TEST(2)
 =WebWorkerSample.TEST_PROMISE(2)
@@ -17,24 +76,29 @@ Now, you could uee the following functions
 =WebWorkerSample.TEST_ERROR_PROMISE(2)
 ```
 
-# Steps for Maintainers
-On dev machine, run the following command so that we could access the website using https://localhost/home.html
+## Run the sample from Localhost
+
+If you want to host the sample from your computer, run the following command:
+
 ```console
 cd webworker-customfunction
 http-server --cors .
 office-addin-https-reverse-proxy --url http://localhost:8080
 ```
 
-If the office-addin certificate is not found or expired, please run
+If the office-addin certificate is not found or expired, run the following command:
+
 ```console
 npx office-addin-dev-certs install --days 365
 ```
 
-Then insert addin using file uploader and the manifest is `manifest-localhost.xml`.
+Sideload the add-in using the the previous steps (1 - 7). Upload the `manifest-localhost.xml` file for step 6.
 
-# Details
-## Dispatch to web worker
-To use web worker for custom function, we need to create web worker and then dispatch the calcuation job to the web worker. Please check the code in the [functions.js](functions.js).
+## Details
+
+### Dispatch to web worker
+
+When a custom function needs to use a web worker, we turn the calcuation into a job and dispatch it to a web worker. The **dispatchCalculationJob** function takes the function name and parameters from a custom function, and creates a job object that is posted to a web worker. For more details see the **dispatchCalculationJob** function in [functions.js](functions.js).
 
 ```JavaScript
     // Post a job to web worker to do calculation
@@ -53,11 +117,14 @@ To use web worker for custom function, we need to create web worker and then dis
     }
 ```
 
-## Web worker do calcuation and send result back
-The web worker will do the real calculation. Please check the [functions-worker.js](functions-worker.js). The functions-worker.js will
-1. listen to the message
-2. invoke calucation
-3. then call postMessage to post the result to the main page.
+### Web worker runs the job and returns result
+
+The web worker runs the job specified in the job object to do the actual calculation. The web worker code is in a separate file in [functions-worker.js](functions-worker.js). 
+
+The functions-worker.js will
+1. Receive a message containing the job to run.
+2. Invoke a function to perform the calculation.
+3. Call **postMessage** to post the result back to the main thread.
 
 ```JavaScript
 self.addEventListener('message',
@@ -106,10 +173,13 @@ self.addEventListener('message',
 );
 
 ```
-Most of the above code is to handle the error case and Promise case.
 
-## Process results from web worker
-The [functions.js](functions.js) listens to the message from the web worker and then resolve the proise or reject the promise.
+Most of the previous code handles the error case and Promise case.
+
+### Process results from the web worker
+
+In [functions.js](functions.js), when a new web worker is created, it is provided a callback function to process the result. The callback function parses the data to determine the outcome of the job. It resolves or rejects the promise as determined by the job result data.
+
 ```JavaScript
         // create a new web worker
         var webWorker = new Worker("functions-worker.js");
@@ -138,5 +208,10 @@ The [functions.js](functions.js) listens to the message from the web worker and 
         });
 ```
 
-# Maintainers
-shaofengzhu
+## Copyright
+
+Copyright (c) 2020 Microsoft Corporation. All rights reserved.
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+<img src="https://telemetry.sharepointpnp.com/officedev/samples/excel-custom-function-web-workers" />

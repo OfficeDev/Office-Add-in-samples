@@ -146,7 +146,7 @@
       </bt:Urls>
       <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
-        <bt:String id="OEP.TaskpaneButton.Label" DefaultValue="Show WebWorker Sample Taskpane" />
+        <bt:String id="OEP.TaskpaneButton.Label" DefaultValue="Web worker task pane" />
         <bt:String id="OEP.Group1Label" DefaultValue="WebWorker Sample" />
         <bt:String id="OEP.GetStarted.Title" DefaultValue="WebWorker Sample" />
         <bt:String id="OEP.CustomFunctions.NameSpace" DefaultValue="WebWorkerSample" />
