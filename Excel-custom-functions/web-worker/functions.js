@@ -4,7 +4,7 @@
 var SampleNamespace = {};
 
 (function(SampleNamespace) {
-    // The max number of web worker to be created
+    // The max number of web workers to be created
     var g_maxWebWorkers = 4;
 
     // The array of web workers
@@ -25,23 +25,23 @@ var SampleNamespace = {};
         // create a new web worker
         var webWorker = new Worker("functions-worker.js");
         webWorker.addEventListener('message', function(event) {
-            var data = event.data;
-            if (typeof(data) == "string") {
-                data = JSON.parse(data);
+            var jobResult = event.data;
+            if (typeof(jobResult) == "string") {
+                jobResult = JSON.parse(jobResult);
             }
 
-            if (typeof(data.jobId) == "number") {
-                var jobId = data.jobId;
+            if (typeof(jobResult.jobId) == "number") {
+                var jobId = jobResult.jobId;
                 // get the promise info associated with the job id
                 var promiseInfo = g_jobIdToPromiseInfoMap[jobId];
                 if (promiseInfo) {
-                    if (data.error) {
+                    if (jobResult.error) {
                         // The web worker returned error
                         promiseInfo.reject(new Error());
                     }
                     else {
                         // The web worker retuned result
-                        promiseInfo.resolve(data.result);
+                        promiseInfo.resolve(jobResult.result);
                     }
                     delete g_jobIdToPromiseInfoMap[jobId];
                 }

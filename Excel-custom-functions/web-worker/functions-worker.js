@@ -3,14 +3,14 @@
 
 self.addEventListener('message',
     function(event) {
-        var data = event.data;
-        if (typeof(data) == "string") {
-            data = JSON.parse(data);
+        var job = event.data;
+        if (typeof(job) == "string") {
+            job = JSON.parse(job);
         }
 
-        var jobId = data.jobId;
+        var jobId = job.jobId;
         try {
-            var result = invokeFunction(data.name, data.parameters);
+            var result = invokeFunction(job.name, job.parameters);
             // check whether the result is a promise.
             if (typeof(result) == "function" || typeof(result) == "object" && typeof(result.then) == "function") {
                 result.then(function(realResult) {
