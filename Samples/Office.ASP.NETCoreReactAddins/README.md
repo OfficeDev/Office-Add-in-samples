@@ -41,24 +41,47 @@ We'd like to hear about your experience with this sample and using ASP.NET Core 
 2. Choose **Create a new project**.
 3. Type "Excel" into the search box at the top of the dialog.
 4. Choose the Excel Web Add-in template, then choose **Next**.
-5. Give the new project a name on the **Configure your new project** page and use the default values for the remaining fields and then choose **Create**.
+5. Give the new project a name on the **Configure your new project** page (for example, `MyWebAddin`). Use the default values for the remaining fields and then choose **Create**.
 6. On the choose the add-in type page, select **Add new functionalities to Excel**. Then choose Finish.
 
 ### Add the ASP.NET Core React.js web project to the solution
 
 1. Download or clone this repo. This will create a **PnP-OfficeAddins** folder.
 2. In Visual Studio, right-click the solution in **Solution Explorer** and choose **Add > Existing Project**.
-3. In the **Add Existing Project** dialog, go to the **PnP-OfficeAddins/Samples/Office.ASP.NETCoreReactAddins** folder. There are two project folders there: **excel-js** (JavaScript) and **excel-ts** (TypeScript). Choose the folder for the language you want to use, and then choose the .csproj file in the folder.
-4. Build the project you just added, right-click the project in **Solution Explorer** and choose **Build**.
-5. Select the add-in project in Solution Explorer. It will have the name you gave the project when you created it and a Manifest entry under it (i.e. ExcelWebAddin1).
-6. Press F4 to view the **Properties** window for the project (if it is not already visible).
-7. Change the **Web Project** property to the name of ASP .NET Core web project you just added to the solution.
-   **Note:**: The ASP.NET Core web project must be on the same local drive as the Excel Web Add-in project.
-8. In the **Solution Explorer** open the manifest.xml file under the Office Add-in project (the project only contains a manifest file). Copy and save the <Id> that has the GUID for your project.
-9. Copy the contents of the manifest.xml file in the ASP.NET Core project and replace all of the contents in the manifest file in the Web Add-in project (i.e. ExcelWebAddin1Manifest.xml) with it.
-10. Press F5 to debug the Office Web Add-in project.
+3. In the **Add Existing Project** dialog, go to the **PnP-OfficeAddins/Samples/Office.ASP.NETCoreReactAddins** folder. There are two project folders there: **excel-js** (JavaScript) and **excel-ts** (TypeScript). Choose the folder for the language you want to use, select the .csproj file in the folder, and then choose **Open**.
+4. Right-click the project that you just added in **Solution Explorer** and choose **Build**.
+5. Select the add-in project in Solution Explorer. It will have the name you gave the project (such as `MyWebAddin`) and have the icon shown in the following screen shot.
 
-> **Note:** npm install should run and install the packages prior to building the ASP.NET Core web project but you may need to watch the output window for errors. If errors occur, please try running npm install from the ./ClientApp folder.
+   ![Screen shot of the MyWebAddin project in the solution explorer](web-addin-project.png)
+
+6. Press F4 to view the **Properties** window for the project (if it is not already visible).
+7. Change the **Web Project** property to the name of ASP .NET Core web project you just added to the solution. The following image shows adding the TypeScript project.
+
+   ![Screen shot of selecting the ASP.NET_Core_React_TypeScript project for the Web Project property](associate-web-project.png)
+
+8. A confirmation dialog will appear asking if you want to associate the project. Choose **Yes**.
+
+   ![Screen shot of the confirmation dialog for associating the project](confirm-associate-project.png)
+
+   **Note:** The ASP .NET Core web project must be on the same local drive as the Excel Web Add-in project.
+
+9. In the **Solution Explorer** open the manifest.xml file under the Office Add-in project (the project only contains a manifest file). Copy and save the `<Id>` that has the GUID for your project. You will need it later.
+
+   ![Screen shot of the manifest file under the MyWebAddin project in the solution explorer](project-manifest.png)
+
+10. Open the manifest.xml file in the ASP.NET Core project and copy the entire file contents to the clipboard. The following image shows the location for the ASP.NET Core React TypeScript manifest file.
+
+    ![Screen shot of the manifest.xml file under the ASP.NET_Core_React_TypeScript project in solution explorer](aspnet-core-manifest.png)
+
+11. Return to the manifest file for the Office Add-in project.
+
+    ![Screen shot of the manifest file under the MyWebAddin project in the solution explorer](project-manifest.png)
+
+12. Replace the entire contents of the Office Add-in manifest file with the contents you copied from the ASP.NET Core React manifest file.
+13. Find the `<Id>` in the manifest and replace it with the ID of your project that you saved previously. This will ensure you are using a uniquely generated ID.
+14. Press F5 to debug the Office Web Add-in project.
+
+**Note:** npm install should run and install the packages prior to building the ASP.NET Core web project but you may need to watch the output window for errors. If errors occur, please try running npm install from the ./ClientApp folder.
 
 ## Known Issues
 
