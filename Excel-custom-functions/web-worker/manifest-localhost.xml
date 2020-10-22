@@ -22,7 +22,7 @@
   <Description DefaultValue="WebWorker Sample-D" />
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
-  <IconUrl DefaultValue="https://officedev.github.io/testing-assets/addins/images/button32x32.png" />
+  <IconUrl DefaultValue="https://localhost/images/button32x32.png" />
   <!--End Basic Settings. -->
   <!--Begin TaskPane Mode integration. This section is used if there are no VersionOverrides or if the Office client version does not support add-in commands. -->
   <Hosts>
@@ -134,9 +134,9 @@
     <!-- You can use resources across hosts and form factors. -->
      <Resources>
       <bt:Images>
-        <bt:Image id="OEP.tpicon_16x16" DefaultValue="https://officedev.github.io/testing-assets/addins/images/button16x16.png" />
-        <bt:Image id="OEP.tpicon_32x32" DefaultValue="https://officedev.github.io/testing-assets/addins/images/button32x32.png" />
-        <bt:Image id="OEP.tpicon_80x80" DefaultValue="https://officedev.github.io/testing-assets/addins/images/button80x80.png" />
+        <bt:Image id="OEP.tpicon_16x16" DefaultValue="https://localhost/images/button16x16.png" />
+        <bt:Image id="OEP.tpicon_32x32" DefaultValue="https://localhost/images/button32x32.png" />
+        <bt:Image id="OEP.tpicon_80x80" DefaultValue="https://localhost/images/button80x80.png" />
       </bt:Images>
       <bt:Urls>
         <bt:Url id="OEP.CustomFunctions.Script" DefaultValue="https://localhost/functions.js" />

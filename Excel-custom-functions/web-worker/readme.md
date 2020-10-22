@@ -1,16 +1,16 @@
 ---
 page_type: sample
 products:
-- office-excel
-- office-365
+  - office-excel
+  - office-365
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 10/06/2020 1:25:00 PM
-description: "This sample shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in."
+description: 'This sample shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in.'
 ---
 
 # Custom function sample using web worker
@@ -30,21 +30,21 @@ This sample shows how to use web workers in custom functions to prevent blocking
 
 ## Solution
 
-Solution | Author(s)
----------|----------
-Office Add-in Custom Function Using Web Workers | Microsoft
+| Solution                                        | Author(s) |
+| ----------------------------------------------- | --------- |
+| Office Add-in Custom Function Using Web Workers | Microsoft |
 
 ## Version history
 
-Version  | Date | Comments
----------| -----| --------
-1.0 | 10-06-2020 | Initial release
+| Version | Date       | Comments        |
+| ------- | ---------- | --------------- |
+| 1.0     | 10-06-2020 | Initial release |
 
 ## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-----------
+---
 
 ## Scenario
 
@@ -80,9 +80,30 @@ Now you can use the following custom functions:
 
 If you want to host the sample from your computer, run the following command:
 
+To run the local server run http-server, if you haven't installed this yet you can do this with the following command:
+
 ```console
-cd webworker-customfunction
+npm install --global http-server
+```
+
+In a Command Window run from the web-worker folder:
+
+```console
 http-server --cors .
+```
+
+Reroute to localhost
+
+To reroute to localhost run office-addin-https-reverse-proxy.
+If you haven't installed this you can do this with the following command:
+
+```console
+npm install --global office-addin-https-reverse-proxy
+```
+
+To reroute run the following in another Command Window
+
+```console
 office-addin-https-reverse-proxy --url http://localhost:8080
 ```
 
@@ -119,9 +140,10 @@ When a custom function needs to use a web worker, we turn the calcuation into a 
 
 ### Web worker runs the job and returns result
 
-The web worker runs the job specified in the job object to do the actual calculation. The web worker code is in a separate file in [functions-worker.js](functions-worker.js). 
+The web worker runs the job specified in the job object to do the actual calculation. The web worker code is in a separate file in [functions-worker.js](functions-worker.js).
 
 The functions-worker.js will
+
 1. Receive a message containing the job to run.
 2. Invoke a function to perform the calculation.
 3. Call **postMessage** to post the result back to the main thread.
