@@ -9,7 +9,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 3/15/2020 1:25:00 PM
+  createdDate: 11/5/2020 10:00:00 AM
 description: "This sample shows how to add keyboard shortcuts to your Office Add-in."
 ---
 
@@ -46,7 +46,7 @@ Office Add-in share global data with a shared runtime | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0 | 9-5-2020 | Initial release
+1.0 | 11-5-2020 | Initial release
 
 ## Disclaimer
 
