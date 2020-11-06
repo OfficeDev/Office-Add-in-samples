@@ -17,7 +17,7 @@ description: "This sample shows how to add keyboard shortcuts to your Office Add
 
 ## Summary
 
-This sample shows how to set up a basic Excel add-in project that utilizes keyboard shortcuts. Currently, the shortcuts are configured to show and hide the taskpane as well as cycle through colors for a selected cell. Keyboard shortcuts can be used to achieve any action within the add-in runtime.
+This sample shows how to set up a basic Excel add-in project that utilizes keyboard shortcuts. Currently, the shortcuts are configured to show and hide the task pane as well as cycle through colors for a selected cell. Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 
 > **Note:** The features used in this sample are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you'll need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is to sign up for an Office 365 subscription. If you don't already have an Office 365 subscription, get one by joining the [Office 365 Developer Program](https://developer.microsoft.com/office/dev-program).
 
