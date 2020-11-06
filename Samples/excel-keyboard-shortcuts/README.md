@@ -40,7 +40,7 @@ Before running this sample, you need a recent version of [npm](https://www.npmjs
 
 Solution | Author(s)
 ---------|----------
-Office Add-in share global data with a shared runtime | Microsoft
+Use keyboard shortcuts for Office add-in actions | Microsoft
 
 ## Version history
 
