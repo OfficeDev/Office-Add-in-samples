@@ -64,12 +64,12 @@ This sample adds three different shortcuts to the Office Add-in. This enables th
 ## Build and run the solution
 
 1. In the command prompt, run the command `npm install`.
-2. Run the command `npm run start`. This starts the node server, and opens Excel on the desktop.
+2. Run the command `npm run start`. This starts the Node.js server, and opens Excel on Windows.
 
 If you're running Excel on the web or Mac, run `npm run start:web` instead and see the following articles for instructions on how to sideload:
 
 - [Sideload Office Add-ins in Office on the web for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing) 
-- [Sideload Office Add-ins on iPad and Mac for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad-and-mac)
+- [Sideload Office Add-ins on Mac for testing](https://docs.microsoft.com/en-us/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad-and-mac#sideload-an-add-in-in-office-on-mac)
 
 Once the add-in is loaded use the following steps to try out the functionality.
 
@@ -111,4 +111,4 @@ Copyright (c) 2020 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://telemetry.sharepointpnp.com/officedev/samples/excel-keyboard-shortcuts" />
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/excel-keyboard-shortcuts" />
