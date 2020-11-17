@@ -1,0 +1,40 @@
+{
+    "actions": [
+        {
+            "id": "SHOWTASKPANE",
+            "type": "ExecuteFunction",
+            "name": "Show task pane for add-in"
+        },
+        {
+            "id": "HIDETASKPANE",
+            "type": "ExecuteFunction",
+            "name": "Hide task pane for add-in"
+        },
+        {
+            "id": "SETCOLOR",
+            "type": "ExecuteFunction",
+            "name": "Cycle through cell colors"
+        }
+
+    ],
+    "shortcuts": [
+        {
+            "action": "SHOWTASKPANE",
+            "key": {
+                "default": "CTRL+SHIFT+UP"
+            }
+        },
+        {
+            "action": "HIDETASKPANE",
+            "key": {
+                "default": "CTRL+SHIFT+DOWN"
+            }
+        },
+        {
+            "action": "SETCOLOR",
+            "key": {
+                "default": "CTRL+SHIFT+O"
+            }
+        }
+    ]
+}

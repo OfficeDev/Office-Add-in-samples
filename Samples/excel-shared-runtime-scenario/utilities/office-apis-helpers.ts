@@ -96,6 +96,7 @@ export async function connectService() {
   let connectDialog: Office.Dialog;
 
   const processMessage = () => {
+    const g = getGlobal() as any;
     g.state.setConnected(true);
     g.state.isConnectInProgress = false;
     connectDialog.close();
