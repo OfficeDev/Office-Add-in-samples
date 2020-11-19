@@ -24,7 +24,7 @@ module.exports = async (env, options) => {
           test: /\.js$/,
           exclude: /node_modules/,
           use: {
-            loader: "babel-loader",
+            loader: "babel-loader", 
             options: {
               presets: ["@babel/preset-env"]
             }
@@ -52,7 +52,7 @@ module.exports = async (env, options) => {
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
-        chunks: ["polyfill", "taskpane"]
+        chunks: ["polyfill", "taskpane","functions","commands"]
       }),
       new CopyWebpackPlugin([
         {
@@ -64,8 +64,8 @@ module.exports = async (env, options) => {
     devServer: {
       headers: {
         "Access-Control-Allow-Origin": "*"
-      },
-      https: options.https !== undefined ? options.https : await devCerts.getHttpsServerOptions(),
+      },      
+      https: (options.https !== undefined) ? options.https : await devCerts.getHttpsServerOptions(),
       port: process.env.npm_package_config_dev_server_port || 3000
     }
   };
