@@ -86,3 +86,18 @@ CustomFunctions.associate("TEST_ERROR", function(n) {
 CustomFunctions.associate("TEST_ERROR_PROMISE", function(n) {
     return SampleNamespace.dispatchCalculationJob("TEST_ERROR_PROMISE", [n]);
 });
+
+
+// This function will show what happens when calculations are run on the main UI thread.
+// The task pane will be blocked until this method completes.
+CustomFunctions.associate("TEST_UI_THREAD", function(n) {
+    var ret = 0;
+    for (var i = 0; i < n; i++) {
+        ret += Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(50))))))))));
+        for (var l = 0; l < n; l++) {
+            ret -= Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(50))))))))));     
+        }
+    }
+    return ret;
+});
+

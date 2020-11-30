@@ -1,6 +1,14 @@
 {
     "functions": [
         {
+            "id": "TEST_UI_THREAD",
+            "parameters": [
+                {
+                    "name": "n"
+                }
+            ]
+        },
+        {
             "id": "TEST",
             "parameters": [
                 {

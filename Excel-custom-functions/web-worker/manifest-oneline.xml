@@ -10,7 +10,7 @@
   <!-- Begin Basic Settings: Add-in metadata, used for all versions of Office unless override provided. -->
 
   <!-- IMPORTANT! Id must be unique for your add-in, if you reuse this manifest ensure that you change this id to a new GUID. -->
-  <Id>91dd5cf9-9c42-4425-8b1e-8a5d90cca373</Id>
+  <Id>e283662f-3557-4148-a600-950dca4417e1</Id>
 
   <!--Version. Updates from the store only get triggered if there is a version change. -->
   <Version>1.0.0.0</Version>
@@ -18,8 +18,8 @@
   <DefaultLocale>en-US</DefaultLocale>
 
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-  <DisplayName DefaultValue="WebWorker Sample-D" />
-  <Description DefaultValue="WebWorker Sample-D" />
+  <DisplayName DefaultValue="WebWorker Sample" />
+  <Description DefaultValue="WebWorker Sample" />
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
   <IconUrl DefaultValue="https://officedev.github.io/testing-assets/addins/images/button32x32.png" />
@@ -34,7 +34,7 @@
     </Sets>
   </Requirements>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:8080/home.html" />
+    <SourceLocation DefaultValue="https://officedev.github.io/testing-assets/addins/webworker-customfunction/home.html" />
   </DefaultSettings>
   <!-- End TaskPane Mode integration.  -->
 
@@ -139,17 +139,17 @@
         <bt:Image id="OEP.tpicon_80x80" DefaultValue="https://officedev.github.io/testing-assets/addins/images/button80x80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="OEP.CustomFunctions.Script" DefaultValue="https://localhost:8080/functions.js" />
-        <bt:Url id="OEP.CustomFunctions.Json" DefaultValue="https://localhost:8080/functions.json" />
-        <bt:Url id="OEP.SharedRuntime.Url" DefaultValue="https://localhost:8080/home.html" />
+        <bt:Url id="OEP.CustomFunctions.Script" DefaultValue="https://officedev.github.io/testing-assets/addins/webworker-customfunction/functions.js" />
+        <bt:Url id="OEP.CustomFunctions.Json" DefaultValue="https://officedev.github.io/testing-assets/addins/webworker-customfunction/functions.json" />
+        <bt:Url id="OEP.SharedRuntime.Url" DefaultValue="https://officedev.github.io/testing-assets/addins/webworker-customfunction/home.html" />
         <bt:Url id="OEP.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
       </bt:Urls>
       <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
-        <bt:String id="OEP.TaskpaneButton.Label" DefaultValue="Show WebWorker Sample Taskpane-D" />
-        <bt:String id="OEP.Group1Label" DefaultValue="WebWorker Sample-D" />
-        <bt:String id="OEP.GetStarted.Title" DefaultValue="WebWorker Sample-D" />
-        <bt:String id="OEP.CustomFunctions.NameSpace" DefaultValue="WebWorkerSample_D" />
+        <bt:String id="OEP.TaskpaneButton.Label" DefaultValue="Web worker task pane" />
+        <bt:String id="OEP.Group1Label" DefaultValue="WebWorker Sample" />
+        <bt:String id="OEP.GetStarted.Title" DefaultValue="WebWorker Sample" />
+        <bt:String id="OEP.CustomFunctions.NameSpace" DefaultValue="WebWorkerSample" />
       </bt:ShortStrings>
       <!-- LongStrings max characters==250. -->
       <bt:LongStrings>
