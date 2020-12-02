@@ -13,15 +13,13 @@ extensions:
 description: "This sample shows how to create contextual ribbon buttons that are enabled based on the state of your add-in. It also shows how to use the Office.js API to show or hide the task pane. This sample also demonstrates how to run code when the task pane is closed, such as on document open."
 ---
 
-# (preview) Manage ribbon and task pane UI, and run code on doc open
+# Manage ribbon and task pane UI, and run code on doc open
 
 ## Summary
 
 This sample shows how to create contextual ribbon buttons that are enabled based on the state of your add-in. It also shows how to use the Office.js API to show or hide the task pane. This sample also demonstrates how to run code when the task pane is closed, such as on document open.
 
 ![Screen shot of the add-in with ribbon buttons enabled and disabled](excel-shared-runtime.png)
-
-> **Note:** The features used in this sample are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you will need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is by using an Office 365 subscription. If you don't already have an Office 365 subscription, you can get one by joining the [Office 365 Developer Program](https://developer.microsoft.com/office/dev-program).
 
 ## Features
 
@@ -36,8 +34,6 @@ This sample shows how to create contextual ribbon buttons that are enabled based
 -  Excel on Windows, Mac, and in a browser.
 
 ## Prerequisites
-
-To try the preview features used by this sample, you will need to [join Office Insider](https://insider.office.com/join).
 
 Before running this sample, make sure you have installed a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) on your computer. To check if you have already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
