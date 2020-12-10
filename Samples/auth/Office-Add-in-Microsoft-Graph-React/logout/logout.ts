@@ -3,21 +3,20 @@
  * See LICENSE in the project root for license information.
  */
 
-import * as msal from 'msal';
+import { PublicClientApplication } from '@azure/msal-browser';
 
 (() => {
   // The initialize function must be run each time a new page is loaded
   Office.initialize = () => {
 
-    const config: msal.Configuration = {
-      auth: {
-          clientId: 'fc19440a-334e-471e-af53-a1c1f53c9226',
-          redirectUri: 'https://localhost:3000/logoutcomplete/logoutcomplete.html', 
-          postLogoutRedirectUri: 'https://localhost:3000/logoutcomplete/logoutcomplete.html'
-      }
-    };
+    const msalInstance = new PublicClientApplication({
+        auth: {
+            clientId: '0a61c279-646b-4055-a5f1-1c3da7f70f18',
+            redirectUri: 'https://localhost:3000/logoutcomplete/logoutcomplete.html', 
+            postLogoutRedirectUri: 'https://localhost:3000/logoutcomplete/logoutcomplete.html'
+        }
+    });
 
-    const userAgentApplication = new msal.UserAgentApplication(config);
-    userAgentApplication.logout();
+    msalInstance.logout();
   };
 })();

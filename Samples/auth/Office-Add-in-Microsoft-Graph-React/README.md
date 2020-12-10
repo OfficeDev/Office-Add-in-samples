@@ -9,10 +9,10 @@ Learn how to build a Microsoft Office Add-in, as a single-page application (SPA)
 Integrating data from online service providers increases the value and adoption of your add-ins. This code sample shows you how to connect your SPA add-in to Microsoft Graph. Use this code sample to:
 
 * Connect to Microsoft Graph from an Office Add-in.
-* Use the msal.js Library to implement the OAuth 2.0 authorization framework in an add-in, using the Implicit Flow.
+* Use the MSAL.js Library to implement the OAuth 2.0 authorization framework in an add-in, using the Auth Code Flow w/ PKCE for SPAs.
 * Use the OneDrive REST APIs from Microsoft Graph.
 * Show a dialog using the Office UI namespace.
-* Build an Add-in using React, msal.js,  and Office.js. 
+* Build an Add-in using React, MSAL.js, and Office.js. 
 * Use add-in commands in an add-in.
 
 ## Applies to
@@ -47,6 +47,7 @@ Office Add-in Microsoft Graph React | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
+1.1  | December 10th, 2020 | Upgrade MSAL.js to v2
 1.0  | August 29th, 2019| Initial release
 
 ## Disclaimer
@@ -61,11 +62,10 @@ Version  | Date | Comments
 
 1. Register your application using the [Azure Management Portal](https://manage.windowsazure.com). **Log in with the identity of an administrator of your Office 365 tenancy to ensure that you are working in an Azure Active Directory that is associated with that tenancy.** To learn how to register your application, see [Register an application with the Microsoft Identity Platform](https://docs.microsoft.com/graph/auth-register-app-v2). Use the following settings:
 
- - REDIRCT URI: `https://localhost:3000/login/login.html`
+ - REDIRCT URI: `https://localhost:3000/login/login.html` (this must be added under "Single-Page Application")
  - SUPPORTED ACCOUNT TYPES: "**Accounts in any organizational directory**"
- - IMPLICIT GRANT: Enable *both* options: **Access tokens** and **ID tokens**
  - API PERMISSIONS: none. Do not request any. 
- - SECRETS: none. The sample uses the OAuth 2.0 Implicit Flow, which requires no secrets.
+ - SECRETS: none. The sample uses the OAuth 2.0 Auth Code Flow w/ PKCE for SPAs, which requires no secrets.
 
 	> Note: After you register your application, copy the **Application (client) ID** on the **Overview** blade of the App Registration in the Azure Management Portal. 
 	 
