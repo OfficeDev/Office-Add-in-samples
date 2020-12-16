@@ -257,26 +257,3 @@ export async function monitorSheetChanges() {
   }
 }
 
-export async function monitorSheetChangesBug() {
-  try {
-    let g = getGlobal() as any;
-    if (g.state === undefined) {
-      return;
-    }
-    if (g.state.isInitialized) {
-      await Excel.run(async (context) => {
-        let table = context.workbook.tables.getItem("ExpensesTable");
-        if (table !== undefined) {
-          table.onSelectionChanged.add(onTableSelectionChange);
-          await context.sync();
-          updateRibbon();
-        } else {
-          g.state.isSumEnabled = false;
-          updateRibbon();
-        }
-      });
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
