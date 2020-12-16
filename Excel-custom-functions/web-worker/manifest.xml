@@ -21,7 +21,7 @@
   <Description DefaultValue="PnP WebWorker sample" />
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
-  <IconUrl DefaultValue="https://localhost:8080/images/icon-32.png" />
+  <IconUrl DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/images/icon-32.png" />
   <!--End Basic Settings. -->
   <!--Begin TaskPane Mode integration. This section is used if there are no VersionOverrides or if the Office client version does not support add-in commands. -->
   <Hosts>
@@ -33,7 +33,7 @@
     </Sets>
   </Requirements>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:8080/home.html" />
+    <SourceLocation DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/home.html" />
   </DefaultSettings>
   <!-- End TaskPane Mode integration.  -->
 
@@ -133,14 +133,14 @@
     <!-- You can use resources across hosts and form factors. -->
      <Resources>
       <bt:Images>
-        <bt:Image id="OEP.tpicon_16x16" DefaultValue="https://localhost:8080/images/icon-16.png" />
-        <bt:Image id="OEP.tpicon_32x32" DefaultValue="https://localhost:8080/images/icon-32.png" />
-        <bt:Image id="OEP.tpicon_80x80" DefaultValue="https://localhost:8080/images/icon-80.png" />
+        <bt:Image id="OEP.tpicon_16x16" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/images/icon-16.png" />
+        <bt:Image id="OEP.tpicon_32x32" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/images/icon-32.png" />
+        <bt:Image id="OEP.tpicon_80x80" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/images/icon-80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="OEP.CustomFunctions.Script" DefaultValue="https://localhost:8080/functions.js" />
-        <bt:Url id="OEP.CustomFunctions.Json" DefaultValue="https://localhost:8080/functions.json" />
-        <bt:Url id="OEP.SharedRuntime.Url" DefaultValue="https://localhost:8080/home.html" />
+        <bt:Url id="OEP.CustomFunctions.Script" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/functions.js" />
+        <bt:Url id="OEP.CustomFunctions.Json" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/functions.json" />
+        <bt:Url id="OEP.SharedRuntime.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/home.html" />
         <bt:Url id="OEP.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
       </bt:Urls>
       <!-- ShortStrings max characters==125. -->
