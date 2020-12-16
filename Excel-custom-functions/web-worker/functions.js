@@ -36,11 +36,11 @@ var SampleNamespace = {};
                 var promiseInfo = g_jobIdToPromiseInfoMap[jobId];
                 if (promiseInfo) {
                     if (jobResult.error) {
-                        // The web worker returned error
+                        // The web worker returned an error
                         promiseInfo.reject(new Error());
                     }
                     else {
-                        // The web worker retuned result
+                        // The web worker returned a result
                         promiseInfo.resolve(jobResult.result);
                     }
                     delete g_jobIdToPromiseInfoMap[jobId];
@@ -52,7 +52,7 @@ var SampleNamespace = {};
         return webWorker;
     }
 
-    // Post a job to web worker to do calculation
+    // Post a job to the web worker to do the calculation
     function dispatchCalculationJob(functionName, parameters) {
         var jobId = g_nextJobId++;
         return new Promise(function(resolve, reject) {
