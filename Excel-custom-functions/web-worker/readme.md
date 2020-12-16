@@ -9,7 +9,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 10/06/2020 1:25:00 PM
+  createdDate: 12/16/2020 1:25:00 PM
 description: "This sample shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in."
 ---
 
@@ -38,7 +38,7 @@ Office Add-in Custom Function Using Web Workers | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0 | 10-06-2020 | Initial release
+1.0 | 12-16-2020 | Initial release
 
 ## Disclaimer
 
@@ -48,7 +48,7 @@ Version  | Date | Comments
 
 ## Scenario
 
-Custom functions block the UI of your Office Add-in when they run. If you have long-running custom functions, this can cause poor performance in your Office Add-in UI when the spreadsheet is calculated. For example, if someone has a table with thousands of rows, each of which is calling a long-running custom function, this can lead to the UI being blocked during a recalculation.
+When using the shared runtime, custom functions block the UI of your Office Add-in when they run. If you have long-running custom functions, this can cause poor performance in your Office Add-in UI when the spreadsheet is calculated. For example, if someone has a table with thousands of rows, each of which is calling a long-running custom function, this can lead to the UI being blocked during a recalculation.
 
 You can unblock the UI by using web workers to do the calculations for your custom functions.
 
@@ -74,34 +74,35 @@ Now you can use the following custom functions:
 =WebWorkerSample.TEST_PROMISE(2)
 =WebWorkerSample.TEST_ERROR(2)
 =WebWorkerSample.TEST_ERROR_PROMISE(2)
+=WebWorkerSample.TEST_UI_THREAD(2)
 ```
+
+If you open the task pane you will see an animated bouncing ball. You can see the effect of blocking the UI thread by entering `=WebWorkerSample.TEST_UI_THREAD(50000)` into a cell. The bouncing ball will stop for a few seconds while the result is calculated.
+
+Next try entering `=WebWorkerSample.TEST(50000)` into a cell. While this takes several seconds to calculate, you'll see the bouncing ball continue to animate in the task pane because the calculation runs on a separate web worker thread.
 
 ## Run the sample from Localhost
 
-If you want to host the sample from your computer, run the following command:
+You host the web server for the sample on your computer by following these steps:
 
-```console
-cd webworker-customfunction
-http-server --cors .
-office-addin-https-reverse-proxy --url http://localhost:8080
-```
-
-If the office-addin certificate is not found or expired, run the following command:
-
-```console
-npx office-addin-dev-certs install --days 365
-```
-
-Sideload the add-in using the the previous steps (1 - 7). Upload the `manifest-localhost.xml` file for step 6.
+1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
+2. Run the following commands to start the localhost web server.
+    
+    ```console
+    cd webworker-customfunction
+    http-server -S --cors .
+    ```
+    
+3. Sideload the add-in using the the previous steps (1 - 7). Upload the `manifest-localhost.xml` file for step 6.
 
 ## Details
 
 ### Dispatch to web worker
 
-When a custom function needs to use a web worker, we turn the calcuation into a job and dispatch it to a web worker. The **dispatchCalculationJob** function takes the function name and parameters from a custom function, and creates a job object that is posted to a web worker. For more details see the **dispatchCalculationJob** function in [functions.js](functions.js).
+When a custom function needs to use a web worker, we turn the calculation into a job and dispatch it to a web worker. The **dispatchCalculationJob** function takes the function name and parameters from a custom function, and creates a job object that is posted to a web worker. For more details see the **dispatchCalculationJob** function in [functions.js](functions.js).
 
 ```JavaScript
-    // Post a job to web worker to do calculation
+    // Post a job to the web worker to do the calculation
     function dispatchCalculationJob(functionName, parameters) {
         var jobId = g_nextJobId++;
         return new Promise(function(resolve, reject) {
@@ -117,11 +118,12 @@ When a custom function needs to use a web worker, we turn the calcuation into a 
     }
 ```
 
-### Web worker runs the job and returns result
+### Web worker runs the job and returns the result
 
-The web worker runs the job specified in the job object to do the actual calculation. The web worker code is in a separate file in [functions-worker.js](functions-worker.js). 
+The web worker runs the job specified in the job object to do the actual calculation. The web worker code is in a separate file in [functions-worker.js](functions-worker.js).
 
-The functions-worker.js will
+The functions-worker.js will:
+
 1. Receive a message containing the job to run.
 2. Invoke a function to perform the calculation.
 3. Call **postMessage** to post the result back to the main thread.
@@ -195,11 +197,11 @@ In [functions.js](functions.js), when a new web worker is created, it is provide
                 var promiseInfo = g_jobIdToPromiseInfoMap[jobId];
                 if (promiseInfo) {
                     if (data.error) {
-                        // The web worker returned error
+                        // The web worker returned an error
                         promiseInfo.reject(new Error());
                     }
                     else {
-                        // The web worker retuned result
+                        // The web worker returned a result
                         promiseInfo.resolve(data.result);
                     }
                     delete g_jobIdToPromiseInfoMap[jobId];
