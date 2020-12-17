@@ -1,10 +1,10 @@
 ---
 page_type: sample
 products:
-- office-excel
-- office-365
+  - office-excel
+  - office-365
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
@@ -30,21 +30,21 @@ This sample shows how to use web workers in custom functions to prevent blocking
 
 ## Solution
 
-Solution | Author(s)
----------|----------
-Office Add-in Custom Function Using Web Workers | Microsoft
+| Solution                                        | Author(s) |
+| ----------------------------------------------- | --------- |
+| Office Add-in Custom Function Using Web Workers | Microsoft |
 
 ## Version history
 
-Version  | Date | Comments
----------| -----| --------
-1.0 | 12-16-2020 | Initial release
+| Version | Date       | Comments        |
+| ------- | ---------- | --------------- |
+| 1.0     | 12-16-2020 | Initial release |
 
 ## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-----------
+---
 
 ## Scenario
 
@@ -79,21 +79,36 @@ Now you can use the following custom functions:
 
 If you open the task pane you will see an animated bouncing ball. You can see the effect of blocking the UI thread by entering `=WebWorkerSample.TEST_UI_THREAD(50000)` into a cell. The bouncing ball will stop for a few seconds while the result is calculated.
 
-Next try entering `=WebWorkerSample.TEST(50000)` into a cell. While this takes several seconds to calculate, you'll see the bouncing ball continue to animate in the task pane because the calculation runs on a separate web worker thread.
-
 ## Run the sample from Localhost
 
 You host the web server for the sample on your computer by following these steps:
 
-1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
-2. Run the following commands to start the localhost web server.
+1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
     
     ```console
-    cd webworker-customfunction
+    npm install --global http-server
+    ```
+    
+2. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
+3. From a command prompt, go to the web-worker folder and run the following command:
+    
+    ```console
     http-server -S --cors .
     ```
     
-3. Sideload the add-in using the the previous steps (1 - 7). Upload the `manifest-localhost.xml` file for step 6.
+4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
+    
+    ```console
+    npm install --global office-addin-https-reverse-proxy
+    ```
+    
+    To reroute run the following in another command prompt:
+    
+    ```console
+    office-addin-https-reverse-proxy --url http://localhost:8080
+    ```
+    
+5. Sideload the add-in using the the previous steps (1 - 7). Upload the `manifest-localhost.xml` file for step 6.
 
 ## Details
 
