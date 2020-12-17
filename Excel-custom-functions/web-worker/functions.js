@@ -36,11 +36,11 @@ var SampleNamespace = {};
                 var promiseInfo = g_jobIdToPromiseInfoMap[jobId];
                 if (promiseInfo) {
                     if (jobResult.error) {
-                        // The web worker returned error
+                        // The web worker returned an error
                         promiseInfo.reject(new Error());
                     }
                     else {
-                        // The web worker retuned result
+                        // The web worker returned a result
                         promiseInfo.resolve(jobResult.result);
                     }
                     delete g_jobIdToPromiseInfoMap[jobId];
@@ -52,7 +52,7 @@ var SampleNamespace = {};
         return webWorker;
     }
 
-    // Post a job to web worker to do calculation
+    // Post a job to the web worker to do the calculation
     function dispatchCalculationJob(functionName, parameters) {
         var jobId = g_nextJobId++;
         return new Promise(function(resolve, reject) {
@@ -86,3 +86,18 @@ CustomFunctions.associate("TEST_ERROR", function(n) {
 CustomFunctions.associate("TEST_ERROR_PROMISE", function(n) {
     return SampleNamespace.dispatchCalculationJob("TEST_ERROR_PROMISE", [n]);
 });
+
+
+// This function will show what happens when calculations are run on the main UI thread.
+// The task pane will be blocked until this method completes.
+CustomFunctions.associate("TEST_UI_THREAD", function(n) {
+    var ret = 0;
+    for (var i = 0; i < n; i++) {
+        ret += Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(50))))))))));
+        for (var l = 0; l < n; l++) {
+            ret -= Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(50))))))))));     
+        }
+    }
+    return ret;
+});
+

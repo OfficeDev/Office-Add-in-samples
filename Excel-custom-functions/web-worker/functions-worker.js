@@ -68,6 +68,9 @@ function test(n) {
     var ret = 0;
     for (var i = 0; i < n; i++) {
         ret += Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(50))))))))));
+        for (var l = 0; l < n; l++) {
+            ret -= Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(50))))))))));     
+        }
     }
     return ret;
 }

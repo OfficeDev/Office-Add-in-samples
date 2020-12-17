@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Created: eec6a18b-71fe-4fdc-bba8-4f3ea6c92bd5 -->
 <OfficeApp 
     xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -10,7 +9,7 @@
   <!-- Begin Basic Settings: Add-in metadata, used for all versions of Office unless override provided. -->
 
   <!-- IMPORTANT! Id must be unique for your add-in, if you reuse this manifest ensure that you change this id to a new GUID. -->
-  <Id>e283662f-3557-4148-a600-950dca4417e1</Id>
+  <Id>91dd5cf9-9c42-4425-8b1e-8a5d90cca373</Id>
 
   <!--Version. Updates from the store only get triggered if there is a version change. -->
   <Version>1.0.0.0</Version>
@@ -18,11 +17,11 @@
   <DefaultLocale>en-US</DefaultLocale>
 
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-  <DisplayName DefaultValue="WebWorker Sample" />
-  <Description DefaultValue="WebWorker Sample" />
+  <DisplayName DefaultValue="PnP WebWorker sample" />
+  <Description DefaultValue="PnP WebWorker sample" />
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
-  <IconUrl DefaultValue="https://officedev.github.io/testing-assets/addins/images/button32x32.png" />
+  <IconUrl DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/images/icon-32.png" />
   <!--End Basic Settings. -->
   <!--Begin TaskPane Mode integration. This section is used if there are no VersionOverrides or if the Office client version does not support add-in commands. -->
   <Hosts>
@@ -34,7 +33,7 @@
     </Sets>
   </Requirements>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://officedev.github.io/testing-assets/addins/webworker-customfunction/home.html" />
+    <SourceLocation DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/home.html" />
   </DefaultSettings>
   <!-- End TaskPane Mode integration.  -->
 
@@ -134,27 +133,27 @@
     <!-- You can use resources across hosts and form factors. -->
      <Resources>
       <bt:Images>
-        <bt:Image id="OEP.tpicon_16x16" DefaultValue="https://officedev.github.io/testing-assets/addins/images/button16x16.png" />
-        <bt:Image id="OEP.tpicon_32x32" DefaultValue="https://officedev.github.io/testing-assets/addins/images/button32x32.png" />
-        <bt:Image id="OEP.tpicon_80x80" DefaultValue="https://officedev.github.io/testing-assets/addins/images/button80x80.png" />
+        <bt:Image id="OEP.tpicon_16x16" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/images/icon-16.png" />
+        <bt:Image id="OEP.tpicon_32x32" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/images/icon-32.png" />
+        <bt:Image id="OEP.tpicon_80x80" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/images/icon-80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="OEP.CustomFunctions.Script" DefaultValue="https://officedev.github.io/testing-assets/addins/webworker-customfunction/functions.js" />
-        <bt:Url id="OEP.CustomFunctions.Json" DefaultValue="https://officedev.github.io/testing-assets/addins/webworker-customfunction/functions.json" />
-        <bt:Url id="OEP.SharedRuntime.Url" DefaultValue="https://officedev.github.io/testing-assets/addins/webworker-customfunction/home.html" />
+        <bt:Url id="OEP.CustomFunctions.Script" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/functions.js" />
+        <bt:Url id="OEP.CustomFunctions.Json" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/functions.json" />
+        <bt:Url id="OEP.SharedRuntime.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Excel-custom-functions/web-worker/home.html" />
         <bt:Url id="OEP.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
       </bt:Urls>
       <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
-        <bt:String id="OEP.TaskpaneButton.Label" DefaultValue="Web worker task pane" />
-        <bt:String id="OEP.Group1Label" DefaultValue="WebWorker Sample" />
-        <bt:String id="OEP.GetStarted.Title" DefaultValue="WebWorker Sample" />
+        <bt:String id="OEP.TaskpaneButton.Label" DefaultValue="Show WebWorker task pane" />
+        <bt:String id="OEP.Group1Label" DefaultValue="WebWorker sample" />
+        <bt:String id="OEP.GetStarted.Title" DefaultValue="WebWorker sample" />
         <bt:String id="OEP.CustomFunctions.NameSpace" DefaultValue="WebWorkerSample" />
       </bt:ShortStrings>
       <!-- LongStrings max characters==250. -->
       <bt:LongStrings>
-        <bt:String id="OEP.TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane" />
-        <bt:String id="OEP.GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started." />
+        <bt:String id="OEP.TaskpaneButton.Tooltip" DefaultValue="Click to Show a task pane" />
+        <bt:String id="OEP.GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show WebWorker task pane' button to get started." />
         <bt:String id="OEP.TestFuncButton.Tooltip" DefaultValue="Test AppCmd button" />
       </bt:LongStrings>
     </Resources>
