@@ -11,16 +11,16 @@ extensions:
   technologies:
   - Add-ins
   createdDate: 10/2/2019 1:25:00 PM
-description: "You can expand the capabilities of Excel custom functions by integrating with Azure functions."
+description: "You can expand the capabilities of Excel custom functions by integrating with Azure Functions."
 ---
 
-# Integrate an Azure function with your Excel custom function
+# Integrate an Azure Function with your Excel custom function
 
-You can expand the capabilities of Excel custom functions by integrating with Azure functions. An Azure function allows you to move your code to the cloud so it is not visible from the browser, and you can choose additional languages to run in besides JavaScript. Also an Azure function can integrate with other Azure services such as message queues and storage. And you can share the function with other clients.
+You can expand the capabilities of Excel custom functions by integrating with Azure Functions. An Azure Function allows you to move your code to the cloud so it is not visible from the browser, and you can choose additional languages to run in besides JavaScript. Also an Azure Function can integrate with other Azure services such as message queues and storage. And you can share the function with other clients.
 
-This sample shows how to move the code from the `Add` custom function into an Azure function.
+This sample shows how to move the code from the `Add` custom function into an Azure Function.
 
-![Overview diagram of Excel custom function calling an Azure function that returns a result.](images/azure-function-overview.png)
+![Overview diagram of Excel custom function calling an Azure Function that returns a result.](images/azure-function-overview.png)
 
 ## Applies to
 
@@ -34,7 +34,7 @@ To set up your development environment:
 2. Install version 2.x of the [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2). Note: The sample does not use extension bundles so you will install the .NET Core 2.x SDK in a later step.
 3. Install the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp). You can also search for the C# extension in the VS Code Extensions view (Ctrl + Shift + X) and typing 'C# for Visual Studio Code'. Note: You will be notified to install the .NET Core 3.0 SDK, but this is not needed for this sample.
 4. Install the [Azure Functions extension](https://docs.microsoft.com/azure/azure-functions/functions-create-first-function-vs-code#install-the-azure-functions-extension). You can also search for the Azure Functions extension in the VS Code Extensions view (Ctrl + Shift + X) and typing 'Azure Functions'.
-5. Download and install [.NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core) which is the required version for Azure functions to build projects correctly.
+5. Download and install [.NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core) which is the required version for Azure Functions to build projects correctly.
 
 You will also need the following:
 
@@ -45,7 +45,7 @@ You will also need the following:
 
 Solution | Author(s)
 ---------|----------
-Azure function integration | David Chesnut (**Microsoft**)
+Azure Function integration | David Chesnut (**Microsoft**)
 
 ## Version history
 
@@ -58,11 +58,11 @@ Version  | Date | Comments
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ----------
-## Try out the Azure function from localhost
+## Try out the Azure Function from localhost
 
-This sample moves the `Add` custom function to an Azure function named `AddTwo()`. The Azure function adds the two numbers and returns the result. The next steps will run the sample. If you want to know how it works, jump down to the explanation section.
+This sample moves the `Add` custom function to an Azure Function named `AddTwo()`. The Azure Function adds the two numbers and returns the result. The next steps will run the sample. If you want to know how it works, jump down to the explanation section.
 
-### Build and run the Azure function
+### Build and run the Azure Function
 
 1. Clone or download this repository to a local project folder.
 2. Start Visual Studio Code and open the **AzureFunction/AzureFunctionProject** folder in the project.
@@ -72,11 +72,11 @@ This sample moves the `Add` custom function to an Azure function named `AddTwo()
     "command": "host start --cors https://localhost:3000",
     ```
     This will modify the tasks so that when you run the project it opens port 3000 for CORS. This allows the Office Add-in to call the function in later steps since it will run on port 3000.
-5. From the **Debug** menu, choose **Start Debugging** (F5). The Azure function project will compile and start running.
+5. From the **Debug** menu, choose **Start Debugging** (F5). The Azure Function project will compile and start running.
     >Note: You may see an alert to allow func access through the firewall.
-    After running you should see output similar to the following image. It will list the URL you can use to call the Azure function.
-    ![Screenshot of the Azure function project output window after debug start.](images/azure-debug-start.png)
-6. You can test that the Azure function is working by calling it from a browser. Open a browser window and enter the following URL to add two numbers.
+    After running you should see output similar to the following image. It will list the URL you can use to call the Azure Function.
+    ![Screenshot of the Azure Function project output window after debug start.](images/azure-debug-start.png)
+6. You can test that the Azure Function is working by calling it from a browser. Open a browser window and enter the following URL to add two numbers.
 `http://localhost:7071/api/AddTwo?first=1&second=2`. You should see the result `{ "answer": 3}` returned to the browser.
 
 ### Build and run the custom function
@@ -101,12 +101,12 @@ This sample moves the `Add` custom function to an Azure function named `AddTwo()
     ```command&nbsp;line
     $ npm run start:web
     ```
-3. In Excel with the add-in loaded, try out the custom function by entering `=CONTOSO.ADD(1,2)` into a cell. The cell should call the custom function, which then calls the Azure function, and returns the result of 3.
+3. In Excel with the add-in loaded, try out the custom function by entering `=CONTOSO.ADD(1,2)` into a cell. The cell should call the custom function, which then calls the Azure Function, and returns the result of 3.
     ![Screenshot of entering the value =CONTOSO.ADD(1,2) into a cell in Excel.](images/contoso-add-function.png)
 
 ## Deploy to an Azure Function App
 
-You can also deploy and run the Azure function from your own Azure account.
+You can also deploy and run the Azure Function from your own Azure account.
 
 1. Start Visual Studio Code and open the **AzureFunction/AzureFunctionProject** folder in the project.
 2. In Visual Studio Code, press F1 to open the command palette. In the command palette, search for and select **Azure Functions: Deploy to function app....** and then choose your subscription.
@@ -127,34 +127,34 @@ You can also deploy and run the Azure function from your own Azure account.
 7. Select the Azure icon on the Activity bar. You should see an Azure Functions area in the Side Bar.
     ![Screenshot of the Azure icon on the Activity bar.](images/azure-icon.png)
 8. In the **Azure: Functions** area, expand the new function app under your subscription. Expand **Functions**, right-click **AddTwo**, and then choose **Copy function URL**.
-9. You can test that the Azure function is working by calling it from a browser. Open a browser window and enter the URL you just copied. If you want to add numbers, append the following query string to the URL `?first=1&second=2`. You should see the result `{ "answer": 3}` returned to the browser.
+9. You can test that the Azure Function is working by calling it from a browser. Open a browser window and enter the URL you just copied. If you want to add numbers, append the following query string to the URL `?first=1&second=2`. You should see the result `{ "answer": 3}` returned to the browser.
 
 ### Add CORS support for the custom function 
 
-You'll need to enable CORS support for the Office Add-in before it can call the Azure function online.
+You'll need to enable CORS support for the Office Add-in before it can call the Azure Function online.
 
-1. Open the Azure portal and sign in. You can do this by selecting the Azure icon on the Activity bar in Visual Studio Code. Then right-click your Azure subscription for the Azure function and choose **Open in Portal**.
+1. Open the Azure portal and sign in. You can do this by selecting the Azure icon on the Activity bar in Visual Studio Code. Then right-click your Azure subscription for the Azure Function and choose **Open in Portal**.
 2. In the Azure portal, select the function app.
 3. Choose **Platform features**.
 4. Choose **CORS** in the **API** section.
-5. Add a new entry in the **Allowed Origins** list for `https://localhost:3000`. This will enable the custom function to call into the Azure function app. 
+5. Add a new entry in the **Allowed Origins** list for `https://localhost:3000`. This will enable the custom function to call into the Azure Function app. 
 6. Choose **Save**.
 
 >**Note:** If you deploy the Excel custom function add-in, be sure to update the Allowed Origins list to support the new domain location.
 
-## Update the Excel custom function to call into the Azure function app
+## Update the Excel custom function to call into the Azure Function app
 
-Once the Azure function is deployed you can update the custom function to call the cloud version of the Azure function instead of the localhost version.
+Once the Azure Function is deployed you can update the custom function to call the cloud version of the Azure Function instead of the localhost version.
 
 1. Start Visual Studio Code and open the **AzureFunction/CustomFunctionProject/src/functions/functions.js** file in the project.
 2. Go to the add function which sets the url string. The code appears as the following:
     ```js
     function add(first, second) {
-      //If you publish the Azure function online, update the following URL to use the correct URL location.
+      //If you publish the Azure Function online, update the following URL to use the correct URL location.
       let url = "http://localhost:7071/api/AddTwo";
       ...
     ```
-3. In the `let url` assignment replace the localhost URL with the Azure function URL you copied from the previous exercise.
+3. In the `let url` assignment replace the localhost URL with the Azure Function URL you copied from the previous exercise.
 4. Run the following commands to build and start the custom function add-in on Excel on Windows. If the project was still running from a previous step, stop it and close Excel before restarting it.
     ```command&nbsp;line
     $ npm run build
@@ -168,13 +168,13 @@ Once the Azure function is deployed you can update the custom function to call t
     $ npm run build
     $ npm run start:web
     ```
-2. Try out the custom function by entering `=CONTOSO.ADD(1,2)` into a cell. The cell should call the custom function, which then calls the Azure function, and returns the result of 3.
+2. Try out the custom function by entering `=CONTOSO.ADD(1,2)` into a cell. The cell should call the custom function, which then calls the Azure Function, and returns the result of 3.
 
 ## Key parts of this sample
 
-### The Azure function
+### The Azure Function
 
-The Azure function is named `AddTwo()` and is in the **AzureFunctionProject/AddTow.cs** file. First the function needs to get the two parameters `first` and `second`. They might be passed as URL query parameters, or in a JSON body. So the code handles both scenarios. Notice the use of `??` and `?.` operators when retrieving values from the JSON body. It's possible a parameter was not passed and we don't want the code to fail because of a null. So these operators help work around any null parameters. For more information see [?? operator (C# reference)](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/null-coalescing-operator) and [Null-conditional operators ?. and ?[]](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/member-access-operators#null-conditional-operators--and-)
+The Azure Function is named `AddTwo()` and is in the **AzureFunctionProject/AddTow.cs** file. First the function needs to get the two parameters `first` and `second`. They might be passed as URL query parameters, or in a JSON body. So the code handles both scenarios. Notice the use of `??` and `?.` operators when retrieving values from the JSON body. It's possible a parameter was not passed and we don't want the code to fail because of a null. So these operators help work around any null parameters. For more information see [?? operator (C# reference)](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/null-coalescing-operator) and [Null-conditional operators ?. and ?[]](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/member-access-operators#null-conditional-operators--and-)
 
 ```csharp
 //retrieve parameters if passed on URL. They are passed in string format (convert them later)
@@ -207,11 +207,11 @@ return new OkObjectResult((n1+n2).ToString());
 
 ### The custom function
 
-The Excel custom function is named `Add` and is in the **CustomFunctionProject/src/functions/functions.js** file. The `Add` function calls the `AddTwo` Azure function and just passes along the `first` and `second` parameters. The fetch function is used to call the Azure function, and the returned answer string is returned to Excel.
+The Excel custom function is named `Add` and is in the **CustomFunctionProject/src/functions/functions.js** file. The `Add` function calls the `AddTwo` Azure Function and just passes along the `first` and `second` parameters. The fetch function is used to call the Azure Function, and the returned answer string is returned to Excel.
 
 ```js
 function add(first, second) {
-  //If you publish the Azure function online, update the following URL to use the correct URL location.
+  //If you publish the Azure Function online, update the following URL to use the correct URL location.
   let url = "http://localhost:7071/api/AddTwo";
  
   return new Promise(function(resolve,reject){
@@ -242,7 +242,7 @@ function add(first, second) {
 
 ### AzureFunctionProject notes
 
-The Azure function is configured to allow anonymous access which means anyone can call the function if they have the URL. This is only for development purposes. In production code, you should configure [authentication and authorization in Azure App Service](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization), to ensure only authorized users and code can call your Azure functions.
+The Azure Function is configured to allow anonymous access which means anyone can call the function if they have the URL. This is only for development purposes. In production code, you should configure [authentication and authorization in Azure App Service](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization), to ensure only authorized users and code can call your Azure Functions.
 
 ### CustomFunctionProject notes
 
