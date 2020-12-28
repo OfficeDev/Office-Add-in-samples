@@ -104,7 +104,7 @@ This sample moves the `Add` custom function to an Azure function named `AddTwo()
 3. In Excel with the add-in loaded, try out the custom function by entering `=CONTOSO.ADD(1,2)` into a cell. The cell should call the custom function, which then calls the Azure function, and returns the result of 3.
     ![Screenshot of entering the value =CONTOSO.ADD(1,2) into a cell in Excel.](images/contoso-add-function.png)
 
-## Deploy to an Azure function app
+## Deploy to an Azure Function App
 
 You can also deploy and run the Azure function from your own Azure account.
 
