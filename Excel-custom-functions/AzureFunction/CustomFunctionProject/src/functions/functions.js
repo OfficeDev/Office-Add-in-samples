@@ -6,7 +6,7 @@
  * @returns {number} The sum of the two numbers.
  */
 function add(first, second) {
-  //If you publish the Azure function online, update the following URL to use the correct URL location.
+  //If you publish the Azure Function online, update the following URL to use the correct URL location.
   let url = "http://localhost:7071/api/AddTwo";
  
   return new Promise(function(resolve,reject){
