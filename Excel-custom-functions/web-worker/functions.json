@@ -1,0 +1,44 @@
+{
+    "functions": [
+        {
+            "id": "TEST_UI_THREAD",
+            "parameters": [
+                {
+                    "name": "n"
+                }
+            ]
+        },
+        {
+            "id": "TEST",
+            "parameters": [
+                {
+                    "name": "n"
+                }
+            ]
+        },
+        {
+            "id": "TEST_PROMISE",
+            "parameters": [
+                {
+                    "name": "n"
+                }
+            ]
+        },
+        {
+            "id": "TEST_ERROR",
+            "parameters": [
+                {
+                    "name": "n"
+                }
+            ]
+        },
+        {
+            "id": "TEST_ERROR_PROMISE",
+            "parameters": [
+                {
+                    "name": "n"
+                }
+            ]
+        }
+    ]
+}
