@@ -33,7 +33,7 @@ To run this code sample, the following are required.
 
 * Office on Windows, version 16.0.6769.2001 or higher.
 
-* A Microsoft Azure Tenant. This add-in requires Azure Active Directiory (AD). Azure AD provides identity services that applications use for authentication and authorization. A trial subscription can be acquired here: [Microsoft Azure](https://account.windowsazure.com/SignUp).
+* A Microsoft Azure Tenant. This add-in requires Azure Active Directory (AD). Azure AD provides identity services that applications use for authentication and authorization. A trial subscription can be acquired here: [Microsoft Azure](https://account.windowsazure.com/SignUp).
 
 * A code editor.
 
@@ -48,6 +48,7 @@ Office Add-in Microsoft Graph React | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0  | August 29th, 2019| Initial release
+1.1  | January 14th, 2021| Changed system for creating and installing the SSL certificates for HTTPS.
 
 ## Disclaimer
 
@@ -69,11 +70,21 @@ Version  | Date | Comments
 
 	> Note: After you register your application, copy the **Application (client) ID** on the **Overview** blade of the App Registration in the Azure Management Portal. 
 	 
-3.  In the code editor, open the `/login/login.ts` file in the project. Near the top is a configuration property called `clientId`. Replace the placeholder value with the application ID you copied from the registration. Save and close the file.
+2.  In the code editor, open the `/login/login.ts` file in the project. Near the top is a configuration property called `clientId`. Replace the placeholder value with the application ID you copied from the registration. Save and close the file.
 
-4. Follow the instructions at [SSL](https://github.com/OfficeDev/generator-office/blob/master/src/docs/ssl.md#method-2-manually-install-the-certificate) to trust a certificate. Use method 2.
+3. Open a **Command Prompt** *as an administrator*.
 
-5. Open a **Command Prompt** *as an administrator*. Run the command `npm install`.
+4. Navigate to the root of the sample, which would normally be `[PATH-TO-YOUR-PROJECTS]\PnP-OfficeAddins\Samples\auth\Office-Add-in-Microsoft-Graph-React`.
+
+5. Run the command `npm install`.
+
+6. Run the command: ```npx office-addin-dev-certs install --machine```.
+
+    If you get the following prompt, click **Yes**.
+
+    <img src="ReadmeImages/CertificateWarningPrompt.png" alt="Screenshot of a dialog that warns about the SSL certificate and asks user to accept or deny installation of it" />
+
+	> Note: If you have worked with another Office Add-in within the last 30 days that was originally created with the Yo Office tool, you may have unexpired certs for localhost already, in which case you will get a message saying that localhost is already trusted. If so, continue with the next section.
 
 ### Run the solution
 
@@ -99,7 +110,8 @@ Questions about developing Office Add-ins should be posted to [Stack Overflow](h
 * [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Copyright
-Copyright (c) 2019 Microsoft Corporation. All rights reserved.
+
+Copyright (c) 2019 and 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
