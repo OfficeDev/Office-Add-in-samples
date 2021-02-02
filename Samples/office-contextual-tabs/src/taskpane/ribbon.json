@@ -1,0 +1,188 @@
+{
+    "actions": [
+        {
+            "id": "runRibbonAction",
+            "type": "ExecuteFunction",
+            "functionName": "runRibbonAction"
+        }
+    ],
+    "tabs": [
+        {
+            "id": "tabTableData",
+            "label": "Table Data",
+            "visible": true,
+            "groups": [
+                {
+                    "id": "grpSources",
+                    "label": "Data sources",
+                    "icon": [
+                        {
+                            "size": 16,
+                            "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                        },
+                        {
+                            "size": 32,
+                            "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                        },
+                        {
+                            "size": 80,
+                            "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                        }
+                    ],
+                    "controls": [
+                        {
+                            "type": "Menu",
+                            "id": "mnuDataSources",
+                            "label": "Data Sources",
+                            "toolTip": "Select data source to sync with",
+                            "superTip": {
+                                "title": "Data Sources",
+                                "description": "Select data source to sync with."
+                            },
+                            "icon": [
+                                {
+                                    "size": 16,
+                                    "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                },
+                                {
+                                    "size": 32,
+                                    "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                },
+                                {
+                                    "size": 80,
+                                    "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                }
+                            ],
+                            "items": [
+                                {
+                                    "type": "MenuItem",
+                                    "id": "itmExternalExcel",
+                                    "enabled": true,
+                                    "icon": [
+                                        {
+                                            "size": 16,
+                                            "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                        }
+                                    ],
+                                    "label": "External Excel file",
+                                    "toolTip": "Sync with external Excel file",
+                                    "superTip": {
+                                        "title": "External Excel file",
+                                        "description": "Sync with external Excel file"
+                                    },
+                                    "actionId": "runRibbonAction"
+                                },
+                                {
+                                    "type": "MenuItem",
+                                    "id": "itmSQLSource",
+                                    "enabled": true,
+                                    "icon": [
+                                        {
+                                            "size": 16,
+                                            "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                        }
+                                    ],
+                                    "label": "SQL Database",
+                                    "toolTip": "Sync with SQL Database",
+                                    "superTip": {
+                                        "title": "SQL Database",
+                                        "description": "Sync with SQL Database."
+                                    },
+                                    "actionId": "runRibbonAction"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "grpData",
+                    "label": "Data Sync",
+                    "icon": [
+                        {
+                            "size": 16,
+                            "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                        },
+                        {
+                            "size": 32,
+                            "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                        },
+                        {
+                            "size": 80,
+                            "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                        }
+                    ],
+                    "controls": [
+                        {
+                            "type": "Button",
+                            "id": "btnRefresh",
+                            "enabled": true,
+                            "icon": [
+                                {
+                                    "size": 16,
+                                    "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                },
+                                {
+                                    "size": 32,
+                                    "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                },
+                                {
+                                    "size": 80,
+                                    "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                }
+                            ],
+                            "label": "Refresh",
+                            "toolTip": "Refresh table with latest data from data source",
+                            "superTip": {
+                                "title": "Refresh table data",
+                                "description": "Refresh table with latest data from data source."
+                            },
+                            "actionId": "runRibbonAction"
+                        },
+                        {
+                            "type": "Button",
+                            "id": "btnSubmit",
+                            "enabled": true,
+                            "icon": [
+                                {
+                                    "size": 16,
+                                    "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                },
+                                {
+                                    "size": 32,
+                                    "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                },
+                                {
+                                    "size": 80,
+                                    "sourceLocation": "https://osf-agave/AppCommands/RibbonAPITest/images/TaskPanes.32x32x32.png"
+                                }
+                            ],
+                            "label": "Submit",
+                            "toolTip": "Submit data changes from table to data source",
+                            "superTip": {
+                                "title": "Submit",
+                                "description": "Submit data changes from table to data source."
+                            },
+                            "actionId": "runRibbonAction"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

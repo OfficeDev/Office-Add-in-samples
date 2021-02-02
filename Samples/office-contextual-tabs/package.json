@@ -1,0 +1,59 @@
+{
+  "name": "office-addin-taskpane-js",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/Office-Addin-TaskPane-JS.git"
+  },
+  "license": "MIT",
+  "config": {
+    "app-to-debug": "excel",
+    "app-type-to-debug": "desktop",
+    "dev-server-port": 3000
+  },
+  "scripts": {
+    "build": "webpack -p --mode production --https false",
+    "build:dev": "webpack --mode development --https false",
+    "build-dev": "webpack --mode development --https false && echo . && echo . && echo . && echo Please use 'build:dev' instead of 'build-dev'.",
+    "dev-server": "webpack-dev-server --mode development",
+    "lint": "office-addin-lint check",
+    "lint:fix": "office-addin-lint fix",
+    "prettier": "office-addin-lint prettier",
+    "start": "office-addin-debugging start manifest.xml",
+    "start:desktop": "office-addin-debugging start manifest.xml desktop",
+    "start:web": "office-addin-debugging start manifest.xml web",
+    "stop": "office-addin-debugging stop manifest.xml",
+    "validate": "office-addin-manifest validate manifest.xml",
+    "watch": "webpack --mode development --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/polyfill": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@types/find-process": "1.2.0",
+    "@types/office-js": "^1.0.108",
+    "@types/office-runtime": "^1.0.14",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^6.1.1",
+    "eslint-config-office-addins": "^1.0.19",
+    "find-process": "^1.4.3",
+    "file-loader": "^4.2.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^4.5.0",
+    "office-addin-cli": "^1.0.13",
+    "office-addin-debugging": "^3.0.34",
+    "office-addin-dev-certs": "^1.5.5",
+    "office-addin-lint": "^1.0.26",
+    "office-addin-manifest": "1.5.7",
+    "office-addin-prettier-config": "^1.0.12",
+    "source-map-loader": "^0.2.4",
+    "ts-loader": "^6.2.2",
+    "typescript": "^4.0.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "prettier": "office-addin-prettier-config"
+}
