@@ -59,31 +59,35 @@ Version  | Date | Comments
 
 ## Build and run the solution
 
-### Configure the solution
+### Create an application registration
 
-1. Register your application using the [Azure Management Portal](https://manage.windowsazure.com). **Log in with the identity of an administrator of your Office 365 tenancy to ensure that you are working in an Azure Active Directory that is associated with that tenancy.** To learn how to register your application, see [Register an application with the Microsoft Identity Platform](https://docs.microsoft.com/graph/auth-register-app-v2). Use the following settings:
+1. Navigate to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page to register your app.
+2. Sign in with the ***admin*** credentials to your Microsoft 365 tenancy. For example, MyName@contoso.onmicrosoft.com.
+3. Select **New registration**. On the **Register an application** page, set the values as follows.
+    
+    * Set **Name** to `ExcelGraphDemo`.
+    * Set **Supported account types** to **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
+    * In the **Redirect URI** section, ensure that **Single-page application (SPA)** is selected in the drop down and then set the URI to `https://localhost:3000/login/login.html`.
+    * Select **Register**.
+    
+    For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://docs.microsoft.com/graph/auth-register-app-v2).
+    
+    > Note: The sample uses the OAuth 2.0 Auth Code Flow w/ PKCE for SPAs, which requires no secrets.
+    
+4. On the **ExcelGraphDemo** page, copy and save the value for the **Application (client) ID**. You'll use it in the next section.
 
- - REDIRCT URI: `https://localhost:3000/login/login.html` (this must be added under "Single-Page Application")
- - SUPPORTED ACCOUNT TYPES: "**Accounts in any organizational directory**"
- - API PERMISSIONS: none. Do not request any. 
- - SECRETS: none. The sample uses the OAuth 2.0 Auth Code Flow w/ PKCE for SPAs, which requires no secrets.
+### Configure the sample
 
-	> Note: After you register your application, copy the **Application (client) ID** on the **Overview** blade of the App Registration in the Azure Management Portal. 
-	 
-2.  In the code editor, open the `/login/login.ts` file in the project. Near the top is a configuration property called `clientId`. Replace the placeholder value with the application ID you copied from the registration. Save and close the file.
-
-3. Open a **Command Prompt** *as an administrator*.
-
-4. Navigate to the root of the sample, which would normally be `[PATH-TO-YOUR-PROJECTS]\PnP-OfficeAddins\Samples\auth\Office-Add-in-Microsoft-Graph-React`.
-
-5. Run the command `npm install`.
-
-6. Run the command: ```npx office-addin-dev-certs install --machine```.
-
+1.  In a code editor, open the `/login/login.ts` file in the project. Near the top is a configuration property called `clientId`. Replace the `YOUR APP ID HERE` placeholder value with the application ID you copied in the previous step. Save and close the file.
+1. Open a **Command Prompt** *as an administrator*.
+1. Navigate to the root of the sample, which would normally be `[PATH-TO-YOUR-PROJECTS]\PnP-OfficeAddins\Samples\auth\Office-Add-in-Microsoft-Graph-React`.
+1. Run the command `npm install`.
+1. Run the command: ```npx office-addin-dev-certs install --machine```.
+    
     If you get the following prompt, click **Yes**.
-
+    
     <img src="ReadmeImages/CertificateWarningPrompt.png" alt="Screenshot of a dialog that warns about the SSL certificate and asks user to accept or deny installation of it" />
-
+    
 	> Note: If you have worked with another Office Add-in within the last 30 days that was originally created with the Yo Office tool, you may have unexpired certs for localhost already, in which case you will get a message saying that localhost is already trusted. If so, continue with the next section.
 
 ### Run the solution
@@ -92,8 +96,8 @@ Version  | Date | Comments
 2. Back in the original command prompt, run the command `npm run sideload`. This will launch Excel and install the add-in in it. After a few seconds, a **OneDrive Files** group appears on the right end of the **Home** ribbon with a button named **Open Add-in**.
 3. Click the **Open Add-in** to open the task pane add-in.
 4. The pages and buttons in the add-in are self-explanatory. 
-
-	> Note: The first time that you press the **Connect to Office 365** button and sign in, you will be prompted to consent to the add-in. 
+    
+	> Note: The first time that you press the **Connect to Office 365** button and sign in, you will be prompted to consent to the add-in.
 
 ## Known issues
 
