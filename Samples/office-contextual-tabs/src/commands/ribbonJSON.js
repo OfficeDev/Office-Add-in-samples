@@ -9,7 +9,7 @@ export function getContextualRibbonJSON() {
   return {
     "actions": [
         {
-            "id": "runRibbonAction",
+            "id": "idRibbonAction",
             "type": "ExecuteFunction",
             "functionName": "runRibbonAction"
         },
@@ -94,7 +94,7 @@ export function getContextualRibbonJSON() {
                                         "title": "External Excel file",
                                         "description": "Sync with external Excel file"
                                     },
-                                    "actionId": "runRibbonAction"
+                                    "actionId": "idRibbonAction"
                                 },
                                 {
                                     "type": "MenuItem",
@@ -120,7 +120,7 @@ export function getContextualRibbonJSON() {
                                         "title": "SQL Database",
                                         "description": "Sync with SQL Database."
                                     },
-                                    "actionId": "runRibbonAction"
+                                    "actionId": "idRibbonAction"
                                 }
                             ]
                         }
@@ -168,7 +168,7 @@ export function getContextualRibbonJSON() {
                                 "title": "Refresh table data",
                                 "description": "Refresh table with latest data from data source."
                             },
-                            "actionId": "runRibbonAction"
+                            "actionId": "idRibbonAction"
                         },
                         {
                             "type": "Button",
@@ -194,7 +194,7 @@ export function getContextualRibbonJSON() {
                                 "title": "Submit",
                                 "description": "Submit data changes from table to data source."
                             },
-                            "actionId": "runRibbonAction"
+                            "actionId": "idRibbonAction"
                         }
                     ]
                 },
