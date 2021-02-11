@@ -10,7 +10,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 02/02/2021 1:25:00 PM
+  createdDate: 02/11/2021 1:25:00 PM
 description: "Learn how to create a contextual tab that displays on the ribbon in response to the context of the Office UI."
 ---
 
@@ -40,7 +40,7 @@ Create custom contextual tabs on the ribbon | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | February 2, 2021 | Initial release
+1.0  | February 11, 2021 | Initial release
 
 ## Disclaimer
 
@@ -68,6 +68,8 @@ The contextual tab supports commands related to working with the sales data. Whe
     ```command&nbsp;line
     $ npm run start
     
+    > **Note:** Sometimes when the add-in sideloads on the first start of Excel, you can open the Contoso task pane, but it will be blank. If this happens, run `npm run start` again to launch a second instance of Excel, and the task pane should load correctly.
+
 You can take the following actions to try out the add-in and the contextual tab.
 
 - Use the task pane to import data from either the the mock Excel file, or mock SQL Database. Selecting **Import data** in the task pane creates the sales table.
