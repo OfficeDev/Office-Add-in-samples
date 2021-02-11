@@ -99,8 +99,10 @@ export async function getTableData() {
  */
 function onSelectionChange(args) {
   let g = getGlobal();
-  setContextualTabVisibility(args.isInsideTable);
-  g.isTableSelected = args.isInsideTable;
+  if (g.isTableSelected !== args.isInsideTable){
+    g.isTableSelected = args.isInsideTable;
+    setContextualTabVisibility(args.isInsideTable);
+  }
 }
 
 /**

@@ -13,11 +13,15 @@ import { createSampleWorkSheet } from '../utilities/utilities.js';
 
 /* global console, document, Office */
 
-Office.onReady(info => {
+Office.onReady(async (info) => {
   if (info.host === Office.HostType.Excel) {
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
     document.getElementById("import").onclick = importData;
+
+    //Create the contextual tab
+    let g = getGlobal(); 
+    await Office.ribbon.requestCreateControls(g.contextualTab);
   }
 });
 
@@ -35,9 +39,6 @@ export async function importData() {
     } else{
       g.mockDataSource = 'sqlMockData';
     }
-
-    //Create the contextual tab
-    await Office.ribbon.requestCreateControls(g.contextualTab);
 
     //Create the sample worksheet and sales table.
     createSampleWorkSheet(g.mockDataSource);
