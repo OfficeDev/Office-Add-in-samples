@@ -16,8 +16,6 @@ export function getContextualRibbonJSON() {
         {
             "id": "showTaskpaneContoso",
             "type": "ShowTaskpane",
-            "sourceLocation": "https://localhost:3000/taskpane.html",
-            "taskpaneId": "ContosoMain",
             "title": "Contoso task pane",
             "supportPinning": false
           }
