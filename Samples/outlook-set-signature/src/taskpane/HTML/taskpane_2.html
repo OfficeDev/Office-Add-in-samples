@@ -1,0 +1,45 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+     
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Signature Data Form</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="../CSS/taskpane_2.css" rel="stylesheet" type="text/css" media="all" />
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.debug.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="../Js/taskpane_render.js"></script>  
+</head>
+
+<body>  
+  <div class="container">
+    <h2>Add signature data</h2>
+
+    <input type="text" id="display_name" placeholder="Name*" onclick="this.select()" required />
+
+    <input type="email" id="email_id" placeholder="Email address*" onclick="this.select()" required />
+
+    <input type="text" id="job_title" placeholder="Title" />
+
+    <input type="text" id="phone_number" placeholder="Phone number" />
+
+    <input type="text" placeholder="Eg: Thank you," id="greeting_text" />
+
+    <input type="text" placeholder="Eg: She, Her" id="preferred_pronoun" />
+
+    <button id="next_button_t1" class="registerbtn" onclick="create_user_info()">Save</button>
+
+    <button id="reset_all_config_btn" class="registerbtn" onclick="reset_all_configuration()">RESET ALL</button>
+
+    <div class="feedback-container">
+      <button id="feedback_btn" class="registerbtn" onclick="launch_feedback_window()">Report issues</button>
+    </div>
+
+    <p id="message"></p>
+  </div>
+
+</body>
+
+</html>
