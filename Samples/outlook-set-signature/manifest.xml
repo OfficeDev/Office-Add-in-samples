@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<OfficeApp
-  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
-  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides"
-  xsi:type="MailApp">
+  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="MailApp">
   <Id>{AED8392F-F6B3-469C-803E-55CD9CFFC764}</Id>
   <Version>1.0</Version>
   <ProviderName>Microsoft</ProviderName>
@@ -13,6 +11,7 @@
   <Description DefaultValue="Insert your signature with ease."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/final_logo.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/final_logo.jpg"/>
+  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <Requirements>
     <Sets DefaultMinVersion="1.1">
       <Set Name="Mailbox" />
@@ -73,9 +72,9 @@
                       <SourceLocation resid="residUrl0"/>
                     </Action>
                   </Control>
-                </Group> 
+                </Group>
               </OfficeTab>
-            </ExtensionPoint> 
+            </ExtensionPoint>
 
             <ExtensionPoint xsi:type="AppointmentOrganizerCommandSurface">
               <OfficeTab id="TabDefault">
@@ -96,9 +95,9 @@
                       <SourceLocation resid="residUrl0"/>
                     </Action>
                   </Control>
-                </Group> 
+                </Group>
               </OfficeTab>
-            </ExtensionPoint> 
+            </ExtensionPoint>
 
             <ExtensionPoint xsi:type="LaunchEvent">
               <LaunchEvents>
@@ -130,5 +129,5 @@
         </bt:LongStrings>
       </Resources>
     </VersionOverrides>
-   </VersionOverrides>
+  </VersionOverrides>
 </OfficeApp>
