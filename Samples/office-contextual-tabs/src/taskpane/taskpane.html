@@ -28,10 +28,15 @@
     <section id="sideload-msg" class="ms-welcome__main">
         <h2 class="ms-font-xl">section.</h2>
     </section>
-    <main id="app-body" class="ms-welcome__main" style="display: none;">
-        <p>Select data source:</p>
-        <input type="radio" id="excelFile" name="dataSource" value="excelFile">Excel File</input>
-        <input type="radio" id="sqlData" name="dataSource" value="sqlData">SQL Database</input>
+    
+    <main id="app-body" class="ms-welcome__main" >
+        <h3>Select data source:</h3>
+        <div>
+            <input type="radio" id="excelFile" name="dataSource" value="excelFile">Excel File</input>
+        </div>
+        <div>
+            <input type="radio" id="sqlData" name="dataSource" value="sqlData">SQL Database</input>
+        </div><br>
         <button id='import'>Import data</button>
     </main>
 </body>
