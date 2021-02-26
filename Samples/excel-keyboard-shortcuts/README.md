@@ -57,9 +57,9 @@ Version  | Date | Comments
 ## Scenario: Open/Close taskpane and modify cell color
 
 This sample adds three different shortcuts to the Office Add-in. This enables the user to:
-- Use the "Ctrl+Shift+Up" keyboard shortcut to open the taskpane.
-- Use the "Ctrl+Shift+Down" keyboard shortcut to close the taskpane.
-- Use the "Ctrl+Shift+O" keyboard shortcut to cycle through colors for a selected cell.
+- Use the "Ctrl+Shift+Alt+Up" keyboard shortcut to open the taskpane.
+- Use the "Ctrl+Shift+Alt+Down" keyboard shortcut to close the taskpane.
+- Use the "Ctrl+Shift+Alt+O" keyboard shortcut to cycle through colors for a selected cell.
 
 ## Build and run the solution
 

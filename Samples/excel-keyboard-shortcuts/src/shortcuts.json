@@ -21,19 +21,19 @@
         {
             "action": "SHOWTASKPANE",
             "key": {
-                "default": "CTRL+SHIFT+UP"
+                "default": "CTRL+Shift+Alt+Up"
             }
         },
         {
             "action": "HIDETASKPANE",
             "key": {
-                "default": "CTRL+SHIFT+DOWN"
+                "default": "CTRL+Shift+Alt+Down"
             }
         },
         {
             "action": "SETCOLOR",
             "key": {
-                "default": "CTRL+SHIFT+O"
+                "default": "CTRL+Shift+Alt+O"
             }
         }
     ]
