@@ -40,10 +40,9 @@
     flex: 1 0 0;
     padding: 10px 20px;
  }
- 
+
  .ms-welcome__main > h2 {
      width: 100%;
-     text-align: center;
  }
  
  .ms-welcome__features {

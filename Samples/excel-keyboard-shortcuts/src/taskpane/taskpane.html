@@ -23,7 +23,7 @@
 <body class="ms-font-m ms-welcome ms-Fabric">
     <header class="ms-welcome__header ms-bgColor-neutralLighter">
         <img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" />
-        <h1 class="ms-font-su">Welcome</h1>
+        <h1 class="ms-font-su">Keyboard Shortcuts</h1>
     </header>
     <section id="sideload-msg" class="ms-welcome__main">
         <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
@@ -32,15 +32,27 @@
         <h1 class="ms-font-xl"> Try the following keyboard shortcuts: </h1>
         <ul class="ms-List ms-welcome__features">
             <li class="ms-ListItem">
-                <span class="ms-font-l">Ctrl+Shift+Alt+Up to Show task pane.</span>
+                <span class="ms-font-l">Ctrl+Alt+1 to Show task pane.</span>
             </li>
             <li class="ms-ListItem">
-                <span class="ms-font-l">Ctrl+Shift+Alt+Down to Hide task pane.</span>
+                <span class="ms-font-l">Ctrl+Alt+2 to Hide task pane.</span>
             </li>
             <li class="ms-ListItem">
-                <span class="ms-font-l">Ctrl+Shift+Alt+O to cycle through cell colors.</span>
+                <span class="ms-font-l">Ctrl+Alt+3 to cycle through cell colors.</span>
+            </li>
+            <li class="ms-ListItem">
             </li>
         </ul>
+        <h2 class="ms-font-l">
+            If using a shortcut that conflicts with existing Excel shortcuts, 
+            the user will see a conflict modal. For e.g. try pressing Ctrl+R.
+
+            The shortcut is programmed to log "test conflict" in the console, but in order to use the shortcut, 
+            the user must first confirm which action the shortcut must take.
+
+            After making a selection, if you wish to reset the shortcut preference, 
+            search for "Reset Office Add-in Shortcut Preferences" in the Tell Me Search box.
+        </h2>
     </main>
 </body>
 

@@ -59,6 +59,10 @@ Office.actions.associate("SETCOLOR", function() {
   });
 });
 
+Office.actions.associate("TESTCONFLICT", function() {
+  console.log("test conflict");
+});
+
 Office.onReady(info => {
   if (info.host === Office.HostType.Excel) {
     document.getElementById("sideload-msg").style.display = "none";
