@@ -14,6 +14,11 @@
             "id": "SETCOLOR",
             "type": "ExecuteFunction",
             "name": "Cycle through cell colors"
+        },
+        {
+            "id": "TESTCONFLICT",
+            "type": "ExecuteFunction",
+            "name": "Test the conflict modal"
         }
 
     ],
@@ -21,19 +26,25 @@
         {
             "action": "SHOWTASKPANE",
             "key": {
-                "default": "CTRL+SHIFT+UP"
+                "default": "Ctrl+Alt+1"
             }
         },
         {
             "action": "HIDETASKPANE",
             "key": {
-                "default": "CTRL+SHIFT+DOWN"
+                "default": "Ctrl+Alt+2"
             }
         },
         {
             "action": "SETCOLOR",
             "key": {
-                "default": "CTRL+SHIFT+O"
+                "default": "Ctrl+Alt+3"
+            }
+        },
+        {
+            "action": "TESTCONFLICT",
+            "key": {
+                "default": "Ctrl+R"
             }
         }
     ]
