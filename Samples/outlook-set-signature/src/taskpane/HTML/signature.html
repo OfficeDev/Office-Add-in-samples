@@ -1,0 +1,115 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+     
+<!doctype html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js"></script>
+
+    <script type="text/javascript" src="../../utilities.js"></script>
+    <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+
+    <body onload="sig_generate()">
+
+    <title>Saved Signatures</title>
+
+    <link href="../CSS/taskpane_3.css" rel="stylesheet" type="text/css" />
+    <div id="carzzz"></div>
+    
+  </head>
+
+  <body>  
+    <div class="container">
+
+      <div id="content-wrap">
+
+          <p id="templates"> TEMPLATE A </p>
+          <div id="box_1"></div>
+
+          <p id="templates"> TEMPLATE B </p>
+          <div id="box_2"></div>
+
+          <p id="templates"> TEMPLATE C </p>
+          <div id="box_3"></div>
+
+        <div style="height:35px;"><br></div>
+
+        <div class="dropdown">
+          <label for="cars"> New Mail
+            <select style="margin-left:62px;" id="new_mail">
+              <option value="tata">None</option>
+              <option value="volvo">Template - A</option>
+              <option value="saab">Template - B</option>
+              <option value="mercedes">Template - C</option>
+            </select>
+          </label>
+        </div>
+
+        <div style="height:20px;"><br></div>
+
+        <div class="dropdown">
+          <label for="cars"> Reply
+              <select style="margin-left:82px;" id="reply">
+                <option value="tata">None</option>
+                <option value="volvo">Template - A</option>
+                <option value="saab">Template - B</option>
+                <option value="mercedes">Template - C</option>
+              </select>
+            </label>
+        </div>
+
+        <div style="height:20px;"><br></div>
+
+        <div class="dropdown">
+          <label for="cars"> Forward
+            <select style="margin-left:70px;" id="forward">
+              <option value="tata">None</option>
+              <option value="volvo">Template - A</option>
+              <option value="saab">Template - B</option>
+              <option value="mercedes">Template - C</option>
+            </select>
+          </label>
+        </div>
+
+      <div style="height:40px;"><br></div>
+
+          <button 
+            id="reset_button" 
+            type="submit" 
+            class="registerbtn">
+            Edit
+          </button>
+
+          
+          <button 
+            id="submit_button" 
+            type="submit" 
+            class="registerbtn">
+            Save
+          </button>
+
+          <div style="height:15px;"><br></div>
+
+          <button 
+            id="hard_reset_button" 
+            type="submit" 
+            class="registerbtn">
+            Reset Signature
+          </button>
+
+          <script src="../Js/taskpane_sig.js"></script>
+          <script src="../Js/signature_loader.js"></script>
+          <script src="../Js/taskpane_main.js"></script>
+      </div>
+
+    </div>
+  </body>
+
+</html>

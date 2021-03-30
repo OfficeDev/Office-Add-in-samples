@@ -1,0 +1,45 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+     
+<!doctype html>
+<html lang="en">
+
+<head>
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Office JavaScript API -->
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js"></script>
+  <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
+  <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <body onload="sig_check()">
+
+  <link href="../CSS/no_signature.css" rel="stylesheet" type="text/css" />
+
+  <div id="carzzz"></div>
+
+  </head>
+
+  <body>
+
+    <div style="height:46px;"><br></div>
+
+    <p id="override_sig">No signature found</p>
+
+    <div style="height:36px;"><br></div>
+
+    <button 
+      onclick="location.href = 'taskpane_2.html';" 
+      id="reset_button" 
+      type="submit" 
+      class="registerbtn">
+      Set signature
+    </button>
+    
+    <script src="../Js/taskpane_sig.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,99 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+     
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Signature Templates Form</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+  <link href="../CSS/taskpane_3.css" rel="stylesheet" type="text/css" media="all" />
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.debug.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="../../utilities.js"></script>
+  <script type="text/javascript" src="../Js/signature_templates.js"></script>
+  <script type="text/javascript" src="../Js/signature_loader.js"></script>
+  <script type="text/javascript" src="../Js/taskpane_main.js"></script>
+</head>
+
+<body>  
+  <div class="container-taskp">
+
+    <p class="templates">TEMPLATE A</p>
+    <div id="box_1"></div>
+    <button class="testBtn" onclick="test_template_A()">Test</button>
+
+    <p class="templates">TEMPLATE B</p>
+    <div id="box_2"></div>
+    <button class="testBtn" onclick="test_template_B()">Test</button>
+
+    <p class="templates">TEMPLATE C</p>
+    <div id="box_3"></div>
+    <button class="testBtn" onclick="test_template_C()">Test</button>
+
+    <div style="height:35px;"><br/></div>
+
+    <div class="dropdown">
+      <label for="cars">New Mail
+        <select style="margin-left:62px;" id="new_mail">
+          <option value="none">None</option>
+          <option value="templateA">Template A</option>
+          <option value="templateB">Template B</option>
+          <option value="templateC">Template C</option>
+        </select>
+      </label>
+    </div>
+
+    <div style="height:20px;"><br></div>
+
+    <div class="dropdown">
+      <label for="cars">Reply
+          <select style="margin-left:85px;" id="reply">
+            <option value="none">None</option>
+            <option value="templateA">Template A</option>
+            <option value="templateB">Template B</option>
+            <option value="templateC">Template C</option>
+          </select>
+        </label>
+    </div>
+
+    <div style="height:20px;"><br></div>
+
+    <div class="dropdown">
+      <label for="cars">Forward
+        <select style="margin-left:71px;" id="forward">
+          <option value="none">None</option>
+          <option value="templateA">Template A</option>
+          <option value="templateB">Template B</option>
+          <option value="templateC">Template C</option>
+        </select>
+      </label>
+    </div>
+
+    <div style="height:15px;"><br></div>
+
+    <p id="newMApt"><strong>Appointments</strong> will use <strong>New Mail</strong> template.</p>
+
+    <div style="height:5px;"><br></div>
+
+    <p id="override_sig">Override Outlook signature</p>
+
+    <label style = "position:relative; left:230px; top:2.5px;" class="switch">
+      <input id="checkbox_sig" type="checkbox" checked>
+      <span class="slider round"></span>
+    </label>
+
+    <div style="height:60px;"><br></div>
+
+    <button id="edit_button" type="submit" class="registerbtn" onclick="navigate_to_taskpane2()">Edit</button>
+
+    <button id="submit_button" type="submit" class="registerbtn" onclick="save_signature_settings()">Save</button>
+
+    <p id="message">Success! You can close this pane.</p>
+
+
+  </div>
+</body>
+
+</html>
