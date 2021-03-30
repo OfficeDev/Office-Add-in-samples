@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
   xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="MailApp">
-  <Id>{AED8392F-F6B3-469C-803E-55CD9CFFC764}</Id>
+  <Id>{C341AD31-BF7A-4C1D-99F1-D2E5896BEB0A}</Id>
   <Version>1.0</Version>
   <ProviderName>Microsoft</ProviderName>
   <DefaultLocale>en-us</DefaultLocale>
