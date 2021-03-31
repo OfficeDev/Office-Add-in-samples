@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-//Office.initialize = function(reason)
-//{
-//}
+Office.initialize = function(reason)
+{
+}
 
 /**
  * Checks if signature exists. 
@@ -14,8 +14,7 @@
  */
  function checkSignature(eventObj) {
   console.log("Check Signature called");
-  eventObj.complete();
-  return;
+  
   let user_info_str = Office.context.roamingSettings.get("user_info");
   if (!user_info_str)
   {
@@ -54,8 +53,8 @@
 	  insert_auto_signature("newMail", user_info, eventObj);
 	}
   }
-  eventObj.completed();
-  return [2 /*return*/];
+ 
+  //return [2 /*return*/];
 }
 
 /**
