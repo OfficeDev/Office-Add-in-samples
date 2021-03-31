@@ -1,8 +1,170 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-Office.initialize = function(reason)
-{
+//Office.initialize = function(reason)
+//{
+//}
+
+/**
+ * Checks if signature exists. 
+ * If not, displays the information bar for user.
+ * If exists, insert signature into new item (appointment or message).
+ * @param {*} eventObj Office event object
+ * @returns 
+ */
+ function checkSignature(eventObj) {
+  console.log("Check Signature called");
+  eventObj.complete();
+  return;
+  let user_info_str = Office.context.roamingSettings.get("user_info");
+  if (!user_info_str)
+  {
+	display_insight_infobar();
+  }
+  else
+  {
+	let user_info = JSON.parse(user_info_str);
+
+	if (Office.context.mailbox.item.getComposeTypeAsync) {
+	  Office.context.mailbox.item.getComposeTypeAsync
+	  (
+		{
+		  "asyncContext" :
+		  {
+			"user_info" : user_info,
+			"eventObj" : eventObj
+		  }
+		},
+		function (asyncResult)
+		{
+		  // console.log("getComposeTypeAsync - " + JSON.stringify(asyncResult));
+		  if (asyncResult.status === "succeeded")
+		  {
+			insert_auto_signature(
+			asyncResult.value.composeType,
+			asyncResult.asyncContext.user_info,
+			asyncResult.asyncContext.eventObj);
+		  }
+		}
+	  );
+	}
+	else {
+    // Appointment item. Just use newMail pattern
+	  let user_info = JSON.parse(user_info_str);
+	  insert_auto_signature("newMail", user_info, eventObj);
+	}
+  }
+  eventObj.completed();
+  return [2 /*return*/];
+}
+
+/**
+ * Insert signature into appointment or message.
+ * @param {*} compose_type The compose type (reply, forward, newMail)
+ * @param {*} user_info Information details about the user
+ * @param {*} eventObj Office event object
+ */
+ function insert_auto_signature(compose_type, user_info, eventObj) {
+  // console.log("insert_auto_signature - " + compose_type);
+  // console.log("insert_auto_signature - " + user_info);
+  let template_name = get_template_name(compose_type);
+  let signature_str = get_signature_str(template_name, user_info);
+  Office.context.mailbox.item.body.setSignatureAsync
+  (
+    signature_str,
+    {
+      "coercionType": "html",
+      "asyncContext": eventObj
+    },
+    function (asyncResult)
+    {
+      asyncResult.asyncContext.completed({ "key00" : "val00" });
+      // console.log("setSignatureAsync - " + JSON.stringify(asyncResult));
+    }
+  );
+}
+
+// function insert_auto_signature(compose_type, user_info, eventObj) {
+  //var something = Office.context.host;
+  //console.log(something);
+//  let template_name = get_template_name(compose_type);
+//  let signature_str = get_signature_str(template_name, user_info);
+  
+//  if (Office.context.mailbox.item.itemType == "appointment" &&
+//      Office.context.platform === "OfficeOnline")
+//  {
+    // In Outlook on the web, setSignatureAsync only works on messages.
+//    set_body(signature_str, eventObj);
+//  }
+//  else
+//  {
+//    set_signature(signature_str, eventObj);
+//  }
+//}
+
+/**
+ * Set signature for current appointment
+ * @param {*} signature_str Signature to insert
+ * @param {*} eventObj Office event object
+ */
+ function set_body(signature_str, eventObj)
+ {
+   Office.context.mailbox.item.body.setAsync
+   (
+     "<br/><br/>" + signature_str,
+     {
+       "coercionType": "html",
+       "asyncContext": eventObj
+     },
+     function (asyncResult)
+     {
+       asyncResult.asyncContext.completed();
+     }
+   );
+ }
+ 
+ /**
+  * Set signature for current message.
+  * @param {*} signature_str Signature to set
+  * @param {*} eventObj Office event object
+  */
+ function set_signature(signature_str, eventObj)
+ {
+   Office.context.mailbox.item.body.setSignatureAsync
+   (
+     signature_str,
+     {
+       "coercionType": "html",
+       "asyncContext": eventObj
+     },
+     function (asyncResult)
+     {
+       asyncResult.asyncContext.completed();
+     }
+   );
+ }
+
+/**
+ * Gets template name (A,B,C) mapped based on the compose type
+ * @param {*} compose_type The compose type (reply, forward, newMail)
+ * @returns Name of the template to use for the compose type
+ */
+ function get_template_name(compose_type) {
+  if (compose_type === "reply") return Office.context.roamingSettings.get("reply");
+  if (compose_type === "forward") return Office.context.roamingSettings.get("forward");
+  return Office.context.roamingSettings.get("newMail");
+}
+
+/**
+ * Gets HTML signature in requested template format for given user
+ * @param {\} template_name Which template format to use (A,B,C)
+ * @param {*} user_info Information details about the user
+ * @returns HTML signature in requested template format
+ */
+ function get_signature_str(template_name, user_info) {
+  if (template_name === "templateB") return get_template_B_str(user_info);
+  if (template_name === "templateC") return get_template_C_str(user_info);
+  return get_template_A_str(user_info);
 }
 
 /**
@@ -35,6 +197,10 @@ function display_insight_infobar() {
 		"contextData" : "{''}"
 		}
 	  ]
+    },
+    function (asyncResult)
+    {
+	  // console.log("display_insight_infobar - " + JSON.stringify(asyncResult));
     }
   );
 }
@@ -117,168 +283,17 @@ function get_template_C_str(user_info)
   return str;
 }
 
-/**
- * Gets HTML signature in requested template format for given user
- * @param {\} template_name Which template format to use (A,B,C)
- * @param {*} user_info Information details about the user
- * @returns HTML signature in requested template format
- */
-function get_signature_str(template_name, user_info) {
-  if (template_name === "templateB") return get_template_B_str(user_info);
-  if (template_name === "templateC") return get_template_C_str(user_info);
-  return get_template_A_str(user_info);
-}
 
-/**
- * Gets template name (A,B,C) mapped based on the compose type
- * @param {*} compose_type The compose type (reply, forward, newMail)
- * @returns Name of the template to use for the compose type
- */
-function get_template_name(compose_type) {
-  if (compose_type === "reply") return Office.context.roamingSettings.get("reply");
-  if (compose_type === "forward") return Office.context.roamingSettings.get("forward");
-  return Office.context.roamingSettings.get("newMail");
-}
 
-/**
- * Inserts signature into appointment or message
- * @param {*} compose_type The compose type (reply, forward, newMail)
- * @param {*} user_info Information details about the user
- * @param {*} eventObj Office event object
- */
-function insert_auto_signature(compose_type, user_info, eventObj) {
-  // console.log("insert_auto_signature - " + compose_type);
-  // console.log("insert_auto_signature - " + user_info);
-  let template_name = get_template_name(compose_type);
-  let signature_str = get_signature_str(template_name, user_info);
-  Office.context.mailbox.item.body.setSignatureAsync
-  (
-    signature_str,
-    {
-      "coercionType": "html",
-      "asyncContext": eventObj
-    },
-    function (asyncResult)
-    {
-      asyncResult.asyncContext.completed({ "key00" : "val00" });
-      // console.log("setSignatureAsync - " + JSON.stringify(asyncResult));
-    }
-  );
-}
 
-/**
- * Checks if signature exists. 
- * If not, displays the information bar for user.
- * If exists, insert signature into new item (appointment or message).
- * @param {*} eventObj Office event object
- * @returns 
- */
-function checkSignature(eventObj) {
-  debugger;
-  let user_info_str = Office.context.roamingSettings.get("user_info");
-  if (!user_info_str)
-  {
-	display_insight_infobar();
-  }
-  else
-  {
-	let user_info = JSON.parse(user_info_str);
 
-	if (Office.context.mailbox.item.getComposeTypeAsync) {
-	  Office.context.mailbox.item.getComposeTypeAsync
-	  (
-		{
-		  "asyncContext" :
-		  {
-			"user_info" : user_info,
-			"eventObj" : eventObj
-		  }
-		},
-		function (asyncResult)
-		{
-		  // console.log("getComposeTypeAsync - " + JSON.stringify(asyncResult));
-		  if (asyncResult.status === "succeeded")
-		  {
-			insert_auto_signature(
-			asyncResult.value.composeType,
-			asyncResult.asyncContext.user_info,
-			asyncResult.asyncContext.eventObj);
-		  }
-		}
-	  );
-	}
-	else {
-    // Appointment item. Just use newMail pattern
-	  let user_info = JSON.parse(user_info_str);
-	  insert_auto_signature("newMail", user_info, eventObj);
-	}
-  }
-  return [2 /*return*/];
-}
 
-/**
- * Set signature for current appointment
- * @param {*} signature_str Signature to insert
- * @param {*} eventObj Office event object
- */
-function set_body(signature_str, eventObj)
-{
-  Office.context.mailbox.item.body.setAsync
-  (
-    "<br/><br/>" + signature_str,
-    {
-      "coercionType": "html",
-      "asyncContext": eventObj
-    },
-    function (asyncResult)
-    {
-      asyncResult.asyncContext.completed();
-      // console.log("setSignatureAsync - " + JSON.stringify(asyncResult));
-    }
-  );
-}
 
-/**
- * Set signature for current message.
- * @param {*} signature_str Signature to set
- * @param {*} eventObj Office event object
- */
-function set_signature(signature_str, eventObj)
-{
-  Office.context.mailbox.item.body.setSignatureAsync
-  (
-    signature_str,
-    {
-      "coercionType": "html",
-      "asyncContext": eventObj
-    },
-    function (asyncResult)
-    {
-      asyncResult.asyncContext.completed();
-      // console.log("setSignatureAsync - " + JSON.stringify(asyncResult));
-    }
-  );
-}
 
-/**
- * Insert signature into appointment or mail.
- * @param {*} compose_type The compose type (reply, forward, newMail)
- * @param {*} user_info Information details about the user
- * @param {*} eventObj Office event object
- */
-function insert_auto_signature(compose_type, user_info, eventObj) {
-  debugger;
-  let template_name = get_template_name(compose_type);
-  let signature_str = get_signature_str(template_name, user_info);
-  if (Office.context.mailbox.item.itemType == "appointment")
-  {
-    set_body(signature_str, eventObj);
-  }
-  else
-  {
-    set_signature(signature_str, eventObj);
-  }
-}
+
+
+
+
 
 /**
  * Validates if str parameter contains text.
