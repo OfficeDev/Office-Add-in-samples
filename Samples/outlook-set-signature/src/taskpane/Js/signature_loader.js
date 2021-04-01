@@ -39,7 +39,6 @@ function lazy_init_user_info()
 }
 
 
-
 function populate_templates()
 {
   populate_template_A();

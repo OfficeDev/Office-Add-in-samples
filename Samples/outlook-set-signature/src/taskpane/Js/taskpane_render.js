@@ -84,7 +84,6 @@ function is_not_valid_text(text)
 
 function is_not_valid_email_address(email_address)
 {
-  // let email_address_regex = /\S+@\S+\.\S+/;
   let email_address_regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   return is_not_valid_text(email_address) || !(email_address_regex.test(email_address));
 }
@@ -106,7 +105,7 @@ function form_has_valid_data(name, email)
   return true;
 }
 
-function navigate_to_taskpane3()
+function navigate_to_taskpane_assignsignature()
 {
   window.location.href = 'assignsignature.html';
 }
@@ -138,7 +137,7 @@ function create_user_info()
 
     console.log(user_info);
     localStorage.setItem('user_info', JSON.stringify(user_info));
-    navigate_to_taskpane3();
+    navigate_to_taskpane_assignsignature();
   }
 }
 
