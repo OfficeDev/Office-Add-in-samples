@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-// Contains code for event-based activation on both Outlook on web and Windows.
+// Contains code for event-based activation on both Outlook on web and Outlook on Windows.
 
 /**
  * Checks if signature exists.
@@ -44,6 +44,63 @@
 }
 
 /**
+ * For Outlook on Windows only. Insert signature into appointment or message.
+ * Outlook on Windows can use setSignatureAsync method on appointments and messages.
+ * @param {*} compose_type The compose type (reply, forward, newMail)
+ * @param {*} user_info Information details about the user
+ * @param {*} eventObj Office event object
+ */
+ function insert_auto_signature(compose_type, user_info, eventObj) {
+  console.log("Inserting auto signature");
+  let template_name = get_template_name(compose_type);
+  let signature_str = get_signature_str(template_name, user_info);
+  set_signature(signature_str, eventObj);
+}
+
+/**
+ * Set signature for current message.
+ * @param {*} signature_str Signature to set
+ * @param {*} eventObj Office event object
+ */
+ function set_signature(signature_str, eventObj) {
+  Office.context.mailbox.item.body.setSignatureAsync(
+    signature_str,
+    {
+      coercionType: "html",
+      asyncContext: eventObj,
+    },
+    function (asyncResult) {
+      asyncResult.asyncContext.completed();
+    }
+  );
+}
+
+/**
+ * Creates information bar to display when new message or appointment is created
+ */
+ function display_insight_infobar() {
+  Office.context.mailbox.item.notificationMessages.addAsync(
+    "fd90eb33431b46f58a68720c36154b4a",
+    {
+      type: "insightMessage",
+      message: "Please set your signature with the PnP sample add-in.",
+      icon: "Icon.16x16",
+      actions: [
+        {
+          actionType: "showTaskPane",
+          actionText: "Set signatures",
+          commandId: get_command_id(),
+          contextData: "{''}",
+        },
+      ],
+    },
+    function (asyncResult) {
+      // console.log("display_insight_infobar - " + JSON.stringify(asyncResult));
+    }
+  );
+}
+
+/**
  * Gets template name (A,B,C) mapped based on the compose type
  * @param {*} compose_type The compose type (reply, forward, newMail)
  * @returns Name of the template to use for the compose type
@@ -78,30 +135,7 @@ function get_command_id() {
   return "MRCS_TpBtn0";
 }
 
-/**
- * Creates information bar to display when new message or appointment is created
- */
-function display_insight_infobar() {
-  Office.context.mailbox.item.notificationMessages.addAsync(
-    "fd90eb33431b46f58a68720c36154b4a",
-    {
-      type: "insightMessage",
-      message: "Please set your signature with the PnP sample add-in.",
-      icon: "Icon.16x16",
-      actions: [
-        {
-          actionType: "showTaskPane",
-          actionText: "Set signatures",
-          commandId: get_command_id(),
-          contextData: "{''}",
-        },
-      ],
-    },
-    function (asyncResult) {
-      // console.log("display_insight_infobar - " + JSON.stringify(asyncResult));
-    }
-  );
-}
+
 
 /**
  *
@@ -185,54 +219,4 @@ function is_valid_data(str) {
   return str !== null && str !== undefined && str !== "";
 }
 
-/**
- * Set signature for current message.
- * @param {*} signature_str Signature to set
- * @param {*} eventObj Office event object
- */
-function set_signature(signature_str, eventObj) {
-  Office.context.mailbox.item.body.setSignatureAsync(
-    signature_str,
-    {
-      coercionType: "html",
-      asyncContext: eventObj,
-    },
-    function (asyncResult) {
-      asyncResult.asyncContext.completed();
-    }
-  );
-}
-
-function getPlatformType() {
-  try {
-    if (Office.context.platform === "OfficeOnline") {
-      return "OfficeOnline";
-    } else {
-      return "Unknown"; // This condition could occur if running on another platform outside of web or Windows.
-    }
-  } catch (error) {
-    // Office.context.platform is not reachable on Windows and will throw an error.
-    return "Windows";
-  }
-}
-
-/**
- * Insert signature into appointment or message.
- * @param {*} compose_type The compose type (reply, forward, newMail)
- * @param {*} user_info Information details about the user
- * @param {*} eventObj Office event object
- */
-function insert_auto_signature(compose_type, user_info, eventObj) {
-  console.log("Inserting auto signature");
-  let template_name = get_template_name(compose_type);
-  let signature_str = get_signature_str(template_name, user_info);
-  if (Office.context.mailbox.item.itemType == "appointment" && getPlatformType() === "OfficeOnline") {
-    set_body(signature_str, eventObj);
-  } else {
-    set_signature(signature_str, eventObj);
-  }
-}
-
-if (Office.actions) {
-  Office.actions.associate("checkSignature", checkSignature);
-}
+Office.actions.associate("checkSignature", checkSignature);
