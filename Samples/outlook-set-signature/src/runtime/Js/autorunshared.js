@@ -10,7 +10,7 @@
  * @param {*} eventObj Office event object
  * @returns
  */
- function checkSignature(eventObj) {
+function checkSignature(eventObj) {
   let user_info_str = Office.context.roamingSettings.get("user_info");
   if (!user_info_str) {
     display_insight_infobar();
@@ -50,7 +50,7 @@
  * @param {*} user_info Information details about the user
  * @param {*} eventObj Office event object
  */
- function insert_auto_signature(compose_type, user_info, eventObj) {
+function insert_auto_signature(compose_type, user_info, eventObj) {
   console.log("Inserting auto signature");
   let template_name = get_template_name(compose_type);
   let signature_str = get_signature_str(template_name, user_info);
@@ -62,7 +62,7 @@
  * @param {*} signature_str Signature to set
  * @param {*} eventObj Office event object
  */
- function set_signature(signature_str, eventObj) {
+function set_signature(signature_str, eventObj) {
   Office.context.mailbox.item.body.setSignatureAsync(
     signature_str,
     {
@@ -78,23 +78,20 @@
 /**
  * Creates information bar to display when new message or appointment is created
  */
- function display_insight_infobar() {
-  Office.context.mailbox.item.notificationMessages.addAsync(
-    "fd90eb33431b46f58a68720c36154b4a",
-    {
-      type: "insightMessage",
-      message: "Please set your signature with the PnP sample add-in.",
-      icon: "Icon.16x16",
-      actions: [
-        {
-          actionType: "showTaskPane",
-          actionText: "Set signatures",
-          commandId: get_command_id(),
-          contextData: "{''}",
-        },
-      ],
-    }
-  );
+function display_insight_infobar() {
+  Office.context.mailbox.item.notificationMessages.addAsync("fd90eb33431b46f58a68720c36154b4a", {
+    type: "insightMessage",
+    message: "Please set your signature with the PnP sample add-in.",
+    icon: "Icon.16x16",
+    actions: [
+      {
+        actionType: "showTaskPane",
+        actionText: "Set signatures",
+        commandId: get_command_id(),
+        contextData: "{''}",
+      },
+    ],
+  });
 }
 
 /**
@@ -120,7 +117,6 @@ function get_signature_str(template_name, user_info) {
   return get_template_A_str(user_info);
 }
 
-
 /**
  * Gets correct command id to match to item type (appointment or message)
  * @returns The command id
@@ -131,8 +127,6 @@ function get_command_id() {
   }
   return "MRCS_TpBtn0";
 }
-
-
 
 /**
  * Gets HTML string for template A

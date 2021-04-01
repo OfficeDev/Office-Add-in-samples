@@ -13,7 +13,7 @@ Office.initialize = function (reason) {};
  * @param {*} user_info Information details about the user
  * @param {*} eventObj Office event object
  */
- function insert_auto_signature(compose_type, user_info, eventObj) {
+function insert_auto_signature(compose_type, user_info, eventObj) {
   console.log("Inserting auto signature");
   let template_name = get_template_name(compose_type);
   let signature_str = get_signature_str(template_name, user_info);
