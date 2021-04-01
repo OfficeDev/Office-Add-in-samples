@@ -93,9 +93,6 @@
           contextData: "{''}",
         },
       ],
-    },
-    function (asyncResult) {
-      // console.log("display_insight_infobar - " + JSON.stringify(asyncResult));
     }
   );
 }
@@ -125,8 +122,8 @@ function get_signature_str(template_name, user_info) {
 
 
 /**
- *
- * @returns Gets correct command id to match to item type (appointment or message)
+ * Gets correct command id to match to item type (appointment or message)
+ * @returns The command id
  */
 function get_command_id() {
   if (Office.context.mailbox.item.itemType == "appointment") {
@@ -138,7 +135,7 @@ function get_command_id() {
 
 
 /**
- *
+ * Gets HTML string for template A
  * @param {*} user_info Information details about the user
  * @returns HTML signature in template A format
  */
@@ -167,7 +164,7 @@ function get_template_A_str(user_info) {
 }
 
 /**
- *
+ * Gets HTML string for template B
  * @param {*} user_info Information details about the user
  * @returns HTML signature in template B format
  */
@@ -195,7 +192,7 @@ function get_template_B_str(user_info) {
 }
 
 /**
- *
+ * Gets HTML string for template C
  * @param {*} user_info Information details about the user
  * @returns HTML signature in template C format
  */
