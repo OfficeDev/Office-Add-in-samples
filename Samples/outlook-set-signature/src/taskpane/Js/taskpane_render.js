@@ -108,7 +108,7 @@ function form_has_valid_data(name, email)
 
 function navigate_to_taskpane3()
 {
-  window.location.href = 'taskpane_3.html';
+  window.location.href = 'assignsignature.html';
 }
 
 function create_user_info()

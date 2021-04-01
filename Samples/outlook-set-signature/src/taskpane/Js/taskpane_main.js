@@ -124,5 +124,5 @@ function test_template_C()
 
 function navigate_to_taskpane2()
 {
-  window.location.href = 'taskpane_2.html';
+  window.location.href = 'editsignature.html';
 }

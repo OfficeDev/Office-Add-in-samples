@@ -23,7 +23,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3000/src/taskpane/HTML/taskpane_2.html"/>
+        <SourceLocation DefaultValue="https://localhost:3000/src/taskpane/HTML/editsignature.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -116,7 +116,7 @@
           <bt:Image id="Icon16x16" DefaultValue="https://localhost:3000/assets/final_logo.png"></bt:Image>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="residUrl0" DefaultValue="https://localhost:3000/src/taskpane/HTML/taskpane_2.html"></bt:Url>
+          <bt:Url id="residUrl0" DefaultValue="https://localhost:3000/src/taskpane/HTML/editsignature.html"></bt:Url>
           <bt:Url id="Autorun" DefaultValue="https://localhost:3000/src/runtime/HTML/autorunweb.html"></bt:Url>
           <bt:Url id="runtimeJs" DefaultValue="https://localhost:3000/src/runtime/Js/autorunshared.js"></bt:Url>
         </bt:Urls>

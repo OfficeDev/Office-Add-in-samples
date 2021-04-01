@@ -49,7 +49,7 @@ module.exports = async (env, options) => {
       new CopyWebpackPlugin([
         {
           to: "taskpane.css",
-          from: "./src/taskpane/CSS/taskpane_2.css"
+          from: "./src/taskpane/CSS/editsignature.css"
         }
       ])
     ],
