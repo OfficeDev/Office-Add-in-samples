@@ -11,8 +11,7 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: "@babel/polyfill",
-      taskpane: "./src/taskpane/Js/taskpane_render.js",
-      commands: "./src/commands/commands.js"
+      taskpane: "./src/taskpane/Js/taskpane_render.js"
     },
     resolve: {
       extensions: [".ts", ".tsx", ".html", ".js"]
@@ -52,12 +51,7 @@ module.exports = async (env, options) => {
           to: "taskpane.css",
           from: "./src/taskpane/CSS/taskpane_2.css"
         }
-      ]),
-      new HtmlWebpackPlugin({
-        filename: "commands.html",
-        template: "./src/commands/commands.html",
-        chunks: ["polyfill", "commands"]
-      })
+      ])
     ],
     devServer: {
       headers: {
