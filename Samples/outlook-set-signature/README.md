@@ -13,7 +13,9 @@ extensions:
 description: "Use Outlook event-based activation to set the signature."
 ---
 
-# (Preview) Use Outlook event-based activation to set the signature
+# Use Outlook event-based activation to set the signature (preview)
+
+**Applies to:** Outlook on Windows | Outlook on the web
 
 ## Summary
 
@@ -39,14 +41,14 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Solution
 
-Solution | Author(s)
----------|----------
-Use Outlook event-based activation to set the signature | Microsoft
+| Solution | Author(s) |
+|---------|----------|
+| Use Outlook event-based activation to set the signature | Microsoft |
 
 ## Version history
 
 Version  | Date | Comments
----------| -----| --------
+|---------|------|---------|
 1.0 | 4-01-2021 | Initial release
 
 ## Disclaimer
@@ -67,12 +69,13 @@ In this scenario, the add-in helps the user manage their email signature, even w
     
     ```command&nbsp;line
     $ npm install
-    
+    ```
 4. Run the following command to start the localhost web server.
     
     ```command&nbsp;line
     $ npm run dev-server
-    
+    ```
+
 5. Sideload the add-in to Outlook on Windows, or Outlook on the web by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 Once the add-in is loaded use the following steps to try out the functionality.
@@ -115,7 +118,7 @@ The add-in handles two events that are mapped to the `checkSignature()` function
 
 When the user creates a new message or appointment, Outlook will load the files specified in the manifest to handle the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events. Outlook on the web will load the `autorunweb.html` page, which then also loads `autorunweb.js` and `autorunshared.js`.
 
-The `autorunweb.js` file contains a version of the `insert_auto_signature` function used specifically when running on Outlook on the web. The [setSignatureAsync() API cannot be used in Outlook on the web for appointments](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#setSignatureAsync_data__options__callback_). Therefore `insert_auto_signature` inserts the signature into a new appointment by directly writing to the body text of the appointment.
+The `autorunweb.js` file contains a version of the `insert_auto_signature` function used specifically when running on Outlook on the web. The [setSignatureAsync() API cannot be used in Outlook on the web for appointments](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#setSignatureAsync_data__options__callback_). Therefore, `insert_auto_signature` inserts the signature into a new appointment by directly writing to the body text of the appointment.
 
 The `autorunshared.js` file contains the `checkSignature` function that handles the events from Outlook. It also contains additional code that is shared and loaded when the add-in is used in Outlook on the web and Outlook on Windows. On Outlook on Windows, this file is loaded directly and `autorunweb.html` and `autorunweb.js` are not loaded.
 
@@ -136,7 +139,7 @@ In the webpack.config.js file, a header is set to `"Access-Control-Allow-Origin"
 
 You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
 
-You can install or uninstall the certificates by running the following commands in the project folder.
+Install or uninstall the certificates by running the following commands in the project folder.
 
 ```
 npx office-addin-dev-certs install
