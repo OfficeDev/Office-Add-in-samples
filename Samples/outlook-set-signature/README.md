@@ -2,14 +2,14 @@
 page_type: sample
 products:
 - office-outlook
-- office-365
+- office
 languages:
 - javascript
 extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 04/01/2021 10:00:00 AM
+  createdDate: 04/02/2021 10:00:00 AM
 description: "Use Outlook event-based activation to set the signature."
 ---
 
