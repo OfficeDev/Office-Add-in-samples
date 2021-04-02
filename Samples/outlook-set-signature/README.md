@@ -32,7 +32,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Applies to
 
--  Outlook on Windows, and on the web.
+- Outlook on Windows, and on the web.
 
 ## Prerequisites
 
