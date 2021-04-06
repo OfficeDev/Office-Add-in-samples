@@ -18,6 +18,7 @@ function checkSignature(eventObj) {
     let user_info = JSON.parse(user_info_str);
 
     if (Office.context.mailbox.item.getComposeTypeAsync) {
+      //Find out if the compose type is "newEmail", "reply", or "forward" so that we can apply the correct template.
       Office.context.mailbox.item.getComposeTypeAsync(
         {
           asyncContext: {
@@ -58,8 +59,9 @@ function insert_auto_signature(compose_type, user_info, eventObj) {
 }
 
 /**
- * Set signature for current message.
- * @param {*} signature_str Signature to set
+ * Set signature for current message. The setSignatureAsync API will insert
+ * the HTML specified in signature_str, to the body of the current mailbox item.
+ * @param {*} signature_str HTML signature to set
  * @param {*} eventObj Office event object
  */
 function set_signature(signature_str, eventObj) {
@@ -204,7 +206,7 @@ function get_template_C_str(user_info) {
 /**
  * Validates if str parameter contains text.
  * @param {*} str String to validate
- * @returns true if string is valid; otherise, false.
+ * @returns true if string is valid; otherwise, false.
  */
 function is_valid_data(str) {
   return str !== null && str !== undefined && str !== "";

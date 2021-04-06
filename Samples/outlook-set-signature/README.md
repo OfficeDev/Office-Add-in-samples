@@ -19,7 +19,7 @@ description: "Use Outlook event-based activation to set the signature."
 
 ## Summary
 
-This sample uses event-based activation to run an Outlook add-in when the user creates a new message or appointment. The add-in can respond to events, even when the task pane is not open. If no signature is set, the add-in prompts the user to set a signature, and can then open the task pane for the user.
+This sample uses event-based activation to run an Outlook add-in when the user creates a new message or appointment. The add-in can respond to events, even when the task pane is not open. It also uses the [setSignatureAsync API](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#setSignatureAsync_data__options__callback_). If no signature is set, the add-in prompts the user to set a signature, and can then open the task pane for the user.
 
 For documentation related to this sample, see [Configure your Outlook add-in for event-based activation (preview)](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch)
 
@@ -28,7 +28,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 ## Features
 
 - Use event-based activation to respond to events when the task pane is not open.
-- Let the user choose and set a signature for messages and appointments.
+- Set a signature for Outlook to use in messages and appointments.
 
 ## Applies to
 
@@ -114,7 +114,7 @@ The add-in handles two events that are mapped to the `checkSignature()` function
 </LaunchEvents>
 ```
 
-### Handling the events
+### Handling the events and using the setSignatureAsync API
 
 When the user creates a new message or appointment, Outlook will load the files specified in the manifest to handle the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events. Outlook on the web will load the `autorunweb.html` page, which then also loads `autorunweb.js` and `autorunshared.js`.
 
