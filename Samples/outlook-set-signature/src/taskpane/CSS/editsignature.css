@@ -1,0 +1,76 @@
+.container {
+  margin: auto;
+  text-align: center;
+}
+
+#message {
+  color: red;
+  font-size: 20px;
+}
+
+input {
+  height: 45px;
+  width: 267px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  text-indent: 5px;
+  font-size: 15px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #919191;
+  border-radius: 2px;
+  opacity: 1;
+}
+
+h2 {
+  color: #aaaaaa;
+}
+
+#next_button_t1,
+#reset_all_config_btn,
+#feedback_btn {
+  width: 120px;
+  height: 45px;
+  /*background: #FFFFFF 0% 0% no-repeat padding-box;*/
+  background: #0078D4 0% 0% no-repeat padding-box;
+  color: white;
+  /*border: 1px solid #8A8886;*/
+  border: none;
+  border-radius: 2px;
+  opacity: 1;
+}
+
+#reset_all_config_btn {
+  background-color: red;
+  color: white;
+}
+
+.feedback-container {
+  margin-top: 8px;
+}
+
+#feedback_btn {
+  /* background: #ffff80;*/
+  background: #ff9800; /*orange*/
+  color: #ffffff;
+  font-size: 16px;
+}
+
+input[type=text], input[type=number], input[type=email] {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  /*padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;*/
+  border: 1px solid #DDDDDD;
+}
+ 
+input[type=text]:focus, input[type=number]:focus, input[type=email]:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  /*padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;*/
+  border: 1px solid rgba(81, 203, 238, 1);
+}
