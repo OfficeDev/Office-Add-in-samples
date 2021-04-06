@@ -52,29 +52,56 @@ function checkSignature(eventObj) {
  * @param {*} eventObj Office event object
  */
 function insert_auto_signature(compose_type, user_info, eventObj) {
-  console.log("Inserting auto signature");
   let template_name = get_template_name(compose_type);
   let signature_str = get_signature_str(template_name, user_info);
-  set_signature(signature_str, eventObj);
+  addTemplateSignature(signature_str, eventObj);
 }
 
 /**
- * Set signature for current message. The setSignatureAsync API will insert
- * the HTML specified in signature_str, to the body of the current mailbox item.
- * @param {*} signature_str HTML signature to set
- * @param {*} eventObj Office event object
+ * 
+ * @param {*} signatureDetails object containing:
+ *  "signature": The signature HTML of the template,
+    "logoBase64": The base64 encoded logo image,
+    "logoFileName": The filename of the logo image
+ * @param {*} eventObj 
+ * @param {*} signatureImageBase64 
  */
-function set_signature(signature_str, eventObj) {
-  Office.context.mailbox.item.body.setSignatureAsync(
-    signature_str,
-    {
-      coercionType: "html",
-      asyncContext: eventObj,
-    },
-    function (asyncResult) {
-      asyncResult.asyncContext.completed();
-    }
-  );
+function addTemplateSignature(signatureDetails, eventObj, signatureImageBase64) {
+  if (is_valid_data(signatureDetails.logoBase64) === true) {
+    //If a base64 image was passed we need to attach it.
+    Office.context.mailbox.item.addFileAttachmentFromBase64Async(
+      signatureDetails.logoBase64,
+      signatureDetails.logoFileName,
+      {
+        isInline: true,
+      },
+      function (result) {
+        //After image is attached, insert the signature
+        Office.context.mailbox.item.body.setSignatureAsync(
+          signatureDetails.signature,
+          {
+            coercionType: "html",
+            asyncContext: eventObj,
+          },
+          function (asyncResult) {
+            asyncResult.asyncContext.completed();
+          }
+        );
+      }
+    );
+  } else {
+    //Image is not embedded, or is referenced from template HTML
+    Office.context.mailbox.item.body.setSignatureAsync(
+      signatureDetails.signature,
+      {
+        coercionType: "html",
+        asyncContext: eventObj,
+      },
+      function (asyncResult) {
+        asyncResult.asyncContext.completed();
+      }
+    );
+  }
 }
 
 /**
@@ -132,10 +159,15 @@ function get_command_id() {
 
 /**
  * Gets HTML string for template A
+ * Embeds the signature logo image into the HTML string
  * @param {*} user_info Information details about the user
- * @returns HTML signature in template A format
+ * @returns Object containing:
+ *  "signature": The signature HTML of template A,
+    "logoBase64": The base64 encoded logo image,
+    "logoFileName": The filename of the logo image
  */
 function get_template_A_str(user_info) {
+  const logoFileName = "sample-logo.png";
   let str = "";
   if (is_valid_data(user_info.greeting)) {
     str += user_info.greeting + "<br/>";
@@ -143,8 +175,11 @@ function get_template_A_str(user_info) {
 
   str += "<table>";
   str += "<tr>";
+  // Embed the logo using <img src='cid:...
   str +=
-    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://localhost:3000/assets/sample-logo.png' alt='Logo' /></td>";
+    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='cid:" +
+    logoFileName +
+    "' alt='MS Logo' width='24' height='24' /></td>";
   str += "<td style='padding-left: 5px;'>";
   str += "<strong>" + user_info.name + "</strong>";
   str += is_valid_data(user_info.pronoun) ? "&nbsp;" + user_info.pronoun : "";
@@ -156,13 +191,23 @@ function get_template_A_str(user_info) {
   str += "</tr>";
   str += "</table>";
 
-  return str;
+  // return object with signature HTML, logo image base64 string, and filename to reference it with.
+  return {
+    signature: str,
+    logoBase64:
+      "iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAEeSURBVFhHzdhBEoIwDIVh4EoeQJd6YrceQM+kvo5hQNokLymO/4aF0/ajlBl1fL4bEp0uj3K9XQ/lGi0MEcB3UdD0uVK1EEj7TIuGeBaKYCgIswCLcUMid8mMcUEiCMk71oRYE+Etsd4UD0aFeBBSFtOEMAgpg6lCIggpitlAMggpgllBeiAkFjNDeiIkBlMgeyAkL6Z6WJdlEJJnjvF4vje/BvRALNN23tyRXzVpd22dHSZtLhjMHemB8cxRINZZyGCssbL2vCN7YLwItHo0PTEMAm3OSA8Mi0DVw5rBRBCoCkERTBSBmhDEYDII5PqlZy1iZSGQuiOSZ6JW3rEuCIpgmDFuCGImZuEUBHkWiOweDUHaQhEE+pM/aobhBZaOpYLJeeeoAAAAAElFTkSuQmCC",
+    logoFileName: logoFileName,
+  };
 }
 
 /**
  * Gets HTML string for template B
+ * References the signature logo image from the HTML
  * @param {*} user_info Information details about the user
- * @returns HTML signature in template B format
+ * @returns Object containing:
+ *  "signature": The signature HTML of template B,
+    "logoBase64": null since this template references the image and does not embed it ,
+    "logoFileName": null since this template references the image and does not embed it
  */
 function get_template_B_str(user_info) {
   let str = "";
@@ -172,6 +217,7 @@ function get_template_B_str(user_info) {
 
   str += "<table>";
   str += "<tr>";
+  // Reference the logo using a URI to the web server <img src='https://...
   str +=
     "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://localhost:3000/assets/sample-logo.png' alt='Logo' /></td>";
   str += "<td style='padding-left: 5px;'>";
@@ -184,13 +230,20 @@ function get_template_B_str(user_info) {
   str += "</tr>";
   str += "</table>";
 
-  return str;
+  return {
+    signature: str,
+    logoBase64: null,
+    logoFileName: null,
+  };
 }
 
 /**
  * Gets HTML string for template C
  * @param {*} user_info Information details about the user
- * @returns HTML signature in template C format
+ * @returns Object containing:
+ *  "signature": The signature HTML of template C,
+    "logoBase64": null since there is no image,
+    "logoFileName": null since there is no image
  */
 function get_template_C_str(user_info) {
   let str = "";
@@ -200,7 +253,11 @@ function get_template_C_str(user_info) {
 
   str += user_info.name;
 
-  return str;
+  return {
+    signature: str,
+    logoBase64: null,
+    logoFileName: null,
+  };
 }
 
 /**
