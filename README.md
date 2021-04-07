@@ -2,6 +2,12 @@
 
 Office Add-ins PnP is a community driven effort that helps developers extend, build, and provision customizations for the Office platform. The source is maintained on this GitHub repo where anyone can participate. You can provide contributions to the samples, reusable components, and documentation. Office Add-ins PnP is owned and coordinated by Office engineering teams, but the work is done by the community for the community.
 
+## Outlook add-in samples
+
+| Date               | Name           | Description  |
+| ------------------ | -------------- | ------------ |
+| April 5, 2021 | [Use Outlook event-based activation to set the signature (preview)](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/outlook-set-signature) | This sample uses event-based activation to run an Outlook add-in when the user creates a new message or appointment. The add-in can respond to events, even when the task pane is not open. It also uses the setSignatureAsync API.|
+
 ## Shared JavaScript runtime samples
 
 Check out these samples if you want to take advantage of the [shared runtime](https://docs.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime) for your Office Add-in.

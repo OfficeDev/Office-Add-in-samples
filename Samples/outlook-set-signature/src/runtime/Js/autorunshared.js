@@ -52,6 +52,7 @@ function checkSignature(eventObj) {
  * @param {*} eventObj Office event object
  */
 function insert_auto_signature(compose_type, user_info, eventObj) {
+<<<<<<< HEAD
   let template_name = get_template_name(compose_type);
   let signature_str = get_signature_str(template_name, user_info);
   addTemplateSignature(signature_str, eventObj);
@@ -102,6 +103,31 @@ function addTemplateSignature(signatureDetails, eventObj, signatureImageBase64) 
       }
     );
   }
+=======
+  console.log("Inserting auto signature");
+  let template_name = get_template_name(compose_type);
+  let signature_str = get_signature_str(template_name, user_info);
+  set_signature(signature_str, eventObj);
+}
+
+/**
+ * Set signature for current message. The setSignatureAsync API will insert
+ * the HTML specified in signature_str, to the body of the current mailbox item.
+ * @param {*} signature_str HTML signature to set
+ * @param {*} eventObj Office event object
+ */
+function set_signature(signature_str, eventObj) {
+  Office.context.mailbox.item.body.setSignatureAsync(
+    signature_str,
+    {
+      coercionType: "html",
+      asyncContext: eventObj,
+    },
+    function (asyncResult) {
+      asyncResult.asyncContext.completed();
+    }
+  );
+>>>>>>> master
 }
 
 /**
@@ -159,6 +185,7 @@ function get_command_id() {
 
 /**
  * Gets HTML string for template A
+<<<<<<< HEAD
  * Embeds the signature logo image into the HTML string
  * @param {*} user_info Information details about the user
  * @returns Object containing:
@@ -168,6 +195,12 @@ function get_command_id() {
  */
 function get_template_A_str(user_info) {
   const logoFileName = "sample-logo.png";
+=======
+ * @param {*} user_info Information details about the user
+ * @returns HTML signature in template A format
+ */
+function get_template_A_str(user_info) {
+>>>>>>> master
   let str = "";
   if (is_valid_data(user_info.greeting)) {
     str += user_info.greeting + "<br/>";
