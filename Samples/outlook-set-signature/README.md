@@ -126,6 +126,30 @@ The `autorunshared.js` file contains a version of the `insert_auto_signature` fu
 
 Note that you can use a similar pattern when handling events. If you need code that only applies to Outlook on the web, you can load it in a separate file like `autorunweb.js`. And for code that applies to both Outlook on the web and Outlook on Windows, you can load it in a shared file like `autorunshared.js`.
 
+### Embedding images with the signature
+
+Template A shows how to insert an image by embedding it in the signature. This will avoid the image being downloaded from your server when the signature is inserted into new mail items. The HTML uses the following `<img>` tag format with the **src** set to **cid:*imageFileName*** to embed the image.
+
+```xml
+str +=
+    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='cid:" +
+    logoFileName +
+    "' alt='MS Logo' width='24' height='24' /></td>";
+```
+
+In the **addTemplateSignature** function, if template A is used, it will attach the image by calling the **addFileAttachmentFromBase64Async()** API. Then it calls the **setSignatureAsync()** API.
+
+### Referencing images from the signature
+
+Template B shows how to reference an image from the HTML. It uses the `<img>` tag and references the web location.
+
+```xml
+ str +=
+    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://localhost:3000/assets/sample-logo.png' alt='Logo' /></td>";
+```
+
+This is a simpler approach as you don't need to attach the image. Although your web server will need to provide the image anytime Outlook needs it for a signature.
+
 ### Task pane code
 
 The task pane code is located under the `taskpane` folder of this project. The task pane HTML and JavaScript files only provide UI and functionality to let the user specify and save a signature.
