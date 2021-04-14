@@ -53,8 +53,8 @@ function checkSignature(eventObj) {
  */
 function insert_auto_signature(compose_type, user_info, eventObj) {
   let template_name = get_template_name(compose_type);
-  let signature_str = get_signature_str(template_name, user_info);
-  addTemplateSignature(signature_str, eventObj);
+  let signature_info = get_signature_info(template_name, user_info);
+  addTemplateSignature(signature_info, eventObj);
 }
 
 /**
@@ -140,10 +140,10 @@ function get_template_name(compose_type) {
  * @param {*} user_info Information details about the user
  * @returns HTML signature in requested template format
  */
-function get_signature_str(template_name, user_info) {
-  if (template_name === "templateB") return get_template_B_str(user_info);
-  if (template_name === "templateC") return get_template_C_str(user_info);
-  return get_template_A_str(user_info);
+function get_signature_info(template_name, user_info) {
+  if (template_name === "templateB") return get_template_B_info(user_info);
+  if (template_name === "templateC") return get_template_C_info(user_info);
+  return get_template_A_info(user_info);
 }
 
 /**
@@ -166,7 +166,7 @@ function get_command_id() {
     "logoBase64": The base64 encoded logo image,
     "logoFileName": The filename of the logo image
  */
-function get_template_A_str(user_info) {
+function get_template_A_info(user_info) {
   const logoFileName = "sample-logo.png";
   let str = "";
   if (is_valid_data(user_info.greeting)) {
@@ -209,7 +209,7 @@ function get_template_A_str(user_info) {
     "logoBase64": null since this template references the image and does not embed it ,
     "logoFileName": null since this template references the image and does not embed it
  */
-function get_template_B_str(user_info) {
+function get_template_B_info(user_info) {
   let str = "";
   if (is_valid_data(user_info.greeting)) {
     str += user_info.greeting + "<br/>";
@@ -245,7 +245,7 @@ function get_template_B_str(user_info) {
     "logoBase64": null since there is no image,
     "logoFileName": null since there is no image
  */
-function get_template_C_str(user_info) {
+function get_template_C_info(user_info) {
   let str = "";
   if (is_valid_data(user_info.greeting)) {
     str += user_info.greeting + "<br/>";
