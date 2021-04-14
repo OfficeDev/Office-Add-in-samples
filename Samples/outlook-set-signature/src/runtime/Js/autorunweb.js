@@ -15,28 +15,57 @@ Office.initialize = function (reason) {};
  */
 function insert_auto_signature(compose_type, user_info, eventObj) {
   let template_name = get_template_name(compose_type);
-  let signature_str = get_signature_str(template_name, user_info);
+  let signatureDetails = get_signature_info(template_name, user_info);
   if (Office.context.mailbox.item.itemType == "appointment") {
-    set_body(signature_str, eventObj);
+    set_body(signatureDetails, eventObj);
   } else {
-    set_signature(signature_str, eventObj);
+    addTemplateSignature(signatureDetails, eventObj);
   }
 }
 
 /**
  * For Outlook on the seb, set signature for current appointment
- * @param {*} signature_str Signature to insert
+* @param {*} signatureDetails object containing:
+ *  "signature": The signature HTML of the template,
+    "logoBase64": The base64 encoded logo image,
+    "logoFileName": The filename of the logo image
  * @param {*} eventObj Office event object
  */
-function set_body(signature_str, eventObj) {
-  Office.context.mailbox.item.body.setAsync(
-    "<br/><br/>" + signature_str,
-    {
-      coercionType: "html",
-      asyncContext: eventObj,
-    },
-    function (asyncResult) {
-      asyncResult.asyncContext.completed();
-    }
-  );
+function set_body(signatureDetails, eventObj) {
+
+  if (is_valid_data(signatureDetails.logoBase64) === true) {
+    //If a base64 image was passed we need to attach it.
+    Office.context.mailbox.item.addFileAttachmentFromBase64Async(
+      signatureDetails.logoBase64,
+      signatureDetails.logoFileName,
+      {
+        isInline: true,
+      },
+      function (result) { 
+        Office.context.mailbox.item.body.setAsync(
+        "<br/><br/>" + signatureDetails.signature,
+        {
+          coercionType: "html",
+          asyncContext: eventObj,
+        },
+        function (asyncResult) {
+
+          asyncResult.asyncContext.completed();
+        }
+      );
+    });
+  } else {
+    Office.context.mailbox.item.body.setAsync(
+      "<br/><br/>" + signatureDetails.signature,
+      {
+        coercionType: "html",
+        asyncContext: eventObj,
+      },
+      function (asyncResult) {
+
+        asyncResult.asyncContext.completed();
+      }
+    );
+  }
+  
 }
