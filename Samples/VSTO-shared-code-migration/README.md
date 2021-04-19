@@ -1,16 +1,17 @@
 ---
 page_type: sample
 products:
+- office
 - office-excel
-- office-365
 languages:
 - javascript
 - csharp
+urlFragment: vsto-shared-library-excel
 extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 01/29/2020 1:25:00 PM
+  createdDate: "01/29/2020 1:25:00 PM"
 description: "Visual Studio Tools for Office (VSTO) add-ins can only run in Office on Windows. By migrating your code to an Office web add-in, you can expand the reach of your add-in to mobile and online platforms. Migrating the code will involve rewriting it in the JavaScript language, and also updating it to use the Office JavaScript APIs. However, you can reduce migration cost by creating a shared library and keeping some of your existing add-in code in its current language."
 ---
 
