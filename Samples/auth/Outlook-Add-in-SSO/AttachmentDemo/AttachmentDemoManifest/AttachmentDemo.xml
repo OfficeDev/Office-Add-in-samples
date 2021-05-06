@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--Created:ce44715c-8c4e-446b-879c-ea9ebe0f09c8-->
+<OfficeApp 
+          xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+          xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" 
+          xsi:type="MailApp">
+
+  <!-- Begin Basic Settings: Add-in metadata, used for all versions of Office unless override provided. -->
+
+  <!-- IMPORTANT! Id must be unique for your add-in, if you reuse this manifest ensure that you change this id to a new GUID. -->
+  <Id>f7c51a57-4ff7-4593-937a-0ce91eb49e38</Id>
+
+  <!--Version. Updates from the store only get triggered if there is a version change. -->
+  <Version>1.0.0.0</Version>
+  <ProviderName>Contoso</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
+  <DisplayName DefaultValue="AttachmentDemoWeb" />
+  <Description DefaultValue="AttachmentDemoWeb Description"/>
+  <IconUrl DefaultValue="~remoteAppUrl/Images/add-in-icon-lo-res.png"/>
+
+  <SupportUrl DefaultValue="https://github.com/OfficeDev/Outlook-Add-in-SSO" />
+  <!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
+  <AppDomains>
+    <AppDomain>https://login.microsoftonline.com</AppDomain>
+  </AppDomains>
+  <!--End Basic Settings. -->
+  
+  <Hosts>
+    <Host Name="Mailbox" />
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1" />
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="~remoteAppUrl/"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+
+  <Permissions>ReadItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.5">
+        <bt:Set Name="Mailbox" />
+      </bt:Sets>
+    </Requirements>
+    <Hosts>
+      <Host xsi:type="MailHost">
+
+        <DesktopFormFactor>
+          <!-- Location of the Functions that UI-less buttons can trigger (ExecuteFunction Actions). -->
+          <FunctionFile resid="functionFile" />
+
+          <!-- Message Read -->
+          <ExtensionPoint xsi:type="MessageReadCommandSurface">
+            <!-- Use the default tab of the ExtensionPoint or create your own with <CustomTab id="myTab"> -->
+            <OfficeTab id="TabDefault">
+              <!-- Up to 6 Groups added per Tab -->
+              <Group id="msgReadGroup">
+                <Label resid="groupLabel" />
+                <!-- UI-less button to save all attachments -->
+                <Control xsi:type="Button" id="msgReadSaveAttachments">
+                  <Label resid="saveAllAttachmentsLabel" />
+                  <Supertip>
+                    <Title resid="saveAllAttachmentsTitle" />
+                    <Description resid="saveAllAttachmentsDesc" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="save-all-icon16" />
+                    <bt:Image size="32" resid="save-all-icon32" />
+                    <bt:Image size="64" resid="save-all-icon64" />
+                    <bt:Image size="80" resid="save-all-icon80" />
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>saveAllAttachments</FunctionName>
+                  </Action>
+                </Control>
+                <!-- Open task pane to save individual attachments -->
+                <Control xsi:type="Button" id="msgReadOpenPaneButton">
+                  <Label resid="paneReadButtonLabel" />
+                  <Supertip>
+                    <Title resid="paneReadSuperTipTitle" />
+                    <Description resid="paneReadSuperTipDescription" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="open-pane-icon16" />
+                    <bt:Image size="32" resid="open-pane-icon32" />
+                    <bt:Image size="64" resid="open-pane-icon64" />
+                    <bt:Image size="80" resid="open-pane-icon80" />
+                  </Icon>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="messageReadTaskPaneUrl" />
+                  </Action>
+                </Control>
+                <!-- Go to http://aka.ms/ButtonCommands to learn how to add more Controls: ExecuteFunction and Menu -->
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+          <!-- Go to http://aka.ms/ExtensionPointsCommands to learn how to add more Extension Points: MessageRead, AppointmentOrganizer, AppointmentAttendee -->
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Images>
+        <bt:Image id="save-all-icon16" DefaultValue="~remoteAppUrl/Images/save-all-16.png"/>
+        <bt:Image id="save-all-icon32" DefaultValue="~remoteAppUrl/Images/save-all-32.png"/>
+        <bt:Image id="save-all-icon64" DefaultValue="~remoteAppUrl/Images/save-all-64.png"/>
+        <bt:Image id="save-all-icon80" DefaultValue="~remoteAppUrl/Images/save-all-80.png"/>
+
+        <bt:Image id="open-pane-icon16" DefaultValue="~remoteAppUrl/Images/open-pane-16.png"/>
+        <bt:Image id="open-pane-icon32" DefaultValue="~remoteAppUrl/Images/open-pane-32.png"/>
+        <bt:Image id="open-pane-icon64" DefaultValue="~remoteAppUrl/Images/open-pane-64.png"/>
+        <bt:Image id="open-pane-icon80" DefaultValue="~remoteAppUrl/Images/open-pane-80.png"/>
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="functionFile" DefaultValue="~remoteAppUrl/Functions/FunctionFile.html"/>
+        <bt:Url id="messageReadTaskPaneUrl" DefaultValue="~remoteAppUrl/home/index"/>
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="groupLabel" DefaultValue="Save to OneDrive"/>
+        <bt:String id="saveAllAttachmentsLabel" DefaultValue="Save all attachments"/>
+        <bt:String id="saveAllAttachmentsTitle" DefaultValue="Save all attachments"/>
+        <bt:String id="paneReadButtonLabel" DefaultValue="Choose attachments"/>
+        <bt:String id="paneReadSuperTipTitle" DefaultValue="Choose attachments to save"/>
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="saveAllAttachmentsDesc" DefaultValue="Saves all attachments to the Outlook Attachments folder in your OneDrive. This will overwrite any files that already exist with the same name."/>
+        <bt:String id="paneReadSuperTipDescription" DefaultValue="Opens a pane so you can choose which attachments to save."/>
+      </bt:LongStrings>
+    </Resources>
+
+    <!-- VersionOverrides v1.1 to add support for SSO -->
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.5">
+          <bt:Set Name="Mailbox" />
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+
+          <DesktopFormFactor>
+            <!-- Location of the Functions that UI-less buttons can trigger (ExecuteFunction Actions). -->
+            <FunctionFile resid="functionFile" />
+
+            <!-- Message Read -->
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <!-- Use the default tab of the ExtensionPoint -->
+              <OfficeTab id="TabDefault">
+                <Group id="msgReadGroup">
+                  <Label resid="groupLabel" />
+                  <!-- UI-less button to save all attachments -->
+                  <Control xsi:type="Button" id="msgReadSaveAttachments">
+                    <Label resid="saveAllAttachmentsLabel" />
+                    <Supertip>
+                      <Title resid="saveAllAttachmentsTitle" />
+                      <Description resid="saveAllAttachmentsDesc" />
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="save-all-icon16" />
+                      <bt:Image size="32" resid="save-all-icon32" />
+                      <bt:Image size="64" resid="save-all-icon64" />
+                      <bt:Image size="80" resid="save-all-icon80" />
+                    </Icon>
+                    <Action xsi:type="ExecuteFunction">
+                      <FunctionName>saveAllAttachments</FunctionName>
+                    </Action>
+                  </Control>
+                  <!-- Open task pane to save individual attachments -->
+                  <Control xsi:type="Button" id="msgReadOpenPaneButton">
+                    <Label resid="paneReadButtonLabel" />
+                    <Supertip>
+                      <Title resid="paneReadSuperTipTitle" />
+                      <Description resid="paneReadSuperTipDescription" />
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="open-pane-icon16" />
+                      <bt:Image size="32" resid="open-pane-icon32" />
+                      <bt:Image size="64" resid="open-pane-icon64" />
+                      <bt:Image size="80" resid="open-pane-icon80" />
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="messageReadTaskPaneUrl" />
+                    </Action>
+                  </Control>
+                  <!-- Go to http://aka.ms/ButtonCommands to learn how to add more Controls: ExecuteFunction and Menu -->
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+            <!-- Go to http://aka.ms/ExtensionPointsCommands to learn how to add more Extension Points: MessageRead, AppointmentOrganizer, AppointmentAttendee -->
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+
+      <Resources>
+        <bt:Images>
+          <bt:Image id="save-all-icon16" DefaultValue="~remoteAppUrl/Images/save-all-16.png"/>
+          <bt:Image id="save-all-icon32" DefaultValue="~remoteAppUrl/Images/save-all-32.png"/>
+          <bt:Image id="save-all-icon64" DefaultValue="~remoteAppUrl/Images/save-all-64.png"/>
+          <bt:Image id="save-all-icon80" DefaultValue="~remoteAppUrl/Images/save-all-80.png"/>
+
+          <bt:Image id="open-pane-icon16" DefaultValue="~remoteAppUrl/Images/open-pane-16.png"/>
+          <bt:Image id="open-pane-icon32" DefaultValue="~remoteAppUrl/Images/open-pane-32.png"/>
+          <bt:Image id="open-pane-icon64" DefaultValue="~remoteAppUrl/Images/open-pane-64.png"/>
+          <bt:Image id="open-pane-icon80" DefaultValue="~remoteAppUrl/Images/open-pane-80.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="functionFile" DefaultValue="~remoteAppUrl/Functions/FunctionFile.html"/>
+          <bt:Url id="messageReadTaskPaneUrl" DefaultValue="~remoteAppUrl/home/index"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="groupLabel" DefaultValue="Save to OneDrive"/>
+          <bt:String id="saveAllAttachmentsLabel" DefaultValue="Save all attachments"/>
+          <bt:String id="saveAllAttachmentsTitle" DefaultValue="Save all attachments"/>
+          <bt:String id="paneReadButtonLabel" DefaultValue="Choose attachments"/>
+          <bt:String id="paneReadSuperTipTitle" DefaultValue="Choose attachments to save"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="saveAllAttachmentsDesc" DefaultValue="Saves all attachments to the Outlook Attachments folder in your OneDrive. This will overwrite any files that already exist with the same name."/>
+          <bt:String id="paneReadSuperTipDescription" DefaultValue="Opens a pane so you can choose which attachments to save."/>
+        </bt:LongStrings>
+      </Resources>
+
+      <WebApplicationInfo>
+        <Id>3e171395-e09a-4bc8-8202-29e647b0c324</Id>
+        <Resource>api://localhost:44355/3e171395-e09a-4bc8-8202-29e647b0c324</Resource>
+        <Scopes>
+          <Scope>openid</Scope>
+          <Scope>profile</Scope>
+          <Scope>offline_access</Scope>
+          <Scope>user.read</Scope>
+          <Scope>files.readwrite</Scope>
+          <Scope>mail.read</Scope>
+        </Scopes>
+      </WebApplicationInfo>
+
+
+
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>
