@@ -150,7 +150,7 @@
     async function saveAttachmentsToOneDrive(attachmentIds, options) {
         //Set default SSO options if they are not provided
         if (options === undefined) options = { allowSignInPrompt: true, allowConsentPrompt: true, forMSGraphAccess: true };
-
+        
         showSpinner();
 
         // Attempt to get an SSO token
