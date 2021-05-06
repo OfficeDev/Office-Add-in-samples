@@ -237,8 +237,8 @@
       </Resources>
 
       <WebApplicationInfo>
-        <Id>3e171395-e09a-4bc8-8202-29e647b0c324</Id>
-        <Resource>api://localhost:44355/3e171395-e09a-4bc8-8202-29e647b0c324</Resource>
+        <Id>[Enter the Client Id (Application ID obtained from the Azure portal)]</Id>
+        <Resource>api://localhost:44355/[Enter the Client Id (Application ID obtained from the Azure portal)]</Resource>
         <Scopes>
           <Scope>openid</Scope>
           <Scope>profile</Scope>
