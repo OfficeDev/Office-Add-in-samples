@@ -1,7 +1,8 @@
-﻿// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license at the root of the project.
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 /* 
-    This file provides URLs to help get Microsoft Graph data. 
+    This file provides access to OneDrive through Microsoft Graph. 
 */
 
 using System;

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 using System.Web.Mvc;
 using System.Web.Routing;
 

@@ -1,4 +1,7 @@
-﻿using Microsoft.Owin;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartup(typeof(AttachmentDemoWeb.Startup))]

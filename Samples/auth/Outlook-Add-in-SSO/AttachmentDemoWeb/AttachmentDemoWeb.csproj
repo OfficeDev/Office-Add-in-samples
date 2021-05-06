@@ -256,7 +256,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Content Include="Helpers\helpers.js" />
+    <Content Include="Scripts\helpers.js" />
     <Content Include="Scripts\MessageRead.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

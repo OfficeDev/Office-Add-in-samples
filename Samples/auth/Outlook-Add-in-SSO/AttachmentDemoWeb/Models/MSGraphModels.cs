@@ -1,4 +1,5 @@
-﻿// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license at the root of the project.
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 /* 
     This file provides .NET model classes for Microsoft Graph data. 

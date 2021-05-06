@@ -1,18 +1,17 @@
-﻿// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE.txt in the project root for license information.
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 (function () {
     "use strict";
 
     var messageBanner;
     var overlay;
     var spinner;
-    var authenticator;
+    var retryGetAccessToken = 0;
 
     // The Office initialize function must be run each time a new page is loaded.
     Office.initialize = function (reason) {
         $(document).ready(function () {
-            // For auth helper
-            //if (OfficeHelpers.Authenticator.isAuthDialog()) return;
-
             var element = document.querySelector('.ms-MessageBanner');
             messageBanner = new fabric['MessageBanner'](element);
 
@@ -29,15 +28,9 @@
             spinner.stop();
 
             $("#save-selected").on("click", function () {
-                saveSelectedAttachments();
+                saveAttachmentsToOneDrive(getSelectedAttachments());
             });
 
-            //authenticator = new OfficeHelpers.Authenticator();
-            //authenticator.endpoints.registerMicrosoftAuth(authConfig.clientId, {
-            //    redirectUrl: authConfig.redirectUrl,
-            //    scope: authConfig.scopes
-            //});
-            debugger;
             initializePane();
         });
     };
@@ -137,22 +130,8 @@
 
         $(".ms-ListItem-action").on("click", function () {
             var attachmentId = $(this).closest(".ms-ListItem").children(".attachment-id").text();
-            saveAttachments([getRestId(attachmentId)]);
+            saveAttachmentsToOneDrive([getRestId(attachmentId)]);
         });
-    }
-
-    function saveSelectedAttachments() {
-        var selectedItems = $(".is-selected");
-        if (selectedItems.length > 0) {
-            var attachmentIds = [];
-
-            for (var i = 0; i < selectedItems.length; i++) {
-                var id = $(selectedItems[i]).children(".attachment-id").text();
-                attachmentIds.push(getRestId(id));
-            }
-
-            saveAttachments(attachmentIds);
-        }
     }
 
     function getSelectedAttachments() {
@@ -166,54 +145,56 @@
             }
         }
         return attachmentIds;
-
     }
 
-    async function saveAttachments(attachmentIds) {
-        showSpinner();
-        dialogFallback();
-        return;
-        // First attempt to get an SSO token
-        try {
-                let bootstrapToken = await OfficeRuntime.auth.getAccessToken({ allowSignInPrompt: true, allowConsentPrompt: true, forMSGraphAccess: true });
+    async function saveAttachmentsToOneDrive(attachmentIds, options) {
+        //Set default SSO options if they are not provided
+        if (options === undefined) options = { allowSignInPrompt: true, allowConsentPrompt: true, forMSGraphAccess: true };
 
-                // The /api/saveAttachments controller will make the token exchange and use the 
-                // access token it gets back to make the call to MS Graph.
-                // Server-side errors are caught in the .fail block of getData.
-            saveAttachmentsWithSSO("/api/saveAttachments",bootstrapToken, attachmentIds);
+        showSpinner();
+
+        // Attempt to get an SSO token
+        try {
+            let bootstrapToken = await OfficeRuntime.auth.getAccessToken(options);
+
+            // The /api/saveAttachmentsToOneDrive controller will make the token exchange and use the 
+            // access token it gets back to make the call to MS Graph.
+            // Server-side errors are caught in the .fail block of saveAttachmentsWithSSO.
+            saveAttachmentsWithSSO("/api/saveAttachments", bootstrapToken, attachmentIds);
+        }
+        catch (exception) {
+            // The only exceptions caught here are exceptions in your code in the try block
+            // and errors returned from the call of `getAccessToken` above.
+            if (exception.code) {
+                handleClientSideErrors(exception);
             }
-            catch (exception) {
-                // The only exceptions caught here are exceptions in your code in the try block
-                // and errors returned from the call of `getAccessToken` above.
-                if (exception.code) {
-                    handleClientSideErrors(exception);
-                }
-                else {
-                    showNotification("EXCEPTION: " , JSON.stringify(exception));
-                }
+            else {
+                showNotification("EXCEPTION: ", JSON.stringify(exception));
             }
         }
-    
+    }
+
     function saveAttachmentsWithSSO(relativeURL, accessToken, attachmentIds) {
+
         var saveAttachmentsRequest = {
             attachmentIds: attachmentIds,
             messageId: getRestId(Office.context.mailbox.item.itemId)
         };
+
         $.ajax({
             url: relativeURL,
             headers: { "Authorization": "Bearer " + accessToken },
             type: "POST",
             data: JSON.stringify(saveAttachmentsRequest),
             contentType: "application/json; charset=utf-8"
-    }).done(function (data) {
-        showNotification("Success", "Attachments saved");
-    }).fail(function (error) {
-        showNotification("Error saving attachments", error.status);
-    }).always(function () {
-        hideSpinner();
-    });
+        }).done(function (data) {
+            showNotification("Success", "Attachments saved");
+        }).fail(function (error) {
+            handleServerSideErrors(result);
+        }).always(function () {
+            hideSpinner();
+        });
     }
-
 
     function handleClientSideErrors(error) {
         switch (error.code) {
@@ -222,24 +203,24 @@
                 // No one is signed into Office. If the add-in cannot be effectively used when no one 
                 // is logged into Office, then the first call of getAccessToken should pass the 
                 // `allowSignInPrompt: true` option.
-                showNotification("Client side error 13001:","No one is signed into Office. But you can use many of the add-ins functions anyway. If you want to log in, press the Get OneDrive File Names button again.");
+                showNotification("Client side error 13001:", "No one is signed into Office. But you can use many of the add-ins functions anyway. If you want to log in, press the Get OneDrive File Names button again.");
                 break;
             case 13002:
                 // The user aborted the consent prompt. If the add-in cannot be effectively used when consent
                 // has not been granted, then the first call of getAccessToken should pass the `allowConsentPrompt: true` option.
-                showNotification("Client side error 13002:","You can use many of the add-ins functions even though you have not granted consent. If you want to grant consent, press the Get OneDrive File Names button again.");
+                showNotification("Client side error 13002:", "You can use many of the add-ins functions even though you have not granted consent. If you want to grant consent, press the Get OneDrive File Names button again.");
                 break;
             case 13006:
                 // Only seen in Office on the web.
-                showNotification("Client side error 13006:","Office on the web is experiencing a problem. Please sign out of Office, close the browser, and then start again.");
+                showNotification("Client side error 13006:", "Office on the web is experiencing a problem. Please sign out of Office, close the browser, and then start again.");
                 break;
             case 13008:
                 // Only seen in Office on the web.
-                showNotification("Client side error 13008:","Office is still working on the last operation. When it completes, try this operation again.");
+                showNotification("Client side error 13008:", "Office is still working on the last operation. When it completes, try this operation again.");
                 break;
             case 13010:
                 // Only seen in Office on the web.
-                showNotification("Client side error 13010:","Follow the instructions to change your browser's zone configuration.");
+                showNotification("Client side error 13010:", "Follow the instructions to change your browser's zone configuration.");
                 break;
             default:
                 // For all other errors, including 13000, 13003, 13005, 13007, 13012, and 50001, fall back
@@ -266,7 +247,7 @@
             if (message.indexOf("AADSTS50076") !== -1) {
                 var claims = JSON.parse(message).Claims;
                 var claimsAsString = JSON.stringify(claims);
-                getDataWithToken({ authChallenge: claimsAsString });
+                saveAttachmentsToOneDrive(getSelectedAttachments(), { authChallenge: claimsAsString });
                 return;
             }
         }
@@ -281,7 +262,7 @@
             if ((exceptionMessage.indexOf("AADSTS500133") !== -1)
                 && (retryGetAccessToken <= 0)) {
                 retryGetAccessToken++;
-                getGraphData();
+                saveAttachmentsToOneDrive(getSelectedAttachments());
             }
             else {
                 // For debugging: 
@@ -317,7 +298,6 @@
     // Dialog API
 
     var loginDialog;
-    var redirectTo = "/files/index";
 
     function dialogFallback() {
 
@@ -336,7 +316,7 @@
             // We now have a valid access token.
             loginDialog.close();
             let attachmentIds = getSelectedAttachments();
-            saveAttachmentsWithSSO("/api/saveAttachmentsFallback",message.accessToken, attachmentIds);
+            saveAttachmentsWithSSO("/api/saveAttachmentsFallback", message.accessToken, attachmentIds);
         } else {
             // Something went wrong with authentication or the authorization of the web application.
             loginDialog.close();

@@ -1,4 +1,7 @@
-﻿using Microsoft.Identity.Client;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using Microsoft.Identity.Client;
 using AttachmentDemoWeb.Helpers;
 using System;
 using System.Threading.Tasks;

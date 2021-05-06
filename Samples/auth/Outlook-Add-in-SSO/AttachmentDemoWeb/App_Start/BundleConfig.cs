@@ -1,4 +1,6 @@
-﻿using System.Web;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 using System.Web.Optimization;
 
 namespace AttachmentDemoWeb

@@ -1,4 +1,7 @@
-﻿using Owin;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using Owin;
 using Microsoft.IdentityModel.Tokens;
 using System.Configuration;
 using Microsoft.Owin.Security.OAuth;

@@ -1,12 +1,9 @@
-﻿using System.Configuration;
-using Microsoft.Identity.Client;
-using System.Linq;
-using System.Net;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 using System.Net.Http;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System;
 using AttachmentDemoWeb.Models;
 using AttachmentDemoWeb.Helpers;
 
