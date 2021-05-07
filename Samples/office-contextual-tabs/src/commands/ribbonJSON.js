@@ -5,7 +5,7 @@
 
 //The following function defines and returns the JSON object that describes the contextual tabs.
 //Make changes to the JSON text if you want to modify the contextual tabs.
-export function getContextualRibbonJSON() {
+function getContextualRibbonJSON() {
   return {
     "actions": [
         {

@@ -2,12 +2,12 @@
  * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
  * See LICENSE in the project root for license information.
  */
-import { createSampleWorkSheet, getTableData, setSyncButtonEnabled } from '../utilities/utilities.js';
-import { getContextualRibbonJSON } from '../commands/ribbonJSON.js';
+// import { createSampleWorkSheet, getTableData, setSyncButtonEnabled } from '../utilities/utilities.js';
+// import { getContextualRibbonJSON } from '../commands/ribbonJSON.js';
 
 /* global global, self, window, console */
 
-export function getGlobal() {
+function getGlobal() {
   return typeof self !== "undefined"
     ? self
     : typeof window !== "undefined"

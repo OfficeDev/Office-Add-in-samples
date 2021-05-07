@@ -2,7 +2,7 @@
  * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
  * See LICENSE in the project root for license information.
  */
-import { getGlobal } from "../commands/commands.js";
+//import { getGlobal } from "../commands/commands.js";
 
 /* global Excel, Office, console */
 
@@ -20,7 +20,7 @@ async function deleteSampleWorkSheet() {
  * replace it.
  * @param  {string} mockDataSource Identifies which mock data source to use to create the table.
  */
-export async function createSampleWorkSheet(mockDataSource) {
+async function createSampleWorkSheet(mockDataSource) {
   //Turn off the Refresh and Submit buttons.
   setSyncButtonEnabled(false);
 
@@ -78,7 +78,7 @@ export async function createSampleWorkSheet(mockDataSource) {
 /**
  * Get the Sales table data and return as Promise in an array.
  */
-export async function getTableData() {
+async function getTableData() {
   let response = null;
 
   return Excel.run(async context => {
@@ -147,7 +147,7 @@ function setContextualTabVisibility(visible) {
  *
  * @param  {boolean} visible true if the buttons should be enabled; otherwise, false.
  */
-export function setSyncButtonEnabled(visible) {
+function setSyncButtonEnabled(visible) {
   let g = getGlobal();
   g.contextualTab.tabs[0].groups[1].controls[0].enabled = visible;
   g.contextualTab.tabs[0].groups[1].controls[1].enabled = visible;
