@@ -7,11 +7,11 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Contoso task pane"/>
-  <Description DefaultValue="A template to get started."/>
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <DisplayName DefaultValue="PnP contextual tabs sample"/>
+  <Description DefaultValue="Demonstrates using contextual tabs in your Office Add-in."/>
+  <IconUrl DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-contextual-tabs/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-contextual-tabs/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/office-contextual-tabs"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
   </AppDomains>
@@ -24,7 +24,7 @@
     </Sets>
   </Requirements>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+    <SourceLocation DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-contextual-tabs/src/taskpane/taskpane.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -73,19 +73,19 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-contextual-tabs/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-contextual-tabs/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-contextual-tabs/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
+        
+        <bt:Url id="Taskpane.Url" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-contextual-tabs/src/taskpane/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Taskpane"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="PnP contextual tabs"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started."/>

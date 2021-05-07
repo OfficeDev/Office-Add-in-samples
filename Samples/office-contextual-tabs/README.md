@@ -54,21 +54,20 @@ After the sales table is created, the sample creates a contextual tab named **Ta
 
 The contextual tab supports commands related to working with the sales data. When you make changes you can submit them and update the mock data source. Or you can refresh the table from the mock data source.
 
-## Build and run the sample
+## Run the sample
 
-1. Clone or download this repository.
-2. In the command line, go to the **office-contextual-tabs** folder from your root directory.
-3. Run the following command to download the dependencies required to run the sample.
-    
-    ```command&nbsp;line
-    $ npm install
-    
-4. Run the following command to start the localhost web server, and sideload the sample add-in to Excel on Windows.
-    
-    ```command&nbsp;line
-    $ npm run start
-    
-    > **Note:** Sometimes when the add-in sideloads on the first start of Excel, you can open the Contoso task pane, but it will be blank. If this happens, run `npm run start` again to launch a second instance of Excel, and the task pane should load correctly.
+You can run this sample in Excel in a browser. The add-in web files are served from this repo on GitHub.
+
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Open [Office on the web](https://office.live.com/).
+1. Choose **Excel**, and then open a new document.
+1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
+1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../images/office-add-ins-my-account.png)
+1. Browse to the add-in manifest file, and then select **Upload**.
+   ![The upload add-in dialog with buttons for browse, upload, and cancel.
+](../../images/upload-add-in.png)
+1. Verify that the add-in loaded successfully. You will see a **PnP contextual tabs** button on the **Home** tab on the ribbon.
 
 You can take the following actions to try out the add-in and the contextual tab.
 
@@ -147,6 +146,36 @@ function onChanged() {
 }
 ```
 
+## Run the sample from Localhost
+
+If you prefer to host the web server for the sample on your computer, follow these steps:
+
+1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+    
+    ```console
+    npm install --global http-server
+    ```
+    
+2. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
+3. From a command prompt, go to the web-worker folder and run the following command:
+    
+    ```console
+    http-server -S --cors .
+    ```
+    
+4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
+    
+    ```console
+    npm install --global office-addin-https-reverse-proxy
+    ```
+    
+    To reroute run the following in another command prompt:
+    
+    ```console
+    office-addin-https-reverse-proxy --url http://localhost:8080
+    ```
+    
+5. Sideload the add-in using the the previous steps (1 - 7). Upload the `manifest-localhost.xml` file for step 6.
 
 
 
