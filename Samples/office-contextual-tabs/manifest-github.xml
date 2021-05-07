@@ -11,7 +11,7 @@
   <Description DefaultValue="A template to get started."/>
   <IconUrl DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-contextual-tabs/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-contextual-tabs/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <SupportUrl DefaultValue="https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/office-contextual-tabs"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
   </AppDomains>

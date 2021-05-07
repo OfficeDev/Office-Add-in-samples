@@ -80,7 +80,7 @@ function runImportSQLDatabase(){
 
 // the add-in command functions need to be available in global scope
 // Globals
-const g = getGlobal();
+let g = getGlobal();
 
 let excelFileMockData = {data: [
   ["Frames", 5000, 7000, 6544, 4377],

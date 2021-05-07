@@ -6,6 +6,7 @@
 //The following function defines and returns the JSON object that describes the contextual tabs.
 //Make changes to the JSON text if you want to modify the contextual tabs.
 function getContextualRibbonJSON() {
+    const sourceUrl = "https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-contextual-tabs/";
   return {
     "actions": [
         {
@@ -32,15 +33,15 @@ function getContextualRibbonJSON() {
                     "icon": [
                         {
                             "size": 16,
-                            "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                            "sourceLocation": sourceUrl + "assets/icon-16.png"
                         },
                         {
                             "size": 32,
-                            "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                            "sourceLocation": sourceUrl + "assets/icon-32.png"
                         },
                         {
                             "size": 80,
-                            "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                            "sourceLocation": sourceUrl + "assets/icon-80.png"
                         }
                     ],
                     "controls": [
@@ -56,15 +57,15 @@ function getContextualRibbonJSON() {
                             "icon": [
                                 {
                                     "size": 16,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-16.png"
                                 },
                                 {
                                     "size": 32,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-32.png"
                                 },
                                 {
                                     "size": 80,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-80.png"
                                 }
                             ],
                             "items": [
@@ -75,15 +76,15 @@ function getContextualRibbonJSON() {
                                     "icon": [
                                         {
                                             "size": 16,
-                                            "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                                            "sourceLocation": sourceUrl + "assets/icon-16.png"
                                         },
                                         {
                                             "size": 32,
-                                            "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                                            "sourceLocation": sourceUrl + "assets/icon-32.png"
                                         },
                                         {
                                             "size": 80,
-                                            "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                                            "sourceLocation": sourceUrl + "assets/icon-80.png"
                                         }
                                     ],
                                     "label": "External Excel file",
@@ -101,15 +102,15 @@ function getContextualRibbonJSON() {
                                     "icon": [
                                         {
                                             "size": 16,
-                                            "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                                            "sourceLocation": sourceUrl + "assets/icon-16.png"
                                         },
                                         {
                                             "size": 32,
-                                            "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                                            "sourceLocation": sourceUrl + "assets/icon-32.png"
                                         },
                                         {
                                             "size": 80,
-                                            "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                                            "sourceLocation": sourceUrl + "assets/icon-80.png"
                                         }
                                     ],
                                     "label": "SQL Database",
@@ -130,15 +131,15 @@ function getContextualRibbonJSON() {
                     "icon": [
                         {
                             "size": 16,
-                            "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                            "sourceLocation": sourceUrl + "assets/icon-16.png"
                         },
                         {
                             "size": 32,
-                            "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                            "sourceLocation": sourceUrl + "assets/icon-32.png"
                         },
                         {
                             "size": 80,
-                            "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                            "sourceLocation": sourceUrl + "assets/icon-80.png"
                         }
                     ],
                     "controls": [
@@ -149,15 +150,15 @@ function getContextualRibbonJSON() {
                             "icon": [
                                 {
                                     "size": 16,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-16.png"
                                 },
                                 {
                                     "size": 32,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-32.png"
                                 },
                                 {
                                     "size": 80,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-80.png"
                                 }
                             ],
                             "label": "Refresh",
@@ -175,15 +176,15 @@ function getContextualRibbonJSON() {
                             "icon": [
                                 {
                                     "size": 16,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-16.png"
                                 },
                                 {
                                     "size": 32,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-32.png"
                                 },
                                 {
                                     "size": 80,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-80.png"
                                 }
                             ],
                             "label": "Submit",
@@ -202,15 +203,15 @@ function getContextualRibbonJSON() {
                     "icon": [
                         {
                             "size": 16,
-                            "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                            "sourceLocation": sourceUrl + "assets/icon-16.png"
                         },
                         {
                             "size": 32,
-                            "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                            "sourceLocation": sourceUrl + "assets/icon-32.png"
                         },
                         {
                             "size": 80,
-                            "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                            "sourceLocation": sourceUrl + "assets/icon-80.png"
                         }
                     ],
                     "controls": [
@@ -221,15 +222,15 @@ function getContextualRibbonJSON() {
                             "icon": [
                                 {
                                     "size": 16,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-16.png"
                                 },
                                 {
                                     "size": 32,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-32.png"
                                 },
                                 {
                                     "size": 80,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-80.png"
                                 }
                             ],
                             "label": "Show task pane",
