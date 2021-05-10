@@ -2,12 +2,12 @@
  * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
  * See LICENSE in the project root for license information.
  */
-// import { createSampleWorkSheet, getTableData, setSyncButtonEnabled } from '../utilities/utilities.js';
-// import { getContextualRibbonJSON } from '../commands/ribbonJSON.js';
+import { createSampleWorkSheet, getTableData, setSyncButtonEnabled, createSampleTable } from '../utilities/utilities.js';
+import { getContextualRibbonJSON } from '../commands/ribbonJSON.js';
 
 /* global global, self, window, console */
 
-function getGlobal() {
+export function getGlobal() {
   return typeof self !== "undefined"
     ? self
     : typeof window !== "undefined"
@@ -40,6 +40,7 @@ function runRibbonAction(event){
  * Submit data changes in table to data source
  */
 function runSubmitAction(){
+  const g = getGlobal();
   //Depending on which data source is in use, get data from the table, then update the mock data source.
   if (g.mockDataSource==='sqlMockData'){
     getTableData().then ((response) => {g.sqlMockData.data = response});
@@ -55,9 +56,10 @@ function runSubmitAction(){
  * Refresh the data in the table from the data source.
  */
 function runRefreshAction(){
-  //Easy way is to just recreate the worksheet and sales data from source
-  createSampleWorkSheet(g.mockDataSource);
+  //Recreate the table and sales data from source
+  createSampleTable(g.mockDataSource);
   g.isTableDirty = false;
+  setSyncButtonEnabled(false);
 }
 
 /**
@@ -66,7 +68,7 @@ function runRefreshAction(){
 function runImportExternalExcelFile(){
   g.mockDataSource = 'excelFileMockData';
   //Just recreate the worksheet using the Excel file mock data source
-  createSampleWorkSheet('excelFileMockData');
+  createSampleTable('excelFileMockData');
 }
 
 /**
@@ -75,12 +77,12 @@ function runImportExternalExcelFile(){
 function runImportSQLDatabase(){
   g.mockDataSource = 'sqlMockData';
   //Just recreate the worksheet using the SQL database source
-  createSampleWorkSheet(g.mockDataSource); 
+  createSampleTable(g.mockDataSource); 
 }
 
 // the add-in command functions need to be available in global scope
 // Globals
-let g = getGlobal();
+const g = getGlobal();
 
 let excelFileMockData = {data: [
   ["Frames", 5000, 7000, 6544, 4377],
