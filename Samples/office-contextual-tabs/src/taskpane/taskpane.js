@@ -29,7 +29,7 @@ Office.onReady(async (info) => {
  * Handles when Import data button is selected. Checks which radio button was selected (Excel or SQL)
  * and then creates the sample worksheet and sales table based on the user's choice.
  */
- export async function importData() {
+ async function importData() {
   try {
     //Determine which data source the user selected from the radio buttons.
     let g = getGlobal(); 
