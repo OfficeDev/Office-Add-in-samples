@@ -42,6 +42,7 @@ async function importData() {
 
     //Create the sample worksheet and sales table.
     createSampleWorkSheet(g.mockDataSource);
+    createSampleTable(mockDataSource);
   } catch (error) {
     console.error(error);
   }
