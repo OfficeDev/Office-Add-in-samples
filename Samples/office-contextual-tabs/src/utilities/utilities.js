@@ -6,32 +6,25 @@
 /* global Excel, Office, console */
 
 /**
- * Delete the sample worksheet with sales table
+ * Deletes the sample table.
  */
-async function deleteSampleWorkSheet() {
-  Excel.run(async context => {
-    let sheet = context.workbook.worksheets.getItemOrNullObject("Sample");
-    if (sheet!==null) {
-        sheet.delete();
-    }
-    return context.sync();
-  });
-}
-
-/**
- * Delete the sample table only
- */
-
-async function deleteSampleTable()
-{
-  Excel.run(async context => {
-    const sheet = context.workbook.worksheets.getItemOrNullObject("Sample");
-    if (sheet===null) return context.sync();
-    let expensesTable = sheet.tables.getItemOrNullObject("SalesTable");
-    if (expensesTable!==null) {
+async function deleteSampleTable() {
+  return Excel.run(async context => {
+    try {
+      const sheet = context.workbook.worksheets.getItem("Sample");
+      let expensesTable = sheet.tables.getItem("SalesTable");
       expensesTable.delete();
+      await context.sync();
+    } catch (error) {
+      if (error.code === "ItemNotFound") {
+        return; //The table did not exist so just return.
+      } else {
+        console.log("deleteSampleTable failed");
+        console.error(error);
+        console.log(error.code);
+        throw error; //Unexpected error occurred.
+      }
     }
-    return context.sync();
   });
 }
 
@@ -39,22 +32,22 @@ async function deleteSampleTable()
  * Create the sales data table. If the table already exists, replace it.
  * @param  {string} mockDataSource Identifies which mock data source to use to create the table.
  */
-async function createSampleTable(mockDataSource) {
+ async function createSampleTable(mockDataSource) {
   //Delete table if it already exists
   await deleteSampleTable();
-
-  Excel.run(async context => {
+  console.log("creating table");
+  return Excel.run(async context => {
     let sheet = context.workbook.worksheets.getItem("Sample");
 
-     //Create title row above table
-     let range = sheet.getRange("A1");
-     if (mockDataSource === "sqlMockData") {
-       range.values = [["Data source: SQL Database"]];
-     } else {
-       range.values = [["Data source: External Excel File"]];
-     }
-     range.format.autofitColumns();
-     
+    //Create title row above table
+    let range = sheet.getRange("A1");
+    if (mockDataSource === "sqlMockData") {
+      range.values = [["Data source: SQL Database"]];
+    } else {
+      range.values = [["Data source: External Excel File"]];
+    }
+    range.format.autofitColumns();
+
     //Create table
     let salesTable = sheet.tables.add("A2:E2", true);
     salesTable.name = "SalesTable";
@@ -85,22 +78,30 @@ async function createSampleTable(mockDataSource) {
 }
 
 /**
- * Create the sample worksheet with sales data table. If the worksheet already exists, replace it.
+ * Create the sample worksheet.
  */
-async function createSampleWorkSheet() {
-  //Ensure that the sample worksheet is deleted.
-  await deleteSampleWorkSheet();
+ async function createSampleWorkSheet() {
   Excel.run(async context => {
-    //Create sample worksheet
-    context.workbook.worksheets.add("Sample");
-    return context.sync();
+    try {
+      //Create sample worksheet
+      context.workbook.worksheets.add("Sample");
+      await context.sync();
+    } catch (error) {
+      if (error.code === "ItemAlreadyExists") {
+        return; //The worksheet already exists so just return.
+      } else {
+        console.error(error);
+        throw error; //Unexpected error occurred.
+      }
+    }
   });
+  return;
 }
 
 /**
  * Get the Sales table data and return as Promise in an array.
  */
-async function getTableData() {
+ async function getTableData() {
   let response = null;
 
   return Excel.run(async context => {
@@ -121,7 +122,7 @@ async function getTableData() {
  */
 function onSelectionChange(args) {
   let g = getGlobal();
-  if (g.isTableSelected !== args.isInsideTable){
+  if (g.isTableSelected !== args.isInsideTable) {
     g.isTableSelected = args.isInsideTable;
     setContextualTabVisibility(args.isInsideTable);
   }
@@ -161,9 +162,11 @@ function setContextualTabVisibility(visible) {
  *
  * @param  {boolean} visible true if the buttons should be enabled; otherwise, false.
  */
-function setSyncButtonEnabled(visible) {
+ function setSyncButtonEnabled(visible) {
+  console.log("sync is " + visible);
   let g = getGlobal();
   g.contextualTab.tabs[0].groups[1].controls[0].enabled = visible;
   g.contextualTab.tabs[0].groups[1].controls[1].enabled = visible;
+  console.log(g.contextualTab);
   Office.ribbon.requestUpdate(g.contextualTab);
 }
