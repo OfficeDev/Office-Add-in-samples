@@ -19,11 +19,9 @@ description: "This sample shows how to add keyboard shortcuts to your Office Add
 
 This sample shows how to set up a basic Excel add-in project that utilizes keyboard shortcuts. Currently, the shortcuts are configured to show and hide the task pane as well as cycle through colors for a selected cell. Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 
-> **Note:** The features used in this sample are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you'll need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is to sign up for an Office 365 subscription. If you don't already have an Office 365 subscription, get one by joining the [Office 365 Developer Program](https://developer.microsoft.com/office/dev-program).
-
 ## Features
 
-- Add keyboard shortcuts to your Office Add-in. 
+- Add keyboard shortcuts to your Office Add-in.
 - Enable users to use those keyboard shortcuts to invoke any action within the Office Add-in runtime.
 
 ## Applies to
@@ -32,9 +30,7 @@ This sample shows how to set up a basic Excel add-in project that utilizes keybo
 
 ## Prerequisites
 
-To use this sample, you'll need to [join Office Insider](https://insider.office.com/join).
-
-
+- Microsoft 365
 
 ## Solution
 
@@ -47,6 +43,7 @@ Use keyboard shortcuts for Office add-in actions | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0 | 11-5-2020 | Initial release
+1.1 | May 11, 2021 | Removed yo office and modified to be GitHub hosted
 
 ## Disclaimer
 
@@ -57,8 +54,9 @@ Version  | Date | Comments
 ## Scenario: Open/Close taskpane and modify cell color
 
 This sample adds three different shortcuts to the Office Add-in. This enables the user to:
-- Use the "Ctrl+Alt+1" keyboard shortcut to open the taskpane.
-- Use the "Ctrl+Alt+2" keyboard shortcut to close the taskpane.
+
+- Use the "Ctrl+Alt+1" keyboard shortcut to open the task pane.
+- Use the "Ctrl+Alt+2" keyboard shortcut to close the task pane.
 - Use the "Ctrl+Alt+3" keyboard shortcut to cycle through colors for a selected cell.
 - Use the "Ctrl+R" keyboard shortcut to test the shortcut conflict modal.
 
@@ -93,13 +91,21 @@ Additionally, the following changes have been made to enable keyboard shortcuts:
 
 1. Configured the add-in's manifest by adding the new element `ExtendedOverrides` to the end of the manifest.
 2. Created the shortcuts JSON file `shortcuts.json`, in the `src/` folder to define actions and their keyboard shortcuts. Ensure the new file is properly bundled by configuring the `webpack.config.js` file.
-3. Mapped actions to runtime calls with the associate method in `src/taskpane/taskpane.js`.
+3. Mapped actions to runtime calls with the associate method in `src/taskpane.js`.
 
 
 ## Run the sample from Localhost
 
-If you prefer to host the web server for the sample on your computer, you can set up a Node.js server. You need a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) installed on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+If you prefer to host the web server for the sample on your computer, follow these steps:
 
+1. Open the **/src/commands/ribbonJSON.js** file.
+1. Edit line 9 to refer to the localhost:3000 endpoint as shown in the following code.
+    
+    ```javascript
+    const sourceUrl = "https://localhost:3000";
+    ```
+    
+1. Save the file.
 1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
     
     ```console
@@ -110,7 +116,7 @@ If you prefer to host the web server for the sample on your computer, you can se
 3. From a command prompt, go to the web-worker folder and run the following command:
     
     ```console
-    http-server -S --cors .
+    http-server -S --cors . -p 3000
     ```
     
 4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
@@ -122,25 +128,10 @@ If you prefer to host the web server for the sample on your computer, you can se
     To reroute run the following in another command prompt:
     
     ```console
-    office-addin-https-reverse-proxy --url http://localhost:8080
+    office-addin-https-reverse-proxy --url http://localhost:3000
     ```
     
-5. Sideload the add-in using the the previous steps (1 - 7). Upload the `manifest-localhost.xml` file for step 6.
-
-
-
-## Security notes
-
-In the webpack.config.js file, a header is set to `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
-
-You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
-
-You can install or uninstall the certificates by running the following commands in the project folder.
-
-```
-npx office-addin-dev-certs install
-npx office-addin-dev-certs uninstall
-```
+5. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/excel-keyboard-shortcuts#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Copyright
 
