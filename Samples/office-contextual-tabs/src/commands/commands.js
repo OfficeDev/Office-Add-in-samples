@@ -20,9 +20,6 @@
  * @param  {} event: The event that was raised.
  */
 function runRibbonAction(event){
-  console.log("event sent");
-  console.log(event.source.id);
-  console.log(event.source);
   switch(event.source.id){
     case "btnSubmit": runSubmitAction();
         break;
@@ -41,7 +38,6 @@ function runRibbonAction(event){
  * Submit data changes in table to data source
  */
 function runSubmitAction(){
-  console.log("runsubmitaction");
   const g = getGlobal();
   //Depending on which data source is in use, get data from the table, then update the mock data source.
   if (g.mockDataSource==='sqlMockData'){
@@ -57,13 +53,11 @@ function runSubmitAction(){
 /**
  * Refresh the data in the table from the data source.
  */
-function runRefreshAction(event){
+function runRefreshAction(){
   //Recreate the table and sales data from source
-  console.log("runrefresh");
   createSampleTable(g.mockDataSource);
   g.isTableDirty = false;
   setSyncButtonEnabled(false);
-  event.completed();
 }
 
 /**
@@ -107,7 +101,6 @@ let sqlMockData = {data: [
 ]};
 
 g.contextualTab = getContextualRibbonJSON();
-console.log(g.contextualTab);
 g.excelFileMockData = excelFileMockData;
 g.sqlMockData = sqlMockData;
 g.runRibbonAction = runRibbonAction;

@@ -26,9 +26,7 @@ This sample shows how to create a custom contextual tab on the ribbon in the Off
 
 ## Prerequisites
 
-To use this sample, you'll need to [join Office Insider](https://insider.office.com/join).
-
-Before running this sample, you need a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) installed on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+- Microsoft 365
 
 ## Solution
 
@@ -41,6 +39,7 @@ Create custom contextual tabs on the ribbon | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0  | February 11, 2021 | Initial release
+1.1  | May 11, 2021 | Removed yo office and modified to be GitHub hosted
 
 ## Disclaimer
 
@@ -84,7 +83,7 @@ You can take the following actions to try out the add-in and the contextual tab.
 
 ### Shared JavaScript runtime
 
-Contextual tabs requires the manifestl.xml file to specify loading the shared JavaScript runtime. For more information on configuring the shared runtime, see [Configure your Office Add-in to use a shared JavaScript runtime](https://docs.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime)
+Contextual tabs requires the manifest.xml file to specify loading the shared JavaScript runtime. For more information on configuring the shared runtime, see [Configure your Office Add-in to use a shared JavaScript runtime](https://docs.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime)
 
 ### Describe and update the contextual tab using JSON
 
@@ -98,16 +97,18 @@ As buttons, or the tab itself are set to be visible or not, the `g.contextualTab
 
 When you build your own add-in, you'll need to decide what context determines which tabs or UI elements are shown. For this sample, we want to show the contextual tab when the focus is in the table. Also we want to enable the **Refresh** and **Submit** buttons when changes are made to the table.
 
-When the user imports data to create the table, `createSampleWorkSheet()` adds a `onSelectionChanged` event handler, and `onChanged` event handler. Later, as the user moves the selection into or out of the table, the onSelectinChanged() function is called, which can display the contextual tab when the selection is inside the table. When the user makes changes to the table, `onSelectionChange()` is called, and the **Refresh** and **Submit** buttons are enabled.
+When the user imports data to create the table, `createSampleTable()` adds an `onSelectionChanged` event handler, and `onChanged` event handler. Later, as the user moves the selection into or out of the table, the onSelectionChanged() function is called, which can display the contextual tab when the selection is inside the table. When the user makes changes to the table, `onSelectionChange()` is called, and the **Refresh** and **Submit** buttons are enabled.
 
 You can see more details in the following code excerpt, or refer to these functions in the `src/utilities/utilities.js` file.
 
 ```javascript
-export async function createSampleWorkSheet(mockDataSource) {
+async function createSampleTable(mockDataSource) {
     //...//
+
+     //Add event handlers
     salesTable.onSelectionChanged.add(onSelectionChange);
-    //...//
     salesTable.onChanged.add(onChanged);
+
     //...//
 }
 
@@ -118,8 +119,10 @@ export async function createSampleWorkSheet(mockDataSource) {
  */
 function onSelectionChange(args) {
   let g = getGlobal();
-  setContextualTabVisibility(args.isInsideTable);
-  g.isTableSelected = args.isInsideTable;
+  if (g.isTableSelected !== args.isInsideTable) {
+    g.isTableSelected = args.isInsideTable;
+    setContextualTabVisibility(args.isInsideTable);
+  }
 }
 
 /**
@@ -128,14 +131,6 @@ function onSelectionChange(args) {
  */
 function onChanged() {
   let g = getGlobal();
-
-  //When the add-in creates the table, it will generate 4 events that we must ignore.
-  //We only want to respond to the change events from the user.
-  if (g.tableEventCount > 0) {
-    g.tableEventCount--;
-    return; //count down to throw away events caused by the table creation code
-  }
-
   //check if dirty flag was set (flag avoids extra unnecessary ribbon operations)
   if (!g.isTableDirty) {
     g.isTableDirty = true;
@@ -150,6 +145,14 @@ function onChanged() {
 
 If you prefer to host the web server for the sample on your computer, follow these steps:
 
+1. Open the **/src/commands/ribbonJSON.js** file.
+1. Edit line 9 to refer to the localhost:3000 endpoint as shown in the following code.
+    
+    ```javascript
+    const sourceUrl = "https://localhost:3000";
+    ```
+    
+1. Save the file.
 1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
     
     ```console
@@ -160,7 +163,7 @@ If you prefer to host the web server for the sample on your computer, follow the
 3. From a command prompt, go to the web-worker folder and run the following command:
     
     ```console
-    http-server -S --cors .
+    http-server -S --cors . -p 3000
     ```
     
 4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
@@ -172,25 +175,10 @@ If you prefer to host the web server for the sample on your computer, follow the
     To reroute run the following in another command prompt:
     
     ```console
-    office-addin-https-reverse-proxy --url http://localhost:8080
+    office-addin-https-reverse-proxy --url http://localhost:3000
     ```
     
-5. Sideload the add-in using the the previous steps (1 - 7). Upload the `manifest-localhost.xml` file for step 6.
-
-
-
-## Security notes
-
-In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
-
-You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
-
-You can install or uninstall the certificates by running the following commands in the project folder.
-
-```command&nbsp;line
-npx office-addin-dev-certs install
-npx office-addin-dev-certs uninstall
-```
+5. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/office-contextual-tabs#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Questions and comments
 

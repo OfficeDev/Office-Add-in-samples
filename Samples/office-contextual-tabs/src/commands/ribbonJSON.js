@@ -6,7 +6,7 @@
 //The following function defines and returns the JSON object that describes the contextual tabs.
 //Make changes to the JSON text if you want to modify the contextual tabs.
 function getContextualRibbonJSON() {
-    const sourceUrl = "https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-contextual-tabs/";
+    const sourceUrl = "https://officedev.github.io/";
   return {
     "actions": [
         {
@@ -146,7 +146,7 @@ function getContextualRibbonJSON() {
                         {
                             "type": "Button",
                             "id": "btnRefresh",
-                            "enabled": true,
+                            "enabled": false,
                             "icon": [
                                 {
                                     "size": 16,
@@ -172,7 +172,7 @@ function getContextualRibbonJSON() {
                         {
                             "type": "Button",
                             "id": "btnSubmit",
-                            "enabled": true,
+                            "enabled": false,
                             "icon": [
                                 {
                                     "size": 16,

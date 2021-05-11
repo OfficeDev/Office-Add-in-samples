@@ -19,9 +19,8 @@ async function deleteSampleTable() {
       if (error.code === "ItemNotFound") {
         return; //The table did not exist so just return.
       } else {
-        console.log("deleteSampleTable failed");
+        console.log("deleteSampleTable function failed");
         console.error(error);
-        console.log(error.code);
         throw error; //Unexpected error occurred.
       }
     }
@@ -35,7 +34,6 @@ async function deleteSampleTable() {
  async function createSampleTable(mockDataSource) {
   //Delete table if it already exists
   await deleteSampleTable();
-  console.log("creating table");
   return Excel.run(async context => {
     let sheet = context.workbook.worksheets.getItem("Sample");
 
@@ -163,10 +161,8 @@ function setContextualTabVisibility(visible) {
  * @param  {boolean} visible true if the buttons should be enabled; otherwise, false.
  */
  function setSyncButtonEnabled(visible) {
-  console.log("sync is " + visible);
   let g = getGlobal();
   g.contextualTab.tabs[0].groups[1].controls[0].enabled = visible;
   g.contextualTab.tabs[0].groups[1].controls[1].enabled = visible;
-  console.log(g.contextualTab);
   Office.ribbon.requestUpdate(g.contextualTab);
 }
