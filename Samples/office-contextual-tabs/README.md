@@ -14,11 +14,9 @@ extensions:
 description: "Learn how to create a contextual tab that displays on the ribbon in response to the context of the Office UI."
 ---
 
-# (Preview) Create custom contextual tabs on the ribbon
+# Create custom contextual tabs on the ribbon
 
 This sample shows how to create a custom contextual tab on the ribbon in the Office UI. The sample creates a table, and when the user moves the focus inside the table, the custom tab is displayed. When the user moves outside the table, the custom tab is hidden.
-
-> **Note:** The features used in this sample are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you'll need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is to sign up for an Office 365 subscription. If you don't already have an Office 365 subscription, get one by joining the [Office 365 Developer Program](https://developer.microsoft.com/office/dev-program).
 
 ## Applies to
 
