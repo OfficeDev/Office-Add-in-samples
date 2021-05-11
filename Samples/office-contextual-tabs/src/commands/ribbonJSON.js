@@ -5,7 +5,8 @@
 
 //The following function defines and returns the JSON object that describes the contextual tabs.
 //Make changes to the JSON text if you want to modify the contextual tabs.
-export function getContextualRibbonJSON() {
+function getContextualRibbonJSON() {
+    const sourceUrl = "https://officedev.github.io/";
   return {
     "actions": [
         {
@@ -32,15 +33,15 @@ export function getContextualRibbonJSON() {
                     "icon": [
                         {
                             "size": 16,
-                            "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                            "sourceLocation": sourceUrl + "assets/icon-16.png"
                         },
                         {
                             "size": 32,
-                            "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                            "sourceLocation": sourceUrl + "assets/icon-32.png"
                         },
                         {
                             "size": 80,
-                            "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                            "sourceLocation": sourceUrl + "assets/icon-80.png"
                         }
                     ],
                     "controls": [
@@ -56,15 +57,15 @@ export function getContextualRibbonJSON() {
                             "icon": [
                                 {
                                     "size": 16,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-16.png"
                                 },
                                 {
                                     "size": 32,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-32.png"
                                 },
                                 {
                                     "size": 80,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-80.png"
                                 }
                             ],
                             "items": [
@@ -75,15 +76,15 @@ export function getContextualRibbonJSON() {
                                     "icon": [
                                         {
                                             "size": 16,
-                                            "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                                            "sourceLocation": sourceUrl + "assets/icon-16.png"
                                         },
                                         {
                                             "size": 32,
-                                            "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                                            "sourceLocation": sourceUrl + "assets/icon-32.png"
                                         },
                                         {
                                             "size": 80,
-                                            "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                                            "sourceLocation": sourceUrl + "assets/icon-80.png"
                                         }
                                     ],
                                     "label": "External Excel file",
@@ -101,15 +102,15 @@ export function getContextualRibbonJSON() {
                                     "icon": [
                                         {
                                             "size": 16,
-                                            "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                                            "sourceLocation": sourceUrl + "assets/icon-16.png"
                                         },
                                         {
                                             "size": 32,
-                                            "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                                            "sourceLocation": sourceUrl + "assets/icon-32.png"
                                         },
                                         {
                                             "size": 80,
-                                            "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                                            "sourceLocation": sourceUrl + "assets/icon-80.png"
                                         }
                                     ],
                                     "label": "SQL Database",
@@ -130,34 +131,34 @@ export function getContextualRibbonJSON() {
                     "icon": [
                         {
                             "size": 16,
-                            "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                            "sourceLocation": sourceUrl + "assets/icon-16.png"
                         },
                         {
                             "size": 32,
-                            "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                            "sourceLocation": sourceUrl + "assets/icon-32.png"
                         },
                         {
                             "size": 80,
-                            "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                            "sourceLocation": sourceUrl + "assets/icon-80.png"
                         }
                     ],
                     "controls": [
                         {
                             "type": "Button",
                             "id": "btnRefresh",
-                            "enabled": true,
+                            "enabled": false,
                             "icon": [
                                 {
                                     "size": 16,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-16.png"
                                 },
                                 {
                                     "size": 32,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-32.png"
                                 },
                                 {
                                     "size": 80,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-80.png"
                                 }
                             ],
                             "label": "Refresh",
@@ -171,19 +172,19 @@ export function getContextualRibbonJSON() {
                         {
                             "type": "Button",
                             "id": "btnSubmit",
-                            "enabled": true,
+                            "enabled": false,
                             "icon": [
                                 {
                                     "size": 16,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-16.png"
                                 },
                                 {
                                     "size": 32,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-32.png"
                                 },
                                 {
                                     "size": 80,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-80.png"
                                 }
                             ],
                             "label": "Submit",
@@ -202,15 +203,15 @@ export function getContextualRibbonJSON() {
                     "icon": [
                         {
                             "size": 16,
-                            "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                            "sourceLocation": sourceUrl + "assets/icon-16.png"
                         },
                         {
                             "size": 32,
-                            "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                            "sourceLocation": sourceUrl + "assets/icon-32.png"
                         },
                         {
                             "size": 80,
-                            "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                            "sourceLocation": sourceUrl + "assets/icon-80.png"
                         }
                     ],
                     "controls": [
@@ -221,15 +222,15 @@ export function getContextualRibbonJSON() {
                             "icon": [
                                 {
                                     "size": 16,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-16.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-16.png"
                                 },
                                 {
                                     "size": 32,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-32.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-32.png"
                                 },
                                 {
                                     "size": 80,
-                                    "sourceLocation": "https://localhost:3000/assets/icon-80.png"
+                                    "sourceLocation": sourceUrl + "assets/icon-80.png"
                                 }
                             ],
                             "label": "Show task pane",
