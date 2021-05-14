@@ -1,13 +1,17 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+const dataSourceUrl = "https://localhost:3000";
+
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
-    document.getElementById("sideload-msg").style.display = "none";
-    document.getElementById("app-body").style.display = "flex";
-    document.getElementById("run").onclick = insertSheets;
+    let fileInput = document.getElementById("fileInput");
+    fileInput.addEventListener("change", insertSheets);
   }
 });
 
 async function insertSheets() {
-  const myFile = document.getElementById("file");
+  const myFile = document.getElementById("fileInput");
   const reader = new FileReader();
 
   reader.onload = async (event) => {
@@ -33,39 +37,28 @@ async function insertSheets() {
       // STEP 2: Add data from the "Service".
       const sheet = context.workbook.worksheets.getItem("Template");
 
-      // Get data from your REST API.
-      // For simplicity, the JSON data is hardcoded in this sample and retrieved from an object called 'salesData'.
-
-      let response = await fetch("url");
-
+      // Get data from your REST API. For this sample, the JSON is fetched from a file in the repo.
+      let response = await fetch(dataSourceUrl + "/data.json");
       if (response.ok) {
-        // if HTTP-status is 200-299
-        // get the response body (the method explained below)
-        let json = await response.json();
+        var json = await response.json();
       } else {
         console.error("HTTP-Error: " + response.status);
       }
+
+      //map JSON to table columns
       const newSalesData = json.salesData.map((item) => [
         item.PRODUCT,
         item.QTR1,
         item.QTR2,
         item.QTR3,
         item.QTR4,
+        "",
       ]);
 
-      // We know that the table in this template starts at B5, so we start with that.
-      // Next, we calculate the total number of rows from our sales data.
-      const startRow = 5;
-      var address =
-        "B" + startRow + ":F" + (newSalesData.length + startRow - 1);
+      const salesTable = sheet.tables.getItem("SalesTable");
+      salesTable.rows.add(null, newSalesData);
 
-      // Write the sales data to table in the template.
-      var range = sheet.getRange(address);
-      range.values = newSalesData;
-
-      return context.sync().catch(function (error) {
-        console.log(error);
-      });
+      return context.sync();
     });
   };
 
