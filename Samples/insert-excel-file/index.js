@@ -11,7 +11,7 @@ async function insertSheets() {
   const reader = new FileReader();
 
   reader.onload = async (event) => {
-    Excel.run((context) => {
+    Excel.run(async (context) => {
       // Remove the metadata before the base64-encoded string.
       const startIndex = reader.result.toString().indexOf("base64,");
       const workbookContents = reader.result.toString().substr(startIndex + 7);
