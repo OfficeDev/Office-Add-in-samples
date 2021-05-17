@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-const dataSourceUrl = "https://localhost:3000";
+const dataSourceUrl = "https://davidchesnut.github.io";
 
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
