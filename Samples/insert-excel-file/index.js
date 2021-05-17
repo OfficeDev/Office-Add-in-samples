@@ -18,6 +18,8 @@ async function insertSheets() {
     Excel.run(async (context) => {
       // Remove the metadata before the base64-encoded string.
       const startIndex = reader.result.toString().indexOf("base64,");
+
+      // 7 is the length of the "base64," string to skip past
       const workbookContents = reader.result.toString().substr(startIndex + 7);
 
       // STEP 1: Insert the template into the workbook.
@@ -55,6 +57,7 @@ async function insertSheets() {
         "",
       ]);
 
+      //insert data as new rows in table.
       const salesTable = sheet.tables.getItem("SalesTable");
       salesTable.rows.add(null, newSalesData);
 

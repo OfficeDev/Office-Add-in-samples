@@ -57,7 +57,7 @@ You can run this sample in Excel on Windows, or Mac. The add-in web files are se
 Once the add-in is loaded use the following steps to try out the functionality.
 
 1. On the **Home** ribbon, choose **Show task pane**.
-2. In the task pane, select the **Choose file** button.
+1. In the task pane, select the **Choose file** button.
 1. In the dialog box that opens, select the **SalesTemplate.xlsx** file that you downloaded previously. The choose **Open**.
 
 A **Contoso Sales Report** will be inserted with a table and chart populated with data.
