@@ -72,11 +72,11 @@
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show task pane"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="PnP Insert Excel file"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show task pane' button to get started."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a task pane"/>
+        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'PnP Insert Excel file' button to get started."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to insert Excel file"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>

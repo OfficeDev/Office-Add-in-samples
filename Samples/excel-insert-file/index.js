@@ -53,14 +53,17 @@ async function insertSheets() {
         item.QTR1,
         item.QTR2,
         item.QTR3,
-        item.QTR4,
-        "",
+        item.QTR4
       ]);
 
-      //insert data as new rows in table.
-      const salesTable = sheet.tables.getItem("SalesTable");
-      salesTable.rows.add(null, newSalesData);
-
+      // We know that the table in this template starts at B5, so we start with that.
+      // Next, we calculate the total number of rows from our sales data.
+      const startRow = 5;
+      var address = "B" + startRow + ":F" + (newSalesData.length + startRow - 1);
+      // Write the sales data to table in the template.
+      var range = sheet.getRange(address);
+      range.values = newSalesData;
+      sheet.activate();
       return context.sync();
     });
   };

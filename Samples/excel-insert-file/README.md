@@ -9,7 +9,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: "5/14/2022 10:00:00 AM"
+  createdDate: "5/18/2022 10:00:00 AM"
 description: "This sample shows how to insert a template from an external Excel file and populate it with JSON data."
 ---
 
@@ -19,6 +19,8 @@ description: "This sample shows how to insert a template from an external Excel 
 
 This sample shows how to insert an existing template from an external Excel file into the currently open Excel file. Then it retrieves data from a JSON web service and populates the template for the customer.
 
+> **Note:** The features used in this sample are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you'll need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is to sign up for an Office 365 subscription. If you don't already have an Office 365 subscription, get one by joining the [Office 365 Developer Program](https://developer.microsoft.com/office/dev-program).
+
 ## Features
 
 - Use **insertWorksheetsFromBase64** to insert a worksheet from another Excel file into the open Excel file.
@@ -26,11 +28,11 @@ This sample shows how to insert an existing template from an external Excel file
 
 ## Applies to
 
-- Excel on Windows, and Mac.
+- Excel on Windows, Mac, and on the web.
 
 ## Prerequisites
 
-- Microsoft 365
+To use this sample, you'll need to [join Office Insider](https://insider.office.com/join).
 
 ## Solution
 
@@ -42,21 +44,28 @@ Insert an external Excel file and populate it with JSON data | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0 | 5-14-2021 | Initial release
+1.0 | 5-18-2021 | Initial release
 
 ----------
 
 ## Run the sample
 
-You can run this sample in Excel on Windows, or Mac. The add-in web files are served from this repo on GitHub.
+To run the sample you just need to sideload the manifest. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** and **SalesTemplate.xlsx** files from this sample to a folder on your computer.
-1. If you are using Excel on Windows, create a network share and sideload the manifest by following the instructions in [Sideload Office Add-ins for testing from a network share](https://docs.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins).
-1. If you are using Excel on Mac, sideload the manifest by following the instructions in [Sideload Office Add-ins on iPad and Mac for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad-and-mac#sideload-an-add-in-in-office-on-mac). Note that the instructions are for Word, but they mirror the same steps as for Excel.
+1. Open [Office on the web](https://office.live.com/).
+1. Choose **Excel**, and then open a new document.
+1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
+1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../images/office-add-ins-my-account.png)
+1. Browse to the add-in manifest file, and then select **Upload**.
+   ![The upload add-in dialog with buttons for browse, upload, and cancel.
+](../../images/upload-add-in.png)
+1. Verify that the add-in loaded successfully. You will see a **PnP Insert Excel file** button on the **Home** tab on the ribbon.
 
 Once the add-in is loaded use the following steps to try out the functionality.
 
-1. On the **Home** ribbon, choose **Show task pane**.
+1. On the **Home** ribbon, choose **PnP Insert Excel file**.
 1. In the task pane, select the **Choose file** button.
 1. In the dialog box that opens, select the **SalesTemplate.xlsx** file that you downloaded previously. The choose **Open**.
 
@@ -110,8 +119,14 @@ Finally it adds the JSON to the table.
         "",
       ]);
 
-      const salesTable = sheet.tables.getItem("SalesTable");
-      salesTable.rows.add(null, newSalesData);
+      // We know that the table in this template starts at B5, so we start with that.
+      // Next, we calculate the total number of rows from our sales data.
+      const startRow = 5;
+      var address = "B" + startRow + ":F" + (newSalesData.length + startRow - 1);
+      // Write the sales data to table in the template.
+      var range = sheet.getRange(address);
+      range.values = newSalesData;
+      sheet.activate();
 ```
 
 ## Run the sample from Localhost
