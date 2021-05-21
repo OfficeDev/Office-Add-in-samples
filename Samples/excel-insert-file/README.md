@@ -76,61 +76,59 @@ A **Contoso Sales Report** will be inserted with a table and chart populated wit
 When you select the **SalesTemplate.xlsx** file, the following code in **index.js** inserts the template. It sets up an object named **options** to identify the sheet by name (**Template**). Then it calls the Office.js **insertWorksheetsFromBase64** API to insert the template into the current worksheet.
 
 ```javascript
-  // STEP 1: Insert the template into the workbook.
-  const workbook = context.workbook;
+// STEP 1: Insert the template into the workbook.
+const workbook = context.workbook;
 
-  // Set up the insert options.
-  var options = {
-    sheetNamesToInsert: ["Template"], // Insert the "Template" worksheet from the source workbook.
-    positionType: Excel.WorksheetPositionType.after, // Insert after the `relativeTo` sheet.
-    relativeTo: "Sheet1",
-    }; // The sheet relative to which the other worksheets will be inserted. Used with `positionType`.
+// Set up the insert options.
+var options = {
+  sheetNamesToInsert: ["Template"], // Insert the "Template" worksheet from the source workbook.
+  positionType: Excel.WorksheetPositionType.after, // Insert after the `relativeTo` sheet.
+  relativeTo: "Sheet1",
+}; // The sheet relative to which the other worksheets will be inserted. Used with `positionType`.
 
-  // Insert the external worksheet.
-  workbook.insertWorksheetsFromBase64(workbookContents, options);
+// Insert the external worksheet.
+workbook.insertWorksheetsFromBase64(workbookContents, options);
 ```
 
 Next, it gets the JSON which is in the **data.json** file in this repo.
 
 ```javascript
- // STEP 2: Add data from the "Service".
-      const sheet = context.workbook.worksheets.getItem("Template");
+// STEP 2: Add data from the "Service".
+const sheet = context.workbook.worksheets.getItem("Template");
 
-      // Get data from your REST API. For this sample, the JSON is fetched from a file in the repo.
-      let response = await fetch(dataSourceUrl + "/data.json");
-      if (response.ok) {
-        var json = await response.json();
-      } else {
-        console.error("HTTP-Error: " + response.status);
-      }
-
+  // Get data from your REST API. For this sample, the JSON is fetched from a file in the repo.
+  let response = await fetch(dataSourceUrl + "/data.json");
+  if (response.ok) {
+    var json = await response.json();
+  } else {
+    console.error("HTTP-Error: " + response.status);
+  }
 ```
 
 Finally, it adds the JSON to the table.
 
 ```javascript
- // Map JSON to table columns.
-      const newSalesData = json.salesData.map((item) => [
-        item.PRODUCT,
-        item.QTR1,
-        item.QTR2,
-        item.QTR3,
-        item.QTR4,
-        "",
-      ]);
+// Map JSON to table columns.
+  const newSalesData = json.salesData.map((item) => [
+    item.PRODUCT,
+    item.QTR1,
+    item.QTR2,
+    item.QTR3,
+    item.QTR4
+  ]);
 
-      // We know that the table in this template starts at B5, so we start with that.
-      // Next, we calculate the total number of rows from our sales data.
-      const startRow = 5;
-      var address = "B" + startRow + ":F" + (newSalesData.length + startRow - 1);
+  // We know that the table in this template starts at B5, so we start with that.
+  // Next, we calculate the total number of rows from our sales data.
+  const startRow = 5;
+  var address = "B" + startRow + ":F" + (newSalesData.length + startRow - 1);
       
-      // Write the sales data to the table in the template.
-      var range = sheet.getRange(address);
-      range.values = newSalesData;
-      sheet.activate();
+  // Write the sales data to the table in the template.
+  var range = sheet.getRange(address);
+  range.values = newSalesData;
+  sheet.activate();
 ```
 
-## Run the sample from Localhost
+## Run the sample on localhost
 
 If you prefer to host the web server for the sample on your computer, follow these steps:
 
@@ -149,13 +147,13 @@ If you prefer to host the web server for the sample on your computer, follow the
     ```
     
 1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
-3. From a command prompt, go to the web-worker folder and run the following command:
+1. From a command prompt, go to the web-worker folder and run the following command:
     
     ```console
     http-server -S --cors . -p 3000
     ```
     
-4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this proxy, you can do it with the following command:
+1. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this proxy, you can do it with the following command:
     
     ```console
     npm install --global office-addin-https-reverse-proxy
@@ -167,7 +165,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
     
-5. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/excel-keyboard-shortcuts#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
+1. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/excel-keyboard-shortcuts#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Copyright
 
