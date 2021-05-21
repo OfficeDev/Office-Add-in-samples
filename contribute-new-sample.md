@@ -32,12 +32,12 @@ For example, if your solution shows how to create a task pane in any Office app 
 Use the following steps to submit a pull request for your new code sample.
 
 1. Fork this repository [OfficeDev/PnP-OfficeAddins](https://github.com/OfficeDev/PnP-OfficeAddins) to your GitHub account.
-2. Create a new branch off the `master` branch for your fork for the contribution.
+2. Create a new branch off the `main` branch for your fork for the contribution.
 3. In the new branch, create the folder for your new sample using the previous naming guidelines.
 4. Add your code sample to the folder.
 5. Commit the new code using descriptive commit message. Commit messages are used to track changes on the repositories for monthly communications.
 6. Push the changes up to your fork.
-7. Create a pull request in your own fork and target the `master` branch on OfficeDev org.
+7. Create a pull request in your own fork and target the `main` branch on OfficeDev org.
 8. Fill up the provided PR template with the requested details.
 
 > **Note:** If you haven't signed a contributor license agreement (CLA), then you will automatically be asked to sign a CLA as part of submitting the PR.
