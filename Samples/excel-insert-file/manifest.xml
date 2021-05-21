@@ -6,8 +6,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="PnP insert Excel file"/>
   <Description DefaultValue="Shows how to insert an external Excel file into the current worksheet."/>
-  <IconUrl DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/excel-insert-file/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/excel-insert-file/assets/icon-64.png"/>
+  <IconUrl DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-insert-file/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-insert-file/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
@@ -16,7 +16,7 @@
     <Host Name="Workbook"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/excel-insert-file/index.html"/>
+    <SourceLocation DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-insert-file/index.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -61,13 +61,13 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/excel-insert-file/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/excel-insert-file/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/excel-insert-file/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-insert-file/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-insert-file/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-insert-file/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/excel-insert-file/index.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-insert-file/index.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
