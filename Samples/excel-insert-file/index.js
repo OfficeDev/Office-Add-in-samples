@@ -47,7 +47,7 @@ async function insertSheets() {
         console.error("HTTP-Error: " + response.status);
       }
 
-      //map JSON to table columns
+      // Map JSON to table columns.
       const newSalesData = json.salesData.map((item) => [
         item.PRODUCT,
         item.QTR1,
@@ -60,7 +60,8 @@ async function insertSheets() {
       // Next, we calculate the total number of rows from our sales data.
       const startRow = 5;
       var address = "B" + startRow + ":F" + (newSalesData.length + startRow - 1);
-      // Write the sales data to table in the template.
+
+      // Write the sales data to the table in the template.
       var range = sheet.getRange(address);
       range.values = newSalesData;
       sheet.activate();

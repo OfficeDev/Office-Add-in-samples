@@ -9,7 +9,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: "5/18/2022 10:00:00 AM"
+  createdDate: "5/18/2021 10:00:00 AM"
 description: "This sample shows how to insert a template from an external Excel file and populate it with JSON data."
 ---
 
@@ -53,21 +53,21 @@ Version  | Date | Comments
 To run the sample you just need to sideload the manifest. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** and **SalesTemplate.xlsx** files from this sample to a folder on your computer.
-1. Open [Office on the web](https://office.live.com/).
+1. Open [Office on the web](https://www.office.com/).
 1. Choose **Excel**, and then open a new document.
-1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
-1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+1. Select the **Insert** tab, and choose **Office Add-ins**.
+1. On the **Office Add-ins** dialog, select **MY ADD-INS** , choose the **Manage My Add-ins** drop-down, and then choose **Upload My Add-in**.
    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../images/office-add-ins-my-account.png)
 1. Browse to the add-in manifest file, and then select **Upload**.
    ![The upload add-in dialog with buttons for browse, upload, and cancel.
 ](../../images/upload-add-in.png)
-1. Verify that the add-in loaded successfully. You will see a **PnP Insert Excel file** button on the **Home** tab on the ribbon.
+1. Verify that the add-in loaded successfully. You'll see a **PnP Insert Excel file** button on the **Home** tab.
 
-Once the add-in is loaded use the following steps to try out the functionality.
+Once the add-in is loaded, use the following steps to try out the functionality.
 
-1. On the **Home** ribbon, choose **PnP Insert Excel file**.
+1. On the **Home** tab, choose **PnP Insert Excel file**.
 1. In the task pane, select the **Choose file** button.
-1. In the dialog box that opens, select the **SalesTemplate.xlsx** file that you downloaded previously. The choose **Open**.
+1. In the dialog box that opens, select the **SalesTemplate.xlsx** file that you downloaded previously, and choose **Open**.
 
 A **Contoso Sales Report** will be inserted with a table and chart populated with data.
 
@@ -106,10 +106,10 @@ Next, it gets the JSON which is in the **data.json** file in this repo.
 
 ```
 
-Finally it adds the JSON to the table.
+Finally, it adds the JSON to the table.
 
 ```javascript
- //map JSON to table columns
+ // Map JSON to table columns.
       const newSalesData = json.salesData.map((item) => [
         item.PRODUCT,
         item.QTR1,
@@ -123,7 +123,8 @@ Finally it adds the JSON to the table.
       // Next, we calculate the total number of rows from our sales data.
       const startRow = 5;
       var address = "B" + startRow + ":F" + (newSalesData.length + startRow - 1);
-      // Write the sales data to table in the template.
+      
+      // Write the sales data to the table in the template.
       var range = sheet.getRange(address);
       range.values = newSalesData;
       sheet.activate();
@@ -141,20 +142,20 @@ If you prefer to host the web server for the sample on your computer, follow the
     ```
     
 1. Save the file.
-1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+1. You need http-server to run the local web server. If you haven't installed http-server, you can do this with the following command:
     
     ```console
     npm install --global http-server
     ```
     
-2. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
+1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
 3. From a command prompt, go to the web-worker folder and run the following command:
     
     ```console
     http-server -S --cors . -p 3000
     ```
     
-4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
+4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this proxy, you can do it with the following command:
     
     ```console
     npm install --global office-addin-https-reverse-proxy
