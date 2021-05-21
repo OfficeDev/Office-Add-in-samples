@@ -38,15 +38,16 @@ The sample implements an Outlook add-in that uses Office's SSO feature to give t
     * Set **Name** to `AttachmentsDemo`.
     * Set **Supported account types** to **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
     * In the **Redirect URI** section, ensure that **Web** is selected in the drop down and then set the URI to `https://localhost:44355/AzureADAuth/Authorize`.
-        > [!NOTE]
-        > The port number in the redirect URI (`44355`) may be different on your development machine. You can find the correct port number for your machine by selecting the **AttachmentDemoWeb** project in **Solution Explorer**, then looking at the **SSL URL** setting in the properties window.
+        **Note:** The port number in the redirect URI (`44355`) may be different on your development machine. You can find the correct port number for your machine by selecting the **AttachmentDemoWeb** project in **Solution Explorer**, then looking at the **SSL URL** setting in the properties window.
     * Choose **Register**.
 
-1. On the **AttachmentsDemo** page, copy and save the values for the **Application (client) ID**. You'll use it in later procedures.
+1. On the **AttachmentsDemo** page, copy and save the **Application (client) ID**. You'll use it in later procedures.
 
 1. Under **Manage**, select **Authentication**. Under **Implicit grant**, turn on the check of **Access tokens**. Then select **Save** button.
 
-1. Under **Manage**, select **Certificates & secrets**. Select the **New client secret** button. Enter a value for **Description**, then select an appropriate option for **Expires** and choose **Add**. *Copy the client secret value immediately and save it with the application ID* before proceeding as you'll need it in a later procedure.
+1. Under **Manage**, select **Certificates & secrets**. Select the **New client secret** button. Enter a value for **Description**, then select an appropriate option for **Expires** and choose **Add**.
+
+1. Copy and save the client secret value. You'll use it in later procedures.
 
 1. Under **Manage**, select **Expose an API**. Click the **Set** link.
 
@@ -70,6 +71,9 @@ The sample implements an Outlook add-in that uses Office's SSO feature to give t
 1. In the **Authorized client applications** section, you identify the applications that you want to authorize to your add-in's web application. Each of the following IDs needs to be pre-authorized.
 
     - `d3590ed6-52b3-4102-aeff-aad2292ab01c` (Microsoft Office)
+    - `ea5a67f6-b6f3-4338-b240-c655ddc3cc8e` (Microsoft Office)
+    - `57fb890c-0dab-4253-a5e0-7188c88b2bb4` (Office on the web)
+    - `08e18876-6177-487e-b8b5-cf950c1e598c` (Office on the web)
     - `bc59ab01-8403-45c6-8796-ac3ef710b3e3` (Outlook on the web)
 
     For each ID, take these steps:
@@ -88,26 +92,25 @@ The sample implements an Outlook add-in that uses Office's SSO feature to give t
     * openid
     * profile
 
-    > [!NOTE]
-    > The `User.Read` permission may already be listed by default. It is a good practice not to ask for permissions that are not needed, so we recommend that you uncheck the box for this permission if your add-in does not actually need it.
+    **Note:** The `User.Read` permission may already be listed by default. It is a good practice not to ask for permissions that are not needed, so we recommend that you uncheck the box for this permission if your add-in does not actually need it.
 
 1. Select the check box for each permission as it appears. After selecting the permissions, select the **Add permissions** button at the bottom of the panel.
 
 1. On the same page, choose the **Grant admin consent for [tenant name]** button, and then select **Yes** for the confirmation that appears.
 
-    > [!NOTE]
-    > After choosing **Grant admin consent for [tenant name]**, you may see a banner message asking you to try again in a few minutes so that the consent prompt can be constructed. If so, you can start work on the next section, ***but don't forget to come back to the portal and press this button***!
+    **Note:** After choosing **Grant admin consent for [tenant name]**, you may see a banner message asking you to try again in a few minutes so that the consent prompt can be constructed. If so, you can start work on the next section, ***but don't forget to come back to the portal and press this button***!
 
 ## Configuring the Sample
 
 Before you run the sample, you'll need to do a few things to make it work properly.
 
-Edit [AttachmentDemo.xml](AttachmentDemo/AttachmentDemoManifest/AttachmentDemo.xml) and replace the `[Enter the Client Id (Application ID obtained from the Azure portal)]` value with the application ID you generated as part of the app registration process.
+1. In Visual Studio, open the **AttachmentDemo.sln** solution file for this sample.
 
-> [!NOTE]
-> Make sure that the port number in the `Resource` element matches the port used by your project. It should also match the port you used when registering the application.
+1. In the **Solution Explorer** open **AttachmentDemo > AttachmentDemoManifest > AttachmentDemo.xml**. Then replace the `[Enter the Client Id (Application ID obtained from the Azure portal)]` value, in both places where it appears, with the application ID you generated as part of the app registration process.
 
-Edit [Web.config](AttachmentDemoWeb/Web.config) and replace the `[Enter the Client Id (Application ID obtained from the Azure portal)]` value in with the application ID and `[Copy the client secret added to the app from the Azure portal]` with the application password you generated as part of the app registration process.
+    **Note:** Make sure that the port number in the `Resource` element matches the port used by your project. It should also match the port you used when registering the application.
+
+1. In the **Solution Explorer** open **AttachmentDemoWeb > Web.config** and replace the `[Enter the Client Id (Application ID obtained from the Azure portal)]` value with the application ID and `[Copy the client secret added to the app from the Azure portal]` with the client secret you generated as part of the app registration process.
 
 ## Provide user consent to the app
 
@@ -137,24 +140,27 @@ The browser will attempt to redirect back to your app, which may not be running.
 
 ## Running the Sample
 
-> [!NOTE]
-> Visual Studio may show a warning or error about the `WebApplicationInfo` element being invalid. The error may not show up until you try to build the solution. As of this writing, Visual Studio has not updated their schema files to include the `WebApplicationInfo` element. To work around this problem, you can use the updated schema file in this repository: [MailAppVersionOverridesV1_1.xsd](manifest-schema-fix/MailAppVersionOverridesV1_1.xsd).
->
-> 1. On your development machine, locate the existing MailAppVersionOverridesV1_1.xsd. This should be located in your Visual Studio installation directory under `./Xml/Schemas/{lcid}`. For example, on a typical installation of VS 2017 32-bit on an English (US) system, the full path would be `C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Xml\Schemas\1033`.
-> 1. Rename the existing file to `MailAppVersionOverridesV1_1.old`.
-> 1. Move the version of the file from this repository into the folder.
+1. Select the **AttachmentDemo** project in **Solution Explorer**, then choose the **Start Action** value you want (under **Add-in** in the properties window). You can choose any installed browser to launch Outlook on the web, or you can choose **Office Desktop Client** to launch Outlook. If you choose **Office Desktop Client**, be sure to configure Outlook to connect to the Office 365 or Outlook.com user you want to install the add-in for.
 
-You can run the sample right from Visual Studio. Select the **AttachmentDemo** project in **Solution Explorer**, then choose the **Start Action** value you want (under **Add-in** in the properties window). You can choose any installed browser to launch Outlook on the web, or you can choose **Office Desktop Client** to launch Outlook. If you choose **Office Desktop Client**, be sure to configure Outlook to connect to the Office 365 or Outlook.com user you want to install the add-in for.
+1. Press **F5** to build and debug the project. You may be prompted to trust the developer certificate.
 
-Press **F5** to build and debug the project. You should be prompted for a user account and password. Be sure to use a user in your Office 365 tenant, or an Outlook.com account. The add-in will be installed for that user, and either Outlook on the web or Outlook will open. Select any message, and you should see the add-in buttons on the Outlook ribbon.
+1. You should be prompted for a user account and password. Provide a user in your Office 365 tenant, or an Outlook.com account. The add-in will be installed for that user, and either Outlook on the web or Outlook will open.
+
+1. Select any message, **that has one or more attachments**, and you should see the add-in buttons on the Outlook ribbon.
+
+**Note:** Visual Studio may show a warning or error about the `WebApplicationInfo` element being invalid. The error may not show up until you try to build the solution. As of this writing, Visual Studio has not updated the schema files to include the `WebApplicationInfo` element. To work around this problem, you can use the updated schema file in this repository: [MailAppVersionOverridesV1_1.xsd](manifest-schema-fix/MailAppVersionOverridesV1_1.xsd).
+
+1. On your development machine, locate the existing MailAppVersionOverridesV1_1.xsd. This should be located in your Visual Studio installation directory under `./Xml/Schemas/{lcid}`. For example, on a typical installation of VS 2017 32-bit on an English (US) system, the full path would be `C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Xml\Schemas\1033`.
+1. Rename the existing file to `MailAppVersionOverridesV1_1.old`.
+1. Move the version of the file from this repository into the folder.
 
 **Add-in in Outlook on desktop**
 
-![The add-in buttons on the ribbon in Outlook on the desktop](readme-images/buttons-outlook.PNG)
+![The add-in buttons on the ribbon in Outlook on the desktop](buttons-outlook.PNG)
 
 **Add-in in Outlook on the web**
 
-![The add-in buttons in Outlook on the web](readme-images/buttons-owa.PNG)
+![The add-in buttons in Outlook on the web](buttons-owa.PNG)
 
 ## Copyright
 
