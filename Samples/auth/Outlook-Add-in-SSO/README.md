@@ -49,9 +49,13 @@ The sample implements an Outlook add-in that uses Office's SSO feature to give t
 
 1. Copy and save the client secret value. You'll use it in later procedures.
 
-1. Under **Manage**, select **Expose an API**. Click the **Set** link.
+1. Under **Manage**, select **Expose an API**.
 
-1. Under **Application ID URI**, change the default value by inserting your host and port number before the GUID listed there. For example, if the default value is `api://05adb30e-50fa-4ae2-9cec-eab2cd6095b0`, and your app is running on `localhost:44355`, the value is `api://localhost:44355/05adb30e-50fa-4ae2-9cec-eab2cd6095b0`. Then click **Save**.
+1. Choose the **Set** link that appears after the text "Application ID URI".
+
+1. In the **Set the App ID URI** panel, change the default value by inserting your host and port number before the GUID listed there. For example, if the default value is `api://05adb30e-50fa-4ae2-9cec-eab2cd6095b0`, and your app is running on `localhost:44355`, the value is `api://localhost:44355/05adb30e-50fa-4ae2-9cec-eab2cd6095b0`.
+
+1. Choose **Save**.
 
 1. Select the **Add a scope** button. In the panel that opens, enter `access_as_user` as the **Scope name**.
 

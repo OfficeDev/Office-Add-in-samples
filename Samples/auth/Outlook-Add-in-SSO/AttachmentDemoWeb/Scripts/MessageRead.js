@@ -190,7 +190,7 @@
         }).done(function (data) {
             showNotification("Success", "Attachments saved");
         }).fail(function (error) {
-            handleServerSideErrors(result);
+            handleServerSideErrors(error);
         }).always(function () {
             hideSpinner();
         });
@@ -234,11 +234,11 @@
 
         // Our special handling on the server will cause the result that is returned
         // from a AADSTS50076 (a 2FA challenge) to have a Message property but no ExceptionMessage.
-        var message = JSON.parse(result.responseText).Message;
+        var message = result.responseJSON.Message;
 
 
         // Results from other errors (other than AADSTS50076) will have an ExceptionMessage property.
-        var exceptionMessage = JSON.parse(result.responseText).ExceptionMessage;
+        var exceptionMessage = result.responseJSON.ExceptionMessage;
 
         // Microsoft Graph requires an additional form of authentication. Have the Office host 
         // get a new token using the Claims string, which tells AAD to prompt the user for all 

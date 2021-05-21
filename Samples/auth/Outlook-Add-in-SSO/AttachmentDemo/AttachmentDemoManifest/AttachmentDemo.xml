@@ -248,9 +248,6 @@
           <Scope>mail.read</Scope>
         </Scopes>
       </WebApplicationInfo>
-
-
-
     </VersionOverrides>
   </VersionOverrides>
 </OfficeApp>
