@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-const dataSourceUrl = "https://davidchesnut.github.io/PnP-OfficeAddins/Samples/excel-insert-file";
+const dataSourceUrl = "https://officedev.github.io/PnP-OfficeAddins/Samples/excel-insert-file";
 
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
