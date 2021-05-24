@@ -11,6 +11,7 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: "@babel/polyfill",
+      runtime: "./src/runtime/Js/autorunshared.js"
     },
     resolve: {
       extensions: [".ts", ".tsx", ".html", ".js"]
@@ -39,7 +40,22 @@ module.exports = async (env, options) => {
       ]
     },
     plugins: [
-      new CleanWebpackPlugin()
+      new CleanWebpackPlugin(),
+      new CopyWebpackPlugin({
+        patterns: [
+        {
+          to: "[name]." + buildType + ".[ext]",
+          from: "manifest*.xml",
+          transform(content) {
+            return content;
+          }
+        }
+      ]}),
+      new HtmlWebpackPlugin({
+        filename: "autorunweb.html",
+        template: "./src/runtime/Js/autorunweb.html",
+        chunks: ["polyfill", "autorunweb"]
+      })
     ],
     devServer: {
       headers: {

@@ -5,13 +5,13 @@
 
 function onMessageRecipientsChangedHandler(event) {
   // External subject tag.
-  var externalTag = "[External]";
+  const externalTag = "[External]";
 
   // Disclaimer text.
-  var disclaimer = '<p style = "color:blue"><i>Caution: This email includes external recipients.</i></p>';  
+  const disclaimer = '<p style = "color:blue"><i>Caution: This email includes external recipients.</i></p>';  
 
   // Get current recipients.
-  var recipients;
+  let recipients;
 
   // 1. Get To recipients.
   Office.context.mailbox.item.to.getAsync(function (asyncResult) {
@@ -24,7 +24,7 @@ function onMessageRecipientsChangedHandler(event) {
   });
 
   // 2. Get Cc recipients.
-  Office.context.mailbox.item.cc.getAsync(function (asyncResult) {
+  /*Office.context.mailbox.item.cc.getAsync(function (asyncResult) {
     // Handle success or error.
     if (asyncResult.status !== Office.asyncResultStatus.Succeeded) {
       console.error("Failed to get Cc recipients. " + JSON.stringify(asyncResult.error));
@@ -41,12 +41,13 @@ function onMessageRecipientsChangedHandler(event) {
     }
 
     recipients += asyncResult.value;
-  });
+  });*/
 
   // TODO: Dynamically determine current organization.
 
   // Check if any recipients are external.
-  var hasExternal = !recipients.contains("contoso.com");
+  //let hasExternal = !recipients.contains("contoso.com");
+  let hasExternal = recipients && recipients.length() > 0;
 
   if (hasExternal) {
     // Ensure "[External]" is prepended to message subject.
@@ -56,7 +57,7 @@ function onMessageRecipientsChangedHandler(event) {
         console.error("Failed to get subject. " + JSON.stringify(asyncResult.error));
       }
 
-      var subject = asyncResult.value;
+      let subject = asyncResult.value;
       if (!subject.contains(externalTag)) {
         subject = `${externalTag} ${subject}`;
         Office.context.mailbox.item.subject.setAsync(subject, function (asyncResult) {
@@ -85,7 +86,7 @@ function onMessageRecipientsChangedHandler(event) {
         console.error("Failed to get subject. " + JSON.stringify(asyncResult.error));
       }
 
-      var subject = asyncResult.value;
+      let subject = asyncResult.value;
       if (subject.contains(externalTag)) {
         subject = subject.replace(externalTag, "").trimBefore();
         Office.context.mailbox.item.subject.setAsync(subject, function (asyncResult) {
