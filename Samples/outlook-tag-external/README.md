@@ -9,7 +9,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 05/07/2021 10:00:00 AM
+  createdDate: 05/27/2021 10:00:00 AM
 description: "Use Outlook event-based activation to tag external recipients."
 ---
 
@@ -21,9 +21,9 @@ description: "Use Outlook event-based activation to tag external recipients."
 
 This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the [appendOnSendAsync API](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#appendOnSendAsync_data__options__callback_). If external recipients are added, the add-in prepends "[External]" to the message subject and appends a disclaimer to the message body on send.
 
-For documentation related to this sample, see [Configure your Outlook add-in for event-based activation (preview)](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch).
+For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch).
 
-> **Note:** The features used in this sample are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you'll need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is to sign up for a Microsoft 365 subscription. If you don't already have a Microsoft 365 subscription, get one by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/office/dev-program).
+> **Note:** Features used in this sample are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you'll need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is to sign up for a Microsoft 365 subscription. If you don't already have a Microsoft 365 subscription, get one by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/office/dev-program).
 
 ## Features
 
@@ -38,7 +38,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 ## Prerequisites
 
 - To use this sample, you'll need to [join Office Insider](https://insider.office.com/join).
-- Before running this sample, you need a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) installed on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+- Before running this sample, you need a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) installed on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your command prompt.
 
 ## Solution
 
@@ -50,7 +50,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 Version  | Date | Comments
 |---------|------|---------|
-| 1.0 | 5-07-2021 | Initial release
+| 1.0 | 5-27-2021 | Initial release
 
 ## Disclaimer
 
