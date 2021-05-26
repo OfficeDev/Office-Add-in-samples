@@ -15,7 +15,7 @@ description: "Use Outlook event-based activation to tag external recipients."
 
 # Use Outlook event-based activation to tag external recipients (preview)
 
-**Applies to:** Outlook on Windows
+**Applies to:** Outlook on the web and on Windows
 
 ## Summary
 
@@ -29,11 +29,11 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 - Use event-based activation to respond to events.
 - Update the message subject to indicate there are external recipients.
-- Add a disclaimer if the message is sent to external recipients.
+- Add a disclaimer if the message is being sent to external recipients.
 
 ## Applies to
 
-- Outlook on Windows
+- Outlook on the web and on Windows
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Solution
 
-| Solution | Author(s) |
+| Solution | Authors |
 |---------|----------|
 | Use Outlook event-based activation to tag a message with external recipients | Microsoft |
 
@@ -50,7 +50,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 Version  | Date | Comments
 |---------|------|---------|
-| 1.0 | 5-27-2021 | Initial release
+| 1.0 | 5-27-2021 | Initial release |
 
 ## Disclaimer
 
@@ -80,23 +80,23 @@ In this scenario, the add-in helps the user indicate if their message has recipi
 
 1. Sideload the add-in to Outlook on Windows, or Outlook on the web by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
-Once the add-in is loaded use the following steps to try out the functionality.
+Once the add-in is loaded, use the following steps to try out the functionality.
 
-1. Open Outlook on Windows.
+1. Open Outlook on Windows or in a browser.
 1. Create a new message.
 1. Add a recipient email address that's external to your organization.
 
-    Notice that "[External]" is inserted at the beginning of the subject.
+    > Notice that "[External]" is inserted at the beginning of the subject.
 
 1. Send the email.
 
-    Navigate to your **Sent Items** folder, open the email you sent, and notice the included disclaimer.
+    > Navigate to your **Sent Items** folder, open the email you sent, and notice the included disclaimer.
 
 ## Key parts of this sample
 
-### Configure event-based activation in the manifest
+### Configure event-based activation in the manifest ---- TO UPDATE FROM HERE
 
-The manifest configures a runtime that is loaded specifically to handle event-based activation. The following `<Runtime>` element specifies an HTML page resource id that loads the runtime on Outlook on the web. The `<Override>` element specifies the JavaScript file instead, to load the runtime for Outlook on Windows. Outlook on Windows doesn't use the HTML page to load the runtime.
+The manifest configures a runtime that is loaded specifically to handle event-based activation. The following `<Runtime>` element specifies an HTML page resource id that loads the runtime on Outlook on the web. The `<Override>` element specifies the JavaScript file to load the runtime for Outlook on Windows because Outlook on Windows doesn't use the HTML page to load the runtime.
 
 ```xml
 <Runtime resid="Autorun">
@@ -114,7 +114,7 @@ The add-in handles one event that are mapped to the `onMessageRecipientsChanged(
 </LaunchEvents>
 ```
 
-### Handling the event and using the appendOnSendAsync API ---- TO UPDATE
+### Handling the event and using the appendOnSendAsync API
 
 When the user creates a new message, Outlook will load the files specified in the manifest to handle the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events. Outlook on the web will load the `autorunweb.html` page, which then also loads `autorunweb.js` and `autorunshared.js`.
 
