@@ -3,8 +3,6 @@
  * See LICENSE in the project root for license information.
  */
 
-/* global global, Office, self, window */
-
 Office.onReady(() => {
   // If needed, Office.js is ready to be called
 });
@@ -20,17 +18,19 @@ function action(event) {
   event.completed();
 }
 
-function getGlobal() {
-  return typeof self !== "undefined"
-    ? self
-    : typeof window !== "undefined"
-    ? window
-    : typeof global !== "undefined"
-    ? global
-    : undefined;
-}
+// function getGlobal() {
+//   return typeof self !== "undefined"
+//     ? self
+//     : typeof window !== "undefined"
+//     ? window
+//     : typeof global !== "undefined"
+//     ? global
+//     : undefined;
+// }
 
-const g = getGlobal();
+// The global variable
+var g = null;
+//const g = getGlobal();
 
 // the add-in command functions need to be available in global scope
 g.action = action;
