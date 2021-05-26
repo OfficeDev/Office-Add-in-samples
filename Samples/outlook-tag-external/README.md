@@ -96,7 +96,7 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 
 ## Key parts of this sample
 
-### Configure event-based activation in the manifest
+### Configure event-based activation and AppendOnSend in the manifest
 
 The manifest configures a runtime that is loaded specifically to handle event-based activation. The following `<Runtime>` element specifies an HTML page resource ID that loads the runtime in Outlook on the web. The `<Override>` element specifies the JavaScript file to load the runtime for Outlook on Windows because Outlook on Windows doesn't use the HTML page to load the runtime.
 
@@ -131,7 +131,7 @@ The `commands.js` file contains the `tagExternal` function that handles the `OnM
 
 Also, the `commands.js` file contains the `_tagExternal` helper function that calls the [appendOnSendAsync() API](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#appendOnSendAsync_data__options__callback_) to set or clear the disclaimer as appropriate.
 
-Note that you can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web but other code to applies to both Outlook on the web and on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature).
+Note that you can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web but other code that applies to both Outlook on the web and on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature).
 
 ## Security notes
 

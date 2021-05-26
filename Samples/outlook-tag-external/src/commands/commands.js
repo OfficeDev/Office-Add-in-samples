@@ -3,6 +3,8 @@
  * See LICENSE in the project root for license information.
  */
 
+Office.initialize = function (reason) {};
+
 /**
  * Handles the OnMessageRecipientsChanged event.
  * @param event {*} The Office event object
@@ -40,11 +42,13 @@ function tagExternal(event) {
 
       console.log("To recipients: " + JSON.stringify(asyncResult.value)); //debugging
       var toRecipients = asyncResult.value;
-      if (toRecipients != null && toRecipients.length > 0 && JSON.stringify(toRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
+      if (toRecipients != null
+          && toRecipients.length > 0
+          && JSON.stringify(toRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
         hasExternal = true;
         console.log("To includes external users"); //debugging
 
-        // Updates item according to whether external recipients are included.
+        // Update item if needed since external recipients are included.
         _tagExternal(event, hasExternal);
 
         // Call event.completed() after all work is done.
@@ -61,7 +65,7 @@ function tagExternal(event) {
         function (asyncResult) {
           // Handle success or error.
           if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-            console.error("Failed to get To recipients. " + JSON.stringify(asyncResult.error));
+            console.error("Failed to get Cc recipients. " + JSON.stringify(asyncResult.error));
     
             // Call event.completed() after all work is done.
             asyncResult.asyncContext.completed();
@@ -70,11 +74,13 @@ function tagExternal(event) {
           
           console.log("Cc recipients: " + JSON.stringify(asyncResult.value)); //debugging
           var ccRecipients = asyncResult.value;
-          if (ccRecipients != null && ccRecipients.length > 0 && JSON.stringify(ccRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
+          if (ccRecipients != null
+              && ccRecipients.length > 0
+              && JSON.stringify(ccRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
             hasExternal = true;
             console.log("Cc includes external users"); //debugging
 
-            // Updates item according to whether external recipients are included.
+            // Update item if needed since external recipients are included.
             _tagExternal(event, hasExternal);
             
             // Call event.completed() after all work is done.
@@ -91,7 +97,7 @@ function tagExternal(event) {
             function (asyncResult) {
               // Handle success or error.
               if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-                console.error("Failed to get To recipients. " + JSON.stringify(asyncResult.error));
+                console.error("Failed to get Bcc recipients. " + JSON.stringify(asyncResult.error));
         
                 // Call event.completed() after all work is done.
                 asyncResult.asyncContext.completed();
@@ -100,11 +106,13 @@ function tagExternal(event) {
         
               console.log("Bcc recipients: " + JSON.stringify(asyncResult.value)); //debugging
               var bccRecipients = asyncResult.value;
-              if (bccRecipients != null && bccRecipients.length > 0 && JSON.stringify(bccRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
+              if (bccRecipients != null
+                  && bccRecipients.length > 0
+                  && JSON.stringify(bccRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
                 hasExternal = true;
                 console.log("Bcc includes external users"); //debugging
 
-                // Updates item according to whether external recipients are included.
+                // Update item if needed since external recipients are included.
                 _tagExternal(event, hasExternal);
           
                 // Call event.completed() after all work is done.
@@ -112,14 +120,14 @@ function tagExternal(event) {
                 return;
               }
 
-              // Updates item according to whether external recipients are included.
+              // Update item if needed since external recipients aren't included.
               _tagExternal(event, hasExternal);
+
+              // Call event.completed() after all work is done.
+              event.completed();
           });
         });
       });
-
-  // Call event.completed() after all work is done.
-  event.completed();
 }
 /**
  * If there are any external recipients, tags the subject of the Outlook item
