@@ -3,15 +3,13 @@
  * See LICENSE in the project root for license information.
  */
 
- import { getValueForKey, setValueForKey } from "../taskpane/helpers";
-
 /**
  * Get value for key
  * @customfunction
  * @param key The key
  * @returns The value for the key.
  */
-export function getValueForKeyCF(key: string): string {
+function getValueForKeyCF(key) {
   return getValueForKey(key);
 }
 
@@ -21,7 +19,7 @@ export function getValueForKeyCF(key: string): string {
  * @param key The key
  * @returns The value for the key.
  */
-export function setValueForKeyCF(key: string, value: string): string {
+function setValueForKeyCF(key, value) {
   setValueForKey(key, value);
   return "Stored key/value pair";
 }
