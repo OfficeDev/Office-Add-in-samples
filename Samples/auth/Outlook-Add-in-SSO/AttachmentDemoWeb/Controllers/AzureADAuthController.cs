@@ -55,7 +55,7 @@ namespace AttachmentDemoWeb.Controllers
 			clientBuilder.WithAuthority(Settings.AzureADAuthority);
 
 			ConfidentialClientApplication clientApp = (ConfidentialClientApplication)clientBuilder.Build();
-			string[] graphScopes = { "Files.Read.All", "User.Read" };
+			string[] graphScopes = { "https://graph.microsoft.com/Files.ReadWrite", "https://graph.microsoft.com/Mail.Read" };
 
 			// Get and save the token.
 			var authResultBuilder = clientApp.AcquireTokenByAuthorizationCode(
