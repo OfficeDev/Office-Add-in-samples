@@ -4,8 +4,6 @@
  */
 
 Office.initialize = () => {
-  // Initialize global state.
-  let g = getGlobal();
   let keys = [];
   let values = [];
 
@@ -47,8 +45,6 @@ function btnGetValue() {
  * Updates a global variable that tracks which storage type is in use.
  */
 function btnStorageChanged() {
-  let g = getGlobal();
-  
   if ((document.getElementById("globalvar")).checked) {
     g.state.storageType = "globalvar";
   } else {

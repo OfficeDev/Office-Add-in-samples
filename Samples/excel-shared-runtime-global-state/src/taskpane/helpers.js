@@ -9,12 +9,11 @@
  * @param {string} value The value to store.
  */
 function setValueForKey(key, value) {
-    let g = getGlobal();
     if (g.state.storageType === "globalvar") {
       g.state.keys.push(key);
       g.state.values.push(value);
     } else {
-      g.window.localStorage.setItem(key, value);
+      window.localStorage.setItem(key, value);
     }
   }
 
@@ -28,16 +27,17 @@ function setValueForKey(key, value) {
    * @returns {string} The value
    */
   function getValueForKey(key) {
-    let g = getGlobal();
     let answer = "";
     if (g.state.storageType === "globalvar") {
+      // get value from global variable
       g.state.keys.forEach((element, index) => {
         if (element === key) {
           answer = g.state.values[index];
         }
       });
     } else {
-      answer = g.window.localStorage.getItem(key);
+      // get value from localStorage
+      answer = window.localStorage.getItem(key);
     }
     return answer;
   }

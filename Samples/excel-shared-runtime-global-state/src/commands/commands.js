@@ -18,19 +18,8 @@ function action(event) {
   event.completed();
 }
 
-// function getGlobal() {
-//   return typeof self !== "undefined"
-//     ? self
-//     : typeof window !== "undefined"
-//     ? window
-//     : typeof global !== "undefined"
-//     ? global
-//     : undefined;
-// }
-
 // The global variable
-var g = null;
-//const g = getGlobal();
+var g = {};
 
 // the add-in command functions need to be available in global scope
 g.action = action;
