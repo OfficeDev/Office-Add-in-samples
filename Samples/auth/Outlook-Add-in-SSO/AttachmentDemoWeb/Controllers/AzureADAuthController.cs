@@ -30,7 +30,7 @@ namespace AttachmentDemoWeb.Controllers
 			ConfidentialClientApplication clientApp = (ConfidentialClientApplication)clientBuilder.Build();
 
 			// Generate the parameterized URL for Azure login.
-			string[] graphScopes = { "https://graph.microsoft.com/Files.Read.All", "https://graph.microsoft.com/User.Read" };
+			string[] graphScopes = { "https://graph.microsoft.com/Files.ReadWrite", "https://graph.microsoft.com/Mail.Read" };
 			var urlBuilder = clientApp.GetAuthorizationRequestUrl(graphScopes);
 			urlBuilder.WithRedirectUri(loginRedirectUri.ToString());
 			urlBuilder.WithAuthority(Settings.AzureADAuthority);

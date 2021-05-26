@@ -28,7 +28,7 @@
             spinner.stop();
 
             $("#save-selected").on("click", function () {
-                saveAttachmentsToOneDrive(getSelectedAttachments());
+                saveAttachments(getSelectedAttachments());
             });
 
             initializePane();
@@ -130,7 +130,7 @@
 
         $(".ms-ListItem-action").on("click", function () {
             var attachmentId = $(this).closest(".ms-ListItem").children(".attachment-id").text();
-            saveAttachmentsToOneDrive([getRestId(attachmentId)]);
+            saveAttachments([getRestId(attachmentId)]);
         });
     }
 
@@ -147,7 +147,7 @@
         return attachmentIds;
     }
 
-    async function saveAttachmentsToOneDrive(attachmentIds, options) {
+    async function saveAttachments(attachmentIds, options) {
         //Set default SSO options if they are not provided
         if (options === undefined) options = { allowSignInPrompt: true, allowConsentPrompt: true, forMSGraphAccess: true };
         
@@ -157,10 +157,10 @@
         try {
             let bootstrapToken = await OfficeRuntime.auth.getAccessToken(options);
 
-            // The /api/saveAttachmentsToOneDrive controller will make the token exchange and use the 
+            // The /api/saveAttachmentsUsingToken controller will make the token exchange and use the 
             // access token it gets back to make the call to MS Graph.
-            // Server-side errors are caught in the .fail block of saveAttachmentsWithSSO.
-            saveAttachmentsWithSSO("/api/saveAttachments", bootstrapToken, attachmentIds);
+            // Server-side errors are caught in the .fail block of saveAttachmentsUsingToken.
+            saveAttachmentsUsingToken("/api/saveAttachments", bootstrapToken, attachmentIds);
         }
         catch (exception) {
             // The only exceptions caught here are exceptions in your code in the try block
@@ -174,7 +174,7 @@
         }
     }
 
-    function saveAttachmentsWithSSO(relativeURL, accessToken, attachmentIds) {
+    function saveAttachmentsUsingToken(relativeURL, accessToken, attachmentIds) {
 
         var saveAttachmentsRequest = {
             attachmentIds: attachmentIds,
@@ -247,7 +247,7 @@
             if (message.indexOf("AADSTS50076") !== -1) {
                 var claims = JSON.parse(message).Claims;
                 var claimsAsString = JSON.stringify(claims);
-                saveAttachmentsToOneDrive(getSelectedAttachments(), { authChallenge: claimsAsString });
+                saveAttachments(getSelectedAttachments(), { authChallenge: claimsAsString });
                 return;
             }
         }
@@ -262,7 +262,7 @@
             if ((exceptionMessage.indexOf("AADSTS500133") !== -1)
                 && (retryGetAccessToken <= 0)) {
                 retryGetAccessToken++;
-                saveAttachmentsToOneDrive(getSelectedAttachments());
+                saveAttachments(getSelectedAttachments());
             }
             else {
                 // For debugging: 
@@ -316,7 +316,7 @@
             // We now have a valid access token.
             loginDialog.close();
             let attachmentIds = getSelectedAttachments();
-            saveAttachmentsWithSSO("/api/saveAttachmentsFallback", message.accessToken, attachmentIds);
+            saveAttachmentsUsingToken("/api/saveAttachmentsFallback", message.accessToken, attachmentIds);
         } else {
             // Something went wrong with authentication or the authorization of the web application.
             loginDialog.close();

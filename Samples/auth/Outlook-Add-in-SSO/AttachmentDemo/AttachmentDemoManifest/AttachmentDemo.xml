@@ -62,9 +62,6 @@
       <Host xsi:type="MailHost">
 
         <DesktopFormFactor>
-          <!-- Location of the Functions that UI-less buttons can trigger (ExecuteFunction Actions). -->
-          <FunctionFile resid="functionFile" />
-
           <!-- Message Read -->
           <ExtensionPoint xsi:type="MessageReadCommandSurface">
             <!-- Use the default tab of the ExtensionPoint or create your own with <CustomTab id="myTab"> -->
@@ -72,23 +69,6 @@
               <!-- Up to 6 Groups added per Tab -->
               <Group id="msgReadGroup">
                 <Label resid="groupLabel" />
-                <!-- UI-less button to save all attachments -->
-                <Control xsi:type="Button" id="msgReadSaveAttachments">
-                  <Label resid="saveAllAttachmentsLabel" />
-                  <Supertip>
-                    <Title resid="saveAllAttachmentsTitle" />
-                    <Description resid="saveAllAttachmentsDesc" />
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="save-all-icon16" />
-                    <bt:Image size="32" resid="save-all-icon32" />
-                    <bt:Image size="64" resid="save-all-icon64" />
-                    <bt:Image size="80" resid="save-all-icon80" />
-                  </Icon>
-                  <Action xsi:type="ExecuteFunction">
-                    <FunctionName>saveAllAttachments</FunctionName>
-                  </Action>
-                </Control>
                 <!-- Open task pane to save individual attachments -->
                 <Control xsi:type="Button" id="msgReadOpenPaneButton">
                   <Label resid="paneReadButtonLabel" />
@@ -128,7 +108,6 @@
         <bt:Image id="open-pane-icon80" DefaultValue="~remoteAppUrl/Images/open-pane-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="functionFile" DefaultValue="~remoteAppUrl/Functions/FunctionFile.html"/>
         <bt:Url id="messageReadTaskPaneUrl" DefaultValue="~remoteAppUrl/home/index"/>
       </bt:Urls>
       <bt:ShortStrings>
@@ -155,32 +134,12 @@
         <Host xsi:type="MailHost">
 
           <DesktopFormFactor>
-            <!-- Location of the Functions that UI-less buttons can trigger (ExecuteFunction Actions). -->
-            <FunctionFile resid="functionFile" />
-
             <!-- Message Read -->
             <ExtensionPoint xsi:type="MessageReadCommandSurface">
               <!-- Use the default tab of the ExtensionPoint -->
               <OfficeTab id="TabDefault">
                 <Group id="msgReadGroup">
                   <Label resid="groupLabel" />
-                  <!-- UI-less button to save all attachments -->
-                  <Control xsi:type="Button" id="msgReadSaveAttachments">
-                    <Label resid="saveAllAttachmentsLabel" />
-                    <Supertip>
-                      <Title resid="saveAllAttachmentsTitle" />
-                      <Description resid="saveAllAttachmentsDesc" />
-                    </Supertip>
-                    <Icon>
-                      <bt:Image size="16" resid="save-all-icon16" />
-                      <bt:Image size="32" resid="save-all-icon32" />
-                      <bt:Image size="64" resid="save-all-icon64" />
-                      <bt:Image size="80" resid="save-all-icon80" />
-                    </Icon>
-                    <Action xsi:type="ExecuteFunction">
-                      <FunctionName>saveAllAttachments</FunctionName>
-                    </Action>
-                  </Control>
                   <!-- Open task pane to save individual attachments -->
                   <Control xsi:type="Button" id="msgReadOpenPaneButton">
                     <Label resid="paneReadButtonLabel" />
@@ -220,7 +179,6 @@
           <bt:Image id="open-pane-icon80" DefaultValue="~remoteAppUrl/Images/open-pane-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="functionFile" DefaultValue="~remoteAppUrl/Functions/FunctionFile.html"/>
           <bt:Url id="messageReadTaskPaneUrl" DefaultValue="~remoteAppUrl/home/index"/>
         </bt:Urls>
         <bt:ShortStrings>
@@ -243,7 +201,6 @@
           <Scope>openid</Scope>
           <Scope>profile</Scope>
           <Scope>offline_access</Scope>
-          <Scope>user.read</Scope>
           <Scope>files.readwrite</Scope>
           <Scope>mail.read</Scope>
         </Scopes>

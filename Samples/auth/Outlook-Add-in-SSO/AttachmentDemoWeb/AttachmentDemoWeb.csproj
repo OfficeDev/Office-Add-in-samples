@@ -249,8 +249,6 @@
   <ItemGroup>
     <Content Include="Content\OfficeThemes.css" />
     <Content Include="favicon.ico" />
-    <Content Include="Functions\FunctionFile.html" />
-    <Content Include="Functions\FunctionFile.js" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Compile Include="App_Start\Startup.Auth.cs" />

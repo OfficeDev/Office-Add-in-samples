@@ -38,8 +38,10 @@ The sample implements an Outlook add-in that uses Office's SSO feature to give t
     * Set **Name** to `AttachmentsDemo`.
     * Set **Supported account types** to **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
     * In the **Redirect URI** section, ensure that **Web** is selected in the drop down and then set the URI to `https://localhost:44355/AzureADAuth/Authorize`.
-        **Note:** The port number in the redirect URI (`44355`) may be different on your development machine. You can find the correct port number for your machine by selecting the **AttachmentDemoWeb** project in **Solution Explorer**, then looking at the **SSL URL** setting in the properties window.
-    * Choose **Register**.
+    
+    **Note:** The port number used for the redirect URI (`44355`) must match the port your web server is running on. When you open the Visual Studio solution in later steps, you can find the web server's port number by selecting the **AttachmentDemoWeb** project in **Solution Explorer**, then looking at the **SSL URL** setting in the properties window.
+
+1. Choose **Register**.
 
 1. On the **AttachmentsDemo** page, copy and save the **Application (client) ID**. You'll use it in later procedures.
 
@@ -110,11 +112,14 @@ Before you run the sample, you'll need to do a few things to make it work proper
 
 1. In Visual Studio, open the **AttachmentDemo.sln** solution file for this sample.
 
-1. In the **Solution Explorer** open **AttachmentDemo > AttachmentDemoManifest > AttachmentDemo.xml**. Then replace the `[Enter the Client Id (Application ID obtained from the Azure portal)]` value, in both places where it appears, with the application ID you generated as part of the app registration process.
+1. In the **Solution Explorer** open **AttachmentDemo > AttachmentDemoManifest > AttachmentDemo.xml**.
+1. Find the `<WebApplicationInfo>` section near the bottom of the manifest. Then replace the `[Enter the Client Id (Application ID obtained from the Azure portal)]` value, in both places where it appears, with the application ID you generated as part of the app registration process.
 
     **Note:** Make sure that the port number in the `Resource` element matches the port used by your project. It should also match the port you used when registering the application.
 
-1. In the **Solution Explorer** open **AttachmentDemoWeb > Web.config** and replace the `[Enter the Client Id (Application ID obtained from the Azure portal)]` value with the application ID and `[Copy the client secret added to the app from the Azure portal]` with the client secret you generated as part of the app registration process.
+1. In the **Solution Explorer** open **AttachmentDemoWeb > Web.config**.
+1. Replace the `[Enter the Client Id (Application ID obtained from the Azure portal)]` value, in both places where it appears, with the application ID you generated as part of the app registration process.
+1. Replace the `[Copy the client secret added to the app from the Azure portal]` value with the client secret you generated as part of the app registration process.
 
 ## Provide user consent to the app
 
@@ -150,21 +155,63 @@ The browser will attempt to redirect back to your app, which may not be running.
 
 1. You should be prompted for a user account and password. Provide a user in your Office 365 tenant, or an Outlook.com account. The add-in will be installed for that user, and either Outlook on the web or Outlook will open.
 
-1. Select any message, **that has one or more attachments**, and you should see the add-in buttons on the Outlook ribbon.
+1. Select any message, **that has one or more attachments**.
 
-**Note:** Visual Studio may show a warning or error about the `WebApplicationInfo` element being invalid. The error may not show up until you try to build the solution. As of this writing, Visual Studio has not updated the schema files to include the `WebApplicationInfo` element. To work around this problem, you can use the updated schema file in this repository: [MailAppVersionOverridesV1_1.xsd](manifest-schema-fix/MailAppVersionOverridesV1_1.xsd).
+1. Open the task pane:
+    
+    * If you are in Outlook on the web: Select the **...** (**More actions**) drop down menu, and then choose **AttachmentDemoWeb**.<br>
+![Screen shot of the ... button in Outlook on the web](buttons-outlook-web.png)
+    * If you are in Outlook on Windows or Mac: On the **Home** tab, select **Choose attachments**. Note that if the Outlook app window is too small, that **Choose attachments** will instead be located on the **Home** tab's **...** (**More commands**) button.<br>
+![Screen shot of the Choose attachments button on Home tab in Outlook on the web](buttons-outlook-desktop.png)
+    
+1. In the **AttachmentDemoWeb** task pane that opens, select the attachments you want to save.
+
+1. Choose **Save selected**
+
+1. You should see a success message in the task pane.<br>
+![Screen shot of the task pane displaying attachments successfully saved](successful-save.png)
+
+1. Open OneDrive and you should see the attachments saved in a new folder named **Outlook Attachments**.<br>
+![Screen shot of the Outlook Attachments folder in OneDrive](onedrive-attachments-folder.png)
+
+## Testing the fallback dialog
+
+It's recommended to test all paths when working with SSO. In some scenarios you will have to use the fallback dialog. You can this by modifying the code as follows.
+
+1. Open the **MessageRead.js** file in Visual Studio.
+1. Add the following function to the file.
+    
+    ```javascript
+    function MockSSOError(code) {
+        this.code = code;
+    } 
+    ```
+    
+1. Find the `saveAttachments` function.
+1. Modify the code so that it reads as follows to throw a fictitious error:
+    
+    ```javascript
+    async function saveAttachments(attachmentIds, options) {
+        //Set default SSO options if they are not provided
+        if (options === undefined) options = { allowSignInPrompt: true, allowConsentPrompt: true, forMSGraphAccess: true };
+        
+        showSpinner();
+
+        // Attempt to get an SSO token
+        try {
+            throw new MockSSOError("13003");
+            let bootstrapToken = await OfficeRuntime.auth.getAccessToken(options);
+    ```
+
+The line of code that calls `MockSSOError` will throw an error that will be passed to `handleClientSideErrors` in the catch block. This will force `handleClientSideErrors` to call `dialogFallback` and you can test that the fallback dialog is working correctly.
+
+## Troubleshooting manifest issues
+
+Visual Studio may show a warning or error about the `WebApplicationInfo` element being invalid. The error may not show up until you try to build the solution. As of this writing, Visual Studio has not updated the schema files to include the `WebApplicationInfo` element. To work around this problem, you can use the updated schema file in this repository: [MailAppVersionOverridesV1_1.xsd](manifest-schema-fix/MailAppVersionOverridesV1_1.xsd).
 
 1. On your development machine, locate the existing MailAppVersionOverridesV1_1.xsd. This should be located in your Visual Studio installation directory under `./Xml/Schemas/{lcid}`. For example, on a typical installation of VS 2017 32-bit on an English (US) system, the full path would be `C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Xml\Schemas\1033`.
 1. Rename the existing file to `MailAppVersionOverridesV1_1.old`.
 1. Move the version of the file from this repository into the folder.
-
-**Add-in in Outlook on desktop**
-
-![The add-in buttons on the ribbon in Outlook on the desktop](buttons-outlook.PNG)
-
-**Add-in in Outlook on the web**
-
-![The add-in buttons in Outlook on the web](buttons-owa.PNG)
 
 ## Copyright
 
