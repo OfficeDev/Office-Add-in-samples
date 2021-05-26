@@ -42,7 +42,7 @@ namespace AttachmentDemoWeb.Controllers
 
             // MSAL.NET adds the profile, offline_access, and openid scopes itself. It will throw an error if you add
             // them redundantly here.
-            string[] graphScopes = { "https://graph.microsoft.com/Files.Read.All" };
+            string[] graphScopes = { "https://graph.microsoft.com/Files.ReadWrite", "https://graph.microsoft.com/Mail.Read" };
 
             // Get the access token for Microsoft Graph.
             AcquireTokenOnBehalfOfParameterBuilder parameterBuilder = null;
