@@ -15,7 +15,7 @@ description: "Use Outlook event-based activation to tag external recipients."
 
 # Use Outlook event-based activation to tag external recipients (preview)
 
-**Applies to:** Outlook on the web and on Windows
+**Applies to:** Outlook on Windows | Outlook on the web
 
 ## Summary
 
@@ -33,7 +33,9 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Applies to
 
-- Outlook on the web and on Windows
+- Outlook
+  - Windows
+  - web browser
 
 ## Prerequisites
 
@@ -94,19 +96,20 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 
 ## Key parts of this sample
 
-### Configure event-based activation in the manifest ---- TO UPDATE FROM HERE
+### Configure event-based activation in the manifest
 
-The manifest configures a runtime that is loaded specifically to handle event-based activation. The following `<Runtime>` element specifies an HTML page resource id that loads the runtime on Outlook on the web. The `<Override>` element specifies the JavaScript file to load the runtime for Outlook on Windows because Outlook on Windows doesn't use the HTML page to load the runtime.
+The manifest configures a runtime that is loaded specifically to handle event-based activation. The following `<Runtime>` element specifies an HTML page resource ID that loads the runtime in Outlook on the web. The `<Override>` element specifies the JavaScript file to load the runtime for Outlook on Windows because Outlook on Windows doesn't use the HTML page to load the runtime.
 
 ```xml
-<Runtime resid="Autorun">
-  <Override type="javascript" resid="runtimeJs"/>
+<Runtime resid="WebViewRuntime.Url">
+  <Override type="javascript" resid="JSRuntime.Url"/>
+</Runtime>
 ...
-<bt:Url id="Autorun" DefaultValue="https://localhost:3000/src/runtime/HTML/autorunweb.html"></bt:Url>
-<bt:Url id="runtimeJs" DefaultValue="https://localhost:3000/src/runtime/Js/autorunshared.js"></bt:Url>
+<bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/commands.html" />
+<bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.js" />
 ```
 
-The add-in handles one event that are mapped to the `onMessageRecipientsChanged()` function.
+The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the `onMessageRecipientsChangedHandler()` function in the JavaScript file.
 
 ```xml
 <LaunchEvents>
@@ -114,17 +117,21 @@ The add-in handles one event that are mapped to the `onMessageRecipientsChanged(
 </LaunchEvents>
 ```
 
-### Handling the event and using the appendOnSendAsync API
+Since the add-in calls `Office.context.mailbox.item.body.appendOnSendAsync`, the `AppendOnSend` permission is declared in the manifest.
 
-When the user creates a new message, Outlook will load the files specified in the manifest to handle the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events. Outlook on the web will load the `autorunweb.html` page, which then also loads `autorunweb.js` and `autorunshared.js`.
+```xml
+<ExtendedPermission>AppendOnSend</ExtendedPermission>
+```
 
-The `autorunweb.js` file contains a version of the `insert_auto_signature` function used specifically when running on Outlook on the web. The [setSignatureAsync() API cannot be used in Outlook on the web for appointments](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#setSignatureAsync_data__options__callback_). Therefore, `insert_auto_signature` inserts the signature into a new appointment by directly writing to the body text of the appointment.
+### Handle the event and call the appendOnSendAsync API
 
-The `autorunshared.js` file contains the `checkSignature` function that handles the events from Outlook. It also contains additional code that is shared and loaded when the add-in is used in Outlook on the web and Outlook on Windows. On Outlook on Windows, this file is loaded directly and `autorunweb.html` and `autorunweb.js` are not loaded.
+When the user creates a new message (including replies and forwards) and changes any recipients, Outlook will load the files specified in the manifest to handle the `OnMessageRecipientsChanged` event. Outlook on the web will load the `commands.html` page, which then also loads `commands.js`.
 
-The `autorunshared.js` file contains a version of the `insert_auto_signature` function that uses the `setSignatureAsync()` API to set the signature for both messages and appointments.
+The `commands.js` file contains the `tagExternal` function that handles the `OnMessageRecipientsChanged` event from Outlook. In Outlook on Windows, this file is loaded directly and `commands.html` is not loaded.
 
-Note that you can use a similar pattern when handling events. If you need code that only applies to Outlook on the web, you can load it in a separate file like `autorunweb.js`. And for code that applies to both Outlook on the web and Outlook on Windows, you can load it in a shared file like `autorunshared.js`.
+Also, the `commands.js` file contains the `_tagExternal` helper function that calls the [appendOnSendAsync() API](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#appendOnSendAsync_data__options__callback_) to set or clear the disclaimer as appropriate.
+
+Note that you can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web but other code to applies to both Outlook on the web and on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature).
 
 ## Security notes
 
