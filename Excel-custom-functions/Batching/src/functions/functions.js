@@ -1,11 +1,14 @@
-﻿/**
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+/**
  * Adds two numbers without using batching
  * @CustomFunction
  * @param first First number
  * @param second Second number
  * @returns The sum of the two numbers.
  */
-function addNoBatch(first: number, second: number): number {
+function addNoBatch(first, second) {
   return first + second;
 }
 
@@ -16,7 +19,7 @@ function addNoBatch(first: number, second: number): number {
  * @param divisor The number to divide the dividend with
  * @returns The sum of the two numbers
  */
-function div2(dividend: number, divisor: number) {
+function div2(dividend, divisor) {
   return _pushOperation(
     "div2",
     [dividend, divisor]
@@ -30,7 +33,7 @@ function div2(dividend: number, divisor: number) {
  * @param second Second number to multiply
  * @returns The product of the two numbers
  */
-function mul2(first: number, second: number) {
+function mul2(first, second) {
   return _pushOperation(
     "mul2",
     [first, second]
@@ -47,28 +50,15 @@ CustomFunctions.associate("MUL2", mul2);
 
 ///////////////////////////////////////
 
-// Next batch
-interface IBatchEntry {
-  operation: string;
-  args: any[];
-  resolve: (data: any) => void;
-  reject: (error: Error) => void;
-}
-
-interface IServerResponse {
-  result?: any;
-  error?: string;
-}
-
-const _batch: IBatchEntry[] = [];
+let _batch = [];
 let _isBatchedRequestScheduled = false;
 
 // This function encloses your custom functions as individual entries,
 // which have some additional properties so you can keep track of whether or not
 // a request has been resolved or rejected.
-function _pushOperation(op: string, args: any[]) {
+function _pushOperation(op, args) {
   // Create an entry for your custom function.
-  const invocationEntry: IBatchEntry = {
+  const invocationEntry = {
     operation: op, // e.g. sum
     args: args,
     resolve: undefined,
@@ -135,13 +125,11 @@ function _makeRemoteRequest() {
 // This function takes a batch of argument sets and returns a [promise of] batch of values.
 // NOTE: When implementing this function on a server, also apply an appropriate authentication mechanism
 //       to ensure only the correct callers can access it.
-async function _fetchFromRemoteService(
-  requestBatch: Array<{ operation: string, args: any[] }>
-): Promise<IServerResponse[]> {
+async function _fetchFromRemoteService(requestBatch) {
   // Simulate a slow network request to the server;
   await pause(1000);
 
-  return requestBatch.map((request): IServerResponse => {
+  return requestBatch.map((request) => {
     const { operation, args } = request;
 
     try {
@@ -152,10 +140,10 @@ async function _fetchFromRemoteService(
         };
       } else if (operation === "mul2") {
         // Multiply the arguments for the given entry.
-        const myresult = args[0] * args[1];
-        console.log(myresult);
+        const myResult = args[0] * args[1];
+        console.log(myResult);
         return {
-          result: myresult
+          result: myResult
         };
       } else {
         return {
@@ -170,6 +158,6 @@ async function _fetchFromRemoteService(
   });
 }
 
-function pause(ms: number) {
+function pause(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
