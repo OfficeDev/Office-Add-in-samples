@@ -20,6 +20,7 @@ function addNoBatch(first, second) {
  * @returns The sum of the two numbers
  */
 function div2(dividend, divisor) {
+  console.log("div2 called");
   return _pushOperation(
     "div2",
     [dividend, divisor]
@@ -58,6 +59,7 @@ let _isBatchedRequestScheduled = false;
 // a request has been resolved or rejected.
 function _pushOperation(op, args) {
   // Create an entry for your custom function.
+  console.log("pushOperation");
   const invocationEntry = {
     operation: op, // e.g. sum
     args: args,
@@ -78,6 +80,7 @@ function _pushOperation(op, args) {
   // If a remote request hasn't been scheduled yet,
   // schedule it after a certain timeout, e.g. 100 ms.
   if (!_isBatchedRequestScheduled) {
+    console.log("schedule remote request");
     _isBatchedRequestScheduled = true;
     setTimeout(_makeRemoteRequest, 100);
   }
@@ -94,6 +97,8 @@ function _makeRemoteRequest() {
   // Copy the shared batch and allow the building of a new batch while you are waiting for a response.
   // Note the use of "splice" rather than "slice", which will modify the original _batch array
   // to empty it out.
+  try{
+  console.log("makeRemoteRequest");
   const batchCopy = _batch.splice(0, _batch.length);
   _isBatchedRequestScheduled = false;
 
@@ -101,21 +106,31 @@ function _makeRemoteRequest() {
   const requestBatch = batchCopy.map((item) => {
     return { operation: item.operation, args: item.args };
   });
-
+  console.log("makeRemoteRequest2");
   // Make the remote request.
   _fetchFromRemoteService(requestBatch)
     .then((responseBatch) => {
+      console.log("responseBatch in fetchFromRemoteService");
       // Match each value from the response batch to its corresponding invocation entry from the request batch,
       // and resolve the invocation promise with its corresponding response value.
       responseBatch.forEach((response, index) => {
         if (response.error) {
           batchCopy[index].reject(new Error(response.error));
+          console.log("rejecting promise");
         } else {
+          console.log("fulfilling promise");
           console.log(response);
+
           batchCopy[index].resolve(response.result);
         }
       });
     });
+    console.log("makeRemoteRequest3");
+  } catch (error) {
+    console.log("error name:" + error.name);
+    console.log("error message:" + error.message);
+    console.log(error);
+  }
 }
 
 // --------------------- A public API ------------------------------
@@ -127,9 +142,11 @@ function _makeRemoteRequest() {
 //       to ensure only the correct callers can access it.
 async function _fetchFromRemoteService(requestBatch) {
   // Simulate a slow network request to the server;
+  console.log("_fetchFromRemoteService");
   await pause(1000);
-
+  console.log("postpause");
   return requestBatch.map((request) => {
+    console.log("requestBatch server side");
     const { operation, args } = request;
 
     try {
@@ -159,5 +176,6 @@ async function _fetchFromRemoteService(requestBatch) {
 }
 
 function pause(ms) {
+  console.log("pause");
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
