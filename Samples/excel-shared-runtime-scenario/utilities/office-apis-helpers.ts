@@ -31,53 +31,47 @@ export function updateRibbon() {
   // Update ribbon based on state tracking
   const g = getGlobal() as any;
 
-  // @ts-ignore
-  OfficeRuntime.ui
-    .getRibbon()
-    // @ts-ignore
-    .then((ribbon) => {
-      ribbon.requestUpdate({
-        tabs: [
+  Office.ribbon.requestUpdate({
+    tabs: [
+      {
+        id: "ShareTime",
+        controls: [
           {
-            id: "ShareTime",
-            controls: [
-              {
-                id: "BtnConnectService",
-                enabled: !g.state.isConnected,
-              },
-              {
-                id: "BtnDisConnectService",
-                enabled: g.state.isConnected,
-              },
-              {
-                id: "BtnInsertData",
-                enabled: g.state.isConnected,
-              },
-              {
-                id: "BtnSumData",
-                enabled: g.state.isSumEnabled,
-              },
-              {
-                id: "BtnEnableAddinStart",
-                enabled: !g.state.isStartOnDocOpen,
-              },
-              {
-                id: "BtnDisableAddinStart",
-                enabled: g.state.isStartOnDocOpen,
-              },
-              {
-                id: "BtnOpenTaskpane",
-                enabled: !g.state.isTaskpaneOpen,
-              },
-              {
-                id: "BtnCloseTaskpane",
-                enabled: g.state.isTaskpaneOpen,
-              },
-            ],
+            id: "BtnConnectService",
+            enabled: !g.state.isConnected,
+          },
+          {
+            id: "BtnDisConnectService",
+            enabled: g.state.isConnected,
+          },
+          {
+            id: "BtnInsertData",
+            enabled: g.state.isConnected,
+          },
+          {
+            id: "BtnSumData",
+            enabled: g.state.isSumEnabled,
+          },
+          {
+            id: "BtnEnableAddinStart",
+            enabled: !g.state.isStartOnDocOpen,
+          },
+          {
+            id: "BtnDisableAddinStart",
+            enabled: g.state.isStartOnDocOpen,
+          },
+          {
+            id: "BtnOpenTaskpane",
+            enabled: !g.state.isTaskpaneOpen,
+          },
+          {
+            id: "BtnCloseTaskpane",
+            enabled: g.state.isTaskpaneOpen,
           },
         ],
-      });
-    });
+      },
+    ],
+  });
 }
 
 /*
@@ -205,8 +199,8 @@ export async function ensureStateInitialized(isOfficeInitializing: boolean) {
       g.state.isSignedIn = true;
     }
   }
-  if (g.state.isInitialized){
-  updateRibbon();
+  if (g.state.isInitialized) {
+    updateRibbon();
   }
 }
 
@@ -256,4 +250,3 @@ export async function monitorSheetChanges() {
     console.error(error);
   }
 }
-
