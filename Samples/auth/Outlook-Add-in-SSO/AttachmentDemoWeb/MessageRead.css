@@ -1,0 +1,51 @@
+﻿/* Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE.txt in the project root for license information. */
+/*Page-specific styling */
+
+.content-wrap {
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.padding {
+    padding: 15px;
+}
+
+.button-container {
+    padding-bottom: 15px;
+}
+
+#save-selected {
+    width: 100%;
+}
+
+.no-attachments {
+    text-align: center;
+    padding-top: 70px;
+}
+
+.attachment-id {
+    display: none;
+}
+
+.status-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 70px;
+    margin-left: -125px;
+    margin-top: -35px;
+    text-align: center;
+}
+
+.status-spinner {
+    width: 28px;
+    margin-top: 10px;
+    margin-left: 111px;
+}

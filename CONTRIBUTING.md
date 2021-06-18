@@ -48,10 +48,10 @@ Here's a high level process for submitting new samples or updates to existing on
 
 1. Sign the Contributor License Agreement.
 1. Fork this repository [OfficeDev/PnP-OfficeAddins](https://github.com/OfficeDev/PnP-OfficeAddins) to your GitHub account.
-1. Create a new branch off the `master` branch for your fork for the contribution.
+1. Create a new branch off the `main` branch for your fork for the contribution.
 1. Include your changes to your branch.
 1. Commit your changes using descriptive commit message * These are used to track changes on the repositories for monthly communications
-1. Create a pull request in your own fork and target `master` branch.
+1. Create a pull request in your own fork and target `main` branch.
 1. Fill up the provided PR template with the requested details.
 
 Before you submit your pull request consider the following guidelines:
@@ -73,7 +73,7 @@ Before you submit your pull request consider the following guidelines:
 * Make your changes in a new git branch:
 
   ```shell
-  git checkout -b react-taxonomypicker master
+  git checkout -b react-taxonomypicker main
   ```
 
 * Ensure your fork is updated and not behind the upstream **pnp-officeaddins** repo. Refer to these resources for more information on syncing your repo:
@@ -83,19 +83,19 @@ Before you submit your pull request consider the following guidelines:
 
     ```shell
     # assuming you are in the folder of your locally cloned fork....
-    git checkout master
+    git checkout main
 
     # assuming you have a remote named `upstream` pointing official **pnp-officeaddins** repo
     git fetch upstream
 
-    # update your local master to be a mirror of what's in the main repo
-    git pull --rebase upstream master
+    # update your local main to be a mirror of what's in the main repo
+    git pull --rebase upstream main
 
     # switch to your branch where you are working, say "react-taxonomypicker"
     git checkout react-taxonomypicker
 
-    # update your branch to update it's fork point to the current tip of master & put your changes on top of it
-    git rebase master
+    # update your branch to update it's fork point to the current tip of main & put your changes on top of it
+    git rebase main
     ```
 
 * Push your branch to GitHub:
@@ -121,19 +121,19 @@ If the sample you wish to contribute is stored in your own Github repository, yo
 
     ```shell
     git remote add origin https://github.com/yourgitaccount/pnp-officeaddins.git
-    git pull origin master
+    git pull origin main
     ```
 
 * Pull your other project from github into the samples folder of your local copy of pnp-officeaddins
 
     ```shell
-    git subtree add --prefix=samples/projectname https://github.com/yourgitaccount/projectname.git master
+    git subtree add --prefix=samples/projectname https://github.com/yourgitaccount/projectname.git main
     ```
 
 * Push the changes up to your forked repository
 
     ```shell
-    git push origin master
+    git push origin main
     ```
 
 Thank you for your contribution!
