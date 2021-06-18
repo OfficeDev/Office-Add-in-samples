@@ -9,128 +9,210 @@ Office.initialize = function (reason) {};
  * Handles the OnMessageRecipientsChanged event.
  * @param event {*} The Office event object
  */
-function onMessageRecipientsChangedHandler(event) {
-  tagExternal(event);
+function tagExternal_onMessageRecipientsChangedHandler(event) {
+  console.log("tagExternal_onMessageRecipientsChangedHandler method"); //debugging
+  console.log("event: " + JSON.stringify(event)); //debugging
+  try {
+    if (event.changedRecipientFields.to) {
+      checkForExternalTo();
+    } else if (event.changedRecipientFields.cc) {
+      checkForExternalCc();
+    } else if (event.changedRecipientFields.bcc) {
+      checkForExternalBcc();
+    }
+  } catch (exception) {
+    console.error(JSON.stringify(error));
+    // Handle any error thrown.
+  }
 }
 
 /**
- * Determines if there are any external recipients. If there are, updates the
- * subject of the Outlook message and appends a disclaimer to the message body.
- * @param event {*} The Office event object
+ * Determines if there are any external recipients in the To field.
+ * If there are, updates the subject of the Outlook message
+ * and appends a disclaimer to the message body.
  */
-function tagExternal(event) {
-  console.log("tagExternal method"); //debugging
+function checkForExternalTo() {
+  console.log("checkForExternalTo method"); //debugging
 
   // Get To recipients.
   console.log("Get To recipients"); //debugging
   Office.context.mailbox.item.to.getAsync(
-    {
-      "asyncContext": event
-    },
     function (asyncResult) {
       // Handle success or error.
       if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-        console.error("Failed to get To recipients. " + JSON.stringify(asyncResult.error));
-
-        // Call event.completed() after all work is done.
-        asyncResult.asyncContext.completed();
-        return;
+        throw ("Failed to get To recipients. " + JSON.stringify(asyncResult.error));
       }
 
-      console.log("To recipients: " + JSON.stringify(asyncResult.value)); //debugging
-      var toRecipients = asyncResult.value;
+      const toRecipients = JSON.stringify(asyncResult.value);
+      console.log("To recipients: " + toRecipients); //debugging
       if (toRecipients != null
           && toRecipients.length > 0
           && JSON.stringify(toRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
         console.log("To includes external users"); //debugging
 
-        // Update item if needed since external recipients are included.
-        _tagExternal(event, true);
-
-        // Call event.completed() after all work is done.
-        asyncResult.asyncContext.completed();
-        return;
+        // Update sessionData.tagExternalTo.
+        Office.context.mailbox.item.sessionData.setAsync(
+          "tagExternalTo",
+          "true",
+          function(asyncResult) {
+          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+            console.log("sessionData.setAsync(tagExternalTo) to true succeeded");
+          } else {
+            throw ("Failed to set tagExternalTo sessionData to true. Error: " + JSON.stringify(asyncResult.error));
+          }
+        });
+      } else {
+        Office.context.mailbox.item.sessionData.setAsync(
+          "tagExternalTo",
+          "false",
+          function(asyncResult) {
+          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+            console.log("sessionData.setAsync(tagExternalTo) to false succeeded");
+          } else {
+            throw ("Failed to set tagExternalTo sessionData to false. Error: " + JSON.stringify(asyncResult.error));
+          }
+        });
       }
 
-      // Get Cc recipients.
-      console.log("Get Cc recipients"); //debugging
-      Office.context.mailbox.item.cc.getAsync(
-        {
-          "asyncContext": event
-        },
-        function (asyncResult) {
-          // Handle success or error.
-          if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-            console.error("Failed to get Cc recipients. " + JSON.stringify(asyncResult.error));
-    
-            // Call event.completed() after all work is done.
-            asyncResult.asyncContext.completed();
-            return;
+      _checkForExternal();
+    });
+}
+/**
+ * Determines if there are any external recipients in the Cc field.
+ * If there are, updates the subject of the Outlook message
+ * and appends a disclaimer to the message body.
+ */
+function checkForExternalCc() {
+  console.log("tagExternal method"); //debugging
+
+  // Get Cc recipients.
+  console.log("Get Cc recipients"); //debugging
+  Office.context.mailbox.item.cc.getAsync(
+    function (asyncResult) {
+      // Handle success or error.
+      if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+        throw ("Failed to get Cc recipients. " + JSON.stringify(asyncResult.error));
+      }
+      
+      const ccRecipients = JSON.stringify(asyncResult.value);
+      console.log("Cc recipients: " + ccRecipients); //debugging
+      if (ccRecipients != null
+          && ccRecipients.length > 0
+          && JSON.stringify(ccRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
+        console.log("Cc includes external users"); //debugging
+
+        // Update sessionData.tagExternalCc.
+        Office.context.mailbox.item.sessionData.setAsync(
+          "tagExternalCc",
+          "true",
+          function(asyncResult) {
+          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+            console.log("sessionData.setAsync(tagExternalCc) to true succeeded");
+          } else {
+            throw("Failed to set tagExternalCc sessionData to true. Error: " + JSON.stringify(asyncResult.error));
           }
-          
-          console.log("Cc recipients: " + JSON.stringify(asyncResult.value)); //debugging
-          var ccRecipients = asyncResult.value;
-          if (ccRecipients != null
-              && ccRecipients.length > 0
-              && JSON.stringify(ccRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
-            console.log("Cc includes external users"); //debugging
-
-            // Update item if needed since external recipients are included.
-            _tagExternal(event, true);
-            
-            // Call event.completed() after all work is done.
-            asyncResult.asyncContext.completed();
-            return;
-          }
-
-          // Get Bcc recipients.
-          console.log("Get Bcc recipients"); //debugging
-          Office.context.mailbox.item.bcc.getAsync(
-            {
-              "asyncContext": event
-            },
-            function (asyncResult) {
-              // Handle success or error.
-              if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-                console.error("Failed to get Bcc recipients. " + JSON.stringify(asyncResult.error));
-        
-                // Call event.completed() after all work is done.
-                asyncResult.asyncContext.completed();
-                return;
-              }
-        
-              console.log("Bcc recipients: " + JSON.stringify(asyncResult.value)); //debugging
-              var bccRecipients = asyncResult.value;
-              if (bccRecipients != null
-                  && bccRecipients.length > 0
-                  && JSON.stringify(bccRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
-                console.log("Bcc includes external users"); //debugging
-
-                // Update item if needed since external recipients are included.
-                _tagExternal(event, true);
-          
-                // Call event.completed() after all work is done.
-                asyncResult.asyncContext.completed();
-                return;
-              }
-
-              // Update item if needed since external recipients aren't included.
-              _tagExternal(event, false);
-
-              // Call event.completed() after all work is done.
-              event.completed();
-          });
         });
-      });
+      } else {
+        Office.context.mailbox.item.sessionData.setAsync(
+          "tagExternalCc",
+          "false",
+          function(asyncResult) {
+          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+            console.log("sessionData.setAsync(tagExternalCc) to false succeeded");
+          } else {
+            throw ("Failed to set tagExternalCc sessionData to false. Error: " + JSON.stringify(asyncResult.error));
+          }
+        });
+      }
+
+      _checkForExternal();
+    });
+}
+/**
+ * Determines if there are any external recipients in the Cc field.
+ * If there are, updates the subject of the Outlook message
+ * and appends a disclaimer to the message body.
+ */
+function checkForExternalBcc() {
+  console.log("checkForExternalBcc method"); //debugging
+
+  // Get Bcc recipients.
+  console.log("Get Bcc recipients"); //debugging
+  Office.context.mailbox.item.bcc.getAsync(
+    function (asyncResult) {
+      // Handle success or error.
+      if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+        throw ("Failed to get Bcc recipients. " + JSON.stringify(asyncResult.error));
+      }
+
+      const bccRecipients = JSON.stringify(asyncResult.value);
+      console.log("Bcc recipients: " + bccRecipients); //debugging
+      if (bccRecipients != null
+          && bccRecipients.length > 0
+          && JSON.stringify(bccRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
+        console.log("Bcc includes external users"); //debugging
+
+        // Update sessionData.tagExternalBcc.
+        Office.context.mailbox.item.sessionData.setAsync(
+          "tagExternalBcc",
+          "true",
+          function(asyncResult) {
+          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+            console.log("sessionData.setAsync(tagExternalBcc) to true succeeded");
+          } else {
+            throw ("Failed to set tagExternalBcc sessionData to true. Error: " + JSON.stringify(asyncResult.error));
+          }
+        });
+      } else {
+        Office.context.mailbox.item.sessionData.setAsync(
+          "tagExternalBcc",
+          "false",
+          function(asyncResult) {
+          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+            console.log("sessionData.setAsync(tagExternalBcc to false) succeeded");
+          } else {
+            throw ("Failed to set tagExternalBcc sessionData to false. Error: " + JSON.stringify(asyncResult.error));
+          }
+        });
+      }
+
+      _checkForExternal();
+    });
+}
+/**
+ * Checks if any field contains external recipients.
+ */
+function _checkForExternal() {
+  console.log("_checkForExternal method"); //debugging
+
+  // Get sessionData to determine if any fields have external recipients.
+  Office.context.mailbox.item.sessionData.getAllAsync(
+    function (asyncResult) {
+      // Handle success or error.
+      if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+        throw ("Failed to get all sessionData. " + JSON.stringify(asyncResult.error));
+      }
+
+      const sessionData = JSON.stringify(asyncResult.value);
+      console.log("Current SessionData: " + sessionData); //debugging
+      if (sessionData != null
+        && sessionData.length > 0
+        && sessionData.includes("true")) {
+        console.log("At least one recipients field includes external users"); //debugging
+        _tagExternal(true);
+      } else {
+        console.log("There are no external recipients"); //debugging
+        _tagExternal(false);
+      }
+    });
 }
 /**
  * If there are any external recipients, tags the subject of the Outlook item
  * as "External" and appends a disclaimer to the item body. If there are
  * no external recipients, ensures the tag is not present and clears the disclaimer.
- * @param event {*} The Office event object
  * @param hasExternal {bool} If there are any external recipients
  */
-function _tagExternal(event, hasExternal) {
+function _tagExternal(hasExternal) {
   console.log("_tagExternal method"); //debugging
 
   // External subject tag.
@@ -140,17 +222,10 @@ function _tagExternal(event, hasExternal) {
     console.log("External: Get Subject"); //debugging
     // Ensure "[External]" is prepended to the subject.
     Office.context.mailbox.item.subject.getAsync(
-      {
-        "asyncContext": event
-      },
       function (asyncResult) {
         // Handle success or error.
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-          console.error("Failed to get subject. " + JSON.stringify(asyncResult.error));
-
-          // Call event.completed() after all work is done.
-          asyncResult.asyncContext.completed();
-          return;
+          throw ("Failed to get subject. " + JSON.stringify(asyncResult.error));
         }
 
         console.log("Current Subject: " + JSON.stringify(asyncResult.value)); //debugging
@@ -160,37 +235,25 @@ function _tagExternal(event, hasExternal) {
           console.log("Updated Subject: " + subject); //debugging
           Office.context.mailbox.item.subject.setAsync(
             subject,
-            {
-              "asyncContext": event
-            },
             function (asyncResult) {
               if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-                console.error("Failed to set Subject. " + JSON.stringify(asyncResult.error));
-
-                // Call event.completed() after all work is done.
-                asyncResult.asyncContext.completed();
-                return;
+                throw ("Failed to set Subject. " + JSON.stringify(asyncResult.error));
               }
           });
         }
     });
 
     // Set disclaimer as there are external recipients.
-    var disclaimer = '<p style = "color:blue"><i>Caution: This email includes external recipients.</i></p>';
+    const disclaimer = '<p style = "color:blue"><i>Caution: This email includes external recipients.</i></p>';
     console.log("Set disclaimer"); //debugging
     Office.context.mailbox.item.body.appendOnSendAsync(
       disclaimer,
       {
-        "coercionType": Office.CoercionType.Html,
-        "asyncContext": event
+        "coercionType": Office.CoercionType.Html
       },
       function (asyncResult) {
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-          console.error("Failed to set disclaimer for appendOnSend. " + JSON.stringify(asyncResult.error));
-
-          // Call event.completed() after all work is done.
-          asyncResult.asyncContext.completed();
-          return;
+          throw ("Failed to set disclaimer for appendOnSend. " + JSON.stringify(asyncResult.error));
         }
       }
     );
@@ -198,40 +261,26 @@ function _tagExternal(event, hasExternal) {
     console.log("Internal: Get subject"); //debugging
     // Ensure "[External]" is not part of the subject.
     Office.context.mailbox.item.subject.getAsync(
-      {
-        "asyncContext": event
-      },
       function (asyncResult) {
         // Handle success or error.
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-          console.error("Failed to get subject. " + JSON.stringify(asyncResult.error));
-
-          // Call event.completed() after all work is done.
-          asyncResult.asyncContext.completed();
-          return;
+          throw ("Failed to get subject. " + JSON.stringify(asyncResult.error));
         }
 
         console.log("Current subject: " + JSON.stringify(asyncResult.value)); //debugging
-        var currentSubject = asyncResult.value;
+        const currentSubject = asyncResult.value;
         if (currentSubject.startsWith(externalTag)) {
-          var updatedSubject = currentSubject.replace(externalTag, "");
+          const updatedSubject = currentSubject.replace(externalTag, "");
           console.log("Updated subject: " + updatedSubject); //debugging
-          var subject = updatedSubject.trim();
+          const subject = updatedSubject.trim();
           console.log("Trimmed subject: " + subject); //debugging
           Office.context.mailbox.item.subject.setAsync(
             subject,
-            {
-              "asyncContext": event
-            },
             function (asyncResult) {
               if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-                console.error("Failed to set subject. " + JSON.stringify(asyncResult.error));
-
-                // Call event.completed() after all work is done.
-                asyncResult.asyncContext.completed();
-                return;
+                throw ("Failed to set subject. " + JSON.stringify(asyncResult.error));
               }
-          });
+            });
         }
     });
 
@@ -239,16 +288,9 @@ function _tagExternal(event, hasExternal) {
     console.log("Clear disclaimer"); //debugging
     Office.context.mailbox.item.body.appendOnSendAsync(
       null,
-      {
-        "asyncContext": event
-      },
       function (asyncResult) {
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-          console.error("Failed to clear disclaimer for appendOnSend. " + JSON.stringify(asyncResult.error));
-
-          // Call event.completed() after all work is done.
-          asyncResult.asyncContext.completed();
-          return;
+          throw ("Failed to clear disclaimer for appendOnSend. " + JSON.stringify(asyncResult.error));
         }
       }
     );
@@ -256,4 +298,4 @@ function _tagExternal(event, hasExternal) {
 }
 
 // 1st parameter: FunctionName of LaunchEvent in the manifest; 2nd parameter: Its implementation in this .js file.
-Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipientsChangedHandler);
+Office.actions.associate("tagExternal_onMessageRecipientsChangedHandler", tagExternal_onMessageRecipientsChangedHandler);
