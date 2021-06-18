@@ -21,9 +21,6 @@ function onMessageRecipientsChangedHandler(event) {
 function tagExternal(event) {
   console.log("tagExternal method"); //debugging
 
-  // Has external?
-  var hasExternal = false;
-
   // Get To recipients.
   console.log("Get To recipients"); //debugging
   Office.context.mailbox.item.to.getAsync(
@@ -45,11 +42,10 @@ function tagExternal(event) {
       if (toRecipients != null
           && toRecipients.length > 0
           && JSON.stringify(toRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
-        hasExternal = true;
         console.log("To includes external users"); //debugging
 
         // Update item if needed since external recipients are included.
-        _tagExternal(event, hasExternal);
+        _tagExternal(event, true);
 
         // Call event.completed() after all work is done.
         asyncResult.asyncContext.completed();
@@ -77,11 +73,10 @@ function tagExternal(event) {
           if (ccRecipients != null
               && ccRecipients.length > 0
               && JSON.stringify(ccRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
-            hasExternal = true;
             console.log("Cc includes external users"); //debugging
 
             // Update item if needed since external recipients are included.
-            _tagExternal(event, hasExternal);
+            _tagExternal(event, true);
             
             // Call event.completed() after all work is done.
             asyncResult.asyncContext.completed();
@@ -109,11 +104,10 @@ function tagExternal(event) {
               if (bccRecipients != null
                   && bccRecipients.length > 0
                   && JSON.stringify(bccRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
-                hasExternal = true;
                 console.log("Bcc includes external users"); //debugging
 
                 // Update item if needed since external recipients are included.
-                _tagExternal(event, hasExternal);
+                _tagExternal(event, true);
           
                 // Call event.completed() after all work is done.
                 asyncResult.asyncContext.completed();
@@ -121,7 +115,7 @@ function tagExternal(event) {
               }
 
               // Update item if needed since external recipients aren't included.
-              _tagExternal(event, hasExternal);
+              _tagExternal(event, false);
 
               // Call event.completed() after all work is done.
               event.completed();
