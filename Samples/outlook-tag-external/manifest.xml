@@ -77,7 +77,7 @@
           <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.js" />
         </bt:Urls>
         <bt:LongStrings>
-          <bt:String id="residAppDesc" DefaultValue="Update the subject and adds a disclaimer if external recipients are included."></bt:String>
+          <bt:String id="residAppDesc" DefaultValue="Update the subject and add a disclaimer if external recipients are included."></bt:String>
         </bt:LongStrings>
       </Resources>
       <ExtendedPermissions>

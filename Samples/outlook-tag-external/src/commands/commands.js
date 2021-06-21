@@ -129,7 +129,7 @@ function checkForExternalCc() {
     });
 }
 /**
- * Determines if there are any external recipients in the Cc field.
+ * Determines if there are any external recipients in the Bcc field.
  * If there are, updates the subject of the Outlook message
  * and appends a disclaimer to the message body.
  */
