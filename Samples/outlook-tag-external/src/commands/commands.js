@@ -15,9 +15,11 @@ function tagExternal_onMessageRecipientsChangedHandler(event) {
   try {
     if (event.changedRecipientFields.to) {
       checkForExternalTo();
-    } else if (event.changedRecipientFields.cc) {
+    }
+    if (event.changedRecipientFields.cc) {
       checkForExternalCc();
-    } else if (event.changedRecipientFields.bcc) {
+    }
+    if (event.changedRecipientFields.bcc) {
       checkForExternalBcc();
     }
   } catch (exception) {
