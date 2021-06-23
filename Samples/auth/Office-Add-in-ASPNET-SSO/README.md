@@ -20,7 +20,7 @@ extensions:
 ---
 # Office Add-in that that supports Single Sign-on to Office, the Add-in, and Microsoft Graph
 
-The `getAccessToken` API in Office.js enables users who are signed into Office to get access to an AAD-protected add-in and to Microsoft Graph without needing to sign-in again. This sample is built on ASP.NET and Microsoft Identity Library (MSAL) .NET.
+This sample implements an Office Add-in that uses the `getAccessToken` API in Office.js to give the add-in access to Microsoft Graph data. This sample is built on ASP.NET and Microsoft Identity Library (MSAL) .NET.
 
 There are two versions of the sample in this repo, one of which has its own README file:
 
@@ -85,7 +85,7 @@ The sample sends a hardcoded query parameter on the URL for the Microsoft Graph 
 ## Questions and comments
 
 We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
-Questions about developing Office Add-ins should be posted to [Microsoft Q&A](http://stackoverflow.com). Ensure your questions are tagged with `office-js-dev` and `office-addins-dev`.
+Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://aka.ms/office-js-dev-questions).
 
 ## Join the Microsoft 365 Developer Program
 Get a free sandbox, tools, and other resources you need to build solutions for the Microsoft 365 platform.

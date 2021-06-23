@@ -245,7 +245,7 @@
 			<!-- LongStrings max characters==250. -->
 			<bt:LongStrings>
 				<bt:String id="Contoso.TaskpaneButton.Tooltip" DefaultValue="Click to open the add-in" />
-				<bt:String id="Contoso.GetStarted.Description" DefaultValue="The SSO ASP.NET sample loaded succesfully. Go to the HOME tab and click the 'Show Add-in' button to get started." />
+				<bt:String id="Contoso.GetStarted.Description" DefaultValue="The SSO ASP.NET sample loaded successfully. Go to the HOME tab and click the 'Show Add-in' button to get started." />
 			</bt:LongStrings>
 		</Resources>
 		<WebApplicationInfo>
