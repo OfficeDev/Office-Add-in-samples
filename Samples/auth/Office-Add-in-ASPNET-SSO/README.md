@@ -72,11 +72,6 @@ Version  | Date | Comments
 2.1 | August 11, 2020 | Removed preview note because the APIs have released.
 2.2 | June 15, 2021 | Updated NuGet packages and adjust code for breaking changes.
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
-----------
 
 ## Security note
 
