@@ -9,7 +9,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 05/27/2021 10:00:00 AM
+  createdDate: 06/30/2021 10:00:00 AM
 description: "Use Outlook event-based activation to tag external recipients."
 ---
 
@@ -23,11 +23,11 @@ This sample uses event-based activation to run an Outlook add-in when the user c
 
 For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch).
 
-> **Note:** Features used in this sample are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you'll need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is to sign up for a Microsoft 365 subscription. If you don't already have a Microsoft 365 subscription, get one by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/office/dev-program).
+> **Note:** Features used in this sample are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you'll need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is to sign up for a Microsoft 365 subscription. If you don't already have a Microsoft 365 subscription, get one by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/office/dev-program). For more information on how to use events currently in preview, see the [How to preview](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch#how-to-preview) section of the event-based activation article.
 
 ## Features
 
-- Use event-based activation to respond to events.
+- Use event-based activation to respond to changes in message recipients during compose mode.
 - Update the message subject to indicate there are external recipients.
 - Add a disclaimer if the message is being sent to external recipients.
 
@@ -39,7 +39,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Prerequisites
 
-- To use this sample, you'll need to [join Office Insider](https://insider.office.com/join).
+- To use this sample, you'll need to follow the instructions in the [How to preview](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch#how-to-preview) section of the event-based activation article.
 - Before running this sample, you need a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) installed on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your command prompt.
 
 ## Solution
@@ -52,7 +52,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 Version  | Date | Comments
 |---------|------|---------|
-| 1.0 | 5-27-2021 | Initial release |
+| 1.0 | 6-30-2021 | Initial release |
 
 ## Disclaimer
 
@@ -109,11 +109,11 @@ The manifest configures a runtime that is loaded specifically to handle event-ba
 <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.js" />
 ```
 
-The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the `onMessageRecipientsChangedHandler()` function in the JavaScript file.
+The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the `tagExternal_onMessageRecipientsChangedHandler` function in the JavaScript file.
 
 ```xml
 <LaunchEvents>
-  <LaunchEvent Type="OnMessageRecipientsChanged" FunctionName="onMessageRecipientsChangedHandler" />
+  <LaunchEvent Type="OnMessageRecipientsChanged" FunctionName="tagExternal_onMessageRecipientsChangedHandler" />
 </LaunchEvents>
 ```
 
