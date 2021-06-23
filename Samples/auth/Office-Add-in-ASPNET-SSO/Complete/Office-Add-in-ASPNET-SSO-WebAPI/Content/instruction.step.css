@@ -1,0 +1,171 @@
+/* Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. */
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto; }
+
+body {
+  position: relative;
+  font-size: 16px; }
+
+main {
+  height: 100%;
+  overflow-y: auto; }
+
+footer {
+  width: 100%;
+  position: relative;
+  bottom: 0; }
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0; }
+
+ul {
+  padding: 0; }
+
+.clearfix {
+  display: block;
+  clear: both;
+  height: 0; }
+
+.pointerCursor {
+  cursor: pointer; }
+
+.invisible {
+  visibility: hidden; }
+
+.undisplayed {
+  display: none; }
+
+.ms-Icon.enlarge {
+  position: relative;
+  font-size: 20px;
+  top: 4px; }
+
+.ms-firstrun-instructionstep {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  height: 100%;
+  min-height: 600px; }
+  .ms-firstrun-instructionstep__header {
+    padding: 20px;
+    min-height: 20px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+            flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+            flex-wrap: nowrap; }
+    .ms-firstrun-instructionstep__header h1 {
+      letter-spacing: 5px; }
+    .ms-firstrun-instructionstep__header p {
+      margin-top: 15px; }
+    .ms-firstrun-instructionstep__header--image {
+      background: transparent no-repeat center center;
+      background-image: url("../assets/images/generic-placeholder.png");
+      background-size: cover;
+      margin-top: 15px;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: column;
+              flex-direction: column;
+      -webkit-flex-wrap: nowrap;
+              flex-wrap: nowrap;
+      -webkit-justify-content: stretch;
+              justify-content: stretch;
+      -webkit-align-items: stretch;
+              align-items: stretch;
+      -webkit-flex: 0 1 0;
+              flex: 0 1 0;
+      min-height: 100px; }
+  .ms-firstrun-instructionstep__content {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+            flex-direction: column;
+    -webkit-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+    -webkit-justify-content: center;
+            justify-content: center;
+    -webkit-align-items: center;
+            align-items: center;
+    height: 100%;
+    -webkit-flex: 1 1 0;
+            flex: 1 1 0;
+    padding: 20px; }
+    .ms-firstrun-instructionstep__content--centered {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-flex-direction: column;
+              flex-direction: column;
+      -webkit-flex-wrap: nowrap;
+              flex-wrap: nowrap; }
+  .ms-firstrun-instructionstep .clearfix {
+    display: block;
+    height: 0;
+    clear: both; }
+  .ms-firstrun-instructionstep__welcome-body {
+    padding-left: 20px; }
+  .ms-firstrun-instructionstep__welcome-intro {
+    padding-top: 6px;
+    padding-bottom: 20px; }
+  .ms-firstrun-instructionstep__list {
+    list-style-type: none; }
+    .ms-firstrun-instructionstep__list.ms-List .ms-ListItem {
+      padding: 0;
+      margin: 0;
+      margin-bottom: 20px; }
+      .ms-firstrun-instructionstep__list.ms-List .ms-ListItem-primaryText {
+        color: #0077d6;
+        background-color: #c6dff3;
+        border-radius: 100%;
+        font-size: 12pt;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0;
+        text-align: center;
+        position: absolute;
+        /* override fabric positioning */ }
+      .ms-firstrun-instructionstep__list.ms-List .ms-ListItem-secondaryText {
+        color: #333333;
+        margin-bottom: 10px;
+        position: inherit;
+        top: 0;
+        /* override fabric positioning */
+        padding-left: 40px;
+        /* Offset by 30px + 10px so that large bullets are aligned properly. */
+        white-space: normal;
+        overflow: auto;
+        line-height: normal; }
+    .ms-firstrun-instructionstep__list li {
+      margin-bottom: 20px; }
+      .ms-firstrun-instructionstep__list li i {
+        position: relative;
+        top: 2px;
+        margin-right: 10px; }
+  .ms-firstrun-instructionstep__action--primary.ms-Button {
+    -webkit-align-self: center;
+            align-self: center;
+    margin-top: 20px;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    -webkit-justify-content: center;
+            justify-content: center;
+    -webkit-align-items: center;
+            align-items: center; }
+    .ms-firstrun-instructionstep__action--primary.ms-Button span.ms-Button-icon {
+      top: 3px; }
+    .ms-firstrun-instructionstep__action--primary.ms-Button i {
+      color: #0078d7; }
+    .ms-firstrun-instructionstep__action--primary.ms-Button span.ms-Button-label {
+      margin-right: 10px;
+      color: #0078d7; }
+
