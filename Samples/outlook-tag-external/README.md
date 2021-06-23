@@ -117,21 +117,42 @@ The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the 
 </LaunchEvents>
 ```
 
+```js
+Office.actions.associate("tagExternal_onMessageRecipientsChangedHandler", tagExternal_onMessageRecipientsChangedHandler);
+```
+
 Since the add-in calls `Office.context.mailbox.item.body.appendOnSendAsync`, the `AppendOnSend` permission is declared in the manifest.
 
 ```xml
 <ExtendedPermission>AppendOnSend</ExtendedPermission>
 ```
 
-### Handle the event and call the appendOnSendAsync API
+### Handle the OnMessageRecipientsChanged event, manage session data, and call the appendOnSendAsync API
 
-When the user creates a new message (including replies and forwards) and changes any recipients, Outlook will load the files specified in the manifest to handle the `OnMessageRecipientsChanged` event. Outlook on the web will load the `commands.html` page, which then also loads `commands.js`.
+When the user creates a new message (including replies and forwards) and changes any recipients, Outlook will load the files specified in the manifest to handle the `OnMessageRecipientsChanged` event. Outlook on the web loads the **commands.html** page, which then also loads **commands.js**. In Outlook on Windows, **commands.js** is loaded directly but **commands.html** is not loaded.
 
-The `commands.js` file contains the `tagExternal` function that handles the `OnMessageRecipientsChanged` event from Outlook. In Outlook on Windows, this file is loaded directly and `commands.html` is not loaded.
+The **commands.js** file contains the `tagExternal_onMessageRecipientsChangedHandler` function that handles the `OnMessageRecipientsChanged` event from Outlook.
 
-Also, the `commands.js` file contains the `_tagExternal` helper function that calls the [appendOnSendAsync() API](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#appendOnSendAsync_data__options__callback_) to set or clear the disclaimer as appropriate.
+Also, the **commands.js** file contains the following helper functions.
 
-Note that you can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web but other code that applies to both Outlook on the web and on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature).
+- `checkForExternalTo`: Determines if there are any external users in the **To** field then sets a [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-preview#sessionData) key named **tagExternalTo**.
+- `checkForExternalCc`: Determines if there are any external users in the **Cc** field then sets a [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-preview#sessionData) key named **tagExternalCc**.
+- `checkForExternalBcc`: Determines if there are any external users in the **Bcc** field then sets a [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-preview#sessionData) key named **tagExternalBcc**.
+- `_checkForExternal`: Checks if any property is set to `true` in the [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-preview#sessionData) property bag.
+- `_tagExternal`:
+  - Updates the [subject](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-preview#subject) to prepend or remove the "[External]" tag.
+  - Calls the [appendOnSendAsync](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#appendOnSendAsync_data__options__callback_) to set or clear the disclaimer.
+
+> **Note**:
+>
+> - The following are still in preview:
+>   - `OnMessageRecipientsChanged` event
+>   - `item.sessionData` object
+> - You can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web but other code that applies to both Outlook on the web and on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature).
+
+## Known issues
+
+In Outlook on the web, the `OnMessageRecipientsChanged` event doesn't fire on reply or reply all. However, if you change recipients in any of the fields, the event is triggered as expected.
 
 ## Security notes
 

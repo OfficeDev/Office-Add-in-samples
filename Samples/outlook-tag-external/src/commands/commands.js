@@ -182,7 +182,7 @@ function checkForExternalBcc() {
     });
 }
 /**
- * Checks if any field contains external recipients.
+ * Checks the session data to determine if any field contains external recipients.
  */
 function _checkForExternal() {
   console.log("_checkForExternal method"); //debugging
