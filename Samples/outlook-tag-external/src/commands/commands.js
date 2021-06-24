@@ -12,19 +12,14 @@ Office.initialize = function (reason) {};
 function tagExternal_onMessageRecipientsChangedHandler(event) {
   console.log("tagExternal_onMessageRecipientsChangedHandler method"); //debugging
   console.log("event: " + JSON.stringify(event)); //debugging
-  try {
-    if (event.changedRecipientFields.to) {
-      checkForExternalTo();
-    }
-    if (event.changedRecipientFields.cc) {
-      checkForExternalCc();
-    }
-    if (event.changedRecipientFields.bcc) {
-      checkForExternalBcc();
-    }
-  } catch (exception) {
-    console.error(JSON.stringify(error));
-    // Handle any error thrown.
+  if (event.changedRecipientFields.to) {
+    checkForExternalTo();
+  }
+  if (event.changedRecipientFields.cc) {
+    checkForExternalCc();
+  }
+  if (event.changedRecipientFields.bcc) {
+    checkForExternalBcc();
   }
 }
 
@@ -42,7 +37,8 @@ function checkForExternalTo() {
     function (asyncResult) {
       // Handle success or error.
       if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-        throw ("Failed to get To recipients. " + JSON.stringify(asyncResult.error));
+        console.error("Failed to get To recipients. " + JSON.stringify(asyncResult.error));
+        return;
       }
 
       const toRecipients = JSON.stringify(asyncResult.value);
@@ -60,7 +56,8 @@ function checkForExternalTo() {
           if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
             console.log("sessionData.setAsync(tagExternalTo) to true succeeded");
           } else {
-            throw ("Failed to set tagExternalTo sessionData to true. Error: " + JSON.stringify(asyncResult.error));
+            console.error("Failed to set tagExternalTo sessionData to true. Error: " + JSON.stringify(asyncResult.error));
+            return;
           }
         });
       } else {
@@ -71,7 +68,8 @@ function checkForExternalTo() {
           if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
             console.log("sessionData.setAsync(tagExternalTo) to false succeeded");
           } else {
-            throw ("Failed to set tagExternalTo sessionData to false. Error: " + JSON.stringify(asyncResult.error));
+            console.error("Failed to set tagExternalTo sessionData to false. Error: " + JSON.stringify(asyncResult.error));
+            return;
           }
         });
       }
@@ -93,7 +91,8 @@ function checkForExternalCc() {
     function (asyncResult) {
       // Handle success or error.
       if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-        throw ("Failed to get Cc recipients. " + JSON.stringify(asyncResult.error));
+        console.error("Failed to get Cc recipients. " + JSON.stringify(asyncResult.error));
+        return;
       }
       
       const ccRecipients = JSON.stringify(asyncResult.value);
@@ -111,7 +110,8 @@ function checkForExternalCc() {
           if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
             console.log("sessionData.setAsync(tagExternalCc) to true succeeded");
           } else {
-            throw("Failed to set tagExternalCc sessionData to true. Error: " + JSON.stringify(asyncResult.error));
+            console.error("Failed to set tagExternalCc sessionData to true. Error: " + JSON.stringify(asyncResult.error));
+            return;
           }
         });
       } else {
@@ -122,7 +122,8 @@ function checkForExternalCc() {
           if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
             console.log("sessionData.setAsync(tagExternalCc) to false succeeded");
           } else {
-            throw ("Failed to set tagExternalCc sessionData to false. Error: " + JSON.stringify(asyncResult.error));
+            console.error("Failed to set tagExternalCc sessionData to false. Error: " + JSON.stringify(asyncResult.error));
+            return;
           }
         });
       }
@@ -144,7 +145,8 @@ function checkForExternalBcc() {
     function (asyncResult) {
       // Handle success or error.
       if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-        throw ("Failed to get Bcc recipients. " + JSON.stringify(asyncResult.error));
+        console.error("Failed to get Bcc recipients. " + JSON.stringify(asyncResult.error));
+        return;
       }
 
       const bccRecipients = JSON.stringify(asyncResult.value);
@@ -162,7 +164,8 @@ function checkForExternalBcc() {
           if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
             console.log("sessionData.setAsync(tagExternalBcc) to true succeeded");
           } else {
-            throw ("Failed to set tagExternalBcc sessionData to true. Error: " + JSON.stringify(asyncResult.error));
+            console.error("Failed to set tagExternalBcc sessionData to true. Error: " + JSON.stringify(asyncResult.error));
+            return;
           }
         });
       } else {
@@ -173,7 +176,8 @@ function checkForExternalBcc() {
           if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
             console.log("sessionData.setAsync(tagExternalBcc to false) succeeded");
           } else {
-            throw ("Failed to set tagExternalBcc sessionData to false. Error: " + JSON.stringify(asyncResult.error));
+            console.error("Failed to set tagExternalBcc sessionData to false. Error: " + JSON.stringify(asyncResult.error));
+            return;
           }
         });
       }
@@ -192,7 +196,8 @@ function _checkForExternal() {
     function (asyncResult) {
       // Handle success or error.
       if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-        throw ("Failed to get all sessionData. " + JSON.stringify(asyncResult.error));
+        console.error("Failed to get all sessionData. " + JSON.stringify(asyncResult.error));
+        return;
       }
 
       const sessionData = JSON.stringify(asyncResult.value);
@@ -227,7 +232,8 @@ function _tagExternal(hasExternal) {
       function (asyncResult) {
         // Handle success or error.
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-          throw ("Failed to get subject. " + JSON.stringify(asyncResult.error));
+          console.error("Failed to get subject. " + JSON.stringify(asyncResult.error));
+          return;
         }
 
         console.log("Current Subject: " + JSON.stringify(asyncResult.value)); //debugging
@@ -239,7 +245,8 @@ function _tagExternal(hasExternal) {
             subject,
             function (asyncResult) {
               if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-                throw ("Failed to set Subject. " + JSON.stringify(asyncResult.error));
+                console.error("Failed to set Subject. " + JSON.stringify(asyncResult.error));
+                return;
               }
           });
         }
@@ -255,8 +262,10 @@ function _tagExternal(hasExternal) {
       },
       function (asyncResult) {
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-          throw ("Failed to set disclaimer for appendOnSend. " + JSON.stringify(asyncResult.error));
+          console.error("Failed to set disclaimer via appendOnSend. " + JSON.stringify(asyncResult));
+          return;
         }
+        console.log("Set disclaimer succeeded"); //debugging
       }
     );
   } else {
@@ -266,7 +275,8 @@ function _tagExternal(hasExternal) {
       function (asyncResult) {
         // Handle success or error.
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-          throw ("Failed to get subject. " + JSON.stringify(asyncResult.error));
+          console.error("Failed to get subject. " + JSON.stringify(asyncResult.error));
+          return;
         }
 
         console.log("Current subject: " + JSON.stringify(asyncResult.value)); //debugging
@@ -280,7 +290,8 @@ function _tagExternal(hasExternal) {
             subject,
             function (asyncResult) {
               if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-                throw ("Failed to set subject. " + JSON.stringify(asyncResult.error));
+                console.error("Failed to set subject. " + JSON.stringify(asyncResult.error));
+                return;
               }
             });
         }
@@ -292,8 +303,10 @@ function _tagExternal(hasExternal) {
       null,
       function (asyncResult) {
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-          throw ("Failed to clear disclaimer for appendOnSend. " + JSON.stringify(asyncResult.error));
+          console.error("Failed to clear disclaimer via appendOnSend. " + JSON.stringify(asyncResult));
+          return;
         }
+        console.log("Clear disclaimer succeeded"); //debugging
       }
     );
   }
