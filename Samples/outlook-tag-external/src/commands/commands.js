@@ -248,12 +248,13 @@ function _tagExternal(hasExternal) {
                 console.error("Failed to set Subject. " + JSON.stringify(asyncResult.error));
                 return;
               }
+              console.log("Set subject succeeded"); //debugging
           });
         }
     });
 
     // Set disclaimer as there are external recipients.
-    const disclaimer = '<p style = "color:blue"><i>Caution: This email includes external recipients.</i></p>';
+    const disclaimer = '<p style="color:blue"><i>Caution: This email includes external recipients.</i></p>';
     console.log("Set disclaimer"); //debugging
     Office.context.mailbox.item.body.appendOnSendAsync(
       disclaimer,
@@ -293,6 +294,7 @@ function _tagExternal(hasExternal) {
                 console.error("Failed to set subject. " + JSON.stringify(asyncResult.error));
                 return;
               }
+              console.log("Set subject succeeded"); //debugging
             });
         }
     });
