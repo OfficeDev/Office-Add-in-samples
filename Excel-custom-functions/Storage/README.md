@@ -39,10 +39,7 @@ Using storage to share data between UI-less custom functions and the task pane |
 Version  | Date | Comments
 ---------| -----| --------
 1.0  | May 1, 2019 | Initial release
-
-### Disclaimer ###
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+1.1 | May 26, 2021 | Update to use GitHub pages for hosting
 
 ## Sample: Sharing data between custom functions and the task pane
 
@@ -50,11 +47,28 @@ This sample code shows how to share data between UI-less custom functions and th
 
 ## Run the sample
 
-To run this sample, download the code and go to the **Storage** folder in a command prompt window.
+You can run this sample in Excel in a browser. The add-in web files are served from this repo on GitHub.
 
-1. Run `npm install`.
-2. Run `npm run build`.
-3. Run `npm run start`. The sample will now sideload into Excel on desktop.
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Open [Office on the web](https://office.live.com/).
+1. Choose **Excel**, and then open a new document.
+1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
+1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../images/office-add-ins-my-account.png)
+1. Browse to the add-in manifest file, and then select **Upload**.
+   ![The upload add-in dialog with buttons for browse, upload, and cancel.
+](../../images/upload-add-in.png)
+1. Verify that the add-in loaded successfully. You will see a **Show Taskpane** button on the **Home** tab on the ribbon.
+
+Once the add-in is loaded use the following steps to try out the functionality.
+
+1. Open the task pane, and enter a value in the text box labeled **Send token to custom function**.
+1. Choose **Send**.
+1. In a cell, enter the following text to retrieve the value.
+    ```
+    =CONTOSO.GETVALUE("token")
+    ```
+1. When the cell is calculated you will see the value you entered from the task pane.
 
 ### How the custom functions work with storage
 
@@ -112,20 +126,40 @@ function ReceiveTokenFromCustomFunction() {
 }
 ```
 
-## Security notes
+## Run the sample from Localhost
 
-### webpack.config.js
+If you prefer to host the web server for the sample on your computer, follow these steps:
+1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+    
+    ```console
+    npm install --global http-server
+    ```
+    
+2. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
+3. From a command prompt, go to the root folder and run the following command:
+    
+    ```console
+    http-server -S --cors . -p 3000
+    ```
+    
+4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
+    
+    ```console
+    npm install --global office-addin-https-reverse-proxy
+    ```
+    
+    To reroute run the following in another command prompt:
+    
+    ```console
+    office-addin-https-reverse-proxy --url http://localhost:3000
+    ```
+    
+5. Follow the steps in [Run the sample](TBD: add link to your Run the sample section), but upload the `manifest-localhost.xml` file for step 6.
 
-In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. You should lock this header down to only allowed domains in production code. 
+## Copyright
 
-### Self-signed certificates
+Copyright (c) 2019 Microsoft Corporation. All rights reserved.
 
-You will be prompted to install self-signed certificates when you run this sample on your development computer. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-You can install or uninstall the self-signed certificates by running the following commands in the project folder.
-
-```cli
-npx office-addin-dev-certs install
-npx office-addin-dev-certs uninstall
-```
 <img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/excel-custom-functions/storage" />

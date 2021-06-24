@@ -1,0 +1,50 @@
+{
+    "functions": [
+        {
+            "id": "ADD",
+            "name": "ADD",
+            "parameters": [
+                {
+                    "description": "First number to be added.",
+                    "name": "first",
+                    "type": "number"
+                },
+                {
+                    "description": "Second number to be added.",
+                    "name": "second",
+                    "type": "number"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "id": "STOREVALUE",
+            "name": "STOREVALUE",
+            "parameters": [
+                {
+                    "description": "Key in the key-value pair you will store.",
+                    "name": "key",
+                    "type": "any"
+                },
+                {
+                    "description": "Value in the key-value pair you will store.",
+                    "name": "value",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "id": "GETVALUE",
+            "name": "GETVALUE",
+            "parameters": [
+                {
+                    "description": "Key of item you intend to get.",
+                    "name": "key",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        }
+    ]
+}
