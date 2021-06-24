@@ -262,7 +262,7 @@ function _tagExternal(hasExternal) {
       },
       function (asyncResult) {
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-          console.error("Failed to set disclaimer via appendOnSend. " + JSON.stringify(asyncResult));
+          console.error("Failed to set disclaimer via appendOnSend. " + JSON.stringify(asyncResult.error));
           return;
         }
         console.log("Set disclaimer succeeded"); //debugging
@@ -303,7 +303,7 @@ function _tagExternal(hasExternal) {
       null,
       function (asyncResult) {
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
-          console.error("Failed to clear disclaimer via appendOnSend. " + JSON.stringify(asyncResult));
+          console.error("Failed to clear disclaimer via appendOnSend. " + JSON.stringify(asyncResult.error));
           return;
         }
         console.log("Clear disclaimer succeeded"); //debugging
