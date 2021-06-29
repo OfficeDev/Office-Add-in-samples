@@ -1,0 +1,1 @@
+az rest --method patch --uri https://graph.microsoft.com/beta/applications/<App_Object_ID> --headers "Content-Type=application/json" --body "{\"identifierUris\": [\"api://localhost:{PORT}/<App_Id>\"]}"

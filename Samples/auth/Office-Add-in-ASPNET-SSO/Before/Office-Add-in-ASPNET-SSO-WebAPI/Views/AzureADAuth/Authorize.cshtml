@@ -1,0 +1,23 @@
+﻿@*Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in the root of the repo.*@
+
+@{
+    ViewBag.Title = "Authorize";
+}
+<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.js"></script>
+<script src="~/Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>
+
+<script>
+ Office.initialize = function (reason) {
+     $(document).ready(function () {
+
+        let message;
+        if ('@ViewBag.AccessToken') {
+            message = { status: "success", accessToken: '@ViewBag.AccessToken' };
+        }
+        else {
+            message = { status: "failure", error: '@ViewBag.Error' };
+        }
+        Office.context.ui.messageParent(JSON.stringify(message));
+        });
+     }
+</script>

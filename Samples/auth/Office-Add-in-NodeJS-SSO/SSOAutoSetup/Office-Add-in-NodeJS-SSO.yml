@@ -1,0 +1,25 @@
+### YamlMime:Sample
+sample:
+- name: Office Add-in that supports Single Sign-on to Office, the Add-in, and Microsoft Graph
+  path: ''
+  description: The getAccessTokenAsync API in Office.js enables users who are signed into Office to get access to an AAD-protected add-in and to Microsoft Graph without needing to sign-in again. This sample is built on Node.js and express.
+  readme: ''
+  generateZip: FALSE
+  isLive: TRUE
+  technologies:
+  - Office Add-in
+  - Microsoft Graph
+  azureDeploy: ''
+  author: rick-kirkham
+  platforms: []
+  languages:
+  - JavaScript
+  - TypeScript
+  extensions:
+    products:
+    - Excel
+    - Word
+    - PowerPoint
+    - Project
+    - Outlook
+    scenarios: []
