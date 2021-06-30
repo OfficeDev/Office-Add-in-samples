@@ -7,7 +7,7 @@ Office.initialize = function (reason) {};
 
 /**
  * Handles the OnMessageRecipientsChanged event.
- * @param event {*} The Office event object
+ * @param {*} event The Office event object
  */
 function tagExternal_onMessageRecipientsChangedHandler(event) {
   console.log("tagExternal_onMessageRecipientsChangedHandler method"); //debugging
@@ -43,38 +43,15 @@ function checkForExternalTo() {
 
       const toRecipients = JSON.stringify(asyncResult.value);
       console.log("To recipients: " + toRecipients); //debugging
+      const keyName = "tagExternalTo";
       if (toRecipients != null
           && toRecipients.length > 0
           && JSON.stringify(toRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
         console.log("To includes external users"); //debugging
-
-        // Update sessionData.tagExternalTo.
-        Office.context.mailbox.item.sessionData.setAsync(
-          "tagExternalTo",
-          "true",
-          function(asyncResult) {
-          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-            console.log("sessionData.setAsync(tagExternalTo) to true succeeded");
-          } else {
-            console.error("Failed to set tagExternalTo sessionData to true. Error: " + JSON.stringify(asyncResult.error));
-            return;
-          }
-        });
+        _setSessionData(keyName, true);
       } else {
-        Office.context.mailbox.item.sessionData.setAsync(
-          "tagExternalTo",
-          "false",
-          function(asyncResult) {
-          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-            console.log("sessionData.setAsync(tagExternalTo) to false succeeded");
-          } else {
-            console.error("Failed to set tagExternalTo sessionData to false. Error: " + JSON.stringify(asyncResult.error));
-            return;
-          }
-        });
+        _setSessionData(keyName, false);
       }
-
-      _checkForExternal();
     });
 }
 /**
@@ -97,38 +74,15 @@ function checkForExternalCc() {
       
       const ccRecipients = JSON.stringify(asyncResult.value);
       console.log("Cc recipients: " + ccRecipients); //debugging
+      const keyName = "tagExternalCc";
       if (ccRecipients != null
           && ccRecipients.length > 0
           && JSON.stringify(ccRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
         console.log("Cc includes external users"); //debugging
-
-        // Update sessionData.tagExternalCc.
-        Office.context.mailbox.item.sessionData.setAsync(
-          "tagExternalCc",
-          "true",
-          function(asyncResult) {
-          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-            console.log("sessionData.setAsync(tagExternalCc) to true succeeded");
-          } else {
-            console.error("Failed to set tagExternalCc sessionData to true. Error: " + JSON.stringify(asyncResult.error));
-            return;
-          }
-        });
+        _setSessionData(keyName, true);
       } else {
-        Office.context.mailbox.item.sessionData.setAsync(
-          "tagExternalCc",
-          "false",
-          function(asyncResult) {
-          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-            console.log("sessionData.setAsync(tagExternalCc) to false succeeded");
-          } else {
-            console.error("Failed to set tagExternalCc sessionData to false. Error: " + JSON.stringify(asyncResult.error));
-            return;
-          }
-        });
+        _setSessionData(keyName, false);
       }
-
-      _checkForExternal();
     });
 }
 /**
@@ -151,42 +105,43 @@ function checkForExternalBcc() {
 
       const bccRecipients = JSON.stringify(asyncResult.value);
       console.log("Bcc recipients: " + bccRecipients); //debugging
+      const keyName = "tagExternalBcc";
       if (bccRecipients != null
           && bccRecipients.length > 0
           && JSON.stringify(bccRecipients).includes(Office.MailboxEnums.RecipientType.ExternalUser)) {
         console.log("Bcc includes external users"); //debugging
-
-        // Update sessionData.tagExternalBcc.
-        Office.context.mailbox.item.sessionData.setAsync(
-          "tagExternalBcc",
-          "true",
-          function(asyncResult) {
-          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-            console.log("sessionData.setAsync(tagExternalBcc) to true succeeded");
-          } else {
-            console.error("Failed to set tagExternalBcc sessionData to true. Error: " + JSON.stringify(asyncResult.error));
-            return;
-          }
-        });
+        _setSessionData(keyName, true);
       } else {
-        Office.context.mailbox.item.sessionData.setAsync(
-          "tagExternalBcc",
-          "false",
-          function(asyncResult) {
-          if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-            console.log("sessionData.setAsync(tagExternalBcc to false) succeeded");
-          } else {
-            console.error("Failed to set tagExternalBcc sessionData to false. Error: " + JSON.stringify(asyncResult.error));
-            return;
-          }
-        });
+        _setSessionData(keyName, false);
       }
-
-      _checkForExternal();
     });
 }
 /**
- * Checks the session data to determine if any field contains external recipients.
+ * Sets the value of the specified sessionData key.
+ * If value is true, also tag as external, else check entire sessionData property bag.
+ * @param {string} key The key or name
+ * @param {bool} value The value to assign to the key
+ */
+ function _setSessionData(key, value) {
+  Office.context.mailbox.item.sessionData.setAsync(
+    key,
+    value.toString(),
+    function(asyncResult) {
+    if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+      console.log(`sessionData.setAsync(${key}) to ${value} succeeded`);
+      if (value) {
+        _tagExternal(value);
+      } else {
+        _checkForExternal();
+      }
+    } else {
+      console.error(`Failed to set ${key} sessionData to ${value}. Error: ${JSON.stringify(asyncResult.error)}`);
+      return;
+    }
+  });
+}
+/**
+ * Checks the sessionData property bag to determine if any field contains external recipients.
  */
 function _checkForExternal() {
   console.log("_checkForExternal method"); //debugging
@@ -217,7 +172,7 @@ function _checkForExternal() {
  * If there are any external recipients, tags the subject of the Outlook item
  * as "External" and appends a disclaimer to the item body. If there are
  * no external recipients, ensures the tag is not present and clears the disclaimer.
- * @param hasExternal {bool} If there are any external recipients
+ * @param {bool} hasExternal If there are any external recipients
  */
 function _tagExternal(hasExternal) {
   console.log("_tagExternal method"); //debugging

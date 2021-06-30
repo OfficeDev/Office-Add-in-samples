@@ -121,7 +121,7 @@ The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the 
 Office.actions.associate("tagExternal_onMessageRecipientsChangedHandler", tagExternal_onMessageRecipientsChangedHandler);
 ```
 
-Since the add-in calls `Office.context.mailbox.item.body.appendOnSendAsync`, the `AppendOnSend` permission is declared in the manifest.
+Since the add-in calls `Office.context.mailbox.item.body.appendOnSendAsync`, the `AppendOnSend` extended permission is declared in the manifest.
 
 ```xml
 <ExtendedPermission>AppendOnSend</ExtendedPermission>
@@ -129,7 +129,7 @@ Since the add-in calls `Office.context.mailbox.item.body.appendOnSendAsync`, the
 
 ### Handle the OnMessageRecipientsChanged event, manage session data, and call the appendOnSendAsync API
 
-When the user creates a new message (including replies and forwards) and changes any recipients, Outlook will load the files specified in the manifest to handle the `OnMessageRecipientsChanged` event. Outlook on the web loads the **commands.html** page, which then also loads **commands.js**. In Outlook on Windows, **commands.js** is loaded directly but **commands.html** is not loaded.
+When the user composes a message (including replies and forwards) and changes any recipients, Outlook will load the files specified in the manifest to handle the `OnMessageRecipientsChanged` event. Outlook on the web loads the **commands.html** page, which then also loads **commands.js**. In Outlook on Windows, **commands.js** is loaded directly but **commands.html** is not loaded.
 
 The **commands.js** file contains the `tagExternal_onMessageRecipientsChangedHandler` function that handles the `OnMessageRecipientsChanged` event from Outlook.
 
@@ -152,7 +152,8 @@ Also, the **commands.js** file contains the following helper functions.
 
 ## Known issues
 
-In Outlook on the web, the `OnMessageRecipientsChanged` event doesn't fire on reply or reply all. However, if you change recipients in any of the fields, the event is triggered as expected.
+- In Outlook on Windows, the `OnMessageRecipientsChanged` event fires on reply or reply all. The expected behavior is implemented in Outlook on the web where this event doesn't fire in those cases.
+- The `item.body.appendOnSendAsync` API throws an error (code 9047) in Outlook on Windows. This call works correctly in Outlook on the web.
 
 ## Security notes
 
