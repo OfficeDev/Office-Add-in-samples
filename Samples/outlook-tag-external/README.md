@@ -69,7 +69,9 @@ In this scenario, the add-in helps the user indicate if their message has recipi
 You can run this sample in Outlook on Windows or in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest to Outlook on Windows, or Outlook on the web by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on Windows, or Outlook on the web by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+
+### Try it out
 
 Once the add-in is loaded use the following steps to try out the functionality.
 
@@ -82,6 +84,38 @@ Once the add-in is loaded use the following steps to try out the functionality.
 1. Send the email.
 
     > Navigate to your **Sent Items** folder, open the email you sent, and notice the included disclaimer.
+
+## Run the sample from localhost
+
+If you prefer to host the web server for the sample on your computer, follow these steps:
+
+1. You need http-server to run the local web server. If you haven't installed this yet, you can do this with the following command.
+
+    ```console
+    npm install --global http-server 
+    ```
+
+1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
+1. From a command prompt, go to the root folder and run the following command.
+
+    ```console
+    http-server -S --cors . -p 3000 
+    ```
+
+1. To reroute to localhost, run office-addin-https-reverse-proxy. If you haven't installed this, you can do this with the following command.
+
+    ```console
+    npm install --global office-addin-https-reverse-proxy 
+    ```
+
+    To reroute run the following in another command prompt:
+
+    ```console
+    office-addin-https-reverse-proxy --url http://localhost:3000 
+    ```
+
+1. Sideload `manifest-localhost.xml` in Outlook on Windows, or Outlook on the web by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. [Try out the sample!](#try-it-out)
 
 ## Key parts of this sample
 
@@ -142,7 +176,7 @@ Also, the **commands.js** file contains the following helper functions.
 ## Known issues
 
 - In Outlook on Windows, the `OnMessageRecipientsChanged` event fires on reply or reply all. The expected behavior is implemented in Outlook on the web where this event doesn't fire in those cases.
-- The `item.body.appendOnSendAsync` API throws an error (code 9047) in Outlook on Windows. This call works correctly in Outlook on the web.
+- The `item.body.appendOnSendAsync` API throws an error (code 9047) in Outlook on Windows. This API works correctly in Outlook on the web.
 
 ## Copyright
 
