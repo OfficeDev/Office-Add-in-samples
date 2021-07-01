@@ -60,7 +60,7 @@ function checkForExternalTo() {
  * and appends a disclaimer to the message body.
  */
 function checkForExternalCc() {
-  console.log("tagExternal method"); //debugging
+  console.log("checkForExternalCc method"); //debugging
 
   // Get Cc recipients.
   console.log("Get Cc recipients"); //debugging
@@ -169,8 +169,8 @@ function _checkForExternal() {
     });
 }
 /**
- * If there are any external recipients, tags the subject of the Outlook item
- * as "External" and appends a disclaimer to the item body. If there are
+ * If there are any external recipients, prepends the subject of the Outlook item
+ * with "[External]" and appends a disclaimer to the item body. If there are
  * no external recipients, ensures the tag is not present and clears the disclaimer.
  * @param {bool} hasExternal If there are any external recipients
  */

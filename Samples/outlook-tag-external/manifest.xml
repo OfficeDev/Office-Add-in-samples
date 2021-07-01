@@ -49,7 +49,7 @@
             <!-- HTML file including reference to or inline JavaScript event handlers.
                 This is used by Outlook on the web. -->
             <Runtime resid="WebViewRuntime.Url">
-              <!-- JavaScript file containing event handlers. This is used by Outlook Desktop. -->
+              <!-- JavaScript file containing event handlers. This is used by Outlook on Windows. -->
               <Override type="javascript" resid="JSRuntime.Url"/>
             </Runtime>
           </Runtimes>

@@ -27,9 +27,9 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Features
 
-- Use event-based activation to respond to changes in message recipients during compose mode.
-- Update the message subject to indicate there are external recipients.
-- Add a disclaimer if the message is being sent to external recipients.
+- Use event-based activation to respond to changes in message recipients during compose mode
+- Update the message subject to indicate there are external recipients
+- Add a disclaimer to messages sent to external recipients
 
 ## Applies to
 
@@ -39,7 +39,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Prerequisites
 
-- To use this sample, you'll need to follow the instructions in the [How to preview](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch#how-to-preview) section of the event-based activation article.
+- To use this sample, follow the instructions in the [How to preview](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch#how-to-preview) section of the event-based activation article.
 - Before running this sample, you need a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) installed on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your command prompt.
 
 ## Solution
@@ -62,7 +62,7 @@ Version  | Date | Comments
 
 ## Scenario: Event-based activation
 
-In this scenario, the add-in helps the user indicate if their message has recipients external to their organization by prepending "[External]" to the message subject. When the user sends an email message that includes external recipients, the add-in appends a disclaimer to the message.
+In this scenario, if the message has external recipients, the add-in prepends "[External]" to the message subject. When the user sends an email message that includes external recipients, the add-in appends a disclaimer to the message.
 
 ## Run the sample
 
@@ -108,7 +108,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     npm install --global office-addin-https-reverse-proxy 
     ```
 
-    To reroute run the following in another command prompt:
+    To reroute, run the following in another command prompt:
 
     ```console
     office-addin-https-reverse-proxy --url http://localhost:3000 

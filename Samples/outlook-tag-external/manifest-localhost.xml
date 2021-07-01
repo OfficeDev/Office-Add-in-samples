@@ -49,7 +49,7 @@
             <!-- HTML file including reference to or inline JavaScript event handlers.
                 This is used by Outlook on the web. -->
             <Runtime resid="WebViewRuntime.Url">
-              <!-- JavaScript file containing event handlers. This is used by Outlook Desktop. -->
+              <!-- JavaScript file containing event handlers. This is used by Outlook on Windows. -->
               <Override type="javascript" resid="JSRuntime.Url"/>
             </Runtime>
           </Runtimes>
@@ -73,7 +73,7 @@
         </bt:Images>
         <bt:Urls>
           <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.html" />
-          <!-- Entry needed for Outlook Desktop. -->
+          <!-- Entry needed for Outlook on Windows. -->
           <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.js" />
         </bt:Urls>
         <bt:LongStrings>
