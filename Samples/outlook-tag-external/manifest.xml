@@ -72,7 +72,7 @@
           <bt:Image id="Icon.80x80" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/commands.html" />
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands/commands.html" />
           <!-- Entry needed for Outlook Desktop. -->
           <bt:Url id="JSRuntime.Url" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands/commands.js" />
         </bt:Urls>
