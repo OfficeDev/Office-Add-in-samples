@@ -64,25 +64,14 @@ Version  | Date | Comments
 
 In this scenario, the add-in helps the user indicate if their message has recipients external to their organization by prepending "[External]" to the message subject. When the user sends an email message that includes external recipients, the add-in appends a disclaimer to the message.
 
-## Build and run the solution
+## Run the sample
 
-1. Clone or download this repository.
-1. In the command line, go to the **outlook-tag-external** folder from your root directory.
-1. Run the following command to download the dependencies required to run the sample.
+You can run this sample in Outlook on Windows or in a browser. The add-in web files are served from this repo on GitHub.
 
-    ```command&nbsp;line
-    npm install
-    ```
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Sideload the add-in manifest to Outlook on Windows, or Outlook on the web by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
-1. Run the following command to start the localhost web server.
-
-    ```command&nbsp;line
-    npm run dev-server
-    ```
-
-1. Sideload the add-in to Outlook on Windows, or Outlook on the web by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
-
-Once the add-in is loaded, use the following steps to try out the functionality.
+Once the add-in is loaded use the following steps to try out the functionality.
 
 1. Open Outlook on Windows or in a browser.
 1. Create a new message.
@@ -105,8 +94,8 @@ The manifest configures a runtime that is loaded specifically to handle event-ba
   <Override type="javascript" resid="JSRuntime.Url"/>
 </Runtime>
 ...
-<bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/commands.html" />
-<bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.js" />
+<bt:Url id="WebViewRuntime.Url" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands.html" />
+<bt:Url id="JSRuntime.Url" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands/commands.js" />
 ```
 
 The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the `tagExternal_onMessageRecipientsChangedHandler` function in the JavaScript file.
@@ -154,19 +143,6 @@ Also, the **commands.js** file contains the following helper functions.
 
 - In Outlook on Windows, the `OnMessageRecipientsChanged` event fires on reply or reply all. The expected behavior is implemented in Outlook on the web where this event doesn't fire in those cases.
 - The `item.body.appendOnSendAsync` API throws an error (code 9047) in Outlook on Windows. This call works correctly in Outlook on the web.
-
-## Security notes
-
-In the webpack.config.js file, a header is set to `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
-
-You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
-
-Install or uninstall the certificates by running the following commands in the project folder.
-
-```command&nbsp;line
-npx office-addin-dev-certs install
-npx office-addin-dev-certs uninstall
-```
 
 ## Copyright
 
