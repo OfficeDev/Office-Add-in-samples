@@ -40,7 +40,6 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 ## Prerequisites
 
 - To use this sample, follow the instructions in the [How to preview](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch#how-to-preview) section of the event-based activation article.
-- Before running this sample, you need a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) installed on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your command prompt.
 
 ## Solution
 
@@ -53,10 +52,6 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 Version  | Date | Comments
 |---------|------|---------|
 | 1.0 | 6-30-2021 | Initial release |
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ----------
 
@@ -73,7 +68,7 @@ You can run this sample in Outlook on Windows or in a browser. The add-in web fi
 
 ### Try it out
 
-Once the add-in is loaded use the following steps to try out the functionality.
+Once the add-in is loaded, use the following steps to try out the functionality.
 
 1. Open Outlook on Windows or in a browser.
 1. Create a new message.
@@ -89,7 +84,7 @@ Once the add-in is loaded use the following steps to try out the functionality.
 
 If you prefer to host the web server for the sample on your computer, follow these steps:
 
-1. You need http-server to run the local web server. If you haven't installed this yet, you can do this with the following command.
+1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
 
     ```console
     npm install --global http-server 
@@ -102,7 +97,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     http-server -S --cors . -p 3000 
     ```
 
-1. To reroute to localhost, run office-addin-https-reverse-proxy. If you haven't installed this, you can do this with the following command.
+1. To reroute to localhost, run office-addin-https-reverse-proxy. If you haven't installed this, run the following command.
 
     ```console
     npm install --global office-addin-https-reverse-proxy 
@@ -117,9 +112,7 @@ If you prefer to host the web server for the sample on your computer, follow the
 1. Sideload `manifest-localhost.xml` in Outlook on Windows, or Outlook on the web by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 1. [Try out the sample!](#try-it-out)
 
-## Key parts of this sample
-
-### Configure event-based activation and AppendOnSend in the manifest
+## Configure event-based activation and AppendOnSend in the manifest
 
 The manifest configures a runtime that is loaded specifically to handle event-based activation. The following `<Runtime>` element specifies an HTML page resource ID that loads the runtime in Outlook on the web. The `<Override>` element specifies the JavaScript file to load the runtime for Outlook on Windows because Outlook on Windows doesn't use the HTML page to load the runtime.
 
@@ -132,7 +125,7 @@ The manifest configures a runtime that is loaded specifically to handle event-ba
 <bt:Url id="JSRuntime.Url" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands/commands.js" />
 ```
 
-The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the `tagExternal_onMessageRecipientsChangedHandler` function in the JavaScript file.
+The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the `tagExternal_onMessageRecipientsChangedHandler` function in the `commands.js` file.
 
 ```xml
 <LaunchEvents>
@@ -150,7 +143,7 @@ Since the add-in calls `Office.context.mailbox.item.body.appendOnSendAsync`, the
 <ExtendedPermission>AppendOnSend</ExtendedPermission>
 ```
 
-### Handle the OnMessageRecipientsChanged event, manage session data, and call the appendOnSendAsync API
+## Handle the OnMessageRecipientsChanged event, manage session data, and call the appendOnSendAsync API
 
 When the user composes a message (including replies and forwards) and changes any recipients, Outlook will load the files specified in the manifest to handle the `OnMessageRecipientsChanged` event. Outlook on the web loads the **commands.html** page, which then also loads **commands.js**. In Outlook on Windows, **commands.js** is loaded directly but **commands.html** is not loaded.
 

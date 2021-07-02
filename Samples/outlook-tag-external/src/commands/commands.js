@@ -25,8 +25,6 @@ function tagExternal_onMessageRecipientsChangedHandler(event) {
 
 /**
  * Determines if there are any external recipients in the To field.
- * If there are, updates the subject of the Outlook message
- * and appends a disclaimer to the message body.
  */
 function checkForExternalTo() {
   console.log("checkForExternalTo method"); //debugging
@@ -56,8 +54,6 @@ function checkForExternalTo() {
 }
 /**
  * Determines if there are any external recipients in the Cc field.
- * If there are, updates the subject of the Outlook message
- * and appends a disclaimer to the message body.
  */
 function checkForExternalCc() {
   console.log("checkForExternalCc method"); //debugging
@@ -87,8 +83,6 @@ function checkForExternalCc() {
 }
 /**
  * Determines if there are any external recipients in the Bcc field.
- * If there are, updates the subject of the Outlook message
- * and appends a disclaimer to the message body.
  */
 function checkForExternalBcc() {
   console.log("checkForExternalBcc method"); //debugging
@@ -127,7 +121,8 @@ function checkForExternalBcc() {
     key,
     value.toString(),
     function(asyncResult) {
-    if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+      // Handle success or error.
+      if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
       console.log(`sessionData.setAsync(${key}) to ${value} succeeded`);
       if (value) {
         _tagExternal(value);
@@ -182,6 +177,7 @@ function _tagExternal(hasExternal) {
 
   if (hasExternal) {
     console.log("External: Get Subject"); //debugging
+    
     // Ensure "[External]" is prepended to the subject.
     Office.context.mailbox.item.subject.getAsync(
       function (asyncResult) {
@@ -199,10 +195,12 @@ function _tagExternal(hasExternal) {
           Office.context.mailbox.item.subject.setAsync(
             subject,
             function (asyncResult) {
+              // Handle success or error.
               if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
                 console.error("Failed to set Subject. " + JSON.stringify(asyncResult.error));
                 return;
               }
+
               console.log("Set subject succeeded"); //debugging
           });
         }
@@ -217,10 +215,12 @@ function _tagExternal(hasExternal) {
         "coercionType": Office.CoercionType.Html
       },
       function (asyncResult) {
+        // Handle success or error.
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
           console.error("Failed to set disclaimer via appendOnSend. " + JSON.stringify(asyncResult.error));
           return;
         }
+
         console.log("Set disclaimer succeeded"); //debugging
       }
     );
@@ -245,10 +245,12 @@ function _tagExternal(hasExternal) {
           Office.context.mailbox.item.subject.setAsync(
             subject,
             function (asyncResult) {
+              // Handle success or error.
               if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
                 console.error("Failed to set subject. " + JSON.stringify(asyncResult.error));
                 return;
               }
+
               console.log("Set subject succeeded"); //debugging
             });
         }
@@ -259,10 +261,12 @@ function _tagExternal(hasExternal) {
     Office.context.mailbox.item.body.appendOnSendAsync(
       null,
       function (asyncResult) {
+        // Handle success or error.
         if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
           console.error("Failed to clear disclaimer via appendOnSend. " + JSON.stringify(asyncResult.error));
           return;
         }
+
         console.log("Clear disclaimer succeeded"); //debugging
       }
     );
