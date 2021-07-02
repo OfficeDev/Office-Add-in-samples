@@ -9,7 +9,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 06/30/2021 10:00:00 AM
+  createdDate: 07/02/2021 10:00:00 AM
 description: "Use Outlook event-based activation to tag external recipients."
 ---
 
@@ -51,7 +51,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 Version  | Date | Comments
 |---------|------|---------|
-| 1.0 | 6-30-2021 | Initial release |
+| 1.0 | 7-2-2021 | Initial release |
 
 ----------
 
@@ -64,7 +64,7 @@ In this scenario, if the message has external recipients, the add-in prepends "[
 You can run this sample in Outlook on Windows or in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on Windows, or Outlook on the web by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 ### Try it out
 
@@ -87,14 +87,14 @@ If you prefer to host the web server for the sample on your computer, follow the
 1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
 
     ```console
-    npm install --global http-server 
+    npm install --global http-server
     ```
 
 1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
 1. From a command prompt, go to the root folder and run the following command.
 
     ```console
-    http-server -S --cors . -p 3000 
+    http-server -S --cors . -p 3000
     ```
 
 1. To reroute to localhost, run office-addin-https-reverse-proxy. If you haven't installed this, run the following command.
@@ -109,7 +109,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000 
     ```
 
-1. Sideload `manifest-localhost.xml` in Outlook on Windows, or Outlook on the web by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload `manifest-localhost.xml` in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 1. [Try out the sample!](#try-it-out)
 
 ## Configure event-based activation and AppendOnSend in the manifest
