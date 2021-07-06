@@ -27,9 +27,9 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Features
 
-- Use event-based activation to respond to changes in message recipients during compose mode
-- Update the message subject to indicate there are external recipients
-- Add a disclaimer to messages sent to external recipients
+- Use event-based activation to respond to changes in message recipients during compose mode.
+- Update the message subject to indicate there are external recipients.
+- Add a disclaimer to messages sent to external recipients.
 
 ## Applies to
 
@@ -103,7 +103,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     npm install --global office-addin-https-reverse-proxy 
     ```
 
-    To reroute, run the following in another command prompt:
+    To reroute, run the following in another command prompt.
 
     ```console
     office-addin-https-reverse-proxy --url http://localhost:3000 
@@ -159,9 +159,9 @@ Also, the **commands.js** file contains the following helper functions.
   - Updates the [subject](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-preview#subject) to prepend or remove the "[External]" tag.
   - Calls the [appendOnSendAsync](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#appendOnSendAsync_data__options__callback_) to set or clear the disclaimer.
 
-> **Note**:
+> **Note**
 >
-> - The following are still in preview:
+> - The following are still in preview.
 >   - `OnMessageRecipientsChanged` event
 >   - `item.sessionData` object
 > - You can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web but other code that applies to both Outlook on the web and on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature).
