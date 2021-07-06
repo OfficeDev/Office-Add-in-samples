@@ -169,7 +169,6 @@ Also, the **commands.js** file contains the following helper functions.
 ## Known issues
 
 - In Outlook on Windows, the `OnMessageRecipientsChanged` event fires on reply or reply all. The expected behavior is implemented in Outlook on the web where this event doesn't fire in those cases.
-- The `item.body.appendOnSendAsync` API throws an error (code 9047) in Outlook on Windows. This API works correctly in Outlook on the web.
 
 ## Copyright
 
