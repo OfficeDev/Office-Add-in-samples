@@ -9,7 +9,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 07/02/2021 10:00:00 AM
+  createdDate: 07/06/2021 2:00:00 PM
 description: "Use Outlook event-based activation to tag external recipients."
 ---
 
@@ -51,7 +51,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 Version  | Date | Comments
 |---------|------|---------|
-| 1.0 | 7-2-2021 | Initial release |
+| 1.0 | 7-6-2021 | Initial release |
 
 ----------
 
@@ -121,8 +121,8 @@ The manifest configures a runtime that is loaded specifically to handle event-ba
   <Override type="javascript" resid="JSRuntime.Url"/>
 </Runtime>
 ...
-<bt:Url id="WebViewRuntime.Url" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands.html" />
-<bt:Url id="JSRuntime.Url" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands/commands.js" />
+<bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands.html" />
+<bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands/commands.js" />
 ```
 
 The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the `tagExternal_onMessageRecipientsChangedHandler` function in the `commands.js` file.
@@ -169,7 +169,6 @@ Also, the **commands.js** file contains the following helper functions.
 ## Known issues
 
 - In Outlook on Windows, the `OnMessageRecipientsChanged` event fires on reply or reply all. The expected behavior is implemented in Outlook on the web where this event doesn't fire in those cases.
-- The `item.body.appendOnSendAsync` API throws an error (code 9047) in Outlook on Windows. This API works correctly in Outlook on the web.
 
 ## Copyright
 

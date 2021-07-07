@@ -6,7 +6,7 @@ Office Add-ins PnP is a community driven effort that helps developers extend, bu
 
 | Date               | Name           | Description  |
 | ------------------ | -------------- | ------------ |
-| July 2, 2021 | [Use Outlook event-based activation to indicate external recipients (preview)](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-tag-external) | This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the appendOnSendAsync API to add a disclaimer.|
+| July 6, 2021 | [Use Outlook event-based activation to indicate external recipients (preview)](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-tag-external) | This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the appendOnSendAsync API to add a disclaimer.|
 | April 5, 2021 | [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature) | This sample uses event-based activation to run an Outlook add-in when the user creates a new message or appointment. The add-in can respond to events, even when the task pane is not open. It also uses the setSignatureAsync API.|
 
 ## Shared JavaScript runtime samples

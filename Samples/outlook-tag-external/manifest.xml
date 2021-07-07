@@ -6,8 +6,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="PnP Tag External Recipients sample"/>
   <Description DefaultValue="Updates the subject and adds a disclaimer if external recipients are included during message compose."/>
-  <IconUrl DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/assets/icon-64.png"/>
-  <HighResolutionIconUrl DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/assets/icon-128.png"/>
+  <IconUrl DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
@@ -67,14 +67,14 @@
       </Hosts>
       <Resources>
         <bt:Images>
-          <bt:Image id="Icon.16x16" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/assets/icon-16.png"/>
-          <bt:Image id="Icon.32x32" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/assets/icon-32.png"/>
-          <bt:Image id="Icon.80x80" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/assets/icon-80.png"/>
+          <bt:Image id="Icon.16x16" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands/commands.html" />
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands/commands.html" />
           <!-- Entry needed for Outlook Desktop. -->
-          <bt:Url id="JSRuntime.Url" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands/commands.js" />
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands/commands.js" />
         </bt:Urls>
         <bt:LongStrings>
           <bt:String id="residAppDesc" DefaultValue="Update the subject and add a disclaimer if external recipients are included."></bt:String>
