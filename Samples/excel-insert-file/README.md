@@ -168,7 +168,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
     
-1. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/excel-keyboard-shortcuts#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
+1. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/excel-keyboard-shortcuts#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Copyright
 
