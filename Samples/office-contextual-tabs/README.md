@@ -25,6 +25,14 @@ This sample accomplishes the following tasks using Office ribbon APIs.
 
 ![Screen shot that shows when a table in Excel has the focus, a custom contextual tab named Table Data is shown on the ribbon](pnp-add-contextual-tabs-to-your-add-in.png)
 
+## Applies to
+
+- Excel and PowerPoint on Windows 10.
+
+## Prerequisites
+
+- Microsoft 365
+
 ## Run the sample
 
 You can run this sample in Excel in a browser. The add-in web files are served from this repo on GitHub.
