@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: create-custom-contextual-tabs-on-the-ribbon
 products:
 - office-excel
 - office-powerpoint
@@ -16,40 +17,15 @@ description: "Learn how to create a contextual tab that displays on the ribbon i
 
 # Create custom contextual tabs on the ribbon
 
-This sample shows how to create a custom contextual tab on the ribbon in the Office UI. The sample creates a table, and when the user moves the focus inside the table, the custom tab is displayed. When the user moves outside the table, the custom tab is hidden.
+This sample accomplishes the following tasks using Office ribbon APIs.
 
-## Applies to
+- Creates a custom contextual tab named **Table Data**.
+- Creates a table in Excel. When the focus is inside the table, the custom tab is displayed.
+- When the focus is outside the table, the custom tab is hidden.
 
--  Excel and PowerPoint on Windows 10.
+![Screen shot that shows when a table in Excel has the focus, a custom contextual tab named Table Data is shown on the ribbon](pnp-add-contextual-tabs-to-your-add-in.png)
 
-## Prerequisites
-
-- Microsoft 365
-
-## Solution
-
-Solution | Author(s)
----------|----------
-Create custom contextual tabs on the ribbon | Microsoft
-
-## Version history
-
-Version  | Date | Comments
----------| -----| --------
-1.0  | February 11, 2021 | Initial release
-1.1  | May 11, 2021 | Removed yo office and modified to be GitHub hosted
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
-## Scenario: Create and use a contextual tab
-
-This sample inserts a table of fictitious sales data for Contoso. The data is pulled from one of two mock data sources; a mock Excel file, or a mock SQL database. The user can select which data source to use either in the task pane, or in the contextual tab.
-
-After the sales table is created, the sample creates a contextual tab named **Table Data**. When you select any cell or range inside the table, the contextual tab is displayed on the ribbon. When you select any cell or range outside the table, the contextual tab is hidden.
-
-The contextual tab supports commands related to working with the sales data. When you make changes you can submit them and update the mock data source. Or you can refresh the table from the mock data source.
+[![YouTube video showing the contextual tab sample code and how it works](https://img.youtube.com/vi/9tLfm4boQIo/0.jpg)](https://www.youtube.com/watch?v=9tLfm4boQIo)
 
 ## Run the sample
 
@@ -79,6 +55,12 @@ You can take the following actions to try out the add-in and the contextual tab.
 
 ## Key parts of this sample
 
+This sample inserts a table of fictitious sales data for Contoso. The data is pulled from one of two mock data sources; a mock Excel file, or a mock SQL database. The user can select which data source to use either in the task pane, or in the contextual tab.
+
+After the sales table is created, the sample creates a contextual tab named **Table Data**. When you select any cell or range inside the table, the contextual tab is displayed on the ribbon. When you select any cell or range outside the table, the contextual tab is hidden.
+
+The contextual tab supports commands related to working with the sales data. When you make changes you can submit them and update the mock data source. Or you can refresh the table from the mock data source.
+
 ### Shared JavaScript runtime
 
 Contextual tabs requires the manifest.xml file to specify loading the shared JavaScript runtime. For more information on configuring the shared runtime, see [Configure your Office Add-in to use a shared JavaScript runtime](https://docs.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime)
@@ -101,7 +83,7 @@ You can see more details in the following code excerpt, or refer to these functi
 
 ```javascript
 async function createSampleTable(mockDataSource) {
-    //...//
+  //...//
 
      //Add event handlers
     salesTable.onSelectionChanged.add(onSelectionChange);
@@ -185,6 +167,19 @@ We'd love to get your feedback about this sample. You can send your feedback to 
 ## Additional resources
 
 - [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+
+## Solution
+
+Solution | Author(s)
+---------|----------
+Create custom contextual tabs on the ribbon | Microsoft
+
+## Version history
+
+Version  | Date | Comments
+---------| -----| --------
+1.0  | February 11, 2021 | Initial release
+1.1  | May 11, 2021 | Removed yo office and modified to be GitHub hosted
 
 ## Copyright
 
