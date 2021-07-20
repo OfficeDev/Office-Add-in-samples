@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: office-add-in-auth-aspnet-graph
 products:
 - office-excel
 - office-365

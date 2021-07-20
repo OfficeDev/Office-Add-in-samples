@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: office-add-in-access-data-offline
 products:
 - office-excel
 - office-365

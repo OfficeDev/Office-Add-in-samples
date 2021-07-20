@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: office-add-in-sso-aspnet
 products:
 - office-excel
 - office-powerpoint

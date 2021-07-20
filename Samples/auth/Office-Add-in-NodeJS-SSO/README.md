@@ -1,6 +1,6 @@
 ---
 page_type: sample
-urlFragment: office-add-in-nodejs-sso
+urlFragment: office-add-in-sso-nodejs
 products:
 - office-excel
 - office-powerpoint
