@@ -69,9 +69,6 @@ $ npm install
 # this will build the add-in 
 $ npm run build
 
-# this will update any security vulnerabilities in dependencies
-$ npm audit fix
-
 # this will start the server on your desktop and launch your add-in on Excel
 $ npm run start
 
@@ -124,9 +121,9 @@ error: function (xhr, status, error) {
 
 ## Security notes
 
-In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
-
-You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
+- There may be security issues in packages used by this sample. Be sure to run `npm audit` to identify any security vulnerabilities.
+- In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
+- You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
 
 You can install or uninstall the certificates by running the following commands in the project folder.
 
@@ -136,7 +133,9 @@ npx office-addin-dev-certs uninstall
 ```
 
 ## Questions and comments
-We'd love to get your feedback about this sample. You can send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to Stack Overflow. Ensure your questions are tagged with [office-js].
+
+We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
+Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://docs.microsoft.com/en-us/answers/topics/office-js-dev.html).
 
 ## Additional resources
 * [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
