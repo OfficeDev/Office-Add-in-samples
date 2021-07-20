@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: outlook-add-in-set-signature
 products:
 - office-outlook
 - office

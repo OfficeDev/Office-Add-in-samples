@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: outlook-add-in-sso-aspnet
 products:
 - office
 - office-outlook
