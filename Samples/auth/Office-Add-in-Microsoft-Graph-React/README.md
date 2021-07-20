@@ -1,6 +1,6 @@
 ---
 page_type: sample
-urlFragment: office-add-in-auth-nodejs-graph
+urlFragment: office-add-in-auth-graph-react
 products:
 - office-excel
 - office-powerpoint
