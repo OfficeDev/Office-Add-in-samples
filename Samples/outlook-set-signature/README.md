@@ -45,42 +45,35 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Version history
 
-Version  | Date | Comments
+| Version  | Date | Comments |
 |---------|------|---------|
-1.0 | 4-01-2021 | Initial release
-1.1 | 6-1-2021 | Update for GA of setSignature API
+| 1.0 | 4-1-2021 | Initial release |
+| 1.1 | 6-1-2021 | Update for GA of setSignature API |
+| 1.2 | 7-27-2021 | Convert to GitHub hosting |
 
 ## Scenario: Event-based activation
 
 In this scenario, the add-in helps the user manage their email signature, even when the task pane is not open. When the user sends a new email message, or creates a new appointment, the add-in displays an information bar prompting the user to create a signature. If the user chooses to set a signature, the add-in opens the task pane for the user to continue setting their signature.
 
-## Build and run the solution
+## Run the sample
 
-1. Clone or download this repository.
-2. In the command line, go to the **outlook-set-signature** folder from your root directory.
-3. Run the following command to download the dependencies required to run the sample.
-    
-    ```command&nbsp;line
-    $ npm install
-    ```
-4. Run the following command to start the localhost web server.
-    
-    ```command&nbsp;line
-    $ npm run dev-server
-    ```
+You can run this sample in Outlook on Windows or in a browser. The add-in web files are served from this repo on GitHub.
 
-5. Sideload the add-in to Outlook on Windows, or Outlook on the web by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+
+### Try it out
 
 Once the add-in is loaded use the following steps to try out the functionality.
 
 1. Open Outlook on Windows or in a browser.
-2. Create a new message or appointment.
-    
-    You should see a notification at the top of the message that reads: **Please set your signature with the PnP sample add-in.**
-    
-3. Choose **Set signatures**. This will open the task pane for the add-in.
-4. In the task pane fill out the fields for your signature data. Then choose **Save**.
-5. The task pane will load a page of sample templates. You can assign the templates to a **New Mail**, **Reply**, or **Forward** action. Once you've assign the templates you want to use, choose **Save**.
+1. Create a new message or appointment.
+
+    > You should see a notification at the top of the message that reads: **Please set your signature with the PnP sample add-in.**
+
+1. Choose **Set signatures**. This will open the task pane for the add-in.
+1. In the task pane fill out the fields for your signature data. Then choose **Save**.
+1. The task pane will load a page of sample templates. You can assign the templates to a **New Mail**, **Reply**, or **Forward** action. Once you've assign the templates you want to use, choose **Save**.
 
 The next time you create a message or appointment, you'll see the signature you selected applied by the add-in.
 
@@ -94,8 +87,8 @@ The manifest configures a runtime that is loaded specifically to handle event-ba
 <Runtime resid="Autorun">
   <Override type="javascript" resid="runtimeJs"/>
 ...
-<bt:Url id="Autorun" DefaultValue="https://localhost:3000/src/runtime/HTML/autorunweb.html"></bt:Url>
-<bt:Url id="runtimeJs" DefaultValue="https://localhost:3000/src/runtime/Js/autorunshared.js"></bt:Url>
+<bt:Url id="Autorun" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-set-signature/src/runtime/HTML/autorunweb.html"></bt:Url>
+<bt:Url id="runtimeJs" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-set-signature/src/runtime/Js/autorunshared.js"></bt:Url>
 ```
 
 The add-in handles two events that are mapped to the `checkSignature()` function.
@@ -138,7 +131,7 @@ Template B shows how to reference an image from the HTML. It uses the `<img>` ta
 
 ```xml
  str +=
-    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://localhost:3000/assets/sample-logo.png' alt='Logo' /></td>";
+    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/outlook-set-signature/assets/sample-logo.png' alt='Logo' /></td>";
 ```
 
 This is a simpler approach as you don't need to attach the image. Although your web server will need to provide the image anytime Outlook needs it for a signature.
@@ -158,7 +151,7 @@ You'll be prompted to install certificates for trusted access to https://localho
 
 Install or uninstall the certificates by running the following commands in the project folder.
 
-```
+```console
 npx office-addin-dev-certs install
 npx office-addin-dev-certs uninstall
 ```
