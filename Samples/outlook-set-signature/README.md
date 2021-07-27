@@ -37,7 +37,9 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Prerequisites
 
-- Before running this sample, you need a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) installed on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+- Microsoft 365
+
+    > **Note**: If you do not have a Microsoft 365 subscription, you can get one for development purposes by signing up for the [Microsoft 365 developer program](https://developer.microsoft.com/office/dev-program).
 
 ## Solution
 
@@ -83,6 +85,7 @@ The next time you create a message or appointment, you'll see the signature you 
 
 If you prefer to host the web server for the sample on your computer, follow these steps:
 
+1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
 
     ```console
