@@ -22,7 +22,7 @@ description: "Use Outlook event-based activation to set the signature."
 
 This sample uses event-based activation to run an Outlook add-in when the user creates a new message or appointment. The add-in can respond to events, even when the task pane is not open. It also uses the [setSignatureAsync API](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#setSignatureAsync_data__options__callback_). If no signature is set, the add-in prompts the user to set a signature, and can then open the task pane for the user.
 
-For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch)
+For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch).
 
 ## Features
 
@@ -31,7 +31,9 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Applies to
 
-- Outlook on Windows, and on the web.
+- Outlook
+  - Windows
+  - web browser
 
 ## Prerequisites
 
@@ -76,6 +78,38 @@ Once the add-in is loaded use the following steps to try out the functionality.
 1. The task pane will load a page of sample templates. You can assign the templates to a **New Mail**, **Reply**, or **Forward** action. Once you've assign the templates you want to use, choose **Save**.
 
 The next time you create a message or appointment, you'll see the signature you selected applied by the add-in.
+
+## Run the sample from localhost
+
+If you prefer to host the web server for the sample on your computer, follow these steps:
+
+1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
+
+    ```console
+    npm install --global http-server
+    ```
+
+1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
+1. From a command prompt, go to the root folder and run the following command.
+
+    ```console
+    http-server -S --cors . -p 3000
+    ```
+
+1. To reroute to localhost, run office-addin-https-reverse-proxy. If you haven't installed this, run the following command.
+
+    ```console
+    npm install --global office-addin-https-reverse-proxy 
+    ```
+
+    To reroute, run the following in another command prompt.
+
+    ```console
+    office-addin-https-reverse-proxy --url http://localhost:3000 
+    ```
+
+1. Sideload `manifest-localhost.xml` in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. [Try out the sample!](#try-it-out)
 
 ## Key parts of this sample
 
@@ -142,19 +176,6 @@ The task pane code is located under the `taskpane` folder of this project. The t
 
 - `editsignature.html` is loaded when the task pane first opens. It lets the user enter details such as name and title for their signature.
 - `assignsignature.html` is loaded when the user saves their details from the `editsignature.html` page. It lets the user assign the signature to actions such as "new email", "reply", and "forward.
-
-## Security notes
-
-In the webpack.config.js file, a header is set to `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
-
-You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
-
-Install or uninstall the certificates by running the following commands in the project folder.
-
-```console
-npx office-addin-dev-certs install
-npx office-addin-dev-certs uninstall
-```
 
 ## Copyright
 
