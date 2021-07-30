@@ -36,6 +36,20 @@ namespace WebApp.Utils
             { Id = spreadsheetDocument.WorkbookPart.GetIdOfPart(worksheetPart), SheetId = 1, Name = "Financials" };
             sheets.Append(sheet);
 
+            // Add financial data to sheet
+            SheetData sheetData = new SheetData();
+
+            Row row = new Row() { RowIndex = 2U, Spans = new ListValue<StringValue>() };
+            Cell cell = new Cell()
+            {
+                CellReference = "A2",
+                DataType = CellValues.String,
+                CellValue = new CellValue("Contoso")
+            };
+
+            row.Append(cell);
+            sheetData.Append(row);
+
             workbookpart.Workbook.Save();
 
             EmbedAddin(spreadsheetDocument, "test");
@@ -48,6 +62,46 @@ namespace WebApp.Utils
             return answer;
 
           
+        }
+
+        public static void AddData (WorksheetPart worksheetPart)
+        {
+            // Get the sheetData cell table.
+            SheetData sheetData = worksheetPart.Worksheet.GetFirstChild<SheetData>();
+
+            // Add a row to the cell table.
+            Row row;
+            row = new Row() { RowIndex = 1 };
+            sheetData.Append(row);
+
+            // In the new row, find the column location to insert a cell in A1.  
+            Cell refCell = null;
+            foreach (Cell cell in row.Elements<Cell>())
+            {
+                if (string.Compare(cell.CellReference.Value, "A1", true) > 0)
+                {
+                    AddDataToCell(row, cell, "title", "A1");
+                    break;
+                }
+                if (string.Compare(cell.CellReference.Value, "B1", true) > 0)
+                {
+                    AddDataToCell(row, cell, "budget", "B1");
+                    break;
+                }
+            }
+
+        }
+
+        public static void AddDataToCell(Row row, Cell cell, string value, string cellReference)
+        {
+            // Add the cell to the cell table at A1.
+            Cell newCell = new Cell() { CellReference = cellReference };
+            row.InsertBefore(newCell, cell);
+
+            // Set the cell value to be a numeric value of 100.
+            newCell.CellValue = new CellValue(value);
+            newCell.DataType = new EnumValue<CellValues>(CellValues.String);
+
         }
 
         /*
