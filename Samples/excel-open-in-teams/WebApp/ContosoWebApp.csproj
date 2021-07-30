@@ -85,6 +85,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Financial.cs" />
     <Compile Include="Models\Teams.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\AuthenticationConfig.cs" />
@@ -136,6 +137,7 @@
     <Content Include="Views\Home\UploadToTeams.cshtml" />
     <Content Include="Views\Shared\Redirect_Layout.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Financial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Project_Readme.html" />

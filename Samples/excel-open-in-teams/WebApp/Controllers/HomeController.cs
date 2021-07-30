@@ -49,7 +49,7 @@ namespace WebApp.Controllers
             string channelID = subs[0];
             string teamID = subs[1];
             string channelName = subs[2];
-            string fileName = "test3.xlsx";
+            string fileName = "financials.xlsx";
             string[] scopes = { "Team.ReadBasic.All" };
 
             string url = "https://graph.microsoft.com/v1.0/teams/" + teamID + "/channels/" + channelID + "/filesFolder";
@@ -141,6 +141,28 @@ namespace WebApp.Controllers
             }
 
             ViewBag.TeamList = items;
+            return View();
+        }
+
+        [Authorize]
+        public ActionResult Financial()
+        {
+            Financial[] f = new Financial[2];
+
+            f[0] = new Financial();
+
+            f[0].Title = "Ad expenses";
+            f[0].Actual = "45,000";
+            f[0].Budget = "47,000";
+            f[0].Variance = "-2,000";
+
+            f[1] = new Financial();
+            f[1].Title = "Operating expenses";
+            f[1].Actual = "103,000";
+            f[1].Budget = "100,000";
+            f[1].Variance = "3,000";
+
+            ViewBag.Financials = f;
             return View();
         }
 
@@ -427,6 +449,8 @@ namespace WebApp.Controllers
 
           
         }
+
+        [Authorize]
         public ActionResult About()
         {
             ViewBag.Name = ClaimsPrincipal.Current.FindFirst("name").Value;

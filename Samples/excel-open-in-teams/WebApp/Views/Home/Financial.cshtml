@@ -1,0 +1,26 @@
+﻿@using WebApp.Models;
+
+@{
+    ViewBag.Title = "Financial";
+}
+
+    <h2>Current quarter</h2>
+    <hr />
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>Title</th>
+            <th>Actual</th>
+            <th>Budget</th>
+            <th>Variance</th>
+        </tr>
+        @foreach (Financial financial in ViewBag.Financials)
+        {
+            <tr>
+                <td>@financial.Title</td>
+                <td>@financial.Actual</td>
+                <td>@financial.Budget</td>
+                <td>@financial.Variance</td>                
+            </tr>
+        }
+    </table>
+</body>

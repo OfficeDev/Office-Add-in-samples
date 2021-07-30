@@ -87,4 +87,6 @@ namespace WebApp.Models
     {
         public string webUrl { get; set; }
     }
+
+   
 }
