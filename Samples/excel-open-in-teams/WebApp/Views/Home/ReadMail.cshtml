@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Read Mail";
+}
+@if (ViewBag.Relogin != "true")
+{
+    <text>
+<h2>@ViewBag.Title.</h2>
+
+<h3>Latest email messages:</h3>
+<p>
+    @ViewBag.Message
+</p>
+    </text>
+}
+else
+{
+    <text>
+        <h2>You need to sign in again.</h2>
+        <p>
+           The app cannot retrieve your mail until you sign in again. Please click @Html.ActionLink("here", "RefreshSession", "Home") to sign in.
+        </p>
+    </text>
+}
+
+

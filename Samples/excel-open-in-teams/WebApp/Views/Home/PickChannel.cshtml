@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "PickChannel";
+}
+
+<h2>Select the channel</h2>
+
+
+@using (Html.BeginForm("ChannelChosen", "Home", FormMethod.Get))
+{
+
+    <fieldset>
+
+        Team Channel:
+
+        @Html.DropDownList("ChannelList")
+
+        <p>
+
+            <input type="submit" value="Submit" />
+
+        </p>
+
+    </fieldset>
+
+}

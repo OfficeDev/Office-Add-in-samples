@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "OpenInTeams";
+}
+
+<h2>Select the Team</h2>
+
+@using (Html.BeginForm("TeamChosen", "Home", FormMethod.Get))
+{
+
+    <fieldset>
+
+        Team to open:
+
+        @Html.DropDownList("TeamList")
+
+        <p>
+
+            <input type="submit" value="Submit" />
+
+        </p>
+
+    </fieldset>
+
+}

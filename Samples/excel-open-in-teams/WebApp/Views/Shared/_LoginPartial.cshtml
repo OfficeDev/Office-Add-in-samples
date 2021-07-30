@@ -1,0 +1,53 @@
+﻿
+@if (Request.IsAuthenticated)
+{
+    System.Security.Claims.Claim claim = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username");
+    string name = claim != null ? claim.Value : string.Empty;
+
+    <text>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-text">
+
+                @*The 'preferred_username' claim can be used for showing the user's primary way of identifying themselves.*@
+
+                Hello, @name!
+            </li>
+            <li>
+                @Html.ActionLink("Sign out", "SignOut", "Account")
+            </li>
+        </ul>
+    </text>
+}
+else
+{
+    <style type="text/css">
+        ul.links {
+            list-style-type: none;
+        }
+
+            ul.links li {
+                display: inline-block;
+                border-left: 1px solid black;
+                padding-left: 10px;
+                margin-left: 10px;
+            }
+
+                ul.links li:first-child {
+                    border-left: 0;
+                    padding-left: 0;
+                    margin-left: 0;
+                }
+    </style>
+
+    <ul class="nav navbar-nav navbar-right">
+        @*<li><img src="~/Content/microsoft.png" style="max-width: 30px;max-height: 30px; display:block; vertical-align:bottom" /></li>
+        <li> @Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+        <li>
+            <a href="@Url.Action("SignIn", "Account")" title="Sign in" class="links">
+                <img alt="Sign in" src="@Url.Content("~/Content/microsoft.png")" style="max-width: 30px;max-height: 30px;">
+                Sign in with Microsoft
+            </a>
+        </li>
+
+    </ul>
+}

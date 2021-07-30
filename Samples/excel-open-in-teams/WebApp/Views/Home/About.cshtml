@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<h2>@ViewBag.Title.</h2>
+
+<h4>User Info:</h4>
+
+<table class="table table-striped table-bordered table-condensed table-hover">
+    <tr>
+        <th class="claim-type claim-data claim-head">Claim Type</th>
+        <th class="claim-data claim-head">Claim Value</th>
+    </tr>
+
+    <tr>
+        <td class="claim-type claim-data">Name</td>
+        <td class="claim-data">@ViewBag.Name</td>
+    </tr>
+    <tr>
+        <td class="claim-type claim-data">Object Id</td>
+        <td class="claim-data">@ViewBag.ObjectId</td>
+    </tr>
+    <tr>
+        <td class="claim-type claim-data">Username</td>
+        <td class="claim-data">@ViewBag.Username</td>
+    </tr>
+    <tr>
+        <td class="claim-type claim-data">Subject</td>
+        <td class="claim-data">@ViewBag.Subject</td>
+    </tr>
+</table>
