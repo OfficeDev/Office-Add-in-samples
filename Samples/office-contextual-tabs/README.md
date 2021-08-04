@@ -27,7 +27,8 @@ This sample accomplishes the following tasks using Office ribbon APIs.
 
 ## Applies to
 
-- Excel and PowerPoint on Windows 10.
+- Excel on Windows
+- PowerPoint on Windows
 
 ## Prerequisites
 
@@ -35,7 +36,7 @@ This sample accomplishes the following tasks using Office ribbon APIs.
 
 ## Run the sample
 
-You can run this sample in Excel in a browser. The add-in web files are served from this repo on GitHub.
+Run this sample in Excel in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 1. Open [Office on the web](https://office.live.com/).
@@ -48,7 +49,7 @@ You can run this sample in Excel in a browser. The add-in web files are served f
 ](../../images/upload-add-in.png)
 1. Verify that the add-in loaded successfully. You will see a **PnP contextual tabs** button on the **Home** tab on the ribbon.
 
-You can take the following actions to try out the add-in and the contextual tab.
+Take the following actions to try out the add-in and the contextual tab.
 
 - Use the task pane to import data from either the the mock Excel file, or mock SQL Database. Selecting **Import data** in the task pane creates the sales table.
 - Select a cell, or range, inside the sales table to display the **Table Data** contextual tab on the ribbon.
@@ -85,7 +86,7 @@ When you build your own add-in, you'll need to decide what context determines wh
 
 When the user imports data to create the table, `createSampleTable()` adds an `onSelectionChanged` event handler, and `onChanged` event handler. Later, as the user moves the selection into or out of the table, the onSelectionChanged() function is called, which can display the contextual tab when the selection is inside the table. When the user makes changes to the table, `onSelectionChange()` is called, and the **Refresh** and **Submit** buttons are enabled.
 
-You can see more details in the following code excerpt, or refer to these functions in the `src/utilities/utilities.js` file.
+See more details in the following code excerpt, or refer to these functions in the `src/utilities/utilities.js` file.
 
 ```javascript
 async function createSampleTable(mockDataSource) {
@@ -129,7 +130,7 @@ function onChanged() {
 
 ## Run the sample from Localhost
 
-If you prefer to host the web server for the sample on your computer, follow these steps:
+If you prefer to host the web server for the sample on your computer, follow these steps.
 
 1. Open the **/src/commands/ribbonJSON.js** file.
 1. Edit line 9 to refer to the localhost:3000 endpoint as shown in the following code.
@@ -139,26 +140,26 @@ If you prefer to host the web server for the sample on your computer, follow the
     ```
     
 1. Save the file.
-1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command.
     
     ```console
     npm install --global http-server
     ```
     
 2. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
-3. From a command prompt, go to the web-worker folder and run the following command:
+3. From a command prompt, go to the web-worker folder and run the following command.
     
     ```console
     http-server -S --cors . -p 3000
     ```
     
-4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
+4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command.
     
     ```console
     npm install --global office-addin-https-reverse-proxy
     ```
     
-    To reroute run the following in another command prompt:
+    To reroute run the following in another command prompt.
     
     ```console
     office-addin-https-reverse-proxy --url http://localhost:3000
@@ -168,7 +169,7 @@ If you prefer to host the web server for the sample on your computer, follow the
 
 ## Questions and comments
 
-We'd love to get your feedback about this sample. You can send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to Stack Overflow. Ensure your questions are tagged with [office-js].
+We'd love to get your feedback about this sample. Please send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://docs.microsoft.com/en-us/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Additional resources
 
