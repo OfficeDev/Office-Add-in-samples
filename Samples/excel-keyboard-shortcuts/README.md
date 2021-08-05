@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: office-add-in-keyboard-shortcuts
 products:
 - office-excel
 - office

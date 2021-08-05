@@ -1,6 +1,6 @@
 ---
 page_type: sample
-urlFragment: create-custom-contextual-tabs-on-the-ribbon
+urlFragment: office-add-in-contextual-tabs
 products:
 - office-excel
 - office-powerpoint

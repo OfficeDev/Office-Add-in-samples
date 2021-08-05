@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: outlook-add-in-auth-aspnet-graph
 products:
 - office-outlook
 - office-365
