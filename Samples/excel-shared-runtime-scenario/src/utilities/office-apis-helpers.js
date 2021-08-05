@@ -1,4 +1,5 @@
-/* global console, location, localStorage, Excel, Office */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 const SetRuntimeVisibleHelper = (visible) => {
   let p;

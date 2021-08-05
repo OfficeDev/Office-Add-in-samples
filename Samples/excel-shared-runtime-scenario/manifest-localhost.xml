@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+	xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+	<!-- Begin Basic Settings: Add-in metadata, used for all versions of Office unless override provided. -->
+	<!-- IMPORTANT! Id must be unique for your add-in, if you reuse this manifest ensure that you change this id to a new GUID. -->
+	<Id>565764A6-0F6E-4D98-A1EF-39B86F13D169</Id>
+	<!--Version. Updates from the store only get triggered if there is a version change. -->
+	<Version>1.0.0.0</Version>
+	<ProviderName>Office Developer Education Team</ProviderName>
+	<DefaultLocale>en-US</DefaultLocale>
+	<!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
+	<DisplayName DefaultValue="Contoso Data Importer" />
+	<Description DefaultValue="Uses a shared runtime to share global state across all parts of the add-in and provide a responsive ribbon UI."/>
+	<!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
+	<IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
+    <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+	<!--If you plan to submit this add-in to the Office Store, uncomment the SupportUrl element below-->
+	<!--<SupportUrl DefaultValue="[Insert the URL of a page that provides support information for the app]">-->
+	<!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
+	<SupportUrl DefaultValue="https://www.contoso.com/help"/>
+	<AppDomains>
+		<AppDomain>https://localhost:3000</AppDomain>
+	</AppDomains>
+	<!--End Basic Settings. -->
+	<!--Begin TaskPane Mode integration. This section is used if there are no VersionOverrides or if the Office client version does not support add-in commands. -->
+	<Hosts>
+		<Host Name="Workbook" />
+	</Hosts>
+	<Requirements>
+		<Sets DefaultMinVersion="1.1">
+			<Set Name="SharedRuntime" MinVersion="1.1"/>
+		</Sets>
+	</Requirements>
+	<DefaultSettings>
+		<SourceLocation DefaultValue="https://localhost:3000/src/taskpane/taskpane.html" />
+	</DefaultSettings>
+	<!-- End TaskPane Mode integration.  -->
+	<Permissions>ReadWriteDocument</Permissions>
+	<!-- Begin Add-in Commands Mode integration. -->
+	<VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+		<!-- The Hosts node is required. -->
+		<Hosts>
+			<!-- Each host can have a different set of commands. -->
+			<!-- Excel host is Workbook, Word host is Document, and PowerPoint host is Presentation. -->
+			<!-- Make sure the hosts you override match the hosts declared in the top section of the manifest. -->
+			<Host xsi:type="Workbook">
+				<Runtimes>
+					<Runtime resid="ContosoAddin.Url" lifetime="long" />
+				</Runtimes>
+				<AllFormFactors>
+					<ExtensionPoint xsi:type="CustomFunctions">
+						<Script>
+							<SourceLocation resid="ContosoAddin.Url"/>
+						</Script>
+						<Page>
+							<SourceLocation resid="ContosoAddin.Url"/>
+						</Page>
+						<Metadata>
+							<SourceLocation resid="Functions.Metadata.Url"/>
+						</Metadata>
+						<Namespace resid="Functions.Namespace"/>
+					</ExtensionPoint>
+				</AllFormFactors>
+				<!-- Form factor. Currently only DesktopFormFactor is supported. -->
+				<DesktopFormFactor>
+					<!--"This code enables a customizable message to be displayed when the add-in is loaded successfully upon individual install."-->
+					<GetStarted>
+						<!-- Title of the Getting Started callout. resid points to a ShortString resource -->
+						<Title resid="GetStarted.Title"/>
+						<!-- Description of the Getting Started callout. resid points to a LongString resource -->
+						<Description resid="GetStarted.Description"/>
+						<!-- Point to a url resource which details how the add-in should be used. -->
+						<LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+					</GetStarted>
+					<!-- Function file is a HTML page that includes the JavaScript where functions for ExecuteAction will be called.
+            Think of the FunctionFile as the code behind ExecuteFunction. -->
+					<FunctionFile resid="ContosoAddin.Url" />
+					<!-- PrimaryCommandSurface is the main Office Ribbon. -->
+					<ExtensionPoint xsi:type="PrimaryCommandSurface">
+						<!-- Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab. -->
+						<CustomTab id="ShareTime">
+							<Group id="ServiceGroup">
+								<Label resid="ServiceGroup.Label"/>
+								<Icon>
+									<bt:Image size="16" resid="Icon.16x16"/>
+									<bt:Image size="32" resid="Icon.32x32"/>
+									<bt:Image size="80" resid="Icon.80x80"/>
+								</Icon>
+								<Control xsi:type="Button" id="BtnConnectService">
+									<Label resid="BtnConnectService.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnConnectService.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnConnectService.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnconnectservice</FunctionName>
+									</Action>
+								</Control>
+								<Control xsi:type="Button" id="BtnDisConnectService">
+									<Label resid="BtnDisConnectService.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnDisConnectService.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnDisConnectService.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btndisconnectservice</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
+								<Control xsi:type="Button" id="BtnInsertData">
+									<Label resid="BtnInsertData.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnInsertData.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnInsertData.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btninsertdata</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
+								<Control xsi:type="Button" id="BtnSumData">
+									<Label resid="BtnSumData.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnSumData.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnSumData.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnsumdata</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
+							
+							</Group>
+							<Group id="StartupGroup">
+								<Label resid="StartupGroup.Label"/>
+								<Icon>
+									<bt:Image size="16" resid="Icon.16x16"/>
+									<bt:Image size="32" resid="Icon.32x32"/>
+									<bt:Image size="80" resid="Icon.80x80"/>
+								</Icon>
+								<Control xsi:type="Button" id="BtnEnableAddinStart">
+									<Label resid="BtnEnableAddinStart.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnEnableAddinStart.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnEnableAddinStart.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnenableaddinstart</FunctionName>
+									</Action>
+								</Control>
+								<Control xsi:type="Button" id="BtnDisableAddinStart">
+									<Label resid="BtnDisableAddinStart.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnDisableAddinStart.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnDisableAddinStart.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btndisableaddinstart</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
+							</Group>
+							<Group id="TaskpaneGroup">
+								<Label resid="TaskpaneGroup.Label"/>
+								<Icon>
+									<bt:Image size="16" resid="Icon.16x16"/>
+									<bt:Image size="32" resid="Icon.32x32"/>
+									<bt:Image size="80" resid="Icon.80x80"/>
+								</Icon>
+								<Control xsi:type="Button" id="BtnOpenTaskpane">
+									<Label resid="BtnOpenTaskpane.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnOpenTaskpane.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnOpenTaskpane.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnopentaskpane</FunctionName>
+									</Action>
+									
+								</Control>
+
+									<Control xsi:type="Button" id="BtnCloseTaskpane">
+									<Label resid="BtnCloseTaskpane.Label" />
+									<Supertip>
+										<!-- ToolTip title. resid must point to a ShortString resource. -->
+										<Title resid="BtnCloseTaskpane.Label" />
+										<!-- ToolTip description. resid must point to a LongString resource. -->
+										<Description resid="BtnCloseTaskpane.Tooltip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Icon.16x16"/>
+										<bt:Image size="32" resid="Icon.32x32"/>
+										<bt:Image size="80" resid="Icon.80x80"/>
+									</Icon>
+									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>btnclosetaskpane</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
+
+							</Group>
+							<Label resid="CommandsGroup.Label"/>
+						</CustomTab>
+					</ExtensionPoint>
+				</DesktopFormFactor>
+			</Host>
+		</Hosts>
+		<!-- You can use resources across hosts and form factors. -->
+		<Resources>
+			<bt:Images>
+				<bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
+				<bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+				<bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+			</bt:Images>
+			<bt:Urls>
+				<bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/src/taskpane/taskpane.html" />
+				<bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
+				<bt:Url id="Functions.Metadata.Url" DefaultValue="https://localhost:3000/src/functions/functions.json"/>
+				<bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/src/commands/commands.html"/>
+				<bt:Url id="ContosoAddin.Url" DefaultValue="https://localhost:3000/src/taskpane/taskpane.html"/>
+			</bt:Urls>
+			<!-- ShortStrings max characters==125. -->
+			<bt:ShortStrings>
+				<bt:String id="TaskpaneButton.Label" DefaultValue="Open Add-in" />
+				<bt:String id="Group1Label" DefaultValue="OneDrive Files" />
+				<bt:String id="GetStarted.Title" DefaultValue="Contoso data add-in has loaded successfully." />
+				<bt:String id="Functions.Namespace" DefaultValue="CONTOSOSHARE"/>
+				<bt:String id="BtnSignIn.Label" DefaultValue="Sign in"/>
+				<bt:String id="BtnSignOut.Label" DefaultValue="Sign out"/>
+				<bt:String id="BtnEnableAddinStart.Label" DefaultValue="Load on doc open"/>
+				<bt:String id="BtnDisableAddinStart.Label" DefaultValue="No load behavior"/>
+				<bt:String id="BtnConnectService.Label" DefaultValue="Connect service"/>
+				<bt:String id="BtnDisConnectService.Label" DefaultValue="Disconnect service"/>
+				<bt:String id="BtnInsertData.Label" DefaultValue="Insert data"/>
+				<bt:String id='AuthGroup.Label' DefaultValue='Authentication'/>
+				<bt:String id="CommandsGroup.Label" DefaultValue="Contoso Data"/>
+				<bt:String id='StartupGroup.Label' DefaultValue='Startup behavior'/>
+				<bt:String id='ServiceGroup.Label' DefaultValue='Services'/>
+				<bt:String id='TaskpaneGroup.Label' DefaultValue='Task pane'/>
+				<bt:String id="BtnOpenTaskpane.Label" DefaultValue="Open task pane"/>
+				<bt:String id="BtnCloseTaskpane.Label" DefaultValue="Close task pane"/>
+				<bt:String id="BtnSyncData.Label" DefaultValue="Sync data"/>
+				<bt:String id="BtnSumData.Label" DefaultValue="Sum"/>
+			</bt:ShortStrings>
+			<!-- LongStrings max characters==250. -->
+			<bt:LongStrings>
+				<bt:String id="TaskpaneButton.Tooltip" DefaultValue="Get files stored on OneDrive" />
+				<bt:String id="GetStarted.Description" DefaultValue="Choose Open Add-in, then Connect to Office 365 to get started." />
+				<bt:String id="BtnEnableAddinStart.Tooltip" DefaultValue="Add-in will load and start running as soon as document opens."/>
+				<bt:String id="BtnDisableAddinStart.Tooltip" DefaultValue="Add-in will have no load document load beahvior."/>
+				<bt:String id="BtnConnectService.Tooltip" DefaultValue="Connect to backend data service"/>
+				<bt:String id="BtnDisConnectService.Tooltip" DefaultValue="Disconnect from backend data service"/>
+				<bt:String id="BtnInsertData.Tooltip" DefaultValue="Insert data from backend data service"/>
+				<bt:String id="BtnOpenTaskpane.Tooltip" DefaultValue="Open the task pane"/>
+				<bt:String id="BtnCloseTaskpane.Tooltip" DefaultValue="Close the task pane"/>
+				<bt:String id="BtnSyncData.Tooltip" DefaultValue="Sync changes to source data"/>
+				<bt:String id="BtnSumData.Tooltip" DefaultValue="Sum selected data"/>
+			</bt:LongStrings>
+		</Resources>
+	</VersionOverrides>
+	<!-- End Add-in Commands Mode integration. -->
+</OfficeApp>

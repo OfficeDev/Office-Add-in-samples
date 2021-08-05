@@ -1,4 +1,5 @@
-
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 function btnConnectService(event) {
   console.log("Connect service button pressed");

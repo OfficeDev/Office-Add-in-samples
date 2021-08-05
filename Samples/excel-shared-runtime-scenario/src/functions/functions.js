@@ -1,4 +1,5 @@
-/* global CustomFunctions */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 /**
  * Adds two numbers.
