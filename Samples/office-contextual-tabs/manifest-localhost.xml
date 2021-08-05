@@ -11,7 +11,7 @@
   <Description DefaultValue="Demonstrates using contextual tabs in your Office Add-in."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/office-contextual-tabs"/>
+  <SupportUrl DefaultValue="https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/office-contextual-tabs"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
   </AppDomains>

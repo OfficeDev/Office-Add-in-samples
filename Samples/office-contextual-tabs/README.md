@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: office-add-in-contextual-tabs
 products:
 - office-excel
 - office-powerpoint
@@ -176,7 +177,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
     
-5. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/office-contextual-tabs#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
+5. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/office-contextual-tabs#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Questions and comments
 

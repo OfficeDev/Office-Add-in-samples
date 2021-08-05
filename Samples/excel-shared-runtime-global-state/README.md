@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: office-add-in-shared-runtime-global-data
 products:
 - office-excel
 - office-365
