@@ -13,9 +13,13 @@ namespace WebApp.Utils
 {
     public class SpreadsheetBuilder
     {
-        public byte[] GenerateBasicSpreadsheet()
+/// <summary>
+        /// Creates a new spreadsheet containing a sheet with your name. Spreadsheet is stored internally in _spreadsheetDocument.
+        /// If _spreadsheetDocument has an existing document, it will be reset to the newly created document.
+        /// </summary>
+        /// <param name="name">The name of the sheet to add to the workbook.</param>
+        public byte[] CreateSpreadsheet (string name)
         {
-    
             var stream = new MemoryStream();
             // By default, AutoSave = true, Editable = true, and Type = xlsx.
             var spreadsheetDocument =
@@ -33,62 +37,61 @@ namespace WebApp.Utils
 
             // Append a new worksheet and associate it with the workbook.
             var sheet = new Sheet()
-            { Id = spreadsheetDocument.WorkbookPart.GetIdOfPart(worksheetPart), SheetId = 1, Name = "Financials" };
+            { Id = spreadsheetDocument.WorkbookPart.GetIdOfPart(worksheetPart), SheetId = 1, Name = name };
             sheets.Append(sheet);
 
-            // Add financial data to sheet
-            SheetData sheetData = new SheetData();
-
-            Row row = new Row() { RowIndex = 2U, Spans = new ListValue<StringValue>() };
-            Cell cell = new Cell()
-            {
-                CellReference = "A2",
-                DataType = CellValues.String,
-                CellValue = new CellValue("Contoso")
-            };
-
-            row.Append(cell);
-            sheetData.Append(row);
 
             workbookpart.Workbook.Save();
 
-            EmbedAddin(spreadsheetDocument, "test");
+            // Get the sheetData cell table.
+            SheetData sheetData = worksheetPart.Worksheet.GetFirstChild<SheetData>();
+            AddData(sheetData);
 
-            // Close the document.
+            EmbedAddin(spreadsheetDocument);
+            workbookpart.Workbook.Save();
             spreadsheetDocument.Close();
-
             //Convert stream to base64
             var answer = stream.ToArray();
             return answer;
 
-          
         }
 
-        public static void AddData (WorksheetPart worksheetPart)
-        {
-            // Get the sheetData cell table.
-            SheetData sheetData = worksheetPart.Worksheet.GetFirstChild<SheetData>();
 
+        private void AddData (SheetData sheetData)
+        {
+
+            InsertCellValue(sheetData, 1, "A1", "Name", CellValues.String);
+            InsertCellValue(sheetData, 1, "B1", "Description", CellValues.String);
+            InsertCellValue(sheetData, 1, "C1", "Value", CellValues.String);
+
+
+        }
+
+        private void InsertCellValue(SheetData sheetData, uint rowIndex, string cellName, string value, CellValues type)
+        {
             // Add a row to the cell table.
             Row row;
-            row = new Row() { RowIndex = 1 };
+            row = new Row() { RowIndex = rowIndex };
             sheetData.Append(row);
 
-            // In the new row, find the column location to insert a cell in A1.  
+            // In the new row, find the column location to insert a cell.  
             Cell refCell = null;
             foreach (Cell cell in row.Elements<Cell>())
             {
-                if (string.Compare(cell.CellReference.Value, "A1", true) > 0)
+                if (string.Compare(cell.CellReference.Value, cellName, true) > 0)
                 {
-                    AddDataToCell(row, cell, "title", "A1");
-                    break;
-                }
-                if (string.Compare(cell.CellReference.Value, "B1", true) > 0)
-                {
-                    AddDataToCell(row, cell, "budget", "B1");
+                    refCell = cell;
                     break;
                 }
             }
+
+            // Add the cell to the cell table at A1.
+            Cell newCell = new Cell() { CellReference = cellName };
+            row.InsertBefore(newCell, refCell);
+
+            // Set the cell value to be a numeric value of 100.
+            newCell.CellValue = new CellValue(value);
+            newCell.DataType = new EnumValue<CellValues>(type);
 
         }
 
@@ -111,16 +114,16 @@ namespace WebApp.Utils
      */
 
         // Adds child parts and generates content of the specified part.
-        public static void CreateWebExTaskpanesPart(WebExTaskpanesPart part, string snippetID)
+        private void CreateWebExTaskpanesPart(WebExTaskpanesPart part)
         {
             WebExtensionPart webExtensionPart1 = part.AddNewPart<WebExtensionPart>("rId1");
-            GenerateWebExtensionPart1Content(webExtensionPart1, snippetID);
+            GenerateWebExtensionPart1Content(webExtensionPart1);
 
             GeneratePartContent(part);
         }
 
         // Generates content of webExtensionPart1.
-        private static void GenerateWebExtensionPart1Content(WebExtensionPart webExtensionPart1, string snippetID)
+        private void GenerateWebExtensionPart1Content(WebExtensionPart webExtensionPart1)
         {
             We.WebExtension webExtension1 = new We.WebExtension() { Id = "{635BF0CD-42CC-4174-B8D2-6D375C9A759E}" };
             webExtension1.AddNamespaceDeclaration("we", "http://schemas.microsoft.com/office/webextensions/webextension/2010/11");
@@ -132,13 +135,6 @@ namespace WebApp.Utils
             // Add the property that makes the taskpane visible.
             We.WebExtensionProperty webExtensionProperty1 = new We.WebExtensionProperty() { Name = "Office.AutoShowTaskpaneWithDocument", Value = "true" };
             webExtensionPropertyBag1.Append(webExtensionProperty1);
-
-            // CUSTOM MODIFICATION BEGIN
-            // Add the property that specifies the snippet to import.
-            string snippetToImportValue = string.Format("{{\"type\":\"gist\",\"id\":\"{0}\"}}", snippetID);
-            We.WebExtensionProperty webExtensionProperty2 = new We.WebExtensionProperty() { Name = "SnippetToImport", Value = snippetToImportValue };
-            webExtensionPropertyBag1.Append(webExtensionProperty2);
-            // CUSTOM MODIFICATION END
 
             We.WebExtensionBindingList webExtensionBindingList1 = new We.WebExtensionBindingList();
 
@@ -155,7 +151,7 @@ namespace WebApp.Utils
         }
 
         // Generates content of part.
-        private static void GeneratePartContent(WebExTaskpanesPart part)
+        private void GeneratePartContent(WebExTaskpanesPart part)
         {
             Wetp.Taskpanes taskpanes1 = new Wetp.Taskpanes();
             taskpanes1.AddNamespaceDeclaration("wetp", "http://schemas.microsoft.com/office/webextensions/taskpanes/2010/11");
@@ -172,11 +168,11 @@ namespace WebApp.Utils
             part.Taskpanes = taskpanes1;
         }
         // Embeds the add-in into a file of the specified type.
-        public static void EmbedAddin(SpreadsheetDocument spreadsheet, string snippetID)
+        private void EmbedAddin(SpreadsheetDocument spreadsheet)
         {
             spreadsheet.DeletePart(spreadsheet.WebExTaskpanesPart);
             var webExTaskpanesPart = spreadsheet.AddWebExTaskpanesPart();
-            CreateWebExTaskpanesPart(webExTaskpanesPart, snippetID);
+            CreateWebExTaskpanesPart(webExTaskpanesPart);
                    
         }
     }

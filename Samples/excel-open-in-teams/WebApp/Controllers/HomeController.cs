@@ -30,7 +30,7 @@ namespace WebApp.Controllers
         public ActionResult SpreadsheetTime()
         {
             SpreadsheetBuilder s = new SpreadsheetBuilder();
-            var test = s.GenerateBasicSpreadsheet();
+            var test = s.CreateSpreadsheet("Financials");
 
             return View("UploadToTeams");
         }
@@ -41,7 +41,7 @@ namespace WebApp.Controllers
         {
             //Build a basic spreadsheet
             SpreadsheetBuilder s = new SpreadsheetBuilder();
-            var spreadsheetBytes = s.GenerateBasicSpreadsheet();
+            var spreadsheetBytes = s.CreateSpreadsheet("Financials");
 
             //upload that file
             //get file folder for the channel
