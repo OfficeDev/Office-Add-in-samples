@@ -79,14 +79,15 @@ function updateRibbon() {
     Managing the dialogs.
 */
 
-const dialogConnectUrl =
-  location.protocol +
+async function connectService() {
+  //construct url for dialog
+  const path = location.path.substr(0,location.path.length-13);
+  const dialogConnectUrl = location.protocol +
   "//" +
   location.hostname +
-  (location.port ? ":" + location.port : "") +
+  (location.port ? ":" + location.port : "") + path +
   "/src/dialog/connect.html";
 
-async function connectService() {
   //pop up a dialog
   let connectDialog;
 
