@@ -21,7 +21,7 @@
 	<!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
 	<SupportUrl DefaultValue="https://www.contoso.com/help"/>
 	<AppDomains>
-		<AppDomain>https://davidchesnut.github.io/PnP-OfficeAddins/Samples/excel-shared-runtime-scenario</AppDomain>
+		<AppDomain>https://davidchesnut.github.io</AppDomain>
 	</AppDomains>
 	<!--End Basic Settings. -->
 	<!--Begin TaskPane Mode integration. This section is used if there are no VersionOverrides or if the Office client version does not support add-in commands. -->

@@ -97,6 +97,7 @@ async function connectService() {
     const g = getGlobal();
     g.state.setConnected(true);
     g.state.isConnectInProgress = false;
+    updateTaskPaneUI();
     connectDialog.close();
   };
 
