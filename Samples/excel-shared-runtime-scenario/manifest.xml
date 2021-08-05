@@ -34,7 +34,7 @@
 		</Sets>
 	</Requirements>
 	<DefaultSettings>
-		<SourceLocation DefaultValue="https://localhost:3000/index.html" />
+		<SourceLocation DefaultValue="https://localhost:3000/src/taskpane/taskpane.html" />
 	</DefaultSettings>
 	<!-- End TaskPane Mode integration.  -->
 	<Permissions>ReadWriteDocument</Permissions>
@@ -272,11 +272,11 @@
 				<bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
 			</bt:Images>
 			<bt:Urls>
-				<bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/index.html" />
+				<bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/src/taskpane/taskpane.html" />
 				<bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
-				<bt:Url id="Functions.Metadata.Url" DefaultValue="https://localhost:3000/functions.json"/>
-				<bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
-				<bt:Url id="ContosoAddin.Url" DefaultValue="https://localhost:3000/index.html"/>
+				<bt:Url id="Functions.Metadata.Url" DefaultValue="https://localhost:3000/src/functions/functions.json"/>
+				<bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/src/commands/commands.html"/>
+				<bt:Url id="ContosoAddin.Url" DefaultValue="https://localhost:3000/src/taskpane/taskpane.html"/>
 			</bt:Urls>
 			<!-- ShortStrings max characters==125. -->
 			<bt:ShortStrings>
