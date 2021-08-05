@@ -81,14 +81,14 @@ function updateRibbon() {
 
 async function connectService() {
   //For dialog url, reuse the existing path, minus the 'taskpane.html' that will be at the end
-  const path = location.pathname.substr(0,location.pathname.length-14);
+  const path = location.pathname.substr(0,location.pathname.length-23);
   
   //construct url for dialog
   const dialogConnectUrl = location.protocol +
   "//" +
   location.hostname +
   (location.port ? ":" + location.port : "") + path +
-  "/src/dialog/connect.html";
+  "/dialog/connect.html";
 
   //pop up a dialog
   let connectDialog;
