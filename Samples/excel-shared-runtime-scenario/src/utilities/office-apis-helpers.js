@@ -1,7 +1,8 @@
-import { getGlobal } from "../src/commands/commands";
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
-export const SetRuntimeVisibleHelper = (visible: boolean) => {
-  let p: any;
+const SetRuntimeVisibleHelper = (visible) => {
+  let p;
   if (visible) {
     p = Office.addin.showAsTaskpane();
   } else {
@@ -17,19 +18,19 @@ export const SetRuntimeVisibleHelper = (visible: boolean) => {
     });
 };
 
-export const SetStartupBehaviorHelper = (isStarting: boolean) => {
+const SetStartupBehaviorHelper = (isStarting) => {
   if (isStarting) {
     Office.addin.setStartupBehavior(Office.StartupBehavior.load);
   } else {
     Office.addin.setStartupBehavior(Office.StartupBehavior.none);
   }
-  let g = getGlobal() as any;
+  let g = getGlobal();
   g.isStartOnDocOpen = isStarting;
 };
 
-export function updateRibbon() {
+function updateRibbon() {
   // Update ribbon based on state tracking
-  const g = getGlobal() as any;
+  const g = getGlobal();
 
   Office.ribbon.requestUpdate({
     tabs: [
@@ -78,25 +79,25 @@ export function updateRibbon() {
     Managing the dialogs.
 */
 
-const dialogConnectUrl: string =
+const dialogConnectUrl =
   location.protocol +
   "//" +
   location.hostname +
   (location.port ? ":" + location.port : "") +
-  "/login/connect.html";
+  "/src/dialog/connect.html";
 
-export async function connectService() {
+async function connectService() {
   //pop up a dialog
-  let connectDialog: Office.Dialog;
+  let connectDialog;
 
   const processMessage = () => {
-    const g = getGlobal() as any;
+    const g = getGlobal();
     g.state.setConnected(true);
     g.state.isConnectInProgress = false;
     connectDialog.close();
   };
 
-  let g = getGlobal() as any;
+  let g = getGlobal();
   await Office.context.ui.displayDialogAsync(
     dialogConnectUrl,
     { height: 40, width: 30, promptBeforeOpen: false },
@@ -115,7 +116,7 @@ export async function connectService() {
   );
 }
 
-export function generateCustomFunction(selectedOption: string) {
+function generateCustomFunction(selectedOption) {
   try {
     Excel.run(async (context) => {
       /**
@@ -136,9 +137,9 @@ export function generateCustomFunction(selectedOption: string) {
 
 //This will check if state is initialized, and if not, initialize it.
 //Useful as there are multiple entry points that need the state and it is not clear which one will get called first.
-export async function ensureStateInitialized(isOfficeInitializing: boolean) {
+async function ensureStateInitialized(isOfficeInitializing) {
   console.log("ensureInitialize called");
-  let g = getGlobal() as any;
+  let g = getGlobal();
   let initValue = false;
   if (isOfficeInitializing) {
     //we are being called in response to Office Initialize
@@ -164,11 +165,11 @@ export async function ensureStateInitialized(isOfficeInitializing: boolean) {
       isSumEnabled: false,
       isInitialized: initValue,
       updateRct: () => {},
-      setTaskpaneStatus: (opened: boolean) => {
+      setTaskpaneStatus: (opened) => {
         g.state.isTaskpaneOpen = opened;
         updateRibbon();
       },
-      setConnected: (connected: boolean) => {
+      setConnected: (connected) => {
         g.state.isConnected = connected;
 
         if (connected) {
@@ -205,7 +206,7 @@ export async function ensureStateInitialized(isOfficeInitializing: boolean) {
 }
 
 async function onTableSelectionChange(event) {
-  let g = getGlobal() as any;
+  let g = getGlobal();
   return Excel.run((context) => {
     return context.sync().then(() => {
       console.log("Table section changed...");
@@ -224,9 +225,9 @@ async function onTableSelectionChange(event) {
   });
 }
 
-export async function monitorSheetChanges() {
+async function monitorSheetChanges() {
   try {
-    let g = getGlobal() as any;
+    let g = getGlobal();
     if (g.state === undefined) {
       return;
     }
@@ -248,5 +249,17 @@ export async function monitorSheetChanges() {
     }
   } catch (error) {
     console.error(error);
+  }
+}
+
+function updateTaskPaneUI() {
+  let g = getGlobal();
+
+  if (g.state.isConnected === true) {
+    document.getElementById("filterSection").style.visibility = "visible";
+    document.getElementById("connectSection").style.visibility = "hidden";
+  } else {
+    document.getElementById("filterSection").style.visibility = "hidden";
+    document.getElementById("connectSection").style.visibility = "visible";
   }
 }
