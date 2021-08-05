@@ -81,7 +81,7 @@ function updateRibbon() {
 
 async function connectService() {
   //construct url for dialog
-  const path = location.pathname.substr(0,location.path.length-13);
+  const path = location.pathname.substr(0,location.pathname.length-13);
   const dialogConnectUrl = location.protocol +
   "//" +
   location.hostname +
