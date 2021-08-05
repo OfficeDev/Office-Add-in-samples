@@ -12,46 +12,13 @@ Office.onReady((info) => {
     CustomFunctions.associate("ADD", add);
     CustomFunctions.associate("GETDATA", getData);
     
-    document.getElementById("connectService").onclick = connectService;
+    document.getElementById("connectService").onclick = connectService; // in office-apis-helpers.js
     document.getElementById("selectFilter").onclick = insertFilteredData;
     
     updateRibbon();
     updateTaskPaneUI();
   }
 });
-
-async function connectService() {
-  //pop up a dialog
-  let connectDialog;
-
-  const processMessage = () => {
-    const g = getGlobal();
-    g.state.setConnected(true);
-    g.state.isConnectInProgress = false;
-
-    updateTaskPaneUI();
-
-    connectDialog.close();
-  };
-
-  let g = getGlobal();
-  await Office.context.ui.displayDialogAsync(
-    dialogConnectUrl,
-    { height: 40, width: 30, promptBeforeOpen: false },
-    (result) => {
-      if (result.status === Office.AsyncResultStatus.Failed) {
-        console.log(`${result.error.code} ${result.error.message}`);
-        g.state.setConnected(false);
-      } else {
-        connectDialog = result.value;
-        connectDialog.addEventHandler(
-          Office.EventType.DialogMessageReceived,
-          processMessage
-        );
-      }
-    }
-  );
-}
 
 async function insertFilteredData() {
   try {
