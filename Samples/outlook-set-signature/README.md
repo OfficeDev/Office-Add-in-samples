@@ -22,7 +22,7 @@ description: "Use Outlook event-based activation to set the signature."
 
 This sample uses event-based activation to run an Outlook add-in when the user creates a new message or appointment. The add-in can respond to events, even when the task pane is not open. It also uses the [setSignatureAsync API](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#setSignatureAsync_data__options__callback_). If no signature is set, the add-in prompts the user to set a signature, and can then open the task pane for the user.
 
-For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch)
+For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch).
 
 ## Features
 
@@ -31,11 +31,15 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Applies to
 
-- Outlook on Windows, and on the web.
+- Outlook
+  - Windows
+  - web browser
 
 ## Prerequisites
 
-- Before running this sample, you need a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) installed on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+- Microsoft 365
+
+    > **Note**: If you do not have a Microsoft 365 subscription, you can get one for development purposes by signing up for the [Microsoft 365 developer program](https://developer.microsoft.com/office/dev-program).
 
 ## Solution
 
@@ -45,44 +49,70 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Version history
 
-Version  | Date | Comments
+| Version  | Date | Comments |
 |---------|------|---------|
-1.0 | 4-01-2021 | Initial release
-1.1 | 6-1-2021 | Update for GA of setSignature API
+| 1.0 | 4-1-2021 | Initial release |
+| 1.1 | 6-1-2021 | Update for GA of setSignature API |
+| 1.2 | 7-27-2021 | Convert to GitHub hosting |
 
 ## Scenario: Event-based activation
 
 In this scenario, the add-in helps the user manage their email signature, even when the task pane is not open. When the user sends a new email message, or creates a new appointment, the add-in displays an information bar prompting the user to create a signature. If the user chooses to set a signature, the add-in opens the task pane for the user to continue setting their signature.
 
-## Build and run the solution
+## Run the sample
 
-1. Clone or download this repository.
-2. In the command line, go to the **outlook-set-signature** folder from your root directory.
-3. Run the following command to download the dependencies required to run the sample.
-    
-    ```command&nbsp;line
-    $ npm install
-    ```
-4. Run the following command to start the localhost web server.
-    
-    ```command&nbsp;line
-    $ npm run dev-server
-    ```
+You can run this sample in Outlook on Windows or in a browser. The add-in web files are served from this repo on GitHub.
 
-5. Sideload the add-in to Outlook on Windows, or Outlook on the web by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+
+### Try it out
 
 Once the add-in is loaded use the following steps to try out the functionality.
 
 1. Open Outlook on Windows or in a browser.
-2. Create a new message or appointment.
-    
-    You should see a notification at the top of the message that reads: **Please set your signature with the PnP sample add-in.**
-    
-3. Choose **Set signatures**. This will open the task pane for the add-in.
-4. In the task pane fill out the fields for your signature data. Then choose **Save**.
-5. The task pane will load a page of sample templates. You can assign the templates to a **New Mail**, **Reply**, or **Forward** action. Once you've assign the templates you want to use, choose **Save**.
+1. Create a new message or appointment.
+
+    > You should see a notification at the top of the message that reads: **Please set your signature with the PnP sample add-in.**
+
+1. Choose **Set signatures**. This will open the task pane for the add-in.
+1. In the task pane fill out the fields for your signature data. Then choose **Save**.
+1. The task pane will load a page of sample templates. You can assign the templates to a **New Mail**, **Reply**, or **Forward** action. Once you've assign the templates you want to use, choose **Save**.
 
 The next time you create a message or appointment, you'll see the signature you selected applied by the add-in.
+
+## Run the sample from localhost
+
+If you prefer to host the web server for the sample on your computer, follow these steps:
+
+1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
+
+    ```console
+    npm install --global http-server
+    ```
+
+1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
+1. From a command prompt, go to the root folder and run the following command.
+
+    ```console
+    http-server -S --cors . -p 3000
+    ```
+
+1. To reroute to localhost, run office-addin-https-reverse-proxy. If you haven't installed this, run the following command.
+
+    ```console
+    npm install --global office-addin-https-reverse-proxy 
+    ```
+
+    To reroute, run the following in another command prompt.
+
+    ```console
+    office-addin-https-reverse-proxy --url http://localhost:3000 
+    ```
+
+1. Sideload `manifest-localhost.xml` in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. [Try out the sample!](#try-it-out)
 
 ## Key parts of this sample
 
@@ -94,8 +124,8 @@ The manifest configures a runtime that is loaded specifically to handle event-ba
 <Runtime resid="Autorun">
   <Override type="javascript" resid="runtimeJs"/>
 ...
-<bt:Url id="Autorun" DefaultValue="https://localhost:3000/src/runtime/HTML/autorunweb.html"></bt:Url>
-<bt:Url id="runtimeJs" DefaultValue="https://localhost:3000/src/runtime/Js/autorunshared.js"></bt:Url>
+<bt:Url id="Autorun" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-set-signature/src/runtime/HTML/autorunweb.html"></bt:Url>
+<bt:Url id="runtimeJs" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-set-signature/src/runtime/Js/autorunshared.js"></bt:Url>
 ```
 
 The add-in handles two events that are mapped to the `checkSignature()` function.
@@ -138,7 +168,7 @@ Template B shows how to reference an image from the HTML. It uses the `<img>` ta
 
 ```xml
  str +=
-    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://localhost:3000/assets/sample-logo.png' alt='Logo' /></td>";
+    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-set-signature/assets/sample-logo.png' alt='Logo' /></td>";
 ```
 
 This is a simpler approach as you don't need to attach the image. Although your web server will need to provide the image anytime Outlook needs it for a signature.
@@ -149,19 +179,6 @@ The task pane code is located under the `taskpane` folder of this project. The t
 
 - `editsignature.html` is loaded when the task pane first opens. It lets the user enter details such as name and title for their signature.
 - `assignsignature.html` is loaded when the user saves their details from the `editsignature.html` page. It lets the user assign the signature to actions such as "new email", "reply", and "forward.
-
-## Security notes
-
-In the webpack.config.js file, a header is set to `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
-
-You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
-
-Install or uninstall the certificates by running the following commands in the project folder.
-
-```
-npx office-addin-dev-certs install
-npx office-addin-dev-certs uninstall
-```
 
 ## Copyright
 
