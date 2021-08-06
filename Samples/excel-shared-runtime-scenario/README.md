@@ -32,11 +32,13 @@ This sample shows how to create contextual ribbon buttons that are enabled based
 
 ## Applies to
 
--  Excel on Windows, Mac, and in a browser.
+- Excel on Windows
+- Excel on Mac
+- Excel on the web
 
 ## Prerequisites
 
-Before running this sample, make sure you have installed a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) on your computer. To check if you have already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+- A Microsoft 365 tenant
 
 ## Solution
 
@@ -49,12 +51,7 @@ Office Add-in Shared Runtime Ribbon/Task pane APIs | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0 | 3-9-2020 | Initial release
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
-----------
+1.1 | 8-5-2021 | Update to GitHub page hosting
 
 ## Scenario: A contextual add-in
 
@@ -64,17 +61,20 @@ The add-in is aware of whether it is connected. When connected you will see the 
 
 Additionally the add-in has a custom function that can display a filtered view of the data. The custom function is aware of the connection status, so that when connected, it will display the mock data. When disconnected, it will show `#N/A`.
 
-## Create certificate files
+## Run the sample
 
-The addin needs HTTPS website. Please run `npx office-addin-dev-certs install --days 365` to install dev certificates.
+You can run this sample in Excel on the web. The add-in web files are served from this repo on GitHub.
 
-## Build and run the solution
-
-In the command prompt in the root of the project, run the command `npm install`.
-
-When the installation completes, run the command `start npm start`. This will open a second command prompt, build the project and then start a server (with dev mode settings). It takes from 5 to 30 seconds. When it finishes, the last line should say `Compiled successfully`. Minimize this command prompt.
-
-Back in the original command prompt, run the command `npm run sideload`. This will launch Excel and sideload the add-in. After a few seconds, a ribbon named `Contoso Data` will appear.
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Open [Office on the web](https://office.live.com/).
+1. Choose **Excel**, and then open a new workbook.
+1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
+1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../images/office-add-ins-my-account.png)
+1. Browse to the add-in manifest file, and then select **Upload**.
+   ![The upload add-in dialog with buttons for browse, upload, and cancel.
+](../../images/upload-add-in.png)
+1. Verify that the add-in loaded successfully. You will see a **Contoso** tab on the ribbon.
 
 The add-in's ribbon buttons have the following behavior:
 
@@ -88,7 +88,6 @@ The add-in's ribbon buttons have the following behavior:
 - **Close task pane:** Closes the task pane. The task pane is not shut down and will remember its state.
 
 If the add-in is not connected to a service, the task pane will show a button to connect. Once connected, the task pane lets you choose a category from the data and insert a custom function. The custom function will filter data displayed to the selected category.
-
 
 ## Key parts of this sample
 
@@ -139,18 +138,41 @@ export async function monitorSheetChanges() {
       ...
 ```
 
+
+## Run the sample from Localhost
+
+If you prefer to host the web server for the sample on your computer, follow these steps:
+
+1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+    
+    ```console
+    npm install --global http-server
+    ```
+    
+2. Use a tool such as openssl to generate a self-signed certificate for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
+3. From a command prompt, go to the web-worker folder and run the following command:
+    
+    ```console
+    http-server -S --cors . -p 3000
+    ```
+    
+4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
+    
+    ```console
+    npm install --global office-addin-https-reverse-proxy
+    ```
+    
+    To reroute run the following in another command prompt:
+    
+    ```console
+    office-addin-https-reverse-proxy --url http://localhost:3000
+    ```
+    
+5. Follow the steps in Run the sample, but upload the `manifest-localhost.xml` file for step 6.
+
 ## Security notes
 
-In the webpack.dev.js file, a header is set to `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
-
-You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
-
-You can install or uninstall the certificates by running the following commands in the project folder.
-
-```
-npx office-addin-dev-certs install
-npx office-addin-dev-certs uninstall
-```
+None
 
 ## Copyright
 
