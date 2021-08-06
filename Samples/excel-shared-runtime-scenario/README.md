@@ -63,11 +63,11 @@ Additionally the add-in has a custom function that can display a filtered view o
 
 ## Run the sample
 
-You can run this sample in Excel in a browser. The add-in web files are served from this repo on GitHub.
+You can run this sample in Excel on the web. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 1. Open [Office on the web](https://office.live.com/).
-1. Choose **Excel**, and then open a new document.
+1. Choose **Excel**, and then open a new workbook.
 1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
 1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../images/office-add-ins-my-account.png)
@@ -149,7 +149,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     npm install --global http-server
     ```
     
-2. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
+2. Use a tool such as openssl to generate a self-signed certificate for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
 3. From a command prompt, go to the web-worker folder and run the following command:
     
     ```console
