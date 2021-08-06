@@ -1,0 +1,52 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contoso Data Importer</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    <script type="text/javascript" src="../utilities/globals.js"></script>
+    <script type="text/javascript" src="../utilities/office-apis-helpers.js"></script>
+    <script type="text/javascript" src="../commands/commands.js"></script>
+    <script type="text/javascript" src="../functions/functions.js"></script>
+    <script type="text/javascript" src="taskpane.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" />
+        <h1 class="ms-font-su">Welcome</h1>
+    </header>
+ 
+    <div id='filterSection'>
+        <h3>Select filter:</h3>
+        <div>
+            <input type="radio" id="communicationFilter" name="filter" value="communicationFilter">Excel File</input>
+        </div>
+        <div>
+            <input type="radio" id="groceriesFilter" name="filter" value="groceriesFilter">SQL Database</input>
+        </div><br>
+        <button id='selectFilter'>Insert filtered data</button>
+
+    </div>
+
+    <div id='connectSection'>
+    <button id='connectService'>Connect to service</button>
+    </div>
+    </main>
+</body>
+
+</html>
