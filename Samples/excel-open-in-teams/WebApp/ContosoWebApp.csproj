@@ -86,6 +86,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Financial.cs" />
+    <Compile Include="Models\IProductData.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Teams.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\AuthenticationConfig.cs" />

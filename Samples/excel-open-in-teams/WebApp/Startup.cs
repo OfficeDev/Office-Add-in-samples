@@ -18,6 +18,8 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Owin;
 using Owin;
+using Microsoft.Extensions.DependencyInjection;
+using WebApp.Models;
 
 [assembly: OwinStartup(typeof(WebApp.Startup))]
 
@@ -28,6 +30,11 @@ namespace WebApp
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+        }
+        public void ConfigureServices(IServiceCollection services)
+        {
+            //Associate singleton list of products from model just for dev and testing purposes
+            services.AddSingleton<IProductData, InMemoryProductData>();
         }
     }
 }

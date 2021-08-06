@@ -45,7 +45,7 @@ namespace WebApp.Utils
 
             // Get the sheetData cell table.
             SheetData sheetData = worksheetPart.Worksheet.GetFirstChild<SheetData>();
-            AddData(sheetData);
+            InsertFinancialHeader(sheetData);
 
             EmbedAddin(spreadsheetDocument);
             workbookpart.Workbook.Save();
@@ -57,14 +57,52 @@ namespace WebApp.Utils
         }
 
 
-        private void AddData (SheetData sheetData)
+        /// <summary>
+        /// Inserts the header row for the financial table at A1 position
+        /// </summary>
+        /// <param name="sheetData">Reference to the sheetData section to insert the row.</param>
+        private void InsertFinancialHeader (SheetData sheetData)
         {
+            InsertCellValue(sheetData, 1, "A1", "Product", CellValues.String);
+            InsertCellValue(sheetData, 1, "B1", "Qtr1", CellValues.String);
+            InsertCellValue(sheetData, 1, "C1", "Qtr2", CellValues.String);
+            InsertCellValue(sheetData, 1, "D1", "Qtr3", CellValues.String);
+            InsertCellValue(sheetData, 1, "E1", "Qtr4", CellValues.String);
+        }
 
-            InsertCellValue(sheetData, 1, "A1", "Name", CellValues.String);
-            InsertCellValue(sheetData, 1, "B1", "Description", CellValues.String);
-            InsertCellValue(sheetData, 1, "C1", "Value", CellValues.String);
+        /// <summary>
+        /// Constructs a cell name from row and column numbers into an Excel string format like "AB21"
+        /// </summary>
+        /// <param name="row">row number value</param>
+        /// <param name="col">column number value</param>
+        /// <returns>Excel string form of the cell name</returns>
+        private string ToCellName(uint row, uint col)
+        {
+            //Column is alpha based composed of big letter and small leter like AC or BN
+            //Special case is first set of A..Z in which case big letter will be a space.
+            char bigLetter;
+            uint ordinal = col / 26; //26 is Alphabet size
+            if (ordinal == 0) bigLetter = ' ';
+            else bigLetter = (char)(ordinal + 96); //96 is ASCII A
 
+            char smallLetter;
+            ordinal = col % 26; //26 is Alphabet size
+            smallLetter = (char)(ordinal + 96); //96 is ASCII A
 
+            string answer = bigLetter + smallLetter + row.ToString();
+            return answer.Trim();
+        }
+
+        /// <summary>
+        /// Insert the financial data rows into a table starting at A2
+        /// </summary>
+        /// <param name="sheetData">The sheetData to insert into</param>
+        /// <param name="values">The values array to insert</param>
+        private void InsertFinancialData (SheetData sheetData, float [,] values)
+        {
+            for (uint row = 0; row < values.GetLength(1); row++)
+                for (uint col = 0; col < values.GetLength(0); col++)
+                    InsertCellValue(sheetData, 1, ToCellName(1+row,col), values[row, col].ToString(), CellValues.Number);
         }
 
         private void InsertCellValue(SheetData sheetData, uint rowIndex, string cellName, string value, CellValues type)
