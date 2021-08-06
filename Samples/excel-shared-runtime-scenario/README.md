@@ -34,7 +34,7 @@ This sample shows how to create contextual ribbon buttons that are enabled based
 
 - Excel on Windows
 - Excel on Mac
-- Excel in a browser
+- Excel on the web
 
 ## Prerequisites
 
