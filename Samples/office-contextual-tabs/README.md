@@ -23,7 +23,7 @@ This sample accomplishes the following tasks using Office ribbon APIs.
 - Creates a table in Excel. When the focus is inside the table, the custom tab is displayed.
 - When the focus is outside the table, the custom tab is hidden.
 
-![Screen shot that shows when a table in Excel has the focus, a custom contextual tab named Table Data is shown on the ribbon](pnp-add-contextual-tabs-to-your-add-in.png)
+![Screenshot that shows when a table in Excel has the focus, a custom contextual tab named Table Data is shown on the ribbon.](pnp-add-contextual-tabs-to-your-add-in.png)
 
 ## Applies to
 
@@ -62,7 +62,7 @@ Take the following actions to try out the add-in and the contextual tab.
 
 ## Key parts of this sample
 
-This sample inserts a table of fictitious sales data for Contoso. The data is pulled from one of two mock data sources; a mock Excel file, or a mock SQL database. The user can select which data source to use either in the task pane, or in the contextual tab.
+This sample inserts a table of fictitious sales data for Contoso. The data is pulled from one of two mock data sources: a mock Excel file, or a mock SQL database. The user can select which data source to use either in the task pane, or in the contextual tab.
 
 After the sales table is created, the sample creates a contextual tab named **Table Data**. When you select any cell or range inside the table, the contextual tab is displayed on the ribbon. When you select any cell or range outside the table, the contextual tab is hidden.
 
@@ -169,7 +169,7 @@ If you prefer to host the web server for the sample on your computer, follow the
 
 ## Questions and comments
 
-We'd love to get your feedback about this sample. Please send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://docs.microsoft.com/en-us/answers/topics/office-js-dev.html) using the office-js-dev tag.
+We'd love to get your feedback about this sample. Please send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://docs.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Additional resources
 
@@ -180,7 +180,7 @@ Demonstration video:
 
 ## Solution
 
-Solution | Author(s)
+Solution | Authors
 ---------|----------
 Create custom contextual tabs on the ribbon | Microsoft
 
