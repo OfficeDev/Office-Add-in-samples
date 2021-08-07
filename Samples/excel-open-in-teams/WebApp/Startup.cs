@@ -31,10 +31,5 @@ namespace WebApp
         {
             ConfigureAuth(app);
         }
-        public void ConfigureServices(IServiceCollection services)
-        {
-            //Associate singleton list of products from model just for dev and testing purposes
-            services.AddSingleton<IProductData, InMemoryProductData>();
-        }
     }
 }

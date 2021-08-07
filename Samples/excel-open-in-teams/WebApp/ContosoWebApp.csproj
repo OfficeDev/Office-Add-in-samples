@@ -82,6 +82,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -134,12 +135,13 @@
     <Content Include="Views\Home\SendMail.cshtml" />
     <Content Include="Views\Home\MailSent.cshtml" />
     <Content Include="Views\Home\OldTeams.cshtml" />
-    <Content Include="Views\Home\OpenInTeams.cshtml" />
-    <Content Include="Views\Home\PickChannel.cshtml" />
+    <Content Include="Views\Home\TeamsList.cshtml" />
+    <Content Include="Views\Home\ChannelsListForTeam.cshtml" />
     <Content Include="Views\Home\UploadToTeams.cshtml" />
     <Content Include="Views\Shared\Redirect_Layout.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Financial.cshtml" />
+    <Content Include="Views\Products\Products.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Project_Readme.html" />

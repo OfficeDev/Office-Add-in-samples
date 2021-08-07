@@ -22,13 +22,13 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-
+                    <li>@Html.ActionLink("Product data", "Products", "Products")</li>
 
                     @if (Request.IsAuthenticated)
                     {
                         <text>
-                            <li>@Html.ActionLink("Open in Teams", "OpenInTeams", "Home")</li>
-                            <li>@Html.ActionLink("Financial", "Financial", "Home")</li>
+                            <li>@Html.ActionLink("Open in Teams", "TeamsList", "Home")</li>
+                            <li>@Html.ActionLink("Product data", "Products", "Home")</li>
 
                         </text>
                     }
