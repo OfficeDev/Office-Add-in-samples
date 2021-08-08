@@ -4,15 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApp.Models;
-using Microsoft.Identity.Client;
-using Microsoft.Identity.Web;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.OpenIdConnect;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using WebApp.Utils;
 using Newtonsoft.Json;
@@ -22,59 +15,179 @@ namespace WebApp.Controllers
 
     public class ProductsController : Controller
     {
+        // Keeps track of an in memory db for dev and testing purposes
         private readonly IProductData db;
 
         public ProductsController()
         {
+            //Create in memory product data
             this.db = new InMemoryProductData();
         }
 
+        /// <summary>
+        /// Gets the products page which will display the product sales data
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
-        // GET: Products
         public ActionResult Products()
         {
+            // Construct model with product data and return it with the view
             var model = db.GetAll();
             return View(model);
         }
 
+        /// <summary>
+        /// Step 1: After user chooses to "Open in Teams" this action is called. Calls the Graph API to
+        /// get a list of Teams to return so that the user can select which team they want to open.
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
-
-        public async Task<ActionResult> UploadSpreadsheet(string ChannelList)
+        public async Task<ActionResult> TeamsList()
         {
-            //Build a basic spreadsheet
-            SpreadsheetBuilder s = new SpreadsheetBuilder();
-            var spreadsheetBytes = s.CreateSpreadsheet("ProductSales",db.GetAll());
+            try
+            {
+                string[] scopes = { "Team.ReadBasic.All" };
 
-            //upload that file
-            //get file folder for the channel
-            string[] subs = ChannelList.Split(',');
-            string channelID = subs[0];
-            string teamID = subs[1];
-            string channelName = subs[2];
-            string fileName = "productdata.xlsx";
-            string[] scopes = { "Team.ReadBasic.All" };
+                string jsonResponse = await GraphAPIHelper.CallGraphAPIGet(scopes, "https://graph.microsoft.com/v1.0/me/joinedTeams");
+                ViewBag.TeamsReady = false;
+                TeamQueryResponse json = JsonConvert.DeserializeObject<TeamQueryResponse>(jsonResponse);
 
-            string url = "https://graph.microsoft.com/v1.0/teams/" + teamID + "/channels/" + channelID + "/filesFolder";
+                // construct Team list data to send back in view
+                List<SelectListItem> items = new List<SelectListItem>();
+                foreach (var entry in json.Teams)
+                {
+                    items.Add(new SelectListItem { Text = entry.Name, Value = entry.Id, Selected = false });
+                }
 
-            string jsonResponse = await CallGraphAPI(scopes, url, HttpMethod.Get);
+                ViewBag.TeamList = items;
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message + ": More details: " + ex.InnerException;
+                return View("Error");
+            }
+        }
 
-            ChannelFolder json = JsonConvert.DeserializeObject<ChannelFolder>(jsonResponse);
+        /// <summary>
+        /// Step 2: Users selected a team (passed in TeamList), so call Graph API to get list of channels for that team.
+        /// Return channels to the view so user can select which channel.
+        /// </summary>
+        /// <param name="TeamList">Contains the team that was selected out of the origina list</param>
+        /// <returns></returns>
+        [Authorize]
+        public async Task<ActionResult> ChannelsListForTeam(string TeamList)
+        {
+            try
+            {
 
-            url = "https://graph.microsoft.com/v1.0/drives/" + json.ParentReference.DriveID + "/items/root:/" + channelName + "/" + fileName + ":/content";
 
-            ////upload file to root of Drive
-            jsonResponse = await CallGraphAPI(scopes, url, HttpMethod.Put, spreadsheetBytes);
-            FileCreated file = JsonConvert.DeserializeObject<FileCreated>(jsonResponse);
+                //Get channels for given team ID and return them
+                string[] scopes = { "Channel.ReadBasic.All" };
+                string url = $"https://graph.microsoft.com/v1.0/teams/" + TeamList + "/channels";
+                string jsonResponse = await GraphAPIHelper.CallGraphAPIGet(scopes, url);
+                Channels json = JsonConvert.DeserializeObject<Channels>(jsonResponse);
 
-            url = "https://graph.microsoft.com/v1.0/teams/" + teamID + "/channels/" + channelID + "/messages";
+                System.Collections.Generic.List<SelectListItem> items = new System.Collections.Generic.List<SelectListItem>();
+                foreach (var entry in json.Value)
+                {
+                    items.Add(new SelectListItem { Text = entry.Name, Value = entry.Id + "," + TeamList + "," + entry.Name, Selected = false });
+                }
 
+                ViewBag.ChannelList = items;
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message + ": More details: " + ex.InnerException;
+                return View("Error");
+            }
+        }
+
+        /// <summary>
+        /// Step 3: Upload the spreadsheet now that we have the team and channel to send to.
+        /// Upload the spreadsheet to the OneDrive for the selected team.
+        /// Then create a message in the channel with a link to the spreadsheet to open.
+        /// </summary>
+        /// <param name="ChannelList">Contains the channel to create the message in.</param>
+        /// <returns></returns>
+        [Authorize]
+        public async Task<ActionResult> UploadSpreadsheet(string channelList)
+        {
+            try
+            {
+                //Split out the channelList into the params it contains
+                string[] subs = channelList.Split(',');
+                string channelID = subs[0];
+                string teamID = subs[1];
+                string channelName = subs[2];
+                string fileName = "productdata.xlsx";
+
+                // Build the spreadsheet
+                SpreadsheetBuilder s = new SpreadsheetBuilder();
+                var spreadsheetBytes = s.CreateSpreadsheet("ProductSales", db.GetAll());
+
+                // Upload spreadsheet to the Team channel's OneDrive
+                FileCreated file = await UploadSpreadsheetToOneDrive(teamID, channelID, channelName, fileName, spreadsheetBytes);
+
+                // Create a new message in channel linking to the new spreadsheet file
+                Message msg = await CreateChannelMessage(teamID, channelID, file, fileName);
+
+                ViewBag.redirect = msg.webUrl; //pass along the Message redirect url to the new view.
+                return View("UploadToTeams");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = ex.Message + ": More details: " + ex.InnerException;
+                return View("Error");
+            }
+        }
+
+       
+        private async Task<FileCreated> UploadSpreadsheetToOneDrive(string teamID, string channelID, string channelName, string fileName, byte[] spreadsheetBytes)
+        {
+            try
+            {
+                // Construct url to get name of OneDrive file folder from team and channel
+                string url = "https://graph.microsoft.com/v1.0/teams/" + teamID + "/channels/" + channelID + "/filesFolder";
+
+                // Set scopes for Graph API call
+                string[] scopes = { "Team.ReadBasic.All" };
+                string jsonResponse = await GraphAPIHelper.CallGraphAPIGet(scopes, url);
+                ChannelFolder json = JsonConvert.DeserializeObject<ChannelFolder>(jsonResponse);
+
+                // Construct url to upload file to OneDrive on Graph
+                url = "https://graph.microsoft.com/v1.0/drives/" + json.ParentReference.DriveID + "/items/root:/" + channelName + "/" + fileName + ":/content";
+
+                // Set scopes for Graph API call
+                scopes = new string[] { "Files.ReadWrite.All" };
+                jsonResponse = await GraphAPIHelper.CallGraphAPIWithBody(scopes, url, HttpMethod.Put, spreadsheetBytes);
+
+                // Deserialize and return new file metadata
+                FileCreated file = JsonConvert.DeserializeObject<FileCreated>(jsonResponse);
+                return file;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        private async Task<Message> CreateChannelMessage(string teamID, string channelID, FileCreated file, string fileName)
+        {
+            // Construct url to create the message on the channel
+            string url = "https://graph.microsoft.com/v1.0/teams/" + teamID + "/channels/" + channelID + "/messages";
+
+            // Extract the id portion of the eTag
             var tagStartLoc = file.eTag.IndexOf('{');
             string eTag = file.eTag.Substring(tagStartLoc + 1);
             eTag = eTag.Substring(0, eTag.IndexOf('}'));
 
+            // Reset file.webUrl to just the portion needed
             var startLoc = file.webUrl.IndexOf(fileName);
             file.webUrl = file.webUrl.Substring(0, startLoc + fileName.Length);
 
+            // Construct body of message and attach link to spreadsheet
             string body = @"{
                     ""body"": {
                         ""contentType"": ""html"",
@@ -94,182 +207,15 @@ namespace WebApp.Controllers
                     ]
                 }";
 
-            //Create message with file attachment in Teams channel
-            jsonResponse = await CallGraphAPI(scopes, url, HttpMethod.Post, body);
+            // Set scopes for the Graph call
+            string[] scopes = { "ChannelMessage.Send" };
 
+            // Create message with file attachment in Teams channel
+            string jsonResponse = await GraphAPIHelper.CallGraphAPIWithBody(scopes, url, HttpMethod.Post, body);
+
+            // Return metadata describing the new message
             Message msg = JsonConvert.DeserializeObject<Message>(jsonResponse);
-            ViewBag.redirect = msg.webUrl;
-
-            return View("UploadToTeams");
-
-        }
-
-        [Authorize]
-
-        public async Task<ActionResult> ChannelsListForTeam(string TeamList)
-        {
-            //Get channels for given team ID and return them
-            string[] scopes = { "Team.ReadBasic.All" };
-            string url = $"https://graph.microsoft.com/v1.0/teams/" + TeamList + "/channels";
-            string jsonResponse = await CallGraphAPI(scopes, url, HttpMethod.Get);
-            Channels json = JsonConvert.DeserializeObject<Channels>(jsonResponse);
-
-            System.Collections.Generic.List<SelectListItem> items = new System.Collections.Generic.List<SelectListItem>();
-            foreach (var entry in json.Value)
-            {
-                items.Add(new SelectListItem { Text = entry.Name, Value = entry.Id + "," + TeamList + "," + entry.Name, Selected = false });
-            }
-
-            ViewBag.ChannelList = items;
-            return View();
-
-        }
-
-
-        [Authorize]
-
-        public async Task<ActionResult> TeamsList()
-        {
-            List<SelectListItem> items = new List<SelectListItem>();
-            string[] scopes = { "Team.ReadBasic.All" };
-
-            string jsonResponse = await CallGraphAPI(scopes, "https://graph.microsoft.com/v1.0/me/joinedTeams", HttpMethod.Get);
-            ViewBag.TeamsReady = false;
-            TeamQueryResponse json = JsonConvert.DeserializeObject<TeamQueryResponse>(jsonResponse);
-
-            foreach (var entry in json.Teams)
-            {
-                items.Add(new SelectListItem { Text = entry.Name, Value = entry.Id, Selected = false });
-            }
-
-            ViewBag.TeamList = items;
-            return View();
-        }
-
-
-
-
-        private async Task<string> CallGraphAPI(string[] scopes, string url, HttpMethod verb)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(verb, url);
-            try
-            {
-                string accessToken = await GetAccessToken(scopes);
-                return await CallGraphAPI(accessToken, request);
-            }
-            catch (Exception ex)
-            {
-                return "{ error: 'An error occurred attempting to get the access token. Details: " + ex.Message + "'}";
-            }
-        }
-
-        /// <summary>
-        /// configures a body that is plain text (string)
-        /// </summary>
-        /// <param name="scopes"></param>
-        /// <param name="url"></param>
-        /// <param name="verb"></param>
-        /// <param name="body"></param>
-        /// <returns></returns>
-        private async Task<string> CallGraphAPI(string[] scopes, string url, HttpMethod verb, string body = null)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(verb, url);
-            if (body != null)
-            {
-                ASCIIEncoding encoding = new ASCIIEncoding();
-
-                StringContent content = new StringContent(body);
-                content.Headers.ContentType.MediaType = "application/json";
-                request.Content = content;
-            }
-            try
-            {
-                string accessToken = await GetAccessToken(scopes);
-                return await CallGraphAPI(accessToken, request);
-            }
-            catch (Exception ex)
-            {
-                return "{ error: 'An error occurred attempting to get the access token. Details: " + ex.Message + "'}";
-            }
-        }
-
-        private async Task<string> GetAccessToken(string[] scopes)
-        {
-            IConfidentialClientApplication app = await MsalAppBuilder.BuildConfidentialClientApplication();
-            AuthenticationResult result = null;
-            var account = await app.GetAccountAsync(ClaimsPrincipal.Current.GetAccountId());
-            try
-            {
-                // try to get an already cached token
-                result = await app.AcquireTokenSilent(scopes, account).ExecuteAsync().ConfigureAwait(false);
-            }
-            catch (Exception ex)
-            {
-                /*
-				 * When the user access this page (from the HTTP GET action result) we check if they have the scope "Mail.Send" and 
-				 * we handle the additional consent step in case it is needed. Then, we acquire an access token and MSAL cache it for us.
-				 * So in this HTTP POST action result, we can always expect a token to be in cache. If they are not in the cache, 
-				 * it means that the user accessed this route via an unsual way.
-				 */
-                throw ex;
-            }
-            return result.AccessToken;
-        }
-
-        /// <summary>
-        /// This one does the actual call over the network
-        /// </summary>
-        /// <param name="accessToken"></param>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        private async Task<string> CallGraphAPI(string accessToken, HttpRequestMessage request)
-        {
-            HttpClient client = new HttpClient();
-            try
-            {
-                if (accessToken != null)
-                {
-                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-                    HttpResponseMessage response = await client.SendAsync(request);
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string jsonResult = await response.Content.ReadAsStringAsync();
-                        return jsonResult;
-                    }
-                    else
-                    {
-                        return "{ error: 'An error has occurred calling the Microsoft Graph API'}";
-                    }
-                }
-                return null;
-            }
-            catch (Exception ex)
-            {
-                return "{ error: 'An error has occurred calling the Microsoft Graph API. Details: " + ex.Message + "'}";
-            }
-        }
-
-
-        private async Task<string> CallGraphAPI(string[] scopes, string url, HttpMethod verb, byte[] body = null)
-        {
-            HttpRequestMessage request = new HttpRequestMessage(verb, url);
-            if (body != null)
-            {
-                ASCIIEncoding encoding = new ASCIIEncoding();
-                System.Net.Http.ByteArrayContent content = new ByteArrayContent(body);
-                request.Content = content;
-            }
-
-            try
-            {
-                string accessToken = await GetAccessToken(scopes);
-                return await CallGraphAPI(accessToken, request);
-            }
-            catch (Exception ex)
-            {
-                return "{ error: 'An error occurred attempting to get the access token. Details: " + ex.Message + "'}";
-            }
+            return msg;
         }
 
 

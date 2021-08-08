@@ -16,10 +16,12 @@ namespace WebApp.Utils
     {
 
         /// <summary>
-        /// Creates a new spreadsheet containing a sheet with your name. Spreadsheet is stored internally in _spreadsheetDocument.
-        /// If _spreadsheetDocument has an existing document, it will be reset to the newly created document.
+        /// Creates a new spreadsheet containing a sheet with the specified name.
+        /// Inserts the product data as a table.
         /// </summary>
         /// <param name="name">The name of the sheet to add to the workbook.</param>
+        /// <param name="productData">The product data values to add to the spreadsheet.</param>
+        /// <returns>A base64 byte array representing the entire spreadsheet.</returns>
         public byte[] CreateSpreadsheet (string name, IEnumerable<Product> productData)
         {
             var stream = new MemoryStream();
@@ -34,6 +36,7 @@ namespace WebApp.Utils
             // Add a WorksheetPart to the WorkbookPart.
             var worksheetPart = workbookpart.AddNewPart<WorksheetPart>();
             worksheetPart.Worksheet = new Worksheet(new SheetData());
+
             // Add Sheets to the Workbook.
             var sheets = spreadsheetDocument.WorkbookPart.Workbook.AppendChild<Sheets>(new Sheets());
 
@@ -41,33 +44,31 @@ namespace WebApp.Utils
             var sheet = new Sheet()
             { Id = spreadsheetDocument.WorkbookPart.GetIdOfPart(worksheetPart), SheetId = 1, Name = name };
             sheets.Append(sheet);
-
             workbookpart.Workbook.Save();
 
             // Get the sheetData table for the worksheet and insert the table header and product data
             SheetData sheetData = worksheetPart.Worksheet.GetFirstChild<SheetData>();
-            InsertFinancialHeader(sheetData);
+            InsertHeader(sheetData);
             InsertData(2, 1, sheetData, productData);
 
             //Embed the script lab add-in
             EmbedAddin(spreadsheetDocument);
 
-            //save and close all
+            //save and close
             workbookpart.Workbook.Save();
             spreadsheetDocument.Close();
 
-            //Convert stream to base64 to return
+            //Convert stream to base64 and return it
             var retVal = stream.ToArray();
             return retVal;
-
         }
 
 
         /// <summary>
-        /// Inserts the header row for the financial table at A1 position
+        /// Inserts the header row for the product data table at A1 position
         /// </summary>
         /// <param name="sheetData">Reference to the sheetData section to insert the row.</param>
-        private void InsertFinancialHeader (SheetData sheetData)
+        private void InsertHeader (SheetData sheetData)
         {
             InsertCellValue(sheetData, 1, "A1", "Product", CellValues.String);
             InsertCellValue(sheetData, 1, "B1", "Qtr1", CellValues.String);
@@ -89,21 +90,23 @@ namespace WebApp.Utils
             char bigLetter;
             uint ordinal = col / 26; //26 is Alphabet size
             if (ordinal == 0) bigLetter = ' ';
-            else bigLetter = (char)(ordinal + 96); //96 is ASCII A
+            else bigLetter = (char)(ordinal + 'A');
 
             char smallLetter;
-            ordinal = col % 26; //26 is Alphabet size
-            smallLetter = (char)(ordinal + 96); //96 is ASCII A
+            ordinal = (col % 26)-1; //26 is Alphabet size
+            smallLetter = (char)(ordinal + 'A');
 
             string answer = bigLetter.ToString() + smallLetter.ToString() + row.ToString();
             return answer.Trim();
         }
 
         /// <summary>
-        /// Insert the data rows into a table starting at A2
+        /// Insert the data rows into a table at specified row,col position.
         /// </summary>
+        /// <param name="row">The row index to start at</param>
+        /// <param name="col">The column index to start at</param>
         /// <param name="sheetData">The sheetData to insert into</param>
-        /// <param name="values">The values array to insert</param>
+        /// <param name="productData">The product values to insert</param>
         private void InsertData (uint row, uint col, SheetData sheetData, IEnumerable<Product> productData)
         {
             foreach (Product p in productData)
@@ -117,6 +120,14 @@ namespace WebApp.Utils
             }
         }
 
+        /// <summary>
+        /// Inserts a cell value into the specified location of the sheet.
+        /// </summary>
+        /// <param name="sheetData">The sheetData to insert into</param>
+        /// <param name="rowIndex">The row index location to insert into</param>
+        /// <param name="cellName">String name of the cell to insert into</param>
+        /// <param name="value">The value to insert</param>
+        /// <param name="type">The type of the value to insert</param>
         private void InsertCellValue(SheetData sheetData, uint rowIndex, string cellName, string value, CellValues type)
         {
             // Add a row to the cell table.
@@ -145,23 +156,12 @@ namespace WebApp.Utils
 
         }
 
-        public static void AddDataToCell(Row row, Cell cell, string value, string cellReference)
-        {
-            // Add the cell to the cell table at A1.
-            Cell newCell = new Cell() { CellReference = cellReference };
-            row.InsertBefore(newCell, cell);
-
-            // Set the cell value to be a numeric value of 100.
-            newCell.CellValue = new CellValue(value);
-            newCell.DataType = new EnumValue<CellValues>(CellValues.String);
-
-        }
 
         /*
-     * Except for code enclosed in "CUSTOM MODIFICATION", all code and comments below this point 
-     * were generated by the Open XML SDK 2.5 Productivity Tool which you can get from here:
-     * https://www.microsoft.com/en-us/download/details.aspx?id=30425
-     */
+        * Except for code enclosed in "CUSTOM MODIFICATION", all code and comments below this point 
+         * were generated by the Open XML SDK 2.5 Productivity Tool which you can get from here:
+        * https://www.microsoft.com/en-us/download/details.aspx?id=30425
+        */
 
         // Adds child parts and generates content of the specified part.
         private void CreateWebExTaskpanesPart(WebExTaskpanesPart part)
@@ -185,6 +185,13 @@ namespace WebApp.Utils
             // Add the property that makes the taskpane visible.
             We.WebExtensionProperty webExtensionProperty1 = new We.WebExtensionProperty() { Name = "Office.AutoShowTaskpaneWithDocument", Value = "true" };
             webExtensionPropertyBag1.Append(webExtensionProperty1);
+
+            // CUSTOM MODIFICATION BEGIN
+            // Add the property that specifies the snippet to import.
+            string snippetToImportValue = string.Format("{{\"type\":\"gist\",\"id\":\"{0}\"}}", "{72189570-AE11-4207-9DEE-C8BDE4B83188}");
+            We.WebExtensionProperty webExtensionProperty2 = new We.WebExtensionProperty() { Name = "SnippetToImport", Value = snippetToImportValue };
+            webExtensionPropertyBag1.Append(webExtensionProperty2);
+            // CUSTOM MODIFICATION END
 
             We.WebExtensionBindingList webExtensionBindingList1 = new We.WebExtensionBindingList();
 
@@ -217,6 +224,7 @@ namespace WebApp.Utils
 
             part.Taskpanes = taskpanes1;
         }
+
         // Embeds the add-in into a file of the specified type.
         private void EmbedAddin(SpreadsheetDocument spreadsheet)
         {

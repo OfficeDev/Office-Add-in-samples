@@ -9,6 +9,10 @@ namespace WebApp.Models
     {
         IEnumerable<Product> GetAll();
     }
+
+    /// <summary>
+    /// For dev testing creates an in memory database with some test product data
+    /// </summary>
     public class InMemoryProductData : IProductData
     {
         List<Product> products;

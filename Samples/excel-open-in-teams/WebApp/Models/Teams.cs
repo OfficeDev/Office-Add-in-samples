@@ -8,22 +8,7 @@ using System.Collections;
 
 namespace WebApp.Models
 {
-    public class MyViewModel
-    {
-        public string SelectedTeamName { get; set; }
-        public IEnumerable<SelectListItem> TeamItems { get; set; }
-    }
-
-    public class ChannelViewModel
-    {
-        public string SelectedChannelName { get; set; }
-        public IEnumerable<SelectListItem> ChannelItems { get; set; }
-    }
-    public class Teams
-    {
-        public string Name { get; set; }
-        public string Id { get; set; }
-    }
+   
     public class TeamQueryResponse
     {
         [JsonProperty("@odata.context")]
