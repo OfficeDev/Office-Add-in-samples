@@ -8,17 +8,19 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using System.IO;
 using We = DocumentFormat.OpenXml.Office2013.WebExtension;
 using Wetp = DocumentFormat.OpenXml.Office2013.WebExtentionPane;
+using WebApp.Models;
 
 namespace WebApp.Utils
 {
     public class SpreadsheetBuilder
     {
-/// <summary>
+
+        /// <summary>
         /// Creates a new spreadsheet containing a sheet with your name. Spreadsheet is stored internally in _spreadsheetDocument.
         /// If _spreadsheetDocument has an existing document, it will be reset to the newly created document.
         /// </summary>
         /// <param name="name">The name of the sheet to add to the workbook.</param>
-        public byte[] CreateSpreadsheet (string name)
+        public byte[] CreateSpreadsheet (string name, IEnumerable<Product> productData)
         {
             var stream = new MemoryStream();
             // By default, AutoSave = true, Editable = true, and Type = xlsx.
@@ -40,19 +42,23 @@ namespace WebApp.Utils
             { Id = spreadsheetDocument.WorkbookPart.GetIdOfPart(worksheetPart), SheetId = 1, Name = name };
             sheets.Append(sheet);
 
-
             workbookpart.Workbook.Save();
 
-            // Get the sheetData cell table.
+            // Get the sheetData table for the worksheet and insert the table header and product data
             SheetData sheetData = worksheetPart.Worksheet.GetFirstChild<SheetData>();
             InsertFinancialHeader(sheetData);
+            InsertData(2, 1, sheetData, productData);
 
+            //Embed the script lab add-in
             EmbedAddin(spreadsheetDocument);
+
+            //save and close all
             workbookpart.Workbook.Save();
             spreadsheetDocument.Close();
-            //Convert stream to base64
-            var answer = stream.ToArray();
-            return answer;
+
+            //Convert stream to base64 to return
+            var retVal = stream.ToArray();
+            return retVal;
 
         }
 
@@ -89,20 +95,26 @@ namespace WebApp.Utils
             ordinal = col % 26; //26 is Alphabet size
             smallLetter = (char)(ordinal + 96); //96 is ASCII A
 
-            string answer = bigLetter + smallLetter + row.ToString();
+            string answer = bigLetter.ToString() + smallLetter.ToString() + row.ToString();
             return answer.Trim();
         }
 
         /// <summary>
-        /// Insert the financial data rows into a table starting at A2
+        /// Insert the data rows into a table starting at A2
         /// </summary>
         /// <param name="sheetData">The sheetData to insert into</param>
         /// <param name="values">The values array to insert</param>
-        private void InsertFinancialData (SheetData sheetData, float [,] values)
+        private void InsertData (uint row, uint col, SheetData sheetData, IEnumerable<Product> productData)
         {
-            for (uint row = 0; row < values.GetLength(1); row++)
-                for (uint col = 0; col < values.GetLength(0); col++)
-                    InsertCellValue(sheetData, 1, ToCellName(1+row,col), values[row, col].ToString(), CellValues.Number);
+            foreach (Product p in productData)
+            {
+                InsertCellValue(sheetData, row, ToCellName(row, col), p.Name, CellValues.String);
+                InsertCellValue(sheetData, row, ToCellName(row, col+1), p.Qtr1.ToString(), CellValues.Number);
+                InsertCellValue(sheetData, row, ToCellName(row, col+2), p.Qtr2.ToString(), CellValues.Number);
+                InsertCellValue(sheetData, row, ToCellName(row, col+3), p.Qtr3.ToString(), CellValues.Number);
+                InsertCellValue(sheetData, row, ToCellName(row, col+4), p.Qtr4.ToString(), CellValues.Number);
+                row++;
+            }
         }
 
         private void InsertCellValue(SheetData sheetData, uint rowIndex, string cellName, string value, CellValues type)

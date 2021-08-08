@@ -43,7 +43,7 @@ namespace WebApp.Controllers
         {
             //Build a basic spreadsheet
             SpreadsheetBuilder s = new SpreadsheetBuilder();
-            var spreadsheetBytes = s.CreateSpreadsheet("ProductSales");
+            var spreadsheetBytes = s.CreateSpreadsheet("ProductSales",db.GetAll());
 
             //upload that file
             //get file folder for the channel
@@ -51,7 +51,7 @@ namespace WebApp.Controllers
             string channelID = subs[0];
             string teamID = subs[1];
             string channelName = subs[2];
-            string fileName = "financials.xlsx";
+            string fileName = "productdata.xlsx";
             string[] scopes = { "Team.ReadBasic.All" };
 
             string url = "https://graph.microsoft.com/v1.0/teams/" + teamID + "/channels/" + channelID + "/filesFolder";
