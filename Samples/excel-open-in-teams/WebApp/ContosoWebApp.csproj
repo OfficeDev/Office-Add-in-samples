@@ -129,18 +129,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\ReadMail.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\SendMail.cshtml" />
-    <Content Include="Views\Home\MailSent.cshtml" />
-    <Content Include="Views\Home\OldTeams.cshtml" />
-    <Content Include="Views\Home\TeamsList.cshtml" />
-    <Content Include="Views\Home\ChannelsListForTeam.cshtml" />
-    <Content Include="Views\Home\UploadToTeams.cshtml" />
+    <Content Include="Views\Products\TeamsList.cshtml" />
+    <Content Include="Views\Products\ChannelsListForTeam.cshtml" />
+    <Content Include="Views\Products\UploadToTeams.cshtml" />
     <Content Include="Views\Shared\Redirect_Layout.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Financial.cshtml" />
     <Content Include="Views\Products\Products.cshtml" />
   </ItemGroup>
   <ItemGroup>
