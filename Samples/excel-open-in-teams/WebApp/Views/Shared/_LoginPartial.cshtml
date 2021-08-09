@@ -1,4 +1,6 @@
-﻿
+﻿<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+
 @if (Request.IsAuthenticated)
 {
     System.Security.Claims.Claim claim = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("preferred_username");
@@ -41,7 +43,7 @@ else
 
     <ul class="nav navbar-nav navbar-right">
         @*<li><img src="~/Content/microsoft.png" style="max-width: 30px;max-height: 30px; display:block; vertical-align:bottom" /></li>
-        <li> @Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+            <li> @Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
         <li>
             <a href="@Url.Action("SignIn", "Account")" title="Sign in" class="links">
                 <img alt="Sign in" src="@Url.Content("~/Content/microsoft.png")" style="max-width: 30px;max-height: 30px;">

@@ -1,4 +1,7 @@
-﻿using Microsoft.Owin;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using Microsoft.Owin;
 using Microsoft.Owin.Infrastructure;
 
 namespace WebApp.Utils
