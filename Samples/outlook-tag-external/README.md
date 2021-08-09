@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: outlook-add-in-tag-external-recipients
 products:
 - office-outlook
 - office

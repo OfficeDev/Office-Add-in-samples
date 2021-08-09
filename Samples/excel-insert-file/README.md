@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: excel-add-in-insert-external-file
 products:
 - office-excel
 - office

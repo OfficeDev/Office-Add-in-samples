@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: office-add-in-ribbon-task-pane-ui
 products:
 - office-excel
 - office-365
