@@ -28,7 +28,7 @@ This sample accomplishes the following tasks using Office ribbon APIs.
 ## Applies to
 
 - Excel on Windows
-- Excel on web
+- Excel on the web
 - PowerPoint on Windows
 
 ## Prerequisites
