@@ -43,10 +43,13 @@ Run this sample in Excel in a browser. The add-in web files are served from this
 1. Choose **Excel**, and then open a new document.
 1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
 1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
-   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../images/office-add-ins-my-account.png)
+
+    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in".](../../images/office-add-ins-my-account.png)
+
 1. Browse to the add-in manifest file, and then select **Upload**.
-   ![The upload add-in dialog with buttons for browse, upload, and cancel.
-](../../images/upload-add-in.png)
+
+    ![The upload add-in dialog with buttons for browse, upload, and cancel.](../../images/upload-add-in.png)
+
 1. Verify that the add-in loaded successfully. You will see a **PnP contextual tabs** button on the **Home** tab on the ribbon.
 
 Take the following actions to try out the add-in and the contextual tab.
@@ -146,14 +149,14 @@ If you prefer to host the web server for the sample on your computer, follow the
     npm install --global http-server
     ```
     
-2. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
-3. From a command prompt, go to the web-worker folder and run the following command.
+1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
+1. From a command prompt, go to the web-worker folder and run the following command.
     
     ```console
     http-server -S --cors . -p 3000
     ```
     
-4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command.
+1. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command.
     
     ```console
     npm install --global office-addin-https-reverse-proxy
@@ -165,7 +168,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
     
-5. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/office-contextual-tabs#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
+1. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/office-contextual-tabs#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Questions and comments
 
@@ -176,7 +179,8 @@ We'd love to get your feedback about this sample. Please send your feedback to u
 - [Create custom contextual tabs in Office Add-ins](https://docs.microsoft.com/office/dev/add-ins/design/contextual-tabs)
 
 Demonstration video:
-[![YouTube video showing the contextual tab sample code and how it works](https://img.youtube.com/vi/9tLfm4boQIo/0.jpg)](https://www.youtube.com/watch?v=9tLfm4boQIo)
+
+[![YouTube video showing the contextual tab sample code and how it works.](https://img.youtube.com/vi/9tLfm4boQIo/0.jpg)](https://www.youtube.com/watch?v=9tLfm4boQIo)
 
 ## Solution
 
