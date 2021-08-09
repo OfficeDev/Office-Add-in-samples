@@ -14,6 +14,12 @@ namespace WebApp.Utils
 {
     static public class GraphAPIHelper
     {
+        /// <summary>
+        /// Call the Graph API using Get verb
+        /// </summary>
+        /// <param name="scopes">Required scopes for the call</param>
+        /// <param name="url">The url to call</param>
+        /// <returns>The JSON result from the call</returns>
        static public async Task<string> CallGraphAPIGet(string[] scopes, string url)
         {
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, url);
@@ -36,7 +42,7 @@ namespace WebApp.Utils
         /// <param name="url">url to POST to</param>
         /// <param name="verb">Either Post or Put</param>
         /// <param name="body">Plain text contenxt to put in body</param>
-        /// <returns></returns>
+        /// <returns>The JSON result from the call</returns>
         static public async Task<string> CallGraphAPIWithBody(string[] scopes, string url, HttpMethod verb, string body = null)
         {
             HttpRequestMessage request = new HttpRequestMessage(verb, url);
@@ -66,7 +72,7 @@ namespace WebApp.Utils
         /// <param name="url">url to POST to</param>
         /// <param name="verb">Either Post or Put</param>
         /// <param name="body">byte array contents to put in the body</param>
-        /// <returns></returns>
+        /// <returns>The JSON result from the call</returns>
         static public  async Task<string> CallGraphAPIWithBody(string[] scopes, string url, HttpMethod verb, byte[] body = null)
         {
             HttpRequestMessage request = new HttpRequestMessage(verb, url);
@@ -88,6 +94,11 @@ namespace WebApp.Utils
             }
         }
 
+        /// <summary>
+        /// Gets an access token for the required scopes to make a Graph API call
+        /// </summary>
+        /// <param name="scopes">Requested scopes for the access token</param>
+        /// <returns>Access token for the requested scopes</returns>
         static private async Task<string> GetAccessToken(string[] scopes)
         {
             IConfidentialClientApplication app = await MsalAppBuilder.BuildConfidentialClientApplication();
@@ -112,11 +123,11 @@ namespace WebApp.Utils
         }
 
         /// <summary>
-        /// This one does the actual call over the network
+        /// Runs the network HTTPS call to the Graph API and returns the results
         /// </summary>
-        /// <param name="accessToken"></param>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <param name="accessToken">The access token for the call</param>
+        /// <param name="request">A prepared Https request to run and make the call</param>
+        /// <returns>JSON result from the call</returns>
         static private async Task<string> CallGraphAPI(string accessToken, HttpRequestMessage request)
         {
             HttpClient client = new HttpClient();

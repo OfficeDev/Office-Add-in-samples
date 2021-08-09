@@ -91,13 +91,13 @@
     <Compile Include="Models\Teams.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\AuthenticationConfig.cs" />
-    <Compile Include="Utils\GraphAPIHelper.cs" />
+    <Compile Include="Helpers\GraphAPIHelper.cs" />
     <Compile Include="Utils\MsalAppBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\OAuth2CodeRedeemerMiddleware.cs" />
     <Compile Include="Utils\SameSiteCookieManager.cs" />
-    <Compile Include="Utils\SpreadsheetBuilder.cs" />
+    <Compile Include="Helpers\SpreadsheetBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
