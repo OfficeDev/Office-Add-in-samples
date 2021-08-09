@@ -50,7 +50,10 @@ This sample accomplishes the following tasks.
 
 1. On the **OpenInTeamsSample** page, copy and save the **Application (client) ID**. You'll use it in later procedures.
 
-//1. Under **Manage**, select **Authentication**. Under **Implicit grant**, check the **Access tokens** checkbox, then select **Save**.
+1. Under **Manage**, select **Authentication**. Under **Implicit grant**, check the following checkboxes.
+    - **Access tokens**
+    - **ID tokens**
+1. Choose **Save** to save the previous authentication changes.
 
 1. Under **Manage**, select **Certificates & secrets**. Select the **New client secret** button. Enter a value for **Description**, then select an appropriate option for **Expires**, and choose **Add**.
 
@@ -62,12 +65,10 @@ This sample accomplishes the following tasks.
 
     * Channel.ReadBasic.All
     * ChannelMessage.Send
-    * Chat.ReadWrite
     * Files.ReadWrite.All
     * openid
     * profile
     * Team.ReadBasic.All
-    * User.Read
 
     **Note:** The `User.Read` permission may already be listed by default. It's a good practice not to ask for permissions that are not needed, so we recommend that you uncheck the box for this permission if your add-in does not actually need it.
 
