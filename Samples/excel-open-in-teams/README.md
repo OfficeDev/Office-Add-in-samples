@@ -23,6 +23,8 @@ This sample accomplishes the following tasks.
 - Embeds your add-in into the Excel spreadsheet.
 - Creates a message in Microsoft Teams with a link to the new spreadsheet.
 
+![Sequence diagram showing an "Open in Microsoft Teams" button on your web site that creates a message in Teams with a link to the spreadsheet with your data which contains your add-in](./images/open-in-teams-diagram.png)
+
 ## Applies to
 
 - Microsoft Teams
@@ -31,6 +33,7 @@ This sample accomplishes the following tasks.
 ## Prerequisites
 
 - Microsoft 365
+- At least one Microsoft Team and channel created on your Microsoft 365 tenant
 
 ## Register the add-in with Azure AD v2.0 endpoint
 
@@ -40,9 +43,9 @@ This sample accomplishes the following tasks.
 
 1. Select **New registration**. On the **Register an application** page, set the values as follows:
 
-    * Set **Name** to `OpenInTeamsSample`.
-    * Set **Supported account types** to **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
-    * In the **Redirect URI** section, ensure that **Web** is selected in the dropdown and then set the URI to `https://localhost:44326/`.
+    - Set **Name** to `OpenInTeamsSample`.
+    - Set **Supported account types** to **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
+    - In the **Redirect URI** section, ensure that **Web** is selected in the dropdown and then set the URI to `https://localhost:44326/`.
     
     **Note:** The port number used for the redirect URI (`44326`) must match the port your web server is running on. When you open the Visual Studio solution in later steps, you can find the web server's port number by selecting the **ContosoWebApp** project in **Solution Explorer**, then looking at the **SSL URL** setting in the properties window.
 
@@ -63,12 +66,12 @@ This sample accomplishes the following tasks.
 
 1. Use the **Select permissions** search box to search the following permissions:
 
-    * Channel.ReadBasic.All
-    * ChannelMessage.Send
-    * Files.ReadWrite.All
-    * openid
-    * profile
-    * Team.ReadBasic.All
+    - Channel.ReadBasic.All
+    - ChannelMessage.Send
+    - Files.ReadWrite.All
+    - openid
+    - profile
+    - Team.ReadBasic.All
 
     **Note:** The `User.Read` permission may already be listed by default. It's a good practice not to ask for permissions that are not needed, so we recommend that you uncheck the box for this permission if your add-in does not actually need it.
 
@@ -112,15 +115,34 @@ The browser will attempt to redirect back to your app, which may not be running.
 1. Press **F5** to build and debug the project. You may be prompted to trust the developer certificate.
     The Contoso Web application will open in a browser.
 1. Choose the **Sign in with Microsoft** button on the ribbon.
+
+    ![Screenshot of Contoso web app with "Sign in with Microsoft" button on the ribbon](./images/contoso-web-app-sign-in.png)
+
 1. You should be prompted for a user account and password. Sign in with a user name and password from your Microsoft 365 account.
     You'll see a new option on the ribbon named **Product data**.
+
+    ![Screenshot of Contoso web app with "Product data" option on the ribbon](./images/contoso-web-app-signed-in.png)
+
 1. Now that you are signed in you can choose **Product data**.
     The Product sales page is displayed.
+
+    ![Screenshot of Contoso web app listing rows of data with product name, quarter 1, quarter 2, quarter 3, and quarter 4 sales numbers](./images/contoso-web-app-product-data.png)
+
 1. Choose **Open in Microsoft Teams** to start the process of opening the data in Microsoft Teams
 1. A page will appear titled **Select the Team**. Choose a team from the dropdown list and then choose **Submit**. This will select the team where you want to open the data.
+
+    ![Screenshot of Contoso web app with dropdown list of teams to select from](./images/contoso-web-app-select-team.png)
+
 1. A page will appear titled **Select the channel**. Choose a channel from the dropdown list and then choose **Submit**. This will select the channel where you want to open the data.
+
+    ![Screenshot of Contoso web app with dropdown list of channels to select from](./images/contoso-web-app-select-channel.png)
+
 1. The page will now redirect to Microsoft Teams. Choose if you want to open Microsoft teams in the browser, or in the app.
-1. When Microsoft Teams opens, you will see a chat message in the channel you chose containing a spreadsheet named productdata.xlsx. Choose the spreadsheet and open it. You will see the product data, and also the script lab add-in is embedded in the spreadsheet.
+1. When Microsoft Teams opens, you will see a chat message in the channel you chose containing a spreadsheet named productdata.xlsx. Choose the spreadsheet and open it.
+
+    ![Screenshot of chat message in Teams with link to productdata.xlsx spreadsheet](./images/teams-chat-message.png)
+
+When the spreadsheet opens, you will see the product data, and also the embedded Script Lab add-in.
 
 ## Key parts of this sample
 
@@ -132,10 +154,10 @@ This sample reuses code from a Microsoft Azure OpenID Connect sample to handle a
 
 This sample uses the [Open XML SDK](https://docs.microsoft.com/office/open-xml/open-xml-sdk) to construct the spreadsheet in memory before uploading it to OneDrive. The code that constructs the spreadsheet is in **Helpers\SpreadsheetBuilder.cs**.
 
-* The `InsertHeader` method inserts the header for the product data table.
-* The `InsertData` method inserts the data values for the product data table.
-* The `EmbedAddin` method embeds the script lab add-in.
-* Modify the `GenerateWebExtensionPart1Content` method to embed your add-in instead of the script lab add-in. Note that there is a *CUSTOM MODIFICATION BEGIN/END* section where you can specify and custom properties that your add-in needs to load when it starts.
+- The `InsertHeader` method inserts the header for the product data table.
+- The `InsertData` method inserts the data values for the product data table.
+- The `EmbedAddin` method embeds the script lab add-in.
+- Modify the `GenerateWebExtensionPart1Content` method to embed your add-in instead of the script lab add-in. Note that there is a *CUSTOM MODIFICATION BEGIN/END* section where you can specify and custom properties that your add-in needs to load when it starts.
 
 ### Interacting with Microsoft Teams through the Microsoft Graph API
 
@@ -143,28 +165,64 @@ This sample uses the Microsoft Graph API to upload the spreadsheet to the OneDri
 
 ### Sequence of events
 
-1. The user chooses to open in Teams. The `TeamsList` action in **ProductsController.cs** is called.
-    - `TeamsList` constructs a URL to query Microsoft Graph for all teams the user belongs to.
-    - `TeamsList` calls `GraphAPIHelper.CallGraphAPIGet` to run the URL call and get back the JSON list of teams.
-    - `TeamsList` returns the `TeamsList` view containing a dropdown list of teams.
-2. The user chooses which Team they want to open in. The `ChannelsListForTeam` action in  **ProductsController.cs** is called.
-    - `ChannelsListForTeam` constructs a URL to query Microsoft Graph for all channels for the selected team.
-    - `ChannelsListForTeam` calls `GraphAPIHelper.CallGraphAPIGet` to run the URL call and get back the JSON list of channels.
-    - `ChannelsListForTeam` returns the `ChannelsListForTeam` view containing a dropdown list of channels.
-3. The user chooses which channel they want to open in. The `UploadSpreadsheet` action in  **ProductsController.cs** is called.
-    - `UploadSpreadsheet` calls `CreateSpreadsheet` to construct an in memory spreadsheet.
-    - `UploadSpreadsheet` calls `UploadSpreadsheetToOneDrive` to upload the spreadsheet to the select team and channel.
-    - `UploadSpreadsheetToOneDrive` constructs a URL to query Microsoft Graph for the name of the folder on OneDrive for the selected team and channel.
-    - `UploadSpreadsheetToOneDrive` calls `GraphAPIHelper.CallGraphAPIGet` to run the URL call and get back the OneDrive folder name.
-    - `UploadSpreadsheetToOneDrive` constructs a URL to create a new message.
-    - `UploadSpreadsheetToOneDrive` calls `GraphAPIHelper.CallGraphAPIWithBody` to upload (HTTP Put) the spreadsheet to the OneDrive folder.
-4. `UploadSpreadsheet` creates the message by calling `CreateChannelMessage`.
-    - `CreateChannelMessage` constructs a URL to create a new message through Microsoft Graph.
-    - `CreateChannelMessage` extracts the redirect URI from the `file.eTag` we received from uploading the spreadsheet file to OneDrive.
-    - `CreateChannelMessage` constructs the text for the message and attaches a link to the spreadsheet file.
-    - `CreateChannelMessage` calls `GraphAPIHelper.CallGraphAPIWithBody` to run the URL and create the message.
-    - `UploadSpreadsheet` returns the `UploadToTeams` view containing the redirect URI to the chat message.
-5. The `UploadToTeams` view loads and redirects to the chat message that was created.
+When the user chooses to open in Microsoft Teams the following sequence of events occurs.
+
+1. The `TeamsList` method in **ProductsController.cs** is called. `TeamsList` constructs a URL to query Microsoft Graph for all teams the user belongs to. The view is returned to the user containing the list of Teams in a dropdown box.
+1. The user chooses which Team they want to open in. The `ChannelsListForTeam` method in  **ProductsController.cs** is called. `ChannelsListForTeam` constructs a URL to query Microsoft Graph for all channels for the selected team. The view is returned to the user containing the list of channels in a dropdown box.
+1. The user chooses which channel they want to open in. The `UploadSpreadsheet` method in  **ProductsController.cs** is called. `UploadSpreadsheet` calls helper methods to construct the spreadsheet and upload it to the correct OneDrive location for the selected Team and Channel. Then it calls a helper method to create a new chat message that links to the spreadsheet. It returns a view containing a redirect URI to the new message on Teams.
+1. The `UploadToTeams` view loads and redirects to the chat message that was created.
+
+## Modify the sample for your own web site
+
+To repurpose the code in this sample for your own web site, you'll want to make the following changes.
+
+### Use your own data
+
+The sample creates an in memory database that contains a small array of product data. You'll need to replace this code to use the actual data from your web site.
+
+The data models are found in **\Models\IProductData.cs** and **\Models\Product.cs**. Replace these files with the correct models for your web site.
+
+The database is initialized in the `ProductsController` constructor in **\Controllers\ProductsController.cs**. Replace this code with the correct initialization code for your web site data.
+
+The **\Helpers\SpreadsheetBuilder.cs** file contains two methods that are bound to the product model data of this sample. See the `InsertHeader` and `InsertData` methods. You'll need to update these to construct the correct header and table rows for your data model.
+
+### Embed your add-in
+
+The sample embeds the script lab add-in. You'll need to change the code to embed your own add-in. 
+
+In the **\Helpers\SpreadsheetBuilder.cs** file, the `GenerateWebExtensionPart1Content` method sets the reference to Script Lab.
+
+```csharp
+We.WebExtension webExtension1 = new We.WebExtension() { Id = "{635BF0CD-42CC-4174-B8D2-6D375C9A759E}" };
+webExtension1.AddNamespaceDeclaration("we", "http://schemas.microsoft.com/office/webextensions/webextension/2010/11");
+We.WebExtensionStoreReference webExtensionStoreReference1 = new We.WebExtensionStoreReference() { Id = "wa104380862", Version = "1.1.0.0", Store = "en-US", StoreType = "OMEX" };
+```
+
+In the previous code:
+
+- The **StoreType** value is "OMEX", an alias for the Office Store.
+- The **Store** value is "en-US" the culture section of the store where Script Lab is.
+- The **Id** value is the Office Store's asset ID for Script Lab.
+
+If you are embedding an add-in from a file share catalog for auto-open, use the following values:
+
+- Set the **StoreType** to "FileSystem".
+- Set the **Store** value to the URL of the network share; for example, "\\\MyComputer\MySharedFolder". This must be the exact URL that appears as the share's **Trusted Catalog Address** in the Office **Trust Center**.
+- Set the **Id** value to be the app ID in the add-ins manifest.
+
+> **Note**: For more information about alternative values for these attributes, see [Automatically open a task pane with a document](https://docs.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document).
+
+The `GeneratePartContent` method specifies the visibility of the task pane when the file opens.
+
+```csharp
+Wetp.WebExtensionTaskpane webExtensionTaskpane1 = new Wetp.WebExtensionTaskpane() { DockState = "right", Visibility = true, Width = 350D, Row = (UInt32Value)4U };
+```
+
+In the previous code, the `Visibility` property of the `WebExtensionTaskpane` object is set to `true`. This ensures that the first time that the file is opened after the code is run, the task pane opens with Script Lab in it (after the user accepts the prompt to trust Script Lab). This is what we want for this sample. However, in most scenarios you will probably want this set to `false`. The effect of setting it to false is that the *first* time the file is opened, the user has to install the add-in, from the **Add-in** button on the ribbon. On every *subsequent* opening of the file, the task pane with the add-in opens automatically.
+
+The advantage of setting this property to `false` is that you can use the Office.js to give users the ability to turn on and off the auto-opening of the add-in. Specifically, your script sets the **Office.AutoShowTaskpaneWithDocument** document setting to `true` or `false`. However, if `WebExtensionTaskpane.Visibility` is set to `true`, there is no way for Office.js or, hence, your users to turn off the auto-opening of the add-in. Only editing the OOXML of the document can change `WebExtensionTaskpane.Visibility` to false.
+
+> **Note**: For more information about task pane visibility at the level of the Open XML that these .NET APIs represent, see [Automatically open a task pane with a document](https://docs.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document).
 
 ## Questions and comments
 
