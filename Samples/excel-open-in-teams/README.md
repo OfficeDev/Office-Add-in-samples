@@ -87,28 +87,8 @@ Before you run the sample, you'll need to do a few things to make it work proper
 
 1. In Visual Studio, open the **excel-open-in-teams.sln** solution file for this sample.
 1. In the **Solution Explorer**, open **ContosoWebWeb > Web.config**.
-1. Replace the `[Application (client) ID]` value in both places where it appears with the application ID you generated as part of the app registration process.
+1. Replace the `[Application (client) ID]` value with the application ID you generated as part of the app registration process.
 1. Replace the `[Application secret]` value with the client secret you generated as part of the app registration process.
-
-### Provide admin consent for all users
-
-If you have access to a tenant administrator account, this method allows you to provide consent for all users in your organization, which can be convenient if you have multiple developers that need to develop and test your add-in.
-
-1. Browse to `https://login.microsoftonline.com/common/adminconsent?client_id={application_ID}&state=12345`, where `{application_ID}` is the application ID shown in your app registration.
-1. Sign in with your administrator account.
-1. Review the permissions and click **Accept**.
-
-The browser will attempt to redirect back to your app, which may not be running. You might see a "this site cannot be reached" error after clicking **Accept**. This is OK, the consent was still recorded.
-
-### Provide consent for a single user
-
-If you don't have access to a tenant administrator account, or you just want to limit consent to a few users, this method allows you to provide consent for a single user.
-
-1. Browse to `https://login.microsoftonline.com/common/oauth2/authorize?client_id={application_ID}&state=12345&response_type=code`, where `{application_ID}` is the application ID shown in your app registration.
-1. Sign in with your account.
-1. Review the permissions and click **Accept**.
-
-The browser will attempt to redirect back to your app, which may not be running. You might see a "this site cannot be reached" error after clicking **Accept**. This is OK, the consent was still recorded.
 
 ## Run the sample
 
