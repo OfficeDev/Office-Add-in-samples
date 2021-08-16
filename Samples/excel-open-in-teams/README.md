@@ -45,22 +45,22 @@ This sample accomplishes the following tasks.
 
     - Set **Name** to `OpenInTeamsSample`.
     - Set **Supported account types** to **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
-    - In the **Redirect URI** section, ensure that **Web** is selected in the dropdown and then set the URI to `https://localhost:44326/`.
+    - In the **Redirect URI** section, ensure that **Web** is selected in the dropdown and then set the URI to `https://localhost:44321/signin-oidc`.
     
-    **Note:** The port number used for the redirect URI (`44326`) must match the port your web server is running on. When you open the Visual Studio solution in later steps, you can find the web server's port number by selecting the **ContosoWebApp** project in **Solution Explorer**, then looking at the **SSL URL** setting in the properties window.
+    **Note:** The port number used for the redirect URI (`44321`) must match the port your web server is running on. When you open the Visual Studio solution in later steps, you can find the web server's port number in the **launchSettings.json** file under the **Properties** folder for the project.
 
 1. Choose **Register**.
 
 1. On the **OpenInTeamsSample** page, copy and save the **Application (client) ID**. You'll use it in later procedures.
 
-1. Under **Manage**, select **Authentication**. Under **Implicit grant**, check the following checkboxes.
-    - **Access tokens**
-    - **ID tokens**
-1. Choose **Save** to save the previous authentication changes.
+1. Under **Manage**, select **Authentication**.
+1. Enter a **Front-channel logout URL** of `https://localhost:44321/signout-oidc`.
+1. Choose **Save**.
 
-1. Under **Manage**, select **Certificates & secrets**. Select the **New client secret** button. Enter a value for **Description**, then select an appropriate option for **Expires**, and choose **Add**.
-
-1. Copy and save the client secret value. You'll use it in later procedures.
+1. Under **Manage**, select **Certificates & secrets > New client secret**. 
+1. Enter a **Description**, for example `clientscret1
+1. Select a vlued for the secret's expiration
+1. Choose **Add** and immediately record the secret's **Value** for use in a later step. The secret value is *never displayed again* and is irretrievable by any other means. Record it in a secure location as you would any password.
 
 1. Under **Manage**, select **API permissions** and then select **Add a permission**. On the panel that opens, choose **Microsoft Graph** and then choose **Delegated permissions**.
 
