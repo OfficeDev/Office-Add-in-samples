@@ -1,0 +1,63 @@
+﻿<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+
+@model IEnumerable<core_open_in_teams.Models.Product>
+
+@{
+    ViewBag.Title = "Product data";
+}
+
+<h2>Product sales</h2>
+
+<img src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/teams_48x1.svg"
+     width="48"
+     height="48"
+     alt="Microsoft Teams product icon" />
+<a href="@Url.Action("TeamsList","Products")" class="btn btn-primary">
+    <span>
+        <strong>Open in Microsoft Teams</strong>
+    </span>
+</a>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qtr1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qtr2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qtr3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qtr4)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qtr1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qtr2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qtr3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qtr4)
+            </td>
+        </tr>
+    }
+
+</table>
