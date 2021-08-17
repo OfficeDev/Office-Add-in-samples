@@ -94,19 +94,13 @@ Before you run the sample, you'll need to do a few things to make it work proper
 
 ## Run the sample
 
-1. Press **F5** to build and debug the project.
-    The Contoso Web application will open in a browser.
-1. Choose the **Sign in with Microsoft** button on the ribbon.
+1. Press **F5** to build and debug the project. The Contoso Web application will open in a browser.
 
-    ![Screenshot of Contoso web app with "Sign in with Microsoft" button on the ribbon](./images/contoso-web-app-sign-in.png)
+    ![Screenshot of Contoso web app with Products button on the ribbon](./images/contoso-web-app.png)
 
-1. You should be prompted for a user account and password. Sign in with a user name and password from your Microsoft 365 account.
-    You'll see a new option on the ribbon named **Product data**.
-
-    ![Screenshot of Contoso web app with "Product data" option on the ribbon](./images/contoso-web-app-signed-in.png)
-
-1. Now that you are signed in you can choose **Product data**.
-    The Product sales page is displayed.
+1. Choose the **Products** button on the ribbon.
+1. You will be prompted for a user account and password. Sign in with a user name and password from your Microsoft 365 account.
+    The product sales page is displayed.
 
     ![Screenshot of Contoso web app listing rows of data with product name, quarter 1, quarter 2, quarter 3, and quarter 4 sales numbers](./images/contoso-web-app-product-data.png)
 
@@ -124,7 +118,7 @@ Before you run the sample, you'll need to do a few things to make it work proper
 
     ![Screenshot of chat message in Teams with link to productdata.xlsx spreadsheet](./images/teams-chat-message.png)
 
-When the spreadsheet opens, you will see the product data, and also the embedded Script Lab add-in.
+When the spreadsheet opens, you will see the product data. The embedded Script Lab add-in will be available on the ribbon.
 
 ## Key parts of this sample
 
