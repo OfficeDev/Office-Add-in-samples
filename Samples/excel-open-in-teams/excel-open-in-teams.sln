@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31424.327
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "core-open-in-teams", "core-open-in-teams\core-open-in-teams.csproj", "{C3BCAD2A-D29A-4860-9F3B-B1A3033F0E83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "excel-open-in-teams", "excel-open-in-teams\excel-open-in-teams.csproj", "{C3BCAD2A-D29A-4860-9F3B-B1A3033F0E83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
