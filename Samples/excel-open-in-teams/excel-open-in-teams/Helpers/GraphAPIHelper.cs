@@ -9,7 +9,7 @@ using System.Security.Claims;
 using System.Net.Http.Headers;
 using Microsoft.Identity.Web;
 
-namespace core_open_in_teams.Helpers
+namespace excel_open_in_teams.Helpers
 {
     static public class GraphAPIHelper
     {

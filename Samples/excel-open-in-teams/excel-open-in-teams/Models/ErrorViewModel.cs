@@ -1,6 +1,6 @@
 using System;
 
-namespace core_open_in_teams.Models
+namespace excel_open_in_teams.Models
 {
     public class ErrorViewModel
     {

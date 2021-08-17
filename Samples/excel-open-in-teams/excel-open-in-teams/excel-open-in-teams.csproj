@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>core_open_in_teams</RootNamespace>
+    <RootNamespace>excel_open_in_teams</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

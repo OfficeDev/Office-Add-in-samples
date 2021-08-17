@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace core_open_in_teams
+namespace excel_open_in_teams
 {
     public class Program
     {

@@ -3,15 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using core_open_in_teams.Models;
+using excel_open_in_teams.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Identity.Web;
-using core_open_in_teams.Helpers;
+using excel_open_in_teams.Helpers;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Net.Http;
 
-namespace core_open_in_teams.Controllers
+namespace excel_open_in_teams.Controllers
 {
     [Authorize]
     public class ProductsController : Controller

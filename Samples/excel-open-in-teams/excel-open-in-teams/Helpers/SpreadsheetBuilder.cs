@@ -8,9 +8,9 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using System.IO;
 using We = DocumentFormat.OpenXml.Office2013.WebExtension;
 using Wetp = DocumentFormat.OpenXml.Office2013.WebExtentionPane;
-using core_open_in_teams.Models;
+using excel_open_in_teams.Models;
 
-namespace core_open_in_teams.Helpers
+namespace excel_open_in_teams.Helpers
 {
     public class SpreadsheetBuilder
     {

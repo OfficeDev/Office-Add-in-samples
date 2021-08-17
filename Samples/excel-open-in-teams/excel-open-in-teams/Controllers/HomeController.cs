@@ -1,4 +1,4 @@
-﻿using core_open_in_teams.Models;
+﻿using excel_open_in_teams.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
@@ -10,7 +10,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace core_open_in_teams.Controllers
+namespace excel_open_in_teams.Controllers
 {
     [Authorize]
     public class HomeController : Controller

@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "core_open_in_teams": {
+    "excel_open_in_teams": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,
