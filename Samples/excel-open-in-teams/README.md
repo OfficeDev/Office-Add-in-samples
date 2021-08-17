@@ -86,13 +86,15 @@ This sample accomplishes the following tasks.
 Before you run the sample, you'll need to do a few things to make it work properly.
 
 1. In Visual Studio, open the **excel-open-in-teams.sln** solution file for this sample.
-1. In the **Solution Explorer**, open **ContosoWebWeb > Web.config**.
-1. Replace the `[Application (client) ID]` value with the application ID you generated as part of the app registration process.
-1. Replace the `[Application secret]` value with the client secret you generated as part of the app registration process.
+1. In the **Solution Explorer**, open **excel-open-in-teams > appsettings.json**.
+1. Replace the `Enter_the_Application_Id_here` value with the application ID you generated as part of the app registration process.
+1. Replace the `Enter_the_Client_Secret_Here` value with the client secret you generated as part of the app registration process.
+
+> Note: You don't need to change the **Domain** or **TenantID** unless you used different tenant settings when setting up the app registration earlier.
 
 ## Run the sample
 
-1. Press **F5** to build and debug the project. You may be prompted to trust the developer certificate.
+1. Press **F5** to build and debug the project.
     The Contoso Web application will open in a browser.
 1. Choose the **Sign in with Microsoft** button on the ribbon.
 
@@ -128,7 +130,7 @@ When the spreadsheet opens, you will see the product data, and also the embedded
 
 ### Authentication
 
-This sample reuses code from a Microsoft Azure OpenID Connect sample to handle authentication and authorization. For more information see [Use OpenID Connect to sign in users to Microsoft identity platform and execute Microsoft Graph operations using incremental consent](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect).
+This sample reuses code from [Quickstart: ASP.NET Core web app that signs in users and calls Microsoft Graph on their behalf](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp-calls-graph). To obtain the access token, this sample uses code from [A web app that calls web APIs: Acquire a token for the app](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore).
 
 ### Constructing the spreadsheet
 
@@ -168,7 +170,7 @@ The **\Helpers\SpreadsheetBuilder.cs** file contains two methods that are bound 
 
 ### Embed your add-in
 
-The sample embeds the script lab add-in. You'll need to change the code to embed your own add-in. 
+The sample embeds the script lab add-in. You'll need to change the code to embed your own add-in.
 
 In the **\Helpers\SpreadsheetBuilder.cs** file, the `GenerateWebExtensionPart1Content` method sets the reference to Script Lab.
 
@@ -207,7 +209,6 @@ The advantage of setting this property to `false` is that you can use the Office
 ## Questions and comments
 
 We'd love to get your feedback about this sample. Please send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://docs.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
-
 
 ## Solution
 
