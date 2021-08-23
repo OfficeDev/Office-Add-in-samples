@@ -1,0 +1,27 @@
+﻿<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+
+@{
+    ViewBag.Title = "PickChannel";
+}
+
+<h2>Select the channel</h2>
+
+
+@using (Html.BeginForm("UploadSpreadsheet", "Products", FormMethod.Get))
+{
+
+    <fieldset>
+
+        Team Channel:
+
+        @Html.DropDownList("channelSelection")
+        <p>
+
+            <input type="submit" value="Submit" />
+
+        </p>
+
+    </fieldset>
+
+}
