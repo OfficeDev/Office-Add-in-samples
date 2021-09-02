@@ -82,6 +82,8 @@ namespace excel_open_in_teams.Controllers
         [AuthorizeForScopes(Scopes = new[] { "Channel.ReadBasic.All" })]
         public async Task<ActionResult> ChannelsListForTeam(string teamIDSelection)
         {
+            //Guard against script injection attack
+            teamIDSelection = System.Web.HttpUtility.HtmlEncode(teamIDSelection);
             try
             {
                 //Get channels for given team ID and return them
@@ -116,14 +118,20 @@ namespace excel_open_in_teams.Controllers
         /// </summary>
         /// <param name="ChannelList">Contains the channel to create the message in.</param>
         /// <returns></returns>
-        [AuthorizeForScopes(Scopes = new[] { "Team.ReadBasic.All", "Files.ReadWrite.All" })]
+        [AuthorizeForScopes(Scopes = new[] { "Team.ReadBasic.All", "Files.ReadWrite" })]
         public async Task<ActionResult> UploadSpreadsheet(string channelSelection)
         {
             try
             {
                 // Deserialize the JSON channel information from the selection
                 Channel channel = JsonConvert.DeserializeObject<Channel>(channelSelection);
-                string fileName = "productdata.xlsx";
+
+                //Guard against script injection attack
+                channel.TeamId = System.Web.HttpUtility.HtmlEncode(channel.TeamId);
+                channel.Id = System.Web.HttpUtility.HtmlEncode(channel.Id);
+                channel.Name = System.Web.HttpUtility.HtmlEncode(channel.Name);
+
+                const string fileName = "productdata.xlsx";
 
                 // Build the spreadsheet
                 SpreadsheetBuilder s = new SpreadsheetBuilder();
@@ -160,8 +168,8 @@ namespace excel_open_in_teams.Controllers
                 // Construct url to upload file to OneDrive on Graph
                 url = "https://graph.microsoft.com/v1.0/drives/" + json.ParentReference.DriveID + "/items/root:/" + channelName + "/" + fileName + ":/content";
 
-                // Following call will use Files.ReadWrite.All scope
-                jsonResponse = await GraphAPIHelper.CallGraphAPIWithBody(_tokenAcquisition,new[] {"Files.ReadWrite.All" }, url, HttpMethod.Put, spreadsheetBytes);
+                // Following call will use Files.ReadWrite scope
+                jsonResponse = await GraphAPIHelper.CallGraphAPIWithBody(_tokenAcquisition,new[] {"Files.ReadWrite" }, url, HttpMethod.Put, spreadsheetBytes);
 
                 // Deserialize and return new file metadata
                 FileCreated file = JsonConvert.DeserializeObject<FileCreated>(jsonResponse);

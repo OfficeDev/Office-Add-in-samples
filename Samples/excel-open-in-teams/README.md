@@ -68,7 +68,7 @@ This sample accomplishes the following tasks.
 
     - Channel.ReadBasic.All
     - ChannelMessage.Send
-    - Files.ReadWrite.All
+    - Files.ReadWrite
     - openid
     - profile
     - Team.ReadBasic.All

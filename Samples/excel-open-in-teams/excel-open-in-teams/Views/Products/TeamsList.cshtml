@@ -9,7 +9,7 @@
 
 @using (Html.BeginForm("ChannelsListForTeam", "Products", FormMethod.Get))
 {
-
+    @Html.AntiForgeryToken()
     <fieldset>
 
         Team to open:
