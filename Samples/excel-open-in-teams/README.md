@@ -59,7 +59,7 @@ This sample accomplishes the following tasks.
 
 1. Under **Manage**, select **Certificates & secrets > New client secret**. 
 1. Enter a **Description**, for example `clientscret1
-1. Select a vlued for the secret's expiration
+1. Select a value for the secret's expiration
 1. Choose **Add** and immediately record the secret's **Value** for use in a later step. The secret value is *never displayed again* and is irretrievable by any other means. Record it in a secure location as you would any password.
 
 1. Under **Manage**, select **API permissions** and then select **Add a permission**. On the panel that opens, choose **Microsoft Graph** and then choose **Delegated permissions**.
