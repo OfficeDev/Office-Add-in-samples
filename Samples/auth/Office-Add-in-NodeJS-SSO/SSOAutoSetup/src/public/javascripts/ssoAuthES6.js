@@ -20,13 +20,13 @@ let retryGetAccessToken = 0;
 
 async function getGraphData() {
     try {
-        let bootstrapToken = await OfficeRuntime.auth.getAccessToken({ allowSignInPrompt: true, allowConsentPrompt: true, forMSGraphAccess: true });
+        let bootstrapToken = await Office.auth.getAccessToken({ allowSignInPrompt: true, allowConsentPrompt: true, forMSGraphAccess: true });
         let exchangeResponse = await getGraphToken(bootstrapToken);
         if (exchangeResponse.claims) {
             // Microsoft Graph requires an additional form of authentication. Have the Office host 
             // get a new token using the Claims string, which tells AAD to prompt the user for all 
             // required forms of authentication.
-            let mfaBootstrapToken = await OfficeRuntime.auth.getAccessToken({ authChallenge: exchangeResponse.claims });
+            let mfaBootstrapToken = await Office.auth.getAccessToken({ authChallenge: exchangeResponse.claims });
             exchangeResponse = await getGraphToken(mfaBootstrapToken);
         }
         
