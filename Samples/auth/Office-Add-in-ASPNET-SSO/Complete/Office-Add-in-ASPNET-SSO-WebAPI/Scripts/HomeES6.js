@@ -38,7 +38,7 @@ async function getDataWithToken(options) {
             throw new MockSSOError("13003");
         */
 
-        let bootstrapToken = await OfficeRuntime.auth.getAccessToken(options);
+        let bootstrapToken = await Office.auth.getAccessToken(options);
 
         // The /api/values controller will make the token exchange and use the 
         // access token it gets back to make the call to MS Graph.
