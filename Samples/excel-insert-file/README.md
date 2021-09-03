@@ -59,11 +59,11 @@ To run the sample you just need to sideload the manifest. The add-in web files a
 1. Select the **Insert** tab, and choose **Office Add-ins**.
 1. On the **Office Add-ins** dialog, select **MY ADD-INS** , choose the **Manage My Add-ins** drop-down, and then choose **Upload My Add-in**.
     
-    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../images/office-add-ins-my-account.png)
+    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
     
 1. Browse to the add-in manifest file, and then select **Upload**.
     
-    ![The upload add-in dialog with buttons for browse, upload, and cancel.](../../images/upload-add-in.png)
+    ![The upload add-in dialog with buttons for browse, upload, and cancel.](../../Samples/images/upload-add-in.png)
     
 1. Verify that the add-in loaded successfully. You'll see a **PnP Insert Excel file** button on the **Home** tab.
 
