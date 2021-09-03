@@ -31,7 +31,7 @@ async function getGraphData() {
             following line. */
     //    throw new MockSSOError("13003");
 
-    let bootstrapToken = await OfficeRuntime.auth.getAccessToken({
+    let bootstrapToken = await Office.auth.getAccessToken({
       allowSignInPrompt: true,
       allowConsentPrompt: true,
       forMSGraphAccess: true,
@@ -41,7 +41,7 @@ async function getGraphData() {
       // Microsoft Graph requires an additional form of authentication. Have the Office host
       // get a new token using the Claims string, which tells AAD to prompt the user for all
       // required forms of authentication.
-      let mfaBootstrapToken = await OfficeRuntime.auth.getAccessToken({
+      let mfaBootstrapToken = await Office.auth.getAccessToken({
         authChallenge: exchangeResponse.claims,
       });
       exchangeResponse = await getGraphToken(mfaBootstrapToken);
