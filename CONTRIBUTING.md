@@ -1,4 +1,4 @@
-# Contributing
+# Contribute
 
 This project welcomes contributions and suggestions. Most contributions require you to
 agree to a Contributor License Agreement (CLA) declaring that you have the right to,
@@ -18,31 +18,31 @@ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any addi
 When you submit changes to this repository, please follow these recommendations.
 
 * Always fork the repository to your own account for applying modifications.
-* Do not combine multiple changes in one pull request. Please submit separate PRs for each fix, update, or new sample.
+* Don't combine multiple changes in one pull request. Please submit separate PRs for each fix, update, or new sample.
 * If you are submitting a typo or documentation fix, you can combine modifications in a single PR where suitable.
 
-## Sample naming and structure guidelines
+## Sample guidelines
 
 When you are submitting a new sample, use the following guidelines.
 
-**Check for existing samples**
+### Check for existing samples
 If you find a similar sample that already exists in the repo, we would prefer that you extend the existing one, rather than submit a new similar sample.
 
-**Create a README.md file**
+### Create a README.md file
 Create a README.md file for your code sample, and base it on the [provided template](/Teamplates/readme-template.md). The README must be named README.md with capital letters.
 
-**Update tracking image**
+### Update tracking image
 The README template contains specific tracking image as a final entry in the page with img tag by default to https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/name-of-sample. This is transparent image, which is used to track anonymous view counts of individual samples in GitHub.
 
-Update the image src element according to correct repository name and folder information. If your sample is for example in samples folder and named as react-todo, src element should be updated as https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/react-todo.
+Update the image `src` element according to correct repository name and folder information. For example, if your sample is **/samples** folder and named as "react-todo", `src` element should be updated as https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/react-todo.
 
-**Name the solution**
+### Name the solution
 When you are submitting a new sample solution, please name the sample solution folder accordingly.
 
 * The solution folder should be under the **/Samples** folder of this repo.
 * Folder name should be in the format [product]-[scenario]-[platform]. For example, a sample that shows how to create data-bound Excel tables using React, should be named "excel-data-bound-tables-react". The names are all lowercase.
 * If your solution is demonstrating multiple technologies, please use functional terms as the name for the solution folder.
-* Do not use period/dot in the folder name of the provided sample.
+* Do not use a period in the folder name of the provided sample.
 
 ## Add your code sample to a pull request
 
