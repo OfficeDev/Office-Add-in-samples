@@ -100,7 +100,6 @@ namespace excel_open_in_teams.Helpers
         /// <returns>Access token for the requested scopes</returns>
         static private async Task<string> GetAccessToken(ITokenAcquisition token,string[] scopes)
         {
-            //string[] scopes = { "openid", "profile", "Channel.ReadBasic.All", "ChannelMessage.Send", "Files.ReadWrite.All", "Team.ReadBasic.All" };
             string accessToken = await token.GetAccessTokenForUserAsync(scopes);
             return accessToken;
          }

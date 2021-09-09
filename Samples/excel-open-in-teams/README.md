@@ -68,7 +68,7 @@ This sample accomplishes the following tasks.
 
     - Channel.ReadBasic.All
     - ChannelMessage.Send
-    - Files.ReadWrite.All
+    - Files.ReadWrite
     - openid
     - profile
     - Team.ReadBasic.All
@@ -99,7 +99,9 @@ Before you run the sample, you'll need to do a few things to make it work proper
     ![Screenshot of Contoso web app with Products button on the ribbon](./images/contoso-web-app.png)
 
 1. Choose the **Products** button on the ribbon.
-1. You will be prompted for a user account and password. Sign in with a user name and password from your Microsoft 365 account.
+1. You will be prompted to sign in. Sign in with a user name and password from your Microsoft 365 account.
+    > Note: You may also be prompted to consent to the app permissions. You'll need to consent before the app can continue successfully.
+
     The product sales page is displayed.
 
     ![Screenshot of Contoso web app listing rows of data with product name, quarter 1, quarter 2, quarter 3, and quarter 4 sales numbers](./images/contoso-web-app-product-data.png)
