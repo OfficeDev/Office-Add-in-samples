@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: excel-custom-function-web-worker-pattern
 products:
   - office-excel
   - office-365
