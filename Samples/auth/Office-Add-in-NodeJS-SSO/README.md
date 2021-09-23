@@ -5,7 +5,7 @@ products:
 - office-excel
 - office-powerpoint
 - office-word
-- microsoft-365
+- m365
 languages:
 - javascript
 extensions:
