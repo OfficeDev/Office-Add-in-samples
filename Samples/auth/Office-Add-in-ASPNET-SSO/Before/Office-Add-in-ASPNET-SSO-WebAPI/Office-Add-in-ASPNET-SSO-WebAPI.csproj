@@ -85,8 +85,8 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.Identity.Client, Version=4.32.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Identity.Client.4.32.1\lib\net45\Microsoft.Identity.Client.dll</HintPath>
+    <Reference Include="Microsoft.Identity.Client, Version=4.36.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.36.1\lib\net45\Microsoft.Identity.Client.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.11.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.6.11.1\lib\net45\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
@@ -272,46 +272,6 @@
     <Content Include="Scripts\Document.js" />
     <Content Include="Scripts\FabricUI\MessageBanner.js" />
     <Content Include="Scripts\HomeES6.js" />
-    <Content Include="Scripts\Office\1\powerpoint-win32-16.00.js" />
-    <Content Include="Scripts\Office\1\powerpoint-win32-16.01.debug.js" />
-    <Content Include="Scripts\Office\1\powerpoint-win32-16.01.js" />
-    <Content Include="Scripts\Office\1\powerpointios-15.debug.js" />
-    <Content Include="Scripts\Office\1\powerpointios-15.js" />
-    <Content Include="Scripts\Office\1\project-15.01.debug.js" />
-    <Content Include="Scripts\Office\1\project-15.01.js" />
-    <Content Include="Scripts\Office\1\project-15.02.debug.js" />
-    <Content Include="Scripts\Office\1\project-15.02.js" />
-    <Content Include="Scripts\Office\1\project-15.debug.js" />
-    <Content Include="Scripts\Office\1\project-15.js" />
-    <Content Include="Scripts\Office\1\project-win32-16.00.debug.js" />
-    <Content Include="Scripts\Office\1\project-win32-16.00.js" />
-    <Content Include="Scripts\Office\1\word-15.01.debug.js" />
-    <Content Include="Scripts\Office\1\word-15.01.js" />
-    <Content Include="Scripts\Office\1\word-15.02.debug.js" />
-    <Content Include="Scripts\Office\1\word-15.02.js" />
-    <Content Include="Scripts\Office\1\word-15.debug.js" />
-    <Content Include="Scripts\Office\1\word-15.js" />
-    <Content Include="Scripts\Office\1\word-ios-16.00.debug.js" />
-    <Content Include="Scripts\Office\1\word-ios-16.00.js" />
-    <Content Include="Scripts\Office\1\word-mac-16.00.debug.js" />
-    <Content Include="Scripts\Office\1\word-mac-16.00.js" />
-    <Content Include="Scripts\Office\1\word-web-16.00.debug.js" />
-    <Content Include="Scripts\Office\1\word-web-16.00.js" />
-    <Content Include="Scripts\Office\1\word-win32-16.00.debug.js" />
-    <Content Include="Scripts\Office\1\word-win32-16.00.js" />
-    <Content Include="Scripts\Office\1\word-win32-16.01.debug.js" />
-    <Content Include="Scripts\Office\1\word-win32-16.01.js" />
-    <Content Include="Scripts\Office\1\wordios-15.debug.js" />
-    <Content Include="Scripts\Office\1\wordios-15.js" />
-    <Content Include="Scripts\Office\en-us\office_strings.debug.js" />
-    <Content Include="Scripts\Office\Excel-Win32-16.01.debug.js" />
-    <Content Include="Scripts\Office\MicrosoftAjax.js" />
-    <Content Include="Scripts\Office\o15apptofilemappingtable.debug.js" />
-    <Content Include="Scripts\Office\o15apptofilemappingtable.js" />
-    <Content Include="Scripts\Office\Office.debug.js" />
-    <Content Include="Scripts\Office\office_strings.debug.js" />
-    <Content Include="Scripts\Office\PowerPoint-Win32-16.01.debug.js" />
-    <Content Include="Scripts\Office\Word-Win32-16.01.debug.js" />
     <Content Include="Scripts\_officeintellisense.js" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
