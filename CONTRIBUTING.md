@@ -1,58 +1,83 @@
-# Contribution guidance
+# Contribute
 
-If you'd like to contribute to this repository, please read the following guidelines. Contributors are more than welcome to share your learnings with others from centralized location.
+This project welcomes contributions and suggestions. Most contributions require you to
+agree to a Contributor License Agreement (CLA) declaring that you have the right to,
+and actually do, grant us the rights to use your contribution. For details, visit
+https://cla.microsoft.com.
 
-## Code of conduct
+When you submit a pull request, a CLA-bot will automatically determine whether you need
+to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the
+instructions provided by the bot. You will only need to do this once across all repositories using our CLA.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-## Question or problem?
-
-Please do not open GitHub issues for general support questions as the GitHub list should be used for feature requests and bug reports. This way we can more easily track actual issues or bugs from the code and keep the general discussion separate from the actual code.
-
-If you have questions about how to use office.js or the Office developer platform, please post your question on [stackoverflow](https://stackoverflow.com). Tag your question with office-js or outlook-web-addins
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
+or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 ## Typos, issues, bugs and contributions
 
-When you submit changes to this PnP repository, please follow these recommendations.
+When you submit changes to this repository, please follow these recommendations.
 
-* Always fork repository to your own account for applying modifications
-* Do not combine multiple changes to one pull request, please submit for example any samples and documentation updates using separate PRs
-* If you are submitting multiple samples, please create specific PR for each of them
-* If you are submitting typo or documentation fix, you can combine modifications to single PR where suitable
+* Always fork the repository to your own account for applying modifications.
+* Don't combine multiple changes in one pull request. Please submit separate PRs for each fix, update, or new sample.
+* If you are submitting a typo or documentation fix, you can combine modifications in a single PR where suitable.
 
-## Sample naming and structure guidelines
+## Sample guidelines
 
-When you are submitting a new sample, use the following guidelines
+When you are submitting a new sample, use the following guidelines.
 
-* You will need to have a README file for your contribution, which is based on the [provided template](../readme-template.md). Please copy this template and update accordingly. The README has to be named as README.md with capital letters.
-  * You will need to have a picture of the web part in practice in the README file ("pics or it didn't happen"). Preview image must be located in /assets/ folder in the root for your solution.
-* The README template contains specific tracking image as a final entry in the page with img tag by default to https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/readme-template. This is transparent image, which is used to track popularity of individual samples in GitHub.
-  * Update the image src element according to correct repository name and folder information. If your sample is for example in samples folder and named as react-todo, src element should be updated as https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/react-todo.
-* If you find a similar kind of sample from the existing samples, we would prefer you extend the existing one, rather than submit a new similar sample.
-  * When you update existing samples, please update the README as well with new information on provided changes and with your author details.
-* When you are submitting a new sample solution, please name the sample solution folder accordingly.
-  * Folder should start by identifying JS library used - like "react-", "angular-", "knockout-"
-  * If you are not using any specific JS library, please use "js-" as the prefix for your sample, or use "ts-" if your sample uses TypeScript.
-  * If your solution is demonstrating multiple technologies, please use functional terms as the name for the solution folder.
-* Do not use period/dot in the folder name of the provided sample.
+### Check for existing samples
+If you find a similar sample that already exists in the repo, we would prefer that you extend the existing one, rather than submit a new similar sample.
 
-## The Contribution License Agreement
+### Create a README.md file
+Create a README.md file for your code sample, and base it on the [provided template](/Teamplates/readme-template.md). The README must be named README.md with capital letters.
 
-For most contributions, you'll be asked to sign a Contribution License Agreement (CLA). This will happen when you submit a pull request. Microsoft will send a link to the CLA to sign via email. Once you sign the CLA, your pull request can proceed. Read the CLA carefully, because you may need to have your employer sign it.
+### Update tracking image
+The README template contains specific tracking image as a final entry in the page with img tag by default to https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/name-of-sample. This is transparent image, which is used to track anonymous view counts of individual samples in GitHub.
 
-## Submitting pull requests
+Update the image `src` element according to correct repository name and folder information. For example, if your sample is **/samples** folder and named as "react-todo", `src` element should be updated as https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/react-todo.
 
-Here's a high level process for submitting new samples or updates to existing ones.
+### Name the solution
+When you are submitting a new sample solution, please name the sample solution folder accordingly.
 
-1. Sign the Contributor License Agreement.
+* The solution folder should be under the **/Samples** folder of this repo.
+* Folder name should be in the format [product]-[scenario]-[platform]. For example, a sample that shows how to create data-bound Excel tables using React, should be named "excel-data-bound-tables-react". The names are all lowercase.
+* If your solution is demonstrating multiple technologies, please use functional terms as the name for the solution folder.
+* Do not use a period in the folder name of the provided sample.
+
+## Add your code sample to a pull request
+
+Use the following steps to submit a pull request for your new code sample.
+
 1. Fork this repository [OfficeDev/PnP-OfficeAddins](https://github.com/OfficeDev/PnP-OfficeAddins) to your GitHub account.
-1. Create a new branch off the `main` branch for your fork for the contribution.
-1. Include your changes to your branch.
-1. Commit your changes using descriptive commit message * These are used to track changes on the repositories for monthly communications
-1. Create a pull request in your own fork and target `main` branch.
-1. Fill up the provided PR template with the requested details.
+2. Create a new branch off the `main` branch for your fork for the contribution.
+3. In the new branch, create the folder for your new sample using the previous naming guidelines.
+4. Add your code sample to the folder.
+5. Commit the new code using descriptive commit message. Commit messages are used to track changes on the repositories for monthly communications.
+6. Push the changes up to your fork.
+7. Create a pull request in your own fork and target the `main` branch on OfficeDev org.
+8. Fill up the provided PR template with the requested details.
+
+> **Note:** If you haven't signed a contributor license agreement (CLA), then you will automatically be asked to sign a CLA as part of submitting the PR.
+
+When you submit your changes, via a pull request, our team will be notified and will review your pull request. You will receive notifications about your pull request from GitHub; you may also be notified by someone from our team if we need more information. We reserve the right to edit your submission for legal, style, clarity, or other issues.
+
+If you need help keeping your fork in sync with the original repo, see [GitHub Help: Syncing a Fork](https://help.github.com/articles/syncing-a-fork/).
+
+## Code hygiene
+
+Follow these guidelines to be sure your code is ready for the world.
+
+* Code added from Stack Overflow, or any other source, is clearly attributed.
+* Any code that has associated documentation displayed in an IDE (such as IntelliSense, or JavaDocs) has code comments.
+* Classes, methods, parameters, and return values have clear descriptions.
+* Exceptions and errors are documented.
+* Remarks exist for anything special or notable about the code.
+* Sections of code that have complex algorithms have appropriate comments describing what they do.
+* Follow the code style that is appropriate for the platform and language that your sample uses.
+* Test your code.
+* Test the UI thoroughly to be sure nothing was broken during the process of moving code into the pull request.
+
+## Additional guidelines
 
 Before you submit your pull request consider the following guidelines:
 
@@ -137,4 +162,3 @@ If the sample you wish to contribute is stored in your own Github repository, yo
     ```
 
 Thank you for your contribution!
-

@@ -1,3 +1,23 @@
+---
+page_type: sample
+urlFragment: office-add-in-auth-graph-react
+products:
+- office-excel
+- office-powerpoint
+- office-word
+- m365
+languages:
+- javascript
+extensions:
+  contentType: samples
+  technologies:
+  - Add-ins
+  - Microsoft Graph
+  services:
+  - Excel
+  - Microsoft 365
+  createdDate: 5/1/2017 2:09:09 PM
+---
 # Get OneDrive data using Microsoft Graph and msal.js in an Office Add-in 
 
 ## Summary

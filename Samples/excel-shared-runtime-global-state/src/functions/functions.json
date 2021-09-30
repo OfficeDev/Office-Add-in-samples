@@ -1,0 +1,34 @@
+{
+    "functions": [
+        {
+            "description": "Get value for key",
+            "id": "GETVALUEFORKEYCF",
+            "name": "GETVALUEFORKEYCF",
+            "parameters": [
+                {
+                    "description": "The key",
+                    "name": "key",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        },
+        {
+            "description": "Get value for key",
+            "id": "SETVALUEFORKEYCF",
+            "name": "SETVALUEFORKEYCF",
+            "parameters": [
+                {
+                    "description": "The key",
+                    "name": "key",
+                    "type": "any"
+                },
+                {
+                    "name": "value",
+                    "type": "any"
+                }
+            ],
+            "result": {}
+        }
+    ]
+}

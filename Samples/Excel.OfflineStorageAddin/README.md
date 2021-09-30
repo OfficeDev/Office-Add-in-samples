@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: office-add-in-access-data-offline
 products:
 - office-excel
 - office-365
@@ -20,7 +21,7 @@ This sample demonstrates how you can implement `localStorage` to enable limited 
 
 ## Applies to
 
--  Excel, PowerPoint, Word on Windows, Mac, and in a browser.
+- Excel, PowerPoint, Word on Windows, Mac, and in a browser.
 
 ## Prerequisites
 
@@ -38,11 +39,8 @@ Version  | Date | Comments
 ---------| -----| --------
 1.0  | July 19, 2019 | Initial release
 
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 ## Scenario: Storing data using local storage
+
 This sample Office Add-in inserts a table of fictitious basketball players' stats in your file, retrieved from a local file named `sampleData.json`. In this sample code, data from the add-in is stored in `localStorage` to allow users who previously opened the add-in with online connection to insert the table of stats offline.
 
 While this add-in gets its data from a local server, implementation of `localStorage` as shown in this sample can be extended to add-ins that get their data from online sources. Furthermore, although this sample runs only in Excel, `localStorage` can be used to offline data across Word, Excel, and PowerPoint.
@@ -70,9 +68,6 @@ $ npm install
 
 # this will build the add-in 
 $ npm run build
-
-# this will update any security vulnerabilities in dependencies
-$ npm audit fix
 
 # this will start the server on your desktop and launch your add-in on Excel
 $ npm run start
@@ -126,9 +121,9 @@ error: function (xhr, status, error) {
 
 ## Security notes
 
-In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
-
-You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
+- There may be security issues in packages used by this sample. Be sure to run `npm audit` to identify any security vulnerabilities.
+- In the webpack.config.js file, a header is set to  `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
+- You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
 
 You can install or uninstall the certificates by running the following commands in the project folder.
 
@@ -138,7 +133,9 @@ npx office-addin-dev-certs uninstall
 ```
 
 ## Questions and comments
-We'd love to get your feedback about this sample. You can send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to Stack Overflow. Ensure your questions are tagged with [office-js].
+
+We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
+Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://docs.microsoft.com/en-us/answers/topics/office-js-dev.html).
 
 ## Additional resources
 * [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)

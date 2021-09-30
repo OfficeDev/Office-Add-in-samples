@@ -1,10 +1,11 @@
 ---
 page_type: sample
+urlFragment: office-add-in-shared-runtime-global-data
 products:
 - office-excel
 - office-365
 languages:
-- typescript
+- javascript
 extensions:
   contentType: samples
   technologies:
@@ -32,7 +33,7 @@ This sample shows how to set up a basic project that uses the shared runtime. Th
 
 ## Prerequisites
 
-Before running this sample, you need a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) installed on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+- Microsoft 365
 
 ## Solution
 
@@ -45,10 +46,7 @@ Office Add-in share global data with a shared runtime | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0 | 3-15-2020 | Initial release
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+1.1 | May 26, 2021 | Updated to use GitHub pages for hosting
 
 ----------
 
@@ -56,15 +54,20 @@ Version  | Date | Comments
 
 This sample enables a user to store and retrieve key/value pairs by using the task pane or custom functions. The user can select which type of storage is used. They can choose to store key/value pairs in local storage, or choose to use a global variable.
 
-## Build and run the solution
+## Run the sample
 
-1. In the command prompt, run the command `npm install`.
-2. Run the command `npm run start`. This starts the node server, and opens Excel on the desktop.
+You can run this sample in Excel in a browser. The add-in web files are served from this repo on GitHub.
 
-If you're running Excel on the web or Mac, see the following articles for instructions on how to sideload:
-
-- [Sideload Office Add-ins in Office on the web for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing) 
-- [Sideload Office Add-ins on iPad and Mac for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad-and-mac)
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Open [Office on the web](https://office.live.com/).
+1. Choose **Excel**, and then open a new document.
+1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
+1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
+1. Browse to the add-in manifest file, and then select **Upload**.
+   ![The upload add-in dialog with buttons for browse, upload, and cancel.
+](../../Samples/images/upload-add-in.png)
+1. Verify that the add-in loaded successfully. You will see a **Show Taskpane** button on the **Home** tab on the ribbon.
 
 Once the add-in is loaded use the following steps to try out the functionality.
 
@@ -93,18 +96,36 @@ Global state is tracked in a window object retrieved using a `getGlobal()` funct
 
 There are no commands.html or functions.html files. These are not necessary because their purpose is to load individual runtimes. These do not apply when using the shared runtime.
 
-## Security notes
+## Run the sample from Localhost
 
-In the webpack.config.js file, a header is set to `"Access-Control-Allow-Origin": "*"`. This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
+If you prefer to host the web server for the sample on your computer, follow these steps:
 
-You'll be prompted to install certificates for trusted access to https://localhost. The certificates are intended only for running and studying this code sample. Do not reuse them in your own code solutions or in production environments.
-
-You can install or uninstall the certificates by running the following commands in the project folder.
-
-```
-npx office-addin-dev-certs install
-npx office-addin-dev-certs uninstall
-```
+1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+    
+    ```console
+    npm install --global http-server
+    ```
+    
+2. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
+3. From a command prompt, go to the root folder and run the following command:
+    
+    ```console
+    http-server -S --cors . -p 3000
+    ```
+    
+4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
+    
+    ```console
+    npm install --global office-addin-https-reverse-proxy
+    ```
+    
+    To reroute run the following in another command prompt:
+    
+    ```console
+    office-addin-https-reverse-proxy --url http://localhost:3000
+    ```
+    
+5. Follow the steps in [Run the sample](#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Copyright
 

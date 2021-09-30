@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: excel-add-in-insert-external-file
 products:
 - office-excel
 - office
@@ -19,7 +20,7 @@ description: "This sample shows how to insert a template from an external Excel 
 
 This sample shows how to insert an existing template from an external Excel file into the currently open Excel file. Then it retrieves data from a JSON web service and populates the template for the customer.
 
-> **Note:** The features used in this sample are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you'll need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is to sign up for an Office 365 subscription. If you don't already have an Office 365 subscription, get one by joining the [Office 365 Developer Program](https://developer.microsoft.com/office/dev-program).
+> **Note:** If you don't already have an Microsoft 365 subscription, get one by joining the [Office 365 Developer Program](https://developer.microsoft.com/office/dev-program).
 
 ## Features
 
@@ -58,11 +59,11 @@ To run the sample you just need to sideload the manifest. The add-in web files a
 1. Select the **Insert** tab, and choose **Office Add-ins**.
 1. On the **Office Add-ins** dialog, select **MY ADD-INS** , choose the **Manage My Add-ins** drop-down, and then choose **Upload My Add-in**.
     
-    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../images/office-add-ins-my-account.png)
+    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
     
 1. Browse to the add-in manifest file, and then select **Upload**.
     
-    ![The upload add-in dialog with buttons for browse, upload, and cancel.](../../images/upload-add-in.png)
+    ![The upload add-in dialog with buttons for browse, upload, and cancel.](../../Samples/images/upload-add-in.png)
     
 1. Verify that the add-in loaded successfully. You'll see a **PnP Insert Excel file** button on the **Home** tab.
 
@@ -168,7 +169,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
     
-1. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/excel-keyboard-shortcuts#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
+1. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/excel-keyboard-shortcuts#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Copyright
 

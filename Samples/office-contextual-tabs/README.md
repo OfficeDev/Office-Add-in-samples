@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: office-add-in-contextual-tabs
 products:
 - office-excel
 - office-powerpoint
@@ -16,57 +17,43 @@ description: "Learn how to create a contextual tab that displays on the ribbon i
 
 # Create custom contextual tabs on the ribbon
 
-This sample shows how to create a custom contextual tab on the ribbon in the Office UI. The sample creates a table, and when the user moves the focus inside the table, the custom tab is displayed. When the user moves outside the table, the custom tab is hidden.
+This sample accomplishes the following tasks using Office ribbon APIs.
+
+- Creates a custom contextual tab named **Table Data**.
+- Creates a table in Excel. When the focus is inside the table, the custom tab is displayed.
+- When the focus is outside the table, the custom tab is hidden.
+
+![Screenshot that shows when a table in Excel has the focus, a custom contextual tab named Table Data is shown on the ribbon.](pnp-add-contextual-tabs-to-your-add-in.png)
 
 ## Applies to
 
--  Excel and PowerPoint on Windows 10.
+- Excel on Windows
+- Excel on the web
+- PowerPoint on Windows
 
 ## Prerequisites
 
 - Microsoft 365
 
-## Solution
-
-Solution | Author(s)
----------|----------
-Create custom contextual tabs on the ribbon | Microsoft
-
-## Version history
-
-Version  | Date | Comments
----------| -----| --------
-1.0  | February 11, 2021 | Initial release
-1.1  | May 11, 2021 | Removed yo office and modified to be GitHub hosted
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
-## Scenario: Create and use a contextual tab
-
-This sample inserts a table of fictitious sales data for Contoso. The data is pulled from one of two mock data sources; a mock Excel file, or a mock SQL database. The user can select which data source to use either in the task pane, or in the contextual tab.
-
-After the sales table is created, the sample creates a contextual tab named **Table Data**. When you select any cell or range inside the table, the contextual tab is displayed on the ribbon. When you select any cell or range outside the table, the contextual tab is hidden.
-
-The contextual tab supports commands related to working with the sales data. When you make changes you can submit them and update the mock data source. Or you can refresh the table from the mock data source.
-
 ## Run the sample
 
-You can run this sample in Excel in a browser. The add-in web files are served from this repo on GitHub.
+Run this sample in Excel in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 1. Open [Office on the web](https://office.live.com/).
 1. Choose **Excel**, and then open a new document.
 1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
 1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
-   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../images/office-add-ins-my-account.png)
+
+    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in".](../../Samples/images/office-add-ins-my-account.png)
+
 1. Browse to the add-in manifest file, and then select **Upload**.
-   ![The upload add-in dialog with buttons for browse, upload, and cancel.
-](../../images/upload-add-in.png)
+
+    ![The upload add-in dialog with buttons for browse, upload, and cancel.](../../Samples/images/upload-add-in.png)
+
 1. Verify that the add-in loaded successfully. You will see a **PnP contextual tabs** button on the **Home** tab on the ribbon.
 
-You can take the following actions to try out the add-in and the contextual tab.
+Take the following actions to try out the add-in and the contextual tab.
 
 - Use the task pane to import data from either the the mock Excel file, or mock SQL Database. Selecting **Import data** in the task pane creates the sales table.
 - Select a cell, or range, inside the sales table to display the **Table Data** contextual tab on the ribbon.
@@ -78,6 +65,12 @@ You can take the following actions to try out the add-in and the contextual tab.
 - Select a cell, or range, outside the sales table to hide the **Table Data** contextual tab.
 
 ## Key parts of this sample
+
+This sample inserts a table of fictitious sales data for Contoso. The data is pulled from one of two mock data sources: a mock Excel file, or a mock SQL database. The user can select which data source to use either in the task pane, or in the contextual tab.
+
+After the sales table is created, the sample creates a contextual tab named **Table Data**. When you select any cell or range inside the table, the contextual tab is displayed on the ribbon. When you select any cell or range outside the table, the contextual tab is hidden.
+
+The contextual tab supports commands related to working with the sales data. When you make changes you can submit them and update the mock data source. Or you can refresh the table from the mock data source.
 
 ### Shared JavaScript runtime
 
@@ -97,11 +90,11 @@ When you build your own add-in, you'll need to decide what context determines wh
 
 When the user imports data to create the table, `createSampleTable()` adds an `onSelectionChanged` event handler, and `onChanged` event handler. Later, as the user moves the selection into or out of the table, the onSelectionChanged() function is called, which can display the contextual tab when the selection is inside the table. When the user makes changes to the table, `onSelectionChange()` is called, and the **Refresh** and **Submit** buttons are enabled.
 
-You can see more details in the following code excerpt, or refer to these functions in the `src/utilities/utilities.js` file.
+See more details in the following code excerpt, or refer to these functions in the `src/utilities/utilities.js` file.
 
 ```javascript
 async function createSampleTable(mockDataSource) {
-    //...//
+  //...//
 
      //Add event handlers
     salesTable.onSelectionChanged.add(onSelectionChange);
@@ -141,7 +134,7 @@ function onChanged() {
 
 ## Run the sample from Localhost
 
-If you prefer to host the web server for the sample on your computer, follow these steps:
+If you prefer to host the web server for the sample on your computer, follow these steps.
 
 1. Open the **/src/commands/ribbonJSON.js** file.
 1. Edit line 9 to refer to the localhost:3000 endpoint as shown in the following code.
@@ -151,40 +144,57 @@ If you prefer to host the web server for the sample on your computer, follow the
     ```
     
 1. Save the file.
-1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command.
     
     ```console
     npm install --global http-server
     ```
     
-2. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
-3. From a command prompt, go to the web-worker folder and run the following command:
+1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
+1. From a command prompt, go to the web-worker folder and run the following command.
     
     ```console
     http-server -S --cors . -p 3000
     ```
     
-4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
+1. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command.
     
     ```console
     npm install --global office-addin-https-reverse-proxy
     ```
     
-    To reroute run the following in another command prompt:
+    To reroute run the following in another command prompt.
     
     ```console
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
     
-5. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/master/Samples/office-contextual-tabs#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
+1. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/office-contextual-tabs#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Questions and comments
 
-We'd love to get your feedback about this sample. You can send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to Stack Overflow. Ensure your questions are tagged with [office-js].
+We'd love to get your feedback about this sample. Please send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://docs.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Additional resources
 
-- [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+- [Create custom contextual tabs in Office Add-ins](https://docs.microsoft.com/office/dev/add-ins/design/contextual-tabs)
+
+Demonstration video:
+
+[![YouTube video showing the contextual tab sample code and how it works.](https://img.youtube.com/vi/9tLfm4boQIo/0.jpg)](https://www.youtube.com/watch?v=9tLfm4boQIo)
+
+## Solution
+
+Solution | Authors
+---------|----------
+Create custom contextual tabs on the ribbon | Microsoft
+
+## Version history
+
+Version  | Date | Comments
+---------| -----| --------
+1.0  | February 11, 2021 | Initial release
+1.1  | May 11, 2021 | Removed yo office and modified to be GitHub hosted
 
 ## Copyright
 

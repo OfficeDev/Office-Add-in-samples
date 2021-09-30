@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: office-add-in-migrate-vsto-to-web
 products:
 - office
 - office-excel

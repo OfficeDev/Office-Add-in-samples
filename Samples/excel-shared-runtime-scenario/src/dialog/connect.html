@@ -1,0 +1,35 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <!-- Office JavaScript API -->
+<!--    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.debug.js"></script> -->
+    <script type="text/javascript" src="https://appsforoffice.edog.officeapps.live.com/lib/beta/hosted/office.debug.js"></script>
+
+    <script type="text/javascript" src="../dialog/connect.js"></script>
+    <script>
+        function closeButtonClick() {
+        let messageObject = { messageType: "dialogClosed" };
+        let jsonMessage = JSON.stringify(messageObject);
+        Office.context.ui.messageParent(jsonMessage);
+    }
+    </script>
+</head>
+
+<body>
+    <label for="Services">Select a servce:</label>
+
+<select id="services">
+  <option value="csv">Shared CSV file</option>
+  <option value="contosodb">Contoso database</option>
+</select>
+<button onClick='closeButtonClick();''>Connect</button>
+</body>
+
+</html>

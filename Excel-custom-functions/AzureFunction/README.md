@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: azure-function-with-excel-custom-function
 products:
 - office-excel
 - office-365

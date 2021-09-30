@@ -1,0 +1,27 @@
+﻿<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+
+@{
+    ViewBag.Title = "OpenInTeams";
+}
+
+<h2>Select the Team</h2>
+
+@using (Html.BeginForm("ChannelsListForTeam", "Products", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    <fieldset>
+
+        Team to open:
+
+        @Html.DropDownList("teamIDSelection")
+
+        <p>
+
+            <input type="submit" value="Submit" />
+
+        </p>
+
+    </fieldset>
+
+}
