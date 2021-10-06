@@ -25,6 +25,7 @@ Office Add-ins code samples are provided in this repo to help you learn, study, 
 | Name           | Description  |
 | -------------- | ------------ |
 | [Open in Teams](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/excel-open-in-teams) | Creates a new Excel spreadsheet in Microsoft Teams containing data you define.|
+| [Insert an external Excel file and populate it with JSON data](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/excel-insert-file)  | Insert an existing template from an external Excel file into the currently open Excel file. Then retrieve data from a JSON web service and populate the template for the customer. |
 | [Create custom contextual tabs on the ribbon](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/office-contextual-tabs) | This sample shows how to create a custom contextual tab on the ribbon in the Office UI. The sample creates a table, and when the user moves the focus inside the table, the custom tab is displayed. When the user moves outside the table, the custom tab is hidden. |
 | [Use keyboard shortcuts for Office add-in actions](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/excel-keyboard-shortcuts) | Shows how to set up a basic Excel add-in project that utilizes keyboard shortcuts. |
 | [Custom function sample using web worker](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Excel-custom-functions/web-worker) | Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in. |
