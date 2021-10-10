@@ -4,7 +4,7 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Eric Legault Consulting Inc.</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Event-based Activation Demo"/>
+  <DisplayName DefaultValue="Event-based Activation Demo (localhost)"/>
   <Description DefaultValue="Demo of Outlook event-based activation"/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
@@ -142,7 +142,7 @@
           <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.js" />
         </bt:Urls>
         <bt:ShortStrings>
-          <bt:String id="GroupLabel" DefaultValue="Event-based Activation Demo"/>
+          <bt:String id="GroupLabel" DefaultValue="Event-based Activation Demo (localhost)"/>
           <bt:String id="msgComposeTaskPaneButton.Label" DefaultValue="Show Taskpane"/>
           <bt:String id="appOrgTaskPaneButton.Label" DefaultValue="Show Taskpane"/>
         </bt:ShortStrings>

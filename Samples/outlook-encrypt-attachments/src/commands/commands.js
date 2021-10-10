@@ -7,6 +7,8 @@
 /* eslint-disable no-undef */ //For Office objects
 var fileName;
 const secretKey = "secret key 123";
+const encryptedAttachmentPrefix = "encrypted_";
+const decryptedAttachmentPrefix = "decrypted_";
 // eslint-disable-next-line no-unused-vars
 Office.initialize = function (reason) {};
 /**
@@ -231,8 +233,9 @@ function onAppointmentAttendeesChangedHandler(event) {
  * @param {Office.AsyncResult} result default: Office.AsyncResult
  */
 function onItemAttachmentsChangedHandler(event) {  
+  //TODO Test adding two or more attachments at the same time!
   console.log("onItemAttachmentsChangedHandler: " + event.attachmentDetails.name + " (" + event.attachmentStatus + ")");
-  if (event.attachmentDetails.name == `decrypted_${fileName}`) {
+  if (event.attachmentDetails.name == `${decryptedAttachmentPrefix}${fileName}`) {
     //Don't process any more events - we've already encrypted the attachment and added it as another attachment, then decrypted that attachment and added it as well
     event.completed(); //NOTE: Must call!
     return;
@@ -273,16 +276,31 @@ function handleAttachmentsCallback(result) {
     case Office.MailboxEnums.AttachmentContentFormat.Base64:
       // Handle file attachment
 
+      //BUG Something is wrong with this flow in Outlook for Windows - nothing fires after adding the ProgressIndicator message
       //Set a notification message that we're processing the attachment. Note that this will be removed immediately after the decrypted attachment is added, and it may not be displayed for very long
+      var options = { 'asyncContext': { base64: result.value.content } };
       Office.context.mailbox.item.notificationMessages.addAsync("processingAttachments", {
         type: Office.MailboxEnums.ItemNotificationMessageType.ProgressIndicator,
         message: `Please wait while the '${fileName}' attachment is encrypted...`,
-      });
-
-      //Encrypt base64 file data using CryptoJS
-      var ciphertext = CryptoJS.AES.encrypt(result.value.content, secretKey).toString();
-      //Then attaches the file to the email
-      addEncryptedAttachmentForCryptoJs(ciphertext);
+      }, options, function(asyncResult){
+          //Encrypt base64 file data using CryptoJS
+          if (asyncResult.status === Office.AsyncResultStatus.Succeeded){
+            try {
+              var ciphertext = CryptoJS.AES.encrypt(asyncResult.asyncContext.base64, secretKey).toString();
+              //Then attaches the file to the email            
+              console.log(`handleAttachmentsCallback(): starting processing of file '${fileName}'...`);
+              encryptAttachment(ciphertext);            
+            }
+            catch(ex){
+              console.error(`handleAttachmentsCallback(): Error: ${ex}`);            
+              Office.context.mailbox.item.notificationMessages.removeAsync("processingAttachments", function (result) {
+        console.log("Notification message removed.");});
+            }            
+          }     
+          else{
+            console.error(`handleAttachmentsCallback(): Unexpected - status is ${asyncResult.status}`);            
+          }     
+      });      
       break;
     case Office.MailboxEnums.AttachmentContentFormat.Eml:
       // Handle email item attachment.
@@ -297,29 +315,33 @@ function handleAttachmentsCallback(result) {
       console.log("Attachment is a cloud attachment.");
       break;
     default:
-    // Handle attachment formats that are not supported.
+      // Handle attachment formats that are not supported.
+      console.log("Not handling unsupported attachment.");
+      break;
   }
 }
 /**
  * Method that converts encrypted data to base64 and creates and adds a file attachment to the current email
  * @param {string} encryptedData default: "undefined"
  */
-function addEncryptedAttachmentForCryptoJs(encryptedData) {
-  console.log("addEncryptedAttachmentForCryptoJs(): encrypted data:");
+function encryptAttachment(encryptedData) {
+  console.log(`encryptAttachment(): Encrypting file '${fileName}''...`);
   // console.dir(encryptedData); //NOTE: If you want to see the encrypted data output to the console, uncomment this line
 
   var base64EncryptedData = window.btoa(encryptedData);
+  var encryptedFileName = `${encryptedAttachmentPrefix}${fileName}`;
+  //NOTE: If you want to see the base64 data output to the console, uncomment these lines
+  // console.log("encryptAttachment(): base64 encrypted data:");
+  // console.dir(base64EncryptedData);
 
-  console.log("addEncryptedAttachmentForCryptoJs(): base64 encrypted data:");
-  // console.dir(base64EncryptedData); //NOTE: If you want to see the base64 data output to the console, uncomment this line
-
+  console.log(`encryptAttachment(): Adding encrypted file '${encryptedFileName}'...`);
   Office.context.mailbox.item.addFileAttachmentFromBase64Async(
     base64EncryptedData,
-    "encrypted_" + fileName,
+    encryptedFileName,
     function (asyncResult) {
-      console.log("addEncryptedAttachmentForCryptoJs(): Added encrypted attachment 'encrypted_" + fileName);
-      console.dir(asyncResult); //NOTE: If you want to see the base64 data output to the console, uncomment this line
-      decryptAttachmentForCryptoJs(encryptedData);
+      console.log(`encryptAttachment(): Added encrypted attachment '${encryptedFileName}'; now decrypting...`);
+      //console.dir(asyncResult); //NOTE: If you want to see the base64 data output to the console, uncomment this line
+      decryptAttachment(encryptedData);
     }
   );
 }
@@ -327,16 +349,20 @@ function addEncryptedAttachmentForCryptoJs(encryptedData) {
  * Method that decrypts encrypted base64 file data using CryptoJS and attaches the file to the email
  * @param {string} encryptedData default: "undefined"
  */
-function decryptAttachmentForCryptoJs(encryptedData) {
+function decryptAttachment(encryptedData) {
+  console.log(`decryptAttachment(): Decrypting file '${fileName}''...`);
+
   var bytes = CryptoJS.AES.decrypt(encryptedData, secretKey);
   var originalText = bytes.toString(CryptoJS.enc.Utf8);
+  var decryptedFileName = `${decryptedAttachmentPrefix}${fileName}`;
 
-  console.log(`decryptAttachmentForCryptoJs(): Original base64: ${originalText}`);
+  // console.log(`decryptAttachment(): Original base64: ${originalText}`); //NOTE: If you want to see the base64 data output to the console, uncomment this line
+  console.log(`decryptAttachment(): Adding decrypted file '${decryptedFileName}'...`);
   Office.context.mailbox.item.addFileAttachmentFromBase64Async(
     originalText,
-    "decrypted_" + fileName,
+    decryptedFileName,
     function (asyncResult) {
-      console.log("Added decrypted attachment 'decrypted_" + fileName);
+      console.log(`decryptAttachment(): Added decrypted attachment '${decryptedFileName}'`);
       // console.dir(asyncResult); //NOTE: If you want to see the base64 data output to the console, uncomment this line
 
       Office.context.mailbox.item.notificationMessages.removeAsync("processingAttachments", function (result) {

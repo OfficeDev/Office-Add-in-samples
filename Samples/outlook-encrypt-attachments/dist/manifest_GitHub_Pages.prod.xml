@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
-  <Id>93011807-161e-4cc1-846f-eb7721919e4e</Id>
+  <Id>c2c560d2-91ce-4f59-883a-f6fff90e5dbb</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Eric Legault Consulting Inc.</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>

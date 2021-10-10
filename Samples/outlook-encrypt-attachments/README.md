@@ -47,37 +47,41 @@ This sample showcases how to use event-based activation in an Outlook add-in.  I
 
 ## Build and run the solution
 
-### Install Types for Office JavaScript Preview API
-
-- `npm install --save-dev @types/office-js-preview`
-- See https://docs.microsoft.com/en-ca/office/dev/add-ins/reference/objectmodel/preview-requirement-set/outlook-requirement-set-preview
+- Install Types for Office JavaScript Preview API
+  - `npm install --save-dev @types/office-js-preview`
+- Follow the steps in the ['How to preview'](https://docs.microsoft.com/en-ca/office/dev/add-ins/reference/objectmodel/preview-requirement-set/outlook-requirement-set-preview) section
 - Clone this repo, or download the sample.
 - in the command line run:
-
   - `npm install`
   - `npm run build`
   - `npm start`
 
-To debug in Outlook Online:
+## To debug in Outlook Online:
 
 - Upload the manifest.xml file in your "My add-ins" page in "Add-ins for Outlook" settings
 - run `npm run start:web` (or from "RUN AND DEBUG" in VS Code, choose "Node.js..." -> "Run Script: start:web")
+
+## To debug in Outlook for Windows:
+
+> Prerequisites: See [Debug your event-based Outlook add-in (preview)](https://docs.microsoft.com/en-ca/office/dev/add-ins/outlook/debug-autolaunch)
+
+
+- Run `npm start`; this should start Outlook for Windows
+- If the "Register Outlook Developer Add-in Manifest" dialog appears, click OK
+- Verify that the `Computer\HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\WEF\Developer\93011807-161e-4cc1-846f-eb7721919e4e` registry key exists and **UseDirectDebugger** is set to 1. TODO: Replace GUID (running `npm start` should do that automatically)
+- Compose a new message or appointment
+- Wait for the "Debug Event-based handler" dialog to appear; do NOT click OK (or Cancel)
+- Open the `%LOCALAPPDATA%\Microsoft\Office\16.0\Wef\{[Outlook profile GUID]}\[encoding]\Javascript\[Add-in ID]_[Add-in Version]_[locale]\bundle.js` file in Visual Studio Code and set breakpoints
+- Run the "Direct Debugging" command in the RUN AND DEBUG dropdown
+- Click OK in the "Debug Event-based handler" dialog
+- Interact with the Outlook item to trigger breakpoints in your code
 
 ## Notes
 
 - At present, imports are not supported in the JavaScript file where you implement the handling for event-based activation.
 - verify that crypto-js is referenced in the .html file (commands.html in this sample) that has a reference to the commands file (commands.js in this sample): `<script type="text/javascript" src="../../node_modules/crypto-js/crypto-js.js"></script>`
 - Instead of using localStorage to manage state (as is done for caching the appointments original date/time in this sample), you can use RoamingSettings (see [&#39;Manage state and settings for an Outlook add-in&#39;](https://docs.microsoft.com/en-us/office/dev/add-ins/outlook/manage-state-and-settings-outlook)) or use the [Office.SessionData interface](https://docs.microsoft.com/en-us/javascript/api/outlook/office.sessiondata?view=outlook-js-preview) in the Preview API.
-- If you get eslint errors ("Parsing error: Cannot read file '.../tsconfig.json'"), ensure this line is in the .eslintrc.json file:
-  `"project": "outlook-encrypt-attachments/tsconfig.json"`.
-  Or add this to the .vscode\settings.json file:
-
-```json
-"eslint.workingDirectories": 
-  [
-    "src"
-  ]
-```
+- If you get eslint errors ("Parsing error: Cannot read file '.../tsconfig.json'"), ensure this line is in the .eslintrc.json file: `"project": "outlook-encrypt-attachments/tsconfig.json"`. Or add this to the .vscode\settings.json file: `"eslint.workingDirectories": [ "src" ]`
 
 ## References
 
