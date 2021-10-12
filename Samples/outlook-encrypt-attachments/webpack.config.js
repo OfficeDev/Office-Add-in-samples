@@ -9,7 +9,7 @@ const webpack = require("webpack");
 var CryptoJS = require("crypto-js");
 
 const urlDev = "https://localhost:3000/";
-const urlProd = "https://www.contoso.com/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
+const urlProd = "https://elegault.github.io/PnP-OfficeAddins/Samples/outlook-encrypt-attachments/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
 
 module.exports = async (env, options) => {
   const dev = options.mode === "development";

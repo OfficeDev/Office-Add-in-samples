@@ -4,6 +4,7 @@
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+
     {
       "name": "Outlook Desktop (Edge Chromium)",
       "type": "edge",
@@ -42,6 +43,17 @@
       "preLaunchTask": "Debug: Web"
     },
     {
+      "name": "Outlook Online",
+      "type": "office-addin",
+      "request": "attach",
+      "port": 9222,
+      "trace": "verbose",
+      "url": "https://localhost:3000/src/commands/commands.html?_host_Info=Outlook$Win32$16.01$en-US$$$$0",
+      "webRoot": "${workspaceFolder}",
+      // "preLaunchTask": "Debug: Web"
+      "timeout": 45000
+    },    
+    {
       "name": "Direct Debugging",
       "type": "node",
       "request": "attach",
@@ -49,43 +61,6 @@
       "protocol": "inspector",
       "timeout": 600000,
       "trace": true
-    }    
-  // {
-  //     "name": "Attach to Office Add-ins",
-  //     "type": "office-addin",
-  //     "request": "attach",
-  //     "port": 9222,
-  //     "webviewTarget": "Edge"
-  // },
-  // {
-  //     "type": "office-addin",
-  //     "request": "attach",
-  //     "name": "Attach to Office Add-ins 2",
-  //     "port": 9222,
-  //     "trace": "verbose",
-  //     // "url": "https://localhost:3000/taskpane.html?_host_Info=HOST$Win32$16.01$en-US$$$$0",
-  //     "url": "https://localhost:3000?_host_Info=Outlook$Win32$16.01$en-US$$$$0",
-  //     "webRoot": "${workspaceFolder}",
-  //     "timeout": 45000            
-  // },
-  // {
-  //     "name": "Debug Outlook Add-in Test 1",
-  //     "type": "office-addin",
-  //     "request": "launch",
-  //     "cwd": "${workspaceFolder}",
-  //     "runtimeExecutable": "npm",
-  //     "runtimeArgs": [
-  //         "run-script",
-  //         "start:web"
-  //     ]
-  // },
-  // {
-  //     "name": "Attach Outlook Add-in Test",
-  //     "type": "office-addin",
-  //     "request": "attach",
-  //     "port": 9222,
-  //     "webRoot": "${workspaceFolder}",            
-  //     "preLaunchTask": "start:web"
-  // }      
+    }        
   ]
 }

@@ -5,6 +5,7 @@
 
 //TEST In Outlook desktop
 /* eslint-disable no-undef */ //For Office objects
+// var CryptoJS = require("crypto-js"); //BUG Can't use: "Uncaught ReferenceError: require is not defined"
 var fileName;
 const secretKey = "secret key 123";
 const encryptedAttachmentPrefix = "encrypted_";
@@ -15,15 +16,17 @@ Office.initialize = function (reason) {};
  * Method that fires when a appointment is being created or edited
  * @param {Office.AsyncResult} result default: Office.AsyncResult
  */
-function onAppointmentComposeHandler(result) {
-  console.log("onAppointmentComposeHandler(): entered!");
-  let originalAppointmentDate = {};
+function onAppointmentComposeHandler(event) {
+  //NOTE: Must call event.completed() when any logic below is finished!
 
-  // showInfoBarForSampleInstructions();
+  console.log("onAppointmentComposeHandler(): entered!");
+
+  let originalAppointmentDate = {}; //Create an object to cache the original date/time and persist it to localStorage
+
   Office.context.mailbox.item.start.getAsync((asyncResult) => {
     if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
       console.error(`Action failed with message ${asyncResult.error.message}`);
-      asyncResult.asyncContext.completed();
+      event.completed();
       return;
     }
     console.log(`Appointment starts: ${asyncResult.value}`);
@@ -32,13 +35,14 @@ function onAppointmentComposeHandler(result) {
     Office.context.mailbox.item.end.getAsync((asyncResult2) => {
       if (asyncResult2.status !== Office.AsyncResultStatus.Succeeded) {
         console.error(`Action failed with message ${asyncResult2.error.message}`);
-        asyncResult2.asyncContext.completed();
+        event.completed();
         return;
       }
+
       console.log(`Appointment ends: ${asyncResult2.value}`);
       originalAppointmentDate.end = asyncResult2.value;
       localStorage.setItem("appointment_info", JSON.stringify(originalAppointmentDate));
-      // result.completed();
+      
       //NOTE: Clicking the "Show Task Pane" link in the InfoBar doesn't work. It is currently 'in backlog' status: https://github.com/OfficeDev/office-js/issues/2125
       //NOTE: actions array only applicable to insightMessage types
       //https://docs.microsoft.com/en-us/javascript/api/outlook/office.notificationmessages?view=outlook-js-preview
@@ -57,8 +61,8 @@ function onAppointmentComposeHandler(result) {
             },
           ],
         },
-        function (addAsyncResult) {
-          result.completed();
+        function () {
+          event.completed();
         }
       );
     });
@@ -80,13 +84,13 @@ function onAppointmentAttendeesChangedHandler(event) {
   //https://docs.microsoft.com/en-us/javascript/api/outlook/office.recipientschangedeventargs?view=outlook-js-preview&preserve-view=true
 
   //NOTE: Must call event.completed() when any logic below is finished!
-  //Add-in launch-event handlers are expected to be short-running, lightweight, and as noninvasive as possible. After activation, your add-in will time out within approximately 300 seconds, the maximum length of time allowed for running event-based add-ins. To signal that your add-in has completed processing a launch event, we recommend you have the associated handler call the event.completed method. (Note that code included after the event.completed statement is not guaranteed to run.) Each time an event that your add-in handles is triggered, the add-in is reactivated and runs the associated event handler, and the timeout window is reset. The add-in ends after it times out, or the user closes the compose window or sends the item.
 
   var totalOptionalAttendees = 0;
   var totalRequiredAttendees = 0;
   var totalDistributionLists = 0;
 
-  console.log(`onAppointmentAttendeesChangedHandler() type = ${event.type}; changedRecipientFields = ${event.changedRecipientFields}`);
+  console.log(`onAppointmentAttendeesChangedHandler() type = ${event.type}; changedRecipientFields = (dir dump on next line)`);
+  console.dir(event.changedRecipientFields);
 
   Office.context.mailbox.item.requiredAttendees.getAsync(function (asyncResult) {
     if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
@@ -286,10 +290,13 @@ function handleAttachmentsCallback(result) {
           //Encrypt base64 file data using CryptoJS
           if (asyncResult.status === Office.AsyncResultStatus.Succeeded){
             try {
-              var ciphertext = CryptoJS.AES.encrypt(asyncResult.asyncContext.base64, secretKey).toString();
+               var ciphertext = CryptoJS.AES.encrypt(asyncResult.asyncContext.base64, secretKey).toString();              
+              //TEST Using inline script; see https://stackoverflow.com/questions/62905663/how-to-import-crypto-js-in-either-a-vanilla-javascript-or-node-based-javascript. 10/11: Still the same issue
+              //var ciphertext = encryptWithCrypto(asyncResult.asyncContext.base64, secretKey);
+
               //Then attaches the file to the email            
               console.log(`handleAttachmentsCallback(): starting processing of file '${fileName}'...`);
-              encryptAttachment(ciphertext);            
+              encryptAttachment(ciphertext);                  
             }
             catch(ex){
               console.error(`handleAttachmentsCallback(): Error: ${ex}`);            
@@ -437,7 +444,7 @@ function onAppointmentTimeChangedHandler(event) {
         const element = asyncResult.value[index];
         if (element.key === "timeChanged") {
           //Only need to set the message once
-          event.completed;
+          event.completed();
           return;
         }
       }

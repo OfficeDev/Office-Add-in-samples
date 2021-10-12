@@ -1,9 +1,9 @@
 {
-  "name": "office-addin-taskpane-js",
-  "version": "0.0.1",
+  "name": "outlook-encrypt-attachments",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/Office-Addin-TaskPane-JS.git"
+    "url": "https://github.com/elegault/PnP-OfficeAddins.git"
   },
   "license": "MIT",
   "config": {
