@@ -34,8 +34,6 @@
                 if (asyncResult.status ==
                     Office.AsyncResultStatus.Failed) {
                     write(asyncResult.error.message);
-                } else {
-                    asyncResult.asyncContext.completed();
                 }
             });
     }
