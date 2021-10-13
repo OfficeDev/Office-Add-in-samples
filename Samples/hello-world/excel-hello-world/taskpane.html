@@ -8,16 +8,24 @@
 
 <body>
     <p>This add-in will set cell A1 to the value 'Hello world!'.</p>
-    <button onclick="sayHello()">Say hello</button>
+    <button id="helloButton">Say hello</button>
 </body>
 
 <script>
     Office.onReady((info) => {
+        // Check that we loaded into Excel
+        if (info.host === Office.HostType.Word) {
+            document.getElementById("helloButton").onclick = sayHello;
+        }
     });
 
     function sayHello() {
         Excel.run(context => {
+
+            // Insert text 'Hello world!' into cell A1.
             context.workbook.worksheets.getActiveWorksheet().getRange("A1").values = [['Hello world!']];
+
+            // sync the context to run the previous API call, and return.
             return context.sync();
         });
     }

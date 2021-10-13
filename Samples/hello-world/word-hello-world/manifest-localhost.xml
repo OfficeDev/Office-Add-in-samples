@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
-  <Id>DADAA96F-5C92-4D42-B259-9EA0064C4750</Id>
+  <Id>C4E304B6-24D2-416B-9BC6-2B4C4D37AEFB</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
@@ -13,7 +13,7 @@
     <AppDomain>https://localhost:3000</AppDomain>
   </AppDomains>
   <Hosts>
-    <Host Name="Workbook"/>
+    <Host Name="Document"/>
   </Hosts>
   <DefaultSettings>
     <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
@@ -21,7 +21,7 @@
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
     <Hosts>
-      <Host xsi:type="Workbook">
+      <Host xsi:type="Document">
         <DesktopFormFactor>
           <GetStarted>
             <Title resid="GetStarted.Title"/>
