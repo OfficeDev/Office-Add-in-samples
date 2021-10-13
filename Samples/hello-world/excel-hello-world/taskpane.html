@@ -14,7 +14,7 @@
 <script>
     Office.onReady((info) => {
         // Check that we loaded into Excel
-        if (info.host === Office.HostType.Word) {
+        if (info.host === Office.HostType.Excel) {
             document.getElementById("helloButton").onclick = sayHello;
         }
     });
