@@ -13,11 +13,9 @@
 </body>
 
 <script>
-    var item;
-
     Office.onReady((info) => {
         if (info.host === Office.HostType.Outlook) {
-            item = Office.context.mailbox.item;
+
             document.getElementById("helloButton").onclick = sayHello;
         }
     });
@@ -27,6 +25,7 @@
         Office.context.mailbox.item.body.setAsync(
             "Hello world!",
             {
+                // This will only work with an html message (not plain text).
                 coercionType: "html",
             },
             function (asyncResult) {
@@ -36,64 +35,6 @@
                     write(asyncResult.error.message);
                 }
             });
-    }
-
-    // Get the body type of the composed item, and set data in 
-    // in the appropriate data type in the item body.
-    function setItemBody() {
-        item.body.getTypeAsync(
-            function (result) {
-                if (result.status == Office.AsyncResultStatus.Failed) {
-                    write(result.error.message);
-                }
-                else {
-                    // Successfully got the type of item body.
-                    // Set data of the appropriate type in body.
-                    if (result.value == Office.MailboxEnums.BodyType.Html) {
-                        // Body is of HTML type.
-                        // Specify HTML in the coercionType parameter
-                        // of setSelectedDataAsync.
-                        item.body.setSelectedDataAsync(
-                            'Hello world!',
-                            {
-                                coercionType: Office.CoercionType.Html,
-                                asyncContext: { var3: 1, var4: 2 }
-                            },
-                            function (asyncResult) {
-                                if (asyncResult.status ==
-                                    Office.AsyncResultStatus.Failed) {
-                                    write(asyncResult.error.message);
-                                }
-                                else {
-                                    // Successfully set data in item body.
-                                    // Do whatever appropriate for your scenario,
-                                    // using the arguments var3 and var4 as applicable.
-                                }
-                            });
-                    }
-                    else {
-                        // Body is of text type. 
-                        item.body.setSelectedDataAsync(
-                            'Hello world!',
-                            {
-                                coercionType: Office.CoercionType.Text,
-                                asyncContext: { var3: 1, var4: 2 }
-                            },
-                            function (asyncResult) {
-                                if (asyncResult.status ==
-                                    Office.AsyncResultStatus.Failed) {
-                                    write(asyncResult.error.message);
-                                }
-                                else {
-                                    // Successfully set data in item body.
-                                    // Do whatever appropriate for your scenario,
-                                    // using the arguments var3 and var4 as applicable.
-                                }
-                            });
-                    }
-                }
-            });
-
     }
 </script>
 
