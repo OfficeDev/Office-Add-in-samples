@@ -35,7 +35,7 @@
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.12.11",
     "@types/find-process": "1.2.0",
-    "@types/office-js-preview": "^1.0.239",
+    "@types/office-js-preview": "^1.0.257",
     "@types/office-runtime": "^1.0.17",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",

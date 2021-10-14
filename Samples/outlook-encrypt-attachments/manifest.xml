@@ -114,7 +114,6 @@
                 <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler" />                 
                 <LaunchEvent Type="OnAppointmentAttendeesChanged" FunctionName="onAppointmentAttendeesChangedHandler" />
                 <LaunchEvent Type="OnAppointmentTimeChanged" FunctionName="onAppointmentTimeChangedHandler" /> 
-                <LaunchEvent Type="OnInfoBarDismissClicked" FunctionName="onInfobarDismissClickedHandler" /> <!-- TODO implement or remove-->
                 <!-- The same function handles both OnMessageAttachmentsChanged and OnAppointmentAttachmentsChanged-->
                 <LaunchEvent Type="OnMessageAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler" /> 
                 <LaunchEvent Type="OnAppointmentAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler" />
