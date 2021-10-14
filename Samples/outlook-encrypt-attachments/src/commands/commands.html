@@ -12,19 +12,6 @@
     -->    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script type="text/javascript" src="commands.js"></script>
-    <!-- <script type="text/javascript">
-        // var encrypted = CryptoJS.AES(...);
-        // var encrypted = CryptoJS.SHA256(...);        
-        //TEST Try using CryptoJS outside of commands.js to bypass the "Uncaught ReferenceError: require is not defined" issue. 10/11: This still causes the same error
-        var CryptoJS = require("crypto-js");
-        function encryptWithCrypto(content, mySecretKey){
-            console.log(`encryptWithCrypto(): Encrypting file with ${mySecretKey}...`);
-            console.dir(content);
-            var ciphertext = CryptoJS.AES.encrypt(content, mySecretKey).toString();              
-            console.log(`encryptWithCrypto(): file encrypted!`);
-            return ciphertext.toString();
-        }
-    </script> -->
 </head>
 <body>
     <!-- NOTE: The body is empty on purpose. Since this is invoked via a button, there is no UI to render. -->  
