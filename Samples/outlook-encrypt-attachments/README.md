@@ -187,8 +187,9 @@ The task pane code is located under the `taskpane` folder of this project. The t
 
 ## Notes
 
-- At present, imports are not supported in the JavaScript file where you implement the handling for event-based activation. This means that external libraries (like `cryto-js`) cannot be required directly in the `commands.js` file and must be loaded in `commands.html`. Since Outlook desktop only loads `commands.js`, encryption of attachments will not work on that platform
+- At present, imports are not supported in the JavaScript file where you implement the handling for event-based activation. This means that external libraries (like the `cryto-js` library used in this sample) cannot be required directly in the `commands.js` file and must be loaded in `commands.html`. Since Outlook desktop only loads `commands.js`, encryption of attachments will not work on that platform. Only Outlook Online can load supporting .html files with external library references, so encryption is only implemented for that scenario
 - `console.dir()` methods cannot be used in Outlook desktop
+- `window.localStorage` cannot be used in Outlook desktop
 - Clicking the "Show Task Pane" link in the InfoBar doesn't work in Outlook Online. A fix is in progress and being tested: https://github.com/OfficeDev/office-js/issues/2125
 - If you get eslint errors ("Parsing error: Cannot read file '.../tsconfig.json'"), ensure this line is in the .eslintrc.json file: `"project": "outlook-encrypt-attachments/tsconfig.json"`. Or add this to the .vscode\settings.json file: `"eslint.workingDirectories": [ "src" ]`
 
