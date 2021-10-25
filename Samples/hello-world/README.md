@@ -1,12 +1,9 @@
 ---
 page_type: sample
-urlFragment: office-add-in-hello-world
+urlFragment: word-add-in-hello-world
 products:
   - office-add-ins
-  - office-excel
   - office-word
-  - office-outlook
-  - office-powerpoint
   - office
 languages:
   - javascript
@@ -37,7 +34,7 @@ Learn how to build the simplest Office Add-in with only a manifest, HTML web pag
 
 ## Prerequisites
 
-- Microsoft 365
+- Microsoft 365 - You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
 ## Understand an Office Add-in
 
@@ -45,25 +42,34 @@ An Office Add-in is a web application that can extend Office with additional fun
 
 A sample was created for each Office application. Each folder is a sample that is designed to run in the indicated Office application.
 
-- outlook-hello-world: Hello world sample for Outlook
-- excel-hello-world: Hello world sample for Excel
-- word-hello-world: Hello world sample for Word
-- powerpoint-hello-world: Hello world sample for PowerPoint
+- outlook-hello-world: [Hello world sample for Outlook](outlook-hello-world/README.md)
+- excel-hello-world: [Hello world sample for Excel](excel-hello-world/README.md)
+- word-hello-world: [Hello world sample for Word](word-hello-world/README.md)
+- powerpoint-hello-world: [Hello world sample for PowerPoint](powerpoint-hello-world/README.md)
 
-To work with the samples, clone or download this repo. Then go to the folder containing the sample for the Office application you want to work with. All of the following guidance will apply to the sample you choose to work with. Details on internals and how to run the Add-in for each host can be found in the matchin subfolder.
+To work with the samples, clone or download this repo. Then go to the folder containing the sample for the Office application you want to work with. All of the following guidance will apply to the sample you choose to work with. Details on internals and how to run the add-in for each host can be found in the matching subfolder.
 
-### Key components
+## Key components
 
 The hello world sample implements the **Manifest** and **Web app** components identified in [Components of an Office Add-in](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins#components-of-an-office-add-in).
 
-- Manifest: You only need one manifest file for your add-in. The hello world sample contains two manifest files to support two different hosting scenarios.
-  - **manifest.xml**: This manifest file will load the add-in from the GitHub repo (through GitHub page hosting). You can run the sample and don't need to configure your own web server.
-  - **manifest.localhost.xml**: This manifest file will load the add-in from a local web server that you configure. See the README files for the specific hosts on how to run the local web server.
-- Web app: The hello world sample implements a task pane named **taskpane.html** that contains HTML and JavaScript. The **taskpane.html** file contains all the code necessary to display a task pane, interact with the user, and write "Hello world!" to the document.
+### Manifest
 
-### Details and running the Add-in
+You only need one manifest file for your add-in. The hello world sample contains two manifest files to support two different hosting scenarios.
+
+- **manifest.xml**: This manifest file will load the add-in from the GitHub repo (through GitHub page hosting). You can run the sample and don't need to configure your own web server.
+- **manifest.localhost.xml**: This manifest file will load the add-in from a local web server that you configure. See the README files for the specific hosts on how to run the local web server.
+
+### Web app
+
+The hello world sample implements a task pane named **taskpane.html** that contains HTML and JavaScript. The **taskpane.html** file contains all the code necessary to display a task pane, interact with the user, and write "Hello world!" to the document.
+
+## Details and running the Add-in
 
 For details on the specific hosts (Word, Excel, PowerPoint and Outlook) see the README files for details when using each host and to learn how to run the local web server.
+
+
+
 
 ## Copyright
 
@@ -71,4 +77,4 @@ Copyright (c) 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/hello-world" />
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/word-add-in-hello-world" />

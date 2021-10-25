@@ -13,27 +13,33 @@
 </body>
 
 <script>
+
     Office.onReady((info) => {
         if (info.host === Office.HostType.Outlook) {
             document.getElementById("helloButton").onclick = sayHello;
         }
     });
 
+    /**
+     * Writes 'Hello world!' to a new message body.
+     */
     function sayHello() {
-        // Overwrite body with 'hello world!'
         Office.context.mailbox.item.body.setAsync(
             "Hello world!",
             {
-                coercionType: "html",
+                coercionType: "html", // Write text as HTML
             },
-            function (asyncResult) {
 
+            // Callback method to check that setAsync succeeded
+            function (asyncResult) {
                 if (asyncResult.status ==
                     Office.AsyncResultStatus.Failed) {
                     write(asyncResult.error.message);
                 }
-            });
+            }
+        );
     }
+
 </script>
 
 </html>

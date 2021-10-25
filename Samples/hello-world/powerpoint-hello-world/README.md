@@ -1,9 +1,9 @@
 ---
 page_type: sample
-urlFragment: excel-add-in-hello-world
+urlFragment: powerpoint-add-in-hello-world
 products:
   - office-add-ins
-  - office-excel
+  - office-powerpoint
   - office
 languages:
   - javascript
@@ -12,10 +12,10 @@ extensions:
   technologies:
     - Add-ins
   createdDate: '10/11/2021 10:00:00 AM'
-description: 'Create a simple Excel add-in that displays hello world.'
+description: 'Create a simple PowerPoint add-in that displays hello world.'
 ---
 
-# Create an Excel add-in that displays hello world
+# Create an PowerPoint add-in that displays hello world
 
 ## Summary
 
@@ -23,14 +23,14 @@ Learn how to build the simplest Office Add-in with only a manifest, HTML web pag
 
 ## Features
 
-- Display hello world in Excel.
+- Display hello world in PowerPoint.
 - Learn fundamentals of the manifest.
 - Learn how to initialize the Office JavaScript API library.
 - Interact with document content through Office JavaScript APIs.
 
 ## Applies to
 
-- Excel on Windows, Mac, and in a browser.
+- PowerPoint on Windows, Mac, and in a browser.
 
 ## Prerequisites
 
@@ -40,7 +40,7 @@ Learn how to build the simplest Office Add-in with only a manifest, HTML web pag
 
 An Office Add-in is a web application that can extend Office with additional functionality for the user. For example, an add-in can add ribbon buttons, a task pane, or a content pane with the functionality you want. Because an Office Add-in is a web application you must provide a web server to host the files.
 
-The sample contained in this folder is a sample that is designed to run in Excel.
+The sample contained in this folder is a sample that is designed to run in PowerPoint.
 
 ## Key components
 
@@ -52,7 +52,7 @@ The manifest file is an XML file that describes your add-in to Office. It contai
 
 The hello world sample contains two manifest files to support two different web hosting scenarios.
 
-- **manifest.xml**: This manifest file gets the add-in's HTML page from the original GitHub repo location. This is the quickest way to try out the sample. To get started running the add-in with this manifest, see [Run the sample on Excel on Windows](run-the-sample-on-excel-on-windows).
+- **manifest.xml**: This manifest file gets the add-in's HTML page from the original GitHub repo location. This is the quickest way to try out the sample. To get started running the add-in with this manifest, see [Run the sample on PowerPoint on Windows](run-the-sample-on-PowerPoint-on-windows).
 - **manifest.localhost.xml**: This manifest file gets the add-in's HTML page from a local web server that you configure. Use this manifest if you want to change the code and experiment. For more information, see [Configure a localhost web server](#configure-a-localhost-web-server).
 
 ### Web app
@@ -67,30 +67,33 @@ The sample initializes the Office JavaScript API library with a call to `office.
 Office.onReady((info) => {});
 ```
 
-### Write to the worksheet
+### Write to a PowerPoint object
 
-When the user chooses the **Say hello** button, the `sayHello()` function is called. This function then calls `Excel.run` to run code and call the Office JavaScript APIs. It uses a `context` object provided by the Office JS API library to get the active worksheet's `A1` range value and set the value to "Hello world!". Calling `context.sync()` runs the command.
+When the user chooses the **Say hello** button, the `sayHello()` function is called. This function calls `Office.context.document.setSelectedDataAsync()` with an empty string (space). This will clear the text of the currently selected object. Then it calls `setSelectedDataAsync()` again and passes "Hello world!". The currently selected object will now display "Hello world!".
 
-For more information see [Tutorial: Create an Excel task pane add-in](https://docs.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial)
+For more information see [Build your first PowerPoint task pane add-in](https://docs.microsoft.com/office/dev/add-ins/quickstarts/powerpoint-quickstart)
 
 ```javascript
-function sayHello() {
-  Excel.run((context) => {
-    context.workbook.worksheets.getActiveWorksheet().getRange('A1').values = [
-      ['Hello world!'],
-    ];
-    return context.sync();
-  });
-}
+ async function sayHello() {
+
+        // Set coercion type to text since 
+        const options = { coercionType: Office.CoercionType.Text };
+
+        // clear current selection
+        await Office.context.document.setSelectedDataAsync(" ", options);
+
+        // Set text in selection to 'Hello world!'
+        await Office.context.document.setSelectedDataAsync("Hello world!", options);
+    }
 ```
 
-## Run the sample on Excel on Windows
+## Run the sample on PowerPoint on Windows
 
 An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The hello world sample is configured so that the files are hosted directly from this GitHub repo. Use the following steps to sideload the manifest.xml file to see the sample run.
 
-1. Download the **manifest.xml** file from the sample folder for Excel.
+1. Download the **manifest.xml** file from the sample folder for PowerPoint.
 1. Open [Office on the web](https://office.live.com/).
-1. Choose **Excel**, and then open a new document.
+1. Choose **PowerPoint**, and then open a new document.
 1. On the **Insert** tab on the ribbon in the **Add-ins** section, choose **Office Add-ins**.
 1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
 
@@ -102,10 +105,11 @@ An Office Add-in requires you to configure a web server to provide all the resou
 ](../images/office-upload-add-ins-excel-web.png)
 
 1. Verify that the add-in loaded successfully. You will see a **Hello world** button on the **Home** tab on the ribbon.
+1. Choose the **Hello world** button to display the task pane of the add-in.
+1. Choose the **Say Hello** button to insert "Hello world!" into the current PowerPoint slide.
+ 
 
-Choose the **Hello world** button on the **Home** tab to display the task pane of the add-in. Choose the **Say hello** button to insert "Hello world!" in cell A1.
-
-## Run the sample on Excel on Windows or Mac
+## Run the sample on PowerPoint on Windows or Mac
 
 Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the Hello world sample. Then follow the sideloading instructions for your platform.
 
@@ -150,7 +154,7 @@ If you prefer to configure a web server and host the add-in's web files from you
    The http-server will run and host the current folder's files on localhost:3000.
 
 8. Open [Office on the web](https://office.live.com/).
-9. Choose **Excel**, and then open a new document.
+9. Choose **PowerPoint**, and then open a new document.
 10. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
 11. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
 
@@ -163,7 +167,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
 13. Verify that the add-in loaded successfully. You will see a **Hello world** button on the **Home** tab on the ribbon.
 14. Choose the **Hello world** button to display the task pane of the add-in.
-15. Choose the **Say Hello** button, this will set the value of the cell A1 to 'Hello world!'.
+15. Choose the **Say Hello** button to insert "Hello world!" into the current PowerPoint slide.
 
 ## Copyright
 
@@ -171,4 +175,4 @@ Copyright (c) 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/hello-world/excel-add-in-hello-world" />
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/hello-world/powerpoint-add-in-hello-world" />
