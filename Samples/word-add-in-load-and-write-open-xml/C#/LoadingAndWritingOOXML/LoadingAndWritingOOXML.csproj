@@ -1,25 +1,26 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="16.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E8882AB9-7539-4175-AE22-E7D2E21216E4}</ProjectGuid>
+    <ProjectGuid>{57BA0C1B-1FEA-4511-91E3-4D96F1EA3F6C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LoadingAndWritingOOXML</RootNamespace>
     <AssemblyName>LoadingAndWritingOOXML</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetOfficeVersion>15.0</TargetOfficeVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{C1CDDADD-2546-481F-9697-4EA41081F2FC};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <IncludeAssemblyInPackage>False</IncludeAssemblyInPackage>
-    <AppFeaturePartId>{3535bc96-6a00-402a-bf4f-dc64c1e0f00d}</AppFeaturePartId>
-    <WspPartId>{676469b3-aa1e-442a-b706-fc6ad556e8a0}</WspPartId>
-    <WorkflowPartId>{73ef274f-1384-4bf3-ba42-b95e3460df22}</WorkflowPartId>
-    <CspkgPartId>{ea64ede4-7a07-4968-9c43-8775089e0822}</CspkgPartId>
-    <SqlPackagePartId>{6017f452-f5bb-46d1-8942-368bd27f3b3f}</SqlPackagePartId>
+    <AppFeaturePartId>{f4034666-f5a5-4525-8918-310b33b244cc}</AppFeaturePartId>
+    <WspPartId>{509f4ea9-59d7-4fbb-b049-2e2521e58eb5}</WspPartId>
+    <WorkflowPartId>{c070664c-90d6-4861-9514-06157777f6d6}</WorkflowPartId>
+    <CspkgPartId>{1a870b16-a4df-48bd-8409-a68952e7d1ce}</CspkgPartId>
+    <SqlPackagePartId>{fbbdbfda-40a0-4c03-963c-47cfad24aeca}</SqlPackagePartId>
     <ProjectMode>OfficeApp</ProjectMode>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+    <MinimumOfficeToolsVersion>14.0</MinimumOfficeToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,7 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="LoadingAndWritingOOXMLManifest\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{396d8833-c4c3-45fb-aafd-1effe479a546}</SharePointProjectItemId>
+      <SharePointProjectItemId>{0aa949f5-75ae-40fe-bad5-efbf6e46b2d2}</SharePointProjectItemId>
     </None>
     <Content Include="LoadingAndWritingOOXMLManifest\LoadingAndWritingOOXML.xml">
       <OpcRelationship>manifest-oemanifest</OpcRelationship>
@@ -50,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LoadingAndWritingOOXMLWeb\LoadingAndWritingOOXMLWeb.csproj">
-      <Project>{2A9E61CC-541D-4FE9-AF11-853B80B9EF20}</Project>
+      <Project>{4604A7D5-9FF9-4225-88DF-7D9CFF74EFFE}</Project>
       <Name>LoadingAndWritingOOXMLWeb</Name>
       <Private>True</Private>
       <RoleType>Web</RoleType>
@@ -60,7 +61,7 @@
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
-    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0'">11.0</VisualStudioVersion>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" Condition="'$(VSToolsPath)' != ''" />

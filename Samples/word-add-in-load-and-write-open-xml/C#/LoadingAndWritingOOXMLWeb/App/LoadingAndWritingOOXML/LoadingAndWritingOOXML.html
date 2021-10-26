@@ -4,22 +4,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <title></title>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+    <title>Sample that shows loading and writing OOXML</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
 
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.min.css">
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/1.0/fabric.components.min.css">
+    <!-- To enable offline debugging using a local reference to Office.js, use:  -->
+    <!-- <script src="Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>  -->
+    <!-- <script src="Scripts/Office/1/office.js" type="text/javascript"></script>  -->
 
-    <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css" />
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
+    <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
 
-    <!-- To enable offline debugging using a local reference to Office.js, use:                        -->
-    <!--    <script src="../../Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>       -->
-    <!--    <script src="../../Scripts/Office/1.1/office.js" type="text/javascript"></script>          -->
-
-    <link href="../App.css" rel="stylesheet" type="text/css" />
+    
     <script src="../App.js" type="text/javascript"></script>
 
-    <link href="LoadingAndWritingOOXML.css" rel="stylesheet" type="text/css" />
+    
     <script src="LoadingAndWritingOOXML.js" type="text/javascript"></script>
 </head>
 <body>
@@ -30,72 +30,74 @@
 
     <div id="content-main">
       <div class="padding ms-font-m">
-        <div id="Content">
-            <div class="ms-font-m">
-                <p>Use this app to insert samples from a range of rich content types, as listed below. Or show the Office Open XML (OOXML) markup for a selected content type right on the page. Select an option and then click the button for the content type you need.</p>
-            </div>
-            <p>
-                <input type="radio" name="radChoice" id="setOOXMLContent" value="content" checked="checked" onchange="clickHandler();" />
-                <label for="setOOXMLContent" style="margin-right:20px; font-weight:bold;">Set Content</label>
-                <input type="radio" name="radChoice" id="setOOXMLMarkup" value="markup" onchange="clickHandler();" />
-                <label for="setOOXMLMarkup" style="font-weight:bold;">Show me the OOXML</label>
-            </p>
-            <button class="ms-Button ms-Button--command" id="setFText">
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--circlePlus"></i></span>
-                <span class="ms-Button-label">Set Formatted Text</span>
-                <span class="ms-Button-description">Description of the action this button takes</span>
-            </button>
-            <button class="ms-Button ms-Button--command" id="setSText">
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--circlePlus"></i></span>
-                <span class="ms-Button-label">Set Styled Text</span>
-                <span class="ms-Button-description">Description of the action this button takes</span>
-            </button>
-            <button class="ms-Button ms-Button--command" id="setImage">
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--circlePlus"></i></span>
-                <span class="ms-Button-label">Set Simple Image</span>
-                <span class="ms-Button-description">Description of the action this button takes</span>
-            </button>
-            <button class="ms-Button ms-Button--command" id="setPhoto">
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--circlePlus"></i></span>
-                <span class="ms-Button-label">Set Formatted Photo</span>
-                <span class="ms-Button-description">Description of the action this button takes</span>
-            </button>
-            <button class="ms-Button ms-Button--command" id="setBox">
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--circlePlus"></i></span>
-                <span class="ms-Button-label">Set Text Box</span>
-                <span class="ms-Button-description">Description of the action this button takes</span>
-            </button>
-            <button class="ms-Button ms-Button--command" id="setShape">
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--circlePlus"></i></span>
-                <span class="ms-Button-label">Set Shape</span>
-                <span class="ms-Button-description">Description of the action this button takes</span>
-            </button>
-            <button class="ms-Button ms-Button--command" id="setControl">
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--circlePlus"></i></span>
-                <span class="ms-Button-label">Set Content Control</span>
-                <span class="ms-Button-description">Description of the action this button takes</span>
-            </button>
-            <button class="ms-Button ms-Button--command" id="setFTable">
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--circlePlus"></i></span>
-                <span class="ms-Button-label">Set Formatted Table</span>
-                <span class="ms-Button-description">Description of the action this button takes</span>
-            </button>
-            <button class="ms-Button ms-Button--command" id="setSTable">
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--circlePlus"></i></span>
-                <span class="ms-Button-label">Set Styled Table</span>
-                <span class="ms-Button-description">Description of the action this button takes</span>
-            </button>
-            <button class="ms-Button ms-Button--command" id="setSmartArt">
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--circlePlus"></i></span>
-                <span class="ms-Button-label">Set SmartArt Diagram</span>
-                <span class="ms-Button-description">Description of the action this button takes</span>
-            </button>
-            <button class="ms-Button ms-Button--command" id="setChart">
-                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--circlePlus"></i></span>
-                <span class="ms-Button-label">Set Chart</span>
-                <span class="ms-Button-description">Description of the action this button takes</span>
-            </button>
-        </div>
+          <div id="Content">
+              <div class="ms-font-m">
+                  <p>Use this app to insert samples from a range of rich content types, as listed below. Or show the Office Open XML (OOXML) markup for a selected content type right on the page. Select an option and then click the button for the content type you need.</p>
+              </div>
+              <p>
+                  <input type="radio" name="radChoice" id="setOOXMLContent" value="content" checked="checked" onchange="clickHandler();" />
+                  <label for="setOOXMLContent" style="margin-right:20px; font-weight:bold;">Set Content</label>
+                  <input type="radio" name="radChoice" id="setOOXMLMarkup" value="markup" onchange="clickHandler();" />
+                  <label for="setOOXMLMarkup" style="font-weight:bold;">Show me the OOXML</label>
+              </p>
+              <ul class="ms-List">
+                  <li class="ms-ListItem" tabindex="0">
+                      <button class="ms-Button" id="setFText">
+                          <span class="ms-Button-label">Set Formatted Text</span>
+                      </button>
+                  </li>
+                  <li class="ms-ListItem" tabindex="0">
+                      <button class="ms-Button" id="setSText">
+                          <span class="ms-Button-label">Set Styled Text</span>
+                      </button>
+                  </li>
+                  <li class="ms-ListItem" tabindex="0">
+                      <button class="ms-Button ms-Button--command" id="setImage">
+                          <span class="ms-Button-label">Set Simple Image</span>
+                      </button>
+                  </li>
+                  <li class="ms-ListItem" tabindex="0">
+                      <button class="ms-Button ms-Button--command" id="setPhoto">
+                          <span class="ms-Button-label">Set Formatted Photo</span>
+                      </button>
+                  </li>
+                  <li class="ms-ListItem" tabindex="0">
+                      <button class="ms-Button ms-Button--command" id="setBox">
+                          <span class="ms-Button-label">Set Text Box</span>
+                      </button>
+                  </li>
+                  <li class="ms-ListItem" tabindex="0">
+                      <button class="ms-Button ms-Button--command" id="setShape">
+                          <span class="ms-Button-label">Set Shape</span>
+                      </button>
+                  </li>
+                  <li class="ms-ListItem" tabindex="0">
+                      <button class="ms-Button ms-Button--command" id="setControl">
+                          <span class="ms-Button-label">Set Content Control</span>
+                      </button>
+                  </li>
+                  <li class="ms-ListItem" tabindex="0">
+                      <button class="ms-Button ms-Button--command" id="setFTable">
+                          <span class="ms-Button-label">Set Formatted Table</span>
+                      </button>
+                  </li>
+                  <li class="ms-ListItem" tabindex="0">
+                      <button class="ms-Button ms-Button--command" id="setSTable">
+                          <span class="ms-Button-label">Set Styled Table</span>
+                      </button>
+                  </li>
+                  <li class="ms-ListItem" tabindex="0">
+                      <button class="ms-Button ms-Button--command" id="setSmartArt">
+                          <span class="ms-Button-label">Set SmartArt Diagram</span>
+                      </button>
+                  </li>
+                  <li class="ms-ListItem" tabindex="0">
+                      <button class="ms-Button ms-Button--command" id="setChart">
+                          <span class="ms-Button-label">Set Chart</span>
+                      </button>
+                   </li>
+              </ul>
+          </div>
         </div>
     </div>
 </body>
