@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2A9E61CC-541D-4FE9-AF11-853B80B9EF20}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LoadingAndWritingOOXMLWeb</RootNamespace>
+    <AssemblyName>LoadingAndWritingOOXMLWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44305</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\App.css" />
+    <Content Include="App\App.js" />
+    <Content Include="App\LoadingAndWritingOOXML\LoadingAndWritingOOXML.css" />
+    <Content Include="App\LoadingAndWritingOOXML\LoadingAndWritingOOXML.html" />
+    <Content Include="App\LoadingAndWritingOOXML\LoadingAndWritingOOXML.js" />
+    <Content Include="Fonts\office365icons.svg" />
+    <Content Include="Images\Close.png" />
+    <Content Include="Images\taskpane_16x.png" />
+    <Content Include="Images\taskpane_32x.png" />
+    <Content Include="Images\taskpane_80x.png" />
+    <Content Include="packages.config" />
+    <Content Include="Fonts\office365icons.eot" />
+    <Content Include="Fonts\office365icons.ttf" />
+    <Content Include="Fonts\office365icons.woff" />
+    <None Include="Scripts\Office\1.0\outlook-15.debug-vsdoc.js" />
+    <None Include="Scripts\Office\1.0\office-vsdoc.js" />
+    <Content Include="Scripts\Office\1.0\ar-sa\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\ar-sa\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\ar-sa\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\ar-sa\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\bg-bg\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\bg-bg\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\bg-bg\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\bg-bg\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\cs-cz\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\cs-cz\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\cs-cz\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\cs-cz\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\da-dk\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\da-dk\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\da-dk\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\da-dk\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\de-de\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\de-de\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\de-de\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\de-de\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\el-gr\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\el-gr\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\el-gr\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\el-gr\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\en-us\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\en-us\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\en-us\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\en-us\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\es-es\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\es-es\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\es-es\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\es-es\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\et-ee\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\et-ee\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\et-ee\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\et-ee\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\excel-15.debug.js" />
+    <Content Include="Scripts\Office\1.0\excel-15.js" />
+    <Content Include="Scripts\Office\1.0\excelwebapp-15.debug.js" />
+    <Content Include="Scripts\Office\1.0\excelwebapp-15.js" />
+    <Content Include="Scripts\Office\1.0\fi-fi\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\fi-fi\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\fi-fi\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\fi-fi\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\fr-fr\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\fr-fr\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\fr-fr\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\fr-fr\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\he-il\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\he-il\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\he-il\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\he-il\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\hi-in\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\hi-in\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\hi-in\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\hi-in\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\hr-hr\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\hr-hr\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\hr-hr\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\hr-hr\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\hu-hu\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\hu-hu\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\hu-hu\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\hu-hu\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\id-id\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\id-id\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\id-id\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\id-id\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\it-it\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\it-it\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\it-it\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\it-it\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\ja-jp\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\ja-jp\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\ja-jp\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\ja-jp\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\kk-kz\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\kk-kz\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\kk-kz\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\kk-kz\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\ko-kr\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\ko-kr\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\ko-kr\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\ko-kr\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\lt-lt\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\lt-lt\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\lt-lt\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\lt-lt\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\lv-lv\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\lv-lv\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\lv-lv\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\lv-lv\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\ms-my\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\ms-my\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\ms-my\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\ms-my\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\nb-no\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\nb-no\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\nb-no\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\nb-no\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\nl-nl\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\nl-nl\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\nl-nl\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\nl-nl\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\office.debug.js" />
+    <Content Include="Scripts\Office\1.0\office.js" />
+    <Content Include="Scripts\Office\1.0\outlook-15.debug.js" />
+    <Content Include="Scripts\Office\1.0\outlook-15.js" />
+    <Content Include="Scripts\Office\1.0\outlookwebapp-15.debug.js" />
+    <Content Include="Scripts\Office\1.0\outlookwebapp-15.js" />
+    <Content Include="Scripts\Office\1.0\pl-pl\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\pl-pl\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\pl-pl\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\pl-pl\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\powerpoint-15.debug.js" />
+    <Content Include="Scripts\Office\1.0\powerpoint-15.js" />
+    <Content Include="Scripts\Office\1.0\project-15.debug.js" />
+    <Content Include="Scripts\Office\1.0\project-15.js" />
+    <Content Include="Scripts\Office\1.0\pt-br\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\pt-br\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\pt-br\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\pt-br\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\pt-pt\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\pt-pt\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\pt-pt\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\pt-pt\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\ro-ro\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\ro-ro\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\ro-ro\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\ro-ro\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\ru-ru\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\ru-ru\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\ru-ru\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\ru-ru\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\sk-sk\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\sk-sk\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\sk-sk\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\sk-sk\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\sl-si\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\sl-si\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\sl-si\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\sl-si\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\sr-latn-cs\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\sr-latn-cs\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\sr-latn-cs\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\sr-latn-cs\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\sv-se\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\sv-se\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\sv-se\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\sv-se\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\th-th\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\th-th\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\th-th\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\th-th\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\tr-tr\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\tr-tr\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\tr-tr\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\tr-tr\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\uk-ua\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\uk-ua\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\uk-ua\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\uk-ua\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\vi-vn\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\vi-vn\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\vi-vn\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\vi-vn\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\word-15.debug.js" />
+    <Content Include="Scripts\Office\1.0\word-15.js" />
+    <Content Include="Scripts\Office\1.0\zh-cn\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\zh-cn\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\zh-cn\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\zh-cn\outlook_strings.js" />
+    <Content Include="Scripts\Office\1.0\zh-tw\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\zh-tw\office_strings.js" />
+    <Content Include="Scripts\Office\1.0\zh-tw\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1.0\zh-tw\outlook_strings.js" />
+    <Content Include="Scripts\Office\MicrosoftAjax.js" />
+    <Content Include="Scripts\_officeintellisense.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="OOXMLSamples\Chart.xml" />
+    <Content Include="OOXMLSamples\ChartMarkup.xml" />
+    <Content Include="OOXMLSamples\ContentControl.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="OOXMLSamples\FormatForMarkup.xml" />
+    <Content Include="OOXMLSamples\FormattedImage.xml" />
+    <Content Include="OOXMLSamples\FormattedImageMarkup.xml" />
+    <Content Include="OOXMLSamples\Sections.xml" />
+    <Content Include="OOXMLSamples\ShapeWithText.xml" />
+    <Content Include="OOXMLSamples\SimpleImage.xml" />
+    <Content Include="OOXMLSamples\SimpleImageMarkup.xml" />
+    <Content Include="OOXMLSamples\SmartArt.xml" />
+    <Content Include="OOXMLSamples\TableStyled.xml" />
+    <Content Include="OOXMLSamples\TableWithDirectFormat.xml" />
+    <Content Include="OOXMLSamples\TextBoxWordArt.xml" />
+    <Content Include="OOXMLSamples\TextWithDirectFormat.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="OOXMLSamples\TextWithStyle.xml" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49560/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

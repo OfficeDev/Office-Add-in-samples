@@ -1,0 +1,8 @@
+﻿/* Page-specific styling */
+
+button{
+    width: 150px;
+    height: 25px;
+    margin-top:15px;
+    padding: 0px; 
+}

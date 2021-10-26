@@ -1,0 +1,739 @@
+﻿<pkg:package xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage">
+  <pkg:part pkg:name="/_rels/.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml" pkg:padding="512">
+    <pkg:xmlData>
+      <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+        <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+      </Relationships>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/_rels/document.xml.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml" pkg:padding="256">
+    <pkg:xmlData>
+      <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+        <Relationship Id="rId4" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/chart" Target="charts/chart1.xml"/>
+      </Relationships>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/document.xml" pkg:contentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml">
+    <pkg:xmlData>
+      <w:document xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+        <w:body>
+          <w:p>
+            <w:r>
+              <w:rPr>
+                <w:noProof/>
+              </w:rPr>
+              <w:drawing>
+                <wp:inline distT="0" distB="0" distL="0" distR="0">
+                  <wp:extent cx="5486400" cy="2257425"/>
+                  <wp:effectExtent l="0" t="0" r="0" b="0"/>
+                  <wp:docPr id="3" name="Chart 3"/>
+                  <wp:cNvGraphicFramePr/>
+                  <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                    <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/chart">
+                      <c:chart r:id="rId4" xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/>
+                    </a:graphicData>
+                  </a:graphic>
+                </wp:inline>
+              </w:drawing>
+            </w:r>
+          </w:p>
+        </w:body>
+      </w:document>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/charts/chart1.xml" pkg:contentType="application/vnd.openxmlformats-officedocument.drawingml.chart+xml">
+    <pkg:xmlData>
+      <c:chartSpace xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+        <c:date1904 val="0"/>
+        <c:lang val="en-US"/>
+        <c:roundedCorners val="0"/>
+        <mc:AlternateContent xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+          <mc:Choice Requires="c14" xmlns:c14="http://schemas.microsoft.com/office/drawing/2007/8/2/chart">
+            <c14:style val="102"/>
+          </mc:Choice>
+          <mc:Fallback>
+            <c:style val="2"/>
+          </mc:Fallback>
+        </mc:AlternateContent>
+        <c:chart>
+          <c:title>
+            <c:overlay val="0"/>
+            <c:spPr>
+              <a:noFill/>
+              <a:ln>
+                <a:noFill/>
+              </a:ln>
+              <a:effectLst/>
+            </c:spPr>
+            <c:txPr>
+              <a:bodyPr rot="0" spcFirstLastPara="1" vertOverflow="ellipsis" vert="horz" wrap="square" anchor="ctr" anchorCtr="1"/>
+              <a:lstStyle/>
+              <a:p>
+                <a:pPr>
+                  <a:defRPr sz="1600" b="1" i="0" u="none" strike="noStrike" kern="1200" cap="all" spc="120" normalizeH="0" baseline="0">
+                    <a:solidFill>
+                      <a:schemeClr val="tx1">
+                        <a:lumMod val="65000"/>
+                        <a:lumOff val="35000"/>
+                      </a:schemeClr>
+                    </a:solidFill>
+                    <a:latin typeface="+mn-lt"/>
+                    <a:ea typeface="+mn-ea"/>
+                    <a:cs typeface="+mn-cs"/>
+                  </a:defRPr>
+                </a:pPr>
+                <a:endParaRPr lang="en-US"/>
+              </a:p>
+            </c:txPr>
+          </c:title>
+          <c:autoTitleDeleted val="0"/>
+          <c:plotArea>
+            <c:layout/>
+            <c:barChart>
+              <c:barDir val="col"/>
+              <c:grouping val="clustered"/>
+              <c:varyColors val="0"/>
+              <c:ser>
+                <c:idx val="0"/>
+                <c:order val="0"/>
+                <c:tx>
+                  <c:strRef>
+                    <c:f>Sheet1!$B$1</c:f>
+                    <c:strCache>
+                      <c:ptCount val="1"/>
+                      <c:pt idx="0">
+                        <c:v>Series 1</c:v>
+                      </c:pt>
+                    </c:strCache>
+                  </c:strRef>
+                </c:tx>
+                <c:spPr>
+                  <a:solidFill>
+                    <a:schemeClr val="accent6"/>
+                  </a:solidFill>
+                  <a:ln>
+                    <a:noFill/>
+                  </a:ln>
+                  <a:effectLst/>
+                </c:spPr>
+                <c:invertIfNegative val="0"/>
+                <c:dLbls>
+                  <c:spPr>
+                    <a:noFill/>
+                    <a:ln>
+                      <a:noFill/>
+                    </a:ln>
+                    <a:effectLst/>
+                  </c:spPr>
+                  <c:txPr>
+                    <a:bodyPr rot="-5400000" spcFirstLastPara="1" vertOverflow="clip" horzOverflow="clip" vert="horz" wrap="square" lIns="38100" tIns="19050" rIns="38100" bIns="19050" anchor="ctr" anchorCtr="1">
+                      <a:spAutoFit/>
+                    </a:bodyPr>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr>
+                        <a:defRPr sz="800" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
+                          <a:solidFill>
+                            <a:schemeClr val="tx1">
+                              <a:lumMod val="50000"/>
+                              <a:lumOff val="50000"/>
+                            </a:schemeClr>
+                          </a:solidFill>
+                          <a:latin typeface="+mn-lt"/>
+                          <a:ea typeface="+mn-ea"/>
+                          <a:cs typeface="+mn-cs"/>
+                        </a:defRPr>
+                      </a:pPr>
+                      <a:endParaRPr lang="en-US"/>
+                    </a:p>
+                  </c:txPr>
+                  <c:dLblPos val="outEnd"/>
+                  <c:showLegendKey val="0"/>
+                  <c:showVal val="1"/>
+                  <c:showCatName val="0"/>
+                  <c:showSerName val="0"/>
+                  <c:showPercent val="0"/>
+                  <c:showBubbleSize val="0"/>
+                  <c:showLeaderLines val="0"/>
+                  <c:extLst>
+                    <c:ext uri="{CE6537A1-D6FC-4f65-9D91-7224C49458BB}" xmlns:c15="http://schemas.microsoft.com/office/drawing/2012/chart">
+                      <c15:showLeaderLines val="1"/>
+                      <c15:leaderLines>
+                        <c:spPr>
+                          <a:ln w="9525">
+                            <a:solidFill>
+                              <a:schemeClr val="tx1">
+                                <a:lumMod val="35000"/>
+                                <a:lumOff val="65000"/>
+                              </a:schemeClr>
+                            </a:solidFill>
+                          </a:ln>
+                          <a:effectLst/>
+                        </c:spPr>
+                      </c15:leaderLines>
+                    </c:ext>
+                  </c:extLst>
+                </c:dLbls>
+                <c:cat>
+                  <c:strRef>
+                    <c:f>Sheet1!$A$2:$A$3</c:f>
+                    <c:strCache>
+                      <c:ptCount val="2"/>
+                      <c:pt idx="0">
+                        <c:v>Category 1</c:v>
+                      </c:pt>
+                      <c:pt idx="1">
+                        <c:v>Category 2</c:v>
+                      </c:pt>
+                    </c:strCache>
+                  </c:strRef>
+                </c:cat>
+                <c:val>
+                  <c:numRef>
+                    <c:f>Sheet1!$B$2:$B$3</c:f>
+                    <c:numCache>
+                      <c:formatCode>General</c:formatCode>
+                      <c:ptCount val="2"/>
+                      <c:pt idx="0">
+                        <c:v>4.3</c:v>
+                      </c:pt>
+                      <c:pt idx="1">
+                        <c:v>2.5</c:v>
+                      </c:pt>
+                    </c:numCache>
+                  </c:numRef>
+                </c:val>
+              </c:ser>
+              <c:ser>
+                <c:idx val="1"/>
+                <c:order val="1"/>
+                <c:tx>
+                  <c:strRef>
+                    <c:f>Sheet1!$C$1</c:f>
+                    <c:strCache>
+                      <c:ptCount val="1"/>
+                      <c:pt idx="0">
+                        <c:v>Series 2</c:v>
+                      </c:pt>
+                    </c:strCache>
+                  </c:strRef>
+                </c:tx>
+                <c:spPr>
+                  <a:solidFill>
+                    <a:schemeClr val="accent5"/>
+                  </a:solidFill>
+                  <a:ln>
+                    <a:noFill/>
+                  </a:ln>
+                  <a:effectLst/>
+                </c:spPr>
+                <c:invertIfNegative val="0"/>
+                <c:dLbls>
+                  <c:spPr>
+                    <a:noFill/>
+                    <a:ln>
+                      <a:noFill/>
+                    </a:ln>
+                    <a:effectLst/>
+                  </c:spPr>
+                  <c:txPr>
+                    <a:bodyPr rot="-5400000" spcFirstLastPara="1" vertOverflow="clip" horzOverflow="clip" vert="horz" wrap="square" lIns="38100" tIns="19050" rIns="38100" bIns="19050" anchor="ctr" anchorCtr="1">
+                      <a:spAutoFit/>
+                    </a:bodyPr>
+                    <a:lstStyle/>
+                    <a:p>
+                      <a:pPr>
+                        <a:defRPr sz="800" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
+                          <a:solidFill>
+                            <a:schemeClr val="tx1">
+                              <a:lumMod val="50000"/>
+                              <a:lumOff val="50000"/>
+                            </a:schemeClr>
+                          </a:solidFill>
+                          <a:latin typeface="+mn-lt"/>
+                          <a:ea typeface="+mn-ea"/>
+                          <a:cs typeface="+mn-cs"/>
+                        </a:defRPr>
+                      </a:pPr>
+                      <a:endParaRPr lang="en-US"/>
+                    </a:p>
+                  </c:txPr>
+                  <c:dLblPos val="outEnd"/>
+                  <c:showLegendKey val="0"/>
+                  <c:showVal val="1"/>
+                  <c:showCatName val="0"/>
+                  <c:showSerName val="0"/>
+                  <c:showPercent val="0"/>
+                  <c:showBubbleSize val="0"/>
+                  <c:showLeaderLines val="0"/>
+                  <c:extLst>
+                    <c:ext uri="{CE6537A1-D6FC-4f65-9D91-7224C49458BB}" xmlns:c15="http://schemas.microsoft.com/office/drawing/2012/chart">
+                      <c15:showLeaderLines val="1"/>
+                      <c15:leaderLines>
+                        <c:spPr>
+                          <a:ln w="9525">
+                            <a:solidFill>
+                              <a:schemeClr val="tx1">
+                                <a:lumMod val="35000"/>
+                                <a:lumOff val="65000"/>
+                              </a:schemeClr>
+                            </a:solidFill>
+                          </a:ln>
+                          <a:effectLst/>
+                        </c:spPr>
+                      </c15:leaderLines>
+                    </c:ext>
+                  </c:extLst>
+                </c:dLbls>
+                <c:cat>
+                  <c:strRef>
+                    <c:f>Sheet1!$A$2:$A$3</c:f>
+                    <c:strCache>
+                      <c:ptCount val="2"/>
+                      <c:pt idx="0">
+                        <c:v>Category 1</c:v>
+                      </c:pt>
+                      <c:pt idx="1">
+                        <c:v>Category 2</c:v>
+                      </c:pt>
+                    </c:strCache>
+                  </c:strRef>
+                </c:cat>
+                <c:val>
+                  <c:numRef>
+                    <c:f>Sheet1!$C$2:$C$3</c:f>
+                    <c:numCache>
+                      <c:formatCode>General</c:formatCode>
+                      <c:ptCount val="2"/>
+                      <c:pt idx="0">
+                        <c:v>2.4</c:v>
+                      </c:pt>
+                      <c:pt idx="1">
+                        <c:v>4.4000000000000004</c:v>
+                      </c:pt>
+                    </c:numCache>
+                  </c:numRef>
+                </c:val>
+              </c:ser>
+              <c:dLbls>
+                <c:dLblPos val="outEnd"/>
+                <c:showLegendKey val="0"/>
+                <c:showVal val="1"/>
+                <c:showCatName val="0"/>
+                <c:showSerName val="0"/>
+                <c:showPercent val="0"/>
+                <c:showBubbleSize val="0"/>
+              </c:dLbls>
+              <c:gapWidth val="100"/>
+              <c:overlap val="-50"/>
+              <c:axId val="459970080"/>
+              <c:axId val="459965768"/>
+            </c:barChart>
+            <c:catAx>
+              <c:axId val="459970080"/>
+              <c:scaling>
+                <c:orientation val="minMax"/>
+              </c:scaling>
+              <c:delete val="0"/>
+              <c:axPos val="b"/>
+              <c:majorGridlines>
+                <c:spPr>
+                  <a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
+                    <a:solidFill>
+                      <a:schemeClr val="tx1">
+                        <a:lumMod val="15000"/>
+                        <a:lumOff val="85000"/>
+                      </a:schemeClr>
+                    </a:solidFill>
+                    <a:round/>
+                  </a:ln>
+                  <a:effectLst/>
+                </c:spPr>
+              </c:majorGridlines>
+              <c:numFmt formatCode="General" sourceLinked="1"/>
+              <c:majorTickMark val="none"/>
+              <c:minorTickMark val="none"/>
+              <c:tickLblPos val="nextTo"/>
+              <c:spPr>
+                <a:noFill/>
+                <a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
+                  <a:solidFill>
+                    <a:schemeClr val="tx1">
+                      <a:lumMod val="15000"/>
+                      <a:lumOff val="85000"/>
+                    </a:schemeClr>
+                  </a:solidFill>
+                  <a:round/>
+                </a:ln>
+                <a:effectLst/>
+              </c:spPr>
+              <c:txPr>
+                <a:bodyPr rot="-60000000" spcFirstLastPara="1" vertOverflow="ellipsis" vert="horz" wrap="square" anchor="ctr" anchorCtr="1"/>
+                <a:lstStyle/>
+                <a:p>
+                  <a:pPr>
+                    <a:defRPr sz="800" b="0" i="0" u="none" strike="noStrike" kern="1200" cap="all" spc="120" normalizeH="0" baseline="0">
+                      <a:solidFill>
+                        <a:schemeClr val="tx1">
+                          <a:lumMod val="65000"/>
+                          <a:lumOff val="35000"/>
+                        </a:schemeClr>
+                      </a:solidFill>
+                      <a:latin typeface="+mn-lt"/>
+                      <a:ea typeface="+mn-ea"/>
+                      <a:cs typeface="+mn-cs"/>
+                    </a:defRPr>
+                  </a:pPr>
+                  <a:endParaRPr lang="en-US"/>
+                </a:p>
+              </c:txPr>
+              <c:crossAx val="459965768"/>
+              <c:crosses val="autoZero"/>
+              <c:auto val="1"/>
+              <c:lblAlgn val="ctr"/>
+              <c:lblOffset val="100"/>
+              <c:noMultiLvlLbl val="0"/>
+            </c:catAx>
+            <c:valAx>
+              <c:axId val="459965768"/>
+              <c:scaling>
+                <c:orientation val="minMax"/>
+              </c:scaling>
+              <c:delete val="1"/>
+              <c:axPos val="l"/>
+              <c:numFmt formatCode="General" sourceLinked="1"/>
+              <c:majorTickMark val="none"/>
+              <c:minorTickMark val="none"/>
+              <c:tickLblPos val="nextTo"/>
+              <c:crossAx val="459970080"/>
+              <c:crosses val="autoZero"/>
+              <c:crossBetween val="between"/>
+            </c:valAx>
+            <c:spPr>
+              <a:noFill/>
+              <a:ln>
+                <a:noFill/>
+              </a:ln>
+              <a:effectLst/>
+            </c:spPr>
+          </c:plotArea>
+          <c:legend>
+            <c:legendPos val="t"/>
+            <c:overlay val="0"/>
+            <c:spPr>
+              <a:noFill/>
+              <a:ln>
+                <a:noFill/>
+              </a:ln>
+              <a:effectLst/>
+            </c:spPr>
+            <c:txPr>
+              <a:bodyPr rot="0" spcFirstLastPara="1" vertOverflow="ellipsis" vert="horz" wrap="square" anchor="ctr" anchorCtr="1"/>
+              <a:lstStyle/>
+              <a:p>
+                <a:pPr>
+                  <a:defRPr sz="900" b="0" i="0" u="none" strike="noStrike" kern="1200" baseline="0">
+                    <a:solidFill>
+                      <a:schemeClr val="tx1">
+                        <a:lumMod val="65000"/>
+                        <a:lumOff val="35000"/>
+                      </a:schemeClr>
+                    </a:solidFill>
+                    <a:latin typeface="+mn-lt"/>
+                    <a:ea typeface="+mn-ea"/>
+                    <a:cs typeface="+mn-cs"/>
+                  </a:defRPr>
+                </a:pPr>
+                <a:endParaRPr lang="en-US"/>
+              </a:p>
+            </c:txPr>
+          </c:legend>
+          <c:plotVisOnly val="1"/>
+          <c:dispBlanksAs val="gap"/>
+          <c:showDLblsOverMax val="0"/>
+        </c:chart>
+        <c:spPr>
+          <a:solidFill>
+            <a:schemeClr val="lt1"/>
+          </a:solidFill>
+          <a:ln w="9525" cap="flat" cmpd="sng" algn="ctr">
+            <a:noFill/>
+            <a:round/>
+          </a:ln>
+          <a:effectLst/>
+        </c:spPr>
+        <c:txPr>
+          <a:bodyPr/>
+          <a:lstStyle/>
+          <a:p>
+            <a:pPr>
+              <a:defRPr/>
+            </a:pPr>
+            <a:endParaRPr lang="en-US"/>
+          </a:p>
+        </c:txPr>
+        <c:externalData r:id="rId3">
+          <c:autoUpdate val="0"/>
+        </c:externalData>
+      </c:chartSpace>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/charts/_rels/chart1.xml.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml">
+    <pkg:xmlData>
+      <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+        <Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/package" Target="../embeddings/Microsoft_Excel_Worksheet11.xlsx"/>
+      </Relationships>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/embeddings/Microsoft_Excel_Worksheet11.xlsx" pkg:contentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" pkg:compression="store">
+    <pkg:binaryData>
+      UEsDBBQABgAIAAAAIQClEOiOeAEAAEQFAAATAAgCW0NvbnRlbnRfVHlwZXNdLnhtbCCiBAIooAAC
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACs
+      VMluwjAQvVfqP0S+Vomhh6qqCBy6HFuk0g8w8YRYeJNtIPx9x2YRrShRRS4ZxZ63eDzj0aRVMluD
+      88LokgyLAclAV4YLvSjJ1+wtfySZD0xzJo2GkmzBk8n49mY021rwGaK1L0kTgn2i1FcNKOYLY0Hj
+      Tm2cYgF/3YJaVi3ZAuj9YPBAK6MD6JCHyEHGoxeo2UqG7LXF5Z2TjapJ9rzLi1IlESri2zzu0LMY
+      B9L/AjFrpahYwNPRtea/nOV7VwUiU45vhPV3aP0Phbjz09WpwB73geV0gkM2ZS68M4XeaSvpxrjl
+      3JhlcZnkjEtT16ICbqqVwqoV3jpg3DcAQckixUIxoQ++L+inZE9TGPZsJJ4vEXf4CNgjQNP3eguJ
+      pkPQh60E33fZE2mXcsMc8M/gcJp6N3DK3VVyNscK0BBD39eeSC/pY99OnbEep97B/2/hMKIRnVsk
+      AhcEHIf0XLMfFXE4r752iG8SB35Gm6Y3cPwNAAD//wMAUEsDBBQABgAIAAAAIQDk+SVTBgEAANwC
+      AAALAAgCX3JlbHMvLnJlbHMgogQCKKAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAArNLdasMgFAfw+8HeQc59Y9qNMUaT3oxB78bIHuBUTxJJ
+      9IjaNX37yWAfga4M1kv1+Penx/VmsqN4oxANuwqWRQmCnGJtXFfBa/O0uAcREzqNIzuq4EgRNvX1
+      1fqFRkx5U+yNjyKnuFhBn5J/kDKqnizGgj25vNJysJjyMHTSoxqwI7kqyzsZfmZAPcsUW11B2Oob
+      EM3R55P/ky0tJdSYUCoOtPAhy0Iy+S6iwdBRqkCzes7T8aOiyGqQp0Gry4JSv7c7h2Y8QflaKw62
+      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
+      Sw2tjyAWFPeo3zWyczs0LS6B09y+LbsrYXSHEHOppH8PoJRoUcwWrbF8rvDem2zExQ47bE7gtRTW
+      OFP7BOFYFHp65zt2xxBpUlYSb9C3nViox/QhK6Y3lE3K0J/fEtZub008n/8ABcJDhWOipG//3Ji3
+      vnCGoRQRXSjoEbnwcgVPoNSYPl/jBP8GDlwiARsY9tc7tucwsBdLKqj5UvlXs/4GctF4pL3BBvR9
+      KKr3KTiBA0DiJA+yhVEIgf9Ey95J2EC+iVJl5RtcYUgsnTf6zzbQixkO5NsDqHa9zaMXTw+wSBTu
+      MOWeT0pr1gS9g/Cu470Ts2J0TigS9rUPWIzaHTZtNRmVbIWdENvc434uPcw97eeyIcdQwqADL3K5
+      DiwedORHOvKoLrk+0hDjefKh+4C/H/fFfcDigf+I5/E68OfJzRF/jI+SUXrwOyMHR7EvJw40mizM
+      7KyhtmNFz/3f+WjzaJGOL+A7twvZOqKgDra9pcRGX6cJrr3pejPfIt/ceHTpbtfgNwvQM2mCzaqN
+      8bsNuhdfpYIXbr0jwiz755Bh04YosYXEt2lnVRYe3kc5+m34gE7+AQAA//8DAFBLAwQUAAYACAAA
+      ACEApul8iowTAAC6fwAAFgAAAGRvY1Byb3BzL3RodW1ibmFpbC53bWbMnU1sI3lah8uOO47b7Xa7
+      3XgzA4uaZTWORpqRxj3LhxxmWWaEQIJ1xLBHDoszsQaBkGZ35SxHDnBwhLhyckAckMaRQA6cOHFx
+      BonbfGq+vz80Hz3ODZCa3/OW7Thp26/Yl22mW7/OL+X6Py6XK/WUO6WqTFJIkrXXv50k5eRHCX9y
+      ylpmI7mkr8UsU2hXsv+efCuzpvbzNkc9c+fOou9+TnP8V/ZakjfWv9r4TDb7jSd//IMfPvUnSfLM
+      R9/uJkk/+WiUuZbRPC///Z//7T/82/eM+ZAm8FyF2bNmsnfu3LHHspmsfX1Y87CEuUwp2dDX/7R5
+      7ckmjIw9939rOmPTuR+ajD5bap4npZ89I8tcyz2XPJrJJJkLr/L/fn6ejaV89tlnZ0u5Nnn9TJt/
+      dXzPq34ok7M5bmRvJPdbq2afU5vOyxrlTzrvpeSK+q8XfiG5PZn+z3pdjJw+9/zc6wvXWz5J3+X0
+      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
+      6UA2JXSf6Hm6Z7SKiBXRoEY93RPpQDYldJ/oebpntKqIVdGgRj3dE+lANiV0n+h5ume0mog10aBG
+      Pd0T6UA2JXSf6Hm6Z7RNETdFgxr1dE+kAzma0JcT772n+3LzoWxK6P2wp/tGy4qYFQ1q1NN9kQ5l
+      U0L3iZ6n+0bLiZgTDWrU0xAOZVNC94mep/tGy4uYFy2lxjzdF+lQNiV0fxk9T/eNVhCxIBrUqKf7
+      Ih3KpoTuEz1P941WFLEoGtSop/siHcqmhO4TPU/3jVYSsSQa1Kin+yIdyqaE7hM9T/eNVhaxLBrU
+      qKf7Ih3KpoTuEz1P941WEbEiGtSop/siHcqmhO4TPU/3jVYVsSoa1Kin+yIdyqaE7hM9T/eNVhOx
+      JhrUqKf7Ih3KpoTuEz1P9422KeKmaFCjnu6LdChHE/py4r339FBuPpZNCX0Y9vTQaFkRs6JBjXp6
+      KNKxbEroPtHz9NBoORFzokGNehrCsWxK6D7R8/TQaHkR86Kl1JinhyIdy6aE7i+j5+mh0QoiFkSD
+      GvX0UKRj2ZTQfaLn6aHRiiIWRYMa9fRQpGPZlNB9oufpodFKIpZEgxr19FCkY9mU0H2i5+mh0coi
+      lkWDGvX0UKRj2ZTQfaLn6aHRKiJWRIMa9fRQpGPZlNB9oufpodGqIlZFgxr19FCkY9mU0H2i5+mh
+      0Woi1kSDGvX0UKRj2ZTQfaLn6aHRNkXcFA1q1NNDkY7laEJfTrz3nh7JzSeyKaGPwp4eGS0rYlY0
+      qFFPj0Q6kU0J3Sd6nh4ZLSdiTjSoUU9DOJFNCd0nep4eGS0vYl60lBrz9EikE9mU0P1l9Dw9MlpB
+      xIJoUKOeHol0IpsSuk/0PD0yWlHEomhQo54eiXQimxK6T/Q8PTJaScSSaFCjnh6JdCKbErpP9Dw9
+      MlpZxLJoUKOeHol0IpsSuk/0PD0yWkXEimhQo54eiXQimxK6T/Q8PTJaVcSqaFCjnh6JdCKbErpP
+      9Dw9MlpNxJpoUKOeHol0IpsSuk/0PD0y2qaIm6JBjXp6JNKJHE3oy4mep9MrzZ1yiTf9+evppc9u
+      PvlU50+fuvm9306n3/1vyi1MrrT2xBNP2GvK6ppvuhJe0rhc0/4L2CPae6dTHpxMacymPDaZcms2
+      5fcmUx6dTdmbTPnWbMqfTab80mzKX02m/PJsyt9NpvzKbMq/TKb8qqakyz69Atr81eJ4ZHqNvEVX
+      ibuhq9pN1+jFq8JlkvszXBUuffwnuYLMF198oedPx1+ebSPTK73dp8fu0zq930KfznvxOiWX9RrT
+      q+LNX+9lETEjSlZEQk+v13f3lU/OiPPHK4uIWVHWRCP09HqDq4jz13tZRFwTJWfrFSr0xT89Z8s4
+      f7yyiJgT5ZJd+Y93C7pHnD+6WES8JMq6iIR+ySV++OGHK9/rdVHydo1BqNC9ZZw/uli0jHlRNuwq
+      h1y5ELpHnL86yyLihigFEQl9uh0u3x7njy4WEQuiXBaN0M+uTpgua7rMtzNn7/X8scAi4mVRiqIR
+      +tk8y4jz11JZRCyKckU0Qi+66/GNN95Y+V5fEaUkGqFfcYnz11JZtIwlUa6KRugllzh/5ZNFxKui
+      lEUj9Ksucd7ci4hlUa6JRuhllzh/hbJFxGuiVEQj9Gsucd7ci4gVUa6LRugVl/jiiy+ufK+vi1IV
+      jdCvu8Tnn39+JbEqCt4h9OpSoncsMP2JWH6t0ukeY+qX1cba03LvySkdCz1qLGh7ckrHQo8aC9qe
+      nNKx0KPGgran96BjoUeNBW1PTulY6FFjQduTUzoWetRY0PbklI6FHjUWtD05pWOhR40FbU9O6Vjo
+      UWNB4wi1Y6FHjQVtT07pWOhRY0Hbk1M6FnrUWND25JSOhR41FrQ9OaVjoUeNBW1PTulY6FFjQduT
+      UzoWetRY0PbklI6FHjUWtD05pWOhR40FbU9O6VjoUWNB25OtOhb6V8dYAxlqIKccWehRY0EbyClH
+      FnrUWNAGcsqRhR41FrSBnHJkoUeNBW0gpxxZ6FFjQRvIKUcWetRY0AZyypGFHjUWtIGccmShR40F
+      bSCnHFnoUWNBG8gpRxZ61FjQBnLKkYUeNRa0gZxyZKFHjQVtIKccWehRY0EbyClHFnrUWNAGcsqR
+      hR41FrSBnHJkoUeNBW0gpxxZ6FFjQRvIKUcWetRY0AZyypGFHjUWtIFsdWShf3WMNZahxnLKqYUe
+      NRa0sZxyaqFHjQVtLKecWuhRY0EbyymnFnrUWNDGcsqphR41FrSxnHJqoUeNBW0sp5xa6FFjQRvL
+      KacWetRY0MZyyqmFHjUWtLGccmqhR40FbSynnFroUWNBG8sppxZ61FjQxnLKqYUeNRa0sZxyaqFH
+      jQVtLKecWuhRY0EbyymnFnrUWNDGcsqphR41FrSxnHJqoUeNBW0sp5xa6FFjQRvLVqcW+lfHWA39
+      WrCh3xPestCjxoLW0L2pblnoUWNBa+g+Xbcs9KixoDX0u8NbFnrUWNAamUsiEnrUWNAauvfFLQs9
+      aixojUxeREKPGgtaI7MhGqFHjQWtobtj3bLQo8aC1tDvqG5Z6FFjQWtkiiISetRY0BqZK6IRetRY
+      0Bq6n9wtCz1qLGiNzFURCT1qLGiNTFk0Qo8aC1ojc000Qo8aC1ojUxGN0KPGgtbIXBeN0KPGgtbI
+      VEUj9KixoDV0/sQtCz1qrOm5KfpAtPQslUzya/p0kyTf0VFqepZKJvlLm/IbOhKeTvkPm/L43Dxl
+      GSZJnpgdiSaaOz3jYv5uiZcnzzt/98WLZ43wGzvuk7hs+qLfyTFtXUuQ/p5uXd89sP6APlOl1stN
+      9ojMwZz5iRf4+iNea/E37f/XS6wYHQPyM8VdYOhp0nH28MJ/eD3p+W3L51n2yDfsz83s5OudC98n
+      zvf5C49f/H42/mytaF3ZGspc4yaX878DfWhuTc2vxUX3dUz3jtwvc54MLac95yV7Bh1a2vv4zbWc
+      zvK6pFT0OaBi/brNkb12v75m5NXpn+kJV3yf0uaf4ew4hu1jEXf6eha/3uzc0k5ZqS/ZSubHcBfK
+      B9bLmvb7393ZWbeznH76W9BPtjUw6qe/BU3fDb5yh7CzrSijPcH82uIna9FdxJbvgc7uMJa+68vv
+      qMqZdWf3C/2Z5GeT9Iy9L+86Y+/x7//x03/4zNOzLetiSbeUK5N90nR7mz9j7+u2n7up/Qr3FOUc
+      vj+yV/rkU888/dQPbj6S13ccEW5oK1nTUk3n+sf5uRoX56oZ68Hk69rLJMnj3/+hzix85sc3H+EO
+      p5c0Mp2fO63l7aencfnB5G9s3/bow5wZmJub/qZNbzzM+YFMT9mPXWQ3lrMfm7AbD3NG4Rn7sSRl
+      Pzpjp+vr4vszvxaX3/mWtTvdi8yfv1GarH2msQ/IZGkwb2sbmr9X7XT64rMQOd7nDPu7702rs/jm
+      zkKc3ud2S+eG8HzV7JYMu2osc6aPT8duz8ZuO2OZ8/zYndnYHWcsc54fuzsbu+uMZc7zY/dnY/ed
+      scx5fuzBbOyBM5Y5z489nI09dMYy5/mxx7Oxx85Y5jw/9mQ29sQZy5znx56/B/KybWN6z+OLYzkn
+      he3qOf0+d/XY6eNn917mt4PpWH7zuHh7Tp93+vjZWP6fNh3L/wGvGjt9/Gwsn5jTsct/FtLnnT4+
+      /dS6em8w/aku2E/1+b32dG/wW3/wT3rudImvTvYGTEv3BrSLR4JZHdl9N/lyMiZdktv63LKYePdZ
+      ydzHgv/NZh3d29Hpkn8Reu7b/y+jWfLfCa3z3w2t80Wj03dw9RY43ZIKWdrZFjjvI/rFLZAp6RY4
+      /axy0UdnY6Y/R9MxVR1Wrzor/lE7xD2/3zgb+9xsWe522XN2PDJd1nTb5UjpFzXmO8W/SD63T06w
+      uNs8X/kUQ0mzOXulVi78w6enJPkfAQAAAP//AwBQSwMEFAAGAAgAAAAhAIZ2R/9OAQAAYwIAABEA
+      CAFkb2NQcm9wcy9jb3JlLnhtbCCiBAEooAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIyS
+      UU+DMBSF3038D6TvUArbog2wRM1edInJMBrfmvaONUJp2uq2f2+BDVn0wcfec+53z71ptjw0dfAF
+      xspW5YhEMQpA8VZIVeXopVyFNyiwjinB6lZBjo5g0bK4vsq4prw18GxaDcZJsIEnKUu5ztHOOU0x
+      tnwHDbORdygvblvTMOefpsKa8Q9WAU7ieIEbcEwwx3AHDPVIRCek4CNSf5q6BwiOoYYGlLOYRAT/
+      eB2Yxv7Z0CsTZyPdUfudTnGnbMEHcXQfrByN+/0+2qd9DJ+f4Lf106ZfNZSquxUHVGSCU26AudYU
+      Gwd6x5SE4NFIqMBkeKJ2l6yZdWt/9K0EcXcsggz/Lnpiv8CABRH4SHRY4Ky8pvcP5QoVSUzSMJ6H
+      ZFaSBU1TOlu8dzMv+ruIQ6E5Tf4HMYlLcktjQpP5hHgGFH3uy29RfAMAAP//AwBQSwMEFAAGAAgA
+      AAAhAIU+KYwKAQAAwwEAABQAAAB4bC90YWJsZXMvdGFibGUxLnhtbGyQ3WrDMAyF7wd7B6P71UkK
+      Y5Q6ZRQKg7GLpXsAr1Eagy0Hy12Xt5/zs42wXeroHOmTtrtPZ8UHBjaeFOSrDATSydeGzgrejoe7
+      BxAcNdXaekIFPTLsytubbdTvFkVKEytoY+w2UvKpRad55Tuk1Gl8cDqmMpwldwF1zS1idFYWWXYv
+      nTYEwtRpLQjSLk0/DkNTVRvurO5fFmLARsFjvtmvQUQfteVXf61af03gGZQT0d7biyMWJ3+hqGC9
+      1JfbBMhFauwW3ywVBoMs8v9MiWACnk3FYJLjS2aAeXAVe4tP1HjBCfRgAsfJMCCP2rP+Iw1nxWA6
+      TJ9NzxiSU+hHzX73lV8AAAD//wMAUEsDBBQABgAIAAAAIQDeQRbZigEAABEDAAAQAAgBZG9jUHJv
+      cHMvYXBwLnhtbCCiBAEooAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJySQW/bMAyF7wP2
+      HwzdGzndOgyBrGJIN/SwYgGSdmdNpmOhsiSIrJHs14+20dRpe9qN5Ht4+kRJXR86X/SQ0cVQieWi
+      FAUEG2sX9pW43/24+CoKJBNq42OAShwBxbX++EFtckyQyQEWHBGwEi1RWkmJtoXO4ILlwEoTc2eI
+      27yXsWmchZtonzoIJC/L8ouEA0Goob5Ip0AxJa56+t/QOtqBDx92x8TAWn1LyTtriG+p75zNEWND
+      xfeDBa/kXFRMtwX7lB0ddankvFVbazysOVg3xiMo+TJQt2CGpW2My6hVT6seLMVcoPvLa7sUxR+D
+      MOBUojfZmUCMNdimZqx9Qsr6d8yP2AIQKsmGaTiWc++8dp/1cjRwcW4cAiYQFs4Rd4484K9mYzK9
+      Q7ycE48ME++Esx34pjPnfOOV+aRX2evYJROOLJyqny484n3axRtD8LzO86HatiZDzS9wWvdpoG55
+      k9kPIevWhD3Uz563wvD4D9MP18urRfmp5HedzZR8+cv6HwAAAP//AwBQSwECLQAUAAYACAAAACEA
+      pRDojngBAABEBQAAEwAAAAAAAAAAAAAAAAAAAAAAW0NvbnRlbnRfVHlwZXNdLnhtbFBLAQItABQA
+      BgAIAAAAIQDk+SVTBgEAANwCAAALAAAAAAAAAAAAAAAAALEDAABfcmVscy8ucmVsc1BLAQItABQA
+      BgAIAAAAIQCBPpSX8wAAALoCAAAaAAAAAAAAAAAAAAAAAOgGAAB4bC9fcmVscy93b3JrYm9vay54
+      bWwucmVsc1BLAQItABQABgAIAAAAIQCVk0hE3wEAAIQDAAAPAAAAAAAAAAAAAAAAABsJAAB4bC93
+      b3JrYm9vay54bWxQSwECLQAUAAYACAAAACEAanVHtcMAAAAqAQAAFAAAAAAAAAAAAAAAAAAnCwAA
+      eGwvc2hhcmVkU3RyaW5ncy54bWxQSwECLQAUAAYACAAAACEAqJz1ALwAAAAlAQAAIwAAAAAAAAAA
+      AAAAAAAcDAAAeGwvd29ya3NoZWV0cy9fcmVscy9zaGVldDEueG1sLnJlbHNQSwECLQAUAAYACAAA
+      ACEAi4JuWJMGAACOGgAAEwAAAAAAAAAAAAAAAAAZDQAAeGwvdGhlbWUvdGhlbWUxLnhtbFBLAQIt
+      ABQABgAIAAAAIQDeI/LThQIAALEFAAANAAAAAAAAAAAAAAAAAN0TAAB4bC9zdHlsZXMueG1sUEsB
+      Ai0AFAAGAAgAAAAhANeY5DpbAgAAhQUAABgAAAAAAAAAAAAAAAAAjRYAAHhsL3dvcmtzaGVldHMv
+      c2hlZXQxLnhtbFBLAQItABQABgAIAAAAIQCm6XyKjBMAALp/AAAWAAAAAAAAAAAAAAAAAB4ZAABk
+      b2NQcm9wcy90aHVtYm5haWwud21mUEsBAi0AFAAGAAgAAAAhAIZ2R/9OAQAAYwIAABEAAAAAAAAA
+      AAAAAAAA3iwAAGRvY1Byb3BzL2NvcmUueG1sUEsBAi0AFAAGAAgAAAAhAIU+KYwKAQAAwwEAABQA
+      AAAAAAAAAAAAAAAAYy8AAHhsL3RhYmxlcy90YWJsZTEueG1sUEsBAi0AFAAGAAgAAAAhAN5BFtmK
+      AQAAEQMAABAAAAAAAAAAAAAAAAAAnzAAAGRvY1Byb3BzL2FwcC54bWxQSwUGAAAAAA0ADQBXAwAA
+      XzMAAAAA
+    </pkg:binaryData>
+  </pkg:part>
+</pkg:package>
