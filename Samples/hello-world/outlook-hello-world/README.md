@@ -1,6 +1,6 @@
 ---
 page_type: sample
-urlFragment: outlook-add-on-hello-world
+urlFragment: outlook-add-in-hello-world
 products:
   - office-add-ins
   - office-outlook
@@ -209,4 +209,4 @@ Copyright (c) 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/hello-world/outlook-add-in-hello-world" />
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/outlook-add-in-hello-world" />

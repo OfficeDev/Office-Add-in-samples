@@ -1,9 +1,8 @@
 ---
 page_type: sample
-urlFragment: word-add-in-hello-world
+urlFragment: office-add-in-hello-world
 products:
   - office-add-ins
-  - office-word
   - office
 languages:
   - javascript
@@ -68,13 +67,10 @@ The hello world sample implements a task pane named **taskpane.html** that conta
 
 For details on the specific hosts (Word, Excel, PowerPoint and Outlook) see the README files for details when using each host and to learn how to run the local web server.
 
-
-
-
 ## Copyright
 
 Copyright (c) 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/word-add-in-hello-world" />
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/office-add-in-hello-world" />
