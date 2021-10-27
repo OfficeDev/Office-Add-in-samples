@@ -1,10 +1,24 @@
-# [ARCHIVED] Word-Add-in-Load-and-write-Open-XML
+---
+page_type: sample
+urlFragment: word-add-in-load-and-write-open-xml
+products:
+- office-word
+- office
+languages:
+- javascript
+extensions:
+  contentType: samples
+  technologies:
+  - Add-ins
+  createdDate: 07/06/2015 2:00:00 PM
+description: "Shows how to add a variety of rich content types to a Word document using the setSelectedDataAsync method with ooxml coercion type.."
+---
 
-**Note:** This repo is archived and no longer actively maintained. Security vulnerabilities may exist in the project, or its dependencies. If you plan to reuse or run any code from this repo, be sure to perform appropriate security checks on the code or dependencies first. Do not use this project as the starting point of a production Office Add-in. Always start your production code by using the Office/SharePoint development workload in Visual Studio, or the [Yeoman generator for Office Add-ins](https://github.com/OfficeDev/generator-office), and follow security best practices as you develop the add-in. 
+# Load and write Open XML in your Word add-in
 
-This sample add-in shows you how to add a variety of rich content types to a Word document using the setSelectedDataAsync method with ooxml coercion type. The app also gives you the ability to show the Office Open XML markup for each sample content type right on the page.
+This sample add-in shows you how to add a variety of rich content types to a Word document using the setSelectedDataAsync method with ooxml coercion type. The add-in also gives you the ability to show the Office Open XML markup for each sample content type right on the page.
 
-**Description of the sample**
+## Description of the sample
 
 The add-in initializes in a blank Word document. You choose an option to insert the content or its markup at the selection point in the active Word document and then click the object type you want from the following options:
 
@@ -34,58 +48,53 @@ Figures 2a - 2b show how the document surface and task pane appear after extract
 
 ![Figure 2b. Task pane appearance after using the 'Get…' button to extract Office Open XML for selected content](/description/image.png)
 
-
-
-**Prerequisites**
+## Prerequisites
 
 This sample requires:
 
-* Visual Studio 2012
-* Office 2013 tools for Visual Studio 2012
-* Word 2013
+* Visual Studio 2019
+* Microsoft 365 - You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
-**Key components of the sample**
+## Key components of the sample
 
-The sample app contains:
+The sample add-in contains:
 
 * The LoadingAndWritingOOXML project, which contains:
 * The LoadingAndWritingOOXML.xml manifest file
 * The LoadingAndWritingOOXML Web project, which contains multiple template files
 * However, the files that have been developed as part of this sample solution include:
 * LoadingAndWritingOOXML.html (in the App folder, LoadingAndWritingOOXML subfolder). This contains the HTML user interface that is displayed in the task pane. It consists of two HTML radio buttons for choosing the option to insert a selected content type or display its markup in Word, several buttons for selecting a content type, and instructional text
-* LoadingAndWritingOOXML.js (in the same folder as above). This script file contains code that runs when the app is loaded. This startup wires up the Click event handlers for the eleven buttons in LoadingAndWritingOOXML.html that represent different content types. The handler in the JavaScript connects each button to the correct function based on the actively-selected radio button, to either write the content or its markup into the document.
-* Several XML files containing the markup for each of the content types you can insert via the app. These are located in the folder named OOXMLSamples. (Note that some content types have a separate XML file for the markup when inserting the object vs. displaying the markup on the page because chunks of binary data where applicable (i.e., for pictures and charts) are removed from the markup displayed on the page for ease of review. To learn more about the binary data contained in some types of Office Open XML markup, see the previously-referenced article  Creating Better Add-ins for Word with Office Open XML
+* LoadingAndWritingOOXML.js (in the same folder as above). This script file contains code that runs when the add-in is loaded. This startup wires up the Click event handlers for the eleven buttons in LoadingAndWritingOOXML.html that represent different content types. The handler in the JavaScript connects each button to the correct function based on the actively-selected radio button, to either write the content or its markup into the document.
+* Several XML files containing the markup for each of the content types you can insert via the add-in. These are located in the folder named OOXMLSamples. (Note that some content types have a separate XML file for the markup when inserting the object vs. displaying the markup on the page because chunks of binary data where applicable (i.e., for pictures and charts) are removed from the markup displayed on the page for ease of review. To learn more about the binary data contained in some types of Office Open XML markup, see the previously-referenced article  Creating Better Add-ins for Word with Office Open XML
 
-All other files are automatically provided by the Visual Studio project template for Add-ins for Office, and they have not been modified in the development of this sample app.
+All other files are automatically provided by the Visual Studio project template for Add-ins for Office, and they have not been modified in the development of this sample add-in.
 
-**Configure the sample**
+## Configure the sample
 
 To configure the sample, open the LoadingAndWritingOOXML.sln file with Visual Studio. No other configuration is necessary.
 
-**Build the sample**
+## Build the sample
 
 To build the sample, choose the Ctrl+Shift+B keys.
 
-**Run and test the sample**
+## Run and test the sample
 
 To run the sample, choose the F5 key.
 
-**Troubleshooting**
+## Troubleshooting
 
-If the app fails to respond as described, try reloading it. (In the task pane, choose the down arrow, and then choose Reload.)
+If the add-in fails to respond as described, try reloading it. (In the task pane, choose the down arrow, and then choose Reload.)
 
-**Change log**
+## Related content
 
-* First release: Aug 2013.
-* GitHub release: Aug 2015.
-
-**Related content**
-
-* [Build Add-ins for Office](http://msdn.microsoft.com/en-us/library/office/jj220060.aspx)
+* [Word add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/word/)
 * [Standard ECMA-376: Office Open XML File Formats](http://www.ecma-international.org/publications/standards/Ecma-376.htm)
-* [Creating Better Apps for Word with Office Open XML](http://msdn.microsoft.com/EN-US/library/office/apps/dn423225.aspx)
+* [Create better add-ins for Word with Office Open XML](https://docs.microsoft.com/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml?redirectedfrom=MSDN)
 
- 
+## Copyright
 
+Copyright (c) 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/word-add-in-load-and-write-open-xml" />
