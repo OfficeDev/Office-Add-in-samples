@@ -72,25 +72,24 @@ Office.onReady((info) => {});
 When the user chooses the **Say hello** button, the `sayHello()` function is called as shown in the following code sample. This function then calls `Office.context.mailbox.item.body.setAsync()` which is an Office JavaScript API. The `setAsync()` method overwrites the body of the message with "Hello world!". Then it calls the anonymous callback method `function (asyncResult)`. Most Outlook functions in the Office JavaScript API use this callback pattern. In this sample, the callback method checks that the call was successful. If not it writes an error message to the console.
 
 ```javascript
- /**
-     * Writes 'Hello world!' to a new message body.
-     */
-    function sayHello() {
-        Office.context.mailbox.item.body.setAsync(
-            "Hello world!",
-            {
-                coercionType: "html", // Write text as HTML
-            },
+/**
+ * Writes 'Hello world!' to a new message body.
+ */
+function sayHello() {
+  Office.context.mailbox.item.body.setAsync(
+    'Hello world!',
+    {
+      coercionType: 'html', // Write text as HTML
+    },
 
-            // Callback method to check that setAsync succeeded
-            function (asyncResult) {
-                if (asyncResult.status ==
-                    Office.AsyncResultStatus.Failed) {
-                    write(asyncResult.error.message);
-                }
-            }
-        );
+    // Callback method to check that setAsync succeeded
+    function (asyncResult) {
+      if (asyncResult.status == Office.AsyncResultStatus.Failed) {
+        write(asyncResult.error.message);
+      }
     }
+  );
+}
 ```
 
 For more information see [Build your first Outlook add-in](https://docs.microsoft.com/office/dev/add-ins/quickstarts/outlook-quickstart)
@@ -99,16 +98,15 @@ For more information see [Build your first Outlook add-in](https://docs.microsof
 
 An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The hello world sample is configured so that the files are hosted directly from this GitHub repo.
 
-
 The process for sideloading an add-in in Outlook on the web depends upon whether you are using the new or classic version.
 
 - If your mailbox toolbar looks like the following image, see [Sideload an add-in in the new Outlook on the web](#new-outlook-on-the-web).
 
-    ![Partial screenshot of the new Outlook on the web toolbar.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-on-the-web-new-toolbar.png)
+  ![Partial screenshot of the new Outlook on the web toolbar.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-on-the-web-new-toolbar.png)
 
 - If your mailbox toolbar looks like the following image, see [Sideload an add-in in classic Outlook on the web](#classic-outlook-on-the-web).
 
-    ![Partial screenshot of the classic Outlook on the web toolbar.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-on-the-web-classic-toolbar.png)
+  ![Partial screenshot of the classic Outlook on the web toolbar.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-on-the-web-classic-toolbar.png)
 
 > [!NOTE]
 > If your organization has included its logo in the mailbox toolbar, you might see something slightly different than shown in the preceding images.
@@ -121,15 +119,15 @@ The process for sideloading an add-in in Outlook on the web depends upon whether
 
 1. Choose **...** from the bottom of the new message and then select **Get Add-ins** from the menu that appears.
 
-    ![Message compose window in the new Outlook on the web with Get Add-ins option highlighted.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-on-the-web-new-get-add-ins.png)
+   ![Message compose window in the new Outlook on the web with Get Add-ins option highlighted.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-on-the-web-new-get-add-ins.png)
 
 1. In the **Add-Ins for Outlook** dialog box, select **My add-ins**.
 
-    ![Add-ins for Outlook dialog box in the new Outlook on the web with My add-ins selected.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-on-the-web-new-my-add-ins.png)
+   ![Add-ins for Outlook dialog box in the new Outlook on the web with My add-ins selected.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-on-the-web-new-my-add-ins.png)
 
 1. Locate the **Custom add-ins** section at the bottom of the dialog box. Select the **Add a custom add-in** link, and then select **Add from file**.
 
-    ![Manage add-ins screenshot pointing to Add from a file option.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-sideload-desktop-add-from-file.png)
+   ![Manage add-ins screenshot pointing to Add from a file option.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-sideload-desktop-add-from-file.png)
 
 1. Locate the **manifest.xml** file in the sample folder for Outlook and install it. Accept all prompts during the installation.
 
@@ -139,32 +137,40 @@ The process for sideloading an add-in in Outlook on the web depends upon whether
 
 1. Choose the gear icon in the top-right section of the toolbar and select **Manage add-ins**.
 
-    ![Outlook on the web screenshot pointing to Manage add-ins option.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-sideload-web-manage-integrations.png)
+   ![Outlook on the web screenshot pointing to Manage add-ins option.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-sideload-web-manage-integrations.png)
 
 1. On the **Manage add-ins** page, select **Add-Ins**, and then select **My add-ins**.
 
-    ![Outlook on the web store dialog with My add-ins selected.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-sideload-store-select-add-ins.png)
+   ![Outlook on the web store dialog with My add-ins selected.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-sideload-store-select-add-ins.png)
 
 1. Locate the **Custom add-ins** section at the bottom of the dialog box. Select the **Add a custom add-in** link, and then select **Add from file**.
 
-    ![Manage add-ins screenshot pointing to Add from a file option.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-sideload-desktop-add-from-file.png)
+   ![Manage add-ins screenshot pointing to Add from a file option.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-sideload-desktop-add-from-file.png)
 
 1. Locate the **manifest.xml** file in the sample folder for Outlook and install it. Accept all prompts during the installation.
 
->Note: The previous steps are from [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing)
+> Note: The previous steps are from [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing)
 
 1. Create a new email message.
 1. Choose the **More compose actions ...** button, and then choose **Hello world**. The add-in will insert "Hello world!" into the body of the email message.
 
 ![Screen shot of new email message in Outlook showing the more compose actions menu and hello world button](../images/outlook-open-hello-world-add-in.png)
 
-## Run the sample on Excel on Windows or Mac
+## Run the sample on Outlook on Windows or Mac
 
 Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the Hello world sample. Then follow the sideloading instructions for your platform.
 
 - [Sideload Outlook add-in on Windows or Mac](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#outlook-on-the-desktop)
 
-## Configure a localhost web server
+## Test the sample on Outlook
+
+1. Verify that the add-in loaded successfully. You will see a **Hello World** button on the Message tab on the ribbon.
+2. Choose the **Hello World** button on the Ribbon to see the Add-in Taskpane with the text "This add-in will insert the text 'Hello world!' in a new message."
+3. Choose the **Say hello** button to insert "Hello world!" in the message body.
+
+![Screen shot of new email message in Outlook showing the hello world button and taskpane](../images/outlook-for-windows-new-message.png)
+
+## Configure a localhost web server and run the sample from localhost
 
 If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps:
 
