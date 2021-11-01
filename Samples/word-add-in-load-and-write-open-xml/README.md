@@ -36,7 +36,7 @@ The add-in initializes in a blank Word document. You choose an option to insert 
 
 Figure 1 shows how the task pane for the sample add-in appears when the solution starts.
 
-![Figure 1. The Loading and Writing OOXML task pane](/description/9a7aa2da-4f99-4519-8cd1-f341060ff9beimage.png)
+![Figure 1. The Loading and Writing OOXML task pane](./description/9a7aa2da-4f99-4519-8cd1-f341060ff9beimage.png)
 
 **Note**
 
@@ -44,9 +44,9 @@ When you choose the option to see the markup for a selected type of content, wha
 
 Figures 2a - 2b show how the document surface and task pane appear after extracting Office Open XML from the selection.
 
-![Figure 2a. Document surface appearance after using the 'Get…' button to extract Office Open XML for selected content](/description/70dee213-4853-47b2-abcf-55a982abb2c4image.png)
+![Figure 2a. Document surface appearance after using the 'Get…' button to extract Office Open XML for selected content](./description/70dee213-4853-47b2-abcf-55a982abb2c4image.png)
 
-![Figure 2b. Task pane appearance after using the 'Get…' button to extract Office Open XML for selected content](/description/image.png)
+![Figure 2b. Task pane appearance after using the 'Get…' button to extract Office Open XML for selected content](./description/image.png)
 
 ## Prerequisites
 
