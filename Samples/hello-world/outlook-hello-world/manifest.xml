@@ -51,12 +51,12 @@
           <ExtensionPoint xsi:type="MessageComposeCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgComposeCmdGroup">
-                <Label resid="GroupLabel"/>
+                <Label resid="CommandsGroup.Label"/>
                 <Control xsi:type="Button" id="msgComposeInsertGist">
                   <Label resid="TaskpaneButton.Label"/>
                   <Supertip>
-                    <Title resid="TaskpaneButton.Title"/>
-                    <Description resid="TaskpaneButton.Tooltip"/>
+                    <Title resid="TaskpaneButton.SupertipTitle"/>
+                    <Description resid="TaskpaneButton.SupertipText"/>
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="Icon.16x16"/>
@@ -67,7 +67,6 @@
                     <SourceLocation resid="Taskpane.Url"/>
                   </Action>
                 </Control>
-   
               </Group>
             </OfficeTab>
           </ExtensionPoint>
@@ -84,14 +83,12 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/hello-world/outlook-hello-world/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GroupLabel" DefaultValue="Contoso Add-in"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Taskpane"/>
-        <bt:String id="TaskpaneButton.Title" DefaultValue="Show Taskpane Title"/>
-       
+        <bt:String id="CommandsGroup.Label" DefaultValue="Contoso Add-in"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Hello world"/>
+        <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Hello world"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane displaying all available properties."/>
-       
+        <bt:String id="TaskpaneButton.SupertipText" DefaultValue="Open the Hello world add-in"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>

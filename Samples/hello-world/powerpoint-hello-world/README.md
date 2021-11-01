@@ -74,40 +74,38 @@ When the user chooses the **Say hello** button, the `sayHello()` function is cal
 For more information see [Build your first PowerPoint task pane add-in](https://docs.microsoft.com/office/dev/add-ins/quickstarts/powerpoint-quickstart)
 
 ```javascript
- async function sayHello() {
+async function sayHello() {
+  // Set coercion type to text since
+  const options = { coercionType: Office.CoercionType.Text };
 
-        // Set coercion type to text since 
-        const options = { coercionType: Office.CoercionType.Text };
+  // clear current selection
+  await Office.context.document.setSelectedDataAsync(' ', options);
 
-        // clear current selection
-        await Office.context.document.setSelectedDataAsync(" ", options);
-
-        // Set text in selection to 'Hello world!'
-        await Office.context.document.setSelectedDataAsync("Hello world!", options);
-    }
+  // Set text in selection to 'Hello world!'
+  await Office.context.document.setSelectedDataAsync('Hello world!', options);
+}
 ```
 
-## Run the sample on PowerPoint on Windows
+## Run the sample on PowerPoint on web
 
 An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The hello world sample is configured so that the files are hosted directly from this GitHub repo. Use the following steps to sideload the manifest.xml file to see the sample run.
 
-1. Download the **manifest.xml** file from the sample folder for PowerPoint.
-1. Open [Office on the web](https://office.live.com/).
-1. Choose **PowerPoint**, and then open a new document.
-1. On the **Insert** tab on the ribbon in the **Add-ins** section, choose **Office Add-ins**.
-1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+1.  Download the **manifest.xml** file from the sample folder for PowerPoint.
+1.  Open [Office on the web](https://office.live.com/).
+1.  Choose **PowerPoint**, and then open a new blank presentation.
+1.  On the **Insert** tab on the ribbon in the **Add-ins** section, choose **Add-ins**.
+1.  On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
 
-    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../images/office-add-ins-excel-web.png)
+    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../images/office-add-ins-powerpoint-web.png)
 
-1. Browse to the add-in manifest file, and then select **Upload**.
+1.  Browse to the add-in manifest file, and then select **Upload**.
 
-    ![The upload add-in dialog with buttons for browse, upload, and cancel.
-](../images/office-upload-add-ins-excel-web.png)
+    ![The upload add-in dialog with buttons for browse, upload, and cancel.](../images/office-upload-add-ins-powerpoint-web.png)
 
-1. Verify that the add-in loaded successfully. You will see a **Hello world** button on the **Home** tab on the ribbon.
-1. Choose the **Hello world** button to display the task pane of the add-in.
-1. Choose the **Say Hello** button to insert "Hello world!" into the current PowerPoint slide.
- 
+1.  Verify that the add-in loaded successfully. You will see a **Hello world** button on the **Home** tab on the ribbon.
+1.  Choose the **Hello world** button to display the task pane of the add-in.
+1.  Position your cursor in the Slide where you want to insert the text.
+1.  Choose the **Say Hello** button to insert "Hello world!" into the current PowerPoint slide.
 
 ## Run the sample on PowerPoint on Windows or Mac
 
@@ -116,58 +114,44 @@ Office Add-ins are cross-platform so you can also run them on Windows, Mac, and 
 - [Sideload Office Add-ins for testing from a network share](https://docs.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
 - [Sideload Office Add-ins on iPad and Mac for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad-and-mac)
 
-## Configure a localhost web server
+## Configure a localhost web server and run the sample from localhost
 
 If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps:
 
-1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+1.  Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
-2. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+2.  You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
 
-   ```console
-   npm install --global http-server
-   ```
+    ```console
+    npm install --global http-server
+    ```
 
-3. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command:
+3.  You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command:
 
-   ```console
-   npm install --global office-addin-dev-certs
-   ```
+    ```console
+    npm install --global office-addin-dev-certs
+    ```
 
-4. Clone or download this sample to a folder on your computer. Then go to that folder in a console or terminal window.
-5. Run the following command to generate a self-signed certificate that you can use for the web server.
+4.  Clone or download this sample to a folder on your computer. Then go to that folder in a console or terminal window.
+5.  Run the following command to generate a self-signed certificate that you can use for the web server.
 
-   ```console
-   npx office-addin-dev-certs install
-   ```
+    ```console
+    npx office-addin-dev-certs install
+    ```
 
-   The previous command will display the folder location where it generated the certificate files.
+    The previous command will display the folder location where it generated the certificate files.
 
-6. Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the hello world sample folder.
+6.  Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the hello world sample folder.
 
-7. Run the following command:
+7.  Run the following command:
 
-   ```console
-   http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
-   ```
+    ```console
+    http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
+    ```
 
-   The http-server will run and host the current folder's files on localhost:3000.
+    The http-server will run and host the current folder's files on localhost:3000.
 
-8. Open [Office on the web](https://office.live.com/).
-9. Choose **PowerPoint**, and then open a new document.
-10. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
-11. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
-
-    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../images/office-add-ins-excel-web.png)
-
-12. Browse to the add-in manifest file, and then select **Upload**.
-
-    ![The upload add-in dialog with buttons for browse, upload, and cancel.
-](../images/office-upload-add-ins-excel-web.png)
-
-13. Verify that the add-in loaded successfully. You will see a **Hello world** button on the **Home** tab on the ribbon.
-14. Choose the **Hello world** button to display the task pane of the add-in.
-15. Choose the **Say Hello** button to insert "Hello world!" into the current PowerPoint slide.
+Now that your localhost web server is running, you can sideload the manifest-localhost.xml file provided in the word-hello-world folder. Follow the steps in [Run the sample on PowerPoint on web](#run-the-sample-on-powerpoint-on-web) to sideload and run the add-in.
 
 ## Copyright
 

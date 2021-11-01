@@ -59,7 +59,7 @@ The sample initializes the Office JavaScript API library with a call to `office.
 Office.onReady((info) => {});
 ```
 
-### Write to the worksheet
+### Write to the document
 
 When the user chooses the **button**, the `sayHello()` function is called. This function Then calls `Word.run` to run code and call the Office JavaScript APIs. It uses a `context` object provided by the Office JS API library to get the document body and inserts a Paragraph with the text "Hello World". Calling `context.sync()` runs the command.
 
@@ -80,7 +80,7 @@ function sayHello() {
 }
 ```
 
-## Run the sample
+## Run the sample on Word on web
 
 An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The hello world sample is configured so that the files are hosted directly from this GitHub repo. Use the following steps to sideload the manifest.xml file to see the sample run.
 
@@ -97,7 +97,14 @@ An Office Add-in requires you to configure a web server to provide all the resou
 8. Choose the **Hello world** button on the Ribbon to see the Add-in Taskpane with the text "This add-in will insert the text 'Hello world!'".
 9. Choose the **Say hello** button to insert "Hello World" in the document.
 
-## Run the sample from Localhost
+## Run the sample on Word on Windows or Mac
+
+Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the Hello world sample. Then follow the sideloading instructions for your platform.
+
+- [Sideload Office Add-ins for testing from a network share](https://docs.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
+- [Sideload Office Add-ins on iPad and Mac for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad-and-mac)
+
+## Configure a localhost web server and run the sample from localhost
 
 If you prefer to run the web server and host the add-in's web files from your computer, use the following steps:
 
@@ -134,21 +141,7 @@ If you prefer to run the web server and host the add-in's web files from your co
 
    The http-server will run and host the current folder's files on localhost:3000.
 
-8. Open [Office on the web](https://office.live.com/).
-9. Choose **Word**, and then open a new document.
-10. Open the **Insert** tab on the ribbon and choose **Add-ins**.
-11. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.<BR /><BR />
-    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../images/office-add-ins-word-web.png)
-12. Browse to the add-in manifest file, and then select **Upload**.<BR /><BR />
-    ![The upload add-in dialog with buttons for browse, upload, and cancel.
-](../images/office-upload-add-ins-word-web.png)
-13. Verify that the add-in loaded successfully. You will see a **Hello world** button on the **Home** tab on the ribbon.
-14. Choose the **Hello world** button on the Ribbon to see the Add-in Taskpane with the text "This add-in will insert the text 'Hello world!'."
-15. Choose the **Say hello** button to insert "Hello World" in the document.
-
-## TODO Instructions for running on Word on Windows
-
-## TODO Instructions for running on Word on Mac
+Now that your localhost web server is running, you can sideload the manifest-localhost.xml file provided in the word-hello-world folder. Follow the steps in [Run the sample on Word on web](#run-the-sample-on-word-on-web) to sideload and run the add-in.
 
 ## Copyright
 
