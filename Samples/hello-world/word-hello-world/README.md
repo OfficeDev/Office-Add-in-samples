@@ -141,7 +141,7 @@ If you prefer to run the web server and host the add-in's web files from your co
 
    The http-server will run and host the current folder's files on localhost:3000.
 
-Now that your localhost web server is running, you can sideload the manifest-localhost.xml file provided in the word-hello-world folder. Follow the steps in [Run the sample on Word on web](#run-the-sample-on-word-on-web) to sideload and run the add-in.
+Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the word-hello-world folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Word on web](#run-the-sample-on-word-on-web) to sideload and run the add-in.
 
 ## Copyright
 

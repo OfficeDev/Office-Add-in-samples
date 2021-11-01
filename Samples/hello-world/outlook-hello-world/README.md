@@ -207,7 +207,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
    The http-server will run and host the current folder's files on localhost:3000.
 
-Now that your localhost web server is running, you can sideload the manifest-localhost.xml file provided in the outlook-hello-world folder. Follow the steps in [Run the sample on Outlook on Web](#run-the-sample-on-outlook-on-web) to sideload and run the add-in.
+Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the outlook-hello-world folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Outlook on Web](#run-the-sample-on-outlook-on-web) to sideload and run the add-in.
 
 ## Copyright
 
