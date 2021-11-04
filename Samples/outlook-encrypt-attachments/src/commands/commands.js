@@ -7,6 +7,9 @@ var fileName;
 const secretKey = "secret key 123";
 const encryptedAttachmentPrefix = "encrypted_";
 const decryptedAttachmentPrefix = "decrypted_";
+var totalOptionalAttendees = 0;
+var totalRequiredAttendees = 0;
+var totalDistributionLists = 0;
 // eslint-disable-next-line no-unused-vars
 Office.initialize = function (reason) {
   try {
@@ -47,55 +50,44 @@ function onAppointmentComposeHandler(event) {
       console.log(`onAppointmentComposeHandler(): Appointment ends: ${asyncResult2.value}`);
       console.log("onAppointmentComposeHandler(): Setting SessionData...");     
 
-      try {
-        Office.context.mailbox.item.sessionData.setAsync("appointment_info", JSON.stringify(originalAppointmentDate), function(asyncResult3){
-          if (asyncResult3.status === Office.AsyncResultStatus.Succeeded) {
-            console.log("onAppointmentComposeHandler(): sessionData set");
-            //Add a notification message to ask the user to open the Task Pane to view additional information on the sample
-            //NOTE: Clicking the "Show Task Pane" link in the InfoBar doesn't work in Outlook Online. A fix is in progress and being tested: https://github.com/OfficeDev/office-js/issues/2125
-                        
-            try {
-              console.log("onAppointmentComposeHandler(): Adding notification message...");
+      Office.context.mailbox.item.sessionData.setAsync("appointment_info", JSON.stringify(originalAppointmentDate), function(asyncResult3){
+        if (asyncResult3.status === Office.AsyncResultStatus.Succeeded) {
+          console.log("onAppointmentComposeHandler(): sessionData set");
+          //Add a notification message to ask the user to open the Task Pane to view additional information on the sample
+          //NOTE: Clicking the "Show Task Pane" link in the InfoBar doesn't work in Outlook Online. A fix is in progress and being tested: https://github.com/OfficeDev/office-js/issues/2125
+                      
+          console.log("onAppointmentComposeHandler(): Adding notification message...");
 
-              //NOTE: actions array only applicable to insightMessage types
-              Office.context.mailbox.item.notificationMessages.addAsync(
-                "showInfoBarForSampleInstructions",
+          //NOTE: actions array only applicable to insightMessage types
+          Office.context.mailbox.item.notificationMessages.addAsync(
+            "showInfoBarForSampleInstructions",
+            {
+              type: Office.MailboxEnums.ItemNotificationMessageType.InsightMessage,
+              message:
+                "Open the Task Pane for details about running the Outlook Event-based Activation Sample Add-in",
+              icon: "Icon.16x16",
+              actions: [
                 {
-                  type: Office.MailboxEnums.ItemNotificationMessageType.InsightMessage,
-                  message:
-                    "Open the Task Pane for details about running the Outlook Event-based Activation Sample Add-in",
-                  icon: "Icon.16x16",
-                  actions: [
-                    {
-                      actionText: "Show Task Pane",
-                      actionType: Office.MailboxEnums.ActionType.ShowTaskPane,
-                      commandId: "appOrgTaskPaneButton",
-                      contextData: "{''}",
-                    },
-                  ],
+                  actionText: "Show Task Pane",
+                  actionType: Office.MailboxEnums.ActionType.ShowTaskPane,
+                  commandId: "appOrgTaskPaneButton",
+                  contextData: "{''}",
                 },
-                function () {
-                  console.log(
-                    "onAppointmentComposeHandler(): Office.context.mailbox.item.notificationMessages.addAsync completed"
-                  );
-                  event.completed();
-                }
+              ],
+            },
+            function () {
+              console.log(
+                "onAppointmentComposeHandler(): Office.context.mailbox.item.notificationMessages.addAsync completed"
               );
-            } catch (ex) {
-              console.error(`onAppointmentComposeHandler(): Error! ${ex}`);
               event.completed();
             }
-          }
-          else {
-            console.error(`onAppointmentComposeHandler(): Action failed with message ${asyncResult3.error.message}`);
-            event.completed();                     
-          }    
-        });
-      }
-      catch(ex){
-        console.error(`onAppointmentComposeHandler(): Error calling sessionData: ${ex}`);
-        event.completed();        
-      }            
+          );
+        }
+        else {
+          console.error(`onAppointmentComposeHandler(): Action failed with message ${asyncResult3.error.message}`);
+          event.completed();                     
+        }    
+      });          
     });
   });
 }
@@ -146,10 +138,13 @@ function onAppointmentAttendeesChangedHandler(event) {
 
   console.log(`onAppointmentAttendeesChangedHandler(): type = ${event.type}; requiredAttendees: ${event.changedRecipientFields.requiredAttendees}; optionalAttendees: ${event.changedRecipientFields.optionalAttendees}; resources: ${event.changedRecipientFields.resources};`);
 
+  //Run a series of Office async calls to calculate the total number of current required and optional attendees as well as distribution lists. Then add, update or remove notification messages depending on the counts. These calls are carried out sequentially in nested callbacks but could be refactored to use closures or Promises for cleaner code.
+
+  //Get required attendees
   Office.context.mailbox.item.requiredAttendees.getAsync(function (asyncResult) {
     console.log(`onAppointmentAttendeesChangedHandler(): getAsync => asyncResult.status: ${asyncResult.status}`);  
     if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-
+      //Add to our total of required attendees and ensure that the current user isn't processed as an attendee
       var apptRequiredAttendees = asyncResult.value;
 
       for (var i = 0; i < apptRequiredAttendees.length; i++) {        
@@ -170,10 +165,11 @@ function onAppointmentAttendeesChangedHandler(event) {
 
       console.log(`onAppointmentAttendeesChangedHandler(): totalRequiredAttendees = ${totalRequiredAttendees}; totalDistributionLists = ${totalDistributionLists}`);
 
+      //Get optional attendees
       Office.context.mailbox.item.optionalAttendees.getAsync(function (asyncResult2) {
         console.log(`onAppointmentAttendeesChangedHandler(): getAsync => asyncResult2.status: ${asyncResult2.status}`);          
-
         if (asyncResult2.status === Office.AsyncResultStatus.Succeeded) {
+          //Add to our total of optional attendees and ensure that the current user isn't processed as an attendee
           var apptOptionalAttendees = asyncResult2.value;          
           //Get attendees except for the current user (which is somehow only included in this array on Outlook Desktop, not Outlook Online)
           var apptOptionalAttendeesWithoutUser = apptOptionalAttendees.filter(function(attendee){return attendee.emailAddress !== Office.context.mailbox.userProfile.emailAddress;});
@@ -190,6 +186,8 @@ function onAppointmentAttendeesChangedHandler(event) {
 
         console.log(`onAppointmentAttendeesChangedHandler(): totalRequiredAttendees = ${totalRequiredAttendees}; totalOptionalAttendees = ${totalOptionalAttendees}; totalDistributionLists = ${totalDistributionLists}`);
 
+        //Update notification messages
+        //=============================================================================================
         if (totalOptionalAttendees === 0 && totalRequiredAttendees === 0) {
           //Remove the info bar with the recipients tally and any distribution list warnings if there are no longer any recipients
           Office.context.mailbox.item.notificationMessages.removeAsync(
@@ -197,7 +195,7 @@ function onAppointmentAttendeesChangedHandler(event) {
             null,
             function (asyncResult3) {
               console.log(`onAppointmentAttendeesChangedHandler() removeAsync:attendeesChanged => asyncResult3.status: ${asyncResult3.status}`);     
-              //No need to call if there are no more distribution lists
+              //No need to call if there are no more distribution lists; otherwise, remove the warning about distribution lists
               if (asyncResult3.status === Office.AsyncResultStatus.Succeeded && totalDistributionLists !== 0) {
                 Office.context.mailbox.item.notificationMessages.removeAsync(
                   "distributionListWarning",
@@ -208,13 +206,14 @@ function onAppointmentAttendeesChangedHandler(event) {
                   }
                 );
               } else {
-                console.error(`onAppointmentAttendeesChangedHandler(): Error with item.notificationMessages.removeAsync(): ${asyncResult3.error}`);
+                //No more attendees
                 event.completed(); //NOTE: Must call!
               }
             }
           );
         } else 
         {
+          //Update the info bar with the recipients tally
           Office.context.mailbox.item.notificationMessages.replaceAsync(
             "attendeesChanged",
             {
@@ -224,7 +223,7 @@ function onAppointmentAttendeesChangedHandler(event) {
               persistent: false,
             },
             function (asyncResult4) {
-              console.log(`onAppointmentAttendeesChangedHandler() removeAsync:attendeesChanged => asyncResult4.status: ${asyncResult4.status}`);   
+              console.log(`onAppointmentAttendeesChangedHandler(): replaceAsync:attendeesChanged => asyncResult4.status: ${asyncResult4.status}`);   
               if (asyncResult4.status === Office.AsyncResultStatus.Succeeded) {  
                 var anyExistingWarningMessages = false;
   
@@ -241,7 +240,9 @@ function onAppointmentAttendeesChangedHandler(event) {
                     console.error(`onAppointmentAttendeesChangedHandler(): Error with item.notificationMessages.getAllAsync(): ${asyncResult5.error}`);
                   }
 
-                  if (totalDistributionLists === 0 && anyExistingWarningMessages === true) {                    
+                  //TEST Only call notificationMessages.getAllAsync if totalDistributionLists === 0?
+                  if (totalDistributionLists === 0 && anyExistingWarningMessages === true) {        
+                    //Remove the warning about distribution lists            
                     Office.context.mailbox.item.notificationMessages.removeAsync(
                       "distributionListWarning",
                       null,
@@ -265,6 +266,7 @@ function onAppointmentAttendeesChangedHandler(event) {
                       warningMessage = `Warning! Your appointment has ${totalDistributionLists} distribution lists! Make sure you have chosen the correct one!`;
                     }    
 
+                    //Update existing warning about distribution lists
                     Office.context.mailbox.item.notificationMessages.replaceAsync(
                       "distributionListWarning",
                       {
@@ -274,7 +276,7 @@ function onAppointmentAttendeesChangedHandler(event) {
                         persistent: false
                       },
                       function (asyncResult7) {
-                        console.log(`onAppointmentAttendeesChangedHandler() replaceAsync:distributionListWarning => asyncResult7.status: ${asyncResult7.status}`);                      
+                        console.log(`onAppointmentAttendeesChangedHandler(): replaceAsync:distributionListWarning => asyncResult7.status: ${asyncResult7.status}`);                      
                         event.completed(); //NOTE: Must call!
                       }
                     );
@@ -290,6 +292,7 @@ function onAppointmentAttendeesChangedHandler(event) {
             }
           );
         }
+        //=============================================================================================
       });
     } else {
       console.error(`onAppointmentAttendeesChangedHandler(): Unexpected: asyncResult.status = ${asyncResult.status}`);
@@ -476,83 +479,75 @@ function decryptAttachment(result) {
  * @param {Office.AsyncResul} result default: Office.AsyncResult
  */
 function onAppointmentTimeChangedHandler(event) {
-
   console.log(`onAppointmentTimeChangedHandler(): type: ${event.type}; start: ${event.start}; end: ${event.end}`);
-  
-  try {    
-    console.log("onAppointmentTimeChangedHandler(): Getting SessionData...");     
-    Office.context.mailbox.item.sessionData.getAsync("appointment_info", function (asyncResult) {
-      if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-        console.log(`onAppointmentTimeChangedHandler(): sessionData retrieved: ${asyncResult.value}`);
 
-        try {
-          //Convert the start and end dates to appropriate formats
-          let originalAppointmentDate = JSON.parse(asyncResult.value);
-          let originalAppointmentDateStartDate = new Date(originalAppointmentDate.start);
-          let originalAppointmentDateStartEnd = new Date(originalAppointmentDate.end);
-          let convertedToLocalStartUtc = Office.context.mailbox.convertToLocalClientTime(
-            originalAppointmentDateStartDate
-          );
-          let convertedToLocalEndUtc = Office.context.mailbox.convertToLocalClientTime(originalAppointmentDateStartEnd);
-          let convertedToLocalStart = new Date(
-            convertedToLocalStartUtc.year,
-            convertedToLocalStartUtc.month,
-            convertedToLocalStartUtc.date,
-            convertedToLocalStartUtc.hours,
-            convertedToLocalStartUtc.minutes
-          );
-          let convertedToLocalEnd = new Date(
-            convertedToLocalEndUtc.year,
-            convertedToLocalEndUtc.month,
-            convertedToLocalEndUtc.date,
-            convertedToLocalEndUtc.hours,
-            convertedToLocalEndUtc.minutes
-          );
+  Office.context.mailbox.item.sessionData.getAsync("appointment_info", function (asyncResult) {
+    if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+      console.log(`onAppointmentTimeChangedHandler(): sessionData retrieved: ${asyncResult.value}`);
 
-          //Add a notification message with the original start/end date/time (if it hasn't already been added)
-          Office.context.mailbox.item.notificationMessages.getAllAsync(function (asyncResult2) {
-            console.log(`getAllAsync(): asyncResult.status = ${asyncResult2.status}`);
-            if (asyncResult2.status != "failed") {
-              for (let index = 0; index < asyncResult2.value.length; index++) {
-                const element = asyncResult2.value[index];
-                if (element.key === "timeChanged") {
-                  //Only need to set the message once
-                  event.completed();
-                  return;
-                }
+      try {
+        //Convert the start and end dates to appropriate formats
+        let originalAppointmentDate = JSON.parse(asyncResult.value);
+        let originalAppointmentDateStartDate = new Date(originalAppointmentDate.start);
+        let originalAppointmentDateStartEnd = new Date(originalAppointmentDate.end);
+        let convertedToLocalStartUtc = Office.context.mailbox.convertToLocalClientTime(
+          originalAppointmentDateStartDate
+        );
+        let convertedToLocalEndUtc = Office.context.mailbox.convertToLocalClientTime(originalAppointmentDateStartEnd);
+        let convertedToLocalStart = new Date(
+          convertedToLocalStartUtc.year,
+          convertedToLocalStartUtc.month,
+          convertedToLocalStartUtc.date,
+          convertedToLocalStartUtc.hours,
+          convertedToLocalStartUtc.minutes
+        );
+        let convertedToLocalEnd = new Date(
+          convertedToLocalEndUtc.year,
+          convertedToLocalEndUtc.month,
+          convertedToLocalEndUtc.date,
+          convertedToLocalEndUtc.hours,
+          convertedToLocalEndUtc.minutes
+        );
+
+        //Add a notification message with the original start/end date/time (if it hasn't already been added)
+        Office.context.mailbox.item.notificationMessages.getAllAsync(function (asyncResult2) {
+          console.log(`getAllAsync(): asyncResult.status = ${asyncResult2.status}`);
+          if (asyncResult2.status != "failed") {
+            for (let index = 0; index < asyncResult2.value.length; index++) {
+              const element = asyncResult2.value[index];
+              if (element.key === "timeChanged") {
+                //Only need to set the message once
+                event.completed();
+                return;
               }
             }
+          }
 
-            var originalDateMessage = `Original date/time: Start = ${convertedToLocalStart.toLocaleDateString()} ${convertedToLocalStart.toLocaleTimeString()}; End = ${convertedToLocalEnd.toLocaleDateString()} ${convertedToLocalEnd.toLocaleTimeString()}`;
-            Office.context.mailbox.item.notificationMessages.replaceAsync(
-              "timeChanged",
-              {
-                type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
-                message: originalDateMessage,
-                icon: "Icon.16x16",
-                persistent: false,
-              },
-              function (asyncResult3) {
-                console.log("replaceAsync() for 'timeChanged' completed");                
-                event.completed();
-              }
-            );
-          });
-        } 
-        catch (ex) {
-          console.error(`onAppointmentTimeChangedHandler(): Error! ${ex}`);  
-          event.completed();
-        }        
-      } else {
-        console.error(`onAppointmentTimeChangedHandler(): Action failed with message ${asyncResult.error.message}`);
+          var originalDateMessage = `Original date/time: Start = ${convertedToLocalStart.toLocaleDateString()} ${convertedToLocalStart.toLocaleTimeString()}; End = ${convertedToLocalEnd.toLocaleDateString()} ${convertedToLocalEnd.toLocaleTimeString()}`;
+          Office.context.mailbox.item.notificationMessages.replaceAsync(
+            "timeChanged",
+            {
+              type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
+              message: originalDateMessage,
+              icon: "Icon.16x16",
+              persistent: false,
+            },
+            function (asyncResult3) {
+              console.log("replaceAsync() for 'timeChanged' completed");                
+              event.completed();
+            }
+          );
+        });
+      } 
+      catch (ex) {
+        console.error(`onAppointmentTimeChangedHandler(): Error! ${ex}`);  
         event.completed();
-      }
-    });
-  }
-  catch(ex){
-    console.error(`onAppointmentTimeChangedHandler(): Error! ${ex}`);
-    event.completed();    
-  }        
+      }        
+    } else {
+      console.error(`onAppointmentTimeChangedHandler(): Action failed with message ${asyncResult.error.message}`);
+      event.completed();
+    }
+  });    
 }
 
 // 1st parameter: FunctionName of LaunchEvent in the manifest; 2nd parameter: Its implementation in this .js file.

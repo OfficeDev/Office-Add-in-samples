@@ -54,13 +54,13 @@ You can run this sample in Outlook on Windows or in a browser. The add-in web fi
 
 Once the add-in is loaded use the following steps to try out the functionality:
 
-1. Open Outlook on Windows or in a browser
-2. Create a new message or appointment
+#### Manage attachments
+1. Create a new message or appointment
     > You should see a notification at the top of the message that reads: **Open the Task Pane for details about running the Outlook Event-based Activation Sample Add-in.** | Show Task Pane | Dismiss
-3. Add an attachment
+2. Add an attachment
     > You should see a notification at the top of the message that reads: **The '{file name} attachment has been encrypted and decrypted and added as reference attachments for your review** | Dismiss
 
-
+#### Setup meetings
 1. Create a new meeting request
 2. Add a user as a required or optional attendee
     > You should see a notification at the top of the message that reads: **Your appointment has 1 required and 0 optional attendees** | Dismiss
@@ -102,37 +102,6 @@ If you prefer to host the web server for the sample on your computer, follow the
 1. Sideload `manifest.xml` in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 1. [Try out the sample!](#try-it-out)
 
-## Build and run the solution
-
-- Install Types for Office JavaScript Preview API
-  - `npm install --save-dev @types/office-js-preview`
-- in the command line run:
-  - `npm install`
-  - `npm run build`
-  - `npm start`
-
-## To debug in Outlook Online:
-
-- Upload the manifest.xml file in your "My add-ins" page in "Add-ins for Outlook" settings
-- run `npm run start:web` (or from "RUN AND DEBUG" in VS Code, choose "Node.js..." -> "Run Script: start:web")
-
-## To debug in Outlook for Windows:
-
-> Prerequisites: See [Debug your event-based Outlook add-in (preview)](https://docs.microsoft.com/en-ca/office/dev/add-ins/outlook/debug-autolaunch)
-
-- Run `npm start`; this should start Outlook for Windows
-- If the "Register Outlook Developer Add-in Manifest" dialog appears, click OK:
-
-![Register dialog](assets/readme/RegisterDialog.png "Register dialog")
-- Verify that the `Computer\HKEY_CURRENT_USER\Software\Microsoft\Office\16.0\WEF\Developer\93011807-161e-4cc1-846f-eb7721919e4e` registry key exists (this corresponds to the Id value in the manifest.xml file) and **UseDirectDebugger** is set to 1 (running `npm start` should do that automatically)
-- Compose a new message or appointment
-- Wait for the "Debug Event-based handler" dialog to appear; do NOT click OK (or Cancel)
-- Open the `%LOCALAPPDATA%\Microsoft\Office\16.0\Wef\{[Outlook profile GUID]}\[encoding]\Javascript\[Add-in ID]_[Add-in Version]_[locale]\bundle.js` file in Visual Studio Code and set breakpoints
-- Run the "Direct Debugging" command in the RUN AND DEBUG dropdown
-- Click OK in the "Debug Event-based handler" dialog
-- Interact with the Outlook item to trigger breakpoints in your code
-- **NOTE**: You may experience issues where the bundle.js file doesn't refresh after recent code changes. In these cases, try restarting the Outlook client. Breakpoints may also stop working. An alternate way of debugging allows `console` functions to write to a local text file. See [Runtime logging on Windows](https://docs.microsoft.com/en-ca/office/dev/add-ins/testing/runtime-logging#runtime-logging-on-windows) for more details
-
 ## Key parts of this sample
 
 ### Configure event-based activation in the manifest
@@ -143,8 +112,8 @@ The manifest configures a runtime that is loaded specifically to handle event-ba
 <Runtime resid="WebViewRuntime.Url">
   <Override type="javascript" resid="JSRuntime.Url"/>
 ...
-<bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.html" />
-<bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.js" />
+<bt:Url id="WebViewRuntime.Url" DefaultValue="https://elegault.github.io/PnP-OfficeAddins/Samples/outlook-encrypt-attachments/src/commands/commands.html" />
+<bt:Url id="JSRuntime.Url" DefaultValue="https://elegault.github.io/PnP-OfficeAddins/Samples/outlook-encrypt-attachments/src/commands/commands.js" />
 ```
 
 The add-in handles six events that are mapped to various functions:
@@ -155,9 +124,8 @@ The add-in handles six events that are mapped to various functions:
   <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler" />                 
   <LaunchEvent Type="OnAppointmentAttendeesChanged" FunctionName="onAppointmentAttendeesChangedHandler" />
   <LaunchEvent Type="OnAppointmentTimeChanged" FunctionName="onAppointmentTimeChangedHandler" /> 
-  <!-- The same function handles both OnMessageAttachmentsChanged and OnAppointmentAttachmentsChanged-->
   <LaunchEvent Type="OnMessageAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler" /> 
-  <LaunchEvent Type="OnAppointmentAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler" />
+  <LaunchEvent Type="OnAppointmentAttachmentsChanged" FunctionName="onAppointmentAttachmentsChangedHandler" />
 </LaunchEvents>
 ```
 
@@ -174,7 +142,7 @@ When the user creates a new message or appointment, Outlook will load the files 
 | `OnMessageAttachmentsChanged` | *onItemAttachmentsChangedHandler |
 | `OnAppointmentAttachmentsChanged` | *onItemAttachmentsChangedHandler |
 
-***NOTE**: The onItemAttachmentsChangedHandler function handles both OnMessageAttachmentsChanged and OnAppointmentAttachmentsChanged
+\* **NOTE**: The onItemAttachmentsChangedHandler function handles both OnMessageAttachmentsChanged and OnAppointmentAttachmentsChanged
 
 Outlook on the web will load the `commands.html` page, which then also loads `commands.js`.
 
@@ -185,13 +153,12 @@ The task pane code is located under the `taskpane` folder of this project. The t
 - `taskpane_appt_compose.html` is loaded when the user clicks the "Open Task Pane" link in the notification message or clicks the Show Task Pane button in the Ribbon.
 - `taskpane_msg_compose.html` is loaded when the user clicks the "Open Task Pane" link in the notification message or clicks the Show Task Pane button in the Ribbon.
 
-## Notes
+## Known Issues
 
 - At present, imports are not supported in the JavaScript file where you implement the handling for event-based activation. This means that external libraries (like the `cryto-js` library used in this sample) cannot be required directly in the `commands.js` file and must be loaded in `commands.html`. Since Outlook desktop only loads `commands.js`, encryption of attachments will not work on that platform. Only Outlook Online can load supporting .html files with external library references, so encryption is only implemented for that scenario
 - `console.dir()` methods cannot be used in Outlook desktop
 - `window.localStorage` cannot be used in Outlook desktop
-- Clicking the "Show Task Pane" link in the InfoBar doesn't work in Outlook Online. A fix is in progress and being tested: https://github.com/OfficeDev/office-js/issues/2125
-- If you get eslint errors ("Parsing error: Cannot read file '.../tsconfig.json'"), ensure this line is in the .eslintrc.json file: `"project": "outlook-encrypt-attachments/tsconfig.json"`. Or add this to the .vscode\settings.json file: `"eslint.workingDirectories": [ "src" ]`
+- Clicking the "Show Task Pane" link in the InfoBar may not work in Outlook Online. A fix has been deployed - see: https://github.com/OfficeDev/office-js/issues/2125
 
 ## References
 
@@ -208,9 +175,6 @@ The task pane code is located under the `taskpane` folder of this project. The t
 - [Debugging with Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging)
 - [Node.js debugging in VS Code](https://code.visualstudio.com/docs/nodejs/nodejs-debugging)
 - [Office-Addin-Debugging](https://www.npmjs.com/package/office-addin-debugging)
-
-## Code Attributions
-
 - Getting recipients and attendees: `https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/outlook/30-recipients-and-attendees/get-set-required-attendees-appointment-organizer.yaml`
 
 ## Copyright

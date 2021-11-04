@@ -12,9 +12,3 @@ Office.onReady((info) => {
     document.getElementById("app-body").style.display = "flex";     
   }
 });
-
-function run() {
-  /**
-   * Insert your Outlook code here
-   */
-}
