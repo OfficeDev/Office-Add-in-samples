@@ -22,7 +22,7 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 ## Applies to
 ---
 - Outlook on Windows
-  - Windows
+  - Outlook on the web
   - web browser
 
 ## Prerequisites
