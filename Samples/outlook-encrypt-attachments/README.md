@@ -8,7 +8,7 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 - adds an attachment to an email or appointment/meeting request
 - adds recipients or distributions lists as required or optional attendeees in a meeting request
 - changes the start or end date or time in an appointment/meeting request
-- adds a notification message to the item when a user newly composes an email or appointment/meeting request, instructing the user to open the Task Pane for further information (for this sample, it shows instructions and details for this sample!)
+- adds a notification message to the item when a new email or appointment/meeting request is created, instructing the user to open the task pane for further information.
 
 ## Features/Scenario
 
