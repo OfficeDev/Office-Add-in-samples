@@ -68,7 +68,7 @@ function onAppointmentComposeHandler(event) {
               icon: "Icon.16x16",
               actions: [
                 {
-                  actionText: "Show Task Pane",
+                  actionText: "Show task pane",
                   actionType: Office.MailboxEnums.ActionType.ShowTaskPane,
                   commandId: "appOrgTaskPaneButton",
                   contextData: "{''}",
