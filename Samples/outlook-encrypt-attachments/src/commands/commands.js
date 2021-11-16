@@ -240,7 +240,6 @@ function onAppointmentAttendeesChangedHandler(event) {
                     console.error(`onAppointmentAttendeesChangedHandler(): Error with item.notificationMessages.getAllAsync(): ${asyncResult5.error}`);
                   }
 
-                  //TEST Only call notificationMessages.getAllAsync if totalDistributionLists === 0?
                   if (totalDistributionLists === 0 && anyExistingWarningMessages === true) {        
                     //Remove the warning about distribution lists            
                     Office.context.mailbox.item.notificationMessages.removeAsync(
