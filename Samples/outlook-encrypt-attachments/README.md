@@ -12,7 +12,7 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 
 ## Features/Scenario
 
-- Encrypts the first attachment that is added to a compose email or appointment and adds it as an another attachment with a "encrypted_" prefix to the file name, then decrypts that attachment and adds it as an another attachment with a "decrypted_" prefix to the file name
+- **Encryption based on attachment change events.** This sample encrypts the first attachment that is added to a composed email or appointment, and adds it as another attachment with an "encrypted_" prefix on the file name. It then decrypts that attachment and adds it as another attachment with a "decrypted_" prefix on the file name.
   - Also adds a notification message to the compose item to denote that encryption and decryption is in progress. When completed, that message is removed (it may only appear for a very brief time, depending on the complexity of the encryption process) and another notification message is added noting that the process has completed: ![Compose email](assets/readme/compose_email.png)  
 - Adds notification messages to a meeting request when recipients are added or removed (these are removed when there are no longer any recipients):
   - Show a message with a running tally of the number of required and optional attendees
