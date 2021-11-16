@@ -153,7 +153,7 @@ function onAppointmentAttendeesChangedHandler(event) {
         );
       }
 
-      //Get attendees except for the current user (which is somehow only included in this array on Outlook Desktop, not Outlook Online)
+      //Get attendees except for the current user (which is only included in this array on Outlook on Windows, not on Outlook on the web.)
       console.log(`onAppointmentAttendeesChangedHandler(): Filtering out attendees for current user ${Office.context.mailbox.userProfile.emailAddress}...`);
       var apptRequiredAttendeesWithoutUser = apptRequiredAttendees.filter(function(attendee){return attendee.emailAddress !== Office.context.mailbox.userProfile.emailAddress;});
       
