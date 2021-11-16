@@ -162,7 +162,7 @@ The task pane code is located under the `taskpane` folder of this project. The t
 
 ## References
 
-- [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/en-ca/office/dev/add-ins/outlook/autolaunch)
+- [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch)
 - [Debug your event-based Outlook add-in (preview)](https://docs.microsoft.com/en-ca/office/dev/add-ins/outlook/debug-autolaunch)
 - Other samples:
   - [https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature)
