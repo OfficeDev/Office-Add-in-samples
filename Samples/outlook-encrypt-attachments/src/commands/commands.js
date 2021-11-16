@@ -54,7 +54,7 @@ function onAppointmentComposeHandler(event) {
         if (asyncResult3.status === Office.AsyncResultStatus.Succeeded) {
           console.log("onAppointmentComposeHandler(): sessionData set");
           //Add a notification message to ask the user to open the Task Pane to view additional information on the sample
-          //NOTE: Clicking the "Show Task Pane" link in the InfoBar doesn't work in Outlook Online. A fix is in progress and being tested: https://github.com/OfficeDev/office-js/issues/2125
+          //NOTE: Choosing the "Show task pane" link in the InfoBar doesn't work in Outlook on the web. A fix is in progress and being tested: https://github.com/OfficeDev/office-js/issues/2125
                       
           console.log("onAppointmentComposeHandler(): Adding notification message...");
 
