@@ -99,7 +99,7 @@ function onMessageComposeHandler(event) {
   console.log("onMessageComposeHandler(): entered!");
 
   //Displays the InfoBar in the compose email. Purpose is to remind the user running this sample to open the Task Pane to display additional instructions and reference information
-  //NOTE: Clicking the "Show Task Pane" link in the InfoBar doesn't work in Outlook Online. A fix is in progress and being tested: https://github.com/OfficeDev/office-js/issues/2125
+  //NOTE: Choosing the "Show task pane" link in the InfoBar doesn't work in Outlook on the web. A fix is in progress and being tested: https://github.com/OfficeDev/office-js/issues/2125
   //NOTE: actions array only applicable to insightMessage types
   var options = { asyncContext: { callingEvent: event } };
   Office.context.mailbox.item.notificationMessages.addAsync(
