@@ -131,7 +131,7 @@ The add-in handles six events that are mapped to various functions:
 
 ### Handling the events
 
-When the user creates a new message or appointment, Outlook will load the files specified in the manifest to handle the following events:
+When the user creates a new message or appointment, Outlook will load the `commands.js` file specified in the manifest to handle the following events:
 
 | Event | Handler |
 | --- | ---|
