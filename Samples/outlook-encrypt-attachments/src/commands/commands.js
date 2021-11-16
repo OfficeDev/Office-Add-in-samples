@@ -171,7 +171,7 @@ function onAppointmentAttendeesChangedHandler(event) {
         if (asyncResult2.status === Office.AsyncResultStatus.Succeeded) {
           //Add to our total of optional attendees and ensure that the current user isn't processed as an attendee
           var apptOptionalAttendees = asyncResult2.value;          
-          //Get attendees except for the current user (which is somehow only included in this array on Outlook Desktop, not Outlook Online)
+          //Get attendees except for the current user (which is only included in this array on Outlook on Windows, not on Outlook on the web.)
           var apptOptionalAttendeesWithoutUser = apptOptionalAttendees.filter(function(attendee){return attendee.emailAddress !== Office.context.mailbox.userProfile.emailAddress;});
 
           totalOptionalAttendees = apptOptionalAttendeesWithoutUser.length;           
