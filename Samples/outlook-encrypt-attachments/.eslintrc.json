@@ -1,9 +1,0 @@
-{
-  "plugins": [
-    "office-addins"
-  ],
-  "extends": [
-    "plugin:office-addins/recommended"
-  ],
-  "project": "outlook-encrypt-attachments/tsconfig.json"
-}
