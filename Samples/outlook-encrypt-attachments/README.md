@@ -106,7 +106,7 @@ If you prefer to host the web server for the sample on your computer, follow the
 
 ### Configure event-based activation in the manifest
 
-The manifest configures a runtime that is loaded specifically to handle event-based activation. The following `<Runtime>` element specifies an HTML page resource id that loads the runtime on Outlook on the web. The `<Override>` element specifies the JavaScript file instead, to load the runtime for Outlook on Windows. Outlook on Windows doesn't use the HTML page to load the runtime.
+The manifest configures a runtime that loads a single JavaScript file to handle event-based activation. The following `<Runtime>` element specifies a `commands.html` page resource id that loads the `commands.js` file on Outlook on the web. The `<Override>` element directly specifies the `commands.js` JavaScript file to load when running on Outlook on Windows. Outlook on Windows doesn't use the HTML page to load the JavaScript file.
 
 ```xml
 <Runtime resid="WebViewRuntime.Url">
