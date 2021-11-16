@@ -168,7 +168,7 @@ The task pane code is located under the `taskpane` folder of this project. The t
   - [https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature)
   - [https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-tag-external](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-tag-external)
 - [crypto-js](https://www.npmjs.com/package/crypto-js)
-- [Office.SessionData interface](https://docs.microsoft.com/en-us/javascript/api/outlook/office.sessiondata?view=outlook-js-preview)
+- [Office.SessionData interface](https://docs.microsoft.com/javascript/api/outlook/office.sessiondata?view=outlook-js-preview)
 - [Microsoft Office Add-in Debugger Extension for Visual Studio Code](https://docs.microsoft.com/en-us/office/dev/add-ins/testing/debug-with-vs-extension)
 - [Develop Office Add-ins with Visual Studio Code](https://docs.microsoft.com/en-us/office/dev/add-ins/develop/develop-add-ins-vscode)
 - [Office Add-ins with Visual Studio Code](https://code.visualstudio.com/docs/other/office)
