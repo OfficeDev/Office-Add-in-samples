@@ -29,7 +29,7 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 ---
 - Microsoft 365
 
-> Note: If you do not have a Microsoft 365 subscription, you can get one for development purposes by signing up for the Microsoft 365 developer program.
+> Note: If you do not have a Microsoft 365 subscription, you can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
 
 ## Solution
 ---
