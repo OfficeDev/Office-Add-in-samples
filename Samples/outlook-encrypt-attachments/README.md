@@ -60,7 +60,7 @@ Once the add-in is loaded use the following steps to try out the functionality:
 2. Add an attachment
     > You should see a notification at the top of the message that reads: **The '{file name} attachment has been encrypted and decrypted and added as reference attachments for your review** | Dismiss
 
-#### Setup meetings
+#### Set up meetings
 1. Create a new meeting request
 2. Add a user as a required or optional attendee
     > You should see a notification at the top of the message that reads: **Your appointment has 1 required and 0 optional attendees** | Dismiss
