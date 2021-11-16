@@ -17,7 +17,7 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 - **Notifications based on recipient changes.** This sample adds notification messages to a meeting request when recipients are added or removed. The notification message are removed when there are no longer any recipients.
   - Shows a message with a running tally of the number of required and optional attendees.
   - Show a message with a warning if one or more distribution lists are invited as an attendee
-- Adds a notification message to an appointment when the user changes the date/time, showing the original date/time that was set when the appointment was opened (to serve as a reference for further date/time edits): ![Compose email](assets/readme/appointment_Outlook_desktop.png)  
+- **Notifications based on date/time changes.** This sample adds a notification message to an appointment when the user changes the date/time, showing the original date/time that was set when the appointment was opened. The notification message provides a reference for further date/time edits. ![Compose email](assets/readme/appointment_Outlook_desktop.png)  
 
 ## Applies to
 ---
