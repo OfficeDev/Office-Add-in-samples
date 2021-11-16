@@ -156,7 +156,7 @@ The task pane code is located under the `taskpane` folder of this project. The t
 ## Known Issues
 
 - At present, imports are not supported in the JavaScript file where you implement the handling for event-based activation. This means that external libraries (like the `crypto-js` library used in this sample) cannot be required directly in the `commands.js` file and must be loaded in `commands.html`. Since Outlook on Windows only loads `commands.js`, the `crypto-js` library cannot be loaded to perform the encryption of attachments. Only Outlook on the web can load supporting .html files with external library references. Therefore encryption is only implemented for that scenario.
-- `console.dir()` methods cannot be used in Outlook desktop
+- `console.dir()` methods cannot be used in event-based activation code on Outlook on Windows.
 - `window.localStorage` cannot be used in Outlook desktop
 - Clicking the "Show Task Pane" link in the InfoBar may not work in Outlook Online. A fix has been deployed - see: https://github.com/OfficeDev/office-js/issues/2125
 
