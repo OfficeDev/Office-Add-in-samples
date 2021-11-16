@@ -170,7 +170,7 @@ The task pane code is located under the `taskpane` folder of this project. The t
 - [crypto-js](https://www.npmjs.com/package/crypto-js)
 - [Office.SessionData interface](https://docs.microsoft.com/javascript/api/outlook/office.sessiondata?view=outlook-js-preview)
 - [Microsoft Office Add-in Debugger Extension for Visual Studio Code](https://docs.microsoft.com/office/dev/add-ins/testing/debug-with-vs-extension)
-- [Develop Office Add-ins with Visual Studio Code](https://docs.microsoft.com/en-us/office/dev/add-ins/develop/develop-add-ins-vscode)
+- [Develop Office Add-ins with Visual Studio Code](https://docs.microsoft.com/office/dev/add-ins/develop/develop-add-ins-vscode)
 - [Office Add-ins with Visual Studio Code](https://code.visualstudio.com/docs/other/office)
 - [Debugging with Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging)
 - [Node.js debugging in VS Code](https://code.visualstudio.com/docs/nodejs/nodejs-debugging)
