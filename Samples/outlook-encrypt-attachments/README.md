@@ -151,7 +151,7 @@ Outlook on the web will load the `commands.html` page, which then also loads `co
 The task pane code is located under the `taskpane` folder of this project. The task pane HTML and JavaScript files only provide a UI with details about this sample.
 
 - `taskpane_appt_compose.html` is loaded when the user chooses the **Open task pane** link in the notification message or chooses the **Show task pane** button in the ribbon.
-- `taskpane_msg_compose.html` is loaded when the user clicks the "Open Task Pane" link in the notification message or clicks the Show Task Pane button in the Ribbon.
+- `taskpane_msg_compose.html` is loaded when the user chooses the **Open task pane** link in the notification message or chooses the **Show task pane** button in the ribbon.
 
 ## Known Issues
 
