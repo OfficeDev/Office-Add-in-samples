@@ -145,7 +145,7 @@ When the user creates a new message or appointment, Outlook will load the `comma
 > [!NOTE]
 > The onItemAttachmentsChangedHandler function handles both OnMessageAttachmentsChanged and OnAppointmentAttachmentsChanged.
 
-Outlook on the web will load the `commands.html` page, which then also loads `commands.js`.
+Outlook on the web loads the `commands.html` page, which then also loads `commands.js`.
 
 ### Task pane code
 
