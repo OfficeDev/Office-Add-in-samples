@@ -67,7 +67,7 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 3. Add a distribution list as a required or optional attendee.
     > A notification appears at the top of the message that reads **Warning! Your appointment has a distribution list! Make sure you have chosen the correct one!** | Dismiss
 4. Change the start or end date or time.
-    > You should see a notification at the top of the message that reads: **Original date/time: Start = ##/##/#### #:##:## ##; End = ##/##/#### #:##:## ##** | Dismiss
+    > A notification appears at the top of the message that reads **Original date/time: Start = ##/##/#### #:##:## ##; End = ##/##/#### #:##:## ##**. | Dismiss
 
 ## Run the sample from localhost
 
