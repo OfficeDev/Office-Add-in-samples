@@ -71,7 +71,7 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 
 ## Run the sample from localhost
 
-If you prefer to host the web server for the sample on your computer, follow these steps:
+If you prefer to host the web server for the sample on your computer, follow these steps.
 
 1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
