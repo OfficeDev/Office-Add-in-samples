@@ -64,7 +64,7 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 1. Create a new meeting request. In Outlook on the web, choose **More options** to expand the request and include all details. Otherwise, you won't see the notifications in the next steps.
 2. Add a user as a required or optional attendee
     > A notification appears at the top of the message that reads **Your appointment has 1 required and 0 optional attendees**. | Dismiss
-3. Add a distribution list as a required or optional attendee
+3. Add a distribution list as a required or optional attendee.
     > You should see a notification at the top of the message that reads: **Warning! Your appointment has a distribution list! Make sure you have chosen the correct one!** | Dismiss
 4. Change the start or end date or time
     > You should see a notification at the top of the message that reads: **Original date/time: Start = ##/##/#### #:##:## ##; End = ##/##/#### #:##:## ##** | Dismiss
