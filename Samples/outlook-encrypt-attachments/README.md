@@ -58,7 +58,7 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 1. Create a new message or appointment.
     > You should see a notification at the top of the message that reads: **Open the task pane for details about running the Outlook event-based activation sample add-in.** | Open task pane | Dismiss
 2. Add an attachment.
-    > You should see a notification at the top of the message that reads: **The '{file name} attachment has been encrypted and decrypted and added as reference attachments for your review** | Dismiss
+    > A notification appears at the top of the message that reads **The '{file name} attachment has been encrypted and decrypted and added as reference attachments for your review**. | Dismiss
 
 #### Set up meetings
 1. Create a new meeting request. In Outlook on the web, choose **More options** to expand the request and include all details (otherwise you won't see the notifications in the next steps.)
