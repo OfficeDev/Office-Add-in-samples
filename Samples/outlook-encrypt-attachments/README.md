@@ -142,7 +142,8 @@ When the user creates a new message or appointment, Outlook will load the `comma
 | `OnMessageAttachmentsChanged` | *onItemAttachmentsChangedHandler |
 | `OnAppointmentAttachmentsChanged` | *onItemAttachmentsChangedHandler |
 
-\* **NOTE**: The onItemAttachmentsChangedHandler function handles both OnMessageAttachmentsChanged and OnAppointmentAttachmentsChanged
+> [!NOTE]
+> The onItemAttachmentsChangedHandler function handles both OnMessageAttachmentsChanged and OnAppointmentAttachmentsChanged.
 
 Outlook on the web will load the `commands.html` page, which then also loads `commands.js`.
 
