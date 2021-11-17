@@ -56,7 +56,7 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 
 #### Manage attachments
 1. Create a new message or appointment.
-    > You should see a notification at the top of the message that reads: **Open the task pane for details about running the Outlook event-based activation sample add-in.** | Open task pane | Dismiss
+    >A notification appears at the top of the message that reads **Open the task pane for details about running the Outlook event-based activation sample add-in**. | Open task pane | Dismiss
 2. Add an attachment.
     > A notification appears at the top of the message that reads **The '{file name} attachment has been encrypted and decrypted and added as reference attachments for your review**. | Dismiss
 
