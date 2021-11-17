@@ -129,7 +129,7 @@ The add-in handles six events that are mapped to various functions:
 </LaunchEvents>
 ```
 
-### Handling the events
+### Handle events
 
 When the user creates a new message or appointment, Outlook loads the `commands.js` file specified in the manifest to handle the following events.
 
