@@ -52,7 +52,7 @@ Run this sample in Outlook on Windows or in a browser. The add-in web files are 
 
 ### Try it out
 
-Once the add-in is loaded use the following steps to try out the functionality:
+Once the add-in is loaded, use the following steps to try out the functionality.
 
 #### Manage attachments
 1. Create a new message or appointment
