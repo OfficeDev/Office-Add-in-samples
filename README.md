@@ -6,10 +6,10 @@ Office Add-ins code samples are provided in this repo to help you learn, study, 
 
 The following samples show how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. They will help you understand the fundamental parts of an Office Add-in. For additional getting started information, see our [quick starts](https://docs.microsoft.com/office/dev/add-ins/quickstarts/excel-quickstart-jquery) and [tutorials](https://docs.microsoft.com/search/?terms=tutorial&scope=Office%20Add-ins).
 
-* [Hello world Excel add-in](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/hello-world/excel-hello-world)
-* [Hello world Outlook add-in](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/hello-world/outlook-hello-world)
-* [Hello world Word add-in](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/hello-world/word-hello-world)
-* [Hello world PowerPoint add-in](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/hello-world/powerpoint-hello-world)
+* [Excel "Hello world" add-in](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/hello-world/excel-hello-world)
+* [Outlook "Hello world" add-in](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/hello-world/outlook-hello-world)
+* [PowerPoint "Hello world" add-in](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/hello-world/powerpoint-hello-world)
+* [Word "Hello world" add-in](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/hello-world/word-hello-world)
 
 ## Auth, Identity and SSO
 
