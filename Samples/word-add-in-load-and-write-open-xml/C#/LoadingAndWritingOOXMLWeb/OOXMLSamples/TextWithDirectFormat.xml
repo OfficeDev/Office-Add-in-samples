@@ -1,0 +1,36 @@
+﻿<pkg:package xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage">
+  <pkg:part pkg:name="/_rels/.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml" pkg:padding="512">
+    <pkg:xmlData>
+      <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+        <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+      </Relationships>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/document.xml" pkg:contentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml">
+    <pkg:xmlData>
+      <!--Notice in the open w:document tag that follows that all namespaces have been removed other than the main Word document (w) namespace.-->
+      <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" >
+        <w:body>
+          <w:p>
+            <w:pPr>
+              <w:spacing w:before="360" w:after="0" w:line="480" w:lineRule="auto"/>
+              <w:rPr>
+                <w:color w:val="70AD47" w:themeColor="accent6"/>
+                <!--Font sizes in Word markup are expressed as double their actual value (so the font size is 14 point). Most wordML numeric values, however (such as the paragraph spacing shown above, are expressed in twips, 1/20th of a point.-->
+                <w:sz w:val="28"/>
+              </w:rPr>
+            </w:pPr>
+            <w:r>
+              <w:rPr>
+                <w:color w:val="70AD47" w:themeColor="accent6"/>
+                <w:sz w:val="28"/>
+              </w:rPr>
+              <w:t>This text has formatting directly applied to achieve its font size, color, line spacing, and paragraph spacing.</w:t>
+            </w:r>
+          </w:p>
+          <!--Note that the sectPr tag (section properties) has been removed from all markup examples in this code sample. That tag controls page layout settings, such as margins and paper size. It is ignored by default but best to remove when you are inserting an object and not looking to alter the user's page layout.-->
+        </w:body>
+      </w:document>
+    </pkg:xmlData>
+  </pkg:part>
+</pkg:package>

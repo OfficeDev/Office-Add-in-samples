@@ -1,0 +1,163 @@
+﻿<pkg:package xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage">
+  <pkg:part pkg:name="/_rels/.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml" pkg:padding="512">
+    <pkg:xmlData>
+      <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+        <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+      </Relationships>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/document.xml" pkg:contentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml">
+    <pkg:xmlData>
+      <!--Namespaces for vml and content earlier than Office 14 have been removed, along with the related fallback markup in the body of this part that provides info for inserting the shape into a Word 2007 document. Because a task pane app can be opened in Word 2013 in a document that is still saved in the 2007 format, you might choose to leave these in your markup. You can't insert a shape into a Word 2007 format document without them. Just remember that, if you leave the fallback markup, you'll need to leave the associated namespaces as well.-->
+      <w:document mc:Ignorable="w14 w15 wp14" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <w:body>
+          <w:p>
+            <w:r>
+              <w:rPr>
+                <w:noProof/>
+              </w:rPr>
+              <mc:AlternateContent>
+                <mc:Choice Requires="wps">
+                  <w:drawing>
+                    <wp:anchor distT="182880" distB="182880" distL="114300" distR="114300" simplePos="0" relativeHeight="251659264" behindDoc="1" locked="0" layoutInCell="1" allowOverlap="0">
+                      <wp:simplePos x="0" y="0"/>
+                      <wp:positionH relativeFrom="margin">
+                        <wp:align>center</wp:align>
+                      </wp:positionH>
+                      <wp:positionV relativeFrom="margin">
+                        <wp:posOffset>5124450</wp:posOffset>
+                      </wp:positionV>
+                      <wp:extent cx="4457700" cy="768096"/>
+                      <wp:effectExtent l="0" t="0" r="0" b="0"/>
+                      <wp:wrapTopAndBottom/>
+                      <wp:docPr id="2" name="Text Box 2"/>
+                      <wp:cNvGraphicFramePr/>
+                      <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                        <a:graphicData uri="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+                          <wps:wsp>
+                            <wps:cNvSpPr txBox="1"/>
+                            <wps:spPr>
+                              <a:xfrm>
+                                <a:off x="0" y="0"/>
+                                <a:ext cx="4457700" cy="768096"/>
+                              </a:xfrm>
+                              <a:prstGeom prst="rect">
+                                <a:avLst/>
+                              </a:prstGeom>
+                              <a:noFill/>
+                              <a:ln w="6350">
+                                <a:noFill/>
+                              </a:ln>
+                              <a:effectLst/>
+                            </wps:spPr>
+                            <wps:style>
+                              <a:lnRef idx="0">
+                                <a:schemeClr val="accent1"/>
+                              </a:lnRef>
+                              <a:fillRef idx="0">
+                                <a:schemeClr val="accent1"/>
+                              </a:fillRef>
+                              <a:effectRef idx="0">
+                                <a:schemeClr val="accent1"/>
+                              </a:effectRef>
+                              <a:fontRef idx="minor">
+                                <a:schemeClr val="dk1"/>
+                              </a:fontRef>
+                            </wps:style>
+                            <wps:txbx>
+                              <w:txbxContent>
+                                <w:p>
+                                  <w:pPr>
+                                    <w:rPr>
+                                      <w:sz w:val="28"/>
+                                      <w14:reflection w14:blurRad="6350" w14:stA="53000" w14:stPos="0" w14:endA="300" w14:endPos="35500" w14:dist="0" w14:dir="5400000" w14:fadeDir="5400000" w14:sx="100000" w14:sy="-90000" w14:kx="0" w14:ky="0" w14:algn="bl"/>
+                                      <w14:textOutline w14:w="0" w14:cap="flat" w14:cmpd="sng" w14:algn="ctr">
+                                        <w14:noFill/>
+                                        <w14:prstDash w14:val="solid"/>
+                                        <w14:round/>
+                                      </w14:textOutline>
+                                      <w14:textFill>
+                                        <w14:gradFill>
+                                          <w14:gsLst>
+                                            <w14:gs w14:pos="0">
+                                              <w14:schemeClr w14:val="accent5">
+                                                <w14:lumMod w14:val="50000"/>
+                                              </w14:schemeClr>
+                                            </w14:gs>
+                                            <w14:gs w14:pos="50000">
+                                              <w14:schemeClr w14:val="accent5"/>
+                                            </w14:gs>
+                                            <w14:gs w14:pos="100000">
+                                              <w14:schemeClr w14:val="accent5">
+                                                <w14:lumMod w14:val="60000"/>
+                                                <w14:lumOff w14:val="40000"/>
+                                              </w14:schemeClr>
+                                            </w14:gs>
+                                          </w14:gsLst>
+                                          <w14:lin w14:ang="5400000" w14:scaled="0"/>
+                                        </w14:gradFill>
+                                      </w14:textFill>
+                                    </w:rPr>
+                                  </w:pPr>
+                                  <w:r>
+                                    <w:rPr>
+                                      <w:sz w:val="28"/>
+                                      <w14:reflection w14:blurRad="6350" w14:stA="53000" w14:stPos="0" w14:endA="300" w14:endPos="35500" w14:dist="0" w14:dir="5400000" w14:fadeDir="5400000" w14:sx="100000" w14:sy="-90000" w14:kx="0" w14:ky="0" w14:algn="bl"/>
+                                      <w14:textOutline w14:w="0" w14:cap="flat" w14:cmpd="sng" w14:algn="ctr">
+                                        <w14:noFill/>
+                                        <w14:prstDash w14:val="solid"/>
+                                        <w14:round/>
+                                      </w14:textOutline>
+                                      <w14:textFill>
+                                        <w14:gradFill>
+                                          <w14:gsLst>
+                                            <w14:gs w14:pos="0">
+                                              <w14:schemeClr w14:val="accent5">
+                                                <w14:lumMod w14:val="50000"/>
+                                              </w14:schemeClr>
+                                            </w14:gs>
+                                            <w14:gs w14:pos="50000">
+                                              <w14:schemeClr w14:val="accent5"/>
+                                            </w14:gs>
+                                            <w14:gs w14:pos="100000">
+                                              <w14:schemeClr w14:val="accent5">
+                                                <w14:lumMod w14:val="60000"/>
+                                                <w14:lumOff w14:val="40000"/>
+                                              </w14:schemeClr>
+                                            </w14:gs>
+                                          </w14:gsLst>
+                                          <w14:lin w14:ang="5400000" w14:scaled="0"/>
+                                        </w14:gradFill>
+                                      </w14:textFill>
+                                    </w:rPr>
+                                    <w:t>This is a text box with WordArt (text effect) formatting. The text box shape is set to wrap text above and below.</w:t>
+                                  </w:r>
+                                </w:p>
+                              </w:txbxContent>
+                            </wps:txbx>
+                            <wps:bodyPr rot="0" spcFirstLastPara="0" vertOverflow="overflow" horzOverflow="overflow" vert="horz" wrap="square" lIns="91440" tIns="91440" rIns="91440" bIns="91440" numCol="1" spcCol="0" rtlCol="0" fromWordArt="0" anchor="t" anchorCtr="0" forceAA="0" compatLnSpc="1">
+                              <a:prstTxWarp prst="textNoShape">
+                                <a:avLst/>
+                              </a:prstTxWarp>
+                              <a:spAutoFit/>
+                            </wps:bodyPr>
+                          </wps:wsp>
+                        </a:graphicData>
+                      </a:graphic>
+                      <wp14:sizeRelH relativeFrom="margin">
+                        <wp14:pctWidth>75000</wp14:pctWidth>
+                      </wp14:sizeRelH>
+                      <wp14:sizeRelV relativeFrom="margin">
+                        <wp14:pctHeight>0</wp14:pctHeight>
+                      </wp14:sizeRelV>
+                    </wp:anchor>
+                  </w:drawing>
+                </mc:Choice>
+              </mc:AlternateContent>
+            </w:r>
+          </w:p>
+        </w:body>
+      </w:document>
+    </pkg:xmlData>
+  </pkg:part>
+</pkg:package>

@@ -1,0 +1,114 @@
+﻿<pkg:package xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage">
+  <pkg:part pkg:name="/_rels/.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml" pkg:padding="512">
+    <pkg:xmlData>
+      <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+        <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+      </Relationships>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/_rels/document.xml.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml" pkg:padding="256">
+    <pkg:xmlData>
+      <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+        <Relationship Id="rId5" Type="http://schemas.microsoft.com/office/2007/relationships/hdphoto" Target="media/hdphoto1.wdp"/>
+        <Relationship Id="rId4" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/image1.png"/>
+      </Relationships>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/document.xml" pkg:contentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml">
+    <pkg:xmlData>
+      <w:document xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"  xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" >
+        <w:body>
+          <w:p>
+            <w:r>
+              <w:rPr>
+                <w:noProof/>
+              </w:rPr>
+              <w:drawing>
+                <wp:inline distT="0" distB="0" distL="0" distR="0">
+                  <wp:extent cx="2305050" cy="2781300"/>
+                  <wp:effectExtent l="133350" t="171450" r="133350" b="171450"/>
+                  <wp:docPr id="4" name="Picture 4"/>
+                  <wp:cNvGraphicFramePr/>
+                  <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                    <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                      <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                        <pic:nvPicPr>
+                          <pic:cNvPr id="4" name="Picture 4"/>
+                          <pic:cNvPicPr/>
+                        </pic:nvPicPr>
+                        <pic:blipFill>
+                          <a:blip r:embed="rId4" cstate="print">
+                            <a:extLst>
+                              <a:ext uri="{BEBA8EAE-BF5A-486C-A8C5-ECC9F3942E4B}">
+                                <a14:imgProps xmlns:a14="http://schemas.microsoft.com/office/drawing/2010/main">
+                                  <a14:imgLayer r:embed="rId5">
+                                    <a14:imgEffect>
+                                      <a14:brightnessContrast bright="20000" contrast="20000"/>
+                                    </a14:imgEffect>
+                                  </a14:imgLayer>
+                                </a14:imgProps>
+                              </a:ext>
+                              <a:ext uri="{28A0092B-C50C-407E-A947-70E740481C1C}">
+                                <a14:useLocalDpi val="0" xmlns:a14="http://schemas.microsoft.com/office/drawing/2010/main"/>
+                              </a:ext>
+                            </a:extLst>
+                          </a:blip>
+                          <a:stretch>
+                            <a:fillRect/>
+                          </a:stretch>
+                        </pic:blipFill>
+                        <pic:spPr>
+                          <a:xfrm>
+                            <a:off x="0" y="0"/>
+                            <a:ext cx="2305050" cy="2781300"/>
+                          </a:xfrm>
+                          <a:prstGeom prst="ellipse">
+                            <a:avLst/>
+                          </a:prstGeom>
+                          <a:ln w="63500" cap="rnd">
+                            <a:solidFill>
+                              <a:schemeClr val="bg1"/>
+                            </a:solidFill>
+                          </a:ln>
+                          <a:effectLst>
+                            <a:outerShdw blurRad="63500" sx="103000" sy="103000" algn="ctr" rotWithShape="0">
+                              <a:prstClr val="black">
+                                <a:alpha val="30000"/>
+                              </a:prstClr>
+                            </a:outerShdw>
+                          </a:effectLst>
+                          <a:scene3d>
+                            <a:camera prst="orthographicFront"/>
+                            <a:lightRig rig="contrasting" dir="t">
+                              <a:rot lat="0" lon="0" rev="3000000"/>
+                            </a:lightRig>
+                          </a:scene3d>
+                          <a:sp3d>
+                            <a:contourClr>
+                              <a:srgbClr val="333333"/>
+                            </a:contourClr>
+                          </a:sp3d>
+                        </pic:spPr>
+                      </pic:pic>
+                    </a:graphicData>
+                  </a:graphic>
+                </wp:inline>
+              </w:drawing>
+            </w:r>
+          </w:p>
+        </w:body>
+      </w:document>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/media/image1.png" pkg:contentType="image/png" pkg:compression="store">
+    <pkg:binaryData>
+ <!--The Base64 (binary) data that describes your photo goes here. Note that this data can be hundreds of pages long for a complex image, but it's automatically generated when you extract your OOXML via getSelectedDataAsync or 
+ when you save a document containing your image from Word 2013 in the Word XML document format.-->
+    </pkg:binaryData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/media/hdphoto1.wdp" pkg:contentType="image/vnd.ms-photo" pkg:compression="store">
+    <pkg:binaryData>
+      <!--Using some types of Office 2013 picture formatting effects (such as adjustments to brightness and contrast as used in this example) require a second copy of the binary data, in the HD Photo format, which appears here.-->
+    </pkg:binaryData>
+  </pkg:part>
+</pkg:package>

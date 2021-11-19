@@ -1,0 +1,355 @@
+﻿<pkg:package xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage">
+  <pkg:part pkg:name="/_rels/.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml" pkg:padding="512">
+    <pkg:xmlData>
+      <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+        <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+      </Relationships>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/diagrams/data1.xml" pkg:contentType="application/vnd.openxmlformats-officedocument.drawingml.diagramData+xml">
+    <pkg:xmlData>
+      <dgm:dataModel xmlns:dgm="http://schemas.openxmlformats.org/drawingml/2006/diagram" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+        <dgm:ptLst>
+          <dgm:pt modelId="{B83C0775-8AC8-44AA-9B22-8B7921AF66AB}" type="doc">
+            <dgm:prSet loTypeId="urn:microsoft.com/office/officeart/2005/8/layout/default" loCatId="list" qsTypeId="urn:microsoft.com/office/officeart/2005/8/quickstyle/simple5" qsCatId="simple" csTypeId="urn:microsoft.com/office/officeart/2005/8/colors/colorful4" csCatId="colorful" phldr="1"/>
+            <dgm:spPr/>
+            <dgm:t>
+              <a:bodyPr/>
+              <a:lstStyle/>
+              <a:p>
+                <a:endParaRPr lang="en-US"/>
+              </a:p>
+            </dgm:t>
+          </dgm:pt>
+          <dgm:pt modelId="{F9426077-8CA6-4E1D-9402-6C169A96D94B}">
+            <dgm:prSet phldrT="[Text]"/>
+            <dgm:spPr/>
+            <dgm:t>
+              <a:bodyPr/>
+              <a:lstStyle/>
+              <a:p>
+                <a:r>
+                  <a:rPr lang="en-US"/>
+                  <a:t>This is a</a:t>
+                </a:r>
+              </a:p>
+            </dgm:t>
+          </dgm:pt>
+          <dgm:pt modelId="{762A8656-80C6-43F4-84B3-3FFA395F45D4}" type="parTrans" cxnId="{BBD5D7F5-7A66-4C67-9FBD-C76F9B621350}">
+            <dgm:prSet/>
+            <dgm:spPr/>
+            <dgm:t>
+              <a:bodyPr/>
+              <a:lstStyle/>
+              <a:p>
+                <a:endParaRPr lang="en-US"/>
+              </a:p>
+            </dgm:t>
+          </dgm:pt>
+          <dgm:pt modelId="{C99A4757-6120-4825-A838-1D35083A5E8F}" type="sibTrans" cxnId="{BBD5D7F5-7A66-4C67-9FBD-C76F9B621350}">
+            <dgm:prSet/>
+            <dgm:spPr/>
+            <dgm:t>
+              <a:bodyPr/>
+              <a:lstStyle/>
+              <a:p>
+                <a:endParaRPr lang="en-US"/>
+              </a:p>
+            </dgm:t>
+          </dgm:pt>
+          <dgm:pt modelId="{F7189A96-7E7A-4B9C-AB6F-EB53805BEB32}">
+            <dgm:prSet phldrT="[Text]"/>
+            <dgm:spPr/>
+            <dgm:t>
+              <a:bodyPr/>
+              <a:lstStyle/>
+              <a:p>
+                <a:r>
+                  <a:rPr lang="en-US"/>
+                  <a:t>dynamic</a:t>
+                </a:r>
+              </a:p>
+            </dgm:t>
+          </dgm:pt>
+          <dgm:pt modelId="{489B2F2E-A7AA-4A1B-84C1-036110F5D8F0}" type="parTrans" cxnId="{3BD802CE-9239-4FA7-A20A-7AADC52CF2A4}">
+            <dgm:prSet/>
+            <dgm:spPr/>
+            <dgm:t>
+              <a:bodyPr/>
+              <a:lstStyle/>
+              <a:p>
+                <a:endParaRPr lang="en-US"/>
+              </a:p>
+            </dgm:t>
+          </dgm:pt>
+          <dgm:pt modelId="{102AEDB6-FF7F-41D0-AB13-AAAA39BBBC44}" type="sibTrans" cxnId="{3BD802CE-9239-4FA7-A20A-7AADC52CF2A4}">
+            <dgm:prSet/>
+            <dgm:spPr/>
+            <dgm:t>
+              <a:bodyPr/>
+              <a:lstStyle/>
+              <a:p>
+                <a:endParaRPr lang="en-US"/>
+              </a:p>
+            </dgm:t>
+          </dgm:pt>
+          <dgm:pt modelId="{D5628C9B-ACAA-43F8-B6F1-7077FCBC1924}">
+            <dgm:prSet phldrT="[Text]"/>
+            <dgm:spPr/>
+            <dgm:t>
+              <a:bodyPr/>
+              <a:lstStyle/>
+              <a:p>
+                <a:r>
+                  <a:rPr lang="en-US"/>
+                  <a:t>SmartArt diagram</a:t>
+                </a:r>
+              </a:p>
+            </dgm:t>
+          </dgm:pt>
+          <dgm:pt modelId="{EC235ADA-A75E-4E5D-B283-A7960A6E25EA}" type="parTrans" cxnId="{8B18C13A-23F1-4898-AD51-5EC63CD568EF}">
+            <dgm:prSet/>
+            <dgm:spPr/>
+            <dgm:t>
+              <a:bodyPr/>
+              <a:lstStyle/>
+              <a:p>
+                <a:endParaRPr lang="en-US"/>
+              </a:p>
+            </dgm:t>
+          </dgm:pt>
+          <dgm:pt modelId="{760601C2-5B53-448A-8EFC-7EA64882F577}" type="sibTrans" cxnId="{8B18C13A-23F1-4898-AD51-5EC63CD568EF}">
+            <dgm:prSet/>
+            <dgm:spPr/>
+            <dgm:t>
+              <a:bodyPr/>
+              <a:lstStyle/>
+              <a:p>
+                <a:endParaRPr lang="en-US"/>
+              </a:p>
+            </dgm:t>
+          </dgm:pt>
+          <dgm:pt modelId="{59CA557F-3BD9-43CD-A00A-BABD38B07A07}" type="pres">
+            <dgm:prSet presAssocID="{B83C0775-8AC8-44AA-9B22-8B7921AF66AB}" presName="diagram" presStyleCnt="0">
+              <dgm:presLayoutVars>
+                <dgm:dir/>
+                <dgm:resizeHandles val="exact"/>
+              </dgm:presLayoutVars>
+            </dgm:prSet>
+            <dgm:spPr/>
+          </dgm:pt>
+          <dgm:pt modelId="{0912AB0B-A2D5-4F78-855C-D681371DAD8D}" type="pres">
+            <dgm:prSet presAssocID="{F9426077-8CA6-4E1D-9402-6C169A96D94B}" presName="node" presStyleLbl="node1" presStyleIdx="0" presStyleCnt="3">
+              <dgm:presLayoutVars>
+                <dgm:bulletEnabled val="1"/>
+              </dgm:presLayoutVars>
+            </dgm:prSet>
+            <dgm:spPr/>
+          </dgm:pt>
+          <dgm:pt modelId="{86BD0573-6D2B-4161-B070-D0A4DCF405E6}" type="pres">
+            <dgm:prSet presAssocID="{C99A4757-6120-4825-A838-1D35083A5E8F}" presName="sibTrans" presStyleCnt="0"/>
+            <dgm:spPr/>
+          </dgm:pt>
+          <dgm:pt modelId="{ED248F05-7B59-4F61-BF1E-ACB7024A5C17}" type="pres">
+            <dgm:prSet presAssocID="{F7189A96-7E7A-4B9C-AB6F-EB53805BEB32}" presName="node" presStyleLbl="node1" presStyleIdx="1" presStyleCnt="3">
+              <dgm:presLayoutVars>
+                <dgm:bulletEnabled val="1"/>
+              </dgm:presLayoutVars>
+            </dgm:prSet>
+            <dgm:spPr/>
+          </dgm:pt>
+          <dgm:pt modelId="{EF984F55-9A40-4B63-B890-D4515FC93BEA}" type="pres">
+            <dgm:prSet presAssocID="{102AEDB6-FF7F-41D0-AB13-AAAA39BBBC44}" presName="sibTrans" presStyleCnt="0"/>
+            <dgm:spPr/>
+          </dgm:pt>
+          <dgm:pt modelId="{45333262-76AB-4ED0-927B-D2E88A8A19F8}" type="pres">
+            <dgm:prSet presAssocID="{D5628C9B-ACAA-43F8-B6F1-7077FCBC1924}" presName="node" presStyleLbl="node1" presStyleIdx="2" presStyleCnt="3">
+              <dgm:presLayoutVars>
+                <dgm:bulletEnabled val="1"/>
+              </dgm:presLayoutVars>
+            </dgm:prSet>
+            <dgm:spPr/>
+          </dgm:pt>
+        </dgm:ptLst>
+        <dgm:cxnLst>
+          <dgm:cxn modelId="{AAA624C2-68AF-45B9-99DB-6BB0549BE6D7}" type="presOf" srcId="{F9426077-8CA6-4E1D-9402-6C169A96D94B}" destId="{0912AB0B-A2D5-4F78-855C-D681371DAD8D}" srcOrd="0" destOrd="0" presId="urn:microsoft.com/office/officeart/2005/8/layout/default"/>
+          <dgm:cxn modelId="{5B6BDFE0-7CAC-4DDD-BE44-C72F0ACEDE76}" type="presOf" srcId="{F7189A96-7E7A-4B9C-AB6F-EB53805BEB32}" destId="{ED248F05-7B59-4F61-BF1E-ACB7024A5C17}" srcOrd="0" destOrd="0" presId="urn:microsoft.com/office/officeart/2005/8/layout/default"/>
+          <dgm:cxn modelId="{8B18C13A-23F1-4898-AD51-5EC63CD568EF}" srcId="{B83C0775-8AC8-44AA-9B22-8B7921AF66AB}" destId="{D5628C9B-ACAA-43F8-B6F1-7077FCBC1924}" srcOrd="2" destOrd="0" parTransId="{EC235ADA-A75E-4E5D-B283-A7960A6E25EA}" sibTransId="{760601C2-5B53-448A-8EFC-7EA64882F577}"/>
+          <dgm:cxn modelId="{BBD5D7F5-7A66-4C67-9FBD-C76F9B621350}" srcId="{B83C0775-8AC8-44AA-9B22-8B7921AF66AB}" destId="{F9426077-8CA6-4E1D-9402-6C169A96D94B}" srcOrd="0" destOrd="0" parTransId="{762A8656-80C6-43F4-84B3-3FFA395F45D4}" sibTransId="{C99A4757-6120-4825-A838-1D35083A5E8F}"/>
+          <dgm:cxn modelId="{3BD802CE-9239-4FA7-A20A-7AADC52CF2A4}" srcId="{B83C0775-8AC8-44AA-9B22-8B7921AF66AB}" destId="{F7189A96-7E7A-4B9C-AB6F-EB53805BEB32}" srcOrd="1" destOrd="0" parTransId="{489B2F2E-A7AA-4A1B-84C1-036110F5D8F0}" sibTransId="{102AEDB6-FF7F-41D0-AB13-AAAA39BBBC44}"/>
+          <dgm:cxn modelId="{559229FF-428B-4644-818E-01247FD01142}" type="presOf" srcId="{B83C0775-8AC8-44AA-9B22-8B7921AF66AB}" destId="{59CA557F-3BD9-43CD-A00A-BABD38B07A07}" srcOrd="0" destOrd="0" presId="urn:microsoft.com/office/officeart/2005/8/layout/default"/>
+          <dgm:cxn modelId="{A37DB756-0850-4B82-B465-33C6274C2864}" type="presOf" srcId="{D5628C9B-ACAA-43F8-B6F1-7077FCBC1924}" destId="{45333262-76AB-4ED0-927B-D2E88A8A19F8}" srcOrd="0" destOrd="0" presId="urn:microsoft.com/office/officeart/2005/8/layout/default"/>
+          <dgm:cxn modelId="{D0C9DFD9-6E80-4A5C-AB2A-4372B7862313}" type="presParOf" srcId="{59CA557F-3BD9-43CD-A00A-BABD38B07A07}" destId="{0912AB0B-A2D5-4F78-855C-D681371DAD8D}" srcOrd="0" destOrd="0" presId="urn:microsoft.com/office/officeart/2005/8/layout/default"/>
+          <dgm:cxn modelId="{46BD9E20-EF98-4020-B751-B7DAC3877AF9}" type="presParOf" srcId="{59CA557F-3BD9-43CD-A00A-BABD38B07A07}" destId="{86BD0573-6D2B-4161-B070-D0A4DCF405E6}" srcOrd="1" destOrd="0" presId="urn:microsoft.com/office/officeart/2005/8/layout/default"/>
+          <dgm:cxn modelId="{C1721B4E-47DF-445C-8F28-C41E92EF52B8}" type="presParOf" srcId="{59CA557F-3BD9-43CD-A00A-BABD38B07A07}" destId="{ED248F05-7B59-4F61-BF1E-ACB7024A5C17}" srcOrd="2" destOrd="0" presId="urn:microsoft.com/office/officeart/2005/8/layout/default"/>
+          <dgm:cxn modelId="{42876663-530A-4B9D-B381-824897CF86F9}" type="presParOf" srcId="{59CA557F-3BD9-43CD-A00A-BABD38B07A07}" destId="{EF984F55-9A40-4B63-B890-D4515FC93BEA}" srcOrd="3" destOrd="0" presId="urn:microsoft.com/office/officeart/2005/8/layout/default"/>
+          <dgm:cxn modelId="{5D7A2DFE-412B-4326-B4D5-951D5B869499}" type="presParOf" srcId="{59CA557F-3BD9-43CD-A00A-BABD38B07A07}" destId="{45333262-76AB-4ED0-927B-D2E88A8A19F8}" srcOrd="4" destOrd="0" presId="urn:microsoft.com/office/officeart/2005/8/layout/default"/>
+        </dgm:cxnLst>
+        <dgm:bg/>
+        <dgm:whole/>
+        <dgm:extLst>
+          <a:ext uri="http://schemas.microsoft.com/office/drawing/2008/diagram">
+            <dsp:dataModelExt relId="rId8" minVer="http://schemas.openxmlformats.org/drawingml/2006/diagram" xmlns:dsp="http://schemas.microsoft.com/office/drawing/2008/diagram"/>
+          </a:ext>
+        </dgm:extLst>
+      </dgm:dataModel>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/_rels/document.xml.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml" pkg:padding="256">
+    <pkg:xmlData>
+      <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+        <!--the SmartArt colors, styles, and drawing parts, and their associated relationships, have been removed. The diagram will retain the applied SmartArt color style and SmartArt quick style (i.e., formatting effects) when inserted into the user's document and the formatting will revert to the default definitions for those styles-->
+        <Relationship Id="rId5" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/diagramLayout" Target="diagrams/layout1.xml"/>
+        <Relationship Id="rId4" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/diagramData" Target="diagrams/data1.xml"/>
+      </Relationships>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/document.xml" pkg:contentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml">
+    <pkg:xmlData>
+      <!--Notice in the opening w:document tag that only the w and wp namespaces are reqiured for this part. All other namespaces that appear by default have been removed-->
+      <w:document xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" >
+        <w:body>
+          <w:p>
+            <w:r>
+              <w:rPr>
+                <w:noProof/>
+              </w:rPr>
+              <w:drawing>
+                <wp:inline distT="0" distB="0" distL="0" distR="0">
+                  <wp:extent cx="3429000" cy="1876425"/>
+                  <wp:effectExtent l="0" t="38100" r="0" b="85725"/>
+                  <wp:docPr id="6" name="Diagram 6"/>
+                  <wp:cNvGraphicFramePr/>
+                  <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                    <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/diagram">
+                      <!--Notice in the relIDs tag that only the relationships for the retained layout and data parts are included here. The relationship IDs for the deleted colors and quick style parts have been removed.-->
+                      <dgm:relIds r:dm="rId4" r:lo="rId5" xmlns:dgm="http://schemas.openxmlformats.org/drawingml/2006/diagram" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/>
+                    </a:graphicData>
+                  </a:graphic>
+                </wp:inline>
+              </w:drawing>
+            </w:r>
+          </w:p>
+        </w:body>
+      </w:document>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/diagrams/layout1.xml" pkg:contentType="application/vnd.openxmlformats-officedocument.drawingml.diagramLayout+xml">
+    <pkg:xmlData>
+      <dgm:layoutDef uniqueId="urn:microsoft.com/office/officeart/2005/8/layout/default" xmlns:dgm="http://schemas.openxmlformats.org/drawingml/2006/diagram" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+        <dgm:title val=""/>
+        <dgm:desc val=""/>
+        <dgm:catLst>
+          <dgm:cat type="list" pri="400"/>
+        </dgm:catLst>
+        <!--Sample  data has been removed from this part. That data controls the preview appearance of your diagram in galleries such as SmartArt styles. If no sample data is included here, a default is used automatically.-->
+        <dgm:styleData>
+          <dgm:dataModel>
+            <dgm:ptLst>
+              <dgm:pt modelId="0" type="doc"/>
+              <dgm:pt modelId="1"/>
+              <dgm:pt modelId="2"/>
+            </dgm:ptLst>
+            <dgm:cxnLst>
+              <dgm:cxn modelId="3" srcId="0" destId="1" srcOrd="0" destOrd="0"/>
+              <dgm:cxn modelId="4" srcId="0" destId="2" srcOrd="1" destOrd="0"/>
+            </dgm:cxnLst>
+            <dgm:bg/>
+            <dgm:whole/>
+          </dgm:dataModel>
+        </dgm:styleData>
+        <dgm:clrData>
+          <dgm:dataModel>
+            <dgm:ptLst>
+              <dgm:pt modelId="0" type="doc"/>
+              <dgm:pt modelId="1"/>
+              <dgm:pt modelId="2"/>
+              <dgm:pt modelId="3"/>
+              <dgm:pt modelId="4"/>
+              <dgm:pt modelId="5"/>
+              <dgm:pt modelId="6"/>
+            </dgm:ptLst>
+            <dgm:cxnLst>
+              <dgm:cxn modelId="7" srcId="0" destId="1" srcOrd="0" destOrd="0"/>
+              <dgm:cxn modelId="8" srcId="0" destId="2" srcOrd="1" destOrd="0"/>
+              <dgm:cxn modelId="9" srcId="0" destId="3" srcOrd="2" destOrd="0"/>
+              <dgm:cxn modelId="10" srcId="0" destId="4" srcOrd="3" destOrd="0"/>
+              <dgm:cxn modelId="11" srcId="0" destId="5" srcOrd="4" destOrd="0"/>
+              <dgm:cxn modelId="12" srcId="0" destId="6" srcOrd="5" destOrd="0"/>
+            </dgm:cxnLst>
+            <dgm:bg/>
+            <dgm:whole/>
+          </dgm:dataModel>
+        </dgm:clrData>
+        <dgm:layoutNode name="diagram">
+          <dgm:varLst>
+            <dgm:dir/>
+            <dgm:resizeHandles val="exact"/>
+          </dgm:varLst>
+          <dgm:choose name="Name0">
+            <dgm:if name="Name1" func="var" arg="dir" op="equ" val="norm">
+              <dgm:alg type="snake">
+                <dgm:param type="grDir" val="tL"/>
+                <dgm:param type="flowDir" val="row"/>
+                <dgm:param type="contDir" val="sameDir"/>
+                <dgm:param type="off" val="ctr"/>
+              </dgm:alg>
+            </dgm:if>
+            <dgm:else name="Name2">
+              <dgm:alg type="snake">
+                <dgm:param type="grDir" val="tR"/>
+                <dgm:param type="flowDir" val="row"/>
+                <dgm:param type="contDir" val="sameDir"/>
+                <dgm:param type="off" val="ctr"/>
+              </dgm:alg>
+            </dgm:else>
+          </dgm:choose>
+          <dgm:shape r:blip="" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+            <dgm:adjLst/>
+          </dgm:shape>
+          <dgm:presOf/>
+          <dgm:constrLst>
+            <dgm:constr type="w" for="ch" forName="node" refType="w"/>
+            <dgm:constr type="h" for="ch" forName="node" refType="w" refFor="ch" refForName="node" fact="0.6"/>
+            <dgm:constr type="w" for="ch" forName="sibTrans" refType="w" refFor="ch" refForName="node" fact="0.1"/>
+            <dgm:constr type="sp" refType="w" refFor="ch" refForName="sibTrans"/>
+            <dgm:constr type="primFontSz" for="ch" forName="node" op="equ" val="65"/>
+          </dgm:constrLst>
+          <dgm:ruleLst/>
+          <dgm:forEach name="Name3" axis="ch" ptType="node">
+            <dgm:layoutNode name="node">
+              <dgm:varLst>
+                <dgm:bulletEnabled val="1"/>
+              </dgm:varLst>
+              <dgm:alg type="tx"/>
+              <dgm:shape type="rect" r:blip="" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+                <dgm:adjLst/>
+              </dgm:shape>
+              <dgm:presOf axis="desOrSelf" ptType="node"/>
+              <dgm:constrLst>
+                <dgm:constr type="lMarg" refType="primFontSz" fact="0.3"/>
+                <dgm:constr type="rMarg" refType="primFontSz" fact="0.3"/>
+                <dgm:constr type="tMarg" refType="primFontSz" fact="0.3"/>
+                <dgm:constr type="bMarg" refType="primFontSz" fact="0.3"/>
+              </dgm:constrLst>
+              <dgm:ruleLst>
+                <dgm:rule type="primFontSz" val="5" fact="NaN" max="NaN"/>
+              </dgm:ruleLst>
+            </dgm:layoutNode>
+            <dgm:forEach name="Name4" axis="followSib" ptType="sibTrans" cnt="1">
+              <dgm:layoutNode name="sibTrans">
+                <dgm:alg type="sp"/>
+                <dgm:shape r:blip="" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+                  <dgm:adjLst/>
+                </dgm:shape>
+                <dgm:presOf/>
+                <dgm:constrLst/>
+                <dgm:ruleLst/>
+              </dgm:layoutNode>
+            </dgm:forEach>
+          </dgm:forEach>
+        </dgm:layoutNode>
+      </dgm:layoutDef>
+    </pkg:xmlData>
+  </pkg:part>
+</pkg:package>
