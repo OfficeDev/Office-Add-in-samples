@@ -1,0 +1,62 @@
+<!-- Copyright (c) Eric Legault Consulting Inc. Licensed under the MIT License. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Outlook Event-Based Activation Sample Add-in</title>
+
+    <!-- Office JavaScript ***PREVIEW*** API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js"></script>
+    <script type="text/javascript" src="taskpane.js"></script>
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header class="ms-welcome__header ms-bgColor-blueLight">
+        <h3 class="ms-font-xl" style="text-align: center;">Outlook Event-Based Activation Sample Add-in</h3>        
+    </header>
+    <section id="sideload-msg" class="ms-welcome__main">
+        <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
+    </section>
+    <main id="app-body" class="ms-welcome__main" style="display: none;">
+        <h2 class="ms-font-xl ms-fontWeight-bold"> Demo Instructions </h2>
+        <p class="ms-font-m">This add-in will showcase how to use event-based activation to handle the <i>OnAppointmentAttendeesChanged</i>, <i>OnAppointmentTimeChanged</i> and <i>OnAppointmentAttachmentsChanged</i> event handlers.</p>
+        <p class="ms-font-m">For more information, see <a target="_blank" href="https://docs.microsoft.com/en-ca/office/dev/add-ins/outlook/autolaunch#event-based-activation-behavior-and-limitations">Configure your Outlook add-in for event-based activation</a></p>
+        <ul class="ms-List ms-welcome__features">
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--PeopleAdd ms-font-m"></i>
+                <span class="ms-font-m">Add any required or optional attendee. A notification message will be added that shows a running tally of how many required and optional attendees have been invited to the meeting request</span>
+            </li>
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--PeopleRepeat ms-font-m"></i>
+                <span class="ms-font-m">Add any Distribution List and see an additional notification message that warns you there are DLs that are receiving this meeting request.</span>
+            </li>
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--DateTime2 ms-font-m"></i>
+                <span class="ms-font-m">Make a change to the appointment date and/or time. A notification message will appear displaying the original date and time. This is very handy when editing existing appointments so you can easily refer back to the original date!</span>
+            </li>
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--Attach ms-font-m"></i><i class="ms-Icon ms-Icon--Add ms-font-m"></i>
+                <span class="ms-font-m">Add any attachment</span>
+            </li>
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--Attach ms-font-m"></i><i class="ms-Icon ms-Icon--Lock ms-font-m"></i>
+                <span class="ms-font-m">A copy of the attachment will be added with "_encrypted" prefixed to the original file name</span>
+            </li>
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--Attach ms-font-m"></i><i class="ms-Icon ms-Icon--Unlock ms-font-m"></i>
+                <span class="ms-font-m">The encrypted attachment will then be decrypted and added as a third attachment with "_decrypted" prefixed to the original file name</span>
+            </li>
+        </ul>
+    </main>
+</body>
+
+</html>
