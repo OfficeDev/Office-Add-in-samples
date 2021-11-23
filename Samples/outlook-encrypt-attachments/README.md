@@ -35,7 +35,7 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 ---
 | Solution                                                                                                                     | Author(s)    |
 | ---------------------------------------------------------------------------------------------------------------------------- | ------------ |
-| Use Outlook event-based activation to process item attachments, meeting request recipients, and appointment date/time changes. | Eric Legault |
+| Use Outlook event-based activation to process item attachments, meeting request recipients, and appointment date/time changes. | [Eric Legault](https://twitter.com/elegault) |
 
 ## Version history
 ---
