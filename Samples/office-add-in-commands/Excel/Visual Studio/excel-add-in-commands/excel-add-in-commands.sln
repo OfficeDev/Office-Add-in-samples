@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "excel-add-in-commands", "excel-add-in-commands\excel-add-in-commands.csproj", "{1ACB47D3-C16E-4500-8D40-322ADB7C97E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "excel-add-in-commandsWeb", "excel-add-in-commandsWeb\excel-add-in-commandsWeb.csproj", "{214ED9C8-FB89-4372-97EA-AC42CAA69C1C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1ACB47D3-C16E-4500-8D40-322ADB7C97E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ACB47D3-C16E-4500-8D40-322ADB7C97E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ACB47D3-C16E-4500-8D40-322ADB7C97E5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1ACB47D3-C16E-4500-8D40-322ADB7C97E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ACB47D3-C16E-4500-8D40-322ADB7C97E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ACB47D3-C16E-4500-8D40-322ADB7C97E5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{214ED9C8-FB89-4372-97EA-AC42CAA69C1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{214ED9C8-FB89-4372-97EA-AC42CAA69C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{214ED9C8-FB89-4372-97EA-AC42CAA69C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{214ED9C8-FB89-4372-97EA-AC42CAA69C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {11B7532E-7249-4E01-B46F-C2A960FB8D5B}
+	EndGlobalSection
+EndGlobal
