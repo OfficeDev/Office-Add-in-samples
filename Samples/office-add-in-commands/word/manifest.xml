@@ -24,9 +24,9 @@
       <Host xsi:type="Document">
         <DesktopFormFactor>
           <GetStarted>
-            <Title resid="GetStarted.Title"/>
-            <Description resid="GetStarted.Description"/>
-            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+            <Title resid="Contoso.GetStarted.Title"/>
+            <Description resid="Contoso.GetStarted.Description"/>
+            <LearnMoreUrl resid="Contoso.GetStarted.LearnMoreUrl"/>
           </GetStarted>
           <FunctionFile resid="Commands.Url"/>
           <ExtensionPoint xsi:type="PrimaryCommandSurface">

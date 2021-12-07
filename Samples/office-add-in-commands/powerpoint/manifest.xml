@@ -8,12 +8,15 @@
   <Description DefaultValue="A template to get started."/>
   <IconUrl DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-add-in-commands/powerpoint/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-add-in-commands/powerpoint/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <SupportUrl DefaultValue="https://docs.microsoft.com/office/dev/add-ins/develop/create-addin-commands"/>
   <AppDomains>
     <AppDomain>https://davidchesnut.github.io</AppDomain>
-    <AppDomain>https://appsforoffice.microsoft.com</AppDomain>
-	<AppDomain>https://static2.sharepointonline.com</AppDomain>
   </AppDomains>
+  <Requirements>
+   <Sets DefaultMinVersion="1.1">
+      <Set Name="AddinCommands" MinVersion="1.1"/>
+   </Sets>
+</Requirements>
   <Hosts>
     <Host Name="Presentation"/>
   </Hosts>
@@ -25,11 +28,11 @@
     <Hosts>
       <Host xsi:type="Presentation">
         <DesktopFormFactor>
-          <GetStarted>
-            <Title resid="GetStarted.Title"/>
-            <Description resid="GetStarted.Description"/>
-            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
-          </GetStarted>
+          <Contoso.GetStarted>
+            <Title resid="Contoso.GetStarted.Title"/>
+            <Description resid="Contoso.GetStarted.Description"/>
+            <LearnMoreUrl resid="Contoso.GetStarted.LearnMoreUrl"/>
+          </Contoso.GetStarted>
           <FunctionFile resid="Commands.Url"/>
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <OfficeTab id="TabHome">
