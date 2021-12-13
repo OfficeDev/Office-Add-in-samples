@@ -10,12 +10,11 @@ Office.onReady(() => {
 });
 
 /**
- * Shows a notification when the add-in command is executed.
+ * Writes the event source id to the document when ExecuteFunction runs.
  * @param event {Office.AddinCommands.Event}
  */
 
-function getData(event) {
-  // Implement your custom code here. The following code is a simple example.
+ function writeValue(event) {
   Word.run(async (context) => {
     // insert a paragraph at the end of the document.
     const paragraph = context.document.body.insertParagraph(

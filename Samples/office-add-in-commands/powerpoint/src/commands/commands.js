@@ -8,13 +8,11 @@ Office.onReady(() => {
 });
 
 /**
- * Shows a notification when the add-in command is executed.
+ * Writes the event source id to the document when ExecuteFunction runs.
  * @param event {Office.AddinCommands.Event}
  */
 
-async function getData(event) {
-  // Implement your custom code here. The following code is a simple example.
-
+ function writeValue(event) {
   const options = { coercionType: Office.CoercionType.Text };
 
   await Office.context.document.setSelectedDataAsync(" ", options);
