@@ -51,9 +51,9 @@ This sample is hosted directly from this GitHub repo. Use the following steps to
 
     ![The upload add-in dialog with buttons for browse, upload, and cancel.](../images/office-upload-add-ins-excel-web.png)
 
-1.  Verify that the add-in loaded successfully. You will see a **Show task pane** button and **Contoso menu** button on the **Home** tab on the ribbon.
+1.  Verify that the add-in loaded successfully. You will see a **Show task pane** button and **Dropdown menu** button on the **Home** tab on the ribbon.
 
-Choose the **Show task pane** button on the **Home** tab to display the task pane of the add-in. Choose the **Contoso menu** button to see a drop down menu. In the menu you can show the task pane, or choose **Get data** to call a command and see the results inserted into the current cell.
+Choose the **Show task pane** button on the **Home** tab to display the task pane of the add-in. Choose the **Dropdown menu** button to see a drop down menu. In the menu you can show the task pane, or choose **Write value** to call a command that writes the button's id to the current cell.
 
 ## Run the sample on Excel on Windows or Mac
 
@@ -99,7 +99,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the excel-hello-world folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Excel on web](#run-the-sample-on-excel-on-web) to sideload and run the add-in.
+Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the excel-hello-world folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Excel on the web](#run-the-sample-on-excel-on-the-web) to sideload and run the add-in.
 
 ## Key parts of this sample
 
@@ -114,21 +114,20 @@ For more information about ExtensionPoint elements and options, see [Add Extensi
 
 The **manifest.xml** file contains a `<FunctionFile resid="Commands.Url"/>` element that specifies where to find the JavaScript commands to run when buttons are used. The `Commands.Url` resource id points to `/src/commands/commands.html`. When a button command is chosen, `commands.html` is loaded, which then loads `/src/commands/commands.js`. This is where the `ExecuteFunction` actions are mapped from the `manifest.xml` file.
 
-For example the following manifest XML maps to the `getData` function in `commands.js`.
+For example the following manifest XML maps to the `writeValue` function in `commands.js`.
 
 ```xml
 <Action xsi:type="ExecuteFunction">
-  <FunctionName>getData</FunctionName>
+  <FunctionName>writeValue</FunctionName>
 </Action>
 ```
 
 ```javascript
-async function getData(event) {
+async function writeValue(event) {
 ...
 ```
 
 For more information about adding commands, see [Add the FunctionFile element](https://docs.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-5-add-the-functionfile-element).
-
 
 ## Copyright
 
