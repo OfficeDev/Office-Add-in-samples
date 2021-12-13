@@ -1,9 +1,9 @@
 ---
 page_type: sample
-urlFragment: powerpoint-add-in-commands
+urlFragment: word-add-in-commands
 products:
   - office-add-ins
-  - office-powerpoint
+  - office-word
   - office
   - office-365
 languages:
@@ -13,10 +13,10 @@ extensions:
   technologies:
     - Add-ins
   createdDate: '12/09/2021 10:00:00 AM'
-description: 'Create an PowerPoint add-in with command buttons.'
+description: 'Create an Word add-in with command buttons.'
 ---
 
-# Create an PowerPoint add-in with command buttons
+# Create an Word add-in with command buttons
 
 ## Summary
 
@@ -29,19 +29,19 @@ Learn how to build an Office Add-in that has a command button to show the task p
 
 ## Applies to
 
-- PowerPoint on Windows, Mac, and in a browser.
+- Word on Windows, Mac, and in a browser.
 
 ## Prerequisites
 
 - Microsoft 365 - You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
-## Run the sample on PowerPoint on the web
+## Run the sample on Word on the web
 
 This sample is hosted directly from this GitHub repo. Use the following steps to sideload the manifest.xml file to see the sample run.
 
-1.  Download the **manifest.xml** file from the sample folder for PowerPoint.
+1.  Download the **manifest.xml** file from the sample folder for Word.
 1.  Open [Office on the web](https://office.live.com/).
-1.  Choose **PowerPoint**, and then open a new document.
+1.  Choose **Word**, and then open a new document.
 1.  On the **Insert** tab on the ribbon in the **Add-ins** section, choose **Office Add-ins**.
 1.  On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
 
@@ -55,7 +55,7 @@ This sample is hosted directly from this GitHub repo. Use the following steps to
 
 Choose the **Show task pane** button on the **Home** tab to display the task pane of the add-in. Choose the **Dropdown menu** button to see a drop down menu. In the menu you can show the task pane, or choose **Write value** to call a command that writes the button's id to the current cell.
 
-## Run the sample on PowerPoint on Windows or Mac
+## Run the sample on Word on Windows or Mac
 
 Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the Hello world sample. Then follow the sideloading instructions for your platform.
 
@@ -99,7 +99,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the excel-hello-world folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on PowerPoint on the web](#run-the-sample-on-excel-on-the-web) to sideload and run the add-in.
+Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the word folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Excel on the web](#run-the-sample-on-excel-on-the-web) to sideload and run the add-in.
 
 ## Key parts of this sample
 
@@ -135,4 +135,4 @@ Copyright (c) 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/powerpoint-add-in-commands" />
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/word-add-in-commands" />
