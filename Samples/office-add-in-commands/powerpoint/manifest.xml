@@ -138,7 +138,7 @@
 			  <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Show task pane" />
 			  <bt:String id="Contoso.GetDataButton.Label" DefaultValue="Show task pane" />
 			  <bt:String id="Contoso.Item1.Label" DefaultValue="Show task pane" />
-			  <bt:String id="Contoso.Item2.Label" DefaultValue="Get data" />
+			  <bt:String id="Contoso.Item2.Label" DefaultValue="Write value" />
 			  <bt:String id="Contoso.Menu.Label" DefaultValue="Dropdown menu" />
 			  <bt:String id="Contoso.Group1Label" DefaultValue="Commands group" />
 			  <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with your sample add-in!" />

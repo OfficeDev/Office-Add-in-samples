@@ -31,12 +31,11 @@ Here is how the samples look when running:
 
 ### Word
 
-Existing Tab
-![](http://i.imgur.com/wrA6R3T.png)
+![](/images/word-ribbon-buttons.png)
 
 ### PowerPoint
 
-![](http://i.imgur.com/jwkkNsQ.png)
+![](/images/powerpoint-ribbon-buttons.png)
 
 ## Applies to
 

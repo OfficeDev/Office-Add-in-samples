@@ -121,7 +121,7 @@
 		  <bt:Images>
 			  <bt:Image id="Contoso.tpicon_16x16" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-add-in-commands/word/assets/icon-16.png" />
 			  <bt:Image id="Contoso.tpicon_32x32" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-add-in-commands/word/assets/icon-32.png" />
-			  <bt:Image id="Contoso.tpicon_80x80" DefaultValue="httpshttps://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-add-in-commands/word/assets/icon-80.png" />
+			  <bt:Image id="Contoso.tpicon_80x80" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-add-in-commands/word/assets/icon-80.png" />
 		  </bt:Images>
 		  <bt:Urls>
 			  <bt:Url id="Commands.Url" DefaultValue="https://davidchesnut.github.io/PnP-OfficeAddins/Samples/office-add-in-commands/word/src/commands/commands.html" />
