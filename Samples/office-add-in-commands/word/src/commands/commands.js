@@ -14,7 +14,7 @@ Office.onReady(() => {
  * @param event {Office.AddinCommands.Event}
  */
 
- function writeValue(event) {
+ async function writeValue(event) {
   Word.run(async (context) => {
     // insert a paragraph at the end of the document.
     const paragraph = context.document.body.insertParagraph(
