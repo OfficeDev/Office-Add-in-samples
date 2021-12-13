@@ -22,6 +22,8 @@ description: 'Create an PowerPoint add-in with command buttons.'
 
 Learn how to build an Office Add-in that has a command button to show the task pane, and a menu dropdown button that can show the task pane, or get data.
 
+![Screen shot of PowerPoint showing ribbon with Home tab selected and two buttons for the sample that show the task pane or show a dropdown menu](../images/powerpoint-ribbon-buttons.png)
+
 ## Features
 
 - A button in the ribbon that shows the task pane.
