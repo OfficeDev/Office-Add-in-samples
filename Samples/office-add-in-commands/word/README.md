@@ -99,7 +99,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the word folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Excel on the web](#run-the-sample-on-excel-on-the-web) to sideload and run the add-in.
+Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the word folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Word on the web](#run-the-sample-on-word-on-the-web) to sideload and run the add-in.
 
 ## Key parts of this sample
 
