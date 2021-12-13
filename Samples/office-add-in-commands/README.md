@@ -17,21 +17,17 @@ extensions:
 description: "Shows how to use add-in commands in Excel, Word and PowerPoint add-ins."
 ---
 
-# Office Add-in Commands Samples
+# Office Add-in commands
 
 ## Summary
 
-Add-in commands enable developers to extend the Office user interface such as the Office Ribbon to create awesome, efficient to use add-ins. These samples show you how to use add-in commands in Excel, Word and PowerPoint add-ins.
+Office Add-in commands enable developers to extend the Office user interface such as the Office Ribbon to create awesome, efficient to use add-ins. These samples show you how to use add-in commands in Excel, Word and PowerPoint add-ins.
 
 Here is how the samples look when running:
 
-### Custom Tab (Simple Example)
-
-![](https://i.imgur.com/HRCbRFO.png)
-
 ### Excel
 
-![](http://i.imgur.com/OsRIk5E.png)
+![](/images/excel-ribbon-buttons.png)
 
 ### Word
 

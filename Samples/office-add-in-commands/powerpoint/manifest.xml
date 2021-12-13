@@ -111,7 +111,7 @@
 									  <bt:Image size="80" resid="Contoso.tpicon_80x80" />
 								  </Icon>
 								  <Action xsi:type="ExecuteFunction">
-									  <FunctionName>getData</FunctionName>
+									  <FunctionName>writeValue</FunctionName>
 								  </Action>
 							  </Item>
 						  </Items>
