@@ -12,7 +12,7 @@ Office.onReady(() => {
  * @param event {Office.AddinCommands.Event}
  */
 
- function writeValue(event) {
+ async function writeValue(event) {
   const options = { coercionType: Office.CoercionType.Text };
 
   await Office.context.document.setSelectedDataAsync(" ", options);

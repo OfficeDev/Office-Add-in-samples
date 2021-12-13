@@ -45,11 +45,11 @@ This sample is hosted directly from this GitHub repo. Use the following steps to
 1.  On the **Insert** tab on the ribbon in the **Add-ins** section, choose **Office Add-ins**.
 1.  On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
 
-    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](Samples/images/office-add-ins-excel-web.png)
+    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](https://raw.githubusercontent.com/davidchesnut/PnP-OfficeAddins/github-hosting2/Samples/images/office-add-ins-excel-web.png)
 
 1.  Browse to the add-in manifest file, and then select **Upload**.
 
-    ![The upload add-in dialog with buttons for browse, upload, and cancel.](Samples/images/office-upload-add-ins-excel-web.png)
+    ![The upload add-in dialog with buttons for browse, upload, and cancel.](https://raw.githubusercontent.com/davidchesnut/PnP-OfficeAddins/github-hosting2/Samples/images/upload-add-in.png)
 
 1.  Verify that the add-in loaded successfully. You will see a **Show task pane** button and **Dropdown menu** button on the **Home** tab on the ribbon.
 
