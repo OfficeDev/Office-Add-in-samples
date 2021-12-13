@@ -45,4 +45,4 @@ function getGlobal() {
 const g = getGlobal();
 
 // The add-in command functions need to be available in global scope
-g.getData = getData;
+g.writeValue = writeValue;
