@@ -27,15 +27,15 @@ Here is how the samples look when running:
 
 ### Excel
 
-![](../images/excel-ribbon-buttons.png)
+![](./images/excel-ribbon-buttons.png)
 
 ### Word
 
-![](../images/word-ribbon-buttons.png)
+![](./images/word-ribbon-buttons.png)
 
 ### PowerPoint
 
-![](../images/powerpoint-ribbon-buttons.png)
+![](./images/powerpoint-ribbon-buttons.png)
 
 ## Applies to
 
