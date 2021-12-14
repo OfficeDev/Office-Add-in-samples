@@ -9,8 +9,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Hello world"/>
   <Description DefaultValue="A simple hello world Office Add-in."/>
-  <IconUrl DefaultValue="https://OfficeDev.github.io/PnP-OfficeAddins/Samples/hello-world/outlook-hello-world/assets/icon-64.png"/>
-  <HighResolutionIconUrl DefaultValue="https://OfficeDev.github.io/PnP-OfficeAddins/Samples/hello-world/outlook-hello-world/assets/icon-128.png"/>
+  <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://docs.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
@@ -26,7 +26,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://OfficeDev.github.io/PnP-OfficeAddins/Samples/hello-world/outlook-hello-world/taskpane.html"/>
+        <SourceLocation DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/taskpane.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -75,12 +75,12 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://OfficeDev.github.io/PnP-OfficeAddins/Samples/hello-world/outlook-hello-world/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://OfficeDev.github.io/PnP-OfficeAddins/Samples/hello-world/outlook-hello-world/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://OfficeDev.github.io/PnP-OfficeAddins/Samples/hello-world/outlook-hello-world/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://OfficeDev.github.io/PnP-OfficeAddins/Samples/hello-world/outlook-hello-world/taskpane.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/outlook-hello-world/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="CommandsGroup.Label" DefaultValue="Contoso Add-in"/>

@@ -123,8 +123,8 @@ The manifest configures a runtime that is loaded specifically to handle event-ba
   <Override type="javascript" resid="JSRuntime.Url"/>
 </Runtime>
 ...
-<bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands.html" />
-<bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands/commands.js" />
+<bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/commands.html" />
+<bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/commands/commands.js" />
 ```
 
 The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the `tagExternal_onMessageRecipientsChangedHandler` function in the `commands.js` file.
