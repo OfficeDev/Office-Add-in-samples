@@ -10,7 +10,7 @@
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://docs.microsoft.com/office/dev/add-ins/develop/create-addin-commands"/>
   <AppDomains>
-    <AppDomain>https://davidchesnut.github.io</AppDomain>
+    <AppDomain>https://officedev.github.io</AppDomain>
   </AppDomains>
   <Requirements>
    <Sets DefaultMinVersion="1.1">
