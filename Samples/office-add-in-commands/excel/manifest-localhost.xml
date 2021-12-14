@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+  <Id>1752701e-e44f-496d-b4cc-3f3144491978</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Contoso</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="excel-add-in-commands"/>
+  <Description DefaultValue="A template to get started."/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <AppDomains>
+    <AppDomain>https://www.contoso.com</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Workbook"/>
+  </Hosts>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3000/taskpane/taskpane.html"/>
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <DesktopFormFactor>
+          <GetStarted>
+            <!-- Title of the Getting Started callout. The resid attribute points to a ShortString resource -->
+            <Title resid="Contoso.GetStarted.Title"/>
+
+            <!-- Description of the Getting Started callout. resid points to a LongString resource -->
+            <Description resid="Contoso.GetStarted.Description"/>
+
+            <!-- Points to a URL resource which details how the add-in should be used. -->
+            <LearnMoreUrl resid="Contoso.GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+          <FunctionFile resid="Commands.Url"/>
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+            <OfficeTab id="TabHome">
+				  <!-- Ensure you provide a unique id for the group. Recommendation for any IDs is to namespace using your company name. -->
+				  <Group id="Contoso.Group1">
+					  <!-- Label for your group. resid must point to a ShortString resource. -->
+					  <Label resid="Contoso.Group1Label" />
+					  <!-- Icons. Required sizes 16,32,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX. -->
+					  <!-- Use PNG icons. All URLs on the resources section must use HTTPS. -->
+					  <Icon>
+						  <bt:Image size="16" resid="Contoso.tpicon_16x16" />
+						  <bt:Image size="32" resid="Contoso.tpicon_32x32" />
+						  <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+					  </Icon>
+
+					  <!-- Control. It can be of type "Button" or "Menu". -->
+					  <Control xsi:type="Button" id="Contoso.TaskpaneButton">
+						  <Label resid="Contoso.TaskpaneButton.Label" />
+						  <Supertip>
+							  <!-- ToolTip title. resid must point to a ShortString resource. -->
+							  <Title resid="Contoso.TaskpaneButton.Label" />
+							  <!-- ToolTip description. resid must point to a LongString resource. -->
+							  <Description resid="Contoso.TaskpaneButton.Tooltip" />
+						  </Supertip>
+						  <Icon>
+							  <bt:Image size="16" resid="Contoso.tpicon_16x16" />
+							  <bt:Image size="32" resid="Contoso.tpicon_32x32" />
+							  <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+						  </Icon>
+
+						  <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+						  <Action xsi:type="ShowTaskpane">
+							  <TaskpaneId>ButtonId1</TaskpaneId>
+							  <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
+							  <SourceLocation resid="Contoso.Taskpane.Url" />
+						  </Action>
+					  </Control>
+					  <Control xsi:type="Menu" id="Contoso.Menu">
+						  <Label resid="Contoso.Menu.Label" />
+						  <Supertip>
+							  <Title resid="Contoso.Menu.Label" />
+							  <Description resid="Contoso.Menu.Tooltip" />
+						  </Supertip>
+						  <Icon>
+							  <bt:Image size="16" resid="Contoso.tpicon_16x16" />
+							  <bt:Image size="32" resid="Contoso.tpicon_32x32" />
+							  <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+						  </Icon>
+						  <Items>
+							  <Item id="itemShowTaskPane">
+								  <Label resid="Contoso.Item1.Label"/>
+								  <Supertip>
+									  <Title resid="Contoso.Item1.Label" />
+									  <Description resid="Contoso.Item1.Tooltip" />
+								  </Supertip>
+								  <Icon>
+									  <bt:Image size="16" resid="Contoso.tpicon_16x16" />
+									  <bt:Image size="32" resid="Contoso.tpicon_32x32" />
+									  <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+								  </Icon>
+								  <Action xsi:type="ShowTaskpane">
+									  <TaskpaneId>ButtonId1</TaskpaneId>
+									  <SourceLocation resid="Contoso.Taskpane.Url" />
+								  </Action>
+							  </Item>
+							  <Item id="itemExecuteFunction">
+								  <Label resid="Contoso.Item2.Label"/>
+								  <Supertip>
+									  <Title resid="Contoso.Item2.Label" />
+									  <Description resid="Contoso.Item2.Tooltip" />
+								  </Supertip>
+								  <Icon>
+									  <bt:Image size="16" resid="Contoso.tpicon_16x16" />
+									  <bt:Image size="32" resid="Contoso.tpicon_32x32" />
+									  <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+								  </Icon>
+								  <Action xsi:type="ExecuteFunction">
+									  <FunctionName>writeValue</FunctionName>
+								  </Action>
+							  </Item>
+						  </Items>
+					  </Control>
+				  </Group>
+			  </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+    <Resources>
+		  <bt:Images>
+			  <bt:Image id="Contoso.tpicon_16x16" DefaultValue="https://localhost:3000/assets/icon-16.png" />
+			  <bt:Image id="Contoso.tpicon_32x32" DefaultValue="https://localhost:3000/assets/icon-32.png" />
+			  <bt:Image id="Contoso.tpicon_80x80" DefaultValue="https://localhost:3000/assets/icon-80.png" />
+		  </bt:Images>
+		  <bt:Urls>
+			  <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/src/commands/commands.html" />
+			  <bt:Url id="Contoso.Taskpane.Url" DefaultValue="https://localhost:3000/src/taskpane/taskpane.html" />
+			  <bt:Url id="Contoso.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
+		  </bt:Urls>
+		  <!-- ShortStrings max characters==125. -->
+		  <bt:ShortStrings>
+			  <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Show task pane" />
+			  <bt:String id="Contoso.WriteValueButton.Label" DefaultValue="Show task pane" />
+			  <bt:String id="Contoso.Item1.Label" DefaultValue="Show task pane" />
+			  <bt:String id="Contoso.Item2.Label" DefaultValue="Write value" />
+			  <bt:String id="Contoso.Menu.Label" DefaultValue="Dropdown menu" />
+			  <bt:String id="Contoso.Group1Label" DefaultValue="Commands group" />
+			  <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with your sample add-in!" />
+		  </bt:ShortStrings>
+		  <!-- LongStrings max characters==250. -->
+		  <bt:LongStrings>
+			  <bt:String id="Contoso.TaskpaneButton.Tooltip" DefaultValue="Choose to show a task pane" />
+			  <bt:String id="Contoso.Item1.Tooltip" DefaultValue="Choose to show a task pane" />
+			  <bt:String id="Contoso.Item2.Tooltip" DefaultValue="Choose to show a task pane" />
+			  <bt:String id="Contoso.Menu.Tooltip" DefaultValue="Show the dropdown menu" />
+
+			  <bt:String id="Contoso.WriteValueButton.Tooltip" DefaultValue="Choose to write value to document" />
+			  <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and choose the 'Show task pane' button to get started." />
+		  </bt:LongStrings>
+	  </Resources>
+  </VersionOverrides>
+</OfficeApp>
