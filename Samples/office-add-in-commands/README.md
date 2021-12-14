@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: office-add-in-commands-samples
 products:
   - office-excel
   - office-word
