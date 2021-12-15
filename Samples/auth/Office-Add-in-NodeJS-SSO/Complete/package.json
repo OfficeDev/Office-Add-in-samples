@@ -4,9 +4,7 @@
   "private": true,
   "scripts": {
     "install-dev-certs": "office-addin-dev-certs install",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "start": "tsc && node ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "@types/jquery": "^3.5.5",
@@ -25,7 +23,6 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "office-addin-dev-certs": "1.5.18",
-    "typescript": "^4.2.4"
+    "office-addin-dev-certs": "1.5.18"
   }
 }
