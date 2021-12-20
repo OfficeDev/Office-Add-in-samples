@@ -22,9 +22,9 @@ description: "Shows how to use add-in commands in Excel, Word and PowerPoint add
 
 ## Summary
 
-Office Add-in commands enable developers to extend the Office user interface such as the Office Ribbon to create awesome, efficient to use add-ins. These samples show you how to use add-in commands in Excel, Word and PowerPoint add-ins.
+Office Add-in commands enable developers to extend the Office user interface such as the Office Ribbon to create awesome, efficient add-ins. These samples show you how to use add-in commands in Excel, Word, and PowerPoint add-ins.
 
-Here is how the samples look when running:
+Here's how the samples look when running:
 
 ### Excel
 
@@ -44,7 +44,7 @@ Here is how the samples look when running:
 
 ## Prerequisites
 
-- Microsoft 365 - You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
+- Microsoft 365 - Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
 ## Run a sample
 
