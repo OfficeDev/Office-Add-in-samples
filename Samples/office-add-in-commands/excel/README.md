@@ -35,7 +35,7 @@ Learn how to build an Office Add-in that has a command button to show the task p
 
 ## Prerequisites
 
-- Microsoft 365 - You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
+- Microsoft 365 - Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
 ## Run the sample on Excel on the web
 
@@ -44,7 +44,7 @@ This sample is hosted directly from this GitHub repo. Use the following steps to
 1.  Download the **manifest.xml** file from the sample folder for Excel.
 1.  Open [Office on the web](https://office.live.com/).
 1.  Choose **Excel**, and then open a new document.
-1.  On the **Insert** tab on the ribbon in the **Add-ins** section, choose **Office Add-ins**.
+1.  On the **Insert** tab, in the **Add-ins** section, choose **Office Add-ins**.
 1.  On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
 
     ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](https://raw.githubusercontent.com/officedev/PnP-OfficeAddins/github-hosting2/Samples/images/office-add-ins-excel-web.png)
@@ -53,37 +53,37 @@ This sample is hosted directly from this GitHub repo. Use the following steps to
 
     ![The upload add-in dialog with buttons for browse, upload, and cancel.](https://raw.githubusercontent.com/officedev/PnP-OfficeAddins/github-hosting2/Samples/images/upload-add-in.png)
 
-1.  Verify that the add-in loaded successfully. You will see a **Show task pane** button and **Dropdown menu** button on the **Home** tab on the ribbon.
+1.  Verify that the add-in loaded successfully. On the ribbon, you'll see a **Show task pane** button and **Dropdown menu** button on the **Home** tab.
 
-Choose the **Show task pane** button on the **Home** tab to display the task pane of the add-in. Choose the **Dropdown menu** button to see a drop down menu. In the menu you can show the task pane, or choose **Write value** to call a command that writes the button's id to the current cell.
+On the **Home** tab, choose the **Show task pane** button to display the task pane of the add-in. Choose the **Dropdown menu** button to see a drop down menu. On the menu, you can show the task pane or choose **Write value** to call a command that writes the button's id to the current cell.
 
 ## Run the sample on Excel on Windows or Mac
 
-Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the Hello world sample. Then follow the sideloading instructions for your platform.
+Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation on how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the Hello world sample. Then follow the sideloading instructions for your platform.
 
-- [Sideload Office Add-ins for testing from a network share](https://docs.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
-- [Sideload Office Add-ins on iPad and Mac for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad-and-mac)
+- [Sideload Office Add-ins for testing from a network share](/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins.md)
+- [Sideload Office Add-ins on iPad and Mac for testing](/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad-and-mac.md)
 
 ## Configure a localhost web server and run the sample from localhost
 
-If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps:
+If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
 1.  Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
-2.  You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+1.  You need http-server to run the local web server. If you haven't installed this yet. you can do this with the following command.
 
     ```console
     npm install --global http-server
     ```
 
-3.  You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command:
+1.  You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command.
 
     ```console
     npm install --global office-addin-dev-certs
     ```
 
-4.  Clone or download this sample to a folder on your computer. Then go to that folder in a console or terminal window.
-5.  Run the following command to generate a self-signed certificate that you can use for the web server.
+1.  Clone or download this sample to a folder on your computer. Then go to that folder in a console or terminal window.
+1.  Run the following command to generate a self-signed certificate that you can use for the web server.
 
     ```console
     npx office-addin-dev-certs install
@@ -91,9 +91,9 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The previous command will display the folder location where it generated the certificate files.
 
-6.  Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the hello world sample folder.
+1.  Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the hello world sample folder.
 
-7.  Run the following command:
+1.  Run the following command.
 
     ```console
     http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
@@ -101,7 +101,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the excel-hello-world folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Excel on the web](#run-the-sample-on-excel-on-the-web) to sideload and run the add-in.
+Now that your localhost web server is running, sideload the **manifest-localhost.xml** file provided in the excel-hello-world folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Excel on the web](#run-the-sample-on-excel-on-the-web) to sideload and run the add-in.
 
 ## Key parts of this sample
 
@@ -116,7 +116,7 @@ For more information about ExtensionPoint elements and options, see [Add Extensi
 
 The **manifest.xml** file contains a `<FunctionFile resid="Commands.Url"/>` element that specifies where to find the JavaScript commands to run when buttons are used. The `Commands.Url` resource id points to `/src/commands/commands.html`. When a button command is chosen, `commands.html` is loaded, which then loads `/src/commands/commands.js`. This is where the `ExecuteFunction` actions are mapped from the `manifest.xml` file.
 
-For example the following manifest XML maps to the `writeValue` function in `commands.js`.
+For example, the following manifest XML maps to the `writeValue` function in `commands.js`.
 
 ```xml
 <Action xsi:type="ExecuteFunction">

@@ -35,7 +35,7 @@ Learn how to build an Office Add-in that has a command button to show the task p
 
 ## Prerequisites
 
-- Microsoft 365 - You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
+- Microsoft 365 - Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
 ## Run the sample on PowerPoint on the web
 
@@ -44,7 +44,7 @@ This sample is hosted directly from this GitHub repo. Use the following steps to
 1.  Download the **manifest.xml** file from the sample folder for PowerPoint.
 1.  Open [Office on the web](https://office.live.com/).
 1.  Choose **PowerPoint**, and then open a new document.
-1.  On the **Insert** tab on the ribbon in the **Add-ins** section, choose **Office Add-ins**.
+1.  On the **Insert** tab, in the **Add-ins** section, choose **Office Add-ins**.
 1.  On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
 
     ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](https://raw.githubusercontent.com/officedev/PnP-OfficeAddins/github-hosting2/Samples/images/office-add-ins-excel-web.png)
@@ -55,7 +55,7 @@ This sample is hosted directly from this GitHub repo. Use the following steps to
 
 1.  Verify that the add-in loaded successfully. You will see a **Show task pane** button and **Dropdown menu** button on the **Home** tab on the ribbon.
 
-Choose the **Show task pane** button on the **Home** tab to display the task pane of the add-in. Choose the **Dropdown menu** button to see a drop down menu. In the menu you can show the task pane, or choose **Write value** to call a command that writes the button's id to the current cell.
+On the **Home** tab, choose the **Show task pane** button to display the task pane of the add-in. Choose the **Dropdown menu** button to see a drop down menu. On the menu you can show the task pane, or choose **Write value** to call a command that writes the button's id to the current cell.
 
 ## Run the sample on PowerPoint on Windows or Mac
 
@@ -70,7 +70,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
 1.  Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
-2.  You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+2.  You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command.
 
     ```console
     npm install --global http-server
