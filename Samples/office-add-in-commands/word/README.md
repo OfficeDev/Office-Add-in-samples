@@ -35,7 +35,7 @@ Learn how to build an Office Add-in that has a command button to show the task p
 
 ## Prerequisites
 
-- Microsoft 365 - You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
+- Microsoft 365 - Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
 ## Run the sample on Word on the web
 
@@ -53,9 +53,9 @@ This sample is hosted directly from this GitHub repo. Use the following steps to
 
     ![The upload add-in dialog with buttons for browse, upload, and cancel.](https://raw.githubusercontent.com/officedev/PnP-OfficeAddins/github-hosting2/Samples/images/upload-add-in.png)
 
-1.  Verify that the add-in loaded successfully. You will see a **Show task pane** button and **Dropdown menu** button on the **Home** tab on the ribbon.
+1.  Verify that the add-in loaded successfully. You'll see a **Show task pane** button and **Dropdown menu** button on the **Home** tab on the ribbon.
 
-Choose the **Show task pane** button on the **Home** tab to display the task pane of the add-in. Choose the **Dropdown menu** button to see a drop down menu. In the menu you can show the task pane, or choose **Write value** to call a command that writes the button's id to the current cell.
+On the **Home** tab, choose the **Show task pane** button to display the task pane of the add-in. Choose the **Dropdown menu** button to see a drop down menu. In the menu you can show the task pane, or choose **Write value** to call a command that writes the button's id to the current cell.
 
 ## Run the sample on Word on Windows or Mac
 
@@ -66,17 +66,17 @@ Office Add-ins are cross-platform so you can also run them on Windows, Mac, and 
 
 ## Configure a localhost web server and run the sample from localhost
 
-If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps:
+If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
 1.  Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
-2.  You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+2.  You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command.
 
     ```console
     npm install --global http-server
     ```
 
-3.  You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command:
+3.  You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command.
 
     ```console
     npm install --global office-addin-dev-certs
@@ -101,7 +101,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the word folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Word on the web](#run-the-sample-on-word-on-the-web) to sideload and run the add-in.
+Now that your localhost web server is running, sideload the **manifest-localhost.xml** file provided in the word folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Word on the web](#run-the-sample-on-word-on-the-web) to sideload and run the add-in.
 
 ## Key parts of this sample
 
