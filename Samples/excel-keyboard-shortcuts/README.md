@@ -91,7 +91,7 @@ The manifest.xml is pre-configured to use the shared runtime. To see how to add 
 Additionally, the following changes have been made to enable keyboard shortcuts:
 
 1. Configured the add-in's manifest by adding the new element `ExtendedOverrides` to the end of the manifest.
-2. Created the shortcuts JSON file `shortcuts.json`, in the `src/` folder to define actions and their keyboard shortcuts. Ensure the new file is properly bundled by configuring the `webpack.config.js` file.
+2. Created the shortcuts JSON file `shortcuts.json`, in the `src/` folder to define actions and their keyboard shortcuts.
 3. Mapped actions to runtime calls with the associate method in `src/taskpane.js`.
 
 
