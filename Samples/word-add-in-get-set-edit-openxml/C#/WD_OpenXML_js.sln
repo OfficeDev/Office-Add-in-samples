@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WD_OpenXML_js", "WD_OpenXML_js\WD_OpenXML_js.csproj", "{655FBEE4-6C63-4929-948B-CF8349592D54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WD_OpenXML_jsWeb", "WD_OpenXML_jsWeb\WD_OpenXML_jsWeb.csproj", "{0600C7EF-523F-4161-BC19-AA71318827CD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{655FBEE4-6C63-4929-948B-CF8349592D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{655FBEE4-6C63-4929-948B-CF8349592D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{655FBEE4-6C63-4929-948B-CF8349592D54}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{655FBEE4-6C63-4929-948B-CF8349592D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{655FBEE4-6C63-4929-948B-CF8349592D54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{655FBEE4-6C63-4929-948B-CF8349592D54}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0600C7EF-523F-4161-BC19-AA71318827CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0600C7EF-523F-4161-BC19-AA71318827CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0600C7EF-523F-4161-BC19-AA71318827CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0600C7EF-523F-4161-BC19-AA71318827CD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

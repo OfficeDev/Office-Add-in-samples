@@ -1,0 +1,20 @@
+### YamlMime:Sample
+sample:
+- name: Word-Add-in-Get-Set-EditOpen-XML
+  path: ''
+  description: This sample app shows you how to use the JavaScript methods getSelectedDataAsync and setSelectedDataAsync to get or set a variety of rich content types in a Word document.
+  readme: ''
+  generateZip: FALSE
+  isLive: TRUE
+  technologies:
+  - Office Add-in
+  - Office Open XML
+  azureDeploy: ''
+  author: JohnAustin
+  platforms: []
+  languages:
+  - JavaScript
+  extensions:
+    products:
+    - Word
+    scenarios: []
