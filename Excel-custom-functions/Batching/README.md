@@ -24,7 +24,7 @@ If your custom functions call a remote service you may want to use a batching pa
 
 ## Prerequisites
 
-To get set up and working with custom functions, see [Custom functions requirements](https://docs.microsoft.com/en-us/office/dev/add-ins/excel/custom-functions-requirements)
+To learn more about custom functions, see [Create custom functions in Excel](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-overview). See [Custom Functions requirement sets](https://docs.microsoft.com/office/dev/add-ins/reference/requirement-sets/custom-functions-requirement-sets) for a list of the platforms that support custom functions.
 
 ## Solution
 
