@@ -59,8 +59,6 @@
                 // Stashing the OOXML in case
                 currentOOXML = bodyOOXML.value;
 
-
-
                 // Update the status message.
                 setTimeout(function () {
                     textArea.value = currentOOXML;
@@ -90,19 +88,19 @@
     // Gets the OOXML contents in a textarea from the add-in and puts the contents of 
     // into the Word document body. 
     function setOOXML_newAPI() {
-        // Get a reference to the Div where we will write the outcome of our operation
+        // Get a reference to the Div where we will write the outcome of our operation.
         var report = document.getElementById("status");
 
-        //Sets the currentOOXML variable to the current contents of the task pane text area
+        // Sets the currentOOXML variable to the current contents of the task pane text area.
         textArea = document.getElementById("dataOOXML");
         currentOOXML = textArea.value;
 
-        // Remove all nodes from the status Div so we have a clean space to write to
+        // Remove all nodes from the status Div so we have a clean space to write to.
         while (report.hasChildNodes()) {
             report.removeChild(report.lastChild);
         }
 
-        // Check whether we have OOXML in the variable
+        // Check whether we have OOXML in the variable.
         if (currentOOXML != "") {
 
             // Run a batch operation against the Word object model.
@@ -118,7 +116,7 @@
                 // and return a promise to indicate task completion.
                 return context.sync().then(function () {
 
-                    // Tell the user we succeeded and then clear the message after a 2 second delay
+                    // Tell the user we succeeded and then clear the message after a 2-second delay.
                     report.innerText = "The setOOXML function succeeded!";
                     setTimeout(function () {
                         report.innerText = "";
@@ -145,10 +143,10 @@
     }
 
     function getOOXML() {
-        // Get a reference to the Div where we will write the status of our operation
+        // Get a reference to the Div where we will write the status of our operation.
         var report = document.getElementById("status");
         var textArea = document.getElementById("dataOOXML");
-        // Remove all nodes from the status Div so we have a clean space to write to
+        // Remove all nodes from the status Div so we have a clean space to write to.
         while (report.hasChildNodes()) {
             report.removeChild(report.lastChild);
         }
@@ -174,23 +172,23 @@
 
                     // Now we populate the text area in the task pane with the retrieved OOXML
                     // so that you can copy it out for editing.
-                    //The first step below clears the text area and then we use a brief timeout to leave
+                    // The first step below clears the text area and then we use a brief timeout to leave
                     // the text area blank momentarily and make it clear that the OOXML is being refreshed
                     // with the markup for the new selection.
-                    //Then we report to the user that we were successful
+                    // Then we report to the user that we were successful
 
                     setTimeout(function () {
                         textArea.value = currentOOXML;
                         report.innerText = "The getOOXML function succeeded!";
                     }, 400);
 
-                    // Clear the success message after a 2 second delay
+                    // Clear the success message after a 2-second delay.
                     setTimeout(function () {
                         report.innerText = "";
                     }, 2000);
                 }
                 else {
-                    // This runs if the getSelectedDataAsync method does not return a success flag
+                    // This runs if the getSelectedDataAsync method does not return a success flag.
                     currentOOXML = "";
                     report.innerText = result.error.message;
                 }
@@ -198,19 +196,19 @@
     }
 
     function setOOXML() {
-        // Get a reference to the Div where we will write the outcome of our operation
+        // Get a reference to the Div where we will write the outcome of our operation.
         var report = document.getElementById("status");
 
-        //Sets the currentOOXML variable to the current contents of the task pane text area
+        // Sets the currentOOXML variable to the current contents of the task pane text area.
         var textArea = document.getElementById("dataOOXML")
         currentOOXML = textArea.value;
 
-        // Remove all nodes from the status Div so we have a clean space to write to
+        // Remove all nodes from the status Div so we have a clean space to write to.
         while (report.hasChildNodes()) {
             report.removeChild(report.lastChild);
         }
 
-        // Check whether we have OOXML in the variable
+        // Check whether we have OOXML in the variable.
         if (currentOOXML != "") {
 
             // Call the setSelectedDataAsync, with parameters of:
@@ -222,7 +220,7 @@
             Office.context.document.setSelectedDataAsync(
                 currentOOXML, { coercionType: "ooxml" },
                 function (result) {
-                    // Tell the user we succeeded and then clear the message after a 2 second delay
+                    // Tell the user we succeeded and then clear the message after a 2-second delay.
                     if (result.status == "succeeded") {
                         report.innerText = "The setOOXML function succeeded!";
                         setTimeout(function () {
@@ -230,7 +228,7 @@
                         }, 2000);
                     }
                     else {
-                        // This runs if the setSelectedDataAsync method does not return a success flag
+                        // This runs if the setSelectedDataAsync method does not return a success flag.
                         report.innerText = result.error.message;
 
                         // Clear the text area just so we don't give you the impression that there's
@@ -242,7 +240,7 @@
         else {
 
             // If currentOOXML == "" then we should not even try to insert it, because
-            // that is gauranteed to cause an exception, needlessly.
+            // that is guaranteed to cause an exception needlessly.
             report.innerText = "There is currently no OOXML to insert!"
                 + " Please select some of your document and click [Get OOXML] first!";
         }
