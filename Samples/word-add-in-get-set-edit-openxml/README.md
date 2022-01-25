@@ -40,11 +40,11 @@ Shows how to get, edit, and set OOXML content in a Word document. This sample Wo
 
 1. Open the **WD_OpenXML_js.sln** file in Visual Studio 2019 or later.
 1. In **Solution Explorer**, select the **WD_OpenXML_js** project.
-1. In the Properties window (**View > Properties Window**), set the **Start Action** to **Office Desktop Client**. Also set the **Start Document** to **SampleDoc.docx**.
-1. Choose **Debug > Start Debugging** or choose the **F5** key.
-1. On the **Home** tab, in the **OOXML Editor** group, choose **Open**.
+1. In the Properties window (**View** > **Properties Window**), set the **Start Action** to **Office Desktop Client**. Also set the **Start Document** to **SampleDoc.docx**.
+1. Choose **Debug** > **Start Debugging** or choose the **F5** key.
+1. On the **Home** tab in Word, in the **OOXML Editor** group, choose **Open**.
 
-The SampleDoc.docx file will open in Word since it's set as the **Start Action** property of the add-in. The document contains a range of common rich content types for Word, including the following.
+The SampleDoc.docx file will open in Word since it's set as the **Start Document** property of the add-in. The document contains a range of common rich content types for Word, including the following:
 
 - formatted text
 - styled text
