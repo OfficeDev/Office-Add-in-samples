@@ -8,7 +8,7 @@
   <ProviderName>Administrator</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Using OOXML in a Word add-in" />
-  <Description DefaultValue="Interact with rich content in Word documents using Office Open XML"/>
+  <Description DefaultValue="Interact with rich content in Word documents using Office Open XML."/>
     <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
   <IconUrl DefaultValue="https://appcommandicons.blob.core.windows.net/images/taskpane_32x.png" />
   <Hosts>

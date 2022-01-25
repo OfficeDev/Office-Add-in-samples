@@ -12,7 +12,7 @@ extensions:
   contentType: samples
   technologies:
     - Add-ins
-  createdDate: '01/24/2021 10:00:00 AM'
+  createdDate: '01/24/2022 10:00:00 AM'
 description: 'Learn how to get, edit, and set OOXML content in a Word document.'
 ---
 
@@ -71,11 +71,11 @@ Figure 1b. More SampleDoc.docx document contents.
 
 The sample uses Office Open XML (the OOXML coercion type) rather than HTML or plain text because OOXML coercion enables you to interact with virtually every type of content a user can insert in their document, such as in the examples you see in Figures 1a - 1b.
 
-Figure 2. Task pane appearance after using the **Get…** button to extract Office Open XML for selected content
+Figure 2. Task pane appearance after using the **Get…** button to extract Office Open XML for selected content.
 
-![Screenshot of the add-ins task pane opened in Word](/description/add-in-screenshot.png)
+![Screenshot of the add-ins task pane opened in Word.](description/add-in-screenshot.png)
 
-When you select content and choose the 'Get…' button, the add-in uses the JavaScript **getSelectedDataAsync** method to generate a complete Office Open XML document package that includes the selected document content, and places it in the text area of the task pane (as shown in Figure 2). Use the text area in that task pane as a scratch pad. Copy the Office Open XML markup you retrieve into an XML file, edit it to include just the information you need, and paste it back into the text area of the task pane to test your edited markup.
+When you select content and choose the **Get…** button, the add-in uses the JavaScript **getSelectedDataAsync** method to generate a complete Office Open XML document package that includes the selected document content, and places it in the text area of the task pane (as shown in Figure 2). Use the text area in that task pane as a scratch pad. Copy the Office Open XML markup you retrieve into an XML file, edit it to include just the information you need, and paste it back into the text area of the task pane to test your edited markup.
 
 After you paste or edit the content in the text area of the task pane, click in a blank area of the document and then choose **Insert…** on the task pane to test the integrity of your markup. That button uses the JavaScript **setSelectedDataAsync** method to insert the contents of the task pane text area as rich content in Word, using the OOXML coercion type.
 
