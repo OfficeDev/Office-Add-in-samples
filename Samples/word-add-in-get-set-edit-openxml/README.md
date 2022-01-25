@@ -39,10 +39,12 @@ Shows how to get, edit, and set OOXML content in a Word document. This sample Wo
 ## Run the sample
 
 1. Open the **WD_OpenXML_js.sln** file in Visual Studio 2019 or later.
-2. Choose **Debug > Start Debugging** or choose the **F5** key.
-3. On the **Home** tab, in the **OOXML Editor** group, choose **Open**.
+1. In **Solution Explorer**, select the **WD_OpenXML_js** project.
+1. In the Properties window (**View > Properties Window**), set the **Start Action** to **Office Desktop Client**. Also set the **Start Document** to **SampleDoc.docx**.
+1. Choose **Debug > Start Debugging** or choose the **F5** key.
+1. On the **Home** tab, in the **OOXML Editor** group, choose **Open**.
 
-The SampleDoc.docx file will open in Word since it's set as the **StartAction** property of the add-in. The document contains a range of common rich content types for Word, including the following.
+The SampleDoc.docx file will open in Word since it's set as the **Start Action** property of the add-in. The document contains a range of common rich content types for Word, including the following.
 
 - formatted text
 - styled text
@@ -59,11 +61,11 @@ The following screenshots (Figure 1a and Figure 1b) show how the document surfac
 
 Figure 1a. SampleDoc.docx document contents.
 
-![Screenshot of SampleDoc.docx document opened with images and formatted text.](/description/CG_GetSetOOXML_fig01a.gif)
+![Screenshot of SampleDoc.docx document opened with images and formatted text.](description/CG_GetSetOOXML_fig01a.gif)
 
 Figure 1b. More SampleDoc.docx document contents.
 
-![Screenshot of SampleDoc.docx document opened with tables and SmartArt.](/description/CG_GetSetOOXML_fig01b.gif)
+![Screenshot of SampleDoc.docx document opened with tables and SmartArt.](description/CG_GetSetOOXML_fig01b.gif)
 
 **Note**
 
@@ -89,10 +91,6 @@ The sample contains:
 **Note**
 
 When you use JavaScript to generate the Office Open XML markup for selected content, it creates an entire document package, which is a far larger payload than you need for inserting just your content. For help interpreting, editing, and simplifying your work with Office Open XML for a Word add-in, see [Create Better Add-ins for Word with Office Open XML](https://docs.microsoft.com/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml).
-
-## Troubleshooting
-
-If the add-in starts with a blank document instead of the one shown in Figure 1, ensure the **StartAction** property of the WD_OpenXML_js project is set to SampleDoc.docx and not just to Word.
 
 ## Change log
 
