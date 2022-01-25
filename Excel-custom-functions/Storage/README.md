@@ -16,17 +16,17 @@ extensions:
 
 If you need to share data values between your UI-less custom functions and the task pane, you can use the OfficeRuntime.storage object. UI-less custom functions and task do not share the same runtime and cannot access the same data. OfficeRuntime.storage saves simple key/value pairs that you can access from both UI-less custom functions and the task pane.
 
-This sample accompanies the article [Save and share state in UI-less custom functions](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-save-state)
+This sample accompanies the article section [Store and access data](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-runtime#store-and-access-data)
 
 ## Applies to
 
-- UI-less custom functions on Excel desktop and online
+- UI-less custom functions on Excel desktop and online.
 
 **Note:** Shared runtime is now recommended for most custom functions scenarios. This sample applies to UI-less custom functions only. 
 
 ## Prerequisites
 
-To get set up and working with custom functions, see [Custom functions requirements](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-requirements)
+To get set up and working with custom functions, see [Custom functions requirements](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-requirements). See [Office client application and platform availability for Office Add-ins: Custom Functions (Excel only)](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-in-availability#custom-functions-excel-only) for a list of the platforms that support custom functions.
 
 ### Solution ###
 
