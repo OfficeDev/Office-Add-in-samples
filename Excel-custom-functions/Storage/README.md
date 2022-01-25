@@ -26,7 +26,7 @@ This sample accompanies the article section [Store and access data](https://docs
 
 ## Prerequisites
 
-To get set up and working with custom functions, see [Custom functions requirements](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-requirements). See [Office client application and platform availability for Office Add-ins: Custom Functions (Excel only)](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-in-availability#custom-functions-excel-only) for a list of the platforms that support custom functions.
+To learn more about UI-less custom functions, see [Authentication for UI-less custom functions](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-authentication). See [Custom Functions requirement sets](https://docs.microsoft.com/office/dev/add-ins/reference/requirement-sets/custom-functions-requirement-sets) for a list of the platforms that support custom functions.
 
 ### Solution ###
 
@@ -154,7 +154,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
     
-5. Follow the steps in [Run the sample](TBD: add link to your Run the sample section), but upload the `manifest-localhost.xml` file for step 6.
+5. Follow the steps in [Run the sample](#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Copyright
 
