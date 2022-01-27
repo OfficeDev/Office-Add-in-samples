@@ -1,0 +1,56 @@
+﻿<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title></title>
+    <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js" type="text/javascript"></script>
+    <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
+
+    <link href="../App.css" rel="stylesheet" type="text/css" />
+    <script src="../App.js" type="text/javascript"></script>
+
+
+    <link href="WD_OpenXML_js.css" rel="stylesheet" type="text/css" />
+    <script src="WD_OpenXML_js.js" type="text/javascript"></script>
+    <style type="text/css">
+        #status {
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page content -->
+    <!-- The following HTML includes a Div with an ID of 'status' that we write to in code from the WD_OpenXML_js.js file  -->
+    <!-- It also includes two buttons that we wire up click events for in the WD_OpenXML_js.js file  -->
+    <!-- And it includes the text area for displaying the OOXML used by the Get and Set functions in the WD_OpenXML_js.js file  -->
+
+    <div id="content-header">
+        <div class="padding ms-font-xl" style="text-align:center;">
+            Get, Set, and Edit OOXML
+        </div>
+
+        <div id="content-main">
+            <div class="padding ms-font-s-plus">
+                <div id="Content">
+                    <p>Select sample content in the document or add content and then select it. Then click 'Get...' below to display the Office Open XML (OOXML) markup for the selection in the text area of this task pane (using getSelectedDataAsync).</p>
+                    <p>When you click 'Insert...' below, the Set function in this app coerces the OOXML shown in the text area to add it to the document at the active selection point.</p>
+                    <button id="getOOXMLData" type="button">Get selected content as OOXML</button>
+                    <br/>
+                    <button id="setOOXMLData" type="button">Insert OOXML content into the document</button>
+                    <p/>
+                    <textarea id="dataOOXML" name="dataOOXML" rows="10" cols="50"></textarea>
+                    <br />
+                    <div id="status"></div>
+                </div>
+                <div id="Tips" style="margin-top:20px;">
+                    <p><b>Use the text area as a scratch pad:</b> You can use the task pane text area to test your edited markup. Copy and paste in that text area as needed. Then, click the 'Insert...' button to test your markup.</p>
+                    <p style="margin-top:20px;"><b>Tip:</b> Display formatting marks (such as paragraph marks) when selecting document content to ensure that you select only what's needed for your markup. On the Home tab, in the Paragraph group, click the paragraph mark icon.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

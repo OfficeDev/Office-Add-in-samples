@@ -1,0 +1,12 @@
+﻿/* Page-specific styling */
+
+button{
+    background: #2a8dd4;
+    color:white;
+    width: 250px;
+    height:32px;
+    margin-top:20px;
+     }
+button:hover {
+        background: darkslategray;
+    }
