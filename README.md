@@ -55,6 +55,8 @@ Check out these samples if you want to take advantage of the [shared runtime](ht
 
 | Name           | Description  |
 | -------------- | ------------ |
+| [Get, edit, and set OOXML content in a Word document with a Word add-in](Samples/word-add-in-get-set-edit-openxml)| Shows how to get, edit, and set OOXML content in a Word document.|
+| [Load and write Open XML in your Word add-in](Samples/word-add-in-load-and-write-open-xml) | Shows how to add a variety of rich content types to a Word document using the **setSelectedDataAsync** method with **ooxml** coercion type.|
 | [Use a shared library to migrate your Visual Studio Tools for Office add-in to an Office web add-in](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/VSTO-shared-code-migration) | Provides a strategy for code reuse when migrating from VSTO Add-ins to Office Add-ins. |
 | [Integrate an Azure function with your Excel custom function](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Excel-custom-functions/AzureFunction) | Learn how to integrate Azure functions with custom functions to move to the cloud or integrate additional services. |
 | [Dynamic DPI code samples](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/dynamic-dpi) | A collection of samples for handling DPI changes in COM, VSTO, and Office Add-ins. |
