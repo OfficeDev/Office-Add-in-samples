@@ -11,16 +11,16 @@ The following samples show how to build the simplest Office Add-in with only a m
 * [PowerPoint "Hello world" add-in](Samples/hello-world/powerpoint-hello-world)
 * [Word "Hello world" add-in](Samples/hello-world/word-hello-world)
 
-## Auth, Identity and SSO
+## Auth, Identity and Single Sign-on (SSO)
 
 | Name           | Description  |
 | -------------- | ------------ |
-| [Single Sign-on (SSO) Sample Outlook Add-in](Samples/auth/Outlook-Add-in-SSO) | The sample implements an Outlook add-in that uses Office's SSO feature to give the add-in access to Microsoft Graph data.|
-| [Get OneDrive data using Microsoft Graph and msal.js in an Office Add-in](Samples/auth/Office-Add-in-Microsoft-Graph-React) | Learn how to build a Microsoft Office Add-in, as a single-page application (SPA) with no backend, that connects to Microsoft Graph, and access workbooks stored in OneDrive for Business to update a spreadsheet.  |
-| [Office Add-in auth to Microsoft Graph](Samples/auth/Office-Add-in-Microsoft-Graph-ASPNET) | Learn how to build a Microsoft Office Add-in that connects to Microsoft Graph, and access workbooks stored in OneDrive for Business to update a spreadsheet. |
-| [Outlook Add-in auth to Microsoft Graph](Samples/auth/Outlook-Add-in-Microsoft-Graph-ASPNET). | Learn how to build a Microsoft Outlook Add-in that connects to Microsoft Graph, and access workbooks stored in OneDrive for Business to compose a new email message. |
-| [Single Sign-on (SSO) Office Add-in with ASP.NET](Samples/auth/Office-Add-in-ASPNET-SSO) | Implements an Office Add-in that uses the getAccessToken API in Office.js to give the add-in access to Microsoft Graph data. This sample is built on ASP.NET. |
-| [Single Sign-on (SSO) Office Add-in with Node.js](Samples/auth/Office-Add-in-NodeJS-SSO) | Implements an Office Add-in that uses the getAccessToken API in Office.js to give the add-in access to Microsoft Graph data. This sample is built on Node.js.|
+| [Use SSO in an Outlook Add-in](Samples/auth/Outlook-Add-in-SSO) | The sample implements an Outlook add-in that uses Office's SSO feature to give the add-in access to Microsoft Graph data.|
+| [Use SSO in an Office Add-in with ASP.NET](Samples/auth/Office-Add-in-ASPNET-SSO) | Implements an Office Add-in that uses the getAccessToken API in Office.js to give the add-in access to Microsoft Graph data. This sample is built on ASP.NET. |
+| [Use SSO in an Office Add-in with Node.js](Samples/auth/Office-Add-in-NodeJS-SSO) | Implements an Office Add-in that uses the getAccessToken API in Office.js to give the add-in access to Microsoft Graph data. This sample is built on Node.js.|
+| [Use MSAL.js for auth and Microsoft Graph in an Excel add-in](Samples/auth/Office-Add-in-Microsoft-Graph-React) | Learn how to build a Microsoft Office Add-in, as a single-page application (SPA) with no backend, that connects to Microsoft Graph, and access workbooks stored in OneDrive for Business to update a spreadsheet.  |
+| [Use MSAL.NET for auth and Microsoft Graph in an Excel add-in](Samples/auth/Office-Add-in-Microsoft-Graph-ASPNET) | Learn how to build a Microsoft Office Add-in that connects to Microsoft Graph, and access workbooks stored in OneDrive for Business to update a spreadsheet. |
+| [Use MSAL.NET for auth and Microsoft Graph in an Outlook add-in](Samples/auth/Outlook-Add-in-Microsoft-Graph-ASPNET). | Learn how to build a Microsoft Outlook Add-in that connects to Microsoft Graph, and access workbooks stored in OneDrive for Business to compose a new email message. |
 
 ## Outlook
 
