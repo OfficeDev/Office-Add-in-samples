@@ -5,10 +5,10 @@
 
 const express = require("express");
 var router = express.Router();
-const authHelper = require("../public/javascripts/obo-auth-helper");
-const getGraphData = require("../public/javascripts/server-msgraph-helper");
+const authHelper = require("../server-helpers/obo-auth-helper");
+const getGraphData = require("../server-helpers/msgraph-helper");
 
-router.get("/getuserdata", authHelper.validateJwt, async function (req, res) {
+router.get("/getuserfilenames", authHelper.validateJwt, async function (req, res) {
   const authHeader = req.headers.authorization;
   const oboRequest = {
     oboAssertion: authHeader.split(" ")[1],

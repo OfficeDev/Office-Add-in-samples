@@ -52,14 +52,14 @@ async function getFileNameList(){
 
 async function callFileNameListAPI(accessToken){
   return await $.ajax({type: "GET", 
-  url: "/getuserdata",
+  url: "/getuserfilenames",
   headers: { Authorization: "Bearer " + accessToken },
   cache: false
 }).done(function (response) {
 return response;
 })
 .fail(function (errorResult) {
-  // This error is relayed from `app.get('/getuserdata` in app.js file.
+  // This error is relayed from `app.get('/getuserfilenames` in app.js file.
   showMessage("Error from Microsoft Graph: " + JSON.stringify(errorResult));
   return null;
 });
