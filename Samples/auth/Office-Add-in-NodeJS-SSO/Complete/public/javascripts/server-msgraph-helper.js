@@ -3,7 +3,7 @@
     This file provides the provides functionality to get Microsoft Graph data. 
 */
 
-var getData = require('./odata-helper');
+var getData = require('./server-odata-helper');
 
 let domain = "graph.microsoft.com";
 let versionURLsegment = "/v1.0";

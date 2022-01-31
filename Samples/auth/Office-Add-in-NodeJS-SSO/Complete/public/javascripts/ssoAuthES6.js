@@ -12,53 +12,33 @@ if (!window.Promise) {
 
 Office.onReady(function (info) {
   $(function () {
-    $("#getGraphDataButton").on("click", getGraphData);
+    $("#getGraphDataButton").on("click", getFileNameList);
   });
 });
 
 let retryGetAccessToken = 0;
 
-async function getGraphData() {
-  // The following method will only be called when you are testing the fallback path.
-  // See the try block below.
-  function MockSSOError(code) {
-    this.code = code;
-  }
-
+async function getFileNameList(){
   try {
-    /* 
-            To test the fallback path, force the SSO path to fail by uncommenting the 
-            following line. */
-    //    throw new MockSSOError("13003");
-
-    let bootstrapToken = await Office.auth.getAccessToken({
+    
+    // The access token returned from getAccessToken only has permissions to your web server APIs,
+    // and the identity claims of the signed in user.
+    let accessToken = await Office.auth.getAccessToken({
       allowSignInPrompt: true,
       allowConsentPrompt: true,
       forMSGraphAccess: true,
     });
-    let exchangeResponse = await getGraphToken(bootstrapToken);
-    if (exchangeResponse.claims) {
-      // Microsoft Graph requires an additional form of authentication. Have the Office host
-      // get a new token using the Claims string, which tells AAD to prompt the user for all
-      // required forms of authentication.
-      let mfaBootstrapToken = await Office.auth.getAccessToken({
-        authChallenge: exchangeResponse.claims,
-      });
-      exchangeResponse = await getGraphToken(mfaBootstrapToken);
-    }
 
-    if (exchangeResponse.error) {
-      // AAD errors are returned to the client with HTTP code 200, so they do not trigger
-      // the catch block below.
-      handleAADErrors(exchangeResponse);
-    } else {
-      // For debugging:
-      // showMessage("ACCESS TOKEN: " + JSON.stringify(exchangeResponse.access_token));
-
-      // makeGraphApiCall makes an AJAX call to the MS Graph endpoint. Errors are caught
-      // in the .fail callback of that call, not in the catch block below.
-      makeGraphApiCall(exchangeResponse.access_token);
-    }
+    let response = await callFileNameListAPI(accessToken);
+    if (response!=null) writeFileNamesToOfficeDocument(response)
+    .then(function () { 
+        showMessage("Your data has been added to the document."); 
+    })
+    .catch(function (error) {
+        // The error from writeFileNamesToOfficeDocument will begin 
+        // "Unable to add filenames to document."
+        showMessage(error);
+    });
   } catch (exception) {
     // The only exceptions caught here are exceptions in your code in the try block
     // and errors returned from the call of `getAccessToken` above.
@@ -70,16 +50,20 @@ async function getGraphData() {
   }
 }
 
-async function getGraphToken(bootstrapToken) {
-  let response = await $.ajax({
-    type: "GET",
-    url: "/auth",
-    headers: { Authorization: "Bearer " + bootstrapToken },
-    cache: false,
-  });
-  return response;
+async function callFileNameListAPI(accessToken){
+  return await $.ajax({type: "GET", 
+  url: "/getuserdata",
+  headers: { Authorization: "Bearer " + accessToken },
+  cache: false
+}).done(function (response) {
+return response;
+})
+.fail(function (errorResult) {
+  // This error is relayed from `app.get('/getuserdata` in app.js file.
+  showMessage("Error from Microsoft Graph: " + JSON.stringify(errorResult));
+  return null;
+});
 }
-
 function handleClientSideErrors(error) {
   switch (error.code) {
     case 13001:
@@ -124,22 +108,22 @@ function handleClientSideErrors(error) {
   }
 }
 
-function handleAADErrors(exchangeResponse) {
-  // On rare occasions the bootstrap token is unexpired when Office validates it,
-  // but expires by the time it is sent to AAD for exchange. AAD will respond
-  // with "The provided value for the 'assertion' is not valid. The assertion has expired."
-  // Retry the call of getAccessToken (no more than once). This time Office will return a
-  // new unexpired bootstrap token.
-  if (
-    exchangeResponse.error_description.indexOf("AADSTS500133") !== -1 &&
-    retryGetAccessToken <= 0
-  ) {
-    retryGetAccessToken++;
-    getGraphData();
-  } else {
-    // For all other AAD errors, fallback to non-SSO sign-in.
-    // For debugging:
-    // showMessage("AAD ERROR: " + JSON.stringify(exchangeResponse));
-    dialogFallback();
-  }
-}
+// function handleAADErrors(exchangeResponse) {
+//   // On rare occasions the bootstrap token is unexpired when Office validates it,
+//   // but expires by the time it is sent to AAD for exchange. AAD will respond
+//   // with "The provided value for the 'assertion' is not valid. The assertion has expired."
+//   // Retry the call of getAccessToken (no more than once). This time Office will return a
+//   // new unexpired bootstrap token.
+//   if (
+//     exchangeResponse.error_description.indexOf("AADSTS500133") !== -1 &&
+//     retryGetAccessToken <= 0
+//   ) {
+//     retryGetAccessToken++;
+//     getGraphData();
+//   } else {
+//     // For all other AAD errors, fallback to non-SSO sign-in.
+//     // For debugging:
+//     // showMessage("AAD ERROR: " + JSON.stringify(exchangeResponse));
+//     dialogFallback();
+//   }
+// }

@@ -20,7 +20,10 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.10.0",
     "node-fetch": "^2.6.7",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "@azure/msal-node": "1.5.0",
+    "jwks-rsa": "^1.8.1",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "office-addin-dev-certs": "1.5.18"
