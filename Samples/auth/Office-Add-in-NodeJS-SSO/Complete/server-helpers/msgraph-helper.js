@@ -18,8 +18,8 @@ const versionURLsegment = "/v1.0";
  */
 async function getGraphData(accessToken, apiURLsegment, queryParamsSegment) {
     // HTML encode the parameters to prevent JavaScript injection attack
-    apiURLsegment = encodeURIComponent(apiURLsegment);
-    queryParamsSegment = encodeURIComponent(queryParamsSegment);
+ //   apiURLsegment = encodeURIComponent(apiURLsegment);
+ //   queryParamsSegment = encodeURIComponent(queryParamsSegment);
 
     return new Promise(async (resolve, reject) => { 
 
