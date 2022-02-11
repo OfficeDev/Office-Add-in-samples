@@ -11,16 +11,18 @@ extensions:
   technologies:
   - Add-ins
   createdDate: 07/06/2015 2:00:00 PM
-description: "Shows how to add a variety of rich content types to a Word document using the setSelectedDataAsync method with ooxml coercion type.."
+description: "Shows how to add a variety of rich content types to a Word document using the setSelectedDataAsync method with ooxml coercion type."
 ---
 
 # Load and write Open XML in your Word add-in
 
 This sample add-in shows you how to add a variety of rich content types to a Word document using the setSelectedDataAsync method with ooxml coercion type. The add-in also gives you the ability to show the Office Open XML markup for each sample content type right on the page.
 
+**Important**: We recommend you use API available in the [Word API requirement sets](https://docs.microsoft.com/office/dev/add-ins/reference/requirement-sets/word-api-requirement-sets) as your first option. Use OOXML if the API you need isn't available or your add-in is targeting Word 2013.
+
 ## Description of the sample
 
-The add-in initializes in a blank Word document. You choose an option to insert the content or its markup at the selection point in the active Word document and then click the object type you want from the following options:
+The add-in initializes in a blank Word document. You choose an option to insert the content or its markup at the selection point in the active Word document and then click the object type you want from the following options.
 
 * formatted text
 * styled text
@@ -40,7 +42,7 @@ Figure 1 shows how the task pane for the sample add-in appears when the solution
 
 **Note**
 
-When you choose the option to see the markup for a selected type of content, what you're seeing is the Office Open XML edited to remove unnecessary markup, along with a few tips for additional guidance. You can also review any piece of markup used in the add-in (with formatting to make it easier to navigate) directly in the Visual Studio solution. For further help interpreting, editing, and simplifying your work with Office Open XML for Word add-ins, see  Creating Better Add-ins for Word with Office Open XML.
+When you choose the option to see the markup for a selected type of content, what you're seeing is the Office Open XML edited to remove unnecessary markup, along with a few tips for additional guidance. You can also review any piece of markup used in the add-in (with formatting to make it easier to navigate) directly in the Visual Studio solution. For further help interpreting, editing, and simplifying your work with Office Open XML for Word add-ins, see [Creating Better Add-ins for Word 2013 with Office Open XML](https://docs.microsoft.com/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml).
 
 Figures 2a - 2b show how the document surface and task pane appear after extracting Office Open XML from the selection.
 
@@ -53,19 +55,18 @@ Figures 2a - 2b show how the document surface and task pane appear after extract
 This sample requires:
 
 * Visual Studio 2019
-* Microsoft 365 - You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
+* Microsoft 365
+  * You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
 ## Key components of the sample
 
 The sample add-in contains:
 
-* The LoadingAndWritingOOXML project, which contains:
-* The LoadingAndWritingOOXML.xml manifest file
-* The LoadingAndWritingOOXML Web project, which contains multiple template files
-* However, the files that have been developed as part of this sample solution include:
-* LoadingAndWritingOOXML.html (in the App folder, LoadingAndWritingOOXML subfolder). This contains the HTML user interface that is displayed in the task pane. It consists of two HTML radio buttons for choosing the option to insert a selected content type or display its markup in Word, several buttons for selecting a content type, and instructional text
-* LoadingAndWritingOOXML.js (in the same folder as above). This script file contains code that runs when the add-in is loaded. This startup wires up the Click event handlers for the eleven buttons in LoadingAndWritingOOXML.html that represent different content types. The handler in the JavaScript connects each button to the correct function based on the actively-selected radio button, to either write the content or its markup into the document.
-* Several XML files containing the markup for each of the content types you can insert via the add-in. These are located in the folder named OOXMLSamples. (Note that some content types have a separate XML file for the markup when inserting the object vs. displaying the markup on the page because chunks of binary data where applicable (i.e., for pictures and charts) are removed from the markup displayed on the page for ease of review. To learn more about the binary data contained in some types of Office Open XML markup, see the previously-referenced article  Creating Better Add-ins for Word with Office Open XML
+* The LoadingAndWritingOOXML project, which contains the LoadingAndWritingOOXML.xml manifest file.
+* The LoadingAndWritingOOXML Web project, which contains multiple template files. However, the files that have been developed as part of this sample solution include:
+  * LoadingAndWritingOOXML.html (in the App folder, LoadingAndWritingOOXML subfolder). This contains the HTML user interface that is displayed in the task pane. It consists of two HTML radio buttons for choosing the option to insert a selected content type or display its markup in Word, several buttons for selecting a content type, and instructional text
+  * LoadingAndWritingOOXML.js (in the same folder as above). This script file contains code that runs when the add-in is loaded. This startup wires up the Click event handlers for the eleven buttons in LoadingAndWritingOOXML.html that represent different content types. The handler in the JavaScript connects each button to the correct function based on the actively-selected radio button, to either write the content or its markup into the document.
+  * Several XML files containing the markup for each of the content types you can insert via the add-in. These are located in the folder named OOXMLSamples. (Note that some content types have a separate XML file for the markup when inserting the object vs. displaying the markup on the page because chunks of binary data where applicable (i.e., for pictures and charts) are removed from the markup displayed on the page for ease of review. To learn more about the binary data contained in some types of Office Open XML markup, see the previously-referenced article  Creating Better Add-ins for Word with Office Open XML
 
 All other files are automatically provided by the Visual Studio project template for Add-ins for Office, and they have not been modified in the development of this sample add-in.
 
@@ -83,7 +84,7 @@ To run the sample, choose the F5 key.
 
 ## Troubleshooting
 
-If the add-in fails to respond as described, try reloading it. (In the task pane, choose the down arrow, and then choose Reload.)
+If the add-in fails to respond as described, try reloading it. (In the task pane, choose the down arrow, and then select **Reload**.)
 
 ## Related content
 
