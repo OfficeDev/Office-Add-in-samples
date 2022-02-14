@@ -18,7 +18,7 @@ description: "Shows how to add a variety of rich content types to a Word documen
 
 This sample add-in shows you how to add a variety of rich content types to a Word document using the setSelectedDataAsync method with ooxml coercion type. The add-in also gives you the ability to show the Office Open XML markup for each sample content type right on the page.
 
-**Important**: We recommend you use APIs available in the [Word API requirement sets](https://docs.microsoft.com/office/dev/add-ins/reference/requirement-sets/word-api-requirement-sets) as your first option. For an example, see the "Insert formatted text" code snippet in [Script lab](https://aka.ms/getscriptlab) on Word. Use OOXML if the API you need isn't available or your add-in is targeting Word 2013.
+**Important**: We recommend you use APIs available in the [Word API requirement sets](https://docs.microsoft.com/office/dev/add-ins/reference/requirement-sets/word-api-requirement-sets) as your first option. For an example, see the [Insert formatted text](https://github.com/OfficeDev/office-js-snippets/blob/prod/samples/word/25-paragraph/insert-formatted-text.yaml) code snippet in [Script lab](https://appsource.microsoft.com/product/office/wa104380862) on Word. Use OOXML if the API you need isn't available or your add-in is targeting Word 2013.
 
 ## Description of the sample
 
