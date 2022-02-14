@@ -1,3 +1,19 @@
+---
+page_type: sample
+urlFragment: outlook-add-in-encrypt-attachments
+products:
+- office-outlook
+- office
+languages:
+- javascript
+extensions:
+  contentType: samples
+  technologies:
+  - Add-ins
+  createdDate: 10/14/2021 10:00:00 AM
+description: "Use Outlook event-based activation to encrypt attachments, process meeting request attendees, and react to appointment date/time changes."
+---
+
 # Use Outlook event-based activation to encrypt attachments, process meeting request attendees and react to appointment date/time changes
 
 **Applies to**: Outlook on Windows | Outlook on the web
@@ -33,8 +49,8 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 
 ## Solution
 ---
-| Solution                                                                                                                     | Author(s)    |
-| ---------------------------------------------------------------------------------------------------------------------------- | ------------ |
+| Solution | Author(s) |
+| ---- | ---- |
 | Use Outlook event-based activation to process item attachments, meeting request recipients, and appointment date/time changes. | [Eric Legault](https://twitter.com/elegault) |
 
 ## Version history
@@ -48,7 +64,7 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 Run this sample in Outlook on Windows or in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-2. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 ### Try it out
 
@@ -57,16 +73,16 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 #### Manage attachments
 1. Create a new message or appointment.
     >A notification appears at the top of the message that reads **Open the task pane for details about running the Outlook event-based activation sample add-in**. | Open task pane | Dismiss
-2. Add an attachment.
+1. Add an attachment.
     > A notification appears at the top of the message that reads **The '{file name} attachment has been encrypted and decrypted and added as reference attachments for your review**. | Dismiss
 
 #### Set up meetings
 1. Create a new meeting request. In Outlook on the web, choose **More options** to expand the request and include all details. Otherwise, you won't see the notifications in the next steps.
-2. Add a user as a required or optional attendee.
+1. Add a user as a required or optional attendee.
     > A notification appears at the top of the message that reads **Your appointment has 1 required and 0 optional attendees**. | Dismiss
-3. Add a distribution list as a required or optional attendee.
+1. Add a distribution list as a required or optional attendee.
     > A notification appears at the top of the message that reads **Warning! Your appointment has a distribution list! Make sure you have chosen the correct one!** | Dismiss
-4. Change the start or end date or time.
+1. Change the start or end date or time.
     > A notification appears at the top of the message that reads **Original date/time: Start = ##/##/#### #:##:## ##; End = ##/##/#### #:##:## ##**. | Dismiss
 
 ## Run the sample from localhost
@@ -116,7 +132,7 @@ The manifest configures a runtime that loads a single JavaScript file to handle 
 <bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-encrypt-attachments/src/commands/commands.js" />
 ```
 
-The add-in handles six events that are mapped to various functions:
+The add-in handles six events that are mapped to various functions.
 
 ```xml
 <LaunchEvents>
