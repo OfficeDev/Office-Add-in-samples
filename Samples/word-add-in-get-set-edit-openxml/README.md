@@ -22,7 +22,7 @@ description: 'Learn how to get, edit, and set OOXML content in a Word document.'
 
 Shows how to get, edit, and set OOXML content in a Word document. This sample Word add-in provides a scratch pad to get Office Open XML for your own content and test your own edited Office Open XML snippets.
 
-**Important**: We recommend you use APIs available in the [Word API requirement sets](https://docs.microsoft.com/office/dev/add-ins/reference/requirement-sets/word-api-requirement-sets) as your first option. For an example, see the [Insert formatted text](https://github.com/OfficeDev/office-js-snippets/blob/prod/samples/word/25-paragraph/insert-formatted-text.yaml) code snippet in [Script lab](https://appsource.microsoft.com/product/office/wa104380862) on Word. Use OOXML if the API you need isn't available or your add-in is targeting Word 2013.
+**Important**: We recommend you use APIs available in the [Word API requirement sets](https://docs.microsoft.com/office/dev/add-ins/reference/requirement-sets/word-api-requirement-sets) as your first option. For an example, see the [Insert formatted text](https://github.com/OfficeDev/office-js-snippets/blob/prod/samples/word/25-paragraph/insert-formatted-text.yaml) code snippet in [Script lab](https://appsource.microsoft.com/product/office/wa104380862) on Word. Use OOXML if the API you need isn't available.
 
 ## Features
 
