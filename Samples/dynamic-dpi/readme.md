@@ -1,5 +1,6 @@
 ---
 page_type: sample
+urlFragment: dynamic-dpi-code-samples
 products:
 - office-365
 languages:
