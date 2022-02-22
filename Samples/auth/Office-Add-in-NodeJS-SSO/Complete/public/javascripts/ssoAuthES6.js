@@ -1,7 +1,6 @@
 /*
  * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo.
  *
- * This file shows how to use the SSO API to get a bootstrap token.
  */
 
 // If the add-in is running in Internet Explorer, the code must add support
@@ -12,59 +11,113 @@ if (!window.Promise) {
 
 Office.onReady(function (info) {
   $(function () {
-    $("#getGraphDataButton").on("click", getFileNameList);
+    $("#getFileNameListButton").on("click", getFileNameList);
   });
 });
 
-let retryGetAccessToken = 0;
-
-async function getFileNameList(){
-  try {
-    
-    // The access token returned from getAccessToken only has permissions to your web server APIs,
-    // and the identity claims of the signed in user.
-    let accessToken = await Office.auth.getAccessToken({
-      allowSignInPrompt: true,
-      allowConsentPrompt: true,
-      forMSGraphAccess: true,
-    });
-
-    let response = await callFileNameListAPI(accessToken);
-    if (response!=null) writeFileNamesToOfficeDocument(response)
-    .then(function () { 
-        showMessage("Your data has been added to the document."); 
-    })
-    .catch(function (error) {
-        // The error from writeFileNamesToOfficeDocument will begin 
+/**
+ * Handles the click event for the Get File Name List button.
+ * Requests a call to the web server /getuserfilenames that 
+ * gets up to 10 file names listed in the user's OneDrive. 
+ * The file names are inserted into the document.
+ */
+async function getFileNameList() {
+  const response = await callWebServerAPI("/getuserfilenames");
+  if (response != null)
+    writeFileNamesToOfficeDocument(response)
+      .then(function () {
+        showMessage("Your OneDrive filenames are added to the document.");
+      })
+      .catch(function (error) {
+        // The error from writeFileNamesToOfficeDocument will begin
         // "Unable to add filenames to document."
         showMessage(error);
-    });
-  } catch (exception) {
-    // The only exceptions caught here are exceptions in your code in the try block
-    // and errors returned from the call of `getAccessToken` above.
-    if (exception.code) {
-      handleClientSideErrors(exception);
-    } else {
-      showMessage("EXCEPTION: " + JSON.stringify(exception));
-    }
-  }
+      });
 }
 
-async function callFileNameListAPI(accessToken){
-  return await $.ajax({type: "GET", 
-  url: "/getuserfilenames",
-  headers: { Authorization: "Bearer " + accessToken },
-  cache: false
-}).done(function (response) {
-return response;
-})
-.fail(function (errorResult) {
-  // This error is relayed from `app.get('/getuserfilenames` in app.js file.
-  showMessage("Error from Microsoft Graph: " + JSON.stringify(errorResult));
-  return null;
-});
+/**
+ * Calls the add-in's web server API specified by the url. Only makes GET calls.
+ *
+ * @param {*} url The url specifying the REST API name to call.
+ * @returns The response from the server.
+ */
+async function callWebServerAPI(url) {
+  // Set up default auth options.
+  let authOptions = {
+    allowSignInPrompt: true,
+    allowConsentPrompt: true,
+    forMSGraphAccess: true
+  };
+  let accessToken=null;
+
+  // There are two scenarios where we might have to call getAccessToken again,
+  // so the following variables set up a loop for retries on potential error scenarios.
+  let count = 0;
+  const maxTries = 2;
+  done=false;
+  while (!done && (count<maxTries)) {
+    count++;
+    try {
+      // The access token returned from getAccessToken only has permissions to your web server APIs,
+      // and it contains the identity claims of the signed-in user.
+      accessToken = await Office.auth.getAccessToken(authOptions);
+    } catch (error) {
+      handleSSOErrors(error);
+    }
+
+    try {
+      const response = await $.ajax({
+        type: "GET",
+        url: url,
+        headers: { Authorization: "Bearer " + accessToken },
+        cache: false,
+      });
+      return response;
+    } catch (e) {
+      // Our special handling on the server will cause the result that is returned
+      // from a AADSTS50076 (a 2FA challenge) to have a Message property but no ExceptionMessage.
+      var message = e.responseJSON.Message;
+
+      // Results from other errors (other than AADSTS50076) will have an ExceptionMessage property.
+      var exceptionMessage = result.responseJSON.ExceptionMessage;
+
+      if (exceptionMessage && e.Message.indexOf("AADSTS500133") !== -1) {
+        // On rare occasions the access token could expire after it was sent to the server.
+        // Microsoft identity platform will respond with
+        // "The provided value for the 'assertion' is not valid. The assertion has expired."
+        // Continue the loop so that getAccessToken is called again to get a fresh token.
+        continue;
+      } else if (message) {
+        // Microsoft Graph requires an additional form of authentication. Have the Office host
+        // get a new token using the Claims string, which tells Microsoft identity platform to
+        // prompt the user for all required forms of authentication.
+        if (message.indexOf("AADSTS50076") !== -1) {
+          const claims = JSON.parse(message).Claims;
+          const claimsAsString = JSON.stringify(claims);
+          authOptions.authChallenge = claimsAsString;
+          continue;
+        }
+      } else {
+        // For debugging:
+        // showResult(["Microsoft identity platform error: " + JSON.stringify(exceptionMessage)]);
+
+        // For all other Microsoft identity platform errors, fallback to non-SSO sign-in.
+        dialogFallback();
+        continue;
+      }
+
+    }
+  }
+  // If we reach this point we were unable to successfully call the server API through SSO.
+  // Use fallback dialog instead.
+  dialogFallback();
 }
-function handleClientSideErrors(error) {
+
+/**
+ * Handles any error returned from getAccessToken.
+ * @param {*} error The error to process
+ */
+function handleSSOErrors(error) {
   switch (error.code) {
     case 13001:
       // No one is signed into Office. If the add-in cannot be effectively used when no one
@@ -107,23 +160,3 @@ function handleClientSideErrors(error) {
       break;
   }
 }
-
-// function handleAADErrors(exchangeResponse) {
-//   // On rare occasions the bootstrap token is unexpired when Office validates it,
-//   // but expires by the time it is sent to AAD for exchange. AAD will respond
-//   // with "The provided value for the 'assertion' is not valid. The assertion has expired."
-//   // Retry the call of getAccessToken (no more than once). This time Office will return a
-//   // new unexpired bootstrap token.
-//   if (
-//     exchangeResponse.error_description.indexOf("AADSTS500133") !== -1 &&
-//     retryGetAccessToken <= 0
-//   ) {
-//     retryGetAccessToken++;
-//     getGraphData();
-//   } else {
-//     // For all other AAD errors, fallback to non-SSO sign-in.
-//     // For debugging:
-//     // showMessage("AAD ERROR: " + JSON.stringify(exchangeResponse));
-//     dialogFallback();
-//   }
-// }
