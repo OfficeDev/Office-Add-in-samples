@@ -27,7 +27,7 @@ The following samples show how to build the simplest Office Add-in with only a m
 | Name           | Description  |
 | -------------- | ------------ |
 | [Use Outlook event-based activation to encrypt attachments, process meeting request attendees and react to appointment date/time changes](Samples/outlook-encrypt-attachments) | Shows how to use event-based activation to encrypt attachments when added by the user. Also shows event handling for recipients changed in a meeting request, and changes to the start or end date or time in a meeting request. |
-| [Use Outlook event-based activation to indicate external recipients (preview)](Samples/outlook-tag-external) | Uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the appendOnSendAsync API to add a disclaimer.|
+| [Use Outlook event-based activation to indicate external recipients](Samples/outlook-tag-external) | Uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the appendOnSendAsync API to add a disclaimer.|
 | [Use Outlook event-based activation to set the signature](Samples/outlook-set-signature) | Uses event-based activation to run an Outlook add-in when the user creates a new message or appointment.|
 
 ## Excel
