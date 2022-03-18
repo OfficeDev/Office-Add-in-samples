@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "ms-azuretools.vscode-azurefunctions",
-    "ms-vscode.csharp"
+    "ms-azuretools.vscode-azurefunctions"
   ]
 }
