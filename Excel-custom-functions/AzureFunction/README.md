@@ -59,12 +59,13 @@ This sample contains an `Add` custom function that calls an Azure Function named
 ### Build and run the Azure Function
 
 1. Clone or download this repository to a local project folder.
-2. Start Visual Studio Code and open the **AzureFunction/AzureFunctionProject** folder in the project.
-3. Choose **Run** > **Start Debugging** (F5). If you are prompted to install the **Azure Functions Core Tools**, choose **Install**. The Azure Function project will compile and start running.
+1. Start Visual Studio Code and open the **AzureFunction/AzureFunctionProject** folder in the project.
+1. Choose **Run** > **Start Debugging** (F5). If you are prompted to install the **Azure Functions Core Tools**, choose **Install**. The Azure Function project will compile and start running.
     >Note: You may see an alert to allow func access through the firewall.
+    >Note: If your default terminal in VS Code is set to PowerShell, you may see an error that "func.ps1 cannot be loaded." To work around this error, open a command prompt or bash terminal and enter the command "func host start".
     After running you should see output similar to the following image. It will list the URL you can use to call the Azure Function.
     ![Screenshot of the Azure Function project output window after debug start.](images/azure-debug-start.png)
-4. You can test that the Azure Function is working by calling it from a browser. Open a browser window and enter the following URL to add two numbers.
+1. You can test that the Azure Function is working by calling it from a browser. Open a browser window and enter the following URL to add two numbers.
 `http://localhost:7071/api/AddTwo?first=1&second=2`. You should see the result `{ "answer": 3}` returned to the browser.
 
 ### Run the custom function add-in
@@ -158,12 +159,14 @@ Once the Azure Function is deployed you can update the custom function to call t
 
 1. Start Visual Studio Code and open the **AzureFunction/CustomFunctionProject/src/functions/functions.js** file in the project.
 1. Go to the add function which sets the url string. The code appears as the following:
+
     ```js
     function add(first, second) {
       //If you publish the Azure Function online, update the following URL to use the correct URL location.
       const url = "http://localhost:7071/api/AddTwo";
       ...
     ```
+
 1. In the `const url` assignment replace the localhost URL with the Azure Function URL you copied from the previous exercise. Save the file.
 1. Follow the steps in [Run the custom function from localhost](run-the-custom-function-from-localhost) to start the add-in and sideload it to Excel.
 1. Try out the custom function by entering `=CONTOSO.ADD(1,2)` into a cell. The cell should call the custom function, which then calls the Azure Function, and returns the result of 3.
