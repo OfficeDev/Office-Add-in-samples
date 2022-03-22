@@ -1,0 +1,8 @@
+{
+    "allowed":
+    [
+        "https://localhost:3000/functions.js",
+        "https://localhost:3000/functions.json",
+        "https://localhost:3000/functions.html"
+    ]
+}

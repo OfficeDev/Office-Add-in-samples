@@ -2,8 +2,8 @@
   "functions": [
     {
       "description": "Add two numbers",
-      "id": "ADD",
-      "name": "ADD",
+      "id": "ADDTWO",
+      "name": "ADDTWO",
       "parameters": [
         {
           "description": "First number",
