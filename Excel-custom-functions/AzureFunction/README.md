@@ -162,7 +162,7 @@ You'll need to enable CORS support for the Office Add-in before it can call the 
 
 Once the Azure Function is deployed you can update the custom function to call the cloud version of the Azure Function instead of the localhost version.
 
-1. Start Visual Studio Code and open the **AzureFunction/CustomFunctionProject/src/functions/functions.js** file in the project.
+1. Start Visual Studio Code and open the **AzureFunction/CustomFunctionProject/functions.js** file in the project.
 1. Go to the add function which sets the url string. The code appears as the following:
 
     ```js
@@ -224,7 +224,7 @@ The `context.res` object is used to return the result (either an error, or the J
 
 ### The custom function
 
-The Excel custom function is named `Add` and is in the **CustomFunctionProject/src/functions/functions.js** file. The `Add` function calls the `AddTwo` Azure Function and just passes along the `first` and `second` parameters. The fetch function is used to call the Azure Function, and the returned answer string is returned to Excel.
+The Excel custom function is named `Add` and is in the **CustomFunctionProject/functions.js** file. The `Add` function calls the `AddTwo` Azure Function and just passes along the `first` and `second` parameters. The fetch function is used to call the Azure Function, and the returned answer string is returned to Excel.
 
 ```javascript
 function add(first, second) {
