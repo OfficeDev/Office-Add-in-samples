@@ -30,4 +30,4 @@
   });
 }
 
-CustomFunctions.associate("ADDTWO", add);
+CustomFunctions.associate("ADD", add);
