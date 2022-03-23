@@ -8,7 +8,7 @@
  * @param {number} second Second number
  * @returns {number} The sum of the two numbers.
  */
-function add(first, second) {
+ function add(first, second) {
   //If you publish the Azure Function online, update the following URL to use the correct URL location.
   const url = "http://localhost:7071/api/AddTwo";
 
