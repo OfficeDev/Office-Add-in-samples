@@ -1,0 +1,46 @@
+[
+    {
+      "name": "office-add-in-contextual-tabs",
+      "reponame": "office-contextual-tabs",
+      "source": "officedev",
+      "title": "Create custom contextual tabs on the ribbon",
+      "shortDescription": "Learn how to create a contextual tab that displays on the ribbon in response to the context of the Office UI.",
+      "url": "https://github.com/pnp/List-Formatting/tree/master/view-samples/teams-group-format",
+      "longDescription": [
+        "Learn how to create a contextual tab that displays on the ribbon in response to the context of the Office UI."
+      ],
+      "creationDateTime": "2021-2-11T00:00:00.000Z",
+      "updateDateTime": "2021-2-11T00:00:00.000Z",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+        {
+          "type": "image",
+          "order": 100,
+          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-contextual-tabs/pnp-add-contextual-tabs-to-your-add-in.png",
+          "alt": "Screenshot that shows when a table in Excel has the focus, a custom contextual tab named Table Data is shown on the ribbon."
+        }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "AbidRahman-MSFT",
+          "pictureUrl": "https://github.com/AbidRahman-MSFT.png",
+          "name": "Abid Rahman"
+        }
+      ],
+      "references": [
+        {
+          "name": "Create custom contextual tabs in Office Add-ins",
+          "description": "A contextual tab is a hidden tab control in the Office ribbon that is displayed in the tab row when a specified event occurs in the Office document. For example, the Table Design tab that appears on the Excel ribbon when a table is selected. You include custom contextual tabs in your Office Add-in and specify when they are visible or hidden, by creating event handlers that change the visibility.",
+          "url": "https://docs.microsoft.com/en-us/office/dev/add-ins/design/contextual-tabs"
+        }
+      ]
+    }
+  ] 
