@@ -5,7 +5,7 @@
       "source": "officedev",
       "title": "Create custom contextual tabs on the ribbon",
       "shortDescription": "Learn how to create a contextual tab that displays on the ribbon in response to the context of the Office UI.",
-      "url": "https://github.com/pnp/List-Formatting/tree/master/view-samples/teams-group-format",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-contextual-tabs",
       "longDescription": [
         "Learn how to create a contextual tab that displays on the ribbon in response to the context of the Office UI."
       ],
