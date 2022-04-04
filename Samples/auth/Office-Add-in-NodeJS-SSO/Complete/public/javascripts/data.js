@@ -1,10 +1,10 @@
 /*
  * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. -->
  *
- * This file shows how to open call Microsoft Graph.
+ * This file shows how to call APIs on your web server, which will then call Microsoft Graph.
  */
 
-function makeGraphApiCall(accessToken) {
+function makeWebServerApiCall(accessToken) {
     $.ajax({type: "GET", 
         url: "/getuserfilenames",
         headers: {"access_token": accessToken },

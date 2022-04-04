@@ -22,7 +22,7 @@ function processMessage(arg) {
         if (messageFromDialog.status === 'success') { 
             // We now have a valid access token.
             loginDialog.close();
-            makeGraphApiCall(messageFromDialog.result);
+            makeWebServerApiCall(messageFromDialog.result);
         }
         else {
             // Something went wrong with authentication or the authorization of the web application.
