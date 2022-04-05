@@ -1,0 +1,41 @@
+[
+  {
+    "name": "outlook-add-in-auth-aspnet-graph",
+    "reponame": "Outlook-Add-in-Microsoft-Graph-ASPNET",
+    "source": "officedev",
+    "title": "Get Excel workbooks using Microsoft Graph and MSAL in an Outlook Add-in",
+    "shortDescription": "Learn how to build a Microsoft Outlook Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into a new message compose form in Outlook.",
+    "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/auth/Office-Add-in-NodeJS-SSO",
+    "longDescription": [
+      "Learn how to build a Microsoft Outlook Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into a new message compose form in Outlook."
+    ],
+    "creationDateTime": "2019-07-08",
+    "updateDateTime": "2019-07-08",
+    "products": ["Office"],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "JavaScript"
+      },
+      {
+        "key": "GRAPH-APIS",
+        "value": ["identity", "files"]
+      }
+    ],
+    "thumbnails": [],
+    "authors": [
+      {
+        "gitHubAccount": "microsoft",
+        "pictureUrl": "https://github.com/microsoft.png",
+        "name": "Microsoft"
+      }
+    ],
+    "references": [
+      {
+        "name": "Authorize to Microsoft Graph from an Office Add-in",
+        "description": "Your add-in can get authorization to Microsoft Graph data by obtaining an access token to Microsoft Graph from the Microsoft identity platform.",
+        "url": "https://docs.microsoft.com/office/dev/add-ins/develop/authorize-to-microsoft-graph-without-sso"
+      }
+    ]
+  }
+]
