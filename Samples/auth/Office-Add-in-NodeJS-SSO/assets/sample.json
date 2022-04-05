@@ -1,0 +1,45 @@
+[
+    {
+      "name": "office-add-in-sso-nodejs",
+      "reponame": "Office-Add-in-NodeJS-SSO",
+      "source": "officedev",
+      "title": "Office Add-in that supports Single Sign-on to Office, the Add-in, and Microsoft Graph",
+      "shortDescription": "The getAccessToken API in Office.js enables users who are signed into Office to get access to an AAD-protected add-in and to Microsoft Graph without needing to sign-in again.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/auth/Office-Add-in-NodeJS-SSO",
+      "longDescription": [
+        "The getAccessToken API in Office.js enables users who are signed into Office to get access to an AAD-protected add-in and to Microsoft Graph without needing to sign-in again."
+      ],
+      "creationDateTime": "2017-05-10",
+      "updateDateTime": "2020-08-20",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        },
+        {
+            "key": "GRAPH-APIS",
+            "value": ["identity","files"]
+        }
+      ],
+      "thumbnails": [
+       
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+        {
+          "name": "Create a Node.js Office Add-in that uses single sign-on",
+          "description": "Users can sign in to Office, and your Office Web Add-in can take advantage of this sign-in process to authorize users to your add-in and to Microsoft Graph without requiring users to sign in a second time. ",
+          "url": "https://docs.microsoft.com/en-us/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs"
+        }
+      ]
+    }
+  ] 
