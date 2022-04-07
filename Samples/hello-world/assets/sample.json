@@ -1,0 +1,46 @@
+[
+    {
+        "name": "office-add-in-hello-world",
+        "reponame": "OfficeDev",
+        "source": "officedev",
+        "title": "Create an Office Add-in that displays hello world",
+        "shortDescription": "Learn how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. This sample will help you understand the fundamental parts of an Office Add-in.",
+        "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/hello-world",
+        "longDescription": [
+            "Learn how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. This sample will help you understand the fundamental parts of an Office Add-in."
+        ],
+        "creationDateTime": "2021-10-11",
+        "updateDateTime": "2021-10-11",
+        "products": [
+            "Office"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "JavaScript"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/images/hello-world-introduction.png",
+                "alt": "Diagram showing a hello project consists of a manifest, HTML page, and image assets."
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "microsoft",
+                "pictureUrl": "https://github.com/microsoft.png",
+                "name": "Microsoft"
+            }
+        ],
+        "references": [
+            {
+                "name": "Office Add-ins platform overview",
+                "description": "You can use the Office Add-ins platform to build solutions that extend Office applications and interact with content in Office documents. With Office Add-ins, you can use familiar web technologies such as HTML, CSS, and JavaScript to extend and interact with Word, Excel, PowerPoint, OneNote, Project, and Outlook. Your solution can run in Office across multiple platforms, including Windows, Mac, iPad, and in a browser.",
+                "url": "https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins"
+            }
+        ]
+    }
+]
