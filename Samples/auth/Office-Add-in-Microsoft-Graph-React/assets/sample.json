@@ -1,7 +1,7 @@
 [
     {
       "name": "office-add-in-auth-graph-react",
-      "reponame": "Office-Add-in-Microsoft-Graph-React",
+      "reponame": "office-add-in-samples",
       "source": "officedev",
       "title": "Get OneDrive data using Microsoft Graph and msal.js in an Office Add-in",
       "shortDescription": "Learn how to build a Microsoft Office Add-in, as a single-page application (SPA) with no backend, that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into an Office document using Office.js.",
@@ -21,7 +21,7 @@
         },
         {
             "key": "GRAPH-APIS",
-            "value": ["identity","files"]
+            "value": "identity,files"
         }
       ],
       "thumbnails": [
