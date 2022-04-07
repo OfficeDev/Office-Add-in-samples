@@ -18,6 +18,8 @@ description: "Use Outlook event-based activation to encrypt attachments, process
 
 **Applies to**: Outlook on Windows | Outlook on the web
 
+![Screen shot of email with an attachment that has an additional encrypted version created by the sample add-in.](./assets/readme/outlook-encrypt-attachments-overview.png)
+
 ## Summary
 ---
 This sample showcases how to use event-based activation in an Outlook add-in when the user composes an email or appointment/meeting request.  It demonstrates how to run tasks based on events that fire when certain data changes when the user:

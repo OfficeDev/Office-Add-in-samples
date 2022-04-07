@@ -1,7 +1,7 @@
 [
     {
       "name": "outlook-add-in-sso-aspnet",
-      "reponame": "Outlook-Add-in-SSO",
+      "reponame": "office-add-in-samples",
       "source": "officedev",
       "title": "Single Sign-on (SSO) sample Outlook add-in",
       "shortDescription": "The sample implements an Outlook add-in that uses Office's SSO feature to give the add-in access to Microsoft Graph data. Specifically, it enables the user to save all attachments to their OneDrive. It also shows how to add custom buttons to the Outlook ribbon.",
