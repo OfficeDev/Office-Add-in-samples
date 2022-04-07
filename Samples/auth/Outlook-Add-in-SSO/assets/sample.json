@@ -19,7 +19,7 @@
         },
         {
           "key": "GRAPH-APIS",
-          "value": ["identity", "files"]
+          "value": "identity,files"
         }
       ],
       "thumbnails": [],
