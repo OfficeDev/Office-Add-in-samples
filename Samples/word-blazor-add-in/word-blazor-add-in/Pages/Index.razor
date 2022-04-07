@@ -1,0 +1,48 @@
+﻿@page "/"
+
+<section class="Title">
+	<h1>
+		Content Control Interactions
+	</h1>
+</section>
+<section class="description text">
+	<p>
+		This sample demonstrates how to insert and change content control properties.
+		To Do: More description text here
+	</p>
+</section>
+
+<section class="setup ms-font-m">
+	<h5>Page Setup</h5>
+	<p>This will add some initial paragraphs to the document.</p>
+	<button class="btn btn-primary" @onclick="Setup">Setup Document</button>
+</section>
+
+<section class="samples ms-font-m">
+	<div>
+		<h5>Convert to Content Controls</h5>
+		<p>This will convert each paragraph surrounded by a Content Control.</p>
+		<button id="insert-controls" class="btn btn-primary" @onclick="InsertContentControls">Convert to Content Controls</button>
+	</div>
+
+	<div class="mt-3">
+		<h5>Tag Content Controls</h5>
+		<p>Tag content controls, mark as odd and even.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="TagContentControls">Tag Content Controls</button>
+	</div>
+
+	<div class="mt-3">
+		<h5>Modify Content Controls</h5>
+		<p>Modify content control appearance and content.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="ModifyContentControls">Modify Content Controls</button>
+	</div>
+
+	<!--
+		<span class="ms-font-m">Delete Even content controls (This will sadly not trigger the DeleteHandlers anymore).</span>
+
+		<span class="ms-font-m">To bring back the Delete Handlers remove this button and restore the commented code</span>
+		<button id="delete-controls" class="ms-Button">
+			<span class="ms-Button-label">Delete even cc's</span>
+		</button>
+	-->
+</section>

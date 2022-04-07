@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>BlazorAddIn</title>
+
+    <base href="/" />
+    
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    
+    <link href="BlazorAddIn.styles.css" rel="stylesheet" />
+
+
+    <!-- Office JavaScript API - replace beta with 1 or 1.1 for GA -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="main">
+            <header class="d-flex align-items-center justify-content-center">
+                <img src="./images/hero-parker-p-1080.png" />
+                <h1>
+                    Blazor OfficeJS Demo
+                </h1>
+            </header>
+
+            <div class="content">
+                <div class="container">
+                    <h2>Loading...</h2>
+                </div>
+            </div>
+        </div>
+        <footer class="d-flex align-items-center justify-content-center">
+            <div class="row">
+                Copyright © 2022 Microsoft Corporation.
+            </div>
+            <div class="row">
+                All rights reserved.
+            </div>
+        </footer>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>

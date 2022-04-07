@@ -1,0 +1,22 @@
+﻿@page "/interactwithparagraphs"
+
+<section class="Title">
+	<h1>
+		Paragraphs Interactions
+	</h1>
+</section>
+
+<section class="description text">
+	<p>
+		This sample demonstrates adding some Paragraphs and returning the Paragraph count to the UI
+		Each step is separated into smaller snippets (compare to home page).
+	</p>
+</section>
+
+<section class="setup ms-font-m">
+	<button class="btn btn-primary" @onclick="InsertParagraps">Insert Paragraphs</button>
+	<p class="mt-2">
+		Paragraph Counter is : @ReturnValue.Value
+	</p>
+</section>
+

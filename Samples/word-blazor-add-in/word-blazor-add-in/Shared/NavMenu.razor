@@ -1,0 +1,30 @@
+﻿<div class="navbar px-3">
+	<div class="container">
+		<div class="col-md-2">
+			<button @onclick="@(() => MoveToPage("/"))" class="btn btn-primary nav-addin"><div>Home</div></button>
+		</div>
+		<div class="col-md-2">
+			<button @onclick="@(() => MoveToPage("/firstaddin"))" class="btn btn-primary nav-addin"><div>1st Add-in</div></button>
+		</div>
+		<div class="col-md-2">
+			<button @onclick="@(() => MoveToPage("/helloworld"))" class="btn btn-primary nav-addin"><div>Hello World</div></button>
+		</div>
+		<div class="col-md-2">
+			<button @onclick="@(() => MoveToPage("/requestcontextdemo"))" class="btn btn-primary nav-addin"><div>Request Context</div></button>
+		</div>
+		<div class="col-md-2">
+			<button @onclick="@(() => MoveToPage("/interactwithparagraphs"))" class="btn btn-primary nav-addin"><div>Paragraphs</div></button>
+		</div>
+	</div>
+</div>
+
+@code {
+
+	[Inject]
+	public NavigationManager NavigationManager { get; set; } = default!;
+
+	void MoveToPage(string page)
+	{
+		NavigationManager.NavigateTo(page, true);
+	}
+}
