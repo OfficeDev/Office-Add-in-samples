@@ -1,7 +1,7 @@
 [
     {
       "name": "office-add-in-sso-aspnet",
-      "reponame": "Office-Add-in-ASPNET-SSO",
+      "reponame": "office-add-in-samples",
       "source": "officedev",
       "title": "Office Add-in that supports Single Sign-on to Office, the add-in, and Microsoft Graph",
       "shortDescription": "This sample implements an Office Add-in that uses the getAccessToken API in Office.js to give the add-in access to Microsoft Graph data. This sample is built on ASP.NET and Microsoft Authentication Library (MSAL) .NET.",
@@ -21,7 +21,7 @@
         },
         {
             "key": "GRAPH-APIS",
-            "value": ["identity","files"]
+            "value": "identity,files"
         }
       ],
       "thumbnails": [

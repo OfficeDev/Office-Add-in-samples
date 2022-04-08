@@ -1,7 +1,7 @@
 [
   {
     "name": "outlook-add-in-auth-aspnet-graph",
-    "reponame": "Outlook-Add-in-Microsoft-Graph-ASPNET",
+    "reponame": "office-add-in-samples",
     "source": "officedev",
     "title": "Get Excel workbooks using Microsoft Graph and MSAL in an Outlook Add-in",
     "shortDescription": "Learn how to build a Microsoft Outlook Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into a new message compose form in Outlook.",
@@ -19,7 +19,7 @@
       },
       {
         "key": "GRAPH-APIS",
-        "value": ["identity", "files"]
+        "value": "identity,files"
       }
     ],
     "thumbnails": [],

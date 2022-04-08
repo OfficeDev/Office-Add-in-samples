@@ -20,6 +20,8 @@ description: 'Create a simple Office Add-in that displays hello world.'
 
 Learn how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. This sample will help you understand the fundamental parts of an Office Add-in.
 
+![Diagram showing a hello project consists of a manifest, HTML page, and image assets.](./images/hello-world-introduction.png)
+
 ## Features
 
 - Display hello world in Outlook, Word, Excel, or PowerPoint.

@@ -1,7 +1,7 @@
 [
     {
       "name": "office-add-in-sso-nodejs",
-      "reponame": "Office-Add-in-NodeJS-SSO",
+      "reponame": "office-add-in-samples",
       "source": "officedev",
       "title": "Office Add-in that supports Single Sign-on to Office, the Add-in, and Microsoft Graph",
       "shortDescription": "The getAccessToken API in Office.js enables users who are signed into Office to get access to an AAD-protected add-in and to Microsoft Graph without needing to sign-in again.",
@@ -21,7 +21,7 @@
         },
         {
             "key": "GRAPH-APIS",
-            "value": ["identity","files"]
+            "value": "identity,files"
         }
       ],
       "thumbnails": [
