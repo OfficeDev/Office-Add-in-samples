@@ -148,7 +148,7 @@ The `autorunshared.js` file contains the `checkSignature` function that handles 
 
 The `autorunshared.js` file contains a version of the `insert_auto_signature` function that uses the `setSignatureAsync()` API to set the signature for both messages and appointments.
 
-Note that you can use a similar pattern when handling events. If you need code that only applies to Outlook on the web, you can load it in a separate file like `autorunweb.js`. And for code that applies to both Outlook on the web and Outlook on Windows, you can load it in a shared file like `autorunshared.js`.
+Note that you can use a similar pattern when handling events. If you need code that only applies to Outlook on the web, you can load it in a separate file like `autorunweb.js`. And for code that applies to Outlook on the web, on Windows, and on Mac, you can load it in a shared file like `autorunshared.js`.
 
 ### Embedding images with the signature
 

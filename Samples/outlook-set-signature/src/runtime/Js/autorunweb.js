@@ -24,7 +24,7 @@ function insert_auto_signature(compose_type, user_info, eventObj) {
 }
 
 /**
- * For Outlook on the seb, set signature for current appointment
+ * For Outlook on the web, set signature for current appointment
 * @param {*} signatureDetails object containing:
  *  "signature": The signature HTML of the template,
     "logoBase64": The base64 encoded logo image,
