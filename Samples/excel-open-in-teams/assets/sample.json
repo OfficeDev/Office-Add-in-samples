@@ -1,0 +1,61 @@
+[
+    {
+        "name": "office-excel-add-in-open-in-teams",
+        "reponame": "OfficeDev",
+        "source": "officedev",
+        "title": "Open data from your web site in a spreadsheet in Microsoft Teams",
+        "shortDescription": "Creates a new Excel spreadsheet in Microsoft Teams containing data you define. Embeds your add-in into the Excel spreadsheet. Creates a message in Microsoft Teams with a link to the new spreadsheet.",
+        "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-tag-external",
+        "longDescription": [
+            "Creates a new Excel spreadsheet in Microsoft Teams containing data you define. Embeds your add-in into the Excel spreadsheet. Creates a message in Microsoft Teams with a link to the new spreadsheet."
+        ],
+        "creationDateTime": "2021-08-13",
+        "updateDateTime": "2021-08-13",
+        "products": [
+            "Office"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "JavaScript"
+            },
+            {
+                "key": "GRAPH-APIS",
+                "value": "teams"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/images/open-in-teams-diagram.png",
+                "alt": "Sequence diagram showing an \"Open in Microsoft Teams\" button on your web site that creates a message in Teams with a link to the spreadsheet with your data which contains your add-in."
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "microsoft",
+                "pictureUrl": "https://github.com/microsoft.png",
+                "name": "Microsoft"
+            }
+        ],
+        "references": [
+            {
+                "name": "Excel add-ins documentation",
+                "description": "With Excel add-ins, you can use familiar web technologies such as HTML, CSS, and JavaScript to build a solution that can run in Excel across multiple platforms, including on Windows, Mac, iPad, and in a web browser.",
+                "url": "https://docs.microsoft.com/office/dev/add-ins/excel/"
+            },
+            {
+                "name": "Use the Microsoft Graph API to work with Microsoft Teams",
+                "description": "Microsoft Teams is a chat-based workspace in Microsoft 365 that provides built-in access to team-specific calendars, files, OneNote notes, Planner plans, Shifts schedules, and more.",
+                "url": "https://docs.microsoft.com/graph/api/resources/teams-api-overview"
+            },
+            {
+                "name": "Welcome to the Open XML SDK 2.5 for Office",
+                "description": "The Open XML SDK 2.5 simplifies the task of manipulating Open XML packages and the underlying Open XML schema elements within a package. ",
+                "url": "https://docs.microsoft.com/en-us/office/open-xml/open-xml-sdk"
+            }
+            
+        ]
+    }
+]

@@ -22,6 +22,8 @@ description: "Use Outlook event-based activation to set the signature."
 
 This sample uses event-based activation to run an Outlook add-in when the user creates a new message or appointment. The add-in can respond to events, even when the task pane is not open. It also uses the [setSignatureAsync API](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#setSignatureAsync_data__options__callback_). If no signature is set, the add-in prompts the user to set a signature, and can then open the task pane for the user.
 
+![Screen shot of sample displaying an information bar prompting the user to set up signatures, and sample signature inserted into the email.](./assets/outlook-set-signature-overview.jpg)
+
 For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch).
 
 ## Features
