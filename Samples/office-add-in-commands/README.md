@@ -28,15 +28,15 @@ Here's how the samples look when running:
 
 ### Excel
 
-![](./images/excel-ribbon-buttons.png)
+![Screenshot showing the sample's show task pane button and a dropdown menu on the ribbon.](./images/excel-ribbon-buttons.png)
 
 ### Word
 
-![](./images/word-ribbon-buttons.png)
+![Screenshot showing the sample's show task pane button and a dropdown menu on the ribbon.](./images/word-ribbon-buttons.png)
 
 ### PowerPoint
 
-![](./images/powerpoint-ribbon-buttons.png)
+![Screenshot showing the sample's show task pane button and a dropdown menu on the ribbon.](./images/powerpoint-ribbon-buttons.png)
 
 ## Applies to
 
