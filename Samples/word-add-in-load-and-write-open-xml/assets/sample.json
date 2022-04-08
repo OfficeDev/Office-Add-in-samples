@@ -1,0 +1,40 @@
+[
+    {
+        "name": "word-add-in-load-and-write-open-xml",
+        "reponame": "OfficeDev",
+        "source": "officedev",
+        "title": "Load and write Open XML in your Word add-in",
+        "shortDescription": "This sample add-in shows you how to add a variety of rich content types to a Word document using the setSelectedDataAsync method with ooxml coercion type.",
+        "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/word-add-in-get-set-edit-openxml",
+        "longDescription": "This sample add-in shows you how to add a variety of rich content types to a Word document using the setSelectedDataAsync method with ooxml coercion type. The add-in also gives you the ability to show the Office Open XML markup for each sample content type right on the page.",
+        "creationDateTime": "2015-08-19",
+        "updateDateTime": "2022-01-19",
+        "products": [
+            "Office"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "JavaScript"
+            }
+        ],
+        "thumbnails": [
+           
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "microsoft",
+                "pictureUrl": "https://github.com/microsoft.png",
+                "name": "Microsoft"
+            }
+        ],
+        "references": [
+            {
+                "name": "Create better add-ins for Word with Office Open XML",
+                "description": "If you're building Office Add-ins to run in Word, you might already know that the Office JavaScript API (Office.js) offers several formats for reading and writing document content. These are called coercion types, and they include plain text, tables, HTML, and Office Open XML.",
+                "url": "https://docs.microsoft.com/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml"
+            }
+            
+        ]
+    }
+]

@@ -20,6 +20,8 @@ description: "This sample shows how to insert a template from an external Excel 
 
 This sample shows how to insert an existing template from an external Excel file into the currently open Excel file. Then it retrieves data from a JSON web service and populates the template for the customer.
 
+![Diagram showing the sample inserting an external spreadsheet into the existing spreadsheet.](./assets/excel-insert-file-overview.png)
+
 > **Note:** If you don't already have an Microsoft 365 subscription, get one by joining the [Office 365 Developer Program](https://developer.microsoft.com/office/dev-program).
 
 ## Features

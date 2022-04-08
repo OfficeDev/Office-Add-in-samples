@@ -22,6 +22,8 @@ description: "Use Outlook event-based activation to tag external recipients."
 
 This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the [appendOnSendAsync API](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-1.11#appendOnSendAsync_data__options__callback_). If external recipients are added, the add-in prepends "[External]" to the message subject and appends a disclaimer to the message body on send.
 
+![Screen shot of PnP sample displaying an information bar prompting the user to set up signatures, and sample signature inserted into the email.](./assets/outlook-tag-external-overview.png)
+
 For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch).
 
 ## Features
