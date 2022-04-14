@@ -10,8 +10,7 @@ languages:
   - Blazor
 extensions:
   contentType: samples
-  technologies:
-    - Add-ins
+  technologies: Add-ins
   createdDate: '04/14/2022 10:00:00 PM'
 description: 'Create a Blazor Webassembly Office Add-in showcasing some samples.'
 ---
@@ -24,7 +23,7 @@ This sample shows how to build an Office Add-in using .NET Blazor technologies.
 Blazor Webassembly allows you to build your addins using .NET, C# and JavaScript to interact with the OfficeJS API.
 
 The Add-in works exactly the same as JavaScript based Office Add-ins but this will allow you to build the User Interface and all other not Office interactions in C# and .NET Core Blazor technologies.
-![Diagram showing a hello project consists of a manifest, HTML page, and image assets.](./images/hello-world-introduction.png)
+![Diagram showing a hello project consists of a manifest, HTML page, and image assets.](../hello-world/images/hello-world-introduction.png)
 
 ## Features
 
