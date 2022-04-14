@@ -1,0 +1,46 @@
+[
+    {
+        "name": "outlook-add-in-tag-external-recipients",
+        "reponame": "OfficeDev",
+        "source": "officedev",
+        "title": "Use Outlook event-based activation to tag external recipients",
+        "shortDescription": "This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. ",
+        "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-tag-external",
+        "longDescription": [
+            "This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the appendOnSendAsync API. If external recipients are added, the add-in prepends \"[External]\" to the message subject and appends a disclaimer to the message body on send."
+        ],
+        "creationDateTime": "2021-07-06",
+        "updateDateTime": "2021-11-01",
+        "products": [
+            "Office"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "JavaScript"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/outlook-tag-external-overview.png",
+                "alt": "Screen shot of sample displaying an information bar prompting the user to set up signatures, and sample signature inserted into the email."
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "microsoft",
+                "pictureUrl": "https://github.com/microsoft.png",
+                "name": "Microsoft"
+            }
+        ],
+        "references": [
+            {
+                "name": "Configure your Outlook add-in for event-based activation",
+                "description": "Without the event-based activation feature, a user has to explicitly launch an add-in to complete their tasks. This feature enables your add-in to run tasks based on certain events, particularly for operations that apply to every item. You can also integrate with the task pane and UI-less functionality.",
+                "url": "https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch"
+            }
+        ]
+    }
+]

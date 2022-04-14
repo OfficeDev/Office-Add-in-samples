@@ -1,0 +1,40 @@
+[
+    {
+        "name": "word-get-set-edit-ooxml",
+        "reponame": "OfficeDev",
+        "source": "officedev",
+        "title": "Get, edit, and set OOXML content in a Word document with a Word add-in",
+        "shortDescription": "This sample Word add-in provides a scratch pad to get Office Open XML for your own content and test your own edited Office Open XML snippets.",
+        "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/word-add-in-get-set-edit-openxml",
+        "longDescription": "This sample Word add-in provides a scratch pad to get Office Open XML for your own content and test your own edited Office Open XML snippets.",
+        "creationDateTime": "2013-08-19",
+        "updateDateTime": "2022-01-19",
+        "products": [
+            "Office"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "JavaScript"
+            }
+        ],
+        "thumbnails": [
+           
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "microsoft",
+                "pictureUrl": "https://github.com/microsoft.png",
+                "name": "Microsoft"
+            }
+        ],
+        "references": [
+            {
+                "name": "Create better add-ins for Word with Office Open XML",
+                "description": "If you're building Office Add-ins to run in Word, you might already know that the Office JavaScript API (Office.js) offers several formats for reading and writing document content. These are called coercion types, and they include plain text, tables, HTML, and Office Open XML.",
+                "url": "https://docs.microsoft.com/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml"
+            }
+            
+        ]
+    }
+]

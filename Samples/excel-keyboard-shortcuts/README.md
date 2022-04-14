@@ -20,6 +20,8 @@ description: "This sample shows how to add keyboard shortcuts to your Office Add
 
 This sample shows how to set up a basic Excel add-in project that utilizes keyboard shortcuts. Currently, the shortcuts are configured to show and hide the task pane as well as cycle through colors for a selected cell. Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 
+![Screen shot of Excel showing the use of CTRL+SHIFT+UP to open the task pane, and CTRL+SHIFT+DOWN to close the task pane.](./assets/excel-keyboard-shortcuts-overview.jpg)
+
 ## Features
 
 - Add keyboard shortcuts to your Office Add-in.
