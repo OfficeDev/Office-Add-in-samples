@@ -1,38 +1,4 @@
-﻿async function deleteEvenContentControls() {
-    // Traverses each content control of the document and deletes the even content controls
-    await Word.run(async (context) => {
-        let currentdocument = context.document;
-        currentdocument.load("$all");
-
-        await context.sync();
-
-        let contentcontrols = currentdocument.contentControls;
-        context.load(contentcontrols);
-
-        await context.sync();
-
-        let contentcontrolsRemaining = contentcontrols.items.length;
-
-        for (let i = 0; i < contentcontrols.items.length; i++) {
-            let contentControl = contentcontrols.items[i];
-
-            // This will reinstate the handler but it should have been persisted from the prev. function
-            // ------------------------------------------------------------------------------------------
-            // contentControl.onDeleted.add(handleContentControlDeleted);
-            // await context.sync();
-
-            // delete even cc
-            if (i % 2 === 0) {
-                contentControl.delete(true);
-                contentcontrolsRemaining--;
-            }
-        }
-
-        await context.sync();
-        console.log("Content controls remaining: " + contentcontrolsRemaining);
-    });
-}
-
+﻿
 
 // -------------------------------------------
 // Step 1: Add some Paragraphs to the document
@@ -102,7 +68,7 @@ export async function insertContentControls() {
 // Step 3: Tag each Content Control, by marking them as even and odd
 // -----------------------------------------------------------------
 
-//async function handleContentControlDeleted(args) {
+//async function handleContentControlDeleted(event: Word.ContentControlEventArgs) {
 //    console.log("Content Control Deleted!");
 //    await Word.run(async (context) => {
 //        // Display the deleted content control's ID.
@@ -146,14 +112,6 @@ export async function tagContentControls() {
                 console.log("Content Control Tagged Odd!");
             }
 
-            // this fails (bug in the API?)
-            contentControl.onDeleted.add(handleContentControlDeleted);
-            console.log("Added Delete Handler");
-
-            // this fails (bug in the API?)
-            contentControl.onSelectionChanged.add(handleSelectionChanged);
-            console.log("Added Changed Handler");
-
             contentcontrolsTagged++;
         }
 
@@ -184,26 +142,97 @@ export async function modifyContentControls() {
             // Change a few properties and append a paragraph
             evenContentControls.items[i].set({
                 color: "red",
-                title: "Odd ContentControl #" + (i + 1),
+                title: "Even ContentControl #" + (i + 1),
                 appearance: "Tags"
             });
-            evenContentControls.items[i].insertParagraph("This is an odd content control", "End");
+            evenContentControls.items[i].insertHtml("This is an <strong>even</strong> content control", "End");
         }
 
         for (let j = 0; j < oddContentControls.items.length; j++) {
             // Change a few properties and append a paragraph
             oddContentControls.items[j].set({
                 color: "green",
-                title: "Even ContentControl #" + (j + 1),
+                title: "Odd ContentControl #" + (j + 1),
                 appearance: "Tags"
             });
-            oddContentControls.items[j].insertHtml("This is an <strong>even</strong> content control", "End");
+            oddContentControls.items[j].insertParagraph("This is an odd content control", "End");
         }
 
         await context.sync();
     });
 }
 
+// --------------------------------------------------------------------------------
+// Step 5: Register the Content Controls for OnDelete and onSelectionChanged events
+// --------------------------------------------------------------------------------
+let eventContexts = [];
+
+export async function registerEvents() {
+    // Traverses each content control of the document and deletes the even content controls
+    await Word.run(async (context) => {
+
+        let contentcontrols = context.document.contentControls;
+        contentcontrols.load("items");
+        await context.sync();
+
+        if (contentcontrols.items.length === 0) {
+            console.log("There aren't any content controls in this document so can't register event handlers.");
+        } else {
+            for (let i = 0; i < contentcontrols.items.length; i++) {
+                eventContexts[i*2] = contentcontrols.items[i].onDeleted.add(handleContentControlDeleted);
+                console.log("Added onDeleted Handler");
+                eventContexts[(i * 2) + 1] = contentcontrols.items[i].onSelectionChanged.add(handleSelectionChanged);
+                console.log("Added onSelectionChanged Handler");
+                contentcontrols.items[i].track();
+            }
+
+            await context.sync();
+
+            console.log("Added OnDelete and onSelectionChanged event handlers.");
+        }
+    });
+}
+
+// -----------------------------------------------------------------------------------
+// Step 6: De-Register the Content Controls for OnDelete and onSelectionChanged events
+// -----------------------------------------------------------------------------------
+
+export async function deregisterEvents() {
+    await Word.run(async (context) => {
+        for (let i = 0; i < eventContexts.length; i++) {
+            await Word.run(eventContexts[i].context, async (context) => {
+                eventContexts[i].remove();
+                console.log("Remove Context " + i);
+            });
+        }
+
+        await context.sync();
+
+        eventContexts = null;
+        console.log("Remove the OnDelete and onSelectionChanged event handlers.");
+    });
+}
+
+// -------------------------------------------
+// Step 7: Delete first 'even' Content Control
+// -------------------------------------------
+
+export async function deleteContentControl() {
+    await Word.run(async (context) => {
+        let contentControls = context.document.contentControls.getByTag("even");
+        contentControls.load("items");
+        await context.sync();
+
+        if (contentControls.items.length === 0) {
+            console.log("There are no content controls tagged 'even' in this document.");
+        } else {
+            console.log("First 'even' Control to be deleted:");
+            console.log(contentControls.items[0]);
+            contentControls.items[0].delete(false);
+            await context.sync();
+        }
+    });
+}
 
 /** Default helper for invoking an action and handling errors. */
 async function tryCatch(callback) {

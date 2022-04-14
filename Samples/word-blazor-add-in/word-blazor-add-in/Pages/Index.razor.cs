@@ -29,5 +29,16 @@ namespace BlazorAddIn.Pages
 
         internal async Task ModifyContentControls() =>
             await JSModule.InvokeVoidAsync("modifyContentControls");
+
+        internal async Task RegisterContentControlsEvents() =>
+            await JSModule.InvokeVoidAsync("registerEvents");
+
+        internal async Task DeRegisterContentControlEvents() =>
+            await JSModule.InvokeVoidAsync("deregisterEvents");
+
+        internal async Task DeleteContentControl() =>
+            await JSModule.InvokeVoidAsync("deleteContentControl");
+
+
     }
 }

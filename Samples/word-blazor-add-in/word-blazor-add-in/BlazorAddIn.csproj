@@ -8,9 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.2" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.JSInterop.WebAssembly" Version="6.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.4" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.JSInterop.WebAssembly" Version="6.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="@echo off&#xD;&#xA;echo.&#xD;&#xA;echo ===============================================================&#xD;&#xA;if $(ConfigurationName) == Debug (&#xD;&#xA;   echo = copy .\ManifestCollection\manifest_local.xml .\manifest.xml =&#xD;&#xA;   copy .\ManifestCollection\manifest_local.xml .\manifest.xml&#xD;&#xA;) else (&#xD;&#xA;   echo copy .\ManifestCollection\manifest_live.xml .\manifest.xml&#xD;&#xA;   copy .\ManifestCollection\manifest_live.xml .\manifest.xml&#xD;&#xA;)&#xD;&#xA;echo ===============================================================&#xD;&#xA;echo." />
+    <Exec Command="@echo off&#xD;&#xA;echo.&#xD;&#xA;echo ===============================================================&#xD;&#xA;echo Adjust the manifest_live with your deployed manifest information&#xD;&#xA;echo ===============================================================&#xD;&#xA;if $(ConfigurationName) == Debug (&#xD;&#xA;   echo = copy .\ManifestCollection\manifest_local.xml .\manifest.xml =&#xD;&#xA;   copy .\ManifestCollection\manifest_local.xml .\manifest.xml&#xD;&#xA;) else (&#xD;&#xA;   echo copy .\ManifestCollection\manifest_live.xml .\manifest.xml&#xD;&#xA;   copy .\ManifestCollection\manifest_live.xml .\manifest.xml&#xD;&#xA;)&#xD;&#xA;echo ===============================================================&#xD;&#xA;echo." />
   </Target>
 
 </Project>

@@ -8,7 +8,7 @@
 <section class="description text">
 	<p>
 		This sample demonstrates how to insert and change content control properties.
-		To Do: More description text here
+		The sample shows you how to add Content Controls to Paragraphs and show how to work with Event Handlers.
 	</p>
 </section>
 
@@ -37,12 +37,22 @@
 		<button id="change-controls" class="btn btn-primary" @onclick="ModifyContentControls">Modify Content Controls</button>
 	</div>
 
-	<!--
-		<span class="ms-font-m">Delete Even content controls (This will sadly not trigger the DeleteHandlers anymore).</span>
+	<div class="mt-3">
+		<h5>Register Content Controls for Events</h5>
+		<p>This will add the OnDelete and onSelectionChanged event handlers to the Content Controls.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="RegisterContentControlsEvents">Register Event Handlers</button>
+	</div>
 
-		<span class="ms-font-m">To bring back the Delete Handlers remove this button and restore the commented code</span>
-		<button id="delete-controls" class="ms-Button">
-			<span class="ms-Button-label">Delete even cc's</span>
-		</button>
-	-->
+	<div class="mt-3">
+		<h5>Delete first 'even' tagged Content Control</h5>
+		<p>This will delete the first Content Control that was tagged 'even'.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="DeleteContentControl">Delete first 'even' Content Control</button>
+	</div>
+
+	<div class="mt-3">
+		<h5>De-Register Content Controls for Events</h5>
+		<p>This will remove the OnDelete and onSelectionChanged event handlers to the Content Controls.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="DeRegisterContentControlEvents">Remove Event Handlers</button>
+	</div>
+
 </section>
