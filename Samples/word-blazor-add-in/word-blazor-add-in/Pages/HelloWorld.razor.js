@@ -1,4 +1,8 @@
-﻿export function insertParagraph() {
+﻿/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
+/**
+ * Basic function to show how to insert a Paragraph at the start of the Word Document
+ */
+export function insertParagraph() {
 
     console.log("Hello JavaScript in Blazor!?!?!?");
 

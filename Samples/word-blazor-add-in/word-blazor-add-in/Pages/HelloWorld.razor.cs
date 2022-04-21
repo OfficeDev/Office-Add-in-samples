@@ -1,8 +1,13 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
+
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace BlazorAddIn.Pages
 {
+    /// <summary>
+    /// Starter class to demo how to insert a paragraph
+    /// </summary>
     public partial class HelloWorld
     {
         [Inject]
@@ -17,6 +22,9 @@ namespace BlazorAddIn.Pages
             }
         }
 
+        /// <summary>
+        /// Basic function to invoke inserting a Paragraph
+        /// </summary>
         private async Task InsertParagraph() =>
             await JSModule.InvokeVoidAsync("insertParagraph");
     }

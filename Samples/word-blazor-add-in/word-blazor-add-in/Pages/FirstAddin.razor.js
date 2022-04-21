@@ -1,4 +1,8 @@
-﻿export async function insertEmersonQuoteAtSelection() {
+﻿/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
+/**
+ * This basic function shows how to insert a text (quote by Emerson) into the current cursor location
+ */
+export async function insertEmersonQuoteAtSelection() {
     await Word.run(async (context) => {
 
         // Create a proxy object for the document.
@@ -23,7 +27,9 @@
             }
         });
 }
-
+/**
+ * This basic function shows how to insert a text (quote by Chekhov) into start of the document.
+ */
 export async function insertChekhovQuoteAtTheBeginning() {
     await Word.run(async (context) => {
 
@@ -45,7 +51,9 @@ export async function insertChekhovQuoteAtTheBeginning() {
             }
         });
 }
-
+/**
+ * This basic function shows how to insert a text (Chinese Proverb) into end of the document.
+ */
 export async function insertChineseProverbAtTheEnd() {
     await Word.run(async (context) => {
 

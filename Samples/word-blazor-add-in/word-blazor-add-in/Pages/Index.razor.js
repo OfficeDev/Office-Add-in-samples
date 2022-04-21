@@ -1,9 +1,8 @@
-﻿
+﻿/* Copyright(c) Maarten van Stam.All rights reserved.Licensed under the MIT License. */
 
-// -------------------------------------------
-// Step 1: Add some Paragraphs to the document
-// -------------------------------------------
-
+/**
+ * Step 1: Add some Paragraphs to the document
+ */
 export async function setupDocument() {
 
     await Word.run(async (context) => {
@@ -27,14 +26,16 @@ export async function setupDocument() {
     });
 }
 
-// ---------------------------------------------------
-// Step 2: Create Content Controls from the Paragraphs
-// ---------------------------------------------------
-
+/**
+ * ContentControlAdded Event Handler
+ * @param  {} args
+ */
 async function handleContentControlAdded(args) {
     console.log("Content Control Added!");
 }
-
+/**
+ * Step 2: Create Content Controls from the Paragraphs
+ */
 export async function insertContentControls() {
 
     // Traverses each paragraph of the document and wraps a content control on each with either a even or odd tags.
@@ -63,29 +64,27 @@ export async function insertContentControls() {
     });
 }
 
-
-// -----------------------------------------------------------------
-// Step 3: Tag each Content Control, by marking them as even and odd
-// -----------------------------------------------------------------
-
-//async function handleContentControlDeleted(event: Word.ContentControlEventArgs) {
-//    console.log("Content Control Deleted!");
-//    await Word.run(async (context) => {
-//        // Display the deleted content control's ID.
-//        console.log('ID of content control that was deleted: ${event.contentControl.id}');
-//    });
-//}
-
+/**
+ * ContentControlDeleted Event Handler
+ * @param  {} args
+ */
 async function handleContentControlDeleted(args) {
     console.log("Content Control Deleted!");
 }
 
+/**
+ * SelectionChanged Event Handler
+ * @param  {} args
+ */
 async function handleSelectionChanged(args) {
     console.log("Content Control Selection Changed!");
 }
 
+/**
+ * Step 3: Tag each Content Control, by marking them as even and odd
+ */
 export async function tagContentControls() {
-
+    
     // Traverses each content control of the document and wraps a content control on each with either a even or odd tags.
     await Word.run(async (context) => {
 
@@ -103,7 +102,7 @@ export async function tagContentControls() {
         for (let i = 0; i < contentcontrols.items.length; i++) {
             let contentControl = contentcontrols.items[i];
             // For even, tag "even".
-            if (i % 2 === 0) {
+            if ((i+1) % 2 === 0) {
                 // Tag
                 contentControl.tag = "even";
                 console.log("Content Control Tagged Even!");
@@ -120,10 +119,9 @@ export async function tagContentControls() {
     });
 }
 
-// -----------------------------------------------------------------
-// Step 4: Modify the Content Controls to showoff the change options
-// -----------------------------------------------------------------
-
+/**
+ * Step 4: Modify the Content Controls to showoff the change options
+ */
 export async function modifyContentControls() {
 
     // Adds title and colors to odd and even content controls and changes their appearance.
@@ -162,11 +160,11 @@ export async function modifyContentControls() {
     });
 }
 
-// --------------------------------------------------------------------------------
-// Step 5: Register the Content Controls for OnDelete and onSelectionChanged events
-// --------------------------------------------------------------------------------
 let eventContexts = [];
 
+/**
+ * Step 5: Register the Content Controls for OnDelete and onSelectionChanged events
+ */
 export async function registerEvents() {
     // Traverses each content control of the document and deletes the even content controls
     await Word.run(async (context) => {
@@ -178,6 +176,10 @@ export async function registerEvents() {
         if (contentcontrols.items.length === 0) {
             console.log("There aren't any content controls in this document so can't register event handlers.");
         } else {
+            if (eventContexts === null) {
+                eventContexts = [];
+            }
+
             for (let i = 0; i < contentcontrols.items.length; i++) {
                 eventContexts[i*2] = contentcontrols.items[i].onDeleted.add(handleContentControlDeleted);
                 console.log("Added onDeleted Handler");
@@ -193,30 +195,9 @@ export async function registerEvents() {
     });
 }
 
-// -----------------------------------------------------------------------------------
-// Step 6: De-Register the Content Controls for OnDelete and onSelectionChanged events
-// -----------------------------------------------------------------------------------
-
-export async function deregisterEvents() {
-    await Word.run(async (context) => {
-        for (let i = 0; i < eventContexts.length; i++) {
-            await Word.run(eventContexts[i].context, async (context) => {
-                eventContexts[i].remove();
-                console.log("Remove Context " + i);
-            });
-        }
-
-        await context.sync();
-
-        eventContexts = null;
-        console.log("Remove the OnDelete and onSelectionChanged event handlers.");
-    });
-}
-
-// -------------------------------------------
-// Step 7: Delete first 'even' Content Control
-// -------------------------------------------
-
+/**
+ * Step 6: Delete first 'even' Content Control
+ */
 export async function deleteContentControl() {
     await Word.run(async (context) => {
         let contentControls = context.document.contentControls.getByTag("even");
@@ -231,6 +212,25 @@ export async function deleteContentControl() {
             contentControls.items[0].delete(false);
             await context.sync();
         }
+    });
+}
+
+/**
+ * Step 7: De-Register the Content Controls for OnDelete and onSelectionChanged events
+ */
+ export async function deregisterEvents() {
+    await Word.run(async (context) => {
+        for (let i = 0; i < eventContexts.length; i++) {
+            await Word.run(eventContexts[i].context, async (context) => {
+                eventContexts[i].remove();
+                console.log("Remove Context " + i);
+            });
+        }
+
+        await context.sync();
+
+        eventContexts = null;
+        console.log("Remove the OnDelete and onSelectionChanged event handlers.");
     });
 }
 
