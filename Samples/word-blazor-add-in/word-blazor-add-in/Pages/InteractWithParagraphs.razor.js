@@ -41,7 +41,7 @@ export async function paragraphCount() {
 
             numberofParagraphs = paragraphs.items.length;
 
-            console.log("Paragraph Count JS: ");
+            console.log("Paragraph count JS: ");
             console.log(numberofParagraphs);
         })
         .catch(function (error) {

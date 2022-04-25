@@ -47,8 +47,8 @@ namespace BlazorAddIn.Pages
             await InsertParagraph("One more paragraph.", "Start");
             await InsertParagraph("Co-locating Index.razor.js Demo.", "Start");
             await InsertParagraph("Inserting another paragraph.", "Start");
-            await InsertParagraph("Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document.", "Start");
-            await ReplaceParagraph("To make your document look professionally produced, Word provides header, footer, cover page, and text box designs that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose the elements you want from the different galleries.");
+            await InsertParagraph("Effective add-ins offer unique and compelling functionality that extends Office applications in a visually appealing way. To create a great add-in, provide an engaging first-time experience for your users, design a first-class UI experience, and optimize your add-in's performance.", "Start");
+            await ReplaceParagraph("With Word add-ins, you can use familiar web technologies such as HTML, CSS, and JavaScript to build a solution that can run in Word across multiple platforms, including on the web, Windows, Mac, and iPad. Learn how to build, test, debug, and publish Word add-ins.");
             await CountParagraps();
         }
 
