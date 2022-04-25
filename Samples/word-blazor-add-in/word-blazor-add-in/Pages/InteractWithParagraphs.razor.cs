@@ -61,7 +61,7 @@ namespace BlazorAddIn.Pages
             await InsertParagraph("Inserting another paragraph.", "Start");
             await InsertParagraph("Effective add-ins offer unique and compelling functionality that extends Office applications in a visually appealing way. To create a great add-in, provide an engaging first-time experience for your users, design a first-class UI experience, and optimize your add-in's performance.", "Start");
             await ReplaceParagraph("With Word add-ins, you can use familiar web technologies such as HTML, CSS, and JavaScript to build a solution that can run in Word across multiple platforms, including on the web, Windows, Mac, and iPad. Learn how to build, test, debug, and publish Word add-ins.");
-            await CountParagraps();
+            await CountParagraphs();
         }
 
         /// <summary>

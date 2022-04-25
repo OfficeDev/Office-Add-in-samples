@@ -1,7 +1,7 @@
-/* Copyright(c) Maarten van Stam.All rights reserved.Licensed under the MIT License. */
+/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
 
 /**
- * Step 1: Add some Paragraphs to the document
+ * Step 1: Add some paragraphs to the document
  */
 export async function setupDocument() {
 
@@ -27,14 +27,14 @@ export async function setupDocument() {
 }
 
 /**
- * ContentControlAdded Event Handler
+ * ContentControlAdded event handler
  * @param  {} args
  */
 async function handleContentControlAdded(args) {
     console.log("Content control added!");
 }
 /**
- * Step 2: Create Content Controls from the Paragraphs
+ * Step 2: Create content controls from the paragraphs
  */
 export async function insertContentControls() {
 
@@ -53,11 +53,8 @@ export async function insertContentControls() {
 
         await context.sync();
 
-        let contentcontrolsinserted = 0;
-
         for (let i = 0; i < paragraphs.items.length; i++) {
-            let contentControl = paragraphs.items[i].insertContentControl();
-            contentcontrolsinserted++;
+            paragraphs.items[i].insertContentControl();
         }
 
         await context.sync();
@@ -65,7 +62,7 @@ export async function insertContentControls() {
 }
 
 /**
- * ContentControlDeleted Event Handler
+ * ContentControlDeleted event handler
  * @param  {} args
  */
 async function handleContentControlDeleted(args) {
@@ -73,7 +70,7 @@ async function handleContentControlDeleted(args) {
 }
 
 /**
- * SelectionChanged Event Handler
+ * SelectionChanged event handler
  * @param  {} args
  */
 async function handleSelectionChanged(args) {
@@ -81,7 +78,7 @@ async function handleSelectionChanged(args) {
 }
 
 /**
- * Step 3: Tag each Content Control, by marking them as even and odd
+ * Step 3: Tag each content control, by marking them as even and odd
  */
 export async function tagContentControls() {
     
@@ -120,7 +117,7 @@ export async function tagContentControls() {
 }
 
 /**
- * Step 4: Modify the Content Controls to showoff the change options
+ * Step 4: Modify the content controls to show the change options
  */
 export async function modifyContentControls() {
 
@@ -163,7 +160,7 @@ export async function modifyContentControls() {
 let eventContexts = [];
 
 /**
- * Step 5: Register the Content Controls for OnDelete and onSelectionChanged events
+ * Step 5: Register the content controls for onDeleted and onSelectionChanged events
  */
 export async function registerEvents() {
     // Traverses each content control of the document and deletes the even content controls
@@ -196,7 +193,7 @@ export async function registerEvents() {
 }
 
 /**
- * Step 6: Delete first 'even' Content Control
+ * Step 6: Delete first 'even' content control
  */
 export async function deleteContentControl() {
     await Word.run(async (context) => {
@@ -216,7 +213,7 @@ export async function deleteContentControl() {
 }
 
 /**
- * Step 7: De-Register the Content Controls for OnDelete and onSelectionChanged events
+ * Step 7: Deregister the content controls for OnDeleted and onSelectionChanged events
  */
  export async function deregisterEvents() {
     await Word.run(async (context) => {
@@ -230,16 +227,7 @@ export async function deleteContentControl() {
         await context.sync();
 
         eventContexts = null;
-        console.log("Remove the OnDelete and onSelectionChanged event handlers.");
+        console.log("Remove the onDeleted and onSelectionChanged event handlers.");
     });
 }
 
-/** Default helper for invoking an action and handling errors. */
-async function tryCatch(callback) {
-    try {
-        await callback();
-    } catch (error) {
-        // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
-        console.error(error);
-    }
-}
