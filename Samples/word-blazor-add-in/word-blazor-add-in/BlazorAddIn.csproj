@@ -17,8 +17,4 @@
     <Folder Include="wwwroot\scripts\" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="@echo off&#xD;&#xA;echo.&#xD;&#xA;echo ===============================================================&#xD;&#xA;echo Adjust the manifest_live with your deployed manifest information&#xD;&#xA;echo ===============================================================&#xD;&#xA;if $(ConfigurationName) == Debug (&#xD;&#xA;   echo = copy .\ManifestCollection\manifest_local.xml .\manifest.xml =&#xD;&#xA;   copy .\ManifestCollection\manifest_local.xml .\manifest.xml&#xD;&#xA;) else (&#xD;&#xA;   echo copy .\ManifestCollection\manifest_live.xml .\manifest.xml&#xD;&#xA;   copy .\ManifestCollection\manifest_live.xml .\manifest.xml&#xD;&#xA;)&#xD;&#xA;echo ===============================================================&#xD;&#xA;echo." />
-  </Target>
-
 </Project>

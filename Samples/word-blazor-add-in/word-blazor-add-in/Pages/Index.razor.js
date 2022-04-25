@@ -1,9 +1,8 @@
-﻿
+/* Copyright(c) Maarten van Stam.All rights reserved.Licensed under the MIT License. */
 
-// -------------------------------------------
-// Step 1: Add some paragraphs to the document
-// -------------------------------------------
-
+/**
+ * Step 1: Add some Paragraphs to the document
+ */
 export async function setupDocument() {
 
     await Word.run(async (context) => {
@@ -27,14 +26,16 @@ export async function setupDocument() {
     });
 }
 
-// ---------------------------------------------------
-// Step 2: Create content controls from the paragraphs
-// ---------------------------------------------------
-
+/**
+ * ContentControlAdded Event Handler
+ * @param  {} args
+ */
 async function handleContentControlAdded(args) {
     console.log("Content control added!");
 }
-
+/**
+ * Step 2: Create Content Controls from the Paragraphs
+ */
 export async function insertContentControls() {
 
     // Traverses each paragraph of the document and wraps a content control on each with either a even or odd tags.
@@ -63,21 +64,27 @@ export async function insertContentControls() {
     });
 }
 
-
-// -----------------------------------------------------------------
-// Step 3: Tag each content control, by marking them as even and odd
-// -----------------------------------------------------------------
-
+/**
+ * ContentControlDeleted Event Handler
+ * @param  {} args
+ */
 async function handleContentControlDeleted(args) {
     console.log("Content control deleted!");
 }
 
+/**
+ * SelectionChanged Event Handler
+ * @param  {} args
+ */
 async function handleSelectionChanged(args) {
     console.log("Content control selection changed!");
 }
 
+/**
+ * Step 3: Tag each Content Control, by marking them as even and odd
+ */
 export async function tagContentControls() {
-
+    
     // Traverses each content control of the document and wraps a content control on each with either a even or odd tags.
     await Word.run(async (context) => {
 
@@ -95,7 +102,7 @@ export async function tagContentControls() {
         for (let i = 0; i < contentcontrols.items.length; i++) {
             let contentControl = contentcontrols.items[i];
             // For even, tag "even".
-            if (i % 2 === 0) {
+            if ((i+1) % 2 === 0) {
                 // Tag
                 contentControl.tag = "even";
                 console.log("Content control tagged even!");
@@ -112,10 +119,9 @@ export async function tagContentControls() {
     });
 }
 
-// -----------------------------------------------------------------
-// Step 4: Modify the content controls to show off the change options
-// -----------------------------------------------------------------
-
+/**
+ * Step 4: Modify the Content Controls to showoff the change options
+ */
 export async function modifyContentControls() {
 
     // Adds title and colors to odd and even content controls and changes their appearance.
@@ -154,11 +160,11 @@ export async function modifyContentControls() {
     });
 }
 
-// --------------------------------------------------------------------------------
-// Step 5: Register the content controls for onDeleted and onSelectionChanged events
-// --------------------------------------------------------------------------------
 let eventContexts = [];
 
+/**
+ * Step 5: Register the Content Controls for OnDelete and onSelectionChanged events
+ */
 export async function registerEvents() {
     // Traverses each content control of the document and deletes the even content controls
     await Word.run(async (context) => {
@@ -170,6 +176,10 @@ export async function registerEvents() {
         if (contentcontrols.items.length === 0) {
             console.log("There aren't any content controls in this document so can't register event handlers.");
         } else {
+            if (eventContexts === null) {
+                eventContexts = [];
+            }
+
             for (let i = 0; i < contentcontrols.items.length; i++) {
                 eventContexts[i*2] = contentcontrols.items[i].onDeleted.add(handleContentControlDeleted);
                 console.log("Added onDeleted handler.");
@@ -185,30 +195,9 @@ export async function registerEvents() {
     });
 }
 
-// -----------------------------------------------------------------------------------
-// Step 6: Deregister the content controls for onDeleted and onSelectionChanged events
-// -----------------------------------------------------------------------------------
-
-export async function deregisterEvents() {
-    await Word.run(async (context) => {
-        for (let i = 0; i < eventContexts.length; i++) {
-            await Word.run(eventContexts[i].context, async (context) => {
-                eventContexts[i].remove();
-                console.log("Remove context " + i);
-            });
-        }
-
-        await context.sync();
-
-        eventContexts = null;
-        console.log("Remove the onDeleted and onSelectionChanged event handlers.");
-    });
-}
-
-// -------------------------------------------
-// Step 7: Delete first 'even' content control
-// -------------------------------------------
-
+/**
+ * Step 6: Delete first 'even' Content Control
+ */
 export async function deleteContentControl() {
     await Word.run(async (context) => {
         let contentControls = context.document.contentControls.getByTag("even");
@@ -224,4 +213,33 @@ export async function deleteContentControl() {
             await context.sync();
         }
     });
+}
+
+/**
+ * Step 7: De-Register the Content Controls for OnDelete and onSelectionChanged events
+ */
+ export async function deregisterEvents() {
+    await Word.run(async (context) => {
+        for (let i = 0; i < eventContexts.length; i++) {
+            await Word.run(eventContexts[i].context, async (context) => {
+                eventContexts[i].remove();
+                console.log("Remove Context " + i);
+            });
+        }
+
+        await context.sync();
+
+        eventContexts = null;
+        console.log("Remove the OnDelete and onSelectionChanged event handlers.");
+    });
+}
+
+/** Default helper for invoking an action and handling errors. */
+async function tryCatch(callback) {
+    try {
+        await callback();
+    } catch (error) {
+        // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
+        console.error(error);
+    }
 }

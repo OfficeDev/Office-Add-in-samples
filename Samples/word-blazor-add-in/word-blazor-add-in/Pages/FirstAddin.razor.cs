@@ -1,8 +1,14 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
+
+using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace BlazorAddIn.Pages
 {
+    /// <summary>
+    /// FirstAddin Class
+    /// This will demo inserting 'famous' quotes at the current selection, start or end of the document.
+    /// </summary>
     public partial class FirstAddin
     {
         [Inject]
@@ -17,10 +23,21 @@ namespace BlazorAddIn.Pages
             }
         }
 
+        /// <summary>
+        /// Will invoke JavaScript function to insert Emerson Quote
+        /// </summary>
         private async Task InsertWaldo() =>
             await JSModule.InvokeVoidAsync("insertEmersonQuoteAtSelection");
+
+        /// <summary>
+        /// Will invoke JavaScript function to insert Chechov Quote
+        /// </summary>
         private async Task InsertChekhov() =>
             await JSModule.InvokeVoidAsync("insertChekhovQuoteAtTheBeginning");
+
+        /// <summary>
+        /// Will invoke JavaScript function to insert Chinese Proverb
+        /// </summary>
         private async Task InsertProverb() =>
             await JSModule.InvokeVoidAsync("insertChineseProverbAtTheEnd");
     }

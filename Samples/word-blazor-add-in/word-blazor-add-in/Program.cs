@@ -1,3 +1,5 @@
+/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
+
 using BlazorAddIn;
 
 using Microsoft.AspNetCore.Components.Web;

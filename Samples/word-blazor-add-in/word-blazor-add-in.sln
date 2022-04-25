@@ -11,6 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "word-blazor-sideloader", "word-blazor-sideloader\word-blazor-sideloader.csproj", "{DD35DC75-F895-4508-B4AC-F7753FB52B9A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{32482004-F717-4F15-9DAB-D70249AFF454} = {32482004-F717-4F15-9DAB-D70249AFF454}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
