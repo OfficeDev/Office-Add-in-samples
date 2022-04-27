@@ -35,7 +35,7 @@ This sample shows how to build a Word add-in using .NET Blazor technologies. Bla
 ## Run the sample
 
 1. Download or clone this repository.
-1. Open Visual Studio 2022, and open the **Office-Add-in-samples\Samples\word-blazor-add-inword-blazor-add-in.sln** solution.
+1. Open Visual Studio 2022, and open the **Office-Add-in-samples\Samples\word-blazor-add-in\word-blazor-add-in.sln** solution.
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
 1. When Word opens, choose **Home** > **Show Taskpane**.
 
@@ -79,7 +79,7 @@ The JavaScript runs the code to interact with the document and returns.
 export function insertParagraph() {
   return Word.run((context) => {
     // insert a paragraph at the start of the document.
-    const paragraph = context.document.body.insertParagraph("Hello World from Page2.razor.js", Word.InsertLocation.start);
+    const paragraph = context.document.body.insertParagraph("Hello World from Blazor", Word.InsertLocation.start);
 
     // sync the context to run the previous API call, and return.
     return context.sync();
@@ -111,7 +111,7 @@ Version  | Date | Comments
 
 ## Copyright
 
-Copyright(c) Maarten van Stam.All rights reserved.Licensed under the MIT License.
+Copyright(c) Maarten van Stam. All rights reserved.Licensed under the MIT License.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 

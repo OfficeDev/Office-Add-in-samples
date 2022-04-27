@@ -30,19 +30,19 @@ export async function insertEmersonQuoteAtSelection() {
 /**
  * This basic function shows how to insert a text (quote by Chekhov) into start of the document.
  */
-export async function insertChekhovQuoteAtTheBeginning() {
+export async function insertBruceSchneierQuoteAtTheBeginning() {
     await Word.run(async (context) => {
 
         // Create a proxy object for the document body.
         const body = context.document.body;
 
         // Queue a command to insert text at the start of the document body.
-        body.insertText('"Knowledge is of no value unless you put it into practice."\n', Word.InsertLocation.start);
+        body.insertText('"There is an entire flight simulator hidden in every copy of Microsoft Excel 97."\n', Word.InsertLocation.start);
 
         // Synchronize the document state by executing the queued commands,
         // and return a promise to indicate task completion.
         await context.sync();
-        console.log('Added a quote from Anton Chekhov.');
+        console.log('Added a quote from Bruce Schneier.');
     })
         .catch(function (error) {
             console.log('Error: ' + JSON.stringify(error));
@@ -52,21 +52,21 @@ export async function insertChekhovQuoteAtTheBeginning() {
         });
 }
 /**
- * This basic function shows how to insert a text (Chinese Proverb) into end of the document.
+ * This basic function shows how to insert a quote from Steve Ballmer at the end of the document.
  */
-export async function insertChineseProverbAtTheEnd() {
+export async function insertSteveBallmerAtTheEnd() {
     await Word.run(async (context) => {
 
         // Create a proxy object for the document body.
         const body = context.document.body;
 
         // Queue a command to insert text at the end of the document body.
-        body.insertText('"To know the road ahead, ask those coming back."\n', Word.InsertLocation.end);
+        body.insertText('"Developer, developer, developer!"\n', Word.InsertLocation.end);
 
         // Synchronize the document state by executing the queued commands,
         // and return a promise to indicate task completion.
         await context.sync();
-        console.log('Added a quote from a Chinese proverb.');
+        console.log('Added a quote from Steve Ballmer.');
     })
         .catch(function (error) {
             console.log('Error: ' + JSON.stringify(error));

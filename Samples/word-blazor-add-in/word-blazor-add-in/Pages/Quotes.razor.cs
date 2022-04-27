@@ -6,10 +6,10 @@ using Microsoft.JSInterop;
 namespace BlazorAddIn.Pages
 {
     /// <summary>
-    /// FirstAddin Class
+    /// Quotes Class
     /// This will demo inserting 'famous' quotes at the current selection, start or end of the document.
     /// </summary>
-    public partial class FirstAddin
+    public partial class Quotes
     {
         [Inject]
         public IJSRuntime JSRuntime { get; set; } = default!;
@@ -19,7 +19,7 @@ namespace BlazorAddIn.Pages
         {
             if (firstRender)
             {
-                JSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/FirstAddin.razor.js");
+                JSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/Quotes.razor.js");
             }
         }
 
@@ -32,13 +32,13 @@ namespace BlazorAddIn.Pages
         /// <summary>
         /// Will invoke JavaScript function to insert Chechov Quote
         /// </summary>
-        private async Task InsertChekhov() =>
-            await JSModule.InvokeVoidAsync("insertChekhovQuoteAtTheBeginning");
+        private async Task InsertBruceSchneier() =>
+            await JSModule.InvokeVoidAsync("insertBruceSchneierQuoteAtTheBeginning");
 
         /// <summary>
-        /// Will invoke JavaScript function to insert Chinese Proverb
+        /// Will invoke JavaScript function to insert Steve Ballmer Quote
         /// </summary>
-        private async Task InsertProverb() =>
-            await JSModule.InvokeVoidAsync("insertChineseProverbAtTheEnd");
+        private async Task InsertBallmer() =>
+            await JSModule.InvokeVoidAsync("insertSteveBallmerAtTheEnd");
     }
 }

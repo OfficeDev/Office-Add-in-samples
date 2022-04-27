@@ -47,14 +47,7 @@ namespace BlazorAddIn.Pages
         /// <returns></returns>
         internal async Task InsertParagraps()
         {
-            // VSTO Way of Working
-            // Get ActiveDocument
-            // Clear ActiveDocument (Get Document Body, Select All, Delete?)
-
             await Clear();
-
-            // Get ActiveDocument
-            // ActiveDocument (Get Document Start, Insert Paragraph at specified location?)
 
             await InsertParagraph("One more paragraph.", "Start");
             await InsertParagraph("Co-locating Index.razor.js Demo.", "Start");
