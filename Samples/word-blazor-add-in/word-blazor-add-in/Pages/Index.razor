@@ -3,57 +3,56 @@
 
 <section class="Title">
 	<h1>
-		Content Control Interactions
+		Content control interactions
 	</h1>
 </section>
 <section class="description text">
 	<p>
-		This sample demonstrates how to insert and change content control properties.
-		The sample shows you how to add Content Controls to Paragraphs and show how to work with Event Handlers.
+		The sample shows you how to add content controls to paragraphs, add event handlers, and change content control properties.
 	</p>
 </section>
 
 <section class="setup ms-font-m">
-	<h5>Page Setup</h5>
-	<p>This will add some initial paragraphs to the document.</p>
-	<button class="btn btn-primary" @onclick="Setup">Setup Document</button>
+	<h5>Page setup</h5>
+	<p>Add some initial paragraphs to the document.</p>
+	<button class="btn btn-primary" @onclick="Setup">Set up document</button>
 </section>
 
 <section class="samples ms-font-m">
 	<div>
-		<h5>Convert to Content Controls</h5>
-		<p>This will convert each paragraph surrounded by a Content Control.</p>
-		<button id="insert-controls" class="btn btn-primary" @onclick="InsertContentControls">Convert to Content Controls</button>
+		<h5>Create content controls</h5>
+		<p>Surround each paragrah with a content control.</p>
+		<button id="insert-controls" class="btn btn-primary" @onclick="InsertContentControls">Convert to content controls</button>
 	</div>
 
 	<div class="mt-3">
-		<h5>Tag Content Controls</h5>
-		<p>Tag content controls, mark as odd and even.</p>
-		<button id="change-controls" class="btn btn-primary" @onclick="TagContentControls">Tag Content Controls</button>
+		<h5>Tag content controls</h5>
+		<p>Tag content controls, and mark them as odd or even.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="TagContentControls">Tag content controls</button>
 	</div>
 
 	<div class="mt-3">
-		<h5>Modify Content Controls</h5>
+		<h5>Modify content controls</h5>
 		<p>Modify content control appearance and content.</p>
-		<button id="change-controls" class="btn btn-primary" @onclick="ModifyContentControls">Modify Content Controls</button>
+		<button id="change-controls" class="btn btn-primary" @onclick="ModifyContentControls">Modify content controls</button>
 	</div>
 
 	<div class="mt-3">
-		<h5>Register Content Controls for Events</h5>
-		<p>This will add the OnDelete and onSelectionChanged event handlers to the Content Controls.</p>
-		<button id="change-controls" class="btn btn-primary" @onclick="RegisterContentControlsEvents">Register Event Handlers</button>
+		<h5>Register content controls for events</h5>
+		<p>Add the onDeleted and onSelectionChanged event handlers to the content controls.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="RegisterContentControlsEvents">Register event handlers</button>
 	</div>
 
 	<div class="mt-3">
-		<h5>Delete first 'even' tagged Content Control</h5>
-		<p>This will delete the first Content Control that was tagged 'even'.</p>
-		<button id="change-controls" class="btn btn-primary" @onclick="DeleteContentControl">Delete first 'even' Content Control</button>
+		<h5>Delete content control</h5>
+		<p>Delete the first content control that was tagged 'even'.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="DeleteContentControl">Delete first 'even' content control</button>
 	</div>
 
 	<div class="mt-3">
-		<h5>De-Register Content Controls for Events</h5>
-		<p>This will remove the OnDelete and onSelectionChanged event handlers to the Content Controls.</p>
-		<button id="change-controls" class="btn btn-primary" @onclick="DeRegisterContentControlEvents">Remove Event Handlers</button>
+		<h5>Deregister content controls for events</h5>
+		<p>Remove the onDeleted and onSelectionChanged event handlers from the content controls.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="DeRegisterContentControlEvents">Remove event handlers</button>
 	</div>
 
 </section>

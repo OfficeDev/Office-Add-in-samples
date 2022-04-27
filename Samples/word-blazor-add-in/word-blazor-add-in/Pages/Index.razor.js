@@ -1,7 +1,7 @@
-﻿/* Copyright(c) Maarten van Stam.All rights reserved.Licensed under the MIT License. */
+/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
 
 /**
- * Step 1: Add some Paragraphs to the document
+ * Step 1: Add some paragraphs to the document
  */
 export async function setupDocument() {
 
@@ -13,28 +13,28 @@ export async function setupDocument() {
         context.document.body.insertParagraph("Inserting another paragraph. ", "Start");
 
         context.document.body.insertParagraph(
-            "Video provides a powerful way to help you prove your point. When you click Online Video, you can paste in the embed code for the video you want to add. You can also type a keyword to search online for the video that best fits your document.",
+            "Effective add-ins offer unique and compelling functionality that extends Office applications in a visually appealing way. To create a great add-in, provide an engaging first-time experience for your users, design a first-class UI experience, and optimize your add-in's performance.",
             "Start"
         );
 
         context.document.body.paragraphs
             .getLast()
             .insertText(
-                "To make your document look professionally produced, Word provides header, footer, cover page, and text box designs that complement each other. For example, you can add a matching cover page, header, and sidebar. Click Insert and then choose the elements you want from the different galleries. ",
+                "With Word add-ins, you can use familiar web technologies such as HTML, CSS, and JavaScript to build a solution that can run in Word across multiple platforms, including on the web, Windows, Mac, and iPad. Learn how to build, test, debug, and publish Word add-ins.",
                 "Replace"
             );
     });
 }
 
 /**
- * ContentControlAdded Event Handler
+ * ContentControlAdded event handler
  * @param  {} args
  */
 async function handleContentControlAdded(args) {
-    console.log("Content Control Added!");
+    console.log("Content control added!");
 }
 /**
- * Step 2: Create Content Controls from the Paragraphs
+ * Step 2: Create content controls from the paragraphs
  */
 export async function insertContentControls() {
 
@@ -53,11 +53,8 @@ export async function insertContentControls() {
 
         await context.sync();
 
-        let contentcontrolsinserted = 0;
-
         for (let i = 0; i < paragraphs.items.length; i++) {
-            let contentControl = paragraphs.items[i].insertContentControl();
-            contentcontrolsinserted++;
+            paragraphs.items[i].insertContentControl();
         }
 
         await context.sync();
@@ -65,23 +62,23 @@ export async function insertContentControls() {
 }
 
 /**
- * ContentControlDeleted Event Handler
+ * ContentControlDeleted event handler
  * @param  {} args
  */
 async function handleContentControlDeleted(args) {
-    console.log("Content Control Deleted!");
+    console.log("Content control deleted!");
 }
 
 /**
- * SelectionChanged Event Handler
+ * SelectionChanged event handler
  * @param  {} args
  */
 async function handleSelectionChanged(args) {
-    console.log("Content Control Selection Changed!");
+    console.log("Content control selection changed!");
 }
 
 /**
- * Step 3: Tag each Content Control, by marking them as even and odd
+ * Step 3: Tag each content control, by marking them as even and odd
  */
 export async function tagContentControls() {
     
@@ -105,10 +102,10 @@ export async function tagContentControls() {
             if ((i+1) % 2 === 0) {
                 // Tag
                 contentControl.tag = "even";
-                console.log("Content Control Tagged Even!");
+                console.log("Content control tagged even!");
             } else {
                 contentControl.tag = "odd";
-                console.log("Content Control Tagged Odd!");
+                console.log("Content control tagged odd!");
             }
 
             contentcontrolsTagged++;
@@ -120,7 +117,7 @@ export async function tagContentControls() {
 }
 
 /**
- * Step 4: Modify the Content Controls to showoff the change options
+ * Step 4: Modify the content controls to show the change options
  */
 export async function modifyContentControls() {
 
@@ -137,7 +134,7 @@ export async function modifyContentControls() {
         await context.sync();
 
         for (let i = 0; i < evenContentControls.items.length; i++) {
-            // Change a few properties and append a paragraph
+            // Change a few properties and append a paragraph.
             evenContentControls.items[i].set({
                 color: "red",
                 title: "Even ContentControl #" + (i + 1),
@@ -147,7 +144,7 @@ export async function modifyContentControls() {
         }
 
         for (let j = 0; j < oddContentControls.items.length; j++) {
-            // Change a few properties and append a paragraph
+            // Change a few properties and append a paragraph.
             oddContentControls.items[j].set({
                 color: "green",
                 title: "Odd ContentControl #" + (j + 1),
@@ -163,7 +160,7 @@ export async function modifyContentControls() {
 let eventContexts = [];
 
 /**
- * Step 5: Register the Content Controls for OnDelete and onSelectionChanged events
+ * Step 5: Register the content controls for onDeleted and onSelectionChanged events
  */
 export async function registerEvents() {
     // Traverses each content control of the document and deletes the even content controls
@@ -182,21 +179,21 @@ export async function registerEvents() {
 
             for (let i = 0; i < contentcontrols.items.length; i++) {
                 eventContexts[i*2] = contentcontrols.items[i].onDeleted.add(handleContentControlDeleted);
-                console.log("Added onDeleted Handler");
+                console.log("Added onDeleted handler.");
                 eventContexts[(i * 2) + 1] = contentcontrols.items[i].onSelectionChanged.add(handleSelectionChanged);
-                console.log("Added onSelectionChanged Handler");
+                console.log("Added onSelectionChanged handler.");
                 contentcontrols.items[i].track();
             }
 
             await context.sync();
 
-            console.log("Added OnDelete and onSelectionChanged event handlers.");
+            console.log("Added onDeleted and onSelectionChanged event handlers.");
         }
     });
 }
 
 /**
- * Step 6: Delete first 'even' Content Control
+ * Step 6: Delete first 'even' content control
  */
 export async function deleteContentControl() {
     await Word.run(async (context) => {
@@ -207,7 +204,7 @@ export async function deleteContentControl() {
         if (contentControls.items.length === 0) {
             console.log("There are no content controls tagged 'even' in this document.");
         } else {
-            console.log("First 'even' Control to be deleted:");
+            console.log("First 'even' control to be deleted:");
             console.log(contentControls.items[0]);
             contentControls.items[0].delete(false);
             await context.sync();
@@ -216,7 +213,7 @@ export async function deleteContentControl() {
 }
 
 /**
- * Step 7: De-Register the Content Controls for OnDelete and onSelectionChanged events
+ * Step 7: Deregister the content controls for OnDeleted and onSelectionChanged events
  */
  export async function deregisterEvents() {
     await Word.run(async (context) => {
@@ -230,16 +227,7 @@ export async function deleteContentControl() {
         await context.sync();
 
         eventContexts = null;
-        console.log("Remove the OnDelete and onSelectionChanged event handlers.");
+        console.log("Remove the onDeleted and onSelectionChanged event handlers.");
     });
 }
 
-/** Default helper for invoking an action and handling errors. */
-async function tryCatch(callback) {
-    try {
-        await callback();
-    } catch (error) {
-        // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
-        console.error(error);
-    }
-}
