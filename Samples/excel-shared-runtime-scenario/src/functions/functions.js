@@ -49,3 +49,6 @@ function add(first, second) {
     throw new CustomFunctions.Error(CustomFunctions.ErrorCode.notAvailable);
   }
 }
+
+CustomFunctions.associate("ADD", add);
+CustomFunctions.associate("GETDATA", getData);
