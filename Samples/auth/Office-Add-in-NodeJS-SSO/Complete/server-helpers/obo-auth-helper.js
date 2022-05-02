@@ -29,11 +29,9 @@ const config = {
   },
 };
 
-// Create msal application object
-const cca = new msal.ConfidentialClientApplication(config);
-
 exports.getConfidentialClientApplication = function getConfidentialClientApplication(){
-  return cca;
+  // Create msal application object
+  return new msal.ConfidentialClientApplication(config);
 }
 
 exports.validateJwt = function (req, res, next) {
@@ -68,17 +66,4 @@ const getSigningKeys = (header, callback) => {
     var signingKey = key.publicKey || key.rsaPublicKey;
     callback(null, signingKey);
   });
-};
-
-exports.getOboToken = function getOboToken(accessToken, scopes) {
-  cca
-    .acquireTokenByCode(tokenRequest)
-    .then((response) => {
-      console.log("OBO flow completed and Graph token received.");
-      return response.accessToken;
-    })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).send(error);
-    });
 };

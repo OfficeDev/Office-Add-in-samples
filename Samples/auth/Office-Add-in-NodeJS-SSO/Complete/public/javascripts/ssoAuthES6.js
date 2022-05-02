@@ -3,8 +3,6 @@
  *
  */
 
-let retryGetAccessToken = 0; // Use when getAccessToken is call repeatedly to control recursion depth
-
 // If the add-in is running in Internet Explorer, the code must add support
 // for Promises.
 if (!window.Promise) {
@@ -23,18 +21,19 @@ Office.onReady(function (info) {
  * gets up to 10 file names listed in the user's OneDrive.
  * The file names are inserted into the document.
  */
-async function getFileNameList() {
-  const response = await callWebServerAPI("/getuserfilenames");
-  if (response != null)
-    writeFileNamesToOfficeDocument(response)
-      .then(function () {
-        showMessage("Your OneDrive filenames are added to the document.");
-      })
-      .catch(function (error) {
-        // The error from writeFileNamesToOfficeDocument will begin
-        // "Unable to add filenames to document."
-        showMessage(error);
-      });
+function getFileNameList() {
+  callWebServerAPI("/getuserfilenames").then((response) => {
+    if (response != null)
+      writeFileNamesToOfficeDocument(response)
+        .then(function () {
+          showMessage("Your OneDrive filenames are added to the document.");
+        })
+        .catch(function (error) {
+          // The error from writeFileNamesToOfficeDocument will begin
+          // "Unable to add filenames to document."
+          showMessage(error);
+        });
+  });
 }
 
 /**
@@ -46,44 +45,60 @@ async function getFileNameList() {
 async function callWebServerAPI(url, authOptions) {
   if (authOptions === undefined) {
     // Set up default auth options.
-    let authOptions = {
+    authOptions = {
       allowSignInPrompt: true,
       allowConsentPrompt: true,
       forMSGraphAccess: true,
     };
   }
-  let accessToken = null;
+  var accessToken = null;
+  var result = null;
+  var tokenNeeded = true; // The following loop will call getAccessToken again in some error scenarios. retryGetAccessToken is configure to only retry the loop once.
+  var retryGetAccessToken = 0; // Use when getAccessToken is called repeatedly to control recursion depth.
 
-  // Get the SSO access token from Office
-  try {
-    // The access token returned from getAccessToken only has permissions to your web server APIs,
-    // and it contains the identity claims of the signed-in user.
-    let accessToken = await Office.auth.getAccessToken(authOptions);
-    retryGetAccessToken = 0; // If success we can reset this counter
-  } catch (error) {
-    handleSSOErrors(error);
-  }
+  while (tokenNeeded && retryGetAccessToken <= 1) {
+    try {
+      // The access token returned from getAccessToken only has permissions to your web server APIs,
+      // and it contains the identity claims of the signed-in user.
+      let authParam = { ...authOptions };
+      accessToken = await Office.auth.getAccessToken(authParam);
+    } catch (error) {
+      handleSSOErrors(error);
+    }
 
-  // Call our web server using the SSO access token
-  try {
-    const response = await $.ajax({
-      type: "GET",
-      url: url,
-      headers: { Authorization: "Bearer " + accessToken },
-      cache: false,
-    });
-    return response;
-  } catch (e) {
-    handleWebServerErrors(e);
+    // Call our web server with requested url
+    try {
+      await $.ajax({
+        type: "GET",
+        url: url,
+        headers: { Authorization: "Bearer " + accessToken },
+        cache: false,
+        success: function (data) {
+          tokenNeeded = false;
+          result = data;
+        },
+      });
+    } catch (error) {
+      // We only handle errors returned by our web server (500).
+      if (error.statusText === "Internal Server Error") {
+        tokenNeeded = handleWebServerErrors(error);
+      } else console.log(JSON.stringify(error)); // Log anything else.
+    }
+    retryGetAccessToken++;
   }
+  if (tokenNeeded) {
+    // We exceeded the loop count and could not obtain an SSO token.
+    dialogFallback();
+  }
+  return result;
 }
 
 /**
  * Handles any error returned from getAccessToken.
- * @param {*} error The error to process
+ * @param {*} err The error to process
  */
-function handleSSOErrors(error) {
-  switch (error.code) {
+function handleSSOErrors(err) {
+  switch (err.code) {
     case 13001:
       // No one is signed into Office. If the add-in cannot be effectively used when no one
       // is logged into Office, then the first call of getAccessToken should pass the
@@ -126,43 +141,46 @@ function handleSSOErrors(error) {
   }
 }
 
-function handleWebServerErrors(e) {
-  // Our special handling on the server will cause the result that is returned
-  // from a AADSTS50076 (a 2FA challenge) to have a Message property but no ExceptionMessage.
-  var message = e.responseJSON.Message;
-
-  // Results from other errors (other than AADSTS50076) will have an ExceptionMessage property.
-  var exceptionMessage = result.responseJSON.ExceptionMessage;
-
-  if (
-    exceptionMessage &&
-    e.Message.indexOf("AADSTS500133") !== -1 &&
-    retryGetAccessToken <= 0
-  ) {
-    // On rare occasions the access token could expire after it was sent to the server.
-    // Microsoft identity platform will respond with
-    // "The provided value for the 'assertion' is not valid. The assertion has expired."
-    // Call this method recursively to try to get an SSO token again.
-    callWebServerAPI(url, authOptions);
-  } else if (message) {
-    // Microsoft Graph requires an additional form of authentication. Have the Office host
-    // get a new token using the Claims string, which tells Microsoft identity platform to
-    // prompt the user for all required forms of authentication.
-    if (message.indexOf("AADSTS50076") !== -1 && retryGetAccessToken <= 0) {
-      const claims = JSON.parse(message).Claims;
-      const claimsAsString = JSON.stringify(claims);
-      authOptions.authChallenge = claimsAsString;
-      callWebServerAPI(url, {
-        allowSignInPrompt: true,
-        allowConsentPrompt: true,
-        forMSGraphAccess: true,
-      });
-    }
-  } else {
-    // For debugging:
-    // showResult(["Microsoft identity platform error: " + JSON.stringify(exceptionMessage)]);
-
-    // For all other Microsoft identity platform errors, fallback to non-SSO sign-in.
-    dialogFallback();
+/**
+ * Handles any error returned from the web server.
+ * @param {*} err The error to process
+ * @returns {boolean} true if the caller should attempt to retry getAccessToken; otherwise false.
+ */
+function handleWebServerErrors(err) {
+  // Our web server returns a type to help handle the known cases.
+  switch (err.responseJSON.type) {
+    case "Microsoft Graph":
+      // An error occurred when the web server called Microsoft Graph.
+      showMessage(
+        "Error from Microsoft Graph: " +
+          JSON.stringify(err.responseJSON.errorDetails)
+      );
+      break;
+    case "AADSTS500133": // expired token
+      // On rare occasions the access token could expire after it was sent to the server.
+      // Microsoft identity platform will respond with
+      // "The provided value for the 'assertion' is not valid. The assertion has expired."
+      // return parameters for the calling function to retry the callWebServerAPI method recursively to try to get a refreshed SSO token.
+      return true; // Indicate to retry call to getAccessToken.
+      break;
+    default:
+      showMessage(
+        "Unknown error from web server: " +
+          JSON.stringify(err.responseJSON.errorDetails)
+      );
+      dialogFallback();
+      return false;
   }
+  return false; // Indicate no need to retry call to getAccessToken.
+}
+
+/**
+ * This method is not implemented. When SSO fails, you should implement a fallback authentication approach.
+ * For example, you may want to display a dialog for the user to sign in, using the Microsoft Authentication Library (MSAL).
+ * For more information, see https://docs.microsoft.com/office/dev/add-ins/develop/auth-with-office-dialog-api
+ */
+function dialogFallback() {
+  console.log(
+    "Unable to acquire SSO token. Fallback authentication is required."
+  );
 }

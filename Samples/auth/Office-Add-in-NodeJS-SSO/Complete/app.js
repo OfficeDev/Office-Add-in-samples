@@ -46,10 +46,6 @@ if (process.env.NODE_ENV !== 'production') {
 app.use('/home/index', indexRouter);
 //app.use('/auth', authRouter);
 
-app.get('/dialog.html', (async (req, res) => {
-  return res.sendfile('dialog.html');
-}));
-
 app.get('/getuserfilenames', getFilesRoute);
 
 

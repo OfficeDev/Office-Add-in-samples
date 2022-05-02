@@ -5,24 +5,25 @@
  */
 
 function makeWebServerApiCall(accessToken) {
-    $.ajax({type: "GET", 
-        url: "/getuserfilenames",
-        headers: {"access_token": accessToken },
-        cache: false
-    }).done(function (response) {
-
-        writeFileNamesToOfficeDocument(response)
-        .then(function () { 
-            showMessage("Your data has been added to the document."); 
+  $.ajax({
+    type: "GET",
+    url: "/getuserfilenames",
+    headers: { Authorization: "Bearer " + accessToken },
+    cache: false,
+  })
+    .done(function (response) {
+      writeFileNamesToOfficeDocument(response)
+        .then(function () {
+          showMessage("Your data has been added to the document.");
         })
         .catch(function (error) {
-            // The error from writeFileNamesToOfficeDocument will begin 
-            // "Unable to add filenames to document."
-            showMessage(error);
+          // The error from writeFileNamesToOfficeDocument will begin
+          // "Unable to add filenames to document."
+          showMessage(error);
         });
     })
     .fail(function (errorResult) {
-        // This error is relayed from `app.get('/getuserfilenames` in app.js file.
-        showMessage("Error from Microsoft Graph: " + JSON.stringify(errorResult));
-	});
+      // This error is relayed from `app.get('/getuserfilenames` in app.js file.
+      showMessage("Error from Microsoft Graph: " + JSON.stringify(errorResult));
+    });
 }
