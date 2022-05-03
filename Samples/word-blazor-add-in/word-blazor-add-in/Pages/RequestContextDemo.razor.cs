@@ -7,7 +7,7 @@ namespace BlazorAddIn.Pages
 {
     /// <summary>
     /// This class shows the use of RequestContext instead of using the Word.run option.
-    /// Word.run is usually prefered to keep track of objects, but you can track it yourself if you like.
+    /// Word.run is usually preferred to keep track of objects, but you can track it yourself if you like.
     /// </summary>
     public partial class RequestContextDemo
     {

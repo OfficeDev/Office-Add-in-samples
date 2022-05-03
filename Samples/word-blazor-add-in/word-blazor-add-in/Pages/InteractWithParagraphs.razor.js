@@ -9,7 +9,7 @@ export async function clearDocument() {
     });
 }
 /**
- * Inserts Paragraphs on the specified location
+ * Inserts paragraphs on the specified location
  * @param  {} text
  * @param  {} location
  */
@@ -19,7 +19,7 @@ export async function insertParagraph(text, location) {
     });
 }
 /**
- * Replacing text in the last paragraph found in the document
+ * Replaces text in the last paragraph found in the document
  * @param  {} text
  */
 export async function replaceParagraph(text) {
@@ -33,7 +33,7 @@ export async function replaceParagraph(text) {
     });
 }
 /**
- * This will count the number of paragraphs in the document
+ * Counts the number of paragraphs in the document
  * @returns numberofParagraphs
  */
 export async function paragraphCount() {

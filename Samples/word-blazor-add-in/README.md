@@ -26,11 +26,11 @@ This sample shows how to build a Word add-in using .NET Blazor technologies. Bla
 
 ## Applies to
 
-- Word on Windows, Mac, and in a browser.
+- Word on the web, Windows, and Mac.
 
 ## Prerequisites
 
-- Microsoft 365 - You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
+- Microsoft 365 - Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
 ## Run the sample
 
@@ -39,22 +39,22 @@ This sample shows how to build a Word add-in using .NET Blazor technologies. Bla
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
 1. When Word opens, choose **Home** > **Show Taskpane**.
 
-Now you can try out the controls.
+Next, try out the controls.
 
 ## Understand an Office Add-in in Blazor Context
 
-An Office Add-in is a web application that can extend Office with additional functionality for the user. For example, an add-in can add ribbon buttons, a task pane, or a content pane with the functionality you want. Because an Office Add-in is a web application you must provide a web server to host the files.
-When building the Office Add-in as a Blazor Webassembly this will allow you to build a .NET Core compliant website that interacts with the Office JS APIs. If your background is with VBA, VSTO, or COM Add-in development, you may find that building Office Add-ins using Blazor Webassembly is a more familiar development technique.
+An Office Add-in is a web application that extends Office with additional functionality for the user. For example, an add-in can add ribbon buttons, a task pane, or a content pane with the functionality you want. Because an Office Add-in is a web application, you must provide a web server to host the files.
+Building the Office Add-in as a Blazor Webassembly allows you to build a .NET Core compliant website that interacts with the Office JS APIs. If your background is with VBA, VSTO, or COM add-in development, you may find that building Office Add-ins using Blazor Webassembly is a familiar development technique.
 
 ## Key parts of this sample
 
-This sample uses a Blazor Webassembly file that can run cross-platform in various browsers supporting WASM (Webassembly). The Blazor WASM App demonstrates some basic Word functions using paragraphs and content controls including event handlers.
+This sample uses a Blazor Webassembly file that runs cross-platform in various browsers supporting WASM (Webassembly). The Blazor WASM App demonstrates some basic Word functions using paragraphs and content controls including event handlers.
 
-The purpose of this sample is to show how to build and interact with the Blazor, C# and JavaScript Interop options. If you are looking for more examples of interacting with Word and Office JS APIs, see [Script Lab](https://https://aka.ms/getscriptlab).
+The purpose of this sample is to show you how to build and interact with the Blazor, C# and JavaScript Interop options. If you're looking for more examples of interacting with Word and Office JS APIs, see [Script Lab](https://https://aka.ms/getscriptlab).
 
 ### Blazor pages
 
-The **Pages** folder contains the Blazor pages, such as **HelloWorld.razor**. These also contain two code-behind pages, such as **HelloWorld.razor.cs** and **HelloWorld.razor.js**. The C# file first establishes an interop connection with the JavaScript file.
+The **Pages** folder contains the Blazor pages, such as **HelloWorld.razor**. These also contain two code-behind pages, named **HelloWorld.razor.cs** and **HelloWorld.razor.js**. The C# file first establishes an interop connection with the JavaScript file.
 
 ```csharp
 protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -87,11 +87,11 @@ export function insertParagraph() {
 }
 ```
 
-This is the fundamental pattern.
+The fundamental pattern includes the following steps.
 
 1. Call **JSRuntime.InvokeAsync** to set up the interop between C# and JavaScript.
 1. Use **JSModule.InvokeVoidAsync** to call JavaScript functions from your C# code.
-1. Always call Office JS APIs to interact with the document from JavaScript code.
+1. Call Office JS APIs to interact with the document from JavaScript code.
 
 ## Questions and comments
 

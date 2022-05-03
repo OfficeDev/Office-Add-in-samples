@@ -14,7 +14,7 @@ namespace BlazorAddIn.Pages
     }
 
     /// <summary>
-    /// This demo will show how to be able to perform very small steps in the OfficeJS model
+    /// This demo shows how to perform very small steps using the OfficeJS model.
     /// </summary>
     public partial class InteractWithParagraphs
     {
@@ -58,7 +58,7 @@ namespace BlazorAddIn.Pages
         }
 
         /// <summary>
-        /// Calls the JavaScript interop to insert Paragraphs at the given location
+        /// Calls the JavaScript interop to insert paragraphs at the given location
         /// </summary>
         /// <param name="text"></param>
         /// <param name="location"></param>
@@ -68,7 +68,7 @@ namespace BlazorAddIn.Pages
         }
 
         /// <summary>
-        /// Calls the JavaScript interop to replace the Paragraph text
+        /// Calls the JavaScript interop to replace the paragraph text
         /// </summary>
         /// <param name="text"></param>
         private async Task ReplaceParagraph(string text)

@@ -1,6 +1,6 @@
 ﻿/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
 /**
- * This basic function shows how to insert a text (quote by Emerson) into the current cursor location
+ * Inserts a quote by Emerson into the current cursor location.
  */
 export async function insertEmersonQuoteAtSelection() {
     await Word.run(async (context) => {
@@ -28,7 +28,7 @@ export async function insertEmersonQuoteAtSelection() {
         });
 }
 /**
- * This basic function shows how to insert a text (quote by Chekhov) into start of the document.
+ * Inserts a quote by Chekhov at the start of the document body.
  */
 export async function insertBruceSchneierQuoteAtTheBeginning() {
     await Word.run(async (context) => {
@@ -52,7 +52,7 @@ export async function insertBruceSchneierQuoteAtTheBeginning() {
         });
 }
 /**
- * This basic function shows how to insert a quote from Steve Ballmer at the end of the document.
+ * Inserts a quote from Steve Ballmer at the end of the document.
  */
 export async function insertSteveBallmerAtTheEnd() {
     await Word.run(async (context) => {

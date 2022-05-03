@@ -23,7 +23,7 @@ namespace BlazorAddIn.Pages
         }
 
         /// <summary>
-        /// Basic function to invoke inserting a Paragraph
+        /// Basic function to invoke inserting a paragraph
         /// </summary>
         private async Task InsertParagraph() =>
             await JSModule.InvokeVoidAsync("insertParagraph");

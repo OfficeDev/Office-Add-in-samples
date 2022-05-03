@@ -7,7 +7,7 @@ namespace BlazorAddIn.Pages
 {
     /// <summary>
     /// Quotes Class
-    /// This will demo inserting 'famous' quotes at the current selection, start or end of the document.
+    /// Inserts 'famous' quotes at the current selection, start, or end of the document.
     /// </summary>
     public partial class Quotes
     {
@@ -24,19 +24,19 @@ namespace BlazorAddIn.Pages
         }
 
         /// <summary>
-        /// Will invoke JavaScript function to insert Emerson Quote
+        /// Invokes JavaScript function to insert Emerson quote.
         /// </summary>
         private async Task InsertWaldo() =>
             await JSModule.InvokeVoidAsync("insertEmersonQuoteAtSelection");
 
         /// <summary>
-        /// Will invoke JavaScript function to insert Chechov Quote
+        /// Invokes JavaScript function to insert Chechov quote.
         /// </summary>
         private async Task InsertBruceSchneier() =>
             await JSModule.InvokeVoidAsync("insertBruceSchneierQuoteAtTheBeginning");
 
         /// <summary>
-        /// Will invoke JavaScript function to insert Steve Ballmer Quote
+        /// Invokes JavaScript function to insert Steve Ballmer quote.
         /// </summary>
         private async Task InsertBallmer() =>
             await JSModule.InvokeVoidAsync("insertSteveBallmerAtTheEnd");
