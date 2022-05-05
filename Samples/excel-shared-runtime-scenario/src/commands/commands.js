@@ -131,12 +131,11 @@ async function insertData() {
 
 const g = getGlobal();
   
-  // the add-in command functions need to be available in global scope
-  g.btnenableaddinstart = btnEnableAddinStart;
-  g.btndisableaddinstart = btnDisableAddinStart;
-  g.btninsertdata = btnInsertData;
-  g.btnopentaskpane = btnOpenTaskpane;
-  g.btnclosetaskpane = btnCloseTaskpane;
-  g.btnconnectservice = btnConnectService;
-  g.btndisconnectservice = btnDisconnectService;
-  g.btnsumdata = btnSumData;
+Office.actions.associate("btnConnectService", btnConnectService);
+Office.actions.associate("btnDisconnectService", btnDisconnectService);
+Office.actions.associate("btnOpenTaskpane", btnOpenTaskpane);
+Office.actions.associate("btnCloseTaskpane", btnCloseTaskpane);
+Office.actions.associate("btnEnableAddinStart", btnEnableAddinStart);
+Office.actions.associate("btnDisableAddinStart", btnDisableAddinStart);
+Office.actions.associate("btnInsertData", btnInsertData);
+Office.actions.associate("btnSumData", btnSumData);
