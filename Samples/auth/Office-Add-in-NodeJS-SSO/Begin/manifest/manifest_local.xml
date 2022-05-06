@@ -2,7 +2,7 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
   <Id>05c2e1c9-3e1d-406e-9a91-e9ac64854143</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Contoso0</ProviderName>
+  <ProviderName>Microsoft<</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Office Add-in NodeJS SSO"/>
   <Description DefaultValue="An add-in that shows how to use SSO, and to fallback to interactive login when SSO is not available."/>

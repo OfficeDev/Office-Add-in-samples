@@ -5,7 +5,7 @@
            xsi:type="TaskPaneApp">
   <Id>a134efb9-12d0-40cd-9d67-bdbf81e6c945</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Administrator</ProviderName>
+  <ProviderName>Microsoft</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Using OOXML in a Word add-in" />
   <Description DefaultValue="Interact with rich content in Word documents using Office Open XML."/>
