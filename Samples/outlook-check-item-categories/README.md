@@ -181,7 +181,7 @@ For additional information on `SendMode` options, see [Available SendMode option
 
 ### Configure the event handlers
 
-The event object is passed to its respective handler in **commands.js** for processing. The `onItemComposeHandler` processes `onNewMessageCompose` and `onNewAppointmentOrganizer` events, while `onItemSendHandler` processes `onMessageSend` and `onAppointmentSend` events. 
+The event object is passed to its respective handler in **commands.js** for processing. The `onItemComposeHandler` processes `onNewMessageCompose` and `onNewAppointmentOrganizer` events, while `onItemSendHandler` processes `onMessageSend` and `onAppointmentSend` events.
 
 The `associate` method is called in `commands.js` to map the function IDs specified in the manifest to the appropriate event handler.
 
