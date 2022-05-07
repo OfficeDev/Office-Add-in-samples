@@ -124,11 +124,11 @@
           <bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/assets/icon-80.png"/> -->
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="JSRuntime.url" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/commands/commands.js"/>
-          <bt:Url id="WebViewRuntime.url" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/commands/commands.html"/>
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/commands/commands.js"/>
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/commands/commands.html"/>
           <bt:Url id="Taskpane.Url" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/taskpane/taskpane.html"/>
-          <!-- <bt:Url id="JSRuntime.url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/commands/commands.js"/> -->
-          <!-- <bt:Url id="WebViewRuntime.url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/commands/commands.html"/> -->
+          <!-- <bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/commands/commands.js"/> -->
+          <!-- <bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/commands/commands.html"/> -->
           <!-- <bt:Url id="Taskpane.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/taskpane/taskpane.html"/> -->
         </bt:Urls>
         <bt:ShortStrings>
