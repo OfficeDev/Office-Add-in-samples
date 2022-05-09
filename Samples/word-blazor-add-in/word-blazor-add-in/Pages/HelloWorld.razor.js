@@ -4,8 +4,6 @@
  */
 export function insertParagraph() {
 
-    console.log("Hello JavaScript in Blazor!?!?!?");
-
     return Word.run((context) => {
 
         // Inserts a paragraph at the start of the document.
