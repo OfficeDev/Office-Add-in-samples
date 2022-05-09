@@ -1,4 +1,5 @@
 ---
+title: "Use Outlook Smart Alerts"
 page_type: sample
 urlFragment: outlook-add-in-check-item-categories
 products:
@@ -15,7 +16,7 @@ extensions:
 description: "Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent."
 ---
 
-# Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent
+# Use Outlook Smart Alerts
 
 **Applies to**: Outlook on Windows
 
@@ -27,7 +28,7 @@ Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, ar
 
 ## Features
 
-![Screenshot of the sample displaying Outlook Smart Alerts when required categories are missing from the message or appointment, and the task pane used to apply the categories to the item.](./assets/outlook-check-item-categories-features.png)
+![Sample displaying Outlook Smart Alerts when required categories are missing from the message or appointment, and the task pane used to apply the categories to the item. Four features are highlighted.](./assets/outlook-check-item-categories-features.png)
 
 1. Use event-based activation triggered by the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events to create color categories based on specific keywords.
 
@@ -43,9 +44,8 @@ Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, ar
 
 ## Prerequisites
 
-- Microsoft 365
+- A Microsoft 365 subscription. If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
 
-> Note: If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
 
 - Outlook on Windows with a minimum build of 16.0.14511.10000. For guidance with client configuration, see [How to preview](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch#how-to-preview).
 
@@ -99,7 +99,7 @@ Once the add-in is loaded, use the following steps to try out its functionality.
 
 1. Select **Don't Send**.
 
-1. To apply the required color categories to the message or appointment, select the **Select categories** button from the ribbon of the message or appointment window.
+1. To apply the required color categories to the message or appointment, choose **Select categories** from the ribbon of the message or appointment window.
 
     > The Office Add-ins Smart Alerts Sample task pane appears.
 
@@ -201,13 +201,13 @@ return;
 
 ![Screenshot of the Outlook Smart Alerts error message when required categories are missing from the message or appointment being sent.](./assets/outlook-check-item-categories-smart-alerts.png)
 
-Event-based add-ins are expected to be short-running and lightweight. To prevent the possibility of a long-running operation that may lead to an add-in timeout, the color category creation process is handled by `onItemComposeHandler` instead of `onItemSendHandler`.
+Event-based add-ins should be short-running and lightweight. To prevent the possibility of a long-running operation that may lead to an add-in timeout, the color category creation process is handled by `onItemComposeHandler` instead of `onItemSendHandler`.
 
 ### Implement a task pane
 
-Task panes can be used to complement event-based activation by providing users with a venue to further interact with the add-in. The `taskpane.html` and `taskpane.js` files configure the UI and functionality of the task pane, respectively. This allows the user to easily choose and apply the required Office Add-ins Sample color categories to the message or appointment.
+Task panes are used to complement event-based activation by providing users with a venue to further interact with the add-in. The `taskpane.html` and `taskpane.js` files configure the UI and functionality of the task pane, respectively. This allows the user to easily choose and apply the required Office Add-ins Sample color categories to the message or appointment.
 
-## Known Issues
+## Known issues
 
 - In the Windows client, imports are not supported in the JavaScript file where you implement event-based activation handling.
 
