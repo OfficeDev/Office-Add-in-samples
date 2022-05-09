@@ -75,7 +75,7 @@ Once the add-in is loaded, use the following steps to try out its functionality.
 
 1. Create a new message or appointment.
 
-    > Office Add-ins Sample color categories are created. To verify this from the new message or appointment window, select **File** \> **Info** \> **Properties** \> **Categories**.
+    Office Add-ins Sample color categories are created. To verify this from the new message or appointment window, select **File** \> **Info** \> **Properties** \> **Categories**.
 
 1. Add a recipient.
 
@@ -95,19 +95,19 @@ Once the add-in is loaded, use the following steps to try out its functionality.
 
 1. Send the message or appointment.
 
-    > An alert appears that reads, "You must assign the following categories before your message can be sent: Office Add-ins Sample: sales, Office Add-ins Sample: performance reviews".
+    An alert appears that reads, "You must assign the following categories before your message can be sent: Office Add-ins Sample: sales, Office Add-ins Sample: performance reviews".
 
 1. Select **Don't Send**.
 
 1. To apply the required color categories to the message or appointment, choose **Select categories** from the ribbon of the message or appointment window.
 
-    > The Office Add-ins Smart Alerts Sample task pane appears.
+    The Office Add-ins Smart Alerts Sample task pane appears.
 
 1. Select the applicable categories from the category list. To apply multiple categories, select and hold **Ctrl** while selecting the categories.
 
 1. Select **Apply Selected Categories**.
 
-    > The applied categories appear in the **Categories applied** section of the task pane.
+    The applied categories appear in the **Categories applied** section of the task pane.
 
 1. Send the message or appointment.
 
