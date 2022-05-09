@@ -64,9 +64,6 @@
             <!-- Points to a URL resource which details how the add-in should be used. -->
             <LearnMoreUrl resid="Contoso.GetStarted.LearnMoreUrl"/>
           </GetStarted>
-          <!-- Function file is a HTML page that includes the JavaScript where functions for ExecuteAction will be called. 
-            Think of the FunctionFile as the code behind ExecuteFunction. -->
-          <FunctionFile resid="Contoso.DesktopFunctionFile.Url" />
 
           <!-- PrimaryCommandSurface is the main Office Ribbon. -->
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
@@ -121,7 +118,6 @@
         <bt:Image id="Contoso.tpicon_80x80" DefaultValue="~remoteAppUrl/Images/Button80x80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="~remoteAppUrl/Functions/FunctionFile.html" />
         <bt:Url id="Contoso.Taskpane.Url" DefaultValue="~remoteAppUrl/" />
         <bt:Url id="Contoso.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
       </bt:Urls>

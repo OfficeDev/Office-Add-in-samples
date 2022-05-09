@@ -16,7 +16,7 @@ description: 'Create a Blazor Webassembly Word add-in showcasing some samples.'
 
 # Create a Blazor Webassembly Word add-in
 
-This sample shows how to build a Word add-in using .NET Blazor technologies. Blazor Webassembly allows you to build your addins using .NET, C# and JavaScript to interact with the OfficeJS API. The add-in uses JavaScript to work with the document and Office JS APIs, but you build the user interface and all other non-Office interactions in C# and .NET Core Blazor technologies.
+This sample shows how to build a Word add-in using .NET Blazor technologies.
 
 - Work with Blazor Webassembly in the context of Office.
 - Build cross-platform Office Add-ins using Blazor, C# and JavaScript Interop.
