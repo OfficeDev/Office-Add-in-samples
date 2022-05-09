@@ -8,10 +8,6 @@ Office.onReady((info) => {
     isOfficeInitialized = true;
     monitorSheetChanges();
 
-    
-    CustomFunctions.associate("ADD", add);
-    CustomFunctions.associate("GETDATA", getData);
-    
     document.getElementById("connectService").onclick = connectService; // in office-apis-helpers.js
     document.getElementById("selectFilter").onclick = insertFilteredData;
     

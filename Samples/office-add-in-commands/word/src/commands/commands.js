@@ -44,5 +44,4 @@ function getGlobal() {
 
 const g = getGlobal();
 
-// The add-in command functions need to be available in global scope
-g.writeValue = writeValue;
+Office.actions.associate("writeValue", writeValue);
