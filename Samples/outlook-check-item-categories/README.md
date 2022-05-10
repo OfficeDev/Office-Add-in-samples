@@ -24,7 +24,7 @@ description: "Use Outlook Smart Alerts to verify that required color categories 
 
 This sample uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent. Specific keywords detected in the subject or body of the item determine the required categories. If no categories or only some of the required categories are applied to the message or appointment, the add-in blocks the item from being sent and alerts the user to apply the missing categories. The user can apply categories to the item from the add-in task pane.
 
-Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, are currently available in preview. For documentation related to this sample, see [Use Smart Alerts and the onMessageSend event in your Outlook add-in (preview)](https://docs.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough).
+Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, are currently available in preview. For documentation related to this sample, see [Use Smart Alerts and the onMessageSend event in your Outlook add-in (preview)](https://docs.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough) and [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch).
 
 ## Features
 
