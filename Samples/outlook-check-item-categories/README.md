@@ -24,7 +24,10 @@ description: "Use Outlook Smart Alerts to verify that required color categories 
 
 This sample uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent. Specific keywords detected in the subject or body of the item determine the required categories. If no categories or only some of the required categories are applied to the message or appointment, the add-in blocks the item from being sent and alerts the user to apply the missing categories. The user can apply categories to the item from the add-in task pane.
 
-Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, are currently available in preview. For documentation related to this sample, see [Use Smart Alerts and the onMessageSend event in your Outlook add-in (preview)](https://docs.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough) and [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch).
+Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, are currently available in preview. For documentation related to this sample, see the following articles.
+- [Use Smart Alerts and the onMessageSend event in your Outlook add-in (preview)](https://docs.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough)
+- [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch)
+- [Get and set categories](https://docs.microsoft.com/office/dev/add-ins/outlook/categories)
 
 ## Features
 
@@ -169,10 +172,10 @@ The `<LaunchEvents>` element maps the four events that activate the add-in to th
 
 ```xml
 <LaunchEvents>
-    <LaunchEvent Type="OnNewMessageCompose" FunctionName="onItemComposeHandler"/>
-    <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onItemComposeHandler"/>
-    <LaunchEvent Type="OnMessageSend" FunctionName="onItemSendHandler" SendMode="SoftBlock"/>
-    <LaunchEvent Type="OnAppointmentSend" FunctionName="onItemSendHandler" SendMode="Block"/>
+    <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler"/>
+    <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler"/>
+    <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler" SendMode="SoftBlock"/>
+    <LaunchEvent Type="OnAppointmentSend" FunctionName="onAppointmentSendHandler" SendMode="Block"/>
 </LaunchEvents>
 ```
 
@@ -189,8 +192,10 @@ The event object is passed to its respective handler in **commands.js** for proc
 The `associate` method is called in `commands.js` to map the function IDs specified in the manifest to the appropriate event handler.
 
 ```javascript
-Office.actions.associate("onItemComposeHandler", onItemComposeHandler);
-Office.actions.associate("onItemSendHandler", onItemSendHandler);
+Office.actions.associate("onMessageComposeHandler", onItemComposeHandler);
+Office.actions.associate("onAppointmentComposeHandler", onItemComposeHandler);
+Office.actions.associate("onMessageSendHandler", onItemSendHandler);
+Office.actions.associate("onAppointmentSendHandler", onItemSendHandler);
 ```
 
 Once the handler processes the event, it calls the `event.completed` method. This method uses the `allowEvent` property to indicate whether the handled event can continue to execute or must terminate. When the event must terminate because it doesn't meet the add-in's conditions, the `errorMessage` property is used to display an alert to the user.
