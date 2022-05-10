@@ -44,7 +44,7 @@ Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, ar
 
 ## Prerequisites
 
-- A Microsoft 365 subscription. If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
+- A Microsoft 365 subscription. If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://aka.ms/m365/devprogram#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
 
 - Outlook on Windows with a minimum build of 16.0.14511.10000. For guidance with client configuration, see [How to preview](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch#how-to-preview).
 
@@ -74,7 +74,7 @@ Once the add-in is loaded, use the following steps to try out its functionality.
 
 1. Create a new message or appointment.
 
-    Office Add-ins Sample color categories are created. To verify this from the new message or appointment window, select **File** \> **Info** \> **Properties** \> **Categories**.
+    Color categories named **Office Add-ins Sample...** are created. To verify this from the new message or appointment window, select **File** \> **Info** \> **Properties** \> **Categories**.
 
 1. Add a recipient.
 
@@ -100,7 +100,7 @@ Once the add-in is loaded, use the following steps to try out its functionality.
 
 1. To apply the required color categories to the message or appointment, choose **Select categories** from the ribbon of the message or appointment window.
 
-    The Office Add-ins Smart Alerts Sample task pane appears.
+    The **Office Add-ins Smart Alerts sample** task pane appears.
 
 1. Select the applicable categories from the category list. To apply multiple categories, select and hold **Ctrl** while selecting the categories.
 
@@ -180,7 +180,7 @@ The `OnMessageSend` event uses the `SoftBlock` option to prevent a user from sen
 
 The `OnAppointmentSend` event uses the `Block` option to prevent a user from sending a meeting invite if some or all of the required categories are missing. If the add-in encounters a loading error and can't check the invite for applied categories, the user will not be able to send the invite until the add-in becomes available again.
 
-For additional information on `SendMode` options, see [Available SendMode options](https://docs.microsoft.com//javascript/api/manifest/launchevent?view=common-js-preview#available-sendmode-options-preview).
+For additional information on `SendMode` options, see [Available SendMode options](https://docs.microsoft.com/javascript/api/manifest/launchevent?view=common-js-preview#available-sendmode-options-preview).
 
 ### Configure the event handlers
 
