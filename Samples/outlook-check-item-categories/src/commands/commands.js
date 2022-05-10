@@ -276,5 +276,7 @@
    return missingCategories;
  }
  
- Office.actions.associate("onItemComposeHandler", onItemComposeHandler);
- Office.actions.associate("onItemSendHandler", onItemSendHandler);
+ Office.actions.associate("onMessageComposeHandler", onItemComposeHandler);
+ Office.actions.associate("onAppointmentComposeHandler", onItemComposeHandler);
+ Office.actions.associate("onMessageSendHandler", onItemSendHandler);
+ Office.actions.associate("onAppointmentSendHandler", onItemSendHandler);

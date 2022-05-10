@@ -103,10 +103,10 @@
             <!-- Enables the add-in on specified events. -->
             <ExtensionPoint xsi:type="LaunchEvent">
               <LaunchEvents>
-                <LaunchEvent Type="OnNewMessageCompose" FunctionName="onItemComposeHandler"/>
-                <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onItemComposeHandler"/>
-                <LaunchEvent Type="OnMessageSend" FunctionName="onItemSendHandler" SendMode="SoftBlock"/>
-                <LaunchEvent Type="OnAppointmentSend" FunctionName="onItemSendHandler" SendMode="Block"/>
+                <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler"/>
+                <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler"/>
+                <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler" SendMode="SoftBlock"/>
+                <LaunchEvent Type="OnAppointmentSend" FunctionName="onAppointmentSendHandler" SendMode="Block"/>
               </LaunchEvents>
               <!-- Identifies the runtime to be used by the add-in (also referenced by the Runtime element). -->
               <SourceLocation resid="WebViewRuntime.Url"/>
