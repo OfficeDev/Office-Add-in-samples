@@ -16,7 +16,7 @@ extensions:
 description: "Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent."
 ---
 
-# Use Outlook Smart Alerts
+# Use Outlook Smart Alerts (preview)
 
 **Applies to**: Outlook on Windows
 
@@ -34,7 +34,7 @@ Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, ar
 
 1. Use event-based activation triggered by the `OnMessageSend` and `OnAppointmentSend` events to verify that a required category is applied to a new message or appointment for each detected keyword in the item's subject or body.
 
-1. Use Outlook Smart Alerts to block a message or appointment from being sent if it's missing some or all of the required categories.
+1. Use Outlook Smart Alerts to block a message or appointment from being sent if it's missing any of the required categories.
 
 1. Apply the required categories to the message or appointment using the add-in's task pane.
 
@@ -50,9 +50,9 @@ Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, ar
 
 ## Solution
 
-| Solution | Author(s) |
+| Solution | Authors |
 | -------- | --------- |
-| Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent | Microsoft |
+| Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent. | Microsoft |
 
 ## Version history
 
@@ -62,7 +62,7 @@ Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, ar
 
 ## Run the sample
 
-Run this sample in Outlook on Windows. The add-in web files are served from this repository on GitHub.
+Run this sample in Outlook on Windows. The add-in's web files are served from this repository on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 
@@ -176,11 +176,11 @@ The `<LaunchEvents>` element maps the four events that activate the add-in to th
 </LaunchEvents>
 ```
 
-The `OnMessageSend` event uses the `SoftBlock` option to prevent a user from sending a message if some or all of the required categories are missing. In the event that the add-in becomes unavailable (for example, if the add-in encounters a loading error) and can't check the message for applied categories, the user will still be able to send the message.
+The `OnMessageSend` event uses the `SoftBlock` option to prevent a user from sending a message if any of the required categories are missing. In the event that the add-in becomes unavailable (for example, if the add-in encounters a loading error) and can't check the message for applied categories, the user will still be able to send the message.
 
-The `OnAppointmentSend` event uses the `Block` option to prevent a user from sending a meeting invite if some or all of the required categories are missing. If the add-in encounters a loading error and can't check the invite for applied categories, the user will not be able to send the invite until the add-in becomes available again.
+The `OnAppointmentSend` event uses the `Block` option to prevent a user from sending a meeting invite if any of the required categories are missing. If the add-in encounters a loading error and can't check the invite for applied categories, the user will not be able to send the invite until the add-in becomes available again.
 
-For additional information on `SendMode` options, see [Available SendMode options](https://docs.microsoft.com/javascript/api/manifest/launchevent?view=common-js-preview#available-sendmode-options-preview).
+For additional information on `SendMode` options, see [Available SendMode options](https://docs.microsoft.com/javascript/api/manifest/launchevent?view=outlook-js-preview#available-sendmode-options-preview).
 
 ### Configure the event handlers
 
@@ -208,7 +208,7 @@ Event-based add-ins should be short-running and lightweight. To prevent the poss
 
 ### Implement a task pane
 
-Task panes are used to complement event-based activation by providing users with a venue to further interact with the add-in. The `taskpane.html` and `taskpane.js` files configure the UI and functionality of the task pane, respectively. This allows the user to easily choose and apply the required Office Add-ins Sample color categories to the message or appointment.
+A task pane is used to complement event-based activation by providing users with a venue to further interact with the add-in. The `taskpane.html` and `taskpane.js` files configure the UI and functionality of the task pane, respectively. This allows the user to easily choose and apply the required Office Add-ins Sample color categories to the message or appointment.
 
 ## Known issues
 

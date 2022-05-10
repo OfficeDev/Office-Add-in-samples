@@ -5,7 +5,7 @@
   <ProviderName>Microsoft</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Office Add-ins Outlook Smart Alerts sample"/>
-  <Description DefaultValue="Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent"/>
+  <Description DefaultValue="Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent."/>
   <IconUrl DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/assets/icon-64.png"/>
   <!-- <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/assets/icon-64.png"/> -->
   <HighResolutionIconUrl DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/assets/icon-128.png"/>

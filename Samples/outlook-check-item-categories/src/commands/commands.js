@@ -47,7 +47,7 @@
  
  /**
   * Handle the OnMessageSend or OnAppointmentSend event by verifying that applicable color categories are 
-  * applied to a new message or appointment before it is sent.
+  * applied to a new message or appointment before it's sent.
   * @param {Office.AddinCommands.Event} event The OnMessageSend or OnAppointmentSend event object.
   */
  function onItemSendHandler(event) {
@@ -85,7 +85,7 @@
        });
      } else {
          console.log(asyncResult.error.message);
-         event.completed({ allowEvent: false, errorMessage: "Failed to check the subject for keywords" });
+         event.completed({ allowEvent: false, errorMessage: "Failed to check the subject for keywords." });
          return;
      }
    });
@@ -181,7 +181,7 @@
  
  /**
   * Determine if keywords are present in the message or appointment's subject or body that require corresponding categories.
-  * @param {string[]} keywords  The keywords that require corresponding categories.
+  * @param {string[]} keywords The keywords that require corresponding categories.
   * @param {string} text The contents of the subject or body of the message or appointment.
   * @param {string[]} detectedWords The keywords found in the message or appointment's subject or body.
   * @returns {string[]} Keywords detected in the message or appointment's subject or body that require corresponding categories.
@@ -228,7 +228,7 @@
  
  /**
   * Check that the appropriate categories, based on detected keywords in the subject or body, are applied to the 
-  * message or appointment before it is sent.
+  * message or appointment before it's sent.
   * @param {Office.AddinCommands.Event} event The OnMessageSend or OnAppointmentSend event object.
   * @param {string[]} detectedWords The keywords found in the message or appointment's subject or body.
   */
