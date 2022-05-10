@@ -46,7 +46,6 @@ Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, ar
 
 - A Microsoft 365 subscription. If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
 
-
 - Outlook on Windows with a minimum build of 16.0.14511.10000. For guidance with client configuration, see [How to preview](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch#how-to-preview).
 
 ## Solution
@@ -113,39 +112,43 @@ Once the add-in is loaded, use the following steps to try out its functionality.
 
 ## Run the sample from localhost
 
-If you prefer to host the web server for the sample on your computer, follow these steps.
+If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
 1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
-1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
+1. You need http-server to run the local web server. If you haven't installed this yet, you can do this with the following command.
 
     ```console
     npm install --global http-server
     ```
 
-1. Use a tool to generate a self-signed certificate, such as openssl, that you can use for the web server. Move the **cert.pem** and **key.pem** files to the root folder of this sample.
-
-1. From a command prompt, go to the root folder and run the following command.
+1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet, you can do this with the following command.
 
     ```console
-    http-server -S --cors . -p 3000
+    npm install --global office-addin-dev-certs
     ```
 
-1. To reroute to localhost, run office-addin-https-reverse-proxy. If you haven't installed this, run the following command.
+1. Clone or download this sample to a folder on your computer, then go to that folder in a console or terminal window.
+
+1. Run the following command to generate a self-signed certificate to use for the web server.
+
+   ```console
+    npx office-addin-dev-certs install
+    ```
+
+    This command will display the folder location where it generated the certificate files.
+
+1. Go to the folder location where the certificate files were generated, then copy the **localhost.crt** and **localhost.key** files to the cloned or downloaded sample folder.
+
+1. Run the following command.
 
     ```console
-    npm install --global office-addin-https-reverse-proxy 
+    http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
     ```
 
-    To reroute, run the following in another command prompt.
+    The http-server will run and host the current folder's files on localhost:3000.
 
-    ```console
-    office-addin-https-reverse-proxy --url http://localhost:3000 
-    ```
-
-1. Sideload **manifest-localhost.xml** in Outlook on Windows by following the manual instructions in [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
-
-1. [Try out the sample!](#try-it-out)
+1. Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the sample folder. Using this file, follow the steps in [Run the sample](#run-the-sample) to sideload and run the add-in.
 
 ## Key parts of the sample
 
