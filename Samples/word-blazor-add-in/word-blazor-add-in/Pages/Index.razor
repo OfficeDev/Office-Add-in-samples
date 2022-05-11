@@ -1,0 +1,59 @@
+﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+@page "/"
+@page "/contentcontrols"
+
+<section class="Title">
+	<h1>
+		Content control interactions
+	</h1>
+</section>
+<section class="description text">
+	<p>
+		The sample shows you how to add content controls to paragraphs, add event handlers, and change content control properties.
+	</p>
+</section>
+
+<section class="setup ms-font-m">
+	<h5>Page setup</h5>
+	<p>Add some initial paragraphs to the document.</p>
+	<button class="btn btn-primary" @onclick="Setup">Set up document</button>
+</section>
+
+<section class="samples ms-font-m">
+	<div>
+		<h5>Create content controls</h5>
+		<p>Surround each paragraph with a content control.</p>
+		<button id="insert-controls" class="btn btn-primary" @onclick="InsertContentControls">Convert to content controls</button>
+	</div>
+
+	<div class="mt-3">
+		<h5>Tag content controls</h5>
+		<p>Tag content controls, and mark them as odd or even.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="TagContentControls">Tag content controls</button>
+	</div>
+
+	<div class="mt-3">
+		<h5>Modify content controls</h5>
+		<p>Modify content control appearance and content.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="ModifyContentControls">Modify content controls</button>
+	</div>
+
+	<div class="mt-3">
+		<h5>Register content controls for events</h5>
+		<p>Add the onDeleted and onSelectionChanged event handlers to the content controls.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="RegisterContentControlsEvents">Register event handlers</button>
+	</div>
+
+	<div class="mt-3">
+		<h5>Delete content control</h5>
+		<p>Delete the first content control that was tagged 'even'.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="DeleteContentControl">Delete first 'even' content control</button>
+	</div>
+
+	<div class="mt-3">
+		<h5>Deregister content controls for events</h5>
+		<p>Remove the onDeleted and onSelectionChanged event handlers from the content controls.</p>
+		<button id="change-controls" class="btn btn-primary" @onclick="DeRegisterContentControlEvents">Remove event handlers</button>
+	</div>
+
+</section>

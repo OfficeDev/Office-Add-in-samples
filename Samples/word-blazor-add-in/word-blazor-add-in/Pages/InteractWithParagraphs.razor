@@ -1,0 +1,22 @@
+﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+@page "/interactwithparagraphs"
+
+<section class="Title">
+	<h1>
+		Paragraph interactions
+	</h1>
+</section>
+
+<section class="description text">
+	<p>
+		This sample adds some paragraphs and returns the paragraph count to the UI.
+		Each step is separated into smaller snippets (compare to home page).
+	</p>
+</section>
+
+<section class="setup ms-font-m">
+	<button class="btn btn-primary" @onclick="InsertParagraps">Insert paragraphs</button>
+	<p class="mt-2">
+		Paragraph count is : @ReturnValue.Value
+	</p>
+</section>

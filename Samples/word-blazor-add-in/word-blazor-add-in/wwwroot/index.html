@@ -1,0 +1,62 @@
+<!-- Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>BlazorAddIn</title>
+
+    <base href="/" />
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="css/app.css" rel="stylesheet" />
+    
+    <link href="BlazorAddIn.styles.css" rel="stylesheet" />
+
+
+    <!--
+        Office JavaScript API - replace beta with 1 or 1.1 for GA
+        This sample is using the beta API to demo the (preview) event handlers on content controls.
+    -->
+
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="main">
+            <header class="d-flex align-items-center justify-content-center">
+                <img src="./images/parker-ms.svg" />
+                <h1>
+                    Blazor Office JS API demo
+                </h1>
+            </header>
+
+            <div class="content">
+                <div class="container">
+                    <h2>Loading...</h2>
+                </div>
+            </div>
+        </div>
+        <footer class="d-flex align-items-center justify-content-center">
+            <div class="row">
+                Copyright © 2022 Maarten van Stam.
+            </div>
+            <div class="row">
+                All rights reserved.
+            </div>
+        </footer>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>
