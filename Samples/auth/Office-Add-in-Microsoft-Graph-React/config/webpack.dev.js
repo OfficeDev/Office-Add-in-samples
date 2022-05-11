@@ -12,8 +12,16 @@ const certPath = os.homedir() + '/.office-addin-dev-certs/';
 module.exports = webpackMerge(commonConfig, {
     devtool: 'eval-source-map',
     devServer: {
-        publicPath: '/',
-        contentBase: path.resolve('dist'),
+        client: {
+            overlay: {
+                warnings: false,
+                errors: true
+            }
+        },
+        static: {
+            directory: path.resolve('dist'),
+            publicPath: '/'
+        },
         hot: true,
         https: {
             key: fs.readFileSync(certPath + 'localhost.key'),
@@ -21,10 +29,6 @@ module.exports = webpackMerge(commonConfig, {
             cacert: fs.readFileSync(certPath + 'ca.crt')
         },
         compress: true,
-        overlay: {
-            warnings: false,
-            errors: true
-        },
         port: 3000,
         historyApiFallback: true
     },

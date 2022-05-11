@@ -14,17 +14,17 @@ extensions:
 description: "Use Outlook event-based activation to tag external recipients."
 ---
 
-# Use Outlook event-based activation to tag external recipients (preview)
+# Use Outlook event-based activation to tag external recipients
 
 **Applies to:** Outlook on Windows | Outlook on the web
 
 ## Summary
 
-This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the [appendOnSendAsync API](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#appendOnSendAsync_data__options__callback_). If external recipients are added, the add-in prepends "[External]" to the message subject and appends a disclaimer to the message body on send.
+This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the [appendOnSendAsync API](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-1.11#appendOnSendAsync_data__options__callback_). If external recipients are added, the add-in prepends "[External]" to the message subject and appends a disclaimer to the message body on send.
+
+![Screen shot of PnP sample displaying an information bar prompting the user to set up signatures, and sample signature inserted into the email.](./assets/outlook-tag-external-overview.png)
 
 For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch).
-
-> **Note:** Features used in this sample are currently in preview and subject to change. They are not currently supported for use in production environments. To try the preview features, you'll need to [join Office Insider](https://insider.office.com/join). A good way to try out preview features is to sign up for a Microsoft 365 subscription. If you don't already have a Microsoft 365 subscription, get one by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/office/dev-program). For more information on how to use events currently in preview, see the [How to preview](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch#how-to-preview) section of the event-based activation article.
 
 ## Features
 
@@ -40,7 +40,9 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Prerequisites
 
-- To use this sample, follow the instructions in the [How to preview](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch#how-to-preview) section of the event-based activation article.
+- Microsoft 365
+
+    > **Note**: If you do not have a Microsoft 365 subscription, you can get one for development purposes by signing up for the [Microsoft 365 developer program](https://developer.microsoft.com/office/dev-program).
 
 ## Solution
 
@@ -53,6 +55,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 Version  | Date | Comments
 |---------|------|---------|
 | 1.0 | 7-6-2021 | Initial release |
+| 1.1 | 11-1-2021 | Update for GA of SessionData API and OnMessageRecipientsChanged event |
 
 ----------
 
@@ -122,8 +125,8 @@ The manifest configures a runtime that is loaded specifically to handle event-ba
   <Override type="javascript" resid="JSRuntime.Url"/>
 </Runtime>
 ...
-<bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands.html" />
-<bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-tag-external/src/commands/commands.js" />
+<bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/commands.html" />
+<bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/commands/commands.js" />
 ```
 
 The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the `tagExternal_onMessageRecipientsChangedHandler` function in the `commands.js` file.
@@ -152,20 +155,17 @@ The **commands.js** file contains the `tagExternal_onMessageRecipientsChangedHan
 
 Also, the **commands.js** file contains the following helper functions.
 
-- `checkForExternalTo`: Determines if there are any external users in the **To** field then sets a [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-preview#sessionData) key named **tagExternalTo**.
-- `checkForExternalCc`: Determines if there are any external users in the **Cc** field then sets a [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-preview#sessionData) key named **tagExternalCc**.
-- `checkForExternalBcc`: Determines if there are any external users in the **Bcc** field then sets a [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-preview#sessionData) key named **tagExternalBcc**.
-- `_checkForExternal`: Checks if any property is set to `true` in the [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-preview#sessionData) property bag.
+- `checkForExternalTo`: Determines if there are any external users in the **To** field then sets a [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) key named **tagExternalTo**.
+- `checkForExternalCc`: Determines if there are any external users in the **Cc** field then sets a [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) key named **tagExternalCc**.
+- `checkForExternalBcc`: Determines if there are any external users in the **Bcc** field then sets a [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) key named **tagExternalBcc**.
+- `_checkForExternal`: Checks if any property is set to `true` in the [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) property bag.
 - `_tagExternal`:
-  - Updates the [subject](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-preview#subject) to prepend or remove the "[External]" tag.
-  - Calls the [appendOnSendAsync](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#appendOnSendAsync_data__options__callback_) to set or clear the disclaimer.
+  - Updates the [subject](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#subject) to prepend or remove the "[External]" tag.
+  - Calls the [appendOnSendAsync](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-1.11#appendOnSendAsync_data__options__callback_) to set or clear the disclaimer.
 
 > **Note**
 >
-> - The following are still in preview.
->   - `OnMessageRecipientsChanged` event
->   - `item.sessionData` object
-> - You can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web but other code that applies to both Outlook on the web and on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature).
+> You can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web but other code that applies to both Outlook on the web and on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature).
 
 ## Known issues
 

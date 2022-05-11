@@ -1,0 +1,289 @@
+﻿<pkg:package xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage">
+  <pkg:part pkg:name="/_rels/.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml" pkg:padding="512">
+    <pkg:xmlData>
+      <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+        <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+      </Relationships>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/document.xml" pkg:contentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml">
+    <pkg:xmlData>
+      <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" >
+        <w:body>
+          <w:tbl>
+            <w:tblPr>
+              <w:tblStyle w:val="TableGrid"/>
+              <w:tblW w:w="5000" w:type="pct"/>
+              <w:tblBorders>
+                <w:top w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+                <w:left w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+                <w:bottom w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+                <w:right w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+                <w:insideH w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+                <w:insideV w:val="none" w:sz="0" w:space="0" w:color="auto"/>
+              </w:tblBorders>
+              <w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="1" w:lastColumn="0" w:noHBand="0" w:noVBand="1"/>
+            </w:tblPr>
+            <w:tblGrid>
+              <w:gridCol w:w="3276"/>
+              <w:gridCol w:w="3042"/>
+              <w:gridCol w:w="3042"/>
+            </w:tblGrid>
+            <w:tr>
+              <w:tc>
+                <w:tcPr>
+                  <w:tcW w:w="1750" w:type="pct"/>
+                  <w:tcBorders>
+                    <w:top w:val="nil"/>
+                    <w:left w:val="nil"/>
+                    <w:bottom w:val="single" w:sz="12" w:space="0" w:color="2E74B5" w:themeColor="accent1" w:themeShade="BF"/>
+                    <w:right w:val="nil"/>
+                  </w:tcBorders>
+                  <w:hideMark/>
+                </w:tcPr>
+                <w:p>
+                  <w:pPr>
+                    <w:spacing w:before="60" w:after="60" w:line="240" w:lineRule="auto"/>
+                    <w:rPr>
+                      <w:b/>
+                      <w:color w:val="5B9BD5" w:themeColor="accent1"/>
+                    </w:rPr>
+                  </w:pPr>
+                  <w:r>
+                    <w:rPr>
+                      <w:b/>
+                      <w:color w:val="5B9BD5" w:themeColor="accent1"/>
+                    </w:rPr>
+                    <w:t>Region</w:t>
+                  </w:r>
+                </w:p>
+              </w:tc>
+              <w:tc>
+                <w:tcPr>
+                  <w:tcW w:w="1625" w:type="pct"/>
+                  <w:tcBorders>
+                    <w:top w:val="nil"/>
+                    <w:left w:val="nil"/>
+                    <w:bottom w:val="single" w:sz="12" w:space="0" w:color="2E74B5" w:themeColor="accent1" w:themeShade="BF"/>
+                    <w:right w:val="nil"/>
+                  </w:tcBorders>
+                  <w:hideMark/>
+                </w:tcPr>
+                <w:p>
+                  <w:pPr>
+                    <w:spacing w:before="60" w:after="60" w:line="240" w:lineRule="auto"/>
+                    <w:jc w:val="center"/>
+                    <w:rPr>
+                      <w:b/>
+                      <w:color w:val="5B9BD5" w:themeColor="accent1"/>
+                    </w:rPr>
+                  </w:pPr>
+                  <w:r>
+                    <w:rPr>
+                      <w:b/>
+                      <w:color w:val="5B9BD5" w:themeColor="accent1"/>
+                    </w:rPr>
+                    <w:t>Q1</w:t>
+                  </w:r>
+                </w:p>
+              </w:tc>
+              <w:tc>
+                <w:tcPr>
+                  <w:tcW w:w="1625" w:type="pct"/>
+                  <w:tcBorders>
+                    <w:top w:val="nil"/>
+                    <w:left w:val="nil"/>
+                    <w:bottom w:val="single" w:sz="12" w:space="0" w:color="2E74B5" w:themeColor="accent1" w:themeShade="BF"/>
+                    <w:right w:val="nil"/>
+                  </w:tcBorders>
+                  <w:hideMark/>
+                </w:tcPr>
+                <w:p>
+                  <w:pPr>
+                    <w:spacing w:before="60" w:after="60" w:line="240" w:lineRule="auto"/>
+                    <w:jc w:val="center"/>
+                    <w:rPr>
+                      <w:b/>
+                      <w:color w:val="5B9BD5" w:themeColor="accent1"/>
+                    </w:rPr>
+                  </w:pPr>
+                  <w:r>
+                    <w:rPr>
+                      <w:b/>
+                      <w:color w:val="5B9BD5" w:themeColor="accent1"/>
+                    </w:rPr>
+                    <w:t>Q2</w:t>
+                  </w:r>
+                </w:p>
+              </w:tc>
+            </w:tr>
+            <w:tr>
+              <w:tc>
+                <w:tcPr>
+                  <w:tcW w:w="1750" w:type="pct"/>
+                  <w:tcBorders>
+                    <w:top w:val="single" w:sz="12" w:space="0" w:color="2E74B5" w:themeColor="accent1" w:themeShade="BF"/>
+                    <w:left w:val="nil"/>
+                    <w:bottom w:val="nil"/>
+                    <w:right w:val="nil"/>
+                  </w:tcBorders>
+                  <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                  <w:hideMark/>
+                </w:tcPr>
+                <w:p>
+                  <w:pPr>
+                    <w:spacing w:before="60" w:after="60" w:line="240" w:lineRule="auto"/>
+                    <w:rPr>
+                      <w:b/>
+                      <w:color w:val="44546A" w:themeColor="text2"/>
+                    </w:rPr>
+                  </w:pPr>
+                  <w:r>
+                    <w:rPr>
+                      <w:b/>
+                      <w:color w:val="44546A" w:themeColor="text2"/>
+                    </w:rPr>
+                    <w:t>Southeast</w:t>
+                  </w:r>
+                </w:p>
+              </w:tc>
+              <w:tc>
+                <w:tcPr>
+                  <w:tcW w:w="1625" w:type="pct"/>
+                  <w:tcBorders>
+                    <w:top w:val="single" w:sz="12" w:space="0" w:color="2E74B5" w:themeColor="accent1" w:themeShade="BF"/>
+                    <w:left w:val="nil"/>
+                    <w:bottom w:val="nil"/>
+                    <w:right w:val="nil"/>
+                  </w:tcBorders>
+                  <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                  <w:hideMark/>
+                </w:tcPr>
+                <w:p>
+                  <w:pPr>
+                    <w:tabs>
+                      <w:tab w:val="decimal" w:pos="1149"/>
+                    </w:tabs>
+                    <w:spacing w:before="60" w:after="60" w:line="240" w:lineRule="auto"/>
+                    <w:rPr>
+                      <w:color w:val="44546A" w:themeColor="text2"/>
+                    </w:rPr>
+                  </w:pPr>
+                  <w:r>
+                    <w:rPr>
+                      <w:color w:val="44546A" w:themeColor="text2"/>
+                    </w:rPr>
+                    <w:t>123,456</w:t>
+                  </w:r>
+                </w:p>
+              </w:tc>
+              <w:tc>
+                <w:tcPr>
+                  <w:tcW w:w="1625" w:type="pct"/>
+                  <w:tcBorders>
+                    <w:top w:val="single" w:sz="12" w:space="0" w:color="2E74B5" w:themeColor="accent1" w:themeShade="BF"/>
+                    <w:left w:val="nil"/>
+                    <w:bottom w:val="nil"/>
+                    <w:right w:val="nil"/>
+                  </w:tcBorders>
+                  <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                  <w:hideMark/>
+                </w:tcPr>
+                <w:p>
+                  <w:pPr>
+                    <w:tabs>
+                      <w:tab w:val="decimal" w:pos="1149"/>
+                    </w:tabs>
+                    <w:spacing w:before="60" w:after="60" w:line="240" w:lineRule="auto"/>
+                    <w:rPr>
+                      <w:color w:val="44546A" w:themeColor="text2"/>
+                    </w:rPr>
+                  </w:pPr>
+                  <w:r>
+                    <w:rPr>
+                      <w:color w:val="44546A" w:themeColor="text2"/>
+                    </w:rPr>
+                    <w:t>234,567</w:t>
+                  </w:r>
+                </w:p>
+              </w:tc>
+            </w:tr>
+            <w:tr>
+              <w:tc>
+                <w:tcPr>
+                  <w:tcW w:w="1750" w:type="pct"/>
+                  <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                  <w:hideMark/>
+                </w:tcPr>
+                <w:p>
+                  <w:pPr>
+                    <w:spacing w:before="60" w:after="60" w:line="240" w:lineRule="auto"/>
+                    <w:rPr>
+                      <w:b/>
+                      <w:color w:val="44546A" w:themeColor="text2"/>
+                    </w:rPr>
+                  </w:pPr>
+                  <w:r>
+                    <w:rPr>
+                      <w:b/>
+                      <w:color w:val="44546A" w:themeColor="text2"/>
+                    </w:rPr>
+                    <w:t>Northwest</w:t>
+                  </w:r>
+                </w:p>
+              </w:tc>
+              <w:tc>
+                <w:tcPr>
+                  <w:tcW w:w="1625" w:type="pct"/>
+                  <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                  <w:hideMark/>
+                </w:tcPr>
+                <w:p>
+                  <w:pPr>
+                    <w:tabs>
+                      <w:tab w:val="decimal" w:pos="1149"/>
+                    </w:tabs>
+                    <w:spacing w:before="60" w:after="60" w:line="240" w:lineRule="auto"/>
+                    <w:rPr>
+                      <w:color w:val="44546A" w:themeColor="text2"/>
+                    </w:rPr>
+                  </w:pPr>
+                  <w:r>
+                    <w:rPr>
+                      <w:color w:val="44546A" w:themeColor="text2"/>
+                    </w:rPr>
+                    <w:t>234,567</w:t>
+                  </w:r>
+                </w:p>
+              </w:tc>
+              <w:tc>
+                <w:tcPr>
+                  <w:tcW w:w="1625" w:type="pct"/>
+                  <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                  <w:hideMark/>
+                </w:tcPr>
+                <w:p>
+                  <w:pPr>
+                    <w:tabs>
+                      <w:tab w:val="decimal" w:pos="1149"/>
+                    </w:tabs>
+                    <w:spacing w:before="60" w:after="60" w:line="240" w:lineRule="auto"/>
+                    <w:rPr>
+                      <w:color w:val="44546A" w:themeColor="text2"/>
+                    </w:rPr>
+                  </w:pPr>
+                  <w:r>
+                    <w:rPr>
+                      <w:color w:val="44546A" w:themeColor="text2"/>
+                    </w:rPr>
+                    <w:t>345,678</w:t>
+                  </w:r>
+                </w:p>
+              </w:tc>
+            </w:tr>
+          </w:tbl>
+        </w:body>
+      </w:document>
+    </pkg:xmlData>
+  </pkg:part>
+</pkg:package>

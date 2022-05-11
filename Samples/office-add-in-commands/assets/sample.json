@@ -1,0 +1,45 @@
+[
+    {
+        "name": "office-add-in-commands-samples",
+        "reponame": "OfficeDev",
+        "source": "officedev",
+        "title": "Office Add-in commands",
+        "shortDescription": "Office Add-in commands enable developers to extend the Office user interface such as the Office Ribbon to create awesome, efficient add-ins.",
+        "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/word-add-in-get-set-edit-openxml",
+        "longDescription": "Office Add-in commands enable developers to extend the Office user interface such as the Office Ribbon to create awesome, efficient add-ins. These samples show you how to use add-in commands in Excel, Word, and PowerPoint add-ins.",
+        "creationDateTime": "2021-12-13",
+        "updateDateTime": "2021-12-13",
+        "products": [
+            "Office"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "JavaScript"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/images/word-ribbon-buttons.png",
+                "alt": "Screenshot showing the sample's show task pane button and a dropdown menu on the ribbon."
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "microsoft",
+                "pictureUrl": "https://github.com/microsoft.png",
+                "name": "Microsoft"
+            }
+        ],
+        "references": [
+            {
+                "name": "Create add-in commands in your manifest for Excel, PowerPoint, and Word",
+                "description": "Add-in commands provide an easy way to customize the default Office user interface (UI) with specified UI elements that perform actions.",
+                "url": "https://docs.microsoft.com/office/dev/add-ins/develop/create-addin-commands"
+            }
+            
+        ]
+    }
+]

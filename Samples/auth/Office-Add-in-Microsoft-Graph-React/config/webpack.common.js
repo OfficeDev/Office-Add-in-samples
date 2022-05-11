@@ -68,7 +68,7 @@ const WEBPACK_PLUGINS = [
   }),
   new webpack.LoaderOptionsPlugin({
     options: {
-      postcss: [autoprefixer({ browsers: ["Safari >= 8", "last 2 versions"] })],
+      postcss: [autoprefixer()],
       htmlLoader: {
         minimize: true,
       },

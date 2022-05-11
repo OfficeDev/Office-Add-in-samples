@@ -1,0 +1,34 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+</head>
+
+<body>
+    <p>This add-in will set cell A1 to the value 'Hello world!'.</p>
+    <button id="helloButton">Say hello</button>
+</body>
+
+<script>
+    Office.onReady((info) => {
+        // Check that we loaded into Excel
+        if (info.host === Office.HostType.Excel) {
+            document.getElementById("helloButton").onclick = sayHello;
+        }
+    });
+
+    function sayHello() {
+        Excel.run(context => {
+
+            // Insert text 'Hello world!' into cell A1.
+            context.workbook.worksheets.getActiveWorksheet().getRange("A1").values = [['Hello world!']];
+
+            // sync the context to run the previous API call, and return.
+            return context.sync();
+        });
+    }
+</script>
+
+</html>

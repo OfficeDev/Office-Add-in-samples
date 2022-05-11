@@ -20,6 +20,8 @@ description: "This sample shows how to add keyboard shortcuts to your Office Add
 
 This sample shows how to set up a basic Excel add-in project that utilizes keyboard shortcuts. Currently, the shortcuts are configured to show and hide the task pane as well as cycle through colors for a selected cell. Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 
+![Screen shot of Excel showing the use of CTRL+SHIFT+UP to open the task pane, and CTRL+SHIFT+DOWN to close the task pane.](./assets/excel-keyboard-shortcuts-overview.jpg)
+
 ## Features
 
 - Add keyboard shortcuts to your Office Add-in.
@@ -91,7 +93,7 @@ The manifest.xml is pre-configured to use the shared runtime. To see how to add 
 Additionally, the following changes have been made to enable keyboard shortcuts:
 
 1. Configured the add-in's manifest by adding the new element `ExtendedOverrides` to the end of the manifest.
-2. Created the shortcuts JSON file `shortcuts.json`, in the `src/` folder to define actions and their keyboard shortcuts. Ensure the new file is properly bundled by configuring the `webpack.config.js` file.
+2. Created the shortcuts JSON file `shortcuts.json`, in the `src/` folder to define actions and their keyboard shortcuts.
 3. Mapped actions to runtime calls with the associate method in `src/taskpane.js`.
 
 

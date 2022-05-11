@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-// Contains code for event-based activation on both Outlook on web and Outlook on Windows.
+// Contains code for event-based activation on Outlook on web, on Windows, and on Mac (new UI preview).
 
 /**
  * Checks if signature exists.
@@ -45,8 +45,8 @@ function checkSignature(eventObj) {
 }
 
 /**
- * For Outlook on Windows only. Insert signature into appointment or message.
- * Outlook on Windows can use setSignatureAsync method on appointments and messages.
+ * For Outlook on Windows and on Mac only. Insert signature into appointment or message.
+ * Outlook on Windows and on Mac can use setSignatureAsync method on appointments and messages.
  * @param {*} compose_type The compose type (reply, forward, newMail)
  * @param {*} user_info Information details about the user
  * @param {*} eventObj Office event object
@@ -219,7 +219,7 @@ function get_template_B_info(user_info) {
   str += "<tr>";
   // Reference the logo using a URI to the web server <img src='https://...
   str +=
-    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://officedev.github.io/PnP-OfficeAddins/Samples/outlook-set-signature/assets/sample-logo.png' alt='Logo' /></td>";
+    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/sample-logo.png' alt='Logo' /></td>";
   str += "<td style='padding-left: 5px;'>";
   str += "<strong>" + user_info.name + "</strong>";
   str += is_valid_data(user_info.pronoun) ? "&nbsp;" + user_info.pronoun : "";

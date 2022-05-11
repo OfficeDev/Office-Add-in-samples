@@ -1,0 +1,45 @@
+[
+    {
+      "name": "office-add-in-sso-aspnet",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Office Add-in that supports Single Sign-on to Office, the add-in, and Microsoft Graph",
+      "shortDescription": "This sample implements an Office Add-in that uses the getAccessToken API in Office.js to give the add-in access to Microsoft Graph data. This sample is built on ASP.NET and Microsoft Authentication Library (MSAL) .NET.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/auth/Office-Add-in-ASPNET-SSO",
+      "longDescription": [
+        "This sample implements an Office Add-in that uses the getAccessToken API in Office.js to give the add-in access to Microsoft Graph data. This sample is built on ASP.NET and Microsoft Authentication Library (MSAL) .NET."
+      ],
+      "creationDateTime": "2017-05-10",
+      "updateDateTime": "2021-06-15",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        },
+        {
+            "key": "GRAPH-APIS",
+            "value": "identity,files"
+        }
+      ],
+      "thumbnails": [
+       
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+        {
+          "name": "Create an ASP.NET Office Add-in that uses single sign-on",
+          "description": "When users are signed in to Office, your add-in can use the same credentials to permit users to access multiple applications without requiring them to sign in a second time. This article walks you through the process of enabling single sign-on (SSO) in an add-in that is built with ASP.NET.",
+          "url": "https://docs.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-aspnet"
+        }
+      ]
+    }
+  ] 

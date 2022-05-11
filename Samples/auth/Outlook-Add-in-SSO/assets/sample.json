@@ -1,0 +1,42 @@
+[
+    {
+      "name": "outlook-add-in-sso-aspnet",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Single Sign-on (SSO) sample Outlook add-in",
+      "shortDescription": "The sample implements an Outlook add-in that uses Office's SSO feature to give the add-in access to Microsoft Graph data. Specifically, it enables the user to save all attachments to their OneDrive. It also shows how to add custom buttons to the Outlook ribbon.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/auth/Outlook-Add-in-SSO",
+      "longDescription": [
+        "The sample implements an Outlook add-in that uses Office's SSO feature to give the add-in access to Microsoft Graph data. Specifically, it enables the user to save all attachments to their OneDrive. It also shows how to add custom buttons to the Outlook ribbon."
+      ],
+      "creationDateTime": "2021-05-28",
+      "updateDateTime": "2021-05-28",
+      "products": ["Office"],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        },
+        {
+          "key": "GRAPH-APIS",
+          "value": "identity,files"
+        }
+      ],
+      "thumbnails": [],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+        {
+          "name": "Authenticate a user with a single-sign-on token in an Outlook add-in",
+          "description": "Single sign-on (SSO) provides a seamless way for your add-in to authenticate users (and optionally to obtain access tokens to call the Microsoft Graph API). Using this method, your add-in can obtain an access token scoped to your server back-end API.",
+          "url": "https://docs.microsoft.com/en-us/office/dev/add-ins/outlook/authenticate-a-user-with-an-sso-token"
+        }
+      ]
+    }
+  ]
+  

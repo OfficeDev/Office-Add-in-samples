@@ -1,0 +1,46 @@
+[
+    {
+        "name": "outlook-add-in-set-signature",
+        "reponame": "OfficeDev",
+        "source": "officedev",
+        "title": "Use Outlook event-based activation to set the signature",
+        "shortDescription": "This sample uses event-based activation to run an Outlook add-in when the user creates a new message or appointment.",
+        "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-set-signature",
+        "longDescription": [
+            "This sample uses event-based activation to run an Outlook add-in when the user creates a new message or appointment. The add-in can respond to events, even when the task pane is not open. It also uses the setSignatureAsync API. If no signature is set, the add-in prompts the user to set a signature, and can then open the task pane for the user."
+        ],
+        "creationDateTime": "2021-04-01",
+        "updateDateTime": "2021-07-27",
+        "products": [
+            "Office"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "JavaScript"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/outlook-set-signature-overview.png",
+                "alt": "Screen shot of sample displaying an information bar prompting the user to set up signatures, and sample signature inserted into the email."
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "microsoft",
+                "pictureUrl": "https://github.com/microsoft.png",
+                "name": "Microsoft"
+            }
+        ],
+        "references": [
+            {
+                "name": "Configure your Outlook add-in for event-based activation",
+                "description": "Without the event-based activation feature, a user has to explicitly launch an add-in to complete their tasks. This feature enables your add-in to run tasks based on certain events, particularly for operations that apply to every item. You can also integrate with the task pane and UI-less functionality.",
+                "url": "https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch"
+            }
+        ]
+    }
+]

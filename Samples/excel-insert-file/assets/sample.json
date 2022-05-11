@@ -1,0 +1,45 @@
+[
+    {
+        "name": "excel-add-in-insert-external-file",
+        "reponame": "OfficeDev",
+        "source": "officedev",
+        "title": "Insert an external Excel file and populate it with JSON data",
+        "shortDescription": "This sample shows how to insert an existing template from an external Excel file into the currently open Excel file. ",
+        "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-tag-external",
+        "longDescription": "Use insertWorksheetsFromBase64 to insert a worksheet from another Excel file into the open Excel file. Get JSON data and add it to the worksheet.",
+        "creationDateTime": "2021-05-18",
+        "updateDateTime": "2021-05-18",
+        "products": [
+            "Office"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "JavaScript"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://officedev.github.io/Office-Add-in-samples/Samples/excel-insert-file/assets/excel-insert-file-overview.png",
+                "alt": "Diagram showing the sample inserting an external spreadsheet into the existing spreadsheet."
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "microsoft",
+                "pictureUrl": "https://github.com/microsoft.png",
+                "name": "Microsoft"
+            }
+        ],
+        "references": [
+            {
+                "name": "insertWorksheetsFromBase64",
+                "description": "Inserts the specified worksheets from a source workbook into the current workbook.",
+                "url": "https://docs.microsoft.com/javascript/api/excel/excel.workbook?view=excel-js-preview#excel-excel-workbook-insertworksheetsfrombase64-member(1)"
+            }
+            
+        ]
+    }
+]

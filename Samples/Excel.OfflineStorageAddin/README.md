@@ -19,6 +19,8 @@ urlFragment: use-storage-techniques-to-access-data-from-an-office-add-in-when-of
 
 This sample demonstrates how you can implement `localStorage` to enable limited functionality for your Office Add-in when a user experiences lost connection.
 
+![Diagram showing Office Add-in accessing storage when not connected to the web.](./assets/office-offline-storage-overview.jpg)
+
 ## Applies to
 
 - Excel, PowerPoint, Word on Windows, Mac, and in a browser.

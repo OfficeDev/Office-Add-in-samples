@@ -1,0 +1,34 @@
+﻿<pkg:package xmlns:pkg="http://schemas.microsoft.com/office/2006/xmlPackage">
+  <pkg:part pkg:name="/_rels/.rels" pkg:contentType="application/vnd.openxmlformats-package.relationships+xml" pkg:padding="512">
+    <pkg:xmlData>
+      <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+        <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+      </Relationships>
+    </pkg:xmlData>
+  </pkg:part>
+  <pkg:part pkg:name="/word/document.xml" pkg:contentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml">
+    <pkg:xmlData>
+      <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" >
+        <w:body>
+          <w:p/>
+          <!--As you see in the markup that follows, you can remove many pieces of a content control (sdt) without issue. Here, the tag and document part references have been removed. The w:showingPlaceholder attribute causes the default content (in the text run in this example) to behave like placeholder text and be automatically selected on click. Also note the w15:appearance attribute which sets the container of the content control to be hidden for a cleaner user experience. Additionally, notice that there is a complete paragraph contained in the placeholder content for this control. Your control must contain at least one complete paragraph when you bind to it in order to enable you to insert multi-paragraph rich content at the binding location.-->
+          <w:sdt>
+              <w:sdtPr>
+                <w:alias w:val="MyControl"/>
+                <w:id w:val="1382295294"/>
+                <w15:appearance w15:val="hidden"/>
+                <w:showingPlcHdr/>
+              </w:sdtPr>
+              <w:sdtContent>
+                <w:p>
+                  <w:r>
+                  <w:t>[This text is inside a content control that has its container hidden. You can bind to a content control to add or interact with content at a specified location in the document.]</w:t>
+                </w:r>
+                </w:p>
+              </w:sdtContent>
+            </w:sdt>
+          </w:body>
+      </w:document>
+    </pkg:xmlData>
+  </pkg:part>
+ </pkg:package>

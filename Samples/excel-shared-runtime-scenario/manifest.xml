@@ -14,8 +14,8 @@
 	<DisplayName DefaultValue="Contoso Data Importer" />
 	<Description DefaultValue="Uses a shared runtime to share global state across all parts of the add-in and provide a responsive ribbon UI."/>
 	<!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
-	<IconUrl DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-shared-runtime-scenario/assets/icon-32.png" />
-    <HighResolutionIconUrl DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-shared-runtime-scenario/assets/icon-80.png"/>
+	<IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/assets/icon-32.png" />
+    <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/assets/icon-80.png"/>
 	<!--If you plan to submit this add-in to the Office Store, uncomment the SupportUrl element below-->
 	<!--<SupportUrl DefaultValue="[Insert the URL of a page that provides support information for the app]">-->
 	<!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
@@ -34,7 +34,7 @@
 		</Sets>
 	</Requirements>
 	<DefaultSettings>
-		<SourceLocation DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-shared-runtime-scenario/src/taskpane/taskpane.html" />
+		<SourceLocation DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/src/taskpane/taskpane.html" />
 	</DefaultSettings>
 	<!-- End TaskPane Mode integration.  -->
 	<Permissions>ReadWriteDocument</Permissions>
@@ -267,16 +267,16 @@
 		<!-- You can use resources across hosts and form factors. -->
 		<Resources>
 			<bt:Images>
-				<bt:Image id="Icon.16x16" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-shared-runtime-scenario/assets/icon-16.png"/>
-				<bt:Image id="Icon.32x32" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-shared-runtime-scenario/assets/icon-32.png"/>
-				<bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-shared-runtime-scenario/assets/icon-80.png"/>
+				<bt:Image id="Icon.16x16" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/assets/icon-16.png"/>
+				<bt:Image id="Icon.32x32" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/assets/icon-32.png"/>
+				<bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/assets/icon-80.png"/>
 			</bt:Images>
 			<bt:Urls>
-				<bt:Url id="Taskpane.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-shared-runtime-scenario/src/taskpane/taskpane.html" />
+				<bt:Url id="Taskpane.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/src/taskpane/taskpane.html" />
 				<bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
-				<bt:Url id="Functions.Metadata.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-shared-runtime-scenario/src/functions/functions.json"/>
-				<bt:Url id="Commands.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-shared-runtime-scenario/src/commands/commands.html"/>
-				<bt:Url id="ContosoAddin.Url" DefaultValue="https://officedev.github.io/PnP-OfficeAddins/Samples/excel-shared-runtime-scenario/src/taskpane/taskpane.html"/>
+				<bt:Url id="Functions.Metadata.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/src/functions/functions.json"/>
+				<bt:Url id="Commands.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/src/commands/commands.html"/>
+				<bt:Url id="ContosoAddin.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/excel-shared-runtime-scenario/src/taskpane/taskpane.html"/>
 			</bt:Urls>
 			<!-- ShortStrings max characters==125. -->
 			<bt:ShortStrings>

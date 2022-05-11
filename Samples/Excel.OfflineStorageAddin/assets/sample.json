@@ -1,0 +1,45 @@
+[
+    {
+        "name": "use-storage-techniques-to-access-data-from-an-office-add-in-when-offline",
+        "reponame": "OfficeDev",
+        "source": "officedev",
+        "title": "Techniques to access data from an Office Add-in when offline",
+        "shortDescription": "This sample demonstrates how you can implement localStorage to enable limited functionality for your Office Add-in when a user experiences lost connection.",
+        "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/Excel.OfflineStorageAddin",
+        "longDescription": "This sample demonstrates how you can implement localStorage to enable limited functionality for your Office Add-in when a user experiences lost connection.",
+        "creationDateTime": "2019-07-19",
+        "updateDateTime": "2019-07-19",
+        "products": [
+            "Office"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "JavaScript"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://officedev.github.io/Office-Add-in-samples/Samples/Excel.OfflineStorageAddin/assets/office-offline-storage-overview.jpg",
+                "alt": "Diagram showing Office Add-in accessing storage when not connected to the web."
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "microsoft",
+                "pictureUrl": "https://github.com/microsoft.png",
+                "name": "Microsoft"
+            }
+        ],
+        "references": [
+            {
+                "name": "Persist add-in state and settings",
+                "description": "Office Add-ins are essentially web applications running in the stateless environment of a browser control. As a result, your add-in may need to persist data to maintain the continuity of certain operations or features across sessions of using your add-in. For example, your add-in may have custom settings or other values that it needs to save and reload the next time it's initialized, such as a user's preferred view or default location.",
+                "url": "https://docs.microsoft.com/office/dev/add-ins/develop/persisting-add-in-state-and-settings"
+            }
+            
+        ]
+    }
+]
