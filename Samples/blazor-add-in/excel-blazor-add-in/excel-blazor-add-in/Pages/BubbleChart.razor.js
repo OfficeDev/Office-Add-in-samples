@@ -1,4 +1,5 @@
-﻿/* 
+﻿/* Copyright(c) Microsoft. All rights reserved. Licensed under the MIT License. */
+/* 
  * This sample is extracted from the excellent helper tool called Script Lab
  * Take a look at more samples provided there
  */

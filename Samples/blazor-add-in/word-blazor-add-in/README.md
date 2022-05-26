@@ -35,7 +35,7 @@ This sample shows how to build a Word add-in using .NET Blazor technologies. Bla
 ## Run the sample
 
 1. Download or clone [this](https://github.com/OfficeDev/Office-Add-in-samples) repository.
-1. Open Visual Studio 2022, and open the **Office-Add-in-samples\Samples\word-blazor-add-in\word-blazor-add-in.sln** solution.
+1. Open Visual Studio 2022, and open the:<br/> **Office-Add-in-samples\Samples\blazor-add-in\word-blazor-add-in\word-blazor-add-in.sln** solution.
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
 1. When Word opens, choose **Home** > **Show Taskpane**.
 
@@ -50,7 +50,7 @@ Building the Office Add-in as a Blazor Webassembly allows you to build a .NET Co
 
 This sample uses a Blazor Webassembly file that runs cross-platform in various browsers supporting WASM (Webassembly). The Blazor WASM App demonstrates some basic Word functions using paragraphs and content controls including event handlers.
 
-The purpose of this sample is to show you how to build and interact with the Blazor, C# and JavaScript Interop options. If you're looking for more examples of interacting with Word and Office JS APIs, see [Script Lab](https://https://aka.ms/getscriptlab).
+The purpose of this sample is to show you how to build and interact with the Blazor, C# and JavaScript Interop options. If you're looking for more examples of interacting with Word and Office JS APIs, see [Script Lab](https://aka.ms/getscriptlab).
 
 ### Blazor pages
 

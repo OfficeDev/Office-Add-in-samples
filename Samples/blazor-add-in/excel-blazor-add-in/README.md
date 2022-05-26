@@ -10,7 +10,7 @@ languages:
 extensions:
   contentType: samples
   technologies: Add-ins
-  createdDate: '04/14/2022 10:00:00 PM'
+  createdDate: '05/26/2022 10:00:00 PM'
 description: 'Create a Blazor Webassembly Excel add-in showcasing some samples.'
 ---
 
@@ -35,7 +35,7 @@ This sample shows how to build a Excel add-in using .NET Blazor technologies. Bl
 ## Run the sample
 
 1. Download or clone [this](https://github.com/OfficeDev/Office-Add-in-samples) repository.
-1. Open Visual Studio 2022, and open the **Office-Add-in-samples\Samples\excel-blazor-add-in\excel-blazor-add-in.sln** solution.
+1. Open Visual Studio 2022, and open the:<br/>**Office-Add-in-samples\Samples\blazor-add-in\excel-blazor-add-in\excel-blazor-add-in.sln** solution.
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
 1. When Excel opens, choose **Home** > **Show Taskpane**.
 
@@ -50,11 +50,11 @@ Building the Office Add-in as a Blazor Webassembly allows you to build a .NET Co
 
 This sample uses a Blazor Webassembly file that runs cross-platform in various browsers supporting WASM (Webassembly). The Blazor WASM App demonstrates some basic Excel functions.
 
-The purpose of this sample is to show you how to build and interact with the Blazor, C# and JavaScript Interop options. If you're looking for more examples of interacting with Excel and Office JS APIs, see [Script Lab](https://https://aka.ms/getscriptlab).
+The purpose of this sample is to show you how to build and interact with the Blazor, C# and JavaScript Interop options. If you're looking for more examples of interacting with Excel and Office JS APIs, see [Script Lab](https://aka.ms/getscriptlab).
 
 ### Blazor pages
 
-The **Pages** folder contains the Blazor pages, such as **HelloWorld.razor**. These also contain two code-behind pages, named **HelloWorld.razor.cs** and **HelloWorld.razor.js**. The C# file first establishes an interop connection with the JavaScript file.
+The **Pages** folder contains the Blazor pages, such as **Index.razor**. These also contain two code-behind pages, named **Index.razor.cs** and **Index.razor.js**. The C# file first establishes an interop connection with the JavaScript file.
 
 ```csharp
 protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -69,21 +69,29 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
 For any events that need to interact with the Office document, the C# file calls through interop to the JavaScript file.
 
 ```csharp
-private async Task InsertParagraph() =>
-  await JSModule.InvokeVoidAsync("insertParagraph");
+private async Task HelloButton() =>
+  await JSModule.InvokeVoidAsync("helloButton");
 ```
 
-The JavaScript runs the code to interact with the document and returns.
+The JavaScript runs the code to interact with the worksheet and returns.
 
 ```javascript
-todo: add function here
+export function helloButton() {
+    return Excel.run(context => {
+        // Insert text 'Hello world!' into cell A1.
+        context.workbook.worksheets.getActiveWorksheet().getRange("A1").values = [['Hello world!']];
+
+        // sync the context to run the previous API call, and return.
+        return context.sync();
+    });
+}
 ```
 
 The fundamental pattern includes the following steps.
 
 1. Call **JSRuntime.InvokeAsync** to set up the interop between C# and JavaScript.
 1. Use **JSModule.InvokeVoidAsync** to call JavaScript functions from your C# code.
-1. Call Office JS APIs to interact with the document from JavaScript code.
+1. Call Office JS APIs to interact with the worksheet from JavaScript code.
 
 ## Questions and comments
 
@@ -99,7 +107,7 @@ Create a Blazor Webassembly Excel add-in | [Maarten van Stam](https://mvp.micros
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | April 25, 2022 | Initial release
+1.0  | May 27, 2022 | Initial release
 
 ## Copyright
 
@@ -107,4 +115,4 @@ Copyright(c) Maarten van Stam. All rights reserved.Licensed under the MIT Licens
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/excel-blazor-add-in" />
+<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/blazor-add-in/excel-blazor-add-in" />
