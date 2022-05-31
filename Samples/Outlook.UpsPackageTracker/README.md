@@ -101,4 +101,4 @@ The Azure Storage emulator must be started before running the solution. A simple
 
 Once the storage emulator has started, press F5 to run the project. 
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Outlook.UPSPackageTracker" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/Outlook.UPSPackageTracker" />

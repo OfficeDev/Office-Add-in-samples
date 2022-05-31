@@ -137,4 +137,4 @@ Copyright (c) 2019 Microsoft Corporation. Tous droits réservés.
 
 Ce projet a adopté le [code de conduite Open Source de Microsoft](https://opensource.microsoft.com/codeofconduct/). Pour en savoir plus, reportez-vous à la [FAQ relative au code de conduite](https://opensource.microsoft.com/codeofconduct/faq/) ou contactez [opencode@microsoft.com](mailto:opencode@microsoft.com) pour toute question ou tout commentaire.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/auth/Outlook-Add-in-Microsoft-Graph-ASPNET" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/auth/Outlook-Add-in-Microsoft-Graph-ASPNET" />

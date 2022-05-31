@@ -117,4 +117,4 @@ Office 外接程序 Microsoft Graph ASP.NET | Microsoft
 
 此项目已采用 [Microsoft 开放源代码行为准则](https://opensource.microsoft.com/codeofconduct/)。有关详细信息，请参阅[行为准则 FAQ](https://opensource.microsoft.com/codeofconduct/faq/)。如有其他任何问题或意见，也可联系 [opencode@microsoft.com](mailto:opencode@microsoft.com)。
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/auth/Office-Add-in-Microsoft-Graph-ASPNET" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/auth/Office-Add-in-Microsoft-Graph-ASPNET" />
