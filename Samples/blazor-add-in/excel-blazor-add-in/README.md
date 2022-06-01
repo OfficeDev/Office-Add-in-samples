@@ -16,7 +16,7 @@ description: 'Create a Blazor Webassembly Excel add-in showcasing some samples.'
 
 # Create a Blazor Webassembly Excel add-in
 
-This sample shows how to build a Excel add-in using .NET Blazor technologies. Blazor Webassembly allows you to build your addins using .NET, C# and JavaScript to interact with the OfficeJS API. The add-in uses JavaScript to work with the document and Office JS APIs, but you build the user interface and all other non-Office interactions in C# and .NET Core Blazor technologies.
+This sample shows how to build an Excel add-in using .NET Blazor technologies. Blazor Webassembly allows you to build Office Add-ins using .NET, C#, and JavaScript to interact with the Office JS API. The add-in uses JavaScript to work with the document and Office JS APIs, but you build the user interface and all other non-Office interactions in C# and .NET Core Blazor technologies.
 
 - Work with Blazor Webassembly in the context of Office.
 - Build cross-platform Office Add-ins using Blazor, C# and JavaScript Interop.
@@ -35,7 +35,7 @@ This sample shows how to build a Excel add-in using .NET Blazor technologies. Bl
 ## Run the sample
 
 1. Download or clone [this](https://github.com/OfficeDev/Office-Add-in-samples) repository.
-1. Open Visual Studio 2022, and open the:<br/>**Office-Add-in-samples\Samples\blazor-add-in\excel-blazor-add-in\excel-blazor-add-in.sln** solution.
+1. Open Visual Studio 2022, and open the **Office-Add-in-samples\Samples\blazor-add-in\excel-blazor-add-in\excel-blazor-add-in.sln** solution.
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
 1. When Excel opens, choose **Home** > **Show Taskpane**.
 
@@ -54,7 +54,7 @@ The purpose of this sample is to show you how to build and interact with the Bla
 
 ### Blazor pages
 
-The **Pages** folder contains the Blazor pages, such as **Index.razor**. These also contain two code-behind pages, named **Index.razor.cs** and **Index.razor.js**. The C# file first establishes an interop connection with the JavaScript file.
+The **Pages** folder contains the Blazor pages, such as **Index.razor**. Each **.razor** page also contains two code-behind pages, for example, **Index.razor.cs** and **Index.razor.js**. The C# file first establishes an interop connection with the JavaScript file.
 
 ```csharp
 protected override async Task OnAfterRenderAsync(bool firstRender)
