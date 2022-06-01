@@ -6,7 +6,7 @@ using Microsoft.JSInterop;
 namespace BlazorAddIn.Pages
 {
     /// <summary>
-    /// Starter class to demo how to insert a paragraph
+    /// Starter class to demo how to insert `Hello world!` text.
     /// </summary>
     public partial class Index
     {
@@ -23,7 +23,7 @@ namespace BlazorAddIn.Pages
         }
 
         /// <summary>
-        /// Basic function to invoke inserting a paragraph
+        /// Basic function to invoke inserting `Hello world!` text.
         /// </summary>
         private async Task HelloButton() =>
             await JSModule.InvokeVoidAsync("helloButton");

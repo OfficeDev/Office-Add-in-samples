@@ -19,21 +19,21 @@ export async function beforeStart(wasmoptions, extensions) {
     console.log("We are now entering function: beforeStart");
 
     Office.onReady((info) => {
-        // Check that we loaded into Excel
+        // Check that we loaded into Excel.
         if (info.host === Office.HostType.Excel) {
-            console.log("We are now hosting in Excel");
+            console.log("We are now hosting in Excel.");
         }
         else {
-            console.log("We are now hosting in The Browser (of your choice)");
+            console.log("We are now hosting in The Browser (of your choice).");
         }
-        console.log("Office onReady");
+        console.log("Office onReady.");
     });
 }
 
 /**
  * afterStarted: Called after Blazor is ready to receive calls from JS. 
  * For example, afterStarted is used to initialize libraries by making JS interop calls and registering custom elements.
- * The Blazor instance is passed to afterStarted as an argument
+ * The Blazor instance is passed to afterStarted as an argument.
  * @param  {} blazor
  */
 export async function afterStarted(blazor) {

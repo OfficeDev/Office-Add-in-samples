@@ -1,18 +1,18 @@
 ﻿/* Copyright(c) Microsoft. All rights reserved. Licensed under the MIT License. */
 /* 
- * This sample is extracted from the excellent helper tool called Script Lab
- * Take a look at more samples provided there
+ * This bubble chart sample is extracted from the excellent helper tool called Script Lab.
+ * Find this sample and more at https://aka.ms/getscriptlab.
  */
 
 export async function createBubbleChart() {
     await Excel.run(async (context) => {
         /*
-          The table is expected to look like this:
+          The table has the following columns and data.
           Product, Inventory, Price, Current Market Share
           Calamansi, 2000, $2.45, 10%
           ...
     
-          We want each bubble to represent a single row.
+          Each bubble represents a single row.
         */
 
         // Get the worksheet and table data.
@@ -51,7 +51,7 @@ export async function createBubbleChart() {
     });
 }
 
-export async function creatTable() {
+export async function createTable() {
     await Excel.run(async (context) => {
         context.workbook.worksheets.getItemOrNullObject("Sample").delete();
         const sheet = context.workbook.worksheets.add("Sample");
@@ -75,14 +75,4 @@ export async function creatTable() {
         sheet.activate();
         await context.sync();
     });
-}
-
-/** Default helper for invoking an action and handling errors. */
-async function tryCatch(callback) {
-    try {
-        await callback();
-    } catch (error) {
-        // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
-        console.error(error);
-    }
 }

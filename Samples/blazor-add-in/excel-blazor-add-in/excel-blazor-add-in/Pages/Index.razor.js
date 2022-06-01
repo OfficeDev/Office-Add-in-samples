@@ -1,6 +1,6 @@
 ﻿/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
 /**
- * Basic function to show how to insert a value into cell on the selected Excel WorkSheet
+ * Basic function to show how to insert a value into cell A1 on the selected Excel worksheet.
  */
 export function helloButton() {
 
