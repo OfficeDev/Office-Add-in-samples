@@ -1,0 +1,32 @@
+﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+<div class="navbar px-3">
+	<div class="container">
+		<div class="col-md-2">
+			<button @onclick="@(() => MoveToPage("/"))" class="btn btn-primary nav-addin"><div>Hello World!</div></button>
+		</div>
+		<div class="col-md-2">
+			@* Credit Office JS Code from Script Lab *@
+			<button @onclick="@(() => MoveToPage("/bubblechart"))" class="btn btn-primary nav-addin"><div>Bubble Chart</div></button>
+		</div>
+@*		<div class="col-md-2">
+			<button @onclick="@(() => MoveToPage("/"))" class="btn btn-primary nav-addin"><div>Option 3</div></button>
+		</div>
+		<div class="col-md-2">
+			<button @onclick="@(() => MoveToPage("/"))" class="btn btn-primary nav-addin"><div>Option 4</div></button>
+		</div>
+		<div class="col-md-2">
+			<button @onclick="@(() => MoveToPage("/"))" class="btn btn-primary nav-addin"><div>Option 5</div></button>
+		</div>
+*@	</div>
+</div>
+
+@code {
+
+	[Inject]
+	public NavigationManager NavigationManager { get; set; } = default!;
+
+	void MoveToPage(string page)
+	{
+		NavigationManager.NavigateTo(page, true);
+	}
+}
