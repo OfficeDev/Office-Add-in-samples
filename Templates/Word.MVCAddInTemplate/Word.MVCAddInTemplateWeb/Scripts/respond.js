@@ -324,10 +324,10 @@ window.matchMedia = window.matchMedia || (function(doc, undefined){
 	//translate CSS
 	ripCSS();
 	
-	//expose update for re-running respond later on
+	//not gonna expose update for re-running respond later on
 	respond.update = ripCSS;
 	
-	//adjust on resize
+	//no adjust on resize
 	function callMedia(){
 		applyMedia( true );
 	}
