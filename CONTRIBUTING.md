@@ -32,9 +32,9 @@ If you find a similar sample that already exists in the repository, we would pre
 Create a README.md file for your code sample, and base it on the [provided template](/Templates/readme-template.md). The README must be named README.md with capital letters.
 
 ### Update tracking image
-The README template contains specific tracking image as a final entry in the page with img tag by default to https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/name-of-sample. This is transparent image, which is used to track anonymous view counts of individual samples in GitHub.
+The README template contains specific tracking image as a final entry in the page with img tag by default to https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/name-of-sample. This is transparent image, which is used to track anonymous view counts of individual samples in GitHub.
 
-Update the image `src` element according to correct repository name and folder information. For example, if your sample is **/samples** folder and named as "react-todo", `src` element should be updated as https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/react-todo.
+Update the image `src` element according to correct repository name and folder information. For example, if your sample is **/samples** folder and named as "react-todo", `src` element should be updated as https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/react-todo.
 
 ### Name the solution
 When you are submitting a new sample solution, please name the sample solution folder accordingly.

@@ -30,4 +30,4 @@ In order to play with this add-in, you need to:
 -  Configure the azureADTenant and azureADClientID variables in the [MessageRead.js](./Outlook.AddInSampleWeb/MessageRead.js) file of the solution
 
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Outlook.AddInSample" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/Outlook.AddInSample" />
