@@ -204,4 +204,4 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 ---
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/outlook-encrypt-attachments" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-encrypt-attachments" />

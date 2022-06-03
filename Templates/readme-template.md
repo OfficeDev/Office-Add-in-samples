@@ -51,4 +51,4 @@ Version  | Date | Comments
 
 > Update the image below to use a unique name. This is used to track how many anonymous views there are to the sample.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/name-of-sample" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/name-of-sample" />

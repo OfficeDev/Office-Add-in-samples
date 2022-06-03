@@ -182,4 +182,4 @@ The control will display some DPI information. You can drag Excel to a monitor w
 
 This is an MFC Windowless ActiveX control that supports dynamic DPI on WM_PAINT. It gets the HWND of the host window from HDC. You can find more info about the DPI code in the ODActiveXCtrl.cpp file.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/dynamic-dpi" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/dynamic-dpi" />
