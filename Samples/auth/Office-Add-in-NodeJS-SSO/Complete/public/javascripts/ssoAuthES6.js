@@ -22,18 +22,55 @@ Office.onReady(function (info) {
  * The file names are inserted into the document.
  */
 function getFileNameList() {
-  callWebServerAPI("/getuserfilenames").then((response) => {
-    if (response != null)
-      writeFileNamesToOfficeDocument(response)
-        .then(function () {
-          showMessage("Your OneDrive filenames are added to the document.");
-        })
-        .catch(function (error) {
-          // The error from writeFileNamesToOfficeDocument will begin
-          // "Unable to add filenames to document."
-          showMessage(error);
-        });
+  getCorrectAccessToken((accessToken) => {
+    callWebServerAPI2("/getuserfilenames", accessToken).then((response) => {
+      if (response != null)
+        writeFileNamesToOfficeDocument(response)
+          .then(function () {
+            showMessage("Your OneDrive filenames are added to the document.");
+          })
+          .catch(function (error) {
+            // The error from writeFileNamesToOfficeDocument will begin
+            // "Unable to add filenames to document."
+            showMessage(error);
+          });
+    });
   });
+}
+
+let authSSO = false;
+
+// When using the fallback approach, the fallback dialog will call this function again with the access token.
+async function callWebServerAPI2(url, accessToken) {
+  // Call our web server with requested url
+  try {
+    await $.ajax({
+      type: "GET",
+      url: url,
+      headers: { Authorization: "Bearer " + accessToken },
+      cache: false,
+      success: function (data) {
+        tokenNeeded = false;
+        result = data;
+      },
+    });
+  } catch (error) {
+    // We only handle errors returned by our web server (500).
+    if (error.statusText === "Internal Server Error") {
+      tokenNeeded = handleWebServerErrors(error);
+    } else console.log(JSON.stringify(error)); // Log anything else.
+  }
+  return result;
+}
+
+// get token based on if we are using SSO or fallback.
+function getCorrectAccessToken(callbackFunction) {
+  if (authSSO) {
+    //return the sso token
+  } else {
+    //return the fallback token
+    dialogFallback(callbackFunction);
+  }
 }
 
 /**
@@ -43,6 +80,7 @@ function getFileNameList() {
  * @returns The response from the server.
  */
 async function callWebServerAPI(url, authOptions) {
+  dialogFallback();
   if (authOptions === undefined) {
     // Set up default auth options.
     authOptions = {
@@ -172,15 +210,4 @@ function handleWebServerErrors(err) {
       return false;
   }
   return false; // Indicate no need to retry call to getAccessToken.
-}
-
-/**
- * This method is not implemented. When SSO fails, you should implement a fallback authentication approach.
- * For example, you may want to display a dialog for the user to sign in, using the Microsoft Authentication Library (MSAL).
- * For more information, see https://docs.microsoft.com/office/dev/add-ins/develop/auth-with-office-dialog-api
- */
-function dialogFallback() {
-  console.log(
-    "Unable to acquire SSO token. Fallback authentication is required."
-  );
 }
