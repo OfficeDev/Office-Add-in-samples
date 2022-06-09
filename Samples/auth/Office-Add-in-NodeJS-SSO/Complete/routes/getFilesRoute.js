@@ -26,13 +26,17 @@ router.get(
 
         // Minimize the data that must come from MS Graph by specifying only the property we need ("name")
         // and only the top 10 folder or file names.
+        const rootUrl = "/me/drive/root/children";
+        
         // Note that the last parameter, for queryParamsSegment, is hardcoded. If you reuse this code in
         // a production add-in and any part of queryParamsSegment comes from user input, be sure that it is
         // sanitized so that it cannot be used in a Response header injection attack.
+        const params = "?$select=name&$top=10";
+
         let graphData = await getGraphData(
           response.accessToken,
-          "/me/drive/root/children",
-          "?$select=name&$top=10");
+          rootUrl,
+          params);
           
             // If Microsoft Graph returns an error, such as invalid or expired token,
             // there will be a code property in the returned object set to a HTTP status (e.g. 401).

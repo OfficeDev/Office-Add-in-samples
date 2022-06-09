@@ -6,9 +6,10 @@
 
 var loginDialog;
 let storedCallbackFunction = null;
+let storedClientRequest = null;
 
-function dialogFallback(callbackFunction) {
-    storedCallbackFunction = callbackFunction;
+function dialogFallback(clientRequest) {
+    storedClientRequest = clientRequest;
     var url = "/dialog.html"; 
 	showLoginPopup(url);
 }
@@ -24,7 +25,8 @@ function processMessage(arg) {
             // We now have a valid access token.
             loginDialog.close();
             const url = localStorage.getItem("url");
-            storedCallbackFunction(messageFromDialog.result);
+            storedClientRequest.accessToken = messageFromDialog.result;
+            storedClientRequest.callback(storedClientRequest);
             //makeGraphApiCall(messageFromDialog.result);
         }
         else {

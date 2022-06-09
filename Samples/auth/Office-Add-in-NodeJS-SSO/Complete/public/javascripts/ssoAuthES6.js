@@ -3,6 +3,9 @@
  *
  */
 
+// global to track if we are using SSO or the fallback auth.
+let authSSO = true;
+
 // If the add-in is running in Internet Explorer, the code must add support
 // for Promises.
 if (!window.Promise) {
@@ -19,101 +22,73 @@ Office.onReady(function (info) {
  * Handles the click event for the Get File Name List button.
  * Requests a call to the web server /getuserfilenames that
  * gets up to 10 file names listed in the user's OneDrive.
- * The file names are inserted into the document.
+ * When the call is completed, it will call the clientRequest.callbackHandler.
  */
 function getFileNameList() {
-  getCorrectAccessToken((accessToken) => {
-    callWebServerAPI2("/getuserfilenames", accessToken).then((response) => {
-      if (response != null)
-        writeFileNamesToOfficeDocument(response)
-          .then(function () {
-            showMessage("Your OneDrive filenames are added to the document.");
-          })
-          .catch(function (error) {
-            // The error from writeFileNamesToOfficeDocument will begin
-            // "Unable to add filenames to document."
-            showMessage(error);
-          });
-    });
+  createRequest((clientRequest) => {
+    clientRequest.url = "/getuserfilenames";
+    clientRequest.callbackHandler = handleGetFileNameResponse;
+    callWebServer(clientRequest);
   });
 }
 
-let authSSO = false;
-
-// When using the fallback approach, the fallback dialog will call this function again with the access token.
-async function callWebServerAPI2(url, accessToken) {
-  // Call our web server with requested url
-  try {
-    await $.ajax({
-      type: "GET",
-      url: url,
-      headers: { Authorization: "Bearer " + accessToken },
-      cache: false,
-      success: function (data) {
-        tokenNeeded = false;
-        result = data;
-      },
-    });
-  } catch (error) {
-    // We only handle errors returned by our web server (500).
-    if (error.statusText === "Internal Server Error") {
-      tokenNeeded = handleWebServerErrors(error);
-    } else console.log(JSON.stringify(error)); // Log anything else.
-  }
-  return result;
+/**
+ * Handler for the returned response from the server API call to get file names.
+ * Writes out the file names to the document.
+ * 
+ * @param {*} response The list of file names.
+ */
+async function handleGetFileNameResponse(response) {
+  if (response != null) {
+    try {
+      await writeFileNamesToOfficeDocument(response);
+      showMessage("Your OneDrive filenames are added to the document.");
+    } catch (error) {
+      // The error from writeFileNamesToOfficeDocument will begin
+      // "Unable to add filenames to document."
+      showMessage(error);
+    }
+  } else showMessage("A null response was returned to handleGetFileNameReponse.");
 }
 
-// get token based on if we are using SSO or fallback.
-function getCorrectAccessToken(callbackFunction) {
-  if (authSSO) {
-    //return the sso token
+/**
+ * Checks to see if SSO or fallback auth is used.
+ * Then calls the correct method to pass the client request to the server.
+ * 
+ * @param {*} clientRequest Contains information for calling an API on the server.
+ */
+function callWebServer(clientRequest) {
+  if (clientRequest.authSSO) {
+    callServerWithSSO(clientRequest);
   } else {
-    //return the fallback token
-    dialogFallback(callbackFunction);
+    callServerWithFallback(clientRequest);
   }
 }
 
 /**
- * Calls the add-in's web server API specified by the url. Only makes GET calls.
- *
- * @param {*} url The url specifying the REST API name to call.
- * @returns The response from the server.
+ * Calls the sever API using SSO as the auth approach.
+ * If the call is successful, the clientRequest.callbackHandler method is called to handle the results.
+ * 
+ * @param {*} clientRequest Contains information for calling an API on the server.
  */
-async function callWebServerAPI(url, authOptions) {
-  dialogFallback();
-  if (authOptions === undefined) {
-    // Set up default auth options.
-    authOptions = {
-      allowSignInPrompt: true,
-      allowConsentPrompt: true,
-      forMSGraphAccess: true,
-    };
-  }
-  var accessToken = null;
+async function callServerWithSSO(clientRequest) {
   var result = null;
   var tokenNeeded = true; // The following loop will call getAccessToken again in some error scenarios. retryGetAccessToken is configure to only retry the loop once.
   var retryGetAccessToken = 0; // Use when getAccessToken is called repeatedly to control recursion depth.
 
   while (tokenNeeded && retryGetAccessToken <= 1) {
-    try {
-      // The access token returned from getAccessToken only has permissions to your web server APIs,
-      // and it contains the identity claims of the signed-in user.
-      let authParam = { ...authOptions };
-      accessToken = await Office.auth.getAccessToken(authParam);
-    } catch (error) {
-      handleSSOErrors(error);
-    }
-
     // Call our web server with requested url
     try {
       await $.ajax({
         type: "GET",
-        url: url,
-        headers: { Authorization: "Bearer " + accessToken },
+        url: clientRequest.url,
+        headers: { Authorization: "Bearer " + clientRequest.accessToken },
         cache: false,
         success: function (data) {
           tokenNeeded = false;
           result = data;
+          // call the handler method 
+          clientRequest.callbackHandler(result);
         },
       });
     } catch (error) {
@@ -126,16 +101,122 @@ async function callWebServerAPI(url, authOptions) {
   }
   if (tokenNeeded) {
     // We exceeded the loop count and could not obtain an SSO token.
-    dialogFallback();
+    authSSO = false;
+    // We need to create a new request
+    createRequest((fallbackRequest) => {
+      fallbackRequest.url = clientRequest.url;
+      fallbackRequest.callbackHandler = clientRequest.callbackHandler;
+      // Hand off to call using fallback auth.
+      callServerWithFallback(fallbackRequest);
+      return;
+    });
   }
-  return result;
 }
 
 /**
+ * Calls the sever API using the fallback auth approach.
+ * @param {*} clientRequest Contains information for calling an API on the server.
+ */
+async function callServerWithFallback(clientRequest) {
+  // Call our web server with requested url
+  try {
+    await $.ajax({
+      type: "GET",
+      url: clientRequest.url,
+      headers: { Authorization: "Bearer " + clientRequest.accessToken },
+      cache: false,
+      success: function (data) {
+        result = data;
+        clientRequest.callbackHandler(result);
+      },
+    });
+  } catch (error) {
+    // We only handle errors returned by our web server (500).
+    if (error.statusText === "Internal Server Error") {
+      handleWebServerErrors(error);
+    } else console.log(JSON.stringify(error)); // Log anything else.
+  }
+}
+
+/**
+ * Creates a client request object with:
+ * authOptions - Auth configuration parameters for SSO.
+ * authSSO - true if using SSO, otherwise false.
+ * accessToken - The access token to the server.
+ * url - The URL of the REST API to call on the server.
+ * callbackHandler - The function to pass the results of the REST API call.
+ * callbackFunction - the function to pass the client request to when ready.
+ * 
+ * Note that when the client request is created it will be passed to the callbackFunction. This is used because
+ * we may need to pop up a dialog to sign in the user, which uses a callback approach.
+ * 
+ * @param {*} callbackFunction The function to pass the client request to when ready. 
+ */
+async function createRequest(callbackFunction) {
+  const clientRequest = {
+    authOptions: {
+      allowSignInPrompt: true,
+      allowConsentPrompt: true,
+      forMSGraphAccess: true,
+    },
+    authSSO: authSSO,
+    accessToken: null,
+    url: null,
+    callbackHandler: null,
+    callbackFunction: callbackFunction
+  }
+
+  if (authSSO) {
+    // Use SSO approach.
+    try {
+      clientRequest.accessToken = await getAccessTokenFromSSO();
+      callbackFunction(clientRequest);
+    } catch {
+      // use fallback auth if SSO failed.
+      authSSO = false;
+      dialogFallback(clientRequest);
+    }
+  } else {
+    // Use fallback auth approach
+    dialogFallback(clientRequest);
+  }
+}
+
+/**
+ * Returns the access token for using SSO auth. Throws an error if SSO fails. 
+ * @param {*} authOptions The configuration options for SSO.
+ * @returns An access token to the server for the signed in user.
+ */
+async function getAccessTokenFromSSO(authOptions) {
+  if (authOptions === undefined) {
+    // Set up default auth options.
+    authOptions = {
+      allowSignInPrompt: true,
+      allowConsentPrompt: true,
+      forMSGraphAccess: true,
+    };
+  }
+  let accessToken = null;
+
+  try {
+    // The access token returned from getAccessToken only has permissions to your web server APIs,
+    // and it contains the identity claims of the signed-in user.
+    let authParam = { ...authOptions };
+    accessToken = await Office.auth.getAccessToken(authParam);
+  } catch (error) {
+    let fallbackRequired = handleSSOErrors(error);
+    if (fallbackRequired) throw (error); // Rethrow the error and caller will switch to fallback auth.
+  }
+  return accessToken;
+}
+
+
+/**
  * Handles any error returned from getAccessToken.
- * @param {*} err The error to process
+ * @param {*} err The error to process.
  */
 function handleSSOErrors(err) {
+  let fallbackRequired = false;
   switch (err.code) {
     case 13001:
       // No one is signed into Office. If the add-in cannot be effectively used when no one
@@ -173,15 +254,16 @@ function handleSSOErrors(err) {
       break;
     default:
       // For all other errors, including 13000, 13003, 13005, 13007, 13012, and 50001, fall back
-      // to non-SSO sign-in.
-      dialogFallback();
+      // to non-SSO sign-in. 
+      fallbackRequired = true;
       break;
   }
+  return fallbackRequired;
 }
 
 /**
  * Handles any error returned from the web server.
- * @param {*} err The error to process
+ * @param {*} err The error to process.
  * @returns {boolean} true if the caller should attempt to retry getAccessToken; otherwise false.
  */
 function handleWebServerErrors(err) {
@@ -191,7 +273,7 @@ function handleWebServerErrors(err) {
       // An error occurred when the web server called Microsoft Graph.
       showMessage(
         "Error from Microsoft Graph: " +
-          JSON.stringify(err.responseJSON.errorDetails)
+        JSON.stringify(err.responseJSON.errorDetails)
       );
       break;
     case "AADSTS500133": // expired token
@@ -204,9 +286,13 @@ function handleWebServerErrors(err) {
     default:
       showMessage(
         "Unknown error from web server: " +
-          JSON.stringify(err.responseJSON.errorDetails)
+        JSON.stringify(err.responseJSON.errorDetails)
       );
-      dialogFallback();
+      // We should use fallback auth from this point if an unknown error occurred while using the SSO token.
+      if (authSSO) {
+        authSSO = false;
+        dialogFallback();
+      }
       return false;
   }
   return false; // Indicate no need to retry call to getAccessToken.
