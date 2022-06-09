@@ -4,6 +4,9 @@
  * This file shows how to use MSAL.js to get an access token to Microsoft Graph an pass it to the task pane.
  */
 
+// Replace with the client ID from your fallback auth app registration.
+const fallbackClientID = "$fallback_application_GUID here$";
+
   // If the add-in is running in Internet Explorer, the code must add support 
  // for Promises.
 if (!window.Promise) {
@@ -51,9 +54,9 @@ if (!window.Promise) {
 
     const msalConfig = {
         auth: {
-            clientId: "b48d21ef-5d0e-4834-a161-fad01549f7af", //This is your client ID
+            clientId: fallbackClientID,
             //authority: "https://login.microsoftonline.com/common", 
-            authority: "https://login.microsoftonline.com/b48d21ef-5d0e-4834-a161-fad01549f7af", 
+            authority: "https://login.microsoftonline.com/"+ fallbackClientID, 
             redirectURI: "https://localhost:44355/dialog", 
             navigateToLoginRequestUrl: false,
             response_type: "access_token"
