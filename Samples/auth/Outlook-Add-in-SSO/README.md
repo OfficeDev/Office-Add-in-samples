@@ -46,8 +46,6 @@ The sample implements an Outlook add-in that uses Office's SSO feature to give t
 
 1. On the **AttachmentsDemo** page, copy and save the **Application (client) ID**. You'll use it in later procedures.
 
-1. Under **Manage**, select **Authentication**. Under **Implicit grant**, check the **Access tokens** checkbox, then select **Save**.
-
 1. Under **Manage**, select **Certificates & secrets**. Select the **New client secret** button. Enter a value for **Description**, then select an appropriate option for **Expires**, and choose **Add**.
 
 1. Copy and save the client secret value. You'll use it in later procedures.
@@ -75,19 +73,13 @@ The sample implements an Outlook add-in that uses Office's SSO feature to give t
 
 1. Select **Add scope** .
 
-1. In the **Authorized client applications** section, identify the applications that you want to authorize to your add-in's web application. Each of the following IDs needs to be pre-authorized:
+1. In the **Authorized client applications** section, enter the following ID to pre-authorize all Microsoft Office application endpoints.
+    
+    * `ea5a67f6-b6f3-4338-b240-c655ddc3cc8e` (All Microsoft Office application endpoints)
+    
+1. Select **Add a client application**. In the panel that opens, set the **Client ID** to the respective GUID and check the box for `api://localhost:44355/[application-id-guid]/access_as_user`.
 
-    - `d3590ed6-52b3-4102-aeff-aad2292ab01c` (Microsoft Office)
-    - `ea5a67f6-b6f3-4338-b240-c655ddc3cc8e` (Microsoft Office)
-    - `57fb890c-0dab-4253-a5e0-7188c88b2bb4` (Office on the web)
-    - `08e18876-6177-487e-b8b5-cf950c1e598c` (Office on the web)
-    - `bc59ab01-8403-45c6-8796-ac3ef710b3e3` (Outlook on the web)
-
-    For each ID, take these steps:
-
-    a. Select **Add a client application** button, and in the panel that opens, set the **Client ID** to the respective GUID and check the box for `api://localhost:44355/$App ID GUID$/access_as_user`.
-
-    b. Select **Add application**.
+1. Select **Add application**.
 
 1. Under **Manage**, select **API permissions** and then select **Add a permission**. On the panel that opens, choose **Microsoft Graph** and then choose **Delegated permissions**.
 
