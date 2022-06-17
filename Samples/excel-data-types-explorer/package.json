@@ -33,7 +33,7 @@
     "@babel/core": "^7.13.10",
     "@babel/preset-typescript": "^7.13.0",
     "@types/jquery": "^3.3.1",
-    "@types/office-js": "^1.0.256",
+    "@types/office-js-preview": "^1.0.315",
     "@types/office-runtime": "^1.0.23",
     "acorn": "^8.5.0",
     "babel-loader": "^8.2.2",
