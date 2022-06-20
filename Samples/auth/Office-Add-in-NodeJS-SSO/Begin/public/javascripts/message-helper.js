@@ -4,8 +4,15 @@
  * This file shows how to display a message on the task pane.
  */
 
- function showMessage(text) {
+function showMessage(text) {
+   const appendedText = $('#message-area').html() + text + "<br>---";
     $('.welcome-body').hide();
     $('#message-area').show(); 
-    $('#message-area').text(text);
+    $('#message-area').html(appendedText);
+ }
+
+ function clearMessage() {
+   $('.welcome-body').hide();
+   $('#message-area').show(); 
+   $('#message-area').html("---<br>");
  }

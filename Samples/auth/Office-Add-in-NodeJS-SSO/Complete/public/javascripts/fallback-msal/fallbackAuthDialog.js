@@ -5,7 +5,7 @@
  */
 
 // Replace with the client ID from your fallback auth app registration.
-const fallbackClientID = "$fallback_application_GUID here$";
+const fallbackClientID = "$fallback_application_GUID_here$";
 
   // If the add-in is running in Internet Explorer, the code must add support 
  // for Promises.
@@ -20,7 +20,6 @@ if (!window.Promise) {
  * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
  */
  const loginRequest = {
-   // scopes: ["openid", "profile", "access_as_user"],
    scopes: ["access_as_user"],
   };
 
@@ -52,20 +51,20 @@ if (!window.Promise) {
         }
      };
 
-    const msalConfig = {
-        auth: {
-            clientId: fallbackClientID,
-            //authority: "https://login.microsoftonline.com/common", 
-            authority: "https://login.microsoftonline.com/"+ fallbackClientID, 
-            redirectURI: "https://localhost:44355/dialog", 
-            navigateToLoginRequestUrl: false,
-            response_type: "access_token"
-        },
-        cache: {
-            cacheLocation: 'localStorage', // Needed to avoid "User login is required" error.
-            storeAuthStateInCookie: true  // Recommended to avoid certain IE/Edge issues.
-        }
-    };
+    // const msalConfig = {
+    //     auth: {
+    //         clientId: fallbackClientID,
+    //         //authority: "https://login.microsoftonline.com/common", 
+    //         authority: "https://login.microsoftonline.com/"+ fallbackClientID, 
+    //         redirectURI: "https://localhost:44355/dialog", 
+    //         navigateToLoginRequestUrl: false,
+    //         response_type: "access_token"
+    //     },
+    //     cache: {
+    //         cacheLocation: 'localStorage', // Needed to avoid "User login is required" error.
+    //         storeAuthStateInCookie: true  // Recommended to avoid certain IE/Edge issues.
+    //     }
+    // };
 
     const userAgentApp = new Msal.UserAgentApplication(msalConfig);
 

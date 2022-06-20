@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@types/jquery": "^3.5.5",
-    "@types/office-js": "^1.0.178",
+    "@types/office-js": "^1.0.201",
     "cookie-parser": "~1.4.5",
     "debug": "~4.3.1",
     "dotenv": "^9.0.2",
@@ -20,7 +20,10 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.10.0",
     "node-fetch": "^2.6.7",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "@azure/msal-node": "1.8.0",
+    "jwks-rsa": "^2.0.5",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "office-addin-dev-certs": "1.5.18"

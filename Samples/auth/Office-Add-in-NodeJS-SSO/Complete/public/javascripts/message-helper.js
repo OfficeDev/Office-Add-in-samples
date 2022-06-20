@@ -5,7 +5,14 @@
  */
 
  function showMessage(text) {
+   const appendedText = $('#message-area').html() + text + "<br>---";
     $('.welcome-body').hide();
     $('#message-area').show(); 
-    $('#message-area').text(text);
+    $('#message-area').html(appendedText);
+ }
+
+ function clearMessage() {
+   $('.welcome-body').hide();
+   $('#message-area').show(); 
+   $('#message-area').html("---<br>");
  }

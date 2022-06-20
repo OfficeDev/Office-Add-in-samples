@@ -24,9 +24,8 @@ function processMessage(arg) {
         if (messageFromDialog.status === 'success') { 
             // We now have a valid access token.
             loginDialog.close();
-            const url = localStorage.getItem("url");
             storedClientRequest.accessToken = messageFromDialog.result;
-            storedClientRequest.callback(storedClientRequest);
+            storedClientRequest.callbackFunction(storedClientRequest);
             //makeGraphApiCall(messageFromDialog.result);
         }
         else {

@@ -5,9 +5,11 @@
  */
 
 var loginDialog;
+let storedCallbackFunction = null;
+let storedClientRequest = null;
 
-function dialogFallback() {
-
+function dialogFallback(clientRequest) {
+    storedClientRequest = clientRequest;
     var url = "/dialog.html"; 
 	showLoginPopup(url);
 }
@@ -22,7 +24,9 @@ function processMessage(arg) {
         if (messageFromDialog.status === 'success') { 
             // We now have a valid access token.
             loginDialog.close();
-            makeGraphApiCall(messageFromDialog.result);
+            storedClientRequest.accessToken = messageFromDialog.result;
+            storedClientRequest.callbackFunction(storedClientRequest);
+            //makeGraphApiCall(messageFromDialog.result);
         }
         else {
             // Something went wrong with authentication or the authorization of the web application.

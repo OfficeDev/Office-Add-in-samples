@@ -1,4 +1,18 @@
 /**
+   * Scopes you add here will be prompted for user consent during sign-in.
+   * By default, MSAL.js will add OIDC scopes (openid, profile, email) to any login request.
+   * For more information about OIDC scopes, visit: 
+   * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
+   * 
+   * For the SPA fallback client, we only need the access_as_user scope to make calls to the middle tier.
+   * The middle tier will perform the On-Behalf-Of flow to get a token with Microsoft Graph scopes.
+   */
+const loginRequest = {
+  scopes: ["api://localhost:44355/$middle_tier_application_GUID here$/access_as_user"]
+};
+
+
+/**
  * Configuration object to be passed to MSAL instance on creation. 
  * For a full list of MSAL.js configuration parameters, visit:
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/configuration.md 
@@ -6,6 +20,7 @@
 
  const msalConfig = {
     auth: {
+      // clientId: "$fallback_application_GUID_here$",
       clientId: "b48d21ef-5d0e-4834-a161-fad01549f7af", // This is the ONLY mandatory field that you need to supply.
       authority: "https://login.microsoftonline.com/common", // Defaults to "https://login.microsoftonline.com/common"
       redirectUri: "https://localhost:44355/dialog.html", // You must register this URI on Azure Portal/App Registration. Defaults to window.location.href
@@ -42,15 +57,7 @@
     }
   };
   
-  /**
-   * Scopes you add here will be prompted for user consent during sign-in.
-   * By default, MSAL.js will add OIDC scopes (openid, profile, email) to any login request.
-   * For more information about OIDC scopes, visit: 
-   * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
-   */
-  const loginRequest = {
-    scopes: ["api://localhost:44355/478aa78e-20ba-4c0d-9ffe-c4f62e5de3d5/access_as_user"],
-  };
+  
   
   /**
    * An optional silentRequest object can be used to achieve silent SSO

@@ -8,12 +8,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
 
+    <!-- msal.min.js can be used in the place of msal.js; included msal.js to make debug easy -->
+  <script id="load-msal" src="https://alcdn.msauth.net/browser/2.15.0/js/msal-browser.js"
+  integrity="sha384-dFzMiVGB5HpWZ+5w5VSif6jhWfNeplSw9ACYmQKZcY2azuT9kCxVWVI9HyfGdkHV"
+  crossorigin="anonymous"></script>
+
     <!-- Office JavaScript API -->
-    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/4.0/MicrosoftAjax.js"></script>
-    <script type="text/javascript" src="https://alcdn.msauth.net/lib/1.1.3/js/msal.min.js"></script>
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 
-    <script type="text/javascript" src="../javascripts/fallbackAuthDialog.js"></script>
+    <script type="text/javascript" src="../javascripts/fallback-msal/authConfig.js"></script>
+    <script type="text/javascript" src="../javascripts/fallback-msal/authRedirect.js"></script>
 </head>
 
 <body>

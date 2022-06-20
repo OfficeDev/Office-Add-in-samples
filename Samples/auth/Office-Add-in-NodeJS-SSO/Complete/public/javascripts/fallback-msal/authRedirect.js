@@ -6,7 +6,6 @@ const myMSALObj = new msal.PublicClientApplication(msalConfig);
 
 Office.initialize = function () {
   if (Office.context.ui.messageParent) {
-    debugger;
     /**
      * A promise handler needs to be registered for handling the
      * response returned from redirect flow. For more information, visit:

@@ -13,10 +13,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var getGraphData = require('./public/javascripts/msgraph-helper');
-
 var indexRouter = require('./routes/index');
-var authRouter = require('./routes/authRoute');
+var getFilesRoute = require('./routes/getFilesRoute');
 
 var app = express();
 
@@ -46,11 +44,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use('/home/index', indexRouter);
-app.use('/auth', authRouter);
+//app.use('/auth', authRouter);
 
-app.get('/dialog.html', (async (req, res) => {
-  return res.sendfile('dialog.html');
-}));
+app.get('/getuserfilenames', getFilesRoute);
 
 
 
