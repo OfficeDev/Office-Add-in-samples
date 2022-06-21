@@ -1,4 +1,5 @@
-// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in the root of the repo.
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 /* 
     This file provides the functionality to write data to the Office document. 

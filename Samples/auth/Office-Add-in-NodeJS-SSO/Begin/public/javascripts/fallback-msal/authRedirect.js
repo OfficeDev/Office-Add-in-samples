@@ -1,3 +1,5 @@
+// This file copied and modified from https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/1-Authentication/1-sign-in/App/authConfig.js
+
 // Create the main myMSALObj instance
 // configuration parameters are located at authConfig.js
 
@@ -6,7 +8,6 @@ const myMSALObj = new msal.PublicClientApplication(msalConfig);
 
 Office.initialize = function () {
   if (Office.context.ui.messageParent) {
-    debugger;
     /**
      * A promise handler needs to be registered for handling the
      * response returned from redirect flow. For more information, visit:

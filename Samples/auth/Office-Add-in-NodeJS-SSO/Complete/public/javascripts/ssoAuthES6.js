@@ -1,7 +1,5 @@
-/*
- * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo.
- *
- */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 // global to track if we are using SSO or the fallback auth.
 // To test fallback auth, set authSSO = false.

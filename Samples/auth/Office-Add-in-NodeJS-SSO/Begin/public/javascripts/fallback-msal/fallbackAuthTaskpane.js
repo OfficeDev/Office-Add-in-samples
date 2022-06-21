@@ -1,8 +1,7 @@
-/*
- * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. -->
- *
- * This file shows how to open a dialog and process any results sent back to the task pane.
- */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// This file shows how to open a dialog and process any results sent back to the task pane.
 
 var loginDialog;
 let storedCallbackFunction = null;

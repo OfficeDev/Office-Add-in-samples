@@ -1,8 +1,7 @@
-/*
- * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. -->
- *
- * This file is the main Node.js server file that defines the express middleware.
- */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// This file is the main Node.js server file that defines the express middleware.
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
