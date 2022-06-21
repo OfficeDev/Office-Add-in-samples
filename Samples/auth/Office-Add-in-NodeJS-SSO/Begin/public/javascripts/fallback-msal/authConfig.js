@@ -6,8 +6,8 @@
    * For more information about OIDC scopes, visit: 
    * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
    * 
-   * For the SPA fallback client, we only need the access_as_user scope to make calls to the middle tier.
-   * The middle tier will perform the On-Behalf-Of flow to get a token with Microsoft Graph scopes.
+   * For the SPA fallback client, we only need the access_as_user scope to make calls to the middle-tier.
+   * The middle-tier server will perform the On-Behalf-Of flow to get a token with Microsoft Graph scopes.
    */
  const loginRequest = {
   scopes: ["api://localhost:44355/$middle_tier_application_GUID here$/access_as_user"]

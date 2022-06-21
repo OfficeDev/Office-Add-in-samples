@@ -22,8 +22,8 @@ Office.onReady(function (info) {
  * Creates a client request object with:
  * authOptions - Auth configuration parameters for SSO.
  * authSSO - true if using SSO, otherwise false.
- * accessToken - The access token to the server.
- * url - The URL of the REST API to call on the server.
+ * accessToken - The access token to the middle-tier server.
+ * url - The URL of the REST API to call on the middle-tier server.
  * callbackRESTApiHandler - The function to pass the results of the REST API call.
  * callbackFunction - the function to pass the client request to when ready.
  *
@@ -41,7 +41,7 @@ Office.onReady(function (info) {
 
 /**
  * Handles the click event for the Get File Name List button.
- * Requests a call to the web server /getuserfilenames that
+ * Requests a call to the middle-tier server /getuserfilenames that
  * gets up to 10 file names listed in the user's OneDrive.
  * When the call is completed, it will call the clientRequest.callbackRESTApiHandler.
  */
@@ -53,7 +53,7 @@ Office.onReady(function (info) {
 }
 
 /**
- * Handler for the returned response from the server API call to get file names.
+ * Handler for the returned response from the middle-tier server API call to get file names.
  * Writes out the file names to the document.
  *
  * @param {*} response The list of file names.
@@ -66,7 +66,7 @@ Office.onReady(function (info) {
 /**
  * Returns the access token for using SSO auth. Throws an error if SSO fails.
  * @param {*} authOptions The configuration options for SSO.
- * @returns An access token to the server for the signed in user.
+ * @returns An access token to the middle-tier server for the signed in user.
  */
  async function getAccessTokenFromSSO(authOptions) {
   if (authOptions === undefined) throw Error("authOptions parameter missing.");
@@ -95,10 +95,10 @@ Office.onReady(function (info) {
    }
 
 /**
- * Calls the REST API on the middle tier web server. Error handling will
+ * Calls the REST API on the middle-tier server. Error handling will
  * switch to fallback auth if SSO fails.
  *
- * @param {*} clientRequest Contains information for calling an API on the server.
+ * @param {*} clientRequest Contains information for calling an API on the middle-tier server.
  */
    async function callWebServer(clientRequest) {
     
@@ -109,16 +109,16 @@ Office.onReady(function (info) {
 
 
 /**
- * Makes the AJAX call to the REST API in the middle tier server.
+ * Makes the AJAX call to the REST API in the middle-tier server.
  * Note that any errors are thrown to the caller to handle.
- * @param {} clientRequest Contains information for calling an API on the server.
+ * @param {} clientRequest Contains information for calling an API on the middle-tier server.
  */
  async function ajaxCallToRESTApi(clientRequest) {
-  // TODO 9: Make AJAX call to REST API on middle tier server.
+  // TODO 9: Make AJAX call to REST API on middle-tier server.
 }
 
 /**
- * Handles any error returned from the web server.
+ * Handles any error returned from the middle-tier server.
  * @param {*} err The error to process.
  * @returns {boolean} true if the caller should refresh the access token; otherwise false.
  */
@@ -131,7 +131,7 @@ Office.onReady(function (info) {
  * Switches the client request to use MSAL auth (fallback) instead of SSO. 
  * Once the new client request is created with MSAL access token, callWebServer is called
  * to continue attempting to call the REST API.
- * @param {*} clientRequest Contains information for calling an API on the server.
+ * @param {*} clientRequest Contains information for calling an API on the middle-tier server.
  */
  function switchToFallbackAuth(clientRequest) {
 // TODO 11: Get a new client request to use MSAL.

@@ -19,7 +19,7 @@ Office.onReady(function (info) {
 
 /**
  * Handles the click event for the Get File Name List button.
- * Requests a call to the web server /getuserfilenames that
+ * Requests a call to the middle-tier server /getuserfilenames that
  * gets up to 10 file names listed in the user's OneDrive.
  * When the call is completed, it will call the clientRequest.callbackRESTApiHandler.
  */
@@ -31,7 +31,7 @@ function getFileNameList() {
 }
 
 /**
- * Handler for the returned response from the server API call to get file names.
+ * Handler for the returned response from the middle-tier server API call to get file names.
  * Writes out the file names to the document.
  *
  * @param {*} response The list of file names.
@@ -51,10 +51,10 @@ async function handleGetFileNameResponse(response) {
 }
 
 /**
- * Calls the REST API on the middle tier web server. Error handling will
+ * Calls the REST API on the middle-tier server. Error handling will
  * switch to fallback auth if SSO fails.
  *
- * @param {*} clientRequest Contains information for calling an API on the server.
+ * @param {*} clientRequest Contains information for calling an API on the middle-tier server.
  */
 async function callWebServer(clientRequest) {
   try {
@@ -88,9 +88,9 @@ async function callWebServer(clientRequest) {
 }
 
 /**
- * Makes the AJAX call to the REST API in the middle tier server.
+ * Makes the AJAX call to the REST API in the middle-tier server.
  * Note that any errors are thrown to the caller to handle.
- * @param {} clientRequest Contains information for calling an API on the server.
+ * @param {} clientRequest Contains information for calling an API on the middle-tier server.
  */
 async function ajaxCallToRESTApi(clientRequest) {
   try {
@@ -115,7 +115,7 @@ async function ajaxCallToRESTApi(clientRequest) {
  * Switches the client request to use MSAL auth (fallback) instead of SSO. 
  * Once the new client request is created with MSAL access token, callWebServer is called
  * to continue attempting to call the REST API.
- * @param {*} clientRequest Contains information for calling an API on the server.
+ * @param {*} clientRequest Contains information for calling an API on the middle-tier server.
  */
 function switchToFallbackAuth(clientRequest) {
   showMessage("Switching from SSO to fallback auth.");
@@ -132,8 +132,8 @@ function switchToFallbackAuth(clientRequest) {
  * Creates a client request object with:
  * authOptions - Auth configuration parameters for SSO.
  * authSSO - true if using SSO, otherwise false.
- * accessToken - The access token to the server.
- * url - The URL of the REST API to call on the server.
+ * accessToken - The access token to the middle-tier server.
+ * url - The URL of the REST API to call on the middle-tier server.
  * callbackRESTApiHandler - The function to pass the results of the REST API call.
  * callbackFunction - the function to pass the client request to when ready.
  *
@@ -175,13 +175,13 @@ async function createRequest(url, restApiCallback, callbackFunction) {
 /**
  * Returns the access token for using SSO auth. Throws an error if SSO fails.
  * @param {*} authOptions The configuration options for SSO.
- * @returns An access token to the server for the signed in user.
+ * @returns An access token to the middle-tier server for the signed in user.
  */
 async function getAccessTokenFromSSO(authOptions) {
   if (authOptions === undefined) throw Error("authOptions parameter missing.");
 
   try {
-    // The access token returned from getAccessToken only has permissions to your web server APIs,
+    // The access token returned from getAccessToken only has permissions to your middle-tier server APIs,
     // and it contains the identity claims of the signed-in user.
     
     const accessToken = await Office.auth.getAccessToken(authOptions);
@@ -249,16 +249,16 @@ function handleSSOErrors(err) {
 }
 
 /**
- * Handles any error returned from the web server.
+ * Handles any error returned from the middle-tier server.
  * @param {*} err The error to process.
  * @returns {boolean} true if the caller should refresh the access token; otherwise false.
  */
 function handleWebServerErrors(err) {
   let returnValue = false;
-  // Our web server returns a type to help handle the known cases.
+  // Our middle-tier server returns a type to help handle the known cases.
   switch (err.responseJSON.type) {
     case "Microsoft Graph":
-      // An error occurred when the web server called Microsoft Graph.
+      // An error occurred when the middle-tier server called Microsoft Graph.
       showMessage(
         "Error from Microsoft Graph: " +
         JSON.stringify(err.responseJSON.errorDetails)
@@ -266,7 +266,7 @@ function handleWebServerErrors(err) {
       returnValue = false;
       break;
     case "AADSTS500133": // expired token
-      // On rare occasions the access token could expire after it was sent to the server.
+      // On rare occasions the access token could expire after it was sent to the middle-tier server.
       // Microsoft identity platform will respond with
       // "The provided value for the 'assertion' is not valid. The assertion has expired."
       // Return true to indicate to caller they should refresh the token.
