@@ -18,6 +18,8 @@ description: "An Outlook add-in sample that accesses Microsoft Graph using singl
 
 **Applies to:** Outlook on Windows | Outlook on Mac | Outlook on the web
 
+> Note: This sample has a security risk because it returns an access token from the middle-tier server to the client code. This pattern should not be used as tokens issued by the Microsoft identity platform to the middle-tier must stay in the middle-tier. We're working to update this sample with the correct pattern as soon as possible. For more information, see [Middle-tier access token request](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow#middle-tier-access-token-request).
+
 ## Summary
 
 The sample implements an Outlook add-in that uses Office's SSO feature to give the add-in access to Microsoft Graph data. Specifically, it enables the user to save all attachments to their OneDrive. It also shows how to add custom buttons to the Outlook ribbon. The sample illustrates the following concepts:

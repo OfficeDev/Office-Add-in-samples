@@ -23,6 +23,8 @@ extensions:
 
 This sample implements an Office Add-in that uses the `getAccessToken` API in Office.js to give the add-in access to Microsoft Graph data. This sample is built on ASP.NET and Microsoft Authentication Library (MSAL) .NET.
 
+> Note: This sample has a security risk because it returns an access token from the middle-tier server to the client code. This pattern should not be used as tokens issued by the Microsoft identity platform to the middle-tier must stay in the middle-tier. We're working to update this sample with the correct pattern as soon as possible. For more information, see [Middle-tier access token request](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow#middle-tier-access-token-request).
+
 There are two versions of the sample in this repo, one of which has its own README file:
 
 - **Before** folder. The starting point for the SSO walkthrough at [Create an ASP.NET Office Add-in that uses single sign-on](https://docs.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-aspnet). Please follow the instructions in the article.
