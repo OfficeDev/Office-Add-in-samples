@@ -22,6 +22,8 @@ extensions:
 
 The `getAccessToken` API in Office.js enables users who are signed into Office to get access to an AAD-protected add-in and to Microsoft Graph without needing to sign-in again. 
 
+> Note: This sample has a security risk because it returns an access token from the middle-tier server to the client code. This pattern should not be used as tokens issued by the Microsoft identity platform to the middle-tier must stay in the middle-tier. We're working to update this sample with the correct pattern as soon as possible. For more information, see [Middle-tier access token request](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow#middle-tier-access-token-request).
+
 There are three versions of the sample in this repo, one of which has its own README file:
 
 - In the **Begin** folder is the starting point for the SSO walkthrough at [Create a Node.js Office Add-in that uses single sign-on](https://docs.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs). Please follow the instructions in the article.
