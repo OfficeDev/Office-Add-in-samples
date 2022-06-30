@@ -71,6 +71,8 @@ async function callWebServer(clientRequest) {
           switchToFallbackAuth(clientRequest);
           return;
         }
+      } else if (error.statusText === "Missing access_as_user") {
+        showMessage("Error: Access token is missing the access_as_user scope.");
       } else {
         // For unhandled errors using SSO, switch to fallback.
         if (clientRequest.authSSO) {

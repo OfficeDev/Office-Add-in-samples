@@ -17,7 +17,7 @@ function dialogFallback(clientRequest) {
 // and access token provider.
 function processMessage(arg) {
 
-    console.log("Message received in processMessage: " + JSON.stringify(arg));
+    console.log("Message received in processMessage");
     let messageFromDialog = JSON.parse(arg.message);
 
         if (messageFromDialog.status === 'success') { 
