@@ -32,18 +32,26 @@ if (process.env.NODE_ENV !== 'production') {
                         { etag: false }));
 
   app.use(function (req, res, next) {
-    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    res.header('Expires', '-1');
-    res.header('Pragma', 'no-cache');
+    res.set({
+      "Content-Security-Policy": "script-src https://appsforoffice.microsoft.com https://ajax.aspnetcdn.com https://alcdn.msauth.net " +  process.env.SERVER_SOURCE,
+      "Cache-Control": "private, no-cache, no-store, must-revalidate",
+      "Expires": "-1",
+      "Pragma": "no-cache"
+    });
     next()
   });
 } else {
   // In production mode, let static files be cached.
   app.use(express.static(path.join(__dirname, 'public')));
+  app.use(function (req, res, next) {
+    res.set({
+      "Content-Security-Policy": "script-src https://appsforoffice.microsoft.com https://ajax.aspnetcdn.com https://alcdn.msauth.net " +  process.env.SERVER_SOURCE,
+    });
+    next()
+  });;
 }
 
 app.use('/home/index', indexRouter);
-//app.use('/auth', authRouter);
 
 app.get('/getuserfilenames', getFilesRoute);
 

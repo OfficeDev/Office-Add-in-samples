@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
+
 /* 
     This file provides the functionality to get data from OData-compliant endpoints. 
 */

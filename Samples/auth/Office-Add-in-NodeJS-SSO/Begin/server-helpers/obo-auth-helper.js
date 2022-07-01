@@ -6,19 +6,20 @@ const jwt = require("jsonwebtoken");
 const jwksClient = require("jwks-rsa");
 
 const DISCOVERY_KEYS_ENDPOINT =
-  "https://login.microsoftonline.com/" +
-  process.env.DIRECTORY_ID +
-  "/discovery/v2.0/keys";
+  "https://login.microsoftonline.com/common/discovery/v2.0/keys";
 
 const config = {
   auth: {
     clientId: process.env.CLIENT_ID,
-    authority: "https://login.microsoftonline.com/" + process.env.DIRECTORY_ID,
+    authority: "https://login.microsoftonline.com/common",
     clientSecret: process.env.CLIENT_SECRET,
   },
   system: {
     loggerOptions: {
       loggerCallback(loglevel, message, containsPii) {
+        if (containsPii) {
+          return;
+        }
         console.log(message);
       },
       piiLoggingEnabled: false,
@@ -32,6 +33,7 @@ exports.getConfidentialClientApplication = function getConfidentialClientApplica
   return new msal.ConfidentialClientApplication(config);
 }
 
+// wrap this with one parameter that returns a new function (req,res,next) 
 exports.validateJwt = function (req, res, next) {
   const authHeader = req.headers.authorization;
   if (authHeader) {
@@ -39,10 +41,14 @@ exports.validateJwt = function (req, res, next) {
 
     const validationOptions = {
       audience: config.auth.clientId, // v2.0 token
-      issuer: config.auth.authority + "/v2.0", // v2.0 token
+      //issuer: config.auth.authority + "/v2.0", // v2.0 token  **can't use this one
     };
 
     jwt.verify(token, getSigningKeys, validationOptions, (err, payload) => {
+      //custom logic to regex search for tenant id in the issuer.
+      //test multi tenant setup.
+      //test msa
+
       if (err) {
         console.log(err);
         return res.sendStatus(403);

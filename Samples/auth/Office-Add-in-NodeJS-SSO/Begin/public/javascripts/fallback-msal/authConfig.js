@@ -1,16 +1,19 @@
 // This file copied and modified from https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/1-Authentication/1-sign-in/App/authConfig.js
 
+const clientId = "$app-id-guid$";
+const accessScope = "api://" + window.location.host + "/" + clientId + "/access_as_user";
+console.log(accessScope);
+
 /**
    * Scopes you add here will be prompted for user consent during sign-in.
    * By default, MSAL.js will add OIDC scopes (openid, profile, email) to any login request.
    * For more information about OIDC scopes, visit: 
    * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
    * 
-   * For the SPA fallback client, we only need the access_as_user scope to make calls to the middle-tier.
-   * The middle-tier server will perform the On-Behalf-Of flow to get a token with Microsoft Graph scopes.
    */
- const loginRequest = {
-  scopes: ["api://localhost:44355/$middle_tier_application_GUID here$/access_as_user"]
+const loginRequest = {
+"scopes": [accessScope],
+"extraScopesToConsent": ["files.read"]
 };
 
 
@@ -22,7 +25,7 @@
 
  const msalConfig = {
     auth: {
-      clientId: "$fallback_application_GUID_here$", // This is the ONLY mandatory field that you need to supply.
+      clientId: clientId, // This is the ONLY mandatory field that you need to supply.
       authority: "https://login.microsoftonline.com/common", // Defaults to "https://login.microsoftonline.com/common"
       redirectUri: "https://localhost:44355/dialog.html", // You must register this URI on Azure Portal/App Registration. Defaults to window.location.href
       //postLogoutRedirectUri: "https://localhost:44355/signout", // Simply remove this line if you would like navigate to index page after logout.

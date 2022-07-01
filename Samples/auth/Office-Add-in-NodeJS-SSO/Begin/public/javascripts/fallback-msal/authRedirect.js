@@ -1,41 +1,34 @@
-// This file copied and modified from https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/1-Authentication/1-sign-in/App/authConfig.js
+// This file copied and modified from https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/1-Authentication/1-sign-in/App/authRedirect.js
 
 // Create the main myMSALObj instance
 // configuration parameters are located at authConfig.js
 
-let username = "";
 const myMSALObj = new msal.PublicClientApplication(msalConfig);
 
-Office.initialize = function () {
+Office.initialize = async function () {
   if (Office.context.ui.messageParent) {
-    /**
-     * A promise handler needs to be registered for handling the
-     * response returned from redirect flow. For more information, visit:
-     *
-     */
-    myMSALObj
-      .handleRedirectPromise()
-      .then(handleResponse)
-      .catch((error) => {
-        console.error(error);
-      });
+    try {
+      const response = await myMSALObj.handleRedirectPromise();
+      handleResponse(response);
+    } catch (error) {
+      console.error(error);
+    }
   }
 };
 
 function handleResponse(response) {
-    /**
-     * To see the full list of response object properties, visit:
-     * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/request-response-object.md#response
-     */
-  
-    if (response !== null) {
-      username = response.account.username;
-      Office.context.ui.messageParent( JSON.stringify({ status: 'success', result : response.accessToken }) );
-      //welcomeUser(username);
-      //updateTable();
-    } else {
-      //log in
-      myMSALObj.loginRedirect(loginRequest);
-    }
+  /**
+   * To see the full list of response object properties, visit:
+   * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/request-response-object.md#response
+   */
+
+  if (response !== null) {
+    Office.context.ui.messageParent(
+      JSON.stringify({ status: "success", result: response.accessToken }),
+      { targetOrigin: window.location.origin }
+    );
+  } else {
+    //log in
+    myMSALObj.loginRedirect(loginRequest);
   }
-  
+}
