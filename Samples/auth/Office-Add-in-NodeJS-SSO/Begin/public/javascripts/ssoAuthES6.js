@@ -117,12 +117,13 @@ Office.onReady(function (info) {
   // TODO 9: Make AJAX call to REST API on middle-tier server.
 }
 
+
 /**
  * Handles any error returned from the middle-tier server.
  * @param {*} err The error to process.
- * @returns {boolean} true if the caller should refresh the access token; otherwise false.
+ * @returns {boolean} true if the caller should try the REST API again; otherwise false.
  */
- function handleWebServerErrors(err) {
+ function handleWebServerErrors(err, clientRequest) {
  // TODO 10: Examine error and show message or
  //          Indicate to caller to get new SSO token.
 }
