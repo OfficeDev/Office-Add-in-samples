@@ -15,7 +15,7 @@ router.get(
       const authHeader = req.headers.authorization;
       let oboRequest = {
         oboAssertion: authHeader.split(" ")[1],
-        scopes: ["files.read"],
+        scopes: ["files.read"]
       };
 
       // The Scope claim tells you what permissions the client application has in the service.
@@ -32,7 +32,7 @@ router.get(
       const response = await cca.acquireTokenOnBehalfOf(oboRequest);
       // Minimize the data that must come from MS Graph by specifying only the property we need ("name")
       // and only the top 10 folder or file names.
-      const rootUrl = "/me/drive/root/childrennn";
+      const rootUrl = "/me/drive/root/children";
 
       // Note that the last parameter, for queryParamsSegment, is hardcoded. If you reuse this code in
       // a production add-in and any part of queryParamsSegment comes from user input, be sure that it is

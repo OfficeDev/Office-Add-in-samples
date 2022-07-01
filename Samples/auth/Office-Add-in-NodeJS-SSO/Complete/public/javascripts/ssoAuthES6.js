@@ -25,9 +25,13 @@ Office.onReady(function (info) {
  */
 function getFileNameList() {
   clearMessage(); // Clear message log on task pane each time an API runs.
-  createRequest("/getuserfilenames",handleGetFileNameResponse, async (clientRequest) => {
-    await callWebServer(clientRequest);
-  });
+  createRequest(
+    "/getuserfilenames",
+    handleGetFileNameResponse,
+    async (clientRequest) => {
+      await callWebServer(clientRequest);
+    }
+  );
 }
 
 /**
@@ -61,30 +65,22 @@ async function callWebServer(clientRequest) {
     await ajaxCallToRESTApi(clientRequest);
   } catch (error) {
     if (error.statusText === "Internal Server Error") {
-      const isTokenExpired = handleWebServerErrors(error);
-      if (isTokenExpired && clientRequest.authSSO) {
+      const retryCall = handleWebServerErrors(error, clientRequest);
+      if (retryCall && clientRequest.authSSO) {
         try {
-          clientRequest.accessToken = await getAccessTokenFromSSO(clientRequest.authOptions);
+          clientRequest.accessToken = await getAccessTokenFromSSO(
+            clientRequest.authOptions
+          );
           await ajaxCallToRESTApi(clientRequest);
         } catch {
           // If still an error go to fallback.
           switchToFallbackAuth(clientRequest);
           return;
         }
-      } else if (error.statusText === "Missing access_as_user") {
-        showMessage("Error: Access token is missing the access_as_user scope.");
-      } else {
-        // For unhandled errors using SSO, switch to fallback.
-        if (clientRequest.authSSO) {
-          switchToFallbackAuth(clientRequest);
-        } else {
-          console.log(JSON.stringify(error)); // Log any errors.
-          showMessage(error.responseText);
-        }
       }
     } else {
       console.log(JSON.stringify(error)); // Log any errors.
-          showMessage(error.responseText);
+      showMessage(error.responseText);
     }
   }
 }
@@ -114,7 +110,7 @@ async function ajaxCallToRESTApi(clientRequest) {
 }
 
 /**
- * Switches the client request to use MSAL auth (fallback) instead of SSO. 
+ * Switches the client request to use MSAL auth (fallback) instead of SSO.
  * Once the new client request is created with MSAL access token, callWebServer is called
  * to continue attempting to call the REST API.
  * @param {*} clientRequest Contains information for calling an API on the middle-tier server.
@@ -123,12 +119,15 @@ function switchToFallbackAuth(clientRequest) {
   showMessage("Switching from SSO to fallback auth.");
   authSSO = false;
   // Create a new request for fallback auth.
-  createRequest(clientRequest.url, clientRequest.callbackRESTApiHandler, async (fallbackRequest) => {
-    // Hand off to call using fallback auth.
-    await callWebServer(fallbackRequest);
-  });
+  createRequest(
+    clientRequest.url,
+    clientRequest.callbackRESTApiHandler,
+    async (fallbackRequest) => {
+      // Hand off to call using fallback auth.
+      await callWebServer(fallbackRequest);
+    }
+  );
 }
-
 
 /**
  * Creates a client request object with:
@@ -162,14 +161,16 @@ async function createRequest(url, restApiCallback, callbackFunction) {
   if (authSSO) {
     try {
       // Get access token from Office SSO.
-      clientRequest.accessToken = await getAccessTokenFromSSO(clientRequest.authOptions);
+      clientRequest.accessToken = await getAccessTokenFromSSO(
+        clientRequest.authOptions
+      );
       callbackFunction(clientRequest);
     } catch {
       // use fallback auth if SSO failed to get access token.
       switchToFallbackAuth(clientRequest);
     }
   } else {
-    // Use fallback auth to get access token. 
+    // Use fallback auth to get access token.
     dialogFallback(clientRequest);
   }
 }
@@ -185,7 +186,7 @@ async function getAccessTokenFromSSO(authOptions) {
   try {
     // The access token returned from getAccessToken only has permissions to your middle-tier server APIs,
     // and it contains the identity claims of the signed-in user.
-    
+
     const accessToken = await Office.auth.getAccessToken(authOptions);
     return accessToken;
   } catch (error) {
@@ -200,7 +201,7 @@ async function getAccessTokenFromSSO(authOptions) {
  * that don't require fallback auth. The text shown for each error indicates next steps
  * you should take. For default (all other errors), the sample returns true
  * so that the caller is informed to use fallback auth.
- * 
+ *
  * @param {*} err The error to process.
  * @returns true if SSO error could not be handled, and fallback auth is required; otherwise, false.
  */
@@ -253,33 +254,39 @@ function handleSSOErrors(err) {
 /**
  * Handles any error returned from the middle-tier server.
  * @param {*} err The error to process.
- * @returns {boolean} true if the caller should refresh the access token; otherwise false.
+ * @returns {boolean} true if the caller should try the REST API again; otherwise false.
  */
-function handleWebServerErrors(err) {
-  let returnValue = false;
+function handleWebServerErrors(err, clientRequest) {
+  let retryCall = false;
   // Our middle-tier server returns a type to help handle the known cases.
   switch (err.responseJSON.type) {
     case "Microsoft Graph":
       // An error occurred when the middle-tier server called Microsoft Graph.
       showMessage(
         "Error from Microsoft Graph: " +
-        JSON.stringify(err.responseJSON.errorDetails)
+          JSON.stringify(err.responseJSON.errorDetails)
       );
-      returnValue = false;
+      retryCall = false;
+      break;
+    case "Missing access_as_user":
+      // The access_as_user scope was missing.
+      showMessage("Error: Access token is missing the access_as_user scope.");
+      retryCall = false;
       break;
     case "AADSTS500133": // expired token
       // On rare occasions the access token could expire after it was sent to the middle-tier server.
       // Microsoft identity platform will respond with
       // "The provided value for the 'assertion' is not valid. The assertion has expired."
       // Return true to indicate to caller they should refresh the token.
-      returnValue = true;
+      retryCall = true;
       break;
     default:
       showMessage(
         "Unknown error from web server: " +
-        JSON.stringify(err.responseJSON.errorDetails)
+          JSON.stringify(err.responseJSON.errorDetails)
       );
-      returnValue = false;
+      retryCall = false;
+      if (clientRequest.authSSO) switchToFallbackAuth(clientRequest);
   }
-  return false;
+  return retryCall;
 }
