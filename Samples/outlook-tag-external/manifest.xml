@@ -2,7 +2,7 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
   <Id>84cc5da3-2a5e-4373-8130-7c38a2a6eaf3</Id>
   <Version>1.0.0.0</Version>
-  <ProviderName>Microsoft</ProviderName>
+  <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="PnP Tag External Recipients sample"/>
   <Description DefaultValue="Updates the subject and adds a disclaimer if external recipients are included during message compose."/>
