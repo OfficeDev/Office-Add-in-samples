@@ -156,11 +156,12 @@
       </bt:LongStrings>
     </Resources>
     <WebApplicationInfo>  
-        <Id>$application_GUID here$</Id>
-        <Resource>api://localhost:44355/$application_GUID here$</Resource>
+        <Id>$app-id-guid$</Id>
+        <Resource>api://localhost:44355/$app-id-guid$</Resource>
         <Scopes>  
-          <Scope>Files.Read.All</Scope>
+          <Scope>Files.Read</Scope>
           <Scope>profile</Scope>
+          <Scope>openid</Scope>
         </Scopes>  
     </WebApplicationInfo> 
   </VersionOverrides>

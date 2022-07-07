@@ -1,5 +1,6 @@
-//- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. -->
-//- 
+//- Copyright (c) Microsoft Corporation.
+//- Licensed under the MIT License.
+//-
 //- This file is a template from which all the other pug files are built.
 
 doctype html
@@ -12,11 +13,11 @@ html
     link(rel='stylesheet', href='/stylesheets/OfficeThemes.css')
     link(rel='stylesheet', href='/stylesheets/Site.css')
     script(src='https://appsforoffice.microsoft.com/lib/1/hosted/office.js')
-    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+    script(src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js')
+    script(id="load-msal" src='https://alcdn.msauth.net/browser/2.15.0/js/msal-browser.js')
     script(src='/javascripts/document.js')
     script(src='/javascripts/message-helper.js')
-    script(src='/javascripts/data.js')
     script(src='/javascripts/ssoAuthEs6.js')
-    script(src='/javascripts/fallbackAuthTaskpane.js')
+    script(src='/javascripts/fallback-msal/fallbackAuthTaskpane.js')
   body.ms-font-m.cancelDefaultBrowserIndentation
     block content
