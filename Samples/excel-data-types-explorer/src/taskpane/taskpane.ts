@@ -1,4 +1,14 @@
 /** Copyright (c) Microsoft Corporation. Licensed under the MIT License. */
+
+Office.onReady((info) => {
+  if (info.host === Office.HostType.Excel) {
+    document.getElementById("getData").onclick = getData;
+    document.getElementById("setData").onclick = setData;
+    document.getElementById("printAsJson").onclick = printAsJson;
+    document.getElementById("clearForm").onclick = clearForm;
+  }
+});
+
 const defaultType: string = "String";
 
 function textInputWithLabel(inputID: string, labelText: string, altText: string): JQuery<HTMLElement>[] {
