@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
   <Id>05c2e1c9-3e1d-406e-9a91-e9ac64854143</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso0</ProviderName>
@@ -16,7 +19,7 @@
     <Host Name="Workbook"/>
     <Host Name="Document"/>
     <Host Name="Presentation"/>
-  </Hosts>  
+  </Hosts>
   <DefaultSettings>
     <SourceLocation DefaultValue="https://localhost:44355/home/index"/>
   </DefaultSettings>
@@ -155,13 +158,14 @@
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to show the SSO add-in." />
       </bt:LongStrings>
     </Resources>
-    <WebApplicationInfo>  
-        <Id>$application_GUID here$</Id>
-        <Resource>api://localhost:44355/$application_GUID here$</Resource>
-        <Scopes>  
-          <Scope>Files.Read.All</Scope>
-          <Scope>profile</Scope>
-        </Scopes>  
-    </WebApplicationInfo> 
+    <WebApplicationInfo>
+      <Id>$app-id-guid$</Id>
+      <Resource>api://localhost:44355/$app-id-guid$</Resource>
+      <Scopes>
+        <Scope>Files.Read</Scope>
+        <Scope>profile</Scope>
+        <Scope>openid</Scope>
+      </Scopes>
+    </WebApplicationInfo>
   </VersionOverrides>
 </OfficeApp>

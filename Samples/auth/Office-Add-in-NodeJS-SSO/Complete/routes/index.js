@@ -1,8 +1,7 @@
-/*
- * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. -->
- *
- * This file defines the home page request handling.
- */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// This file defines the home page request handling.
 
 var express = require('express');
 var router = express.Router();

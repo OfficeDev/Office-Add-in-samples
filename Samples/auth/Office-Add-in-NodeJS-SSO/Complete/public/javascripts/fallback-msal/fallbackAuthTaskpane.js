@@ -1,13 +1,14 @@
-/*
- * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. -->
- *
- * This file shows how to open a dialog and process any results sent back to the task pane.
- */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// This file shows how to open a dialog and process any results sent back to the task pane.
 
 var loginDialog;
+let storedCallbackFunction = null;
+let storedClientRequest = null;
 
-function dialogFallback() {
-
+function dialogFallback(clientRequest) {
+    storedClientRequest = clientRequest;
     var url = "/dialog.html"; 
 	showLoginPopup(url);
 }
@@ -16,13 +17,15 @@ function dialogFallback() {
 // and access token provider.
 function processMessage(arg) {
 
-    console.log("Message received in processMessage: " + JSON.stringify(arg));
+    console.log("Message received in processMessage");
     let messageFromDialog = JSON.parse(arg.message);
 
         if (messageFromDialog.status === 'success') { 
             // We now have a valid access token.
             loginDialog.close();
-            makeGraphApiCall(messageFromDialog.result);
+            storedClientRequest.accessToken = messageFromDialog.result;
+            storedClientRequest.callbackFunction(storedClientRequest);
+            //makeGraphApiCall(messageFromDialog.result);
         }
         else {
             // Something went wrong with authentication or the authorization of the web application.
