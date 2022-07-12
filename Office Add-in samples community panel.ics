@@ -20,33 +20,33 @@ END:DAYLIGHT
 END:VTIMEZONE
 BEGIN:VEVENT
 CLASS:PUBLIC
-CREATED:20220622T163432Z
+CREATED:20220712T200101Z
 DESCRIPTION:We need your feedback on what you need from the Office Add-in d
 	ocs and samples. Where do we have gaps? Where is there friction in the dev
 	elopment process that samples and docs can help with? Join in and let us k
 	now what improvements you'd like to see to make your development experienc
-	e better.\n \nJoin at https://aka.ms/officeaddinsamples-join\n____________
-	____________________________________________________________________ \nMic
-	rosoft Teams meeting \nJoin on your computer or mobile app \nClick here to
-	 join the meeting <https://teams.microsoft.com/l/meetup-join/19%3ameeting_
-	NDQxMWI2MzQtMWUxZS00MjlmLTllODctM2RkNDI3YjliMTFm%40thread.v2/0?context=%7b
-	%22Tid%22%3a%2272f988bf-86f1-41af-91ab-2d7cd011db47%22%2c%22Oid%22%3a%22f2
-	848d9b-e14b-42b2-a867-80b9922f67d4%22%7d>  \nOr join by entering a meeting
-	 ID\nMeeting ID: 211 486 177 698 \nPasscode: GtjE8S \nOr call in (audio on
-	ly) \n+1 323-849-4874\,\,9845425# <tel:+13238494874\,\,9845425#>    United
-	 States\, Los Angeles \nPhone Conference ID: 984 542 5# \nFind a local num
-	ber <https://dialin.teams.microsoft.com/8551f4c1-bea3-441a-8738-69aa517a91
-	c5?id=9845425>  | Reset PIN <https://dialin.teams.microsoft.com/usp/pstnco
-	nferencing>  \nLearn More <https://aka.ms/JoinTeamsMeeting>  | Meeting opt
-	ions <https://teams.microsoft.com/meetingOptions/?organizerId=f2848d9b-e14
-	b-42b2-a867-80b9922f67d4&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47&thr
-	eadId=19_meeting_NDQxMWI2MzQtMWUxZS00MjlmLTllODctM2RkNDI3YjliMTFm@thread.v
-	2&messageId=0&language=en-US>  \n_________________________________________
-	_______________________________________ \n \n
-DTEND;TZID="Pacific Standard Time":20220624T093000
-DTSTAMP:20220622T163432Z
-DTSTART;TZID="Pacific Standard Time":20220624T090000
-LAST-MODIFIED:20220622T163432Z
+	e better.\n \nPlease join us at https://aka.ms/officeaddinsamples-join\n__
+	__________________________________________________________________________
+	____ \nMicrosoft Teams meeting \nJoin on your computer or mobile app \nCli
+	ck here to join the meeting <https://teams.microsoft.com/l/meetup-join/19%
+	3ameeting_NDQxMWI2MzQtMWUxZS00MjlmLTllODctM2RkNDI3YjliMTFm%40thread.v2/0?c
+	ontext=%7b%22Tid%22%3a%2272f988bf-86f1-41af-91ab-2d7cd011db47%22%2c%22Oid%
+	22%3a%22f2848d9b-e14b-42b2-a867-80b9922f67d4%22%7d>  \nOr join by entering
+	 a meeting ID\nMeeting ID: 211 486 177 698 \nPasscode: GtjE8S \nOr call in
+	 (audio only) \n+1 323-849-4874\,\,9845425# <tel:+13238494874\,\,9845425#>
+	    United States\, Los Angeles \nPhone Conference ID: 984 542 5# \nFind a
+	 local number <https://dialin.teams.microsoft.com/8551f4c1-bea3-441a-8738-
+	69aa517a91c5?id=9845425>  | Reset PIN <https://dialin.teams.microsoft.com/
+	usp/pstnconferencing>  \nLearn More <https://aka.ms/JoinTeamsMeeting>  | M
+	eeting options <https://teams.microsoft.com/meetingOptions/?organizerId=f2
+	848d9b-e14b-42b2-a867-80b9922f67d4&tenantId=72f988bf-86f1-41af-91ab-2d7cd0
+	11db47&threadId=19_meeting_NDQxMWI2MzQtMWUxZS00MjlmLTllODctM2RkNDI3YjliMTF
+	m@thread.v2&messageId=0&language=en-US>  \n_______________________________
+	_________________________________________________ \n \n
+DTEND;TZID="Pacific Standard Time":20220727T090000
+DTSTAMP:20220712T200101Z
+DTSTART;TZID="Pacific Standard Time":20220727T080000
+LAST-MODIFIED:20220712T200101Z
 LOCATION:Microsoft Teams Meeting
 ORGANIZER;CN="David Chesnut":mailto:davech@microsoft.com
 PRIORITY:5
@@ -61,7 +61,7 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	12/omml" xmlns="http://www.w3.org/TR/REC-html40"><head><meta name=ProgId c
 	ontent=Word.Document><meta name=Generator content="Microsoft Word 15"><met
 	a name=Originator content="Microsoft Word 15"><link rel=File-List href="ci
-	d:filelist.xml@01D8861B.42DBA700"><!--[if gte mso 9]><xml>\n<o:OfficeDocum
+	d:filelist.xml@01D895EF.462398D0"><!--[if gte mso 9]><xml>\n<o:OfficeDocum
 	entSettings>\n<o:AllowPNG/>\n</o:OfficeDocumentSettings>\n</xml><![endif]-
 	-><!--[if gte mso 9]><xml>\n<w:WordDocument>\n<w:SpellingState>Clean</w:Sp
 	ellingState>\n<w:DocumentKind>DocumentEmail</w:DocumentKind>\n<w:TrackMove
@@ -522,151 +522,146 @@ X-ALT-DESC;FMTTYPE=text/html:<html xmlns:v="urn:schemas-microsoft-com:vml"
 	Smart Link"/>\n</w:LatentStyles>\n</xml><![endif]--><style><!--\n/* Font D
 	efinitions */\n@font-face\n	{font-family:"Cambria Math"\;\n	panose-1:2 4 5
 	 3 5 4 6 3 2 4\;\n	mso-font-charset:0\;\n	mso-generic-font-family:roman\;\
-	n	mso-font-pitch:variable\;\n	mso-font-signature:-536869121 1107305727 335
-	54432 0 415 0\;}\n@font-face\n	{font-family:Calibri\;\n	panose-1:2 15 5 2 
-	2 2 4 3 2 4\;\n	mso-font-charset:0\;\n	mso-generic-font-family:swiss\;\n	m
-	so-font-pitch:variable\;\n	mso-font-signature:-469750017 -1073732485 9 0 5
-	11 0\;}\n@font-face\n	{font-family:"Segoe UI"\;\n	panose-1:2 11 5 2 4 2 4 
-	2 2 3\;\n	mso-font-charset:0\;\n	mso-generic-font-family:swiss\;\n	mso-fon
-	t-pitch:variable\;\n	mso-font-signature:-469750017 -1073683329 9 0 511 0\;
-	}\n@font-face\n	{font-family:"Segoe UI Semibold"\;\n	panose-1:2 11 7 2 4 2
-	 4 2 2 3\;\n	mso-font-charset:0\;\n	mso-generic-font-family:swiss\;\n	mso-
-	font-pitch:variable\;\n	mso-font-signature:-469750017 -1073683329 9 0 511 
-	0\;}\n/* Style Definitions */\np.MsoNormal\, li.MsoNormal\, div.MsoNormal\
-	n	{mso-style-unhide:no\;\n	mso-style-qformat:yes\;\n	mso-style-parent:""\;
-	\n	margin:0in\;\n	mso-pagination:widow-orphan\;\n	font-size:11.0pt\;\n	fon
-	t-family:"Calibri"\,sans-serif\;\n	mso-fareast-font-family:Calibri\;}\na:l
-	ink\, span.MsoHyperlink\n	{mso-style-priority:99\;\n	color:#0563C1\;\n	tex
-	t-decoration:underline\;\n	text-underline:single\;}\na:visited\, span.MsoH
-	yperlinkFollowed\n	{mso-style-noshow:yes\;\n	mso-style-priority:99\;\n	col
-	or:#954F72\;\n	text-decoration:underline\;\n	text-underline:single\;}\np.m
-	sonormal0\, li.msonormal0\, div.msonormal0\n	{mso-style-name:msonormal\;\n
-		mso-style-unhide:no\;\n	mso-margin-top-alt:auto\;\n	margin-right:0in\;\n	
-	mso-margin-bottom-alt:auto\;\n	margin-left:0in\;\n	mso-pagination:widow-or
-	phan\;\n	font-size:11.0pt\;\n	font-family:"Calibri"\,sans-serif\;\n	mso-fa
-	reast-font-family:Calibri\;}\nspan.EmailStyle18\n	{mso-style-type:personal
-	-compose\;\n	mso-style-noshow:yes\;\n	mso-style-unhide:no\;\n	mso-ansi-fon
-	t-size:11.0pt\;\n	mso-bidi-font-size:11.0pt\;\n	font-family:"Calibri"\,san
-	s-serif\;\n	mso-ascii-font-family:Calibri\;\n	mso-fareast-font-family:Cali
-	bri\;\n	mso-hansi-font-family:Calibri\;\n	mso-bidi-font-family:"Times New 
-	Roman"\;\n	color:windowtext\;}\n.MsoChpDefault\n	{mso-style-type:export-on
-	ly\;\n	mso-default-props:yes\;\n	font-size:10.0pt\;\n	mso-ansi-font-size:1
-	0.0pt\;\n	mso-bidi-font-size:10.0pt\;\n	font-family:"Calibri"\,sans-serif\
-	;\n	mso-ascii-font-family:Calibri\;\n	mso-fareast-font-family:Calibri\;\n	
-	mso-hansi-font-family:Calibri\;\n	mso-font-kerning:1.0pt\;\n	mso-ligatures
-	:standardcontextual\;}\n@page WordSection1\n	{size:8.5in 11.0in\;\n	margin
-	:1.0in 1.0in 1.0in 1.0in\;\n	mso-header-margin:.5in\;\n	mso-footer-margin:
-	.5in\;\n	mso-paper-source:0\;}\ndiv.WordSection1\n	{page:WordSection1\;}\n
-	--></style><!--[if gte mso 10]><style>/* Style Definitions */\ntable.MsoNo
-	rmalTable\n	{mso-style-name:"Table Normal"\;\n	mso-tstyle-rowband-size:0\;
-	\n	mso-tstyle-colband-size:0\;\n	mso-style-noshow:yes\;\n	mso-style-priori
-	ty:99\;\n	mso-style-parent:""\;\n	mso-padding-alt:0in 5.4pt 0in 5.4pt\;\n	
-	mso-para-margin:0in\;\n	mso-pagination:widow-orphan\;\n	font-size:10.0pt\;
-	\n	font-family:"Calibri"\,sans-serif\;\n	mso-bidi-font-family:"Times New R
-	oman"\;\n	mso-font-kerning:1.0pt\;\n	mso-ligatures:standardcontextual\;}\n
-	</style><![endif]--><!--[if gte mso 9]><xml>\n<o:shapedefaults v:ext="edit
-	" spidmax="1026" />\n</xml><![endif]--><!--[if gte mso 9]><xml>\n<o:shapel
-	ayout v:ext="edit">\n<o:idmap v:ext="edit" data="1" />\n</o:shapelayout></
-	xml><![endif]--></head><body lang=EN-US link="#0563C1" vlink="#954F72" sty
-	le='tab-interval:.5in\;word-wrap:break-word'><div class=WordSection1><p cl
-	ass=MsoNormal>We need your feedback on what you need from the Office Add-i
-	n docs and samples. Where do we have gaps? Where is there friction in the 
-	development process that samples and docs can help with? Join in and let u
-	s know what improvements you'd like to see to make your development experi
-	ence better.<o:p></o:p></p><p class=MsoNormal><span style='mso-bidi-font-f
-	amily:"Times New Roman"'><o:p>&nbsp\;</o:p></span></p><p class=MsoNormal><
-	span style='mso-bidi-font-family:"Times New Roman"'>Join at <a href="https
-	://aka.ms/officeaddinsamples-join">https://aka.ms/officeaddinsamples-join<
-	/a><o:p></o:p></span></p><div><p class=MsoNormal><span style='mso-fareast-
-	font-family:"Times New Roman"\;color:#5F5F5F'>____________________________
-	____________________________________________________</span><span style='ms
-	o-fareast-font-family:"Times New Roman"'> <o:p></o:p></span></p></div><div
-	><div style='margin-top:.25in\;margin-bottom:15.0pt'><p class=MsoNormal><s
-	pan style='font-size:18.0pt\;font-family:"Segoe UI"\,sans-serif\;mso-farea
-	st-font-family:"Times New Roman"\;color:#252424'>Microsoft Teams meeting</
-	span><span style='font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-fam
-	ily:"Times New Roman"\;color:#252424'> <o:p></o:p></span></p></div><div st
-	yle='margin-bottom:15.0pt'><div><p class=MsoNormal><b><span style='font-si
+	n	mso-font-pitch:variable\;\n	mso-font-signature:3 0 0 0 1 0\;}\n@font-fac
+	e\n	{font-family:Calibri\;\n	panose-1:2 15 5 2 2 2 4 3 2 4\;\n	mso-font-ch
+	arset:0\;\n	mso-generic-font-family:swiss\;\n	mso-font-pitch:variable\;\n	
+	mso-font-signature:-469750017 -1073732485 9 0 511 0\;}\n@font-face\n	{font
+	-family:"Segoe UI"\;\n	panose-1:2 11 5 2 4 2 4 2 2 3\;\n	mso-font-charset:
+	0\;\n	mso-generic-font-family:swiss\;\n	mso-font-pitch:variable\;\n	mso-fo
+	nt-signature:-469750017 -1073683329 9 0 511 0\;}\n@font-face\n	{font-famil
+	y:"Segoe UI Semibold"\;\n	panose-1:2 11 7 2 4 2 4 2 2 3\;\n	mso-font-chars
+	et:0\;\n	mso-generic-font-family:swiss\;\n	mso-font-pitch:variable\;\n	mso
+	-font-signature:-469750017 -1073683329 9 0 511 0\;}\n/* Style Definitions 
+	*/\np.MsoNormal\, li.MsoNormal\, div.MsoNormal\n	{mso-style-unhide:no\;\n	
+	mso-style-qformat:yes\;\n	mso-style-parent:""\;\n	margin:0in\;\n	mso-pagin
+	ation:widow-orphan\;\n	font-size:11.0pt\;\n	font-family:"Calibri"\,sans-se
+	rif\;\n	mso-fareast-font-family:Calibri\;}\na:link\, span.MsoHyperlink\n	{
+	mso-style-noshow:yes\;\n	mso-style-priority:99\;\n	color:#0563C1\;\n	text-
+	decoration:underline\;\n	text-underline:single\;}\na:visited\, span.MsoHyp
+	erlinkFollowed\n	{mso-style-noshow:yes\;\n	mso-style-priority:99\;\n	color
+	:#954F72\;\n	text-decoration:underline\;\n	text-underline:single\;}\np.mso
+	normal0\, li.msonormal0\, div.msonormal0\n	{mso-style-name:msonormal\;\n	m
+	so-style-unhide:no\;\n	mso-margin-top-alt:auto\;\n	margin-right:0in\;\n	ms
+	o-margin-bottom-alt:auto\;\n	margin-left:0in\;\n	mso-pagination:widow-orph
+	an\;\n	font-size:11.0pt\;\n	font-family:"Calibri"\,sans-serif\;\n	mso-fare
+	ast-font-family:Calibri\;}\nspan.EmailStyle18\n	{mso-style-type:personal-c
+	ompose\;\n	mso-style-noshow:yes\;\n	mso-style-unhide:no\;\n	mso-ansi-font-
+	size:11.0pt\;\n	mso-bidi-font-size:11.0pt\;\n	font-family:"Calibri"\,sans-
+	serif\;\n	mso-ascii-font-family:Calibri\;\n	mso-fareast-font-family:Calibr
+	i\;\n	mso-hansi-font-family:Calibri\;\n	mso-bidi-font-family:"Times New Ro
+	man"\;\n	color:windowtext\;}\n.MsoChpDefault\n	{mso-style-type:export-only
+	\;\n	mso-default-props:yes\;\n	font-size:10.0pt\;\n	mso-ansi-font-size:10.
+	0pt\;\n	mso-bidi-font-size:10.0pt\;\n	font-family:"Calibri"\,sans-serif\;\
+	n	mso-ascii-font-family:Calibri\;\n	mso-fareast-font-family:Calibri\;\n	ms
+	o-hansi-font-family:Calibri\;\n	mso-bidi-font-family:Calibri\;\n	mso-font-
+	kerning:1.0pt\;\n	mso-ligatures:standardcontextual\;}\n@page WordSection1\
+	n	{size:8.5in 11.0in\;\n	margin:1.0in 1.0in 1.0in 1.0in\;\n	mso-header-mar
+	gin:.5in\;\n	mso-footer-margin:.5in\;\n	mso-paper-source:0\;}\ndiv.WordSec
+	tion1\n	{page:WordSection1\;}\n--></style><!--[if gte mso 10]><style>/* St
+	yle Definitions */\ntable.MsoNormalTable\n	{mso-style-name:"Table Normal"\
+	;\n	mso-tstyle-rowband-size:0\;\n	mso-tstyle-colband-size:0\;\n	mso-style-
+	noshow:yes\;\n	mso-style-priority:99\;\n	mso-style-parent:""\;\n	mso-paddi
+	ng-alt:0in 5.4pt 0in 5.4pt\;\n	mso-para-margin:0in\;\n	mso-pagination:wido
+	w-orphan\;\n	font-size:10.0pt\;\n	font-family:"Calibri"\,sans-serif\;\n	ms
+	o-font-kerning:1.0pt\;\n	mso-ligatures:standardcontextual\;}\n</style><![e
+	ndif]--><!--[if gte mso 9]><xml>\n<o:shapedefaults v:ext="edit" spidmax="1
+	026" />\n</xml><![endif]--><!--[if gte mso 9]><xml>\n<o:shapelayout v:ext=
+	"edit">\n<o:idmap v:ext="edit" data="1" />\n</o:shapelayout></xml><![endif
+	]--></head><body lang=EN-US link="#0563C1" vlink="#954F72" style='tab-inte
+	rval:.5in\;word-wrap:break-word'><div class=WordSection1><p class=MsoNorma
+	l>We need your feedback on what you need from the Office Add-in docs and s
+	amples. Where do we have gaps? Where is there friction in the development 
+	process that samples and docs can help with? Join in and let us know what 
+	improvements you'd like to see to make your development experience better.
+	<o:p></o:p></p><p class=MsoNormal><span style='mso-bidi-font-family:"Times
+	 New Roman"'><o:p>&nbsp\;</o:p></span></p><p class=MsoNormal><span style='
+	mso-bidi-font-family:"Times New Roman"'>Please join us at <a href="https:/
+	/aka.ms/officeaddinsamples-join">https://aka.ms/officeaddinsamples-join</a
+	><o:p></o:p></span></p><div><p class=MsoNormal><span style='mso-fareast-fo
+	nt-family:"Times New Roman"\;color:#5F5F5F'>______________________________
+	__________________________________________________</span><span style='mso-
+	fareast-font-family:"Times New Roman"'> <o:p></o:p></span></p></div><div><
+	div style='margin-top:.25in\;margin-bottom:15.0pt'><p class=MsoNormal><spa
+	n style='font-size:18.0pt\;font-family:"Segoe UI"\,sans-serif\;mso-fareast
+	-font-family:"Times New Roman"\;color:#252424'>Microsoft Teams meeting</sp
+	an><span style='font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-famil
+	y:"Times New Roman"\;color:#252424'> <o:p></o:p></span></p></div><div styl
+	e='margin-bottom:15.0pt'><div><p class=MsoNormal><b><span style='font-size
+	:10.5pt\;font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-family:"Time
+	s New Roman"\;color:#252424'>Join on your computer or mobile app</span></b
+	><b><span style='font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-fami
+	ly:"Times New Roman"\;color:#252424'> <o:p></o:p></span></b></p></div><p c
+	lass=MsoNormal><span style='font-family:"Segoe UI"\,sans-serif\;mso-fareas
+	t-font-family:"Times New Roman"\;color:#252424'><a href="https://teams.mic
+	rosoft.com/l/meetup-join/19%3ameeting_NDQxMWI2MzQtMWUxZS00MjlmLTllODctM2Rk
+	NDI3YjliMTFm%40thread.v2/0?context=%7b%22Tid%22%3a%2272f988bf-86f1-41af-91
+	ab-2d7cd011db47%22%2c%22Oid%22%3a%22f2848d9b-e14b-42b2-a867-80b9922f67d4%2
+	2%7d" target="_blank"><span style='font-size:10.5pt\;font-family:"Segoe UI
+	 Semibold"\,sans-serif\;color:#6264A7'>Click here to join the meeting</spa
+	n></a> <o:p></o:p></span></p></div><div style='margin-top:15.0pt\;margin-b
+	ottom:15.0pt'><div style='margin-bottom:3.0pt'><p class=MsoNormal><b><span
+	 style='font-size:10.5pt\;font-family:"Segoe UI"\,sans-serif\;mso-fareast-
+	font-family:"Times New Roman"\;color:#252424'>Or join by entering a meetin
+	g ID</span></b><span style='font-family:"Segoe UI"\,sans-serif\;mso-fareas
+	t-font-family:"Times New Roman"\;color:#252424'><br></span><span style='fo
+	nt-size:10.5pt\;font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-famil
+	y:"Times New Roman"\;color:#252424'>Meeting ID: </span><span style='font-s
+	ize:12.0pt\;font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-family:"T
+	imes New Roman"\;color:#252424'>211 486 177 698</span><span style='font-si
 	ze:10.5pt\;font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-family:"Ti
-	mes New Roman"\;color:#252424'>Join on your computer or mobile app</span><
-	/b><b><span style='font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-fa
-	mily:"Times New Roman"\;color:#252424'> <o:p></o:p></span></b></p></div><p
-	 class=MsoNormal><span style='font-family:"Segoe UI"\,sans-serif\;mso-fare
-	ast-font-family:"Times New Roman"\;color:#252424'><a href="https://teams.m
-	icrosoft.com/l/meetup-join/19%3ameeting_NDQxMWI2MzQtMWUxZS00MjlmLTllODctM2
-	RkNDI3YjliMTFm%40thread.v2/0?context=%7b%22Tid%22%3a%2272f988bf-86f1-41af-
-	91ab-2d7cd011db47%22%2c%22Oid%22%3a%22f2848d9b-e14b-42b2-a867-80b9922f67d4
-	%22%7d" target="_blank"><span style='font-size:10.5pt\;font-family:"Segoe 
-	UI Semibold"\,sans-serif\;color:#6264A7'>Click here to join the meeting</s
-	pan></a> <o:p></o:p></span></p></div><div style='margin-top:15.0pt\;margin
-	-bottom:15.0pt'><div style='margin-bottom:3.0pt'><p class=MsoNormal><b><sp
-	an style='font-size:10.5pt\;font-family:"Segoe UI"\,sans-serif\;mso-fareas
-	t-font-family:"Times New Roman"\;color:#252424'>Or join by entering a meet
-	ing ID</span></b><span style='font-family:"Segoe UI"\,sans-serif\;mso-fare
-	ast-font-family:"Times New Roman"\;color:#252424'><br></span><span style='
-	font-size:10.5pt\;font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-fam
-	ily:"Times New Roman"\;color:#252424'>Meeting ID: </span><span style='font
-	-size:12.0pt\;font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-family:
-	"Times New Roman"\;color:#252424'>211 486 177 698</span><span style='font-
-	size:10.5pt\;font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-family:"
-	Times New Roman"\;color:#252424'> </span><span style='font-family:"Segoe U
-	I"\,sans-serif\;mso-fareast-font-family:"Times New Roman"\;color:#252424'>
-	<br></span><span style='font-size:10.5pt\;font-family:"Segoe UI"\,sans-ser
-	if\;mso-fareast-font-family:"Times New Roman"\;color:#252424'>Passcode: </
-	span><span style='font-size:12.0pt\;font-family:"Segoe UI"\,sans-serif\;ms
-	o-fareast-font-family:"Times New Roman"\;color:#252424'>GtjE8S </span><spa
-	n style='font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-family:"Time
-	s New Roman"\;color:#252424'><o:p></o:p></span></p></div></div><div style=
-	'margin-bottom:3.0pt'><div style='margin-bottom:3.0pt'><p class=MsoNormal>
-	<b><span style='font-size:10.5pt\;font-family:"Segoe UI"\,sans-serif\;mso-
-	fareast-font-family:"Times New Roman"\;color:#252424'>Or call in (audio on
-	ly)</span></b><span style='font-family:"Segoe UI"\,sans-serif\;mso-fareast
-	-font-family:"Times New Roman"\;color:#252424'> <o:p></o:p></span></p></di
-	v><div style='margin-bottom:3.0pt'><p class=MsoNormal><span style='font-fa
-	mily:"Segoe UI"\,sans-serif\;mso-fareast-font-family:"Times New Roman"\;co
-	lor:#252424'><a href="tel:+13238494874\,\,9845425# "><span style='font-siz
-	e:10.5pt\;color:#6264A7'>+1 323-849-4874\,\,9845425#</span></a> </span><sp
-	an style='font-size:10.5pt\;font-family:"Segoe UI"\,sans-serif\;mso-fareas
-	t-font-family:"Times New Roman"\;color:#252424'>&nbsp\; United States\, Lo
-	s Angeles </span><span style='font-family:"Segoe UI"\,sans-serif\;mso-fare
-	ast-font-family:"Times New Roman"\;color:#252424'><o:p></o:p></span></p></
-	div></div><p class=MsoNormal><span style='font-size:10.5pt\;font-family:"S
-	egoe UI"\,sans-serif\;mso-fareast-font-family:"Times New Roman"\;color:#25
-	2424'>Phone Conference ID: </span><span style='font-size:12.0pt\;font-fami
+	mes New Roman"\;color:#252424'> </span><span style='font-family:"Segoe UI"
+	\,sans-serif\;mso-fareast-font-family:"Times New Roman"\;color:#252424'><b
+	r></span><span style='font-size:10.5pt\;font-family:"Segoe UI"\,sans-serif
+	\;mso-fareast-font-family:"Times New Roman"\;color:#252424'>Passcode: </sp
+	an><span style='font-size:12.0pt\;font-family:"Segoe UI"\,sans-serif\;mso-
+	fareast-font-family:"Times New Roman"\;color:#252424'>GtjE8S </span><span 
+	style='font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-family:"Times 
+	New Roman"\;color:#252424'><o:p></o:p></span></p></div></div><div style='m
+	argin-bottom:3.0pt'><div style='margin-bottom:3.0pt'><p class=MsoNormal><b
+	><span style='font-size:10.5pt\;font-family:"Segoe UI"\,sans-serif\;mso-fa
+	reast-font-family:"Times New Roman"\;color:#252424'>Or call in (audio only
+	)</span></b><span style='font-family:"Segoe UI"\,sans-serif\;mso-fareast-f
+	ont-family:"Times New Roman"\;color:#252424'> <o:p></o:p></span></p></div>
+	<div style='margin-bottom:3.0pt'><p class=MsoNormal><span style='font-fami
 	ly:"Segoe UI"\,sans-serif\;mso-fareast-font-family:"Times New Roman"\;colo
-	r:#252424'>984 542 5# </span><span style='font-family:"Segoe UI"\,sans-ser
-	if\;mso-fareast-font-family:"Times New Roman"\;color:#252424'><o:p></o:p><
-	/span></p><div style='margin-bottom:15.0pt'><p class=MsoNormal><span style
-	='font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-family:"Times New R
-	oman"\;color:#252424'><a href="https://dialin.teams.microsoft.com/8551f4c1
-	-bea3-441a-8738-69aa517a91c5?id=9845425" target="_blank"><span style='font
-	-size:10.5pt\;color:#6264A7'>Find a local number</span></a> | <a href="htt
-	ps://dialin.teams.microsoft.com/usp/pstnconferencing" target="_blank"><spa
-	n style='font-size:10.5pt\;color:#6264A7'>Reset PIN</span></a> <o:p></o:p>
-	</span></p></div><div style='margin-top:15.0pt\;margin-bottom:.25in'><p cl
-	ass=MsoNormal><span style='font-family:"Segoe UI"\,sans-serif\;mso-fareast
-	-font-family:"Times New Roman"\;color:#252424'><a href="https://aka.ms/Joi
-	nTeamsMeeting" target="_blank"><span style='font-size:10.5pt\;color:#6264A
-	7'>Learn More</span></a> | <a href="https://teams.microsoft.com/meetingOpt
-	ions/?organizerId=f2848d9b-e14b-42b2-a867-80b9922f67d4&amp\;tenantId=72f98
-	8bf-86f1-41af-91ab-2d7cd011db47&amp\;threadId=19_meeting_NDQxMWI2MzQtMWUxZ
-	S00MjlmLTllODctM2RkNDI3YjliMTFm@thread.v2&amp\;messageId=0&amp\;language=e
-	n-US" target="_blank"><span style='font-size:10.5pt\;color:#6264A7'>Meetin
-	g options</span></a> <o:p></o:p></span></p></div></div><div><p class=MsoNo
-	rmal><span style='mso-fareast-font-family:"Times New Roman"\;color:#5F5F5F
-	'>________________________________________________________________________
-	________</span><span style='mso-fareast-font-family:"Times New Roman"'> <o
-	:p></o:p></span></p></div><p class=MsoNormal><span style='mso-bidi-font-fa
-	mily:"Times New Roman"'><o:p>&nbsp\;</o:p></span></p></div></body></html>
+	r:#252424'><a href="tel:+13238494874\,\,9845425# "><span style='font-size:
+	10.5pt\;color:#6264A7'>+1 323-849-4874\,\,9845425#</span></a> </span><span
+	 style='font-size:10.5pt\;font-family:"Segoe UI"\,sans-serif\;mso-fareast-
+	font-family:"Times New Roman"\;color:#252424'>&nbsp\; United States\, Los 
+	Angeles </span><span style='font-family:"Segoe UI"\,sans-serif\;mso-fareas
+	t-font-family:"Times New Roman"\;color:#252424'><o:p></o:p></span></p></di
+	v></div><p class=MsoNormal><span style='font-size:10.5pt\;font-family:"Seg
+	oe UI"\,sans-serif\;mso-fareast-font-family:"Times New Roman"\;color:#2524
+	24'>Phone Conference ID: </span><span style='font-size:12.0pt\;font-family
+	:"Segoe UI"\,sans-serif\;mso-fareast-font-family:"Times New Roman"\;color:
+	#252424'>984 542 5# </span><span style='font-family:"Segoe UI"\,sans-serif
+	\;mso-fareast-font-family:"Times New Roman"\;color:#252424'><o:p></o:p></s
+	pan></p><div style='margin-bottom:15.0pt'><p class=MsoNormal><span style='
+	font-family:"Segoe UI"\,sans-serif\;mso-fareast-font-family:"Times New Rom
+	an"\;color:#252424'><a href="https://dialin.teams.microsoft.com/8551f4c1-b
+	ea3-441a-8738-69aa517a91c5?id=9845425" target="_blank"><span style='font-s
+	ize:10.5pt\;color:#6264A7'>Find a local number</span></a> | <a href="https
+	://dialin.teams.microsoft.com/usp/pstnconferencing" target="_blank"><span 
+	style='font-size:10.5pt\;color:#6264A7'>Reset PIN</span></a> <o:p></o:p></
+	span></p></div><div style='margin-top:15.0pt\;margin-bottom:.25in'><p clas
+	s=MsoNormal><span style='font-family:"Segoe UI"\,sans-serif\;mso-fareast-f
+	ont-family:"Times New Roman"\;color:#252424'><a href="https://aka.ms/JoinT
+	eamsMeeting" target="_blank"><span style='font-size:10.5pt\;color:#6264A7'
+	>Learn More</span></a> | <a href="https://teams.microsoft.com/meetingOptio
+	ns/?organizerId=f2848d9b-e14b-42b2-a867-80b9922f67d4&amp\;tenantId=72f988b
+	f-86f1-41af-91ab-2d7cd011db47&amp\;threadId=19_meeting_NDQxMWI2MzQtMWUxZS0
+	0MjlmLTllODctM2RkNDI3YjliMTFm@thread.v2&amp\;messageId=0&amp\;language=en-
+	US" target="_blank"><span style='font-size:10.5pt\;color:#6264A7'>Meeting 
+	options</span></a> <o:p></o:p></span></p></div></div><div><p class=MsoNorm
+	al><span style='mso-fareast-font-family:"Times New Roman"\;color:#5F5F5F'>
+	__________________________________________________________________________
+	______</span><span style='mso-fareast-font-family:"Times New Roman"'> <o:p
+	></o:p></span></p></div><p class=MsoNormal><span style='mso-bidi-font-fami
+	ly:"Times New Roman"'><o:p>&nbsp\;</o:p></span></p></div></body></html>
 X-MICROSOFT-CDO-BUSYSTATUS:BUSY
 X-MICROSOFT-CDO-IMPORTANCE:1
 X-MICROSOFT-DISALLOW-COUNTER:FALSE
 X-MS-OLK-AUTOFILLLOCATION:FALSE
 X-MS-OLK-CONFTYPE:0
-BEGIN:VALARM
-TRIGGER:-PT15M
-ACTION:DISPLAY
-DESCRIPTION:Reminder
-END:VALARM
 END:VEVENT
 END:VCALENDAR
