@@ -2,7 +2,7 @@
 
 Office Add-ins code samples are provided in this repo to help you learn, study, and built great Office Add-ins!
 
-> Join us July 25th at 8:00 AM Pacific Time for a community panel discussion on samples. What do you want us to focus on over the next 6 months? Get the invite at https://aka.ms/officeaddinsamples-call.
+> Join us July 27th at 8:00 AM Pacific Time for a community panel discussion on samples. What do you want us to focus on over the next 6 months? Get the invite at https://aka.ms/officeaddinsamples-call.
 
 ## Getting started
 
