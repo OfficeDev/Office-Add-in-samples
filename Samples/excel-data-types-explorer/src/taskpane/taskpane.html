@@ -23,17 +23,17 @@
 
 <body class="ms-font-m ms-welcome ms-Fabric">
     <section class="ms-font-m main">
-        <h1>Create and Retrieve Data</h1>
-        <p>Choose the type of data you want to insert from the dropdown below or select a cell and press <b>Get Data</b> to
-            retrieve its data:</p>
-    
+        <h1>Create and retrieve data types</h1>
+        <p>Use this tool to create data types, or to explore data types that already exist on a worksheet.</p>
+        <p>To create a data type, use the select list to choose a data type (string, double, boolean, entity, web image, or formatted number), enter data in the displayed fields, and then select <strong>Set data</strong>. The data type will be inserted into the currently active cell on the worksheet.</p>
+        <p>To explore existing data types, select the cell on the worksheet that contains data, and then select the <strong>Get data</strong> button.</p>    
         <div>
-            <button id="getData" class="ms-Button ms-Button-label buttons">Get Data</button>
+            <button id="getData" class="ms-Button ms-Button-label buttons">Get data</button>
             <label> | </label>
-            <button id="setData"" class="ms-Button ms-Button-label buttons" alt="set entered data into active cell">Set</button>
-            <button id="printAsJson" class="ms-Button ms-Button-label buttons" alt="print entered data as json into the console">Print as Json</button>
+            <button id="setData"" class="ms-Button ms-Button-label buttons" alt="set entered data into active cell">Set data</button>
+            <button id="printAsJson" class="ms-Button ms-Button-label buttons" alt="print entered data as json into the console">Print as JSON</button>
             <label> | </label>
-            <button id="clearForm" class="ms-Button ms-Button-label buttons" alt="clear current contents of input boxes">Clear</button>
+            <button id="clearForm" class="ms-Button ms-Button-label buttons" alt="clear current contents of input boxes">Clear form</button>
         </div>
     
         <select id="dataTypeSelect" name="dataType" class="ms-Button ms-Button-label buttons">
@@ -41,29 +41,27 @@
             <option class="typeDouble" value="Double">Double</option>
             <option class="typeBoolean" value="Boolean">Boolean</option>
             <option class="typeEntity" value="Entity">Entity</option>
-            <option class="typeImage" value="WebImage">Web Image</option>
-            <option class="typeFNV" value="FormattedNumber">Formatted Number</option>
+            <option class="typeImage" value="WebImage">Web image</option>
+            <option class="typeFNV" value="FormattedNumber">Formatted number</option>
         </select>
     
         <div id="dataTypeContents">
             <div class="backgroundColorForm solidBorder"></div>
         </div>
     
-        <div>
+        <!-- <div>
             <button id="getData" class="ms-Button ms-Button-label buttons">Get Data</button>
             <label> | </label>
             <button id="setData" class="ms-Button ms-Button-label buttons" alt="set entered data into active cell">Set</button>
             <button id="printAsJson" class="ms-Button ms-Button-label buttons" alt="print entered data as json into the console">Print as Json</button>
             <label> | </label>
             <button id="clearForm" class="ms-Button ms-Button-label buttons" alt="clear current contents of input boxes">Clear</button>
-        </div>
+        </div> -->
     
     </section>
     
     <section class="ms-font-m main">
-        <br>
-        <a href="https://docs.microsoft.com/javascript/api/excel/excel.range?view=excel-js-preview#valuesAsJson">Learn more about valuesAsJson</a>
-        <br>
+        <p><a href="https://docs.microsoft.com/javascript/api/excel/excel.range?view=excel-js-preview#valuesAsJson">Learn more about data types</a>.</p>
     </section>
 </body>
 
