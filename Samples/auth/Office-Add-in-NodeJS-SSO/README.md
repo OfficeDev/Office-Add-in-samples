@@ -22,15 +22,14 @@ extensions:
 
 The `getAccessToken` API in Office.js enables users who are signed into Office to get access to an AAD-protected add-in and to Microsoft Graph without needing to sign-in again. 
 
-There are three versions of the sample in this repo, one of which has its own README file:
+There are two versions of the sample in this repo:
 
 - In the **Begin** folder is the starting point for the SSO walkthrough at [Create a Node.js Office Add-in that uses single sign-on](https://docs.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs). Please follow the instructions in the article.
 - In the **Complete** folder is the completed sample. To use this version, follow the instructions in [Create a Node.js Office Add-in that uses single sign-on](https://docs.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs), but with the following changes:
-    - Substitute "Complete" for "Begin"
-    - Skip the sections **Code the client-side** and **Code the server-side**
-- In the **SSOAutoSetup** folder is the same completed sample (with some slight differences in folder structure), but it contains a utility that will automate most of the registration and configuration. Instructions are in the README in that folder. Use this version if you would like to see a working SSO sample right away. However, if you've never registered an app with AAD before, we recommend that you go through the manual process of registration and configuration documented in [Create a Node.js Office Add-in that uses single sign-on](https://docs.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs). Doing so will give you a better understanding of what AAD does and the significance of the configuration steps.
+  - Substitute "Complete" for "Begin"
+  - Skip the sections **Code the client-side** and **Code the server-side**
 
-These samples are built on Node.JS, Express, and Microsoft Authentication Library for JavaScript (msal.js). 
+These samples are built on Node.JS, Express, and Microsoft Authentication Library for JavaScript (msal.js).
 
 ## Features
 
@@ -57,8 +56,7 @@ Integrating data from online service providers increases the value and adoption 
 To run this code sample, the following are required:
 
 * A code editor. We recommend Visual Studio Code which was used to create the sample.
-* A Microsoft 365 account. To get one, join the [Microsoft 365 Developer Program](https://aka.ms/devprogramsignup). This includes a free 1 year subscription to Microsoft 365. During the preview phase, the SSO requires Microsoft 365 (which includes the subscription version of Office). You should use the latest monthly version and build from the Insiders channel. You need to be an Office Insider to get this version. For more information, see [Be an Office Insider](https://products.office.com/office-insider?tab=tab-1). 
-    > Note: When a build graduates to the production semi-annual channel, support for preview features, including SSO, is turned off for that build.
+* A Microsoft 365 account. To get one, join the [Microsoft 365 Developer Program](https://aka.ms/devprogramsignup). This includes a free 1 year subscription to Microsoft 365. During the preview phase, the SSO requires Microsoft 365 (which includes the subscription version of Office).
 * At least a few files and folders stored on OneDrive for Business in your Microsoft 365 subscription.
 * A Microsoft Azure Tenant. This add-in requires Azure Active Directory (AD). Azure AD provides identity services that applications use for authentication and authorization. A trial subscription can be acquired here: [Microsoft Azure](https://account.windowsazure.com/SignUp).
 
@@ -66,7 +64,7 @@ To run this code sample, the following are required:
 
 Solution | Author(s)
 ---------|----------
-Office Add-in Microsoft Graph ASP.NET | Microsoft
+Office Add-in Microsoft Graph Node.js | Microsoft
 
 ## Version history
 
@@ -78,16 +76,13 @@ Version  | Date | Comments
 1.0 | January 7, 2019 | Added information about web application security practices.
 2.0 | October 26, 2019 | Changed to use new API and added Display Dialog API fallback.
 2.1 | August 11, 2020 | Removed preview note because the API has released.
+2.2 | July 7, 2022 | Fixed middle-tier token handling and MSAL fallback approach to be consistent with Microsoft identity platform guidance.
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 ----------
-
-## To use the project
-
-Please go to the README in the **Complete** or **SSOAutoSetup** folder for the next steps.
 
 ## Security note
 
