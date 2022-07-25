@@ -16,16 +16,17 @@ extensions:
 description: "Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent."
 ---
 
-# Use Outlook Smart Alerts (preview)
+# Use Outlook Smart Alerts
 
-**Applies to**: Outlook on Windows
+**Applies to**: Outlook on Windows | Outlook on the web
 
 ## Summary
 
 This sample uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent. Specific keywords detected in the subject or body of the item determine the required categories. If no categories or only some of the required categories are applied to the message or appointment, the add-in blocks the item from being sent and alerts the user to apply the missing categories. The user can apply categories to the item from the add-in task pane.
 
-Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, are currently available in preview. For documentation related to this sample, see the following articles.
-- [Use Smart Alerts and the onMessageSend event in your Outlook add-in (preview)](https://docs.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough)
+For documentation related to this sample, see the following articles.
+
+- [Use Smart Alerts and the OnMessageSend event in your Outlook add-in](https://docs.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough)
 - [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch)
 - [Get and set categories](https://docs.microsoft.com/office/dev/add-ins/outlook/categories)
 
@@ -43,13 +44,13 @@ Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, ar
 
 ## Applies to
 
-- Outlook on Windows (minimum build - 16.0.14511.10000)
+- Outlook
+  - Windows (minimum build - 16.0.14511.10000)
+  - Web browser
 
 ## Prerequisites
 
 - A Microsoft 365 subscription. If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://aka.ms/m365/devprogram#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
-
-- Outlook on Windows with a minimum build of 16.0.14511.10000. For guidance with client configuration, see [How to preview](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch#how-to-preview).
 
 ## Solution
 
@@ -62,6 +63,7 @@ Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, ar
 | Version | Date | Comments |
 | ------- | ----- | -------- |
 | 1.0 | 05-05-2022 | Initial release |
+| 1.1 | 07-25-2022 | Update for General Availability (GA) of OnMessageSend and OnAppointmentSend events |
 
 ## Run the sample
 
@@ -183,7 +185,7 @@ The `OnMessageSend` event uses the `SoftBlock` option to prevent a user from sen
 
 The `OnAppointmentSend` event uses the `Block` option to prevent a user from sending a meeting invite if any of the required categories are missing. If the add-in encounters a loading error and can't check the invite for applied categories, the user will not be able to send the invite until the add-in becomes available again.
 
-For additional information on `SendMode` options, see [Available SendMode options](https://docs.microsoft.com/javascript/api/manifest/launchevent?view=outlook-js-preview#available-sendmode-options-preview).
+For additional information on `SendMode` options, see [Available SendMode options](https://docs.microsoft.com/javascript/api/manifest/launchevent#available-sendmode-options).
 
 ### Configure the event handlers
 
@@ -207,7 +209,7 @@ sendEvent.completed({ allowEvent: false, errorMessage: message });
 return;
 ```
 
-![Screenshot of the Outlook Smart Alerts error message when required categories are missing from the message or appointment being sent.](./assets/outlook-check-item-categories-smart-alerts.png)
+![The Outlook Smart Alerts error message when required categories are missing from the message or appointment being sent.](./assets/outlook-check-item-categories-smart-alerts.png)
 
 Event-based add-ins should be short-running and lightweight. To prevent the possibility of a long-running operation that may lead to an add-in timeout, the color category creation process is handled by `onItemComposeHandler` instead of `onItemSendHandler`.
 
