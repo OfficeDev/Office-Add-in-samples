@@ -89,10 +89,10 @@
     // into the Word document body. 
     function setOOXML_newAPI() {
         // Get a reference to the Div where we will write the outcome of our operation.
-        var report = document.getElementById("status");
+        const report = document.getElementById("status");
 
         // Sets the currentOOXML variable to the current contents of the task pane text area.
-        textArea = document.getElementById("dataOOXML");
+        const textArea = document.getElementById("dataOOXML");
         currentOOXML = textArea.value;
 
         // Remove all nodes from the status Div so we have a clean space to write to.
@@ -107,7 +107,7 @@
             Word.run(function (context) {
 
                 // Create a proxy object for the document body.
-                var body = context.document.body;
+                const body = context.document.body;
 
                 // Queue a commmand to insert OOXML in to the beginning of the body.
                 body.insertOoxml(currentOOXML, Word.InsertLocation.replace);
