@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApplicationTry2</title>
+    
+    @* This office.js library holds the JavaScript API for Office.*@
+    <script src='https://appsforoffice.microsoft.com/lib/1/hosted/office.js'></script>
+
+    @* The following two files hold the Office UI Fabric styles and components. *@
+    <link rel='stylesheet', href='https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.min.css' />
+    <link rel='stylesheet', href='https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.components.min.css' />
+    
+    <link rel='stylesheet', href='/css/site.css' />
+    <link rel='stylesheet', href='/css/OfficeThemes.css' />
+    <link rel='stylesheet', href='/css/instruction.step.css' />
+
+    <script src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js'></script>
+    <script id="load-msal" src='https://alcdn.msauth.net/browser/2.15.0/js/msal-browser.js'></script>
+    <script src='/js/document.js'></script>
+    <script src='/js/message-helper.js'></script>
+    <script src='/js/ssoAuthEs6.js'></script>
+    <script src='/js/fallback-msal/fallbackAuthTaskpane.js'></script>
+</head>
+<body class="ms-font-m cancelDefaultBrowserIndentation">
+
+    <div id="content">
+        @RenderBody()
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
