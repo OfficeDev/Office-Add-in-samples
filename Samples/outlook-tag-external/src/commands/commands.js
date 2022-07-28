@@ -188,7 +188,7 @@ function _tagExternal(hasExternal) {
         }
 
         console.log("Current Subject: " + JSON.stringify(asyncResult.value)); //debugging
-        var subject = asyncResult.value;
+        let subject = asyncResult.value;
         if (!subject.includes(externalTag)) {
           subject = `${externalTag} ${subject}`;
           console.log("Updated Subject: " + subject); //debugging

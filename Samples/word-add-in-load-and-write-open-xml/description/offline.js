@@ -1,11 +1,11 @@
-﻿var Galleries = Galleries || { };
+﻿const Galleries = Galleries || { };
 
 (function() {
 
     function findElem(parent, tagName, className) {
-        var elemToSearch = (parent) ?  parent : document.body;
-        var tagMatch = elemToSearch.getElementsByTagName(tagName);
-        var evaluator = function(elem) {
+        const elemToSearch = (parent) ?  parent : document.body;
+        const tagMatch = elemToSearch.getElementsByTagName(tagName);
+        const evaluator = function(elem) {
             return (className) ? (elem.className.indexOf(className) > -1) : true;
         };
 
@@ -13,8 +13,8 @@
     }
 
     function findArrayElem(array, evaluator) {
-        var newArray = new Array();
-        for (var count = 0; count < array.length; count++) {
+        const newArray = new Array();
+        for (let count = 0; count < array.length; count++) {
             if (evaluator(array[count])) {
                 newArray.push(array[count]);
             }
@@ -23,7 +23,7 @@
     }
 
     function iterateElem(elems, delegate) {
-        for(var count = 0; count < elems.length; count++) {
+        for(let count = 0; count < elems.length; count++) {
             delegate(count, elems[count]);
         }
     }
@@ -37,7 +37,7 @@
     }
  
     function attachEventHandler(elem, event, callback) {
-        var elemToAttach = (elem) ? elem : window;
+        const elemToAttach = (elem) ? elem : window;
         if (document.addEventListener) {
 			elemToAttach.addEventListener(event, callback, false);
 		} else if ( document.attachEvent ) {

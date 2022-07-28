@@ -26,14 +26,14 @@
     };
 
     // Variable to hold Office Open XML.
-    var currentOOXML = "";
+    let currentOOXML = "";
 
     // Gets the OOXML contents of the Word document body and
     // puts the OOXML into a textarea in the add-in.
     function getOOXML_newAPI() {
 
         // Get a reference to the Div where we will write the status of our operation
-        var report = document.getElementById("status");
+        const report = document.getElementById("status");
 
         // Remove all nodes from the status Div so we have a clean space to write to
         while (report.hasChildNodes()) {
@@ -41,16 +41,16 @@
         }
 
         // Get a reference to the text area that will hold the OOXML we get from the document.
-        var textArea = document.getElementById("dataOOXML");
+        const textArea = document.getElementById("dataOOXML");
 
         // Run a batch operation against the Word Javascript object model.
         Word.run(function (context) {
 
             // Create a proxy object for the document body.
-            var body = context.document.body;
+            const body = context.document.body;
 
             // Queue a commmand to get the OOXML contents of the body.
-            var bodyOOXML = body.getOoxml();
+            const bodyOOXML = body.getOoxml();
 
             // Synchronize the document state by executing the queued commands, 
             // and return a promise to indicate task completion.
@@ -144,8 +144,8 @@
 
     function getOOXML() {
         // Get a reference to the Div where we will write the status of our operation.
-        var report = document.getElementById("status");
-        var textArea = document.getElementById("dataOOXML");
+        const report = document.getElementById("status");
+        const textArea = document.getElementById("dataOOXML");
         // Remove all nodes from the status Div so we have a clean space to write to.
         while (report.hasChildNodes()) {
             report.removeChild(report.lastChild);
@@ -197,10 +197,10 @@
 
     function setOOXML() {
         // Get a reference to the Div where we will write the outcome of our operation.
-        var report = document.getElementById("status");
+        const report = document.getElementById("status");
 
         // Sets the currentOOXML variable to the current contents of the task pane text area.
-        var textArea = document.getElementById("dataOOXML")
+        const textArea = document.getElementById("dataOOXML");
         currentOOXML = textArea.value;
 
         // Remove all nodes from the status Div so we have a clean space to write to.
