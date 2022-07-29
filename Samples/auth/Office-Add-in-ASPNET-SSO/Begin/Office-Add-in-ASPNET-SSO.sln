@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Office-Add-in-ASPNET-SSO-web", "Office-Add-in-ASPNET-SSO-web\Office-Add-in-ASPNET-SSO-web.csproj", "{C2652268-9F06-4504-9CEB-C49EF09BE5DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office-Add-in-ASPNET-SSO-manifest", "Office-Add-in-ASPNET-SSO-manifest\Office-Add-in-ASPNET-SSO-manifest.csproj", "{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2652268-9F06-4504-9CEB-C49EF09BE5DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2652268-9F06-4504-9CEB-C49EF09BE5DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2652268-9F06-4504-9CEB-C49EF09BE5DB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C2652268-9F06-4504-9CEB-C49EF09BE5DB}.Debug|x64.Build.0 = Debug|Any CPU
+		{C2652268-9F06-4504-9CEB-C49EF09BE5DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2652268-9F06-4504-9CEB-C49EF09BE5DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2652268-9F06-4504-9CEB-C49EF09BE5DB}.Release|x64.ActiveCfg = Release|Any CPU
+		{C2652268-9F06-4504-9CEB-C49EF09BE5DB}.Release|x64.Build.0 = Release|Any CPU
+		{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}.Debug|x64.ActiveCfg = Debug|x64
+		{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}.Debug|x64.Build.0 = Debug|x64
+		{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}.Debug|x64.Deploy.0 = Debug|x64
+		{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}.Release|x64.ActiveCfg = Release|x64
+		{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}.Release|x64.Build.0 = Release|x64
+		{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}.Release|x64.Deploy.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C806A8C8-1F3A-4149-8406-11C905C322F2}
+	EndGlobalSection
+EndGlobal

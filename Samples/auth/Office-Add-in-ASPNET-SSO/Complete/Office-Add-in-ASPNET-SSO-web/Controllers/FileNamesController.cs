@@ -14,7 +14,7 @@ using Microsoft.Identity.Client;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.Resource;
 
-namespace OfficeAddinSSOMiddleTier.Controllers
+namespace OfficeAddinSSOWeb.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
@@ -37,8 +37,6 @@ namespace OfficeAddinSSOMiddleTier.Controllers
             try
             {
                 // Get list of first 10 file names from user's OneDrive root folder.
-                //var filelist = await _graphServiceClient.Me.Drive.Root.Children["$filter=startswith(mail,'test@email.com')"].Request().GetAsync();
-                //return Ok(filelist);
                 var filelist = await _graphServiceClient.Me.Drive.Root.Children.Request().Select(u => new
                 {
                     u.Name

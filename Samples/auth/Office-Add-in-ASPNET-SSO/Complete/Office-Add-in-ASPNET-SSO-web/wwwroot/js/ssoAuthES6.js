@@ -61,8 +61,7 @@ async function handleGetFileNameResponse(response) {
  *
  * @param {*} clientRequest Contains information for calling an API on the middle-tier server.
  */
-async function callWebServer(clientRequest) {
-    // Note this only handles GET APIs. Extend this if you need to handle additional HTTP verbs.
+async function callWebServer(clientRequest) {    
     try {
         const data = await $.ajax({
             type: clientRequest.verb,
