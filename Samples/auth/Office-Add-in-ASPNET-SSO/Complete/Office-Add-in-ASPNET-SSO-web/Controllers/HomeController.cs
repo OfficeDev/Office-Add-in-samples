@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using OfficeAddinSSOWeb.Models;
 

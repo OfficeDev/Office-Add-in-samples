@@ -24,8 +24,7 @@ function processMessage(arg) {
             // We now have a valid access token.
             loginDialog.close();
             storedClientRequest.accessToken = messageFromDialog.result;
-            storedClientRequest.callbackFunction(storedClientRequest);
-            //makeGraphApiCall(messageFromDialog.result);
+            storedClientRequest.callbackFunction(storedClientRequest);            
         }
         else {
             // Something went wrong with authentication or the authorization of the web application.

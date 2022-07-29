@@ -74,7 +74,7 @@ async function callWebServer(clientRequest) {
         // Check for expired token. Refresh and retry the call if it expired.
         if (error.getResponseHeader !== undefined) {
             const responseHeader = error.getResponseHeader("www-authenticate");
-            if (responseHeader !== undefined && responseHeader.includes("The token expired") && authSSO) {
+            if (responseHeader !== null && responseHeader.includes("The token expired") && authSSO) {
                 try {
                     clientRequest.accessToken = await Office.auth.getAccessToken(clientRequest.authOptions);
                     const data = await $.ajax({
@@ -101,7 +101,7 @@ async function callWebServer(clientRequest) {
         // For all other error scenarios, display the message and use fallback auth.
         showMessage(
             "Unknown error from web server: " +
-            JSON.stringify(err.responseJSON.errorDetails)
+            JSON.stringify(error.responseJSON.errorDetails)
         );
         if (clientRequest.authSSO) switchToFallbackAuth(clientRequest);
     }
