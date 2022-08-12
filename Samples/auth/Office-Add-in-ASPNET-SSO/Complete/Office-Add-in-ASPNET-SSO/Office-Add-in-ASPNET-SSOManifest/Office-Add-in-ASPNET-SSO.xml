@@ -249,8 +249,8 @@
 			</bt:LongStrings>
 		</Resources>
 		<WebApplicationInfo>
-			<Id>$application_GUID here$</Id>
-			<Resource>api://localhost:44355/$application_GUID here$</Resource>
+			<Id>ce44715c-8c4e-446b-879c-ea9ebe0f09c8</Id>
+			<Resource>ce44715c-8c4e-446b-879c-ea9ebe0f09c8</Resource>
 			<Scopes>
         <Scope>Files.Read.All</Scope>
 				<Scope>profile</Scope>				

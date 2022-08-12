@@ -333,7 +333,7 @@
             { height: 60, width: 30 }, function (result) {
                 console.log("Dialog has initialized. Wiring up events");
                 loginDialog = result.value;
-                loginDialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogMessageReceived, processMessage);
+                loginDialog.addEventHandler(Office.EventType.DialogMessageReceived, processMessage);
             });
     }
 
