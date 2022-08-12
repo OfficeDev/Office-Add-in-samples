@@ -1,6 +1,6 @@
 # Office Add-ins code samples
 
-Office Add-ins code samples are provided in this repo to help you learn, study, and built great Office Add-ins!
+Office Add-ins code samples are provided in this repo to help you learn, study, and build great Office Add-ins!
 
 ## Getting started
 
