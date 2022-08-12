@@ -3,13 +3,21 @@
 
 // This file shows how to open a dialog and process any results sent back to the task pane.
 
+const msalInstance = new msal.PublicClientApplication({
+    auth: {
+        clientId: "57b34432-e305-4b6d-9921-420a4c696a09",
+        redirectUri: "https://localhost:7283/Account/Authorize",
+        authority: "https://login.microsoftonline.com/organizations/"
+    }
+})
+
 var loginDialog;
 let storedCallbackFunction = null;
 let storedClientRequest = null;
 
 function dialogFallback(clientRequest) {
     storedClientRequest = clientRequest;
-    var url = "/dialog.html"; 
+    var url = "/Account/SignIn"; 
 	showLoginPopup(url);
 }
 
@@ -23,7 +31,8 @@ function processMessage(arg) {
         if (messageFromDialog.status === 'success') { 
             // We now have a valid access token.
             loginDialog.close();
-            storedClientRequest.accessToken = messageFromDialog.result;
+            // Exchange the SPA auth code for an access token.
+            storedClientRequest.accessToken = getTokenPopup(messageFromDialog.result);
             storedClientRequest.callbackFunction(storedClientRequest);            
         }
         else {
@@ -31,6 +40,24 @@ function processMessage(arg) {
             loginDialog.close();
             showMessage(JSON.stringify(error.toString()));
         }
+}
+
+///get Token
+function getTokenPopup(spaCode) {
+
+    var code = spaCode;
+    const scopes = ["file.read"];
+
+    console.log('MSAL: acquireTokenByCode hybrid parameters present');
+
+    var authResult = msalInstance.acquireTokenByCode({
+        code,
+        scopes
+    })
+    console.log(authResult);
+
+    return authResult
+
 }
 
 // Use the Office dialog API to open a pop-up and display the sign-in page for the identity provider.

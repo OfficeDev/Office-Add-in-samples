@@ -19,7 +19,7 @@ namespace OfficeAddinSSOWeb.Controllers
         [Route("")]
         [Route("Home")]
         [Route("Home/Index")]
-        public IActionResult Index()
+        public async Task<ActionResult> Index()
         {
             return View();
         }

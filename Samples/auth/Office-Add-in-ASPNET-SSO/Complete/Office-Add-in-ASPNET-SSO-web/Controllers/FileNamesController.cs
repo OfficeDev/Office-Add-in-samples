@@ -22,6 +22,7 @@ namespace OfficeAddinSSOWeb.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [RequiredScope("access_as_user")]
+    
     public class FileNamesController : Controller
     {
         public FileNamesController(ITokenAcquisition tokenAcquisition, GraphServiceClient graphServiceClient, IOptions<MicrosoftGraphOptions> graphOptions)
@@ -39,8 +40,9 @@ namespace OfficeAddinSSOWeb.Controllers
         {
             try
             {
-                // Get list of first 10 file names from user's OneDrive root folder.
-                var filelist = await _graphServiceClient.Me.Drive.Root.Children.Request().Select(u => new
+            // Get list of first 10 file names from user's OneDrive root folder.
+            
+            var filelist = await _graphServiceClient.Me.Drive.Root.Children.Request().Select(u => new
                 {
                     u.Name
                 }).Top(10).GetAsync();

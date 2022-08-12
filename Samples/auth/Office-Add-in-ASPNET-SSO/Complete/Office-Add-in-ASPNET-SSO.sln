@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Office-Add-in-ASPNET-SSO-web", "Office-Add-in-ASPNET-SSO-web\Office-Add-in-ASPNET-SSO-web.csproj", "{C2652268-9F06-4504-9CEB-C49EF09BE5DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OfficeAddinASPNETSSOweb", "Office-Add-in-ASPNET-SSO-web\OfficeAddinASPNETSSOweb.csproj", "{C2652268-9F06-4504-9CEB-C49EF09BE5DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office-Add-in-ASPNET-SSO-manifest", "Office-Add-in-ASPNET-SSO-manifest\Office-Add-in-ASPNET-SSO-manifest.csproj", "{E67B9448-E0DB-4A4B-B5F6-2DA56F94BCDC}"
 EndProject

@@ -15,6 +15,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
+builder.Services.AddSession(options =>
+{
+    options.Cookie.IsEssential = true;
+});
 
 var config = builder.Configuration;
 
@@ -41,6 +45,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 app.UseHttpsRedirection();
+
+app.UseSession();
 
 app.UseRouting();
 
