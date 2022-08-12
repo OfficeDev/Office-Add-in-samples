@@ -1,8 +1,6 @@
 # Office Add-ins code samples
 
-Office Add-ins code samples are provided in this repo to help you learn, study, and built great Office Add-ins!
-
-> Join us July 27th at 8:00 AM Pacific Time for a community panel discussion on samples. What do you want us to focus on over the next 6 months? Get the invite at https://aka.ms/officeaddinsamples-call.
+Office Add-ins code samples are provided in this repo to help you learn, study, and build great Office Add-ins!
 
 ## Getting started
 
@@ -86,10 +84,10 @@ To learn more about Office Add-ins, see the [Office Add-ins documentation](https
 
 Get a free sandbox, tools, and other resources you need to build solutions for the Microsoft 365 platform.
 
-- [Free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) Get a free, renewable 90-day Microsoft 365 E5 developer subscription.
-- [Sample data packs](https://developer.microsoft.com/microsoft-365/dev-program#Sample) Automatically configure your sandbox by installing user data and content to help you build your solutions.
-- [Access to experts](https://developer.microsoft.com/microsoft-365/dev-program#Experts) Access community events to learn from Microsoft 365 experts.
-- [Personalized recommendations](https://developer.microsoft.com/microsoft-365/dev-program#Recommendations) Find developer resources quickly from your personalized dashboard.
+* [Free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) Get a free, renewable 90-day Microsoft 365 E5 developer subscription.
+* [Sample data packs](https://developer.microsoft.com/microsoft-365/dev-program#Sample) Automatically configure your sandbox by installing user data and content to help you build your solutions.
+* [Access to experts](https://developer.microsoft.com/microsoft-365/dev-program#Experts) Access community events to learn from Microsoft 365 experts.
+* [Personalized recommendations](https://developer.microsoft.com/microsoft-365/dev-program#Recommendations) Find developer resources quickly from your personalized dashboard.
 
 ## Patterns and Practices community
 
