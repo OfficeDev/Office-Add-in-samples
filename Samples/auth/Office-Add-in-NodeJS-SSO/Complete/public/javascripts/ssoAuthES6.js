@@ -3,7 +3,7 @@
 
 // global to track if we are using SSO or the fallback auth.
 // To test fallback auth, set authSSO = false.
-let authSSO = false;
+let authSSO = true;
 
 // If the add-in is running in Internet Explorer, the code must add support
 // for Promises.
