@@ -46,8 +46,8 @@ router.get(
       // Return it to the client. On client side it will get handled in the fail callback of `makeWebServerApiCall`.
       if (graphData.code) {
         res
-          .status(500)
-          .send({ type: "Microsoft Graph", errorDetails: graphData });
+          .status(403)
+          .send({ type: "Microsoft Graph", errorDetails: "An error occurred while calling the Microsoft Graph API.\n" + graphData });
       } else {
         // MS Graph data includes OData metadata and eTags that we don't need.
         // Send only what is actually needed to the client: the item names.
@@ -65,9 +65,9 @@ router.get(
       // with "The provided value for the 'assertion' is not valid. The assertion has expired."
       // Construct an error message to return to the client so it can refresh the SSO token.
       if (err.errorMessage.indexOf("AADSTS500133") !== -1) {
-        res.status(500).send({ type: "AADSTS500133", errorDetails: err });
+        res.status(401).send({ type: "AADSTS500133", errorDetails: err });
       } else {
-        res.status(500).send({ type: "Unknown", errorDetails: err });
+        res.status(401).send({ type: "Unknown", errorDetails: err });
       }
     }
   }
