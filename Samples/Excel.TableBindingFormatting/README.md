@@ -1,4 +1,12 @@
-# Excel Task Pane Table Binding and Formatting #
+# [ARCHIVED] Excel Task Pane Table Binding and Formatting #
+
+**Note:** This sample is archived and no longer actively maintained. Security vulnerabilities may exist in the project, or its dependencies. If you plan to reuse or run any code from this repo, be sure to perform appropriate security checks on the code or dependencies first. Do not use this project as the starting point of a production Office Add-in. Always start your production code by using the Office/SharePoint development workload in Visual Studio, or the [Yeoman generator for Office Add-ins](https://github.com/OfficeDev/generator-office), and follow security best practices as you develop the add-in.
+
+For current samples, showing how to work with tables and formatting, see [Script Lab](https://docs.microsoft.com/office/dev/add-ins/overview/explore-with-script-lab).
+
+To restore the project dependencies, rename the following file.
+
+- Excel.TableBindingFormattingWeb/packages-archive.config -> Excel.TableBindingFormattingWeb/packages.config
 
 ### Summary ###
 This code sample demonstrates techniques for creating a table binding, adding rows to an existing binding, applying table styles and applying cell formatting.
