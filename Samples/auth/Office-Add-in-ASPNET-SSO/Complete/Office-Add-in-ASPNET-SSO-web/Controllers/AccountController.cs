@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Microsoft.Identity.Web;
 using Microsoft.Graph;
 using Microsoft.Identity.Client;
+using Microsoft.AspNetCore.Authorization;
 //using System.Web;
 
 namespace OfficeAddinSSOWeb.Controllers
@@ -16,13 +17,18 @@ namespace OfficeAddinSSOWeb.Controllers
     public class AccountController : Controller
     {
 
-        [Route("Account/SignIn")]
-        [AuthorizeForScopes(ScopeKeySection = "DownstreamApi:Scopes")]
-       public void SignIn()
+        [Route("Account/Authorize")]
+        // [AuthorizeForScopes(ScopeKeySection = "DownstreamApi:Scopes")]
+        [AllowAnonymous]
+        public ActionResult Authorize()
         {
-            var code = HttpContext.Session.GetString("OpenIdConnect");
-            var redirectUrl = Url.Action(nameof(AuthorizeComplete));
-            ViewBag.redirectUrl = redirectUrl;
+            //Return the view with code that will redirect to MicrosoftIdentity/Account/SignIn HTTP/1.1
+            ViewBag.redirectUrl = "/MicrosoftIdentity/Account/SignIn";
+            return View("Authorize");
+
+            //            var code = HttpContext.Session.GetString("OpenIdConnect");
+            //          var redirectUrl = Url.Action(nameof(AuthorizeComplete));
+            //        ViewBag.redirectUrl = redirectUrl;
         }
 
         [Route("Account/AuthorizeComplete")]

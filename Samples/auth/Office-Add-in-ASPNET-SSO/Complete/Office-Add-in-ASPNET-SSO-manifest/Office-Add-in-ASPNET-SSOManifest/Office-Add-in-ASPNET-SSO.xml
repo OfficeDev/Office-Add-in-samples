@@ -32,7 +32,7 @@
 		<Host Name="Workbook" />
 	</Hosts>
 	<DefaultSettings>
-		<SourceLocation DefaultValue="~remoteAppUrl/" />
+		<SourceLocation DefaultValue="~remoteAppUrl/Home" />
 	</DefaultSettings>
 	<!-- End TaskPane Mode integration.  -->
 
@@ -233,7 +233,7 @@
 				<bt:Image id="Contoso.tpicon_80x80" DefaultValue="~remoteAppUrl/Images/Button80x80.png" />
 			</bt:Images>
 			<bt:Urls>
-				<bt:Url id="Contoso.Taskpane.Url" DefaultValue="~remoteAppUrl/" />
+				<bt:Url id="Contoso.Taskpane.Url" DefaultValue="~remoteAppUrl/Home" />
 				<bt:Url id="Contoso.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
 			</bt:Urls>
 			<!-- ShortStrings max characters==125. -->

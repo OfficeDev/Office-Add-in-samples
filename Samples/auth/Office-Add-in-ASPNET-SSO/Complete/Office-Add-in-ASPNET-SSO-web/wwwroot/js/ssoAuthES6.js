@@ -14,6 +14,7 @@ if (!window.Promise) {
 Office.onReady(function (info) {
     $(function () {
         $("#getFileNameListButton").on("click", getFileNameList);
+        $("#signInButton").on("click", dialogFallback);
     });
 });
 

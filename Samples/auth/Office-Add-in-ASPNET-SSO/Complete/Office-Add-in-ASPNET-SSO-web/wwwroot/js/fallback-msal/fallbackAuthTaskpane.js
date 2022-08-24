@@ -3,7 +3,7 @@
 
 // This file shows how to open a dialog and process any results sent back to the task pane.
 
-const msalInstance = new msal.PublicClientApplication({
+const msalInstance2 = new msal.PublicClientApplication({
     auth: {
         clientId: "57b34432-e305-4b6d-9921-420a4c696a09",
         redirectUri: "https://localhost:7283/Account/Authorize",
@@ -15,9 +15,9 @@ var loginDialog;
 let storedCallbackFunction = null;
 let storedClientRequest = null;
 
-function dialogFallback(clientRequest) {
-    storedClientRequest = clientRequest;
-    var url = "/Account/SignIn"; 
+function dialogFallback(/*clientRequest*/) {
+    //storedClientRequest = clientRequest;
+    var url = "/MicrosoftIdentity/Account/SignIn";
 	showLoginPopup(url);
 }
 
@@ -26,13 +26,19 @@ function dialogFallback(clientRequest) {
 function processMessage(arg) {
 
     console.log("Message received in processMessage");
-    let messageFromDialog = JSON.parse(arg.message);
+    //let messageFromDialog = JSON.parse(arg.message);
 
         if (messageFromDialog.status === 'success') { 
-            // We now have a valid access token.
+            // We now have a valid SPA auth code.
             loginDialog.close();
             // Exchange the SPA auth code for an access token.
-            storedClientRequest.accessToken = getTokenPopup(messageFromDialog.result);
+            const accessScope = "api://" + window.location.host + "/" + msalInstance2.clientId + "/access_as_user";
+            const scopes = [accessScope];
+
+            const tokenResponse = await getTokenFromCache(scopes);
+
+            storedClientRequest.accessToken = tokenResponse;
+            //storedClientRequest.accessToken = getTokenPopup(messageFromDialog.result);
             storedClientRequest.callbackFunction(storedClientRequest);            
         }
         else {

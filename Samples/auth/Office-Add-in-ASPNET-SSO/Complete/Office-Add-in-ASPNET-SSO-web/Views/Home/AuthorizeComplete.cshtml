@@ -1,0 +1,146 @@
+﻿@*Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in the root of the repo.*@
+@using Microsoft.Extensions.Configuration
+@using System.Text
+@using Microsoft.Identity.Web
+@inject IConfiguration Configuration
+
+@{
+    Layout = null;
+}    
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <!-- msal.min.js can be used in the place of msal.js; included msal.js to make debug easy -->
+    <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.20.0/js/msal-browser.js"></script>
+
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+
+   
+</head>
+
+<body>
+      <p>Hopefully an SPA code arrived...</p>
+</body>
+
+<script>
+    const msalInstance = new msal.PublicClientApplication({
+        auth: {
+    @{
+        var clientId = Configuration["AzureAd:ClientId"];
+        var instance = Configuration["AzureAd:Instance"];
+        var domain = Configuration["AzureAd:Domain"];
+        var redirectUri = Configuration["SpaRedirectUri"];
+
+        @Html.Raw($"clientId: '{clientId}',")
+        ;
+        @Html.Raw($"redirectUri: '{redirectUri}',")
+        ;
+        @Html.Raw($"authority: '{instance}{domain}',")
+        ;
+    }
+                },
+    cache: {
+        cacheLocation: 'sessionStorage',
+            storeAuthStateInCookie: false,
+                    }
+                });
+    var spaAuthCode = '';
+    (function () {
+    @{
+        Context.Session.TryGetValue(Constants.SpaAuthCode, out var spaCode);
+        if (spaCode is not null && !string.IsNullOrEmpty(Encoding.Default.GetString(spaCode)))
+        {
+                        @Html.Raw($"spaAuthCode = '{Encoding.Default.GetString(spaCode)}';")
+            ;
+            Context.Session.Remove(Constants.SpaAuthCode);
+        }
+        else
+        {
+                        @Html.Raw($"spaAuthCode = '';")
+            ;
+        }
+    }
+    if (!!spaAuthCode) {
+        msalInstance
+            .handleRedirectPromise()
+            .then(result => {
+                if (result) {
+                    console.log('MSAL: Returning from login');
+                    document.dispatchEvent(new Event('AUTHENTICATED'));
+                    return result;
+                }
+
+                const timeLabel = "Time for acquireTokenByCode";
+                console.time(timeLabel);
+                console.log('MSAL: acquireTokenByCode hybrid parameters present');
+
+                return msalInstance.acquireTokenByCode({
+                    spaAuthCode,
+                    scopes,
+                })
+                    .then(result => {
+                        console.timeEnd(timeLabel);
+                        console.log('MSAL: acquireTokenByCode completed successfully', result);
+                        document.dispatchEvent(new Event('AUTHENTICATED'));
+                    })
+                    .catch(error => {
+                        console.timeEnd(timeLabel);
+                        console.error('MSAL: acquireTokenByCode failed', error);
+                        if (error instanceof msal.InteractionRequiredAuthError) {
+                            console.log('MSAL: acquireTokenByCode failed, redirecting');
+
+    @{
+        if (User.Identity is not null)
+        {
+            @Html.Raw($"const username = '{User.Identity.Name}';")
+            ;
+        }
+        else
+        {
+            @Html.Raw($"const username = '';")
+            ;
+        }
+    }
+
+                                                const account = msalInstance.getAllAccounts()
+                                .find(account => account.username === username);
+
+                            return msalInstance.acquireTokenRedirect({
+                                account,
+                                scopes
+                            });
+                        }
+                    });
+            })
+    }
+    else {
+        document.dispatchEvent(new Event('AUTHENTICATED'));
+    }
+            }) ();
+
+
+
+
+
+
+    Office.onReady(function () {
+        //getSPACode();
+        console.log("Sending auth complete message through dialog: " + spaAuthCode);
+       // Office.context.ui.messageParent(spaAuthCode);
+    });
+      
+</script>
+</html>
+
+
+
+
+
