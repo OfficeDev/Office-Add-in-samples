@@ -10,7 +10,7 @@ languages:
 extensions:
   contentType: samples
   technologies: Add-ins
-  createdDate: '08/18/2022 00:05:00 PM'
+  createdDate: '08/25/2022 11:13:00 PM'
 description: 'Create a Blazor Webassembly Outlook add-in showcasing some samples.'
 ---
 
@@ -36,9 +36,11 @@ This sample shows how to build a Outlook add-in using .NET Blazor technologies. 
 
 1. Download or clone the [Office Add-ins samples repository](https://github.com/OfficeDev/Office-Add-in-samples).
 1. Open Visual Studio 2022 and open the: **Office-Add-in-samples\Samples\blazor-add-in\outlook-blazor-add-in\outlook-blazor-add-in.sln** solution.
+1. Select Project **outlook-blazor-sideloader** and select **Office Desktop Client** to run the demo.
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
 1. When Outlook opens, choose **Home** > **Show Taskpane**.
 
+The first time you run this demo, you need to enter the Outlook credentials for the account that you want to access.
 Next, try out the controls.
 
 ## Understand an Office Add-in in Blazor Context
@@ -48,13 +50,13 @@ Building the Office Add-in as a Blazor Webassembly allows you to build a .NET Co
 
 ## Key parts of this sample
 
-This sample uses a Blazor Webassembly file that runs cross-platform in various browsers supporting WASM (Webassembly). The Blazor WASM App demonstrates some basic Outlook functions using paragraphs and content controls including event handlers.
+This sample uses a Blazor Webassembly file that runs cross-platform in various browsers supporting WASM (Webassembly). The Blazor WASM App demonstrates some basic Outlook functions to read attachments in email items.
 
 The purpose of this sample is to show you how to build and interact with the Blazor, C# and JavaScript Interop options. If you're looking for more examples of interacting with Outlook and Office JS APIs, see [Script Lab](https://aka.ms/getscriptlab).
 
 ### Blazor pages
 
-The **Pages** folder contains the Blazor pages, such as **HelloWorld.razor**. Each **.razor** page also contain two code-behind pages, for example, named **HelloWorld.razor.cs** and **HelloWorld.razor.js**. The C# file first establishes an interop connection with the JavaScript file.
+The **Pages** folder contains the Blazor pages, such as **Index.razor**. Each **.razor** page also contain two code-behind pages, for example, named **Index.razor.cs** and **Index.razor.js**. The C# file first establishes an interop connection with the JavaScript file.
 
 ```csharp
 protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -66,35 +68,42 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
 }
 ```
 
-For any events that need to interact with the Office document, the C# file calls through interop to the JavaScript file.
+For any events that need to interact with the Outlook mail item, the C# file calls through interop to the JavaScript file.
 
 ```csharp
-private async Task InsertParagraph() =>
-  await JSModule.InvokeVoidAsync("insertParagraph");
+private async Task<MailRead?> GetEmailData()
+{
+    MailRead? mailreaditem = await JSModule.InvokeAsync<MailRead>("getEmailData");
+
+    Console.WriteLine("Subject C#: ");
+    Console.WriteLine(mailreaditem?.Subject);
+
+    return mailreaditem;
+}
 ```
 
-The JavaScript runs the code to interact with the document and returns.
+The JavaScript runs the code to interact with the document and returns (see full code in the sample).
 
 ```javascript
-export function insertParagraph() {
-  return Outlook.run((context) => {
-    // insert a paragraph at the start of the document.
-    const paragraph = context.document.body.insertParagraph(
-      'Hello World from Blazor',
-      Outlook.InsertLocation.start
-    );
+export async function getEmailData() {
 
-    // sync the context to run the previous API call, and return.
-    return context.sync();
-  });
+    try {
+        console.log(`Reading mailbox item`);
+        const item = Office.context.mailbox.item;
+        ...
+    } catch (err) {
+        console.error(`Index.razor.js(getEmailData) Catch Exception: ${err}`);
+        subject = `${err}`;
+        return { Subject: subject };
+    }
 }
 ```
 
 The fundamental pattern includes the following steps.
 
 1. Call **JSRuntime.InvokeAsync** to set up the interop between C# and JavaScript.
-1. Use **JSModule.InvokeVoidAsync** to call JavaScript functions from your C# code.
-1. Call Office JS APIs to interact with the document from JavaScript code.
+1. Use **JSModule.InvokeVoidAsync/JSModule.InvokeAsync** to call JavaScript functions from your C# code.
+1. Call Office JS APIs to interact with the Outlook items from JavaScript code.
 
 ## Questions and comments
 
@@ -111,11 +120,11 @@ We'd love to get your feedback about this sample. Please send your feedback to u
 
 | Version | Date            | Comments        |
 | ------- | --------------- | --------------- |
-| 1.0     | August 18, 2022 | Initial release |
+| 1.0     | August 25, 2022 | Initial release |
 
 ## Copyright
 
-Copyright(c) Maarten van Stam and Eric Legault. All rights reserved.Licensed under the MIT License.
+Copyright(c) Maarten van Stam and Eric Legault. All rights reserved. Licensed under the MIT License.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
