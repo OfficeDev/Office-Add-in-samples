@@ -37,6 +37,8 @@ This sample shows how to build a Outlook add-in using .NET Blazor technologies. 
 1. Download or clone the [Office Add-ins samples repository](https://github.com/OfficeDev/Office-Add-in-samples).
 1. Open Visual Studio 2022 and open the: **Office-Add-in-samples\Samples\blazor-add-in\outlook-blazor-add-in\outlook-blazor-add-in.sln** solution.
 1. Select Project **outlook-blazor-sideloader** and select **Office Desktop Client** to run the demo.
+1. Enter your email address of the account use in the **Email Address** property of the **outlook-blazor-sideloader** project.
+1. This will also enable the **Use multi-factor auth** to **true**   
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
 1. When Outlook opens, choose **Home** > **Show Taskpane**.
 
