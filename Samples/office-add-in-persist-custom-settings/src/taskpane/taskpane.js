@@ -1,62 +1,65 @@
-/*
- * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
- * See LICENSE in the project root for license information.
- */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
 /* global console, document, Office, fabric */
 
-// StorageManager tracks which methods to call when
-// managing settings. When the user changes which storage
-// type to use, this object is updated to point to the corresponding
-// save and get methods.
+/** StorageManager tracks which methods to call when
+ * managing settings. When the user changes which storage
+ * type to use, this object is updated to point to the corresponding
+ * save and get methods. On start, the default is to use the property bag.
+ */
 const StorageManager = {
-  // Defaults to property bag to manage settings
   mode: "PropertyBag",
   setSetting: saveToPropertyBag,
   getSetting: getFromPropertyBag,
 };
 
 Office.onReady(() => {
-  document.getElementById("storageOptions").onchange = setStorageMode;
-
-  // Initialize text fields.
+  // Initialize Fabric UI text fields.
   const TextFieldElements = document.querySelectorAll(".ms-TextField");
   for (let i = 0; i < TextFieldElements.length; i++) {
     new fabric["TextField"](TextFieldElements[i]);
   }
 
-  // Initialize buttons.
+  // Initialize Fabric UI button that saves a new setting.
   let button = document.getElementById("saveSetting");
   new fabric["Button"](button, () => {
     const name = document.getElementById("setName").value;
     const value = document.getElementById("setValue").value;
-    console.log(name);
-    console.log(value);
     StorageManager.setSetting(name, value);
   });
 
+  //Initialize Fabric UI button that gets a setting value.
   button = document.getElementById("getSetting");
   new fabric["Button"](button, () => {
     const name = document.getElementById("getName").value;
-    var v = StorageManager.getSetting(name);
-    showToast("Retrieved setting information KEY: " + name + " VALUE: " + v);
-    console.log(v);
+    const value = StorageManager.getSetting(name);
+    displayStatusMessage("Retrieved setting information KEY: " + name + " VALUE: " + value);
   });
 
-  // Initialize dropdown.
-  var DropdownHTMLElements = document.querySelectorAll(".ms-Dropdown");
-  for (var i = 0; i < DropdownHTMLElements.length; ++i) {
+  // Initialize dropdown with storage options.
+  const DropdownHTMLElements = document.querySelectorAll(".ms-Dropdown");
+  for (let i = 0; i < DropdownHTMLElements.length; ++i) {
     let Dropdown = new fabric["Dropdown"](DropdownHTMLElements[i]);
     console.log(Dropdown);
   }
+  // Configure event handler for when storage options are changed.
+  document.getElementById("storageOptions").onchange = setStorageMode;
 });
 
+/**
+ * Sets the storage mode to match what the user chose in the drop down of options.
+ * StorageManager contains two function pointers to set or get values.
+ * The function pointers are updated to match the user selection.
+ * For example, if the user chooses browser cookies, the methods will
+ * point to saveToBrowserCookies, and getFromBrowserCookies.
+ */
 function setStorageMode() {
-  // Get the selected option fromt the drop-down list.
-  var selectionList = document.getElementById("storageOptions");
-  var index = selectionList.selectedIndex;
-  var modeSelected = selectionList.options[index];
-  var mode = modeSelected.value;
+  // Get the selected option from the drop-down list.
+  const selectionList = document.getElementById("storageOptions");
+  const index = selectionList.selectedIndex;
+  const modeSelected = selectionList.options[index];
+  const mode = modeSelected.value;
   StorageManager.mode = mode;
 
   try {
@@ -73,7 +76,7 @@ function setStorageMode() {
           StorageManager.setSetting = saveToBrowserCookies;
           StorageManager.getSetting = getFromBrowserCookies;
         } else {
-          var browserError = { name: "Error", message: "Browser cookies are disabled. You may want to enable them." };
+          const browserError = { name: "Error", message: "Browser cookies are disabled. You may want to enable them." };
           throw browserError;
         }
         break;
@@ -84,7 +87,7 @@ function setStorageMode() {
           StorageManager.setSetting = saveToLocalStorage;
           StorageManager.getSetting = getFromLocalStorage;
         } else {
-          var webStorageError = { name: "Error", message: "Browser storage not available in your browser (sorry)." };
+          const webStorageError = { name: "Error", message: "Browser storage not available in your browser (sorry)." };
           throw webStorageError;
         }
         break;
@@ -95,8 +98,8 @@ function setStorageMode() {
           StorageManager.setSetting = saveToSessionStorage;
           StorageManager.getSetting = getFromSessionStorage;
         } else {
-          var webStorageError2 = { name: "Error", message: "Browser storage not available in your browser (sorry)." };
-          throw webStorageError2;
+          const webStorageError = { name: "Error", message: "Browser storage not available in your browser (sorry)." };
+          throw webStorageError;
         }
         break;
 
@@ -106,11 +109,12 @@ function setStorageMode() {
         StorageManager.getSetting = getFromDocument;
         break;
     }
-    showToast("Switched storage type to " + mode);
+    displayStatusMessage("Switched storage type to " + mode);
   } catch (err) {
-    showToast(err.name + ":" + err.message);
+    displayStatusMessage(err.name + ":" + err.message);
   }
 }
+
 // Stores the settings in the JavaScript APIs for Office property bag.
 async function saveToPropertyBag(key, value) {
   // Note that Project does not support the settings object.
@@ -119,7 +123,7 @@ async function saveToPropertyBag(key, value) {
     Office.context.document.settings.set(key, value);
     await Office.context.document.settings.saveAsync();
   } else {
-    var unsupportedError = {
+    const unsupportedError = {
       name: "Error: Feature not supported",
       message: "The settings object is not supported in this host application.",
     };
@@ -132,11 +136,10 @@ function getFromPropertyBag(key) {
   // Note that Project does not support the settings object.
   // Need to check that the settings object is available before setting.
   if (Office.context.document.settings) {
-    var value = null;
-    value = Office.context.document.settings.get(key);
+    const value = Office.context.document.settings.get(key);
     return value;
   } else {
-    var unsupportedError = {
+    const unsupportedError = {
       name: "Error: Feature not supported",
       message: "The settings object is not supported in this host application.",
     };
@@ -151,9 +154,9 @@ function saveToBrowserCookies(key, value) {
 
 // Retrieves the specified setting from the browser cookies.
 function getFromBrowserCookies(key) {
-  var cookies = {};
-  var all = document.cookie;
-  var value = null;
+  const cookies = {};
+  const all = document.cookie;
+  let value;
 
   if (all === "") {
     return cookies;
@@ -181,7 +184,7 @@ function saveToLocalStorage(_key, _value) {
 
 // Retrieves the specified setting from local storage (Web Storage that doesn't expire).
 function getFromLocalStorage(_key) {
-  var value = localStorage.getItem(_key);
+  const value = localStorage.getItem(_key);
   return value;
 }
 
@@ -192,14 +195,14 @@ function saveToSessionStorage(_key, _value) {
 
 // Retrieves the specified setting from session storage (Web Storage limited to the lifetime of the browser window).
 function getFromSessionStorage(_key) {
-  var value = sessionStorage.getItem(_key);
+  const value = sessionStorage.getItem(_key);
   return value;
 }
 
 // Stores the settings in a hidden <div> added to the document.
 function saveToDocument(key, value) {
-  var hiddenStorage = null;
-  var hiddenName = "hiddenstorage";
+  let hiddenStorage = null;
+  const hiddenName = "hiddenstorage";
 
   if (document.getElementById(hiddenName) == null) {
     hiddenStorage = document.createElement("div");
@@ -222,16 +225,16 @@ function saveToDocument(key, value) {
 
 // Retrieves the specified setting from a hidden <div> in the document.
 function getFromDocument(key) {
-  var value = null;
+  let value;
 
   if (document.getElementById(key) != null) {
-    var valueNode = document.getElementById(key);
+    const valueNode = document.getElementById(key);
     value = valueNode.innerHTML;
   }
 
   return value;
 }
 
-function showToast(message) {
+function displayStatusMessage(message) {
   document.getElementById("bannerText").innerText = message;
 }

@@ -24,9 +24,8 @@
 </head>
 
 <body>
-    <h1 class="ms-font-xxl" id="page">Set and get settings</h1>
     <div id="set">
-        <h2 class="ms-font-xl">Set a key/value pair</h2>
+        <h2 class="ms-font-xl">Create a new setting</h2>
         <div class="ms-TextField">
             <label class="ms-Label">Name</label>
             <input id="setName" class="ms-TextField-field" type="text" value="" placeholder="">
@@ -36,7 +35,7 @@
             <input id="setValue" class="ms-TextField-field" type="text" value="" placeholder="">
         </div>
         <button id="saveSetting" class="ms-Button">
-            <span class="ms-Button-label">Save setting</span>
+            <span class="ms-Button-label">Create setting</span>
         </button>
     </div>
 
@@ -52,8 +51,9 @@
     </div>
 
     <div id="storageSection">
+        <h2 class="ms-font-xl">Storage type</h2>
         <div class="ms-Dropdown" tabindex="0">
-            <label class="ms-Label">Storage type</label>
+          
             <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown"></i>
             <select id="storageOptions" class="ms-Dropdown-select">
                 <option value="PropertyBag">Property bag</option>
@@ -71,9 +71,7 @@
                 <i class="ms-Icon ms-Icon--Info"></i>
             </div>
             <div id="bannerText" class="ms-MessageBar-text">
-                Lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.
-                <br />
-                <a href="#" class="ms-Link">Hyperlink string</a>
+                Try creating a new setting, or getting an existing value.
             </div>
         </div>
     </div>
