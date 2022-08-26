@@ -1,0 +1,82 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title>Set and get settings from the task pane</title>
+
+    <!-- Fabric UI -->
+    <link rel="stylesheet"
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.min.css" />
+    <link rel="stylesheet"
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/css/fabric.components.min.css" />
+    <script src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-js/1.4.0/js/fabric.min.js"></script>
+
+    <!-- Office JS API -->
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+    <!-- Local files -->
+
+</head>
+
+<body>
+    <h1 class="ms-font-xxl" id="page">Set and get settings</h1>
+    <div id="set">
+        <h2 class="ms-font-xl">Set a key/value pair</h2>
+        <div class="ms-TextField">
+            <label class="ms-Label">Name</label>
+            <input id="setName" class="ms-TextField-field" type="text" value="" placeholder="">
+        </div>
+        <div class="ms-TextField">
+            <label class="ms-Label">Value</label>
+            <input id="setValue" class="ms-TextField-field" type="text" value="" placeholder="">
+        </div>
+        <button id="saveSetting" class="ms-Button">
+            <span class="ms-Button-label">Save setting</span>
+        </button>
+    </div>
+
+    <div id="get">
+        <h2 class="ms-font-xl">Get a setting</h2>
+        <div class="ms-TextField">
+            <label class="ms-Label">Name</label>
+            <input id="getName" class="ms-TextField-field" type="text" value="" placeholder="">
+        </div>
+        <button id="getSetting" class="ms-Button">
+            <span class="ms-Button-label">Get setting</span>
+        </button>
+    </div>
+
+    <div id="storageSection">
+        <div class="ms-Dropdown" tabindex="0">
+            <label class="ms-Label">Storage type</label>
+            <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown"></i>
+            <select id="storageOptions" class="ms-Dropdown-select">
+                <option value="PropertyBag">Property bag</option>
+                <option value="Cookies">Browser cookies</option>
+                <option value="LocalStorage">Browser local storage</option>
+                <option value="SessionStorage">Browser session storage</option>
+                <option value="Document">HTML document div</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="ms-MessageBar">
+        <div class="ms-MessageBar-content">
+            <div class="ms-MessageBar-icon">
+                <i class="ms-Icon ms-Icon--Info"></i>
+            </div>
+            <div id="bannerText" class="ms-MessageBar-text">
+                Lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.
+                <br />
+                <a href="#" class="ms-Link">Hyperlink string</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
