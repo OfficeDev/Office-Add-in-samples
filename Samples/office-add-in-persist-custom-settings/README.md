@@ -26,7 +26,7 @@ This sample shows how to save custom settings inside an Office Add-in. The add-i
 
 ## Prerequisites
 
-- Microsoft 365
+- Microsoft 365 - You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
 ## Run the sample
 
