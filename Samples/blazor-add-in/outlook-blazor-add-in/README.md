@@ -16,13 +16,13 @@ description: 'Create a Blazor Webassembly Outlook add-in showcasing some samples
 
 # Create a Blazor Webassembly Outlook add-in
 
-This sample shows how to build a Outlook add-in using .NET Blazor technologies. Blazor Webassembly allows you to build Office Add-ins using .NET, C#, and JavaScript to interact with the Office JS API. The add-in uses JavaScript to work with the document and Office JS APIs, but you build the user interface and all other non-Office interactions in C# and .NET Core Blazor technologies.
+This sample shows how to build an Outlook add-in using .NET Blazor technologies. Blazor Webassembly allows you to build Office Add-ins using .NET, C#, and JavaScript to interact with the Office JavaScript API. The add-in uses JavaScript to work with the document and Office JS APIs, but you build the user interface and all other non-Office interactions in C# and .NET Core Blazor technologies.
 
-- Work with Blazor Webassembly in the context of Office.
-- Build cross-platform Office Add-ins using Blazor, C# and JavaScript Interop.
-- Initialize the Office JavaScript API library in Blazor context.
-- Interact with Outlook to manipulate paragraphs and content controls.
-- Interact with document content through Office JavaScript APIs.
+Working with Blazor Webassembly in the framework of Office, you can:
+- Build cross-platform Office Add-ins using Blazor, C#, and JavaScript Interop
+- Initialize the Office JavaScript API library in Blazor context
+- Interact with Outlook to manipulate paragraphs and content controls
+- Interact with document content through Office JavaScript APIs
 
 ## Applies to
 
@@ -35,14 +35,12 @@ This sample shows how to build a Outlook add-in using .NET Blazor technologies. 
 ## Run the sample
 
 1. Download or clone the [Office Add-ins samples repository](https://github.com/OfficeDev/Office-Add-in-samples).
-1. Open Visual Studio 2022 and open the: **Office-Add-in-samples\Samples\blazor-add-in\outlook-blazor-add-in\outlook-blazor-add-in.sln** solution.
-1. Select Project **outlook-blazor-sideloader** and select **Office Desktop Client** to run the demo.
-1. Enter your email address of the account use in the **Email Address** property of the **outlook-blazor-sideloader** project.
-1. This will also enable the **Use multi-factor auth** to **true**   
-1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
+1. Open Visual Studio 2022 and open the **Office-Add-in-samples\Samples\blazor-add-in\outlook-blazor-add-in\outlook-blazor-add-in.sln** solution.
+1. To run the demo, select Project **outlook-blazor-sideloader** and select **Office Desktop Client**.
+1. The first time you run the demo, enter the email address of the account you want to access in the **Email Address** property of the **outlook-blazor-sideloader** project. This sets the **Use multi-factor auth** to **true**.   
+1. To start the solution, choose **Debug** > **Start Debugging** or press **F5**.
 1. When Outlook opens, choose **Home** > **Show Taskpane**.
 
-The first time you run this demo, you need to enter the Outlook credentials for the account that you want to access.
 Next, try out the controls.
 
 ## Understand an Office Add-in in Blazor Context
