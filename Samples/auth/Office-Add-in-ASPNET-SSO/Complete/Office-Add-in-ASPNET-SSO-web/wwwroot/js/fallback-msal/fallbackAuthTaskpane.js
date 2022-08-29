@@ -15,8 +15,8 @@ var loginDialog;
 let storedCallbackFunction = null;
 let storedClientRequest = null;
 
-function dialogFallback(/*clientRequest*/) {
-    //storedClientRequest = clientRequest;
+function dialogFallback(clientRequest) {
+    storedClientRequest = clientRequest;
     var url = "/MicrosoftIdentity/Account/SignIn";
 	showLoginPopup(url);
 }
@@ -26,19 +26,19 @@ function dialogFallback(/*clientRequest*/) {
 function processMessage(arg) {
 
     console.log("Message received in processMessage");
-    //let messageFromDialog = JSON.parse(arg.message);
+    let messageFromDialog = JSON.parse(arg.message);
 
         if (messageFromDialog.status === 'success') { 
             // We now have a valid SPA auth code.
             loginDialog.close();
             // Exchange the SPA auth code for an access token.
-            const accessScope = "api://" + window.location.host + "/" + msalInstance2.clientId + "/access_as_user";
-            const scopes = [accessScope];
+      //      const accessScope = "api://" + window.location.host + "/" + msalInstance2.clientId + "/access_as_user";
+        //    const scopes = [accessScope];
 
-            const tokenResponse = await getTokenFromCache(scopes);
+          //  const tokenResponse = await getTokenFromCache(scopes);
 
-            storedClientRequest.accessToken = tokenResponse;
-            //storedClientRequest.accessToken = getTokenPopup(messageFromDialog.result);
+            //storedClientRequest.accessToken = tokenResponse;
+            storedClientRequest.accessToken = messageFromDialog.accessToken;
             storedClientRequest.callbackFunction(storedClientRequest);            
         }
         else {

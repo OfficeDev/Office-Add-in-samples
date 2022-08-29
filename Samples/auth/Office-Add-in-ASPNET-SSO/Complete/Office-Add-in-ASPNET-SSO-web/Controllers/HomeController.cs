@@ -5,37 +5,31 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using OfficeAddinSSOWeb.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Graph.ExternalConnectors;
 
 namespace OfficeAddinSSOWeb.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+      
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
         
-
-
         [Route("")]
         [AllowAnonymous]
         // temp for handling the oidc redirect but change this later.
-        public async Task<ActionResult> RootAuth()
-        {
-            var code = HttpContext.Session.GetString("OpenIdConnect");
-            var spaAuthCode = HttpContext.Session.GetString("Spa_Auth_Code");
-
-            ViewBag.SpaAuthCode = spaAuthCode;
-
+        public ActionResult RootAuth()
+        {           
             return View("AuthorizeComplete");
         }
 
         [Route("Home")]
         [Route("Home/Index")]
         [AllowAnonymous]
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             return View();
         }

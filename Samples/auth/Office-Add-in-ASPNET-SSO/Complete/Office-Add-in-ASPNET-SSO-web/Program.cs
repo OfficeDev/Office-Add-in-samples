@@ -6,6 +6,7 @@
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Graph.ExternalConnectors;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 
@@ -23,16 +24,18 @@ var initialScopes = builder.Configuration.GetSection("DownstreamApi:Scopes")
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
     .AddMicrosoftIdentityWebApp(builder.Configuration)
     .EnableTokenAcquisitionToCallDownstreamApi(initialScopes)
-    .AddDistributedTokenCaches();
+    .AddDistributedTokenCaches()
+    .AddMicrosoftGraph(builder.Configuration.GetSection("DownstreamApi"));
 
-builder.Services.AddControllersWithViews(options =>
-{
-    var policy = new AuthorizationPolicyBuilder()
-        .RequireAuthenticatedUser()
-        .Build();
+builder.Services.AddControllersWithViews().AddMicrosoftIdentityUI();
+//builder.Services.AddControllersWithViews(options =>
+//{
+//    var policy = new AuthorizationPolicyBuilder()
+//        .RequireAuthenticatedUser()
+//        .Build();
 
-    options.Filters.Add(new AuthorizeFilter(policy));
-}).AddMicrosoftIdentityUI();
+//    options.Filters.Add(new AuthorizeFilter(policy));
+//}).AddMicrosoftIdentityUI();
 
 builder.Services.AddRazorPages();
 

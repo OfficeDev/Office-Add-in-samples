@@ -67,7 +67,7 @@ async function callWebServer(clientRequest) {
         const data = await $.ajax({
             type: clientRequest.verb,
             url: clientRequest.url,
-            headers: { Authorization: "Bearer " + clientRequest.accessToken },
+            headers: {"Authorization": "Bearer " + clientRequest.accessToken},            
             cache: false
         });
         clientRequest.callbackRESTApiHandler(data);
@@ -82,6 +82,9 @@ async function callWebServer(clientRequest) {
                         type: clientRequest.verb,
                         url: clientRequest.url,
                         headers: { Authorization: "Bearer " + clientRequest.accessToken },
+                        xhrFields: {
+                            withCredentials: true
+                        },
                         cache: false
                     });
                     clientRequest.callbackRESTApiHandler(data);

@@ -9,19 +9,20 @@ using System.Linq;
 using System.Net;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.Graph;
-using Microsoft.Identity.Client;
+//using Microsoft.Identity.Client;
 using Microsoft.Identity.Web;
+
 using Microsoft.Identity.Web.Resource;
 
 namespace OfficeAddinSSOWeb.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
-    [RequiredScope("access_as_user")]
+//    [RequiredScope("access_as_user")]
     
     public class FileNamesController : Controller
     {
@@ -35,6 +36,8 @@ namespace OfficeAddinSSOWeb.Controllers
         private readonly GraphServiceClient _graphServiceClient;
         private readonly IOptions<MicrosoftGraphOptions> _graphOptions;
 
+        // [Authorize]
+        [RequiredScope("access_as_user")]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -52,14 +55,13 @@ namespace OfficeAddinSSOWeb.Controllers
                 foreach (var file in filelist)
                 {
                     files.Add(file.Name);
-                }
-
+                }                
                 return Ok(files);
             }
-            catch (MsalException ex)
-            {
-                return StatusCode((int)HttpStatusCode.Unauthorized, "An authentication error occurred while acquiring a token for the Microsoft Graph API.\n" + ex.ErrorCode + "\n" + ex.Message);
-            }
+            //catch (MsalException ex)
+            //{
+            //    return StatusCode((int)HttpStatusCode.Unauthorized, "An authentication error occurred while acquiring a token for the Microsoft Graph API.\n" + ex.ErrorCode + "\n" + ex.Message);
+            //}
             catch (Exception ex)
             {
                 if (ex.InnerException is MicrosoftIdentityWebChallengeUserException challengeException)

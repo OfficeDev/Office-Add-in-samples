@@ -1,11 +1,11 @@
-﻿using Microsoft.Owin.Security.OpenIdConnect;
+﻿//using Microsoft.Owin.Security.OpenIdConnect;
 //using Microsoft.Owin.Security;
 //using Microsoft.Owin.Host.SystemWeb;
 using OfficeAddinSSOWeb;
 //using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 using Microsoft.Identity.Web;
 using Microsoft.Graph;
 using Microsoft.Identity.Client;
@@ -16,10 +16,10 @@ namespace OfficeAddinSSOWeb.Controllers
 {
     public class AccountController : Controller
     {
-
+       
         [Route("Account/Authorize")]
         // [AuthorizeForScopes(ScopeKeySection = "DownstreamApi:Scopes")]
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult Authorize()
         {
             //Return the view with code that will redirect to MicrosoftIdentity/Account/SignIn HTTP/1.1
@@ -33,12 +33,13 @@ namespace OfficeAddinSSOWeb.Controllers
 
         [Route("Account/AuthorizeComplete")]
 
-        public async Task<ActionResult> AuthorizeComplete()
+        //temp moved to Home RootAuth controller (don't use this one)
+        public ActionResult AuthorizeComplete()
         {
-            var code = HttpContext.Session.GetString("OpenIdConnect");
-            var spaAuthCode = HttpContext.Session.GetString("Spa_Auth_Code");
+            //var code = HttpContext.Session.GetString("OpenIdConnect");
+            //var spaAuthCode = HttpContext.Session.GetString("Spa_Auth_Code");
 
-            ViewBag.SpaAuthCode = spaAuthCode;
+          //  ViewBag.ClientId = configuration.GetValue<string>("AzureId:ClientId");
 
             return View("AuthorizeComplete");
         }

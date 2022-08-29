@@ -26,6 +26,7 @@
 
     <script src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js'></script>
     <script src="https://alcdn.msauth.net/browser/2.22.0/js/msal-browser.min.js"></script>
+    <script src="~/js/message-helper.js"></script>
     <script src="~/js/fallback-msal/fallbackAuthTaskpane.js"></script>
     <script src="~/js/ssoAuthES6.js"></script>
 
@@ -75,7 +76,8 @@
                     if (error instanceof msal.InteractionRequiredAuthError) {
                         return msalInstance.acquireTokenRedirect({
                             account,
-                            scopes
+                            scopes,
+                            "extraScopesToConsent": ["files.read"]
                         });
                     }
                 });
