@@ -26,7 +26,7 @@ This sample shows how to save custom settings inside an Office Add-in. The add-i
 
 ## Prerequisites
 
-- Microsoft 365 - You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
+- Microsoft 365 - Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
 ## Run the sample
 
@@ -34,14 +34,13 @@ You can run this sample in Excel, Word, or PowerPoint in a browser. The add-in w
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 1. Open [Office on the web](https://office.live.com/).
-1. Choose **Excel**, **Word**, or **PowerPoint** and then open a new document.
+1. Choose **Excel**, **Word**, or **PowerPoint**, and then open a new document.
 1. Open the **Insert** tab on the ribbon and choose **Add-ins** (**Office Add-ins** for Excel).
-1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+1. In the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
 1. Browse to the add-in manifest file, and then select **Upload**.
-   ![The upload add-in dialog with buttons for browse, upload, and cancel.
-](../../Samples/images/upload-add-in.png)
-1. Verify that the add-in loaded successfully. You will see a **Custom settings** button on the **Home** tab on the ribbon.
+   ![The upload add-in dialog with buttons for browse, upload, and cancel.](../../Samples/images/upload-add-in.png)
+1. Verify the add-in loaded successfully. You'll see a **Custom settings** button on the **Home** tab on the ribbon.
 
 ## Run the sample on Office on Windows or Mac
 
@@ -52,17 +51,17 @@ Office Add-ins are cross-platform so you can also run them on Windows, Mac, and 
 
 ## Configure a localhost web server and run the sample from localhost
 
-If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps:
+If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
-1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if these tools are already installed on your computer, run the commands `node -v` and `npm -v` in your terminal.
 
-2. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+2. You need http-server to run the local web server. If you haven't installed this yet, use the following command to install it.
 
     ```console
     npm install --global http-server
     ```
 
-3. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command:
+3. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet, use the following command.
 
     ```console
     npm install --global office-addin-dev-certs
@@ -77,9 +76,9 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The previous command will display the folder location where it generated the certificate files.
 
-6. Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the hello world sample folder.
+6. Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to your cloned or downloaded sample folder.
 
-7. Run the following command:
+7. Run the following command.
 
     ```console
     http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
@@ -87,13 +86,13 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the office-add-in-save-custom-settings folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample](#run-the-sample) to sideload and run the add-in.
+Now that your localhost web server is running, sideload the **manifest-localhost.xml** file provided in the office-add-in-save-custom-settings folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample](#run-the-sample) to sideload and run the add-in.
 
 ## Use the sample in your own project
 
-To reuse the code from this sample you'll want to look at the specific functions that save or get settings in the **taskpane.js** file. For example, the **saveToPropertyBag** and **getFromPropertyBag** files work with the Office settings object to access settings in the property bag. Decide on which storage method you want to use. Then copy the corresponding methods for that storage method to your own project. The methods are self-contained and can be call directly from your code.
+To reuse the code from this sample you'll want to look at the specific functions that save or get settings in the **taskpane.js** file. For example, the **saveToPropertyBag** and **getFromPropertyBag** files work with the Office settings object to access settings in the property bag. Decide which storage method you want to use. Then copy the corresponding methods for that storage method to your own project. The methods are self-contained and can be called directly from your code.
 
-If you are using the property bag, and also want to save the settings into the Excel, Word, or PowerPoint document, you will need to include the following code. Modify the error handling function as needed for your own project.
+If you're using the property bag and also want to save the settings into the Excel, Word, or PowerPoint document, you'll need to include the following code. Modify the error handling function as needed for your own project.
 
 ```javascript
 Office.context.document.settings.saveAsync(function (asyncResult) {
