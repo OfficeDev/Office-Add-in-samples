@@ -55,20 +55,20 @@ If you prefer to configure a web server and host the add-in's web files from you
 
 1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if these tools are already installed on your computer, run the commands `node -v` and `npm -v` in your terminal.
 
-2. You need http-server to run the local web server. If you haven't installed this yet, use the following command to install it.
+1. You need http-server to run the local web server. If you haven't installed this yet, use the following command to install it.
 
     ```console
     npm install --global http-server
     ```
 
-3. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet, use the following command.
+1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet, use the following command.
 
     ```console
     npm install --global office-addin-dev-certs
     ```
 
-4. Clone or download this sample to a folder on your computer. Then go to that folder in a console or terminal window.
-5. Run the following command to generate a self-signed certificate that you can use for the web server.
+1. Clone or download this sample to a folder on your computer. Then go to that folder in a console or terminal window.
+1. Run the following command to generate a self-signed certificate that you can use for the web server.
 
     ```console
     npx office-addin-dev-certs install
@@ -76,9 +76,9 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The previous command will display the folder location where it generated the certificate files.
 
-6. Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to your cloned or downloaded sample folder.
+1. Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to your cloned or downloaded sample folder.
 
-7. Run the following command.
+1. Run the following command.
 
     ```console
     http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
