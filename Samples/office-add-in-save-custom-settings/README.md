@@ -1,4 +1,5 @@
 ---
+title:  Save custom settings in your Office Add-in
 page_type: sample
 urlFragment: office-add-in-save-custom-settings
 products:
