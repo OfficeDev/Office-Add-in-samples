@@ -24,7 +24,7 @@ function handleResponse(response) {
 
   if (response !== null) {
     Office.context.ui.messageParent(
-      JSON.stringify({ status: "success", result: response.accessToken }),
+      JSON.stringify({ status: "success", result: response.accessToken, accountId: response.account.homeAccountId }),
       { targetOrigin: window.location.origin }
     );
   } else {

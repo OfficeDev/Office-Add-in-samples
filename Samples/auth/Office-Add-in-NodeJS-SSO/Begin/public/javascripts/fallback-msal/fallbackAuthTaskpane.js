@@ -15,8 +15,8 @@ async function dialogFallback(clientRequest) {
   if (homeAccountId !== null) {
     const result = await myMSALObj.acquireTokenSilent(loginRequest);
     if (result !== null && result.accessToken !== null) {
-      clientRequest.accessToken = result.accessToken;
-      clientRequest.callbackFunction(storedClientRequest);
+      clientRequest.accessToken = result.accessToken;    
+      clientRequest.callbackFunction(clientRequest);
     }
   } else {
     // Pop up dialog to sign in user.
