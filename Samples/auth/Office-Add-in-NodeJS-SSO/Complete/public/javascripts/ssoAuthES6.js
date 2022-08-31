@@ -71,16 +71,22 @@ async function callWebServer(clientRequest) {
     });
     clientRequest.callbackRESTApiHandler(data);
   } catch (error) {
-    // Check for expired token. Refresh and retry the call if it expired.
-    if (error.responseJSON.type === "AADSTS500133") {
+    // Check for expired SSO token. Refresh and retry the call if it expired.
+    if (
+      error.responseJSON &&
+      authSSO === true &&
+      error.responseJSON.type === "TokenExpiredError"
+    ) {
       try {
-        clientRequest.accessToken = await Office.auth.getAccessToken(
-          clientRequest.authOptions
-        );
+        const accessToken = await Office.auth.getAccessToken({
+          allowSignInPrompt: true,
+          allowConsentPrompt: true,
+          forMSGraphAccess: true,
+        });
         const data = await $.ajax({
           type: clientRequest.verb,
           url: clientRequest.url,
-          headers: { Authorization: "Bearer " + clientRequest.accessToken },
+          headers: { Authorization: "Bearer " + accessToken },
           cache: false,
         });
         clientRequest.callbackRESTApiHandler(data);
@@ -93,15 +99,17 @@ async function callWebServer(clientRequest) {
 
     // Check for a Microsoft Graph API call error. which is returned as bad request (403)
     if (error.status === 403) {
-      showMessage(error.responseJSON.errorDetails);
+      if (error.responseJSON && error.responseJSON.type === "Microsoft Graph") {
+        showMessage(error.responseJSON.errorDetails);
+      } else {
+        showMessage(error);
+      }
+
       return;
     }
 
     // For all other error scenarios, display the message and use fallback auth.
-    showMessage(
-      "Unknown error from web server: " +
-        JSON.stringify(error.responseJSON.errorDetails)
-    );
+    showMessage("Unknown error from web server: " + JSON.stringify(error));
     if (clientRequest.authSSO) switchToFallbackAuth(clientRequest);
   }
 }
@@ -132,7 +140,6 @@ function switchToFallbackAuth(clientRequest) {
 
 /**
  * Creates a client request object with:
- * authOptions - Auth configuration parameters for SSO.
  * authSSO - true if using SSO, otherwise false.
  * verb - REST API verb such as GET, POST...
  * accessToken - The access token to the ASP.NET Core server.
@@ -147,11 +154,6 @@ function switchToFallbackAuth(clientRequest) {
  */
 async function createRequest(verb, url, restApiCallback, callbackFunction) {
   const clientRequest = {
-    authOptions: {
-      allowSignInPrompt: true,
-      allowConsentPrompt: true,
-      forMSGraphAccess: true,
-    },
     authSSO: authSSO,
     verb: verb,
     accessToken: null,
@@ -163,9 +165,11 @@ async function createRequest(verb, url, restApiCallback, callbackFunction) {
   if (authSSO) {
     try {
       // Get access token from Office SSO.
-      clientRequest.accessToken = await Office.auth.getAccessToken(
-        clientRequest.authOptions
-      );
+      clientRequest.accessToken = await Office.auth.getAccessToken({
+        allowSignInPrompt: true,
+        allowConsentPrompt: true,
+        forMSGraphAccess: true,
+      });
       callbackFunction(clientRequest);
     } catch (error) {
       // handle the SSO error which will inform us if we need to switch to fallback auth.
