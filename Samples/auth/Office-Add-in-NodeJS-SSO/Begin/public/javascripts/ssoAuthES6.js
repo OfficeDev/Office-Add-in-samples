@@ -32,7 +32,7 @@ Office.onReady(function (info) {
  *
  * @param {*} callbackFunction The function to pass the client request to when ready.
  */
- async function createRequest(url, restApiCallback, callbackFunction) {
+ async function createRequest(verb, url, restApiCallback, callbackFunction) {
     // TODO 1: Initialize the client request.
 
     // TODO 2: Get the access token.
