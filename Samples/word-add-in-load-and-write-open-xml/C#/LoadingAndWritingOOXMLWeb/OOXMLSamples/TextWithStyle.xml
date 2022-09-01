@@ -22,9 +22,10 @@
               <w:pStyle w:val="Heading1"/>
             </w:pPr>
             <w:r>
-              <w:t>This text is formatted using the Heading 1 paragraph style.</w:t>
+              <w:t>This text is formatted using the Heading 1 paragraph style..</w:t>
             </w:r>
           </w:p>
+          <w:p/>
         </w:body>
       </w:document>
     </pkg:xmlData>
