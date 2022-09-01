@@ -92,10 +92,6 @@ Office.onReady(function (info) {
     
     // TODO 7: Call REST API with error handler.
 
-    // TODO 8: Check for expired SSO token and refresh if needed.
-
-    // TODO 9: Check for Microsoft Graph and other errors.
-
   }
 
 /**
