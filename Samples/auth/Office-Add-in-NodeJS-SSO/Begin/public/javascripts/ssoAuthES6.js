@@ -32,7 +32,7 @@ Office.onReady(function (info) {
  *
  * @param {*} callbackFunction The function to pass the client request to when ready.
  */
- async function createRequest(url, restApiCallback, callbackFunction) {
+ async function createRequest(verb, url, restApiCallback, callbackFunction) {
     // TODO 1: Initialize the client request.
 
     // TODO 2: Get the access token.
@@ -63,18 +63,6 @@ Office.onReady(function (info) {
   //         Check for error and display success or error message.
 }
 
-/**
- * Returns the access token for using SSO auth. Throws an error if SSO fails.
- * @param {*} authOptions The configuration options for SSO.
- * @returns An access token to the middle-tier server for the signed in user.
- */
- async function getAccessTokenFromSSO(authOptions) {
-  if (authOptions === undefined) throw Error("authOptions parameter missing.");
-    
-  // TODO 5: Get access token, and handle errors.
-
-  }
-
   /**
  * Handles any error returned from getAccessToken. The numbered errors are typically user actions
  * that don't require fallback auth. The text shown for each error indicates next steps
@@ -86,10 +74,10 @@ Office.onReady(function (info) {
  */
    function handleSSOErrors(err) {
 
-    // TODO 6: Handle errors where the add-in should NOT invoke 
+    // TODO 5: Handle errors where the add-in should NOT invoke 
     //         the alternative system of authorization.
 
-    // TODO 7: Handle errors where the add-in should invoke 
+    // TODO 6: Handle errors where the add-in should invoke 
     //         the alternative system of authorization.
 
    }
@@ -102,31 +90,9 @@ Office.onReady(function (info) {
  */
    async function callWebServer(clientRequest) {
     
-    // TODO 8: Call REST API and check for errors.
-    //         Get refreshed SSO token if current one expired.
+    // TODO 7: Call REST API with error handler.
 
   }
-
-
-/**
- * Makes the AJAX call to the REST API in the middle-tier server.
- * Note that any errors are thrown to the caller to handle.
- * @param {} clientRequest Contains information for calling an API on the middle-tier server.
- */
- async function ajaxCallToRESTApi(clientRequest) {
-  // TODO 9: Make AJAX call to REST API on middle-tier server.
-}
-
-
-/**
- * Handles any error returned from the middle-tier server.
- * @param {*} err The error to process.
- * @returns {boolean} true if the caller should try the REST API again; otherwise false.
- */
- function handleWebServerErrors(err, clientRequest) {
- // TODO 10: Examine error and show message or
- //          Indicate to caller to get new SSO token.
-}
 
 /**
  * Switches the client request to use MSAL auth (fallback) instead of SSO. 
@@ -135,5 +101,5 @@ Office.onReady(function (info) {
  * @param {*} clientRequest Contains information for calling an API on the middle-tier server.
  */
  function switchToFallbackAuth(clientRequest) {
-// TODO 11: Get a new client request to use MSAL.
+// TODO 10: Get a new client request to use MSAL.
 }
