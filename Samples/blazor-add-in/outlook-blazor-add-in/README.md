@@ -4,6 +4,7 @@ urlFragment: outlook-blazor-add-in
 products:
   - office-add-ins
   - office
+  - office-outlook
 languages:
   - javascript
   - C#
@@ -21,7 +22,7 @@ This sample shows how to build an Outlook add-in using .NET Blazor technologies.
 Working with Blazor Webassembly in the framework of Office, you can:
 - Build cross-platform Office Add-ins using Blazor, C#, and JavaScript Interop
 - Initialize the Office JavaScript API library in Blazor context
-- Interact with Outlook to manipulate paragraphs and content controls
+- Interact with Outlook to work with email and calendar items
 - Interact with document content through Office JavaScript APIs
 
 ## Applies to
@@ -36,16 +37,17 @@ Working with Blazor Webassembly in the framework of Office, you can:
 
 1. Download or clone the [Office Add-ins samples repository](https://github.com/OfficeDev/Office-Add-in-samples).
 1. Open Visual Studio 2022 and open the **Office-Add-in-samples\Samples\blazor-add-in\outlook-blazor-add-in\outlook-blazor-add-in.sln** solution.
-1. To run the demo, select Project **outlook-blazor-sideloader** and select **Office Desktop Client**.
-1. The first time you run the demo, enter the email address of the account you want to access in the **Email Address** property of the **outlook-blazor-sideloader** project. This sets the **Use multi-factor auth** to **true**.   
+1. In **Solution Explorer** select the **outlook-blazor-sideloader** project. Then display the project properties (F4).
+1. In the **Properties** window, set the **Start Action** to **Office Desktop Client**.
+1. In the **Properties** window, set the **Email Address** to the email address of the account you want to use with this sample.
 1. To start the solution, choose **Debug** > **Start Debugging** or press **F5**.
 1. When Outlook opens, choose **Home** > **Show Taskpane**.
 
-Next, try out the controls.
+Next, try out the controls. The task pane will display information about the currently selected email item.
 
 ## Understand an Office Add-in in Blazor Context
 
-An Office Add-in is a web application that extends Office with additional functionality for the user. For example, an add-in can add ribbon buttons, a task pane, or a content pane with the functionality you want. Because an Office Add-in is a web application, you must provide a web server to host the files.
+An Office Add-in is a web application that extends Office with additional functionality for the user. For example, Outlook add-ins can add ribbon buttons, and provide a task pane during compose or read modes. Because an Office Add-in is a web application, you must provide a web server to host the files.
 Building the Office Add-in as a Blazor Webassembly allows you to build a .NET Core compliant website that interacts with the Office JS APIs. If your background is with VBA, VSTO, or COM add-in development, you may find that building Office Add-ins using Blazor Webassembly is a familiar development technique.
 
 ## Key parts of this sample
@@ -82,7 +84,7 @@ private async Task<MailRead?> GetEmailData()
 }
 ```
 
-The JavaScript runs the code to interact with the document and returns (see full code in the sample).
+The JavaScript runs the code to interact with the item and returns (see full code in the sample).
 
 ```javascript
 export async function getEmailData() {

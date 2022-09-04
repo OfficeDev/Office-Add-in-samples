@@ -1,3 +1,5 @@
+/* Copyright (c) Maarten van Stam and Eric Legault. All rights reserved. Licensed under the MIT License. */
+
 // https://github.com/justmarks/UiPathOutlook/blob/2247bb3f5f52f8ba6763374fea3f25e1ece5d03b/src/commands/commands.js
 
 export async function getEmailData() {

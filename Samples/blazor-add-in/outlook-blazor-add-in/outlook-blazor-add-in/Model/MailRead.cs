@@ -1,3 +1,5 @@
+/* Copyright (c) Maarten van Stam and Eric Legault. All rights reserved. Licensed under the MIT License. */
+
 ﻿using System.Text;
 
 namespace BlazorAddIn.Model
