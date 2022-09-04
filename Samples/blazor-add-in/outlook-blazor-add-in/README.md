@@ -23,7 +23,6 @@ Working with Blazor Webassembly in the framework of Office, you can:
 - Build cross-platform Office Add-ins using Blazor, C#, and JavaScript Interop
 - Initialize the Office JavaScript API library in Blazor context
 - Interact with Outlook to work with email and calendar items
-- Interact with document content through Office JavaScript APIs
 
 ## Applies to
 
@@ -39,7 +38,10 @@ Working with Blazor Webassembly in the framework of Office, you can:
 1. Open Visual Studio 2022 and open the **Office-Add-in-samples\Samples\blazor-add-in\outlook-blazor-add-in\outlook-blazor-add-in.sln** solution.
 1. In **Solution Explorer** select the **outlook-blazor-sideloader** project. Then display the project properties (F4).
 1. In the **Properties** window, set the **Start Action** to **Office Desktop Client**.
+   ![Start Action](./images/StartAction.png)
 1. In the **Properties** window, set the **Email Address** to the email address of the account you want to use with this sample.
+   In case this was not set before running you might also see this dialog:
+   ![Start Action](./images/Connect.png)
 1. To start the solution, choose **Debug** > **Start Debugging** or press **F5**.
 1. When Outlook opens, choose **Home** > **Show Taskpane**.
 
