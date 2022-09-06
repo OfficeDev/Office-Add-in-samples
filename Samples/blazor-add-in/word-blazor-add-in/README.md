@@ -61,7 +61,7 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
 {
   if (firstRender)
   {
-    JSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/Index.razor.js");
+    JSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/HelloWorld.razor.js");
   }
 }
 ```

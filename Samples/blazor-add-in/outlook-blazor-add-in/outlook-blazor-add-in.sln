@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAddIn", "outlook-blazor-add-in\BlazorAddIn.csproj", "{7FA58596-8D55-44C6-AC25-5A1141C4A016}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "outlook-blazor-sideloader", "outlook-blazor-sideloader\outlook-blazor-sideloader.csproj", "{7B997E4A-EABA-47C6-A8E9-5C8367443E43}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7FA58596-8D55-44C6-AC25-5A1141C4A016} = {7FA58596-8D55-44C6-AC25-5A1141C4A016}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A58F3EE9-8A70-4E58-8A96-FAE83BF3ECE6}"
+	ProjectSection(SolutionItems) = preProject
+		images\Connect.png = images\Connect.png
+		README.md = README.md
+		images\StartAction.png = images\StartAction.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FA58596-8D55-44C6-AC25-5A1141C4A016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FA58596-8D55-44C6-AC25-5A1141C4A016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FA58596-8D55-44C6-AC25-5A1141C4A016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FA58596-8D55-44C6-AC25-5A1141C4A016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B997E4A-EABA-47C6-A8E9-5C8367443E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B997E4A-EABA-47C6-A8E9-5C8367443E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B997E4A-EABA-47C6-A8E9-5C8367443E43}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7B997E4A-EABA-47C6-A8E9-5C8367443E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B997E4A-EABA-47C6-A8E9-5C8367443E43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B997E4A-EABA-47C6-A8E9-5C8367443E43}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD546567-5F61-4041-ADBD-AB35E35DC5D3}
+	EndGlobalSection
+EndGlobal
