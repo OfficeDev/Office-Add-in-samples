@@ -1,0 +1,83 @@
+---
+page_type: sample
+urlFragment: office-excel-add-in-data-types-explorer
+products:
+- office-excel
+- m365
+languages:
+- javascript
+extensions:
+  contentType: samples
+  technologies:
+  - Add-ins
+  createdDate: 09/07/2022 4:00:00 PM
+description: "Use this sample to create data types in Excel workbooks, and explore existing data types in Excel workbooks."
+---
+
+# Create and explore data types in Excel (preview)
+
+## Summary
+
+This sample builds an Excel add-in that can create and explore data types in your workbooks. See [Overview of data types in Excel add-ins (preview)](https://docs.microsoft.com/office/dev/add-ins/excel/excel-data-types-overview) to learn more about data types.
+
+> **Note:** Data types APIs are currently only available in public preview. Preview APIs are subject to change and are not intended for use in a production environment. We recommend that you try them out in test and development environments only. Do not use preview APIs in a production environment or within business-critical documents.
+>
+> To use preview APIs:
+>
+> - You must reference the **beta** library on the content delivery network (CDN) (https://appsforoffice.microsoft.com/lib/beta/hosted/office.js). The [type definition file](https://appsforoffice.microsoft.com/lib/beta/hosted/office.d.ts) for TypeScript compilation and IntelliSense is found at the CDN and [DefinitelyTyped](https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/master/types/office-js-preview/index.d.ts). You can install these types with `npm install --save-dev @types/office-js-preview`. For additional information, see the [@microsoft/office-js](https://www.npmjs.com/package/@microsoft/office-js) NPM package readme.
+> - You may need to join the [Office Insider program](https://insider.office.com) for access to more recent Office builds.
+>
+> To try out data types in Office on Windows, you must have an Excel build number greater than or equal to 16.0.14626.10000. To try out data types in Office on Mac, you must have an Excel build number greater than or equal to 16.55.21102600.
+
+## Features
+
+This sample builds and then sideloads a data types explorer add-in that allows you to create and edit data types in an Excel workbook. Once the add-in is sideloaded, you can use it to explore string, double, boolean, entity, web image, and formatted number data types.
+
+(add screenshot)
+
+In particular, this add-in contains an entity data type builder.
+
+(add screenshot)
+
+## Applies to
+
+- Excel on Windows (minimum build of 16.0.14626.10000)
+- Excel on Mac (minimum build of 16.55.21102600)
+- Excel on the web
+
+## Prerequisites
+
+- Excel on Windows with a minimum build of 16.0.14626.10000), or Excel on Mac with a minimum build of 16.55.21102600), or Excel on the web.
+
+- Data types APIs are currently only available in public preview. To use preview APIs, you must reference the **beta** library on the content delivery network (CDN) (https://appsforoffice.microsoft.com/lib/beta/hosted/office.js). The [type definition file](https://appsforoffice.microsoft.com/lib/beta/hosted/office.d.ts) for TypeScript compilation and IntelliSense is found at the CDN and [DefinitelyTyped](https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/master/types/office-js-preview/index.d.ts). You can install these types with `npm install --save-dev @types/office-js-preview`. For additional information, see the [@microsoft/office-js](https://www.npmjs.com/package/@microsoft/office-js) NPM package readme.
+
+## Solution
+
+Solution | Author(s)
+---------|----------
+Create and explore data types in Excel workbooks | Microsoft
+
+## Version history
+
+Version  | Date | Comments
+---------| -----| --------
+1.0 | 9-7-2022 | Initial release
+
+----------
+
+## Run the sample
+
+Take the following steps to run this sample and set up the data types explorer add-in.
+
+1. Clone or download this repo.
+1. Navigate to the **Samples/excel-data-types-explorer** folder via the command line.
+1. Run `npm install` to set up the add-in dependencies.
+1. Run `npm start`. This command will open Excel and sideload the add-in in Excel.
+
+## Copyright
+
+Copyright (c) 2022 Microsoft Corporation. All rights reserved.
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-insert-external-file" />

@@ -1,11 +1,22 @@
 /** Copyright (c) Microsoft Corporation. Licensed under the MIT License. */
 
+// Set up the task pane buttons and select list..
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
+    // Assign the HTML buttons to the relevant method.
     document.getElementById("getData").onclick = getData;
     document.getElementById("setData").onclick = setData;
     document.getElementById("printAsJson").onclick = printAsJson;
     document.getElementById("clearForm").onclick = clearForm;
+    console.log("test test");
+
+    // Update the displayed input fields based on the select list. 
+    $("#dataTypeSelect").on("change", function() {
+      var value = $("#dataTypeSelect option:selected");
+      setSelectedType(getTypeContent(value.val().toString()));
+    });
+
+    setSelectedType(getTypeContent(defaultType));
   }
 });
 
@@ -186,16 +197,6 @@ function entitySection(): JQuery<HTMLElement> {
   return element;
 }
 
-/** When data type is selected. */
-$(document).ready(function() {
-  $("#dataTypeSelect").change(function() {
-    var value = $("#dataTypeSelect option:selected");
-    setSelectedType(getTypeContent(value.val().toString()));
-  });
-
-  setSelectedType(getTypeContent(defaultType));
-});
-
 function getTypeContent(valueType: string): JQuery<HTMLElement> | JQuery<HTMLElement>[] {
   switch (valueType) {
     case "String":
@@ -257,8 +258,8 @@ function entityContents(valueType: string): JQuery<HTMLElement> {
     `<button class="ms-Button ms-Button-label buttons" alt="toggle to expand or collapse metadata properties of field">More Settings</button>`
   );
 
-  /** Function for expanding or collapsing the additional metadata contents of a
-  particular input field, in the entity contents. */
+  /** Expand or collapse the additional metadata contents of a
+  particular input field, within the entity contents. */
   buttonToggleMetadata[0].onclick = function() {
     var visibility = trMetadata[0].style.visibility;
     if (visibility != "collapse") {
@@ -435,18 +436,18 @@ function setSelectedType(selected: JQuery<HTMLElement>[] | JQuery<HTMLElement>) 
   $(".backgroundColorForm").replaceWith(element);
 }
 
-/** Add another section in entity contents. */
+/** Add another section in entity fields. */
 function addSection() {
   $(".sections").append(entitySection());
 }
 
-/** Add a new field to the entity contents. */
+/** Add a new field to the entity fields. */
 function addField(element: HTMLButtonElement) {
   // append specificFieldContents to the fieldsDiv.
   const fieldsDiv = element.parentElement.previousElementSibling;
   $(fieldsDiv).append(specificFieldContent());
 }
-/** Move a field down in the entity contents order. */
+/** Move a field down in the entity fields order. */
 function moveFieldDown(element: HTMLButtonElement) {
   const curSpecificField = element.parentElement.parentElement.parentElement.parentElement.parentElement
     .parentElement as HTMLDivElement;
@@ -474,7 +475,7 @@ function moveSectionDown(element: HTMLButtonElement) {
     $(nextSpecificSection).after(curSpecificSection);
   }
 }
-/** Move a field up in the entity contents order/ */
+/** Move a field up in the entity contents order. */
 function moveFieldUp(element: HTMLButtonElement) {
   const curSpecificField = element.parentElement.parentElement.parentElement.parentElement.parentElement
     .parentElement as HTMLDivElement;
@@ -503,14 +504,14 @@ function moveSectionUp(element: HTMLButtonElement) {
   }
 }
 
-/** Function for expanding section contents in the entity contents. */
+/** Expand the section fields in the entity field. */
 function expandSection(element: HTMLButtonElement) {
   // element.parentElement.parentElement.parentElement.parentElement.nextElementSibling.style.display = "block";
   $(element).replaceWith(
     `<button class="ms-Button ms-Button-label arrows sectionToggle" onclick="collapseSection(this)" alt="collapse section" title="collapse section">&#x2228</button>`
   );
 }
-/** Function for collapsing section contents in the entity contents. */
+/** Collapse the section fields in the entity field. */
 function collapseSection(element: HTMLButtonElement) {
   // element.parentElement.parentElement.parentElement.parentElement.nextElementSibling.style.display = "none";
   $(element).replaceWith(
@@ -518,12 +519,12 @@ function collapseSection(element: HTMLButtonElement) {
   );
 }
 
-/** Function for printing the inputted data into the console. */
+/** Print the inputted data into the console. */
 function printAsJson() {
   console.log(JSON.stringify(createValueAsJson()));
 }
 
-/** Function for assigning the inputted data to the active cell as the appropriate data type. */
+/** Assign the inputted data to the active worksheet cell as the appropriate data type. */
 function createValueAsJson(): Excel.CellValue {
   var values = $("#dataTypeSelect option:selected");
   switch (values.val()) {
@@ -598,6 +599,7 @@ function createValueAsJson(): Excel.CellValue {
       break;
   }
 }
+
 async function setData() {
   await Excel.run(async (context) => {
     const activeCell = context.workbook.getActiveCell();
@@ -605,7 +607,8 @@ async function setData() {
     await tryCatch(context.sync);
   });
 }
-/** Function for assigning the inputted entity contents to an entity. */
+
+// /** Assign the inputted entity contents to an entity data type. */
 function setEntity() {
   const display: string = $("#displayString")
     .val()
@@ -852,20 +855,20 @@ function fieldValuesContentsFromQuery() {
 
   return values;
 }
-/** Function for removing a selected input field in the entity contents. */
+/** Remove a selected input field in the entity fields. */
 function removeField(element: HTMLButtonElement) {
   // removes specificField
   element.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
 }
 
-/** Function for retrieving the contents of a selected entity and putting them in the form boxes. */
+/** Retrieve the contents of a selected entity and put them in the form boxes. */
 function getEntity(value) {
   var sections;
   if (value.layouts != undefined && value.layouts.card != undefined) {
     sections = value.layouts.card.sections;
   }
 
-  // If there is no section, make one
+  // If there is no section, make one.
   if (sections == undefined) {
     const propertyKeys = Object.keys(value.properties);
     sections = [
@@ -953,7 +956,7 @@ function getEntity(value) {
             .parent();
           firstMetadataElement.before(`<div class="checkboxes">
                   <input type="checkbox" class="mainImage" alt="main image checkbox"/>
-                  <label>Make Main Image</label>
+                  <label>Make main image</label>
                 </div><br>`);
           break;
         case "String":
@@ -1055,7 +1058,8 @@ function getEntity(value) {
     jqSublabel = jqSublabel.slice(1);
   }
 }
-/** Function for retrieving the contents of a selected cell and putting them in the form boxes. */
+
+/** Retrieve the contents of a selected cell and put them in the form boxes. */
 async function getData() {
   await Excel.run(async (context) => {
     const activeCell = context.workbook.getActiveCell();
@@ -1099,7 +1103,7 @@ async function getData() {
   });
 }
 
-/** Function for clearing the input boxes. */
+/** Clear the input boxes. */
 async function clearForm() {
   $(".inputBox").val("");
   $(".cardView").prop("checked", true);

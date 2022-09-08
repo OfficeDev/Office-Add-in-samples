@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contoso Task Pane Add-in</title>
+    <title>Office Add-ins Excel Data Types Explorer</title>
 
     <!-- Office Preview JavaScript API -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js"></script>
@@ -23,10 +23,10 @@
 
 <body class="ms-font-m ms-welcome ms-Fabric">
     <section class="ms-font-m main">
-        <h1>Create and retrieve data types</h1>
-        <p>Use this tool to create data types, or to explore data types that already exist on a worksheet.</p>
-        <p>To create a data type, use the select list to choose a data type (string, double, boolean, entity, web image, or formatted number), enter data in the displayed fields, and then select <strong>Set data</strong>. The data type will be inserted into the currently active cell on the worksheet.</p>
-        <p>To explore existing data types, select the cell on the worksheet that contains data, and then select the <strong>Get data</strong> button.</p>    
+        <h1>Create and explore data types</h1>
+        <p>Use this tool to create data types or to explore data types that already exist in a workbook.</p>
+        <p>To create a data type, use the <strong>Data type</strong> select list to choose a data type (string, double, boolean, entity, web image, or formatted number), enter data in the displayed fields, and then select the <strong>Set data</strong> button. The data type will be inserted into the currently active cell on the worksheet.</p>
+        <p>To explore existing data types, select a cell on the worksheet that contains data, and then select the <strong>Get data</strong> button. The data type information will be displayed in the task pane fields.</p>    
         <div>
             <button id="getData" class="ms-Button ms-Button-label buttons">Get data</button>
             <label> | </label>
@@ -36,6 +36,7 @@
             <button id="clearForm" class="ms-Button ms-Button-label buttons" alt="clear current contents of input boxes">Clear form</button>
         </div>
     
+        <label><strong>Data type:</strong></label>
         <select id="dataTypeSelect" name="dataType" class="ms-Button ms-Button-label buttons">
             <option class="typeString" value="String" selected>String</option>
             <option class="typeDouble" value="Double">Double</option>
@@ -61,7 +62,7 @@
     </section>
     
     <section class="ms-font-m main">
-        <p><a href="https://docs.microsoft.com/javascript/api/excel/excel.range?view=excel-js-preview#valuesAsJson">Learn more about data types</a>.</p>
+        <p><a href="https://docs.microsoft.com/javascript/api/excel/excel.range#valuesAsJson">Learn more about data types</a>.</p>
     </section>
 </body>
 
