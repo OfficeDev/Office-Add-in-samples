@@ -20,12 +20,7 @@ description: "Use this sample to create data types in Excel workbooks, and explo
 
 This sample builds an Excel add-in that can create and explore data types in your workbooks. See [Overview of data types in Excel add-ins (preview)](https://docs.microsoft.com/office/dev/add-ins/excel/excel-data-types-overview) to learn more about data types.
 
-> **Note:** Data types APIs are currently only available in public preview. Preview APIs are subject to change and are not intended for use in a production environment. We recommend that you try them out in test and development environments only. Do not use preview APIs in a production environment or within business-critical documents.
->
-> To use preview APIs:
->
-> - You must reference the **beta** library on the content delivery network (CDN) (https://appsforoffice.microsoft.com/lib/beta/hosted/office.js). The [type definition file](https://appsforoffice.microsoft.com/lib/beta/hosted/office.d.ts) for TypeScript compilation and IntelliSense is found at the CDN and [DefinitelyTyped](https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/master/types/office-js-preview/index.d.ts). You can install these types with `npm install --save-dev @types/office-js-preview`. For additional information, see the [@microsoft/office-js](https://www.npmjs.com/package/@microsoft/office-js) NPM package readme.
-> - You may need to join the [Office Insider program](https://insider.office.com) for access to more recent Office builds.
+> **Note:** Data types APIs are currently only available in public preview. Preview APIs are subject to change and are not intended for use in a production environment. We recommend that you try them out in test and development environments only. Do not use preview APIs in a production environment or within business-critical documents. This add-in sample references the **beta** Office.js library on the content delivery network (CDN) (https://appsforoffice.microsoft.com/lib/beta/hosted/office.js) and the **beta** [type definition file](https://appsforoffice.microsoft.com/lib/beta/hosted/office.d.ts) for TypeScript compilation and IntelliSense.
 >
 > To try out data types in Office on Windows, you must have an Excel build number greater than or equal to 16.0.14626.10000. To try out data types in Office on Mac, you must have an Excel build number greater than or equal to 16.55.21102600.
 
@@ -49,7 +44,7 @@ In particular, this add-in contains an entity data type builder that you can use
 
 - Excel on Windows with a minimum build of 16.0.14626.10000), or Excel on Mac with a minimum build of 16.55.21102600), or Excel on the web.
 
-- Data types APIs are currently only available in public preview. To use preview APIs, you must reference the **beta** library on the content delivery network (CDN) (https://appsforoffice.microsoft.com/lib/beta/hosted/office.js). The [type definition file](https://appsforoffice.microsoft.com/lib/beta/hosted/office.d.ts) for TypeScript compilation and IntelliSense is found at the CDN and [DefinitelyTyped](https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/master/types/office-js-preview/index.d.ts). You can install these types with `npm install --save-dev @types/office-js-preview`. For additional information, see the [@microsoft/office-js](https://www.npmjs.com/package/@microsoft/office-js) NPM package readme.
+- Data types APIs are currently only available in public preview. Preview APIs are subject to change and are not intended for use in a production environment. We recommend that you try them out in test and development environments only. Do not use preview APIs in a production environment or within business-critical documents.
 
 ## Solution
 
