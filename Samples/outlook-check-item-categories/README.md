@@ -18,7 +18,7 @@ description: "Use Outlook Smart Alerts to verify that required color categories 
 
 # Use Outlook Smart Alerts
 
-**Applies to**: Outlook on Windows | Outlook on the web
+**Applies to**: Outlook on Windows
 
 ## Summary
 
@@ -44,9 +44,7 @@ For documentation related to this sample, see the following articles.
 
 ## Applies to
 
-- Outlook
-  - Windows (minimum build - 16.0.14511.10000)
-  - Web browser
+- Outlook on Windows starting in version 2206 (build 15330.20196)
 
 ## Prerequisites
 
@@ -63,7 +61,7 @@ For documentation related to this sample, see the following articles.
 | Version | Date | Comments |
 | ------- | ----- | -------- |
 | 1.0 | 05-05-2022 | Initial release |
-| 1.1 | 07-25-2022 | Update for General Availability (GA) of OnMessageSend and OnAppointmentSend events |
+| 1.1 | 09-08-2022 | Update for General Availability (GA) of OnMessageSend and OnAppointmentSend events |
 
 ## Run the sample
 
