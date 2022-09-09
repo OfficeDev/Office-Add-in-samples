@@ -1,12 +1,11 @@
 /** Copyright (c) Microsoft Corporation. Licensed under the MIT License. */
 
-// Set up the task pane buttons and select list..
+// Set up the task pane buttons and select list.
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
     // Assign the HTML buttons to the relevant method.
     document.getElementById("getData").onclick = getData;
     document.getElementById("setData").onclick = setData;
-    document.getElementById("printAsJson").onclick = printAsJson;
     document.getElementById("clearForm").onclick = clearForm;
     console.log("test test");
 
@@ -100,7 +99,7 @@ function createOptionsFromList(list: string[]): JQuery<HTMLElement>[] {
 
 function specificFieldContent(): JQuery<HTMLElement> {
   var content = entityContents(defaultType);
-  var select = $("<select/>", {
+  var select = $("<label><strong>Data type:</strong></label><select/>", {
     id: "dataTypeSelectEntity",
     name: "dataType",
     class: "dataTypeSelectEntity ms-Button ms-Button-label buttons",
@@ -165,13 +164,9 @@ function entityDefaultSection(): JQuery<HTMLElement> {
 function entitySection(): JQuery<HTMLElement> {
   var element = $("<div/>", { class: "sectionContents formContents solidBorder" });
   var table1 = $(`
-                  <table id="sectionTable">
+              <table id="sectionTable">
                 <tbody>
                   <tr class="columnTitle">
-                    <td>
-                      <button class="ms-Button ms-Button-label arrows" onclick="moveSectionUp(this)" alt="button to move section up" title="move section up">&#9650</button>
-                      <button class="ms-Button ms-Button-label arrows" onclick="moveSectionDown(this)" alt="button to move section down" title="move section down">&#9660</button>
-                    </td>
                     <td><label class="sectionHeader">Section Title:</label></td>
                     <td><input class="inputBox sectionTitle" alt="section title input box"/></td>
                     <td>
@@ -220,18 +215,14 @@ function getTypeContent(valueType: string): JQuery<HTMLElement> | JQuery<HTMLEle
 /** Create the HTML for entity contents section. */
 function entityContents(valueType: string): JQuery<HTMLElement> {
   var trKey = $(`<tr>
-          <td rowspan="3">
-            <button class="ms-Button ms-Button-label arrows" onclick="moveFieldUp(this)" alt="button to move field up" title="move field up">&#9650</button>
-            <button class="ms-Button ms-Button-label arrows" onclick="moveFieldDown(this)" alt="button to move field down" title="move field down">&#9660</button>
-          </td>
           <td><label class="labels">Key:</label></td>
-          <td><input class="inputBox fieldName" alt="key input box"/></td>
+          <td><input class="inputBox fieldName" alt="Key input box"/></td>
         </tr>`);
 
   var tdMetadata = $(`<td colspan="4" class="center settings"/>`);
 
   if (valueType == "WebImage") {
-    tdMetadata.append(checkboxWithLabel("mainImage", "Make Main Image", "main image checkbox"));
+    tdMetadata.append(checkboxWithLabel("mainImage", "Make main image", "main image checkbox"));
     tdMetadata.append($("<br/>"));
   }
 
@@ -239,8 +230,8 @@ function entityContents(valueType: string): JQuery<HTMLElement> {
     checkboxWithLabel("cardView", "Card View", "cardview checkbox"),
     checkboxWithLabel("autoComplete", "Autocomplete", "autoComplete checkbox"),
     $("<br/>"),
-    checkboxWithLabel("calcCompare", "Calc Compare", "calcCompare checkbox"),
-    checkboxWithLabel("dotNotation", "Dot Notation", "dotNotation checkbox"),
+    checkboxWithLabel("calcCompare", "Calc compare", "calcCompare checkbox"),
+    checkboxWithLabel("dotNotation", "Dot notation", "dotNotation checkbox"),
     $("<br/>"),
     $("<label/>").text("Sublabel: "),
     $("<input/>", { class: "sublabel", alt: "sublabel input box" })
@@ -250,12 +241,9 @@ function entityContents(valueType: string): JQuery<HTMLElement> {
 
   var trButtons = $(`<tr/>`);
   var tdButtons = $(`<td colspan="4"/>`);
-  var buttonRemoveField = $(
-    `<button class="ms-Button ms-Button-label buttons" onclick="removeField(this)" alt="delete current field">Delete Field</button>`
-  );
 
   var buttonToggleMetadata = $(
-    `<button class="ms-Button ms-Button-label buttons" alt="toggle to expand or collapse metadata properties of field">More Settings</button>`
+    `<button class="ms-Button ms-Button-label buttons" alt="Toggle to expand or collapse metadata properties of field">More settings</button>`
   );
 
   /** Expand or collapse the additional metadata contents of a
@@ -269,7 +257,7 @@ function entityContents(valueType: string): JQuery<HTMLElement> {
     }
   };
 
-  tdButtons.append([buttonRemoveField, buttonToggleMetadata]);
+  tdButtons.append([buttonToggleMetadata]);
   trButtons.append(tdButtons);
 
   return $(`<div id="entityContents"/>`).append(
@@ -285,8 +273,8 @@ function entityContents(valueType: string): JQuery<HTMLElement> {
 /** Create the HTML for the entity data type. */
 function entityContent(): JQuery<HTMLElement> {
   var div = $(`<div class="contentPadding"/>`);
-  var iconlabel = $(`<label class="labels"> Entity Icon: </label>`);
-  var contentLabel = $(`<label class="labels contentPadding">Entity Contents:</label>`);
+  var iconlabel = $(`<label class="labels"> Entity icon: </label>`);
+  var contentLabel = $(`<label class="labels contentPadding">Entity contents:</label>`);
   var select = $(`<select id="iconSelect" name="dataType" class="ms-Button ms-Button-label buttons"/>`);
   var options = createOptionsFromList([
     "Generic",
@@ -345,7 +333,7 @@ function entityContent(): JQuery<HTMLElement> {
 
   var sections = $(`<div class="sections"/>`).append(entityDefaultSection());
 
-  var label = $(`<label for="displayString" class="labels">Entity Display Text: </label>`);
+  var label = $(`<label for="displayString" class="labels">Entity display text: </label>`);
   var input = $(`<input class="inputBox displayString" type="text" id="displayString" alt="display text input box"/>`);
 
   var providerTable = $(`<div id="entityContents" class="solidBorder formContents"/>`).append(
@@ -365,7 +353,7 @@ function entityContent(): JQuery<HTMLElement> {
 
   var referencedValuesLabel = $(`<label for="referencedValues" class="labels">Referenced values: </label>`);
   var referencedValuesInput = $(
-    `<input class="inputBox displayString" type="text" id="referencedValues" alt="referencedValues text isplay box" disabled/>`
+    `<input class="inputBox displayString" type="text" id="referencedValues" alt="referencedValues text display box" disabled/>`
   );
   var referencedValuesClearButton = $("<button/>", {
     id: "clearReferencedValue",
@@ -385,29 +373,8 @@ function entityContent(): JQuery<HTMLElement> {
     referencedValuesDiv[0].style.display = "none";
   };
 
-  var collapseProviderInfo = $("<button/>", {
-    class: "ms-Button ms-Button-label sectionToggle arrows",
-    alt: "collapse section",
-    title: "collapse section"
-  }).text("\u2228");
-
-  collapseProviderInfo[0].onclick = function() {
-    if (providerTable[0].style.display == "none") {
-      providerTable[0].style.display = "block";
-      collapseProviderInfo.text("\u2228");
-      collapseProviderInfo[0].setAttribute("alt", "collapse section");
-      collapseProviderInfo[0].setAttribute("title", "collapse section");
-    } else {
-      providerTable[0].style.display = "none";
-      collapseProviderInfo.text("\u2227");
-      collapseProviderInfo[0].setAttribute("alt", "expand section");
-      collapseProviderInfo[0].setAttribute("title", "expand section");
-    }
-  };
-
   var providerInfo = $("<div/>", { class: "contentPadding" })
     .append($("<label/>", { class: "labels" }).text("Provider info: "))
-    .append(collapseProviderInfo)
     .append(providerTable);
 
   var element = $(`<tr id="Entity"/>`).append(
@@ -418,11 +385,6 @@ function entityContent(): JQuery<HTMLElement> {
       .append(referencedValuesDiv)
       .append(contentLabel)
       .append(sections)
-      .append(
-        $(
-          `<button id="addSection" onclick="addSection()" class="ms-Button ms-Button-label buttons" style="margin-left:20px;" alt="add another section to entity contents">Add another section</button>`
-        )
-      )
   );
 
   return element;
@@ -436,92 +398,25 @@ function setSelectedType(selected: JQuery<HTMLElement>[] | JQuery<HTMLElement>) 
   $(".backgroundColorForm").replaceWith(element);
 }
 
-/** Add another section in entity fields. */
-function addSection() {
-  $(".sections").append(entitySection());
-}
-
 /** Add a new field to the entity fields. */
 function addField(element: HTMLButtonElement) {
-  // append specificFieldContents to the fieldsDiv.
+  // Append specificFieldContents to the fieldsDiv.
   const fieldsDiv = element.parentElement.previousElementSibling;
   $(fieldsDiv).append(specificFieldContent());
-}
-/** Move a field down in the entity fields order. */
-function moveFieldDown(element: HTMLButtonElement) {
-  const curSpecificField = element.parentElement.parentElement.parentElement.parentElement.parentElement
-    .parentElement as HTMLDivElement;
-  const nextSpecificField = curSpecificField.nextElementSibling as HTMLDivElement;
-  if (nextSpecificField) {
-    $(curSpecificField).remove();
-    $(nextSpecificField).after(curSpecificField);
-  } else {
-    const curSectionContents = curSpecificField.parentElement.parentElement.parentElement as HTMLDivElement;
-    const nextSectionContents = curSectionContents.nextElementSibling as HTMLDivElement;
-    if (nextSectionContents) {
-      const nextSectionFields = $(nextSectionContents).find(".fields");
-      $(curSpecificField).remove();
-      nextSectionFields.prepend(curSpecificField);
-    }
-  }
-}
-/** Move a section down in the entity contents order. */
-function moveSectionDown(element: HTMLButtonElement) {
-  const curSpecificSection = element.parentElement.parentElement.parentElement.parentElement
-    .parentElement as HTMLDivElement;
-  const nextSpecificSection = curSpecificSection.nextElementSibling as HTMLDivElement;
-  if (nextSpecificSection) {
-    $(curSpecificSection).remove();
-    $(nextSpecificSection).after(curSpecificSection);
-  }
-}
-/** Move a field up in the entity contents order. */
-function moveFieldUp(element: HTMLButtonElement) {
-  const curSpecificField = element.parentElement.parentElement.parentElement.parentElement.parentElement
-    .parentElement as HTMLDivElement;
-  const prevSpecificField = curSpecificField.previousElementSibling as HTMLDivElement;
-  if (prevSpecificField) {
-    $(curSpecificField).remove();
-    $(prevSpecificField).before(curSpecificField);
-  } else {
-    const curSectionContents = curSpecificField.parentElement.parentElement.parentElement as HTMLDivElement;
-    const prevSectionContents = curSectionContents.previousElementSibling as HTMLDivElement;
-    if (prevSectionContents) {
-      const prevSectionFields = $(prevSectionContents).find(".fields");
-      $(curSpecificField).remove();
-      prevSectionFields.append(curSpecificField);
-    }
-  }
-}
-/** Move a section up in the entity contents order. */
-function moveSectionUp(element: HTMLButtonElement) {
-  const curSpecificSection = element.parentElement.parentElement.parentElement.parentElement
-    .parentElement as HTMLDivElement;
-  const prevSpecificSection = curSpecificSection.previousElementSibling as HTMLDivElement;
-  if (prevSpecificSection && prevSpecificSection.id != "defaultSection") {
-    $(curSpecificSection).remove();
-    $(prevSpecificSection).before(curSpecificSection);
-  }
 }
 
 /** Expand the section fields in the entity field. */
 function expandSection(element: HTMLButtonElement) {
-  // element.parentElement.parentElement.parentElement.parentElement.nextElementSibling.style.display = "block";
   $(element).replaceWith(
     `<button class="ms-Button ms-Button-label arrows sectionToggle" onclick="collapseSection(this)" alt="collapse section" title="collapse section">&#x2228</button>`
   );
 }
+
 /** Collapse the section fields in the entity field. */
 function collapseSection(element: HTMLButtonElement) {
-  // element.parentElement.parentElement.parentElement.parentElement.nextElementSibling.style.display = "none";
   $(element).replaceWith(
     `<button class="ms-Button ms-Button-label arrows sectionToggle" onclick="expandSection(this)" alt="expand section" title="expand section" >&#x2227 </button>`
   );
-}
-
-/** Print the inputted data into the console. */
-function printAsJson() {
-  console.log(JSON.stringify(createValueAsJson()));
 }
 
 /** Assign the inputted data to the active worksheet cell as the appropriate data type. */
@@ -608,7 +503,7 @@ async function setData() {
   });
 }
 
-// /** Assign the inputted entity contents to an entity data type. */
+/** Assign the inputted entity contents to an entity data type. */
 function setEntity() {
   const display: string = $("#displayString")
     .val()
@@ -730,7 +625,6 @@ function setEntity() {
       sections: sectionArray
     };
   }
-  // addCachedRefs(entity);
 
   if (referencedValues != "") {
     entity.referencedValues = JSON.parse(referencedValues);
@@ -741,7 +635,8 @@ function setEntity() {
   }
   return entity;
 }
-/** Helper function for retrieving jQuery values for setEntity(). */
+
+/** Helper function to retrieve jQuery values for setEntity(). */
 function valuesFromQuery(query: string) {
   var jq = $(query);
   var result = [];
@@ -756,7 +651,7 @@ function valuesFromQuery(query: string) {
   }
   return result;
 }
-/** Helper function for retrieving fieldValue contents for jQuery for setEntity(). */
+/** Helper function to retrieve fieldValue contents for setEntity(). */
 function fieldValuesContentsFromQuery() {
   var jqFieldContents = $(".fieldValueContents");
   var jqBasicValue = $(".basicValue");
@@ -855,11 +750,6 @@ function fieldValuesContentsFromQuery() {
 
   return values;
 }
-/** Remove a selected input field in the entity fields. */
-function removeField(element: HTMLButtonElement) {
-  // removes specificField
-  element.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.remove();
-}
 
 /** Retrieve the contents of a selected entity and put them in the form boxes. */
 function getEntity(value) {
@@ -902,9 +792,6 @@ function getEntity(value) {
 
   var propertyKeysOrdered = [];
   for (var i = 0; i < sections.length; ++i) {
-    if (i != 0) {
-      addSection();
-    }
     $(".sectionTitle")
       .last()
       .val(sections[i].title);
