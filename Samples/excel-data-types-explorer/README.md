@@ -32,7 +32,7 @@ This sample builds and then sideloads a data types explorer add-in that allows y
 
 In particular, this add-in contains an entity data type builder that you can use to create and explore entity cards. To learn more about entity cards, see [Use cards with entity value data types](https://docs.microsoft.com/office/dev/add-ins/excel/excel-data-types-entity-card)
 
-![Screenshot showing hte data types explorer task pane, with the entity builder displayed, and an entity card open over the Excel grid.](task-pane-data-types-explorer-entity.png)
+![Screenshot showing the data types explorer task pane, with the entity builder displayed, and an entity card open over the Excel grid.](task-pane-data-types-explorer-entity.png)
 
 ## Applies to
 
@@ -67,7 +67,8 @@ Take the following steps to run this sample and set up the data types explorer a
 1. Clone or download this repo.
 1. Navigate to the **Samples/excel-data-types-explorer** folder via the command line.
 1. Run `npm install` to set up the add-in dependencies.
-1. Run `npm start`. This command will open Excel and sideload the add-in in Excel.
+1. Run `npm start`. This command will open Excel, sideload the add-in in Excel, and open the task pane.
+1. Follow the directions in the task pane to build and explore data types.
 
 Another version of this data types explorer tool is available as an [Excel Script Lab sample](https://gist.github.com/mafrenet/e6e1eb26d3ff778edad73a4230b44b5b). To learn more about Script Lab, see [Explore Office JavaScript API using Script Lab](https://docs.microsoft.com/office/dev/add-ins/overview/explore-with-script-lab).
 
