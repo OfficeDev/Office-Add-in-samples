@@ -43,8 +43,8 @@ In particular, this add-in contains an entity data type builder that you can use
 ## Prerequisites
 
 - Excel on Windows with a minimum build of 16.0.14626.10000), or Excel on Mac with a minimum build of 16.55.21102600), or Excel on the web.
-
-- Data types APIs are currently only available in public preview. Preview APIs are subject to change and are not intended for use in a production environment. We recommend that you try them out in test and development environments only. Do not use preview APIs in a production environment or within business-critical documents.
+- [Node.js](https://nodejs.org/) version 16 or greater.
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
 ## Solution
 
