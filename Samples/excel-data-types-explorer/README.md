@@ -33,11 +33,11 @@ This sample builds an Excel add-in that can create and explore data types in you
 
 This sample builds and then sideloads a data types explorer add-in that allows you to create and edit data types in an Excel workbook. Once the add-in is sideloaded, you can use it to explore string, double, boolean, entity, web image, and formatted number data types.
 
-(add screenshot)
+![Screenshot showing the data types explorer task pane and a formatted number entity in the Excel grid.](task-pane-data-types-explorer-formatted-number.png)
 
-In particular, this add-in contains an entity data type builder.
+In particular, this add-in contains an entity data type builder that you can use to create and explore entity cards. To learn more about entity cards, see [Use cards with entity value data types](https://docs.microsoft.com/office/dev/add-ins/excel/excel-data-types-entity-card)
 
-(add screenshot)
+![Screenshot showing hte data types explorer task pane, with the entity builder displayed, and an entity card open over the Excel grid.](task-pane-data-types-explorer-entity.png)
 
 ## Applies to
 
@@ -73,6 +73,8 @@ Take the following steps to run this sample and set up the data types explorer a
 1. Navigate to the **Samples/excel-data-types-explorer** folder via the command line.
 1. Run `npm install` to set up the add-in dependencies.
 1. Run `npm start`. This command will open Excel and sideload the add-in in Excel.
+
+Another version of this data types explorer tool is available as an [Excel Script Lab sample](https://gist.github.com/mafrenet/e6e1eb26d3ff778edad73a4230b44b5b). To learn more about Script Lab, see [Explore Office JavaScript API using Script Lab](https://docs.microsoft.com/office/dev/add-ins/overview/explore-with-script-lab).
 
 ## Copyright
 

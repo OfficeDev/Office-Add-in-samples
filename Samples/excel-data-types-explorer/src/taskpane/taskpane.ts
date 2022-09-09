@@ -99,11 +99,11 @@ function createOptionsFromList(list: string[]): JQuery<HTMLElement>[] {
 
 function specificFieldContent(): JQuery<HTMLElement> {
   var content = entityContents(defaultType);
-  var select = $("<label><strong>Data type:</strong></label><select/>", {
+  var label = $("<label><strong>Data type: </strong></label>");
+  var select = $("<select/>", {
     id: "dataTypeSelectEntity",
     name: "dataType",
     class: "dataTypeSelectEntity ms-Button ms-Button-label buttons",
-    style: "display:block"
   });
 
   select[0].onchange = function() {
@@ -122,7 +122,7 @@ function specificFieldContent(): JQuery<HTMLElement> {
   select.append($("<option/>", { class: "typeUnsupported", value: "Unsupported", disabled: true }).text("Unsupported"));
 
   var table = $("<table/>", { id: "fieldTable" }).append(
-    $("<tbody/>").append($("<tr/>").append($("<td/>").append(select)))
+    $("<tbody/>").append($("<tr/>").append($("<td/>").append(label).append(select)))
   );
 
   return $("<div/>", { id: "specificField", class: "specificFieldContents formContents solidBorder" })
