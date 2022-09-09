@@ -30,7 +30,7 @@ async function insertSheets() {
         const workbook = context.workbook;
 
         // Set up the insert options.
-        var options = {
+        const options = {
           sheetNamesToInsert: ["Template"], // Insert the "Template" worksheet from the source workbook.
           positionType: Excel.WorksheetPositionType.after, // Insert after the `relativeTo` sheet.
           relativeTo: "Sheet1",
@@ -51,7 +51,7 @@ async function insertSheets() {
         // Get data from your REST API. For this sample, the JSON is fetched from a file in the repo.
         let response = await fetch(dataSourceUrl + "/data.json");
         if (response.ok) {
-          var json = await response.json();
+          const json = await response.json();
         } else {
           console.error("HTTP-Error: " + response.status);
         }
@@ -68,11 +68,11 @@ async function insertSheets() {
         // We know that the table in this template starts at B5, so we start with that.
         // Next, we calculate the total number of rows from our sales data.
         const startRow = 5;
-        var address =
+        const address =
           "B" + startRow + ":F" + (newSalesData.length + startRow - 1);
 
         // Write the sales data to the table in the template.
-        var range = sheet.getRange(address);
+        const range = sheet.getRange(address);
         range.values = newSalesData;
         sheet.activate();
         return context.sync();

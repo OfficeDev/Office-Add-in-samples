@@ -1,1 +1,0 @@
-az ad app show --id <App_ID>

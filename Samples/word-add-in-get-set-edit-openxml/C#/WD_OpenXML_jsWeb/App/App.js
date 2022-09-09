@@ -3,10 +3,10 @@
 
 /* Common app functionality */
 
-var app = (function () {
+const app = (function () {
     "use strict";
 
-    var app = {};
+    const app = {};
 
     // Common initialization function (to be called from each page)
     app.initialize = function () {

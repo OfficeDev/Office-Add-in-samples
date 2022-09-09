@@ -1,0 +1,38 @@
+﻿@* Copyright (c) Maarten van Stam and Eric Legault. All rights reserved. Licensed under the MIT License. *@
+
+@inherits LayoutComponentBase
+
+<div class="main">
+	<header class="d-flex align-items-center justify-content-center">
+		<img src="./images/parker-ms.svg" />
+		<h1>
+			Blazor Office JS API demo
+		</h1>
+	</header>
+
+	<NavMenu/>
+
+	<div class="content">
+		<div class="container">
+			@Body
+		</div>
+	</div>
+</div>
+
+<footer class="d-flex align-items-center justify-content-center">
+	<div class="row">
+		@TrademarkMessage1
+	</div>
+	<div class="row">
+		@TrademarkMessage2
+	</div>
+	<div class="row">
+		Powered by: @System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription
+	</div>	
+</footer>
+
+
+@code {
+	public string TrademarkMessage1 { get; set; } = "Copyright © " + @DateTime.Now.Year + " Maarten van Stam/Eric Legault.";
+	public string TrademarkMessage2 { get; set; } = "All rights reserved.";
+}

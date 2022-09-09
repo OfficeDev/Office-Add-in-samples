@@ -112,7 +112,7 @@ function logout() {
     Office.context.ui.displayDialogAsync('https://localhost:44301/azureadauth/logout',
         { height: 30, width: 30 }, function (result) {           
             dialog = result.value;
-            dialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogMessageReceived, processLogoutMessage);
+            dialog.addEventHandler(Office.EventType.DialogMessageReceived, processLogoutMessage);
         });
 }
 

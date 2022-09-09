@@ -22,7 +22,7 @@ This sample accompanies the article section [Store and access data](https://docs
 
 - UI-less custom functions on Excel desktop and online.
 
-**Note:** Shared runtime is now recommended for most custom functions scenarios. This sample applies to UI-less custom functions only. 
+**Note:** Shared runtime is now recommended for most custom functions scenarios. This sample applies to UI-less custom functions only.
 
 ## Prerequisites
 
@@ -40,6 +40,7 @@ Version  | Date | Comments
 ---------| -----| --------
 1.0  | May 1, 2019 | Initial release
 1.1 | May 26, 2021 | Update to use GitHub pages for hosting
+1.2 | July 28, 2022 | Update JavaScript variable declarations
 
 ## Sample: Sharing data between custom functions and the task pane
 
@@ -56,8 +57,7 @@ You can run this sample in Excel in a browser. The add-in web files are served f
 1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
 1. Browse to the add-in manifest file, and then select **Upload**.
-   ![The upload add-in dialog with buttons for browse, upload, and cancel.
-](../../Samples/images/upload-add-in.png)
+   ![The upload add-in dialog with buttons for browse, upload, and cancel.](../../Samples/images/upload-add-in.png)
 1. Verify that the add-in loaded successfully. You will see a **Show Taskpane** button on the **Home** tab on the ribbon.
 
 Once the add-in is loaded use the following steps to try out the functionality.
@@ -65,9 +65,11 @@ Once the add-in is loaded use the following steps to try out the functionality.
 1. Open the task pane, and enter a value in the text box labeled **Send token to custom function**.
 1. Choose **Send**.
 1. In a cell, enter the following text to retrieve the value.
+
     ```
     =CONTOSO.GETVALUE("token")
     ```
+
 1. When the cell is calculated you will see the value you entered from the task pane.
 
 ### How the custom functions work with storage
@@ -100,9 +102,9 @@ The /src/taskpane/taskpane.html has two JavaScript functions that are called fro
 
 ```js
 function SendTokenToCustomFunction() {
-  var token = document.getElementById('tokenTextBox').value;
-  var tokenSendStatus = document.getElementById('tokenSendStatus');
-  var key = "token";
+  const token = document.getElementById('tokenTextBox').value;
+  const tokenSendStatus = document.getElementById('tokenSendStatus');
+  const key = "token";
   OfficeRuntime.storage.setItem(key, token).then(function () {
     tokenSendStatus.value = "Success: Item with key '" + key + "' saved to Storage.";
   }, function (error) {
@@ -115,8 +117,8 @@ The `ReceiveTokenFromCustomFunction` function retrieves the key from a text box 
 
 ```js
 function ReceiveTokenFromCustomFunction() {
-  var key = "token";
-  var tokenSendStatus = document.getElementById('tokenSendStatus');
+  const key = "token";
+  const tokenSendStatus = document.getElementById('tokenSendStatus');
   OfficeRuntime.storage.getItem(key).then(function (result) {
     tokenSendStatus.value = "Success: Item with key '" + key + "' read from Storage.";
     document.getElementById('tokenTextBox2').value = result;
@@ -129,32 +131,33 @@ function ReceiveTokenFromCustomFunction() {
 ## Run the sample from Localhost
 
 If you prefer to host the web server for the sample on your computer, follow these steps:
+
 1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
-    
+
     ```console
     npm install --global http-server
     ```
-    
-2. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
-3. From a command prompt, go to the root folder and run the following command:
-    
+
+1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
+1. From a command prompt, go to the root folder and run the following command:
+
     ```console
     http-server -S --cors . -p 3000
     ```
-    
-4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
-    
+
+1. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
+
     ```console
     npm install --global office-addin-https-reverse-proxy
     ```
-    
+
     To reroute run the following in another command prompt:
-    
+
     ```console
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
-    
-5. Follow the steps in [Run the sample](#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
+
+1. Follow the steps in [Run the sample](#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Copyright
 

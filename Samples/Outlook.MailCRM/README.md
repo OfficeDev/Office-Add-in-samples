@@ -1,4 +1,11 @@
-# DXDemos.Office365 #
+# [ARCHIVED] DXDemos.Office365 #
+
+**Note:** This sample is archived and no longer actively maintained. Security vulnerabilities may exist in the project, or its dependencies. If you plan to reuse or run any code from this repo, be sure to perform appropriate security checks on the code or dependencies first. Do not use this project as the starting point of a production Office Add-in. Always start your production code by using the Office/SharePoint development workload in Visual Studio, or the [Yeoman generator for Office Add-ins](https://github.com/OfficeDev/generator-office), and follow security best practices as you develop the add-in.
+
+To restore the project dependencies, rename the following file.
+
+- DXDemos.Office365/packages-archive.config -> DXDemos.Office365/packages.config
+
 DXDemos.Office365 is a solution containing several store patterns and practices. The apps and add-ins in this solution are near store-ready and illustrate a number of interesting patterns.
 
 # Getting Started #

@@ -32,8 +32,8 @@ Office.initialize = function (reason) {
 
 function writeContent(fileName) {
 
-    var myOOXMLRequest = new XMLHttpRequest();
-    var myXML;
+    const myOOXMLRequest = new XMLHttpRequest();
+    let myXML;
     myOOXMLRequest.open('GET', fileName, false);
     myOOXMLRequest.send();
     if (myOOXMLRequest.status === 200) {
@@ -45,8 +45,8 @@ function writeContent(fileName) {
 
 function writeMarkup(fileName) {
 
-    var myOOXMLRequest = new XMLHttpRequest();
-    var myXML;
+    const myOOXMLRequest = new XMLHttpRequest();
+    let myXML;
 
     //Set the format for the markup
     myOOXMLRequest.open('GET', '../../OOXMLSamples/FormatForMarkup.xml', false);

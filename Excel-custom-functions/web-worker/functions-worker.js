@@ -3,14 +3,14 @@
 
 self.addEventListener('message',
     function(event) {
-        var job = event.data;
+        let job = event.data;
         if (typeof(job) == "string") {
             job = JSON.parse(job);
         }
 
-        var jobId = job.jobId;
+        const jobId = job.jobId;
         try {
-            var result = invokeFunction(job.name, job.parameters);
+            const result = invokeFunction(job.name, job.parameters);
             // check whether the result is a promise.
             if (typeof(result) == "function" || typeof(result) == "object" && typeof(result.then) == "function") {
                 result.then(function(realResult) {
@@ -65,10 +65,10 @@ function invokeFunction(name, parameters) {
 }
 
 function test(n) {
-    var ret = 0;
-    for (var i = 0; i < n; i++) {
+    let ret = 0;
+    for (let i = 0; i < n; i++) {
         ret += Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(50))))))))));
-        for (var l = 0; l < n; l++) {
+        for (let l = 0; l < n; l++) {
             ret -= Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(50))))))))));     
         }
     }

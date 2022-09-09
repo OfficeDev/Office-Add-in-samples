@@ -28,12 +28,13 @@ const config = {
   },
 };
 
-exports.getConfidentialClientApplication = function getConfidentialClientApplication(){
-  // Create msal application object
-  return new msal.ConfidentialClientApplication(config);
-}
+exports.getConfidentialClientApplication =
+  function getConfidentialClientApplication() {
+    // Create msal application object
+    return new msal.ConfidentialClientApplication(config);
+  };
 
-// wrap this with one parameter that returns a new function (req,res,next) 
+// wrap this with one parameter that returns a new function (req,res,next)
 exports.validateJwt = function (req, res, next) {
   const authHeader = req.headers.authorization;
   if (authHeader) {
@@ -50,14 +51,22 @@ exports.validateJwt = function (req, res, next) {
       //test msa
 
       if (err) {
-        console.log(err);
-        return res.sendStatus(403);
+        // On rare occasions the SSO access token is unexpired when Office validates it,
+        // but expires by the time it is used in the OBO flow. Microsoft identity platform will respond
+        // with "The provided value for the 'assertion' is not valid. The assertion has expired."
+        // Construct an error message to return to the client so it can refresh the SSO token.
+        if (err.name === "TokenExpiredError") {
+          return res
+            .status(401)
+            .send({ type: "TokenExpiredError", errorDetails: err });
+        } else {
+          return res.status(403).send({ type: "Unknown", errorDetails: err });
+        }
       }
-
       next();
     });
   } else {
-    res.sendStatus(401);
+    res.status(401).send({ type: "Unknown", errorDetails: err });
   }
 };
 

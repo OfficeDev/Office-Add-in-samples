@@ -19,7 +19,7 @@ function action(event) {
 }
 
 // The global variable
-var g = {};
+const g = {};
 
 // the add-in command functions need to be available in global scope
 g.action = action;
