@@ -1,4 +1,12 @@
-# Outlook Add-in consuming the Microsoft Graph API
+# [ARCHIVED] Outlook Add-in consuming the Microsoft Graph API
+
+**Note:** This sample is archived and no longer actively maintained. Security vulnerabilities may exist in the project, or its dependencies. If you plan to reuse or run any code from this repo, be sure to perform appropriate security checks on the code or dependencies first. Do not use this project as the starting point of a production Office Add-in. Always start your production code by using the Office/SharePoint development workload in Visual Studio, or the [Yeoman generator for Office Add-ins](https://github.com/OfficeDev/generator-office), and follow security best practices as you develop the add-in.
+
+For a current sample showing how to consume the Microsoft Graph API, see  [Outlook add-in using Microsoft Graph](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/auth/Outlook-Add-in-Microsoft-Graph-ASPNET).
+
+To restore the project dependencies, rename the following file.
+
+- Outlook.AddInSampleWeb/packages-archive.config -> Excel.Outlook.AddInSampleWeb/packages.config
 
 ### Summary ###
 This is a sample Outlook Add-in - built using Microsoft Visual Studio 2015 - that consumes the Microsoft Graph API via REST/AJAX, using ADAL.JS and the current user's context in Office 365.
@@ -30,4 +38,4 @@ In order to play with this add-in, you need to:
 -  Configure the azureADTenant and azureADClientID variables in the [MessageRead.js](./Outlook.AddInSampleWeb/MessageRead.js) file of the solution
 
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Outlook.AddInSample" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/Outlook.AddInSample" />

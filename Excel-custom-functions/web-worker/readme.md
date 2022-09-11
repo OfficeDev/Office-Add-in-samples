@@ -44,6 +44,7 @@ To learn more about custom functions, see [Create custom functions in Excel](htt
 | Version | Date       | Comments        |
 | ------- | ---------- | --------------- |
 | 1.0     | 12-16-2020 | Initial release |
+| 1.1     | 07-28-2022 | Update JavaScript variable declarations |
 
 ## Disclaimer
 
@@ -68,8 +69,7 @@ You can run this sample in Excel in a browser. The add-in web files are served f
 1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](images/office-add-ins-my-account.png)
 1. Browse to the add-in manifest file, and then select **Upload**.
-   ![The upload add-in dialog with buttons for browse, upload, and cancel.
-](images/upload-add-in.png)
+   ![The upload add-in dialog with buttons for browse, upload, and cancel.](images/upload-add-in.png)
 1. Verify that the add-in loaded successfully. You will see a **Web worker task pane** button on the **Home** tab on the ribbon.
 
 Now you can use the following custom functions:
@@ -89,31 +89,31 @@ If you open the task pane you will see an animated bouncing ball. You can see th
 You host the web server for the sample on your computer by following these steps:
 
 1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
-    
+
     ```console
     npm install --global http-server
     ```
-    
-2. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
-3. From a command prompt, go to the web-worker folder and run the following command:
-    
+
+1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
+1. From a command prompt, go to the web-worker folder and run the following command:
+
     ```console
     http-server -S --cors .
     ```
-    
-4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
-    
+
+1. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
+
     ```console
     npm install --global office-addin-https-reverse-proxy
     ```
-    
+
     To reroute run the following in another command prompt:
-    
+
     ```console
     office-addin-https-reverse-proxy --url http://localhost:8080
     ```
-    
-5. Sideload the add-in using the the previous steps (1 - 7). Upload the `manifest-localhost.xml` file for step 6.
+
+1. Sideload the add-in using the the previous steps (1 - 7). Upload the `manifest-localhost.xml` file for step 6.
 
 ## Details
 
@@ -124,11 +124,11 @@ When a custom function needs to use a web worker, we turn the calculation into a
 ```JavaScript
     // Post a job to the web worker to do the calculation
     function dispatchCalculationJob(functionName, parameters) {
-        var jobId = g_nextJobId++;
+        const jobId = g_nextJobId++;
         return new Promise(function(resolve, reject) {
             // store the promise information.
             g_jobIdToPromiseInfoMap[jobId] = {resolve: resolve, reject: reject};
-            var worker = getOrCreateWebWorker(jobId);
+            const worker = getOrCreateWebWorker(jobId);
             worker.postMessage({
                 jobId: jobId,
                 name: functionName,
@@ -145,20 +145,20 @@ The web worker runs the job specified in the job object to do the actual calcula
 The functions-worker.js will:
 
 1. Receive a message containing the job to run.
-2. Invoke a function to perform the calculation.
-3. Call **postMessage** to post the result back to the main thread.
+1. Invoke a function to perform the calculation.
+1. Call **postMessage** to post the result back to the main thread.
 
 ```JavaScript
 self.addEventListener('message',
     function(event) {
-        var data = event.data;
+        let data = event.data;
         if (typeof(data) == "string") {
             data = JSON.parse(data);
         }
 
-        var jobId = data.jobId;
+        const jobId = data.jobId;
         try {
-            var result = invokeFunction(data.name, data.parameters);
+            const result = invokeFunction(data.name, data.parameters);
             // check whether the result is a promise
             if (typeof(result) == "function" || typeof(result) == "object" && typeof(result.then) == "function") {
                 result.then(function(realResult) {
@@ -204,17 +204,17 @@ In [functions.js](functions.js), when a new web worker is created, it is provide
 
 ```JavaScript
         // create a new web worker
-        var webWorker = new Worker("functions-worker.js");
+        const webWorker = new Worker("functions-worker.js");
         webWorker.addEventListener('message', function(event) {
-            var data = event.data;
+            let data = event.data;
             if (typeof(data) == "string") {
                 data = JSON.parse(data);
             }
 
             if (typeof(data.jobId) == "number") {
-                var jobId = data.jobId;
+                const jobId = data.jobId;
                 // get the promise info associated with the job id
-                var promiseInfo = g_jobIdToPromiseInfoMap[jobId];
+                const promiseInfo = g_jobIdToPromiseInfoMap[jobId];
                 if (promiseInfo) {
                     if (data.error) {
                         // The web worker returned an error
@@ -236,4 +236,4 @@ Copyright (c) 2020 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://telemetry.sharepointpnp.com/officedev/samples/excel-custom-function-web-workers" />
+<img src="https://pnptelemetry.azurewebsites.net/officedev/samples/excel-custom-function-web-workers" />

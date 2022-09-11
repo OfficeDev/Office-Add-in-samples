@@ -206,10 +206,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Cell-Analyzer_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Cell-Analyzer_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>C1D12EA6C996B98B21E522F6358A69B79D4F0AF0</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>2AD0C77F92D5251087E27CBF0513B23B2E0D1201</ManifestCertificateThumbprint>
   </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

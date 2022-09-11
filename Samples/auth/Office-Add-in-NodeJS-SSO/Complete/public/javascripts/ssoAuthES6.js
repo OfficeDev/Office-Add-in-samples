@@ -1,8 +1,9 @@
-/*
- * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo.
- *
- * This file shows how to use the SSO API to get a bootstrap token.
- */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// global to track if we are using SSO or the fallback auth.
+// To test fallback auth, set authSSO = false.
+let authSSO = true;
 
 // If the add-in is running in Internet Explorer, the code must add support
 // for Promises.
@@ -12,76 +13,187 @@ if (!window.Promise) {
 
 Office.onReady(function (info) {
   $(function () {
-    $("#getGraphDataButton").on("click", getGraphData);
+    $("#getFileNameListButton").on("click", getFileNameList);
   });
 });
 
-let retryGetAccessToken = 0;
+/**
+ * Handles the click event for the Get File Name List button.
+ * Requests a call to the ASP.NET Core server /api/filenames REST API that
+ * gets up to 10 file names listed in the user's OneDrive.
+ * When the call is completed, it will call the clientRequest.callbackRESTApiHandler.
+ */
+function getFileNameList() {
+  clearMessage(); // Clear message log on task pane each time an API runs.
+  createRequest(
+    "GET",
+    "/getuserfilenames",
+    handleGetFileNameResponse,
+    async (clientRequest) => {
+      await callWebServer(clientRequest);
+    }
+  );
+}
 
-async function getGraphData() {
-  // The following method will only be called when you are testing the fallback path.
-  // See the try block below.
-  function MockSSOError(code) {
-    this.code = code;
-  }
+/**
+ * Handler for the returned response from the ASP.NET Core server API call to get file names.
+ * Writes out the file names to the document.
+ *
+ * @param {*} response The list of file names.
+ */
+async function handleGetFileNameResponse(response) {
+  if (response !== null) {
+    try {
+      await writeFileNamesToOfficeDocument(response);
+      showMessage("Your OneDrive filenames are added to the document.");
+    } catch (error) {
+      // The error from writeFileNamesToOfficeDocument will begin
+      // "Unable to add filenames to document."
+      showMessage(error);
+    }
+  } else
+    showMessage("A null response was returned to handleGetFileNameResponse.");
+}
 
+/**
+ * Calls the REST API on the server. Error handling will
+ * switch to fallback auth if SSO fails.
+ *
+ * @param {*} clientRequest Contains information for calling an API on the server.
+ */
+async function callWebServer(clientRequest) {
   try {
-    /* 
-            To test the fallback path, force the SSO path to fail by uncommenting the 
-            following line. */
-    //    throw new MockSSOError("13003");
-
-    let bootstrapToken = await Office.auth.getAccessToken({
-      allowSignInPrompt: true,
-      allowConsentPrompt: true,
-      forMSGraphAccess: true,
+    const data = await $.ajax({
+      type: clientRequest.verb,
+      url: clientRequest.url,
+      headers: { Authorization: "Bearer " + clientRequest.accessToken },
+      cache: false,
     });
-    let exchangeResponse = await getGraphToken(bootstrapToken);
-    if (exchangeResponse.claims) {
-      // Microsoft Graph requires an additional form of authentication. Have the Office host
-      // get a new token using the Claims string, which tells AAD to prompt the user for all
-      // required forms of authentication.
-      let mfaBootstrapToken = await Office.auth.getAccessToken({
-        authChallenge: exchangeResponse.claims,
-      });
-      exchangeResponse = await getGraphToken(mfaBootstrapToken);
+    clientRequest.callbackRESTApiHandler(data);
+  } catch (error) {
+    // Check for expired SSO token. Refresh and retry the call if it expired.
+    if (
+      error.responseJSON &&
+      authSSO === true &&
+      error.responseJSON.type === "TokenExpiredError"
+    ) {
+      try {
+        const accessToken = await Office.auth.getAccessToken({
+          allowSignInPrompt: true,
+          allowConsentPrompt: true,
+          forMSGraphAccess: true,
+        });
+        const data = await $.ajax({
+          type: clientRequest.verb,
+          url: clientRequest.url,
+          headers: { Authorization: "Bearer " + accessToken },
+          cache: false,
+        });
+        clientRequest.callbackRESTApiHandler(data);
+      } catch (error) {
+        showMessage(error.responseText);
+        switchToFallbackAuth(clientRequest);
+        return;
+      }
     }
 
-    if (exchangeResponse.error) {
-      // AAD errors are returned to the client with HTTP code 200, so they do not trigger
-      // the catch block below.
-      handleAADErrors(exchangeResponse);
-    } else {
-      // For debugging:
-      // showMessage("ACCESS TOKEN: " + JSON.stringify(exchangeResponse.access_token));
+    // Check for a Microsoft Graph API call error. which is returned as bad request (403)
+    if (error.status === 403) {
+      if (error.responseJSON && error.responseJSON.type === "Microsoft Graph") {
+        showMessage(error.responseJSON.errorDetails);
+      } else {
+        showMessage(error);
+      }
 
-      // makeGraphApiCall makes an AJAX call to the MS Graph endpoint. Errors are caught
-      // in the .fail callback of that call, not in the catch block below.
-      makeGraphApiCall(exchangeResponse.access_token);
+      return;
     }
-  } catch (exception) {
-    // The only exceptions caught here are exceptions in your code in the try block
-    // and errors returned from the call of `getAccessToken` above.
-    if (exception.code) {
-      handleClientSideErrors(exception);
-    } else {
-      showMessage("EXCEPTION: " + JSON.stringify(exception));
-    }
+
+    // For all other error scenarios, display the message and use fallback auth.
+    showMessage("Unknown error from web server: " + JSON.stringify(error));
+    if (clientRequest.authSSO) switchToFallbackAuth(clientRequest);
   }
 }
 
-async function getGraphToken(bootstrapToken) {
-  let response = await $.ajax({
-    type: "GET",
-    url: "/auth",
-    headers: { Authorization: "Bearer " + bootstrapToken },
-    cache: false,
-  });
-  return response;
+/**
+ * Switches the client request to use MSAL.js auth (fallback) instead of SSO.
+ * Once the new client request is created with MSAL.js access token, callWebServer is called
+ * to continue attempting to call the REST API.
+ * @param {*} clientRequest Contains information for calling an API on the server.
+ */
+function switchToFallbackAuth(clientRequest) {
+  // Guard against accidental call to this function when fallback is already in use.
+  if (authSSO === false) return;
+
+  showMessage("Switching from SSO to fallback auth.");
+  authSSO = false;
+  // Create a new request for fallback auth.
+  createRequest(
+    clientRequest.verb,
+    clientRequest.url,
+    clientRequest.callbackRESTApiHandler,
+    async (fallbackRequest) => {
+      // Hand off to call using fallback auth.
+      await callWebServer(fallbackRequest);
+    }
+  );
 }
 
-function handleClientSideErrors(error) {
-  switch (error.code) {
+/**
+ * Creates a client request object with:
+ * authSSO - true if using SSO, otherwise false.
+ * verb - REST API verb such as GET, POST...
+ * accessToken - The access token to the ASP.NET Core server.
+ * url - The URL of the REST API to call on the ASP.NET Core server.
+ * callbackRESTApiHandler - The function to pass the results of the REST API call.
+ * callbackFunction - the function to pass the client request to when ready.
+ *
+ * Note that when the client request is created it will be passed to the callbackFunction. This is used because
+ * we may need to pop up a dialog to sign in the user, which uses a callback approach.
+ *
+ * @param {*} callbackFunction The function to pass the client request to when ready.
+ */
+async function createRequest(verb, url, restApiCallback, callbackFunction) {
+  const clientRequest = {
+    authSSO: authSSO,
+    verb: verb,
+    accessToken: null,
+    url: url,
+    callbackRESTApiHandler: restApiCallback,
+    callbackFunction: callbackFunction,
+  };
+
+  if (authSSO) {
+    try {
+      // Get access token from Office SSO.
+      clientRequest.accessToken = await Office.auth.getAccessToken({
+        allowSignInPrompt: true,
+        allowConsentPrompt: true,
+        forMSGraphAccess: true,
+      });
+      callbackFunction(clientRequest);
+    } catch (error) {
+      // handle the SSO error which will inform us if we need to switch to fallback auth.
+      let fallbackRequired = handleSSOErrors(error);
+      if (fallbackRequired) switchToFallbackAuth(clientRequest);
+    }
+  } else {
+    // Use fallback auth to get access token.
+    dialogFallback(clientRequest);
+  }
+}
+
+/**
+ * Handles any error returned from getAccessToken. The numbered errors are typically user actions
+ * that don't require fallback auth. The text shown for each error indicates next steps
+ * you should take. For default (all other errors), the sample returns true
+ * so that the caller is informed to use fallback auth.
+ *
+ * @param {*} err The error to process.
+ * @returns true if SSO error could not be handled, and fallback auth is required; otherwise, false.
+ */
+function handleSSOErrors(err) {
+  let fallbackRequired = false;
+  switch (err.code) {
     case 13001:
       // No one is signed into Office. If the add-in cannot be effectively used when no one
       // is logged into Office, then the first call of getAccessToken should pass the
@@ -119,27 +231,8 @@ function handleClientSideErrors(error) {
     default:
       // For all other errors, including 13000, 13003, 13005, 13007, 13012, and 50001, fall back
       // to non-SSO sign-in.
-      dialogFallback();
+      fallbackRequired = true;
       break;
   }
-}
-
-function handleAADErrors(exchangeResponse) {
-  // On rare occasions the bootstrap token is unexpired when Office validates it,
-  // but expires by the time it is sent to AAD for exchange. AAD will respond
-  // with "The provided value for the 'assertion' is not valid. The assertion has expired."
-  // Retry the call of getAccessToken (no more than once). This time Office will return a
-  // new unexpired bootstrap token.
-  if (
-    exchangeResponse.error_description.indexOf("AADSTS500133") !== -1 &&
-    retryGetAccessToken <= 0
-  ) {
-    retryGetAccessToken++;
-    getGraphData();
-  } else {
-    // For all other AAD errors, fallback to non-SSO sign-in.
-    // For debugging:
-    // showMessage("AAD ERROR: " + JSON.stringify(exchangeResponse));
-    dialogFallback();
-  }
+  return fallbackRequired;
 }

@@ -1,0 +1,19 @@
+﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+<div class="navbar px-3">
+	<div class="container">
+		<div class="col-md-2">
+			<button @onclick="@(() => MoveToPage("/"))" class="btn btn-primary nav-addin"><div>Attachments</div></button>
+		</div>
+	</div>
+</div>
+
+@code {
+
+	[Inject]
+	public NavigationManager NavigationManager { get; set; } = default!;
+
+	void MoveToPage(string page)
+	{
+		NavigationManager.NavigateTo(page, true);
+	}
+}

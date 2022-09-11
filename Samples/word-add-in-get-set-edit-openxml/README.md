@@ -63,11 +63,11 @@ The following screenshots (Figure 1a and Figure 1b) show how the document surfac
 
 Figure 1a. SampleDoc.docx document contents.
 
-![Screenshot of SampleDoc.docx document opened with images and formatted text.](description/CG_GetSetOOXML_fig01a.gif)
+![SampleDoc.docx document opened with images and formatted text.](description/CG_GetSetOOXML_fig01a.gif)
 
 Figure 1b. More SampleDoc.docx document contents.
 
-![Screenshot of SampleDoc.docx document opened with tables and SmartArt.](description/CG_GetSetOOXML_fig01b.gif)
+![SampleDoc.docx document opened with tables and SmartArt.](description/CG_GetSetOOXML_fig01b.gif)
 
 **Note**
 
@@ -75,7 +75,7 @@ The sample uses Office Open XML (the OOXML coercion type) rather than HTML or pl
 
 Figure 2. Task pane appearance after using the **Get…** button to extract Office Open XML for selected content.
 
-![Screenshot of the add-ins task pane opened in Word.](description/add-in-screenshot.png)
+![The add-in's task pane opened in Word.](description/add-in-screenshot.png)
 
 When you select content and choose the **Get…** button, the add-in uses the JavaScript **getSelectedDataAsync** method to generate a complete Office Open XML document package that includes the selected document content, and places it in the text area of the task pane (as shown in Figure 2). Use the text area in that task pane as a scratch pad. Copy the Office Open XML markup you retrieve into an XML file, edit it to include just the information you need, and paste it back into the text area of the task pane to test your edited markup.
 
@@ -100,6 +100,7 @@ When you use JavaScript to generate the Office Open XML markup for selected cont
 - GitHub release: August 2015
 - Use new Word API: October 2015
 - Fix bugs and move to new samples repo: January 2022
+- Update JavaScript variable declarations: July 2022
 
 ## Related content
 
@@ -108,4 +109,4 @@ When you use JavaScript to generate the Office Open XML markup for selected cont
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/word-get-set-edit-ooxml" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/word-get-set-edit-ooxml" />

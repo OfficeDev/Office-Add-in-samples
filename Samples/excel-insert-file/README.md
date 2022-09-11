@@ -60,13 +60,13 @@ To run the sample you just need to sideload the manifest. The add-in web files a
 1. Choose **Excel**, and then open a new document.
 1. Select the **Insert** tab, and choose **Office Add-ins**.
 1. On the **Office Add-ins** dialog, select **MY ADD-INS** , choose the **Manage My Add-ins** drop-down, and then choose **Upload My Add-in**.
-    
+
     ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
-    
+
 1. Browse to the add-in manifest file, and then select **Upload**.
-    
+
     ![The upload add-in dialog with buttons for browse, upload, and cancel.](../../Samples/images/upload-add-in.png)
-    
+
 1. Verify that the add-in loaded successfully. You'll see a **PnP Insert Excel file** button on the **Home** tab.
 
 Once the add-in is loaded, use the following steps to try out the functionality.
@@ -86,7 +86,7 @@ When you select the **SalesTemplate.xlsx** file, the following code in **index.j
 const workbook = context.workbook;
 
 // Set up the insert options.
-var options = {
+const options = {
   sheetNamesToInsert: ["Template"], // Insert the "Template" worksheet from the source workbook.
   positionType: Excel.WorksheetPositionType.after, // Insert after the `relativeTo` sheet.
   relativeTo: "Sheet1",
@@ -105,7 +105,7 @@ const sheet = context.workbook.worksheets.getItem("Template");
   // Get data from your REST API. For this sample, the JSON is fetched from a file in the repo.
   let response = await fetch(dataSourceUrl + "/data.json");
   if (response.ok) {
-    var json = await response.json();
+    const json = await response.json();
   } else {
     console.error("HTTP-Error: " + response.status);
   }
@@ -126,10 +126,10 @@ Finally, it adds the JSON to the table.
   // We know that the table in this template starts at B5, so we start with that.
   // Next, we calculate the total number of rows from our sales data.
   const startRow = 5;
-  var address = "B" + startRow + ":F" + (newSalesData.length + startRow - 1);
+  const address = "B" + startRow + ":F" + (newSalesData.length + startRow - 1);
       
   // Write the sales data to the table in the template.
-  var range = sheet.getRange(address);
+  const range = sheet.getRange(address);
   range.values = newSalesData;
   sheet.activate();
 ```
@@ -140,37 +140,37 @@ If you prefer to host the web server for the sample on your computer, follow the
 
 1. Open the **index.js** file.
 1. Edit line 4 to refer to the localhost:3000 endpoint as shown in the following code.
-    
+
     ```javascript
     const dataSourceUrl = "https://localhost:3000";
     ```
-    
+
 1. Save the file.
 1. You need http-server to run the local web server. If you haven't installed http-server, you can do this with the following command:
-    
+
     ```console
     npm install --global http-server
     ```
-    
+
 1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
 1. From a command prompt, go to the web-worker folder and run the following command:
-    
+
     ```console
     http-server -S --cors . -p 3000
     ```
-    
+
 1. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this proxy, you can do it with the following command:
-    
+
     ```console
     npm install --global office-addin-https-reverse-proxy
     ```
-    
+
     To reroute run the following in another command prompt:
-    
+
     ```console
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
-    
+
 1. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/excel-keyboard-shortcuts#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Copyright
@@ -179,4 +179,4 @@ Copyright (c) 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/excel-insert-external-file" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-insert-external-file" />

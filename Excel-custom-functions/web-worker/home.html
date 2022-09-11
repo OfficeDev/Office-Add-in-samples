@@ -8,9 +8,9 @@
         <script src="functions.js" type="text/javascript"></script>
         <script type="text/javascript">
 
-        var ballX = 100;
-        var ballY = 10;
-        var ballDirection = 'downRight';
+        let ballX = 100;
+        let ballY = 10;
+        let ballDirection = 'downRight';
 
         Office.onReady(function() {
             animate();
@@ -22,17 +22,17 @@
             setInterval(drawBall, 10);
          }
 
-         var drawBall = () => {
-            var canvas = document.getElementById('mycanvas');
+         const drawBall = () => {
+            const canvas = document.getElementById('mycanvas');
 
             if (canvas.getContext) {
-                var ctx = canvas.getContext('2d');
-                ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-                moveBall(ctx.canvas.width,ctx.canvas.height);
-                var radius=20;
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                moveBall(ctx.canvas.width, ctx.canvas.height);
+                const radius = 20;
 
                 ctx.beginPath();
-                ctx.arc(ballX,ballY,radius,0,2*Math.PI,false);
+                ctx.arc(ballX, ballY, radius, 0, 2*Math.PI, false);
                 ctx.fillStyle = 'green';
                 ctx.fill();
                 ctx.lineWidth = 4;
@@ -41,7 +41,7 @@
             }
          }
 
-         var moveBall = (width,height) => {
+         const moveBall = (width,height) => {
              //check for ball collision with context boundaries
            
              if (ballX <= 0) {

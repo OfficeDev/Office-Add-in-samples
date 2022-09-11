@@ -26,21 +26,21 @@ When you submit changes to this repository, please follow these recommendations.
 When you are submitting a new sample, use the following guidelines.
 
 ### Check for existing samples
-If you find a similar sample that already exists in the repo, we would prefer that you extend the existing one, rather than submit a new similar sample.
+If you find a similar sample that already exists in the repository, we would prefer that you extend the existing one, rather than submit a new similar sample.
 
 ### Create a README.md file
-Create a README.md file for your code sample, and base it on the [provided template](/Teamplates/readme-template.md). The README must be named README.md with capital letters.
+Create a README.md file for your code sample, and base it on the [provided template](/Templates/readme-template.md). The README must be named README.md with capital letters.
 
 ### Update tracking image
-The README template contains specific tracking image as a final entry in the page with img tag by default to https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/name-of-sample. This is transparent image, which is used to track anonymous view counts of individual samples in GitHub.
+The README template contains specific tracking image as a final entry in the page with img tag by default to https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/name-of-sample. This is transparent image, which is used to track anonymous view counts of individual samples in GitHub.
 
-Update the image `src` element according to correct repository name and folder information. For example, if your sample is **/samples** folder and named as "react-todo", `src` element should be updated as https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/react-todo.
+Update the image `src` element according to correct repository name and folder information. For example, if your sample is **/samples** folder and named as "react-todo", `src` element should be updated as https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/react-todo.
 
 ### Name the solution
 When you are submitting a new sample solution, please name the sample solution folder accordingly.
 
-* The solution folder should be under the **/Samples** folder of this repo.
-* Folder name should be in the format [product]-[scenario]-[platform]. For example, a sample that shows how to create data-bound Excel tables using React, should be named "excel-data-bound-tables-react". The names are all lowercase.
+* The solution folder should be under the **/Samples** folder of this repository.
+* Folder name should be in the format *[product]-[scenario]-[platform]*. For example, a sample that shows how to create data-bound Excel tables using React, should be named "excel-data-bound-tables-react". The names are all lowercase.
 * If your solution is demonstrating multiple technologies, please use functional terms as the name for the solution folder.
 * Do not use a period in the folder name of the provided sample.
 
@@ -48,7 +48,7 @@ When you are submitting a new sample solution, please name the sample solution f
 
 Use the following steps to submit a pull request for your new code sample.
 
-1. Fork this repository [OfficeDev/PnP-OfficeAddins](https://github.com/OfficeDev/PnP-OfficeAddins) to your GitHub account.
+1. Fork this repository [OfficeDev/Office-Add-in-samples](https://github.com/OfficeDev/Office-Add-in-samples) to your GitHub account.
 2. Create a new branch off the `main` branch for your fork for the contribution.
 3. In the new branch, create the folder for your new sample using the previous naming guidelines.
 4. Add your code sample to the folder.
@@ -61,7 +61,7 @@ Use the following steps to submit a pull request for your new code sample.
 
 When you submit your changes, via a pull request, our team will be notified and will review your pull request. You will receive notifications about your pull request from GitHub; you may also be notified by someone from our team if we need more information. We reserve the right to edit your submission for legal, style, clarity, or other issues.
 
-If you need help keeping your fork in sync with the original repo, see [GitHub Help: Syncing a Fork](https://help.github.com/articles/syncing-a-fork/).
+If you need help keeping your fork in sync with the original repository, see [GitHub Help: Syncing a Fork](https://help.github.com/articles/syncing-a-fork/).
 
 ## Code hygiene
 
@@ -79,29 +79,30 @@ Follow these guidelines to be sure your code is ready for the world.
 
 ## Additional guidelines
 
-Before you submit your pull request consider the following guidelines:
+Before you submit your pull request, consider the following guidelines.
 
-* Search [GitHub](https://github.com/OfficeDev/PnP-OfficeAddins/pulls) for an open or closed Pull Request
+* Search [GitHub](https://github.com/OfficeDev/Office-Add-in-samples/pulls) for an open or closed Pull Request
   that relates to your submission. You don't want to duplicate effort.
-* Make sure you have a link in your local cloned fork to the [OfficeDev/PnP-OfficeAddins](https://github.com/OfficeDev/PnP-OfficeAddins):
+
+* Make sure you have a link in your local cloned fork to the [OfficeDev/Office-Add-in-samples](https://github.com/OfficeDev/Office-Add-in-samples) repository.
 
   ```shell
-  # check if you have a remote pointing to the Microsoft repo:
+  # check if you have a remote pointing to the Microsoft repository
   git remote -v
 
-  # if you see a pair of remotes (fetch & pull) that point to https://github.com/OfficeDev/PnP-OfficeAddins, you're ok... otherwise you need to add one
+  # if you see a pair of remotes (fetch & pull) that point to https://github.com/OfficeDev/Office-Add-in-samples, you're ok... otherwise you need to add one
 
-  # add a new remote named "upstream" and point to the Microsoft repo
-  git remote add upstream https://github.com/OfficeDev/PnP-OfficeAddins.git
+  # add a new remote named "upstream" and point to the Microsoft repository
+  git remote add upstream https://github.com/OfficeDev/Office-Add-in-samples.git
   ```
 
-* Make your changes in a new git branch:
+* Make your changes in a new git branch.
 
   ```shell
   git checkout -b react-taxonomypicker main
   ```
 
-* Ensure your fork is updated and not behind the upstream **pnp-officeaddins** repo. Refer to these resources for more information on syncing your repo:
+* Ensure your fork is updated and not behind the upstream **Office-Add-in-samples** repository. Refer to these resources for more information on syncing your repository:
   * [GitHub Help: Syncing a Fork](https://help.github.com/articles/syncing-a-fork/)
   * [Keep Your Forked Git Repo Updated with Changes from the Original Upstream Repo](http://www.andrewconnell.com/blog/keep-your-forked-git-repo-updated-with-changes-from-the-original-upstream-repo)
   * For a quick cheat sheet:
@@ -110,10 +111,10 @@ Before you submit your pull request consider the following guidelines:
     # assuming you are in the folder of your locally cloned fork....
     git checkout main
 
-    # assuming you have a remote named `upstream` pointing official **pnp-officeaddins** repo
+    # assuming you have a remote named `upstream` pointing to the official Office-Add-in-samples repository
     git fetch upstream
 
-    # update your local main to be a mirror of what's in the main repo
+    # update your local main to be a mirror of what's in the main repository
     git pull --rebase upstream main
 
     # switch to your branch where you are working, say "react-taxonomypicker"
@@ -123,7 +124,7 @@ Before you submit your pull request consider the following guidelines:
     git rebase main
     ```
 
-* Push your branch to GitHub:
+* Push your branch to GitHub.
 
   ```shell
   git push origin react-taxonomypicker
@@ -131,31 +132,32 @@ Before you submit your pull request consider the following guidelines:
 
 ## Merging your existing Github projects with this repository
 
-If the sample you wish to contribute is stored in your own Github repository, you can use the following steps to merge it with the this repository:
+If the sample you wish to contribute is stored in your own Github repository, you can use the following steps to merge it with the this repository.
 
-* Fork the `pnp-officeaddins` repository from GitHub
-* Create a local git repository
+1. Fork the **Office-Add-in-samples** repository from GitHub.
+
+1. Create a local git repository.
 
     ```shell
-    md pnp-officeaddins
-    cd pnp-officeaddins
+    md Office-Add-in-samples
+    cd Office-Add-in-samples
     git init
     ```
 
-* Pull your forked copy of pnp-officeaddins into your local repository
+1. Pull your forked copy of **Office-Add-in-samples** into your local repository.
 
     ```shell
-    git remote add origin https://github.com/yourgitaccount/pnp-officeaddins.git
+    git remote add origin https://github.com/yourgitaccount/Office-Add-in-samples.git
     git pull origin main
     ```
 
-* Pull your other project from github into the samples folder of your local copy of pnp-officeaddins
+1. Pull your other project from Github into the samples folder of your local copy of the Office-Add-in-samples repository.
 
     ```shell
     git subtree add --prefix=samples/projectname https://github.com/yourgitaccount/projectname.git main
     ```
 
-* Push the changes up to your forked repository
+1. Push the changes up to your forked repository
 
     ```shell
     git push origin main

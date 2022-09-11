@@ -129,4 +129,4 @@ Find more information and resources at:
 - Find lots of TypeScript type definitions at: <https://github.com/DefinitelyTyped/DefinitelyTyped>
 - Read more about this sample at: <http://simonjaeger.com/use-typescript-in-a-visual-studio-office-add-in-project>
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Office.TypeScriptAddin" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/Office.TypeScriptAddin" />

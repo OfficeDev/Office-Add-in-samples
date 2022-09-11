@@ -1,0 +1,42 @@
+[
+    {
+      "name": "outlook-blazor-add-in",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Create a Blazor WebAssembly Outlook add-in",
+      "shortDescription": "This sample shows how to build an Outlook add-in using .NET Blazor technologies.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/outlook-blazor-add-in",
+      "longDescription": [
+        "This sample shows how to build an Outlook add-in using .NET Blazor technologies. Blazor WebAssembly allows you to build Office Add-ins using .NET, C#, and JavaScript to interact with the Office JavaScript API. The add-in uses JavaScript to work with the document and Office JS APIs, but you build the user interface and all other non-Office interactions in C# and .NET Core Blazor technologies."
+      ],
+      "creationDateTime": "2022-09-06",
+      "updateDateTime": "2022-09-06",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+       
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "aafvstam",
+          "pictureUrl": "https://github.com/aafvstam.png",
+          "name": "Maarten van Stam"
+        },
+        {
+          "gitHubAccount": "elegault",
+          "pictureUrl": "https://github.com/elegault.png",
+          "name": "Eric Legault"
+        }
+      ],
+      "references": [
+      
+      ]
+    }
+  ] 

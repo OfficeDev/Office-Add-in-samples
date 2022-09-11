@@ -1,4 +1,10 @@
-# UPS Package Tracker for Outlook 2013 #
+# [ARCHIVED] UPS Package Tracker for Outlook 2013 #
+
+**Note:** This sample is archived and no longer actively maintained. Security vulnerabilities may exist in the project, or its dependencies. If you plan to reuse or run any code from this repo, be sure to perform appropriate security checks on the code or dependencies first. Do not use this project as the starting point of a production Office Add-in. Always start your production code by using the Office/SharePoint development workload in Visual Studio, or the [Yeoman generator for Office Add-ins](https://github.com/OfficeDev/generator-office), and follow security best practices as you develop the add-in.
+
+To restore the project dependencies, rename the following files.
+
+- UPSPackageTrackerWeb/packages-archive.config -> UPSPackageTrackerWeb/packages.config
 
 ### Summary ###
 This sample demonstrates how to create an add-in for Outlook which extracts data from a mail message, retrieves data from an external service and formats the data for display.
@@ -101,4 +107,4 @@ The Azure Storage emulator must be started before running the solution. A simple
 
 Once the storage emulator has started, press F5 to run the project. 
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/Outlook.UPSPackageTracker" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/Outlook.UPSPackageTracker" />
