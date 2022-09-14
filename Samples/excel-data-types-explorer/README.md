@@ -36,8 +36,8 @@ In particular, this add-in contains an entity data type builder that you can use
 
 ## Applies to
 
-- Excel on Windows (minimum build of 16.0.14626.10000)
-- Excel on Mac (minimum build of 16.55.21102600)
+- Excel on Windows
+- Excel on Mac
 - Excel on the web
 
 ## Prerequisites
