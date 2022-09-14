@@ -11,7 +11,7 @@ extensions:
   technologies:
   - Add-ins
   createdDate: 09/07/2022 4:00:00 PM
-description: "Use this sample to create data types in Excel workbooks, and explore existing data types in Excel workbooks."
+description: "Create data types in Excel workbooks and explore existing data types in Excel workbooks."
 ---
 
 # Create and explore data types in Excel (preview)
@@ -68,7 +68,7 @@ Take the following steps to run this sample and set up the data types explorer a
 1. Navigate to the **Samples/excel-data-types-explorer** folder via the command line.
 1. Run `npm install` to set up the add-in dependencies.
 1. Run `npm install --save @types/office-js-preview` to install the Office.js preview type definitions ([@types/office-js-preview](https://www.npmjs.com/package/@types/office-js-preview)).
-1. Run `npm start`. This command will open Excel, sideload the add-in in Excel, and open the task pane.
+1. Run `npm start`. This command opens Excel, sideloads the add-in in Excel, and opens the task pane.
 1. Follow the directions in the task pane to build and explore data types.
 
 Another version of this data types explorer tool is available as an [Excel Script Lab sample](https://gist.github.com/mafrenet/e6e1eb26d3ff778edad73a4230b44b5b). To learn more about Script Lab, see [Explore Office JavaScript API using Script Lab](https://docs.microsoft.com/office/dev/add-ins/overview/explore-with-script-lab).
