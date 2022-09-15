@@ -1,17 +1,16 @@
 /** Copyright (c) Microsoft Corporation. Licensed under the MIT License. */
 
-// Set up the task pane buttons and select list.
+// Set up the task pane buttons and select list..
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
     // Assign the HTML buttons to the relevant method.
-    document.getElementById("getData").onclick = getData;
     document.getElementById("setData").onclick = setData;
+    document.getElementById("getData").onclick = getData;
     document.getElementById("clearForm").onclick = clearForm;
-    console.log("test test");
 
     // Update the displayed input fields based on the select list. 
     $("#dataTypeSelect").on("change", function() {
-      var value = $("#dataTypeSelect option:selected");
+      let value = $("#dataTypeSelect option:selected");
       setSelectedType(getTypeContent(value.val().toString()));
     });
 
@@ -19,7 +18,7 @@ Office.onReady((info) => {
   }
 });
 
-const defaultType: string = "String";
+const defaultType: string = "FormattedNumber";
 
 function textInputWithLabel(inputID: string, labelText: string, altText: string): JQuery<HTMLElement>[] {
   return [
@@ -88,7 +87,7 @@ function unsupportedContent(): JQuery<HTMLElement> {
 }
 
 function createOptionsFromList(list: string[]): JQuery<HTMLElement>[] {
-  var options = [];
+  let options = [];
   list.forEach(function(val) {
     const noSpaceVal = val.replace(" ", "");
     options.push($("<option/>", { class: "type" + noSpaceVal, value: noSpaceVal }).text(val));
@@ -98,30 +97,30 @@ function createOptionsFromList(list: string[]): JQuery<HTMLElement>[] {
 }
 
 function specificFieldContent(): JQuery<HTMLElement> {
-  var content = entityContents(defaultType);
-  var label = $("<label><strong>Data type: </strong></label>");
-  var select = $("<select/>", {
+  let content = entityContents("String"); // Set the default data type inside an entity to "String".
+  let label = $("<label><strong>Data type: </strong></label>");
+  let select = $("<select/>", {
     id: "dataTypeSelectEntity",
     name: "dataType",
     class: "dataTypeSelectEntity ms-Button ms-Button-label buttons",
   });
 
   select[0].onchange = function() {
-    var options = (select[0] as HTMLSelectElement).options;
-    var valueType = options.item(options.selectedIndex).value;
+    let options = (select[0] as HTMLSelectElement).options;
+    let valueType = options.item(options.selectedIndex).value;
     $(content)
       .children()
       .replaceWith(entityContents(valueType).children());
   };
 
-  var options = createOptionsFromList(["String", "Double", "Boolean", "Web Image", "Formatted Number"]);
-  for (var i = 0; i < options.length; ++i) {
+  let options = createOptionsFromList(["String", "Double", "Boolean", "Web Image", "Formatted Number"]);
+  for (let i = 0; i < options.length; ++i) {
     select.append(options[i]);
   }
 
   select.append($("<option/>", { class: "typeUnsupported", value: "Unsupported", disabled: true }).text("Unsupported"));
 
-  var table = $("<table/>", { id: "fieldTable" }).append(
+  let table = $("<table/>", { id: "fieldTable" }).append(
     $("<tbody/>").append($("<tr/>").append($("<td/>").append(label).append(select)))
   );
 
@@ -131,11 +130,11 @@ function specificFieldContent(): JQuery<HTMLElement> {
 }
 
 function entitySectionContent(): JQuery<HTMLElement> {
-  var fields = $(`<div class="fields"/>`).append(specificFieldContent());
+  let fields = $(`<div class="fields"/>`).append(specificFieldContent());
 
-  var section = $(`<div class="collapsibleSection" aria-expanded="true"/>`).append(fields);
+  let section = $(`<div class="collapsibleSection" aria-expanded="true"/>`).append(fields);
 
-  var newFieldButton = $("<button/>", {
+  let newFieldButton = $("<button/>", {
     id: "addField",
     class: "ms-Button ms-Button-label buttons",
     alt: "add another field to current section",
@@ -153,8 +152,8 @@ function entitySectionContent(): JQuery<HTMLElement> {
 }
 
 function entityDefaultSection(): JQuery<HTMLElement> {
-  var defaultSection = $(`<div id="defaultSection" class="sectionContents formContents solidBorder"/>`);
-  var label = $("<label/>", { class: "sectionHeader" }).text("Default section: ");
+  let defaultSection = $(`<div id="defaultSection" class="sectionContents formContents solidBorder"/>`);
+  let label = $("<label/>", { class: "sectionHeader" }).text("Default section: ");
 
   defaultSection.append([label, entitySectionContent()]);
 
@@ -162,8 +161,8 @@ function entityDefaultSection(): JQuery<HTMLElement> {
 }
 
 function entitySection(): JQuery<HTMLElement> {
-  var element = $("<div/>", { class: "sectionContents formContents solidBorder" });
-  var table1 = $(`
+  let element = $("<div/>", { class: "sectionContents formContents solidBorder" });
+  let table1 = $(`
               <table id="sectionTable">
                 <tbody>
                   <tr class="columnTitle">
@@ -176,7 +175,7 @@ function entitySection(): JQuery<HTMLElement> {
                 </tbody>
               </table>`);
 
-  var removeSectionButton = $("<button/>", {
+  let removeSectionButton = $("<button/>", {
     class: "ms-Button ms-Button-label buttons",
     alt: "delete current section and its contents"
   }).text("Delete Section and its Contents");
@@ -214,12 +213,12 @@ function getTypeContent(valueType: string): JQuery<HTMLElement> | JQuery<HTMLEle
 
 /** Create the HTML for entity contents section. */
 function entityContents(valueType: string): JQuery<HTMLElement> {
-  var trKey = $(`<tr>
+  let trKey = $(`<tr>
           <td><label class="labels">Key:</label></td>
           <td><input class="inputBox fieldName" alt="Key input box"/></td>
         </tr>`);
 
-  var tdMetadata = $(`<td colspan="4" class="center settings"/>`);
+  let tdMetadata = $(`<td colspan="4" class="center settings"/>`);
 
   if (valueType == "WebImage") {
     tdMetadata.append(checkboxWithLabel("mainImage", "Make main image", "main image checkbox"));
@@ -237,19 +236,19 @@ function entityContents(valueType: string): JQuery<HTMLElement> {
     $("<input/>", { class: "sublabel", alt: "sublabel input box" })
   ]);
 
-  var trMetadata = $(`<tr class="metadata" style="visibility:collapse"/>`).append(tdMetadata);
+  let trMetadata = $(`<tr class="metadata" style="visibility:collapse"/>`).append(tdMetadata);
 
-  var trButtons = $(`<tr/>`);
-  var tdButtons = $(`<td colspan="4"/>`);
+  let trButtons = $(`<tr/>`);
+  let tdButtons = $(`<td colspan="4"/>`);
 
-  var buttonToggleMetadata = $(
+  let buttonToggleMetadata = $(
     `<button class="ms-Button ms-Button-label buttons" alt="Toggle to expand or collapse metadata properties of field">More settings</button>`
   );
 
   /** Expand or collapse the additional metadata contents of a
   particular input field, within the entity contents. */
   buttonToggleMetadata[0].onclick = function() {
-    var visibility = trMetadata[0].style.visibility;
+    let visibility = trMetadata[0].style.visibility;
     if (visibility != "collapse") {
       trMetadata[0].style.visibility = "collapse";
     } else {
@@ -272,11 +271,11 @@ function entityContents(valueType: string): JQuery<HTMLElement> {
 
 /** Create the HTML for the entity data type. */
 function entityContent(): JQuery<HTMLElement> {
-  var div = $(`<div class="contentPadding"/>`);
-  var iconlabel = $(`<label class="labels"> Entity icon: </label>`);
-  var contentLabel = $(`<label class="labels contentPadding">Entity contents:</label>`);
-  var select = $(`<select id="iconSelect" name="dataType" class="ms-Button ms-Button-label buttons"/>`);
-  var options = createOptionsFromList([
+  let div = $(`<div class="contentPadding"/>`);
+  let iconlabel = $(`<label class="labels"> Entity icon: </label>`);
+  let contentLabel = $(`<label class="labels contentPadding">Entity contents:</label>`);
+  let select = $(`<select id="iconSelect" name="dataType" class="ms-Button ms-Button-label buttons"/>`);
+  let options = createOptionsFromList([
     "Generic",
     "Airplane",
     "Animal",
@@ -324,19 +323,19 @@ function entityContent(): JQuery<HTMLElement> {
     "Wand"
   ]);
 
-  for (var i = 0; i < options.length; ++i) {
+  for (let i = 0; i < options.length; ++i) {
     select.append(options[i]);
   }
 
   div.append(iconlabel);
   div.append(select);
 
-  var sections = $(`<div class="sections"/>`).append(entityDefaultSection());
+  let sections = $(`<div class="sections"/>`).append(entityDefaultSection());
 
-  var label = $(`<label for="displayString" class="labels">Entity display text: </label>`);
-  var input = $(`<input class="inputBox displayString" type="text" id="displayString" alt="display text input box"/>`);
+  let label = $(`<label for="displayString" class="labels">Entity display text: </label>`);
+  let input = $(`<input class="inputBox displayString" type="text" id="displayString" alt="display text input box"/>`);
 
-  var providerTable = $(`<div id="entityContents" class="solidBorder formContents"/>`).append(
+  let providerTable = $(`<div id="entityContents" class="solidBorder formContents"/>`).append(
     $(`<table id="fieldTable"/>`).append(
       $(`<tbody/>`)
         .append(
@@ -351,17 +350,17 @@ function entityContent(): JQuery<HTMLElement> {
     )
   );
 
-  var referencedValuesLabel = $(`<label for="referencedValues" class="labels">Referenced values: </label>`);
-  var referencedValuesInput = $(
+  let referencedValuesLabel = $(`<label for="referencedValues" class="labels">Referenced values: </label>`);
+  let referencedValuesInput = $(
     `<input class="inputBox displayString" type="text" id="referencedValues" alt="referencedValues text display box" disabled/>`
   );
-  var referencedValuesClearButton = $("<button/>", {
+  let referencedValuesClearButton = $("<button/>", {
     id: "clearReferencedValue",
     class: "ms-Button ms-Button-label buttons",
     text: "Clear referencedValues"
   });
 
-  var referencedValuesDiv = $("<div/>", { id: "referencedValuesDiv" })
+  let referencedValuesDiv = $("<div/>", { id: "referencedValuesDiv" })
     .append(referencedValuesLabel)
     .append(referencedValuesInput)
     .append(referencedValuesClearButton);
@@ -373,11 +372,11 @@ function entityContent(): JQuery<HTMLElement> {
     referencedValuesDiv[0].style.display = "none";
   };
 
-  var providerInfo = $("<div/>", { class: "contentPadding" })
+  let providerInfo = $("<div/>", { class: "contentPadding" })
     .append($("<label/>", { class: "labels" }).text("Provider info: "))
     .append(providerTable);
 
-  var element = $(`<tr id="Entity"/>`).append(
+  let element = $(`<tr id="Entity"/>`).append(
     $(`<td colspan="2"/>`)
       .append([label, input])
       .append(div)
@@ -392,7 +391,7 @@ function entityContent(): JQuery<HTMLElement> {
 
 /** Create the HTML for when boolean, string, or double data types are selected */
 function setSelectedType(selected: JQuery<HTMLElement>[] | JQuery<HTMLElement>) {
-  var element = $(`<div class= "backgroundColorForm solidBorder"/>`);
+  let element = $(`<div class= "backgroundColorForm solidBorder"/>`);
   element.append(selected);
 
   $(".backgroundColorForm").replaceWith(element);
@@ -421,10 +420,10 @@ function collapseSection(element: HTMLButtonElement) {
 
 /** Assign the inputted data to the active worksheet cell as the appropriate data type. */
 function createValueAsJson(): Excel.CellValue {
-  var values = $("#dataTypeSelect option:selected");
+  let values = $("#dataTypeSelect option:selected");
   switch (values.val()) {
     case "String":
-      var stringValue = $("#basicValue")
+      let stringValue = $("#basicValue")
         .val()
         .toString();
       return {
@@ -445,7 +444,7 @@ function createValueAsJson(): Excel.CellValue {
       break;
 
     case "Boolean":
-      var booleanValue = $("#basicValue")
+      let booleanValue = $("#basicValue")
         .val()
         .toString();
       if (booleanValue.toLowerCase() === "true") {
@@ -467,10 +466,10 @@ function createValueAsJson(): Excel.CellValue {
       return setEntity();
 
     case "WebImage":
-      var url = $("#url")
+      let url = $("#url")
         .val()
         .toString();
-      var altText = $("#altText")
+      let altText = $("#altText")
         .val()
         .toString();
       return {
@@ -481,7 +480,7 @@ function createValueAsJson(): Excel.CellValue {
 
     case "FormattedNumber":
       var doubleValue = Number($("#number").val());
-      var format = $("#format").val();
+      let format = $("#format").val();
       if (!isNaN(doubleValue)) {
         return {
           type: Excel.CellValueType.formattedNumber,
@@ -508,7 +507,7 @@ function setEntity() {
   const display: string = $("#displayString")
     .val()
     .toString();
-  var iconName: string = $("#iconSelect option:selected").val() as string;
+  let iconName: string = $("#iconSelect option:selected").val() as string;
   const referencedValues: string = $("#referencedValues").val() as string;
   const fields = valuesFromQuery(".fieldName");
   const values = fieldValuesContentsFromQuery();
@@ -517,25 +516,25 @@ function setEntity() {
   const calcCompares = valuesFromQuery(".calcCompare");
   const dotNotation = valuesFromQuery(".dotNotation");
   const sublabels = valuesFromQuery(".sublabel");
-  var mainImage = valuesFromQuery(".mainImage");
-  var providerInfo = [
+  let mainImage = valuesFromQuery(".mainImage");
+  let providerInfo = [
     valuesFromQuery("#providerDescription"),
     valuesFromQuery("#providerTarget"),
     valuesFromQuery("#providerLogo")
   ];
-  var mainImageExists = false;
-  var mainImageKey;
-  var sectionArray = [];
-  var jqSectionContents = $(".sectionContents");
+  let mainImageExists = false;
+  let mainImageKey;
+  let sectionArray = [];
+  let jqSectionContents = $(".sectionContents");
 
-  var fDefaultSection: Boolean = true;
+  let fDefaultSection: Boolean = true;
   while (jqSectionContents.length > 0) {
     const first = jqSectionContents.first();
-    var children = first.find(".fieldName");
-    var sectionTitle = first.find(".sectionTitle");
-    var properties = [];
-    for (var i = 0; i < children.length; ++i) {
-      var val = $(children[i]).val();
+    let children = first.find(".fieldName");
+    let sectionTitle = first.find(".sectionTitle");
+    let properties = [];
+    for (let i = 0; i < children.length; ++i) {
+      let val = $(children[i]).val();
       properties.push(val);
     }
 
@@ -546,7 +545,7 @@ function setEntity() {
       continue;
     }
 
-    var sectionEntry = {
+    let sectionEntry = {
       layout: "List",
       title: sectionTitle.val(),
       properties: properties
@@ -555,7 +554,7 @@ function setEntity() {
     jqSectionContents = jqSectionContents.slice(1);
   }
 
-  var entity: Excel.EntityCellValue = {
+  let entity: Excel.EntityCellValue = {
     type: Excel.CellValueType.entity,
     text: display,
     properties: {},
@@ -573,14 +572,14 @@ function setEntity() {
     };
   }
 
-  for (var i = 0; i < fields.length; ++i) {
-    var curSectionFields = [];
+  for (let i = 0; i < fields.length; ++i) {
+    let curSectionFields = [];
     const field = fields[i];
-    var value = values[i];
+    let value = values[i];
     if (field == "" || value == "") {
       break;
     }
-    var featureIntegration = {};
+    let featureIntegration = {};
     if (!cardViews[i]) {
       featureIntegration["cardView"] = true;
     }
@@ -593,7 +592,7 @@ function setEntity() {
     if (!dotNotation[i]) {
       featureIntegration["dotNotation"] = true;
     }
-    var propertyMetadata = {};
+    let propertyMetadata = {};
     if (Object.keys(featureIntegration).length > 0) {
       propertyMetadata["excludeFrom"] = featureIntegration;
     }
@@ -638,8 +637,8 @@ function setEntity() {
 
 /** Helper function to retrieve jQuery values for setEntity(). */
 function valuesFromQuery(query: string) {
-  var jq = $(query);
-  var result = [];
+  let jq = $(query);
+  let result = [];
   while (jq.length > 0) {
     const first = jq.first();
     if (first.is("input[type=checkbox]")) {
@@ -653,18 +652,18 @@ function valuesFromQuery(query: string) {
 }
 /** Helper function to retrieve fieldValue contents for setEntity(). */
 function fieldValuesContentsFromQuery() {
-  var jqFieldContents = $(".fieldValueContents");
-  var jqBasicValue = $(".basicValue");
-  var jqUrl = $(".url");
-  var jqNumber = $(".number");
-  var jqFormat = $(".format");
-  var jqAltText = $(".altText");
-  var jqUnsupportedValue = $(".unsupportedValue");
-  var values = [];
+  let jqFieldContents = $(".fieldValueContents");
+  let jqBasicValue = $(".basicValue");
+  let jqUrl = $(".url");
+  let jqNumber = $(".number");
+  let jqFormat = $(".format");
+  let jqAltText = $(".altText");
+  let jqUnsupportedValue = $(".unsupportedValue");
+  let values = [];
   while (jqFieldContents.length > 0) {
     const first = jqFieldContents.first();
-    var valueType = first.attr("id");
-    var value;
+    let valueType = first.attr("id");
+    let value;
     switch (valueType) {
       case "String":
         value = {
@@ -706,7 +705,7 @@ function fieldValuesContentsFromQuery() {
         jqBasicValue = jqBasicValue.slice(1);
         break;
       case "Boolean":
-        var booleanValue = jqBasicValue
+        let booleanValue = jqBasicValue
           .first()
           .val()
           .toString();
@@ -753,7 +752,7 @@ function fieldValuesContentsFromQuery() {
 
 /** Retrieve the contents of a selected entity and put them in the form boxes. */
 function getEntity(value) {
-  var sections;
+  let sections;
   if (value.layouts != undefined && value.layouts.card != undefined) {
     sections = value.layouts.card.sections;
   }
@@ -790,16 +789,16 @@ function getEntity(value) {
     }
   }
 
-  var propertyKeysOrdered = [];
-  for (var i = 0; i < sections.length; ++i) {
+  let propertyKeysOrdered = [];
+  for (let i = 0; i < sections.length; ++i) {
     $(".sectionTitle")
       .last()
       .val(sections[i].title);
-    var sectionKeys = sections[i].properties;
+    let sectionKeys = sections[i].properties;
     $(".specificFieldContents")
       .last()
       .remove();
-    for (var j = 0; j < sectionKeys.length; ++j) {
+    for (let j = 0; j < sectionKeys.length; ++j) {
       $(".fields")
         .last()
         .append(specificFieldContent());
@@ -869,21 +868,21 @@ function getEntity(value) {
   else if (value.layouts.compact["icon"] != undefined) {
     $("#iconSelect").val(value.layouts.compact["icon"]);
   }
-  var jqFields = $(".fieldName");
-  var jqCardView = $(".cardView");
-  var jqAutoComplete = $(".autoComplete");
-  var jqCalcCompare = $(".calcCompare");
-  var jqDotNotation = $(".dotNotation");
-  var jqSublabel = $(".sublabel");
-  var jqBasicValue = $(".basicValue");
-  var jqUrl = $(".url");
-  var jqNumber = $(".number");
-  var jqFormat = $(".format");
-  var jqAltText = $(".altText");
-  var jqMainImage = $(".mainImage");
-  var jqUnsupportedValue = $(".unsupportedValue");
+  let jqFields = $(".fieldName");
+  let jqCardView = $(".cardView");
+  let jqAutoComplete = $(".autoComplete");
+  let jqCalcCompare = $(".calcCompare");
+  let jqDotNotation = $(".dotNotation");
+  let jqSublabel = $(".sublabel");
+  let jqBasicValue = $(".basicValue");
+  let jqUrl = $(".url");
+  let jqNumber = $(".number");
+  let jqFormat = $(".format");
+  let jqAltText = $(".altText");
+  let jqMainImage = $(".mainImage");
+  let jqUnsupportedValue = $(".unsupportedValue");
 
-  for (var i = 0; i < propertyKeysOrdered.length; ++i) {
+  for (let i = 0; i < propertyKeysOrdered.length; ++i) {
     const propertyName = propertyKeysOrdered[i];
     const propertyValue = value.properties[propertyName];
     jqFields.first().val(propertyName);
@@ -917,13 +916,13 @@ function getEntity(value) {
         jqUnsupportedValue = jqUnsupportedValue.slice(1);
         break;
     }
-    var featureIntegration: Excel.CellValuePropertyMetadataExclusions = {
+    let featureIntegration: Excel.CellValuePropertyMetadataExclusions = {
       cardView: false,
       autoComplete: false,
       calcCompare: false,
       dotNotation: false
     };
-    var sublabel = "";
+    let sublabel = "";
     if (typeof propertyValue.propertyMetadata == "object") {
       if (typeof propertyValue.propertyMetadata.excludeFrom == "object") {
         featureIntegration = Object.assign(featureIntegration, propertyValue.propertyMetadata.excludeFrom);
@@ -955,7 +954,7 @@ async function getData() {
     const value = activeCell.valuesAsJson[0][0];
     clearForm();
 
-    var valueType = value.type == "LinkedEntity" ? "Entity" : value.type;
+    let valueType = value.type == "LinkedEntity" ? "Entity" : value.type;
     $("#dataTypeSelect").val(valueType);
     setSelectedType(getTypeContent(valueType));
 
