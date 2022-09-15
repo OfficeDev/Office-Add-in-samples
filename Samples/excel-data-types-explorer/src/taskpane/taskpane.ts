@@ -1,6 +1,6 @@
 /** Copyright (c) Microsoft Corporation. Licensed under the MIT License. */
 
-// Set up the task pane buttons and select list..
+// Set up the task pane buttons and select list.
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
     // Assign the HTML buttons to the relevant method.
