@@ -28,11 +28,11 @@ This sample builds an Excel add-in that can create and explore data types in you
 
 This sample builds and then sideloads a data types explorer add-in that allows you to create and edit data types in an Excel workbook. Once the add-in is sideloaded, you can use it to explore string, double, boolean, entity, web image, and formatted number data types.
 
-![Screenshot showing the data types explorer task pane and a formatted number entity in the Excel grid.](task-pane-data-types-explorer-formatted-number.png)
+![Screenshot showing the data types explorer task pane and a formatted number entity in the Excel grid.](assets/task-pane-data-types-explorer-formatted-number.png)
 
-In particular, this add-in contains an entity data type builder that you can use to create and explore entity cards. To learn more about entity cards, see [Use cards with entity value data types](https://docs.microsoft.com/office/dev/add-ins/excel/excel-data-types-entity-card)
+In particular, this add-in contains an entity data type builder that you can use to create and explore entity cards. To learn more about entity cards, see [Use cards with entity value data types](https://docs.microsoft.com/office/dev/add-ins/excel/excel-data-types-entity-card).
 
-![Screenshot showing the data types explorer task pane, with the entity builder displayed, and an entity card open over the Excel grid.](task-pane-data-types-explorer-entity.png)
+![Screenshot showing the data types explorer task pane, with the entity builder displayed, and an entity card open over the Excel grid.](assets/task-pane-data-types-explorer-entity.png)
 
 ## Applies to
 
@@ -42,7 +42,7 @@ In particular, this add-in contains an entity data type builder that you can use
 
 ## Prerequisites
 
-- Excel on Windows with a minimum build of 16.0.14626.10000), or Excel on Mac with a minimum build of 16.55.21102600), or Excel on the web.
+- Excel on Windows with a minimum build of 16.0.14626.10000, or Excel on Mac with a minimum build of 16.55.21102600, or Excel on the web.
 - [Node.js](https://nodejs.org/) version 16 or greater.
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
@@ -65,7 +65,7 @@ Version  | Date | Comments
 Take the following steps to run this sample and set up the data types explorer add-in.
 
 1. Clone or download this repo.
-1. Navigate to the **Samples/excel-data-types-explorer** folder via the command line.
+1. Go to the **Samples/excel-data-types-explorer** folder via the command line.
 1. Run `npm install` to set up the add-in dependencies.
 1. Run `npm start`. This command opens Excel, sideloads the add-in in Excel, and opens the task pane.
 1. Follow the directions in the task pane to build and explore data types.
