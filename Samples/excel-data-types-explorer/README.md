@@ -71,7 +71,9 @@ Take the following steps to run this sample and set up the data types explorer a
 1. Run `npm start`. This command opens Excel, sideloads the add-in in Excel, and opens the task pane.
 1. Follow the directions in the task pane to build and explore data types.
 
-Another version of this data types explorer tool is available as an [Excel Script Lab sample](https://gist.github.com/mafrenet/e6e1eb26d3ff778edad73a4230b44b5b). To learn more about Script Lab, see [Explore Office JavaScript API using Script Lab](https://docs.microsoft.com/office/dev/add-ins/overview/explore-with-script-lab).
+## See also
+
+An unmaintained version of this data types explorer tool is also available as an [Excel Script Lab sample](https://gist.github.com/mafrenet/e6e1eb26d3ff778edad73a4230b44b5b). To learn more about Script Lab, see [Explore Office JavaScript API using Script Lab](https://docs.microsoft.com/office/dev/add-ins/overview/explore-with-script-lab).
 
 ## Copyright
 
