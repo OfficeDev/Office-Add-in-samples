@@ -1,6 +1,6 @@
 /** Copyright (c) Microsoft Corporation. Licensed under the MIT License. */
 
-// Set up the task pane buttons and select list.
+/** Set up the task pane buttons and select list. */
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
     // Assign the HTML buttons to the relevant method.
@@ -18,6 +18,90 @@ Office.onReady((info) => {
   }
 });
 
+/** Set the contents in the task pane fields to the selected cell, 
+ *  as the chosen data type. */
+async function setData() {
+  await Excel.run(async (context) => {
+    const activeCell = context.workbook.getActiveCell();
+    activeCell.valuesAsJson = [[createValueAsJson()]];
+
+    await tryCatch(context.sync);
+
+    // Clear the input fields in the task pane after creating the data type. 
+    clearForm();
+  });
+}
+
+/** Retrieve the contents of a selected cell and put them in the input fields 
+ *  in the task pane. */
+async function getData() {
+  await Excel.run(async (context) => {
+    const activeCell = context.workbook.getActiveCell();
+    activeCell.load("valuesAsJson");
+    await context.sync();
+    const value = activeCell.valuesAsJson[0][0];
+    clearForm();
+
+    let valueType = value.type == "LinkedEntity" ? "Entity" : value.type;
+    $("#dataTypeSelect").val(valueType);
+    setSelectedType(getTypeContent(valueType));
+
+    switch (value.type) {
+      case "String":
+        $("#basicValue").val(value.basicValue);
+        break;
+      case "Double":
+        $("#basicValue").val(value.basicValue);
+        break;
+      case "Boolean":
+        const basicValue = value.basicValue;
+        if (basicValue) {
+          $("#basicValue").val("true");
+        } else {
+          $("#basicValue").val("false");
+        }
+        break;
+      case "WebImage":
+        $("#url").val(value.address);
+        $("#altText").val(value.altText);
+        break;
+      case "FormattedNumber":
+        $("#format").val(value.numberFormat);
+        $("#number").val(value.basicValue);
+        break;
+      case "Entity":
+      case "LinkedEntity":
+        getEntity(value);
+        break;
+    }
+  });
+}
+
+/** Clear the input fields in the task pane. */
+async function clearForm() {
+  $(".inputBox").val("");
+  $(".cardView").prop("checked", true);
+  $(".autoComplete").prop("checked", true);
+  $(".calcCompare").prop("checked", true);
+  $(".dotNotation").prop("checked", true);
+  $(".mainImage").prop("checked", false);
+  $(".sublabel").val("");
+  $(".specificFieldContents").remove();
+  $(".sectionContents").remove();
+  $("#iconSelect").val("Generic");
+
+  setSelectedType(
+    getTypeContent(
+      $("#dataTypeSelect")
+        .val()
+        .toString()
+    )
+  );
+}
+
+/** 
+ * Helper functions for setData, getData, and clearForm.
+ */
 const defaultType: string = "FormattedNumber";
 
 function textInputWithLabel(inputID: string, labelText: string, altText: string): JQuery<HTMLElement>[] {
@@ -131,7 +215,6 @@ function specificFieldContent(): JQuery<HTMLElement> {
 
 function entitySectionContent(): JQuery<HTMLElement> {
   let fields = $(`<div class="fields"/>`).append(specificFieldContent());
-
   let section = $(`<div class="collapsibleSection" aria-expanded="true"/>`).append(fields);
 
   let newFieldButton = $("<button/>", {
@@ -492,14 +575,6 @@ function createValueAsJson(): Excel.CellValue {
       }
       break;
   }
-}
-
-async function setData() {
-  await Excel.run(async (context) => {
-    const activeCell = context.workbook.getActiveCell();
-    activeCell.valuesAsJson = [[createValueAsJson()]];
-    await tryCatch(context.sync);
-  });
 }
 
 /** Assign the inputted entity contents to an entity data type. */
@@ -943,72 +1018,6 @@ function getEntity(value) {
     jqDotNotation = jqDotNotation.slice(1);
     jqSublabel = jqSublabel.slice(1);
   }
-}
-
-/** Retrieve the contents of a selected cell and put them in the form boxes. */
-async function getData() {
-  await Excel.run(async (context) => {
-    const activeCell = context.workbook.getActiveCell();
-    activeCell.load("valuesAsJson");
-    await context.sync();
-    const value = activeCell.valuesAsJson[0][0];
-    clearForm();
-
-    let valueType = value.type == "LinkedEntity" ? "Entity" : value.type;
-    $("#dataTypeSelect").val(valueType);
-    setSelectedType(getTypeContent(valueType));
-
-    switch (value.type) {
-      case "String":
-        $("#basicValue").val(value.basicValue);
-        break;
-      case "Double":
-        $("#basicValue").val(value.basicValue);
-        break;
-      case "Boolean":
-        const basicValue = value.basicValue;
-        if (basicValue) {
-          $("#basicValue").val("true");
-        } else {
-          $("#basicValue").val("false");
-        }
-        break;
-      case "WebImage":
-        $("#url").val(value.address);
-        $("#altText").val(value.altText);
-        break;
-      case "FormattedNumber":
-        $("#format").val(value.numberFormat);
-        $("#number").val(value.basicValue);
-        break;
-      case "Entity":
-      case "LinkedEntity":
-        getEntity(value);
-        break;
-    }
-  });
-}
-
-/** Clear the input boxes. */
-async function clearForm() {
-  $(".inputBox").val("");
-  $(".cardView").prop("checked", true);
-  $(".autoComplete").prop("checked", true);
-  $(".calcCompare").prop("checked", true);
-  $(".dotNotation").prop("checked", true);
-  $(".mainImage").prop("checked", false);
-  $(".sublabel").val("");
-  $(".specificFieldContents").remove();
-  $(".sectionContents").remove();
-  $("#iconSelect").val("Generic");
-
-  setSelectedType(
-    getTypeContent(
-      $("#dataTypeSelect")
-        .val()
-        .toString()
-    )
-  );
 }
 
 /** Default helper for invoking an action and handling errors. */
