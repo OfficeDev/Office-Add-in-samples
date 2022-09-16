@@ -67,8 +67,10 @@ Take the following steps to run this sample and set up the data types explorer a
 1. Clone or download this repo.
 1. Go to the **Samples/excel-data-types-explorer** folder via the command line.
 1. Run `npm install` to set up the add-in dependencies.
-1. Run `npm start`. This command opens Excel, sideloads the add-in in Excel, and opens the task pane.
+1. Run `npm start`. This command opens Excel, sideloads the add-in in Excel, and opens the task pane. If the task pane doesn't open automatically, select **Show Taskpane** in the Excel ribbon.
 1. Follow the directions in the task pane to build and explore data types.
+
+Note: To sideload this add-in sample in Excel on the web, see [Sideload Office Add-ins to Office on the web](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing).
 
 ## See also
 
