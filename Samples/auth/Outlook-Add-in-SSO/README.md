@@ -197,7 +197,7 @@ It's recommended to test all paths when working with SSO. In some scenarios, you
         // Attempt to get an SSO token
         try {
             throw new MockSSOError("13003");
-            let bootstrapToken = await OfficeRuntime.auth.getAccessToken(options);
+            let bootstrapToken = await Office.auth.getAccessToken(options);
     ```
 
 The line of code that calls `MockSSOError` will throw an error that will be passed to `handleClientSideErrors` in the catch block. This will force `handleClientSideErrors` to call `dialogFallback` and you can test that the fallback dialog is working correctly.
