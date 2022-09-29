@@ -3,7 +3,7 @@ _u.ExtensibilityStrings = function()
 {
 };
 _u.ExtensibilityStrings.registerClass("_u.ExtensibilityStrings");
-_u.ExtensibilityStrings.l_APICallFailedDueToItemChange_Text = "चयनित आइटम बदला गया है."
+_u.ExtensibilityStrings.l_APICallFailedDueToItemChange_Text = "चयनित आइटम बदला गया है.";
 _u.ExtensibilityStrings.l_API_Not_Supported_By_ExtensionPoint_Error_Text = "API, एक्सटेंशन पॉइंट के लिए समर्थित नहीं है.";
 _u.ExtensibilityStrings.l_API_Not_Supported_For_Shared_Folders_Error = "साझा किए गए फ़ोल्डर के लिए API समर्थित नहीं है.";
 _u.ExtensibilityStrings.l_ActionsDefinitionMultipleActionsError_Text = "वर्तमान में केवल कोई एकल क्रिया समर्थित है.";
@@ -48,7 +48,7 @@ _u.ExtensibilityStrings.l_InvalidCommandIdError_Text = "'commandId' पैरा
 _u.ExtensibilityStrings.l_InvalidDate_Text = "इनपुट मान्य दिनांक तक हल नहीं किया गया.";
 _u.ExtensibilityStrings.l_InvalidEndTime_Text = "समाप्ति समय प्रारंभ समय से पहले नहीं हो सकता.";
 _u.ExtensibilityStrings.l_InvalidEventDates_Text = "समाप्ति दिनांक प्रारंभ दिनांक से पहले आता है.";
-_u.ExtensibilityStrings.l_InvalidParameterValueError_Text = "'{0}' पैरामीटर का मान अमान्य है.";
+_u.ExtensibilityStrings.l_InvalidParameterValueError_Text = "'{0}' पैरामीटर का मान अमान्य है."
 _u.ExtensibilityStrings.l_InvalidSelection_Text = "चयन मान्य नहीं है.";
 _u.ExtensibilityStrings.l_InvalidTime_Text = "इनपुट मान्य दिनांक को स्पष्ट नहीं करता.";
 _u.ExtensibilityStrings.l_Invalid_Category_Error_Text = "अमान्य श्रेणियाँ प्रदान की गई थीं.";

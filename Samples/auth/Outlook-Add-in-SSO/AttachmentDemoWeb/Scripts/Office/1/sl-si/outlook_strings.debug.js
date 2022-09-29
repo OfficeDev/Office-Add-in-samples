@@ -3,7 +3,7 @@ _u.ExtensibilityStrings = function()
 {
 };
 _u.ExtensibilityStrings.registerClass("_u.ExtensibilityStrings");
-_u.ExtensibilityStrings.l_APICallFailedDueToItemChange_Text = "Izbrani element je bil spremenjen."
+_u.ExtensibilityStrings.l_APICallFailedDueToItemChange_Text = "Izbrani element je bil spremenjen.";
 _u.ExtensibilityStrings.l_API_Not_Supported_By_ExtensionPoint_Error_Text = "API ni podprt za razširitveno točko.";
 _u.ExtensibilityStrings.l_API_Not_Supported_For_Shared_Folders_Error = "Vmesnik API ni podprt za mape v skupni rabi.";
 _u.ExtensibilityStrings.l_ActionsDefinitionMultipleActionsError_Text = "Trenutno je podprto le eno dejanje.";
@@ -41,7 +41,7 @@ _u.ExtensibilityStrings.l_InternalFormatError_Text = "Prišlo je do napake notra
 _u.ExtensibilityStrings.l_InternalProtocolError_Text = "Notranja napaka protokola: »{0}«.";
 _u.ExtensibilityStrings.l_Internal_Server_Error_Text = "Exchange server je vrnil napako. Več informacij poiščite v diagnostičnem predmetu.";
 _u.ExtensibilityStrings.l_Internet_Not_Connected_Error_Text = "Uporabnik ni več povezan z omrežjem. Preverite omrežno povezavo in poskusite znova.";
-_u.ExtensibilityStrings.l_InvalidActionType_Text = "Vrednost parametra »actionType« ni veljavna. Sprejeta vrednost je »showTaskPane«.";
+_u.ExtensibilityStrings.l_InvalidActionType_Text = "Vrednost parametra »actionType« ni veljavna. Sprejeta vrednost je »showTaskPane«."
 _u.ExtensibilityStrings.l_InvalidAttachmentId_Text = "ID priloge ni veljaven.";
 _u.ExtensibilityStrings.l_InvalidAttachmentPath_Text = "Pot priloge ni veljavna.";
 _u.ExtensibilityStrings.l_InvalidCommandIdError_Text = "Vrednost parametra »commandId« ni veljavna.";

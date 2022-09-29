@@ -31,6 +31,7 @@ Strings.OfficeOM.L_CoercionTypeNotSupported = "نوع الاندماج المح�
 Strings.OfficeOM.L_ColIndexOutOfRange = "إن قيمة فهرس العمود خارج النطاق المسموح به. استخدم قيمة (0 أو أعلى) تكون أصغر من عدد الأعمدة.";
 Strings.OfficeOM.L_ConfirmCancelMessage = "عذراً، يتعذر علينا المتابعة.";
 Strings.OfficeOM.L_ConfirmDialog = "هل تثق بمجال {0} الذي يستضيف جلسة عمل Office؟";
+Strings.OfficeOM.L_ConfirmDialogApiTrustsParent = 'أنت علي وشك إرسال المعلومات الحساسة المحتملة وتلقيها من {0}. انقر فوق "موافق" فقط إذا كنت تثق في موقع الويب التالي الذي يتلقى المعلومات الحساسة: {1}.';
 Strings.OfficeOM.L_ConfirmRefreshMessage = "للمتابعة، قم بإزالة الوظيفة الإضافية وإضافتها مرة أخرى أو تحديث الصفحة.";
 Strings.OfficeOM.L_ConnectionFailureWithDetails = "فشل الطلب برمز الحالة {0} ورمز الخطأ {1} وظهرت رسالة الخطأ التالية: {2}";
 Strings.OfficeOM.L_ConnectionFailureWithStatus = "فشل الطلب برمز الحالة {0}.";
@@ -44,7 +45,7 @@ Strings.OfficeOM.L_CustomXmlExceedQuotaMessage = "تحدد XPath التحديد 
 Strings.OfficeOM.L_CustomXmlExceedQuotaName = "تم الوصول إلى الحد الأقصى للتحديد";
 Strings.OfficeOM.L_CustomXmlNodeNotFound = "لم يتم العثور على العقدة المحددة.";
 Strings.OfficeOM.L_CustomXmlOutOfDateMessage = "البيانات غير محدثة. قم باسترداد العنصر مرة أخرى.";
-Strings.OfficeOM.L_CustomXmlOutOfDateName = "البيانات ليست حديثة";
+Strings.OfficeOM.L_CustomXmlOutOfDateName = "البيانات ليست حديثة"
 Strings.OfficeOM.L_DataNotMatchBindingSize = "لا يتطابق عنصر البيانات الذي تم توفيره مع حجم التحديد الحالي.";
 Strings.OfficeOM.L_DataNotMatchBindingType = "عنصر البيانات المحدد غير متوافق مع نوع الربط.";
 Strings.OfficeOM.L_DataNotMatchCoercionType = "نوع عنصر البيانات المحدد غير متوافق مع التحديد الحالي.";
@@ -151,7 +152,7 @@ Strings.OfficeOM.L_OverwriteWorksheetData = "فشلت عملية التعيين 
 Strings.OfficeOM.L_PermissionDenied = "تم رفض الإذن";
 Strings.OfficeOM.L_PropertyDoesNotExist = 'لا توجد الخاصية "{0}" في العنصر.';
 Strings.OfficeOM.L_PropertyNotLoaded = "الخاصية '{0}' غير متاحة. قبل قراءة قيمة الخاصية، قم باستدعاء أسلوب التحميل على العنصر المضمن وقم باستدعاء \"context.sync()‎\" في سياق الطلب المقترن.";
-Strings.OfficeOM.L_ReadSettingsError = "خطأ في إعدادات القراءة"
+Strings.OfficeOM.L_ReadSettingsError = "خطأ في إعدادات القراءة";
 Strings.OfficeOM.L_RedundantCallbackSpecification = "لا يمكن تعيين رد الاستدعاء في كل من قائمة الوسائط وفي العنصر الاختياري.";
 Strings.OfficeOM.L_RequestPayloadSizeLimitExceededMessage = 'تجاوز حجم حمولة الطلب الحد المسموح به. الرجاء الرجوع إلى الوثائق: "https://docs.microsoft.com/office/dev/add-ins/concepts/resource-limits-and-performance-optimization#excel-add-ins".';
 Strings.OfficeOM.L_RequestTimeout = "استغرقت المكالمة وقتاً طويلاً وبالتالي يتعذر تنفيذها.";

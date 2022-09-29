@@ -155,7 +155,7 @@
 
         // Attempt to get an SSO token
         try {
-            let bootstrapToken = await OfficeRuntime.auth.getAccessToken(options);
+            let bootstrapToken = await Office.auth.getAccessToken(options);
 
             // The /api/saveAttachmentsUsingToken controller will make the token exchange and use the 
             // access token it gets back to make the call to MS Graph.

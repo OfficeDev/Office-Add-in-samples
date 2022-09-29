@@ -35,7 +35,7 @@ _u.ExtensibilityStrings.l_ElevatedPermissionNeeded_Text = "الإذن غير ا�
 _u.ExtensibilityStrings.l_EmailAddressTooLong_Text = "إن عنواناً واحد أو أكثر من عناوين البريد الإلكتروني التي قدمتها طويل(ة) جداً.";
 _u.ExtensibilityStrings.l_EwsRequestOversized_Text = "يتجاوز الطلب حد الحجم الذي يبلغ 1 ميغابايت. يرجى تعديل طلب EWS الخاص بك.";
 _u.ExtensibilityStrings.l_ExceededMaxNumberOfAttachments_Text = "تتعذر إضافة المرفقات لأن الرسالة تحتوي بالفعل على العدد الأقصى من المرفقات";
-_u.ExtensibilityStrings.l_HtmlSanitizationFailure_Text = "فشلت عملية التحقق من سلامة مستند HTML."
+_u.ExtensibilityStrings.l_HtmlSanitizationFailure_Text = "فشلت عملية التحقق من سلامة مستند HTML.";
 _u.ExtensibilityStrings.l_Insufficient_Item_Permissions_Text = "لا يمتلك المستخدم الأذونات المطلوبة لتنفيذ هذه العملية.";
 _u.ExtensibilityStrings.l_InternalFormatError_Text = "حدث خطأ في التنسيق الداخلي.";
 _u.ExtensibilityStrings.l_InternalProtocolError_Text = 'خطأ بروتوكول داخلي: "{0}".';
@@ -48,7 +48,7 @@ _u.ExtensibilityStrings.l_InvalidCommandIdError_Text = "قيمة المعلمة 
 _u.ExtensibilityStrings.l_InvalidDate_Text = "لا يتم حل الإدخال إلى تاريخ صالح.";
 _u.ExtensibilityStrings.l_InvalidEndTime_Text = "لا يمكن أن يكون وقت النهاية قبل وقت البدء.";
 _u.ExtensibilityStrings.l_InvalidEventDates_Text = "يقع تاريخ الانتهاء قبل تاريخ البدء.";
-_u.ExtensibilityStrings.l_InvalidParameterValueError_Text = "قيمة المعلمة '{0}' غير صالحة.";
+_u.ExtensibilityStrings.l_InvalidParameterValueError_Text = "قيمة المعلمة '{0}' غير صالحة."
 _u.ExtensibilityStrings.l_InvalidSelection_Text = "التحديد غير صالح.";
 _u.ExtensibilityStrings.l_InvalidTime_Text = "لا يتم حل الإدخال إلى تاريخ صالح.";
 _u.ExtensibilityStrings.l_Invalid_Category_Error_Text = "تم تقديم فئات غير صالحة.";

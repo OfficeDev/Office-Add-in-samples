@@ -1,5 +1,5 @@
 /* Excel specific API library */
-/* Version: 15.0.5287.1000 */
+/* Version: 15.0.5365.3001 */
 /*
 	Copyright (c) Microsoft Corporation.  All rights reserved.
 */
@@ -703,7 +703,8 @@ Microsoft.Office.WebExtension.Parameters={
 	Height: "height",
 	RequireHTTPs: "requireHTTPS",
 	MessageToParent: "messageToParent",
-	XFrameDenySafe: "xFrameDenySafe"
+	XFrameDenySafe: "xFrameDenySafe",
+	TargetOrigin: "targetOrigin"
 };
 Microsoft.Office.Internal.Parameters={
 	DocumentTheme: "documentTheme",
@@ -755,7 +756,8 @@ OSF.DDA.PropertyDescriptors={
 	DataPartProperties: "DataPartProperties",
 	DataNodeProperties: "DataNodeProperties",
 	MessageType: "messageType",
-	MessageContent: "messageContent"
+	MessageContent: "messageContent",
+	MessageOrigin: "messageOrigin"
 };
 OSF.DDA.EventDescriptors={
 	BindingSelectionChangedEvent: "BindingSelectionChangedEvent",
@@ -869,16 +871,26 @@ var OfficeExt;
 			return DefaultSetRequirement;
 		})();
 		Requirement.DefaultSetRequirement=DefaultSetRequirement;
-		var DefaultDialogSetRequirement=(function (_super) {
-			__extends(DefaultDialogSetRequirement, _super);
-			function DefaultDialogSetRequirement() {
+		var DefaultRequiredDialogSetRequirement=(function (_super) {
+			__extends(DefaultRequiredDialogSetRequirement, _super);
+			function DefaultRequiredDialogSetRequirement() {
 				_super.call(this, {
 					"dialogapi": 1.1
 				});
 			}
-			return DefaultDialogSetRequirement;
+			return DefaultRequiredDialogSetRequirement;
 		})(DefaultSetRequirement);
-		Requirement.DefaultDialogSetRequirement=DefaultDialogSetRequirement;
+		Requirement.DefaultRequiredDialogSetRequirement=DefaultRequiredDialogSetRequirement;
+		var DefaultOptionalDialogSetRequirement=(function (_super) {
+			__extends(DefaultOptionalDialogSetRequirement, _super);
+			function DefaultOptionalDialogSetRequirement() {
+				_super.call(this, {
+					"dialogorigin": 1.1
+				});
+			}
+			return DefaultOptionalDialogSetRequirement;
+		})(DefaultSetRequirement);
+		Requirement.DefaultOptionalDialogSetRequirement=DefaultOptionalDialogSetRequirement;
 		var ExcelClientDefaultSetRequirement=(function (_super) {
 			__extends(ExcelClientDefaultSetRequirement, _super);
 			function ExcelClientDefaultSetRequirement() {
@@ -1107,7 +1119,23 @@ var OfficeExt;
 					var matrixItem=JSON.parse(appContext.get_requirementMatrix().toLowerCase());
 					defaultRequirementMatrix=new RequirementMatrix(new DefaultSetRequirement(matrixItem));
 				} else {
-					defaultRequirementMatrix=new RequirementMatrix(new DefaultDialogSetRequirement());
+					var dialogRequiredSetRequirement=new DefaultRequiredDialogSetRequirement();
+					var mainRequirement=appContext.get_requirementMatrix();
+					if (mainRequirement !=undefined && mainRequirement.length > 0 && typeof (JSON) !=="undefined") {
+						var matrixItem=JSON.parse(mainRequirement.toLowerCase());
+						for (var name in dialogRequiredSetRequirement._sets) {
+							if (matrixItem.hasOwnProperty(name)) {
+								dialogRequiredSetRequirement._sets[name]=matrixItem[name];
+							}
+						}
+						var dialogOptionalSetRequirement=new DefaultOptionalDialogSetRequirement();
+						for (var name in dialogOptionalSetRequirement._sets) {
+							if (matrixItem.hasOwnProperty(name)) {
+								dialogRequiredSetRequirement._sets[name]=matrixItem[name];
+							}
+						}
+					}
+					defaultRequirementMatrix=new RequirementMatrix(dialogRequiredSetRequirement);
 				}
 				return defaultRequirementMatrix;
 			}
@@ -2781,6 +2809,9 @@ Microsoft.Office.Common.Invoker.prototype={
 					},
 					"message": {
 						value: message[OSF.DDA.PropertyDescriptors.MessageContent]
+					},
+					"origin": {
+						value: message[OSF.DDA.PropertyDescriptors.MessageOrigin]
 					}
 				});
 			} else {
@@ -4267,7 +4298,15 @@ Microsoft.Office.Common.Invoker.prototype={
 						"types": ["string","number","boolean"]
 					}
 				],
-				supportedOptions: []
+				supportedOptions: [
+					{
+						name: Microsoft.Office.WebExtension.Parameters.TargetOrigin,
+						value: {
+							"types": ["string"],
+							"defaultValue": ""
+						}
+					}
+				]
 			});
 			OSF.DDA.SyncMethodCalls.define({
 				method: OSF.DDA.SyncMethodNames.AddMessageHandler,
@@ -7864,6 +7903,7 @@ OSF.InitializationHelper.prototype.prepareRightBeforeWebExtensionInitialize=func
 			args={};
 			args[OSF.DDA.PropertyDescriptors.MessageType]=0;
 			args[OSF.DDA.PropertyDescriptors.MessageContent]=1;
+			args[OSF.DDA.PropertyDescriptors.MessageOrigin]=2;
 			parameterMap.setMapping(OSF.DDA.EventDescriptors.DialogMessageReceivedEvent, {fromHost: args});
 			OSF.DDA.SafeArray.Delegate.ParameterMap=parameterMap;
 			}
@@ -7899,7 +7939,13 @@ OSF.InitializationHelper.prototype.prepareRightBeforeWebExtensionInitialize=func
 					}
 					var startTime=(new Date()).getTime();
 					var message=args.hostCallArgs[Microsoft.Office.WebExtension.Parameters.MessageToParent];
-					window.external.MessageParent(message);
+					if (typeof window.external.MessageParent2 !='undefined' && typeof OsfOMToken !='undefined' && OsfOMToken) {
+						var targetOrigin=args.hostCallArgs[Microsoft.Office.WebExtension.Parameters.TargetOrigin];
+						window.external.MessageParent2(message, targetOrigin, OsfOMToken);
+					}
+					else {
+						window.external.MessageParent(message);
+					}
 					if (args.onReceiving) {
 						args.onReceiving();
 					}

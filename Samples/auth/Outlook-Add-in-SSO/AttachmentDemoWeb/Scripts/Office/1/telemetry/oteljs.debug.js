@@ -408,9 +408,8 @@ var oteljs = function(modules) {
         function SimpleTelemetryLogger(parent, persistentDataFields, config) {
             var _a, _b;
             this.onSendEvent = new Event.a, this.persistentDataFields = [], this.config = config || {}, 
-            parent ? (this.onSendEvent = parent.onSendEvent, (_a = this.persistentDataFields).push.apply(_a, parent.persistentDataFields), 
-            this.config = __assign(__assign({}, parent.getConfig()), this.config)) : this.persistentDataFields.push(Object(DataFieldHelper.e)("OTelJS.Version", "3.1.70")), 
-            persistentDataFields && (_b = this.persistentDataFields).push.apply(_b, persistentDataFields);
+            parent && (this.onSendEvent = parent.onSendEvent, (_a = this.persistentDataFields).push.apply(_a, parent.persistentDataFields), 
+            this.config = __assign(__assign({}, parent.getConfig()), this.config)), persistentDataFields && (_b = this.persistentDataFields).push.apply(_b, persistentDataFields);
         }
         return SimpleTelemetryLogger.prototype.sendTelemetryEvent = function(event) {
             var localEvent;
@@ -428,7 +427,8 @@ var oteljs = function(modules) {
         }, SimpleTelemetryLogger.prototype.processTelemetryEvent = function(event) {
             var _a;
             event.telemetryProperties || (event.telemetryProperties = TenantTokenManager_TenantTokenManager.getTenantTokens(event.eventName)), 
-            event.dataFields && this.persistentDataFields && (_a = event.dataFields).unshift.apply(_a, this.persistentDataFields), 
+            event.dataFields && (event.dataFields.unshift(Object(DataFieldHelper.e)("OTelJS.Version", "3.1.74")), 
+            this.persistentDataFields && (_a = event.dataFields).unshift.apply(_a, this.persistentDataFields)), 
             this.config.disableValidation || TelemetryEventValidator_TelemetryEventValidator.validateTelemetryEvent(event);
         }, SimpleTelemetryLogger.prototype.addSink = function(sink) {
             this.onSendEvent.addListener((function(event) {

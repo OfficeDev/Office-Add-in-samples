@@ -4,7 +4,7 @@ _u.ExtensibilityStrings = function()
 };
 _u.ExtensibilityStrings.registerClass("_u.ExtensibilityStrings");
 _u.ExtensibilityStrings.l_APICallFailedDueToItemChange_Text = "選択したアイテムは変更されました。";
-_u.ExtensibilityStrings.l_API_Not_Supported_By_ExtensionPoint_Error_Text = "API が拡張点でサポートされていません。";
+_u.ExtensibilityStrings.l_API_Not_Supported_By_ExtensionPoint_Error_Text = "API が拡張点でサポートされていません。"
 _u.ExtensibilityStrings.l_API_Not_Supported_For_Shared_Folders_Error = "API は共有フォルダーではサポートされていません。";
 _u.ExtensibilityStrings.l_ActionsDefinitionMultipleActionsError_Text = "現在、単一の処理のみがサポートされています。";
 _u.ExtensibilityStrings.l_ActionsDefinitionWrongNotificationMessageError_Text = "この通知メッセージの種類に対して処理を定義することはできません。";
@@ -25,7 +25,7 @@ _u.ExtensibilityStrings.l_CannotAddAttachmentBeforeUpgrade_Text = "サーバー�
 _u.ExtensibilityStrings.l_CannotPersistPropertyInUnsavedDraftError_Text = "通知は、保存されていない下書きでは永続化できません。この API を呼び出す前にアイテムを保存してください。";
 _u.ExtensibilityStrings.l_CursorPositionChanged_Text = "データの挿入中に、ユーザーがカーソル位置を変更しました。";
 _u.ExtensibilityStrings.l_DataWriteErrorName_Text = "データの書き込みエラーが発生しました";
-_u.ExtensibilityStrings.l_DeleteAttachmentDoesNotExist_Text = "添付ファイル インデックスを含む添付ファイルが見つからなかったため、添付ファイルを削除できません。"
+_u.ExtensibilityStrings.l_DeleteAttachmentDoesNotExist_Text = "添付ファイル インデックスを含む添付ファイルが見つからなかったため、添付ファイルを削除できません。";
 _u.ExtensibilityStrings.l_DisplayNameTooLong_Text = "指定した表示名の中に、長すぎるものが 1 つ以上あります。";
 _u.ExtensibilityStrings.l_DisplayReplyFormHtmlBodyRequired_Text = "'htmlBody' は必須です。";
 _u.ExtensibilityStrings.l_DuplicateNotificationKey_Text = "指定したキーを持つ通知は既に存在します。";

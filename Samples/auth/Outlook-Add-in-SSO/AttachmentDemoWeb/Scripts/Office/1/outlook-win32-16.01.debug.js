@@ -1,6 +1,6 @@
 /*! Outlook specific API library */
 /*! Version: 16.0.6807.1000 */
-/*! Update: 5 */
+/*! Update: 7 */
 /*!
 	Copyright (c) Microsoft Corporation.  All rights reserved.
 */
@@ -1063,6 +1063,7 @@ Microsoft.Office.WebExtension.Parameters={
 	Height: "height",
 	RequireHTTPs: "requireHTTPS",
 	MessageToParent: "messageToParent",
+	TargetOrigin: "targetOrigin",
 	XFrameDenySafe: "xFrameDenySafe"
 };
 OSF.OUtil.setNamespace("DDA",OSF);
@@ -1653,6 +1654,26 @@ var OfficeExt;
 				return DefaultSetRequirement
 			}();
 		Requirement.DefaultSetRequirement=DefaultSetRequirement;
+		var DefaultRequiredDialogSetRequirement = (function (_super) {
+            __extends(DefaultRequiredDialogSetRequirement, _super);
+            function DefaultRequiredDialogSetRequirement() {
+                return _super.call(this, {
+                    "dialogapi": 1.1
+                }) || this;
+            }
+            return DefaultRequiredDialogSetRequirement;
+        }(DefaultSetRequirement));
+        Requirement.DefaultRequiredDialogSetRequirement = DefaultRequiredDialogSetRequirement;
+        var DefaultOptionalDialogSetRequirement = (function (_super) {
+            __extends(DefaultOptionalDialogSetRequirement, _super);
+            function DefaultOptionalDialogSetRequirement() {
+                return _super.call(this, {
+                    "dialogorigin": 1.1
+                }) || this;
+            }
+            return DefaultOptionalDialogSetRequirement;
+        }(DefaultSetRequirement));
+        Requirement.DefaultOptionalDialogSetRequirement = DefaultOptionalDialogSetRequirement;
 		var ExcelClientDefaultSetRequirement=function(_super)
 			{
 				__extends(ExcelClientDefaultSetRequirement,_super);
@@ -1997,6 +2018,25 @@ var OfficeExt;
 					}
 					return defaultRequirementMatrix
 				};
+				RequirementsMatrixFactory.getDefaultDialogRequirementMatrix = function (appContext) {
+					var setRequirements = new DefaultRequiredDialogSetRequirement();
+					var mainRequirement = appContext.get_requirementMatrix();
+					if (mainRequirement != undefined && mainRequirement.length > 0 && typeof (JSON) !== "undefined") {
+						var matrixItem = JSON.parse(mainRequirement.toLowerCase());
+						for (var name in setRequirements._sets) {
+							if (matrixItem.hasOwnProperty(name)) {
+								setRequirements._sets[name] = matrixItem[name];
+							}
+						}
+						var dialogOptionalSetRequirement = new DefaultOptionalDialogSetRequirement();
+						for (var name in dialogOptionalSetRequirement._sets) {
+							if (matrixItem.hasOwnProperty(name)) {
+								setRequirements._sets[name] = matrixItem[name];
+							}
+						}
+					}
+					return new RequirementMatrix(setRequirements);
+				};
 				RequirementsMatrixFactory.getClientFullVersionString=function(appContext)
 				{
 					var appMinorVersion=appContext.get_appMinorVersion();
@@ -2171,8 +2211,13 @@ OSF.DDA.Context=function OSF_DDA_Context(officeAppContext, document, license, ap
 		OSF.OUtil.defineEnumerableProperty(this,"license",{value: license});
 	if(officeAppContext.ui)
 		OSF.OUtil.defineEnumerableProperty(this,"ui",{value: officeAppContext.ui});
-	if(!officeAppContext.get_isDialog())
-	{
+	if(officeAppContext.get_isDialog()) {
+        var requirements = OfficeExt.Requirement.RequirementsMatrixFactory.getDefaultDialogRequirementMatrix(officeAppContext);
+        OSF.OUtil.defineEnumerableProperty(this, "requirements", {
+            value: requirements
+        });
+	}
+	else {
 		if(document)
 			OSF.OUtil.defineEnumerableProperty(this,"document",{value: document});
 		if(appOM)
@@ -3282,7 +3327,7 @@ OSF.DDA.DispIdHost.Facade=function OSF_DDA_DispIdHost_Facade(getDelegateMethods,
 		var dispId=dispIdMap[syncMethodCall];
 		return invoker({
 				dispId: dispId,
-				hostCallArgs: callArgs[Microsoft.Office.WebExtension.Parameters.MessageToParent],
+				hostCallArgs: callArgs,
 				onCalling: function OSF_DDA_DispIdFacade$Execute_onCalling()
 				{
 					OSF.OUtil.writeProfilerMark(OSF.HostCallPerfMarker.IssueCall)
@@ -3778,8 +3823,30 @@ var OSFRichclient;
                 window.external.UnregisterEvent(id, targetId, callback);
             }
         };
-        RichClientHostController.prototype.messageParent=function (message) {
-            window.external.MessageParent(message);
+        RichClientHostController.prototype.messageParent=function (params) {
+            if (params) {
+                var messageToParent = params[Microsoft.Office.WebExtension.Parameters.MessageToParent];
+                if (typeof messageToParent === "boolean") {
+                    if (messageToParent === true) {
+                        params[Microsoft.Office.WebExtension.Parameters.MessageToParent] = "true";
+                    }
+                    else if (messageToParent === false) {
+                        params[Microsoft.Office.WebExtension.Parameters.MessageToParent] = "";
+                    }
+                }
+            }
+            if (typeof window.external.MessageParent2 != 'undefined') {
+                if (typeof OsfOMToken != 'undefined' && OsfOMToken) {
+                    window.external.MessageParent2(JSON.stringify(params), OsfOMToken);
+                }
+                else {
+                    window.external.MessageParent2(JSON.stringify(params));
+                }
+            }
+            else {
+                var message = params[Microsoft.Office.WebExtension.Parameters.MessageToParent];
+                window.external.MessageParent(message);
+            }
         };
         return RichClientHostController;
     })();
@@ -4252,7 +4319,8 @@ OSF.OUtil.augmentList(Microsoft.Office.WebExtension.EventType,{
 });
 OSF.OUtil.augmentList(OSF.DDA.PropertyDescriptors,{
 	MessageType: "messageType",
-	MessageContent: "messageContent"
+	MessageContent: "messageContent",
+	MessageOrigin: "messageOrigin"
 });
 OSF.DDA.DialogEventType={};
 OSF.OUtil.augmentList(OSF.DDA.DialogEventType,{
@@ -4298,7 +4366,8 @@ OSF.DDA.DialogEventArgs=function OSF_DDA_DialogEventArgs(message)
 	if(message[OSF.DDA.PropertyDescriptors.MessageType]==OSF.DialogMessageType.DialogMessageReceived)
 		OSF.OUtil.defineEnumerableProperties(this,{
 			type: {value: Microsoft.Office.WebExtension.EventType.DialogMessageReceived},
-			message: {value: message[OSF.DDA.PropertyDescriptors.MessageContent]}
+			message: {value: message[OSF.DDA.PropertyDescriptors.MessageContent]},
+			origin: {value: message[OSF.DDA.PropertyDescriptors.MessageOrigin]}
 		});
 	else
 		OSF.OUtil.defineEnumerableProperties(this,{
@@ -4385,7 +4454,14 @@ OSF.DDA.SyncMethodCalls.define({
 			name: Microsoft.Office.WebExtension.Parameters.MessageToParent,
 			types: ["string","number","boolean"]
 		}],
-	supportedOptions: []
+	supportedOptions: [
+		{
+            name: Microsoft.Office.WebExtension.Parameters.TargetOrigin,
+            value: {
+                "types": ["string"],
+                "defaultValue": ""
+            }
+        }]
 });
 OSF.DDA.SyncMethodCalls.define({
 	method: OSF.DDA.SyncMethodNames.AddMessageHandler,
@@ -4437,6 +4513,9 @@ OSF.DDA.SafeArray.Delegate.ParameterMap.define({
 		},{
 			name: OSF.DDA.PropertyDescriptors.MessageContent,
 			value: 1
+		},{
+			name: OSF.DDA.PropertyDescriptors.MessageOrigin,
+			value: 2 
 		}],
 	isComplexType: true
 });

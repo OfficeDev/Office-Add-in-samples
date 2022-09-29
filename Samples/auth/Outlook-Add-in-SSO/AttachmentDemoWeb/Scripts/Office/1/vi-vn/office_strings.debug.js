@@ -3,7 +3,7 @@ Strings.OfficeOM = function()
 {
 };
 Strings.OfficeOM.registerClass("Strings.OfficeOM");
-Strings.OfficeOM.L_APICallFailed = "Gọi API Không thành công";
+Strings.OfficeOM.L_APICallFailed = "Gọi API Không thành công"
 Strings.OfficeOM.L_APINotSupported = "API Không được Hỗ trợ";
 Strings.OfficeOM.L_ActivityLimitReached = "Đã đạt giới hạn hoạt động.";
 Strings.OfficeOM.L_AddBindingFromPromptDefaultText = "Vui lòng chọn.";
@@ -31,6 +31,7 @@ Strings.OfficeOM.L_CoercionTypeNotSupported = "Kiểu ép buộc đã xác đị
 Strings.OfficeOM.L_ColIndexOutOfRange = "Giá trị chỉ mục cột nằm ngoài phạm vi cho phép. Hãy sử dụng một giá trị (0 hoặc cao hơn) và bé hơn số lượng cột.";
 Strings.OfficeOM.L_ConfirmCancelMessage = "Rất tiếc, chúng tôi không thể tiếp tục.";
 Strings.OfficeOM.L_ConfirmDialog = "Bạn có tin cậy miền {0} nơi lưu trữ phiên Office này không?";
+Strings.OfficeOM.L_ConfirmDialogApiTrustsParent = "Bạn sắp gửi và nhận thông tin nhạy cảm tiềm ẩn từ {0}. Chỉ bấm OK nếu bạn tin tưởng trang web sau đây nhận được thông tin nhạy cảm: {1}.";
 Strings.OfficeOM.L_ConfirmRefreshMessage = "Để tiếp tục, hãy loại bỏ phần bổ trợ và thêm lại hoặc làm mới trang.";
 Strings.OfficeOM.L_ConnectionFailureWithDetails = "Yêu cầu không thành công với mã trạng thái {0}, mã lỗi {1} và thông báo lỗi sau: {2}";
 Strings.OfficeOM.L_ConnectionFailureWithStatus = "Yêu cầu không thành công với mã trạng thái {0}.";
@@ -43,7 +44,7 @@ Strings.OfficeOM.L_CustomXmlError = "Lỗi XML Tùy chỉnh.";
 Strings.OfficeOM.L_CustomXmlExceedQuotaMessage = "XPath giới hạn lựa chọn tới 1024 mục.";
 Strings.OfficeOM.L_CustomXmlExceedQuotaName = "Đã đạt Giới hạn về Vùng chọn";
 Strings.OfficeOM.L_CustomXmlNodeNotFound = "Không tìm thấy nút đã xác định.";
-Strings.OfficeOM.L_CustomXmlOutOfDateMessage = "Dữ liệu đã lỗi thời. Truy xuất lại đối tượng."
+Strings.OfficeOM.L_CustomXmlOutOfDateMessage = "Dữ liệu đã lỗi thời. Truy xuất lại đối tượng.";
 Strings.OfficeOM.L_CustomXmlOutOfDateName = "Dữ liệu Không Hiện hành";
 Strings.OfficeOM.L_DataNotMatchBindingSize = "Đối tượng dữ liệu được cung cấp không khớp với kích cỡ của lựa chọn hiện tại.";
 Strings.OfficeOM.L_DataNotMatchBindingType = "Dữ liệu đã định không tương thích với kiểu ghép nối.";

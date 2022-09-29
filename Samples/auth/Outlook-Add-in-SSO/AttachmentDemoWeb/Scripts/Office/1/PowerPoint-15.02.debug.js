@@ -1,5 +1,5 @@
 /* PowerPoint specific API library */
-/* Version: 15.0.5155.1000 */
+/* Version: 15.0.5365.3001 */
 /*
 	Copyright (c) Microsoft Corporation.  All rights reserved.
 */
@@ -1441,7 +1441,13 @@ OSF.DDA.SafeArray.Delegate.MessageParent=function OSF_DDA_SafeArray_Delegate$Mes
 		}
 		var startTime=(new Date()).getTime();
 		var message=args.hostCallArgs[Microsoft.Office.WebExtension.Parameters.MessageToParent];
-		window.external.MessageParent(message);
+		if (typeof window.external.MessageParent2 !='undefined' && typeof OsfOMToken !='undefined' && OsfOMToken) {
+			var targetOrigin=args.hostCallArgs[Microsoft.Office.WebExtension.Parameters.TargetOrigin];
+			window.external.MessageParent2(message, targetOrigin, OsfOMToken);
+		}
+		else {
+			window.external.MessageParent(message);
+		}
 		if (args.onReceiving) {
 			args.onReceiving();
 		}
@@ -1511,7 +1517,8 @@ OSF.DDA.SafeArray.Delegate.ParameterMap.define({
 	type: OSF.DDA.EventDescriptors.DialogMessageReceivedEvent,
 	fromHost: [
 		{ name: OSF.DDA.PropertyDescriptors.MessageType, value: 0 },
-		{ name: OSF.DDA.PropertyDescriptors.MessageContent, value: 1 }
+		{ name: OSF.DDA.PropertyDescriptors.MessageContent, value: 1 },
+		{ name: OSF.DDA.PropertyDescriptors.MessageOrigin, value: 2 }
 	],
 	isComplexType: true
 });

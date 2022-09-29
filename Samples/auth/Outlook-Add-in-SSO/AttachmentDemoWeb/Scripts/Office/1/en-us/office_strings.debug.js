@@ -37,6 +37,7 @@ Strings.OfficeOM.L_CoercionTypeNotSupported='The specified coercion type is not 
 Strings.OfficeOM.L_ColIndexOutOfRange='The column index value is out of the allowed range. Use a value (0 or higher) that\'s less than the number of columns.';
 Strings.OfficeOM.L_ConfirmCancelMessage='Sorry, we can\'t continue.';
 Strings.OfficeOM.L_ConfirmDialog='Do you trust the domain {0} where this Office session is hosted?';
+Strings.OfficeOM.L_ConfirmDialogApiTrustsParent='You are about to send and receive potentially sensitive information from {0}. Only click OK if you trust the following website recieving the sensitive information: {1}.';
 Strings.OfficeOM.L_ConfirmRefreshMessage='To continue, remove the add-in and add it again, or refresh the page.';
 Strings.OfficeOM.L_ConnectionFailureWithDetails='The request failed with status code of {0}, error code {1} and the following error message: {2}';
 Strings.OfficeOM.L_ConnectionFailureWithStatus='The request failed with status code of {0}.';
