@@ -360,3 +360,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Project scripts
+AttachmentDemoWeb/Scripts/embedded/
+AttachmentDemoWeb/Scripts/Office/
