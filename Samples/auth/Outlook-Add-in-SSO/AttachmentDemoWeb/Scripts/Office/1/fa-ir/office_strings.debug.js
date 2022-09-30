@@ -31,6 +31,7 @@ Strings.OfficeOM.L_CoercionTypeNotSupported = "نوع تبدیل داده معی
 Strings.OfficeOM.L_ColIndexOutOfRange = "مقدار فهرست ستون خارج از محدوده مجاز است. از مقداری (0 یا بیشتر) استفاده کنید که کمتر از تعداد ستون ها باشد.";
 Strings.OfficeOM.L_ConfirmCancelMessage = "با عرض پوزش، نمی‌توانیم ادامه دهیم.";
 Strings.OfficeOM.L_ConfirmDialog = "آیا به دامنه {0} که این جلسه Office در آن میزبانی می‌شود اعتماد دارید؟";
+Strings.OfficeOM.L_ConfirmDialogApiTrustsParent = "شما در آستانه ارسال و دریافت اطلاعات بالقوه حساسی از طرف {0} هستید. فقط در صورتی که به این وب سایت که اطلاعات حساس {1} را دریافت می‌کند، اعتماد دارید «تأیید» را کلیک کنید.";
 Strings.OfficeOM.L_ConfirmRefreshMessage = "برای ادامه، افزونه را حذف و دوباره آن را اضافه کنید، یا صفحه را تازه‌سازی کنید.";
 Strings.OfficeOM.L_ConnectionFailureWithDetails = "درخواست با کد وضعیت {0}، کد خطای {1} و پیام خطای زیر انجام نشد: {2}";
 Strings.OfficeOM.L_ConnectionFailureWithStatus = "درخواست با کد وضعیت {0} انجام نشد.";
@@ -45,7 +46,7 @@ Strings.OfficeOM.L_CustomXmlExceedQuotaName = "به حد مجاز انتخاب �
 Strings.OfficeOM.L_CustomXmlNodeNotFound = "گره معین شده یافت نشد.";
 Strings.OfficeOM.L_CustomXmlOutOfDateMessage = "داده‌ها قدیمی است. جسم را دوباره بازیابی کنید.";
 Strings.OfficeOM.L_CustomXmlOutOfDateName = "داده‌ها به‌روز نیستند";
-Strings.OfficeOM.L_DataNotMatchBindingSize = "شیء داده تأمینی با اندازه مورد انتخابی فعلی مطابقت ندارد."
+Strings.OfficeOM.L_DataNotMatchBindingSize = "شیء داده تأمینی با اندازه مورد انتخابی فعلی مطابقت ندارد.";
 Strings.OfficeOM.L_DataNotMatchBindingType = "شیء داده معین شده با این نوع پیوستگی سازگار نیست.";
 Strings.OfficeOM.L_DataNotMatchCoercionType = "نوع شیء داده معین شده با مورد انتخابی فعلی سازگار نیست.";
 Strings.OfficeOM.L_DataNotMatchSelection = "شیء داده تأمینی با شکل و ابعاد مورد انتخابی فعلی مطابقت ندارد.";
@@ -128,7 +129,7 @@ Strings.OfficeOM.L_NamedItemNotFound = "مورد معین شده وجود ندا
 Strings.OfficeOM.L_NavOutOfBound = "عملیات ناموفق بود زیرا فهرست خارج از دامنه است.";
 Strings.OfficeOM.L_NetworkProblem = "مشکل شبکه";
 Strings.OfficeOM.L_NetworkProblemRetrieveFile = "خطای شبکه مانع بازیابی فایل شده است.";
-Strings.OfficeOM.L_NewWindowCrossZone = "تنظیمات امنیتی در مرورگر شما مانع از ایجاد کادر گفتگوی می‌شود. یک مرورگر دیگر را امتحان کنید یا {0}، بنابراین، «{1}» و دامنه نشان داده شده در نوار آدرس شما در منطقه امنیتی مشابهی هستند.";
+Strings.OfficeOM.L_NewWindowCrossZone = "تنظیمات امنیتی در مرورگر شما مانع از ایجاد کادر گفتگوی می‌شود. یک مرورگر دیگر را امتحان کنید یا {0}، بنابراین، «{1}» و دامنه نشان داده شده در نوار آدرس شما در منطقه امنیتی مشابهی هستند."
 Strings.OfficeOM.L_NewWindowCrossZoneConfigureBrowserLink = "مرورگر خود را پیکربندی کنید";
 Strings.OfficeOM.L_NewWindowCrossZoneErrorString = "محدودیت‌های مرورگر مانع از ایجاد کادر گفتگو می‌شود. دامنه کادر گفتگو و دامنه میزبان افزونه در یک منطقه امنیتی مشابه نیستند.";
 Strings.OfficeOM.L_NoCapability = "شما مجوزهای لازم برای این اقدام را ندارید.";
@@ -153,10 +154,10 @@ Strings.OfficeOM.L_PropertyDoesNotExist = "ویژگی «{0}» در شئ وجود
 Strings.OfficeOM.L_PropertyNotLoaded = "مشخصه «{0}» موجود نیست. قبل از خواندن مقدار مشخصه، متد بارگیری را بر روی شئ دارنده فراخوانی کنید و سپس «context.sync()» را در موضوع درخواست مرتبط فراخوانی کنید.";
 Strings.OfficeOM.L_ReadSettingsError = "خطای تنظیمات خواندن";
 Strings.OfficeOM.L_RedundantCallbackSpecification = "بازگشت تماس را نمی توان در لیست آرگومان و نیز در شیء اختیاری مشخص کرد.";
-Strings.OfficeOM.L_RequestPayloadSizeLimitExceededMessage = 'اندازه بار درخواست از حد مجاز فراتر رفته است. لطفاً به مستندات مراجعه کنید: "https://docs.microsoft.com/office/dev/add-ins/concepts/resource-limits-and-performance-optimization#excel-add-ins".';
+Strings.OfficeOM.L_RequestPayloadSizeLimitExceededMessage = 'اندازه بار درخواست‌ها از حد مجاز فراتر رفته است. لطفاً به مستندات مراجعه کنید: "https://docs.microsoft.com/office/dev/add-ins/concepts/resource-limits-and-performance-optimization#excel-add-ins".';
 Strings.OfficeOM.L_RequestTimeout = "اجرای تماس بیش از اندازه طول کشید.";
 Strings.OfficeOM.L_RequestTokenUnavailable = "این API کنترل شده است تا فرکانس تماس پایین بیاید.";
-Strings.OfficeOM.L_ResponsePayloadSizeLimitExceededMessage = 'حجم بار پاسخ از حد مجاز فراتر رفته است. لطفاً به مستندات مراجعه کنید: "https://docs.microsoft.com/office/dev/add-ins/concepts/resource-limits-and-performance-optimization#excel-add-ins".';
+Strings.OfficeOM.L_ResponsePayloadSizeLimitExceededMessage = 'اندازه بار پاسخ‌ها از حد مجاز فراتر رفته است. لطفاً به مستندات مراجعه کنید: "https://docs.microsoft.com/office/dev/add-ins/concepts/resource-limits-and-performance-optimization#excel-add-ins".';
 Strings.OfficeOM.L_RowIndexOutOfRange = "مقدار فهرست ردیف خارج از محدوده مجاز است. از مقداری (0 یا بیشتر) استفاده کنید که کمتر از تعداد ردیف ها باشد.";
 Strings.OfficeOM.L_RunMustReturnPromise = "عملکرد انبوه ارائه شده به متد «.run» جواب حتمی ارائه نداد. تابع باید حتماً جواب حتمی ارائه کند تا اشیای ردیابی‌شده به طور خودکار در هنگام تکمیل عملکرد انبوه آزاد شوند. معمولاً جواب حتمی با پاسخ از «context.sync()» برگردانده می‌شود.";
 Strings.OfficeOM.L_SSOClientError = "خطا در درخواست تأیید اعتبار از Office رخ داد.";

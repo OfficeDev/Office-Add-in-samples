@@ -26,7 +26,7 @@ _u.ExtensibilityStrings.l_CannotPersistPropertyInUnsavedDraftError_Text = "ام�
 _u.ExtensibilityStrings.l_CursorPositionChanged_Text = "هنگامی که داده در حال وارد شدن بود، کاربر موقعیت مکان نما را تغییر داد.";
 _u.ExtensibilityStrings.l_DataWriteErrorName_Text = "خطای نوشتن داده";
 _u.ExtensibilityStrings.l_DeleteAttachmentDoesNotExist_Text = "پیوست را نمی‌توان حذف کرد زیرا پیوست در فهرست پیوست یافت نمی شود.";
-_u.ExtensibilityStrings.l_DisplayNameTooLong_Text = "یک یا چند نام نمایشی ارائه شده بیش از حد طولانی است.";
+_u.ExtensibilityStrings.l_DisplayNameTooLong_Text = "یک یا چند نام نمایشی ارائه شده بیش از حد طولانی است."
 _u.ExtensibilityStrings.l_DisplayReplyFormHtmlBodyRequired_Text = "'htmlBody' مورد نیاز است.";
 _u.ExtensibilityStrings.l_DuplicateNotificationKey_Text = "اعلان با کلید ارائه‌شده از قبل وجود دارد.";
 _u.ExtensibilityStrings.l_Duplicate_Category_Error_Text = "یکی از رده‌های ارائه‌شده در حال حاضر در فهرست مقوله اصلی است.";
@@ -60,7 +60,7 @@ _u.ExtensibilityStrings.l_Missing_Extended_Permissions_For_API = "مجوز تم�
 _u.ExtensibilityStrings.l_NoValidRecipientsProvided_Text = "گیرنده معتبری ارائه نشده است.";
 _u.ExtensibilityStrings.l_NotificationKeyNotFound_Text = "هیچ اعلانی همراه با کلید ارائه‌شده وجود ندارد.";
 _u.ExtensibilityStrings.l_NullOrEmptyParameterError_Text = "پارامتر '{0}' الزامی است و نباید تهی یا خالی باشد.";
-_u.ExtensibilityStrings.l_NumberOfNotificationsExceeded_Text = "افزودن اعلان امکان‌پذیر نیست زیرا به حد مجاز اعلان رسیده است."
+_u.ExtensibilityStrings.l_NumberOfNotificationsExceeded_Text = "افزودن اعلان امکان‌پذیر نیست زیرا به حد مجاز اعلان رسیده است.";
 _u.ExtensibilityStrings.l_NumberOfRecipientsExceeded_Text = "تعداد کل گیرندگان در کارد نباید بیشتر از {0} باشد.";
 _u.ExtensibilityStrings.l_OffsetNotfound_Text = "افستی برای این مهر زمان یافت نشد.";
 _u.ExtensibilityStrings.l_Olk_Http_Error_Text = "این درخواست انجام نشد. لطفاً برای کد خطای HTTP به شیء تشخیص عیب مراجعه کنید.";

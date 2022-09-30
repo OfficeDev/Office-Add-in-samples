@@ -3,7 +3,7 @@ _u.ExtensibilityStrings = function()
 {
 };
 _u.ExtensibilityStrings.registerClass("_u.ExtensibilityStrings");
-_u.ExtensibilityStrings.l_APICallFailedDueToItemChange_Text = "Vybratá položka sa zmenila.";
+_u.ExtensibilityStrings.l_APICallFailedDueToItemChange_Text = "Vybratá položka sa zmenila."
 _u.ExtensibilityStrings.l_API_Not_Supported_By_ExtensionPoint_Error_Text = "Rozhranie API nie je podporované pre bod rozšírenia.";
 _u.ExtensibilityStrings.l_API_Not_Supported_For_Shared_Folders_Error = "Rozhranie API nie je podporované pre zdieľané priečinky.";
 _u.ExtensibilityStrings.l_ActionsDefinitionMultipleActionsError_Text = "Momentálne sa podporuje len jedna akcia.";
@@ -72,7 +72,7 @@ _u.ExtensibilityStrings.l_PersistedNotificationArraySaveError_Text = "Uskutočne
 _u.ExtensibilityStrings.l_RecurrenceErrorMaxOccurrences_Text = "Rady opakovaných výskytov prekračujú maximálnu hodnotu 999 výskytov.";
 _u.ExtensibilityStrings.l_RecurrenceErrorZeroOccurrences_Text = "Rady opakovaných výskytov nemajú žiadne výskyty v rámci zadaného časového rozsahu.";
 _u.ExtensibilityStrings.l_RecurrenceInvalidTimeZone_Text = "Zadané časové pásmo nie je podporované.";
-_u.ExtensibilityStrings.l_RecurrenceUnsupportedAlternateCalendar_Text = "Spôsob opakovania bol používateľom nastavený pomocou alternatívneho kalendára, ktorý nie je podporovaný."
+_u.ExtensibilityStrings.l_RecurrenceUnsupportedAlternateCalendar_Text = "Spôsob opakovania bol používateľom nastavený pomocou alternatívneho kalendára, ktorý nie je podporovaný.";
 _u.ExtensibilityStrings.l_Recurrence_Error_Instance_SetAsync_Text = "Spôsob opakovania sa nedá nastaviť pre jediný výskyt v rade.";
 _u.ExtensibilityStrings.l_Recurrence_Error_Properties_Invalid_Text = "Spôsob opakovania nie je platný. Skontrolujte, či zadané vlastnosti opakovania zodpovedajú typu opakovania.";
 _u.ExtensibilityStrings.l_SaveError_Text = "Pri pokuse o uloženie položky na server sa vyskytla chyba pripojenia.";
