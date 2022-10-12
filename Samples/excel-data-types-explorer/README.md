@@ -18,7 +18,7 @@ description: "Create data types in Excel workbooks and explore existing data typ
 
 ## Summary
 
-This sample builds an Excel add-in that can create and explore data types in your workbooks. Data types enable add-in developers to organize complex data structures as objects, such as formatted number values, web images, and entity values. See [Overview of data types in Excel add-ins](https://docs.microsoft.com/office/dev/add-ins/excel/excel-data-types-overview) to learn more about data types.
+This sample builds an Excel add-in that can create and explore data types in your workbooks. Data types enable add-in developers to organize complex data structures as objects, such as formatted number values, web images, and entities. See [Overview of data types in Excel add-ins](https://docs.microsoft.com/office/dev/add-ins/excel/excel-data-types-overview) to learn more about data types.
 
 ## Features
 
@@ -53,6 +53,7 @@ Create and explore data types in Excel workbooks | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0 | 9-7-2022 | Initial release
+1.1 | 10-12-2022 | Promote from Preview to GA
 
 ----------
 
