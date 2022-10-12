@@ -14,15 +14,11 @@ extensions:
 description: "Create data types in Excel workbooks and explore existing data types in Excel workbooks."
 ---
 
-# Create and explore data types in Excel (preview)
+# Create and explore data types in Excel
 
 ## Summary
 
-This sample builds an Excel add-in that can create and explore data types in your workbooks. Data types enable add-in developers to organize complex data structures as objects, such as formatted number values, web images, and entity values. See [Overview of data types in Excel add-ins (preview)](https://docs.microsoft.com/office/dev/add-ins/excel/excel-data-types-overview) to learn more about data types.
-
-> **Note:** Data types APIs are currently only available in public preview. Preview APIs are subject to change and are not intended for use in a production environment. We recommend that you try them out in test and development environments only. Do not use preview APIs in a production environment or within business-critical documents. This add-in sample references the **beta** Office.js library on the content delivery network (CDN) (https://appsforoffice.microsoft.com/lib/beta/hosted/office.js) and the **beta** [type definition file](https://appsforoffice.microsoft.com/lib/beta/hosted/office.d.ts) for TypeScript compilation and IntelliSense.
->
-> To try out data types in Office on Windows, you must have an Excel build number greater than or equal to 16.0.14626.10000. To try out data types in Office on Mac, you must have an Excel build number greater than or equal to 16.55.21102600.
+This sample builds an Excel add-in that can create and explore data types in your workbooks. Data types enable add-in developers to organize complex data structures as objects, such as formatted number values, web images, and entity values. See [Overview of data types in Excel add-ins](https://docs.microsoft.com/office/dev/add-ins/excel/excel-data-types-overview) to learn more about data types.
 
 ## Features
 
