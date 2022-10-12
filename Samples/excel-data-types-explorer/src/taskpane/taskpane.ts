@@ -358,53 +358,7 @@ function entityContent(): JQuery<HTMLElement> {
   let iconlabel = $(`<label class="labels"> Entity icon: </label>`);
   let contentLabel = $(`<label class="labels contentPadding">Entity contents:</label>`);
   let select = $(`<select id="iconSelect" name="dataType" class="ms-Button ms-Button-label buttons"/>`);
-  let options = createOptionsFromList([
-    "Generic",
-    "Airplane",
-    "Animal",
-    "Apple",
-    "Art",
-    "Atom",
-    "Bank",
-    "Basketball",
-    "Beaker",
-    "Bird",
-    "Book",
-    "Bridge",
-    "Briefcase",
-    "Car",
-    "Cat",
-    "City",
-    "Clouds",
-    "Constellation",
-    "Dinosaur",
-    "Disaster",
-    "DNA",
-    "Dog",
-    "Drama",
-    "Galaxy",
-    "HatGraduation",
-    "Heart",
-    "Languages",
-    "Leaf",
-    "Location",
-    "Map",
-    "Microscope",
-    "Money",
-    "Mountain",
-    "MovieCamera",
-    "MusicNote",
-    "Notebook",
-    "PartlySunnyWeather",
-    "Person",
-    "Planet",
-    "PointScan",
-    "Running",
-    "Satellite",
-    "Syringe",
-    "Violin",
-    "Wand"
-  ]);
+  let options = createOptionsFromList(Object.values(Excel.EntityCompactLayoutIcons));
 
   for (let i = 0; i < options.length; ++i) {
     select.append(options[i]);
