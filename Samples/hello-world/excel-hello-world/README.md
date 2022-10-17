@@ -109,8 +109,9 @@ Choose the **Hello world** button on the **Home** tab to display the task pane o
 
 Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the Hello world sample. Then follow the sideloading instructions for your platform.
 
-- [Sideload Office Add-ins for testing from a network share](https://docs.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
-- [Sideload Office Add-ins on iPad and Mac for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad-and-mac)
+- [Sideload Office Add-ins for testing from a network share](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
+- [Sideload Office Add-ins on Mac for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac)
+- [Sideload Office Add-ins on iPad for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad)
 
 ## Configure a localhost web server and run the sample from localhost
 
