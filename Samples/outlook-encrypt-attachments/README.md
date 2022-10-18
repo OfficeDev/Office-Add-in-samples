@@ -34,11 +34,11 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 ## Features/Scenario
 
 - **Encryption based on attachment change events.** This sample encrypts the first attachment that is added to a composed email or appointment, and adds it as another attachment with an "encrypted_" prefix on the file name. It then decrypts that attachment and adds it as another attachment with a "decrypted_" prefix on the file name.
-  - Also adds a notification message to the compose item to denote that encryption and decryption is in progress. When completed, that message is removed (it may only appear for a very brief time, depending on the complexity of the encryption process) and another notification message is added noting that the process has completed: ![Compose email](assets/readme/compose_email.png)  
+  - Also adds a notification message to the compose item to denote that encryption and decryption is in progress. When completed, that message is removed (it may only appear for a very brief time, depending on the complexity of the encryption process) and another notification message is added noting that the process has completed: ![Message in compose mode with the sample add-in notification message and task pane displayed.](assets/readme/compose_email.png)  
 - **Notifications based on recipient changes.** This sample adds notification messages to a meeting request when recipients are added or removed. The notification message are removed when there are no longer any recipients.
   - Shows a message with a running tally of the number of required and optional attendees.
   - Show a message with a warning if one or more distribution lists are invited as an attendee
-- **Notifications based on date/time changes.** This sample adds a notification message to an appointment when the user changes the date/time, showing the original date/time that was set when the appointment was opened. The notification message provides a reference for further date/time edits. ![Compose email](assets/readme/appointment_Outlook_desktop.png)  
+- **Notifications based on date/time changes.** This sample adds a notification message to an appointment when the user changes the date/time, showing the original date/time that was set when the appointment was opened. The notification message provides a reference for further date/time edits. ![Message in compose mode with the sample add-in date/time change notification and task pane displayed.](assets/readme/appointment_outlook_desktop.png)  
 
 ## Applies to
 
