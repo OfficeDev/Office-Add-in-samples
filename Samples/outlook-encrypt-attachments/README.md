@@ -79,7 +79,7 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 Run this sample in Outlook on Windows or in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 ### Try it out
 
@@ -132,7 +132,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000 
     ```
 
-1. Sideload `manifest.xml` in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload `manifest.xml` in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 1. [Try out the sample!](#try-it-out)
 
 ## Key parts of this sample
