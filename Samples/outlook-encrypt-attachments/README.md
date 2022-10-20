@@ -44,8 +44,8 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 
 ---
 
-- Outlook on Windows
-  - Outlook on the web
+- Outlook
+  - Windows
   - web browser
 
 ## Prerequisites
