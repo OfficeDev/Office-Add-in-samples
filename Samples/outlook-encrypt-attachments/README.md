@@ -18,11 +18,14 @@ description: "Use Outlook event-based activation to encrypt attachments, process
 
 **Applies to**: Outlook on Windows | Outlook on the web
 
-![Screen shot of email with an attachment that has an additional encrypted version created by the sample add-in.](./assets/readme/outlook-encrypt-attachments-overview.png)
+![Message in compose mode with an attachment that has additional encrypted and decrypted versions created by the sample add-in.](./assets/readme/outlook-encrypt-attachments-overview.png)
 
 ## Summary
+
 ---
+
 This sample showcases how to use event-based activation in an Outlook add-in when the user composes an email or appointment/meeting request.  It demonstrates how to run tasks based on events that fire when certain data changes when the user:
+
 - adds an attachment to an email or appointment/meeting request
 - adds recipients or distributions lists as required or optional attendeees in a meeting request
 - changes the start or end date or time in an appointment/meeting request
@@ -31,54 +34,66 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 ## Features/Scenario
 
 - **Encryption based on attachment change events.** This sample encrypts the first attachment that is added to a composed email or appointment, and adds it as another attachment with an "encrypted_" prefix on the file name. It then decrypts that attachment and adds it as another attachment with a "decrypted_" prefix on the file name.
-  - Also adds a notification message to the compose item to denote that encryption and decryption is in progress. When completed, that message is removed (it may only appear for a very brief time, depending on the complexity of the encryption process) and another notification message is added noting that the process has completed: ![Compose email](assets/readme/compose_email.png)  
+  - Also adds a notification message to the compose item to denote that encryption and decryption is in progress. When completed, that message is removed (it may only appear for a very brief time, depending on the complexity of the encryption process) and another notification message is added noting that the process has completed: ![Message in compose mode with the sample add-in notification message and task pane displayed.](assets/readme/compose_email.png)  
 - **Notifications based on recipient changes.** This sample adds notification messages to a meeting request when recipients are added or removed. The notification message are removed when there are no longer any recipients.
   - Shows a message with a running tally of the number of required and optional attendees.
   - Show a message with a warning if one or more distribution lists are invited as an attendee
-- **Notifications based on date/time changes.** This sample adds a notification message to an appointment when the user changes the date/time, showing the original date/time that was set when the appointment was opened. The notification message provides a reference for further date/time edits. ![Compose email](assets/readme/appointment_Outlook_desktop.png)  
+- **Notifications based on date/time changes.** This sample adds a notification message to an appointment when the user changes the date/time, showing the original date/time that was set when the appointment was opened. The notification message provides a reference for further date/time edits. ![Message in compose mode with the sample add-in date/time change notification and task pane displayed.](assets/readme/appointment_outlook_desktop.png)  
 
 ## Applies to
+
 ---
-- Outlook on Windows
-  - Outlook on the web
+
+- Outlook
+  - Windows
   - web browser
 
 ## Prerequisites
+
 ---
+
 - Microsoft 365
 
 > Note: If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
 
 ## Solution
+
 ---
+
 | Solution | Author(s) |
 | ---- | ---- |
 | Use Outlook event-based activation to process item attachments, meeting request recipients, and appointment date/time changes. | [Eric Legault](https://twitter.com/elegault) |
 
 ## Version history
+
 ---
+
 | Version | Date       | Comments        |
 | ------- | ---------- | --------------- |
 | 1.0     | 10-14-2021 | Initial release |
 
 ## Run the sample
+
 ---
+
 Run this sample in Outlook on Windows or in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 ### Try it out
 
 Once the add-in is loaded, use the following steps to try out the functionality.
 
 #### Manage attachments
+
 1. Create a new message or appointment.
     >A notification appears at the top of the message that reads **Open the task pane for details about running the Outlook event-based activation sample add-in**. | Open task pane | Dismiss
 1. Add an attachment.
     > A notification appears at the top of the message that reads **The '{file name} attachment has been encrypted and decrypted and added as reference attachments for your review**. | Dismiss
 
 #### Set up meetings
+
 1. Create a new meeting request. In Outlook on the web, choose **More options** to expand the request and include all details. Otherwise, you won't see the notifications in the next steps.
 1. Add a user as a required or optional attendee.
     > A notification appears at the top of the message that reads **Your appointment has 1 required and 0 optional attendees**. | Dismiss
@@ -117,7 +132,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000 
     ```
 
-1. Sideload `manifest.xml` in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload `manifest.xml` in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 1. [Try out the sample!](#try-it-out)
 
 ## Key parts of this sample
@@ -181,20 +196,20 @@ The task pane code is located under the `taskpane` folder of this project. The t
 
 ## References
 
-- [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch)
-- [Debug your event-based Outlook add-in (preview)](https://docs.microsoft.com/en-ca/office/dev/add-ins/outlook/debug-autolaunch)
+- [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch)
+- [Debug your event-based Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch)
 - Other samples:
-  - [https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature)
-  - [https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-tag-external](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-tag-external)
+  - [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature)
+  - [Use Outlook event-based activation to tag external recipients](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-tag-external)
 - [crypto-js](https://www.npmjs.com/package/crypto-js)
-- [Office.SessionData interface](https://docs.microsoft.com/javascript/api/outlook/office.sessiondata?view=outlook-js-preview)
-- [Microsoft Office Add-in Debugger Extension for Visual Studio Code](https://docs.microsoft.com/office/dev/add-ins/testing/debug-with-vs-extension)
-- [Develop Office Add-ins with Visual Studio Code](https://docs.microsoft.com/office/dev/add-ins/develop/develop-add-ins-vscode)
+- [Office.SessionData interface](https://learn.microsoft.com/javascript/api/outlook/office.sessiondata)
+- [Microsoft Office Add-in Debugger Extension for Visual Studio Code](https://learn.microsoft.com/office/dev/add-ins/testing/debug-with-vs-extension)
+- [Develop Office Add-ins with Visual Studio Code](https://learn.microsoft.com/office/dev/add-ins/develop/develop-add-ins-vscode)
 - [Office Add-ins with Visual Studio Code](https://code.visualstudio.com/docs/other/office)
 - [Debugging with Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging)
 - [Node.js debugging in VS Code](https://code.visualstudio.com/docs/nodejs/nodejs-debugging)
 - [Office-Addin-Debugging](https://www.npmjs.com/package/office-addin-debugging)
-- Getting recipients and attendees: `https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/outlook/30-recipients-and-attendees/get-set-required-attendees-appointment-organizer.yaml`
+- [Getting recipients and attendees Script Lab sample](https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/outlook/30-recipients-and-attendees/get-set-required-attendees-appointment-organizer.yaml)
 
 ## Copyright
 
