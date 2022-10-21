@@ -4,7 +4,7 @@
 }
 
 #message {
-  color: red;
+  color: darkred;
   font-size: 20px;
 }
 
@@ -33,7 +33,7 @@ h2 {
   width: 120px;
   height: 45px;
   /*background: #FFFFFF 0% 0% no-repeat padding-box;*/
-  background: #0078D4 0% 0% no-repeat padding-box;
+  background: #005696 0% 0% no-repeat padding-box;
   color: white;
   /*border: 1px solid #8A8886;*/
   border: none;
@@ -42,7 +42,7 @@ h2 {
 }
 
 #reset_all_config_btn {
-  background-color: red;
+  background-color: darkred;
   color: white;
 }
 
@@ -52,7 +52,7 @@ h2 {
 
 #feedback_btn {
   /* background: #ffff80;*/
-  background: #ff9800; /*orange*/
+  background: #723401; /*Sienna*/
   color: #ffffff;
   font-size: 16px;
 }

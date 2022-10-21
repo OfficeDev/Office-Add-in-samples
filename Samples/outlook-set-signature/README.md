@@ -76,7 +76,7 @@ Once the add-in is loaded use the following steps to try out the functionality.
 1. Open Outlook on Windows, on Mac, or in a browser.
 1. Create a new message or appointment.
 
-    > You should see a notification at the top of the message that reads: **Please set your signature with the PnP sample add-in.**
+    > You should see a notification at the top of the message that reads: **Please set your signature with the Office Add-ins sample.**
 
 1. Choose **Set signatures**. This will open the task pane for the add-in.
 1. In the task pane fill out the fields for your signature data. Then choose **Save**.
