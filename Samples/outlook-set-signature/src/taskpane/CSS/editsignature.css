@@ -18,13 +18,26 @@ input {
   text-indent: 5px;
   font-size: 15px;
   background: #ffffff 0% 0% no-repeat padding-box;
-  border: 1px solid #919191;
+  border: 1px solid #424242;
   border-radius: 2px;
   opacity: 1;
 }
 
+::placeholder {
+  color: #424242;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #424242;
+}
+
+::-ms-input-placeholder {
+  color: #424242;
+}
+
 h2 {
-  color: #aaaaaa;
+  color: #424242;
 }
 
 #next_button_t1,
@@ -65,7 +78,7 @@ input[type=text], input[type=number], input[type=email] {
   outline: none;
   /*padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;*/
-  border: 1px solid #DDDDDD;
+  border: 1px solid #424242;
 }
  
 input[type=text]:focus, input[type=number]:focus, input[type=email]:focus {
