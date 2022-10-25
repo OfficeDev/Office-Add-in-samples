@@ -78,7 +78,7 @@ This sample contains an `Add` custom function that calls an Azure Function named
 Run the **CustomFunctionProject** in Excel on the web. The add-in web files are served from this repo on GitHub.
 
 1. Locate the **manifest.xml** file in the **AzureFunction/CustomFunctionProject** folder.
-1. Sideload the **manifest.xml** file in Excel on the web by following the manual instructions in the article [Sideload Office Add-ins in Office on the web for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing).
+1. Sideload the **manifest.xml** file in Excel on the web by following the manual instructions in the article [Sideload Office Add-ins in Office on the web for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing).
 
 ### Try it out
 
@@ -116,7 +116,7 @@ If you prefer to host the web server for the custom function on your computer, f
     http-server -S --cors . -p 3000
     ```
 
-1. Sideload `manifest-local.xml` in Excel on the web by following the manual instructions in the article [Sideload Office Add-ins in Office on the web for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing).
+1. Sideload `manifest-local.xml` in Excel on the web by following the manual instructions in the article [Sideload Office Add-ins in Office on the web for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing).
 1. [Try out the custom function!](#try-it-out)
 
 ## Try out the Azure Function deployed to an Azure Function App
@@ -254,7 +254,7 @@ function add(first, second) {
 
 ### AzureFunctionProject notes
 
-The Azure Function is configured to allow anonymous access which means anyone can call the function if they have the URL. This is only for development purposes. In production code, you should configure [authentication and authorization in Azure App Service](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization), to ensure only authorized users and code can call your Azure Functions.
+The Azure Function is configured to allow anonymous access which means anyone can call the function if they have the URL. This is only for development purposes. In production code, you should configure [authentication and authorization in Azure App Service](https://learn.microsoft.com/azure/app-service/overview-authentication-authorization), to ensure only authorized users and code can call your Azure Functions.
 
 ### CustomFunctionProject notes
 
@@ -273,8 +273,8 @@ We'd love to get your feedback about this sample. You can send your feedback to 
 
 ## Additional resources
 
-- [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
-- [Quickstart: Create a JavaScript function in Azure using Visual Studio Code](https://docs.microsoft.com/azure/azure-functions/create-first-function-vs-code-node)
+- [Office Add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+- [Quickstart: Create a JavaScript function in Azure using Visual Studio Code](https://learn.microsoft.com/azure/azure-functions/create-first-function-vs-code-node)
 
 ## Copyright
 

@@ -52,7 +52,7 @@ To work with the samples, clone or download this repo. Then go to the folder con
 
 ## Key components
 
-The hello world sample implements the **Manifest** and **Web app** components identified in [Components of an Office Add-in](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins#components-of-an-office-add-in).
+The hello world sample implements the **Manifest** and **Web app** components identified in [Components of an Office Add-in](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins#components-of-an-office-add-in).
 
 ### Manifest
 

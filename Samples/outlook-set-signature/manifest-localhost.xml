@@ -48,7 +48,7 @@
       <Hosts>
         <Host xsi:type="MailHost">
         <!-- Specify the runtime for event-based activation. -->
-        <!-- For more information, see https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch -->
+        <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch -->
           <Runtimes>
             <Runtime resid="Autorun">
               <Override type="javascript" resid="runtimeJs"/>

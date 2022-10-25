@@ -45,7 +45,7 @@ The sample contained in this folder is a sample that is designed to run in Excel
 
 ## Key components
 
-The hello world sample implements the **Manifest** and **Web app** components identified in [Components of an Office Add-in](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins#components-of-an-office-add-in).
+The hello world sample implements the **Manifest** and **Web app** components identified in [Components of an Office Add-in](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins#components-of-an-office-add-in).
 
 ### Manifest
 
@@ -62,7 +62,7 @@ The hello world sample implements a task pane named **taskpane.html** that conta
 
 ### Initialize the Office JavaScript API library
 
-The sample initializes the Office JavaScript API library with a call to `office.onReady()` in the **taskpane.html** file. This is required before you can make any calls to the Office JavaScript APIs. For more information about initialization, see [Initialize your Office Add-in](https://docs.microsoft.com/en-us/office/dev/add-ins/develop/initialize-add-in).
+The sample initializes the Office JavaScript API library with a call to `office.onReady()` in the **taskpane.html** file. This is required before you can make any calls to the Office JavaScript APIs. For more information about initialization, see [Initialize your Office Add-in](https://learn.microsoft.com/office/dev/add-ins/develop/initialize-add-in).
 
 ```javascript
 Office.onReady((info) => {});
@@ -72,7 +72,7 @@ Office.onReady((info) => {});
 
 When the user chooses the **Say hello** button, the `sayHello()` function is called. This function then calls `Excel.run` to run code and call the Office JavaScript APIs. It uses a `context` object provided by the Office JS API library to get the active worksheet's `A1` range value and set the value to "Hello world!". Calling `context.sync()` runs the command.
 
-For more information see [Tutorial: Create an Excel task pane add-in](https://docs.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial)
+For more information see [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial)
 
 ```javascript
 function sayHello() {

@@ -18,17 +18,17 @@ description: "An Outlook add-in sample that accesses Microsoft Graph using singl
 
 **Applies to:** Outlook on Windows | Outlook on Mac | Outlook on the web
 
-> Note: This sample has a security risk because it returns an access token from the middle-tier server to the client code. This pattern should not be used as tokens issued by the Microsoft identity platform to the middle-tier must stay in the middle-tier. We're working to update this sample with the correct pattern as soon as possible. For more information, see [Middle-tier access token request](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow#middle-tier-access-token-request).
+> Note: This sample has a security risk because it returns an access token from the middle-tier server to the client code. This pattern should not be used as tokens issued by the Microsoft identity platform to the middle-tier must stay in the middle-tier. We're working to update this sample with the correct pattern as soon as possible. For more information, see [Middle-tier access token request](https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow#middle-tier-access-token-request).
 
 ## Summary
 
 The sample implements an Outlook add-in that uses Office's SSO feature to give the add-in access to Microsoft Graph data. Specifically, it enables the user to save all attachments to their OneDrive. It also shows how to add custom buttons to the Outlook ribbon. The sample illustrates the following concepts:
 
-- [Use the SSO access token](https://docs.microsoft.com/outlook/add-ins/authenticate-a-user-with-an-sso-token) to call the Microsoft Graph API without prompting the user
-- If the SSO token is not available, authenticate to the user's OneDrive using the [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview).
+- [Use the SSO access token](https://learn.microsoft.com/outlook/add-ins/authenticate-a-user-with-an-sso-token) to call the Microsoft Graph API without prompting the user
+- If the SSO token is not available, authenticate to the user's OneDrive using the [Microsoft Authentication Library (MSAL)](https://learn.microsoft.com/azure/active-directory/develop/msal-overview).
 - Use the [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/onedrive) to create files in OneDrive
-- Add [add-in command buttons](https://docs.microsoft.com/outlook/add-ins/add-in-commands-for-outlook) to the Outlook ribbon when reading mail, including a UI-less button and a button that opens a task pane
-- Implement a WebAPI that uses the [Microsoft identity platform and OAuth 2.0 On-Behalf-Of flow](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) to exchange the user's access token for a new access token with permissions to Microsoft Graph and OneDrive.
+- Add [add-in command buttons](https://learn.microsoft.com/outlook/add-ins/add-in-commands-for-outlook) to the Outlook ribbon when reading mail, including a UI-less button and a button that opens a task pane
+- Implement a WebAPI that uses the [Microsoft identity platform and OAuth 2.0 On-Behalf-Of flow](https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) to exchange the user's access token for a new access token with permissions to Microsoft Graph and OneDrive.
 
 ## Register the add-in with Azure AD v2.0 endpoint
 

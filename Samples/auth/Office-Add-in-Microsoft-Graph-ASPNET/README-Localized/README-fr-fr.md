@@ -73,7 +73,7 @@ Version | Date | Commentaires
 
 1. Dans **Visual Studio**, choisissez le projet **Office-Add-in-Microsoft-Graph-ASPNETWeb**. Dans **Propriétés**, assurez-vous que **SSL activé** est défini sur **True**. Vérifiez que l’**URL SSL** utilise le même nom de domaine et le même numéro de port que ceux répertoriés à l’étape suivante.
  
-2. Inscrivez votre application à l’aide du [portail de gestion Azure](https://manage.windowsazure.com). **Connectez-vous à l’aide de l’identité d’un administrateur de votre location Office 365 afin de vous assurer que vous travaillez dans un répertoire Azure Active Directory associé à cette location.** Pour savoir comment inscrire votre application, consulter [Inscrire une application sur la Plateforme d’identités Microsoft](https://docs.microsoft.com/graph/auth-register-app-v2). Utilisez les paramètres suivants :
+2. Inscrivez votre application à l’aide du [portail de gestion Azure](https://manage.windowsazure.com). **Connectez-vous à l’aide de l’identité d’un administrateur de votre location Office 365 afin de vous assurer que vous travaillez dans un répertoire Azure Active Directory associé à cette location.** Pour savoir comment inscrire votre application, consulter [Inscrire une application sur la Plateforme d’identités Microsoft](https://learn.microsoft.com/graph/auth-register-app-v2). Utilisez les paramètres suivants :
 
  - URI DE REDIRECTION : https://localhost:44301/AzureADAuth/Authorize
  - TYPE DE COMPTES PRIS EN CHARGE : « Comptes dans cet annuaire organisationnel uniquement »
@@ -109,8 +109,8 @@ Si vous avez des questions sur le développement des compléments Office, envoye
 
 ## Ressources supplémentaires
 
-* [Documentation Microsoft Graph](https://docs.microsoft.com/graph/)
-* [Documentation pour compléments Office](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+* [Documentation Microsoft Graph](https://learn.microsoft.com/graph/)
+* [Documentation pour compléments Office](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Copyright
 Copyright (c) 2019 Microsoft Corporation. Tous droits réservés.
