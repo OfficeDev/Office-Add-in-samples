@@ -45,7 +45,7 @@ Integrating data from online service providers increases the value and adoption 
 
 ## Applies to
 
--  Any platform and Office host combination that supports the [IdentityAPI 1.3 requirement set](https://learn.microsoft.com/en-us/office/dev/add-ins/reference/requirement-sets/identity-api-requirement-sets).
+-  Any platform and Office host combination that supports the [IdentityAPI 1.3 requirement set](https://learn.microsoft.com/office/dev/add-ins/reference/requirement-sets/identity-api-requirement-sets).
 
 ## Prerequisites
 
@@ -83,7 +83,7 @@ The sample sends a hardcoded query parameter on the URL for the Microsoft Graph 
 ## Questions and comments
 
 We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
-Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://learn.microsoft.com/en-us/answers/topics/office-js-dev.html).
+Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html).
 
 ## Join the Microsoft 365 Developer Program
 Get a free sandbox, tools, and other resources you need to build solutions for the Microsoft 365 platform.

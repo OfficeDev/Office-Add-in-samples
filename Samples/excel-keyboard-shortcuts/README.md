@@ -87,7 +87,7 @@ Once the add-in is loaded use the following steps to try out the functionality.
 
 The manifest.xml is pre-configured to use the shared runtime. To see how to add shared runtime to your own add-in, use the following article:
 
-- [Configure your Excel Add-in to use a shared JavaScript runtime](https://learn.microsoft.com/en-us/office/dev/add-ins/excel/configure-your-add-in-to-use-a-shared-runtime)
+- [Configure your Excel Add-in to use a shared JavaScript runtime](https://learn.microsoft.com/office/dev/add-ins/excel/configure-your-add-in-to-use-a-shared-runtime)
 
 
 Additionally, the following changes have been made to enable keyboard shortcuts:

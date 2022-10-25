@@ -47,8 +47,8 @@ This sample Office Add-in inserts a table of fictitious basketball players' stat
 
 While this add-in gets its data from a local server, implementation of `localStorage` as shown in this sample can be extended to add-ins that get their data from online sources. Furthermore, although this sample runs only in Excel, `localStorage` can be used to offline data across Word, Excel, and PowerPoint.
 
-**Note**: `localStorage` can store up to 5MB of data. To store larger amounts of data offline and for improved performance, consider using [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). Note that as of now, IndexedDB isn't supported by all browsers used by Office Add-ins. Check [here](https://learn.microsoft.com/en-us/office/dev/add-ins/concepts/browsers-used-by-office-web-add-ins) to see which browsers are supported by Office Add-ins and [here](https://caniuse.com/#search=indexedDB) to see which browsers can support IndexedDB.
-As another option, you can store your add-in's data in [`Office.Settings`](https://learn.microsoft.com/en-us/javascript/api/office/office.settings?view=office-js). Using Office.Settings will enable your add-in's offline capabilities to persist within the file (e.g. if you'd like to share your file with others).
+**Note**: `localStorage` can store up to 5MB of data. To store larger amounts of data offline and for improved performance, consider using [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). Note that as of now, IndexedDB isn't supported by all browsers used by Office Add-ins. Check [here](https://learn.microsoft.com/office/dev/add-ins/concepts/browsers-used-by-office-web-add-ins) to see which browsers are supported by Office Add-ins and [here](https://caniuse.com/#search=indexedDB) to see which browsers can support IndexedDB.
+As another option, you can store your add-in's data in [`Office.Settings`](https://learn.microsoft.com/javascript/api/office/office.settings?view=office-js). Using Office.Settings will enable your add-in's offline capabilities to persist within the file (e.g. if you'd like to share your file with others).
 
 ## Build and run the sample
 
@@ -137,7 +137,7 @@ npx office-addin-dev-certs uninstall
 ## Questions and comments
 
 We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
-Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://learn.microsoft.com/en-us/answers/topics/office-js-dev.html).
+Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html).
 
 ## Additional resources
 * [Office Add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)

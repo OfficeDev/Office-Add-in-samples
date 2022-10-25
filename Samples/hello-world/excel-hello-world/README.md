@@ -62,7 +62,7 @@ The hello world sample implements a task pane named **taskpane.html** that conta
 
 ### Initialize the Office JavaScript API library
 
-The sample initializes the Office JavaScript API library with a call to `office.onReady()` in the **taskpane.html** file. This is required before you can make any calls to the Office JavaScript APIs. For more information about initialization, see [Initialize your Office Add-in](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/initialize-add-in).
+The sample initializes the Office JavaScript API library with a call to `office.onReady()` in the **taskpane.html** file. This is required before you can make any calls to the Office JavaScript APIs. For more information about initialization, see [Initialize your Office Add-in](https://learn.microsoft.com/office/dev/add-ins/develop/initialize-add-in).
 
 ```javascript
 Office.onReady((info) => {});

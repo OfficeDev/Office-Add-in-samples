@@ -53,7 +53,7 @@
             {
                 "name": "Welcome to the Open XML SDK 2.5 for Office",
                 "description": "The Open XML SDK 2.5 simplifies the task of manipulating Open XML packages and the underlying Open XML schema elements within a package. ",
-                "url": "https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk"
+                "url": "https://learn.microsoft.com/office/open-xml/open-xml-sdk"
             }
             
         ]

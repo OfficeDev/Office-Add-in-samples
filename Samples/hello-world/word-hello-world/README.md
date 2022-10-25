@@ -53,7 +53,7 @@ The hello world sample implements the **Manifest** and **Web app** components id
 
 ### Initialize the Office JavaScript API library
 
-The sample initializes the Office JavaScript API library with a call to `office.onReady()` in the **taskpane.html** file. This is required before you can make any calls to the Office JavaScript APIs. For more information about initialization, see [Initialize your Office Add-in](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/initialize-add-in).
+The sample initializes the Office JavaScript API library with a call to `office.onReady()` in the **taskpane.html** file. This is required before you can make any calls to the Office JavaScript APIs. For more information about initialization, see [Initialize your Office Add-in](https://learn.microsoft.com/office/dev/add-ins/develop/initialize-add-in).
 
 ```javascript
 Office.onReady((info) => {});
@@ -63,7 +63,7 @@ Office.onReady((info) => {});
 
 When the user chooses the **button**, the `sayHello()` function is called. This function Then calls `Word.run` to run code and call the Office JavaScript APIs. It uses a `context` object provided by the Office JS API library to get the document body and inserts a Paragraph with the text "Hello World". Calling `context.sync()` runs the command.
 
-For more information see [Tutorial: Create an Word task pane add-in](https://learn.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial)
+For more information see [Tutorial: Create an Word task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/word-tutorial)
 
 ```javascript
 function sayHello() {
