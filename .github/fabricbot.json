@@ -965,7 +965,7 @@
           {
             "name": "addReply",
             "parameters": {
-              "comment": "Thanks for your interest in Office Add-ins development! Feedback here is intended for reporting problems with the Office Add-ins *documentation*. Can you please post this feature request to [Microsoft 365 on Q&A](https://docs.microsoft.com/answers/products/m365)? Feature Requests submitted to **Q&A** are regularly reviewed by the product teams as they plan future releases. Thanks!"
+              "comment": "Thanks for your interest in Office Add-ins development! Feedback here is intended for reporting problems with the Office Add-ins *documentation*. Can you please post this feature request to [Microsoft 365 on Q&A](https://learn.microsoft.com/answers/products/m365)? Feature Requests submitted to **Q&A** are regularly reviewed by the product teams as they plan future releases. Thanks!"
             }
           },
           {

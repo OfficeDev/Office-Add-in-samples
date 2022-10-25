@@ -38,7 +38,7 @@
         {
           "name": "Create a Node.js Office Add-in that uses single sign-on",
           "description": "Users can sign in to Office, and your Office Web Add-in can take advantage of this sign-in process to authorize users to your add-in and to Microsoft Graph without requiring users to sign in a second time. ",
-          "url": "https://docs.microsoft.com/en-us/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs"
+          "url": "https://learn.microsoft.com/en-us/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs"
         }
       ]
     }

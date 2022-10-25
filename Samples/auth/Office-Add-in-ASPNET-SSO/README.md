@@ -23,12 +23,12 @@ extensions:
 
 This sample implements an Office Add-in that uses the `getAccessToken` API in Office.js to give the add-in access to Microsoft Graph data. This sample is built on ASP.NET and Microsoft Authentication Library (MSAL) .NET.
 
-> Note: This sample has a security risk because it returns an access token from the middle-tier server to the client code. This pattern should not be used as tokens issued by the Microsoft identity platform to the middle-tier must stay in the middle-tier. We're working to update this sample with the correct pattern as soon as possible. For more information, see [Middle-tier access token request](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow#middle-tier-access-token-request).
+> Note: This sample has a security risk because it returns an access token from the middle-tier server to the client code. This pattern should not be used as tokens issued by the Microsoft identity platform to the middle-tier must stay in the middle-tier. We're working to update this sample with the correct pattern as soon as possible. For more information, see [Middle-tier access token request](https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow#middle-tier-access-token-request).
 
 There are two versions of the sample in this repo, one of which has its own README file:
 
-- **Before** folder. The starting point for the SSO walkthrough at [Create an ASP.NET Office Add-in that uses single sign-on](https://docs.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-aspnet). Please follow the instructions in the article.
-- **Complete** folder. The completed sample. To use this version, follow the instructions in the article [Create an ASP.NET Office Add-in that uses single sign-on](https://docs.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-aspnet), but substitute "Complete" for "Before" in those instructions and skip the sections **Code the client-side** and **Code the server-side**.
+- **Before** folder. The starting point for the SSO walkthrough at [Create an ASP.NET Office Add-in that uses single sign-on](https://learn.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-aspnet). Please follow the instructions in the article.
+- **Complete** folder. The completed sample. To use this version, follow the instructions in the article [Create an ASP.NET Office Add-in that uses single sign-on](https://learn.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-aspnet), but substitute "Complete" for "Before" in those instructions and skip the sections **Code the client-side** and **Code the server-side**.
 
 ## Features
 
@@ -45,7 +45,7 @@ Integrating data from online service providers increases the value and adoption 
 
 ## Applies to
 
--  Any platform and Office host combination that supports the [IdentityAPI 1.3 requirement set](https://docs.microsoft.com/en-us/office/dev/add-ins/reference/requirement-sets/identity-api-requirement-sets).
+-  Any platform and Office host combination that supports the [IdentityAPI 1.3 requirement set](https://learn.microsoft.com/en-us/office/dev/add-ins/reference/requirement-sets/identity-api-requirement-sets).
 
 ## Prerequisites
 
@@ -83,7 +83,7 @@ The sample sends a hardcoded query parameter on the URL for the Microsoft Graph 
 ## Questions and comments
 
 We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
-Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://docs.microsoft.com/en-us/answers/topics/office-js-dev.html).
+Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://learn.microsoft.com/en-us/answers/topics/office-js-dev.html).
 
 ## Join the Microsoft 365 Developer Program
 Get a free sandbox, tools, and other resources you need to build solutions for the Microsoft 365 platform.
@@ -94,8 +94,8 @@ Get a free sandbox, tools, and other resources you need to build solutions for t
 
 ## Additional resources
 
-* [Microsoft Graph documentation](https://docs.microsoft.com/graph/)
-* [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+* [Microsoft Graph documentation](https://learn.microsoft.com/graph/)
+* [Office Add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Copyright
 Copyright (c) 2019 - 2021 Microsoft Corporation. All rights reserved.

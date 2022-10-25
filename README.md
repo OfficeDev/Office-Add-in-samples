@@ -4,7 +4,7 @@ Office Add-ins code samples are provided in this repo to help you learn, study, 
 
 ## Getting started
 
-The following samples show how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. They will help you understand the fundamental parts of an Office Add-in. For additional getting started information, see our [quick starts](https://docs.microsoft.com/office/dev/add-ins/quickstarts/excel-quickstart-jquery) and [tutorials](https://docs.microsoft.com/search/?terms=tutorial&scope=Office%20Add-ins).
+The following samples show how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. They will help you understand the fundamental parts of an Office Add-in. For additional getting started information, see our [quick starts](https://learn.microsoft.com/office/dev/add-ins/quickstarts/excel-quickstart-jquery) and [tutorials](https://learn.microsoft.com/search/?terms=tutorial&scope=Office%20Add-ins).
 
 * [Excel "Hello world" add-in](Samples/hello-world/excel-hello-world)
 * [Outlook "Hello world" add-in](Samples/hello-world/outlook-hello-world)
@@ -18,7 +18,6 @@ The following samples show how to build the simplest Office Add-in with only a m
 | [Create a Blazor WebAssembly Excel add-in](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/excel-blazor-add-in) | Uses .NET Blazor technologies to build an Excel add-in. |
 | [Create a Blazor WebAssembly Word add-in](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/word-blazor-add-in) | Uses .NET Blazor technologies to build a Word add-in. |
 | [Create a Blazor WebAssembly Outlook add-in](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/outlook-blazor-add-in) | Uses .NET Blazor technologies to build an Outlook add-in. |
-
 
 ## Auth, Identity and Single Sign-on (SSO)
 
@@ -70,7 +69,7 @@ All of the following samples show how to access and work with a user's Microsoft
 
 ## Shared JavaScript runtime
 
-Check out these samples if you want to take advantage of the [shared runtime](https://docs.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime) for your Office Add-in.
+Check out these samples if you want to take advantage of the [shared runtime](https://learn.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime) for your Office Add-in.
 
 | Date               | Name           | Description  |
 | ------------------ | -------------- | ------------ |

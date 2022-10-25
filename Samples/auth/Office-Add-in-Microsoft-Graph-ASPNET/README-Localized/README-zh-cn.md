@@ -73,7 +73,7 @@ Office 外接程序 Microsoft Graph ASP.NET | Microsoft
 
 1. 在 **Visual Studio** 中，选择**“Office-Add-in-Microsoft-Graph-ASPNETWeb”**项目。在**“属性”**中，确保**“已启用 SSL”**为**“True”**。验证 **SSL URL** 使用的域名和端口号与下一步中列出的相同。
  
-2. 使用 [Azure 管理门户](https://manage.windowsazure.com)注册你的应用程序。**使用 Office 365 租赁的管理员标识登录，以确保正在使用与该租赁相关联的 Azure Active Directory。**若要了解如何注册应用程序，请参阅 [向 Microsoft 标识平台注册应用程序](https://docs.microsoft.com/graph/auth-register-app-v2)。使用以下设置：
+2. 使用 [Azure 管理门户](https://manage.windowsazure.com)注册你的应用程序。**使用 Office 365 租赁的管理员标识登录，以确保正在使用与该租赁相关联的 Azure Active Directory。**若要了解如何注册应用程序，请参阅 [向 Microsoft 标识平台注册应用程序](https://learn.microsoft.com/graph/auth-register-app-v2)。使用以下设置：
 
  - 重定向 URI：https://localhost:44301/AzureADAuth/Authorize
  - 支持的帐户类型：“仅限此组织目录中的帐户”
@@ -109,8 +109,8 @@ Office 外接程序 Microsoft Graph ASP.NET | Microsoft
 
 ## 其他资源
 
-* [Microsoft Graph 文档](https://docs.microsoft.com/graph/)
-* [Office 外接程序文档](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+* [Microsoft Graph 文档](https://learn.microsoft.com/graph/)
+* [Office 外接程序文档](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## 版权信息
 版权所有 (c) 2019 Microsoft Corporation。保留所有权利。

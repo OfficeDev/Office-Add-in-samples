@@ -73,7 +73,7 @@ extensions:
 
 1. В **Visual Studio** выберите проект **Office-Add-in-Microsoft-Graph-ASPNETWeb**. Убедитесь, что в окне **Свойства** для параметра **SSL включен** задано значение **Иcтина**. Убедитесь, что в поле **URL-адрес SSL** используются доменное имя и номер порта, указанные на следующем этапе.
  
-2. Зарегистрируйте свое приложение на [портале управления Azure](https://manage.windowsazure.com). **Войдите в систему, используя учетные данные администратора Office 365, чтобы убедиться, что вы работаете в службе Azure Active Directory, связанной с ними.** Сведения о регистрации приложений см. в статье [Регистрация приложения с помощью платформы удостоверений Майкрософт](https://docs.microsoft.com/graph/auth-register-app-v2). Используйте указанные ниже параметры:
+2. Зарегистрируйте свое приложение на [портале управления Azure](https://manage.windowsazure.com). **Войдите в систему, используя учетные данные администратора Office 365, чтобы убедиться, что вы работаете в службе Azure Active Directory, связанной с ними.** Сведения о регистрации приложений см. в статье [Регистрация приложения с помощью платформы удостоверений Майкрософт](https://learn.microsoft.com/graph/auth-register-app-v2). Используйте указанные ниже параметры:
 
  - URI ПЕРЕНАПРАВЛЕНИЯ: https://localhost:44301/AzureADAuth/Authorize
  - ПОДДЕРЖИВАЕМЫЕ ТИПЫ УЧЕТНЫХ ЗАПИСЕЙ "Учетные записи только в этом каталоге организации"
@@ -109,8 +109,8 @@ extensions:
 
 ## Дополнительные ресурсы
 
-* [Документация по Microsoft Graph](https://docs.microsoft.com/graph/)
-* [Документация по надстройкам Office](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+* [Документация по Microsoft Graph](https://learn.microsoft.com/graph/)
+* [Документация по надстройкам Office](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Авторские права
 © Корпорация Майкрософт (Microsoft Corporation), 2019. Все права защищены.

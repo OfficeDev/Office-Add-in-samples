@@ -108,9 +108,9 @@ Office.context.document.settings.saveAsync(function (asyncResult) {
 
 ## Additional resources
 
-- [Persist add-in state and settings](https://docs.microsoft.com/office/dev/add-ins/develop/persisting-add-in-state-and-settings)
+- [Persist add-in state and settings](https://learn.microsoft.com/office/dev/add-ins/develop/persisting-add-in-state-and-settings)
 - [Introduction to Web Storage](http://msdn.microsoft.com/library/cc197062(VS.85).aspx)
-- [Settings object](https://docs.microsoft.com/javascript/api/office/office.settings)
+- [Settings object](https://learn.microsoft.com/javascript/api/office/office.settings)
 
 ## Copyright
 

@@ -24,8 +24,8 @@ The `getAccessToken` API in Office.js enables users who are signed into Office t
 
 There are two versions of the sample in this repo:
 
-- In the **Begin** folder is the starting point for the SSO walkthrough at [Create a Node.js Office Add-in that uses single sign-on](https://docs.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs). Please follow the instructions in the article.
-- In the **Complete** folder is the completed sample. To use this version, follow the instructions in [Create a Node.js Office Add-in that uses single sign-on](https://docs.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs), but with the following changes:
+- In the **Begin** folder is the starting point for the SSO walkthrough at [Create a Node.js Office Add-in that uses single sign-on](https://learn.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs). Please follow the instructions in the article.
+- In the **Complete** folder is the completed sample. To use this version, follow the instructions in [Create a Node.js Office Add-in that uses single sign-on](https://learn.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs), but with the following changes:
   - Substitute "Complete" for "Begin"
   - Skip the sections **Code the client-side** and **Code the server-side**
 
@@ -91,7 +91,7 @@ These samples send a hardcoded query parameter on the URL for the Microsoft Grap
 ## Questions and comments
 
 We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
-Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://docs.microsoft.com/answers/topics/office-addins-dev.html). Ensure your questions are tagged with office-js-dev or office-addins-dev.
+Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-addins-dev.html). Ensure your questions are tagged with office-js-dev or office-addins-dev.
 
 ## Join the Microsoft 365 Developer Program
 Get a free sandbox, tools, and other resources you need to build solutions for the Microsoft 365 platform.
@@ -102,8 +102,8 @@ Get a free sandbox, tools, and other resources you need to build solutions for t
 
 ## Additional resources
 
-* [Microsoft Graph documentation](https://docs.microsoft.com/graph/)
-* [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+* [Microsoft Graph documentation](https://learn.microsoft.com/graph/)
+* [Office Add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Copyright
 

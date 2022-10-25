@@ -90,7 +90,7 @@ Version  | Date | Comments
     * In the **Redirect URI** section, ensure that **Single-page application (SPA)** is selected in the drop down and then set the URI to `https://localhost:3000/login/login.html`.
     * Select **Register**.
     
-    For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://docs.microsoft.com/graph/auth-register-app-v2).
+    For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://learn.microsoft.com/graph/auth-register-app-v2).
     
     > Note: The sample uses the OAuth 2.0 Auth Code Flow w/ PKCE for SPAs, which requires no secrets.
     
@@ -130,8 +130,8 @@ Questions about developing Office Add-ins should be posted to [Stack Overflow](h
 
 ## Additional resources
 
-* [Microsoft Graph documentation](https://docs.microsoft.com/graph/)
-* [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+* [Microsoft Graph documentation](https://learn.microsoft.com/graph/)
+* [Office Add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Copyright
 
