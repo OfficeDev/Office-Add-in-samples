@@ -16,19 +16,19 @@ description: "Use Outlook event-based activation to set the signature."
 
 # Use Outlook event-based activation to set the signature
 
-**Applies to:** Outlook on Windows | Outlook on the web | Outlook on Mac (new UI preview)
+**Applies to:** Outlook on Windows | Outlook on the web | Outlook on Mac (new UI)
 
 ## Summary
 
-This sample uses event-based activation to run an Outlook add-in when the user creates a new message or appointment. The add-in can respond to events, even when the task pane is not open. It also uses the [setSignatureAsync API](https://learn.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#setSignatureAsync_data__options__callback_). If no signature is set, the add-in prompts the user to set a signature, and can then open the task pane for the user.
+This sample uses event-based activation to run an Outlook add-in when the user creates a new message or appointment. The add-in can respond to events, even when the task pane isn't open. It also uses the [setSignatureAsync API](https://learn.microsoft.com/javascript/api/outlook/office.body#outlook-office-body-setsignatureasync-member(1)). If no signature is set, the add-in prompts the user to set a signature, and can then open the task pane for the user.
 
-![Screen shot of sample displaying an information bar prompting the user to set up signatures, and sample signature inserted into the email.](./assets/outlook-set-signature-overview.jpg)
+![Sample displaying an information bar prompting the user to set up signatures, the task pane where the signature can be set, and a sample signature inserted into the email.](./assets/outlook-set-signature-overview.png)
 
 For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch).
 
 ## Features
 
-- Use event-based activation to respond to events when the task pane is not open.
+- Use event-based activation to respond to events when the task pane isn't open.
 - Set a signature for Outlook to use in messages and appointments.
 
 ## Applies to
@@ -36,13 +36,13 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 - Outlook
   - Windows
   - Web browser
-  - new Mac UI (preview)
+  - new Mac UI
 
 ## Prerequisites
 
 - Microsoft 365
 
-    > **Note**: If you do not have a Microsoft 365 subscription, you can get one for development purposes by signing up for the [Microsoft 365 developer program](https://developer.microsoft.com/office/dev-program).
+    > **Note**: If you don't have a Microsoft 365 subscription, you can get one for development purposes by signing up for the [Microsoft 365 developer program](https://developer.microsoft.com/office/dev-program).
 
 ## Solution
 
@@ -60,11 +60,11 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Scenario: Event-based activation
 
-In this scenario, the add-in helps the user manage their email signature, even when the task pane is not open. When the user sends a new email message, or creates a new appointment, the add-in displays an information bar prompting the user to create a signature. If the user chooses to set a signature, the add-in opens the task pane for the user to continue setting their signature.
+In this scenario, the add-in helps the user manage their email signature, even when the task pane isn't open. When the user sends a new message, or creates a new appointment, the add-in displays an information bar prompting the user to create a signature. If the user chooses to set a signature, the add-in opens the task pane for the user to continue setting their signature.
 
 ## Run the sample
 
-You can run this sample in Outlook on Windows, on Mac (new UI in preview), or in a browser. The add-in web files are served from this repo on GitHub.
+You can run this sample in Outlook on Windows, on Mac (new UI), or in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 1. Sideload the add-in manifest in Outlook on the web, on Windows, or on Mac by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
@@ -76,7 +76,7 @@ Once the add-in is loaded use the following steps to try out the functionality.
 1. Open Outlook on Windows, on Mac, or in a browser.
 1. Create a new message or appointment.
 
-    > You should see a notification at the top of the message that reads: **Please set your signature with the PnP sample add-in.**
+    > You should see a notification at the top of the message that reads: **Please set your signature with the Office Add-ins sample.**
 
 1. Choose **Set signatures**. This will open the task pane for the add-in.
 1. In the task pane fill out the fields for your signature data. Then choose **Save**.
@@ -144,9 +144,9 @@ The add-in handles two events that are mapped to the `checkSignature()` function
 
 When the user creates a new message or appointment, Outlook will load the files specified in the manifest to handle the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events. Outlook on the web and on Mac will load the `autorunweb.html` page, which then also loads `autorunweb.js` and `autorunshared.js`.
 
-The `autorunweb.js` file contains a version of the `insert_auto_signature` function used specifically when running on Outlook on the web. The [setSignatureAsync() API cannot be used in Outlook on the web for appointments](https://learn.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-preview#setSignatureAsync_data__options__callback_). Therefore, `insert_auto_signature` inserts the signature into a new appointment by directly writing to the body text of the appointment.
+The `autorunweb.js` file contains a version of the `insert_auto_signature` function used specifically when running on Outlook on the web. The [setSignatureAsync() API cannot be used in Outlook on the web for appointments](https://learn.microsoft.com/javascript/api/outlook/office.body#outlook-office-body-setsignatureasync-member(1)). Therefore, `insert_auto_signature` inserts the signature into a new appointment by directly writing to the body text of the appointment.
 
-The `autorunshared.js` file contains the `checkSignature` function that handles the events from Outlook. It also contains additional code that is shared and loaded when the add-in is used in Outlook on the web, on Windows, and on Mac. In Outlook on Windows, this file is loaded directly and `autorunweb.html` and `autorunweb.js` are not loaded.
+The `autorunshared.js` file contains the `checkSignature` function that handles the events from Outlook. It also contains additional code that is shared and loaded when the add-in is used in Outlook on the web, on Windows, and on Mac. In Outlook on Windows, this file is loaded directly and `autorunweb.html` and `autorunweb.js` aren't loaded.
 
 The `autorunshared.js` file contains a version of the `insert_auto_signature` function that uses the `setSignatureAsync()` API to set the signature for both messages and appointments.
 

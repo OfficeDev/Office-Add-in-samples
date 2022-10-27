@@ -7,7 +7,7 @@
   <Version>1.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-us</DefaultLocale>
-  <DisplayName DefaultValue="PnP set signature sample"/>
+  <DisplayName DefaultValue="Office Add-ins signature sample"/>
   <Description DefaultValue="Insert your signature with ease."/>
   <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/final_logo.png"/>
   <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/final_logo.jpg"/>
