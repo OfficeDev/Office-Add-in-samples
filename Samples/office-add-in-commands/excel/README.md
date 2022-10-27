@@ -111,7 +111,7 @@ Now that your localhost web server is running, sideload the **manifest-localhost
 The **manifest.xml** file defines all of the commands UI in the `<ExtensionPoint>` element.
 The ribbon buttons and dropdown menu are specified in the `<OfficeTab>` section. Because `<OfficeTab id="TabHome">` specifies `TabHome`, the buttons are located on the **Home** ribbon tab.
 
-For more information about ExtensionPoint elements and options, see [Add ExtensionPoint elements](https://docs.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-6-add-extensionpoint-elements).
+For more information about ExtensionPoint elements and options, see [Add ExtensionPoint elements](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-6-add-extensionpoint-elements).
 
 ### Commands JavaScript
 
@@ -130,7 +130,7 @@ async function writeValue(event) {
 ...
 ```
 
-For more information about adding commands, see [Add the FunctionFile element](https://docs.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-5-add-the-functionfile-element).
+For more information about adding commands, see [Add the FunctionFile element](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-5-add-the-functionfile-element).
 
 ## Copyright
 

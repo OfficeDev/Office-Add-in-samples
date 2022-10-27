@@ -74,7 +74,7 @@ The contextual tab supports commands related to working with the sales data. Whe
 
 ### Shared JavaScript runtime
 
-Contextual tabs requires the manifest.xml file to specify loading the shared JavaScript runtime. For more information on configuring the shared runtime, see [Configure your Office Add-in to use a shared JavaScript runtime](https://docs.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime)
+Contextual tabs requires the manifest.xml file to specify loading the shared JavaScript runtime. For more information on configuring the shared runtime, see [Configure your Office Add-in to use a shared JavaScript runtime](https://learn.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime)
 
 ### Describe and update the contextual tab using JSON
 
@@ -173,11 +173,11 @@ If you prefer to host the web server for the sample on your computer, follow the
 
 ## Questions and comments
 
-We'd love to get your feedback about this sample. Please send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://docs.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
+We'd love to get your feedback about this sample. Please send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Additional resources
 
-- [Create custom contextual tabs in Office Add-ins](https://docs.microsoft.com/office/dev/add-ins/design/contextual-tabs)
+- [Create custom contextual tabs in Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/design/contextual-tabs)
 
 Demonstration video:
 
