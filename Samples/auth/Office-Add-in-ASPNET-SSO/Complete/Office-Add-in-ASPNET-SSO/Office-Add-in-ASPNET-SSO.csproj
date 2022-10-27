@@ -21,6 +21,7 @@
     <ProjectMode>OfficeApp</ProjectMode>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <MinimumOfficeToolsVersion>14.0</MinimumOfficeToolsVersion>
+    <CoreWebProject>..\Office-Add-in-ASPNETCore-WebAPI\Office-Add-in-ASPNETCore-WebAPI.csproj</CoreWebProject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,17 +52,6 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Office-Add-in-ASPNET-SSO-WebAPI\Office-Add-in-ASPNET-SSO-WebAPI.csproj">
-      <Project>{FCEBFFAD-8183-4284-82F5-F15465DFAFA8}</Project>
-      <Name>Office-Add-in-ASPNET-SSO-WebAPI</Name>
-      <Private>True</Private>
-      <RoleType>Web</RoleType>
-      <OutputItemType>SharePointWebProjectOutput</OutputItemType>
-      <RoleName>Office-Add-in-ASPNET-SSO-WebAPI</RoleName>
-      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\AsyncUsageAnalyzers.1.0.0-alpha003\analyzers\dotnet\AsyncUsageAnalyzers.dll" />

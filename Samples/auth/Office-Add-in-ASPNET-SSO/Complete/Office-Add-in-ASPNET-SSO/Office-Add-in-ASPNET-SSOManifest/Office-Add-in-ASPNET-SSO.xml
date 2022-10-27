@@ -15,14 +15,18 @@
 	<!--Version. Updates from the store only get triggered if there is a version change. -->
 	<Version>1.0.0.4</Version>
 	<ProviderName>Microsoft Office Developer Education Team</ProviderName>
+
 	<DefaultLocale>en-US</DefaultLocale>
 	<!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-	<DisplayName DefaultValue="SSO ASP.NET Sample" />
-	<Description DefaultValue="Shows how an ASP.NET-based add-in can use single sign-on and the on-behalf-of flow to get Microsoft Graph data."/>
+	<DisplayName DefaultValue="Office-Add-in-ASPNETCore-WebAPI" />
+	<Description DefaultValue="Office-Add-in-ASPNETCore-WebAPI Description"/>
 	<!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
 	<IconUrl DefaultValue="~remoteAppUrl/Images/Button32x32.png" />
 
 	<SupportUrl DefaultValue="http://www.contoso.com" />
+  <AppDomains>
+    <AppDomain>localhost:7080</AppDomain>
+  </AppDomains>
 	<!--End Basic Settings. -->
 
 	<!--Begin TaskPane Mode integration. This section is used if there are no VersionOverrides or if the Office client version does not support add-in commands. -->
@@ -249,8 +253,8 @@
 			</bt:LongStrings>
 		</Resources>
 		<WebApplicationInfo>
-			<Id>$application_GUID here$</Id>
-			<Resource>api://localhost:44355/$application_GUID here$</Resource>
+			<Id>[Enter client ID here]</Id>
+			<Resource>api://localhost:7080/[Enter client ID here]</Resource>
 			<Scopes>
         <Scope>Files.Read.All</Scope>
 				<Scope>profile</Scope>				
