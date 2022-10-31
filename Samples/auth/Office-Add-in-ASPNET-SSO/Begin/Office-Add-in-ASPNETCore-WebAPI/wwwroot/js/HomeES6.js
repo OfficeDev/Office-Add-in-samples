@@ -18,9 +18,6 @@ Office.onReady(() => {
 
 let retryGetAccessToken = 0;
 
-// TODO 1: Ha
-     //         the alternative system of authorization.
-
 async function getUserFileNames(options) {
     if (options === undefined) {
         options = { allowSignInPrompt: true, allowConsentPrompt: true, forMSGraphAccess: true };

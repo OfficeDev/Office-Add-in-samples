@@ -253,8 +253,8 @@
       </bt:LongStrings>
     </Resources>
     <WebApplicationInfo>
-      <Id>[Enter client ID here]</Id>
-      <Resource>api://localhost:7080/[Enter client ID here]</Resource>
+      <Id>Enter_client_ID_here</Id>
+      <Resource>api://localhost:44355/Enter_client_ID_here</Resource>
       <Scopes>
         <Scope>Files.Read</Scope>
         <Scope>profile</Scope>
