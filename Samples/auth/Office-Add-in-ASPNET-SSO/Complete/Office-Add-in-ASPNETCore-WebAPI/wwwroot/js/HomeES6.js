@@ -12,17 +12,16 @@ if (!window.Promise) {
 
 Office.onReady(() => {
     $(document).ready(function () {
-        $('#getGraphDataButton').click(getGraphData);
+        $('#getUserFileNames').click(getUserFileNames);
     });
 });
 
 let retryGetAccessToken = 0;
 
-async function getGraphData() {
-    await getUserFileNames({ allowSignInPrompt: true, allowConsentPrompt: true, forMSGraphAccess: true });
-}
-
 async function getUserFileNames(options) {
+    if (options === undefined) {
+        options = { allowSignInPrompt: true, allowConsentPrompt: true, forMSGraphAccess: true };
+    }
     clearMessage();
     let fileNameList = null;
     try {
@@ -62,10 +61,8 @@ async function callRESTApi(relativeUrl, accessToken) {
     }
 }
 
-
 function handleClientSideErrors(error) {
     switch (error.code) {
-
         case 13001:
             // No one is signed into Office. If the add-in cannot be effectively used when no one 
             // is logged into Office, then the first call of getAccessToken should pass the 

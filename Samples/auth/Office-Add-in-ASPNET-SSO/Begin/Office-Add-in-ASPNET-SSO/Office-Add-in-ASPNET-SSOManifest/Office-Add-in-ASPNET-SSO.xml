@@ -14,12 +14,12 @@
 
   <!--Version. Updates from the store only get triggered if there is a version change. -->
   <Version>1.0.0.4</Version>
-  <ProviderName>Contoso</ProviderName>
+  <ProviderName>Microsoft Office Developer Education Team</ProviderName>
 
   <DefaultLocale>en-US</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-  <DisplayName DefaultValue="Office Add-in ASP.NET Core SSO sample" />
-  <Description DefaultValue="Shows how to use SSO in an Office Add-in to get OneDrive file names."/>
+  <DisplayName DefaultValue="Office-Add-in-ASPNETCore-WebAPI" />
+  <Description DefaultValue="Office-Add-in-ASPNETCore-WebAPI Description"/>
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
   <IconUrl DefaultValue="~remoteAppUrl/Images/Button32x32.png" />
 
