@@ -25,8 +25,8 @@ This sample implements an Office Add-in that uses the `getAccessToken` API in Of
 
 There are two versions of the sample in this repo, one of which has its own README file:
 
-- **Begin** folder. The starting point for the SSO walkthrough at [Create an ASP.NET Office Add-in that uses single sign-on](https://docs.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-aspnet). Please follow the instructions in the article.
-- **Complete** folder. The completed sample. To use this version, follow the instructions in the article [Create an ASP.NET Office Add-in that uses single sign-on](https://docs.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-aspnet), but substitute "Complete" for "Begin" in those instructions and skip the sections **Code the client-side** and **Code the server-side**.
+- **Begin** folder. The starting point for the SSO walkthrough at [Create an ASP.NET Office Add-in that uses single sign-on](https://learn.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-aspnet). Please follow the instructions in the article.
+- **Complete** folder. The completed sample. To use this version, follow the instructions in the article [Create an ASP.NET Office Add-in that uses single sign-on](https://learn.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-aspnet), but substitute "Complete" for "Begin" in those instructions and skip the sections **Code the client-side** and **Code the server-side**.
 
 ## Features
 
@@ -40,7 +40,7 @@ Integrating data from online service providers increases the value and adoption 
 
 ## Applies to
 
-- Any platform and Office host combination that supports the [IdentityAPI 1.3 requirement set](https://docs.microsoft.com/en-us/office/dev/add-ins/reference/requirement-sets/identity-api-requirement-sets).
+- Any platform and Office host combination that supports the [IdentityAPI 1.3 requirement set](https://learn.microsoft.com/en-us/office/dev/add-ins/reference/requirement-sets/identity-api-requirement-sets).
 
 ## Prerequisites
 
