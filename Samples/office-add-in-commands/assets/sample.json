@@ -37,7 +37,7 @@
             {
                 "name": "Create add-in commands in your manifest for Excel, PowerPoint, and Word",
                 "description": "Add-in commands provide an easy way to customize the default Office user interface (UI) with specified UI elements that perform actions.",
-                "url": "https://docs.microsoft.com/office/dev/add-ins/develop/create-addin-commands"
+                "url": "https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands"
             }
             
         ]

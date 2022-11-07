@@ -26,9 +26,9 @@ This sample uses Outlook Smart Alerts to verify that required color categories a
 
 For documentation related to this sample, see the following articles.
 
-- [Use Smart Alerts and the OnMessageSend event in your Outlook add-in](https://docs.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough)
-- [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch)
-- [Get and set categories](https://docs.microsoft.com/office/dev/add-ins/outlook/categories)
+- [Use Smart Alerts and the OnMessageSend event in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough)
+- [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch)
+- [Get and set categories](https://learn.microsoft.com/office/dev/add-ins/outlook/categories)
 
 ## Features
 
@@ -69,7 +69,7 @@ Run this sample in Outlook on Windows. The add-in's web files are served from th
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 
-1. Sideload the add-in manifest in Outlook on Windows by following the manual instructions in [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on Windows by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 ### Try it out
 
@@ -183,7 +183,7 @@ The `OnMessageSend` event uses the `SoftBlock` option to prevent a user from sen
 
 The `OnAppointmentSend` event uses the `Block` option to prevent a user from sending a meeting invite if any of the required categories are missing. If the add-in encounters a loading error and can't check the invite for applied categories, the user will not be able to send the invite until the add-in becomes available again.
 
-For additional information on `SendMode` options, see [Available SendMode options](https://docs.microsoft.com/javascript/api/manifest/launchevent#available-sendmode-options).
+For additional information on `SendMode` options, see [Available SendMode options](https://learn.microsoft.com/javascript/api/manifest/launchevent#available-sendmode-options).
 
 ### Configure the event handlers
 

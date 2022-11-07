@@ -56,10 +56,10 @@ There are three samples for Excel, Word, and PowerPoint. Go to the folder of the
 
 ## Documentation
 
-- [Add-in commands for Excel, PowerPoint, and Word](https://docs.microsoft.com/office/dev/add-ins/design/add-in-commands)
-- [Create add-in commands in your manifest for Excel, PowerPoint, and Word](https://docs.microsoft.com/office/dev/add-ins/develop/create-addin-commands)
+- [Add-in commands for Excel, PowerPoint, and Word](https://learn.microsoft.com/office/dev/add-ins/design/add-in-commands)
+- [Create add-in commands in your manifest for Excel, PowerPoint, and Word](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands)
 - [FAQ](FAQ.md)
-- [Manifest reference](https://docs.microsoft.com/office/dev/add-ins/reference/manifest/extensionpoint)
+- [Manifest reference](https://learn.microsoft.com/office/dev/add-ins/reference/manifest/extensionpoint)
 
 ## Copyright
 

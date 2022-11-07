@@ -11,7 +11,7 @@
   <Description DefaultValue="A simple hello world Office Add-in."/>
   <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/powerpoint-hello-world/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/powerpoint-hello-world/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://docs.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"/>
+  <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"/>
   <AppDomains>
     <AppDomain>https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/powerpoint-hello-world</AppDomain>
   </AppDomains>

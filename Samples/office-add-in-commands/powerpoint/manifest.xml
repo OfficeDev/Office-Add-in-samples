@@ -8,7 +8,7 @@
   <Description DefaultValue="A template to get started."/>
   <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://docs.microsoft.com/office/dev/add-ins/develop/create-addin-commands"/>
+  <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands"/>
   <AppDomains>
     <AppDomain>https://officedev.github.io</AppDomain>
   </AppDomains>

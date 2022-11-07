@@ -73,7 +73,7 @@ Versión | Fecha | Comentarios
 
 1. En **Visual Studio**, elija el proyecto**Office-Add-in-Microsoft-Graph-ASPNETWeb**. En **Propiedades**, asegúrese de que el**SSL esté activado** y sea **Verdadero**. Compruebe que la **URL de SSL** use el mismo nombre de dominio y número de puerto que se indica en el paso 3 que se muestra a continuación.
  
-2. Registre la aplicación mediante el [Portal de administración de Azure](https://manage.windowsazure.com). **Ingrese con la identidad de un administrador de su Oficina 365 para asegurarse de que está trabajando en un Directorio Activo Azure que está asociado con esa tenencia.** Para saber cómo registrar aplicaciones, consulte [Registrar una aplicación en el Microsoft Identity Platform](https://docs.microsoft.com/graph/auth-register-app-v2). Use la siguiente configuración:
+2. Registre la aplicación mediante el [Portal de administración de Azure](https://manage.windowsazure.com). **Ingrese con la identidad de un administrador de su Oficina 365 para asegurarse de que está trabajando en un Directorio Activo Azure que está asociado con esa tenencia.** Para saber cómo registrar aplicaciones, consulte [Registrar una aplicación en el Microsoft Identity Platform](https://learn.microsoft.com/graph/auth-register-app-v2). Use la siguiente configuración:
 
  - URI REDIRCT: https://localhost:44301/AzureADAuth/Authorize
  - TIPOS DE CUENTA ADMITIDAS: «Solo las cuentas de este directorio organizativo»
@@ -109,8 +109,8 @@ Las preguntas sobre el desarrollo de complementos de oficina deben enviarse a [S
 
 ## Recursos adicionales
 
-* [Documentación de Microsoft Graph](https://docs.microsoft.com/graph/)
-* [Documentación de complementos de Office](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+* [Documentación de Microsoft Graph](https://learn.microsoft.com/graph/)
+* [Documentación de complementos de Office](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Derechos de autor
 Derechos de autor (c) 2019 Microsoft Corporation. Todos los derechos reservados.

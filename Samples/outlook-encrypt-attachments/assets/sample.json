@@ -39,7 +39,7 @@
             {
                 "name": "Configure your Outlook add-in for event-based activation",
                 "description": "Without the event-based activation feature, a user has to explicitly launch an add-in to complete their tasks. This feature enables your add-in to run tasks based on certain events, particularly for operations that apply to every item. You can also integrate with the task pane and UI-less functionality.",
-                "url": "https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch"
+                "url": "https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch"
             }
         ]
     }
