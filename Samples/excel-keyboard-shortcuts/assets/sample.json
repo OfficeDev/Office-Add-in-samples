@@ -37,7 +37,7 @@
             {
                 "name": "Add custom keyboard shortcuts to your Office Add-ins",
                 "description": "Keyboard shortcuts, also known as key combinations, enable your add-in's users to work more efficiently. Keyboard shortcuts also improve the add-in's accessibility for users with disabilities by providing an alternative to the mouse.",
-                "url": "https://docs.microsoft.com/office/dev/add-ins/design/keyboard-shortcuts"
+                "url": "https://learn.microsoft.com/office/dev/add-ins/design/keyboard-shortcuts"
             }
             
         ]

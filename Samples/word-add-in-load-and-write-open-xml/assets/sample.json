@@ -32,7 +32,7 @@
             {
                 "name": "Create better add-ins for Word with Office Open XML",
                 "description": "If you're building Office Add-ins to run in Word, you might already know that the Office JavaScript API (Office.js) offers several formats for reading and writing document content. These are called coercion types, and they include plain text, tables, HTML, and Office Open XML.",
-                "url": "https://docs.microsoft.com/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml"
+                "url": "https://learn.microsoft.com/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml"
             }
             
         ]

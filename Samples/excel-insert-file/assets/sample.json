@@ -37,7 +37,7 @@
             {
                 "name": "insertWorksheetsFromBase64",
                 "description": "Inserts the specified worksheets from a source workbook into the current workbook.",
-                "url": "https://docs.microsoft.com/javascript/api/excel/excel.workbook?view=excel-js-preview#excel-excel-workbook-insertworksheetsfrombase64-member(1)"
+                "url": "https://learn.microsoft.com/javascript/api/excel/excel.workbook?view=excel-js-preview#excel-excel-workbook-insertworksheetsfrombase64-member(1)"
             }
             
         ]
