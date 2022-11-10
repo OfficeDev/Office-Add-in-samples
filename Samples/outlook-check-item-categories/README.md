@@ -32,7 +32,7 @@ For documentation related to this sample, see the following articles.
 
 ## Features
 
-![Sample displaying Outlook Smart Alerts when required categories are missing from the message or appointment, and the task pane used to apply the categories to the item. Four features are highlighted.](./assets/outlook-check-item-categories-features.png)
+:::image type="content" source="assets/outlook-check-item-categories.png" alt-text="Sample displaying Outlook Smart Alerts when required categories are missing from the message or appointment, and the task pane used to apply the categories to the item. Four features are highlighted.":::
 
 1. Use event-based activation triggered by the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events to create color categories based on specific keywords.
 
@@ -207,7 +207,7 @@ sendEvent.completed({ allowEvent: false, errorMessage: message });
 return;
 ```
 
-![The Outlook Smart Alerts error message when required categories are missing from the message or appointment being sent.](./assets/outlook-check-item-categories-smart-alerts.png)
+:::image type="content" source="assets/outlook-check-item-categories-smart-alerts.png" alt-text="The Outlook Smart Alerts error message when required categories are missing from the message or appointment being sent.":::
 
 Event-based add-ins should be short-running and lightweight. To prevent the possibility of a long-running operation that may lead to an add-in timeout, the color category creation process is handled by `onItemComposeHandler` instead of `onItemSendHandler`.
 
