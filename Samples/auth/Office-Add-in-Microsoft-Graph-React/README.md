@@ -8,6 +8,7 @@ products:
 - m365
 languages:
 - javascript
+description: Learn how to build a Microsoft Office Add-in, as a single-page application with no backend, that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into an Office document using Office.js.
 extensions:
   contentType: samples
   technologies:
