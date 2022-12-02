@@ -3,6 +3,8 @@
 * See LICENSE in the project root for license information.
 */
 
+Office.onReady();
+
 /**
  * The words in the subject or body that require corresponding color categories to be applied to a new
  * message or appointment.
