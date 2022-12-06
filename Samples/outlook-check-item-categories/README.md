@@ -18,7 +18,7 @@ description: "Use Outlook Smart Alerts to verify that required color categories 
 
 # Use Outlook Smart Alerts
 
-**Applies to**: Outlook on Windows
+**Applies to**: Outlook on Windows | [new Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439)
 
 ## Summary
 
@@ -44,7 +44,12 @@ For documentation related to this sample, see the following articles.
 
 ## Applies to
 
-- Outlook on Windows starting in version 2206 (build 15330.20196)
+- Outlook on Windows starting in Version 2206 (Build 15330.20196)
+- [New Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439) starting in Version 16.65.827.0
+
+> **Note**: Although the Smart Alerts feature is supported in Outlook on the web, Windows, and new Mac UI (see the "Supported clients and platforms" section of [Use Smart Alerts and the onMessageSend and OnAppointmentSend events in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough#supported-clients-and-platforms)), this sample only runs in Outlook on Windows and Mac.
+>
+> As the Office.Categories API can't be used in Compose mode in Outlook on the web, this sample isn't supported on that client. To learn how to develop a Smart Alerts add-in for Outlook on the web, see the [Smart Alerts walkthrough](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough).
 
 ## Prerequisites
 
@@ -62,14 +67,15 @@ For documentation related to this sample, see the following articles.
 | ------- | ----- | -------- |
 | 1.0 | 05-05-2022 | Initial release |
 | 1.1 | 09-08-2022 | Update for General Availability (GA) of OnMessageSend and OnAppointmentSend events |
+| 1.2 | 12-02-2022 | Add support for new Outlook on Mac |
 
 ## Run the sample
 
-Run this sample in Outlook on Windows. The add-in's web files are served from this repository on GitHub.
+Run this sample in Outlook on Windows or Mac. The add-in's web files are served from this repository on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 
-1. Sideload the add-in manifest in Outlook on Windows by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on Windows or Mac by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 ### Try it out
 
@@ -157,7 +163,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
 ### Configure event-based activation in the manifest
 
-The manifest configures a runtime to handle event-based activation. Because the Outlook platform uses the client to determine whether to use HTML or JavaScript to load the runtime, both of these files must be referenced in the manifest. An HTML page resource ID is specified in the `<Runtime>` element, and a JavaScript file resource ID is specified in the `<Override>` element, as shown below. Outlook on Windows uses the referenced JavaScript file, instead of the HTML page, to load the runtime.
+The manifest configures a runtime to handle event-based activation. Because the Outlook platform uses the client to determine whether to use HTML or JavaScript to load the runtime, both of these files must be referenced in the manifest. An HTML page resource ID is specified in the `<Runtime>` element, and a JavaScript file resource ID is specified in the `<Override>` element, as shown below. Outlook on Windows uses the referenced JavaScript file to load the runtime, while Outlook on Mac uses the HTML file.
 
 ```xml
 <Runtime resid="WebViewRuntime.Url">
