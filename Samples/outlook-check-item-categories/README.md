@@ -45,7 +45,7 @@ For documentation related to this sample, see the following articles.
 ## Applies to
 
 - Outlook on Windows starting in Version 2206 (Build 15330.20196)
-- Outlook on Mac starting in Version 16.65.827.0
+- [New Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439) starting in Version 16.65.827.0
 
 > **Note**: Although the Smart Alerts feature is supported in Outlook on the web, Windows, and new Mac UI (see the "Supported clients and platforms" section of [Use Smart Alerts and the onMessageSend and OnAppointmentSend events in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough#supported-clients-and-platforms)), this sample only runs in Outlook on Windows and Mac.
 >
