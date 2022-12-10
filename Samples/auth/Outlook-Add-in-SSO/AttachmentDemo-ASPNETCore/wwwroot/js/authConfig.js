@@ -1,6 +1,6 @@
 ﻿// This file copied and modified from https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/1-Authentication/1-sign-in/App/authConfig.js
 
-const clientId = "9bd4bf6b-6e9c-4231-8ffe-47b6f1666a87";
+const clientId = "Enter_client_ID_here";
 const accessScope = "api://" + window.location.host + "/" + clientId + "/access_as_user";
 console.log(accessScope);
 

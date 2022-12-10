@@ -200,7 +200,6 @@
         <Scopes>
           <Scope>openid</Scope>
           <Scope>profile</Scope>
-          <Scope>offline_access</Scope>
           <Scope>files.readwrite</Scope>
           <Scope>mail.read</Scope>
         </Scopes>

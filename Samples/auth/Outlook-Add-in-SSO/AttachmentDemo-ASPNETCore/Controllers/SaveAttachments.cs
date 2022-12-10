@@ -55,16 +55,22 @@ namespace AttachmentDemo_ASPNETCore.Controllers
                         if (itemAttachment == null) return BadRequest("Error retrieving attachment.");
                         if (itemAttachment.Item == null) return BadRequest("Error retrieving attachment.");
 
-                        // Serialize the item to JSON and save to OneDrive
-                        string jsonItem = Json(itemAttachment.Item).ToString();
+                        // Serialize the item to JSON and save to OneDrive+		
+                        string itemContent;
+                        if (((Microsoft.Graph.Message)itemAttachment.Item).Body != null)
+                        {
+                            itemContent = ((Microsoft.Graph.Message)itemAttachment.Item).Body.Content;
+                        }
+                        else return BadRequest("Error retrieving attachment body");
                         MemoryStream fileStream = new MemoryStream();
                         StreamWriter sw = new StreamWriter(fileStream);
-                        sw.Write(jsonItem);
+                        sw.Write(itemContent);
                         sw.Flush();
                         fileStream.Position = 0;
+                        string relativeFilePath = "Outlook Attachments/" + MakeFileNameValid(itemAttachment.Name);
 
                         // This method only supports files 4MB or less
-                        DriveItem newItem = await _graphServiceClient.Me.Drive.Root.ItemWithPath(itemAttachment.Name + ".json")
+                        DriveItem newItem = await _graphServiceClient.Me.Drive.Root.ItemWithPath(relativeFilePath + ".txt")
                             .Content.Request().PutAsync<DriveItem>(fileStream);
 
                     }
@@ -77,7 +83,8 @@ namespace AttachmentDemo_ASPNETCore.Controllers
                         {
                             MemoryStream fileStream = new MemoryStream(fileAttachment.ContentBytes);
                             // This method only supports files 4MB or less
-                            DriveItem newItem = await _graphServiceClient.Me.Drive.Root.ItemWithPath(fileAttachment.Name)
+                            string relativeFilePath = "Outlook Attachments/" + MakeFileNameValid(fileAttachment.Name);
+                            DriveItem newItem = await _graphServiceClient.Me.Drive.Root.ItemWithPath(relativeFilePath)
                                 .Content.Request().PutAsync<DriveItem>(fileStream);
                         }
                         else
@@ -107,6 +114,7 @@ namespace AttachmentDemo_ASPNETCore.Controllers
             {
                 if (ex.InnerException is MicrosoftIdentityWebChallengeUserException challengeException)
                 {
+                    // Returns 200 success for incremental consent request.
                     _tokenAcquisition.ReplyForbiddenWithWwwAuthenticateHeader(_graphOptions.Value.Scopes.Split(' '),
                         challengeException.MsalUiRequiredException);
                 }
@@ -131,6 +139,12 @@ namespace AttachmentDemo_ASPNETCore.Controllers
 
             }
             return StatusCode((int)HttpStatusCode.OK);
+        }
+
+        internal static string MakeFileNameValid(string originalFileName)
+        {
+            char[] invalidChars = Path.GetInvalidFileNameChars();
+            return string.Join("_", originalFileName.Split(invalidChars, StringSplitOptions.RemoveEmptyEntries)).TrimEnd('.');
         }
 
         /// <summary>

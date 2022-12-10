@@ -29,26 +29,15 @@ The sample implements an Outlook add-in that uses Office's SSO feature to give t
 
 ## Register the add-in with Microsoft identity platform
 
-Use the following value for the placeholder for the subsequent app registration steps.
+Use the following values for the subsequent app registration steps.
 
-| Placeholder or section | Value                               |
-|---------------------|-------------------------------------|
-| <add-in-name>       | AttachmentDemo                      |
-| Microsoft Graph permissions | openid, profile, offline_access, Files.ReadWrite, Mail.Read|
+| Placeholder or section | Value          |
+|------------------------|----------------|
+| `<add-in-name>`          | `AttachmentDemo` |
+| `<fully-qualified-domain-name>` | `localhost:44355` |
+| Microsoft Graph permissions | profile, openid, Files.ReadWrite, Mail.Read |
 
-Follow the steps in [Register an Office Add-in that uses single sign-on (SSO) with the Microsoft identity platform](https://learn.microsoft.com/office/dev/add-ins/develop/register-sso-add-in-aad-v2)
-
-## Add an SPA redirect to the app registration
-
-Fallback authentication uses the MSAL library to sign in the user. This requires the add-in to acquire an access token from the client side in the task pane. To support this you will need an SPA redirect in the app registration.
-
-1. Open the app registration you created in the Azure portal.
-1. Under **Manage**, select **Authentication**.
-1. Select **Add a platform**.
-1. In the **Configure platforms** pane, select **Single-page application**.
-1. In the **Configure single-page application** pane, enter `https://localhost:44355/dialog.html` for the **Redirect URIs** and then select **Configure**.
-
-Now your app registration supports fallback authentication in the task pane.
+Follow the steps in [Register an Office Add-in that uses single sign-on (SSO) with the Microsoft identity platform](https://learn.microsoft.com/office/dev/add-ins/develop/register-sso-add-in-aad-v2).
 
 ## Configure the Sample
 
@@ -56,14 +45,23 @@ Before you run the sample, you'll need to do a few things to make it work proper
 
 1. In Visual Studio, open the **AttachmentDemo.sln** solution file for this sample.
 
+### Update AttachmentDemo.xml
+
 1. In the **Solution Explorer**, open **AttachmentDemo > AttachmentDemoManifest > AttachmentDemo.xml**.
 1. Find the `<WebApplicationInfo>` section near the bottom of the manifest. Then replace the `Enter_client_ID_here` value, in both places where it appears, with the application ID you generated as part of the app registration process.
 
     **Note:** Make sure that the port number in the `Resource` element matches the port used by your project. It should also match the port you used when registering the application.
 
-1. In the **Solution Explorer**, open **AttachmentDemo-ASPNETCore > appsetings.json**.
+### Update appsettings.json
+
+1. In the **Solution Explorer**, open **AttachmentDemo-ASPNETCore > appsettings.json**.
 1. Replace the `Enter_client_ID_here` placeholder value with the application ID you generated as part of the app registration process.
-1. Replace the `Enter_client_secret_here` value with the client secret you generated as part of the app registration process.
+1. Replace the `Enter_client_secret_here` placeholder value with the client secret you generated as part of the app registration process.
+
+### Update authconfig.js
+
+1. In the **Solution Explorer**, open **AttachmentDemo-ASPNETCore > wwwroot > js > authConfig.js**.
+1. Replace the `Enter_client_ID_here` placeholder value with the application ID you generated as part of the app registration process.
 
 ## Provide user consent to the app
 
@@ -96,29 +94,37 @@ The browser will attempt to redirect back to your app, which may not be running.
 
 ## Run the Sample
 
-1. Select the **AttachmentDemo** project in **Solution Explorer**, then choose the **Start Action** value you want (under **Add-in** in the properties window). Choose any installed browser to launch Outlook on the web, or you can choose **Office Desktop Client** to launch Outlook on Windows. If you choose **Office Desktop Client**, be sure to configure Outlook to connect to the Office or Outlook.com user you want to install the add-in for.
+1. In the **Solution Explorer**, right-click the **AttachmentDemo** project and select **Properties**.
+1. In the **Properties** window, set the following property values.
+
+| Property | Value |
+|----------|-------|
+| `Start Action` | `Office Desktop client` or an installed browser. |
+| `Email Address` | The email address of a user in your test tenant. |
+| `Use multi-factor auth` | `True` |
 
 1. Press **F5** to build and debug the project. You may be prompted to trust the developer certificate.
-
 1. You should be prompted for a user account and password. Provide a user in your Office tenant, or an Outlook.com account. The add-in will be installed for that user, and either Outlook on the web or Outlook on Windows will open.
 
 1. Select any message, **that has one or more attachments**.
-
 1. Open the task pane:
-    
-    * If you're in Outlook on the web: Select the **...** (**More actions**) drop down menu, and then choose **AttachmentDemoWeb**.<br>
-![Screen shot of the elipses button in Outlook on the web](buttons-outlook-web.png)
-    * If you're in Outlook on Windows or Mac: On the **Home** tab, select **Choose attachments**. Note that if the Outlook app window is too small, that **Choose attachments** will instead be located on the **Home** tab's **...** (**More commands**) button.<br>
-![Screen shot of the Choose attachments button on Home tab in Outlook on the web](buttons-outlook-desktop.png)
-    
+
+    - If you're in Outlook on the web: Select the **...** (**More actions**) drop down menu, and then choose **AttachmentDemoWeb**.
+
+    ![Screen shot of the elipses button in Outlook on the web](buttons-outlook-web.png)
+
+    - If you're in Outlook on Windows or Mac: On the **Home** tab, select **Choose attachments**. Note that if the Outlook app window is too small, that **Choose attachments** will instead be located on the **Home** tab's **...** (**More commands**) button.
+
+    ![Screen shot of the Choose attachments button on Home tab in Outlook on the web](buttons-outlook-desktop.png)
+
 1. In the **AttachmentDemoWeb** task pane that opens, select the attachments you want to save.
-
 1. Choose **Save to OneDrive**.
+1. You should see a success message in the task pane.
 
-1. You should see a success message in the task pane.<br>
 ![Screen shot of the task pane displaying attachments successfully saved](successful-save.png)
 
-1. Open OneDrive and you should see the attachments saved in a new folder named **Outlook Attachments**.<br>
+1. Open OneDrive and you should see the attachments saved in a new folder named **Outlook Attachments**.
+
 ![Screen shot of the Outlook Attachments folder in OneDrive](onedrive-attachments-folder.png)
 
 ## Testing the fallback dialog
@@ -127,7 +133,7 @@ It's recommended to test all paths when working with SSO. In some scenarios, you
 
 1. In Visual Studio, open the **MessageRead.js** file.
 1. Change the authSSO value to false.
-    
+
     ```javascript
     let authSSO = false;
     ```
