@@ -10,9 +10,6 @@
 *.userosscache
 *.sln.docstates
 
-# libraries
-AttachmentDemo-ASPNETCore/wwwroot/lib
-
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

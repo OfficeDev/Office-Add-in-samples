@@ -160,9 +160,12 @@
             ) {
                 return true; // Caller should get refreshed token from getAccessToken.
             } else {
-                // Unknown error.
-                showMessage("There was an unexpected error. Details from response header: " + authHeader);
-                return false;
+                // Handle unexpected www-authenticate header.
+                if (authHeader !== null) {
+                    showMessage("There was an unexpected error. Details from response header: " + authHeader);
+                    return false;
+                }
+                // Otherwise proceed to next error check.
             }
 
             // This section handles errors that were handled by the controller and returned as JSON.
