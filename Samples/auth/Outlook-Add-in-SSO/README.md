@@ -111,7 +111,7 @@ The browser will attempt to redirect back to your app, which may not be running.
 
     - If you're in Outlook on the web: Select the **...** (**More actions**) drop down menu, and then choose **AttachmentDemoWeb**.
 
-    ![Screen shot of the elipses button in Outlook on the web](buttons-outlook-web.png)
+    ![Screen shot of the elipses button in Outlook on the web](buttons-outlook-web.PNG)
 
     - If you're in Outlook on Windows or Mac: On the **Home** tab, select **Choose attachments**. Note that if the Outlook app window is too small, that **Choose attachments** will instead be located on the **Home** tab's **...** (**More commands**) button.
 
