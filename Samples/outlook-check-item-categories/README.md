@@ -32,7 +32,7 @@ For documentation related to this sample, see the following articles.
 
 ## Features
 
-![Sample displaying Outlook Smart Alerts when required categories are missing from the message or appointment, and the task pane used to apply the categories to the item. Four features are highlighted.](./assets/outlook-check-item-categories-features.png)
+![Sample displaying Outlook Smart Alerts when required categories are missing from the message or appointment, and the task pane used to apply the categories to the item. Four features are highlighted.](./assets/outlook-check-item-categories.png)
 
 1. Use event-based activation triggered by the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events to create color categories based on specific keywords.
 

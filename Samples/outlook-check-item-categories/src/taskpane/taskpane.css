@@ -52,21 +52,25 @@
      text-align: center;
  }
  
- .ms-welcome__action.ms-Button--hero {
-     margin-top: 15px;
-     margin-bottom: 15px;
-     text-align: center;
+ .ms-Button {
+    background-color: #005D95;
+    border-style: none;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 200px;
  }
- 
-.ms-Button.ms-Button--hero .ms-Button-label {
-  color: #0078d7;
-}
 
-.ms-Button.ms-Button--hero:hover .ms-Button-label,
-.ms-Button.ms-Button--hero:focus .ms-Button-label{
-  color: #005a9e;
-  cursor: pointer;
-}
+ .ms-Button:hover .ms-Button-label {
+    cursor: pointer;
+ }
+
+ .ms-Button-label {
+    color: #FFFFFF;
+ }
 
 b {
     font-weight: bold;
