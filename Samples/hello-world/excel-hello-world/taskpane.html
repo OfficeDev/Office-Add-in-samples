@@ -29,7 +29,7 @@
             context.workbook.worksheets.getActiveWorksheet().getRange("A1").values = [['Hello world!']];
             context.workbook.worksheets.getActiveWorksheet().getRange("B2").values = [['Hello world!']];
             context.workbook.worksheets.getActiveWorksheet().getRange("C3").values = [['Hello world!']];
-            let c = context.workbook.worksheets.getActiveWorksheet().getRange("C3").values
+            var c = context.workbook.worksheets.getActiveWorksheet().getRange("C3").values
             context.workbook.worksheets.getActiveWorksheet().getRange("D4").values = [[c]];
 
             // sync the context to run the previous API call, and return.
