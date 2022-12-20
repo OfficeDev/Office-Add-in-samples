@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/messageHelper.js"></script>
+    <script type="text/javascript" src="~/js/MessageRead.js"></script>
+}
+
+<fluent-button hidden id="save-button" appearance="accent">Save to OneDrive</fluent-button>
+
+<fluent-progress-ring hidden id="spinner"></fluent-progress-ring>
+
+<fluent-card hidden id="no-attachments">
+    There are no attachments on this message.
+</fluent-card>
+
+<fluent-card hidden id="list-of-attachments">
+
+</fluent-card>
+
+<fluent-card id="message-area">
+    ---
+</fluent-card>
+

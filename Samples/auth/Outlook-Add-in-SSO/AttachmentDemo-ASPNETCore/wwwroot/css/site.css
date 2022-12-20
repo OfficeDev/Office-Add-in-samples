@@ -1,0 +1,37 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    padding: 1em;
+}
+
+: not(: defined) {
+    visibility: hidden;
+}
+
+fluent - card {
+    padding: 16px;
+    display: flex;
+    flex - direction: column;
+}
+
+h2 {
+    font - size: var(--type - ramp - plus - 5 - font - size);
+    line - height: var(--type - ramp - plus - 5 - line - height);
+}
+
+#button {
+    align - self: flex - end;
+}

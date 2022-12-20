@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!--Created:ce44715c-8c4e-446b-879c-ea9ebe0f09c8-->
-<OfficeApp 
-          xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-          xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
-          xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" 
+<OfficeApp
+          xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+          xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0"
           xsi:type="MailApp">
 
   <!-- Begin Basic Settings: Add-in metadata, used for all versions of Office unless override provided. -->
@@ -27,7 +27,7 @@
     <AppDomain>https://login.microsoftonline.com</AppDomain>
   </AppDomains>
   <!--End Basic Settings. -->
-  
+
   <Hosts>
     <Host Name="Mailbox" />
   </Hosts>
@@ -54,7 +54,7 @@
 
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
     <Requirements>
-      <bt:Sets DefaultMinVersion="1.5">
+      <bt:Sets DefaultMinVersion="1.3">
         <bt:Set Name="Mailbox" />
       </bt:Sets>
     </Requirements>
@@ -195,12 +195,11 @@
       </Resources>
 
       <WebApplicationInfo>
-        <Id>[Enter the Client Id (Application ID obtained from the Azure portal)]</Id>
-        <Resource>api://localhost:44355/[Enter the Client Id (Application ID obtained from the Azure portal)]</Resource>
+        <Id>Enter_client_ID_here</Id>
+        <Resource>api://localhost:44355/Enter_client_ID_here</Resource>
         <Scopes>
           <Scope>openid</Scope>
           <Scope>profile</Scope>
-          <Scope>offline_access</Scope>
           <Scope>files.readwrite</Scope>
           <Scope>mail.read</Scope>
         </Scopes>
