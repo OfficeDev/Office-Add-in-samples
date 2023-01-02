@@ -28,15 +28,15 @@ Office.actions.associate("HIDETASKPANE", function() {
 });
 
 Office.actions.associate("SETCOLOR", function() {
-  var context = new Excel.RequestContext();
-  var range = context.workbook.getSelectedRange();
-  var rangeFormat = range.format;
+  const context = new Excel.RequestContext();
+  const range = context.workbook.getSelectedRange();
+  const rangeFormat = range.format;
   rangeFormat.fill.load();
-  var colors = ["#FFFFFF", "#C7CC7A", "#7560BA", "#9DD9D2", "#FFE1A8", "#E26D5C"];
+  const colors = ["#FFFFFF", "#C7CC7A", "#7560BA", "#9DD9D2", "#FFE1A8", "#E26D5C"];
   return context.sync().then(function() {
-    var rangeTarget = context.workbook.getSelectedRange();
-    var currentColor = -1;
-    for (var i = 0; i < colors.length; i++) {
+    const rangeTarget = context.workbook.getSelectedRange();
+    let currentColor = -1;
+    for (let i = 0; i < colors.length; i++) {
       if (colors[i] == rangeFormat.fill.color) {
         currentColor = i;
         break;

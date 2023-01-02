@@ -1,11 +1,15 @@
-//- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. -->
-//- 
+//- Copyright (c) Microsoft Corporation.
+//- Licensed under the MIT License.
+//-
 //- This file defines the UI of the task pane page.
 
 extends layout
 
 block content
   div#connectContainer
+    // The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
+    img(src='https://pnptelemetry.azurewebsites.net/pnp-officeaddins/auth/Office-Add-in-NodeJS-SSO-run')
+
     div.ms-bgColor-neutralLight.welcome
       div.ms-fontSize-xl.ms-fontColor-themePrimary Welcome
       div.ms-font-l This add-in demonstrates how to connect to Microsoft Graph from an add-in.
@@ -16,10 +20,10 @@ block content
         li.ms-listItem #[span.ms-ListItem-primaryText 2] #[span.ms-ListItem-secondaryText Gets the names of the first ten files and folders in OneDrive.]
         li.ms-listItem #[span.ms-ListItem-primaryText 3] #[span.ms-ListItem-secondaryText Adds the names to the current document.]
     
-    div#message-area.welcome.ms-font-l
+    div#message-area.welcome.ms-font-m
   
   footer#footer.homefooter.ms-bgColor-neutralLight
     div.container
       p(style="text-align:center;") 
-        button#getGraphDataButton.popupButton.ms-Button.ms-Button--primary
+        button#getFileNameListButton.popupButton.ms-Button.ms-Button--primary
           span.ms-Button-label Get OneDrive File Names

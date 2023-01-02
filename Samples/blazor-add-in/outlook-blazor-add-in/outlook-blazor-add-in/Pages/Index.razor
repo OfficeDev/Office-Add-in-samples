@@ -1,0 +1,63 @@
+﻿@* Copyright (c) Maarten van Stam and Eric Legault. All rights reserved. Licensed under the MIT License. *@
+@page "/"
+
+<section class="Title">
+	<h1>
+		Read eMail Attachments
+	</h1>
+</section>
+
+<section class="description text">
+	<p>
+		The sample shows you how to read attachments from an email item.
+	</p>
+</section>
+
+<section class="samples ms-font-m">
+
+	@if (@MailReadData is not null)
+	{
+		<div class="row">
+			<h3>Current Email Properties</h3>
+		</div>
+		<dl class="row">
+			<dt class="col-sm-3">Subject</dt>
+			<dd class="col-sm-9">@MailReadData.Subject</dd>
+
+			<dt class="col-sm-3">Id</dt>
+			<dd class="col-sm-9">@MailReadData.AttachmentId</dd>
+
+			<dt class="col-sm-3">First Attachment Name</dt>
+			<dd class="col-sm-9">@MailReadData.AttachmentName</dd>
+
+			<dt class="col-sm-3">AttachmentType</dt>
+			<dd class="col-sm-9">@MailReadData.AttachmentType</dd>
+
+			<dt class="col-sm-3">Inline</dt>
+			<dd class="col-sm-9">@MailReadData.Inline</dd>
+
+			<dt class="col-sm-3">Base64 Attachment Data</dt>
+			<dd class="col-sm-9">
+				@if (!String.IsNullOrEmpty(MailReadData.AttachmentImageURL))
+				{
+					<img src="@MailReadData.AttachmentImageURL" width="50" />
+				}
+				else if (!String.IsNullOrEmpty(MailReadData.AttachmentBase64Data))
+				{
+					@*Just show some of the base64 data*@
+					@MailReadData.AttachmentBase64Data
+				}
+				else
+				{	
+					<div>N/A</div>
+				}
+			</dd>
+		</dl>
+	}
+	else
+	{
+		<div class="row">
+			<h3>Unable to read email and attachment data</h3>
+		</div>
+	}
+</section>

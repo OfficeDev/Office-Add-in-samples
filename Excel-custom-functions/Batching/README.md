@@ -16,7 +16,9 @@ description: "If your functions call a remote service you may want to use a batc
 
 # Custom function batching pattern
 
-If your custom functions call a remote service you may want to use a batching pattern to reduce the number of network calls to the remote service. This is useful when a spreadsheet recalculates and it contains many of your custom functions. Recalculate will result in many calls to your custom functions, but you can batch them into one or a few calls to the remote service.
+If your custom functions call a remote service, you may want to use a batching pattern to reduce the number of network calls to the remote service. Batching the requests to a remote web service improves network performance. Each call to a remote web service takes time, and there is often a delay between a request to a remote service and a response from the service. Batching the calls to the remote service means they are all sent as one request, and then returned as one response, which reduces the overall request and response processing time. 
+
+For example, following a batching pattern for your custom functions add-ins is useful when a worksheet that contains many custom functions recalculates. Recalculating the worksheet will result in many calls to your custom functions, but you can batch the resulting requests to a remote web service into one or a few requests. 
 
 ## Applies to
 
@@ -24,7 +26,7 @@ If your custom functions call a remote service you may want to use a batching pa
 
 ## Prerequisites
 
-To learn more about custom functions, see [Create custom functions in Excel](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-overview). See [Custom Functions requirement sets](https://docs.microsoft.com/office/dev/add-ins/reference/requirement-sets/custom-functions-requirement-sets) for a list of the platforms that support custom functions.
+To learn more about custom functions, see [Create custom functions in Excel](https://learn.microsoft.com/office/dev/add-ins/excel/custom-functions-overview). See [Custom Functions requirement sets](https://learn.microsoft.com/office/dev/add-ins/reference/requirement-sets/custom-functions-requirement-sets) for a list of the platforms that support custom functions.
 
 ## Solution
 

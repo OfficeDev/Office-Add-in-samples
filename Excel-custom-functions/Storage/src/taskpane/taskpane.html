@@ -22,9 +22,9 @@
     <script type="text/javascript">
         // Private functions
         function SendTokenToCustomFunction() {
-            var token = document.getElementById('tokenTextBox').value;
-            var tokenSendStatus = document.getElementById('tokenSendStatus');
-            var key = "token";
+            const token = document.getElementById('tokenTextBox').value;
+            const tokenSendStatus = document.getElementById('tokenSendStatus');
+            const key = "token";
 
             OfficeRuntime.storage.setItem(key, token).then(function () {
                 tokenSendStatus.value = "Success: Item with key '" + key + "' saved to Storage.";
@@ -34,8 +34,8 @@
         }
 
         function ReceiveTokenFromCustomFunction() {
-            var key = "token";
-            var tokenSendStatus = document.getElementById('tokenSendStatus');
+            const key = "token";
+            const tokenSendStatus = document.getElementById('tokenSendStatus');
 
             OfficeRuntime.storage.getItem(key).then(function (result) {
                 tokenSendStatus.value = "Success: Item with key '" + key + "' read from Storage.";

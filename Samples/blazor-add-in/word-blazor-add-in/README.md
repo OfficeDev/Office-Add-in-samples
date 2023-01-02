@@ -61,7 +61,7 @@ protected override async Task OnAfterRenderAsync(bool firstRender)
 {
   if (firstRender)
   {
-    JSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/Index.razor.js");
+    JSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/HelloWorld.razor.js");
   }
 }
 ```
@@ -98,7 +98,7 @@ The fundamental pattern includes the following steps.
 
 ## Questions and comments
 
-We'd love to get your feedback about this sample. Please send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://docs.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
+We'd love to get your feedback about this sample. Please send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Solution
 
@@ -117,5 +117,7 @@ We'd love to get your feedback about this sample. Please send your feedback to u
 Copyright(c) Maarten van Stam. All rights reserved.Licensed under the MIT License.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+**Note**: The index.html file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/blazor-add-in/word-blazor-add-in" />

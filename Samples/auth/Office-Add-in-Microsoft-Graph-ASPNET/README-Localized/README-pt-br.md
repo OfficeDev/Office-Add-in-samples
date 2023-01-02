@@ -73,7 +73,7 @@ Versão | Data | Comentários
 
 1. No **Visual Studio**, escolha o projeto **Office-suplemento-Microsoft-Graph-ASPNETWeb**. Em **Propriedades**, certifique-se de que o **SSL Habilitado** seja **Verdadeiro**. Verifique se o **URL SSL** usa o mesmo nome de domínio e número da porta que estão listados no próximo passo.
  
-2. Registre o seu aplicativo usando o [Portal de Gerenciamento do Azure](https://manage.windowsazure.com). **Faça logon com a identidade de um administrador da sua locação do Office 365 para garantir que você esteja trabalhando em um Azure Active Directory associado a essa locação.** Para aprender como registrar seus aplicativos, confira[Registrando um aplicativo na Microsoft Identity Platform](https://docs.microsoft.com/graph/auth-register-app-v2). Use as seguintes configurações:
+2. Registre o seu aplicativo usando o [Portal de Gerenciamento do Azure](https://manage.windowsazure.com). **Faça logon com a identidade de um administrador da sua locação do Office 365 para garantir que você esteja trabalhando em um Azure Active Directory associado a essa locação.** Para aprender como registrar seus aplicativos, confira[Registrando um aplicativo na Microsoft Identity Platform](https://learn.microsoft.com/graph/auth-register-app-v2). Use as seguintes configurações:
 
  - REDIRECIONE O URI: https://localhost:44301/AzureADAuth/Authorize
  - TIPOS DE CONTA COM SUPORTE: “Apenas contas neste diretório organizacional”
@@ -109,8 +109,8 @@ Perguntas sobre o desenvolvimento de suplementos do Office devem ser publicadas 
 
 ## Recursos adicionais
 
-* [Documentação do Microsoft Graph](https://docs.microsoft.com/graph/)
-* [Documentação de Suplementos do Office](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+* [Documentação do Microsoft Graph](https://learn.microsoft.com/graph/)
+* [Documentação de Suplementos do Office](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Direitos autorais
 Direitos autorais (c) 2019 Microsoft Corporation. Todos os direitos reservados.

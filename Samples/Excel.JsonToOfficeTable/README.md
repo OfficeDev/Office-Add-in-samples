@@ -1,4 +1,12 @@
-# Using Apps for Excel for Custom Data Access and Reporting #
+# [ARCHIVED] Using Apps for Excel for Custom Data Access and Reporting #
+
+**Note:** This sample is archived and no longer actively maintained. Security vulnerabilities may exist in the project, or its dependencies. If you plan to reuse or run any code from this repo, be sure to perform appropriate security checks on the code or dependencies first. Do not use this project as the starting point of a production Office Add-in. Always start your production code by using the Office/SharePoint development workload in Visual Studio, or the [Yeoman generator for Office Add-ins](https://github.com/OfficeDev/generator-office), and follow security best practices as you develop the add-in.
+
+For the current sample showing how to import JSON to tables, see the **Import JSON data** snippet in [Script Lab](https://learn.microsoft.com/office/dev/add-ins/overview/explore-with-script-lab).
+
+To restore the project dependencies, rename the following files.
+
+- Excel.JsonToOfficeTableWeb/packages-archive.config -> Excel.JsonToOfficeTableWeb/packages.config
 
 ### Summary ###
 Microsoft Excel is known for being the #1 reporting tool in the world. Regardless of what format insights are delivered in, users often desire the ability to export and work with the data in Excel. For that reason, Excel plug-ins are incredibly popular for custom and proprietary data access. Unfortunately, traditional plug-ins often cripple a user’s ability to upgrade Office. PowerPivot and Power Query have made it easy to connect to a variety of data sources without custom plug-ins. However, many data sources might be too complex for an end-user to understand and others aren’t supported at all. For these scenarios,  Excel-based Apps for Office can help simplify sources and get data into Excel. This sample contains patterns for using Apps for Office to accomplish complex data access and reporting tasks. Specifically, it provides patterns for generically converting JSON into an Office.TableData object that can popular Excel.

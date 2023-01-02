@@ -1,8 +1,7 @@
-/*
- * Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. -->
- *
- * This file is the main Node.js server file that defines the express middleware.
- */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// This file is the main Node.js server file that defines the express middleware.
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
@@ -13,10 +12,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var getGraphData = require('./public/javascripts/msgraph-helper');
-
 var indexRouter = require('./routes/index');
-var authRouter = require('./routes/authRoute');
+var getFilesRoute = require('./routes/getFilesRoute');
 
 var app = express();
 
@@ -35,52 +32,29 @@ if (process.env.NODE_ENV !== 'production') {
                         { etag: false }));
 
   app.use(function (req, res, next) {
-    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    res.header('Expires', '-1');
-    res.header('Pragma', 'no-cache');
+    res.set({
+      "Content-Security-Policy": "script-src https://appsforoffice.microsoft.com https://ajax.aspnetcdn.com https://alcdn.msauth.net " +  process.env.SERVER_SOURCE,
+      "Cache-Control": "private, no-cache, no-store, must-revalidate",
+      "Expires": "-1",
+      "Pragma": "no-cache"
+    });
     next()
   });
 } else {
   // In production mode, let static files be cached.
   app.use(express.static(path.join(__dirname, 'public')));
+  app.use(function (req, res, next) {
+    res.set({
+      "Content-Security-Policy": "script-src https://appsforoffice.microsoft.com https://ajax.aspnetcdn.com https://alcdn.msauth.net " +  process.env.SERVER_SOURCE,
+    });
+    next()
+  });;
 }
 
 app.use('/home/index', indexRouter);
-app.use('/auth', authRouter);
 
-app.get('/dialog.html', (async (req, res) => {
-  return res.sendfile('dialog.html');
-}));
+app.get('/getuserfilenames', getFilesRoute);
 
-app.get('/getuserdata', async function(req, res, next) {
-  const graphToken = req.get('access_token');
-
-  // Minimize the data that must come from MS Graph by specifying only the property we need ("name")
-  // and only the top 10 folder or file names.
-  // Note that the last parameter, for queryParamsSegment, is hardcoded. If you reuse this code in
-  // a production add-in and any part of queryParamsSegment comes from user input, be sure that it is
-  // sanitized so that it cannot be used in a Response header injection attack. 
-  const graphData = await getGraphData(graphToken, "/me/drive/root/children", "?$select=name&$top=10");
-
-  // If Microsoft Graph returns an error, such as invalid or expired token,
-  // there will be a code property in the returned object set to a HTTP status (e.g. 401).
-  // Relay it to the client. It will caught in the fail callback of `makeGraphApiCall`.
-  if (graphData.code) {
-      next(createError(graphData.code, "Microsoft Graph error " + JSON.stringify(graphData)));
-  }
-  else 
-  {
-    // MS Graph data includes OData metadata and eTags that we don't need.
-    // Send only what is actually needed to the client: the item names.
-    const itemNames = [];
-    const oneDriveItems = graphData['value'];
-    for (let item of oneDriveItems){
-        itemNames.push(item['name']);
-    }
-
-    res.send(itemNames)
-  }
-});
 
 
 // Catch 404 and forward to error handler

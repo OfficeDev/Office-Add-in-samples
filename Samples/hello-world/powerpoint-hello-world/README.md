@@ -44,7 +44,7 @@ The sample contained in this folder is a sample that is designed to run in Power
 
 ## Key components
 
-The hello world sample implements the **Manifest** and **Web app** components identified in [Components of an Office Add-in](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins#components-of-an-office-add-in).
+The hello world sample implements the **Manifest** and **Web app** components identified in [Components of an Office Add-in](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins#components-of-an-office-add-in).
 
 ### Manifest
 
@@ -61,7 +61,7 @@ The hello world sample implements a task pane named **taskpane.html** that conta
 
 ### Initialize the Office JavaScript API library
 
-The sample initializes the Office JavaScript API library with a call to `office.onReady()` in the **taskpane.html** file. This is required before you can make any calls to the Office JavaScript APIs. For more information about initialization, see [Initialize your Office Add-in](https://docs.microsoft.com/en-us/office/dev/add-ins/develop/initialize-add-in).
+The sample initializes the Office JavaScript API library with a call to `office.onReady()` in the **taskpane.html** file. This is required before you can make any calls to the Office JavaScript APIs. For more information about initialization, see [Initialize your Office Add-in](https://learn.microsoft.com/office/dev/add-ins/develop/initialize-add-in).
 
 ```javascript
 Office.onReady((info) => {});
@@ -71,7 +71,7 @@ Office.onReady((info) => {});
 
 When the user chooses the **Say hello** button, the `sayHello()` function is called. This function calls `Office.context.document.setSelectedDataAsync()` with an empty string (space). This will clear the text of the currently selected object. Then it calls `setSelectedDataAsync()` again and passes "Hello world!". The currently selected object will now display "Hello world!".
 
-For more information see [Build your first PowerPoint task pane add-in](https://docs.microsoft.com/office/dev/add-ins/quickstarts/powerpoint-quickstart)
+For more information see [Build your first PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/quickstarts/powerpoint-quickstart)
 
 ```javascript
 async function sayHello() {
@@ -111,8 +111,9 @@ An Office Add-in requires you to configure a web server to provide all the resou
 
 Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the Hello world sample. Then follow the sideloading instructions for your platform.
 
-- [Sideload Office Add-ins for testing from a network share](https://docs.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
-- [Sideload Office Add-ins on iPad and Mac for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad-and-mac)
+- [Sideload Office Add-ins for testing from a network share](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
+- [Sideload Office Add-ins on Mac for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac)
+- [Sideload Office Add-ins on iPad for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad)
 
 ## Configure a localhost web server and run the sample from localhost
 

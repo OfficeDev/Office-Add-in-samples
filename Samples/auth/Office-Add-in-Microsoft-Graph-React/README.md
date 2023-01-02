@@ -8,6 +8,7 @@ products:
 - m365
 languages:
 - javascript
+description: Learn how to build a Microsoft Office Add-in, as a single-page application with no backend, that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into an Office document using Office.js.
 extensions:
   contentType: samples
   technologies:
@@ -90,7 +91,7 @@ Version  | Date | Comments
     * In the **Redirect URI** section, ensure that **Single-page application (SPA)** is selected in the drop down and then set the URI to `https://localhost:3000/login/login.html`.
     * Select **Register**.
     
-    For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://docs.microsoft.com/graph/auth-register-app-v2).
+    For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://learn.microsoft.com/graph/auth-register-app-v2).
     
     > Note: The sample uses the OAuth 2.0 Auth Code Flow w/ PKCE for SPAs, which requires no secrets.
     
@@ -130,13 +131,15 @@ Questions about developing Office Add-ins should be posted to [Stack Overflow](h
 
 ## Additional resources
 
-* [Microsoft Graph documentation](https://docs.microsoft.com/graph/)
-* [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+* [Microsoft Graph documentation](https://learn.microsoft.com/graph/)
+* [Office Add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Copyright
 
 Copyright (c) 2019 and 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+**Note**: The Index.html file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/auth/Office-Add-in-Microsoft-Graph-React" />

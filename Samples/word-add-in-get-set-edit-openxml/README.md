@@ -22,7 +22,7 @@ description: 'Learn how to get, edit, and set OOXML content in a Word document.'
 
 Shows how to get, edit, and set OOXML content in a Word document. This sample Word add-in provides a scratch pad to get Office Open XML for your own content and test your own edited Office Open XML snippets.
 
-**Important**: We recommend you use APIs available in the [Word API requirement sets](https://docs.microsoft.com/office/dev/add-ins/reference/requirement-sets/word-api-requirement-sets) as your first option. For an example, see the [Insert formatted text](https://github.com/OfficeDev/office-js-snippets/blob/prod/samples/word/25-paragraph/insert-formatted-text.yaml) code snippet in [Script lab](https://appsource.microsoft.com/product/office/wa104380862) on Word. Use OOXML if the API you need isn't available.
+**Important**: We recommend you use APIs available in the [Word API requirement sets](https://learn.microsoft.com/office/dev/add-ins/reference/requirement-sets/word-api-requirement-sets) as your first option. For an example, see the [Insert formatted text](https://github.com/OfficeDev/office-js-snippets/blob/prod/samples/word/25-paragraph/insert-formatted-text.yaml) code snippet in [Script Lab](https://appsource.microsoft.com/product/office/wa104380862) on Word. Use OOXML if the API you need isn't available.
 
 ## Features
 
@@ -63,11 +63,11 @@ The following screenshots (Figure 1a and Figure 1b) show how the document surfac
 
 Figure 1a. SampleDoc.docx document contents.
 
-![Screenshot of SampleDoc.docx document opened with images and formatted text.](description/CG_GetSetOOXML_fig01a.gif)
+![SampleDoc.docx document opened with images and formatted text.](description/CG_GetSetOOXML_fig01a.gif)
 
 Figure 1b. More SampleDoc.docx document contents.
 
-![Screenshot of SampleDoc.docx document opened with tables and SmartArt.](description/CG_GetSetOOXML_fig01b.gif)
+![SampleDoc.docx document opened with tables and SmartArt.](description/CG_GetSetOOXML_fig01b.gif)
 
 **Note**
 
@@ -75,7 +75,7 @@ The sample uses Office Open XML (the OOXML coercion type) rather than HTML or pl
 
 Figure 2. Task pane appearance after using the **Get…** button to extract Office Open XML for selected content.
 
-![Screenshot of the add-ins task pane opened in Word.](description/add-in-screenshot.png)
+![The add-in's task pane opened in Word.](description/add-in-screenshot.png)
 
 When you select content and choose the **Get…** button, the add-in uses the JavaScript **getSelectedDataAsync** method to generate a complete Office Open XML document package that includes the selected document content, and places it in the text area of the task pane (as shown in Figure 2). Use the text area in that task pane as a scratch pad. Copy the Office Open XML markup you retrieve into an XML file, edit it to include just the information you need, and paste it back into the text area of the task pane to test your edited markup.
 
@@ -92,7 +92,7 @@ The sample contains:
 
 **Note**
 
-When you use JavaScript to generate the Office Open XML markup for selected content, it creates an entire document package, which is a far larger payload than you need for inserting just your content. For help interpreting, editing, and simplifying your work with Office Open XML for a Word add-in, see [Create Better Add-ins for Word with Office Open XML](https://docs.microsoft.com/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml).
+When you use JavaScript to generate the Office Open XML markup for selected content, it creates an entire document package, which is a far larger payload than you need for inserting just your content. For help interpreting, editing, and simplifying your work with Office Open XML for a Word add-in, see [Create Better Add-ins for Word with Office Open XML](https://learn.microsoft.com/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml).
 
 ## Change log
 
@@ -100,11 +100,12 @@ When you use JavaScript to generate the Office Open XML markup for selected cont
 - GitHub release: August 2015
 - Use new Word API: October 2015
 - Fix bugs and move to new samples repo: January 2022
+- Update JavaScript variable declarations: July 2022
 
 ## Related content
 
 - [Standard ECMA-376: Office Open XML File Formats](http://www.ecma-international.org/publications/standards/Ecma-376.htm)
-- [Create Better Add-ins for Word with Office Open XML](https://docs.microsoft.com/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml)
+- [Create Better Add-ins for Word with Office Open XML](https://learn.microsoft.com/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml)
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 

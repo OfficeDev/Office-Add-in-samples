@@ -44,7 +44,7 @@ The sample contained in this folder is a sample that is designed to run in Outlo
 
 ## Key components
 
-The hello world sample implements the **Manifest** and **Web app** components identified in [Components of an Office Add-in](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins#components-of-an-office-add-in).
+The hello world sample implements the **Manifest** and **Web app** components identified in [Components of an Office Add-in](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins#components-of-an-office-add-in).
 
 ### Manifest
 
@@ -52,7 +52,7 @@ The manifest file is an XML file that describes your add-in to Office. It contai
 
 The hello world sample contains two manifest files to support two different web hosting scenarios.
 
-- **manifest.xml**: This manifest file gets the add-in's HTML page from the original GitHub repo location. This is the quickest way to try out the sample. To get started running the add-in with this manifest, see [Run the sample on Outlook on Windows](run-the-sample-on-outlook-on-windows).
+- **manifest.xml**: This manifest file gets the add-in's HTML page from the original GitHub repo location. This is the quickest way to try out the sample. To get started running the add-in with this manifest, see [Run the sample on Outlook on Windows or Mac](#run-the-sample-on-outlook-on-windows-or-mac).
 - **manifest.localhost.xml**: This manifest file gets the add-in's HTML page from a local web server that you configure. Use this manifest if you want to change the code and experiment. For more information, see [Configure a localhost web server](#configure-a-localhost-web-server).
 
 ### Web app
@@ -61,7 +61,7 @@ The hello world sample implements a task pane named **taskpane.html** that conta
 
 ### Initialize the Office JavaScript API library
 
-The sample initializes the Office JavaScript API library with a call to `office.onReady()` in the **taskpane.html** file. This is required before you can make any calls to the Office JavaScript APIs. For more information about initialization, see [Initialize your Office Add-in](https://docs.microsoft.com/en-us/office/dev/add-ins/develop/initialize-add-in).
+The sample initializes the Office JavaScript API library with a call to `office.onReady()` in the **taskpane.html** file. This is required before you can make any calls to the Office JavaScript APIs. For more information about initialization, see [Initialize your Office Add-in](https://learn.microsoft.com/office/dev/add-ins/develop/initialize-add-in).
 
 ```javascript
 Office.onReady((info) => {});
@@ -92,7 +92,7 @@ function sayHello() {
 }
 ```
 
-For more information see [Build your first Outlook add-in](https://docs.microsoft.com/office/dev/add-ins/quickstarts/outlook-quickstart)
+For more information see [Build your first Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/quickstarts/outlook-quickstart)
 
 ## Run the sample on Outlook on Web
 
@@ -149,7 +149,7 @@ The process for sideloading an add-in in Outlook on the web depends upon whether
 
 1. Locate the **manifest.xml** file in the sample folder for Outlook and install it. Accept all prompts during the installation.
 
-> Note: The previous steps are from [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing)
+> Note: The previous steps are from [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing)
 
 1. Create a new email message.
 1. Choose the **More compose actions ...** button, and then choose **Hello world**. The add-in will insert "Hello world!" into the body of the email message.
@@ -160,7 +160,7 @@ The process for sideloading an add-in in Outlook on the web depends upon whether
 
 Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the Hello world sample. Then follow the sideloading instructions for your platform.
 
-- [Sideload Outlook add-in on Windows or Mac](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#outlook-on-the-desktop)
+- [Sideload Outlook add-in on Windows or Mac](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#outlook-on-the-desktop)
 
 ## Test the sample on Outlook
 
@@ -214,5 +214,7 @@ Now that your localhost web server is running, you can sideload the **manifest-l
 Copyright (c) 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+**Note**: The taskpane.html file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-add-in-hello-world" />

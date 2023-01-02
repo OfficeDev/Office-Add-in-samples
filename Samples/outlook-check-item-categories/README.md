@@ -16,22 +16,23 @@ extensions:
 description: "Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent."
 ---
 
-# Use Outlook Smart Alerts (preview)
+# Use Outlook Smart Alerts
 
-**Applies to**: Outlook on Windows
+**Applies to**: Outlook on Windows | [new Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439)
 
 ## Summary
 
 This sample uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent. Specific keywords detected in the subject or body of the item determine the required categories. If no categories or only some of the required categories are applied to the message or appointment, the add-in blocks the item from being sent and alerts the user to apply the missing categories. The user can apply categories to the item from the add-in task pane.
 
-Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, are currently available in preview. For documentation related to this sample, see the following articles.
-- [Use Smart Alerts and the onMessageSend event in your Outlook add-in (preview)](https://docs.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough)
-- [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch)
-- [Get and set categories](https://docs.microsoft.com/office/dev/add-ins/outlook/categories)
+For documentation related to this sample, see the following articles.
+
+- [Use Smart Alerts and the OnMessageSend event in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough)
+- [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch)
+- [Get and set categories](https://learn.microsoft.com/office/dev/add-ins/outlook/categories)
 
 ## Features
 
-![Sample displaying Outlook Smart Alerts when required categories are missing from the message or appointment, and the task pane used to apply the categories to the item. Four features are highlighted.](./assets/outlook-check-item-categories-features.png)
+![Sample displaying Outlook Smart Alerts when required categories are missing from the message or appointment, and the task pane used to apply the categories to the item. Four features are highlighted.](./assets/outlook-check-item-categories.png)
 
 1. Use event-based activation triggered by the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events to create color categories based on specific keywords.
 
@@ -43,13 +44,16 @@ Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, ar
 
 ## Applies to
 
-- Outlook on Windows (minimum build - 16.0.14511.10000)
+- Outlook on Windows starting in Version 2206 (Build 15330.20196)
+- [New Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439) starting in Version 16.65.827.0
+
+> **Note**: Although the Smart Alerts feature is supported in Outlook on the web, Windows, and new Mac UI (see the "Supported clients and platforms" section of [Use Smart Alerts and the onMessageSend and OnAppointmentSend events in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough#supported-clients-and-platforms)), this sample only runs in Outlook on Windows and Mac.
+>
+> As the Office.Categories API can't be used in Compose mode in Outlook on the web, this sample isn't supported on that client. To learn how to develop a Smart Alerts add-in for Outlook on the web, see the [Smart Alerts walkthrough](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough).
 
 ## Prerequisites
 
 - A Microsoft 365 subscription. If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://aka.ms/m365/devprogram#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
-
-- Outlook on Windows with a minimum build of 16.0.14511.10000. For guidance with client configuration, see [How to preview](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch#how-to-preview).
 
 ## Solution
 
@@ -62,14 +66,16 @@ Smart Alerts and its related events, `OnMessageSend` and `OnAppointmentSend`, ar
 | Version | Date | Comments |
 | ------- | ----- | -------- |
 | 1.0 | 05-05-2022 | Initial release |
+| 1.1 | 09-08-2022 | Update for General Availability (GA) of OnMessageSend and OnAppointmentSend events |
+| 1.2 | 12-02-2022 | Add support for new Outlook on Mac |
 
 ## Run the sample
 
-Run this sample in Outlook on Windows. The add-in's web files are served from this repository on GitHub.
+Run this sample in Outlook on Windows or Mac. The add-in's web files are served from this repository on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 
-1. Sideload the add-in manifest in Outlook on Windows by following the manual instructions in [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on Windows or Mac by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 ### Try it out
 
@@ -157,7 +163,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
 ### Configure event-based activation in the manifest
 
-The manifest configures a runtime to handle event-based activation. Because the Outlook platform uses the client to determine whether to use HTML or JavaScript to load the runtime, both of these files must be referenced in the manifest. An HTML page resource ID is specified in the `<Runtime>` element, and a JavaScript file resource ID is specified in the `<Override>` element, as shown below. Outlook on Windows uses the referenced JavaScript file, instead of the HTML page, to load the runtime.
+The manifest configures a runtime to handle event-based activation. Because the Outlook platform uses the client to determine whether to use HTML or JavaScript to load the runtime, both of these files must be referenced in the manifest. An HTML page resource ID is specified in the `<Runtime>` element, and a JavaScript file resource ID is specified in the `<Override>` element, as shown below. Outlook on Windows uses the referenced JavaScript file to load the runtime, while Outlook on Mac uses the HTML file.
 
 ```xml
 <Runtime resid="WebViewRuntime.Url">
@@ -183,7 +189,7 @@ The `OnMessageSend` event uses the `SoftBlock` option to prevent a user from sen
 
 The `OnAppointmentSend` event uses the `Block` option to prevent a user from sending a meeting invite if any of the required categories are missing. If the add-in encounters a loading error and can't check the invite for applied categories, the user will not be able to send the invite until the add-in becomes available again.
 
-For additional information on `SendMode` options, see [Available SendMode options](https://docs.microsoft.com/javascript/api/manifest/launchevent?view=outlook-js-preview#available-sendmode-options-preview).
+For additional information on `SendMode` options, see [Available SendMode options](https://learn.microsoft.com/javascript/api/manifest/launchevent#available-sendmode-options).
 
 ### Configure the event handlers
 
@@ -207,7 +213,7 @@ sendEvent.completed({ allowEvent: false, errorMessage: message });
 return;
 ```
 
-![Screenshot of the Outlook Smart Alerts error message when required categories are missing from the message or appointment being sent.](./assets/outlook-check-item-categories-smart-alerts.png)
+![The Outlook Smart Alerts error message when required categories are missing from the message or appointment being sent.](./assets/outlook-check-item-categories-smart-alerts.png)
 
 Event-based add-ins should be short-running and lightweight. To prevent the possibility of a long-running operation that may lead to an add-in timeout, the color category creation process is handled by `onItemComposeHandler` instead of `onItemSendHandler`.
 
