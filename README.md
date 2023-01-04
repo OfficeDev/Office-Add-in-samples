@@ -88,6 +88,12 @@ Check out these samples if you want to take advantage of the [shared runtime](ht
 
 To learn more about Office Add-ins, see the [Office Add-ins documentation](https://aka.ms/office-add-ins-docs).
 
+## Questions and feedback
+
+* Did you experience any problems with a sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+* We'd love to get your feedback about the samples. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+* For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
+
 ## Join the Microsoft 365 Developer Program
 
 Get a free sandbox, tools, and other resources you need to build solutions for the Microsoft 365 platform.
