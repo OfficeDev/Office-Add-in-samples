@@ -11,6 +11,12 @@ The following samples show how to build the simplest Office Add-in with only a m
 * [PowerPoint "Hello world" add-in](Samples/hello-world/powerpoint-hello-world)
 * [Word "Hello world" add-in](Samples/hello-world/word-hello-world)
 
+### Completed tutorials
+
+The following sample is completed versions of the [Excel add-in tutorial](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial).
+
+* [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial)
+
 ## Blazor WebAssembly
 
 | Name           | Description  |
