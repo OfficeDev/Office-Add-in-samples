@@ -6,14 +6,18 @@ The tutorial gives step-by-step instructions on how to add functionality alongsi
 
 ## Run the add-in
 
-1. If the local web server is already running and your add-in is already loaded in Excel, proceed to step 2. Otherwise, start the local web server and sideload your add-in:
+1. Navigate to the root directory of the `My Office Add-in` project.
+
+1. Run `npm install`
+
+1. Start the local web server and sideload your add-in:
 
 - To test your add-in in Excel, run the following command in the root directory of your project. This starts the local web server (if it's not already running) and opens Excel with your add-in loaded.
 
   - Windows: `npm start`
   - Mac: `npm run dev-server`
 
-- To test your add-in in Excel on the web, run the following command in the root directory of your project. When you run this command, the local web server starts. Replace "{url}" with the URL of an Excel document on your OneDrive or a SharePoint library to which you have permissions.
+- To test your add-in in Excel on the web, run the following command in the root directory of the `My Office Add-in` project. When you run this command, the local web server starts. Replace "{url}" with the URL of an Excel document on your OneDrive or a SharePoint library to which you have permissions.
 
   ```command line
   npm run start:web -- --document {url}

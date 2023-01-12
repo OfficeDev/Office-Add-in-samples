@@ -13,9 +13,11 @@ The following samples show how to build the simplest Office Add-in with only a m
 
 ### Completed tutorials
 
-The following sample is completed versions of the [Excel add-in tutorial](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial).
+The following sample is the completed version of the [Excel add-in tutorial](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial).
 
-* [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial)
+| Name           | Description  |
+| -------------- | ------------ |
+| [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial) | This sample shows how to create an Excel add-in with a task pane and command ribbon buttons. The add-in shows how to create and sort a table, make a chart, freeze rows, protect a worksheet, and pop-up a dialog box. |
 
 ## Blazor WebAssembly
 
