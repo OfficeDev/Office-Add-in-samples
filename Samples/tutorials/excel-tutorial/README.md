@@ -1,14 +1,62 @@
+---
+page_type: sample
+urlFragment: office-excel-add-in-tutorial
+products:
+- office-excel
+- m365
+languages:
+- javascript
+extensions:
+  contentType: samples
+  technologies:
+  - Add-ins
+  createdDate: 01/13/2022 4:00:00 PM
+description: "A completed version of the step-by-step Excel tutorial hosted on learn.microsoft.com."
+---
+
 # Excel Tutorial - Completed
+
+## Summary
 
 This sample is the result of completing the [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial). It was constructed with the [Yeoman generator for Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/yeoman-generator-overview).
 
 The tutorial gives step-by-step instructions on how to add functionality alongside explanations as to why code is being added. This sample is best used if you've completed the tutorial and want to start from a more complete project. It's also helpful when debugging problems you encounter during the tutorial.
 
-## Run the add-in
+## Features
+
+This sample features the basics of working with a workbook in Excel. The functions create and interact with a table, make a chart, freeze the header row, and protect the worksheet. The sample also shows how to use a dialog box.
+
+## Applies to
+
+- Excel on Windows
+- Excel on Mac
+- Excel on the web
+
+## Prerequisites
+
+- Office connected to a Microsoft 365 subscription (including Office on the web).
+- [Node.js](https://nodejs.org/) version 16 or greater.
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
+
+## Solution
+
+Solution | Author(s)
+---------|----------
+Learn the basics of Excel add-ins | Microsoft
+
+## Version history
+
+Version  | Date | Comments
+---------| -----| --------
+1.0 | 1-13-2023 | Initial release
+
+## Run the sample
 
 1. Navigate to the root directory of the `My Office Add-in` project.
 
-1. Run `npm install`
+1. Run `npm install`.
+
+1. Run `npm run build`.
 
 1. Start the local web server and sideload your add-in:
 
@@ -36,3 +84,15 @@ The tutorial gives step-by-step instructions on how to add functionality alongsi
 1. If the add-in task pane isn't already open in Excel, go to the Home tab and choose the **Show Taskpane** button in the ribbon to open it.
 
 1. Use the buttons in the taskpane and the **Toggle Worksheet Protection** button to interact with the workbook through your add-in.
+
+## See also
+
+The version of this sample you can create step-by-step is found in the article [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial).
+
+## Copyright
+
+Copyright (c) 2023 Microsoft Corporation. All rights reserved.
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/office-excel-add-in-tutorial" />
