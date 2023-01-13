@@ -13,18 +13,21 @@ Office.onReady((info) => {
     }
 
     // Assign event handlers and other initialization logic.
-    document.getElementById("create-table").onclick = createTable;
-    document.getElementById("filter-table").onclick = filterTable;
-    document.getElementById("sort-table").onclick = sortTable;
-    document.getElementById("create-chart").onclick = createChart;
-    document.getElementById("freeze-header").onclick = freezeHeader;
-    document.getElementById("open-dialog").onclick = openDialog;
+    document.getElementById("create-table").onclick = (() => tryCatch(createTable));
+    document.getElementById("filter-table").onclick = (() => tryCatch(filterTable));
+    document.getElementById("sort-table").onclick = (() => tryCatch(sortTable));
+    document.getElementById("create-chart").onclick = (() => tryCatch(createChart));
+    document.getElementById("freeze-header").onclick = (() => tryCatch(freezeHeader));
+    document.getElementById("open-dialog").onclick = (() => tryCatch(openDialog));
 
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
   }
 });
 
+/**
+ * This function creates a table with some sample data and formats the range to fit it.
+ */
 async function createTable() {
   await Excel.run(async (context) => {
     const currentWorksheet = context.workbook.worksheets.getActiveWorksheet();
@@ -49,15 +52,13 @@ async function createTable() {
     expensesTable.getRange().format.autofitRows();
 
     await context.sync();
-  })
-    .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-        console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-    });
+  });
 }
 
+/**
+ * This function filters the "ExpensesTable" to only show rows
+ * with categories of "Education" and "Groceries".
+ */
 async function filterTable() {
   await Excel.run(async (context) => {
     const currentWorksheet = context.workbook.worksheets.getActiveWorksheet();
@@ -67,15 +68,12 @@ async function filterTable() {
     categoryFilter.applyValuesFilter(['Education', 'Groceries']);
 
     await context.sync();
-  })
-    .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-        console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-    });
+  });
 }
 
+/**
+ * This function sorts the "ExpensesTable" based on values in the second column.
+ */
 async function sortTable() {
   await Excel.run(async (context) => {
     const currentWorksheet = context.workbook.worksheets.getActiveWorksheet();
@@ -89,15 +87,12 @@ async function sortTable() {
 
     expensesTable.sort.apply(sortFields);
     await context.sync();
-  })
-    .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-        console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-    });
+  });
 }
 
+/**
+ * This function creates a clustered column chart based on the "ExpensesTable".
+ */
 async function createChart() {
   await Excel.run(async (context) => {
 
@@ -116,13 +111,7 @@ async function createChart() {
     chart.series.getItemAt(0).name = 'Value in \u20AC';
 
     await context.sync();
-  })
-    .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-        console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-    });
+  });
 }
 
 async function freezeHeader() {
@@ -132,17 +121,14 @@ async function freezeHeader() {
     currentWorksheet.freezePanes.freezeRows(1);
 
     await context.sync();
-  })
-    .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-        console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-    });
+  });
 }
 
 let dialog = null;
 
+/**
+ * This function opens a dialog that uses popup.html.
+ */
 function openDialog() {
   Office.context.ui.displayDialogAsync(
     'https://localhost:3000/popup.html',
@@ -155,7 +141,21 @@ function openDialog() {
   );
 }
 
+/**
+ * This function writes the string provided by the dialog to the "user-name" element in the taskpane.
+ * @param arg The value returned from the dialog.
+ */
 function processMessage(arg) {
   document.getElementById("user-name").innerHTML = arg.message;
   dialog.close();
+}
+
+/** Default helper for invoking an action and handling errors. */
+async function tryCatch(callback) {
+  try {
+      await callback();
+  } catch (error) {
+      // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
+      console.error(error);
+  }
 }

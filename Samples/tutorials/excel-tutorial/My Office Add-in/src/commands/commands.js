@@ -43,27 +43,31 @@ const g = getGlobal();
 // The add-in command functions need to be available in global scope
 g.action = action;
 
+/**
+ * This function toggles the current worksheet between protected and unprotected.
+ * @param args This is a requirement for all add-in commands of type **ExecuteFunction**. It signals the Office client application that the function has finished and the UI can become responsive again.
+ */
 async function toggleProtection(args) {
-  await Excel.run(async (context) => {
-    const sheet = context.workbook.worksheets.getActiveWorksheet();
+  try {
+      await Excel.run(async (context) => {
+        const sheet = context.workbook.worksheets.getActiveWorksheet();
 
-    sheet.load('protection/protected');
-    await context.sync();
+        sheet.load('protection/protected');
+        await context.sync();
+    
+        if (sheet.protection.protected) {
+            sheet.protection.unprotect();
+        } else {
+            sheet.protection.protect();
+        }
 
-    if (sheet.protection.protected) {
-      sheet.protection.unprotect();
-    } else {
-      sheet.protection.protect();
-    }
+        await context.sync();
+      });
+  } catch (error) {
+      // Note: In a production add-in, you'd want to notify the user through your add-in's UI.
+      console.error(error);
+  }
 
-    await context.sync();
-  })
-    .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-        console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-    });
   args.completed();
 }
 
