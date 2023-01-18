@@ -1,0 +1,149 @@
+{
+    "$schema": "http://zlatkom2:32080/metaos/schema/metaos.public.schema.json#",
+    "manifestVersion": "m365DevPreview",
+    "id": "1e7e38da-7ad6-429a-9c6f-81aa1b9c9344",
+    "version": "1.0.0.0",
+    "name": {
+        "short": "Hello world",
+        "full": "Hello world"
+    },
+    "description": {
+        "short": "A simple hello world Office Add-in.",
+        "full": "A simple hello world Office Add-in."
+    },
+    "icons": {
+        "outline": "icon-32.png",
+        "color": "icon-64.png"
+    },
+    "accentColor": "#230201",
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples",
+        "privacyUrl": "https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples",
+        "termsOfUseUrl": "https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"
+    },
+    "localizationInfo": {
+        "defaultLanguageTag": "en-US"
+    },
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "MailboxItem.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "validDomains": [
+        "https://www.contoso.com",
+        "https://localhost:3000"
+    ],
+    "extensions": [
+        {
+            "requirements": {
+                "capabilities": [
+                    {
+                        "name": "Mailbox",
+                        "minVersion": "1.1"
+                    }
+                ],
+                "scopes": [
+                    "mail"
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.3"
+                            }
+                        ]
+                    },
+                    "id": "runtime_1",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/taskpane.html"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "action_1",
+                            "type": "openPage",
+                            "view": "view_1",
+                            "displayName": "action_1",
+                            "pinnable": false
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.3"
+                            }
+                        ],
+                        "scopes": [
+                            "mail"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "contexts": [
+                        "mailCompose"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabDefault",
+                            "groups": [
+                                {
+                                    "overriddenByRibbonApi": false,
+                                    "id": "msgComposeCmdGroup",
+                                    "label": "Contoso Add-in",
+                                    "controls": [
+                                        {
+                                            "id": "msgComposeInsertGist",
+                                            "type": "button",
+                                            "label": "Hello world",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "file": "icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "file": "icon-32_02.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "file": "icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Hello world",
+                                                "description": "Open the Hello world add-in"
+                                            },
+                                            "actionId": "action_1",
+                                            "overriddenByRibbonApi": false,
+                                            "enabled": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "audienceClaimUrl": "https://localhost:3000/taskpane.html"
+        }
+    ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "defaultBlockUntilAdminAction": false
+}

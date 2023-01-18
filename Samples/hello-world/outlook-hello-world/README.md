@@ -55,6 +55,11 @@ The hello world sample contains two manifest files to support two different web 
 - **manifest.xml**: This manifest file gets the add-in's HTML page from the original GitHub repo location. This is the quickest way to try out the sample. To get started running the add-in with this manifest, see [Run the sample on Outlook on Windows or Mac](#run-the-sample-on-outlook-on-windows-or-mac).
 - **manifest.localhost.xml**: This manifest file gets the add-in's HTML page from a local web server that you configure. Use this manifest if you want to change the code and experiment. For more information, see [Configure a localhost web server](#configure-a-localhost-web-server).
 
+This sample also supports the preview version of the JSON-formatted manifest that Teams extensions, like custom tabs and messaging extensions, use. For more information about this manifest, see [Teams manifest for Office Add-ins (preview)](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
+
+- **manifest.json**: This manifest file is a preview JSON version of manifest.xml. To try it out, see [Run the Teams manifest version of hello world](#run-the-teams-manifest-version-of-hello-world).
+- **manifest-localhost.json**: This manifest file is a preview JSON version of manifest-localhost.xml. To try it out, see [Run the Teams manifest version of hello world](#run-the-teams-manifest-version-of-hello-world).
+
 ### Web app
 
 The hello world sample implements a task pane named **taskpane.html** that contains HTML and JavaScript. The **taskpane.html** file contains all the code necessary to display a task pane, interact with the user, and write "Hello world!" into a new email message.
@@ -93,6 +98,36 @@ function sayHello() {
 ```
 
 For more information see [Build your first Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/quickstarts/outlook-quickstart)
+
+## Run the Teams manifest version of hello world
+
+If you want to run the hello world sample using the preview Teams manifest (**manifest.json** or **manifest-localhost.json**) follow the steps below. The Teams manifest files perform the exact same function as the XML manifest files. They help Outlook get information about your add-in, and load the correct resources. For more information, see [Teams manifest for Office Add-ins (preview)](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
+
+>Note: The new manifest is available for preview and is subject to change based on feedback. We encourage experienced add-in developers to experiment with it. The preview manifest should not be used in production add-ins.
+
+1. Follow the instructions at [Set up your development environment](https://learn.microsoft.com/office/dev/add-ins/overview/set-up-your-dev-environment?tabs=yeomangenerator) to ensure you have the required development environment with Node.js and Visual Studio Code.
+
+1. From the root folder of this sample, run the following command to install the **office-addin-debugging** package. This will also create a package.json file.
+
+    ```console
+    npm install office-addin-debugging
+    ```
+
+1. Run the following command to sideload the manifest.json file. This will start Outlook, sideload the hello world sample, and load the add-in resources from the GitHub repo.
+
+    ```console
+    npx office-addin-debugging start manifest.json
+    ```
+
+If you want to run the add-in locally, you follow the steps at [Configure a localhost web server and run the sample from localhost](#configure-a-localhost-web-server-and-run-the-sample-from-localhost). Then rename **manifest-localhost.json** to **manifest.json** and 
+
+1. Star a local Node.js server by following the steps at [Configure a localhost web server and run the sample from localhost](#configure-a-localhost-web-server-and-run-the-sample-from-localhost).
+1. Rename **manifest-localhost.json** to **manifest.json**.
+1. Run the following command to sideload the **manifest.json** file. This will start Outlook, sideload the hello world sample, and load the add-in resources from the localhost Node.js server.
+
+    ```console
+    npx office-addin-debugging start manifest.json
+    ```
 
 ## Run the sample on Outlook on Web
 
