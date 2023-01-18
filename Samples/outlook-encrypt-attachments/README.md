@@ -217,6 +217,12 @@ The task pane code is located under the `taskpane` folder of this project. The t
 - [Office-Addin-Debugging](https://www.npmjs.com/package/office-addin-debugging)
 - [Getting recipients and attendees Script Lab sample](https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/outlook/30-recipients-and-attendees/get-set-required-attendees-appointment-organizer.yaml)
 
+## Questions and feedback
+
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
+
 ## Copyright
 
 Copyright (c) 2021 Microsoft Corporation. All rights reserved.

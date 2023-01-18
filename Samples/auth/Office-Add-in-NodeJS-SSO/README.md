@@ -88,10 +88,11 @@ Version  | Date | Comments
 
 These samples send a hardcoded query parameter on the URL for the Microsoft Graph REST API. If you modify this code in a production add-in and any part of query parameter comes from user input, be sure that it is sanitized so that it cannot be used in a Response header injection attack.
 
-## Questions and comments
+## Questions and feedback
 
-We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
-Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-addins-dev.html). Ensure your questions are tagged with office-js-dev or office-addins-dev.
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Join the Microsoft 365 Developer Program
 Get a free sandbox, tools, and other resources you need to build solutions for the Microsoft 365 platform.
