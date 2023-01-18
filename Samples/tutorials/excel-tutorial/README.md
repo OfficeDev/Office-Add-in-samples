@@ -20,7 +20,7 @@ description: "A completed version of the step-by-step Excel tutorial hosted on l
 
 This sample is the result of completing the [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial). It was constructed with the [Yeoman generator for Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/yeoman-generator-overview).
 
-The tutorial gives step-by-step instructions on how to add functionality alongside explanations as to why code is being added. This sample is best used if you've completed the tutorial and want to start from a more complete project. It's also helpful when debugging problems you encounter during the tutorial.
+The tutorial gives step-by-step instructions on how to add functionality alongside explanations as to why code is being added. Use this sample if you want to explore and try the completed code, or if you need to debug any issues you may have encountered while following the tutorial.
 
 ## Features
 
