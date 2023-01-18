@@ -163,9 +163,11 @@ In the **Startup.cs** file, the **ConfigureServices** method updates the CORS po
 
 The Cell analyzer REST API project is configured to support CORS requests from https://localhost:44368 (the Office web add-in.) This is only for development purposes. In production code, you should configure CORS to support your deployed Office web add-in endpoint.
 
-## Questions and comments
+## Questions and feedback
 
-We'd love to get your feedback about this sample. You can send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to Stack Overflow. Ensure your questions are tagged with [office-js].
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Additional resources
 

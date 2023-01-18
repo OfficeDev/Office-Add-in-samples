@@ -124,10 +124,11 @@ Version  | Date | Comments
 
 * When a dialog is opened (with either the **Connect to Office 365** or the **Sign out from Office 365** buttons) on a Windows computer, a process named **Desktop App Web Viewer** starts on the computer. (You can see it in **Task Manager**.) These processes don't always close when the dialog closes. If you are working with the sample a lot, opening and closing dialogs, these processes use more and more memory. Eventually, the login dialog will start to flicker and seem to reload itself over and over. If this happens, use  **Task Manager** to kill the processes.
 
-## Questions and comments
+## Questions and feedback
 
-We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
-Questions about developing Office Add-ins should be posted to [Stack Overflow](http://stackoverflow.com). Ensure your questions are tagged with [office-js] and [MicrosoftGraph].
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Additional resources
 
