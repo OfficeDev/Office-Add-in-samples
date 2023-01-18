@@ -42,7 +42,11 @@ async function createTable() {
       ["1/15/2017", "Best For You Organics Company", "Groceries", "97.88"]
     ]);
 
+    
+    // Learn more about the Excel number format syntax in this article:
+    // https://support.microsoft.com/office/number-format-codes-5026bbd6-04bc-48cd-bf33-80f18b4eae68
     expensesTable.columns.getItemAt(3).getRange().numberFormat = [['\u20AC#,##0.00']];
+    
     expensesTable.getRange().format.autofitColumns();
     expensesTable.getRange().format.autofitRows();
 
