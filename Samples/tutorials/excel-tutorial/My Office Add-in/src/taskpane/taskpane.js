@@ -44,7 +44,7 @@ async function createTable() {
 
     
     // Learn more about the Excel number format syntax in this article:
-    // https://support.microsoft.com/office/number-format-codes-5026bbd6-04bc-48cd-bf33-80f18b4eae68
+    // https://support.microsoft.com/office/5026bbd6-04bc-48cd-bf33-80f18b4eae68
     expensesTable.columns.getItemAt(3).getRange().numberFormat = [['\u20AC#,##0.00']];
     
     expensesTable.getRange().format.autofitColumns();
