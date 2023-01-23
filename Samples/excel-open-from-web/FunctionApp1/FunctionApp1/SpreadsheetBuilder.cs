@@ -40,10 +40,9 @@ namespace FunctionApp1
             sheets.Append(sheet);
             workbookpart.Workbook.Save();
 
-            // Get the sheetData table for the worksheet and insert the table header and product data
+            // Get the sheetData table for the worksheet and insert the table header and data
             SheetData sheetData = worksheetPart.Worksheet.GetFirstChild<SheetData>();
-            InsertHeader(sheetData, tableData.rows[0]);
-            InsertData(2, 1, sheetData, tableData);
+            InsertData(1, 1, sheetData, tableData);
 
             //Embed the script lab add-in
             EmbedAddin(spreadsheetDocument);
@@ -55,27 +54,6 @@ namespace FunctionApp1
             //Convert stream to base64 and return it
             var retVal = stream.ToArray();
             return retVal;
-        }
-
-
-        /// <summary>
-        /// Inserts the header row for the product data table at A1 position
-        /// </summary>
-        /// <param name="sheetData">Reference to the sheetData section to insert the row.</param>
-        private void InsertHeader(SheetData sheetData, RowData header)
-        {
-            uint colNumber = 1;
-            uint rowNumber = 1;
-            foreach(ColumnData col in header.columns)
-            {                
-                InsertCellValue(sheetData, 1, ToCellName(rowNumber,colNumber++), col.Value, CellValues.String);
-
-            }
-            //InsertCellValue(sheetData, 1, "A1", "Product", CellValues.String);
-            //InsertCellValue(sheetData, 1, "B1", "Qtr1", CellValues.String);
-            //InsertCellValue(sheetData, 1, "C1", "Qtr2", CellValues.String);
-            //InsertCellValue(sheetData, 1, "D1", "Qtr3", CellValues.String);
-            //InsertCellValue(sheetData, 1, "E1", "Qtr4", CellValues.String);
         }
 
         /// <summary>
@@ -104,10 +82,10 @@ namespace FunctionApp1
         /// <summary>
         /// Insert the data rows into a table at specified row,col position.
         /// </summary>
-        /// <param name="row">The row index to start at</param>
-        /// <param name="col">The column index to start at</param>
+        /// <param name="rowStart">The row index to start at</param>
+        /// <param name="colStart">The column index to start at</param>
         /// <param name="sheetData">The sheetData to insert into</param>
-        /// <param name="productData">The product values to insert</param>
+        /// <param name="tableData">The table values to insert</param>
         private void InsertData(uint rowStart, uint colStart, SheetData sheetData, TableData tableData)
         {
             uint rowNumber = rowStart;
@@ -123,16 +101,7 @@ namespace FunctionApp1
                 rowNumber++;
                 colNumber = colStart;
 
-            }
-            //foreach (Product p in productData)
-            //{
-            //    InsertCellValue(sheetData, row, ToCellName(row, col), p.Name, CellValues.String);
-            //    InsertCellValue(sheetData, row, ToCellName(row, col + 1), p.Qtr1.ToString(), CellValues.Number);
-            //    InsertCellValue(sheetData, row, ToCellName(row, col + 2), p.Qtr2.ToString(), CellValues.Number);
-            //    InsertCellValue(sheetData, row, ToCellName(row, col + 3), p.Qtr3.ToString(), CellValues.Number);
-            //    InsertCellValue(sheetData, row, ToCellName(row, col + 4), p.Qtr4.ToString(), CellValues.Number);
-            //    row++;
-            //}
+            }         
         }
 
         /// <summary>
