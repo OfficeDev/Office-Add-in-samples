@@ -13,8 +13,8 @@ const openInExcelIcon = document.getElementById('openInExcelIcon');
 function showWelcomeMessage(username, accounts) {
     // Reconfiguring DOM elements
     cardDiv.style.display = 'initial';
-    signInButton.style.visibility = 'visible';
-    openInExcelIcon.style.visibility = ''
+    openInExcelIcon.style.visibility = 'visible'
+    signInButton.style.visibility = 'hidden';    
     welcomeDiv.innerHTML = `Welcome ${username}`;
     dropdownButton.setAttribute('style', 'display:inline !important; visibility:visible');
     dropdownButton.innerHTML = username;
