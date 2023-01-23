@@ -113,6 +113,9 @@ async function createChart() {
   });
 }
 
+/**
+ * This function freezes the top row of the active Excel worksheet.
+ */
 async function freezeHeader() {
   await Excel.run(async (context) => {
 

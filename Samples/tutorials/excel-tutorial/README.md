@@ -79,7 +79,7 @@ Version  | Date | Comments
 
       > NOTE: If you are developing on a Mac, enclose the {url} in single quotation marks. Do not do this on Windows.
 
-      If your add-in doesn't sideload in the document, manually sideload it by following the instructions in Manually sideload add-ins to Office on the web.
+      If your add-in doesn't sideload in the document, manually sideload it by following the instructions in [Manually sideload add-ins to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing).
 
 1. If the add-in task pane isn't already open in Excel, go to the Home tab and choose the **Show Taskpane** button in the ribbon to open it.
 
