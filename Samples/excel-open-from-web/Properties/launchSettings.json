@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "excel_open_from_web": {
-      "commandName": "Project",
-      "commandLineArgs": "--port 7083",
-      "launchBrowser": false
-    }
-  }
-}
