@@ -144,7 +144,7 @@ function openDialog() {
 }
 
 /**
- * This function writes the string provided by the dialog to the "user-name" element in the taskpane.
+ * This function writes the string provided by the dialog to the "user-name" element in the task pane.
  * @param arg The value returned from the dialog.
  */
 function processMessage(arg) {
