@@ -4,6 +4,7 @@ const signInButton = document.getElementById("SignIn");
 const dropdownButton = document.getElementById('dropdownMenuButton1');
 const cardDiv = document.getElementById("card-div");
 const mailButton = document.getElementById("readMail");
+const fileButton = document.getElementById("uploadFile");
 const profileButton = document.getElementById("seeProfile");
 const profileDiv = document.getElementById("profile-div");
 const listGroup = document.getElementById('list-group');

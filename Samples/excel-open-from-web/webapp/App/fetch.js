@@ -12,10 +12,34 @@
  * @param {Object} myMSALObj 
  * @returns 
  */
-const callGraph = async (username, scopes, uri, interactionType, myMSALObj) => {
+const callGraphFile = async (username, scopes, uri, interactionType, myMSALObj) => {
+
+}
+
+/**
+ * This method calls the Graph API by utilizing the graph client instance.
+ * @param {String} username 
+ * @param {Array} scopes 
+ * @param {String} uri 
+ * @param {String} interactionType 
+ * @param {Object} myMSALObj 
+ * @returns 
+ */
+const callGraph = async (username, scopes, uri, interactionType, myMSALObj, data) => {
     const account = myMSALObj.getAccountByUsername(username);
     try {
-        let response = await getGraphClient({
+        let response = null;
+        if (data){
+        response = await getGraphClient({
+            account: account,
+            scopes: scopes,
+            interactionType: interactionType,
+        })
+            .api(uri)
+            .responseType('raw')
+            .put(data);
+    } else {
+        response = await getGraphClient({
             account: account,
             scopes: scopes,
             interactionType: interactionType,
@@ -23,7 +47,7 @@ const callGraph = async (username, scopes, uri, interactionType, myMSALObj) => {
             .api(uri)
             .responseType('raw')
             .get();
-
+    }
         response = await handleClaimsChallenge(account, response, uri);
         if (response && response.error === 'claims_challenge_occurred') throw response.error;
         updateUI(response, uri);

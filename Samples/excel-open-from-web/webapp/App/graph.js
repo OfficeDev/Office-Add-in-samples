@@ -20,7 +20,7 @@ const getGraphClient = (providerOptions) => {
     };
 
     const graphClient = MicrosoftGraph.Client.initWithMiddleware(clientOptions);
-
+    
     return graphClient;
 };
 

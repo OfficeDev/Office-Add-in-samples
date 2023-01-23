@@ -60,7 +60,7 @@ const graphConfig = {
         uri: 'https://graph.microsoft.com/v1.0/drives/',
         scopes: ['Files.ReadWrite'],
     }
-    url = "https://graph.microsoft.com/v1.0/drives/" + json.ParentReference.DriveID + "/items/root:/" + channelName + "/" + fileName + ":/content";
+   //url = "https://graph.microsoft.com/v1.0/drives/" + json.ParentReference.DriveID + "/items/root:/" + channelName + "/" + fileName + ":/content";
 };
 
 /**

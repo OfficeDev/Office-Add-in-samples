@@ -152,9 +152,16 @@ function readContacts() {
     );
 }
 
-function uploadFile() {
+function uploadFile(folderName, fileName, data) {
+
+    const uri = "https://graph.microsoft.com/v1.0/me/drive/root:/" + folderName + "/" + fileName + ":/content";
+
     callGraph(
         username,
-        
+        graphConfig.graphFilesEndpoint.scopes,
+        uri,
+        msal.Interactiontype.Redirect,
+        myMSALObj,
+        data
     )
 }
