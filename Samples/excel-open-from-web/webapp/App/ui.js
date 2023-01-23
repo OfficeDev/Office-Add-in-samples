@@ -8,11 +8,13 @@ const fileButton = document.getElementById("uploadFile");
 const profileButton = document.getElementById("seeProfile");
 const profileDiv = document.getElementById("profile-div");
 const listGroup = document.getElementById('list-group');
+const openInExcelIcon = document.getElementById('openInExcelIcon');
 
 function showWelcomeMessage(username, accounts) {
     // Reconfiguring DOM elements
     cardDiv.style.display = 'initial';
-    signInButton.style.visibility = 'hidden';
+    signInButton.style.visibility = 'visible';
+    openInExcelIcon.style.visibility = ''
     welcomeDiv.innerHTML = `Welcome ${username}`;
     dropdownButton.setAttribute('style', 'display:inline !important; visibility:visible');
     dropdownButton.innerHTML = username;
