@@ -52,7 +52,7 @@ Version  | Date | Comments
 
 ## Run the sample
 
-1. Fork or download this repo.
+1. Fork and download this repo.
 
 1. Go to the **Samples/tutorials/excel-tutorial/My Office Add-in** folder via the command line.
 
