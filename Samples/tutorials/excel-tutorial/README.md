@@ -10,7 +10,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 01/13/2022 4:00:00 PM
+  createdDate: 01/13/2023 4:00:00 PM
 description: "A completed version of the step-by-step Excel tutorial hosted on learn.microsoft.com."
 ---
 
@@ -52,7 +52,9 @@ Version  | Date | Comments
 
 ## Run the sample
 
-1. Navigate to the root directory of the `My Office Add-in` project.
+1. Fork or download this repo.
+
+1. Go to the **Samples/tutorials/excel-tutorial/My Office Add-in** folder via the command line.
 
 1. Run `npm install`.
 
@@ -83,7 +85,7 @@ Version  | Date | Comments
 
 1. If the add-in task pane isn't already open in Excel, go to the Home tab and choose the **Show Taskpane** button in the ribbon to open it.
 
-1. Use the buttons in the taskpane and the **Toggle Worksheet Protection** button to interact with the workbook through your add-in.
+1. Use the buttons in the task pane and the **Toggle Worksheet Protection** button to interact with the workbook through your add-in.
 
 ## See also
 
