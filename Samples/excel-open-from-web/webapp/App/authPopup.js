@@ -145,65 +145,10 @@ function seeProfile() {
     );
 }
 
-function readContacts() {
-    callGraph(
-        username,
-        graphConfig.graphContactsEndpoint.scopes,
-        graphConfig.graphContactsEndpoint.uri,
-        msal.InteractionType.Popup,
-        myMSALObj
-    );
-}
-
 function openInExcel() {
-    // create test table data to pass to Azure function.
-    const tableData = {
-        rows: [
-            {
-                columns: [
-                    { value: 'ID' },
-                    { value: 'Name' },
-                    { value: 'Qtr1' },
-                    { value: 'Qtr2' },
-                    { value: 'Qtr3' },
-                    { value: 'Qtr4' },
-                ],
-            },
-            {
-                columns: [
-                    { value: '1' },
-                    { value: 'Frames' },
-                    { value: '5000' },
-                    { value: '7000' },
-                    { value: '6544' },
-                    { value: '4377' },
-                ],
-            },
-            {
-                columns: [
-                    { value: '2' },
-                    { value: 'Saddles' },
-                    { value: '400' },
-                    { value: '323' },
-                    { value: '276' },
-                    { value: '651' },
-                ],
-            },
-        ],
-    };
-
-    //    var products = new List<Product>()
-    //{ new Product {ID=1, Name="Frames", Qtr1=5000, Qtr2=7000, Qtr3=6544, Qtr4=4377},
-    //new Product {ID=2, Name="Saddles", Qtr1=400, Qtr2=323, Qtr3=276, Qtr4=651},
-    //new Product {ID=3, Name="Brake levers", Qtr1=12000, Qtr2=8766, Qtr3=8456, Qtr4=9812},
-    //new Product {ID=4, Name="Chains", Qtr1=1550, Qtr2=1088, Qtr3=692, Qtr4=853},
-    //new Product {ID=5, Name="Mirrors", Qtr1=225, Qtr2=600, Qtr3=923, Qtr4=544},
-    //new Product {ID=5, Name="Spokes", Qtr1=6005, Qtr2=7634, Qtr3=4589, Qtr4=8765}
-    //}
-    //const bodyEncoded = encodeURIComponent(JSON.stringify(tableData));
     const bodyEncoded = JSON.stringify(tableData);
-    // get spreadsheet
-    //http://localhost:7071/api/Function1
+    
+    // Use Azure function to create spreadsheet
     fetch('http://localhost:7071/api/Function1', {
         headers: {
             'Content-Type': 'application/octet-stream',

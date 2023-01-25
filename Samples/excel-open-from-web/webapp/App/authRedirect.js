@@ -142,16 +142,6 @@ function seeProfile() {
     );
 }
 
-function readContacts() {
-    callGraph(
-        username,
-        graphConfig.graphContactsEndpoint.scopes,
-        graphConfig.graphContactsEndpoint.uri,
-        msal.InteractionType.Redirect,
-        myMSALObj
-    );
-}
-
 function uploadFile(folderName, fileName, data) {
 
     const uri = "https://graph.microsoft.com/v1.0/me/drive/root:/" + folderName + "/" + fileName + ":/content";

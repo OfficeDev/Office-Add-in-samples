@@ -3,6 +3,9 @@ const welcomeDiv = document.getElementById("WelcomeMessage");
 const signInButton = document.getElementById("SignIn");
 const dropdownButton = document.getElementById('dropdownMenuButton1');
 const cardDiv = document.getElementById("card-div");
+const cardDataDiv = document.getElementById("card-div-data");
+const tableDiv = document.getElementById("tableData");
+const tableSection = document.getElementById("tableSection");
 const mailButton = document.getElementById("readMail");
 const fileButton = document.getElementById("uploadFile");
 const profileButton = document.getElementById("seeProfile");
@@ -13,9 +16,13 @@ const openInExcelIcon = document.getElementById('openInExcelIcon');
 function showWelcomeMessage(username, accounts) {
     // Reconfiguring DOM elements
     cardDiv.style.display = 'initial';
+    cardDataDiv.style.display = 'initial';
+    console.log(convertJSONtoHTMLTable(tableData));
+    tableDiv.innerHTML = convertJSONtoHTMLTable(tableData);
     openInExcelIcon.style.visibility = 'visible'
     signInButton.style.visibility = 'hidden';    
     welcomeDiv.innerHTML = `Welcome ${username}`;
+    tableSection.innerHTML = `Sales data for ${username}`;
     dropdownButton.setAttribute('style', 'display:inline !important; visibility:visible');
     dropdownButton.innerHTML = username;
     accounts.forEach(account => {
@@ -87,4 +94,24 @@ function updateUI(data, endpoint) {
             });
         }
     }
+}
+
+/**
+ * Converts table data in JSON format into HTML format for display on the web page.
+ * 
+ * @param {*} jsonData The JSON table. See tableData.js for expected format.
+ * @returns HTML version of the table.
+ */
+function convertJSONtoHTMLTable(jsonData){    
+    let htmlResult = "<table class='table' style='word-break: break-all;'>";
+
+    jsonData.rows.map(row => {
+        htmlResult += "<tr>"
+        row.columns.map(col => {
+            htmlResult += "<td>" + col.value + "</td>";
+        });
+        htmlResult += "</tr>";
+    })
+    htmlResult += "</table>";
+    return htmlResult;
 }
