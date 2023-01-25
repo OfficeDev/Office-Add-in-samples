@@ -16,10 +16,10 @@ using System.Net.Http;
 
 namespace FunctionApp1
 {
-    public static class Function1
+    public static class FunctionCreateSpreadsheet
     {
 
-        [FunctionName("Function1")]
+        [FunctionName("FunctionCreateSpreadsheet")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             ILogger log)
