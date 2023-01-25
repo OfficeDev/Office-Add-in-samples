@@ -145,8 +145,13 @@ function seeProfile() {
     );
 }
 
+let sheetWindow;
+
 function openInExcel() {
+    // Create new blank tab in response to onclick (to avoid popup blockers).
+    sheetWindow = window.open("", "_blank");
     const bodyEncoded = JSON.stringify(tableData);
+ //  window.open("https://davechuatest3-my.sharepoint.com/personal/davech_davechuatest3_onmicrosoft_com/_layouts/15/Doc.aspx?sourcedoc=%7BA3CECD75-833B-4109-B2E5-A1ED87C3A6B1%7D&file=spreadsheet.xlsx&action=default&mobileredirect=true","_blank");
     
     // Use Azure function to create spreadsheet
     fetch('http://localhost:7071/api/Function1', {
@@ -160,10 +165,11 @@ function openInExcel() {
         .then((blob) => {
             console.log(blob);
             uploadFile('openinexcel', 'spreadsheet.xlsx', blob);
+            
         });
 }
 
-function uploadFile(folderName, fileName, data) {
+async function uploadFile(folderName, fileName, data) {
     const uri =
         'https://graph.microsoft.com/v1.0/me/drive/root:/' +
         folderName +
@@ -171,7 +177,7 @@ function uploadFile(folderName, fileName, data) {
         fileName +
         ':/content';
 
-    callGraph(
+    const result = await callGraph(
         username,
         graphConfig.graphFilesEndpoint.scopes,
         uri,
@@ -179,6 +185,12 @@ function uploadFile(folderName, fileName, data) {
         myMSALObj,
         data
     );
+ //   const url = result.webUrl;
+//    const url = "https://davechuatest3-my.sharepoint.com/personal/davech_davechuatest3_onmicrosoft_com/_layouts/15/Doc.aspx?sourcedoc=%7BA3CECD75-833B-4109-B2E5-A1ED87C3A6B1%7D&file=spreadsheet.xlsx&action=default&mobileredirect=true";
+//    window.open(url, "_blank");
+
+    sheetWindow.location = result.webUrl;
+  
 }
 
 selectAccount();
