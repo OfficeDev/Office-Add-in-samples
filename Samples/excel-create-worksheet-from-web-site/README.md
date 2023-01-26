@@ -14,7 +14,6 @@ extensions:
 description: "Learn how to create a spreadsheet from your web site, populate it with data, and embed your Excel add-in."
 ---
 
-
 # Create a spreadsheet from your web site, populate it with data, and embed your Excel add-in
 
 This sample accomplishes the following tasks.
@@ -150,9 +149,8 @@ Open the project in your IDE (like Visual Studio or Visual Studio Code) to confi
 
 ### Start the Azure function project
 
-1. Open 
-
-1. Press **F5** to build and debug the project. The Contoso Web application will open in a browser.
+1. Open FunctionCreateSpreadsheet.sln in Visual Studio.
+1. Press **F5** to build and start the Azure function project. 
     ![Screenshot of Contoso web app with Products button on the ribbon](./images/contoso-web-app.png)
 1. Choose the **Products** button on the ribbon.
 1. You will be prompted to sign in. Sign in with a user name and password from your Microsoft 365 account.
@@ -170,29 +168,37 @@ Open the project in your IDE (like Visual Studio or Visual Studio Code) to confi
 When the spreadsheet opens, you will see the product data. The embedded Script Lab add-in will be available on the ribbon.
 
 ## Key parts of this sample
+
 ### Authentication
 This sample reuses code from [Quickstart: ASP.NET Core web app that signs in users and calls Microsoft Graph on their behalf](https://learn.microsoft.com/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp-calls-graph). To obtain the access token, this sample uses code from [A web app that calls web APIs: Acquire a token for the app](https://learn.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore).
+
 ### Constructing the spreadsheet
 This sample uses the [Open XML SDK](https://learn.microsoft.com/office/open-xml/open-xml-sdk) to construct the spreadsheet in memory before uploading it to OneDrive. The code that constructs the spreadsheet is in **Helpers\SpreadsheetBuilder.cs**.
 - The `InsertHeader` method inserts the header for the product data table.
 - The `InsertData` method inserts the data values for the product data table.
 - The `EmbedAddin` method embeds the script lab add-in.
 - Modify the `GenerateWebExtensionPart1Content` method to embed your add-in instead of the script lab add-in. Note that there is a *CUSTOM MODIFICATION BEGIN/END* section where you can specify and custom properties that your add-in needs to load when it starts.
-### Interacting with Microsoft Teams through the Microsoft Graph API
+
+### Upload the spreadsheet to OneDrive
+
 This sample uses the Microsoft Graph API to upload the spreadsheet to the OneDrive for Microsoft Teams, and also to create the message that links to the spreadsheet. The **ProductsController.cs** file contains the code that constructs the URL calls for Microsoft Graph. The **Helpers\GraphAPIHelper.cs** file contains code that gets the access token, makes the Microsoft Graph call, and returns the result.
+
 ### Sequence of events
 When the user chooses to open in Microsoft Teams the following sequence of events occurs.
 1. The `TeamsList` method in **ProductsController.cs** is called. `TeamsList` constructs a URL to query Microsoft Graph for all teams the user belongs to. The view is returned to the user containing the list of Teams in a dropdown box.
 1. The user chooses which Team they want to open in. The `ChannelsListForTeam` method in  **ProductsController.cs** is called. `ChannelsListForTeam` constructs a URL to query Microsoft Graph for all channels for the selected team. The view is returned to the user containing the list of channels in a dropdown box.
 1. The user chooses which channel they want to open in. The `UploadSpreadsheet` method in  **ProductsController.cs** is called. `UploadSpreadsheet` calls helper methods to construct the spreadsheet and upload it to the correct OneDrive location for the selected Team and Channel. Then it calls a helper method to create a new chat message that links to the spreadsheet. It returns a view containing a redirect URI to the new message on Teams.
 1. The `UploadToTeams` view loads and redirects to the chat message that was created.
+
 ## Modify the sample for your own web site
 To repurpose the code in this sample for your own web site, you'll want to make the following changes.
+
 ### Use your own data
 The sample creates an in memory database that contains a small array of product data. You'll need to replace this code to use the actual data from your web site.
 The data models are found in **\Models\IProductData.cs** and **\Models\Product.cs**. Replace these files with the correct models for your web site.
 The database is initialized in the `ProductsController` constructor in **\Controllers\ProductsController.cs**. Replace this code with the correct initialization code for your web site data.
 The **\Helpers\SpreadsheetBuilder.cs** file contains two methods that are bound to the product model data of this sample. See the `InsertHeader` and `InsertData` methods. You'll need to update these to construct the correct header and table rows for your data model.
+
 ### Embed your add-in
 The sample embeds the script lab add-in. You'll need to change the code to embed your own add-in.
 In the **\Helpers\SpreadsheetBuilder.cs** file, the `GenerateWebExtensionPart1Content` method sets the reference to Script Lab.
@@ -242,11 +248,11 @@ Open data from your web site in a spreadsheet in Microsoft Teams | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | August 13, 2021 | Initial release
+1.0  | January 23, 2023 | Initial release
 
 ## Copyright
 
-Copyright (c) 2021 Microsoft Corporation. All rights reserved.
+Copyright (c) 2023 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 

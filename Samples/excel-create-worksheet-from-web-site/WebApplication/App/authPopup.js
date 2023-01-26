@@ -154,7 +154,7 @@ function openInExcel() {
  //  window.open("https://davechuatest3-my.sharepoint.com/personal/davech_davechuatest3_onmicrosoft_com/_layouts/15/Doc.aspx?sourcedoc=%7BA3CECD75-833B-4109-B2E5-A1ED87C3A6B1%7D&file=spreadsheet.xlsx&action=default&mobileredirect=true","_blank");
     
     // Use Azure function to create spreadsheet
-    fetch('http://localhost:7071/api/Function1', {
+    fetch('http://localhost:7071/api/FunctionCreateSpreadsheet', {
         headers: {
             'Content-Type': 'application/octet-stream',
         },
