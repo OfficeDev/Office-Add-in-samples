@@ -110,13 +110,13 @@ If you want to run the hello world sample using the preview Teams manifest (**ma
 1. From the root folder of this sample, run the following command to install the **office-addin-debugging** package. This will also create a package.json file.
 
     ```console
-    npm install office-addin-debugging
+    npm install --global office-addin-debugging
     ```
 
 1. Run the following command to sideload the manifest.json file. This will start Outlook, sideload the hello world sample, and load the add-in resources from the GitHub repo.
 
     ```console
-    npx office-addin-debugging start manifest.json
+    office-addin-debugging start manifest.json
     ```
 
 If you want to run the add-in locally, you follow the steps at [Configure a localhost web server and run the sample from localhost](#configure-a-localhost-web-server-and-run-the-sample-from-localhost). Then rename **manifest-localhost.json** to **manifest.json** and 
