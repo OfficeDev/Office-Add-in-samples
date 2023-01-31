@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -25,8 +28,7 @@ namespace FunctionApp1
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
-            string responseMessage = "";
-            //string userName = req.Query["userName"];
+            string responseMessage = "";            
             try
             {
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
