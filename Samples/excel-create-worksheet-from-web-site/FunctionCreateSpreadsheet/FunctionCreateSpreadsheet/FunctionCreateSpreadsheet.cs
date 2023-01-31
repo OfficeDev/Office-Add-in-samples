@@ -26,7 +26,7 @@ namespace FunctionApp1
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
             string responseMessage = "";
-
+            //string userName = req.Query["userName"];
             try
             {
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();

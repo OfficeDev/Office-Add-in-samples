@@ -36,13 +36,14 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary navbarStyle">
             <a class="navbar-brand" href="/">Contoso sales</a>            
             <div class="navbar navbar-collapse justify-content-end">
-                <img src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/excel_48x1.svg"
-                id="openInExcelIcon"
-                style="visibility: hidden;"
-                onclick="openInExcel()"
-                width="48"
-                height="48" 
-                alt="Open data in new Excel spreadsheet file." />
+
+                <button type="button" id="openInExcelIcon" disabled="true" class="btn btn-primary" onclick="openInExcel()"><img src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/excel_48x1.svg"
+                    width="48"
+                    height="48" 
+                    alt="Open data in new Excel spreadsheet file." >
+                </img>Open in Microsoft Excel</button>
+            
+           
                 <button type="button" id="SignIn" class="btn btn-secondary" onclick="signIn()">Sign In</button>
                 <div class="dropdown">
                     <button

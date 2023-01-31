@@ -5,16 +5,31 @@
 
 /* global console, document, Excel, Office */
 
+let userName = null;
+
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
     document.getElementById("run").onclick = run;
+    displayUserName();
   }
 });
 
+function displayUserName() {
+  userName = Office.context.document.settings.get("userName");
+  if (userName != null) {
+    const welcomeHeader = document.getElementById("welcomeHeader");
+    welcomeHeader.innerHTML = `Welcome ${userName}!`;
+  }
+}
+
 export async function run() {
   try {
+    let color = Office.context.document.settings.get("themeColor");
+    console.log(color);
+    Office.context.document.settings.set('themeColor', 'green');
+    Office.context.document.settings.saveAsync();
     await Excel.run(async (context) => {
       /**
        * Insert your Excel code here

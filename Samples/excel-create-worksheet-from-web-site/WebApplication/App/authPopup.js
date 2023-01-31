@@ -145,21 +145,29 @@ function seeProfile() {
     );
 }
 
-let sheetWindow;
+let sheetWindow; // Used for opening a new browser tab to load the created spreadsheet.
 
+/**
+ * Calls FunctionCreateSpreadsheet in the Azure Functions project to create the spreadsheet.
+ * Calls uploadFile to then upload the new spreadsheet to OneDrive.
+ */
 function openInExcel() {
     // Create new blank tab in response to onclick (to avoid popup blockers).
     sheetWindow = window.open("", "_blank");
-    const bodyEncoded = JSON.stringify(tableData);
- //  window.open("https://davechuatest3-my.sharepoint.com/personal/davech_davechuatest3_onmicrosoft_com/_layouts/15/Doc.aspx?sourcedoc=%7BA3CECD75-833B-4109-B2E5-A1ED87C3A6B1%7D&file=spreadsheet.xlsx&action=default&mobileredirect=true","_blank");
+
+    // Get mock data.
+    const bodyJSON = JSON.stringify(tableData);
     
-    // Use Azure function to create spreadsheet
-    fetch('http://localhost:7071/api/FunctionCreateSpreadsheet', {
+    // const url = `http://localhost:7071/api/FunctionCreateSpreadsheet?userName=${username}`;
+     const url = 'http://localhost:7071/api/FunctionCreateSpreadsheet';
+    
+     // Use Azure Function to create spreadsheet
+    fetch(url, {
         headers: {
             'Content-Type': 'application/octet-stream',
         },
         method: 'POST',
-        body: bodyEncoded,
+        body: bodyJSON,
     })
         .then((response) => response.blob())
         .then((blob) => {
@@ -169,7 +177,13 @@ function openInExcel() {
         });
 }
 
-async function uploadFile(folderName, fileName, data) {
+/**
+ * Creates a new spreadsheet on Microsoft OneDrive.
+ * @param {*} folderName Name of folder off root to place the spreadsheet.
+ * @param {*} fileName Name to give the spreadsheet file.
+ * @param {*} data Base64 encoded raw data of the spreadsheet.
+ */
+async function uploadFile(folderName, fileName, data) {    
     const uri =
         'https://graph.microsoft.com/v1.0/me/drive/root:/' +
         folderName +
@@ -185,10 +199,8 @@ async function uploadFile(folderName, fileName, data) {
         myMSALObj,
         data
     );
- //   const url = result.webUrl;
-//    const url = "https://davechuatest3-my.sharepoint.com/personal/davech_davechuatest3_onmicrosoft_com/_layouts/15/Doc.aspx?sourcedoc=%7BA3CECD75-833B-4109-B2E5-A1ED87C3A6B1%7D&file=spreadsheet.xlsx&action=default&mobileredirect=true";
-//    window.open(url, "_blank");
 
+    // Update the browser tab (opened previously) to open the new spreadsheet file.
     sheetWindow.location = result.webUrl;
   
 }

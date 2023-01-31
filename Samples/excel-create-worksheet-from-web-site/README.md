@@ -10,7 +10,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 01/23/2023 1:25:00 PM
+  createdDate: 01/31/2023 1:25:00 PM
 description: "Learn how to create a spreadsheet from your web site, populate it with data, and embed your Excel add-in."
 ---
 
@@ -20,10 +20,10 @@ This sample accomplishes the following tasks.
 
 - Creates a new Excel spreadsheet from a web site.
 - Populates the spreadsheet with data from the web site.
-- Embeds an Excel add-in into the Excel spreadsheet.
+- Embeds the Script Lab add-in into the Excel spreadsheet.
 - Opens the spreadsheet on a new browser tab.
 
-![Sequence diagram showing an "Open in Microsoft Teams" button on your web site that creates a spreadsheet with your data which contains your add-in](./images/open-in-teams-diagram.png)
+![Sequence diagram showing an "Open in Microsoft Excel" button on your web site that creates a spreadsheet with your data which contains your add-in](./images/open-in-excel-overview.png)
 
 ## Applies to
 
@@ -43,7 +43,7 @@ This sample accomplishes the following tasks.
 From your shell or command line:
 
 ```console
-git clone https://github.com/Azure-Samples/ms-identity-javascript-tutorial.git
+git clone https://github.com/OfficeDev/Office-Add-in-samples.git
 ```
 
 or download and extract the repository *.zip* file.
@@ -53,7 +53,7 @@ or download and extract the repository *.zip* file.
 ### Step 2: Install project dependencies
 
 ```console
-    cd root folder
+    cd <WebApplication-folder>
     npm install
 ```
 
@@ -69,7 +69,7 @@ The **WebApp** must be registered in Azure AD. To register it, you can:
 <details>
    <summary>Expand this section if you want to use this automation:</summary>
 
-    > :warning: If you have never used **Microsoft Graph PowerShell** before, we recommend you go through the [App Creation Scripts Guide](./AppCreationScripts/AppCreationScripts.md) once to ensure that your environment is prepared correctly for this step.
+    > :warning: If you have never used **Microsoft Graph PowerShell** before, we recommend you go through the [App Creation Scripts Guide](./WebApplication/AppCreationScripts/AppCreationScripts.md) once to ensure that your environment is prepared correctly for this step.
   
     1. On Windows, run PowerShell as **Administrator** and navigate to the root of the cloned directory
     1. In PowerShell run:
@@ -129,79 +129,84 @@ To manually register the apps, as a first step you'll need to:
     1. Select the optional claim **login_hint**.
     > An opaque, reliable login hint claim. This claim is the best value to use for the login_hint OAuth parameter in all flows to get SSO.See $[optional claims](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) for more details on this optional claim.
     1. Select **Add** to save your changes.
+
 ##### Configure the client app (ms-identity-javascript-c2s1) to use your app registration
 
 Open the project in your IDE (like Visual Studio or Visual Studio Code) to configure the code.
 
 > In the steps below, "ClientID" is the same as "Application ID" or "AppId".
-1. Open the `App\authConfig.js` file.
+1. Open the `WebApplication/App/authConfig.js` file.
 1. Find the key `Enter_the_Application_Id_Here` and replace the existing value with the application ID (clientId) of `ms-identity-javascript-c2s1` app copied from the Azure portal.
 1. Find the key `Enter_the_Tenant_Id_Here` and replace the existing value with your Azure AD tenant/directory ID.
 
-### Step 4: Running the sample
-
-```console
-    cd 2-Authorization-I\1-call-graph
-    npm start
-```
-
 ## Run the sample
 
-### Start the Azure function project
+### Start the Azure Functions project
 
 1. Open FunctionCreateSpreadsheet.sln in Visual Studio.
-1. Press **F5** to build and start the Azure function project. 
-    ![Screenshot of Contoso web app with Products button on the ribbon](./images/contoso-web-app.png)
-1. Choose the **Products** button on the ribbon.
+1. Press **F5** (or choose **Debug** > **Start Debugging**) to build and start the Azure function project. The function will run locally using the Azure Functions Core Tools. You should see the following output in a new console window.
+
+![Console output after starting the Azure Functions project.](./images/azure-function-running.png)
+
+### Start the web application
+
+1. From your shell or command line go to the `WebApplication/App` folder, then run the following command:
+
+    ```console
+    npm start
+    ```
+
+1. In a browser, go to the URL `https://localhost:3000/index.html`.
+    ![Contoso web app with sign-in button.](./images/web-page-sign-in-button.png)
+1. Choose the **Sign In** button.
 1. You will be prompted to sign in. Sign in with a user name and password from your Microsoft 365 account.
+
     > Note: You may also be prompted to consent to the app permissions. You'll need to consent before the app can continue successfully.
-    The product sales page is displayed.
-    ![Screenshot of Contoso web app listing rows of data with product name, quarter 1, quarter 2, quarter 3, and quarter 4 sales numbers](./images/contoso-web-app-product-data.png)
-1. Choose **Open in Microsoft Teams** to start the process of opening the data in Microsoft Teams
-1. A page will appear titled **Select the Team**. Choose a team from the dropdown list and then choose **Submit**. This will select the team where you want to open the data.
-    ![Screenshot of Contoso web app with dropdown list of teams to select from](./images/contoso-web-app-select-team.png)
-1. A page will appear titled **Select the channel**. Choose a channel from the dropdown list and then choose **Submit**. This will select the channel where you want to open the data.
-    ![Screenshot of Contoso web app with dropdown list of channels to select from](./images/contoso-web-app-select-channel.png)
-1. The page will now redirect to Microsoft Teams. Choose if you want to open Microsoft teams in the browser, or in the app.
-1. When Microsoft Teams opens, you will see a chat message in the channel you chose containing a spreadsheet named productdata.xlsx. Choose the spreadsheet and open it.
-    ![Screenshot of chat message in Teams with link to productdata.xlsx spreadsheet](./images/teams-chat-message.png)
-When the spreadsheet opens, you will see the product data. The embedded Script Lab add-in will be available on the ribbon.
+
+    Once you sign in, the page will display a table of sales data.
+    ![Screenshot of Contoso web app listing rows of data with product name, quarter 1, quarter 2, quarter 3, and quarter 4 sales numbers](./images/web-page-product-data.png)
+1. Choose the Excel icon to open a new tab with a new spreadsheet.
+
+When the spreadsheet opens, you will see the sales data. The embedded Script Lab add-in will be available on the ribbon.
 
 ## Key parts of this sample
 
 ### Authentication
-This sample reuses code from [Quickstart: ASP.NET Core web app that signs in users and calls Microsoft Graph on their behalf](https://learn.microsoft.com/azure/active-directory/develop/quickstart-v2-aspnet-core-webapp-calls-graph). To obtain the access token, this sample uses code from [A web app that calls web APIs: Acquire a token for the app](https://learn.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore).
 
-### Constructing the spreadsheet
-This sample uses the [Open XML SDK](https://learn.microsoft.com/office/open-xml/open-xml-sdk) to construct the spreadsheet in memory before uploading it to OneDrive. The code that constructs the spreadsheet is in **Helpers\SpreadsheetBuilder.cs**.
-- The `InsertHeader` method inserts the header for the product data table.
-- The `InsertData` method inserts the data values for the product data table.
+This sample was built using the code from [Vanilla JavaScript single-page application using MSAL.js to authenticate users to call Microsoft Graph](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/2-Authorization-I/1-call-graph/README.md). Please refer to the [readme](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/2-Authorization-I/1-call-graph/README.md) for more information on how the authentication works.
+
+### Implement the Excel button
+
+The `WebApplicatoin/App/index.html` page has an `<img>` tag that displays the Excel icon. The click handler calls `openInExcel()` which is in the `WebApplication/App/authPopup.js` file. The `openInExcel` function sends the sales data from `WebApplication/App/tableData.js` in a POST request to the `FunctionCreateSpreadsheet` Azure Functions app.
+
+### Construct the spreadsheet
+
+The **FunctionCreateSpreadsheet** app uses Azure Functions to provide a function that constructs the spreadsheet. The function is triggered by an HTTP POST request. The body of the request contains JSON describing rows and columns of data to populate the spreadsheet. The function expects data in the format shown in `./WebApplication/App/tableData.js`. The function returns the raw data of the new spreadsheet as a Base64 string.
+
+The function uses the [Open XML SDK](https://learn.microsoft.com/office/open-xml/open-xml-sdk) to construct the spreadsheet in memory. The code that constructs the spreadsheet is in `FunctionCreateSpreadsheet/SpreadsheetBuilder.cs`.
+
+- The `InsertData` method inserts the data values for the sales data table.
 - The `EmbedAddin` method embeds the script lab add-in.
-- Modify the `GenerateWebExtensionPart1Content` method to embed your add-in instead of the script lab add-in. Note that there is a *CUSTOM MODIFICATION BEGIN/END* section where you can specify and custom properties that your add-in needs to load when it starts.
+- Modify the `GenerateWebExtensionPart1Content` method to embed your add-in instead of the script lab add-in. Note that there is a *CUSTOM MODIFICATION BEGIN/END* section where you can specify custom properties that your add-in needs to load when it starts.
 
 ### Upload the spreadsheet to OneDrive
 
-This sample uses the Microsoft Graph API to upload the spreadsheet to the OneDrive for Microsoft Teams, and also to create the message that links to the spreadsheet. The **ProductsController.cs** file contains the code that constructs the URL calls for Microsoft Graph. The **Helpers\GraphAPIHelper.cs** file contains code that gets the access token, makes the Microsoft Graph call, and returns the result.
-
-### Sequence of events
-When the user chooses to open in Microsoft Teams the following sequence of events occurs.
-1. The `TeamsList` method in **ProductsController.cs** is called. `TeamsList` constructs a URL to query Microsoft Graph for all teams the user belongs to. The view is returned to the user containing the list of Teams in a dropdown box.
-1. The user chooses which Team they want to open in. The `ChannelsListForTeam` method in  **ProductsController.cs** is called. `ChannelsListForTeam` constructs a URL to query Microsoft Graph for all channels for the selected team. The view is returned to the user containing the list of channels in a dropdown box.
-1. The user chooses which channel they want to open in. The `UploadSpreadsheet` method in  **ProductsController.cs** is called. `UploadSpreadsheet` calls helper methods to construct the spreadsheet and upload it to the correct OneDrive location for the selected Team and Channel. Then it calls a helper method to create a new chat message that links to the spreadsheet. It returns a view containing a redirect URI to the new message on Teams.
-1. The `UploadToTeams` view loads and redirects to the chat message that was created.
+Once the Base64 encoded string of the new spreadsheet is returned to the `openInExcel` function, it calls `uploadFile`. The `uploadFile` function uses the Microsoft Graph API to upload the spreadsheet to the OneDrive. It creates the URI `'https://graph.microsoft.com/v1.0/me/drive/root:/` for the Microsoft Graph API and adds the folder location and filename. It adds the Base64 string as the body, and calls the `callGraph` function to make the actual REST API call.
 
 ## Modify the sample for your own web site
+
 To repurpose the code in this sample for your own web site, you'll want to make the following changes.
 
 ### Use your own data
-The sample creates an in memory database that contains a small array of product data. You'll need to replace this code to use the actual data from your web site.
-The data models are found in **\Models\IProductData.cs** and **\Models\Product.cs**. Replace these files with the correct models for your web site.
-The database is initialized in the `ProductsController` constructor in **\Controllers\ProductsController.cs**. Replace this code with the correct initialization code for your web site data.
-The **\Helpers\SpreadsheetBuilder.cs** file contains two methods that are bound to the product model data of this sample. See the `InsertHeader` and `InsertData` methods. You'll need to update these to construct the correct header and table rows for your data model.
+
+The sample uses mock data described in `WebApplication/App/tableData.js`. You'll need to replace this code to use the actual data from your web site. If your data uses a different data model, you'll need to update the `FunctionCreateSpreadsheet/Product.cs` file.
+The `FunctionCreateSpreadsheet/SpreadsheetBuilder.cs` file contains an `InsertData` method that is bound to the product model data of this sample. You'll need to update it handle any changes you make to the data model.
 
 ### Embed your add-in
+
 The sample embeds the script lab add-in. You'll need to change the code to embed your own add-in.
-In the **\Helpers\SpreadsheetBuilder.cs** file, the `GenerateWebExtensionPart1Content` method sets the reference to Script Lab.
+In the **SpreadsheetBuilder.cs** file, the `GenerateWebExtensionPart1Content` method sets the reference to Script Lab.
+
 ```csharp
 We.WebExtension webExtension1 = new We.WebExtension() { Id = "{635BF0CD-42CC-4174-B8D2-6D375C9A759E}" };
 webExtension1.AddNamespaceDeclaration("we", "http://schemas.microsoft.com/office/webextensions/webextension/2010/11");
@@ -214,13 +219,10 @@ In the previous code:
 - The **Store** value is "en-US" the culture section of the store where Script Lab is.
 - The **Id** value is the Office Store's asset ID for Script Lab.
 
-If you are embedding an add-in from a file share catalog for auto-open, use the following values:
-
-- Set the **StoreType** to "FileSystem".
-- Set the **Store** value to the URL of the network share; for example, "\\\MyComputer\MySharedFolder". This must be the exact URL that appears as the share's **Trusted Catalog Address** in the Office **Trust Center**.
-- Set the **Id** value to be the app ID in the add-ins manifest.
+The `GenerateWebExtensionPart1Content` method contains commented code that shows how to set values for a centrally deployed add-in.
 
 > **Note**: For more information about alternative values for these attributes, see [Automatically open a task pane with a document](https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document).
+
 The `GeneratePartContent` method specifies the visibility of the task pane when the file opens.
 
 ```csharp
@@ -232,6 +234,7 @@ In the previous code, the `Visibility` property of the `WebExtensionTaskpane` ob
 The advantage of setting this property to `false` is that you can use the Office.js to give users the ability to turn on and off the auto-opening of the add-in. Specifically, your script sets the **Office.AutoShowTaskpaneWithDocument** document setting to `true` or `false`. However, if `WebExtensionTaskpane.Visibility` is set to `true`, there is no way for Office.js or, hence, your users to turn off the auto-opening of the add-in. Only editing the OOXML of the document can change `WebExtensionTaskpane.Visibility` to false.
 
 > **Note**: For more information about task pane visibility at the level of the Open XML that these .NET APIs represent, see [Automatically open a task pane with a document](https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document).
+
 ## Questions and feedback
 
 - Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
@@ -242,13 +245,13 @@ The advantage of setting this property to `false` is that you can use the Office
 
 Solution | Authors
 ---------|----------
-Open data from your web site in a spreadsheet in Microsoft Teams | Microsoft
+Open data from your web site in a spreadsheet | Microsoft
 
 ## Version history
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | January 23, 2023 | Initial release
+1.0  | January 31, 2023 | Initial release
 
 ## Copyright
 

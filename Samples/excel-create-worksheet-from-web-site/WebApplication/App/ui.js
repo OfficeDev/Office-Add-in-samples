@@ -19,7 +19,7 @@ function showWelcomeMessage(username, accounts) {
     cardDataDiv.style.display = 'initial';
     console.log(convertJSONtoHTMLTable(tableData));
     tableDiv.innerHTML = convertJSONtoHTMLTable(tableData);
-    openInExcelIcon.style.visibility = 'visible'
+    openInExcelIcon.disabled = false;
     signInButton.style.visibility = 'hidden';    
     welcomeDiv.innerHTML = `Welcome ${username}`;
     tableSection.innerHTML = `Sales data for ${username}`;

@@ -11,6 +11,9 @@ using We = DocumentFormat.OpenXml.Office2013.WebExtension;
 using Wetp = DocumentFormat.OpenXml.Office2013.WebExtentionPane;
 using DocumentFormat.OpenXml.Drawing.Spreadsheet;
 using DocumentFormat.OpenXml.Wordprocessing;
+using DocumentFormat.OpenXml.Office2013.WebExtension;
+using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.Office2019.Drawing.Diagram11;
 
 namespace FunctionApp1
 {
@@ -156,15 +159,43 @@ namespace FunctionApp1
             GeneratePartContent(part);
         }
 
+
+//        <we:webextension xmlns:we="http://schemas.microsoft.com/office/webextensions/webextension/2010/11" id="{e93b4955-bfc2-4db2-b1a4-2b0dd674278e}">
+//<we:reference id = "e93b4955-bfc2-4db2-b1a4-2b0dd674278e" version="1.0.0.0" store="developer" storeType="Registry"/>
+
+//<we:reference id = "e93b4955-bfc2-4db2-b1a4-2b0dd674278e" version="1.0.0.0" store="developer" storeType="uploadfiledevcatalog"/>
+//<we:alternateReferences><we:reference id = "e93b4955-bfc2-4db2-b1a4-2b0dd674278e" version="1.0.0.0" store="omex" storeType="omex"/>
+//</we:alternateReferences>
+
+//<we:alternateReferences/>
+//<we:properties>
+//<we:property name = "themeColor" value="&quot;green&quot;"/>
+//</we:properties>
+//<we:bindings/>
+//<we:snapshot xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/>
+//</we:webextension>
+
+
         // Generates content of webExtensionPart1.
         private void GenerateWebExtensionPart1Content(WebExtensionPart webExtensionPart1)
         {
             We.WebExtension webExtension1 = new We.WebExtension() { Id = "{635BF0CD-42CC-4174-B8D2-6D375C9A759E}" };
             webExtension1.AddNamespaceDeclaration("we", "http://schemas.microsoft.com/office/webextensions/webextension/2010/11");
+
             We.WebExtensionStoreReference webExtensionStoreReference1 = new We.WebExtensionStoreReference() { Id = "wa104380862", Version = "1.1.0.0", Store = "en-US", StoreType = "OMEX" };
             We.WebExtensionReferenceList webExtensionReferenceList1 = new We.WebExtensionReferenceList();
 
             We.WebExtensionPropertyBag webExtensionPropertyBag1 = new We.WebExtensionPropertyBag();
+
+            //use for central deployment
+            //< we:reference id = "e93b4955-bfc2-4db2-b1a4-2b0dd674278e" version = "1.0.0.0" store = "excatalog" storeType = "excatalog" />< we:alternateReferences >
+            //< we:reference id = "e93b4955-bfc2-4db2-b1a4-2b0dd674278e" version = "1.0.0.0" store = "omex" storeType = "omex" /></ we:alternateReferences >< we:properties >
+            //We.WebExtensionStoreReference webExtensionStoreReference1 = new We.WebExtensionStoreReference() { Id = "e93b4955-bfc2-4db2-b1a4-2b0dd674278e", Version = "1.0.0.0", Store = "excatalog", StoreType = "excatalog" };
+            //We.WebExtensionStoreReference webExtensionStoreReference2 = new We.WebExtensionStoreReference() { Id = "e93b4955-bfc2-4db2-b1a4-2b0dd674278e", Version = "1.0.0.0", Store = "omex", StoreType = "omex" };
+            //We.WebExtensionReferenceList webExtensionReferenceList1 = new We.WebExtensionReferenceList();
+            //webExtensionReferenceList1.Append(webExtensionStoreReference2);
+            
+
 
             // Add the property that makes the taskpane visible.
             We.WebExtensionProperty webExtensionProperty1 = new We.WebExtensionProperty() { Name = "Office.AutoShowTaskpaneWithDocument", Value = "true" };
@@ -172,9 +203,9 @@ namespace FunctionApp1
 
             // CUSTOM MODIFICATION BEGIN
             // Add the property that specifies the snippet to import.
-            string snippetToImportValue = string.Format("{{\"type\":\"gist\",\"id\":\"{0}\"}}", "{72189570-AE11-4207-9DEE-C8BDE4B83188}");
-            We.WebExtensionProperty webExtensionProperty2 = new We.WebExtensionProperty() { Name = "SnippetToImport", Value = snippetToImportValue };
-            webExtensionPropertyBag1.Append(webExtensionProperty2);
+            //string snippetToImportValue = string.Format("{{\"type\":\"gist\",\"id\":\"{0}\"}}", "{72189570-AE11-4207-9DEE-C8BDE4B83188}");
+            //We.WebExtensionProperty webExtensionProperty2 = new We.WebExtensionProperty() { Name = "userName", Value = userName };
+            //webExtensionPropertyBag1.Append(webExtensionProperty2);
             // CUSTOM MODIFICATION END
 
             We.WebExtensionBindingList webExtensionBindingList1 = new We.WebExtensionBindingList();
