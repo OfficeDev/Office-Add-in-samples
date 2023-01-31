@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 /**
  * This method stores the claim challenge to the localStorage in the browser to be used when acquiring a token
  * @param {String} claimsChallenge
