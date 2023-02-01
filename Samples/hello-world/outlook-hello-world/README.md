@@ -101,7 +101,7 @@ For more information see [Build your first Outlook add-in](https://learn.microso
 
 ## Run the Teams manifest version of hello world
 
-If you want to run the hello world sample using the preview Teams manifest (**manifest.json** or **manifest-localhost.json**) follow the steps below. The Teams manifest files perform the exact same function as the XML manifest files. They help Outlook get information about your add-in, and load the correct resources. For more information, see [Teams manifest for Office Add-ins (preview)](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
+If you want to run the hello world sample using the preview Teams manifest (**manifest.json** or **manifest-localhost.json**), follow the steps below. The Teams manifest files perform the exact same function as the XML manifest files. They help Outlook get information about your add-in, and load the correct resources. For more information, see [Teams manifest for Office Add-ins (preview)](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
 
 >Note: The new manifest is available for preview and is subject to change based on feedback. We encourage experienced add-in developers to experiment with it. The preview manifest should not be used in production add-ins.
 
@@ -119,9 +119,9 @@ If you want to run the hello world sample using the preview Teams manifest (**ma
     office-addin-debugging start manifest.json
     ```
 
-If you want to run the add-in locally, you follow the steps at [Configure a localhost web server and run the sample from localhost](#configure-a-localhost-web-server-and-run-the-sample-from-localhost). Then rename **manifest-localhost.json** to **manifest.json** and 
+If you want to run the add-in locally, follow the steps at [Configure a localhost web server and run the sample from localhost](#configure-a-localhost-web-server-and-run-the-sample-from-localhost). Then, rename **manifest-localhost.json** to **manifest.json** and:
 
-1. Star a local Node.js server by following the steps at [Configure a localhost web server and run the sample from localhost](#configure-a-localhost-web-server-and-run-the-sample-from-localhost).
+1. Start a local Node.js server by following the steps at [Configure a localhost web server and run the sample from localhost](#configure-a-localhost-web-server-and-run-the-sample-from-localhost).
 1. Rename **manifest-localhost.json** to **manifest.json**.
 1. Run the following command to sideload the **manifest.json** file. This will start Outlook, sideload the hello world sample, and load the add-in resources from the localhost Node.js server.
 
