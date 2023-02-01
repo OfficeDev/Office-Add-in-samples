@@ -105,6 +105,14 @@ If you want to run the hello world sample using the preview Teams manifest (**ma
 
 >Note: The new manifest is available for preview and is subject to change based on feedback. We encourage experienced add-in developers to experiment with it. The preview manifest should not be used in production add-ins.
 
+1. From your shell or command line:
+
+    ```console
+    git clone https://github.com/OfficeDev/Office-Add-in-samples.git
+    ```
+
+    or download and extract the repository *.zip* file.
+
 1. Follow the instructions at [Set up your development environment](https://learn.microsoft.com/office/dev/add-ins/overview/set-up-your-dev-environment?tabs=yeomangenerator) to ensure you have the required development environment with Node.js and Visual Studio Code.
 
 1. From the root folder of this sample, run the following command to install the **office-addin-debugging** package. This will also create a package.json file.
