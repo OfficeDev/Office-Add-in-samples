@@ -18,7 +18,7 @@ const openInExcelIcon = document.getElementById('openInExcelIcon');
 
 function showWelcomeMessage(username, accounts) {
     // Reconfiguring DOM elements
-    cardDiv.style.display = 'initial';
+    cardDiv.style.display = 'none';
     cardDataDiv.style.display = 'initial';
     console.log(convertJSONtoHTMLTable(tableData));
     tableDiv.innerHTML = convertJSONtoHTMLTable(tableData);
