@@ -56,20 +56,20 @@ Function Cleanup
     # Removes the applications
     Write-Host "Cleaning-up applications from tenant '$tenantId'"
 
-    Write-Host "Removing 'client' (contosotest-addin-data-to-excel) if needed"
+    Write-Host "Removing 'client' (contoso-addin-data-to-excel) if needed"
     try
     {
-        Get-MgApplication -Filter "DisplayName eq 'contosotest-addin-data-to-excel'" | ForEach-Object {Remove-MgApplication -ApplicationId $_.Id }
+        Get-MgApplication -Filter "DisplayName eq 'contoso-addin-data-to-excel'" | ForEach-Object {Remove-MgApplication -ApplicationId $_.Id }
     }
     catch
     {
         $message = $_
         Write-Warning $Error[0]
-        Write-Host "Unable to remove the application 'contosotest-addin-data-to-excel'. Error is $message. Try deleting manually." -ForegroundColor White -BackgroundColor Red
+        Write-Host "Unable to remove the application 'contoso-addin-data-to-excel'. Error is $message. Try deleting manually." -ForegroundColor White -BackgroundColor Red
     }
 
-    Write-Host "Making sure there are no more (contosotest-addin-data-to-excel) applications found, will remove if needed..."
-    $apps = Get-MgApplication -Filter "DisplayName eq 'contosotest-addin-data-to-excel'" | Format-List Id, DisplayName, AppId, SignInAudience, PublisherDomain
+    Write-Host "Making sure there are no more (contoso-addin-data-to-excel) applications found, will remove if needed..."
+    $apps = Get-MgApplication -Filter "DisplayName eq 'contoso-addin-data-to-excel'" | Format-List Id, DisplayName, AppId, SignInAudience, PublisherDomain
     
     if ($apps)
     {
@@ -79,19 +79,19 @@ Function Cleanup
     foreach ($app in $apps) 
     {
         Remove-MgApplication -ApplicationId $app.Id
-        Write-Host "Removed contosotest-addin-data-to-excel.."
+        Write-Host "Removed contoso-addin-data-to-excel.."
     }
 
     # also remove service principals of this app
     try
     {
-        Get-MgServicePrincipal -filter "DisplayName eq 'contosotest-addin-data-to-excel'" | ForEach-Object {Remove-MgServicePrincipal -ServicePrincipalId $_.Id -Confirm:$false}
+        Get-MgServicePrincipal -filter "DisplayName eq 'contoso-addin-data-to-excel'" | ForEach-Object {Remove-MgServicePrincipal -ServicePrincipalId $_.Id -Confirm:$false}
     }
     catch
     {
         $message = $_
         Write-Warning $Error[0]
-        Write-Host "Unable to remove ServicePrincipal 'contosotest-addin-data-to-excel'. Error is $message. Try deleting manually from Enterprise applications." -ForegroundColor White -BackgroundColor Red
+        Write-Host "Unable to remove ServicePrincipal 'contoso-addin-data-to-excel'. Error is $message. Try deleting manually from Enterprise applications." -ForegroundColor White -BackgroundColor Red
     }
 }
 

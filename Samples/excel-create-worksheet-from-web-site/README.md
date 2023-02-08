@@ -25,6 +25,8 @@ This sample accomplishes the following tasks.
 
 ![Sequence diagram showing an "Open in Microsoft Excel" button on your web site that creates a spreadsheet with your data which contains your add-in](./images/open-in-excel-overview.png)
 
+This sample implements the pattern described in [Create an Excel spreadsheet from your web page, populate it with data, and embed your Office Add-in](https://learn.microsoft.com/office/dev/add-ins/excel/pnp-open-in-excel)
+
 ## Applies to
 
 - Microsoft Excel
@@ -150,13 +152,13 @@ Open the project in your IDE (like Visual Studio or Visual Studio Code) to confi
 
 ### Start the web application
 
-1. From your shell or command line go to the `WebApplication/App` folder, then run the following command:
+1. From your shell or command line go to the `WebApplication/` folder, then run the following command:
 
     ```console
     npm start
     ```
 
-1. In a browser, go to the URL `https://localhost:3000/index.html`.
+1. In a browser, go to the URL `http://localhost:3000/index.html`.
     ![Contoso web app with sign-in button.](./images/web-page-sign-in-button.png)
 1. Choose the **Sign In** button.
 1. You will be prompted to sign in. Sign in with a user name and password from your Microsoft 365 account.
