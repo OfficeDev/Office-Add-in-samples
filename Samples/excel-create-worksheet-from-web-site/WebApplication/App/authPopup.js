@@ -158,8 +158,7 @@ function openInExcel() {
     // Get mock data.
     const bodyJSON = JSON.stringify(tableData);
     
-    // const url = `http://localhost:7071/api/FunctionCreateSpreadsheet?userName=${username}`;
-     const url = 'http://localhost:7071/api/FunctionCreateSpreadsheet';
+    const url = 'http://localhost:7071/api/FunctionCreateSpreadsheet';
     
      // Use Azure Function to create spreadsheet
     fetch(url, {

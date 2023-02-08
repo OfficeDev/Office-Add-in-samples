@@ -237,6 +237,11 @@ The advantage of setting this property to `false` is that you can use the Office
 
 > **Note**: For more information about task pane visibility at the level of the Open XML that these .NET APIs represent, see [Automatically open a task pane with a document](https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document).
 
+## Security notes
+
+- There may be security issues in packages used by this sample. Be sure to run `npm audit` to identify any security vulnerabilities.
+- In the `FunctionCreateSpreadsheet/FunctionCreateSpreadsheet/local.settings.json` file, "CORS" is set to "*". This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
+
 ## Questions and feedback
 
 - Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
