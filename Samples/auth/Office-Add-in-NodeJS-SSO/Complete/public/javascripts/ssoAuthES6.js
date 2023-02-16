@@ -18,22 +18,16 @@ if (!window.Promise) {
     window.Promise = Office.Promise;
 }
 
-Office.onReady(function (info) {
-    console.log(
-        'Office is ready: Host=' +
-            info.host +
-            ', Platform=' +
-            info.platform +
-            ', Version=' +
-            info.version
-    );
+Office.onReady(() => {
     document
         .getElementById('getFileNameListButton')
         .addEventListener('click', getFileNameList);
 });
 
 /**
- * Gets the user's OneDrive file names and writes them to the document.
+ * Handles the click event for the Get File Name List button.
+ * Requests a call to the middle-tier server /getuserfilenames that
+ * gets up to 10 file names listed in the user's OneDrive.
  */
 async function getFileNameList() {
     clearMessage(); // Clear message log on task pane each time an API runs.
@@ -117,7 +111,7 @@ async function getAccessToken(authSSO) {
             return token;
         } catch (error) {
             console.log(error.message);
-            return handleGetAccessTokenError(error);
+            return handleSSOErrors(error);
         }
     } else {
         // Get access token through MSAL fallback.
@@ -127,19 +121,22 @@ async function getAccessToken(authSSO) {
         } catch (error) {
             console.log(error);
             throw new Error(
-                'Cannot get access token. Both SSO and fallback auth failed. ' + error
+                'Cannot get access token. Both SSO and fallback auth failed. ' +
+                    error
             );
         }
     }
 }
 
 /**
- * Handle Office errors returned by getAccessToken. You can find an explanation of the error codes
- * in the comments in this function.
+* Handles any error returned from getAccessToken. The numbered errors are typically user actions
+ * that don't require fallback auth. The text shown for each error indicates next steps
+ * you should take. For default (all other errors), the sample returns true
+ * so that the caller is informed to use fallback auth.
  * @param {*} error The error returned by Office.auth.getAccessToken.
- * @returns access token when falling back to MSAL auth.
+ * @returns access token when falling back to MSAL auth; otherwise, null.
  */
-async function handleGetAccessTokenError(error) {
+async function handleSSOErrors(error) {
     switch (error.code) {
         case 13001:
             // No one is signed into Office. If the add-in cannot be effectively used when no one
@@ -182,5 +179,5 @@ async function handleGetAccessTokenError(error) {
             authSSO = false;
             return getAccessToken(false);
     }
-    return null; // Return null for any case
+    return null; // Return null for errors that show a message to the user.
 }
