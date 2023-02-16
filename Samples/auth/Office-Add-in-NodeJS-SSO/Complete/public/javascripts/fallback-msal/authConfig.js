@@ -27,8 +27,8 @@ const loginRequest = {
     auth: {
       clientId: clientId, // This is the ONLY mandatory field that you need to supply.
       authority: "https://login.microsoftonline.com/common", // Defaults to "https://login.microsoftonline.com/common"
-      redirectUri: "https://localhost:44355/dialog.html", // You must register this URI on Azure Portal/App Registration. Defaults to window.location.href
-      //postLogoutRedirectUri: "https://localhost:44355/signout", // Simply remove this line if you would like navigate to index page after logout.
+      redirectUri: "https://localhost:3000/dialog.html", // You must register this URI on Azure Portal/App Registration. Defaults to window.location.href
+      //postLogoutRedirectUri: "https://localhost:3000/signout", // Simply remove this line if you would like navigate to index page after logout.
       navigateToLoginRequestUrl: false, // If "true", will navigate back to the original request location before processing the auth code response.
       response_type: "access_token"
     },
