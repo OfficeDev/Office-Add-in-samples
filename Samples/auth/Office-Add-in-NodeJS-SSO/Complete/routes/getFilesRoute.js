@@ -21,10 +21,10 @@ router.get(
       // The Scope claim tells you what permissions the client application has in the service.
       // In this case we look for a scope value of access_as_user, or full access to the service as the user.
       const tokenScopes = jwt.decode(oboRequest.oboAssertion).scp.split(" ");
-      const accessAsUserScope = tokenScopes.find(
+      let accessAsUserScope = tokenScopes.find(
         (scope) => scope === "access_as_user"
       );
-      if (!accessAsUserScope) {
+      if (accessAsUserScope !== 'access_as_user' ) {
         res.status(401).send({ type: "Missing access_as_user" });
         return;
       }
@@ -73,10 +73,10 @@ router.get(
       // but expires by the time it is used in the OBO flow. Microsoft identity platform will respond
       // with "The provided value for the 'assertion' is not valid. The assertion has expired."
       // Construct an error message to return to the client so it can refresh the SSO token.
-      if (err.errorMessage.indexOf("AADSTS500133") !== -1) {
-        res.status(401).send({ type: "TokenExpiredError", errorDetails: err });
+      if ((err.errorMessage !== undefined) && err.errorMessage.indexOf("AADSTS500133") !== -1) {
+        res.status(401).send({ type: "TokenExpiredError", errorDetails: JSON.stringify(err) });
       } else {
-        res.status(403).send({ type: "Unknown", errorDetails: err });
+        res.status(403).send({ type: "Unknown", errorDetails: JSON.stringify(err) });
       }
     }
   }
