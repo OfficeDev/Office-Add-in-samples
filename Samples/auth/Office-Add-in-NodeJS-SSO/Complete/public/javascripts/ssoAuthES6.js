@@ -33,7 +33,7 @@ async function getFileNameList() {
     clearMessage(); // Clear message log on task pane each time an API runs.
 
     try {
-        const jsonResponse = await callServerAPI('GET', '/getuserfilenames');
+        const jsonResponse = await callWebServerAPI('GET', '/getuserfilenames');
         if (jsonResponse === null) {
             return; // When null is returned a message was already shown to the user prompting to try again with additional information.
         }
@@ -52,7 +52,7 @@ async function getFileNameList() {
  * @param {*} retryRequest Indicates if this is a retry of the call.
  * @returns The response JSON from the server API.
  */
-async function callServerAPI(method, path, retryRequest = false) {
+async function callWebServerAPI(method, path, retryRequest = false) {
     const accessToken = await getAccessToken(authSSO);
     if (accessToken === null) {
         return null;
@@ -78,11 +78,11 @@ async function callServerAPI(method, path, retryRequest = false) {
         jsonBody.type === 'TokenExpiredError'
     ) {
         if (!retryRequest) {
-            return callServerAPI(method, path, true); // Try the call again. The underlying call to Office JS getAccessToken will refresh the token.
+            return callWebServerAPI(method, path, true); // Try the call again. The underlying call to Office JS getAccessToken will refresh the token.
         } else {
             // Indicates a second call to retry and refresh the token failed.
             authSSO = false;
-            return callServerAPI(method, path, true); // Try the call again, but now using MSAL fallback auth.
+            return callWebServerAPI(method, path, true); // Try the call again, but now using MSAL fallback auth.
         }
     }
 

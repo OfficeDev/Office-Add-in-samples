@@ -54,16 +54,16 @@ async function getAccessTokenMSAL() {
                                 // For more dialog codes, see https://learn.microsoft.com/office/dev/add-ins/develop/dialog-handle-errors-events#errors-and-events-in-the-dialog-box
                                 switch (arg.error) {
                                     case 12002:
-                                        reject("The auth dialog box has been directed to a page that it cannot find or load, or the URL syntax is invalid.");
+                                        reject('The auth dialog box has been directed to a page that it cannot find or load, or the URL syntax is invalid.');
                                         break;
                                     case 12003:
-                                        reject("The auth dialog box has been directed to a URL with the HTTP protocol. HTTPS is required.");          
+                                        reject('The auth dialog box has been directed to a URL with the HTTP protocol. HTTPS is required.');
                                         break;
                                     case 12006:
-                                        reject("The auth dialog box was closed before the user signed in.");
+                                        reject('The auth dialog box was closed before the user signed in.');
                                         break;
                                     default:
-                                        reject("Unknown error in auth dialog box.");
+                                        reject('Unknown error in auth dialog box.');
                                         break;
                                 }
                             }

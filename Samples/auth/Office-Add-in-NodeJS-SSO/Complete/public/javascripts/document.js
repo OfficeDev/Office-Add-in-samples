@@ -8,17 +8,17 @@
 function writeFileNamesToOfficeDocument(result) {
   try {
     switch (Office.context.host) {
-      case "Excel":
+      case 'Excel':
         return writeFileNamesToWorksheet(result);
-      case "Word":
+      case 'Word':
         return writeFileNamesToDocument(result);
-      case "PowerPoint":
+      case 'PowerPoint':
         return writeFileNamesToPresentation(result);
       default:
-        throw "Unsupported Office host application: This add-in only runs on Excel, PowerPoint, or Word.";
+        throw 'Unsupported Office host application: This add-in only runs on Excel, PowerPoint, or Word.';
     }
   } catch (error) {
-    throw Error("Unable to add filenames to document. " + error.toString());
+    throw Error('Unable to add filenames to document. ' + error.toString());
   }
 }
 
@@ -34,7 +34,7 @@ async function writeFileNamesToWorksheet(result) {
       filenames.push(innerArray);
     }
 
-    var rangeAddress = "B5:B" + (5 + (result.length - 1)).toString();
+    var rangeAddress = 'B5:B' + (5 + (result.length - 1)).toString();
     var range = sheet.getRange(rangeAddress);
     range.values = filenames;
     range.format.autofitColumns();
@@ -47,7 +47,7 @@ async function writeFileNamesToDocument(result) {
   return Word.run(function (context) {
     var documentBody = context.document.body;
     for (var i = 0; i < result.length; i++) {
-      documentBody.insertParagraph(result[i], "End");
+      documentBody.insertParagraph(result[i], 'End');
     }
 
     return context.sync();
@@ -55,9 +55,9 @@ async function writeFileNamesToDocument(result) {
 }
 
 async function writeFileNamesToPresentation(result) {
-  var fileNames = "";
+  var fileNames = '';
   for (var i = 0; i < result.length; i++) {
-    fileNames += result[i] + "\n";
+    fileNames += result[i] + '\n';
   }
 
   Office.context.document.setSelectedDataAsync(
