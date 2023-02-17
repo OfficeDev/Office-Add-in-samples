@@ -12,7 +12,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var getCalendarFeeBusyRoute = require('./routes/getCalendarFreeBusy');
+var getUserProfile = require('./routes/getUserProfile');
 
 var app = express();
 
@@ -50,7 +50,7 @@ if (process.env.NODE_ENV !== 'production') {
   });;
 }
 
-app.get('/getCalendarFreeBusy', getCalendarFeeBusyRoute);
+app.get('/getUserProfile', getUserProfileRoute);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
