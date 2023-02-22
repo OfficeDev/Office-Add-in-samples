@@ -12,119 +12,107 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 05/05/2022 10:00:00 AM
-description: "Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent."
+  createdDate: 02/21/2023 10:00:00 AM
+description: "Use SSO with event-based activation in an Outlook add-in."
 ---
 
-# Use Outlook Smart Alerts
+# Use SSO with event-based activation in an Outlook add-in
 
-**Applies to**: Outlook on Windows | [new Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439)
+**Applies to**: Outlook on Windows | Outlook on the web | [new Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439)
 
 ## Summary
 
-This sample uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent.
+The sample shows how to use SSO to access a user's Microsoft Graph data from an event fired in an Outlook add-in. The sample illustrates the following concepts:
 
-For documentation related to this sample, see the following articles.
+- [Get a user access token using SSO](https://learn.microsoft.com/outlook/add-ins/authenticate-a-user-with-an-sso-token) when the [OnNewMessageCompose event](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch) fires.
+- Implement a server REST API that uses the [Microsoft identity platform and OAuth 2.0 On-Behalf-Of flow](https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) to exchange the user's access token for a new access token with permissions to the users profile on Microsoft Graph.
+- Use the [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/onedrive) to get user profile data such as display name and job title.
+- Construct a signature in the mail item containing the user profile data.
 
-- [Use Smart Alerts and the OnMessageSend event in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough)
-- [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch)
+## Register the add-in with Microsoft identity platform
 
-## Features
+Use the following values for the subsequent app registration steps.
 
-Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent.
+| Placeholder or section | Value          |
+|------------------------|----------------|
+| `<add-in-name>`          | `outlook-event-sso-sample` |
+| `<fully-qualified-domain-name>` | `localhost:3000` |
+| Microsoft Graph permissions | profile, openid, user.read |
 
+Follow the steps in [Register an Office Add-in that uses single sign-on (SSO) with the Microsoft identity platform](https://learn.microsoft.com/office/dev/add-ins/develop/register-sso-add-in-aad-v2).
 
-## Applies to
+> Note: The instructions have you create a redirect URI for a single-page application. This step isn't necessary for this sample because it doesn't use a fallback authentication approach if SSO fails.
 
-- Outlook on Windows starting in Version 2206 (Build 15330.20196)
-- [New Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439) starting in Version 16.65.827.0
+## Configure the Sample
 
-> **Note**: Although the Smart Alerts feature is supported in Outlook on the web, Windows, and new Mac UI (see the "Supported clients and platforms" section of [Use Smart Alerts and the onMessageSend and OnAppointmentSend events in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough#supported-clients-and-platforms)), this sample only runs in Outlook on Windows and Mac.
->
-> As the Office.Categories API can't be used in Compose mode in Outlook on the web, this sample isn't supported on that client. To learn how to develop a Smart Alerts add-in for Outlook on the web, see the [Smart Alerts walkthrough](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough).
+Before you run the sample, you'll need to do a few things to make it work properly.
 
-## Prerequisites
+- In Visual Studio Code (or editor of your choice) , open the root folder for this sample.
 
-- A Microsoft 365 subscription. If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://aka.ms/m365/devprogram#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
+### Update manifest.xml
 
-## Solution
+1. Open the **manifest.xml** file.
+1. Find the `<WebApplicationInfo>` section near the bottom of the manifest. Then replace the `Enter_client_ID_here` value, in both places where it appears, with the application ID you generated as part of the app registration process.
 
-| Solution | Authors |
-| -------- | --------- |
-| Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent. | Microsoft |
+>Note: Make sure that the port number in the `Resource` element matches the port used by your project. It should also match the port you used when registering the application.
 
-## Version history
+### Update .ENV
 
-| Version | Date | Comments |
-| ------- | ----- | -------- |
-| 1.0 | 02-17-2023 | Initial release |
+1. Open the **.ENV** file.
+1. Replace the `Enter_client_ID_here` placeholder value with the application ID you generated as part of the app registration process.
+1. Replace the `Enter_client_secret_here` placeholder value with the client secret you generated as part of the app registration process.
 
-## Run the sample
+## Provide user consent to the app
 
-Run this sample in Outlook on Windows or Mac. The add-in's web files are served from this repository on GitHub.
+If you want to try the add-in using a different tenant than the one where you registered the app, you need to do this step.
 
-1. Download the **manifest.xml** file from this sample to a folder on your computer.
+You have two choices for providing consent:
 
-1. Sideload the add-in manifest in Outlook on Windows or Mac by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+- All users. Use an administrator account and consent once for all users in your Office 365 tenant
+- Single user. Use any account to consent for just that user
 
-### Try it out
+### Provide admin consent for all users
 
+If you have access to a tenant administrator account, this method allows you to provide consent for all users in your organization, which can be convenient if you have multiple developers that need to develop and test your add-in.
 
+1. Browse to `https://login.microsoftonline.com/common/adminconsent?client_id={application_ID}&state=12345`, where `{application_ID}` is the application ID shown in your app registration.
+1. Sign in with your administrator account.
+1. Review the permissions and click **Accept**.
 
+The browser will attempt to redirect back to your app, which may not be running. You might see a "this site cannot be reached" error after clicking **Accept**. This is OK, the consent was still recorded.
 
-## Run the sample from localhost
+### Provide consent for a single user
 
-If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
+If you don't have access to a tenant administrator account, or you just want to limit consent to a few users, this method allows you to provide consent for a single user.
 
-1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+1. Browse to `https://login.microsoftonline.com/common/oauth2/authorize?client_id={application_ID}&state=12345&response_type=code`, where `{application_ID}` is the application ID shown in your app registration.
+1. Sign in with your account.
+1. Review the permissions and click **Accept**.
 
-1. You need http-server to run the local web server. If you haven't installed this yet, you can do this with the following command.
+The browser will attempt to redirect back to your app, which may not be running. You might see a "this site cannot be reached" error after clicking **Accept**. This is OK, the consent was still recorded.
 
-    ```console
-    npm install --global http-server
-    ```
+## Run the Sample
 
-1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet, you can do this with the following command.
+1. Open a terminal window and run the command `npm install` to install all package dependencies.
+1. Run the command `npm start` to start the web server.
+1. You need to sideload the add-in into Outlook to test it. Follow the instructions at [Sideload an Office Add-in for Testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing) to sideload the sample.
+1. Compose a new email. The email will display a notification that it will append a signature.
+1. Send the email to yourself. Check when it arrives that the signature is appended.
 
-    ```console
-    npm install --global office-addin-dev-certs
-    ```
+## SSO and fallback
 
-1. Clone or download this sample to a folder on your computer, then go to that folder in a console or terminal window.
+It's recommended to always have a fallback authentication approach if SSO fails for any reason. However, fallback authentication requires a popup dialog for the user to sign in. It's not possible to open a dialog from an event in Outlook so this sample doesn't use fallback authentication. If an error occurs, the sample displays the error as a notification on the message, and the signature is not appended.
 
-1. Run the following command to generate a self-signed certificate to use for the web server.
+## Questions and feedback
 
-   ```console
-    npx office-addin-dev-certs install
-    ```
-
-    This command will display the folder location where it generated the certificate files.
-
-1. Go to the folder location where the certificate files were generated, then copy the **localhost.crt** and **localhost.key** files to the cloned or downloaded sample folder.
-
-1. Run the following command.
-
-    ```console
-    http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
-    ```
-
-    The http-server will run and host the current folder's files on localhost:3000.
-
-1. Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the sample folder. Using this file, follow the steps in [Run the sample](#run-the-sample) to sideload and run the add-in.
-
-## Key parts of the sample
-
-
-## Known issues
-
-- In the Windows client, imports are not supported in the JavaScript file where you implement event-based activation handling.
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Copyright
 
 Copyright (c) 2023 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
----
 
 <img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/outlook-add-in-sso-event-based-activation" />
