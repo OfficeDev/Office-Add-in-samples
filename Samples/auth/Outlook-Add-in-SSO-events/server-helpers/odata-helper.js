@@ -14,19 +14,15 @@ const getData = function(accessToken,
     // If any part of queryParamsSegment comes from user input,
     // be sure that it is sanitized so that it cannot be used in
     // a Response header injection attack.
-    queryParamsSegment,
-    sendBody) {
-
-    let textBody = JSON.stringify(sendBody);
+    queryParamsSegment) {
 
     return new Promise((resolve, reject) => {
         var options = {
             host: domain,
             path: apiVersion + apiURLsegment + queryParamsSegment,
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Content-Length': textBody.length,
                 Accept: 'application/json',
                 Authorization: 'Bearer ' + accessToken,
                 'Cache-Control': 'private, no-cache, no-store, must-revalidate',
@@ -69,7 +65,6 @@ const getData = function(accessToken,
             });
         })
         .on('error',  reject);
-        req.write(textBody);
         req.end();
     });
 }

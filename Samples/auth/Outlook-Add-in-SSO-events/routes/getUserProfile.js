@@ -15,7 +15,7 @@ router.get(
       const authHeader = req.headers.authorization;
       let oboRequest = {
         "oboAssertion": authHeader.split(' ')[1],
-        "scopes": ["calendars.read"],
+        "scopes": ["user.read"],
       };      
 
       // The Scope claim tells you what permissions the client application has in the service.
@@ -40,8 +40,7 @@ router.get(
       const graphData = await getGraphData(
         response.accessToken,
         rootUrl,
-        params,
-        sendBody
+        params
       );
 
       // If Microsoft Graph returns an error, such as invalid or expired token,

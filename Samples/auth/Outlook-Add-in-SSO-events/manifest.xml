@@ -137,8 +137,7 @@
         <Resource>api://localhost:3000/Enter_client_ID_here</Resource>
         <Scopes>
           <Scope>openid</Scope>
-          <Scope>user.read</Scope>
-          <Scope>calendars.read</Scope>
+          <Scope>user.read</Scope>          
           <Scope>profile</Scope>
         </Scopes>
       </WebApplicationInfo>

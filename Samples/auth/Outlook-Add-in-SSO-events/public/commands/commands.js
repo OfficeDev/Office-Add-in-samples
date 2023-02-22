@@ -41,13 +41,6 @@ async function getUserProfile() {
             accessToken
         );
 
-        // AAD errors are returned to the client with HTTP code 200, so they do not trigger
-        // the catch block.
-        if (response.error) {
-            handleAADErrors(response, callback);
-            return;
-        }
-
         // Create signature from user profile.
         const signature = `${jsonReponse.displayName} \n ${jsonReponse.mail} \n ${jsonReponse.jobTitle} \n ${jsonReponse.mobilePhone}`;
         await appendTextOnSend(signature);
@@ -57,7 +50,7 @@ async function getUserProfile() {
             handleClientSideErrors(exception);
             return;
         } else {
-            showMessage('EXCEPTION: ' + JSON.stringify(exception));
+            showMessage(exception.message);
             return;
         }
     }
@@ -74,7 +67,7 @@ async function callWebServerAPI(method, url, retryRequest = false) {
     // Get the access token from Office host using SSO.
     // Note that Office.auth.getAccessToken modifies the options parameter. Create a copy of the object
     // to avoid modifying the original object.
-    const options = JSON.parse(JSON.stringify(ssoOptions));
+    const options = JSON.parse(JSON.stringify(defaultSSO));
     const accessToken = await Office.auth.getAccessToken(options);
 
     const response = await fetch(url, {
@@ -106,9 +99,7 @@ async function callWebServerAPI(method, url, retryRequest = false) {
     }
 
     // Handle other errors.
-    throw new Error(
-        'Unknown error from web server: ' + JSON.stringify(jsonBody)
-    );
+    throw new Error(JSON.stringify(jsonBody));
 }
 
 /**
@@ -164,10 +155,11 @@ function handleSSOErrors(err) {
  * Creates information bar to display a message to the user.
  */
 function showMessage(text) {
+    console.log(text);
     const id = 'dac64749-cb7308b6d444';
     const details = {
         type: Office.MailboxEnums.ItemNotificationMessageType.ErrorMessage,
-        message: text,
+        message: text.substring(0,150),
     };
     Office.context.mailbox.item.notificationMessages.addAsync(id, details);
 }

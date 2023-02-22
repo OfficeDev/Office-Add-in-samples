@@ -16,7 +16,7 @@ const versionURLsegment = '/v1.0';
  * @param {*} queryParamsSegment An optional oData query, e.g., '?$select=name&$top=10'
  * @returns
  */
-async function getGraphData(accessToken, apiURLsegment, queryParamsSegment, sendBody) {
+async function getGraphData(accessToken, apiURLsegment, queryParamsSegment) {
   // HTML encode the parameters to prevent JavaScript injection attack
   //  apiURLsegment = encodeURIComponent(apiURLsegment);
   //  queryParamsSegment = encodeURIComponent(queryParamsSegment);
@@ -28,8 +28,7 @@ async function getGraphData(accessToken, apiURLsegment, queryParamsSegment, send
         domain,
         apiURLsegment,
         versionURLsegment,
-        queryParamsSegment,
-        sendBody
+        queryParamsSegment
       );
       resolve(oData);
     } catch (error) {

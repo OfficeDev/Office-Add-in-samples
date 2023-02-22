@@ -12,7 +12,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var getUserProfile = require('./routes/getUserProfile');
+var getUserProfileRoute = require('./routes/getUserProfile');
 
 var app = express();
 
