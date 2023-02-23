@@ -35,15 +35,15 @@ These samples are built on Node.JS, Express, and Microsoft Authentication Librar
 
 Integrating data from online service providers increases the value and adoption of your add-ins. This code sample shows you how to connect your add-in to Microsoft Graph. Use this code sample to:
 
-* Build an add-in using Node.js, Express, msal.js, and Office.js
-* Connect to Microsoft Graph from an Office Add-in
-* Use the OneDrive REST APIs from Microsoft Graph
-* Use the Express routes and middleware to implement the OAuth 2.0 authorization framework in an add-in
-* See how to use the Single Sign-on (SSO) API
-* See how an add-in can fall back to an interactive sign-in in scenarios where SSO is not available
-* Use the msal.js library to implement a fallback authentication/authorization system that is invoked when Office SSO is not available
-* Show a dialog using the Office UI namespace when Office SSO is not available
-* Use add-in commands in an add-in
+- Build an add-in using Node.js, Express, msal.js, and Office.js
+- Connect to Microsoft Graph from an Office Add-in
+- Use the OneDrive REST APIs from Microsoft Graph
+- Use the Express routes and middleware to implement the OAuth 2.0 authorization framework in an add-in
+- See how to use the Single Sign-on (SSO) API
+- See how an add-in can fall back to an interactive sign-in in scenarios where SSO is not available
+- Use the msal.js library to implement a fallback authentication/authorization system that is invoked when Office SSO is not available
+- Show a dialog using the Office UI namespace when Office SSO is not available
+- Use add-in commands in an add-in
 
 ## Applies to
 
@@ -55,10 +55,10 @@ Integrating data from online service providers increases the value and adoption 
 
 To run this code sample, the following are required:
 
-* A code editor. We recommend Visual Studio Code which was used to create the sample.
-* A Microsoft 365 account. To get one, join the [Microsoft 365 Developer Program](https://aka.ms/devprogramsignup). This includes a free 1 year subscription to Microsoft 365. During the preview phase, the SSO requires Microsoft 365 (which includes the subscription version of Office).
-* At least a few files and folders stored on OneDrive for Business in your Microsoft 365 subscription.
-* A Microsoft Azure Tenant. This add-in requires Azure Active Directory (AD). Azure AD provides identity services that applications use for authentication and authorization. A trial subscription can be acquired here: [Microsoft Azure](https://account.windowsazure.com/SignUp).
+- A code editor. We recommend Visual Studio Code which was used to create the sample.
+- A Microsoft 365 account. To get one, join the [Microsoft 365 Developer Program](https://aka.ms/devprogramsignup). This includes a free 1 year subscription to Microsoft 365. During the preview phase, the SSO requires Microsoft 365 (which includes the subscription version of Office).
+- At least a few files and folders stored on OneDrive for Business in your Microsoft 365 subscription.
+- A Microsoft Azure Tenant. This add-in requires Azure Active Directory (AD). Azure AD provides identity services that applications use for authentication and authorization. A trial subscription can be acquired here: [Microsoft Azure](https://account.windowsazure.com/SignUp).
 
 ## Solution
 
@@ -77,12 +77,7 @@ Version  | Date | Comments
 2.0 | October 26, 2019 | Changed to use new API and added Display Dialog API fallback.
 2.1 | August 11, 2020 | Removed preview note because the API has released.
 2.2 | July 7, 2022 | Fixed middle-tier token handling and MSAL fallback approach to be consistent with Microsoft identity platform guidance.
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
-----------
+2.3 | February 16, 2023 | Refactored code to simplify.
 
 ## Security note
 
@@ -95,7 +90,9 @@ These samples send a hardcoded query parameter on the URL for the Microsoft Grap
 - For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Join the Microsoft 365 Developer Program
+
 Get a free sandbox, tools, and other resources you need to build solutions for the Microsoft 365 platform.
+
 - [Free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) Get a free, renewable 90-day Microsoft 365 E5 developer subscription.
 - [Sample data packs](https://developer.microsoft.com/microsoft-365/dev-program#Sample) Automatically configure your sandbox by installing user data and content to help you build your solutions.
 - [Access to experts](https://developer.microsoft.com/microsoft-365/dev-program#Experts) Access community events to learn from Microsoft 365 experts.
@@ -103,8 +100,8 @@ Get a free sandbox, tools, and other resources you need to build solutions for t
 
 ## Additional resources
 
-* [Microsoft Graph documentation](https://learn.microsoft.com/graph/)
-* [Office Add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
+- [Microsoft Graph documentation](https://learn.microsoft.com/graph/)
+- [Office Add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Copyright
 
