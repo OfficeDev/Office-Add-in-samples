@@ -34,7 +34,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "morgan": "^1.10.0",
-    "office-addin-debugging": "^4.6.7"
+    "office-addin-debugging": "^5.0.2"
   },
   "devDependencies": {
     "jest": "^27.0.6",
