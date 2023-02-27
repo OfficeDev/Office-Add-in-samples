@@ -43,7 +43,7 @@
     "html-loader": "^4.1.0",
     "html-webpack-plugin": "^5.5.0",
     "office-addin-cli": "^1.5.3",
-    "office-addin-debugging": "^4.6.3",
+    "office-addin-debugging": "^5.0.2",
     "office-addin-dev-certs": "^1.9.3",
     "office-addin-lint": "^2.2.3",
     "office-addin-manifest": "^1.10.4",
