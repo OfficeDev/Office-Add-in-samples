@@ -12,7 +12,7 @@ const getData = function(accessToken,
     apiURLsegment, 
     apiVersion, 
     // If any part of queryParamsSegment comes from user input,
-    // be sure that it is sanitized so that it cannot be used in
+    // be sure that it's sanitized so that it can't be used in
     // a Response header injection attack.
     queryParamsSegment) {
 
@@ -39,10 +39,10 @@ const getData = function(accessToken,
             response.on('end', function () {
 
                 // The response from the OData endpoint might be an error, say a
-                // 401 if the endpoint requires an access token and it was invalid
-                // or expired. But a message is not an error in the call of https.get,
+                // 401, if the endpoint requires an access token and it was invalid
+                // or expired. However, a message isn't an error in the call of https.get,
                 // so the "on('error', reject)" line below isn't triggered. 
-                // So, the code distinguishes success (200) messages from error 
+                // The code distinguishes success (200) messages from error 
                 // messages and sends a JSON object to the caller with either the
                 // requested OData or error information.
 
@@ -56,7 +56,7 @@ const getData = function(accessToken,
                     error.message = response.statusMessage;
                     
                     // The error body sometimes includes an empty space
-                    // before the first character, remove it or it causes an error.
+                    // before the first character. Remove it to avoid causing an error.
                     body = body.trim();
                     error.bodyCode = JSON.parse(body).error.code;
                     error.bodyMessage = JSON.parse(body).error.message;

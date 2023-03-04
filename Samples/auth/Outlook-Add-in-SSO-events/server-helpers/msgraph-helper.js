@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-// This file provides the provides functionality to get Microsoft Graph data. 
+// This file provides the functionality to get Microsoft Graph data. 
 
 const getData = require('./odata-helper');
 
@@ -17,7 +17,7 @@ const versionURLsegment = '/v1.0';
  * @returns
  */
 async function getGraphData(accessToken, apiURLsegment, queryParamsSegment) {
-  // HTML encode the parameters to prevent JavaScript injection attack
+  // HTML encodes the parameters to prevent a JavaScript injection attack.
   //  apiURLsegment = encodeURIComponent(apiURLsegment);
   //  queryParamsSegment = encodeURIComponent(queryParamsSegment);
 

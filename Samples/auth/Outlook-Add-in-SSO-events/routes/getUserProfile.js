@@ -19,7 +19,7 @@ router.get(
       };      
 
       // The Scope claim tells you what permissions the client application has in the service.
-      // In this case we look for a scope value of access_as_user, or full access to the service as the user.
+      // In this case, we look for a scope value of access_as_user, or full access to the service as the user.
       const tokenScopes = jwt.decode(oboRequest.oboAssertion).scp.split(' ');
       const accessAsUserScope = tokenScopes.find(
         (scope) => scope === 'access_as_user'
@@ -33,8 +33,8 @@ router.get(
       const rootUrl = '/me';
       
       // Note that the last parameter, for queryParamsSegment, is hardcoded. If you reuse this code in
-      // a production add-in and any part of queryParamsSegment comes from user input, be sure that it is
-      // sanitized so that it cannot be used in a Response header injection attack.
+      // a production add-in and any part of queryParamsSegment comes from user input, be sure that it's
+      // sanitized so that it can't be used in a Response header injection attack.
       const params = '';
 
       const graphData = await getGraphData(
@@ -45,7 +45,7 @@ router.get(
 
       // If Microsoft Graph returns an error, such as invalid or expired token,
       // there will be a code property in the returned object set to a HTTP status (e.g. 401).
-      // Return it to the client. On client side it will get handled in the fail callback of `makeWebServerApiCall`.
+      // Return it to the client. On the client side, it will get handled in the fail callback of `makeWebServerApiCall`.
       if (graphData.code) {
         res
           .status(403)
@@ -67,8 +67,8 @@ router.get(
         res.status(200).send(JSON.stringify(returnJson));
       }
     } catch (err) {
-      // On rare occasions the SSO access token is unexpired when Office validates it,
-      // but expires by the time it is used in the OBO flow. Microsoft identity platform will respond
+      // On rare occasions, the SSO access token is unexpired when Office validates it,
+      // but expires by the time it's used in the OBO flow. The Microsoft identity platform will respond
       // with "The provided value for the 'assertion' is not valid. The assertion has expired."
       // Construct an error message to return to the client so it can refresh the SSO token.
       if (err.errorMessage.indexOf('AADSTS500133') !== -1) {

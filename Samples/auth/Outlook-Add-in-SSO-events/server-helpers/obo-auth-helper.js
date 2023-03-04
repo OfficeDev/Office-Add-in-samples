@@ -30,11 +30,11 @@ const config = {
 
 exports.getConfidentialClientApplication =
   function getConfidentialClientApplication() {
-    // Create msal application object
+    // Create an msal application object.
     return new msal.ConfidentialClientApplication(config);
   };
 
-// wrap this with one parameter that returns a new function (req,res,next)
+// Wrap this with one parameter that returns a new function (req,res,next).
 exports.validateJwt = function (req, res, next) {
   const authHeader = req.headers.authorization;
   if (authHeader) {
@@ -42,17 +42,17 @@ exports.validateJwt = function (req, res, next) {
 
     const validationOptions = {
       audience: config.auth.clientId, // v2.0 token
-      //issuer: config.auth.authority + "/v2.0", // v2.0 token  **can't use this one
+      // issuer: config.auth.authority + "/v2.0", // v2.0 token  **can't use this one
     };
 
     jwt.verify(token, getSigningKeys, validationOptions, (err, payload) => {
-      //custom logic to regex search for tenant id in the issuer.
-      //test multi tenant setup.
-      //test msa
+      // Custom logic to regex search for tenant id in the issuer.
+      // Test multi-tenant setup.
+      // Test MSA.
 
       if (err) {
-        // On rare occasions the SSO access token is unexpired when Office validates it,
-        // but expires by the time it is used in the OBO flow. Microsoft identity platform will respond
+        // On rare occasions, the SSO access token is unexpired when Office validates it,
+        // but expires by the time it's used in the OBO flow. The Microsoft identity platform will respond
         // with "The provided value for the 'assertion' is not valid. The assertion has expired."
         // Construct an error message to return to the client so it can refresh the SSO token.
         if (err.name === "TokenExpiredError") {

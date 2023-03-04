@@ -13,8 +13,8 @@ const defaultSSO = {
 };
 
 /**
- * Handle the OnNewMessageCompose or OnNewAppointmentOrganizerevent by calling getUserProfile which will
- * append a signature with the user's profile to the message body.
+ * Handle the OnNewMessageCompose or OnNewAppointmentOrganizer event by calling getUserProfile.
+ * This appends a signature with the user's profile to the message body on send.
  *
  * @param {Office.AddinCommands.Event} event The OnNewMessageCompose or OnNewAppointmentOrganizer event object.
  */
@@ -83,7 +83,7 @@ async function callWebServerAPI(method, url, retryRequest = false) {
         return response.json();
     }
 
-    // Check for fail condition: Is SSO token expired? If so, retry the call which will get a refreshed token.
+    // Check for fail condition: Is the SSO token expired? If so, retry the call which will get a refreshed token.
     const jsonBody = await response.json();
     if (
         jsonBody !== null &&
@@ -111,7 +111,7 @@ async function callWebServerAPI(method, url, retryRequest = false) {
 function handleSSOErrors(err) {
     switch (err.code) {
         case 13001:
-            // No one is signed into Office. If the add-in cannot be effectively used when no one
+            // No one is signed into Office. If the add-in can't be effectively used when no one
             // is logged into Office, then the first call of getAccessToken should pass the
             // `allowSignInPrompt: true` option. Since this sample does that, you should not see
             // this error.
@@ -120,8 +120,8 @@ function handleSSOErrors(err) {
             );
             break;
         case 13002:
-            // The user aborted the consent prompt. If the add-in cannot be effectively used when consent
-            // has not been granted, then the first call of getAccessToken should pass the `allowConsentPrompt: true` option.
+            // The user aborted the consent prompt. If the add-in can't be effectively used when consent
+            // hasn't been granted, then the first call of getAccessToken should pass the `allowConsentPrompt: true` option.
             showMessage(
                 'You have not granted consent. If you want to grant consent, try sending again.'
             );
