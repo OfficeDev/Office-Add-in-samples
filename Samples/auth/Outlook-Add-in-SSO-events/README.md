@@ -47,7 +47,8 @@ Follow the steps in [Register an Office Add-in that uses single sign-on (SSO) wi
 
 Before you run the sample, you'll need to do a few things to make it work properly.
 
-- In Visual Studio Code (or editor of your choice), open the root folder for this sample.
+1. Clone or download this repo.
+1. In Visual Studio Code (or editor of your choice), open the root folder for this sample.
 
 ### Update manifest.xml
 

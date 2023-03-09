@@ -132,6 +132,9 @@
           <bt:String id="SelectButtonDescription" DefaultValue="Opens the task pane for the Outlook add-in SSO in events sample."/>
         </bt:LongStrings>
       </Resources>
+
+      <!-- Specifies SSO scopes and resources for the web application that hosts this add-in. -->
+      <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/develop/sso-in-office-add-ins#configure-the-add-in. -->
       <WebApplicationInfo>
         <Id>Enter_client_ID_here</Id>
         <Resource>api://localhost:3000/Enter_client_ID_here</Resource>
