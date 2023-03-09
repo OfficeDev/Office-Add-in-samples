@@ -111,9 +111,11 @@ Get a free sandbox, tools, and other resources you need to build solutions for t
 * [Access to experts](https://developer.microsoft.com/microsoft-365/dev-program#Experts) Access community events to learn from Microsoft 365 experts.
 * [Personalized recommendations](https://developer.microsoft.com/microsoft-365/dev-program#Recommendations) Find developer resources quickly from your personalized dashboard.
 
-## Patterns and Practices community
+## Community
 
-Office Add-ins PnP is a community driven effort that helps developers extend, build, and provision customizations for the Office platform. The source is maintained on this GitHub repo where anyone can participate. You can provide contributions to the samples, reusable components, and documentation. Office Add-ins PnP is owned and coordinated by Office engineering teams, but the work is done by the community for the community.
+The Office Add-ins code samples are a community driven effort that helps developers extend, build, and provision customizations for the Office platform. The source is maintained on this GitHub repo where anyone can participate. You can provide contributions to the samples, reusable components, and documentation. Office Add-ins code samples is owned and coordinated by Office engineering teams, but the work is done by the community for the community.
+
+Please read the [Contribute](https://github.com/OfficeDev/Office-Add-in-samples/blob/main/CONTRIBUTING.md) page to learn how to be an active part of this community.
 
 ## Code of conduct
 
