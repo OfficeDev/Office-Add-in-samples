@@ -19,7 +19,7 @@ module.exports = async (env, options) => {
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: ["./src/taskpane/Js/taskpane_main.js", "./src/taskpane/html/editsignature.html"],
-      autorun: ["./src/runtime/Js/autorunshared.js", "./src/runtime/html/autorunweb.html"],
+      autorun: ["./src/runtime/Js/autorunshared.js", "./src/runtime/html/autorunweb.html"]
     },
     output: {
       clean: true,
@@ -85,6 +85,10 @@ module.exports = async (env, options) => {
                 return content.toString().replace(new RegExp(urlDev, "g"), urlProd);
               }
             },
+          },
+          {
+            from: "./src/runtime/Js/autorunshared.js",
+            to: "autorunshared.js",
           },
         ],
       }),
