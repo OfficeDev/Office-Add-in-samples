@@ -4,7 +4,7 @@
 
 **I'm new to Office Add-ins, where do I start?**
 
-If you have never developed an Office Web Add-in before we recommend you to visit our [5 minute quick starts](https://docs.microsoft.com/office/dev/add-ins/quickstarts/excel-quickstart-jquery) to understand the basics.
+If you have never developed an Office Web Add-in before we recommend you to visit our [5 minute quick starts](https://learn.microsoft.com/office/dev/add-ins/quickstarts/excel-quickstart-jquery) to understand the basics.
 
 **I deployed the add-in manifest using a SharePoint App Catalog, which shows as "My organization" in the insertion dialog and I don't see buttons on the Ribbon, Why?**
 
@@ -18,7 +18,7 @@ Deploying add-ins with commands via the SharePoint Add-in Catalog is not support
 4.  Double check the reference documentation.
 5.  Verify that in your VersionOverrides you are targeting the correct host. Sometimes folks assume that the hosts declared on the top of the manifest
 6.  Verify that you are using the correct Tab element. OfficeTab is to add commands to an existing Office Tab and requires that you pass an existing Id. CustomTab is to create a new tab. Consult the reference documentation for more details.
-7.  See [Debug your add-in with runtime logging](https://docs.microsoft.com/en-us/office/dev/add-ins/testing/runtime-logging) to diagnose issues with your manifest.
+7.  See [Debug your add-in with runtime logging](https://learn.microsoft.com/office/dev/add-ins/testing/runtime-logging) to diagnose issues with your manifest.
 
 ### Debug: ExecuteFunction not working
 

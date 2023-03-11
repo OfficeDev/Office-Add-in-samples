@@ -44,7 +44,7 @@ The sample contained in this folder is a sample that is designed to run in Word.
 
 ### Key components
 
-The hello world sample implements the **Manifest** and **Web app** components identified in [Components of an Office Add-in](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins#components-of-an-office-add-in).
+The hello world sample implements the **Manifest** and **Web app** components identified in [Components of an Office Add-in](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins#components-of-an-office-add-in).
 
 - Manifest: You only need one manifest file for your add-in. The hello world sample contains two manifest files to support two different hosting scenarios.
   - **manifest.xml**: This manifest file will load the add-in from the GitHub repo (through GitHub page hosting). You can run the sample and don't need to configure your own web server.
@@ -53,7 +53,7 @@ The hello world sample implements the **Manifest** and **Web app** components id
 
 ### Initialize the Office JavaScript API library
 
-The sample initializes the Office JavaScript API library with a call to `office.onReady()` in the **taskpane.html** file. This is required before you can make any calls to the Office JavaScript APIs. For more information about initialization, see [Initialize your Office Add-in](https://docs.microsoft.com/en-us/office/dev/add-ins/develop/initialize-add-in).
+The sample initializes the Office JavaScript API library with a call to `office.onReady()` in the **taskpane.html** file. This is required before you can make any calls to the Office JavaScript APIs. For more information about initialization, see [Initialize your Office Add-in](https://learn.microsoft.com/office/dev/add-ins/develop/initialize-add-in).
 
 ```javascript
 Office.onReady((info) => {});
@@ -63,7 +63,7 @@ Office.onReady((info) => {});
 
 When the user chooses the **button**, the `sayHello()` function is called. This function Then calls `Word.run` to run code and call the Office JavaScript APIs. It uses a `context` object provided by the Office JS API library to get the document body and inserts a Paragraph with the text "Hello World". Calling `context.sync()` runs the command.
 
-For more information see [Tutorial: Create an Word task pane add-in](https://docs.microsoft.com/en-us/office/dev/add-ins/tutorials/word-tutorial)
+For more information see [Tutorial: Create an Word task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/word-tutorial)
 
 ```javascript
 function sayHello() {
@@ -101,8 +101,9 @@ An Office Add-in requires you to configure a web server to provide all the resou
 
 Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the Hello world sample. Then follow the sideloading instructions for your platform.
 
-- [Sideload Office Add-ins for testing from a network share](https://docs.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
-- [Sideload Office Add-ins on iPad and Mac for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad-and-mac)
+- [Sideload Office Add-ins for testing from a network share](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
+- [Sideload Office Add-ins on Mac for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac)
+- [Sideload Office Add-ins on iPad for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad)
 
 ## Configure a localhost web server and run the sample from localhost
 
@@ -143,10 +144,18 @@ If you prefer to run the web server and host the add-in's web files from your co
 
 Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the word-hello-world folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Word on web](#run-the-sample-on-word-on-web) to sideload and run the add-in.
 
+## Questions and feedback
+
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
+
 ## Copyright
 
 Copyright (c) 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+**Note**: The taskpane.html file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/word-add-in-hello-world" />

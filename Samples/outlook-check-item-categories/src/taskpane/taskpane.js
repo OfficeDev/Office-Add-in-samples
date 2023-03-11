@@ -11,7 +11,9 @@ Office.onReady((info) => {
     document.getElementById("app-body").style.display = "flex";
     getCategories();
     document.getElementById("apply-categories").onclick = applyCategories;
-    document.getElementById("categories-container").onclick = function() { clearElement("notification"); };
+    document.getElementById("categories-container").onclick = function () {
+      clearElement("notification");
+    };
     getAppliedCategories();
   }
 });
@@ -20,32 +22,36 @@ Office.onReady((info) => {
  * Get the categories associated with the event-based add-in.
  */
 function getCategories() {
-  Office.context.mailbox.masterCategories.getAsync(asyncResult => {
-    if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-      let selection = document.createElement("select");
-      selection.name = "applicable-categories";
-      selection.id = "applicable-categories";
-      selection.multiple = true;
-      let label = document.createElement("label");
-      label.innerHTML = "<br/>Select the applicable categories.<br/><br/>Select and hold <b>Ctrl</b> to choose multiple categories.<br/>";
-      label.htmlFor = "applicable-categories";
-
-      asyncResult.value.forEach((category, index) => {
-        let displayName = category.displayName;
-        if (displayName.includes("Office Add-ins Sample: ")) {
-          let option = document.createElement("option");
-          option.value = index;
-          option.text = category.displayName;
-          selection.appendChild(option);
-          selection.size++;
-        }
-      });
-
-      document.getElementById("categories-container").appendChild(label).appendChild(selection);
-    } else {
+  Office.context.mailbox.masterCategories.getAsync((asyncResult) => {
+    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
       console.log(asyncResult.error.message);
       return;
     }
+
+    let selection = document.createElement("select");
+    selection.name = "applicable-categories";
+    selection.id = "applicable-categories";
+    selection.multiple = true;
+    let label = document.createElement("label");
+    label.innerHTML =
+      "<br/>Select the applicable categories.<br/><br/>Select and hold <b>Ctrl</b> to choose multiple categories.<br/>";
+    label.htmlFor = "applicable-categories";
+
+    asyncResult.value.forEach((category, index) => {
+      let displayName = category.displayName;
+      if (displayName.includes("Office Add-ins Sample: ")) {
+        let option = document.createElement("option");
+        option.value = index;
+        option.text = category.displayName;
+        selection.appendChild(option);
+        selection.size++;
+      }
+    });
+
+    document
+      .getElementById("categories-container")
+      .appendChild(label)
+      .appendChild(selection);
   });
 }
 
@@ -55,23 +61,28 @@ function getCategories() {
 function applyCategories() {
   let selectedCategories = getSelectedCategories("applicable-categories");
   if (selectedCategories.length > 0) {
-    Office.context.mailbox.item.categories.addAsync(selectedCategories, asyncResult => {
-      if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-        console.log(asyncResult.error.message);
-        return;
-      }
+    Office.context.mailbox.item.categories.addAsync(
+      selectedCategories,
+      (asyncResult) => {
+        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+          console.log(asyncResult.error.message);
+          return;
+        }
 
-      document.getElementById("notification").innerHTML = "<i>Selected categories have been applied.</i>";
-      getAppliedCategories();
-      clearSelection("applicable-categories");
-    });
+        document.getElementById("notification").innerHTML =
+          "<i>Selected categories have been applied.</i>";
+        getAppliedCategories();
+        clearSelection("applicable-categories");
+      }
+    );
   } else {
-    document.getElementById("notification").innerHTML = "<i>Select categories to be applied.</i>";
+    document.getElementById("notification").innerHTML =
+      "<i>Select categories to be applied.</i>";
   }
 }
 
 /**
- * Get the selected categories from the task pane. 
+ * Get the selected categories from the task pane.
  * @param {string} id The ID of the HTML element where categories are selected.
  * @returns {string[]} The selected category names.
  */
@@ -92,25 +103,29 @@ function getSelectedCategories(id) {
 function getAppliedCategories() {
   clearElement("applied-categories-container");
 
-  Office.context.mailbox.item.categories.getAsync(asyncResult => {
-    if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-      let categories = asyncResult.value;
-      if (categories) {
-        let categoryList = document.createElement("ul");
-        categories.forEach(category => {
-          let appliedCategory = document.createElement("li");
-          appliedCategory.innerText = category.displayName;
-          categoryList.appendChild(appliedCategory);
-        });
-        
-        document.getElementById("applied-categories-container").appendChild(categoryList);
-      } else {
-        let notification = document.createElement("p");
-        notification.innerText = "No categories have been applied.";
-        document.getElementById("applied-categories-container").appendChild(notification);
-      }
-    } else {
+  Office.context.mailbox.item.categories.getAsync((asyncResult) => {
+    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
       console.log(asyncResult.error.message);
+    }
+    
+    let categories = asyncResult.value;
+    if (categories) {
+      let categoryList = document.createElement("ul");
+      categories.forEach((category) => {
+        let appliedCategory = document.createElement("li");
+        appliedCategory.innerText = category.displayName;
+        categoryList.appendChild(appliedCategory);
+      });
+
+      document
+        .getElementById("applied-categories-container")
+        .appendChild(categoryList);
+    } else {
+      let notification = document.createElement("p");
+      notification.innerText = "No categories have been applied.";
+      document
+        .getElementById("applied-categories-container")
+        .appendChild(notification);
     }
   });
 }
@@ -128,7 +143,7 @@ function clearElement(id) {
  * @param {string} id The ID of the <select> element to be cleared.
  */
 function clearSelection(id) {
-  document.getElementById(id).options.forEach(option => {
+  document.getElementById(id).options.forEach((option) => {
     if (option.selected) {
       option.selected = false;
     }

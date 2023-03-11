@@ -37,14 +37,14 @@
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
     <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
       <Requirements>
-        <bt:Sets DefaultMinVersion="1.11">
+        <bt:Sets DefaultMinVersion="1.12">
           <bt:Set Name="Mailbox"/>
         </bt:Sets>
       </Requirements>
       <Hosts>
         <Host xsi:type="MailHost">
           <!-- Specifies the event-based activation runtime. -->
-          <!-- For more information, see https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch. -->
+          <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch. -->
           <Runtimes>
             <!-- HTML file that references the JavaScript event handlers. This is used by Outlook on the web. -->
             <Runtime resid="WebViewRuntime.Url">

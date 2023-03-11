@@ -61,7 +61,7 @@
     width: 86px;
     height: 32px;
     color: white;
-    background: #0078D4 0% 0% no-repeat padding-box;
+    background: #005696 0% 0% no-repeat padding-box;
     border-radius: 2px;
     opacity: 1;
   }
@@ -72,7 +72,7 @@
     left: 17px;
     border: none;
     color: #FFFFFF; /* White */
-    background-color: #4CAF50; /* Green */
+    background-color: #00602B; /* Dark green */
     text-decoration: none;
     text-align: center;
     font-size: 14px;
@@ -97,7 +97,7 @@
     color: white;
     font-weight: bold;
     width: 277px;
-    background-color: green;
+    background-color: darkgreen;
     padding: 10px;
     display: none;
   }
@@ -136,7 +136,7 @@
     height: 136px;
     border: 1px solid #DDDDDD;
     border-radius: 2px;
-    color: #8b6464;
+    color: #573d3d;
     padding: 5px;
     opacity: 1;
   }
@@ -148,7 +148,7 @@
     height: 106px;
     border: 1px solid #DDDDDD;
     border-radius: 2px;
-    color: #8b6464;
+    color: #573d3d;
     padding: 5px;
     opacity: 1;
   }
@@ -160,7 +160,7 @@
     height: 65px;
     border: 1px solid #DDDDDD;
     border-radius: 2px;
-    color: #8b6464;
+    color: #573d3d;
     padding: 5px;
     opacity: 1;
   }

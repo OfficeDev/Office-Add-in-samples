@@ -26,7 +26,7 @@ For example, following a batching pattern for your custom functions add-ins is u
 
 ## Prerequisites
 
-To learn more about custom functions, see [Create custom functions in Excel](https://docs.microsoft.com/office/dev/add-ins/excel/custom-functions-overview). See [Custom Functions requirement sets](https://docs.microsoft.com/office/dev/add-ins/reference/requirement-sets/custom-functions-requirement-sets) for a list of the platforms that support custom functions.
+To learn more about custom functions, see [Create custom functions in Excel](https://learn.microsoft.com/office/dev/add-ins/excel/custom-functions-overview). See [Custom Functions requirement sets](https://learn.microsoft.com/office/dev/add-ins/reference/requirement-sets/custom-functions-requirement-sets) for a list of the platforms that support custom functions.
 
 ## Solution
 

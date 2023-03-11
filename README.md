@@ -4,12 +4,20 @@ Office Add-ins code samples are provided in this repo to help you learn, study, 
 
 ## Getting started
 
-The following samples show how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. They will help you understand the fundamental parts of an Office Add-in. For additional getting started information, see our [quick starts](https://docs.microsoft.com/office/dev/add-ins/quickstarts/excel-quickstart-jquery) and [tutorials](https://docs.microsoft.com/search/?terms=tutorial&scope=Office%20Add-ins).
+The following samples show how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. They will help you understand the fundamental parts of an Office Add-in. For additional getting started information, see our [quick starts](https://learn.microsoft.com/office/dev/add-ins/quickstarts/excel-quickstart-jquery) and [tutorials](https://learn.microsoft.com/search/?terms=tutorial&scope=Office%20Add-ins).
 
 * [Excel "Hello world" add-in](Samples/hello-world/excel-hello-world)
 * [Outlook "Hello world" add-in](Samples/hello-world/outlook-hello-world)
 * [PowerPoint "Hello world" add-in](Samples/hello-world/powerpoint-hello-world)
 * [Word "Hello world" add-in](Samples/hello-world/word-hello-world)
+
+### Completed tutorials
+
+The following sample is the completed version of the [Excel add-in tutorial](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial).
+
+| Name           | Description  |
+| -------------- | ------------ |
+| [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial) | This sample shows how to create an Excel add-in with a task pane and command ribbon buttons. The add-in shows how to create and sort a table, make a chart, freeze a row, protect a worksheet, and display a dialog box. |
 
 ## Blazor WebAssembly
 
@@ -18,7 +26,6 @@ The following samples show how to build the simplest Office Add-in with only a m
 | [Create a Blazor WebAssembly Excel add-in](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/excel-blazor-add-in) | Uses .NET Blazor technologies to build an Excel add-in. |
 | [Create a Blazor WebAssembly Word add-in](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/word-blazor-add-in) | Uses .NET Blazor technologies to build a Word add-in. |
 | [Create a Blazor WebAssembly Outlook add-in](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/outlook-blazor-add-in) | Uses .NET Blazor technologies to build an Outlook add-in. |
-
 
 ## Auth, Identity and Single Sign-on (SSO)
 
@@ -52,6 +59,7 @@ All of the following samples show how to access and work with a user's Microsoft
 
 | Name           | Description  |
 | -------------- | ------------ |
+| [Data types explorer](Samples/excel-data-types-explorer) | Builds an Excel add-in that allows you to create and explore data types in your workbooks. Data types enable add-in developers to organize complex data structures as objects, such as formatted number values, web images, and entity values. |
 | [Open in Teams](Samples/excel-open-in-teams) | Creates a new Excel spreadsheet in Microsoft Teams containing data you define.|
 | [Insert an external Excel file and populate it with JSON data](Samples/excel-insert-file)  | Insert an existing template from an external Excel file into the currently open Excel file. Then retrieve data from a JSON web service and populate the template for the customer. |
 | [Create custom contextual tabs on the ribbon](Samples/office-contextual-tabs) | This sample shows how to create a custom contextual tab on the ribbon in the Office UI. The sample creates a table, and when the user moves the focus inside the table, the custom tab is displayed. When the user moves outside the table, the custom tab is hidden. |
@@ -69,7 +77,7 @@ All of the following samples show how to access and work with a user's Microsoft
 
 ## Shared JavaScript runtime
 
-Check out these samples if you want to take advantage of the [shared runtime](https://docs.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime) for your Office Add-in.
+Check out these samples if you want to take advantage of the [shared runtime](https://learn.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime) for your Office Add-in.
 
 | Date               | Name           | Description  |
 | ------------------ | -------------- | ------------ |
@@ -88,6 +96,12 @@ Check out these samples if you want to take advantage of the [shared runtime](ht
 
 To learn more about Office Add-ins, see the [Office Add-ins documentation](https://aka.ms/office-add-ins-docs).
 
+## Questions and feedback
+
+* Did you experience any problems with a sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+* We'd love to get your feedback about the samples. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+* For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
+
 ## Join the Microsoft 365 Developer Program
 
 Get a free sandbox, tools, and other resources you need to build solutions for the Microsoft 365 platform.
@@ -97,9 +111,11 @@ Get a free sandbox, tools, and other resources you need to build solutions for t
 * [Access to experts](https://developer.microsoft.com/microsoft-365/dev-program#Experts) Access community events to learn from Microsoft 365 experts.
 * [Personalized recommendations](https://developer.microsoft.com/microsoft-365/dev-program#Recommendations) Find developer resources quickly from your personalized dashboard.
 
-## Patterns and Practices community
+## Community
 
-Office Add-ins PnP is a community driven effort that helps developers extend, build, and provision customizations for the Office platform. The source is maintained on this GitHub repo where anyone can participate. You can provide contributions to the samples, reusable components, and documentation. Office Add-ins PnP is owned and coordinated by Office engineering teams, but the work is done by the community for the community.
+The Office Add-ins code samples are a community-driven effort that helps developers extend, build, and provision customizations for the Office platform. The source is maintained on this GitHub repo where anyone can participate. You can provide contributions to the samples, reusable components, and documentation. Office Add-ins code samples is owned and coordinated by Office engineering teams, but the work is done by the community for the community.
+
+Please read the [Contribute](https://github.com/OfficeDev/Office-Add-in-samples/blob/main/CONTRIBUTING.md) page to learn how to be an active part of this community.
 
 ## Code of conduct
 

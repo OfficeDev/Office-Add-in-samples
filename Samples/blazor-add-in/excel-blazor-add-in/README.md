@@ -35,7 +35,7 @@ This sample shows how to build an Excel add-in using .NET Blazor technologies. B
 ## Run the sample
 
 1. Download or clone the [Office Add-ins samples repository](https://github.com/OfficeDev/Office-Add-in-samples).
-1. Open Visual Studio 2022 and open the **Office-Add-in-samples\Samples\blazor-add-in\excel-blazor-add-in\excel-blazor-add-in.sln** solution.
+1. Open Visual Studio 2022 and open the **Office-Add-in-samples\Samples\blazor-add-in\excel-blazor-add-in\excel-blazor-add-in.sln** solution. (Do **not** open Visual Studio "as administrator". There is a bug that will prevent the add-in from sideloading when Visual Studio is elevated in this way.)
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
 1. When Excel opens, choose **Home** > **Show Taskpane**.
 
@@ -93,9 +93,11 @@ The fundamental pattern includes the following steps.
 1. Use **JSModule.InvokeVoidAsync** to call JavaScript functions from your C# code.
 1. Call Office JS APIs to interact with the worksheet from JavaScript code.
 
-## Questions and comments
+## Questions and feedback
 
-We'd love to get your feedback about this sample. Please send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to [Microsoft Q&A](https://docs.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Solution
 
@@ -114,5 +116,7 @@ Version  | Date | Comments
 Copyright(c) Maarten van Stam. All rights reserved.Licensed under the MIT License.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+**Note**: The index.html file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
 
 <img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/blazor-add-in/excel-blazor-add-in" />

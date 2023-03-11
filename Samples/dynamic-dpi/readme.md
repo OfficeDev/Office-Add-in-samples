@@ -17,7 +17,7 @@ description: "Update your ActiveX, COM, VSTO and related Office solutions to han
 
 Many computer and display configurations now support high DPI (dots-per-inch) resolutions, and can connect multiple monitors with different sizes and pixel densities. This requires applications to adjust when the user moves the app to a monitor with a different DPI, or changes the zoom level. Applications that don’t support DPI scaling might look fine on low DPI monitors, but will look stretched and blurry when shown on a high DPI monitor.
 
-The code samples included here will help you with handling DPI changes in your code for VSTO and COM Add-in projects. More information about the code samples and handling DPI can be found in the accompnying article: [Handle high DPI and DPI scaling in your Office solution](https://docs.microsoft.com/office/client-developer/ddpi/handle-high-dpi-and-dpi-scaling-in-your-office-solution)
+The code samples included here will help you with handling DPI changes in your code for VSTO and COM Add-in projects. More information about the code samples and handling DPI can be found in the accompnying article: [Handle high DPI and DPI scaling in your Office solution](https://learn.microsoft.com/office/client-developer/ddpi/handle-high-dpi-and-dpi-scaling-in-your-office-solution)
 
 ![Overview diagram of dragging Office with an add-in to a monitor with a different DPI.](dpi-overview.png)
 

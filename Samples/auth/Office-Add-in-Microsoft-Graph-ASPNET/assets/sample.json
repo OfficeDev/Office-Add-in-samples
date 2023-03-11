@@ -38,7 +38,7 @@
         {
           "name": "Authorize to Microsoft Graph from an Office Add-in",
           "description": "Your add-in can get authorization to Microsoft Graph data by obtaining an access token to Microsoft Graph from the Microsoft identity platform.",
-          "url": "https://docs.microsoft.com/office/dev/add-ins/develop/authorize-to-microsoft-graph-without-sso"
+          "url": "https://learn.microsoft.com/office/dev/add-ins/develop/authorize-to-microsoft-graph-without-sso"
         }
       ]
     }

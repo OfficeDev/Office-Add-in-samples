@@ -20,11 +20,11 @@ description: "Use Outlook event-based activation to tag external recipients."
 
 ## Summary
 
-This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the [appendOnSendAsync API](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-1.11#appendOnSendAsync_data__options__callback_). If external recipients are added, the add-in prepends "[External]" to the message subject and appends a disclaimer to the message body on send.
+This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the [appendOnSendAsync API](https://learn.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-1.11#appendOnSendAsync_data__options__callback_). If external recipients are added, the add-in prepends "[External]" to the message subject and appends a disclaimer to the message body on send.
 
 ![Screen shot of PnP sample displaying an information bar prompting the user to set up signatures, and sample signature inserted into the email.](./assets/outlook-tag-external-overview.png)
 
-For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://docs.microsoft.com/office/dev/add-ins/outlook/autolaunch).
+For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch).
 
 ## Features
 
@@ -68,7 +68,7 @@ In this scenario, if the message has external recipients, the add-in prepends "[
 You can run this sample in Outlook on Windows or in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 ### Try it out
 
@@ -113,7 +113,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000 
     ```
 
-1. Sideload `manifest-localhost.xml` in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://docs.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload `manifest-localhost.xml` in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 1. [Try out the sample!](#try-it-out)
 
 ## Configure event-based activation and AppendOnSend in the manifest
@@ -155,13 +155,13 @@ The **commands.js** file contains the `tagExternal_onMessageRecipientsChangedHan
 
 Also, the **commands.js** file contains the following helper functions.
 
-- `checkForExternalTo`: Determines if there are any external users in the **To** field then sets a [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) key named **tagExternalTo**.
-- `checkForExternalCc`: Determines if there are any external users in the **Cc** field then sets a [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) key named **tagExternalCc**.
-- `checkForExternalBcc`: Determines if there are any external users in the **Bcc** field then sets a [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) key named **tagExternalBcc**.
-- `_checkForExternal`: Checks if any property is set to `true` in the [SessionData](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) property bag.
+- `checkForExternalTo`: Determines if there are any external users in the **To** field then sets a [SessionData](https://learn.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) key named **tagExternalTo**.
+- `checkForExternalCc`: Determines if there are any external users in the **Cc** field then sets a [SessionData](https://learn.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) key named **tagExternalCc**.
+- `checkForExternalBcc`: Determines if there are any external users in the **Bcc** field then sets a [SessionData](https://learn.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) key named **tagExternalBcc**.
+- `_checkForExternal`: Checks if any property is set to `true` in the [SessionData](https://learn.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) property bag.
 - `_tagExternal`:
-  - Updates the [subject](https://docs.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#subject) to prepend or remove the "[External]" tag.
-  - Calls the [appendOnSendAsync](https://docs.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-1.11#appendOnSendAsync_data__options__callback_) to set or clear the disclaimer.
+  - Updates the [subject](https://learn.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#subject) to prepend or remove the "[External]" tag.
+  - Calls the [appendOnSendAsync](https://learn.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-1.11#appendOnSendAsync_data__options__callback_) to set or clear the disclaimer.
 
 > **Note**
 >
@@ -170,6 +170,12 @@ Also, the **commands.js** file contains the following helper functions.
 ## Known issues
 
 - In Outlook on Windows, the `OnMessageRecipientsChanged` event fires on reply or reply all. The expected behavior is implemented in Outlook on the web where this event doesn't fire in those cases.
+
+## Questions and feedback
+
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Copyright
 

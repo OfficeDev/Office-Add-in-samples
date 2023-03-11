@@ -47,8 +47,9 @@ You can run this sample in Excel, Word, or PowerPoint in a browser. The add-in w
 
 Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the custom settings sample. Then follow the sideloading instructions for your platform.
 
-- [Sideload Office Add-ins for testing from a network share](https://docs.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
-- [Sideload Office Add-ins on iPad and Mac for testing](https://docs.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad-and-mac)
+- [Sideload Office Add-ins for testing from a network share](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
+- [Sideload Office Add-ins on Mac for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac)
+- [Sideload Office Add-ins on iPad for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad)
 
 ## Configure a localhost web server and run the sample from localhost
 
@@ -107,9 +108,15 @@ Office.context.document.settings.saveAsync(function (asyncResult) {
 
 ## Additional resources
 
-- [Persist add-in state and settings](https://docs.microsoft.com/office/dev/add-ins/develop/persisting-add-in-state-and-settings)
+- [Persist add-in state and settings](https://learn.microsoft.com/office/dev/add-ins/develop/persisting-add-in-state-and-settings)
 - [Introduction to Web Storage](http://msdn.microsoft.com/library/cc197062(VS.85).aspx)
-- [Settings object](https://docs.microsoft.com/javascript/api/office/office.settings)
+- [Settings object](https://learn.microsoft.com/javascript/api/office/office.settings)
+
+## Questions and feedback
+
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Copyright
 
