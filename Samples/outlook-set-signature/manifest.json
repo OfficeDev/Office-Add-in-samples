@@ -12,8 +12,8 @@
         "full": "Insert your signature with ease."
     },
     "icons": {
-        "outline": "assets/final_logo.png",
-        "color": "assets/final_logo.png"
+        "outline": "public/assets/final_logo.png",
+        "color": "public/assets/final_logo.png"
     },
     "accentColor": "#230201",
     "developer": {
@@ -64,8 +64,8 @@
                     "id": "runtime_1",
                     "type": "general",
                     "code": {
-                        "page": "https://localhost:3000/autorunweb.html",
-                        "script": "https://localhost:3000/autorunshared.js"
+                        "page": "https://localhost:3000/runtime/HTML/autorunweb.html",
+                        "script": "https://localhost:3000/runtime/Js/autorunshared.js"
                     },
                     "lifetime": "short",
                     "actions": [
@@ -88,7 +88,7 @@
                     "id": "runtime_2",
                     "type": "general",
                     "code": {
-                        "page": "https://localhost:3000/editsignature.html"
+                        "page": "https://localhost:3000/taskpane/HTML/editsignature.html"
                     },
                     "lifetime": "short",
                     "actions": [
@@ -254,7 +254,7 @@
                     ]
                 }
             ],
-            "audienceClaimUrl": "https://localhost:3000/editsignature.html"
+            "audienceClaimUrl": "https://localhost:3000/taskpane/HTML/editsignature.html"
         }
     ],
     "showLoadingIndicator": false,

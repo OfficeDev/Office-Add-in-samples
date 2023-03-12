@@ -16,49 +16,28 @@
     "npm": ">=7 <10"
   },
   "scripts": {
-    "build": "webpack --mode production",
-    "build:dev": "webpack --mode development",
-    "dev-server": "webpack serve --mode development",
-    "lint": "office-addin-lint check",
-    "lint:fix": "office-addin-lint fix",
-    "prettier": "office-addin-lint prettier",
+    "dev-server": "node ./bin/www",
     "start": "office-addin-debugging start manifest.json --app outlook",
     "stop": "office-addin-debugging stop manifest.json",
     "validate": "office-addin-manifest validate manifest.json"
   },
   "dependencies": {
-    "core-js": "^3.9.1",
-    "regenerator-runtime": "^0.13.7"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.13.10",
-    "@babel/preset-env": "^7.12.11",
     "@types/node": "^14.14.22",
     "@types/office-js": "^1.0.256",
     "@types/office-runtime": "^1.0.23",
-    "babel-loader": "^8.2.2",
-    "copy-webpack-plugin": "^9.0.1",
-    "eslint-plugin-office-addins": "^2.1.4",
-    "file-loader": "^6.2.0",
-    "html-loader": "^4.1.0",
-    "html-webpack-plugin": "^5.5.0",
-    "office-addin-cli": "^1.5.4",
-    "office-addin-debugging": "^4.6.7",
-    "office-addin-dev-certs": "^1.11.1",
-    "office-addin-lint": "^2.2.4",
-    "office-addin-manifest": "^1.12.0",
-    "office-addin-mock": "^2.3.6",
-    "office-addin-prettier-config": "^1.2.0",
-    "office-addin-test-helpers": "^1.4.4",
-    "office-addin-test-server": "^1.4.6",
-    "os-browserify": "^0.3.0",
-    "process": "^0.11.10",
-    "source-map-loader": "^3.0.0",
-    "webpack": "^5.73.0",
-    "webpack-cli": "^4.8.0",
-    "webpack-dev-server": "4.7.4"
+    "cookie-parser": "~1.4.4",
+    "core-js": "^3.9.1",
+    "regenerator-runtime": "^0.13.7",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.1"
   },
-  "prettier": "office-addin-prettier-config",
+  "devDependencies": {
+    "office-addin-debugging": "^5.0.4",
+    "office-addin-dev-certs": "^1.11.2"
+  },
   "browserslist": [
     "ie 11"
   ]
