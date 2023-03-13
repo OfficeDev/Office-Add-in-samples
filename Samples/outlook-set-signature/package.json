@@ -22,21 +22,18 @@
     "validate": "office-addin-manifest validate manifest.json"
   },
   "dependencies": {
-    "@types/node": "^14.14.22",
     "@types/office-js": "^1.0.256",
     "@types/office-runtime": "^1.0.23",
     "cookie-parser": "~1.4.4",
-    "core-js": "^3.9.1",
-    "regenerator-runtime": "^0.13.7",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
+    "express": "~4.18.2",
     "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
     "office-addin-debugging": "^5.0.4",
-    "office-addin-dev-certs": "^1.11.2"
+    "office-addin-dev-certs": "^1.11.2",
+    "office-addin-manifest": "^1.12.3"
   },
   "browserslist": [
     "ie 11"
