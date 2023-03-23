@@ -1,6 +1,0 @@
-{
-    "allowed":
-    [
-        "https://localhost:3000/commands/commands.js"
-    ]
-}

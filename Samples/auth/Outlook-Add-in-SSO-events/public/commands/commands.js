@@ -32,7 +32,7 @@ Office.actions.associate('onMessageComposeHandler', onItemComposeHandler);
 async function getUserProfile() {
     try {
         // Get access token from Outlook host via SSO.
-        let accessToken = await Office.auth.getAccessToken(defaultSSO);
+        let accessToken = await OfficeRuntime.auth.getAccessToken(defaultSSO);
 
         // Call web server which will make Graph call and return filename list.
         let jsonReponse = await callWebServerAPI(
@@ -47,7 +47,7 @@ async function getUserProfile() {
     } catch (exception) {
         // Exceptions are displayed in the notification bar.
         if (exception.code) {
-            handleClientSideErrors(exception);
+            handleSSOErrors(exception);
             return;
         } else {
             showMessage(exception.message);
