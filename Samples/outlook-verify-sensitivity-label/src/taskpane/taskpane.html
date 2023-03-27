@@ -1,0 +1,52 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Office Add-ins sample: Verify the sensitivity label of a message</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    <script type="text/javascript" src="taskpane.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <img width="90" height="90" src="../../assets/logo-filled.png" alt="Fabrikam" title="Fabrikam" />
+        <h1 class="ms-font-su">Office Add-ins sample: Verify the sensitivity label of a message</h1>
+    </header>
+    <section id="sideload-msg" class="ms-welcome__main">
+        <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
+    </section>
+    <main id="app-body" class="ms-welcome__main" style="display: none;">
+        <h2 class="ms-font-xl">Test the sample today!</h2>
+        <ol class="ms-List">
+            <li class="ms-ListItem">
+                <span class="ms-font-m">Create a new message.</span>
+            </li>
+            <li class="ms-ListItem">
+                <span class="ms-font-m">Add an attachment or the email address of a fictitious legal team employee at Fabrikam (for example, eli-legal@fabrikam.com).</span>
+            </li>
+            <li class="ms-ListItem">
+                <span class="ms-font-m">Select <b>Send</b>.</span>
+            </li>
+            <li class="ms-ListItem">
+                <span class="ms-font-m">A dialog appears to notify you that the sensitivity label has been set to Highly Confidential and legalhold@fabrikam.com has been added to the Bcc field. Once you've verified this, select <b>Send Anyway</b>.</span>
+            </li>
+        </ol>
+        <p>To learn more about the sensitivity label API, see <a href="https://learn.microsoft.com/office/dev/add-ins/outlook/sensitivity-label">Manage the sensitivity label of your message or appointment in compose mode (preview)</a>.</p>
+    </main>
+</body>
+
+</html>
