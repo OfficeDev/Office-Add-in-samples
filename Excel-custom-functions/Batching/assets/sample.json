@@ -4,10 +4,10 @@
       "reponame": "office-add-in-samples",
       "source": "officedev",
       "title": "Custom function batching pattern",
-      "shortDescription": "If your functions call a remote service you may want to use a batching pattern to reduce the number of network calls to the service.",
+      "shortDescription": "If your functions call a remote service, use a batching pattern to reduce the number of network calls to the service.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Excel-custom-functions/Batching",
       "longDescription": [
-        "If your custom functions call a remote service, you may want to use a batching pattern to reduce the number of network calls to the remote service. Batching the requests to a remote web service improves network performance."
+        "Use a batching pattern to reduce the number of network calls your custom functions make to their remote web service. Batching the requests improves network performance."
       ],
       "creationDateTime": "2019-04-05",
       "updateDateTime": "2021-06-01",

@@ -7,7 +7,7 @@
       "shortDescription": "You can expand the capabilities of Excel custom functions by integrating with Azure Functions.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Excel-custom-functions/AzureFunction",
       "longDescription": [
-        "You can expand the capabilities of Excel custom functions by integrating with Azure Functions. An Azure Function allows you to move your code to the cloud so it is not visible from the browser, and you can choose additional languages to run in besides JavaScript. Also an Azure Function can integrate with other Azure services such as message queues and storage. And you can share the function with other clients."
+        "Expand the capabilities of Excel custom functions by integrating with Azure Functions. An Azure Function allows you to move your code to the cloud so it is not visible from the browser, and you can choose additional languages to run in besides JavaScript. Azure Function can also integrate with other Azure services, such as message queues and storage, and you can share the function with other clients."
       ],
       "creationDateTime": "2019-10-02",
       "updateDateTime": "2022-03-17",

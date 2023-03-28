@@ -7,7 +7,7 @@
       "shortDescription": "Create a Word add-in with command buttons.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-add-in-commands/word",
       "longDescription": [
-        "Learn how to build an Office Add-in that has a command button to show the task pane, and a menu dropdown button that can show the task pane, or get data."
+        "Learn how to build an Office Add-in that has a command button to show the task pane and a menu dropdown button that shows the task pane or gets data."
       ],
       "creationDateTime": "2021-12-09",
       "updateDateTime": "2021-12-09",
