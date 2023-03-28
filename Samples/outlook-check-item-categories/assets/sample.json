@@ -7,7 +7,7 @@
       "shortDescription": "Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-check-item-categories",
       "longDescription": [
-        "This sample uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent. Specific keywords detected in the subject or body of the item determine the required categories."
+        "Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent. Specific keywords detected in the subject or body of the item determine the required categories."
       ],
       "creationDateTime": "2022-05-05",
       "updateDateTime": "2022-12-02",

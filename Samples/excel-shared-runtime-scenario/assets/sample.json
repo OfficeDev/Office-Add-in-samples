@@ -3,11 +3,11 @@
       "name": "office-add-in-ribbon-task-pane-ui",
       "reponame": "office-add-in-samples",
       "source": "officedev",
-      "title": "Manage ribbon and task pane UI, and run code on doc open",
+      "title": "Manage ribbon and task pane UI, and run code on document open",
       "shortDescription": "Shows contextual ribbon buttons, hide or show task pane, and how to start add-in on document open.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-shared-runtime-scenario",
       "longDescription": [
-        "This sample shows how to create contextual ribbon buttons that are enabled based on the state of your add-in. It also shows how to use the Office.js API to show or hide the task pane. This sample also demonstrates how to run code when the task pane is closed, such as on document open."
+        "Shows how to create contextual ribbon buttons that are enabled based on the state of your add-in. It also shows how to use the Office.js API to show or hide the task pane. Also shows how to run code when the task pane is closed, such as on document open."
       ],
       "creationDateTime": "2020-03-09",
       "updateDateTime": "2021-08-05",

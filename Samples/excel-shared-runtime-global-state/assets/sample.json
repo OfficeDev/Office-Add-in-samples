@@ -7,7 +7,7 @@
       "shortDescription": "Shows how to set up an Office Add-in project that uses the shared runtime.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-shared-runtime-global-state",
       "longDescription": [
-        "This sample shows how to set up a project that uses the shared runtime. The shared runtime runs all parts of the Excel add-in (ribbon buttons, task pane, and custom functions) in a single browser runtime. This makes it easy to share data through local storage, or through global variables."
+        "Shows how to set up a project that uses the shared runtime. The shared runtime runs all parts of the Excel add-in (ribbon buttons, task pane, and custom functions) in a single browser runtime. This makes it easy to share data through local storage, or through global variables."
       ],
       "creationDateTime": "2020-03-15",
       "updateDateTime": "2021-05-26",

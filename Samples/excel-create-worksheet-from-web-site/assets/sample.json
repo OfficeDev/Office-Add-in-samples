@@ -3,11 +3,11 @@
       "name": "excel-add-in-create-spreadsheet-from-web-page",
       "reponame": "office-add-in-samples",
       "source": "officedev",
-      "title": "Create a spreadsheet with your add-in and data from your web site",
-      "shortDescription": "Create a spreadsheet from your web site, populate it with data, and embed your Excel add-in.",
+      "title": "Create a spreadsheet with your add-in and data from your web page",
+      "shortDescription": "Create a spreadsheet from your web page populate it with data, and embed your Excel add-in.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-create-worksheet-from-web-site",
       "longDescription": [
-        "This sample shows how a user can create a spreadsheet from your web site, populate it with data they want to work on, and embed your add-in to continue working with your services."
+        "Shows how a user can create a spreadsheet from your web page, populate it with data they want to work on, and embed your add-in to continue working with your services."
       ],
       "creationDateTime": "2023-01-31", 
       "updateDateTime": "2023-01-31",
