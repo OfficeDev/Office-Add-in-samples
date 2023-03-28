@@ -1,0 +1,46 @@
+[
+    {
+      "name": "outlook-add-in-check-item-categories",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Use Outlook Smart Alerts",
+      "shortDescription": "Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-check-item-categories",
+      "longDescription": [
+        "This sample uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent. Specific keywords detected in the subject or body of the item determine the required categories."
+      ],
+      "creationDateTime": "2022-05-05",
+      "updateDateTime": "2022-12-02",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+        {
+            "type": "Image",
+            "order": 100,
+            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/outlook-check-item-categories/assets/outlook-check-item-categories.png",
+            "alt": "Sample displaying Outlook Smart Alerts when required categories are missing from the message or appointment, and the task pane used to apply the categories to the item. Four features are highlighted."
+          }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+        {
+          "name": "Use Smart Alerts and the OnMessageSend and OnAppointmentSend events in your Outlook add-in",
+          "description": "Learn how to handle the on-send events in your Outlook add-in using event-based activation.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough"
+        }
+      ]
+    }
+  ] 

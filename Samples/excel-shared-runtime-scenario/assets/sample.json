@@ -1,0 +1,61 @@
+[
+    {
+      "name": "office-add-in-ribbon-task-pane-ui",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Manage ribbon and task pane UI, and run code on doc open",
+      "shortDescription": "Shows contextual ribbon buttons, hide or show task pane, and how to start add-in on document open.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-shared-runtime-scenario",
+      "longDescription": [
+        "This sample shows how to create contextual ribbon buttons that are enabled based on the state of your add-in. It also shows how to use the Office.js API to show or hide the task pane. This sample also demonstrates how to run code when the task pane is closed, such as on document open."
+      ],
+      "creationDateTime": "2020-03-09",
+      "updateDateTime": "2021-08-05",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+        {
+            "type": "Image",
+            "order": 100,
+            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/excel-shared-runtime-scenario/images/excel-shared-runtime.png",
+            "alt": "Screenshot of the add-in with ribbon buttons enabled and disabled."
+          }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+        {
+          "name": "Create custom contextual tabs in Office Add-ins",
+          "description": "A contextual tab is a hidden tab control in the Office ribbon that is displayed in the tab row when a specified event occurs in the Office document.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/design/contextual-tabs"
+        },
+        {
+          "name": "Show or hide the task pane of your Office Add-in",
+          "description": "You can show the task pane of your Office Add-in by calling the Office.addin.showAsTaskpane() method.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/develop/show-hide-add-in"
+        },
+        {
+          "name": "Run code in your Office Add-in when the document opens",
+          "description": "You can configure your Office Add-in to load and run code as soon as the document is opened.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/develop/run-code-on-document-open"
+        },
+        {
+          "name": "Configure your Office Add-in to use a shared runtime",
+          "description": "You can configure your Office Add-in to run all of its code in a single shared runtime. This enables better coordination across your add-in and access to the DOM and CORS from all parts of your add-in.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime"
+        }
+      ]
+    }
+  ] 
