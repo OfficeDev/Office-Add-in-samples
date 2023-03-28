@@ -103,7 +103,7 @@
           <bt:String id="TaskpaneButton.Label" DefaultValue="Sample Instructions"/>
         </bt:ShortStrings>
         <bt:LongStrings>
-          <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane listing the steps to test the add-in sample."/>
+          <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane listing the steps to run the add-in sample."/>
         </bt:LongStrings>
       </Resources>
     </VersionOverrides>

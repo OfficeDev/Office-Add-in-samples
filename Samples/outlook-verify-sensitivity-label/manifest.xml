@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
+  <Id>f9abed2a-5bf7-42ad-8ff7-65711751b50a</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Fabrikam</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Office Add-ins Outlook sensitivity label sample"/>
+  <Description DefaultValue="Verify the sensitivity label of a message in an event-based add-in."/>
+  <IconUrl DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://www.fabrikam.com/help"/>
+  <AppDomains>
+    <AppDomain>https://www.fabrikam.com</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/commands/commands.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.12">
+          <bt:Set Name="Mailbox"/>
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <!-- Specifies the event-based activation runtime. -->
+          <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch. -->
+          <Runtimes>
+            <!-- HTML file that references the JavaScript event handlers. This is used by Outlook on the web. -->
+            <Runtime resid="WebViewRuntime.Url">
+              <!-- JavaScript file that contains the event handlers. This is used by Outlook on Windows. -->
+              <Override type="javascript" resid="JSRuntime.Url"/>
+            </Runtime>
+          </Runtimes>
+          <DesktopFormFactor>
+            <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="msgComposeGroup">
+                  <Label resid="GroupLabel" />
+                  <Control xsi:type="Button" id="msgComposeOpenPaneButton">
+                    <Label resid="TaskpaneButton.Label" />
+                    <Supertip>
+                      <Title resid="TaskpaneButton.Label" />
+                      <Description resid="TaskpaneButton.Tooltip" />
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.16x16" />
+                      <bt:Image size="32" resid="Icon.32x32" />
+                      <bt:Image size="80" resid="Icon.80x80" />
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="Taskpane.Url" />
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+            <!-- Configures the add-in to launch when the specified events occur. -->
+            <ExtensionPoint xsi:type="LaunchEvent">
+              <LaunchEvents>
+                <LaunchEvent Type="OnMessageRecipientsChanged" FunctionName="onMessageRecipientsChangedHandler"/>
+                <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler" SendMode="PromptUser"/>
+                <LaunchEvent Type="OnSensitivityLabelChanged" FunctionName="onSensitivityLabelChangedHandler"/>
+              </LaunchEvents>
+              <!-- Identifies the runtime to be used by the add-in (also referenced by the Runtime element). -->
+              <SourceLocation resid="WebViewRuntime.Url" />
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+      <Resources>
+        <bt:Images>
+          <bt:Image id="Icon.16x16" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/assets/icon-80.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/commands/commands.js"/>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/taskpane/taskpane.html"/>
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/commands/commands.html"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="GroupLabel" DefaultValue="Verify sensitivity label"/>
+          <bt:String id="TaskpaneButton.Label" DefaultValue="Sample Instructions"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane listing the steps to run the add-in sample."/>
+        </bt:LongStrings>
+      </Resources>
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>
