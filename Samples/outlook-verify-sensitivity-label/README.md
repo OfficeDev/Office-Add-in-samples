@@ -51,7 +51,7 @@ For documentation related to this sample, see the following:
 
 ## Prerequisites
 
-- A Microsoft 365 subscription. If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://aka.ms/m365/devprogram#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
+- A Microsoft 365 E5 subscription. You can get a [free developer sandbox](https://aka.ms/m365/devprogram#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
 - A [Microsoft 365 Insider Program](https://insider.office.com/join) membership to run the sample in Outlook on Windows and on Mac.
 - A configured `Developer` registry key to run the sample in Outlook on Windows. This is needed to preview the sensitivity label API in event handlers. For guidance on how to configure the key, see [Preview features in event handlers (Outlook on Windows)](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch#preview-features-in-event-handlers-outlook-on-windows).
 - An enabled catalog of sensitivity labels in Outlook that includes the **Highly Confidential** label. To learn how to configure the sensitivity labels in your tenant, see the following:
