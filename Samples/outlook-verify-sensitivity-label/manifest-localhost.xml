@@ -23,7 +23,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3000/commands.html"/>
+        <SourceLocation DefaultValue="https://localhost:3000/src/commands/commands.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -94,9 +94,9 @@
           <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/commands.js"/>
-          <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
-          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/commands.html"/>
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.js"/>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/src/taskpane/taskpane.html"/>
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.html"/>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GroupLabel" DefaultValue="Verify sensitivity label"/>
