@@ -8,11 +8,13 @@
 Office.onReady((info) => {
   if (info.host === Office.HostType.Outlook) {
     
-      document.getElementById("getProfileButton").onclick = getFileNameList;
+      document.getElementById("getProfileButton").onclick = getConsent;
     
   }
 });
 
-function testBody(){
-  setSignature("This is a test.");
+async function getConsent(){
+  const accessToken = await OfficeRuntime.auth.getAccessToken({ allowConsentPrompt: true });
+  document.getElementById("message-area").innerText = accessToken;
+  console.log(accessToken);
 }

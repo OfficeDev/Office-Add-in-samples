@@ -3,13 +3,20 @@
  * See LICENSE in the project root for license information.
  */
 
-Office.onReady();
+const urlOrigin = 'https://localhost:3000'; // Change this if deploying to a different location.
+
+Office.onReady((info) => {
+    if (info.host === Office.HostType.Outlook) {
+        // All console logs from events go to a runtime logging file. For more information, see https://learn.microsoft.com/office/dev/add-ins/testing/runtime-logging
+        console.log('initializing ...' + info);
+    }
+});
 
 // Default SSO settings for acquiring access tokens.
 const defaultSSO = {
-    allowSignInPrompt: true,
-    allowConsentPrompt: true,
-    forMSGraphAccess: true,
+    allowSignInPrompt: false,
+    allowConsentPrompt: false,
+    //    forMSGraphAccess: true, // Leave commented during development testing (sideload) or you get a 13012 error from getAccessToken.
 };
 
 /**
@@ -18,42 +25,49 @@ const defaultSSO = {
  *
  * @param {Office.AddinCommands.Event} event The OnNewMessageCompose or OnNewAppointmentOrganizer event object.
  */
-async function onItemComposeHandler(event) {
-    await getUserProfile();
+function onItemComposeHandler(event) {
+    getUserProfile();
     event.completed({ allowEvent: true });
 }
 
 Office.actions.associate('onMessageComposeHandler', onItemComposeHandler);
 
 /**
- * Call the web server API to get the user's free/busy schedule.
- * The web server will use OBO and call Microsoft Graph to get and return the schedule.
+ * Call the web server API to get the user's profile.
+ * The web server will use the On-Behalf-Of flow and call Microsoft Graph to get and return the profile.
  */
-async function getUserProfile() {
-    try {
-        // Get access token from Outlook host via SSO.
-        let accessToken = await Office.auth.getAccessToken(defaultSSO);
+function getUserProfile() {
+    // Start promise chain
+    let p = new Promise((resolve, reject) => {
+        resolve('success');
+    });
 
+    p.then((result) => {
         // Call web server which will make Graph call and return filename list.
-        let jsonReponse = await callWebServerAPI(
-            'GET',
-            '/getUserProfile',
-            accessToken
-        );
-
-        // Create signature from user profile.
-        const signature = `${jsonReponse.displayName} \n ${jsonReponse.mail} \n ${jsonReponse.jobTitle} \n ${jsonReponse.mobilePhone}`;
-        await appendTextOnSend(signature);
-    } catch (exception) {
-        // Exceptions are displayed in the notification bar.
-        if (exception.code) {
-            handleClientSideErrors(exception);
-            return;
-        } else {
-            showMessage(exception.message);
-            return;
-        }
-    }
+        return callWebServerAPI('GET', urlOrigin + '/getuserprofile');
+    })
+        .then((jsonResponse) => {
+            // Create signature from user profile.
+            let signature = `${jsonResponse.displayName} \n ${jsonResponse.mail}`;
+            if (jsonResponse.jobTitle !== null) {
+                signature += `\n ${jsonResponse.jobTitle}`;
+            }
+            if (jsonResponse.mobilePhone !== null) {
+                signature += `\n ${jsonResponse.mobilePhone}`;
+            }
+            return appendTextOnSend(signature);
+        })
+        .then(() => {
+            return; // Simple return when promise chain completed.
+        })
+        .catch((exception) => {
+            // Exceptions are displayed in the notification bar.
+            if (exception.code) {
+                handleClientSideErrors(exception);
+            } else {
+                showMessage(exception.message);
+            }
+        });
 }
 
 /**
@@ -61,50 +75,66 @@ async function getUserProfile() {
  * @param {*} method HTTP method to use such as GET, POST, etc...
  * @param {*} url URL of the REST API.
  * @param {*} retryRequest Indicates if this is a retry of the call.
- * @returns The JSON response from the REST API.
+ * @returns A promise that will return the JSON response from the REST API.
  */
-async function callWebServerAPI(method, url, retryRequest = false) {
-    // Get the access token from Office host using SSO.
-    // Note that Office.auth.getAccessToken modifies the options parameter. Create a copy of the object
-    // to avoid modifying the original object.
-    const options = JSON.parse(JSON.stringify(defaultSSO));
-    const accessToken = await Office.auth.getAccessToken(options);
+function callWebServerAPI(method, url, retryRequest = false) {
+    return new Promise((resolve, reject) => {
+        // Get the access token from Office host using SSO.
+        // Note that Office.auth.getAccessToken modifies the options parameter. Create a copy of the object
+        // to avoid modifying the original object.
+        const options = JSON.parse(JSON.stringify(defaultSSO));
+        resolve(OfficeRuntime.auth.getAccessToken(options));
+    })
+        .then((accessToken) => {
+            // Call the REST API on our web server.
+            return fetch(url, {
+                method: method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + accessToken,
+                },
+            });
+        })
+        .then((response) => {
+            // Check for success condition: HTTP status code 2xx.
+            if (response.ok) {
+                return response.json();
+            }
+            // Check for fail condition: Did we get a Microsoft Graph API error, which is returned as bad request (403)?
+            else if (
+                response.status === 403 &&
+                jsonBody.type === 'Microsoft Graph'
+            ) {
+                // Return a promise that will reject with the Microsoft Graph error details.
+                return new Promise((resolve, reject) => {
+                    reject('Microsoft Graph error: ' + jsonBody.errorDetails);
+                });
+            }
+            // Handle all other errors by returning a promise that will reject with the error details.
+            return new Promise((resolve, reject) => {
+                reject('Unknown error: ' + jsonBody);
+            });
+        })
+        .then((jsonBody) => {
+            // Check for expired token. If token expired, retry the call which will get a refreshed token.
+            if (
+                jsonBody !== null &&
+                jsonBody.type === 'TokenExpiredError' &&
+                !retryRequest
+            ) {
+                // Try the call again (and return result). The underlying call to Office JS getAccessToken will refresh the token.
+                return callWebServerAPI(method, path, true); // true parameter will ensure we only do the recursion once.
+            }
 
-    const response = await fetch(url, {
-        method: method,
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + accessToken,
-        },
-    });
-
-    // Check for success condition: HTTP status code 2xx.
-    if (response.ok) {
-        return response.json();
-    }
-
-    // Check for fail condition: Is the SSO token expired? If so, retry the call which will get a refreshed token.
-    const jsonBody = await response.json();
-    if (
-        jsonBody !== null &&
-        jsonBody.type === 'TokenExpiredError' &&
-        !retryRequest
-    ) {
-        return callWebServerAPI(method, path, true); // Try the call again. The underlying call to Office JS getAccessToken will refresh the token.
-    }
-
-    // Check for fail condition: Did we get a Microsoft Graph API error, which is returned as bad request (403)?
-    if (response.status === 403 && jsonBody.type === 'Microsoft Graph') {
-        throw new Error('Microsoft Graph error: ' + jsonBody.errorDetails);
-    }
-
-    // Handle other errors.
-    throw new Error(JSON.stringify(jsonBody));
+            // Final step is to return a Promise that will resolve with the JSON body.
+            return new Promise((resolve) => {
+                resolve(jsonBody);
+            });
+        });
 }
 
 /**
- * Handles any error returned from getAccessToken. The numbered errors are typically user actions
- * that don't require fallback auth. The text shown for each error indicates next steps
+ * Handles any error returned from getAccessToken. The text shown for each error indicates next steps
  * you should take.
  * @param {*} err The error to process.
  */
@@ -156,10 +186,10 @@ function handleSSOErrors(err) {
  */
 function showMessage(text) {
     console.log(text);
-    const id = 'dac64749-cb7308b6d444';
+    const id = 'dac64749-cb7308b6d444'; // Unique ID for the notification.
     const details = {
         type: Office.MailboxEnums.ItemNotificationMessageType.ErrorMessage,
-        message: text.substring(0,150),
+        message: text.substring(0, 150),
     };
     Office.context.mailbox.item.notificationMessages.addAsync(id, details);
 }

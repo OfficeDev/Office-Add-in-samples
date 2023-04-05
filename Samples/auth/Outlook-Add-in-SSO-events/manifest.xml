@@ -13,7 +13,7 @@
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
-    <AppDomain>https://www.contoso.com</AppDomain>
+    <AppDomain>https://localhost:3000</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Mailbox"/>
@@ -133,8 +133,8 @@
         </bt:LongStrings>
       </Resources>
       <WebApplicationInfo>
-        <Id>Enter_client_ID_here</Id>
-        <Resource>api://localhost:3000/Enter_client_ID_here</Resource>
+        <Id>2420a85b-8b06-447c-b0d1-be1d542ba6ec</Id>
+        <Resource>api://localhost:3000/2420a85b-8b06-447c-b0d1-be1d542ba6ec</Resource>
         <Scopes>
           <Scope>openid</Scope>
           <Scope>user.read</Scope>          
