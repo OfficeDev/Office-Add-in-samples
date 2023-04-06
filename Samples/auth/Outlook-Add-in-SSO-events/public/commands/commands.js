@@ -26,49 +26,24 @@ const defaultSSO = {
  * @param {Office.AddinCommands.Event} event The OnNewMessageCompose or OnNewAppointmentOrganizer event object.
  */
 function onItemComposeHandler(event) {
-    getUserProfile();
-    event.completed({ allowEvent: true });
+    callWebServerAPI('GET', urlOrigin + '/getuserprofile')
+    .then((jsonResponse)=>{
+        let signature = `${jsonResponse.displayName} \n ${jsonResponse.mail}`;
+        if (jsonResponse.jobTitle !== null) {
+            signature += `\n ${jsonResponse.jobTitle}`;
+        }
+        if (jsonResponse.mobilePhone !== null) {
+            signature += `\n ${jsonResponse.mobilePhone}`;
+        }
+        appendTextOnSend(signature);
+        event.completed();
+    }).catch((exception)=>{
+        console.log(exception);
+        event.completed();
+    });
 }
 
 Office.actions.associate('onMessageComposeHandler', onItemComposeHandler);
-
-/**
- * Call the web server API to get the user's profile.
- * The web server will use the On-Behalf-Of flow and call Microsoft Graph to get and return the profile.
- */
-function getUserProfile() {
-    // Start promise chain
-    let p = new Promise((resolve, reject) => {
-        resolve('success');
-    });
-
-    p.then((result) => {
-        // Call web server which will make Graph call and return filename list.
-        return callWebServerAPI('GET', urlOrigin + '/getuserprofile');
-    })
-        .then((jsonResponse) => {
-            // Create signature from user profile.
-            let signature = `${jsonResponse.displayName} \n ${jsonResponse.mail}`;
-            if (jsonResponse.jobTitle !== null) {
-                signature += `\n ${jsonResponse.jobTitle}`;
-            }
-            if (jsonResponse.mobilePhone !== null) {
-                signature += `\n ${jsonResponse.mobilePhone}`;
-            }
-            return appendTextOnSend(signature);
-        })
-        .then(() => {
-            return; // Simple return when promise chain completed.
-        })
-        .catch((exception) => {
-            // Exceptions are displayed in the notification bar.
-            if (exception.code) {
-                handleClientSideErrors(exception);
-            } else {
-                showMessage(exception.message);
-            }
-        });
-}
 
 /**
  * Calls a REST API on the server.
@@ -128,9 +103,57 @@ function callWebServerAPI(method, url, retryRequest = false) {
 
             // Final step is to return a Promise that will resolve with the JSON body.
             return new Promise((resolve) => {
+                console.log("final resolve");
                 resolve(jsonBody);
             });
         });
+}
+
+/**
+ * Appends text to the end of the message or appointment's body once it's sent.
+ * @param {*} text The text to append.
+ */
+function appendTextOnSend(text) {
+    // It's recommended to call getTypeAsync and pass its returned value to the options.coercionType parameter of the appendOnSendAsync call.
+    Office.context.mailbox.item.body.getTypeAsync((asyncResult) => {
+        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+            console.log(
+                'Action failed with error: ' + asyncResult.error.message
+            );
+            return;
+        }
+
+        const bodyFormat = asyncResult.value;
+        Office.context.mailbox.item.body.appendOnSendAsync(
+            text,
+            { coercionType: bodyFormat },
+            (asyncResult) => {
+                if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+                    console.log(
+                        'Action failed with error: ' + asyncResult.error.message
+                    );
+                    return;
+                }
+
+                showMessage(
+                    `"${text}" will be appended to the body once the message or appointment is sent. Send the mail item to test this feature.`
+                );
+            }
+        );
+    });
+}
+
+/**
+ * Creates information bar to display a message to the user.
+ */
+function showMessage(text) {
+    console.log(text);
+    const id = 'dac64749-cb7308b6d444'; // Unique ID for the notification.
+    const details = {
+        type: Office.MailboxEnums.ItemNotificationMessageType.ErrorMessage,
+        message: text.substring(0, 150),
+    };
+    Office.context.mailbox.item.notificationMessages.addAsync(id, details);
 }
 
 /**
@@ -179,51 +202,4 @@ function handleSSOErrors(err) {
             showMessage('Could not sign in: ' + err.code);
             break;
     }
-}
-
-/**
- * Creates information bar to display a message to the user.
- */
-function showMessage(text) {
-    console.log(text);
-    const id = 'dac64749-cb7308b6d444'; // Unique ID for the notification.
-    const details = {
-        type: Office.MailboxEnums.ItemNotificationMessageType.ErrorMessage,
-        message: text.substring(0, 150),
-    };
-    Office.context.mailbox.item.notificationMessages.addAsync(id, details);
-}
-
-/**
- * Appends text to the end of the message or appointment's body once it's sent.
- * @param {*} text The text to append.
- */
-function appendTextOnSend(text) {
-    // It's recommended to call getTypeAsync and pass its returned value to the options.coercionType parameter of the appendOnSendAsync call.
-    Office.context.mailbox.item.body.getTypeAsync((asyncResult) => {
-        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-            console.log(
-                'Action failed with error: ' + asyncResult.error.message
-            );
-            return;
-        }
-
-        const bodyFormat = asyncResult.value;
-        Office.context.mailbox.item.body.appendOnSendAsync(
-            text,
-            { coercionType: bodyFormat },
-            (asyncResult) => {
-                if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                    console.log(
-                        'Action failed with error: ' + asyncResult.error.message
-                    );
-                    return;
-                }
-
-                showMessage(
-                    `"${text}" will be appended to the body once the message or appointment is sent. Send the mail item to test this feature.`
-                );
-            }
-        );
-    });
 }
