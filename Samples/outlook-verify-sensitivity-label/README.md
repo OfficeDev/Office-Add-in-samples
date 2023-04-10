@@ -1,7 +1,7 @@
 ---
 title: "Verify the sensitivity label of a message (preview)"
 page_type: sample
-urlFragment: excel-add-in-create-spreadsheet-from-web-page
+urlFragment: outlook-verify-sensitivity-label
 products:
 - office-add-ins
 - office-outlook
@@ -164,7 +164,7 @@ To use the sensitivity label API, the **\<Permissions\>** element of the manifes
 <Permissions>ReadWriteItem</Permissions>
 ```
 
-The manifest configures a runtime to handle event-based activation. Because the Outlook platform uses the client to determine whether to use HTML or JavaScript to load the runtime, both of these files must be referenced in the manifest. An HTML page resource ID is specified in the **\<Runtime\>** element, and a JavaScript file resource ID is specified in the **\<Override\>** element, as shown below. Outlook on Windows uses the referenced JavaScript file to load the runtime, while Outlook on Mac and on the web use the HTML file.
+The manifest configures a runtime to handle event-based activation. Because the Outlook platform uses the client to determine whether to use HTML or JavaScript to load the runtime, both of these files must be referenced in the manifest. An HTML page resource ID is specified in the **\<Runtime\>** element, and a JavaScript file resource ID is specified in the **\<Override\>** element, as shown next. Outlook on Windows uses the referenced JavaScript file to load the runtime, while Outlook on Mac and on the web use the HTML file.
 
 ```xml
 <!-- HTML file that references the JavaScript event handlers. This is used by Outlook on the web. -->
