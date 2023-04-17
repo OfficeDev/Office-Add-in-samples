@@ -76,18 +76,6 @@ Follow the steps in [Register an Office Add-in that uses single sign-on (SSO) wi
 1. Replace the `Enter_client_secret_here` placeholder value with the client secret you generated as part of the app registration process.
 1. Save your changes.
 
-
-
-### Provide consent for a single user
-
-If you don't have access to a tenant administrator account, or you want to limit consent to a few users, this method allows you to provide consent for a single user.
-
-1. Browse to `https://login.microsoftonline.com/common/oauth2/authorize?client_id={application_ID}&state=12345&response_type=code`, where `{application_ID}` is the application ID shown in your app registration.
-1. Sign in with your account.
-1. Review the permissions and click **Accept**.
-
-The browser will attempt to redirect back to your app, which may not be running. You might see a "this site cannot be reached" error after clicking **Accept**. This is OK, the consent was still recorded.
-
 ## Run the sample
 
 1. Open a terminal window and run the command `npm install` to install all package dependencies.
@@ -96,7 +84,7 @@ The browser will attempt to redirect back to your app, which may not be running.
 1. Compose a new email. The email will display a notification that it will append a signature.
 1. Send the email to yourself. Check when it arrives that the signature is appended.
 
-## SSO and fallback
+## Outlook smart alerts and fallback authentication
 
 It's recommended to always have a fallback authentication approach if SSO fails for any reason. However, fallback authentication requires a popup dialog for the user to sign in. It's not possible to open a dialog from an event in Outlook, so this sample doesn't use fallback authentication. If an error occurs, the sample displays the error as a notification on the message, and the signature is not appended.
 

@@ -136,8 +136,8 @@
       <!-- Specifies SSO scopes and resources for the web application that hosts this add-in. -->
       <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/develop/sso-in-office-add-ins#configure-the-add-in. -->
       <WebApplicationInfo>
-        <Id>2420a85b-8b06-447c-b0d1-be1d542ba6ec</Id>
-        <Resource>api://localhost:3000/2420a85b-8b06-447c-b0d1-be1d542ba6ec</Resource>
+        <Id>Enter_client_ID_here</Id>
+        <Resource>api://localhost:3000/Enter_client_ID_here</Resource>
         <Scopes>
           <Scope>openid</Scope>
           <Scope>user.read</Scope>          
