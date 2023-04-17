@@ -18,20 +18,32 @@ description: "Use SSO with event-based activation in an Outlook add-in."
 
 # Use SSO with event-based activation in an Outlook add-in
 
-**Applies to**: Outlook on Windows | Outlook on the web | [new Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439)
+The sample shows how to use SSO to access a user's Microsoft Graph data from an event fired in an Outlook add-in.
 
-## Summary
-
-The sample shows how to use SSO to access a user's Microsoft Graph data from an event fired in an Outlook add-in. The sample illustrates the following concepts:
+## Features
 
 - [Get a user access token using SSO](https://learn.microsoft.com/outlook/add-ins/authenticate-a-user-with-an-sso-token) when the [OnNewMessageCompose event](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch) fires.
 - Implement a server REST API that uses the [Microsoft identity platform and OAuth 2.0 On-Behalf-Of flow](https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) to exchange the user's access token for a new access token with permissions to the users profile on Microsoft Graph.
 - Use the [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/onedrive) to get user profile data, such as display name and job title.
 - Construct a signature in the mail item containing the user profile data.
 
+## Applies to
+
+- Outlook on Windows
+- Outlook on the web
+- [new Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439)
+
+## Prerequisites
+
+- A Microsoft 365 account. To get one, join the [Microsoft 365 Developer Program](https://aka.ms/devprogramsignup).
+- [Node.js](https://nodejs.org/) version 16 or greater.
+- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
+
+To run the sample, you first need to create an app registration to use SSO.
+
 ## Register the add-in with the Microsoft identity platform
 
-Use the following values for the subsequent app registration steps.
+Before you run the sample, you must create an app registration to use SSO. Use the following values for the subsequent app registration steps.
 
 | Placeholder or section | Value          |
 |------------------------|----------------|
@@ -45,8 +57,6 @@ Follow the steps in [Register an Office Add-in that uses single sign-on (SSO) wi
 
 ## Configure the sample
 
-Before you run the sample, you'll need to do a few things to make it work properly.
-
 1. Clone or download this repo.
 1. In Visual Studio Code (or editor of your choice), open the root folder for this sample.
 
@@ -55,7 +65,7 @@ Before you run the sample, you'll need to do a few things to make it work proper
 1. Open the **manifest.xml** file.
 1. Find the `<WebApplicationInfo>` section near the bottom of the manifest. Then, replace the `Enter_client_ID_here` value, in both places where it appears, with the application ID you generated as part of the app registration process.
 
-> Note: Make sure that the port number in the `Resource` element matches the port used by your project. It should also match the port you used when registering the application.
+    > Note: Make sure that the port number in the `Resource` element matches the port used by your project. It should also match the port you used when registering the application.
 
 1. Save your changes.
 
@@ -66,24 +76,7 @@ Before you run the sample, you'll need to do a few things to make it work proper
 1. Replace the `Enter_client_secret_here` placeholder value with the client secret you generated as part of the app registration process.
 1. Save your changes.
 
-## Provide user consent to the app
 
-If you want to try the add-in using a different tenant than the one where you registered the app, you need to complete this step.
-
-You have two choices for providing consent:
-
-- All users. Use an administrator account and consent once for all users in your Office 365 tenant.
-- Single user. Use any account to consent for just that user.
-
-### Provide admin consent for all users
-
-If you have access to a tenant administrator account, this method allows you to provide consent for all users in your organization. This is convenient if you have multiple developers that need to develop and test your add-in.
-
-1. Browse to `https://login.microsoftonline.com/common/adminconsent?client_id={application_ID}&state=12345`, where `{application_ID}` is the application ID shown in your app registration.
-1. Sign in with your administrator account.
-1. Review the permissions and click **Accept**.
-
-The browser will attempt to redirect back to your app, which may not be running. You might see a "this site cannot be reached" error after clicking **Accept**. This is OK, the consent was still recorded.
 
 ### Provide consent for a single user
 

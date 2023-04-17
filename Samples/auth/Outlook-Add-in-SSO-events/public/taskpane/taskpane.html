@@ -8,7 +8,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Office Add-ins Smart Alerts Sample</title>
+    <title>Office Add-ins Smart Alerts using SSO sample</title>
 
     <!-- Office JavaScript API -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
@@ -29,38 +29,31 @@
     </header>
     <main class="ms-firstrun-instructionstep">
         
-        <p class="ms-font-l">Modify the source files, then click <b>Run</b>.</p>
         <section class="ms-firstrun-instructionstep__header">
-            <h2 class="ms-font-m"> This add-in demonstrates how to use single sign-on by making a call to Microsoft
-                Graph to get user profile data.</h2>
+            <h2 class="ms-font-m"> This add-in demonstrates how to use single sign-on (SSO) in an Outlook event.
+                When you compose a new message, the event gets your user profile data from Microsoft Graph,
+                and appends a signature with your profile data.</h2>
             <div class="ms-firstrun-instructionstep__header--image"></div>
         </section>
         <div id="welcome-body" class="ms-firstrun-instructionstep__welcome-body">
             <p class="ms-font-m ms-firstrun-instructionstep__welcome-intro"><b>To use this add-in:</b></p>
             <ul class="ms-List ms-firstrun-instructionstep__list">
                 <li class="ms-ListItem">
-                    <span class="ms-ListItem-primaryText">Click the <b>Get My User Profile Information</b>
+                    <span class="ms-ListItem-primaryText">Create a new message or appointment. The add-in will display a notification with the email signature it will append.</b>
                         button.</span>
                     <div class="clearfix"></div>
-                </li>
-                <li class="ms-ListItem">
-                    <span class="ms-ListItem-secondaryText">If you are not signed into Office, you are prompted to sign
-                        in.</span>
-                    <div class="clearfix"></div>
-                </li>
-                <li class="ms-ListItem">
-                    <span class="ms-ListItem-primaryText">You may also be prompted to accept the app's permissions request.</span>
-                    <div class="clearfix"></div>
-                </li>
-                <li class="ms-ListItem">
-                    <span class="ms-ListItem-primaryText">Your user profile information will be displayed in the document.</span>
+                </li><li class="ms-ListItem">
+                    <span class="ms-ListItem-primaryText">If you are not signed in, 
+                        or have not consented to the scopes the add-in requires, choose the <b>Sign in and consent</b>
+                        button. Outlook events cannot display dialogs, so you must use the task pane
+                        if you need to sign in or consent. After you sign in and consent, the events can use SSO.</span>
                     <div class="clearfix"></div>
                 </li>
             </ul>
             <br>
             <p align="center">
                 <button id="getProfileButton" class="popupButton ms-Button ms-Button--primary"><span
-                        class="ms-Button-label">Get My User Profile Information </span></button>
+                        class="ms-Button-label">Sign in and consent</span></button>
             </p>
         </div>
         <p><label id="message-area"></label></p>

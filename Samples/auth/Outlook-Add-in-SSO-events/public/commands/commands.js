@@ -20,27 +20,28 @@ const defaultSSO = {
 };
 
 /**
- * Handle the OnNewMessageCompose or OnNewAppointmentOrganizer event by calling getUserProfile.
+ * Handle the OnNewMessageCompose event by calling getUserProfile.
  * This appends a signature with the user's profile to the message body on send.
  *
- * @param {Office.AddinCommands.Event} event The OnNewMessageCompose or OnNewAppointmentOrganizer event object.
+ * @param {Office.AddinCommands.Event} event The OnNewMessageCompose event object.
  */
 function onItemComposeHandler(event) {
     callWebServerAPI('GET', urlOrigin + '/getuserprofile')
-    .then((jsonResponse)=>{
-        let signature = `${jsonResponse.displayName} \n ${jsonResponse.mail}`;
-        if (jsonResponse.jobTitle !== null) {
-            signature += `\n ${jsonResponse.jobTitle}`;
-        }
-        if (jsonResponse.mobilePhone !== null) {
-            signature += `\n ${jsonResponse.mobilePhone}`;
-        }
-        appendTextOnSend(signature);
-        event.completed();
-    }).catch((exception)=>{
-        console.log(exception);
-        event.completed();
-    });
+        .then((jsonResponse) => {
+            let signature = `${jsonResponse.displayName} \n ${jsonResponse.mail}`;
+            if (jsonResponse.jobTitle !== null) {
+                signature += `\n ${jsonResponse.jobTitle}`;
+            }
+            if (jsonResponse.mobilePhone !== null) {
+                signature += `\n ${jsonResponse.mobilePhone}`;
+            }
+            appendTextOnSend(signature);
+            event.completed();
+        })
+        .catch((exception) => {
+            showMessage(JSON.stringify(exception));
+            event.completed();
+        });
 }
 
 Office.actions.associate('onMessageComposeHandler', onItemComposeHandler);
@@ -53,13 +54,15 @@ Office.actions.associate('onMessageComposeHandler', onItemComposeHandler);
  * @returns A promise that will return the JSON response from the REST API.
  */
 function callWebServerAPI(method, url, retryRequest = false) {
-    return new Promise((resolve, reject) => {
-        // Get the access token from Office host using SSO.
-        // Note that Office.auth.getAccessToken modifies the options parameter. Create a copy of the object
-        // to avoid modifying the original object.
-        const options = JSON.parse(JSON.stringify(defaultSSO));
-        resolve(OfficeRuntime.auth.getAccessToken(options));
-    })
+    let response = null;
+    // Get the access token from Office host using SSO.
+    // Note that Office.auth.getAccessToken modifies the options parameter. Create a copy of the object
+    // to avoid modifying the original object.
+    const options = JSON.parse(JSON.stringify(defaultSSO));
+
+    // Begin promise chain.
+    return OfficeRuntime.auth
+        .getAccessToken(options)
         .then((accessToken) => {
             // Call the REST API on our web server.
             return fetch(url, {
@@ -70,10 +73,17 @@ function callWebServerAPI(method, url, retryRequest = false) {
                 },
             });
         })
-        .then((response) => {
+        .then((responseData) => {
+            // Get the JSON body from the response.
+            response = responseData;
+            return response.json();
+        })
+        .then((jsonBody) => {
             // Check for success condition: HTTP status code 2xx.
             if (response.ok) {
-                return response.json();
+                return new Promise((resolve) => {
+                    resolve(jsonBody);
+                });
             }
             // Check for fail condition: Did we get a Microsoft Graph API error, which is returned as bad request (403)?
             else if (
@@ -85,27 +95,20 @@ function callWebServerAPI(method, url, retryRequest = false) {
                     reject('Microsoft Graph error: ' + jsonBody.errorDetails);
                 });
             }
-            // Handle all other errors by returning a promise that will reject with the error details.
-            return new Promise((resolve, reject) => {
-                reject('Unknown error: ' + jsonBody);
-            });
-        })
-        .then((jsonBody) => {
-            // Check for expired token. If token expired, retry the call which will get a refreshed token.
-            if (
+            // Check for expired token. If the token expired, retry the call which will get a refreshed token.
+            else if (
                 jsonBody !== null &&
                 jsonBody.type === 'TokenExpiredError' &&
                 !retryRequest
             ) {
                 // Try the call again (and return result). The underlying call to Office JS getAccessToken will refresh the token.
-                return callWebServerAPI(method, path, true); // true parameter will ensure we only do the recursion once.
+                return callWebServerAPI(method, url, true); // true parameter will ensure we only do the recursion once.
+            } else {
+                // Handle all other errors by returning a promise that will reject with the error details.
+                return new Promise((resolve, reject) => {
+                    reject('Unknown error: ' + JSON.stringify(jsonBody));
+                });
             }
-
-            // Final step is to return a Promise that will resolve with the JSON body.
-            return new Promise((resolve) => {
-                console.log("final resolve");
-                resolve(jsonBody);
-            });
         });
 }
 
