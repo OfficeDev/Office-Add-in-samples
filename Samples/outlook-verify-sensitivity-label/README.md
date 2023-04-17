@@ -33,8 +33,8 @@ This sample uses the sensitivity label API in an event-based add-in to verify an
   - Get the available sensitivity labels from the catalog.
   - Get the sensitivity label of a message.
 - Event-based activation is used to handle the following events.
-  - When the `OnMessageRecipientsChanged` event occurs, the add-in checks if the Legal Hold account (legalhold@fabrikam.com) was added to the **To**, **Cc**, or **Bcc** field. If the account appears in the **To** or **Cc** field, it's automatically removed from the message. On the other hand, if it was added to the **Bcc** field, the add-in checks whether the sensitivity label of the message is set to **Highly Confidential**. If it isn't, the account is removed from the message.
-  - When the `OnSensitivityLabelChanged` event occurs, the add-in checks if the sensitivity label is set to **Highly Confidential**, then adds the Legal Hold account, if applicable.
+  - When the `OnMessageRecipientsChanged` event occurs, the add-in checks if the legal hold account (legalhold@fabrikam.com) was added to the **To**, **Cc**, or **Bcc** field. If the account appears in the **To** or **Cc** field, it's automatically removed from the message. On the other hand, if it was added to the **Bcc** field, the add-in checks whether the sensitivity label of the message is set to **Highly Confidential**. If it isn't, the account is removed from the message.
+  - When the `OnSensitivityLabelChanged` event occurs, the add-in checks if the sensitivity label is set to **Highly Confidential**, then adds the legal hold account, if applicable.
   - When the `OnMessageSend` event occurs, the add-in checks whether the message contains an attachment or a recipient who's a member of the Fabrikam legal team. If one of these conditions is met, the sensitivity label of the message is set to **Highly Confidential**. A Smart Alerts dialog is then shown to notify that the sensitivity label was updated.
 
 For documentation related to this sample, see the following:
@@ -120,7 +120,7 @@ Once the add-in is loaded, use the following steps to try out its functionality.
 1. (Optional) Add a subject or content to the body of the message.
 1. Select **Send**.
 
-    The sensitivity label of the message is set to **Highly Confidential** and the **legalhold@fabrikam.com** account is added to the **Bcc** field. A Smart Alerts dialog appears that reads, "Due to the contents of your message, the sensitivity label has been set to Highly Confidential and the Legal Hold account has been added to the **Bcc** field. To learn more, see Fabrikam's information protection policy. Do you need to make changes to your message?"
+    The sensitivity label of the message is set to **Highly Confidential** and the **legalhold@fabrikam.com** account is added to the **Bcc** field. A Smart Alerts dialog appears that reads, "Due to the contents of your message, the sensitivity label has been set to Highly Confidential and the legal hold account has been added to the **Bcc** field. To learn more, see Fabrikam's information protection policy. Do you need to make changes to your message?"
 1. If you're ready to send your message, select **Send anyway**. Otherwise, select **Don't send**.
 
    > **Note**: Sending a message to the fabrikam.com domain will result in an undeliverable message.
@@ -135,7 +135,7 @@ If you manually change the sensitivity label of a message to **Highly Confidenti
 
     The sensitivity label of the message is set to **Highly Confidential** and the **legalhold@fabrikam.com** account is added to the **Bcc** field.
 
-### Test removing the Legal Hold account from a Highly Confidential message
+### Test removing the legal hold account from a Highly Confidential message
 
 If you attempt to remove the **legalhold@fabrikam.com** account from a message that's labeled **Highly Confidential**, the account will be automatically re-added to the **Bcc** field. Use the following steps to try out this functionality.
 
@@ -144,7 +144,7 @@ If you attempt to remove the **legalhold@fabrikam.com** account from a message t
 
     The **legalhold@fabrikam.com** account is re-added to the **Bcc** field.
 
-### Test manually adding the Legal Hold account as a recipient
+### Test manually adding the legal hold account as a recipient
 
 In this sample, the **legalhold@fabrikam.com** account can only be added to the **Bcc** field when the sensitivity label of a message is set to **Highly Confidential**. Use the following steps to try out this functionality.
 
@@ -207,7 +207,7 @@ if (Office.context.platform === Office.PlatformType.PC || Office.context.platfor
 The handler calls the `event.completed` method to signify when it completes processing an event. In the `onMessageSendHandler` function, the `event.completed` call specifies the `allowEvent` property to indicate whether the event can continue to execute or must terminate. It also specifies the `errorMessage` property to display the Smart Alerts dialog to indicate that the sensitivity label was updated.
 
 ```javascript
-event.completed({ allowEvent: false, errorMessage: "Due to the contents of your message, the sensitivity label has been set to Highly Confidential and the Legal Hold account has been added to the Bcc field.\nTo learn more, see Fabrikam's information protection policy.\n\nDo you need to make changes to your message?" });
+event.completed({ allowEvent: false, errorMessage: "Due to the contents of your message, the sensitivity label has been set to Highly Confidential and the legal hold account has been added to the Bcc field.\nTo learn more, see Fabrikam's information protection policy.\n\nDo you need to make changes to your message?" });
 ```
 
 ### Call the sensitivity label API
@@ -282,7 +282,7 @@ Office.context.mailbox.item.sensitivityLabel.setAsync(highlyConfidentialLabel, {
         return;
     }
     
-    event.completed({ allowEvent: false, errorMessage: "Due to the contents of your message, the sensitivity label has been set to Highly Confidential and the Legal Hold account has been added to the Bcc field.\nTo learn more, see Fabrikam's information protection policy.\n\nDo you need to make changes to your message?" });
+    event.completed({ allowEvent: false, errorMessage: "Due to the contents of your message, the sensitivity label has been set to Highly Confidential and the legal hold account has been added to the Bcc field.\nTo learn more, see Fabrikam's information protection policy.\n\nDo you need to make changes to your message?" });
 });
 ```
 
@@ -309,3 +309,5 @@ Office.context.mailbox.item.sensitivityLabel.setAsync(highlyConfidentialLabel, {
 Copyright (c) 2023 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-verify-sensitivity-label" />
