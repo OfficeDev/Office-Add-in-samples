@@ -12,7 +12,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 03/27/2023 10:00:00 AM
+  createdDate: 04/18/2023 10:00:00 AM
 description: "Learn how to verify and update the sensitivity label of a message using an event-based add-in."
 ---
 
@@ -302,7 +302,7 @@ Office.context.mailbox.item.sensitivityLabel.setAsync(highlyConfidentialLabel, {
 
 |Version|Date|Comments|
 |-------|----|--------|
-|1.0|March 27, 2023|Initial release|
+|1.0|April 18, 2023|Initial release|
 
 ## Copyright
 
