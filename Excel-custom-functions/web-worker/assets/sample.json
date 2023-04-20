@@ -1,0 +1,35 @@
+[
+    {
+      "name": "excel-custom-function-web-worker-pattern",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Custom function sample using web worker",
+      "shortDescription": "Use web workers in custom functions to prevent blocking the UI of your Office Add-in.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Excel-custom-functions/web-worker",
+      "longDescription": [
+        "Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in."
+      ],
+      "creationDateTime": "2020-12-16",
+      "updateDateTime": "2022-07-28",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+      ]
+    }
+  ] 

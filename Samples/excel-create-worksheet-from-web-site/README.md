@@ -11,19 +11,19 @@ extensions:
   technologies:
   - Add-ins
   createdDate: 01/31/2023 1:25:00 PM
-description: "Learn how to create a spreadsheet from your web site, populate it with data, and embed your Excel add-in."
+description: "Learn how to create a spreadsheet from your web page, populate it with data, and embed your Excel add-in."
 ---
 
-# Create a spreadsheet from your web site, populate it with data, and embed your Excel add-in
+# Create a spreadsheet from your web page, populate it with data, and embed your Excel add-in
 
 This sample accomplishes the following tasks.
 
-- Creates a new Excel spreadsheet from a web site.
-- Populates the spreadsheet with data from the web site.
+- Creates a new Excel spreadsheet from a web page.
+- Populates the spreadsheet with data from the web page.
 - Embeds the Script Lab add-in into the Excel spreadsheet.
 - Opens the spreadsheet on a new browser tab.
 
-![Sequence diagram showing an "Open in Microsoft Excel" button on your web site that creates a spreadsheet with your data which contains your add-in](./images/open-in-excel-overview.png)
+![Sequence diagram showing an "Open in Microsoft Excel" button on your web page that creates a spreadsheet with your data which contains your add-in](./images/open-in-excel-overview.png)
 
 This sample implements the pattern described in [Create an Excel spreadsheet from your web page, populate it with data, and embed your Office Add-in](https://learn.microsoft.com/office/dev/add-ins/excel/pnp-open-in-excel)
 
@@ -252,7 +252,7 @@ The advantage of setting this property to `false` is that you can use the Office
 
 Solution | Authors
 ---------|----------
-Open data from your web site in a spreadsheet | Microsoft
+Open data from your web page in a spreadsheet | Microsoft
 
 ## Version history
 
