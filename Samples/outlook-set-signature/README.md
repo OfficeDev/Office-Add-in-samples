@@ -44,6 +44,8 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
     > **Note**: If you don't have a Microsoft 365 subscription, you can get one for development purposes by signing up for the [Microsoft 365 developer program](https://developer.microsoft.com/office/dev-program).
 
+- A recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) installed on your computer. These are required if you want to run the web server on localhost. To check if you have already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+
 ## Solution
 
 | Solution | Author(s) |
@@ -57,6 +59,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 | 1.0 | 4-1-2021 | Initial release |
 | 1.1 | 6-1-2021 | Update for GA of setSignature API |
 | 1.2 | 7-27-2021 | Convert to GitHub hosting |
+| 1.3 | 4-17-2023 | Add support for unified Microsoft 365 manifest |
 
 ## Scenario: Event-based activation
 
@@ -64,10 +67,48 @@ In this scenario, the add-in helps the user manage their email signature, even w
 
 ## Run the sample
 
-You can run this sample in Outlook on Windows, on Mac (new UI), or in a browser. The add-in web files are served from this repo on GitHub.
+There are multiple ways to run this sample.
+
+### Run the sample using GitHub as the web host
+
+The quickest way to run the sample is to use GitHub as the web host.However you can't debug or change the source code. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on the web, on Windows, or on Mac by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on the web, on Windows, or on Mac by following the instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+
+### Run the sample on localhost with the unified Microsoft 365 manifest
+
+You can run the sample using the [unified Microsoft 365 manifest](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview) which is currently in preview. We encourage you to experiment with the unified manifest, but don't use the unified manifest for production add-ins.
+
+1. Clone or download this repository.
+1. From the command line, or a terminal window, go to the project folder ```/samples/outlook-set-signature```.
+1. Run the following commands.
+
+    ```console
+    npm install
+    npm start:unified
+    ```
+
+This will start the web server on localhost. When you want to stop the web server, run `npm stop:unified`.
+
+To debug task pane code, see [Debug add-ins on Windows using Visual Studio Code and Microsoft Edge WebView2 (Chromium-based)](https://learn.microsoft.com/office/dev/add-ins/testing/debug-desktop-using-edge-chromium) and related articles.
+
+>Note: You can't debug event-based activation code using the unified manifest at this time.
+
+### Run the sample on localhost with manifest.xml
+
+You can host the web server on localhost and use the manifest.xml file to sideload and run the sample. This supports debugging and production deployments.
+
+1. Run the following commands.
+
+    ```console
+    npm install
+    npm start
+    ```
+
+To debug event-based activation code, see [Debug your event-based Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch)
+
+To debug task pane code, see [Debug add-ins on Windows using Visual Studio Code and Microsoft Edge WebView2 (Chromium-based)](https://learn.microsoft.com/office/dev/add-ins/testing/debug-desktop-using-edge-chromium) and related articles.
 
 ### Try it out
 
@@ -84,38 +125,28 @@ Once the add-in is loaded use the following steps to try out the functionality.
 
 The next time you create a message or appointment, you'll see the signature you selected applied by the add-in.
 
-## Run the sample from localhost
+## Deploy to Azure
 
-If you prefer to host the web server for the sample on your computer, follow these steps:
+This sample supports deployment to Azure with the unified manifest. There are two approaches to deploy the sample to Azure: Use Visual Studio Code, or Use TeamsFx CLI.
 
-1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
-1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
+### From Visual Studio Code
 
-    ```console
-    npm install --global http-server
-    ```
+1. Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
+1. After you signed in, select a subscription under your account.
+1. Open the Teams Toolkit and click `Provision in the cloud` from DEVELOPMENT section or open the command palette and select: `Teams: Provision in the cloud`.
+1. Open the Teams Toolkit and click `Deploy to the cloud` or open the command palette and select: `Teams: Deploy to the cloud`.
 
-1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
-1. From a command prompt, go to the root folder and run the following command.
+### From TeamsFx CLI
 
-    ```console
-    http-server -S --cors . -p 3000
-    ```
+Run the following commands:
 
-1. To reroute to localhost, run office-addin-https-reverse-proxy. If you haven't installed this, run the following command.
+```dotnetcli
+teamsfx account login azure
+teamsfx provision --env dev
+teamsfx deploy --env dev
+```
 
-    ```console
-    npm install --global office-addin-https-reverse-proxy 
-    ```
-
-    To reroute, run the following in another command prompt.
-
-    ```console
-    office-addin-https-reverse-proxy --url http://localhost:3000 
-    ```
-
-1. Sideload `manifest-localhost.xml` in Outlook on the web, on Windows, or on Mac by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
-1. [Try out the sample!](#try-it-out)
+> Note: Provisioning and deployment may incur charges to your Azure Subscription.
 
 ## Key parts of this sample
 
