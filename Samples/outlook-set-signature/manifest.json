@@ -1,7 +1,7 @@
 {
-    "$schema": "http://zlatkom2:32080/metaos/schema/metaos.public.schema.json#",
+    "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/op/extensions/MicrosoftTeams.schema.json",
     "manifestVersion": "devPreview",
-    "id": "C341AD31-BF7A-4C1D-99F1-D2E5896BEB0A",
+    "id": "B341AD31-BF7A-4C1D-99F1-D2E5896BEB0A",
     "version": "1.0.0.0",
     "name": {
         "short": "Signature sample",
@@ -12,8 +12,8 @@
         "full": "Insert your signature with ease."
     },
     "icons": {
-        "outline": "public/assets/final_logo.png",
-        "color": "public/assets/final_logo.png"
+        "outline": "assets/final_logo.png",
+        "color": "assets/final_logo.png"
     },
     "accentColor": "#230201",
     "developer": {
@@ -64,8 +64,8 @@
                     "id": "runtime_1",
                     "type": "general",
                     "code": {
-                        "page": "https://localhost:3000/runtime/HTML/autorunweb.html",
-                        "script": "https://localhost:3000/runtime/Js/autorunshared.js"
+                        "page": "https://localhost:3000/autorunweb.html",
+                        "script": "https://localhost:3000/autorunshared.js"
                     },
                     "lifetime": "short",
                     "actions": [
@@ -88,7 +88,7 @@
                     "id": "runtime_2",
                     "type": "general",
                     "code": {
-                        "page": "https://localhost:3000/taskpane/HTML/editsignature.html"
+                        "page": "https://localhost:3000/editsignature.html"
                     },
                     "lifetime": "short",
                     "actions": [
@@ -135,12 +135,12 @@
                                 {
                                     "overriddenByRibbonApi": false,
                                     "id": "mccsG0",
-                                    "label": "Signature Injector",
+                                    "label": "Signature Injector2",
                                     "controls": [
                                         {
                                             "id": "MRCS_TpBtn0",
                                             "type": "button",
-                                            "label": "Set my signature",
+                                            "label": "Set my signature2",
                                             "icons": [
                                                 {
                                                     "size": 16,
@@ -156,7 +156,7 @@
                                                 }
                                             ],
                                             "supertip": {
-                                                "title": "Set my signature",
+                                                "title": "Set my signature2",
                                                 "description": "Opens a pane displaying all available properties."
                                             },
                                             "actionId": "action_1",
@@ -194,12 +194,12 @@
                                 {
                                     "overriddenByRibbonApi": false,
                                     "id": "aocsG0",
-                                    "label": "Signature Injector",
+                                    "label": "Signature Injector2",
                                     "controls": [
                                         {
                                             "id": "MRCS_TpBtn1",
                                             "type": "button",
-                                            "label": "Set my signature",
+                                            "label": "Set my signature2",
                                             "icons": [
                                                 {
                                                     "size": 16,
@@ -215,7 +215,7 @@
                                                 }
                                             ],
                                             "supertip": {
-                                                "title": "Set my signature",
+                                                "title": "Set my signature2",
                                                 "description": "Opens a pane displaying all available properties."
                                             },
                                             "actionId": "action_2",
@@ -254,7 +254,7 @@
                     ]
                 }
             ],
-            "audienceClaimUrl": "https://localhost:3000/taskpane/HTML/editsignature.html"
+            "audienceClaimUrl": "https://localhost:3000/editsignature.html"
         }
     ],
     "showLoadingIndicator": false,

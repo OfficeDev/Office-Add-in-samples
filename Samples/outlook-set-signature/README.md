@@ -45,6 +45,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
     > **Note**: If you don't have a Microsoft 365 subscription, you can get one for development purposes by signing up for the [Microsoft 365 developer program](https://developer.microsoft.com/office/dev-program).
 
 - A recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) installed on your computer. These are required if you want to run the web server on localhost. To check if you have already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+- [Teams Toolkit extension for VS Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/install-teams-toolkit) if you want to run the sample with the [unified Microsoft 365 manifest](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
 
 ## Solution
 
@@ -131,28 +132,39 @@ This sample supports deployment to Azure with the unified manifest. There are tw
 
 ### From Visual Studio Code
 
-1. Open Teams Toolkit, and sign into Azure by clicking the `Sign in to Azure` under the `ACCOUNTS` section from sidebar.
-1. After you signed in, select a subscription under your account.
-1. Open the Teams Toolkit and click `Provision in the cloud` from DEVELOPMENT section or open the command palette and select: `Teams: Provision in the cloud`.
-1. Open the Teams Toolkit and click `Deploy to the cloud` or open the command palette and select: `Teams: Deploy to the cloud`.
+1. Open Teams Toolkit, and sign into Azure by choosing `Sign in to Azure` under the **ACCOUNTS** section from sidebar.
+1. After you sign in, select a subscription under your account.
+1. Choose `Provision in the cloud` from the **DEVELOPMENT** section or open the command palette and select: `Teams: Provision in the cloud`.
+1. Choose `Deploy to the cloud` or open the command palette and select: `Teams: Deploy to the cloud`.
 
 ### From TeamsFx CLI
 
 Run the following commands:
 
-```dotnetcli
+```console
 teamsfx account login azure
 teamsfx provision --env dev
 teamsfx deploy --env dev
 ```
 
-> Note: Provisioning and deployment may incur charges to your Azure Subscription.
+> Note: Provisioning and deployment may incur charges to your Azure subscription.
+
+The previous steps provision a new storage account in your Azure subscription and enable it to server static HTML content.
+
+Once the sample is successfully deployed follow these steps:
+
+1. Open the `./webpack.config.js` file.
+1. Change the `urlProd` constant to use the endpoint of your new Azure deployment. The correct endpoint is listed in the VS Code **OUTPUT** window from running previous commands. Or you can go to your Azure portal and go to the new storage account. Then choose **Data management > Static website** and copy the **Primary endpoint** value.
+1. Save the changes to `webpack.config.js` and run the `npm run build` command. This will generate a new `manifest.json` file in the `dist` folder that will load the add-in resources from your storage account.
+1. Run the command `npm start:unified:prod` to start Outlook and sideload the manifest.json from the `dist` folder. Outlook will start and then load the sample add-in from the deployed storage account.
 
 ## Key parts of this sample
 
-### Configure event-based activation in the manifest
+The manifest configures a runtime that is loaded specifically to handle event-based activation.
 
-The manifest configures a runtime that is loaded specifically to handle event-based activation. The following `<Runtime>` element specifies an HTML page resource ID that loads the runtime on Outlook on the web and on Mac. The `<Override>` element specifies the JavaScript file instead, to load the runtime for Outlook on Windows. Outlook on Windows doesn't use the HTML page to load the runtime.
+### Configure event-based activation in the manifest.xml file
+
+The following `<Runtime>` element specifies an HTML page resource ID that loads the runtime on Outlook on the web and on Mac. The `<Override>` element specifies the JavaScript file instead, to load the runtime for Outlook on Windows. Outlook on Windows doesn't use the HTML page to load the runtime.
 
 ```xml
 <Runtime resid="Autorun">
@@ -164,11 +176,76 @@ The manifest configures a runtime that is loaded specifically to handle event-ba
 
 The add-in handles two events that are mapped to the `checkSignature()` function.
 
+`manifest.xml`
+
 ```xml
 <LaunchEvents>
   <LaunchEvent Type="OnNewMessageCompose" FunctionName="checkSignature" />
   <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="checkSignature" />
 </LaunchEvents>
+```
+
+### Configure event-based activation in the unified manifest file
+
+If you use the unified manifest, the `manifest.json` file it specifies an HTML page resource ID that loads the runtime on Outlook on the web and on Mac. The `runtimes` array includes a runtime entry that describes the event-based activation required. The `code` object identies the HTML file to load. It also identifies a Javascript file to load when using Outlook on Windows.
+
+```json
+ "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.5"
+                            }
+                        ]
+                    },
+                    "id": "runtime_1",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/autorunweb.html",
+                        "script": "https://localhost:3000/autorunshared.js"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "checkSignature",
+                            "type": "executeFunction",
+                            "displayName": "checkSignature"
+                        }
+                    ]
+                },
+...
+```
+
+The add-in handles two events that are mapped to the `checkSignature()` function. They are described in the `autoRunEvents` array. Note that the `actionID` must match an `id` specified in the previous `actions` array.
+
+```json
+ "autoRunEvents": [
+      {
+          "requirements": {
+              "capabilities": [
+                  {
+                      "name": "Mailbox",
+                      "minVersion": "1.5"
+                  }
+              ],
+              "scopes": [
+                  "mail"
+              ]
+          },
+          "events": [
+              {
+                  "type": "newMessageComposeCreated",
+                  "actionId": "checkSignature"
+              },
+              {
+                  "type": "newAppointmentOrganizerCreated",
+                  "actionId": "checkSignature"
+              }
+          ]
+      }
+  ],
 ```
 
 ### Handling the events and using the setSignatureAsync API
