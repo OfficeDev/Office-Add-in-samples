@@ -1,0 +1,41 @@
+[
+    {
+      "name": "azure-function-with-excel-custom-function",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Integrate an Azure Function with your Excel custom function",
+      "shortDescription": "You can expand the capabilities of Excel custom functions by integrating with Azure Functions.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Excel-custom-functions/AzureFunction",
+      "longDescription": [
+        "Expand the capabilities of Excel custom functions by integrating with Azure Functions. An Azure Function allows you to move your code to the cloud so it is not visible from the browser, and you can choose additional languages to run in besides JavaScript. Azure Function can also integrate with other Azure services, such as message queues and storage, and you can share the function with other clients."
+      ],
+      "creationDateTime": "2019-10-02",
+      "updateDateTime": "2022-03-17",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+        {
+            "type": "Image",
+            "order": 100,
+            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Excel-custom-functions/AzureFunction/images/azure-function-overview.png",
+            "alt": "Overview diagram of Excel custom function calling an Azure Function that returns a result."
+          }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+      ]
+    }
+  ] 

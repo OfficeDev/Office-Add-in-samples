@@ -1,0 +1,40 @@
+[
+    {
+      "name": "office-add-in-save-custom-settings",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Save custom settings in your Office Add-in",
+      "shortDescription": "Shows how to save custom settings inside an Office Add-in.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-add-in-save-custom-settings",
+      "longDescription": [
+        "Shows how to save custom settings inside an Office Add-in. The add-in stores data as key/value pairs, using the JavaScript API for Office property bag, browser cookies, web storage (localStorage and sessionStorage), or by storing the data in a hidden div in the document."
+      ],
+      "creationDateTime": "2022-08-26",
+      "updateDateTime": "2022-08-26",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+        {
+          "name": "Persist add-in state and settings",
+          "description": "Learn to persist data in Office Add-in web applications running in the stateless environment of a browser control.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/develop/persisting-add-in-state-and-settings"
+        }
+      ]
+    }
+  ] 

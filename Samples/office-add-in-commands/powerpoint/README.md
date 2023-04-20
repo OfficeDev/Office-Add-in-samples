@@ -13,16 +13,16 @@ extensions:
   technologies:
     - Add-ins
   createdDate: '12/09/2021 10:00:00 AM'
-description: 'Create an PowerPoint add-in with command buttons.'
+description: 'Create a PowerPoint add-in with command buttons.'
 ---
 
-# Create an PowerPoint add-in with command buttons
+# Create a PowerPoint add-in with command buttons
 
 ## Summary
 
 Learn how to build an Office Add-in that has a command button to show the task pane, and a menu dropdown button that can show the task pane, or get data.
 
-![Screen shot of PowerPoint showing ribbon with Home tab selected and two buttons for the sample that show the task pane or show a dropdown menu](../images/powerpoint-ribbon-buttons.png)
+![Screen shot of PowerPoint showing ribbon with Home tab selected and two buttons for the sample that show the task pane or show a dropdown menu.](../images/powerpoint-ribbon-buttons.png)
 
 ## Features
 
