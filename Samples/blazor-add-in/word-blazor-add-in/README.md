@@ -9,7 +9,8 @@ languages:
   - C#
 extensions:
   contentType: samples
-  technologies: Add-ins
+  technologies: 
+  - Add-ins
   createdDate: '04/14/2022 10:00:00 PM'
 description: 'Create a Blazor Webassembly Word add-in showcasing some samples.'
 ---

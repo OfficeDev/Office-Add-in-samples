@@ -1,0 +1,55 @@
+/* 
+ * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin-top: 0;
+}
+
+.ms-welcome__header {
+  padding: 20px;
+  padding-bottom: 30px;
+  padding-top: 100px;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ms-welcome__main {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex: 1 0 0;
+  flex: 1 0 0;
+  padding: 10px 20px;
+}
+
+.ms-welcome__main > h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.ms-welcome__features {
+  list-style-type: none;
+  margin-top: 20px;
+}
+
+.ms-ListItem {
+  padding-bottom: 20px;
+}
