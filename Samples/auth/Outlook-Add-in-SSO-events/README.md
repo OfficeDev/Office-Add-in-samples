@@ -82,6 +82,9 @@ Follow the steps in [Register an Office Add-in that uses single sign-on (SSO) wi
 1. Run the command `npm start` to start the web server.
 1. To test the add-in in Outlook, you need to sideload it. Follow the instructions at [Sideload an Office Add-in for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing) to sideload the sample.
 1. Compose a new email. The email will display a notification that it will append a signature.
+
+    >Note: If you didn't grant consent when you created the app registration this step will fail. To grant consent, open the task pane, choose **Sign in and consent**. After you consent, new emails will append the signature.
+
 1. Send the email to yourself. Check when it arrives that the signature is appended.
 
 ## Outlook smart alerts and fallback authentication
