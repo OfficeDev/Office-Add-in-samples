@@ -135,12 +135,12 @@
                                 {
                                     "overriddenByRibbonApi": false,
                                     "id": "mccsG0",
-                                    "label": "Signature Injector2",
+                                    "label": "Signature Injector",
                                     "controls": [
                                         {
                                             "id": "MRCS_TpBtn0",
                                             "type": "button",
-                                            "label": "Set my signature2",
+                                            "label": "Set my signature",
                                             "icons": [
                                                 {
                                                     "size": 16,
@@ -156,7 +156,7 @@
                                                 }
                                             ],
                                             "supertip": {
-                                                "title": "Set my signature2",
+                                                "title": "Set my signature",
                                                 "description": "Opens a pane displaying all available properties."
                                             },
                                             "actionId": "action_1",
@@ -199,7 +199,7 @@
                                         {
                                             "id": "MRCS_TpBtn1",
                                             "type": "button",
-                                            "label": "Set my signature2",
+                                            "label": "Set my signature",
                                             "icons": [
                                                 {
                                                     "size": 16,
@@ -215,7 +215,7 @@
                                                 }
                                             ],
                                             "supertip": {
-                                                "title": "Set my signature2",
+                                                "title": "Set my signature",
                                                 "description": "Opens a pane displaying all available properties."
                                             },
                                             "actionId": "action_2",

@@ -87,10 +87,10 @@ You can run the sample using the [unified Microsoft 365 manifest](https://learn.
 
     ```console
     npm install
-    npm start:unified
+    npm run start:unified
     ```
 
-This will start the web server on localhost. When you want to stop the web server, run `npm stop:unified`.
+This will start the web server on localhost. When you want to stop the web server, run `npm run stop:unified`.
 
 To debug task pane code, see [Debug add-ins on Windows using Visual Studio Code and Microsoft Edge WebView2 (Chromium-based)](https://learn.microsoft.com/office/dev/add-ins/testing/debug-desktop-using-edge-chromium) and related articles.
 

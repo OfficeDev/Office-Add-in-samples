@@ -12,7 +12,12 @@
   <IconUrl DefaultValue="https://localhost:3000/assets/final_logo.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/final_logo.jpg"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
-
+  <AppDomains>
+    <AppDomain>https://www.contoso.com</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
   <Requirements>
     <Sets DefaultMinVersion="1.1">
       <Set Name="Mailbox" />
@@ -47,8 +52,8 @@
 
       <Hosts>
         <Host xsi:type="MailHost">
-        <!-- Specify the runtime for event-based activation. -->
-        <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch -->
+          <!-- Specify the runtime for event-based activation. -->
+          <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch -->
           <Runtimes>
             <Runtime resid="Autorun">
               <Override type="javascript" resid="runtimeJs"/>
@@ -101,7 +106,7 @@
                 </Group>
               </OfficeTab>
             </ExtensionPoint>
-            
+
             <!-- Specify function to call for new message and new appointment events -->
             <ExtensionPoint xsi:type="LaunchEvent">
               <LaunchEvents>
