@@ -104,7 +104,7 @@ You can host the web server on localhost and use the manifest.xml file to sidelo
 
     ```console
     npm install
-    npm start
+    npm run start
     ```
 
 To debug event-based activation code, see [Debug your event-based Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch)
@@ -156,7 +156,7 @@ Once the sample is successfully deployed follow these steps:
 1. Open the `./webpack.config.js` file.
 1. Change the `urlProd` constant to use the endpoint of your new Azure deployment. The correct endpoint is listed in the VS Code **OUTPUT** window from running previous commands. Or you can go to your Azure portal and go to the new storage account. Then choose **Data management > Static website** and copy the **Primary endpoint** value.
 1. Save the changes to `webpack.config.js` and run the `npm run build` command. This will generate a new `manifest.json` file in the `dist` folder that will load the add-in resources from your storage account.
-1. Run the command `npm start:unified:prod` to start Outlook and sideload the manifest.json from the `dist` folder. Outlook will start and then load the sample add-in from the deployed storage account.
+1. Run the command `npm run start:unified:prod` to start Outlook and sideload the manifest.json from the `dist` folder. Outlook will start and then load the sample add-in from the deployed storage account.
 
 ## Key parts of this sample
 
@@ -187,7 +187,7 @@ The add-in handles two events that are mapped to the `checkSignature()` function
 
 ### Configure event-based activation in the unified manifest file
 
-If you use the unified manifest, the `manifest.json` file it specifies an HTML page resource ID that loads the runtime on Outlook on the web and on Mac. The `runtimes` array includes a runtime entry that describes the event-based activation required. The `code` object identies the HTML file to load. It also identifies a Javascript file to load when using Outlook on Windows.
+If you use the unified manifest, the `manifest.json` file it specifies an HTML page resource ID that loads the runtime on Outlook on the web and on Mac. The `runtimes` array includes a runtime entry that describes the event-based activation required. The `code` object identities the HTML file to load. It also identifies a Javascript file to load when using Outlook on Windows.
 
 ```json
  "runtimes": [
