@@ -45,7 +45,8 @@ For documentation related to this sample, see [Configure your Outlook add-in for
     > **Note**: If you don't have a Microsoft 365 subscription, you can get one for development purposes by signing up for the [Microsoft 365 developer program](https://developer.microsoft.com/office/dev-program).
 
 - A recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) installed on your computer. These are required if you want to run the web server on localhost. To check if you have already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
-- [Teams Toolkit extension for VS Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/install-teams-toolkit) if you want to deploy the sample to Microsoft Azure with the [unified Microsoft 365 manifest](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
+- (Optional) [Teams Toolkit extension for VS Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/install-teams-toolkit) if you want to deploy the sample to Microsoft Azure with the [unified Microsoft 365 manifest](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
+- (Optional) [TeamsFx command line interface](https://learn.microsoft.com/microsoftteams/platform/toolkit/teamsfx-cli) if you want to use TeamsFx CLI for deployment steps.
 
 ## Solution
 
