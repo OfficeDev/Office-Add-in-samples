@@ -35,8 +35,7 @@ function onItemComposeHandler(event) {
             if (jsonResponse.mobilePhone !== null) {
                 signature += `\n ${jsonResponse.mobilePhone}`;
             }
-            appendTextOnSend(signature);
-            event.completed();
+            appendTextOnSend(signature,event);
         })
         .catch((exception) => {
             showMessage(JSON.stringify(exception));
@@ -115,14 +114,16 @@ function callWebServerAPI(method, url, retryRequest = false) {
 /**
  * Appends text to the end of the message or appointment's body once it's sent.
  * @param {*} text The text to append.
+ * @param {*} event The event object. This method calls event.completed() when it's done.
  */
-function appendTextOnSend(text) {
+function appendTextOnSend(text,event) {
     // It's recommended to call getTypeAsync and pass its returned value to the options.coercionType parameter of the appendOnSendAsync call.
     Office.context.mailbox.item.body.getTypeAsync((asyncResult) => {
         if (asyncResult.status === Office.AsyncResultStatus.Failed) {
             console.log(
                 'Action failed with error: ' + asyncResult.error.message
             );
+            event.completed();
             return;
         }
 
@@ -135,12 +136,14 @@ function appendTextOnSend(text) {
                     console.log(
                         'Action failed with error: ' + asyncResult.error.message
                     );
+                    event.completed();
                     return;
                 }
 
                 showMessage(
                     `"${text}" will be appended to the body once the message or appointment is sent. Send the mail item to test this feature.`
                 );
+                event.completed();
             }
         );
     });
