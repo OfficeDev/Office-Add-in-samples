@@ -46,7 +46,6 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 - A recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) installed on your computer. These are required if you want to run the web server on localhost. To check if you have already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 - (Optional) [Teams Toolkit extension for VS Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/install-teams-toolkit) if you want to deploy the sample to Microsoft Azure with the [unified Microsoft 365 manifest](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
-- (Optional) [TeamsFx command line interface](https://learn.microsoft.com/microsoftteams/platform/toolkit/teamsfx-cli) if you want to use TeamsFx CLI for deployment steps.
 
 ## Solution
 
@@ -129,7 +128,7 @@ The next time you create a message or appointment, you'll see the signature you 
 
 ## Deploy to Azure
 
-This sample supports deployment to Azure with the unified manifest. There are two approaches to deploy the sample to Azure: Use Visual Studio Code, or Use TeamsFx CLI.
+This sample supports deployment to Azure with the unified manifest.
 
 ### From Visual Studio Code
 
@@ -137,20 +136,6 @@ This sample supports deployment to Azure with the unified manifest. There are tw
 1. After you sign in, select a subscription under your account.
 1. Choose `Provision in the cloud` from the **DEVELOPMENT** section or open the command palette and select: `Teams: Provision in the cloud`.
 1. Choose `Deploy to the cloud` or open the command palette and select: `Teams: Deploy to the cloud`.
-
-### From TeamsFx CLI
-
-Run the following commands:
-
-```console
-teamsfx account login azure
-teamsfx provision --env dev
-teamsfx deploy --env dev
-```
-
-> Note: Provisioning and deployment may incur charges to your Azure subscription.
-
-The previous steps provision a new storage account in your Azure subscription and enable it to server static HTML content.
 
 Once the sample is successfully deployed follow these steps:
 
