@@ -12,7 +12,13 @@
   <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/final_logo.png"/>
   <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/final_logo.jpg"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
-
+  <AppDomains>
+    <AppDomain>https://www.contoso.com</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  
   <Requirements>
     <Sets DefaultMinVersion="1.1">
       <Set Name="Mailbox" />
