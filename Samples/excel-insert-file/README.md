@@ -35,7 +35,7 @@ This sample shows how to insert an existing template from an external Excel file
 
 ## Prerequisites
 
-To use this sample, you'll need to [join Office Insider](https://insider.office.com/join).
+To use this sample, you'll need to [join the Microsoft 365 Insider program](https://insider.microsoft365.com/join).
 
 ## Solution
 
