@@ -24,8 +24,8 @@
         {
             "type": "Image",
             "order": 100,
-            "url": "https://learn.microsoft.com/en-us/office/dev/add-ins/images/excel-data-types-entity-card-tofu.png",
-            "alt": "An entity value data type in Excel with the card window displayed."
+            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/office-add-in-commands/auto-open-task-pane/images/auto-open-sample.png",
+            "alt": "The autoopen sample's task pane with buttons to turn autoopen on and off."
           }
       ],
       "authors": [

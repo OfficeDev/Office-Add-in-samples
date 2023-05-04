@@ -22,6 +22,8 @@ description: "Configure a document to automatically open your Office Add-in's ta
 
 Some scenarios for your Office Add-in may require the task pane to automatically open with certain documents. This sample shows how to configure a document to automatically open your task pane when the document is opened by a user. The auto-open task pane feature requires the [AddInCommands 1.1](https://learn.microsoft.com/javascript/api/requirement-sets/common/add-in-commands-requirement-sets) requirement set.
 
+![The autoopen sample's task pane with buttons to turn autoopen on and off.](./images/auto-open-sample.png)
+
 ## Features
 
 - Shows how to configure a document to auto-open when the document is opened.
