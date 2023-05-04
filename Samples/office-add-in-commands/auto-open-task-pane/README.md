@@ -117,7 +117,7 @@ To specify the task pane to open automatically, the sample sets the **TaskpaneId
 
 ### Tag the document to automatically open the task pane
 
-The sample uses the Office JS **settings.set** method to set **Office.AutoShowTaskpaneWithDocument** to **true** as shown in the following code from the **Home.js** file. To turn autooppen off, the code calls **settings.remove** to remove the setting.
+The sample uses the Office JS **settings.set** method to set **Office.AutoShowTaskpaneWithDocument** to **true** as shown in the following code from the **home.js** file. To turn autooppen off, the code calls **settings.remove** to remove the setting.
 
 ```javascript
 function setAutoOpenOn() {
