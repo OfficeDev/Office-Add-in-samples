@@ -8,7 +8,7 @@
     }
 
     document.getElementById('template-description').innerText =
-        'This sample show how to tag a document programmatically to auto-open a taskpane';
+        'This sample show how to programmatically tag a document to auto-open a task pane.';
 
     // Add click event handlers for the buttons.
     document.getElementById('set-auto-open-on').onclick = setAutoOpenOn;
@@ -25,7 +25,7 @@ function setAutoOpenOn() {
     );
     Office.context.document.settings.saveAsync();
     showNotification(
-        'The auto-open setting has been set to ON on this document'
+        'The auto-open setting has been set to ON for this document.'
     );
 }
 
@@ -35,11 +35,11 @@ function setAutoOpenOff() {
     );
     Office.context.document.settings.saveAsync();
     showNotification(
-        'The auto-open setting has been set to OFF on this document'
+        'The auto-open setting has been set to OFF for this document.'
     );
 }
 
-// Helper function for displaying notifications in the footer
+// Helper function for displaying notifications in the footer.
 function showNotification(content) {
     document.getElementById('message-text').innerText = content;
     document.getElementById('message-text').style.visibility = 'visible';
