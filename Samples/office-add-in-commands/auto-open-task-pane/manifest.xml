@@ -17,7 +17,7 @@
   <ProviderName>[Provider name]</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-  <DisplayName DefaultValue="AutoOpenSimple" />
+  <DisplayName DefaultValue="Auto-Open Sample" />
   <Description DefaultValue="Configure a document to automatically open your Office Add-in's task pane when the document is opened."/>
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->

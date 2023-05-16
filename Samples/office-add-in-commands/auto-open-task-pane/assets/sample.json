@@ -5,9 +5,9 @@
       "source": "officedev",
       "title": "Auto-open a task pane with a document",
       "shortDescription": "Configure a document to automatically open your Office Add-in's task pane when the document is opened.",
-      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-data-types-explorer",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-add-in-commands/auto-open-task-pane",
       "longDescription": [
-        "Configure a document to automatically open your Office Add-in's task pane when the document is opened."
+        "Configure a document to automatically open your Office Add-in's task pane when the document opens."
       ],
       "creationDateTime": "2023-05-03",
       "updateDateTime": "2023-05-03",
@@ -25,7 +25,7 @@
             "type": "Image",
             "order": 100,
             "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/office-add-in-commands/auto-open-task-pane/images/auto-open-sample.png",
-            "alt": "The autoopen sample's task pane with buttons to turn autoopen on and off."
+            "alt": "The sample's task pane with buttons to turn auto-open on and off."
           }
       ],
       "authors": [
@@ -38,7 +38,7 @@
       "references": [
         {
           "name": "Automatically open a task pane with a document",
-          "description": "Some scenarios require that a task pane open automatically when a document opens, without explicit user interaction. You can use the autoopen task pane feature, introduced in the AddInCommands 1.1 requirement set, to automatically open a task pane when your scenario requires it.",
+          "description": "Some scenarios require that a task pane open automatically when a document opens, without explicit user interaction. You can use the auto-open task pane feature to automatically open a task pane when your scenario requires it.",
           "url": "https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document"
         }
       ]
