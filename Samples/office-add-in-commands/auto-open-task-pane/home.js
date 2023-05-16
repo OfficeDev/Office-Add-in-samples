@@ -1,11 +1,4 @@
 ﻿Office.onReady((reason) => {
-    // If not using Word 2016, use fallback logic.
-    if (!Office.context.requirements.isSetSupported('WordApi', '1.1')) {
-        document.getElementById('template-description').innerText =
-            'You need a later version of Word to support the WordApi 1.1 requirement set.';
-
-        return;
-    }
 
     document.getElementById('template-description').innerText =
         'This sample show how to tag a document programmatically to auto-open a taskpane';

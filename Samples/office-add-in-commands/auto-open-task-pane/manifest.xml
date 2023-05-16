@@ -18,11 +18,11 @@
   <DefaultLocale>en-US</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
   <DisplayName DefaultValue="AutoOpenSimple" />
-  <Description DefaultValue="AutoOpenSimple"/>
+  <Description DefaultValue="Configure a document to automatically open your Office Add-in's task pane when the document is opened."/>
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
   <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/auto-open-task-pane/images/Button32x32.png" />
-  <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"/>
+  <SupportUrl DefaultValue="https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-add-in-commands/auto-open-task-pane"/>
 
   <!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
   <AppDomains>
