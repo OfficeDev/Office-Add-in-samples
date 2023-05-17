@@ -83,7 +83,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The previous command will display the folder location where it generated the certificate files.
 
-1. Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the hello world sample folder.
+1. Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the `./auto-open-task-pane` sample folder.
 
 1. Run the following command.
 
