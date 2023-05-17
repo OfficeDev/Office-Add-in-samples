@@ -1,14 +1,14 @@
 ﻿Office.onReady((reason) => {
 
     document.getElementById('template-description').innerText =
-        'This sample show how to programmatically tag a document to auto-open a task pane.';
+        'This sample shows how to programmatically tag a document to auto-open a task pane.';
 
     // Add click event handlers for the buttons.
     document.getElementById('set-auto-open-on').onclick = setAutoOpenOn;
     document.getElementById('set-auto-open-off').onclick = setAutoOpenOff;
     document.getElementById('turn-off-message').onclick = turnOffMessage;
 
-    turnOffMessage(); //Ensure message footer is not showing on start.
+    turnOffMessage(); // Ensure message footer isn't showing on start.
 });
 
 function setAutoOpenOn() {
