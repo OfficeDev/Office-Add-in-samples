@@ -38,7 +38,7 @@
       "references": [
         {
           "name": "Automatically open a task pane with a document",
-          "description": "Some scenarios require that a task pane open automatically when a document opens, without explicit user interaction. You can use the auto-open task pane feature to automatically open a task pane when your scenario requires it.",
+          "description": "Your Office Add-in may need the task pane to automatically open in certain documents. This sample shows how to configure a document to start with the add-in's task pane open when the document is opened.",
           "url": "https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document"
         }
       ]

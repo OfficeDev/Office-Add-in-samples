@@ -93,7 +93,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the **auto-open-task-pane** folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Excel on web](#run-the-sample-on-excel-on-web) to sideload and run the add-in.
+Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the **auto-open-task-pane** folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Word on web](#run-the-sample-on-word-on-the-web) to sideload and run the add-in.
 
 ## How is the auto-open feature different from inserting a task pane?
 
