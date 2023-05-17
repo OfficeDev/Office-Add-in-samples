@@ -83,7 +83,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The previous command will display the folder location where it generated the certificate files.
 
-1. Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the `./auto-open-task-pane` sample folder.
+1. Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the **auto-open-task-pane** sample folder.
 
 1. Run the following command.
 
@@ -93,7 +93,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the **auto-open-task-pane** folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample in Word on web](#run-the-sample-in-word-on-the-web) to sideload and run the add-in.
+Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the **auto-open-task-pane** folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample in Word on the web](#run-the-sample-in-word-on-the-web) to sideload and run the add-in.
 
 ## How is the auto-open feature different from inserting a task pane?
 
