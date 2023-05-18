@@ -45,8 +45,8 @@ For documentation related to this sample, see the following:
 
 ## Applies to
 
-- Outlook on Windows starting in Version 2302 (Build 16130.20020)
-- Outlook on Mac starting in Version 16.71.312.0
+- Outlook on Windows starting in Version 2304 (Build 16327.20248)
+- Outlook on Mac starting in Version 16.71.312.0 (preview)
 - Outlook on the web (modern)
 
 ## Prerequisites
