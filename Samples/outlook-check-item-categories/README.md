@@ -117,6 +117,8 @@ Once the add-in is loaded, use the following steps to try out its functionality.
 
     The applied categories appear in the **Categories applied** section of the task pane.
 
+    **Note**: Categories applied to a message being composed don't appear on the message itself. They only appear on the message once the message is sent and is accessed from the **Sent Items** folder.
+
 1. Send the message or appointment.
 
 ## Run the sample from localhost
