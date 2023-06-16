@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <p>This add-in will set cell A1 to the value 'Hello world!'.</p>
+    <p>This add-in will test out side loading</p>
     <button id="helloButton">Say hello</button>
 
     <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
@@ -26,7 +26,7 @@
         Excel.run(context => {
 
             // Insert text 'Hello world!' into cell A1.
-            context.workbook.worksheets.getActiveWorksheet().getRange("A1").values = [['Hello world!']];
+            context.workbook.worksheets.getActiveWorksheet().getRange("A1").values = [['Sherman!']];
 
             // sync the context to run the previous API call, and return.
             return context.sync();
