@@ -50,7 +50,7 @@
     "office-addin-cli": "^1.5.4",
     "office-addin-debugging": "^5.0.5",
     "office-addin-dev-certs": "^1.11.1",
-    "office-addin-dev-settings": "^2.0.3",
+    "office-addin-dev-settings": "^2.0.6",
     "office-addin-lint": "^2.2.4",
     "office-addin-manifest": "^1.12.0",
     "office-addin-prettier-config": "^1.2.0",
