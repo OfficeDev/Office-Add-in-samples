@@ -3,6 +3,8 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
+using System.Diagnostics;
+
 namespace BlazorAddIn.Pages
 {
     /// <summary>
@@ -18,6 +20,8 @@ namespace BlazorAddIn.Pages
         {
             if (firstRender)
             {
+                Debug.WriteLine("Hit OnAfterRenderAsync!");
+                Console.WriteLine("Hit OnAfterRenderAsync in Console!");
                 JSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/Index.razor.js");
             }
         }

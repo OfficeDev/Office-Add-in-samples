@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Images\" />
+    <Folder Include="wwwroot\Functions\" />
   </ItemGroup>
 
 </Project>

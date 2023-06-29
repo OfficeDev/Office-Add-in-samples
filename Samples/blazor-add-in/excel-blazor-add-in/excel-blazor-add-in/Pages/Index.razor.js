@@ -4,7 +4,10 @@
  */
 export function helloButton() {
 
+    console.log("We are now entering function: helloButton");
+
     return Excel.run(context => {
+
 
         // Insert text 'Hello world!' into cell A1.
         context.workbook.worksheets.getActiveWorksheet().getRange("A1").values = [['Hello world!']];
