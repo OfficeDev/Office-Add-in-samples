@@ -1,5 +1,5 @@
 {
-    "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/op/extensions/MicrosoftTeams.schema.json",
+    "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/DevPreview/MicrosoftTeams.schema.json",
     "manifestVersion": "devPreview",
     "id": "B341AD31-BF7A-4C1D-99F1-D2E5896BEB0A",
     "version": "1.0.0.0",
@@ -133,7 +133,6 @@
                             "builtInTabId": "TabDefault",
                             "groups": [
                                 {
-                                    "overriddenByRibbonApi": false,
                                     "id": "mccsG0",
                                     "label": "Signature Injector",
                                     "controls": [
