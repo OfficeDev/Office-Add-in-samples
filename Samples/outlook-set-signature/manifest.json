@@ -191,7 +191,6 @@
                             "builtInTabId": "TabDefault",
                             "groups": [
                                 {
-                                    "overriddenByRibbonApi": false,
                                     "id": "aocsG0",
                                     "label": "Signature Injector2",
                                     "controls": [
