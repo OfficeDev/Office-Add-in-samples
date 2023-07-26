@@ -5,8 +5,6 @@ This is a sample project extending the Visual Studio 2015 template for an Office
 
 It’s a great way to help you ensure the quality and code maintainability of your project. Also, if you’re coming from a more strongly typed programming language (like C#, Java, etc.), TypeScript can be your way into the world of JavaScript.
 
-Read more about this sample at: http://simonjaeger.com/use-typescript-in-a-visual-studio-office-add-in-project
-
 ### Applies to ###
 -  Office Client (Excel, Word, PowerPoint, Project)
 -  Office Online (Excel, Word, PowerPoint)
@@ -110,8 +108,6 @@ var app = new App();
 ```
 
 You can also customize your build phase and debugging experience in a few ways. If you get into the properties of your Visual Studio project and locate the TypeScript Build tab – you can select things such as the ECMAScript version (what’s ECMAScript you may ask – head to: <http://blogs.msdn.com/b/tess/archive/2015/11/12/mastering-asp-net-5-without-growing-a-beard.aspx>), source map location, output properties and more.
-
-![](http://simonjaeger.com/wp-content/uploads/2015/12/tsprops.png)
 
 When your code grows larger, investing in using something like TypeScript really proves to be valuable. At some point you will surely refactor code, hunt bugs and debug – and with TypeScript your life gets a bit easier! You can use Visual Studio to debug your TypeScript code and not have to deal with the plain JavaScript itself (this is what the *.js.map files are good for, mapping between the TypeScript and JavaScript).
 
