@@ -18,9 +18,9 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      assignpane: ["./src/taskpane/Js/taskpane_main.js", "./src/taskpane/html/assignsignature.html"],
-      editpane: ["./src/taskpane/html/editsignature.html"],
-      autorun: ["./src/runtime/Js/autorunshared.js", "./src/runtime/html/autorunweb.html"],
+      assignpane: ["./src/taskpane/Js/taskpane_main.js", "./src/taskpane/HTML/assignsignature.html"],
+      editpane: ["./src/taskpane/HTML/editsignature.html"],
+      autorun: ["./src/runtime/Js/autorunshared.js", "./src/runtime/HTML/autorunweb.html"],
     },
     output: {
       clean: true,
@@ -57,17 +57,17 @@ module.exports = async (env, options) => {
     plugins: [
       new HtmlWebpackPlugin({
         filename: "editsignature.html",
-        template: "./src/taskpane/html/editsignature.html",
+        template: "./src/taskpane/HTML/editsignature.html",
         chunks: ["polyfill", "editpane"],
       }),
       new HtmlWebpackPlugin({
         filename: "assignsignature.html",
-        template: "./src/taskpane/html/assignsignature.html",
+        template: "./src/taskpane/HTML/assignsignature.html",
         chunks: ["polyfill", "assignpane"],
       }),
       new HtmlWebpackPlugin({
         filename: "autorunweb.html",
-        template: "./src/runtime/html/autorunweb.html",
+        template: "./src/runtime/HTML/autorunweb.html",
         chunks: ["polyfill", "autorun"],
       }),
       new CopyWebpackPlugin({
