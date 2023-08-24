@@ -48,6 +48,7 @@ Insert an external Excel file and populate it with JSON data | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0 | 5-18-2021 | Initial release
+1.1 | 8-17-2023 | Fix localhost setup steps
 
 ----------
 
