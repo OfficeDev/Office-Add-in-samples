@@ -123,6 +123,5 @@ Find more information and resources at:
 - Learn more about building for Office and Office 365 at: <http://dev.office.com/>
 - Get started with TypeScript at: <http://www.typescriptlang.org/>
 - Find lots of TypeScript type definitions at: <https://github.com/DefinitelyTyped/DefinitelyTyped>
-- Read more about this sample at: <http://simonjaeger.com/use-typescript-in-a-visual-studio-office-add-in-project>
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/Office.TypeScriptAddin" />
