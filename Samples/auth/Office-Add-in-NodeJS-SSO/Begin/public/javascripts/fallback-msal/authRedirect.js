@@ -12,6 +12,10 @@ Office.initialize = async function () {
       handleResponse(response);
     } catch (error) {
       console.error(error);
+      Office.context.ui.messageParent(
+        JSON.stringify({ status: "error", error: error.message }),
+        { targetOrigin: window.location.origin }
+      );
     }
   }
 };

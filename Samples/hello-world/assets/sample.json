@@ -4,10 +4,10 @@
         "reponame": "OfficeDev",
         "source": "officedev",
         "title": "Create an Office Add-in that displays hello world",
-        "shortDescription": "Learn how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. This sample will help you understand the fundamental parts of an Office Add-in.",
+        "shortDescription": "Learn how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo.",
         "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/hello-world",
         "longDescription": [
-            "Learn how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. This sample will help you understand the fundamental parts of an Office Add-in."
+            "Learn how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. Understand the fundamental parts of an Office Add-in."
         ],
         "creationDateTime": "2021-10-11",
         "updateDateTime": "2021-10-11",

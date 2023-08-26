@@ -117,6 +117,8 @@ Once the add-in is loaded, use the following steps to try out its functionality.
 
     The applied categories appear in the **Categories applied** section of the task pane.
 
+    **Note**: Categories applied to a message being composed don't appear on the message itself. They only appear on the message once the message is sent and is accessed from the **Sent Items** folder.
+
 1. Send the message or appointment.
 
 ## Run the sample from localhost
@@ -224,6 +226,12 @@ A task pane is used to complement event-based activation by providing users with
 ## Known issues
 
 - In the Windows client, imports are not supported in the JavaScript file where you implement event-based activation handling.
+
+## Questions and feedback
+
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Copyright
 

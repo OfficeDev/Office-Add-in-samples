@@ -1,0 +1,13 @@
+.navbarStyle {
+    padding: .5rem 1rem !important;
+}
+
+.dropdown-toggle {
+    visibility: hidden;
+    display: none !important;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+

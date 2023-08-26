@@ -1,0 +1,46 @@
+[
+    {
+      "name": "office-excel-add-in-data-types-explorer",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Create and explore data types in Excel",
+      "shortDescription": "An Excel add-in that creates and explores data types in your workbooks.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-data-types-explorer",
+      "longDescription": [
+        "Builds an Excel add-in that creates and explores data types in your workbooks. Data types enable add-in developers to organize complex data structures as objects, such as formatted number values, web images, and entities."
+      ],
+      "creationDateTime": "2022-09-07",
+      "updateDateTime": "2022-10-12",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+        {
+            "type": "Image",
+            "order": 100,
+            "url": "https://learn.microsoft.com/en-us/office/dev/add-ins/images/excel-data-types-entity-card-tofu.png",
+            "alt": "An entity value data type in Excel with the card window displayed."
+          }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+        {
+          "name": "Overview of data types in Excel add-ins",
+          "description": "Data types organize complex data structures as objects. This includes formatted number values, web images, and entities as entity cards.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/excel/excel-data-types-overview"
+        }
+      ]
+    }
+  ] 

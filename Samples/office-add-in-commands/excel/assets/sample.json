@@ -1,0 +1,46 @@
+[
+    {
+      "name": "excel-add-in-commands",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Create an Excel add-in with command buttons",
+      "shortDescription": "Create an Excel add-in with command buttons.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-add-in-commands/excel",
+      "longDescription": [
+        "Learn how to build an Office Add-in that has a command button to show the task pane and a menu dropdown button that shows the task pane or gets data."
+      ],
+      "creationDateTime": "2021-12-09",
+      "updateDateTime": "2021-12-09",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+        {
+            "type": "Image",
+            "order": 100,
+            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/office-add-in-commands/images/excel-ribbon-buttons.png",
+            "alt": "Excel ribbon with Home tab selected and two buttons for the sample that show the task pane or show a dropdown menu."
+          }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+        {
+          "name": "Add-in commands",
+          "description": "Add-in commands are UI elements that extend the Office UI and start actions in your add-in.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/design/add-in-commands"
+        }
+      ]
+    }
+  ] 

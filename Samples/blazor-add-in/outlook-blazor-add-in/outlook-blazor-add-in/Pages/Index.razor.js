@@ -16,6 +16,8 @@ export async function getEmailData() {
             return { Subject: "No email item" };
         }
 
+        console.log("Email Subject: " + item.subject);
+        
         var listOfAttachments = [];
         var attachments = item.attachments;
 
@@ -28,8 +30,6 @@ export async function getEmailData() {
             try {
                 const returnedAttachments = await getAttachments(item);
                 console.log(returnedAttachments);
-
-                console.log("Email Subject: " + item.subject);
 
                 for (var i = 0; i < returnedAttachments.length; i++) {
 
@@ -85,7 +85,7 @@ export async function getEmailData() {
             return {
                 AttachmentId: "",
                 AttachmentName: "No Attachments",
-                Subject: "",
+                Subject: item.subject,
                 AttachmentType: "",
                 Inline: false,
                 AttachmentBase64Data: ""

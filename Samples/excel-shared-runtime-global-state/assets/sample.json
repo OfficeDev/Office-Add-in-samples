@@ -1,0 +1,46 @@
+[
+    {
+      "name": "office-add-in-shared-runtime-global-data",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Share global data with a shared runtime",
+      "shortDescription": "Shows how to set up an Office Add-in project that uses the shared runtime.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-shared-runtime-global-state",
+      "longDescription": [
+        "Shows how to set up a project that uses the shared runtime. The shared runtime runs all parts of the Excel add-in (ribbon buttons, task pane, and custom functions) in a single browser runtime. This makes it easy to share data through local storage, or through global variables."
+      ],
+      "creationDateTime": "2020-03-15",
+      "updateDateTime": "2021-05-26",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+        {
+            "type": "Image",
+            "order": 100,
+            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/excel-shared-runtime-global-state/excel-shared-runtime-global.png",
+            "alt": "Add-in task pane with controls to set or get global variables in the solution."
+          }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+        {
+          "name": "Configure your Office Add-in to use a shared runtime",
+          "description": "You can configure your Office Add-in to run all of its code in a single shared runtime. This enables better coordination across your add-in and access to the DOM and CORS from all parts of your add-in.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime"
+        }
+      ]
+    }
+  ] 

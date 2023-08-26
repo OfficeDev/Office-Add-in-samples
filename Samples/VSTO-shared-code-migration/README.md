@@ -18,7 +18,7 @@ description: "Visual Studio Tools for Office (VSTO) add-ins can only run in Offi
 
 # Use a shared library to migrate your Visual Studio Tools for Office add-in to an Office web add-in
 
-![Sharing code between a VSTO Add-in and an Office Web Add-in](shared-code-library-migration.png)
+![Sharing code between a VSTO Add-in and an Office Web Add-in.](shared-code-library-migration.png)
 
 Visual Studio Tools for Office (VSTO) add-ins can only run in Office on Windows. By migrating your code to an Office web add-in, you can expand the reach of your add-in to mobile and online platforms. Migrating the code will involve rewriting it in the JavaScript language, and also updating it to use the Office JavaScript APIs. However, you can reduce migration cost by creating a shared library and keeping some of your existing add-in code in its current language.
 
@@ -163,9 +163,11 @@ In the **Startup.cs** file, the **ConfigureServices** method updates the CORS po
 
 The Cell analyzer REST API project is configured to support CORS requests from https://localhost:44368 (the Office web add-in.) This is only for development purposes. In production code, you should configure CORS to support your deployed Office web add-in endpoint.
 
-## Questions and comments
+## Questions and feedback
 
-We'd love to get your feedback about this sample. You can send your feedback to us in the Issues section of this repository. Questions about developing Office Add-ins should be posted to Stack Overflow. Ensure your questions are tagged with [office-js].
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Additional resources
 

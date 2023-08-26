@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
+  <Id>dac64749-60d7-4579-9036-cb7308b6d444</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Contoso</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Outlook add-in SSO in events sample"/>
+  <Description DefaultValue="Use SSO to access Microsoft Graph from code using event-based activation in an Outlook add-in."/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <AppDomains>
+    <AppDomain>https://localhost:3000</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://localhost:3000/taskpane/taskpane.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteMailbox</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+    <Rule xsi:type="ItemIs" ItemType="Appointment" FormType="Read"/>
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.12">
+          <bt:Set Name="Mailbox"/>
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <!-- Specifies the event-based activation runtime. -->
+          <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch. -->
+          <Runtimes>
+            <!-- HTML file that references the JavaScript event handlers. This is used by Outlook on the web. -->
+            <Runtime resid="WebViewRuntime.Url">
+              <!-- JavaScript file that contains the event handlers. This is used by Outlook on Windows. -->
+              <Override type="javascript" resid="JSRuntime.Url"/>
+            </Runtime>
+          </Runtimes>
+          <DesktopFormFactor>
+            <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="CategoriesGroupMessageCompose">
+                  <Label resid="CategoriesGroupLabel"/>
+                  <Control xsi:type="Button" id="MessageComposeSelectButton">
+                    <Label resid="SelectButtonLabel"/>
+                    <Supertip>
+                      <Title resid="SelectButtonLabel"/>
+                      <Description resid="SelectButtonDescription"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.16x16" />
+                      <bt:Image size="32" resid="Icon.32x32" />
+                      <bt:Image size="80" resid="Icon.80x80" />
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="Taskpane.Url"/>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+            <ExtensionPoint xsi:type="AppointmentOrganizerCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="CategoriesGroupAppointmentOrganizer">
+                  <Label resid="CategoriesGroupLabel"/>
+                  <Control xsi:type="Button" id="AppointmentOrganizerSelectButton">
+                    <Label resid="SelectButtonLabel"/>
+                    <Supertip>
+                      <Title resid="SelectButtonLabel"/>
+                      <Description resid="SelectButtonDescription"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="Icon.16x16" />
+                      <bt:Image size="32" resid="Icon.32x32" />
+                      <bt:Image size="80" resid="Icon.80x80" />
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="Taskpane.Url"/>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+            <!-- Enables the add-in on specified events. -->
+            <ExtensionPoint xsi:type="LaunchEvent">
+              <LaunchEvents>
+                <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler"/>
+              </LaunchEvents>
+              <!-- Identifies the runtime to be used by the add-in (also referenced by the Runtime element). -->
+              <SourceLocation resid="WebViewRuntime.Url"/>
+            </ExtensionPoint>
+
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+
+      <Resources>
+        <bt:Images>
+          <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/commands/commands.js"/>
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/commands/commands.html"/>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane/taskpane.html"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="CategoriesGroupLabel" DefaultValue="Outlook add-in SSO in events sample"/>
+          <bt:String id="SelectButtonLabel" DefaultValue="Show task pane"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="SelectButtonDescription" DefaultValue="Opens the task pane for the Outlook add-in SSO in events sample."/>
+        </bt:LongStrings>
+      </Resources>
+
+      <!-- Specifies SSO scopes and resources for the web application that hosts this add-in. -->
+      <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/develop/sso-in-office-add-ins#configure-the-add-in. -->
+      <WebApplicationInfo>
+        <Id>Enter_client_ID_here</Id>
+        <Resource>api://localhost:3000/Enter_client_ID_here</Resource>
+        <Scopes>
+          <Scope>openid</Scope>
+          <Scope>user.read</Scope>          
+          <Scope>profile</Scope>
+        </Scopes>
+      </WebApplicationInfo>
+      <ExtendedPermissions>
+        <ExtendedPermission>AppendOnSend</ExtendedPermission>
+      </ExtendedPermissions>
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>
