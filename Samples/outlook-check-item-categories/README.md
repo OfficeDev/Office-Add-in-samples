@@ -206,7 +206,7 @@ Office.actions.associate("onMessageSendHandler", onItemSendHandler);
 Office.actions.associate("onAppointmentSendHandler", onItemSendHandler);
 ```
 
-Once the handler processes the event, it calls the `event.completed` method. This method uses the `allowEvent` property to indicate whether the handled event can continue to execute or must terminate. When the event must terminate because it doesn't meet the add-in's conditions, the `errorMessage` property is used to display an alert to the user.
+Once the handler processes the event, it calls the [event.completed](https://learn.microsoft.com/javascript/api/outlook/office.mailboxevent#outlook-office-mailboxevent-completed-member(1)) method. This method uses the [allowEvent](https://learn.microsoft.com/javascript/api/outlook/office.smartalertseventcompletedoptions#outlook-office-smartalertseventcompletedoptions-allowevent-member) property to indicate whether the handled event can continue to execute or must terminate. When the event must terminate because it doesn't meet the add-in's conditions, the [errorMessage](https://learn.microsoft.com/javascript/api/outlook/office.smartalertseventcompletedoptions#outlook-office-smartalertseventcompletedoptions-errormessage-member) property is used to display an alert to the user.
 
 ```javascript
 let message = `You must assign the following categories before your ${Office.context.mailbox.item.itemType} can be sent: ${requiredCategories.join(", ")}`;
