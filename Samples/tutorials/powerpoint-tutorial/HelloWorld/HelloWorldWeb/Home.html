@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+    <script src="Scripts/jquery-3.6.0.js" type="text/javascript"></script>
+    <script src="Scripts/MessageBanner.js" type="text/javascript"></script>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+    <!-- To enable offline debugging using a local reference to Office.js, use:  -->
+    <!-- <script src="Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>  -->
+    <!-- <script src="Scripts/Office/1/office.js" type="text/javascript"></script>  -->
+
+    <script src="Home.js" type="text/javascript"></script>
+    <link href="Home.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/Button.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/MessageBanner.css" rel="stylesheet" type="text/css" />
+
+
+    <!-- For Office UI Fabric Core, go to https://aka.ms/office-ui-fabric to learn more. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.0/css/fabric.min.css">
+
+    <!-- To enable the offline use of Office UI Fabric Core, use: -->
+    <!-- link rel="stylesheet" href="Content/fabric.min.css" -->
+</head>
+
+    <!-- Office UI Fabric JS and it's components are no longer actively supported. Please see https://aka.ms/PnP-OfficeFabricReact for recommended Patterns and Practices -->
+    <!-- <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.components.min.css"> -->
+
+<body class="ms-Fabric" dir="ltr">
+    <div id="content-header">
+        <div class="ms-Grid ms-bgColor-neutralPrimary">
+            <div class="ms-Grid-row">
+                <div class="padding ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12"> <div class="ms-font-xl ms-fontColor-white ms-fontWeight-semibold">My PowerPoint add-in</div></div>
+            </div>
+        </div>
+    </div>
+    <div id="content-main">
+        <div class="padding">
+            <button class="Button Button--primary" id="insert-image">
+                <span class="Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+                <span class="Button-label">Insert Image</span>
+                <span class="Button-description">Gets the photo of the day that shows on the Bing home page and adds it to the slide.</span>
+            </button>
+            <br /><br />
+            <button class="Button Button--primary" id="insert-text">
+                <span class="Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+                <span class="Button-label">Insert Text</span>
+                <span class="Button-description">Inserts text into the slide.</span>
+            </button>
+            <br /><br />
+            <button class="Button Button--primary" id="get-slide-metadata">
+                <span class="Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+                <span class="Button-label">Get Slide Metadata</span>
+                <span class="Button-description">Gets metadata for the selected slide(s).</span>
+            </button>
+            <br /><br />
+            <button class="Button Button--primary" id="go-to-first-slide">
+                <span class="Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+                <span class="Button-label">Go to First Slide</span>
+                <span class="Button-description">Go to the first slide.</span>
+            </button>
+            <br /><br />
+            <button class="Button Button--primary" id="go-to-next-slide">
+                <span class="Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+                <span class="Button-label">Go to Next Slide</span>
+                <span class="Button-description">Go to the next slide.</span>
+            </button>
+            <br /><br />
+            <button class="Button Button--primary" id="go-to-previous-slide">
+                <span class="Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+                <span class="Button-label">Go to Previous Slide</span>
+                <span class="Button-description">Go to the previous slide.</span>
+            </button>
+            <br /><br />
+            <button class="Button Button--primary" id="go-to-last-slide">
+                <span class="Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+                <span class="Button-label">Go to Last Slide</span>
+                <span class="Button-description">Go to the last slide.</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Component used for displaying notifications -->
+    <div class="MessageBanner" id="notification-popup">
+        <div class="MessageBanner-content">
+            <div class="MessageBanner-text">
+                <div class="MessageBanner-clipper">
+                    <div class="ms-font-m-plus ms-fontWeight-semibold" id="notification-header"></div>
+                    <div class="ms-font-m ms-fontWeight-semilight" id="notification-body"></div>
+                </div>
+            </div>
+            <button class="MessageBanner-expand" style="display:none"><i class="ms-Icon ms-Icon--chevronsDown"></i> </button>
+            <div class="MessageBanner-action"></div>
+        </div>
+        <button class="MessageBanner-close"> <i class="ms-Icon ms-Icon--ChromeClose"></i> </button>
+    </div>
+</body>
+</html>
