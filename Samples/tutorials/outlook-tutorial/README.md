@@ -20,11 +20,11 @@ description: "A completed version of the step-by-step Outlook tutorial hosted on
 
 This sample is the result of completing the [Tutorial: Build a message compose Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/outlook-tutorial). It was constructed with the [Yeoman generator for Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/yeoman-generator-overview).
 
-The tutorial gives step-by-step instructions on how to add functionality alongside explanations as to why code is being added. Use this sample if you want to explore and try the completed code, or if you need to debug any issues you may have encountered while following the tutorial.
+The tutorial gives step-by-step instructions on how to add functionality alongside explanations as to why code is being added. Use this sample if you want to explore and try the completed code, or if you need to debug any issues you encountered while following the tutorial.
 
 ## Features
 
-This sample features the basics of working with a compose message in Outlook. The functions collect information from the user, fetch data from an external service, implement a function command, and implement a task pane that inserts content into the body of a message. The sample also shows how to use a dialog box.
+This sample demonstrates the basics of working with a compose message in Outlook. The functions collect information from the user, fetch data from an external service, implement a function command, and implement a task pane that inserts content into the body of a message. The sample also shows how to use a dialog box.
 
 ## Applies to
 
@@ -63,7 +63,7 @@ This sample features the basics of working with a compose message in Outlook. Th
 
 1. Run `npm install`.
 
-1. Start the local web server and sideload your add-in:
+1. Start the local web server and sideload your add-in.
 
     - To test your add-in in Outlook, run the following command in the root directory of your `Git the gist` project. This starts the local web server (if it's not already running) and opens Outlook with your add-in loaded.
 
@@ -73,15 +73,15 @@ This sample features the basics of working with a compose message in Outlook. Th
 
 1. In Outlook, compose a new message.
 
-1. In the message window, choose the **Insert default gist** button in the ribbon. This opens a dialog where you can add your GitHub username and select the default gist.
+1. In the message window, choose the **Insert default gist** button in the ribbon. This opens a dialog where you add your GitHub username and select the default gist.
 
     > In Outlook on Windows, you may need to close and reopen the new message window to pick up the latest settings from the dialog.
 
-1. In the message window, choose the **Insert gist** button in ribbon. This opens a task pane where you can select the GitHub gist you want to insert into the message body.
+1. In the message window, choose the **Insert gist** button in ribbon. This opens a task pane where you select the GitHub gist you want to insert into the message body.
 
 ## See also
 
-The version of this sample you can create step-by-step is found in the article [Tutorial: Build a message compose Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/outlook-tutorial).
+The version of this sample that you create step-by-step is found in the article [Tutorial: Build a message compose Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/outlook-tutorial).
 
 ## Copyright
 
