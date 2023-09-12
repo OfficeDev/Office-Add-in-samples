@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <title>Settings</title>
+
+  <!-- Office JavaScript API -->
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+<!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui. -->
+  <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+
+  <!-- Template styles -->
+  <link href="dialog.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-l">
+  <main>
+    <section class="ms-font-m ms-fontColor-neutralPrimary">
+      <div class="not-configured-warning ms-MessageBar ms-MessageBar--warning">
+        <div class="ms-MessageBar-content">
+          <div class="ms-MessageBar-icon">
+            <i class="ms-Icon ms-Icon--Info"></i>
+          </div>
+          <div class="ms-MessageBar-text">
+            Oops! It looks like you haven't configured <strong>Git the gist</strong> yet.
+            <br/>
+            Please configure your GitHub username and select a default gist, then try that action again!
+          </div>
+        </div>
+      </div>
+      <div class="ms-font-xxl">Settings</div>
+      <div class="ms-Grid">
+        <div class="ms-Grid-row">
+          <div class="ms-TextField">
+            <label class="ms-Label">GitHub Username</label>
+            <input class="ms-TextField-field" id="github-user" type="text" value="" placeholder="Please enter your GitHub username">
+          </div>
+        </div>
+        <div class="error-display ms-Grid-row">
+          <div class="ms-font-l ms-fontWeight-semibold">An error occurred:</div>
+          <pre><code id="error-text"></code></pre>
+        </div>
+        <div class="gist-list-container ms-Grid-row">
+          <div class="list-title ms-font-xl ms-fontWeight-regular">Choose Default Gist</div>
+          <form>
+            <div id="gist-list">
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="ms-Dialog-actions">
+        <div class="ms-Dialog-actionsRight">
+          <button class="ms-Dialog-action ms-Button ms-Button--primary" id="settings-done" disabled>
+            <span class="ms-Button-label">Done</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="../helpers/gist-api.js"></script>
+  <script type="text/javascript" src="dialog.js"></script>
+</body>
+
+</html>
