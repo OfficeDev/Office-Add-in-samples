@@ -1,0 +1,30 @@
+section {
+    margin: 10px 20px;
+  }
+  
+  .not-configured-warning {
+    display: none;
+  }
+  
+  .error-display {
+    display: none;
+  }
+  
+  .gist-list-container {
+    margin: 10px -8px;
+    display: none;
+  }
+  
+  .list-title {
+    border-bottom: 1px solid #a6a6a6;
+    padding-bottom: 5px;
+  }
+  
+  ul {
+    margin-top: 10px;
+  }
+  
+  .ms-ListItem-secondaryText,
+  .ms-ListItem-tertiaryText {
+    padding-left: 15px;
+  }

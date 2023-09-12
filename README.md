@@ -13,11 +13,12 @@ The following samples show how to build the simplest Office Add-in with only a m
 
 ### Completed tutorials
 
-The following sample is the completed version of the [Excel add-in tutorial](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial).
+The following samples are the completed versions of various tutorials for Office Add-ins.
 
 | Name           | Description  |
 | -------------- | ------------ |
 | [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial) | This sample shows how to create an Excel add-in with a task pane and command ribbon buttons. The add-in shows how to create and sort a table, make a chart, freeze a row, protect a worksheet, and display a dialog box. |
+| [Tutorial: Build a message compose Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/outlook-tutorial) | This sample shows how to build an Outlook add-in that can be used in message compose mode to insert content into the body of a message. The add-in shows how to collect information from the user, fetch data from an external service, implement a function command, implement a task pane, and display a dialog box. |
 
 ## Blazor WebAssembly
 
@@ -83,7 +84,7 @@ Check out these samples if you want to take advantage of the [shared runtime](ht
 
 | Date               | Name           | Description  |
 | ------------------ | -------------- | ------------ |
-[Share global data with a shared runtime](Samples/excel-shared-runtime-global-state) | Shows how to set up a basic project that uses the shared runtime to run code for ribbon buttons, task pane, and custom functions in a single browser runtime. |
+| [Share global data with a shared runtime](Samples/excel-shared-runtime-global-state) | Shows how to set up a basic project that uses the shared runtime to run code for ribbon buttons, task pane, and custom functions in a single browser runtime. |
 | [Manage ribbon and task pane UI, and run code on doc open](Samples/excel-shared-runtime-scenario) | Shows how to create contextual ribbon buttons that are enabled based on the state of your add-in. |
 
 ## Additional samples
