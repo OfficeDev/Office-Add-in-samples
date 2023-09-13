@@ -20,11 +20,11 @@ description: "A completed version of the step-by-step Excel tutorial hosted on l
 
 This sample is the result of completing the [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial). It was constructed with the [Yeoman generator for Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/yeoman-generator-overview).
 
-The tutorial gives step-by-step instructions on how to add functionality alongside explanations as to why code is being added. Use this sample if you want to explore and try the completed code, or if you need to debug any issues you may have encountered while following the tutorial.
+The tutorial gives step-by-step instructions on how to add functionality alongside explanations as to why code is being added. Use this sample if you want to explore and try the completed code, or if you need to debug any issues you encountered while following the tutorial.
 
 ## Features
 
-This sample features the basics of working with a workbook in Excel. The functions create and interact with a table, make a chart, freeze the header row, and protect the worksheet. The sample also shows how to use a dialog box.
+This sample demonstrates the basics of working with a workbook in Excel. The functions create and interact with a table, make a chart, freeze the header row, and protect the worksheet. The sample also shows how to use a dialog box.
 
 ## Applies to
 
@@ -60,7 +60,7 @@ Version  | Date | Comments
 
 1. Run `npm run build`.
 
-1. Start the local web server and sideload your add-in:
+1. Start the local web server and sideload your add-in.
 
     - To test your add-in in Excel, run the following command in the root directory of your project. This starts the local web server (if it's not already running) and opens Excel with your add-in loaded.
 
@@ -89,7 +89,7 @@ Version  | Date | Comments
 
 ## See also
 
-The version of this sample you can create step-by-step is found in the article [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial).
+The version of this sample that you create step-by-step is found in the article [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial).
 
 ## Copyright
 

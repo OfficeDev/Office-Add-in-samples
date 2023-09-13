@@ -49,11 +49,13 @@ async function insertSheets() {
         const sheet = context.workbook.worksheets.getItem("Template");
 
         // Get data from your REST API. For this sample, the JSON is fetched from a file in the repo.
+        let json;
         let response = await fetch(dataSourceUrl + "/data.json");
         if (response.ok) {
-          const json = await response.json();
+          json = await response.json();
         } else {
           console.error("HTTP-Error: " + response.status);
+          return;
         }
 
         // Map JSON to table columns.
