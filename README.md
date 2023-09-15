@@ -17,8 +17,8 @@ The following samples are the completed versions of various tutorials for Office
 
 | Name           | Description  |
 | -------------- | ------------ |
-| [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial) | This sample shows how to create an Excel add-in with a task pane and command ribbon buttons. The add-in shows how to create and sort a table, make a chart, freeze a row, protect a worksheet, and display a dialog box. |
-| [Tutorial: Build a message compose Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/outlook-tutorial) | This sample shows how to build an Outlook add-in that can be used in message compose mode to insert content into the body of a message. The add-in shows how to collect information from the user, fetch data from an external service, implement a function command, implement a task pane, and display a dialog box. |
+| [Excel Tutorial - Completed](Samples/tutorials/excel-tutorial) | This sample is the completed version of the [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial) that shows how to create an Excel add-in with a task pane and command ribbon buttons. The add-in shows how to create and sort a table, make a chart, freeze a row, protect a worksheet, and display a dialog box. |
+| [Outlook Tutorial - Completed](Samples/tutorials/outlook-tutorial) | This sample is the completed version of the [Tutorial: Build a message compose Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/outlook-tutorial) that shows how to build an Outlook add-in that can be used in message compose mode to insert content into the body of a message. The add-in shows how to collect information from the user, fetch data from an external service, implement a function command, implement a task pane, and display a dialog box. |
 
 ## Blazor WebAssembly
 
