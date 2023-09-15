@@ -10,7 +10,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 09/13/2023 4:00:00 PM
+  createdDate: 09/15/2023 4:00:00 PM
 description: "A completed version of the step-by-step PowerPoint tutorial hosted on learn.microsoft.com."
 ---
 
@@ -48,7 +48,7 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 
 | Version  | Date | Comments |
 |----------|------|----------|
-| 1.0 | 9-13-2023 | Initial release |
+| 1.0 | 9-15-2023 | Initial release |
 
 ## Run the sample
 

@@ -122,6 +122,7 @@
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Functions\FunctionFile.html" />
     <Content Include="Functions\FunctionFile.js" />
+    <Content Include="Global.asax" />
     <Content Include="Home.css" />
     <Content Include="Home.html" />
     <Content Include="Home.js" />
@@ -579,7 +580,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\PhotoController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,2 +1,0 @@
-bin\Debug\OfficeAppManifests\HelloWorldManifest.xml
-C:\add-ins\HelloWorld\HelloWorld\bin\Debug\HelloWorld.debugapp

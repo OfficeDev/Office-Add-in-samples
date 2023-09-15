@@ -11,7 +11,7 @@ namespace HelloWorldWeb.Controllers
     {
         public string Get()
         {
-            string url = "http://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1";
+            string url = "https://www.bing.com/HPImageArchive.aspx?format=xml&idx=0&n=1";
 
             // Create the request.
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -26,7 +26,7 @@ namespace HelloWorldWeb.Controllers
                 // Parse the XML response and get the URL.
                 XmlDocument doc = new XmlDocument();
                 doc.LoadXml(result);
-                string photoURL = "http://bing.com" + doc.SelectSingleNode("/images/image/url").InnerText;
+                string photoURL = "https://bing.com" + doc.SelectSingleNode("/images/image/url").InnerText;
 
                 // Fetch the photo and return it as a Base64-encoded string.
                 return getPhotoFromURL(photoURL);

@@ -13,6 +13,7 @@
             $('#insert-image').click(insertImage);
             $('#insert-text').click(insertText);
             $('#get-slide-metadata').click(getSlideMetadata);
+            $('#add-slides').click(addSlides);
             $('#go-to-first-slide').click(goToFirstSlide);
             $('#go-to-next-slide').click(goToNextSlide);
             $('#go-to-previous-slide').click(goToPreviousSlide);
@@ -23,7 +24,9 @@
     function insertImage() {
         // Get image from web service (as a Base64-encoded string).
         $.ajax({
-            url: "/api/Photo/", success: function (result) {
+            url: "/api/photo/",
+            dataType: "text",
+            success: function (result) {
                 insertImageFromBase64String(result);
             }, error: function (xhr, status, error) {
                 showNotification("Error", "Oops, something went wrong.");
@@ -36,11 +39,11 @@
         Office.context.document.setSelectedDataAsync(image, {
             coercionType: Office.CoercionType.Image
         },
-            function (asyncResult) {
-                if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                    showNotification("Error", asyncResult.error.message);
-                }
-            });
+        function (asyncResult) {
+            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+                showNotification("Error", asyncResult.error.message);
+            }
+        });
     }
 
     function insertText() {
@@ -62,6 +65,18 @@
                 }
             }
         );
+    }
+
+    async function addSlides() {
+        await PowerPoint.run(async function (context) {
+            context.presentation.slides.add();
+            context.presentation.slides.add();
+
+            await context.sync();
+
+            showNotification("Success", "Slides added.");
+            goToLastSlide();
+        });
     }
 
     function goToFirstSlide() {
