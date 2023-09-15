@@ -55,7 +55,7 @@ export const signInO365 = async (setState: (x: AppState) => void,
             }
         );
 
-    const processLoginMessage = (arg: {message: string, type: string}) => {
+    const processLoginMessage = (arg: {message: string, origin: string}) => {
 
         let messageFromDialog = JSON.parse(arg.message);
         if (messageFromDialog.status === 'success') { 
