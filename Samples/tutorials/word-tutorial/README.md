@@ -24,7 +24,7 @@ The tutorial gives step-by-step instructions on how to add functionality alongsi
 
 ## Features
 
-This sample demonstrates the basics of working with a document in Word. The functions insert a range of text, format text, replace text, insert images, HTML, and tables, and create and update content controls.
+This sample demonstrates the basics of working with a document in Word. The functions insert (and replace) text ranges, paragraphs, images, HTML, tables, and content controls. The add-in also shows how to format text and how to insert (and replace) content in content controls.
 
 ## Applies to
 
