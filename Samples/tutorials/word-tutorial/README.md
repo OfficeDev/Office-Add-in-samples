@@ -24,7 +24,7 @@ The tutorial gives step-by-step instructions on how to add functionality alongsi
 
 ## Features
 
-This sample demonstrates the basics of working with a document in Word. The functions insert (and replace) text ranges, paragraphs, images, HTML, tables, and content controls. The add-in also shows how to format text and how to insert (and replace) content in content controls.
+This sample demonstrates the basics of working with a document in Word. The add-in inserts and replaces text ranges, paragraphs, images, HTML, tables, and content controls. The add-in also shows how to format text and how to manage content with content controls.
 
 ## Applies to
 
@@ -85,7 +85,7 @@ This sample demonstrates the basics of working with a document in Word. The func
 
 1. If the add-in task pane isn't already open in Word, go to the Home tab and choose the **Show Taskpane** button in the ribbon to open it.
 
-1. Use the buttons in the task pane to interact with the document through your add-in, following the respective instructions from step 3 in the various "Test the add-in" sections of the [Tutorial: Create a Word task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/word-tutorial).
+1. Use the buttons in the task pane to interact with the document through your add-in. For details on the expected behavior of each button, see the "Test the add-in" sections of the [Tutorial: Create a Word task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/word-tutorial).
 
 ## See also
 
