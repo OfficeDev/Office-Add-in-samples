@@ -66,7 +66,7 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 
 ## See also
 
-The version of this sample that you create step-by-step is found in the article [Tutorial: Create an PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial).
+The version of this sample that you create step-by-step is found in the article [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial).
 
 ## Copyright
 
