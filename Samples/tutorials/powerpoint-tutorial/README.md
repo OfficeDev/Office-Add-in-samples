@@ -35,7 +35,7 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- Visual Studio 2019 or later.
+- Visual Studio 2022 or later.
 
 ## Solution
 
