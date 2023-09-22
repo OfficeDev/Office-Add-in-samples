@@ -35,8 +35,7 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- [Node.js](https://nodejs.org/) version 16 or greater.
-- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
+- Visual Studio 2019 or later.
 
 ## Solution
 
