@@ -35,8 +35,7 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- [Node.js](https://nodejs.org/) version 16 or greater.
-- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
+- Visual Studio 2022 or later.
 
 ## Solution
 
@@ -48,7 +47,7 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 
 | Version  | Date | Comments |
 |----------|------|----------|
-| 1.0 | 9-15-2023 | Initial release |
+| 1.0 | 9-19-2023 | Initial release |
 
 ## Run the sample
 
@@ -62,7 +61,7 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 
 1. If the add-in task pane isn't already open in PowerPoint, go to the Home tab and choose the **Show Taskpane** button in the ribbon to open it.
 
-1. Use the buttons in the task pane to interact with the workbook through your add-in.
+1. Use the buttons in the task pane to interact with the presentation through your add-in.
 
 ## See also
 
