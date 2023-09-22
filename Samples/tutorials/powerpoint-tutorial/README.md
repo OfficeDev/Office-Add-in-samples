@@ -14,11 +14,11 @@ extensions:
 description: "A completed version of the step-by-step PowerPoint tutorial hosted on learn.microsoft.com."
 ---
 
-# PowerPoint Tutorial - Completed
+# PowerPoint Tutorial (Visual Studio) - Completed
 
 ## Summary
 
-This sample is the result of completing the [Tutorial: Create an PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial). It was constructed with [Visual Studio 2022](https://learn.microsoft.com/office/dev/add-ins/develop/develop-add-ins-visual-studio).
+This sample is the result of completing the [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial?tabs=visualstudio). It was constructed with [Visual Studio 2022](https://learn.microsoft.com/office/dev/add-ins/develop/develop-add-ins-visual-studio).
 
 The tutorial gives step-by-step instructions on how to add functionality alongside explanations as to why code is being added. Use this sample if you want to explore and try the completed code, or if you need to debug any issues you encountered while following the tutorial.
 
@@ -65,7 +65,7 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 
 ## See also
 
-The version of this sample that you create step-by-step is found in the article [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial).
+The version of this sample that you create step-by-step is found in the article [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial?tabs=visualstudio).
 
 ## Copyright
 
