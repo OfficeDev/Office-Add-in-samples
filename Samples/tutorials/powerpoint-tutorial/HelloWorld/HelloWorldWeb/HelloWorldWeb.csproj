@@ -119,7 +119,6 @@
     <Content Include="Content\sass\mixins\_Animation.Mixins.scss" />
     <Content Include="Content\sass\Fabric.scss" />
     <Content Include="Content\sass\Fabric.Scoped.scss" />
-    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Functions\FunctionFile.html" />
     <Content Include="Functions\FunctionFile.js" />
     <Content Include="Global.asax" />
@@ -131,12 +130,6 @@
     <Content Include="Images\Button32x32.png" />
     <Content Include="Images\Button80x80.png" />
     <Content Include="Images\Close.png" />
-    <Content Include="Scripts\jquery-3.6.0.js" />
-    <Content Include="Scripts\jquery-3.6.0.min.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
-    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.6.0.min.map" />
     <None Include="Scripts\Office\1\outlook-win32.debug-vsdoc.js" />
     <None Include="Scripts\Office\1\office-vsdoc.js" />
     <None Include="Scripts\embedded\1.0\visio-web-embedded.debug-vsdoc.js" />
