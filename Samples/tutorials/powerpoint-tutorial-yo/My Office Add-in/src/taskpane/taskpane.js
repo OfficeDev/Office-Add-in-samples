@@ -23,83 +23,79 @@ Office.onReady((info) => {
 
 function insertImage() {
   // Call Office.js to insert the image into the document.
-  Office.context.document.setSelectedDataAsync(base64Image, {
+  Office.context.document.setSelectedDataAsync(
+    base64Image,
+    {
       coercionType: Office.CoercionType.Image
-  },
-      function (asyncResult) {
-          if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-            setMessage("Error: " + asyncResult.error.message);
-          }
-      });
+    },
+    (asyncResult) => {
+      if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+        setMessage("Error: " + asyncResult.error.message);
+      }
+    }
+  );
 }
 
 function insertText() {
-  Office.context.document.setSelectedDataAsync('Hello World!',
-      function (asyncResult) {
-          if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-            setMessage("Error: " + asyncResult.error.message);
-          }
-      });
+  Office.context.document.setSelectedDataAsync("Hello World!", (asyncResult) => {
+    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+      setMessage("Error: " + asyncResult.error.message);
+    }
+  });
 }
 
 function getSlideMetadata() {
-    Office.context.document.getSelectedDataAsync(Office.CoercionType.SlideRange,
-        function (asyncResult) {
-            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                setMessage("Error: " + asyncResult.error.message);
-            } else {
-                setMessage("Metadata for selected slides: " + JSON.stringify(asyncResult.value));
-            }
-        }
-    );
-  }
+  Office.context.document.getSelectedDataAsync(Office.CoercionType.SlideRange, (asyncResult) => {
+    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+      setMessage("Error: " + asyncResult.error.message);
+    } else {
+      setMessage("Metadata for selected slides: " + JSON.stringify(asyncResult.value));
+    }
+  });
+}
   
-  async function addSlides() {
+async function addSlides() {
   await PowerPoint.run(async function (context) {
-      context.presentation.slides.add();
-      context.presentation.slides.add();
+    context.presentation.slides.add();
+    context.presentation.slides.add();
 
-      await context.sync();
+    await context.sync();
 
-      goToLastSlide();
-      setMessage("Success: Slides added.");
+    goToLastSlide();
+    setMessage("Success: Slides added.");
   });
 }
 
 function goToFirstSlide() {
-  Office.context.document.goToByIdAsync(Office.Index.First, Office.GoToType.Index,
-      function (asyncResult) {
-          if (asyncResult.status == "failed") {
-            setMessage("Error: " + asyncResult.error.message);
-          }
-      });
+  Office.context.document.goToByIdAsync(Office.Index.First, Office.GoToType.Index, (asyncResult) => {
+    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+      setMessage("Error: " + asyncResult.error.message);
+    }
+  });
 }
 
 function goToLastSlide() {
-  Office.context.document.goToByIdAsync(Office.Index.Last, Office.GoToType.Index,
-      function (asyncResult) {
-          if (asyncResult.status == "failed") {
-            setMessage("Error: " + asyncResult.error.message);
-          }
-      });
+  Office.context.document.goToByIdAsync(Office.Index.Last, Office.GoToType.Index, (asyncResult) => {
+    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+      setMessage("Error: " + asyncResult.error.message);
+    }
+  });
 }
 
 function goToPreviousSlide() {
-  Office.context.document.goToByIdAsync(Office.Index.Previous, Office.GoToType.Index,
-      function (asyncResult) {
-          if (asyncResult.status == "failed") {
-            setMessage("Error: " + asyncResult.error.message);
-          }
-      });
+  Office.context.document.goToByIdAsync(Office.Index.Previous, Office.GoToType.Index, (asyncResult) => {
+    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+      setMessage("Error: " + asyncResult.error.message);
+    }
+  });
 }
 
 function goToNextSlide() {
-  Office.context.document.goToByIdAsync(Office.Index.Next, Office.GoToType.Index,
-      function (asyncResult) {
-          if (asyncResult.status == "failed") {
-            setMessage("Error: " + asyncResult.error.message);
-          }
-      });
+  Office.context.document.goToByIdAsync(Office.Index.Next, Office.GoToType.Index, (asyncResult) => {
+    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+      setMessage("Error: " + asyncResult.error.message);
+    }
+  });
 }
 
 async function clearMessage(callback) {
@@ -108,15 +104,15 @@ async function clearMessage(callback) {
 }
 
 function setMessage(message) {
-    document.getElementById("message").innerText = message;
+  document.getElementById("message").innerText = message;
 }
 
 /** Default helper for invoking an action and handling errors. */
 async function tryCatch(callback) {
-    try {
-        document.getElementById("message").innerText = "";
-        await callback();
-    } catch (error) {
-        setMessage("Error: " + error.toString());
-    }
+  try {
+    document.getElementById("message").innerText = "";
+    await callback();
+  } catch (error) {
+    setMessage("Error: " + error.toString());
+  }
 }
