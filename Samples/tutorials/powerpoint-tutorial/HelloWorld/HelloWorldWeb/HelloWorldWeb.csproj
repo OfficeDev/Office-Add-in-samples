@@ -130,10 +130,7 @@
     <Content Include="Images\Button32x32.png" />
     <Content Include="Images\Button80x80.png" />
     <Content Include="Images\Close.png" />
-    <None Include="Scripts\embedded\1.0\visio-web-embedded.debug-vsdoc.js" />
     <Content Include="Content\OfficeThemes.css" />
-    <Content Include="Scripts\embedded\1.0\visio-web-embedded.debug.js" />
-    <Content Include="Scripts\embedded\1.0\visio-web-embedded.js" />
     <Content Include="Scripts\MessageBanner.js" />
     <Content Include="Web.config" />
   </ItemGroup>
