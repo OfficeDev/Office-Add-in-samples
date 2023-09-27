@@ -42,7 +42,7 @@ const rules = [
     test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
     use: {
       loader: "file-loader",
-      query: {
+      options: {
         name: "assets/[name].[ext]",
       },
     },
