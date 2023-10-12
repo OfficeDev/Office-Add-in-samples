@@ -46,7 +46,7 @@ For documentation related to this sample, see the following:
 ## Applies to
 
 - Outlook on Windows starting in Version 2304 (Build 16327.20248)
-- Outlook on Mac starting in Version 16.71.312.0 (preview)
+- Outlook on Mac starting in Version 16.77.816.0
 - Outlook on the web (modern)
 
 ## Prerequisites
@@ -303,6 +303,7 @@ Office.context.mailbox.item.sensitivityLabel.setAsync(highlyConfidentialLabel, {
 |-------|----|--------|
 |1.0|April 18, 2023|Initial release|
 |1.1|May 19, 2023|Update for General Availability (GA) of the sensitivity label API|
+|1.2|October 12, 2023|Update supported version of Outlook on Mac|
 
 ## Copyright
 
