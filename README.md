@@ -55,10 +55,10 @@ All of the following samples show how to access and work with a user's Microsoft
 
 | Name           | Description  |
 | -------------- | ------------ |
-| [Use Outlook event-based activation to encrypt attachments, process meeting request attendees and react to appointment date/time changes](Samples/outlook-encrypt-attachments) | Shows how to use event-based activation to encrypt attachments when added by the user. Also shows event handling for recipients changed in a meeting request, and changes to the start or end date or time in a meeting request. |
-| [Use Outlook event-based activation to indicate external recipients](Samples/outlook-tag-external) | Uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the appendOnSendAsync API to add a disclaimer.|
-| [Use Outlook event-based activation to set the signature](Samples/outlook-set-signature) | Uses event-based activation to run an Outlook add-in when the user creates a new message or appointment.|
-| [Use Outlook Smart Alerts](Samples/outlook-check-item-categories/) | Uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent.|
+| [Encrypt attachments, process meeting request attendees, and react to appointment date/time changes using Outlook event-based activation](Samples/outlook-encrypt-attachments) | Shows how to use event-based activation to encrypt attachments when added by the user. Also shows event handling for recipients changed in a meeting request, and changes to the start or end date or time in a meeting request. |
+| [Identify and tag external recipients using Outlook event-based activation](Samples/outlook-tag-external) | Uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the appendOnSendAsync API to add a disclaimer.|
+| [Set your signature using Outlook event-based activation](Samples/outlook-set-signature) | Uses event-based activation to run an Outlook add-in when the user creates a new message or appointment.|
+| [Verify the color categories of a message or appointment before it's sent using Smart Alerts](Samples/outlook-check-item-categories/) | Uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent.|
 | [Verify the sensitivity label of a message](Samples/outlook-verify-sensitivity-label/) | Uses the sensitivity label API in an event-based add-in to verify and apply the **Highly Confidential** sensitivity label to applicable outgoing messages. |
 
 ## Excel
