@@ -1,4 +1,5 @@
 ---
+title: "Encrypt attachments, process meeting request attendees, and react to appointment date/time changes using Outlook event-based activation"
 page_type: sample
 urlFragment: outlook-add-in-encrypt-attachments
 products:
@@ -14,7 +15,7 @@ extensions:
 description: "Use Outlook event-based activation to encrypt attachments, process meeting request attendees, and react to appointment date/time changes."
 ---
 
-# Use Outlook event-based activation to encrypt attachments, process meeting request attendees and react to appointment date/time changes
+# Encrypt attachments, process meeting request attendees, and react to appointment date/time changes using Outlook event-based activation
 
 **Applies to**: Outlook on Windows | Outlook on the web
 

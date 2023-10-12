@@ -1,5 +1,5 @@
 ---
-title: "Use Outlook Smart Alerts"
+title: "Verify the color categories of a message or appointment before it's sent using Smart Alerts"
 page_type: sample
 urlFragment: outlook-add-in-check-item-categories
 products:
@@ -16,7 +16,7 @@ extensions:
 description: "Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent."
 ---
 
-# Use Outlook Smart Alerts
+# Verify the color categories of a message or appointment before it's sent using Smart Alerts
 
 **Applies to**: Outlook on Windows | [new Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439)
 
