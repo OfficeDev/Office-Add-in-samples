@@ -303,7 +303,7 @@ Office.context.mailbox.item.sensitivityLabel.setAsync(highlyConfidentialLabel, {
 |-------|----|--------|
 |1.0|April 18, 2023|Initial release|
 |1.1|May 19, 2023|Update for General Availability (GA) of the sensitivity label API|
-|1.2|October 5, 2023|Update supported version in Outlook on Mac|
+|1.2|October 12, 2023|Update supported version in Outlook on Mac|
 
 ## Copyright
 
