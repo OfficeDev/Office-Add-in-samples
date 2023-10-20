@@ -33,7 +33,7 @@ This sample uses the sensitivity label API in an event-based add-in to verify an
   - Get the available sensitivity labels from the catalog.
   - Get the sensitivity label of a message.
 - Event-based activation is used to handle the following events.
-  - When the `OnMessageRecipientsChanged` event occurs, the add-in checks if the legal hold account (legalhold@fabrikam.com) was added to the **To**, **Cc**, or **Bcc** field. If the account appears in the **To** or **Cc** field, it's automatically removed from the message. On the other hand, if it was added to the **Bcc** field, the add-in checks whether the sensitivity label of the message is set to **Highly Confidential**. If it isn't, the account is removed from the message.
+  - When the `OnMessageRecipientsChanged` event occurs, the add-in checks if the legal hold account (`legalhold@fabrikam.com`) was added to the **To**, **Cc**, or **Bcc** field. If the account appears in the **To** or **Cc** field, it's automatically removed from the message. On the other hand, if it was added to the **Bcc** field, the add-in checks whether the sensitivity label of the message is set to **Highly Confidential**. If it isn't, the account is removed from the message.
   - When the `OnSensitivityLabelChanged` event occurs, the add-in checks if the sensitivity label is set to **Highly Confidential**, then adds the legal hold account, if applicable.
   - When the `OnMessageSend` event occurs, the add-in checks whether the message contains an attachment or a recipient who's a member of the Fabrikam legal team. If one of these conditions is met, the sensitivity label of the message is set to **Highly Confidential**. A Smart Alerts dialog is then shown to notify that the sensitivity label was updated.
 
@@ -41,7 +41,7 @@ For documentation related to this sample, see the following:
 
 - [Manage the sensitivity label of your message or appointment in compose mode](https://learn.microsoft.com/office/dev/add-ins/outlook/sensitivity-label)
 - [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch)
-- [Use Smart Alerts and the OnMessageSend and OnAppointmentSend events in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough)
+- [Handle OnMessageSend and OnAppointmentSend events in your Outlook add-in with Smart Alerts](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events)
 
 ## Applies to
 
@@ -114,44 +114,44 @@ Once the add-in is loaded, use the following steps to try out its functionality.
 1. Do one of the following:
 
     - Add an attachment to the message.
-    - Add the email address of a fictitious Fabrikam legal team member to the **To**, **Cc**, or **Bcc** field using the format, **-legal@fabrikam.com**. For example, **eli-legal@fabrikam.com**.
+    - Add the email address of a fictitious Fabrikam legal team member to the **To**, **Cc**, or **Bcc** field using the format, `-legal@fabrikam.com`. For example, `eli-legal@fabrikam.com`.
 
 1. (Optional) Add a subject or content to the body of the message.
 1. Select **Send**.
 
-    The sensitivity label of the message is set to **Highly Confidential** and the **legalhold@fabrikam.com** account is added to the **Bcc** field. A Smart Alerts dialog appears that reads, "Due to the contents of your message, the sensitivity label has been set to Highly Confidential and the legal hold account has been added to the **Bcc** field. To learn more, see Fabrikam's information protection policy. Do you need to make changes to your message?"
+    The sensitivity label of the message is set to **Highly Confidential** and the `legalhold@fabrikam.com` account is added to the **Bcc** field. A Smart Alerts dialog appears that reads, "Due to the contents of your message, the sensitivity label has been set to Highly Confidential and the legal hold account has been added to the **Bcc** field. To learn more, see Fabrikam's information protection policy. Do you need to make changes to your message?"
 1. If you're ready to send your message, select **Send anyway**. Otherwise, select **Don't send**.
 
    > **Note**: Sending a message to the fabrikam.com domain will result in an undeliverable message.
 
 ### Test changing the sensitivity label of a message
 
-If you manually change the sensitivity label of a message to **Highly Confidential**, the **legalhold@fabrikam.com** account is automatically added to the **Bcc** field. Use the following steps to try out this functionality.
+If you manually change the sensitivity label of a message to **Highly Confidential**, the `legalhold@fabrikam.com` account is automatically added to the **Bcc** field. Use the following steps to try out this functionality.
 
 1. Create a new message.
 1. Change the sensitivity label to **Highly Confidential**. For guidance on how to change the sensitivity label of a message, see [Apply sensitivity labels to your files and email](https://support.microsoft.com/office/2f96e7cd-d5a4-403b-8bd7-4cc636bae0f9).
 1. If you're prompted with a **Justification Required** dialog, select the applicable option, then select **Change**.
 
-    The sensitivity label of the message is set to **Highly Confidential** and the **legalhold@fabrikam.com** account is added to the **Bcc** field.
+    The sensitivity label of the message is set to **Highly Confidential** and the `legalhold@fabrikam.com` account is added to the **Bcc** field.
 
 ### Test removing the legal hold account from a Highly Confidential message
 
-If you attempt to remove the **legalhold@fabrikam.com** account from a message that's labeled **Highly Confidential**, the account will be automatically re-added to the **Bcc** field. Use the following steps to try out this functionality.
+If you attempt to remove the `legalhold@fabrikam.com` account from a message that's labeled **Highly Confidential**, the account will be automatically re-added to the **Bcc** field. Use the following steps to try out this functionality.
 
-1. Navigate to the message you previously created in [Test changing the sensitivity label of the message](#test-changing-the-sensitivity-label-of-the-message).
-1. Navigate to the **Bcc** field and delete **legalhold@fabrikam.com**.
+1. Navigate to the message you previously created in [Test changing the sensitivity label of the message](#test-changing-the-sensitivity-label-of-a-message).
+1. Navigate to the **Bcc** field and delete `legalhold@fabrikam.com`.
 
-    The **legalhold@fabrikam.com** account is re-added to the **Bcc** field.
+    The `legalhold@fabrikam.com` account is re-added to the **Bcc** field.
 
 ### Test manually adding the legal hold account as a recipient
 
-In this sample, the **legalhold@fabrikam.com** account can only be added to the **Bcc** field when the sensitivity label of a message is set to **Highly Confidential**. Use the following steps to try out this functionality.
+In this sample, the `legalhold@fabrikam.com` account can only be added to the **Bcc** field when the sensitivity label of a message is set to **Highly Confidential**. Use the following steps to try out this functionality.
 
 1. Create a new message.
 1. Ensure that the sensitivity label is set to something other than **Highly Confidential**.
-1. Add **legalhold@fabrikam.com** to the **To**, **Cc**, or **Bcc** field of the message.
+1. Add `legalhold@fabrikam.com` to the **To**, **Cc**, or **Bcc** field of the message.
 
-    The **legalhold@fabrikam.com** account is automatically removed from the **To**, **Cc**, or **Bcc** field of the message.
+    The `legalhold@fabrikam.com` account is automatically removed from the **To**, **Cc**, or **Bcc** field of the message.
 
 ## Key parts of the sample
 
@@ -176,7 +176,7 @@ The manifest configures a runtime to handle event-based activation. Because the 
 <bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/commands/commands.html"/>
 ```
 
-The **\<LaunchEvents\>** element maps the three events that activate the add-in to the functions that handle each event. The `OnMessageSend` event includes an additional **SendMode** attribute to specify how the add-in will handle the event if certain conditions aren't met. In this sample, the **SendMode** attribute is configured to the `PromptUser` option to notify the sender that the sensitivity label of a message has been updated to meet the company's data loss prevention policies. To learn more about **SendMode** options, see [Available SendMode options](https://learn.microsoft.com/javascript/api/manifest/launchevent#available-sendmode-options).
+The **\<LaunchEvents\>** element maps the three events that activate the add-in to the functions that handle each event. The `OnMessageSend` event includes an additional **SendMode** attribute to specify how the add-in will handle the event if certain conditions aren't met. In this sample, the **SendMode** attribute is configured to the `PromptUser` option to notify the sender that the sensitivity label of a message has been updated to meet the company's data loss prevention policies. To learn more about send mode options, see [Available send mode options](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events#available-send-mode-options).
 
 ```xml
 <!-- Indicates on which events the add-in activates. -->
