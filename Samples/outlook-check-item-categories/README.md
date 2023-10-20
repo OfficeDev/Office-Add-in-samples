@@ -26,7 +26,8 @@ This sample uses Outlook Smart Alerts to verify that required color categories a
 
 For documentation related to this sample, see the following articles.
 
-- [Use Smart Alerts and the OnMessageSend event in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough)
+- [Handle OnMessageSend and OnAppointmentSend events in your Outlook add-in with Smart Alerts](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events)
+- [Automatically check for an attachment before a message is sent](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough)
 - [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch)
 - [Get and set categories](https://learn.microsoft.com/office/dev/add-ins/outlook/categories)
 
@@ -47,7 +48,7 @@ For documentation related to this sample, see the following articles.
 - Outlook on Windows starting in Version 2206 (Build 15330.20196)
 - [New Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439) starting in Version 16.65.827.0
 
-> **Note**: Although the Smart Alerts feature is supported in Outlook on the web, Windows, and new Mac UI (see the "Supported clients and platforms" section of [Use Smart Alerts and the onMessageSend and OnAppointmentSend events in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough#supported-clients-and-platforms)), this sample only runs in Outlook on Windows and Mac.
+> **Note**: Although the Smart Alerts feature is supported in Outlook on the web, Windows, and new Mac UI (see the "Supported clients and platforms" section of [Use Smart Alerts and the onMessageSend and OnAppointmentSend events in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events#supported-clients-and-platforms)), this sample only runs in Outlook on Windows and Mac.
 >
 > As the Office.Categories API can't be used in Compose mode in Outlook on the web, this sample isn't supported on that client. To learn how to develop a Smart Alerts add-in for Outlook on the web, see the [Smart Alerts walkthrough](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough).
 
@@ -191,7 +192,7 @@ The `OnMessageSend` event uses the `SoftBlock` option to prevent a user from sen
 
 The `OnAppointmentSend` event uses the `Block` option to prevent a user from sending a meeting invite if any of the required categories are missing. If the add-in encounters a loading error and can't check the invite for applied categories, the user will not be able to send the invite until the add-in becomes available again.
 
-For additional information on `SendMode` options, see [Available SendMode options](https://learn.microsoft.com/javascript/api/manifest/launchevent#available-sendmode-options).
+For additional information on send mode options, see [Available send mode options](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events#available-send-mode-options).
 
 ### Configure the event handlers
 
