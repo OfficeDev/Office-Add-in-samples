@@ -99,12 +99,12 @@ The fundamental pattern includes the following steps.
 
 ## Debugging
 
-This sample is configured to support debugging both JavaScript and C# files. If you create a new Blazor project, you will need to make the following file updates to support C# debugging.
+This sample is configured to support debugging both JavaScript and C# files. New Blazor projects need the following file updates to support C# debugging.
 
 1. In the **launchSettings.json** file of the web project, make sure all instances of `launchBrowser` are set to `false`.
 1. In the **<projectName>.csproj.user** file of the add-in project, add the `<BlazorAppUrl>` and `<InspectUri>` elements as shown in the following example XML.
 
-**Note:** The port number in the following XML is 7126. You must change the number to the port number specified in the **launchSettings.json** file for your web project.
+**Note:** The port number in the following XML is 7126. You must change it to the port number specified in the **launchSettings.json** file for your web project.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
