@@ -1,46 +1,46 @@
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
      Licensed under the MIT License. -->
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <title>Excel Add-In with Commands Sample</title>
+     <!DOCTYPE html>
+     <html>
+     <head>
+         <meta charset="UTF-8" />
+         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+         <title>Excel Add-In with Commands Sample</title>
+     
+         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+         <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+     
+         <!-- To enable offline debugging using a local reference to Office.js, use:                        -->
+         <!-- <script src="Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>  -->
+         <!-- <script src="Scripts/Office/1/office.js" type="text/javascript"></script>  -->
+     
+         <link href="taskpane.css" rel="stylesheet" type="text/css" />
+         <script src="taskpane.js" type="text/javascript"></script>
+     
+         <!-- For the Office UI Fabric, go to https://aka.ms/office-ui-fabric to learn more. -->
+         <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.min.css">
+         <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.components.min.css">
+         
+         <!-- To enable the offline use of Office UI Fabric, use: -->
+         <!-- link rel="stylesheet" href="Content/fabric.min.css" -->
+         <!-- link rel="stylesheet" href="Content/fabric.components.min.css" -->
+     </head>
+     <body class="ms-font-m ms-welcome">
+        <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
+        <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/Excel.JsonToOfficeTable-run" />
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
-
-    <!-- To enable offline debugging using a local reference to Office.js, use:                        -->
-    <!-- <script src="Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>  -->
-    <!-- <script src="Scripts/Office/1/office.js" type="text/javascript"></script>  -->
-
-    <link href="taskpane.css" rel="stylesheet" type="text/css" />
-    <script src="taskpane.js" type="text/javascript"></script>
-
-    <!-- For the Office UI Fabric, go to https://aka.ms/office-ui-fabric to learn more. -->
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.min.css">
-    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.components.min.css">
-    
-    <!-- To enable the offline use of Office UI Fabric, use: -->
-    <!-- link rel="stylesheet" href="Content/fabric.min.css" -->
-    <!-- link rel="stylesheet" href="Content/fabric.components.min.css" -->
-</head>
-<body class="ms-font-m ms-welcome">
-    <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
-    <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/Excel.OfflineStorageAddin-run" />
-
-    <div id="content-header">
-        <div class="padding">
-            <h1>Basketball Draft Player Stats</h1>
-        </div>
-    </div>
-    <div id="content-main">
-        <div class="padding">
-            <p>See player stats for tonight's basketball draft</p>
-            <br />
-            <h3>Create the table with player stats</h3>
-            <button class="ms-Button" id="create-table">Create Table</button>
-        </div>
-    </div>
-</body>
-</html>
+        <div id="content-header">
+             <div class="padding">
+                 <h1>Basketball Draft Player Stats</h1>
+             </div>
+         </div>
+         <div id="content-main">
+             <div class="padding">
+                 <p>See player stats for tonight's basketball draft</p>
+                 <br />
+                 <h3>Create the table with player stats</h3>
+                 <button class="ms-Button" id="create-table">Create Table</button>
+             </div>
+         </div>
+     </body>
+     </html>
