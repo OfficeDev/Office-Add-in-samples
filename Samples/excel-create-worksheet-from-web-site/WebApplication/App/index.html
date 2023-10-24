@@ -2,142 +2,161 @@
      Licensed under the MIT License. -->
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+        <title>Contoso product sales</title>
+        <link rel="SHORTCUT ICON" href="./favicon.svg" type="image/x-icon" />
+        <link rel="stylesheet" href="./styles.css" />
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <title>Contoso product sales</title>
-    <link rel="SHORTCUT ICON" href="./favicon.svg" type="image/x-icon" />
-    <link rel="stylesheet" href="./styles.css" />
+        <!-- msal.min.js can be used in the place of msal.js; included msal.js to make debug easy -->
+        <script
+            id="load-msal"
+            src="https://alcdn.msauth.net/browser/2.31.0/js/msal-browser.js"
+            integrity="sha384-BO4qQ2RTxj2akCJc7t6IdU9aRg6do4LGIkVVa01Hm33jxM+v2G+4q+vZjmOCywYq"
+            crossorigin="anonymous"
+        ></script>
 
-    <!-- msal.min.js can be used in the place of msal.js; included msal.js to make debug easy -->
-    <script id="load-msal" src="https://alcdn.msauth.net/browser/2.31.0/js/msal-browser.js"
-        integrity="sha384-BO4qQ2RTxj2akCJc7t6IdU9aRg6do4LGIkVVa01Hm33jxM+v2G+4q+vZjmOCywYq"
-        crossorigin="anonymous"></script>
+        <!-- adding Graph SDK v2.0 via CDN-->
+        <script
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@microsoft/microsoft-graph-client/lib/graph-js-sdk.js"
+        ></script>
 
-    <!-- adding Graph SDK v2.0 via CDN-->
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@microsoft/microsoft-graph-client/lib/graph-js-sdk.js"></script>
+        <!-- adding Bootstrap 5 for UI components  -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+            crossorigin="anonymous"
+        />
 
-    <!-- adding Bootstrap 5 for UI components  -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+        <link rel="SHORTCUT ICON" href="https://c.s-microsoft.com/favicon.ico?v2" type="image/x-icon" />
+    </head>
 
-    <link rel="SHORTCUT ICON" href="https://c.s-microsoft.com/favicon.ico?v2" type="image/x-icon" />
-</head>
+    <body>
+        <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
+        <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-create-spreadsheet-from-web-page-run" />
 
-<body>
-    <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
-    <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-create-spreadsheet-from-web-page-run" />
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary navbarStyle justify-content-between">
-        <a class="navbar-brand text-white" href="/">Contoso product sales</a>
-        <div class="navbar navbar-collapse">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary navbarStyle justify-content-between">
+            <a class="navbar-brand text-white" href="/">Contoso product sales</a>            
+            <div class="navbar navbar-collapse">
 
-            <button type="button" id="openInExcelIcon" disabled="true" class="btn btn-primary"
-                onclick="openInExcel()"><img
-                    src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/excel_48x1.svg"
-                    width="48" height="48" alt="Open data in new Excel spreadsheet file.">
+                <button type="button" id="openInExcelIcon" disabled="true" class="btn btn-primary" onclick="openInExcel()"><img src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/excel_48x1.svg"
+                    width="48"
+                    height="48" 
+                    alt="Open data in new Excel spreadsheet file." >
                 </img>Open in Microsoft Excel</button>
-
-
-            <button type="button" id="SignIn" class="btn btn-secondary" onclick="signIn()">Sign In</button>
-            <div class="dropdown">
-                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li>
-                        <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal">Switch
-                            Account</a>
-                    </li>
-                    <li><a class="dropdown-item" onclick="signOut()" href="#">Sign out</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <br />
-    <div class="row">
-        <div id="card-div" class="col-auto">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h5 class="card-title" id="WelcomeMessage">
-                        Please sign-in to see your product sales data.
-                    </h5>
-                    <div id="profile-div"></div>
-
-                </div>
-            </div>
-        </div>
-        <div id="card-div-data" class="col-auto" style="display: none">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h5 class="card-title" id="tableSection">
-                        Your data below
-                    </h5>
-                    <div id="tableData"></div>
-                    <br />
-                    <br />
-                </div>
-            </div>
-        </div>
-        <br />
-        <br />
-        <div class="col-md-4">
-            <div class="list-group" id="list-tab" role="tablist"></div>
-        </div>
-        <div class="col-md-5">
-            <div class="tab-content" id="nav-tabContent"></div>
-        </div>
-    </div>
-    <br />
-    <br />
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Set active account</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <ul class="list-group" id="list-group">
-                        <li class="list-group-item" onclick="addAnotherAccount(event)">Add another account</li>
+            
+           
+                <button type="button" id="SignIn" class="btn btn-secondary" onclick="signIn()">Sign In</button>
+                <div class="dropdown">
+                    <button
+                        class="btn btn-warning dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                >Switch Account</a
+                            >
+                        </li>
+                        <li><a class="dropdown-item" onclick="signOut()" href="#">Sign out</a></li>
                     </ul>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" id="closeModal" class="btn btn-secondary"
-                        data-bs-dismiss="modal">Close</button>
+            </div>
+        </nav>
+        <br />
+        <div class="row">
+            <div id="card-div" class="col-auto">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title" id="WelcomeMessage">
+                            Please sign-in to see your product sales data.
+                        </h5>
+                        <div id="profile-div"></div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div id="card-div-data" class="col-auto" style="display: none">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title" id="tableSection">
+                            Your data below
+                        </h5>
+                        <div id="tableData"></div>
+                        <br />
+                        <br />                        
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="col-md-4">
+                <div class="list-group" id="list-tab" role="tablist"></div>
+            </div>
+            <div class="col-md-5">
+                <div class="tab-content" id="nav-tabContent"></div>
+            </div>
+        </div>
+        <br />
+        <br />
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Set active account</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <ul class="list-group" id="list-group">
+                            <li class="list-group-item" onclick="addAnotherAccount(event)">Add another account</li>
+                      </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="closeModal"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- importing bootstrap.js and supporting js libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-        crossorigin="anonymous"></script>
+        <!-- importing bootstrap.js and supporting js libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous"
+        ></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+            crossorigin="anonymous"
+        ></script>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"
+        ></script>
 
-    <!-- importing app scripts (load order is important) -->
-    <script type="text/javascript" src="./authConfig.js"></script>
-    <script type="text/javascript" src="./ui.js"></script>
+        <!-- importing app scripts (load order is important) -->
+        <script type="text/javascript" src="./authConfig.js"></script>
+        <script type="text/javascript" src="./ui.js"></script>
 
-    <!-- <script type="text/javascript" src="./authRedirect.js"></script> -->
-    <!-- uncomment the above line and comment the line below if you would like to use the redirect flow -->
-    <script type="text/javascript" src="./tableData.js"></script>
-    <script type="text/javascript" src="./authPopup.js"></script>
-    <script type="text/javascript" src="./graph.js"></script>
-    <script type="text/javascript" src="./utils/storageUtils.js"></script>
-    <script type="text/javascript" src="./fetch.js"></script>
-</body>
-
+        <!-- <script type="text/javascript" src="./authRedirect.js"></script> -->
+        <!-- uncomment the above line and comment the line below if you would like to use the redirect flow -->
+        <script type="text/javascript" src="./tableData.js"></script>        
+        <script type="text/javascript" src="./authPopup.js"></script>
+        <script type="text/javascript" src="./graph.js"></script>
+        <script type="text/javascript" src="./utils/storageUtils.js"></script>
+        <script type="text/javascript" src="./fetch.js"></script>
+    </body>
 </html>
