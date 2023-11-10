@@ -14,7 +14,7 @@
     },
     "dependencies": {
         "@azure/msal-browser": "^2.8.0",
-        "axios": "^0.21.1",
+        "axios": "^1.6.0",
         "core-js": "^2.6.1",
         "office-ui-fabric-react": "^6.138.1",
         "react": "^16.8.1",
