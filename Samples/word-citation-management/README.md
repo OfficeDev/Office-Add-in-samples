@@ -20,7 +20,7 @@ description: "Shows how to manage citations in a Word document."
 
 This sample shows the basics of managing citations with an add-in in a Word document. The add-in uses the [insertEndnote API](https://learn.microsoft.com/javascript/api/word/word.range?view=word-js-1.5#word-word-range-insertendnote-member(1)) to list inserted citations at the end of the document.
 
-TODO  For documentation related to this sample, see [Citation management article](https://learn.microsoft.com/office/dev/add-ins/word/citation-management).
+For documentation related to this sample, see [Citation management article](https://learn.microsoft.com/office/dev/add-ins/word/citation-management).
 
 ## Description
 
