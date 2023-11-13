@@ -28,7 +28,7 @@ The user updates their Word document to include their citations and quotations. 
 
 The sample also depends on [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJs#readme), a JavaScript library for parsing the .bib file.
 
-![citation management add-in...](./assets/word-citation-management.png)
+![Citation management add-in task pane.](./assets/word-citation-management.png)
 
 ## Applies to
 
