@@ -58,7 +58,7 @@ The sample also depends on [@orcid/bibtexParseJs](https://github.com/ORCID/bibte
 
 ## Run the sample
 
-1. Fork and download this repo.
+1. Clone or download this repo.
 
 1. Go to the **Samples\word-citation-management** folder via the command line.
 
