@@ -15,7 +15,7 @@ extensions:
 description: 'Create a simple Word Add-in that displays hello world.'
 ---
 
-# Create an Word Add-in that displays hello world
+# Create a Word Add-in that displays hello world
 
 ## Summary
 
