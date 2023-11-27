@@ -18,15 +18,15 @@ description: "Shows how to manage citations in a Word document."
 
 ## Summary
 
-This sample shows the basics of managing citations with an add-in in a Word document. The add-in uses the [insertEndnote API](https://learn.microsoft.com/javascript/api/word/word.range?view=word-js-1.5#word-word-range-insertendnote-member(1)) to list inserted citations at the end of the document.
+This sample shows how to manage citations in Word with an add-in. The add-in uses the [insertEndnote API](https://learn.microsoft.com/javascript/api/word/word.range#word-word-range-insertendnote-member(1)) to list inserted citations at the end of the document.
 
-For documentation related to this sample, see [Citation management article](https://learn.microsoft.com/office/dev/add-ins/word/citation-management).
+For documentation related to this sample, see [Citation management](https://learn.microsoft.com/office/dev/add-ins/word/citation-management).
 
 ## Description
 
 The user updates their Word document to include their citations and quotations. The user selects their bibliography file (.bib) through the add-in UI. The add-in lists the references found in the .bib file. The user selects the text in the document that they want to cite then picks the option from the reference list displayed in the add-in UI. The inserted citations are listed at the end of the document.
 
-The sample also depends on [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJs#readme), a JavaScript library for parsing the .bib file.
+The sample uses the [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJs#readme) JavaScript library to parse the .bib file.
 
 ![Citation management add-in task pane.](./assets/word-citation-management.png)
 
@@ -83,7 +83,7 @@ The sample also depends on [@orcid/bibtexParseJs](https://github.com/ORCID/bibte
 
     ![The initial screen displaying the button to choose a file.](./assets/word-citation-management-initial-screen.png)
 
-    For convenience, the assets folder of this project includes a sample.bib file that you can use for testing.
+    For convenience, the assets folder of this project includes a sample.bib file.
 
     ![Screen showing selected file.](./assets/word-citation-management-selected-bib.png)
 
@@ -105,7 +105,7 @@ The following are a few suggestions for how you could tailor this to your scenar
 
 - Include [single sign-on (SSO)](https://learn.microsoft.com/office/dev/add-ins/develop/sso-in-office-add-ins) to support managing sessions and persisting settings for the user.
 - Update the citation style used to display the references in the endnotes, or allow the user to choose the style.
-- Use [footnotes](https://learn.microsoft.com/javascript/api/word/word.range?view=word-js-1.5#word-word-range-insertfootnote-member(1)) instead of endnotes, or allow the user to choose.
+- Use [footnotes](https://learn.microsoft.com/javascript/api/word/word.range#word-word-range-insertfootnote-member(1)) instead of endnotes, or allow the user to choose.
 
 ## Related content
 
