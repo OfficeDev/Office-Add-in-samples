@@ -42,8 +42,6 @@ The sample uses the [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJ
 - [Node.js](https://nodejs.org/) version 16 or greater.
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
-- [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJs#readme).
-
 ## Solution
 
 | Solution | Authors |
