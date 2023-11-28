@@ -20,8 +20,6 @@ description: "Shows how to manage citations in a Word document."
 
 This sample shows how to manage citations in Word with an add-in. The add-in uses the [insertEndnote API](https://learn.microsoft.com/javascript/api/word/word.range#word-word-range-insertendnote-member(1)) to list inserted citations at the end of the document.
 
-For documentation related to this sample, see [Citation management](https://learn.microsoft.com/office/dev/add-ins/word/citation-management).
-
 ## Description
 
 The user updates their Word document to include their citations and quotations. The user selects their bibliography file (.bib) through the add-in UI. The add-in lists the references found in the .bib file. The user selects the text in the document to cite then picks the option from the reference list displayed in the add-in UI. The inserted citations are listed at the end of the document.
@@ -107,6 +105,7 @@ The following are a few suggestions for how you could tailor this to your scenar
 
 ## Related content
 
+- [Citation management](https://learn.microsoft.com/office/dev/add-ins/word/citation-management)
 - [Word add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/word/)
 
 ## Questions and feedback
