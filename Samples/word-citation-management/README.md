@@ -24,7 +24,7 @@ For documentation related to this sample, see [Citation management](https://lear
 
 ## Description
 
-The user updates their Word document to include their citations and quotations. The user selects their bibliography file (.bib) through the add-in UI. The add-in lists the references found in the .bib file. The user selects the text in the document that they want to cite then picks the option from the reference list displayed in the add-in UI. The inserted citations are listed at the end of the document.
+The user updates their Word document to include their citations and quotations. The user selects their bibliography file (.bib) through the add-in UI. The add-in lists the references found in the .bib file. The user selects the text in the document to cite then picks the option from the reference list displayed in the add-in UI. The inserted citations are listed at the end of the document.
 
 The sample uses the [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJs#readme) JavaScript library to parse the .bib file.
 
