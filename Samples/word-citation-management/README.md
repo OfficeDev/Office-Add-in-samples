@@ -10,7 +10,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 11/15/2023 4:00:00 PM
+  createdDate: 11/28/2023 4:00:00 PM
 description: "Shows how to manage citations in a Word document."
 ---
 
@@ -50,7 +50,7 @@ The sample uses the [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJ
 
 | Version  | Date | Comments |
 |----------|------|----------|
-| 1.0 | 11-15-2023 | Initial release |
+| 1.0 | 11-28-2023 | Initial release |
 
 ## Run the sample
 
