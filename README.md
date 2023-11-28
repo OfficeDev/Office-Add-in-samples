@@ -80,6 +80,7 @@ All of the following samples show how to access and work with a user's Microsoft
 | -------------- | ------------ |
 | [Get, edit, and set OOXML content in a Word document with a Word add-in](Samples/word-add-in-get-set-edit-openxml)| Shows how to get, edit, and set OOXML content in a Word document.|
 | [Load and write Open XML in your Word add-in](Samples/word-add-in-load-and-write-open-xml) | Shows how to add a variety of rich content types to a Word document using the **setSelectedDataAsync** method with **ooxml** coercion type.|
+| [Manage citations with your Word add-in](Samples/word-citation-management)| Shows how to manage citations in a Word document.|
 
 ## Shared JavaScript runtime
 
