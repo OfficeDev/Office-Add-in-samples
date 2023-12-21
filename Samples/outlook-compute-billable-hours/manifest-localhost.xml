@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" xsi:type="MailApp">
+  <Id>d0c090d1-1cb0-4304-842e-1a54284a109f</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Contoso</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Office Add-ins Outlook module extension sample"/>
+  <Description DefaultValue="Computes billable hours for meetings, emails, and tasks."/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
+  <AppDomains>
+    <AppDomain>https://www.contoso.com</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://localhost:3000/module.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteMailbox</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.3">
+          <bt:Set Name="Mailbox"/>
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <DesktopFormFactor>
+            <FunctionFile resid="Module.Url"/>
+
+            <!-- Configure the module extension. -->
+            <ExtensionPoint xsi:type="Module">
+              <SourceLocation resid="Module.Url"/>
+              <Label resid="ExtensionPoint.Label"/>
+              <CommandSurface>
+                <CustomTab id="idTab">
+                  <Group id="idGroup">
+                    <Label resid="ModuleGroup.Label"/>
+                    
+                    <!-- Configure the button to change to the associate billing rate. -->
+                    <Control xsi:type="Button" id="changeToAssociate">
+                      <Label resid="ChangeToAssociate.Label"/>
+                      <Supertip>
+                        <Title resid="ChangeToAssociate.Label"/>
+                        <Description resid="ChangeToAssociate.Tooltip"/>
+                      </Supertip>
+                      <Icon>
+                        <bt:Image size="16" resid="AssociateIcon.16x16"/>
+                        <bt:Image size="32" resid="AssociateIcon.32x32"/>
+                        <bt:Image size="80" resid="AssociateIcon.80x80"/>
+                      </Icon>
+                      <Action xsi:type="ExecuteFunction">
+                        <FunctionName>changeToAssociateRate</FunctionName>
+                      </Action>
+                    </Control>
+
+                    <!-- Configure the button to change to the partner billing rate. -->
+                    <Control xsi:type="Button" id="changeToPartner">
+                      <Label resid="ChangeToPartner.Label"/>
+                      <Supertip>
+                        <Title resid="ChangeToPartner.Label"/>
+                        <Description resid="ChangeToPartner.Tooltip"/>
+                      </Supertip>
+                      <Icon>
+                        <bt:Image size="16" resid="PartnerIcon.16x16"/>
+                        <bt:Image size="32" resid="PartnerIcon.32x32"/>
+                        <bt:Image size="80" resid="PartnerIcon.80x80"/>
+                      </Icon>
+                      <Action xsi:type="ExecuteFunction">
+                        <FunctionName>changeToPartnerRate</FunctionName>
+                      </Action>
+                    </Control>
+
+                    <!-- Configure the button to change to the executive billing rate. -->
+                    <Control xsi:type="Button" id="changeToExecutive">
+                      <Label resid="ChangeToExecutive.Label"/>
+                      <Supertip>
+                        <Title resid="ChangeToExecutive.Label"/>
+                        <Description resid="ChangeToExecutive.Tooltip"/>
+                      </Supertip>
+                      <Icon>
+                        <bt:Image size="16" resid="ExecutiveIcon.16x16"/>
+                        <bt:Image size="32" resid="ExecutiveIcon.32x32"/>
+                        <bt:Image size="80" resid="ExecutiveIcon.80x80"/>
+                      </Icon>
+                      <Action xsi:type="ExecuteFunction">
+                        <FunctionName>changeToExecutiveRate</FunctionName>
+                      </Action>
+                    </Control>
+                  </Group>
+                  <Label resid="CustomTab.Label"/>
+                </CustomTab>
+              </CommandSurface>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+      <Resources>
+        <bt:Images>
+          <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+          <bt:Image id="AssociateIcon.16x16" DefaultValue="https://localhost:3000/assets/associate-16.png"/>
+          <bt:Image id="AssociateIcon.32x32" DefaultValue="https://localhost:3000/assets/associate-32.png"/>
+          <bt:Image id="AssociateIcon.80x80" DefaultValue="https://localhost:3000/assets/associate-80.png"/>
+          <bt:Image id="PartnerIcon.16x16" DefaultValue="https://localhost:3000/assets/partner-16.png"/>
+          <bt:Image id="PartnerIcon.32x32" DefaultValue="https://localhost:3000/assets/partner-32.png"/>
+          <bt:Image id="PartnerIcon.80x80" DefaultValue="https://localhost:3000/assets/partner-80.png"/>
+          <bt:Image id="ExecutiveIcon.16x16" DefaultValue="https://localhost:3000/assets/executive-16.png"/>
+          <bt:Image id="ExecutiveIcon.32x32" DefaultValue="https://localhost:3000/assets/executive-32.png"/>
+          <bt:Image id="ExecutiveIcon.80x80" DefaultValue="https://localhost:3000/assets/executive-80.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="Module.Url" DefaultValue="https://localhost:3000/module.html"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="ExtensionPoint.Label" DefaultValue="Billable Hours"/>
+          <bt:String id="ModuleGroup.Label" DefaultValue="Change billing rate"/>
+          <bt:String id="CustomTab.Label" DefaultValue="Billable Hours"/>
+          <bt:String id="ChangeToAssociate.Label" DefaultValue="Associate Rate"/>
+          <bt:String id="ChangeToPartner.Label" DefaultValue="Partner Rate"/>
+          <bt:String id="ChangeToExecutive.Label" DefaultValue="Executive Rate"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="ChangeToAssociate.Tooltip" DefaultValue="Change to the associate billing rate: $127/hr."/>
+          <bt:String id="ChangeToPartner.Tooltip" DefaultValue="Change to the partner billing rate: $237/hr."/>
+          <bt:String id="ChangeToExecutive.Tooltip" DefaultValue="Change to the executive billing rate: $449/hr."/>
+        </bt:LongStrings>
+      </Resources>
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>

@@ -1,0 +1,44 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Office Add-ins Outlook module extension sample</title>
+
+    <!-- Office JavaScript API and other scripts -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    <script type="text/javascript" src="module.js"></script>
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="module.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <!-- Set up the main user interface of the add-in. -->
+    <div class="app-Title-bar ms-bgColor-themeDarker ms-fontColor-themeLighter ms-font-xxl ms-fontWeight-semibold">Office Add-ins Outlook module extension sample</div>
+    <div class="app-Data-display">
+        <div class="app-Grid-title ms-fontColor-themeDarker ms-font-xl ms-fontWeight-semibold">Meetings</div>
+        <div id="app-Meetings-table" class="app-Grid ms-Grid app-Grid ms-font-m-plus">
+        </div>
+
+        <div class="app-Grid-title ms-fontColor-themeDarker ms-font-xl ms-fontWeight-semibold">Emails</div>
+        <div id="app-Email-table" class="app-Grid ms-Grid app-Grid ms-font-m-plus">
+        </div>
+
+        <div class="app-Grid-title ms-fontColor-themeDarker ms-font-xl ms-fontWeight-semibold">Tasks</div>
+        <div id="app-Tasks-table" class="app-Grid ms-Grid app-Grid ms-font-m-plus">
+        </div>
+    </div>
+    <div id="app-Running-total"> </div>
+</body>
+
+</html>
