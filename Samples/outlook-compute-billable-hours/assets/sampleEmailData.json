@@ -1,0 +1,19 @@
+{
+  "Messages": [
+    {
+      "Recipients": "Norris Manzo; Susana Benson; Randy Felts",
+      "Hours": "2",
+      "Subject": "Product approval overview"
+    },
+    {
+      "Recipients": "Allison Horne; Susana Franklin",
+      "Hours": "1",
+      "Subject": "Executive approval of product legal requirements"
+    },
+    {
+      "Recipients": "Sonya Hogan; Jodie Norton",
+      "Hours": "3",
+      "Subject": "NDA approval for Level 4 and below"
+    }
+  ]
+}

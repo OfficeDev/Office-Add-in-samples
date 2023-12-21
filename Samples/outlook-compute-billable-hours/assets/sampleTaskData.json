@@ -1,0 +1,16 @@
+{
+  "Tasks": [
+    {
+      "Hours": "6",
+      "Action": "File patents from new product"
+    },
+    {
+      "Hours": "2",
+      "Action": "Prepare pending action documents for meeting"
+    },
+    {
+      "Hours": "8",
+      "Action": "Status update for corporate board"
+    }
+  ]
+}

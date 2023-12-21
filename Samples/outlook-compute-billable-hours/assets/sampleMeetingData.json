@@ -1,0 +1,19 @@
+{
+  "Appointments": [
+    {
+      "Attendees": "Kristy Woodard; Charlene Potter",
+      "Hours": "4",
+      "Subject": "Review NDA language"
+    },
+    {
+      "Attendees": "Norris Frasier; Harlan Lundgren",
+      "Hours": "6",
+      "Subject": "Working meeting about contract with supplier"
+    },
+    {
+      "Attendees": "Mark Cazares; Ruth Dalton; Allison Beasley",
+      "Hours": "4",
+      "Subject": "Review of pending actions"
+    }
+  ]
+}
