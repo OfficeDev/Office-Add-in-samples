@@ -1,0 +1,261 @@
+{
+    "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/DevPreview/MicrosoftTeams.schema.json",
+    "manifestVersion": "devPreview",
+    "id": "B341AD31-BF7A-4C1D-99F1-D2E5896BEB0A",
+    "version": "1.0.0.0",
+    "name": {
+        "short": "Signature sample",
+        "full": "Signature sample"
+    },
+    "description": {
+        "short": "Insert your signature with ease.",
+        "full": "Insert your signature with ease."
+    },
+    "icons": {
+        "outline": "assets/final_logo.png",
+        "color": "assets/final_logo.png"
+    },
+    "accentColor": "#230201",
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://www.contoso.com/help",
+        "privacyUrl": "https://www.contoso.com/help",
+        "termsOfUseUrl": "https://www.contoso.com/help"
+    },
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us"
+    },
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "Mailbox.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "validDomains": [
+        "https://localhost:3000"
+    ],
+    "extensions": [
+        {
+            "requirements": {
+                "capabilities": [
+                    {
+                        "name": "Mailbox",
+                        "minVersion": "1.1"
+                    }
+                ],
+                "scopes": [
+                    "mail"
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.5"
+                            }
+                        ]
+                    },
+                    "id": "runtime_1",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/autorunweb.html",
+                        "script": "https://localhost:3000/autorunshared.js"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "checkSignature",
+                            "type": "executeFunction",
+                            "displayName": "checkSignature"
+                        }
+                    ]
+                },
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.5"
+                            }
+                        ]
+                    },
+                    "id": "runtime_2",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/editsignature.html"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "action_1",
+                            "type": "openPage",
+                            "view": "view_1",
+                            "displayName": "action_1",
+                            "pinnable": false
+                        },
+                        {
+                            "id": "action_2",
+                            "type": "openPage",
+                            "view": "view_2",
+                            "displayName": "action_2",
+                            "pinnable": false
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.5"
+                            }
+                        ],
+                        "scopes": [
+                            "mail"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "contexts": [
+                        "mailCompose"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabDefault",
+                            "groups": [
+                                {
+                                    "id": "mccsG0",
+                                    "label": "Signature Injector",
+                                    "controls": [
+                                        {
+                                            "id": "MRCS_TpBtn0",
+                                            "type": "button",
+                                            "label": "Set my signature",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "file": "https://localhost:3000/assets/final_logo.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "file": "https://localhost:3000/assets/final_logo.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "file": "https://localhost:3000/assets/final_logo.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Set my signature",
+                                                "description": "Opens a pane displaying all available properties."
+                                            },
+                                            "actionId": "action_1",
+                                            "overriddenByRibbonApi": false,
+                                            "enabled": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.5"
+                            }
+                        ],
+                        "scopes": [
+                            "mail"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "contexts": [
+                        "meetingDetailsOrganizer"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabDefault",
+                            "groups": [
+                                {
+                                    "id": "aocsG0",
+                                    "label": "Signature Injector2",
+                                    "controls": [
+                                        {
+                                            "id": "MRCS_TpBtn1",
+                                            "type": "button",
+                                            "label": "Set my signature",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "file": "https://localhost:3000/assets/final_logo.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "file": "https://localhost:3000/assets/final_logo.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "file": "https://localhost:3000/assets/final_logo.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Set my signature",
+                                                "description": "Opens a pane displaying all available properties."
+                                            },
+                                            "actionId": "action_2",
+                                            "overriddenByRibbonApi": false,
+                                            "enabled": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "autoRunEvents": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.5"
+                            }
+                        ],
+                        "scopes": [
+                            "mail"
+                        ]
+                    },
+                    "events": [
+                        {
+                            "type": "newMessageComposeCreated",
+                            "actionId": "checkSignature"
+                        },
+                        {
+                            "type": "newAppointmentOrganizerCreated",
+                            "actionId": "checkSignature"
+                        }
+                    ]
+                }
+            ],
+            "audienceClaimUrl": "https://localhost:3000/editsignature.html"
+        }
+    ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "defaultBlockUntilAdminAction": false
+}

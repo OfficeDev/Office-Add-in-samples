@@ -1,0 +1,155 @@
+id: 
+name: GitOps.PullRequestIssueManagement
+description: GitOps.PullRequestIssueManagement primitive
+owner: 
+resource: repository
+disabled: false
+where: 
+configuration:
+  resourceManagementConfiguration:
+    scheduledSearches:
+    - description: 
+      frequencies:
+      - hourly:
+          hour: 3
+      filters:
+      - isIssue
+      - isOpen
+      - hasLabel:
+          label: 'Needs: author feedback'
+      - noActivitySince:
+          days: 4
+      - isNotLabeledWith:
+          label: 'Status: no recent activity'
+      actions:
+      - addLabel:
+          label: 'Status: no recent activity'
+      - addReply:
+          reply: This issue has been automatically marked as stale because it is marked as needing author feedback but has not had any activity for **4 days**. It will be closed if no further activity occurs **within 3 days of this comment**. Thank you for your interest in Office Add-ins!
+    - description: 
+      frequencies:
+      - hourly:
+          hour: 3
+      filters:
+      - isIssue
+      - isOpen
+      - hasLabel:
+          label: 'Needs: author feedback'
+      - hasLabel:
+          label: 'Status: no recent activity'
+      - noActivitySince:
+          days: 3
+      actions:
+      - addReply:
+          reply: This issue has been closed due to inactivity. Please comment if you still need assistance and we'll re-open the issue.
+      - closeIssue
+    - description: 
+      frequencies:
+      - hourly:
+          hour: 1
+      filters:
+      - isIssue
+      - isOpen
+      - hasLabel:
+          label: 'Type: programming question'
+      actions:
+      - addReply:
+          reply: Thanks for your interest in Office Add-ins development! Feedback here is intended for reporting problems with the Office Add-ins *documentation*. Can you please post your question to Stack Overflow with the [office-js](https://stackoverflow.com/questions/tagged/office-js) tag? By posting how-to questions like this to Stack Overflow, you'll not only be able to reach a broader audience of folks who have expertise in the area, but will also enable others to benefit from any answers that are provided there. Thanks!
+      - closeIssue
+    - description: 
+      frequencies:
+      - hourly:
+          hour: 1
+      filters:
+      - isIssue
+      - isOpen
+      - hasLabel:
+          label: 'Type: product feature request'
+      actions:
+      - addReply:
+          reply: Thanks for your interest in Office Add-ins development! Feedback here is intended for reporting problems with the Office Add-ins *documentation*. Can you please post this feature request to [Microsoft 365 on Q&A](https://learn.microsoft.com/answers/products/m365)? Feature Requests submitted to **Q&A** are regularly reviewed by the product teams as they plan future releases. Thanks!
+      - closeIssue
+    eventResponderTasks:
+    - if:
+      - payloadType: Issues
+      - isAction:
+          action: Opened
+      - not: isAssignedToSomeone
+      then:
+      - addLabel:
+          label: 'needs triage :mag:'
+      description: 
+    - if:
+      - payloadType: Issues
+      - not:
+          isAction:
+            action: Closed
+      - hasLabel:
+          label: 'Status: no recent activity'
+      then:
+      - removeLabel:
+          label: 'Status: no recent activity'
+      description: 
+    - if:
+      - payloadType: Issue_Comment
+      - hasLabel:
+          label: 'Status: no recent activity'
+      then:
+      - removeLabel:
+          label: 'Status: no recent activity'
+      description: 
+    - if:
+      - payloadType: Issue_Comment
+      - isAction:
+          action: Created
+      - isActivitySender:
+          issueAuthor: True
+      - hasLabel:
+          label: 'Needs: author feedback'
+      then:
+      - addLabel:
+          label: 'Needs attention :wave:'
+      - removeLabel:
+          label: 'Needs: author feedback'
+      description: 
+    - if:
+      - payloadType: Pull_Request
+      then:
+      - inPrLabel:
+          label: 'Status: in PR'
+      description: 
+    - if:
+      - payloadType: Issues
+      - labelAdded:
+          label: 'Status: in PR'
+      - hasLabel:
+          label: 'Status: under investigation'
+      then:
+      - removeLabel:
+          label: 'Status: under investigation'
+      description: 
+      triggerOnOwnActions: true
+    - if:
+      - payloadType: Issues
+      - labelAdded:
+          label: 'Status: in PR'
+      - hasLabel:
+          label: 'Status: in backlog'
+      then:
+      - removeLabel:
+          label: 'Status: in backlog'
+      description: 
+      triggerOnOwnActions: true
+    - if:
+      - payloadType: Issues
+      - labelAdded:
+          label: 'Status: in PR'
+      - hasLabel:
+          label: 'Needs attention :wave:'
+      then:
+      - removeLabel:
+          label: 'Needs attention :wave:'
+      description: 
+      triggerOnOwnActions: true
+onFailure: 
+onSuccess: 

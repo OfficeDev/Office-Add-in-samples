@@ -22,7 +22,7 @@ description: 'Create an Excel add-in with command buttons.'
 
 Learn how to build an Office Add-in that has a command button to show the task pane, and a menu dropdown button that can show the task pane, or get data.
 
-![Screen shot of Excel showing ribbon with Home tab selected and two buttons for the sample that show the task pane or show a dropdown menu](../images/excel-ribbon-buttons.png)
+![Screen shot of Excel showing ribbon with Home tab selected and two buttons for the sample that show the task pane or show a dropdown menu.](../images/excel-ribbon-buttons.png)
 
 ## Features
 

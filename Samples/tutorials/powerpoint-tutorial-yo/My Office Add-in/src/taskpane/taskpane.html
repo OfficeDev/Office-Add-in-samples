@@ -1,0 +1,56 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contoso Task Pane Add-in</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
+    <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/office-powerpoint-add-in-tutorial-yo-run" />
+
+    <header id="content-header">
+        <div class="ms-Grid ms-bgColor-neutralPrimary">
+            <div class="ms-Grid-row">
+                <div class="padding ms-Grid-col ms-u-sm12 ms-u-md12 ms-u-lg12"> <div class="ms-font-xl ms-fontColor-white ms-fontWeight-semibold">My PowerPoint add-in</div></div>
+            </div>
+        </div>
+    </header>
+    <section id="sideload-msg" class="ms-welcome__main">
+        <h2 class="ms-font-xl">Please <a target="_blank" href="https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing">sideload</a> your add-in to see app body.</h2>
+    </section>
+    <main id="app-body" class="ms-welcome__main" style="display: none;">
+        <div class="padding">
+            <button class="ms-Button" id="insert-image">Insert Image</button><br/><br/>
+            <button class="ms-Button" id="insert-text">Insert Text</button><br/><br/>
+            <button class="ms-Button" id="get-slide-metadata">Get Slide Metadata</button><br/><br/>
+            <button class="ms-Button" id="add-slides">Add Slides</button><br/><br/>
+            <button class="ms-Button" id="go-to-first-slide">Go to First Slide</button><br/><br/>
+            <button class="ms-Button" id="go-to-next-slide">Go to Next Slide</button><br/><br/>
+            <button class="ms-Button" id="go-to-previous-slide">Go to Previous Slide</button><br/><br/>
+            <button class="ms-Button" id="go-to-last-slide">Go to Last Slide</button><br/><br/>
+        </div>
+    </main>
+    <section id="display-msg" class="ms-welcome__main">
+        <div class="padding">
+            <h3>Message</h3>
+            <div id="message"></div>
+        </div>
+    </section>
+</body>
+
+</html>

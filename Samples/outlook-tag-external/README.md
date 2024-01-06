@@ -1,4 +1,5 @@
 ---
+title: "Identify and tag external recipients using Outlook event-based activation"
 page_type: sample
 urlFragment: outlook-add-in-tag-external-recipients
 products:
@@ -14,7 +15,7 @@ extensions:
 description: "Use Outlook event-based activation to tag external recipients."
 ---
 
-# Use Outlook event-based activation to tag external recipients
+# Identify and tag external recipients using Outlook event-based activation
 
 **Applies to:** Outlook on Windows | Outlook on the web
 

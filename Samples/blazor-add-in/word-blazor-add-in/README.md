@@ -9,7 +9,8 @@ languages:
   - C#
 extensions:
   contentType: samples
-  technologies: Add-ins
+  technologies: 
+  - Add-ins
   createdDate: '04/14/2022 10:00:00 PM'
 description: 'Create a Blazor Webassembly Word add-in showcasing some samples.'
 ---
@@ -95,6 +96,25 @@ The fundamental pattern includes the following steps.
 1. Call **JSRuntime.InvokeAsync** to set up the interop between C# and JavaScript.
 1. Use **JSModule.InvokeVoidAsync** to call JavaScript functions from your C# code.
 1. Call Office JS APIs to interact with the document from JavaScript code.
+
+## Debugging
+
+This sample is configured to support debugging both JavaScript and C# files. New Blazor projects need the following file updates to support C# debugging.
+
+1. In the **launchSettings.json** file of the web project, make sure all instances of `launchBrowser` are set to `false`.
+1. In the **<projectName>.csproj.user** file of the add-in project, add the `<BlazorAppUrl>` and `<InspectUri>` elements as shown in the following example XML.
+
+**Note:** The port number in the following XML is 7126. You must change it to the port number specified in the **launchSettings.json** file for your web project.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <BlazorAppUrl>https://localhost:7126/</BlazorAppUrl>
+    <InspectUri>{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}</InspectUri>
+  </PropertyGroup>
+</Project>
+```
 
 ## Questions and feedback
 

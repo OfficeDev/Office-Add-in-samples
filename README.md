@@ -13,11 +13,15 @@ The following samples show how to build the simplest Office Add-in with only a m
 
 ### Completed tutorials
 
-The following sample is the completed version of the [Excel add-in tutorial](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial).
+The following samples are the completed versions of various tutorials for Office Add-ins.
 
 | Name           | Description  |
 | -------------- | ------------ |
-| [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial) | This sample shows how to create an Excel add-in with a task pane and command ribbon buttons. The add-in shows how to create and sort a table, make a chart, freeze a row, protect a worksheet, and display a dialog box. |
+| [Excel Tutorial - Completed](Samples/tutorials/excel-tutorial) | This sample is the completed version of the [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial) that shows how to create an Excel add-in with a task pane and command ribbon buttons. The add-in shows how to create and sort a table, make a chart, freeze a row, protect a worksheet, and display a dialog box. |
+| [Outlook Tutorial - Completed](Samples/tutorials/outlook-tutorial) | This sample is the completed version of the [Tutorial: Build a message compose Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/outlook-tutorial) that shows how to build an Outlook add-in that can be used in message compose mode to insert content into the body of a message. The add-in shows how to collect information from the user, fetch data from an external service, implement a function command, implement a task pane, and display a dialog box. |
+| [PowerPoint Tutorial (Visual Studio) - Completed](Samples/tutorials/powerpoint-tutorial) | This sample is the completed version of the [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorialtabs=visualstudio) that shows how to create a PowerPoint add-in with a task pane. The add-in shows how to add the [Bing](https://www.bing.com) photo of the day to a slide, add text to a slide, get slide metadata, and navigate between slides. |
+| [PowerPoint Tutorial (yo office) - Completed](Samples/tutorials/powerpoint-tutorial-yo) | This sample is the completed version of the [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial?tabs=yeomangenerator) that shows how to create a PowerPoint add-in with a task pane. The add-in shows how to add an image to a slide, add text to a slide, get slide metadata, and navigate between slides. |
+| [Word Tutorial - Completed](Samples/tutorials/word-tutorial) | This sample is the completed version of the [Tutorial: Create a Word task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/word-tutorial) that shows how to create a Word add-in with a task pane. The add-in shows how to insert and replace text ranges, paragraphs, images, HTML, tables, and content controls. The add-in also shows how to format text and how to manage content in content controls. |
 
 ## Blazor WebAssembly
 
@@ -34,11 +38,12 @@ All of the following samples show how to access and work with a user's Microsoft
 | Host | Auth approach | Platform | Name |
 | ---- | ------------- | -------- | ---- |
 | Outlook add-in | SSO | ASP.NET server |[Use SSO in an Outlook Add-in with ASP.NET](Samples/auth/Outlook-Add-in-SSO)|
-| Office Add-in | SSO | ASP.NET server | [Use SSO in an Office Add-in with ASP.NET](Samples/auth/Office-Add-in-ASPNET-SSO) |
-| Excel add-in | SSO | Node.js server |[Use SSO in an Office Add-in with Node.js](Samples/auth/Office-Add-in-NodeJS-SSO) |
-| Excel add-in | MSAL | React SPA |[Use MSAL.js for auth and Microsoft Graph in an Excel add-in](Samples/auth/Office-Add-in-Microsoft-Graph-React)
-| Excel add-in | MSAL | ASP.NET server |[Use MSAL.NET for auth and Microsoft Graph in an Excel add-in](Samples/auth/Office-Add-in-Microsoft-Graph-ASPNET)
-| Outlook add-in | MSAL | ASP.NET server |[Use MSAL.NET for auth and Microsoft Graph in an Outlook add-in](Samples/auth/Outlook-Add-in-Microsoft-Graph-ASPNET)
+| Outlook add-in | SSO | Node.js server |[Use SSO with event-based activation in an Outlook add-in](Samples/auth/Outlook-Add-in-SSO-events)|
+| Office Add-in | SSO | ASP.NET server |[Use SSO in an Office Add-in with ASP.NET](Samples/auth/Office-Add-in-ASPNET-SSO)|
+| Excel add-in | SSO | Node.js server |[Use SSO in an Office Add-in with Node.js](Samples/auth/Office-Add-in-NodeJS-SSO)|
+| Excel add-in | MSAL | React SPA |[Use MSAL.js for auth and Microsoft Graph in an Excel add-in](Samples/auth/Office-Add-in-Microsoft-Graph-React)|
+| Excel add-in | MSAL | ASP.NET server |[Use MSAL.NET for auth and Microsoft Graph in an Excel add-in](Samples/auth/Office-Add-in-Microsoft-Graph-ASPNET)|
+| Outlook add-in | MSAL | ASP.NET server |[Use MSAL.NET for auth and Microsoft Graph in an Outlook add-in](Samples/auth/Outlook-Add-in-Microsoft-Graph-ASPNET)|
 
 ## Office
 
@@ -50,10 +55,11 @@ All of the following samples show how to access and work with a user's Microsoft
 
 | Name           | Description  |
 | -------------- | ------------ |
-| [Use Outlook event-based activation to encrypt attachments, process meeting request attendees and react to appointment date/time changes](Samples/outlook-encrypt-attachments) | Shows how to use event-based activation to encrypt attachments when added by the user. Also shows event handling for recipients changed in a meeting request, and changes to the start or end date or time in a meeting request. |
-| [Use Outlook event-based activation to indicate external recipients](Samples/outlook-tag-external) | Uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the appendOnSendAsync API to add a disclaimer.|
-| [Use Outlook event-based activation to set the signature](Samples/outlook-set-signature) | Uses event-based activation to run an Outlook add-in when the user creates a new message or appointment.|
-| [Use Outlook Smart Alerts](Samples/outlook-check-item-categories/) | Uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent.|
+| [Encrypt attachments, process meeting request attendees, and react to appointment date/time changes using Outlook event-based activation](Samples/outlook-encrypt-attachments) | Shows how to use event-based activation to encrypt attachments when added by the user. Also shows event handling for recipients changed in a meeting request, and changes to the start or end date or time in a meeting request. |
+| [Identify and tag external recipients using Outlook event-based activation](Samples/outlook-tag-external) | Uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the appendOnSendAsync API to add a disclaimer.|
+| [Set your signature using Outlook event-based activation](Samples/outlook-set-signature) | Uses event-based activation to run an Outlook add-in when the user creates a new message or appointment.|
+| [Verify the color categories of a message or appointment before it's sent using Smart Alerts](Samples/outlook-check-item-categories/) | Uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent.|
+| [Verify the sensitivity label of a message](Samples/outlook-verify-sensitivity-label/) | Uses the sensitivity label API in an event-based add-in to verify and apply the **Highly Confidential** sensitivity label to applicable outgoing messages. |
 
 ## Excel
 
@@ -74,6 +80,7 @@ All of the following samples show how to access and work with a user's Microsoft
 | -------------- | ------------ |
 | [Get, edit, and set OOXML content in a Word document with a Word add-in](Samples/word-add-in-get-set-edit-openxml)| Shows how to get, edit, and set OOXML content in a Word document.|
 | [Load and write Open XML in your Word add-in](Samples/word-add-in-load-and-write-open-xml) | Shows how to add a variety of rich content types to a Word document using the **setSelectedDataAsync** method with **ooxml** coercion type.|
+| [Manage citations with your Word add-in](Samples/word-citation-management)| Shows how to manage citations in a Word document.|
 
 ## Shared JavaScript runtime
 
@@ -81,7 +88,7 @@ Check out these samples if you want to take advantage of the [shared runtime](ht
 
 | Date               | Name           | Description  |
 | ------------------ | -------------- | ------------ |
-[Share global data with a shared runtime](Samples/excel-shared-runtime-global-state) | Shows how to set up a basic project that uses the shared runtime to run code for ribbon buttons, task pane, and custom functions in a single browser runtime. |
+| [Share global data with a shared runtime](Samples/excel-shared-runtime-global-state) | Shows how to set up a basic project that uses the shared runtime to run code for ribbon buttons, task pane, and custom functions in a single browser runtime. |
 | [Manage ribbon and task pane UI, and run code on doc open](Samples/excel-shared-runtime-scenario) | Shows how to create contextual ribbon buttons that are enabled based on the state of your add-in. |
 
 ## Additional samples

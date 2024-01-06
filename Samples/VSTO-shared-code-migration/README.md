@@ -18,7 +18,7 @@ description: "Visual Studio Tools for Office (VSTO) add-ins can only run in Offi
 
 # Use a shared library to migrate your Visual Studio Tools for Office add-in to an Office web add-in
 
-![Sharing code between a VSTO Add-in and an Office Web Add-in](shared-code-library-migration.png)
+![Sharing code between a VSTO Add-in and an Office Web Add-in.](shared-code-library-migration.png)
 
 Visual Studio Tools for Office (VSTO) add-ins can only run in Office on Windows. By migrating your code to an Office web add-in, you can expand the reach of your add-in to mobile and online platforms. Migrating the code will involve rewriting it in the JavaScript language, and also updating it to use the Office JavaScript APIs. However, you can reduce migration cost by creating a shared library and keeping some of your existing add-in code in its current language.
 

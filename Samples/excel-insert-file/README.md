@@ -35,7 +35,7 @@ This sample shows how to insert an existing template from an external Excel file
 
 ## Prerequisites
 
-To use this sample, you'll need to [join Office Insider](https://insider.office.com/join).
+To use this sample, you'll need to [join the Microsoft 365 Insider program](https://insider.microsoft365.com/join).
 
 ## Solution
 
@@ -48,6 +48,7 @@ Insert an external Excel file and populate it with JSON data | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0 | 5-18-2021 | Initial release
+1.1 | 8-17-2023 | Fix localhost setup steps
 
 ----------
 
@@ -58,14 +59,14 @@ To run the sample you just need to sideload the manifest. The add-in web files a
 1. Download the **manifest.xml** and **SalesTemplate.xlsx** files from this sample to a folder on your computer.
 1. Open [Office on the web](https://www.office.com/).
 1. Choose **Excel**, and then open a new document.
-1. Select the **Insert** tab, and choose **Office Add-ins**.
+1. Select the **Insert** tab, and choose **Add-ins**.
 1. On the **Office Add-ins** dialog, select **MY ADD-INS** , choose the **Manage My Add-ins** drop-down, and then choose **Upload My Add-in**.
 
-    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
+    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../images/office-add-ins-my-account.png)
 
 1. Browse to the add-in manifest file, and then select **Upload**.
 
-    ![The upload add-in dialog with buttons for browse, upload, and cancel.](../../Samples/images/upload-add-in.png)
+    ![The upload add-in dialog with buttons for browse, upload, and cancel.](../images/upload-add-in.png)
 
 1. Verify that the add-in loaded successfully. You'll see a **PnP Insert Excel file** button on the **Home** tab.
 
@@ -134,10 +135,11 @@ Finally, it adds the JSON to the table.
   sheet.activate();
 ```
 
-## Run the sample on localhost
+## Configure a localhost web server and run the sample from localhost
 
-If you prefer to host the web server for the sample on your computer, follow these steps:
+If you prefer to run the web server and host the add-in's web files from your computer, use the following steps:
 
+1. Clone or download this sample to a folder on your computer. Then go to that folder in a console or terminal window.
 1. Open the **index.js** file.
 1. Edit line 4 to refer to the localhost:3000 endpoint as shown in the following code.
 
@@ -146,30 +148,35 @@ If you prefer to host the web server for the sample on your computer, follow the
     ```
 
 1. Save the file.
-1. You need http-server to run the local web server. If you haven't installed http-server, you can do this with the following command:
+1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
 
-    ```console
-    npm install --global http-server
-    ```
+   ```console
+   npm install --global http-server
+   ```
 
-1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
-1. From a command prompt, go to the web-worker folder and run the following command:
+1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command:
 
-    ```console
-    http-server -S --cors . -p 3000
-    ```
+   ```console
+   npm install --global office-addin-dev-certs
+   ```
 
-1. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this proxy, you can do it with the following command:
+1. Run the following command to generate a self-signed certificate that you can use for the web server.
 
-    ```console
-    npm install --global office-addin-https-reverse-proxy
-    ```
+   ```console
+   npx office-addin-dev-certs install
+   ```
 
-    To reroute run the following in another command prompt:
+   The previous command will display the folder location where it generated the certificate files.
 
-    ```console
-    office-addin-https-reverse-proxy --url http://localhost:3000
-    ```
+1. Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the **excel-insert-file** sample folder.
+1. Run the following command:
+
+   ```console
+   http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
+   ```
+
+   The http-server will run and host the current folder's files on localhost:3000.
 
 1. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/excel-keyboard-shortcuts#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
