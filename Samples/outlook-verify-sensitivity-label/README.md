@@ -52,7 +52,6 @@ For documentation related to this sample, see the following:
 ## Prerequisites
 
 - A Microsoft 365 E5 subscription. You can get a [free developer sandbox](https://aka.ms/m365/devprogram#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
-- A [Microsoft 365 Insider Program](https://insider.office.com/join) membership to run the sample in Outlook on Windows and on Mac.
 - An enabled catalog of sensitivity labels in Outlook that includes the **Highly Confidential** label. To learn how to configure the sensitivity labels in your tenant, see the following:
   - [Get started with sensitivity labels](https://learn.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels)
   - [Create and configure sensitivity labels and their policies](https://learn.microsoft.com/microsoft-365/compliance/create-sensitivity-labels)
@@ -304,6 +303,7 @@ Office.context.mailbox.item.sensitivityLabel.setAsync(highlyConfidentialLabel, {
 |1.0|April 18, 2023|Initial release|
 |1.1|May 19, 2023|Update for General Availability (GA) of the sensitivity label API|
 |1.2|October 12, 2023|Update supported version of Outlook on Mac|
+|1.3|January 11, 2024|Remove Microsoft 365 Insider Program requirement|
 
 ## Copyright
 

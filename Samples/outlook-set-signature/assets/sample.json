@@ -12,7 +12,9 @@
         "creationDateTime": "2021-04-01",
         "updateDateTime": "2021-07-27",
         "products": [
-            "Office"
+            "Office",
+            "Teams",
+            "TeamsToolkit"
         ],
         "metadata": [
             {
