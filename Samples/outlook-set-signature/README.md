@@ -1,4 +1,5 @@
 ---
+title: "Set your signature using Outlook event-based activation"
 page_type: sample
 urlFragment: outlook-add-in-set-signature
 products:
@@ -14,7 +15,7 @@ extensions:
 description: "Use Outlook event-based activation to set the signature."
 ---
 
-# Use Outlook event-based activation to set the signature
+# Set your signature using Outlook event-based activation
 
 **Applies to:** Outlook on Windows | Outlook on the web | Outlook on Mac (new UI)
 

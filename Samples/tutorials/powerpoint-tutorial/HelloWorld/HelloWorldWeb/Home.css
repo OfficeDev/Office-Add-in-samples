@@ -1,0 +1,35 @@
+﻿/* Page-specific styling */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 40px; /* bottom = footer height */
+}
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+}
+
+.padding {
+    padding: 15px;
+}
+
+#notification-popup.MessageBanner {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    text-align: left;
+    height: inherit;
+    min-width: inherit;
+}
+
+#notification-popup .MessageBanner-text {
+    margin: 0;
+    padding: 18px 15px;
+    min-width: inherit;
+}

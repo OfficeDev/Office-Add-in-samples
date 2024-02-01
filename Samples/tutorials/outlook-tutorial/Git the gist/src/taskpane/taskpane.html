@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contoso Task Pane Add-in</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+   <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-l ms-landing-page">
+  <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
+  <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/office-outlook-add-in-tutorial-run" />
+
+  <main class="ms-landing-page__main">
+    <section class="ms-landing-page__content ms-font-m ms-fontColor-neutralPrimary">
+      <div id="not-configured" style="display: none;">
+        <div class="centered ms-font-xxl ms-u-textAlignCenter">Welcome!</div>
+        <div class="ms-font-xl" id="settings-prompt">Please choose the <strong>Settings</strong> icon at the bottom of this window to configure this add-in.</div>
+      </div>
+      <div id="gist-list-container" style="display: none;">
+        <form>
+          <div id="gist-list">
+          </div>
+        </form>
+      </div>
+      <div id="error-display" style="display: none;" class="ms-u-borderBase ms-fontColor-error ms-font-m ms-bgColor-error ms-borderColor-error">
+      </div>
+    </section>
+    <button class="ms-Button ms-Button--primary" id="insert-button" tabindex=0 disabled>
+      <span class="ms-Button-label">Insert</span>
+    </button>
+  </main>
+  <footer class="ms-landing-page__footer ms-bgColor-themePrimary">
+    <div class="ms-landing-page__footer--left">
+      <img src="../../assets/logo-filled.png" />
+      <h1 class="ms-font-xl ms-fontWeight-semilight ms-fontColor-white">Git the gist</h1>
+    </div>
+    <div id="settings-icon" class="ms-landing-page__footer--right" aria-label="Settings" tabindex=0>
+      <i class="ms-Icon enlarge ms-Icon--Settings ms-fontColor-white"></i>
+    </div>
+  </footer>
+  <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
+  <script type="text/javascript" src="../../node_modules/showdown/dist/showdown.min.js"></script>
+  <script type="text/javascript" src="../../node_modules/urijs/src/URI.min.js"></script>
+  <script type="text/javascript" src="../helpers/addin-config.js"></script>
+  <script type="text/javascript" src="../helpers/gist-api.js"></script>
+  <script type="text/javascript" src="taskpane.js"></script>
+</body>
+
+</html>
