@@ -52,8 +52,8 @@ The manifest file is an XML file that describes your add-in to Office. It contai
 
 The hello world sample contains two manifest files to support two different web hosting scenarios.
 
-- **manifest.xml**: This manifest file gets the add-in's HTML page from the original GitHub repo location. This is the quickest way to try out the sample. To get started running the add-in with this manifest, see [Run the sample on Outlook on Windows or Mac](#run-the-sample-on-outlook-on-windows-or-mac).
-- **manifest.localhost.xml**: This manifest file gets the add-in's HTML page from a local web server that you configure. Use this manifest if you want to change the code and experiment. For more information, see [Configure a localhost web server](#configure-a-localhost-web-server).
+- **manifest.xml**: This manifest file gets the add-in's HTML page from the original GitHub repo location. This is the quickest way to try out the sample. To get started running the add-in with this manifest, see [Run the sample using GitHub as a web host](#run-the-sample-using-github-as-a-web-host).
+- **manifest.localhost.xml**: This manifest file gets the add-in's HTML page from a local web server that you configure. Use this manifest if you want to change the code and experiment. For more information, see [Configure a localhost web server and run the sample from localhost](#configure-a-localhost-web-server-and-run-the-sample-from-localhost).
 
 ### Web app
 
@@ -94,120 +94,63 @@ function sayHello() {
 
 For more information see [Build your first Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/quickstarts/outlook-quickstart)
 
-## Run the sample on Outlook on Web
+## Run the sample
 
-An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The hello world sample is configured so that the files are hosted directly from this GitHub repo.
+An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. Select one of the following options to run the hello world sample.
 
-The process for sideloading an add-in in Outlook on the web depends upon whether you are using the new or classic version.
+### Run the sample using GitHub as a web host
 
-- If your mailbox toolbar looks like the following image, see [Sideload an add-in in the new Outlook on the web](#new-outlook-on-the-web).
+The hello world sample is configured so that the files are hosted directly from this GitHub repo.
 
-  ![Partial screenshot of the new Outlook on the web toolbar.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-on-the-web-new-toolbar.png)
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Sideload the manifest in Outlook on Windows, on Mac, or on the web by following the instructions in [Sideload Outlook add-in on Windows or Mac](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#outlook-on-the-desktop).
 
-- If your mailbox toolbar looks like the following image, see [Sideload an add-in in classic Outlook on the web](#classic-outlook-on-the-web).
+### Configure a localhost web server and run the sample from localhost
 
-  ![Partial screenshot of the classic Outlook on the web toolbar.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-on-the-web-classic-toolbar.png)
-
-> [!NOTE]
-> If your organization has included its logo in the mailbox toolbar, you might see something slightly different than shown in the preceding images.
-
-### New Outlook on the web
-
-1. Go to [Outlook on the web](https://outlook.office.com).
-
-1. Create a new message.
-
-1. Choose **...** from the bottom of the new message and then select **Get Add-ins** from the menu that appears.
-
-   ![Message compose window in the new Outlook on the web with Get Add-ins option highlighted.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-on-the-web-new-get-add-ins.png)
-
-1. In the **Add-Ins for Outlook** dialog box, select **My add-ins**.
-
-   ![Add-ins for Outlook dialog box in the new Outlook on the web with My add-ins selected.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-on-the-web-new-my-add-ins.png)
-
-1. Locate the **Custom add-ins** section at the bottom of the dialog box. Select the **Add a custom add-in** link, and then select **Add from file**.
-
-   ![Manage add-ins screenshot pointing to Add from a file option.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-sideload-desktop-add-from-file.png)
-
-1. Locate the **manifest.xml** file in the sample folder for Outlook and install it. Accept all prompts during the installation.
-
-### Classic Outlook on the web
-
-1. Go to [Outlook on the web](https://outlook.office.com).
-
-1. Choose the gear icon in the top-right section of the toolbar and select **Manage add-ins**.
-
-   ![Outlook on the web screenshot pointing to Manage add-ins option.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-sideload-web-manage-integrations.png)
-
-1. On the **Manage add-ins** page, select **Add-Ins**, and then select **My add-ins**.
-
-   ![Outlook on the web store dialog with My add-ins selected.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-sideload-store-select-add-ins.png)
-
-1. Locate the **Custom add-ins** section at the bottom of the dialog box. Select the **Add a custom add-in** link, and then select **Add from file**.
-
-   ![Manage add-ins screenshot pointing to Add from a file option.](https://raw.githubusercontent.com/OfficeDev/office-js-docs-pr/master/docs/images/outlook-sideload-desktop-add-from-file.png)
-
-1. Locate the **manifest.xml** file in the sample folder for Outlook and install it. Accept all prompts during the installation.
-
-> Note: The previous steps are from [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing)
-
-1. Create a new email message.
-1. Choose the **More compose actions ...** button, and then choose **Hello world**. The add-in will insert "Hello world!" into the body of the email message.
-
-![Screen shot of new email message in Outlook showing the more compose actions menu and hello world button](../images/outlook-open-hello-world-add-in.png)
-
-## Run the sample on Outlook on Windows or Mac
-
-Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the Hello world sample. Then follow the sideloading instructions for your platform.
-
-- [Sideload Outlook add-in on Windows or Mac](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#outlook-on-the-desktop)
-
-## Test the sample on Outlook
-
-1. Verify that the add-in loaded successfully. You will see a **Hello World** button on the Message tab on the ribbon.
-2. Choose the **Hello World** button on the Ribbon to see the Add-in Taskpane with the text "This add-in will insert the text 'Hello world!' in a new message."
-3. Choose the **Say hello** button to insert "Hello world!" in the message body.
-
-![Screen shot of new email message in Outlook showing the hello world button and taskpane](../images/outlook-for-windows-new-message.png)
-
-## Configure a localhost web server and run the sample from localhost
-
-If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps:
+If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
 1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
-2. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
 
    ```console
    npm install --global http-server
    ```
 
-3. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command:
+1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command:
 
    ```console
    npm install --global office-addin-dev-certs
    ```
 
-4. Clone or download this sample to a folder on your computer. Then go to that folder in a console or terminal window.
-5. Run the following command to generate a self-signed certificate that you can use for the web server.
+1. Clone or download this sample to a folder on your computer. Then, go to that folder in a console or terminal window.
+1. Run the following command to generate a self-signed certificate to use for the web server.
 
    ```console
    npx office-addin-dev-certs install
    ```
 
-   The previous command will display the folder location where it generated the certificate files.
+   This command will display the folder location where it generated the certificate files.
 
-6. Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the hello world sample folder.
+1. Go to the folder location where the certificate files were generated. Copy the **localhost.crt** and **localhost.key** files to the cloned or downloaded sample folder.
 
-7. Run the following command:
+1. Run the following command.
 
    ```console
    http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
    ```
 
-   The http-server will run and host the current folder's files on localhost:3000.
+   The http-server will run and host the current folder's files on `localhost:3000`.
 
-Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the outlook-hello-world folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Outlook on Web](#run-the-sample-on-outlook-on-web) to sideload and run the add-in.
+1. Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the **outlook-hello-world** folder. Using the **manifest-localhost.xml** file, follow the steps in [Sideload Outlook add-in on Windows or Mac](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#outlook-on-the-desktop) to sideload and run the add-in.
+
+## Test the sample on Outlook
+
+1. Verify that the add-in loaded successfully. You'll see a **Hello World** button on the Message tab of the ribbon.
+1. Choose the **Hello World** button on the ribbon to see the add-in task pane with the text, "This add-in will insert the text 'Hello world!' in a new message."
+1. Choose the **Say hello** button to insert "Hello world!" in the message body.
+
+![A new email message in Outlook showing the hello world button and task pane.](../images/outlook-for-windows-new-message.png)
 
 ## Questions and feedback
 
@@ -221,6 +164,6 @@ Copyright (c) 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-**Note**: The taskpane.html file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
+**Note**: The **taskpane.html** file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-add-in-hello-world" />
