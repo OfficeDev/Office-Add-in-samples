@@ -139,4 +139,4 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 **Note**: The index.html file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
 
-<img src="https://telemetry.sharepointpnp.com/pnp-officeaddins/samples/blazor-add-in/excel-blazor-add-in" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/blazor-add-in/excel-blazor-add-in" />
