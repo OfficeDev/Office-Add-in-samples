@@ -243,7 +243,8 @@
                 const accessToken = await Office.auth.getAccessToken({
                     allowSignInPrompt: true,
                     allowConsentPrompt: true,
-                    forMSGraphAccess: true,
+                    //Leave the following parameter commented while developing and sideloading to avoid 13012 error.
+                    //forMSGraphAccess: true,
                 });
                 return accessToken;
             } catch (error) {
