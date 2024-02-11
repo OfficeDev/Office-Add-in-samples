@@ -8,6 +8,8 @@ const myMSALObj = new msal.PublicClientApplication(msalConfig);
 Office.initialize = async function () {
   if (Office.context.ui.messageParent) {
     try {
+      await myMSALObj.initialize();
+
       const response = await myMSALObj.handleRedirectPromise();
       handleResponse(response);
     } catch (error) {

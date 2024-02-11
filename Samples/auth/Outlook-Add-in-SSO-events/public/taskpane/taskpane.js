@@ -19,7 +19,9 @@ async function signInAndConsent(){
   try {
     const accessToken = await OfficeRuntime.auth.getAccessToken({
       allowSignInPrompt: false,
-      allowConsentPrompt: false 
+      allowConsentPrompt: false,
+      //Leave the following parameter commented while developing and sideloading to avoid 13012 error.
+      //forMSGraphAccess: true,
     });
     document.getElementById("message-area").innerText = "Sign in successful.";
   } catch (exception){
