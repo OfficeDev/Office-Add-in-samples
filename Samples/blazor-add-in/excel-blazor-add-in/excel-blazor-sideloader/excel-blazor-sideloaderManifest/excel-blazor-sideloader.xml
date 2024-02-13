@@ -41,7 +41,6 @@
       <Set Name="ExcelApi" MinVersion="1.3"/>
       <Set Name="DialogApi" MinVersion="1.1"/>
       <Set Name="AddinCommands" MinVersion ="1.1"/>
-      <Set Name="CustomFunctionsRuntime" MinVersion="1.1"/>
     </Sets>
   </Requirements>
   <DefaultSettings>
@@ -60,7 +59,7 @@
       <!-- Make sure the hosts you override match the hosts declared in the top section of the manifest. -->
       <Host xsi:type="Workbook">
         <Runtimes>
-          <Runtime resid="Contoso.DesktopFunctionFile.Url" lifetime="long" />
+          <Runtime resid="Contoso.Taskpane.Url" lifetime="long" />
         </Runtimes>
         <!-- Form factor. Currently only DesktopFormFactor is supported. -->
         <DesktopFormFactor>
@@ -227,7 +226,7 @@
       <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
         <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Show Taskpane" />
-        <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Function 1 Click Twice!" />
+        <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Function 1" />
         <bt:String id="Contoso.FunctionButton2.Label" DefaultValue="Function 2" />
         <bt:String id="Contoso.FunctionButton3.Label" DefaultValue="Function 3" />
         <bt:String id="Contoso.FunctionButton4.Label" DefaultValue="Function 4" />

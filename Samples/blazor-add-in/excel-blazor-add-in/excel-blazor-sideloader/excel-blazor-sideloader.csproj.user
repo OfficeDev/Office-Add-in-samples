@@ -10,5 +10,6 @@
     <GeneratedProductId>{3fa7ee7d-b518-4a4b-bad0-5e9feff7398f}</GeneratedProductId>
     <GeneratedAppVersion>1.0.0.0</GeneratedAppVersion>
     <GeneratedClientSecret>8+3FJCKX54n3DcW8oTvq989TlRbIPDX3qW56wJWHzyI=</GeneratedClientSecret>
+    <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
 </Project>

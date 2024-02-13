@@ -54,7 +54,7 @@ async function callStaticLocalComponentMethodinit() {
             await context.sync();
         });
         console.log();
-        console.log("erreur call : " + err.message);
+        console.log("Error call : " + err.message);
     }
     finally {
         console.log("Finish callStaticLocalComponentMethodinit");

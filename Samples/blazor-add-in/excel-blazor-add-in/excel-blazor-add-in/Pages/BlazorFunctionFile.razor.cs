@@ -3,16 +3,15 @@ using Microsoft.JSInterop;
 
 using System.Diagnostics;
 
-
-// TODO: .NET 8.0
 // TODO: TypeScript
-// Get Functions from Blazor Page
-// Try Code by One1Lion 
-// I follow this pattern: https://www.meziantou.net/javascript-isolation-in-blazor-components.htm
 // See StickyNote
 // TODO: Mix Server Code with Client WASM (new .NET 8 feature)
 // TODO: Serverside Components (render client first, don't wait for async components to load)
 // https://devblogs.microsoft.com/dotnet/asp-net-core-updates-in-dotnet-8-preview-3/
+// Think of a good example of a C# function to use here that makes the use of the Blazor load feasible 
+// https://learn.microsoft.com/en-us/aspnet/core/blazor/javascript-interoperability/?view=aspnetcore-8.0
+// restore telemetry before PR
+// Do we still need CustomFunctionsRuntime in Manifest?
 
 namespace BlazorAddIn.Pages
 {
