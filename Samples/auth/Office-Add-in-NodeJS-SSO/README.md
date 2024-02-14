@@ -56,7 +56,7 @@ Integrating data from online service providers increases the value and adoption 
 To run this code sample, the following are required:
 
 - A code editor. We recommend Visual Studio Code which was used to create the sample.
-- A Microsoft 365 account. To get one, join the [Microsoft 365 Developer Program](https://aka.ms/devprogramsignup). This includes a free 1 year subscription to Microsoft 365. During the preview phase, the SSO requires Microsoft 365 (which includes the subscription version of Office).
+- A Microsoft 365 account. You can get one if you qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 - At least a few files and folders stored on OneDrive for Business in your Microsoft 365 subscription.
 - A Microsoft Azure Tenant. This add-in requires Azure Active Directory (AD). Azure AD provides identity services that applications use for authentication and authorization. A trial subscription can be acquired here: [Microsoft Azure](https://account.windowsazure.com/SignUp).
 
@@ -91,12 +91,9 @@ These samples send a hardcoded query parameter on the URL for the Microsoft Grap
 
 ## Join the Microsoft 365 Developer Program
 
-Get a free sandbox, tools, and other resources you need to build solutions for the Microsoft 365 platform.
+Join the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram) to get resources and information to help you build solutions for the Microsoft 365 platform, including recommendations tailored to your areas of interest.
 
-- [Free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) Get a free, renewable 90-day Microsoft 365 E5 developer subscription.
-- [Sample data packs](https://developer.microsoft.com/microsoft-365/dev-program#Sample) Automatically configure your sandbox by installing user data and content to help you build your solutions.
-- [Access to experts](https://developer.microsoft.com/microsoft-365/dev-program#Experts) Access community events to learn from Microsoft 365 experts.
-- [Personalized recommendations](https://developer.microsoft.com/microsoft-365/dev-program#Recommendations) Find developer resources quickly from your personalized dashboard.
+You might also qualify for a free developer subscription that's renewable for 90 days and comes configured with sample data; for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-).
 
 ## Additional resources
 

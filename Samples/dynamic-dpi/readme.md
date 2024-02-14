@@ -30,13 +30,15 @@ The code samples included here will help you with handling DPI changes in your c
 
 ## Prerequisites
 
-- Visual Studio 2017 or later with the following workloads
-    - .NET desktop development
-    - Desktop development with C++
-    - Office/SharePoint development
-    - latest version of Windows SDK
-    > **Note:** Some samples may not compile because they might target an older Windows SDK. If this happens you can right-click the solution and choose **Retarget solution**. Then choose the version of the Windows SDK you have installed.
-- An Office 365 account which you can get by joining the [Office 365 Developer Program](https://aka.ms/devprogramsignup) that includes a free 1 year subscription to Office 365.
+- Visual Studio 2017 or later with the following workloads.
+  - .NET desktop development
+  - Desktop development with C++
+  - Office/SharePoint development
+  - latest version of Windows SDK
+
+  > **Note:** Some samples may not compile because they might target an older Windows SDK. If this happens you can right-click the solution and choose **Retarget solution**. Then choose the version of the Windows SDK you have installed.
+- A Microsoft 365 account. You can get one if you qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
+
 > **Note:** Many of the samples use the **Developer** tab in Microsoft Excel. If you haven't enabled the **Developer** tab, follow these instructions in the article [Show the Developer tab](https://support.office.com/article/show-the-developer-tab-e1192344-5e56-4d45-931b-e5fd9bea2d45)
 
 ## Solution

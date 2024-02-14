@@ -22,7 +22,7 @@ This sample shows how to insert an existing template from an external Excel file
 
 ![Diagram showing the sample inserting an external spreadsheet into the existing spreadsheet.](./assets/excel-insert-file-overview.png)
 
-> **Note:** If you don't already have an Microsoft 365 subscription, get one by joining the [Office 365 Developer Program](https://developer.microsoft.com/office/dev-program).
+> **Note:** If you don't already have an Microsoft 365 subscription, you might qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 
 ## Features
 
