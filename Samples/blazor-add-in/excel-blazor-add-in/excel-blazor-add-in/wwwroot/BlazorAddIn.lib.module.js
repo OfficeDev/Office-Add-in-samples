@@ -39,3 +39,42 @@ export async function beforeStart(wasmoptions, extensions) {
 export async function afterStarted(blazor) {
     console.log("We are now entering function: afterStarted");
 }
+
+/**
+ * Writes the event source id to the document when ExecuteFunction runs.
+ * @param event {Office.AddinCommands.Event}
+ */
+
+function writeValue2(event) {
+
+    console.log("We are now entering function: writeValue");
+
+    Office.context.document.setSelectedDataAsync(
+        "ExecuteFunction works. Button ID=" + event.source.id,
+        function (asyncResult) {
+            var error = asyncResult.error;
+            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+                // Show error message.
+            } else {
+                // Show success message.
+            }
+        }
+    );
+
+    // Calling event.completed is required. event.completed lets the platform know that processing has completed.
+    event.completed();
+}
+
+function getGlobal() {
+    return typeof self !== "undefined"
+        ? self
+        : typeof window !== "undefined"
+            ? window
+            : typeof global !== "undefined"
+                ? global
+                : undefined;
+}
+
+const g = getGlobal();
+
+Office.actions.associate("writeValue2", writeValue2);

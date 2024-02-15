@@ -1,7 +1,56 @@
-console.log("Loading BlazorFunctionFile.js");
+/*
+ * Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ * 
+ * For this to work, change the manifest 
+ * Uncomment the line with Contoso.DesktopFunctionFile.Url
+ * Comment the uncommented with Contoso.DesktopFunctionFile.Url
+ */
+
+console.log("Loading command.js");
+
+/* global global, Office, self, window */
+
+Office.onReady(() => {
+    // If needed, Office.js is ready to be called
+});
+
+/**
+ * Writes the event source id to the document when ExecuteFunction runs.
+ * @param event {Office.AddinCommands.Event}
+ */
+
+function writeValue(event) {
+    Office.context.document.setSelectedDataAsync(
+        "ExecuteFunction works. Button ID=" + event.source.id,
+        function (asyncResult) {
+            var error = asyncResult.error;
+            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+                // Show error message.
+            } else {
+                // Show success message.
+            }
+        }
+    );
+
+    // Calling event.completed is required. event.completed lets the platform know that processing has completed.
+    event.completed();
+}
+
+function getGlobal() {
+    return typeof self !== "undefined"
+        ? self
+        : typeof window !== "undefined"
+            ? window
+            : typeof global !== "undefined"
+                ? global
+                : undefined;
+}
+
+const g = getGlobal();
 
 // The command function.
-async function highlightSelection2(event) {
+async function highlightSelection(event) {
 
     // Implement your custom code here. The following code is a simple Excel example.  
     try {
@@ -30,9 +79,9 @@ async function callStaticLocalComponentMethodinit() {
     console.log("In callStaticLocalComponentMethodinit");
     try {
         var name = "init";
-        // Call JSInvokable Function here ...
 
-        name = await DotNet.invokeMethodAsync("BlazorAddIn", "SayHello", "Skod from Blazor");
+        // Call JSInvokable Function here ...
+        // name = await DotNet.invokeMethodAsync("BlazorAddIn", "SayHello", "Skod from Blazor");
         console.log("fin init : " + name)
 
         await Excel.run(async (context) => {
@@ -62,6 +111,5 @@ async function callStaticLocalComponentMethodinit() {
 }
 
 // You must register the function with the following line.
-// Apparently this is not exposed to the Ribbon Button
-// The page is loaded but the function is not called.
-Office.actions.associate("highlightSelection2", highlightSelection2);
+Office.actions.associate("writeValue", writeValue);
+Office.actions.associate("highlightSelection", highlightSelection);

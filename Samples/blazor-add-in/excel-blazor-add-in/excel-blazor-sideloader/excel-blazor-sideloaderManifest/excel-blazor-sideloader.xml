@@ -158,7 +158,7 @@
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>highlightSelection</FunctionName>
+                    <FunctionName>writeValue</FunctionName>
                   </Action>
                 </Control>
 
@@ -178,7 +178,7 @@
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>highlightSelection</FunctionName>
+                    <FunctionName>highlightSelection2</FunctionName>
                   </Action>
                 </Control>
 
@@ -198,7 +198,7 @@
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>highlightSelection</FunctionName>
+                    <FunctionName>writeValue2</FunctionName>
                   </Action>
                 </Control>
 
@@ -218,7 +218,9 @@
         <bt:Image id="Contoso.tpicon_80x80" DefaultValue="~remoteAppUrl/Images/Button80x80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="~remoteAppUrl/functions" />
+        <bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="~remoteAppUrl/Commands/commands.html" />
+        <!--<bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="~remoteAppUrl/functions" />-->
+        <!--<bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="~remoteAppUrl/" />-->
         <bt:Url id="Contoso.Taskpane.Url" DefaultValue="~remoteAppUrl/" />
         <bt:Url id="Contoso.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
       </bt:Urls>
@@ -226,10 +228,10 @@
       <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
         <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Show Taskpane" />
-        <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Function 1" />
-        <bt:String id="Contoso.FunctionButton2.Label" DefaultValue="Function 2" />
-        <bt:String id="Contoso.FunctionButton3.Label" DefaultValue="Function 3" />
-        <bt:String id="Contoso.FunctionButton4.Label" DefaultValue="Function 4" />
+        <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Color *" />
+        <bt:String id="Contoso.FunctionButton2.Label" DefaultValue="Write *" />
+        <bt:String id="Contoso.FunctionButton3.Label" DefaultValue="ColorBlazor" />
+        <bt:String id="Contoso.FunctionButton4.Label" DefaultValue="WriteBlazor" />
         <bt:String id="Contoso.Group1Label" DefaultValue="Commands Group" />
         <bt:String id="Contoso.CustomTabLabel" DefaultValue="Custom Tab Label" />
         <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with your sample add-in!" />
