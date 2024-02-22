@@ -32,7 +32,7 @@ async function callStaticLocalComponentMethodinit() {
         var name = "init";
         // Call JSInvokable Function here ...
 
-        name = await DotNet.invokeMethodAsync("BlazorAddIn", "SayHello", "Skod from Blazor");
+        // name = await DotNet.invokeMethodAsync("BlazorAddIn", "SayHelloFunctions", "Skod from Blazor");
         console.log("fin init : " + name)
 
         await Excel.run(async (context) => {
@@ -62,6 +62,7 @@ async function callStaticLocalComponentMethodinit() {
 }
 
 // You must register the function with the following line.
+
 // Apparently this is not exposed to the Ribbon Button
 // The page is loaded but the function is not called.
 Office.actions.associate("highlightSelection2", highlightSelection2);

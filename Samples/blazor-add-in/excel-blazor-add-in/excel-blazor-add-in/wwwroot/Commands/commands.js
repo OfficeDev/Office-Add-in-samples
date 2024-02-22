@@ -50,14 +50,14 @@ function getGlobal() {
 const g = getGlobal();
 
 // The command function.
-async function highlightSelection(event) {
+async function highlightSelectionIndex(event) {
 
     // Implement your custom code here. The following code is a simple Excel example.  
     try {
-        console.log("Running highlightSelection");
+        console.log("Running highlightSelectionIndex");
 
         console.log("Before callStaticLocalComponentMethodinit");
-        callStaticLocalComponentMethodinit();
+        callStaticLocalComponentMethodinit("SayHelloIndex");
         console.log("After callStaticLocalComponentMethodinit");
 
         await Excel.run(async (context) => {
@@ -75,14 +75,41 @@ async function highlightSelection(event) {
     event.completed();
 }
 
-async function callStaticLocalComponentMethodinit() {
-    console.log("In callStaticLocalComponentMethodinit");
+async function highlightSelectionBubble(event) {
+
+    // Implement your custom code here. The following code is a simple Excel example.  
     try {
-        var name = "init";
+        console.log("Running highlightSelectionBubble");
+
+        console.log("Before callStaticLocalComponentMethodinit");
+        callStaticLocalComponentMethodinit("SayHelloBubble");
+        console.log("After callStaticLocalComponentMethodinit");
+
+        await Excel.run(async (context) => {
+            const range = context.workbook.getSelectedRange();
+            range.format.fill.color = "red";
+            await context.sync();
+        });
+
+    } catch (error) {
+        // Note: In a production add-in, notify the user through your add-in's UI.
+        console.error(error);
+    }
+
+    // Calling event.completed is required. event.completed lets the platform know that processing has completed.
+    event.completed();
+}
+
+async function callStaticLocalComponentMethodinit(methodname) {
+
+    console.log("In callStaticLocalComponentMethodinit");
+
+    try {
+        var name = "Initializing";
 
         // Call JSInvokable Function here ...
-        // name = await DotNet.invokeMethodAsync("BlazorAddIn", "SayHello", "Skod from Blazor");
-        console.log("fin init : " + name)
+        name = await DotNet.invokeMethodAsync("BlazorAddIn", methodname, "Skod from Blazor");
+        console.log("Finished Initializing: " + name)
 
         await Excel.run(async (context) => {
             const range = context.workbook.getSelectedRange();
@@ -112,4 +139,5 @@ async function callStaticLocalComponentMethodinit() {
 
 // You must register the function with the following line.
 Office.actions.associate("writeValue", writeValue);
-Office.actions.associate("highlightSelection", highlightSelection);
+Office.actions.associate("highlightSelectionIndex", highlightSelectionIndex);
+Office.actions.associate("highlightSelectionBubble", highlightSelectionBubble);

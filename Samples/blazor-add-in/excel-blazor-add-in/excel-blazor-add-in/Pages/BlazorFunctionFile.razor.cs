@@ -25,8 +25,8 @@ namespace BlazorAddIn.Pages
         {
             if (firstRender)
             {
-                Debug.WriteLine("Hit OnAfterRenderAsync BlazorFunctionFile!");
-                Console.WriteLine("Hit OnAfterRenderAsync BlazorFunctionFile in Console!");
+                Debug.WriteLine("Hit OnAfterRenderAsync in BlazorFunctionFile.cs!");
+                Console.WriteLine("Hit OnAfterRenderAsync in BlazorFunctionFile.cs in Console!");
                 JSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/BlazorFunctionFile.razor.js");
             }
         }
@@ -41,7 +41,7 @@ namespace BlazorAddIn.Pages
         //}
 
         [JSInvokable]
-        public static string SayHello(string name)
+        public static string SayHelloFunctions(string name)
         {
             return $"Hello, {name} from BlazorFunctionFile!";
         }

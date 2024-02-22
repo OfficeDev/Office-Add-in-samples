@@ -59,7 +59,7 @@
       <!-- Make sure the hosts you override match the hosts declared in the top section of the manifest. -->
       <Host xsi:type="Workbook">
         <Runtimes>
-          <Runtime resid="Contoso.Taskpane.Url" lifetime="long" />
+          <Runtime resid="Contoso.Shared.Url" lifetime="long" />
         </Runtimes>
         <!-- Form factor. Currently only DesktopFormFactor is supported. -->
         <DesktopFormFactor>
@@ -79,7 +79,7 @@
 
           <!-- Function file is a HTML page that includes the JavaScript where functions for ExecuteAction will be called. 
             Think of the FunctionFile as the code behind ExecuteFunction. -->
-          <FunctionFile resid="Contoso.DesktopFunctionFile.Url" />
+          <FunctionFile resid="Contoso.Shared.Url" />
 
           <!-- PrimaryCommandSurface is the main Office Ribbon. -->
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
@@ -116,7 +116,7 @@
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>ButtonId1</TaskpaneId>
                     <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
-                    <SourceLocation resid="Contoso.Taskpane.Url" />
+                    <SourceLocation resid="Contoso.Shared.Url" />
                   </Action>
                 </Control>
 
@@ -138,7 +138,7 @@
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>highlightSelection</FunctionName>
+                    <FunctionName>highlightSelectionIndex</FunctionName>
                   </Action>
                 </Control>
 
@@ -158,7 +158,7 @@
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>writeValue</FunctionName>
+                    <FunctionName>highlightSelectionBubble</FunctionName>
                   </Action>
                 </Control>
 
@@ -178,9 +178,10 @@
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>highlightSelection2</FunctionName>
+                    <FunctionName>writeValue</FunctionName>
                   </Action>
                 </Control>
+
 
                 <Control xsi:type="Button" id="Contoso.FunctionButton4">
                   <Label resid="Contoso.FunctionButton4.Label" />
@@ -218,20 +219,19 @@
         <bt:Image id="Contoso.tpicon_80x80" DefaultValue="~remoteAppUrl/Images/Button80x80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="~remoteAppUrl/Commands/commands.html" />
         <!--<bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="~remoteAppUrl/functions" />-->
         <!--<bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="~remoteAppUrl/" />-->
-        <bt:Url id="Contoso.Taskpane.Url" DefaultValue="~remoteAppUrl/" />
+        <bt:Url id="Contoso.Shared.Url" DefaultValue="~remoteAppUrl/" />
         <bt:Url id="Contoso.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
       </bt:Urls>
 
       <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
         <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Show Taskpane" />
-        <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Color *" />
-        <bt:String id="Contoso.FunctionButton2.Label" DefaultValue="Write *" />
-        <bt:String id="Contoso.FunctionButton3.Label" DefaultValue="ColorBlazor" />
-        <bt:String id="Contoso.FunctionButton4.Label" DefaultValue="WriteBlazor" />
+        <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Insert Name Index" />
+        <bt:String id="Contoso.FunctionButton2.Label" DefaultValue="Insert Name Bubble" />
+        <bt:String id="Contoso.FunctionButton3.Label" DefaultValue="Write JS" />
+        <bt:String id="Contoso.FunctionButton4.Label" DefaultValue="Dummy" />
         <bt:String id="Contoso.Group1Label" DefaultValue="Commands Group" />
         <bt:String id="Contoso.CustomTabLabel" DefaultValue="Custom Tab Label" />
         <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with your sample add-in!" />
@@ -241,8 +241,8 @@
       <bt:LongStrings>
         <bt:String id="Contoso.TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane" />
         <bt:String id="Contoso.FunctionButton1.Tooltip" DefaultValue="Click to Run a Function" />
-        <bt:String id="Contoso.FunctionButton2.Tooltip" DefaultValue="Click to Run a Function" />
         <bt:String id="Contoso.FunctionButton3.Tooltip" DefaultValue="Click to Run a Function" />
+        <bt:String id="Contoso.FunctionButton2.Tooltip" DefaultValue="Click to Run a Function" />
         <bt:String id="Contoso.FunctionButton4.Tooltip" DefaultValue="Click to Run a Function" />
         <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started." />
       </bt:LongStrings>

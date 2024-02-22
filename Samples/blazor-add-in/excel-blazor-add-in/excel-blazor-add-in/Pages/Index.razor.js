@@ -2,6 +2,8 @@
 /**
  * Basic function to show how to insert a value into cell A1 on the selected Excel worksheet.
  */
+console.log("Loading Index.razor.js");
+
 export function helloButton() {
 
     console.log("We are now entering function: helloButton");

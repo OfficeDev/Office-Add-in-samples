@@ -7,6 +7,8 @@
  * - Configuring Blazor settings.
  */
 
+console.log("Loading BlazorAddin.lib.module.js");
+
 /**
  * beforeStart(options, extensions): 
  * 
@@ -19,6 +21,10 @@ export async function beforeStart(wasmoptions, extensions) {
     console.log("We are now entering function: beforeStart");
 
     Office.onReady((info) => {
+
+        // Office Finished Loading
+        console.log("Office onReady.");
+
         // Check that we loaded into Excel.
         if (info.host === Office.HostType.Excel) {
             console.log("We are now hosting in Excel.");
@@ -26,7 +32,6 @@ export async function beforeStart(wasmoptions, extensions) {
         else {
             console.log("We are now hosting in The Browser (of your choice).");
         }
-        console.log("Office onReady.");
     });
 }
 
@@ -40,41 +45,3 @@ export async function afterStarted(blazor) {
     console.log("We are now entering function: afterStarted");
 }
 
-/**
- * Writes the event source id to the document when ExecuteFunction runs.
- * @param event {Office.AddinCommands.Event}
- */
-
-function writeValue2(event) {
-
-    console.log("We are now entering function: writeValue");
-
-    Office.context.document.setSelectedDataAsync(
-        "ExecuteFunction works. Button ID=" + event.source.id,
-        function (asyncResult) {
-            var error = asyncResult.error;
-            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                // Show error message.
-            } else {
-                // Show success message.
-            }
-        }
-    );
-
-    // Calling event.completed is required. event.completed lets the platform know that processing has completed.
-    event.completed();
-}
-
-function getGlobal() {
-    return typeof self !== "undefined"
-        ? self
-        : typeof window !== "undefined"
-            ? window
-            : typeof global !== "undefined"
-                ? global
-                : undefined;
-}
-
-const g = getGlobal();
-
-Office.actions.associate("writeValue2", writeValue2);

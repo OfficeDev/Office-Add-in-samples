@@ -20,8 +20,8 @@ namespace BlazorAddIn.Pages
         {
             if (firstRender)
             {
-                Debug.WriteLine("Hit OnAfterRenderAsync!");
-                Console.WriteLine("Hit OnAfterRenderAsync in Console!");
+                Debug.WriteLine("Hit OnAfterRenderAsync in Index.razor.cs!");
+                Console.WriteLine("Hit OnAfterRenderAsync in Index.razor.cs in Console!");
                 JSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/Index.razor.js");
             }
         }
@@ -31,5 +31,11 @@ namespace BlazorAddIn.Pages
         /// </summary>
         private async Task HelloButton() =>
             await JSModule.InvokeVoidAsync("helloButton");
+
+        [JSInvokable]
+        public static string SayHelloIndex(string name)
+        {
+            return $"Hello Index, {name} from BlazorFunctionFile!";
+        }
     }
 }

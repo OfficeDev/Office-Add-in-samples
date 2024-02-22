@@ -33,6 +33,12 @@ namespace BlazorAddIn.Pages
         /// </summary>
         private async Task CreateBubbleChart() =>
             await JSModule.InvokeVoidAsync("createBubbleChart");
+
+        [JSInvokable]
+        public static string SayHelloBubble(string name)
+        {
+            return $"Hello Bubble, {name} from BlazorFunctionFile!";
+        }
     }
 }
 
