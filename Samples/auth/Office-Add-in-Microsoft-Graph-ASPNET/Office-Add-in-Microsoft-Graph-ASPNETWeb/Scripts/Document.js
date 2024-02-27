@@ -8,8 +8,8 @@ Office.initialize = function () {
     $(document).ready(function () {
         app.initialize();
 
-        $("#getOneDriveFilesButton").click(getFileNamesFromGraph);
-        $("#logoutO365PopupButton").click(logout);        
+        $("#getOneDriveFilesButton").on("click", getFileNamesFromGraph);
+        $("#logoutO365PopupButton").on("click", logout);        
     });
 };
 

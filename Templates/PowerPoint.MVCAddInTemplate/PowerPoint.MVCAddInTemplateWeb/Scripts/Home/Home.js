@@ -14,7 +14,7 @@
             messageBanner = new fabric.MessageBanner(element);
             messageBanner.hideBanner();
 
-            $('#get-data-from-selection').click(getDataFromSelection);
+            $('#get-data-from-selection').on("click", getDataFromSelection);
         });
     };
 
