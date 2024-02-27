@@ -9,7 +9,7 @@
         // The document is ready
         $(document).ready(function () {
 
-            // Assign HTML buttons to functions
+            // Assign HTML buttons to functions.
             $('#create-table').on("click", loadTable);
         });
     });

@@ -48,10 +48,10 @@ Office.initialize = function (reason) {
             $('#hdnActiveTab').val(this.id.substring(3));
         });
 
-        //hide the message
+        // Hide the message.
         $('#message').on("click", function () { $('#message').hide(); });
 
-        //wire up client-side processing
+        // Wire up client-side processing.
         $('#btnSubmit1').click(function () {
             $.ajax({
                 url: '../Services/Stocks.svc/GetHistory?stock=' + $('#txtSymbol1').val() + '&fromyear=' + $('#cboFromYear1').val(),
