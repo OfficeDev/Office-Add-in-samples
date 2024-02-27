@@ -10,7 +10,7 @@
         $(document).ready(function () {
 
             // Assign HTML buttons to functions
-            $('#create-table').click(loadTable);
+            $('#create-table').on("click", loadTable);
         });
     });
     

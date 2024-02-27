@@ -49,7 +49,7 @@ Office.initialize = function (reason) {
         });
 
         //hide the message
-        $('#message').click(function () { $('#message').hide(); });
+        $('#message').on("click", function () { $('#message').hide(); });
 
         //wire up client-side processing
         $('#btnSubmit1').click(function () {
