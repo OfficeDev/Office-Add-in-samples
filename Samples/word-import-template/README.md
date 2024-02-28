@@ -3,7 +3,7 @@ page_type: sample
 urlFragment: word-import-template
 products:
 - office-word
-- m365
+- office
 languages:
 - javascript
 extensions:
@@ -14,19 +14,17 @@ extensions:
 description: "Shows how to import templates in a Word document."
 ---
 
-# Import templates in a Word document - TODO: Update ReadMe
+# Import templates in a Word document
 
 ## Summary
 
-This sample shows how to import a Word document template with an add-in. The add-in uses the [insertEndnote API](https://learn.microsoft.com/javascript/api/word/word.range#word-word-range-insertendnote-member(1)) to list inserted citations at the end of the document.
+This sample shows how to import a Word document template with an add-in.
 
 ## Description
 
-The user updates their Word document to include their citations and quotations. The user selects their bibliography file (.bib) through the add-in UI. The add-in lists the references found in the .bib file. The user selects the text in the document to cite then picks the option from the reference list displayed in the add-in UI. The inserted citations are listed at the end of the document.
+The user updates their Word document with the content from another Word document, treating the external document like a template. The user selects a Word document through the add-in UI then applies the template to the current document.
 
-The sample uses the [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJs#readme) JavaScript library to parse the .bib file.
-
-![Citation management add-in task pane.](./assets/word-citation-management.png)
+![Import template add-in task pane.](./assets/word-import-template.png)
 
 ## Applies to
 
@@ -44,19 +42,19 @@ The sample uses the [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJ
 
 | Solution | Authors |
 |----------|-----------|
-| How to manage citations in a Word document | Microsoft |
+| How to import a template in a Word document | Microsoft |
 
 ## Version history
 
 | Version  | Date | Comments |
 |----------|------|----------|
-| 1.0 | 11-28-2023 | Initial release |
+| 1.0 | 02-29-2024 | Initial release |
 
 ## Run the sample
 
 1. Clone or download this repo.
 
-1. Go to the **Samples\word-citation-management** folder via the command line.
+1. Go to the **Samples\word-import-template** folder via the command line.
 
 1. Run `npm install`.
 
@@ -71,31 +69,27 @@ The sample uses the [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJ
 
     - To test your add-in in Word on the web, follow the instructions in [Sideload a Yeoman-created add-in to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing#sideload-a-yeoman-created-add-in-to-office-on-the-web).
 
-1. If the add-in task pane isn't already open in Word, go to the Home tab and choose the **Show Taskpane** button in the ribbon to open it.
+1. If the add-in task pane isn't already open in Word, go to the Home tab and choose the **Show Task Pane** button in the ribbon to open it.
 
 ## Try it out
 
-1. In the "Bibliography sources" section of the add-in UI, select the **Choose File** button. Navigate to the local location of your .bib file then open the file.
+1. In the "Template" section of the add-in UI, select the **Choose File** button. Navigate to the location of your .docx file then open the file.
 
-    ![The initial screen displaying the button to choose a file.](./assets/word-citation-management-initial-screen.png)
+    ![The initial screen displaying the button to choose a file.](./assets/word-import-template-initial-screen.png)
 
-    For convenience, the assets folder of this project includes a sample.bib file.
+    For convenience, the assets folder of this project includes a *template example.docx* file.
 
-    ![Screen showing selected file.](./assets/word-citation-management-selected-bib.png)
+    ![Screen showing the selected file and updated UI.](./assets/word-import-template-selected-docx.png)
 
-1. In the document, select the text that you cited or quoted, or place the cursor.
+1. In the "Import" section of the add-in UI, select the **Import template** button.
 
-    ![Screen showing text selected in the Word document.](./assets/word-citation-management-selected-text.png)
+    ![Screen showing the imported template.](./assets/word-import-template-applied.png)
 
-1. In the list of references in the "References" section of the add-in UI, search for and select the reference you want to insert then select the **Insert citation** button. To unselect the selected radio button, choose the **Clear selection** button.
+1. In the document, make updates, including adding text and other content.
 
-    ![Screen showing selected reference option.](./assets/word-citation-management-select-option.png)
+1. In the "Save and close" section of the add-in UI, select the **Save then close** button.
 
-1. In the document, the reference mark appears at the end of the selected text and an endnote with the reference information is displayed at the end of the document.
-
-    ![Screen showing citation inserted in the Word document.](./assets/word-citation-management-inserted-citation.png)
-
-## Make it yours
+## Make it yours -- TODO: Update
 
 The following are a few suggestions for how you could tailor this to your scenario.
 
@@ -105,7 +99,7 @@ The following are a few suggestions for how you could tailor this to your scenar
 
 ## Related content
 
-- [Citation management](https://learn.microsoft.com/office/dev/add-ins/word/citation-management)
+- [Import template](https://learn.microsoft.com/office/dev/add-ins/word/import-template)
 - [Word add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/word/)
 
 ## Questions and feedback
