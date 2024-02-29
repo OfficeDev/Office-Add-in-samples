@@ -13,12 +13,12 @@
         $(document).ready(function () {
             app.initialize();
             CheckButtons();
-            $('#AddBindings').click(CreateTable);
-            $('#AddData').click(AddRowsToTable);
-            $('#ClearFormat').click(ClearFormat);
-            $('#ClearData').click(ClearData);
-            $('#CellFormatting').click(DoCellFormatting);
-            $('#TableOptions').click(DoTableOptions);
+            $('#AddBindings').on("click", CreateTable);
+            $('#AddData').on("click", AddRowsToTable);
+            $('#ClearFormat').on("click", ClearFormat);
+            $('#ClearData').on("click", ClearData);
+            $('#CellFormatting').on("click", DoCellFormatting);
+            $('#TableOptions').on("click", DoTableOptions);
 
             var sel = $("#TableStyle");
             $.each(tableStyles, function (i, style) {

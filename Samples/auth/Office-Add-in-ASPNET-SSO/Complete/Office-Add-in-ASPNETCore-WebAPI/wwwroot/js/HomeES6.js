@@ -12,7 +12,7 @@ if (!window.Promise) {
 
 Office.onReady(() => {
     $(document).ready(function () {
-        $('#getUserFileNames').click(getUserFileNames);
+        $('#getUserFileNames').on("click", getUserFileNames);
     });
 });
 

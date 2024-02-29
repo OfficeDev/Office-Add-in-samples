@@ -10,14 +10,14 @@
             messageBanner = new components.MessageBanner(element);
             messageBanner.hideBanner();
 
-            $('#insert-image').click(insertImage);
-            $('#insert-text').click(insertText);
-            $('#get-slide-metadata').click(getSlideMetadata);
-            $('#add-slides').click(addSlides);
-            $('#go-to-first-slide').click(goToFirstSlide);
-            $('#go-to-next-slide').click(goToNextSlide);
-            $('#go-to-previous-slide').click(goToPreviousSlide);
-            $('#go-to-last-slide').click(goToLastSlide);
+            $('#insert-image').on("click", insertImage);
+            $('#insert-text').on("click", insertText);
+            $('#get-slide-metadata').on("click", getSlideMetadata);
+            $('#add-slides').on("click", addSlides);
+            $('#go-to-first-slide').on("click", goToFirstSlide);
+            $('#go-to-next-slide').on("click", goToNextSlide);
+            $('#go-to-previous-slide').on("click", goToPreviousSlide);
+            $('#go-to-last-slide').on("click", goToLastSlide);
         });
     });
 
