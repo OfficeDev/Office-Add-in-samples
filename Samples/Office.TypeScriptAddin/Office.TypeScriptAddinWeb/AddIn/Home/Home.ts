@@ -10,7 +10,7 @@
         $(document).ready(function () {
             app.initialize();
 
-            $('#get-data-from-selection').click(getDataFromSelection);
+            $('#get-data-from-selection').on("click", getDataFromSelection);
         });
     };
 

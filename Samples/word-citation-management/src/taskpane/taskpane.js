@@ -12,10 +12,10 @@ Office.onReady((info) => {
   $(document).ready(function () {
     if (info.host === Office.HostType.Word) {
       document.getElementById("app-body").style.display = "flex";
-      $("#bib-file").change(() => tryCatch(getFileContents));
+      $("#bib-file").on("change", () => tryCatch(getFileContents));
       search();
-      $("#insert-citation").click(() => tryCatch(insertCitation));
-      $("#clear").click(() => tryCatch(clearSelection));
+      $("#insert-citation").on("click", () => tryCatch(insertCitation));
+      $("#clear").on("click", () => tryCatch(clearSelection));
     }
   });
 });

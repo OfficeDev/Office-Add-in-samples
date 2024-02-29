@@ -33,9 +33,9 @@ This sample implements the pattern described in [Create an Excel spreadsheet fro
 
 ## Prerequisites
 
-- [Visual Studio 2022 or later](https://aka.ms/VSDownload). Add the Office/SharePoint development workload when configuring Visual Studio.
-- [Visual Studio Code](https://code.visualstudio.com/Download).
-- A Microsoft 365 account. To get one, join the [Microsoft 365 Developer Program](https://aka.ms/devprogramsignup). 
+- [Visual Studio 2022 or later.](https://aka.ms/VSDownload) Add the Office/SharePoint development workload when configuring Visual Studio.
+- [Visual Studio Code.](https://code.visualstudio.com/Download)
+- A Microsoft 365 account. You can get one if you qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 - At least a few files and folders stored on OneDrive for Business in your Microsoft 365 subscription.
 
 ## Set up the sample
