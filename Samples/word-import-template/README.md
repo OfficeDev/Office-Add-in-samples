@@ -22,9 +22,9 @@ This sample shows how to import a Word document template with an add-in.
 
 ## Description
 
-The user updates their Word document with the content from another Word document, treating the external document like a template. The user selects a Word document through the add-in UI then applies the template to the current document.
+The user updates their Word document with the content from another Word document, treating the external document like a template. The user selects a Word document through the add-in UI then it's applied to the current document.
 
-![Import template add-in task pane.](./assets/word-import-template.png)
+![Import template add-in task pane.](./resources/word-import-template.png)
 
 ## Applies to
 
@@ -73,21 +73,19 @@ The user updates their Word document with the content from another Word document
 
 ## Try it out
 
-1. In the "Template" section of the add-in UI, select the **Choose File** button. Navigate to the location of your .docx file then open the file.
+1. In the "Template" section of the add-in UI, select the **Choose File** button. Navigate to the location of your .docx file then open the file. The template is automatically applied to your document.
 
-    ![The initial screen displaying the button to choose a file.](./assets/word-import-template-initial-screen.png)
+    ![The initial screen displaying the button to choose a file.](./resources/word-import-template-initial-screen.png)
 
-    For convenience, the assets folder of this project includes a *template example.docx* file.
+    For convenience, the resources folder of this project includes a *template example.docx* file.
 
-    ![Screen showing the selected file and updated UI.](./assets/word-import-template-selected-docx.png)
+    ![Screen showing the imported template.](./resources/word-import-template-applied.png)
 
-1. In the "Import" section of the add-in UI, select the **Import template** button.
-
-    ![Screen showing the imported template.](./assets/word-import-template-applied.png)
-
-1. In the document, make updates, including adding text and other content.
+1. In the document, update the text and other content.
 
 1. In the "Save and close" section of the add-in UI, select the **Save then close** button.
+
+    ![Screen showing the button to save and close the document.](./resources/word-import-template-save-close-button.png)
 
 ## Make it yours -- TODO: Update
 

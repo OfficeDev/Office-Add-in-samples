@@ -12,7 +12,6 @@ Office.onReady((info) => {
     if (info.host === Office.HostType.Word) {
       document.getElementById("app-body").style.display = "flex";
       $("#template-file").on("change", () => tryCatch(getFileContents));
-      $("#import-template").on("click", () => tryCatch(importTemplate));
       $("#save-close").on("click", () => tryCatch(saveAndCloseFile));
     }
   });
@@ -27,8 +26,11 @@ async function getFileContents() {
     const startIndex = reader.result.toString().indexOf("base64,");
     template = reader.result.toString().substring(startIndex + 7);
 
-    // Show the Import and Save sections.
-    $("#import-section").show();
+    // Import the template into the document.
+    importTemplate();
+
+    // Show the Update and Save sections.
+    $("#imported-section").show();
   };
 
   // Read the file as a data URL so we can parse the Base64-encoded string.
