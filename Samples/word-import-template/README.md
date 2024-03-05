@@ -10,7 +10,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 02/29/2024 4:00:00 PM
+  createdDate: 03/08/2024 4:00:00 PM
 description: "Shows how to import templates in a Word document."
 ---
 
@@ -48,7 +48,7 @@ The user updates their Word document with the content from another Word document
 
 | Version  | Date | Comments |
 |----------|------|----------|
-| 1.0 | 02-29-2024 | Initial release |
+| 1.0 | 03-08-2024 | Initial release |
 
 ## Run the sample
 
