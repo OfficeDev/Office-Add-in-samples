@@ -12,7 +12,6 @@ Office.onReady((info) => {
     if (info.host === Office.HostType.Word) {
       document.getElementById("app-body").style.display = "flex";
       $("#template-file").on("change", () => tryCatch(getFileContents));
-      $("#save-close").on("click", () => tryCatch(saveAndCloseFile));
     }
   });
 });
@@ -29,7 +28,7 @@ async function getFileContents() {
     // Import the template into the document.
     importTemplate();
 
-    // Show the Update and Save sections.
+    // Show the Update section.
     $("#imported-section").show();
   };
 
@@ -48,17 +47,6 @@ async function importTemplate() {
       importPageColor: true,
       importDifferentOddEvenPages: true
     });
-    await context.sync();
-  });
-}
-
-// Displays the save dialog if the file hasn't already been saved, then closes the file.
-async function saveAndCloseFile() {
-  await Word.run(async (context) => {
-    context.document.save(Word.SaveBehavior.prompt);
-    await context.sync();
-
-    context.document.close();
     await context.sync();
   });
 }

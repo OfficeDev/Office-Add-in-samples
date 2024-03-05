@@ -10,7 +10,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 02/29/2024 4:00:00 PM
+  createdDate: 03/08/2024 4:00:00 PM
 description: "Shows how to import templates in a Word document."
 ---
 
@@ -48,7 +48,7 @@ The user updates their Word document with the content from another Word document
 
 | Version  | Date | Comments |
 |----------|------|----------|
-| 1.0 | 02-29-2024 | Initial release |
+| 1.0 | 03-08-2024 | Initial release |
 
 ## Run the sample
 
@@ -75,10 +75,6 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 
 1. In the document, update the text and other content.
 
-1. In the "Save and close" section of the add-in UI, select the **Save then close** button.
-
-    ![Screen showing the button to save and close the document.](./resources/word-import-template-save-close-button.png)
-
 ## Run the sample from localhost
 
 If you prefer to host the web server for the sample on your computer, follow these steps:
@@ -100,13 +96,13 @@ If you prefer to host the web server for the sample on your computer, follow the
 1. To reroute to localhost, run office-addin-https-reverse-proxy. If you haven't installed this, run the following command.
 
     ```console
-    npm install --global office-addin-https-reverse-proxy 
+    npm install --global office-addin-https-reverse-proxy
     ```
 
     To reroute, run the following in another command prompt.
 
     ```console
-    office-addin-https-reverse-proxy --url http://localhost:3000 
+    office-addin-https-reverse-proxy --url http://localhost:3000
     ```
 
 1. Sideload `manifest-localhost.xml` in Word by following the appropriate instructions in the article [Sideload an Office Add-in for testing](https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing).
