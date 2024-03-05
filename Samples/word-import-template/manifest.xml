@@ -16,7 +16,7 @@
     <Host Name="Document"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/word-import-template/src/taskpane.html"/>
+    <SourceLocation DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/word-import-template/src/taskpane/taskpane.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -67,7 +67,7 @@
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/word-import-template/src/taskpane.html"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/word-import-template/src/taskpane/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
