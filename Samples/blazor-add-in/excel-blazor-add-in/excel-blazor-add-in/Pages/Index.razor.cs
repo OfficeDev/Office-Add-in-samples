@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace BlazorAddIn.Pages
 {
@@ -12,9 +13,9 @@ namespace BlazorAddIn.Pages
     /// </summary>
     public partial class Index
     {
-        [Inject]
-        public IJSRuntime JSRuntime { get; set; } = default!;
-        public IJSObjectReference JSModule { get; set; } = default!;
+        [Inject, AllowNull]
+        private IJSRuntime JSRuntime { get; set; } 
+        private IJSObjectReference JSModule { get; set; } = default!;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {

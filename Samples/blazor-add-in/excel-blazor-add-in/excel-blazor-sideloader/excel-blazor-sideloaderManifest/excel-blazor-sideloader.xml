@@ -199,7 +199,7 @@
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>writeValue2</FunctionName>
+                    <FunctionName>createBubbles</FunctionName>
                   </Action>
                 </Control>
 
@@ -231,7 +231,7 @@
         <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Insert Name Index" />
         <bt:String id="Contoso.FunctionButton2.Label" DefaultValue="Insert Name Bubble" />
         <bt:String id="Contoso.FunctionButton3.Label" DefaultValue="Write JS" />
-        <bt:String id="Contoso.FunctionButton4.Label" DefaultValue="Dummy" />
+        <bt:String id="Contoso.FunctionButton4.Label" DefaultValue="Bubbles" />
         <bt:String id="Contoso.Group1Label" DefaultValue="Commands Group" />
         <bt:String id="Contoso.CustomTabLabel" DefaultValue="Custom Tab Label" />
         <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with your sample add-in!" />

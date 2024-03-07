@@ -3,6 +3,33 @@
  * This bubble chart sample is extracted from the excellent helper tool called Script Lab.
  * Find this sample and more at https://aka.ms/getscriptlab.
  */
+console.log("Loading BubbleChart.razor.js");
+
+export async function createTable() {
+    await Excel.run(async (context) => {
+        context.workbook.worksheets.getItemOrNullObject("Sample").delete();
+        const sheet = context.workbook.worksheets.add("Sample");
+
+        let inventoryTable = sheet.tables.add("A1:D1", true);
+        inventoryTable.name = "Sales";
+        inventoryTable.getHeaderRowRange().values = [["Product", "Inventory", "Price", "Current Market Share"]];
+
+        inventoryTable.rows.add(null, [
+            ["Calamansi", 2000, "$2.45", "10%"],
+            ["Cara cara orange", 10000, "$2.12", "45%"],
+            ["Limequat", 4000, "$0.70", "66%"],
+            ["Meyer lemon", 100, "$2.65", "5%"],
+            ["Pomelo", 4000, "$1.69", "14%"],
+            ["Yuzu", 7500, "$3.23", "34%"]
+        ]);
+
+        sheet.getUsedRange().format.autofitColumns();
+        sheet.getUsedRange().format.autofitRows();
+
+        sheet.activate();
+        await context.sync();
+    });
+}
 
 export async function createBubbleChart() {
     await Excel.run(async (context) => {
@@ -51,28 +78,3 @@ export async function createBubbleChart() {
     });
 }
 
-export async function createTable() {
-    await Excel.run(async (context) => {
-        context.workbook.worksheets.getItemOrNullObject("Sample").delete();
-        const sheet = context.workbook.worksheets.add("Sample");
-
-        let inventoryTable = sheet.tables.add("A1:D1", true);
-        inventoryTable.name = "Sales";
-        inventoryTable.getHeaderRowRange().values = [["Product", "Inventory", "Price", "Current Market Share"]];
-
-        inventoryTable.rows.add(null, [
-            ["Calamansi", 2000, "$2.45", "10%"],
-            ["Cara cara orange", 10000, "$2.12", "45%"],
-            ["Limequat", 4000, "$0.70", "66%"],
-            ["Meyer lemon", 100, "$2.65", "5%"],
-            ["Pomelo", 4000, "$1.69", "14%"],
-            ["Yuzu", 7500, "$3.23", "34%"]
-        ]);
-
-        sheet.getUsedRange().format.autofitColumns();
-        sheet.getUsedRange().format.autofitRows();
-
-        sheet.activate();
-        await context.sync();
-    });
-}
