@@ -35,8 +35,6 @@ The user updates their Word document with the content from another Word document
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- [Node.js](https://nodejs.org/) version 16 or greater.
-- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
 ## Solution
 
@@ -65,7 +63,7 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 
 1. Go to the Home tab and choose the **Show Task Pane** button in the ribbon to open the add-in task pane.
 
-1. In the "Template" section of the add-in UI, select the **Choose File** button. Navigate to the location of your .docx file then open the file. The template is automatically applied to your document.
+1. In the "Template" section of the add-in UI, select the **Choose File** button. Navigate to the location of your .docx file then open the file. The template is automatically applied to your document, replacing any preexisting content.
 
     ![The initial screen displaying the button to choose a file.](./resources/word-import-template-initial-screen.png)
 
@@ -78,6 +76,8 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 ## Run the sample from localhost
 
 If you prefer to host the web server for the sample on your computer, follow these steps:
+
+1. Install [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
 1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
 
@@ -109,13 +109,13 @@ If you prefer to host the web server for the sample on your computer, follow the
 
 1. [Try out the sample!](#try-it-out)
 
-## Make it yours -- TODO: Update
+## Make it yours
 
 The following are a few suggestions for how you could tailor this to your scenario.
 
 - Include [single sign-on (SSO)](https://learn.microsoft.com/office/dev/add-ins/develop/sso-in-office-add-ins) to support managing sessions and persisting settings for the user.
-- Update the citation style used to display the references in the endnotes, or allow the user to choose the style.
-- Use [footnotes](https://learn.microsoft.com/javascript/api/word/word.range#word-word-range-insertfootnote-member(1)) instead of endnotes, or allow the user to choose.
+- Provide personalized or company-approved templates for users to access.
+- Enable users to personalize templates and save to shared location.
 
 ## Related content
 
