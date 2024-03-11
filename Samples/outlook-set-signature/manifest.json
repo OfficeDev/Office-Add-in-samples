@@ -143,15 +143,15 @@
                                             "icons": [
                                                 {
                                                     "size": 16,
-                                                    "file": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://localhost:3000/assets/final_logo.png"
                                                 },
                                                 {
                                                     "size": 32,
-                                                    "file": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://localhost:3000/assets/final_logo.png"
                                                 },
                                                 {
                                                     "size": 80,
-                                                    "file": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://localhost:3000/assets/final_logo.png"
                                                 }
                                             ],
                                             "supertip": {
@@ -201,15 +201,15 @@
                                             "icons": [
                                                 {
                                                     "size": 16,
-                                                    "file": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://localhost:3000/assets/final_logo.png"
                                                 },
                                                 {
                                                     "size": 32,
-                                                    "file": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://localhost:3000/assets/final_logo.png"
                                                 },
                                                 {
                                                     "size": 80,
-                                                    "file": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://localhost:3000/assets/final_logo.png"
                                                 }
                                             ],
                                             "supertip": {
