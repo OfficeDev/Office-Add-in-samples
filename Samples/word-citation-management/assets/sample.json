@@ -24,7 +24,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/OfficeDev/Office-Add-in-samples/blob/main/Samples/word-citation-management/assets/word-citation-management.png",
+                "url": "https://learn.microsoft.com/office/dev/add-ins/images/word-citation-management.png",
                 "alt": "The citation management add-in task pane."
             }
         ],

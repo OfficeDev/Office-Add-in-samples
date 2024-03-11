@@ -3,7 +3,7 @@ page_type: sample
 urlFragment: word-citation-management
 products:
 - office-word
-- m365
+- office
 languages:
 - javascript
 extensions:
@@ -26,7 +26,7 @@ The user updates their Word document to include their citations and quotations. 
 
 The sample uses the [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJs#readme) JavaScript library to parse the .bib file.
 
-![Citation management add-in task pane.](./assets/word-citation-management.png)
+![Citation management add-in task pane.](./resources/word-citation-management.png)
 
 ## Applies to
 
@@ -77,23 +77,23 @@ The sample uses the [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJ
 
 1. In the "Bibliography sources" section of the add-in UI, select the **Choose File** button. Navigate to the local location of your .bib file then open the file.
 
-    ![The initial screen displaying the button to choose a file.](./assets/word-citation-management-initial-screen.png)
+    ![The initial screen displaying the button to choose a file.](./resources/word-citation-management-initial-screen.png)
 
-    For convenience, the assets folder of this project includes a sample.bib file.
+    For convenience, the resources folder of this project includes a sample.bib file.
 
-    ![Screen showing selected file.](./assets/word-citation-management-selected-bib.png)
+    ![Screen showing selected file.](./resources/word-citation-management-selected-bib.png)
 
 1. In the document, select the text that you cited or quoted, or place the cursor.
 
-    ![Screen showing text selected in the Word document.](./assets/word-citation-management-selected-text.png)
+    ![Screen showing text selected in the Word document.](./resources/word-citation-management-selected-text.png)
 
 1. In the list of references in the "References" section of the add-in UI, search for and select the reference you want to insert then select the **Insert citation** button. To unselect the selected radio button, choose the **Clear selection** button.
 
-    ![Screen showing selected reference option.](./assets/word-citation-management-select-option.png)
+    ![Screen showing selected reference option.](./resources/word-citation-management-select-option.png)
 
 1. In the document, the reference mark appears at the end of the selected text and an endnote with the reference information is displayed at the end of the document.
 
-    ![Screen showing citation inserted in the Word document.](./assets/word-citation-management-inserted-citation.png)
+    ![Screen showing citation inserted in the Word document.](./resources/word-citation-management-inserted-citation.png)
 
 ## Make it yours
 
