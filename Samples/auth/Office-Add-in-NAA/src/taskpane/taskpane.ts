@@ -5,7 +5,7 @@
 
 /* global console, document, Excel, Office */
 
-import { ssoGetToken } from "./authConfig";
+import { ssoGetToken, ssoGetUserIdentity } from "./authConfig";
 import { getGraphData } from "./msgraph-helper";
 import { writeFileNamesToOfficeDocument} from "./document";
 
@@ -13,11 +13,28 @@ Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
-    document.getElementById("run").onclick = run;
+    document.getElementById("getUserData").onclick = getUserData;
+    document.getElementById("getUserFiles").onclick = getUserFiles;
   }
 });
 
-export async function run() {
+/**
+ * Gets the user data such as name and email and displays it
+ * in the task pane.
+ */
+async function getUserData(){
+  const userAccount = await ssoGetUserIdentity();
+  console.log(userAccount);
+  document.getElementById("userName").innerText = userAccount.idTokenClaims.name;
+  document.getElementById("userEmail").innerText = userAccount.idTokenClaims.email;
+
+}
+
+/**
+ * Gets the first 10 items (files or folders) from the user's OneDrive.
+ * Inserts the item names into the document.
+ */
+async function getUserFiles() {
   try {
       const accessToken = await ssoGetToken();
       

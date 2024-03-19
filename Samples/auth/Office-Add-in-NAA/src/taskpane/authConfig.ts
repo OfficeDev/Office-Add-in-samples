@@ -6,7 +6,7 @@
 import * as msalBrowser from "@azure/msal-browser";
 import { getGraphData } from "./msgraph-helper";
 
-export { ssoGetToken }
+export { ssoGetToken, ssoGetUserIdentity }
 
 //msal config - using dev tenant registered app ID. 
 const msalConfig = {
@@ -16,7 +16,6 @@ const msalConfig = {
         supportsNestedAppAuth: true
     }
 }
-
 const myloginhint = "davechuatest3.onmicrosoft.com";
 
 // Initialize MSAL public client application.
@@ -38,8 +37,30 @@ async function ssoGetToken() {
         loginhint: myloginhint
     };
     try {
-        const result = await pca.ssoSilent(tokenRequest);
-        return result.accessToken;        
+        const userAccount = await pca.ssoSilent(tokenRequest);
+        return userAccount.accessToken;
+    } catch (error) {
+        console.log(error);
+        let resultatpu = pca.acquireTokenPopup(tokenRequest);
+        console.log("result: " + resultatpu);
+        throw (error); //rethrow
+    }
+}
+
+/**
+ * Uses MSAL and nested app authentication to get the user account from Office SSO.
+ * This demonstrates how to work with user identity from the token.
+ * 
+ * @returns The user account data (identity).
+ */
+async function ssoGetUserIdentity() {
+    const tokenRequest = {
+        scopes: [ "openid" ],
+        loginhint: myloginhint
+    };
+    try {
+        const userAccount = await pca.ssoSilent(tokenRequest);
+        return userAccount;
     } catch (error) {
         console.log(error);
         let resultatpu = pca.acquireTokenPopup(tokenRequest);
