@@ -10,7 +10,7 @@ import { getGraphData } from "./msgraph-helper";
 import { writeFileNamesToOfficeDocument} from "./document";
 
 Office.onReady((info) => {
-  if (info.host === Office.HostType.Excel) {
+  if (info.host === Office.HostType.Excel || info.host === Office.HostType.Word || info.host === Office.HostType.PowerPoint) {
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
     document.getElementById("getUserData").onclick = getUserData;
