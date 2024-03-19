@@ -5,6 +5,8 @@
 
 //const getData = require("./odata-helper");
 
+export { getGraphData }
+
 const domain = "graph.microsoft.com";
 const versionURLsegment = "/v1.0";
 
@@ -17,13 +19,6 @@ const versionURLsegment = "/v1.0";
  * @returns
  */
 async function getGraphData(accessToken, apiURLsegment, queryParamsSegment) 
-  // HTML encode the parameters to prevent JavaScript injection attack
-  //  apiURLsegment = encodeURIComponent(apiURLsegment);
-  //  queryParamsSegment = encodeURIComponent(queryParamsSegment);
-
-    // If any part of queryParamsSegment comes from user input,
-// be sure that it is sanitized so that it cannot be used in
-// a Response header injection attack.
 {
   const requestString = "https://graph.microsoft.com/v1.0" + apiURLsegment + queryParamsSegment;
   const headersInit = { 'Authorization': accessToken };
@@ -39,4 +34,4 @@ async function getGraphData(accessToken, apiURLsegment, queryParamsSegment)
 
 }
 
-module.exports = getGraphData;
+
