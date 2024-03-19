@@ -5,6 +5,8 @@
 
 /* global console, document, Excel, Office */
 
+import ssoGetToken from "./authConfig";
+
 Office.onReady((info) => {
   if (info.host === Office.HostType.Excel) {
     document.getElementById("sideload-msg").style.display = "none";
@@ -16,6 +18,7 @@ Office.onReady((info) => {
 export async function run() {
   try {
     await Excel.run(async (context) => {
+      ssoGetToken();
       /**
        * Insert your Excel code here
        */
