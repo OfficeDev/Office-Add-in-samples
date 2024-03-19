@@ -70,5 +70,5 @@ async function writeFileNamesToPresentation(fileNameList: string[]) {
         throw asyncfileNameList.error.message;
       }
     }
-  );
+  ); 
 }
