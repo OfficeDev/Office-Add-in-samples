@@ -9,8 +9,8 @@
         // The document is ready
         $(document).ready(function () {
 
-            // Assign HTML buttons to functions
-            $('#create-table').click(loadTable);
+            // Assign HTML buttons to functions.
+            $('#create-table').on("click", loadTable);
         });
     });
     

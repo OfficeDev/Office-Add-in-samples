@@ -74,31 +74,31 @@ function clickHandler() {
 
     if ($('#setOOXMLContent').is(':checked')) {
 
-        $('#setFText').click(function () { writeContent('../../OOXMLSamples/TextWithDirectFormat.xml'); });
-        $('#setSText').click(function () { writeContent('../../OOXMLSamples/TextWithStyle.xml'); });
-        $('#setImage').click(function () { writeContent('../../OOXMLSamples/SimpleImage.xml'); });
-        $('#setPhoto').click(function () { writeContent('../../OOXMLSamples/FormattedImage.xml'); });
-        $('#setBox').click(function () { writeContent('../../OOXMLSamples/TextBoxWordArt.xml'); });
-        $('#setShape').click(function () { writeContent('../../OOXMLSamples/ShapeWithText.xml'); });
-        $('#setControl').click(function () { writeContent('../../OOXMLSamples/ContentControl.xml'); });
-        $('#setFTable').click(function () { writeContent('../../OOXMLSamples/TableWithDirectFormat.xml'); });2
-        $('#setSTable').click(function () { writeContent('../../OOXMLSamples/TableStyled.xml'); });
-        $('#setSmartArt').click(function () { writeContent('../../OOXMLSamples/SmartArt.xml'); });
-        $('#setChart').click(function () { writeContent('../../OOXMLSamples/Chart.xml'); });
+        $('#setFText').on("click", function () { writeContent('../../OOXMLSamples/TextWithDirectFormat.xml'); });
+        $('#setSText').on("click", function () { writeContent('../../OOXMLSamples/TextWithStyle.xml'); });
+        $('#setImage').on("click", function () { writeContent('../../OOXMLSamples/SimpleImage.xml'); });
+        $('#setPhoto').on("click", function () { writeContent('../../OOXMLSamples/FormattedImage.xml'); });
+        $('#setBox').on("click", function () { writeContent('../../OOXMLSamples/TextBoxWordArt.xml'); });
+        $('#setShape').on("click", function () { writeContent('../../OOXMLSamples/ShapeWithText.xml'); });
+        $('#setControl').on("click", function () { writeContent('../../OOXMLSamples/ContentControl.xml'); });
+        $('#setFTable').on("click", function () { writeContent('../../OOXMLSamples/TableWithDirectFormat.xml'); });2
+        $('#setSTable').on("click", function () { writeContent('../../OOXMLSamples/TableStyled.xml'); });
+        $('#setSmartArt').on("click", function () { writeContent('../../OOXMLSamples/SmartArt.xml'); });
+        $('#setChart').on("click", function () { writeContent('../../OOXMLSamples/Chart.xml'); });
     }
 
     else {
-        $('#setFText').click(function () { writeMarkup('../../OOXMLSamples/TextWithDirectFormat.xml'); });
-        $('#setSText').click(function () { writeMarkup('../../OOXMLSamples/TextWithStyle.xml'); });
-        $('#setImage').click(function () { writeMarkup('../../OOXMLSamples/SimpleImage.xml'); });
-        $('#setPhoto').click(function () { writeMarkup('../../OOXMLSamples/FormattedImageMarkup.xml'); });
-        $('#setBox').click(function () { writeMarkup('../../OOXMLSamples/TextBoxWordArt.xml'); });
-        $('#setShape').click(function () { writeMarkup('../../OOXMLSamples/ShapeWithText.xml'); });
-        $('#setControl').click(function () { writeMarkup('../../OOXMLSamples/ContentControl.xml'); });
-        $('#setFTable').click(function () { writeMarkup('../../OOXMLSamples/TableWithDirectFormat.xml'); });
-        $('#setSTable').click(function () { writeMarkup('../../OOXMLSamples/TableStyled.xml'); });
-        $('#setSmartArt').click(function () { writeMarkup('../../OOXMLSamples/SmartArt.xml'); });
-        $('#setChart').click(function () { writeMarkup('../../OOXMLSamples/ChartMarkup.xml'); })
+        $('#setFText').on("click", function () { writeMarkup('../../OOXMLSamples/TextWithDirectFormat.xml'); });
+        $('#setSText').on("click", function () { writeMarkup('../../OOXMLSamples/TextWithStyle.xml'); });
+        $('#setImage').on("click", function () { writeMarkup('../../OOXMLSamples/SimpleImage.xml'); });
+        $('#setPhoto').on("click", function () { writeMarkup('../../OOXMLSamples/FormattedImageMarkup.xml'); });
+        $('#setBox').on("click", function () { writeMarkup('../../OOXMLSamples/TextBoxWordArt.xml'); });
+        $('#setShape').on("click", function () { writeMarkup('../../OOXMLSamples/ShapeWithText.xml'); });
+        $('#setControl').on("click", function () { writeMarkup('../../OOXMLSamples/ContentControl.xml'); });
+        $('#setFTable').on("click", function () { writeMarkup('../../OOXMLSamples/TableWithDirectFormat.xml'); });
+        $('#setSTable').on("click", function () { writeMarkup('../../OOXMLSamples/TableStyled.xml'); });
+        $('#setSmartArt').on("click", function () { writeMarkup('../../OOXMLSamples/SmartArt.xml'); });
+        $('#setChart').on("click", function () { writeMarkup('../../OOXMLSamples/ChartMarkup.xml'); })
     }
 }
 

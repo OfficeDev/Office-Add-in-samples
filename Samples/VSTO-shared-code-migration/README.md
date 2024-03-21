@@ -32,20 +32,20 @@ The sample starts with an Excel VSTO add-in that provides functionality for the 
 
 ## Applies to
 
--  Excel, Outlook, Word, and PowerPoint, on Windows, Mac, and in a browser.
+- Excel, Outlook, Word, and PowerPoint, on Windows, Mac, and in a browser.
 
 ## Prerequisites
 
 To set up your development environment:
 
 1. Install [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/).
-2. Install the following workloads:
+1. Install the following workloads:
     - ASP.NET and web development
     - .NET Core cross-platform development. **Note:** You need at least .NET Core version 2.2 or later to run the completed sample.
     - Office/SharePoint development
     - Visual Studio Tools for Office (VSTO). **Note:** This is an **Individual** component.
 
-You will also need an Office 365 account. You can join the [Office 365 Developer Program](https://aka.ms/devprogramsignup) that includes a free 1 year subscription to Office 365.
+You'll also need a Microsoft 365 account. You might qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 
 ## Solution
 
