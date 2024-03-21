@@ -13,9 +13,9 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Office Add-ins Outlook spam-reporting sample"/>
   <Description DefaultValue="Report spam or phishing emails using a spam-reporting add-in."/>
-  <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-spam-reporting/assets/icon-64.png"/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/outlook/spam-reporting" />
-  <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-spam-reporting/assets/icon-128.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
   <AppDomains>
     <AppDomain>https://officedev.github.io</AppDomain>
   </AppDomains>
@@ -30,7 +30,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
     <Host Name="Mailbox"/>
-        <SourceLocation DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/ericl-outlook-spam-reporting-sample/src/spamreporting.html"/>
+        <SourceLocation DefaultValue="https://localhost:3000/src/spamreporting.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -103,13 +103,13 @@
       </Hosts>
       <Resources>
         <bt:Images>
-          <bt:Image id="Icon.16x16" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/ericl-outlook-spam-reporting-sample/assets/icon-16.png"/>
-          <bt:Image id="Icon.32x32" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/ericl-outlook-spam-reporting-sample/assets/icon-32.png"/>
-          <bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/ericl-outlook-spam-reporting-sample/assets/icon-80.png"/>
+          <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/ericl-outlook-spam-reporting-sample/src/spamreporting.html"/>
-          <bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/ericl-outlook-spam-reporting-sample/src/spamreporting.js"/>
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/src/spamreporting.html"/>
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/spamreporting.js"/>
           <bt:Url id="MoreInfo.Url" DefaultValue="https://learn.microsoft.com/en-us/office/dev/add-ins/outlook/spam-reporting"/>
         </bt:Urls>
         <bt:ShortStrings>
