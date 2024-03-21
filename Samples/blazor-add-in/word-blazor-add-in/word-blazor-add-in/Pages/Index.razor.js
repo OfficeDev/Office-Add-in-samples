@@ -13,7 +13,7 @@ export async function setupDocument() {
         context.document.body.insertParagraph("Inserting another paragraph. ", "Start");
 
         context.document.body.insertParagraph(
-            "Effective add-ins offer unique and compelling functionality that extends Office applications in a visually appealing way. To create a great add-in, provide an engaging first-time experience for your users, design a first-class UI experience, and optimize your add-in's performance.",
+            "Effective add-ins offer unique and compelling functionality that extends Office applications in a visually appealing way. To create a great add-in, provide engaging first-time experience for your users, design a first-class UI experience, and optimize your add-in's performance.",
             "Start"
         );
 

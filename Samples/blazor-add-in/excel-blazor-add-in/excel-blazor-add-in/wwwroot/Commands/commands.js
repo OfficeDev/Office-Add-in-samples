@@ -56,8 +56,6 @@ async function createBubbles(event) {
     // Implement your custom code here. The following code is a simple Excel example.
     try {
 
-        var name = "Initializing";
-
         // Call JSInvokable Function here ...
         await DotNet.invokeMethodAsync("BlazorAddIn", "CreateBubbles");
 
@@ -131,7 +129,7 @@ async function callStaticLocalComponentMethodinit(methodname) {
         var name = "Initializing";
 
         // Call JSInvokable Function here ...
-        name = await DotNet.invokeMethodAsync("BlazorAddIn", methodname, "Skod from Blazor");
+        name = await DotNet.invokeMethodAsync("BlazorAddIn", methodname, "Soft as in Software from Blazor");
         console.log("Finished Initializing: " + name)
 
         await Excel.run(async (context) => {

@@ -29,7 +29,7 @@ namespace BlazorAddIn.Pages
         /// <summary>
         /// Function to create the starter table as source for the bubble chart.
         /// </summary>
-        private async Task CreateTable() => 
+        private async Task CreateTable() =>
             await JSModule.InvokeVoidAsync("createTable");
 
         /// <summary>
@@ -39,13 +39,10 @@ namespace BlazorAddIn.Pages
             await JSModule.InvokeVoidAsync("createBubbleChart");
 
         [JSImport("createTable", "BubbleChart")]
-        internal static partial void RunCreateTable();
+        internal static partial Task CreateImportedTable();
 
         [JSImport("createBubbleChart", "BubbleChart")]
         internal static partial Task RunCreateChart();
-
-        [JSImport("createTable", "BubbleChart")]
-        internal static partial Task CreateImportedTable();
 
         [JSInvokable]
         public static async Task CreateBubbles()

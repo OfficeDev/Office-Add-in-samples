@@ -1,13 +1,17 @@
 ﻿/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
-
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices.JavaScript;
+using System.Runtime.Versioning;
+
 namespace BlazorAddIn.Pages
 {
+    [SupportedOSPlatform("browser")]
     public partial class Index
     {
-        [Inject]
+        [Inject, AllowNull]
         public IJSRuntime JSRuntime { get; set; } = default!;
 
         public IJSObjectReference JSModule { get; set; } = default!;
@@ -61,5 +65,27 @@ namespace BlazorAddIn.Pages
         /// </summary>
         internal async Task DeleteContentControl() =>
             await JSModule.InvokeVoidAsync("deleteContentControl");
+
+        [JSImport("setupDocument", "Index")]
+        internal static partial Task SetupDocument();
+
+        [JSImport("insertContentControls", "Index")]
+        internal static partial Task InsertContentControlsFunction();
+
+        [JSImport("tagContentControls", "Index")]
+        internal static partial Task TagContentControlsFunction();
+
+        [JSImport("modifyContentControls", "Index")]
+        internal static partial Task ModifyContentControlsFunction();
+
+        [JSInvokable]
+        public static async Task PrepareDocument()
+        {
+            await JSHost.ImportAsync("Index", "../Pages/Index.razor.js");
+            await SetupDocument();
+            await InsertContentControlsFunction();
+            await TagContentControlsFunction();
+            await ModifyContentControlsFunction();
+        }
     }
 }

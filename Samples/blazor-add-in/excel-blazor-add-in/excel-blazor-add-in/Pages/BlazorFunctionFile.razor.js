@@ -32,7 +32,7 @@ async function callStaticLocalComponentMethodinit() {
         var name = "init";
         // Call JSInvokable Function here ...
 
-        // name = await DotNet.invokeMethodAsync("BlazorAddIn", "SayHelloFunctions", "Skod from Blazor");
+        // name = await DotNet.invokeMethodAsync("BlazorAddIn", "SayHelloFunctions", "Soft as in Software from Blazor");
         console.log("fin init : " + name)
 
         await Excel.run(async (context) => {
