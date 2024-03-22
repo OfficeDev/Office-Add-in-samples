@@ -70,14 +70,20 @@ class AccountManager {
             scopes: ["openid"],
             loginHint: myloginHint
         };
-        // Acquire token silent failure. Send an interactive request via popup.
         try {
-            const userAccount = await this.pca.acquireTokenPopup(tokenRequest);
+            const userAccount = await this.pca.acquireTokenSilent(tokenRequest);
             return userAccount;
-        } catch (popupError) {
-            // Acquire token interactive failure.
-            console.log(popupError);
-            throw new Error("Unable to acquire access token: " + popupError)
+
+        } catch (error) {
+            // Acquire token silent failure. Send an interactive request via popup.
+            try {
+                const userAccount = await this.pca.acquireTokenPopup(tokenRequest);
+                return userAccount;
+            } catch (popupError) {
+                // Acquire token interactive failure.
+                console.log(popupError);
+                throw new Error("Unable to acquire access token: " + popupError)
+            }
         }
     }
 }
