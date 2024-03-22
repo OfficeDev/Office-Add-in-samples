@@ -28,11 +28,11 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
+    "@azure/msal-browser": "^3.10.0",
     "core-js": "^3.9.1",
     "regenerator-runtime": "^0.13.7"
   },
   "devDependencies": {
-    "@azure/msal-browser": "^3.10.0",
     "@babel/core": "^7.13.10",
     "@babel/preset-typescript": "^7.13.0",
     "@types/office-js": "^1.0.256",

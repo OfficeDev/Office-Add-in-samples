@@ -28,6 +28,7 @@ Office.onReady((info) => {
 async function getUserData() {
   const userAccount = await accountManager.ssoGetUserIdentity();
   console.log(userAccount);
+  document.getElementById("userData").style.visibility = "visible";
   document.getElementById("userName").innerText = userAccount.idTokenClaims.name;
   document.getElementById("userEmail").innerText = userAccount.idTokenClaims.email;
 

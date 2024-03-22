@@ -13,8 +13,9 @@
     <!-- Office JavaScript API -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
 
-    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
-    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+    <!-- For Office UI Fabric Core, go to https://aka.ms/office-ui-fabric to learn more. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.0/css/fabric.min.css">
+    <link href="button.css" rel="stylesheet" type="text/css" />
 
     <!-- Template styles -->
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
@@ -30,17 +31,25 @@
     </section>
     <main id="app-body" class="ms-welcome__main" style="display: none;">
         <h2 class="ms-font-xl"> SSO with nested app authentication </h2>
-        <p class="ms-font-l">This add-in demonstrates how to connect to Microsoft Graph from an add-in.</p>
-        <div role="button" id="getUserData" class="ms-welcome__action ms-Button ms-Button--hero ms-font-xl">
-            <span class="ms-Button-label">Get user data</span>
-        </div>
-        <div id="userData">
+        <p class="ms-font-l">This add-in demonstrates how to connect to Microsoft Graph from an add-in.</p>        
+        
+        <button class="Button Button--primary" id="getUserData">
+            <span class="Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+            <span class="Button-label">Get user data</span>
+            <span class="Button-description">Gets the user's name and email.</span>
+        </button>
+        <br>
+        <div id="userData" style="visibility: hidden;">
             <label>Name: </label><label id="userName"></label><br>
             <label>Email: </label><label id="userEmail"></label>
         </div>
-        <div role="button" id="getUserFiles" class="ms-welcome__action ms-Button ms-Button--hero ms-font-xl">
-            <span class="ms-Button-label">Get user files</span>
-        </div>
+        <br>
+        <button class="Button Button--primary" id="getUserFiles">
+            <span class="Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+            <span class="Button-label">Get user files</span>
+            <span class="Button-description">Gets the first 10 items from the user's OneDrive and inserts them in the document.</span>
+        </button>
+
         <p><label id="item-subject"></label></p>
     </main>
 </body>

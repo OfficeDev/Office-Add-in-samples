@@ -20,7 +20,7 @@ const msalConfig = {
 
 // Encapsulate functions for getting user account and token information.
 class AccountManager {
-    pca = undefined;
+    pca: msalBrowser.IPublicClientApplication | undefined = undefined;
 
     // Initialize MSAL public client application.
     async initialize() {
@@ -34,18 +34,26 @@ class AccountManager {
      * @returns An access token for calling Microsoft Graph APIs.
      */
     async ssoGetToken() {
+        if (this.pca === undefined) throw new Error("AccountManager is not initialized!");
+        // Specify minimum scopes needed for the access token.
         const tokenRequest = {
             scopes: ["Files.Read"],
             loginHint: myloginHint
-        };
+        }
         try {
-            const userAccount = await this.pca.ssoSilent(tokenRequest);
+            const userAccount = await this.pca.acquireTokenSilent(tokenRequest);
             return userAccount.accessToken;
+
         } catch (error) {
-            console.log(error);
-            let resultatpu = this.pca.acquireTokenPopup(tokenRequest);
-            console.log("result: " + resultatpu);
-            throw (error); //rethrow
+            // Acquire token silent failure. Send an interactive request via popup.
+            try {
+                const userAccount = await this.pca.acquireTokenPopup(tokenRequest);
+                return userAccount.accessToken;
+            } catch (popupError) {
+                // Acquire token interactive failure.
+                console.log(popupError);
+                throw new Error("Unable to acquire access token: " + popupError)
+            }
         }
     }
 
@@ -56,18 +64,20 @@ class AccountManager {
      * @returns The user account data (identity).
      */
     async ssoGetUserIdentity() {
+        if (this.pca === undefined) throw new Error("AccountManager is not initialized!");
+        // Specify minimum scopes needed for the access token.
         const tokenRequest = {
             scopes: ["openid"],
             loginHint: myloginHint
         };
+        // Acquire token silent failure. Send an interactive request via popup.
         try {
-            const userAccount = await this.pca.ssoSilent(tokenRequest);
+            const userAccount = await this.pca.acquireTokenPopup(tokenRequest);
             return userAccount;
-        } catch (error) {
-            console.log(error);
-            let resultatpu = this.pca.acquireTokenPopup(tokenRequest);
-            console.log("result: " + resultatpu);
-            throw (error); //rethrow
+        } catch (popupError) {
+            // Acquire token interactive failure.
+            console.log(popupError);
+            throw new Error("Unable to acquire access token: " + popupError)
         }
     }
 }
