@@ -20,7 +20,7 @@ description: "Learn how to create an integrated spam-reporting add-in in Outlook
 
 **Applies to**: Outlook on Windows (preview)
 
-![A sample spam-reporting dialog.](/assets/readme/outlook-spam-processing-dialog.png)
+![A sample spam-reporting dialog.](./assets/readme/outlook-spam-processing-dialog.png)
 
 ## Summary
 
@@ -112,11 +112,11 @@ Once the add-in is loaded in Outlook, use the following steps to try out its fun
 
 1. Choose a message from your inbox, then select the add-in's button from the ribbon.
 
-    ![The spam-reporting add-in button is selected from the ribbon.](/assets//readme/outlook-spam-ribbon-button.png)
+    ![The spam-reporting add-in button is selected from the ribbon.](./assets//readme/outlook-spam-ribbon-button.png)
 1. In the preprocessing dialog, choose a reason for reporting the message and add information about the message, if configured. Then, select **Report**.
 1. (Optional) In the post-processing dialog, select **OK**.
 
-    ![The post-processing dialog of the sample spam-reporting add-in.](/assets//readme/outlook-spam-post-processing-dialog.png)
+    ![The post-processing dialog of the sample spam-reporting add-in.](./assets//readme/outlook-spam-post-processing-dialog.png)
 
 ## References
 
