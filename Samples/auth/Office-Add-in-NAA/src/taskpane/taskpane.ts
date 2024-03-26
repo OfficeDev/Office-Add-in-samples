@@ -3,21 +3,39 @@
  * See LICENSE in the project root for license information.
  */
 
-/* global console, document, Excel, Office */
+/* global console, document, Office */
 
 import { AccountManager } from "./authConfig";
 import { getGraphData } from "./msgraph-helper";
 import { writeFileNamesToOfficeDocument } from "./document";
 
 const accountManager = new AccountManager();
+const sideloadMsg = document.getElementById("sideload-msg");
+const appBody = document.getElementById("app-body");
+const getUserDataButton = document.getElementById("getUserData");
+const getUserFilesButton = document.getElementById("getUserFiles");
+const userName = document.getElementById("userName");
+const userEmail = document.getElementById("userEmail");
 
 Office.onReady((info) => {
-  if (info.host === Office.HostType.Excel || info.host === Office.HostType.Word || info.host === Office.HostType.PowerPoint) {
-    document.getElementById("sideload-msg").style.display = "none";
-    document.getElementById("app-body").style.display = "flex";
-    document.getElementById("getUserData").onclick = getUserData;
-    document.getElementById("getUserFiles").onclick = getUserFiles;
-    accountManager.initialize();
+  switch (info.host) {
+    case Office.HostType.Excel:
+    case Office.HostType.PowerPoint:
+    case Office.HostType.Word:
+      if (sideloadMsg) {
+        sideloadMsg.style.display = "none";
+      }
+      if (appBody) {
+        appBody.style.display = "flex";
+      }
+      if (getUserDataButton) {
+        getUserDataButton.onclick = getUserData;
+      }
+      if (getUserFilesButton) {
+        getUserFilesButton.onclick = getUserFiles;
+      }
+      accountManager.initialize();
+      break;
   }
 });
 
@@ -26,12 +44,21 @@ Office.onReady((info) => {
  * in the task pane.
  */
 async function getUserData() {
+  const userDataElement = document.getElementById("userData");
   const userAccount = await accountManager.ssoGetUserIdentity();
-  console.log(userAccount);
-  document.getElementById("userData").style.visibility = "visible";
-  document.getElementById("userName").innerText = userAccount.idTokenClaims.name;
-  document.getElementById("userEmail").innerText = userAccount.idTokenClaims.email;
+  const idTokenClaims = userAccount.idTokenClaims as { name?: string; email?: string };
 
+  console.log(userAccount);
+
+  if (userDataElement) {
+    userDataElement.style.visibility = "visible";
+  }
+  if (userName) {
+    userName.innerText = idTokenClaims.name ?? "";
+  }
+  if (userEmail) {
+    userEmail.innerText = idTokenClaims.email ?? "";
+  }
 }
 
 /**
@@ -42,8 +69,8 @@ async function getUserFiles() {
   try {
     const accessToken = await accountManager.ssoGetToken();
 
-    const root = '/me/drive/root/children';
-    const params = '?$select=name&$top=10';
+    const root = "/me/drive/root/children";
+    const params = "?$select=name&$top=10";
     const results = await getGraphData(accessToken, root, params);
     // Get item names from the results
     const itemNames = [];
@@ -56,5 +83,3 @@ async function getUserFiles() {
     console.error(error);
   }
 }
-
-
