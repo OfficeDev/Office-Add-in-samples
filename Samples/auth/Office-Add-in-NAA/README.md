@@ -41,7 +41,7 @@ This sample shows how to use nested app authentication (NAA) in an Office Add-in
 ### Create an application registration
 
 1. Navigate to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page to register your app.
-1. Sign in with the ***admin*** credentials to your Microsoft 365 tenancy. For example, <MyName@contoso.onmicrosoft.com>.
+1. Sign in with the ***admin*** credentials to your Microsoft 365 tenancy. For example, **MyName@contoso.onmicrosoft.com**.
 1. Select **New registration**. On the **Register an application** page, set the values as follows.
 
     - Set **Name** to `OfficeAddinNAA`.
