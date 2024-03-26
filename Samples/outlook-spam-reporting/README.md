@@ -12,7 +12,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 02/12/2024 10:00:00 AM
+  createdDate: 03/26/2024 10:00:00 AM
 description: "Learn how to create an integrated spam-reporting add-in in Outlook."
 ---
 
@@ -20,7 +20,7 @@ description: "Learn how to create an integrated spam-reporting add-in in Outlook
 
 **Applies to**: Outlook on Windows (preview)
 
-[A sample spam-reporting dialog.](/assets/readme/outlook-spam-processing-dialog.png)
+![A sample spam-reporting dialog.](/assets/readme/outlook-spam-processing-dialog.png)
 
 ## Summary
 
@@ -33,20 +33,20 @@ This sample showcases how to build an integrated spam-reporting solution that:
 To learn about key components of this sample, see [Implement an integrated spam-reporting add-in (preview)](https://learn.microsoft.com/office/dev/add-ins/outlook/spam-reporting).
 
 > [!IMPORTANT]
-
 > The integrated spam-reporting feature is currently in preview in Outlook on Windows. Features in preview shouldn't be used in production add-ins. We invite you to try out this feature in test or development environments and welcome feedback on your experience through [GitHub](https://github.com/OfficeDev/office-js/issues/new/choose).
 
 ## Applies to
 
 Outlook on Windows starting in Version 2307 (Build 16626.10000).
-    > [!NOTE]
-    > If you don't have a Microsoft 365 subscription, you might qualify for a free developer subscription that's renewable for 90 days and comes configured with sample data. For details, see the [Microsoft 365 Developer Program FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-).
+
+> [!NOTE]
+> If you don't have a Microsoft 365 subscription, you might qualify for a free developer subscription that's renewable for 90 days and comes configured with sample data. For details, see the [Microsoft 365 Developer Program FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-).
 
 ## Prerequisites
 - Microsoft 365 subscription
 
-    > [!TIP]
-    > If you're unable to choose a channel in your Outlook client, see [Let users choose which Microsoft 365 Insider channel to install on Windows devices](https://learn.microsoft.com/deployoffice/insider/deploy/user-choice).
+> [!TIP]
+> If you're unable to choose a channel in your Outlook client, see [Let users choose which Microsoft 365 Insider channel to install on Windows devices](https://learn.microsoft.com/deployoffice/insider/deploy/user-choice).
 
 > [!IMPORTANT]
 > To test the `getAsFileAsync` method while it's still in preview in Outlook on Windows, you must configure your computer's registry.
@@ -56,7 +56,7 @@ Outlook on Windows starting in Version 2307 (Build 16626.10000).
 > 1. In the registry, navigate to `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Outlook\Options\WebExt\Developer`. If the key doesn't exist, create it.
 > 1. Create an entry named `EnableBetaAPIsInJavaScript` and set its value to `1`.
 >
->    :::image type="content" source="../images/outlook-beta-registry-key.png" alt-text="The EnableBetaAPIsInJavaScript registry value is set to 1.":::
+>    ![The EnableBetaAPIsInJavaScript registry value is set to 1.](https://learn.microsoft.com/office/dev/add-ins/images/outlook-beta-registry-key.png)
 
 ## Run the sample
 
@@ -112,11 +112,11 @@ Once the add-in is loaded in Outlook, use the following steps to try out its fun
 
 1. Choose a message from your inbox, then select the add-in's button from the ribbon.
 
-    [The spam-reporting add-in button is selected from the ribbon.](/assets//readme/outlook-spam-ribbon-button.png)
+    ![The spam-reporting add-in button is selected from the ribbon.](/assets//readme/outlook-spam-ribbon-button.png)
 1. In the preprocessing dialog, choose a reason for reporting the message and add information about the message, if configured. Then, select **Report**.
 1. (Optional) In the post-processing dialog, select **OK**.
 
-    [The post-processing dialog of the sample spam-reporting add-in.](/assets//readme/outlook-spam-post-processing-dialog.png)
+    ![The post-processing dialog of the sample spam-reporting add-in.](/assets//readme/outlook-spam-post-processing-dialog.png)
 
 ## References
 
@@ -157,4 +157,4 @@ Run this sample in Outlook on Windows using one of the following add-in file hos
 
 | Version | Date | Comments |
 | ----- | ----- | ----- |
-| 1.0 | February 12, 2024 | Initial release |
+| 1.0 | March 26, 2024 | Initial release |
