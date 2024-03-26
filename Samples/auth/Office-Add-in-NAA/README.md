@@ -41,7 +41,7 @@ This sample shows how to use nested app authentication (NAA) in an Office Add-in
 ### Create an application registration
 
 1. Navigate to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page to register your app.
-1. Sign in with the ***admin*** credentials to your Microsoft 365 tenancy. For example, MyName@contoso.onmicrosoft.com.
+1. Sign in with the ***admin*** credentials to your Microsoft 365 tenancy. For example, <MyName@contoso.onmicrosoft.com>.
 1. Select **New registration**. On the **Register an application** page, set the values as follows.
 
     - Set **Name** to `OfficeAddinNAA`.
@@ -57,7 +57,7 @@ For more information on how to register your application, see [Register an appli
 
 1. Open the **src/taskpane/authConfig.ts** file.
 1. Replace the placeholder "Enter_the_Application_Id_Here" with the Application ID that you copied.
-1. Replace the placeholder "Enter_the_Login_Hint_Here" with your Microsoft 365 user name. For example: *admin@contoso.onmicrosoft.com*.
+1. Replace the placeholder "Enter_the_Login_Hint_Here" with your Microsoft 365 user name. For example: *<admin@contoso.onmicrosoft.com>*.
 1. Save the file.
 
 ## Key parts of this sample
@@ -86,4 +86,4 @@ Copyright (c) 2024 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/office-wxp-naa" />
+![image](https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/office-wxp-naa)

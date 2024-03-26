@@ -5,8 +5,10 @@
     This file provides the functionality to write data to the Office document. 
 */
 
+/* global Excel Office Word */
+
 //module.exports = writeFileNamesToOfficeDocument;
-export { writeFileNamesToOfficeDocument }
+export { writeFileNamesToOfficeDocument };
 function writeFileNamesToOfficeDocument(fileNameList: string[]) {
   try {
     switch (Office.context.host) {
@@ -17,10 +19,10 @@ function writeFileNamesToOfficeDocument(fileNameList: string[]) {
       case Office.HostType.PowerPoint:
         return writeFileNamesToPresentation(fileNameList);
       default:
-        throw 'Unsupported Office host application: This add-in only runs on Excel, PowerPoint, or Word.';
+        throw "Unsupported Office host application: This add-in only runs on Excel, PowerPoint, or Word.";
     }
   } catch (error) {
-    throw Error('Unable to add filenames to document. ' + error.toString());
+    throw Error(`Unable to add filenames to document. ${error}`);
   }
 }
 
@@ -37,7 +39,7 @@ async function writeFileNamesToWorksheet(fileNameList: string[]) {
     }
 
     // Update the range.
-    const rangeAddress = 'B5:B' + (5 + (fileNameList.length - 1)).toString();
+    const rangeAddress = "B5:B" + (5 + (fileNameList.length - 1)).toString();
     const range = sheet.getRange(rangeAddress);
     range.values = fileNames;
     range.format.autofitColumns();
@@ -50,7 +52,7 @@ async function writeFileNamesToDocument(fileNameList: string[]) {
   return Word.run(function (context) {
     const documentBody = context.document.body;
     for (let i = 0; i < fileNameList.length; i++) {
-      documentBody.insertParagraph(fileNameList[i], 'End');
+      documentBody.insertParagraph(fileNameList[i], "End");
     }
 
     return context.sync();
@@ -58,17 +60,14 @@ async function writeFileNamesToDocument(fileNameList: string[]) {
 }
 
 async function writeFileNamesToPresentation(fileNameList: string[]) {
-  let fileNames = '';
+  let fileNames = "";
   for (var i = 0; i < fileNameList.length; i++) {
-    fileNames += fileNameList[i] + '\n';
+    fileNames += fileNameList[i] + "\n";
   }
 
-  Office.context.document.setSelectedDataAsync(
-    fileNames,
-    function (asyncfileNameList) {
-      if (asyncfileNameList.status === Office.AsyncResultStatus.Failed) {
-        throw asyncfileNameList.error.message;
-      }
+  Office.context.document.setSelectedDataAsync(fileNames, function (asyncfileNameList) {
+    if (asyncfileNameList.status === Office.AsyncResultStatus.Failed) {
+      throw asyncfileNameList.error.message;
     }
-  ); 
+  });
 }
