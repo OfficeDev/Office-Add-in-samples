@@ -72,37 +72,44 @@ For more information on how to register your application, see [Register an appli
 `npm install`
 `npm run start`
 
-This will start the web server and sideload the add-in in Excel. If you want to choose Word or PowerPoint, modify the start command in the package.json file as follows.
-- For Word: `"start": "office-addin-debugging start manifest.xml desktop --app word",`
-- For PowerPoint: `"start": "office-addin-debugging start manifest.xml desktop --app powerpoint",`
+This will start the web server and sideload the add-in to Excel.
 
-You can also debug the sample by opening the project in VS Code. Select the **Run and Debug** icon in the **Activity Bar** on the side of VS Code. You can also use the keyboard shortcut **Ctrl+Shift+D**.
-1. Select the launch configuration you want from the **Configuration dropdown** in the **Run and Debug** view. For example, **Word Desktop (Edge Chromium)**.
-1. Start your debug session with **F5**.
-
-For more information on debugging with VS Code, see [Debugging](https://code.visualstudio.com/Docs/editor/debugging).
-
-1. In Outlook, compose a new email message.
-1. On the ribbon for the message, look for the **Show task pane** button and select it.
+1. In Excel, on the ribbon, look for the **Show task pane** button and select it.
 1. When the task pane opens, there are two buttons: **Get user data** and **Get user files**.
 1. Select **Get user data** if you want to see the signed in user's name and email.
 1. Select **Get user files** to insert the first 10 filenames from the signed in user's Microsoft OneDrive.
 
 You will be prompted to consent to the scopes the sample needs when you select the buttons.  
 
+## Selecting hosts and debugging steps
+
+If you want to choose Word or PowerPoint, modify the `start` command in the `package.json` file to match one of the following entries.
+- For Word: `"start": "office-addin-debugging start manifest.xml desktop --app word",`
+- For PowerPoint: `"start": "office-addin-debugging start manifest.xml desktop --app powerpoint",`
+
+You can also debug the sample by opening the project in VS Code.
+
+1. Select the **Run and Debug** icon in the **Activity Bar** on the side of VS Code. You can also use the keyboard shortcut **Ctrl+Shift+D**.
+1. Select the launch configuration you want from the **Configuration dropdown** in the **Run and Debug** view. For example, **Word Desktop (Edge Chromium)**.
+1. Start your debug session with **F5**, or **Run > Start Debugging**.
+
+![VS Code debug view](./assets/vs-code-debug-view.png)
+
+For more information on debugging with VS Code, see [Debugging](https://code.visualstudio.com/Docs/editor/debugging). For more information on debugging Office Add-ins in VS Code, see [Debug Office Add-ins on Windows using Visual Studio Code and Microsoft Edge WebView2 (Chromium-based)](https://learn.microsoft.com/office/dev/add-ins/testing/debug-desktop-using-edge-chromium)
+
 ## Key parts of this sample
 
-The **src/taskpane/authConfig.ts** file contains the MSAL code for configuring and using NAA. It contains a class named AccountManager which manages getting user account and token information.
+The `src/taskpane/authConfig.ts` file contains the MSAL code for configuring and using NAA. It contains a class named AccountManager which manages getting user account and token information.
 
-- The **initialize** function is called from Office.onReady to configure and intitialize MSAL to use NAA.
-- The **ssoGetToken** function gets an access token for the signed in user to call Microsoft Graph APIs.
-- The **ssoGetUserIdentity** function gets the account information of the signed in user. This can be used to get user details such as name and email.
+- The `initialize` function is called from Office.onReady to configure and intitialize MSAL to use NAA.
+- The `ssoGetToken` function gets an access token for the signed in user to call Microsoft Graph APIs.
+- The `ssoGetUserIdentity` function gets the account information of the signed in user. This can be used to get user details such as name and email.
 
-The **src/taskpane/document.ts** file contains code to write a list of file names, retrieved from Microsoft Graph, into the document. This works for Word, Excel, and PowerPoint documents.
+The `src/taskpane/document.ts` file contains code to write a list of file names, retrieved from Microsoft Graph, into the document. This works for Word, Excel, and PowerPoint documents.
 
-The **src/taskpane/taskpane.ts** file contains code that runs when the user chooses buttons in the task pane. They use the AccountManager class to get tokens or user information depending on which button is chosen.
+The `src/taskpane/taskpane.ts` file contains code that runs when the user chooses buttons in the task pane. They use the AccountManager class to get tokens or user information depending on which button is chosen.
 
-The **src/taskpane/msgraph-helper.ts** file contains code to construct and make a REST call to the Microsoft Graph API.
+The `src/taskpane/msgraph-helper.ts` file contains code to construct and make a REST call to the Microsoft Graph API.
 
 ## Questions and feedback
 
