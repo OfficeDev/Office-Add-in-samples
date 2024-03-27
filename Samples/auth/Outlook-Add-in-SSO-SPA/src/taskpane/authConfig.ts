@@ -9,7 +9,7 @@ import { PublicClientNext, type IPublicClientApplication } from "@azure/msal-bro
 
 export { AccountManager };
 
-const applicationId = "3d3d0be3-6258-4f51-8832-cf07c00bde03";
+const applicationId = "Enter_the_Application_Id_Here";
 const myloginHint = "Enter_the_Login_Hint_Here";
 
 const msalConfig = {
