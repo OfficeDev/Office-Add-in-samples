@@ -57,7 +57,7 @@ For more information on how to register your application, see [Register an appli
 ### Configure the sample
 
 1. Clone or download this repository.
-1. From the command line, or a terminal window, go to the root folder of this sample at `/samples/auth/Outlook-Add-in-SSO-SPA`.
+1. From the command line, or a terminal window, go to the root folder of this sample at `/samples/auth/Outlook-Add-in-SSO-NAA`.
 1. Open the `src/taskpane/authConfig.ts` file.
 1. Replace the placeholder "Enter_the_Application_Id_Here" with the Application ID that you copied.
 1. Replace the placeholder "Enter_the_Login_Hint_Here" with your Microsoft 365 user name. For example: **admin@contoso.onmicrosoft.com**.
