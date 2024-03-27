@@ -5,7 +5,7 @@
     This file provides the functionality to write data to the Office document. 
 */
 
-/* global Excel Office Word */
+/* global Excel Office PowerPoint Word */
 
 //module.exports = writeFileNamesToOfficeDocument;
 export { writeFileNamesToOfficeDocument };
@@ -26,48 +26,37 @@ function writeFileNamesToOfficeDocument(fileNameList: string[]) {
   }
 }
 
-async function writeFileNamesToWorksheet(fileNameList: string[]) {
+async function writeFileNamesToWorksheet(fileNames: string[]) {
   return Excel.run(async function (context) {
+    const valuesToSet: string[][] = [];
+
+    fileNames.forEach((fileName) => {
+      valuesToSet.push([fileName]);
+    });
+
     const sheet = context.workbook.worksheets.getActiveWorksheet();
-
-    // Build correct array structure to update the range later.
-    const fileNames = [];
-    for (let i = 0; i < fileNameList.length; i++) {
-      var innerArray = [];
-      innerArray.push(fileNameList[i]);
-      fileNames.push(innerArray);
-    }
-
-    // Update the range.
-    const rangeAddress = "B5:B" + (5 + (fileNameList.length - 1)).toString();
-    const range = sheet.getRange(rangeAddress);
-    range.values = fileNames;
+    const range = sheet.getRange(`B5:B${5 + valuesToSet.length - 1}`);
+    range.values = valuesToSet;
     range.format.autofitColumns();
-
     await context.sync();
   });
 }
 
-async function writeFileNamesToDocument(fileNameList: string[]) {
-  return Word.run(function (context) {
-    const documentBody = context.document.body;
-    for (let i = 0; i < fileNameList.length; i++) {
-      documentBody.insertParagraph(fileNameList[i], "End");
-    }
-
-    return context.sync();
+async function writeFileNamesToDocument(fileNames: string[]) {
+  return Word.run(async (context) => {
+    fileNames.forEach((name) => {
+      context.document.body.insertParagraph(name, "End");
+    });
+    await context.sync();
   });
 }
 
-async function writeFileNamesToPresentation(fileNameList: string[]) {
-  let fileNames = "";
-  for (var i = 0; i < fileNameList.length; i++) {
-    fileNames += fileNameList[i] + "\n";
-  }
+async function writeFileNamesToPresentation(fileNames: string[]) {
+  const text = fileNames.join("\n");
 
-  Office.context.document.setSelectedDataAsync(fileNames, function (asyncfileNameList) {
-    if (asyncfileNameList.status === Office.AsyncResultStatus.Failed) {
-      throw asyncfileNameList.error.message;
-    }
+  return PowerPoint.run(async (context) => {
+    const slide = context.presentation.getSelectedSlides().getItemAt(0);
+    slide.shapes.addTextBox(text, { width: 300, height: 300 });
+    await context.sync();
   });
 }

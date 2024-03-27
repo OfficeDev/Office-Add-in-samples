@@ -6,7 +6,7 @@
 /* global console, document, Office */
 
 import { AccountManager } from "./authConfig";
-import { getGraphData } from "./msgraph-helper";
+import { makeGraphRequest } from "./msgraph-helper";
 import { writeFileNamesToOfficeDocument } from "./document";
 
 const accountManager = new AccountManager();
@@ -44,20 +44,24 @@ Office.onReady((info) => {
  * in the task pane.
  */
 async function getUserData() {
-  const userDataElement = document.getElementById("userData");
-  const userAccount = await accountManager.ssoGetUserIdentity();
-  const idTokenClaims = userAccount.idTokenClaims as { name?: string; email?: string };
+  try {
+    const userDataElement = document.getElementById("userData");
+    const userAccount = await accountManager.ssoGetUserIdentity();
+    const idTokenClaims = userAccount.idTokenClaims as { name?: string; email?: string };
 
-  console.log(userAccount);
+    console.log(userAccount);
 
-  if (userDataElement) {
-    userDataElement.style.visibility = "visible";
-  }
-  if (userName) {
-    userName.innerText = idTokenClaims.name ?? "";
-  }
-  if (userEmail) {
-    userEmail.innerText = idTokenClaims.email ?? "";
+    if (userDataElement) {
+      userDataElement.style.visibility = "visible";
+    }
+    if (userName) {
+      userName.innerText = idTokenClaims.name ?? "";
+    }
+    if (userEmail) {
+      userEmail.innerText = idTokenClaims.email ?? "";
+    }
+  } catch (error) {
+    console.error(error);
   }
 }
 
@@ -67,19 +71,22 @@ async function getUserData() {
  */
 async function getUserFiles() {
   try {
-    const accessToken = await accountManager.ssoGetToken();
+    const names = await getFileNames();
 
-    const root = "/me/drive/root/children";
-    const params = "?$select=name&$top=10";
-    const results = await getGraphData(accessToken, root, params);
-    // Get item names from the results
-    const itemNames = [];
-    const oneDriveItems = results["value"];
-    for (let item of oneDriveItems) {
-      itemNames.push(item["name"]);
-    }
-    writeFileNamesToOfficeDocument(itemNames);
+    writeFileNamesToOfficeDocument(names);
   } catch (error) {
     console.error(error);
   }
+}
+
+async function getFileNames(count = 10) {
+  const accessToken = await accountManager.ssoGetToken();
+  const response: { value: { name: string }[] } = await makeGraphRequest(
+    accessToken,
+    "/me/drive/root/children",
+    `?$select=name&$top=${count}`
+  );
+
+  const names = response.value.map((item: { name: string }) => item.name);
+  return names;
 }
