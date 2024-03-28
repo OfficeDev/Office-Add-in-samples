@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/Azure-Samples/ms-identity-javascript-tutorial#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.19.2",
     "morgan": "^1.10.0",
     "office-addin-debugging": "^5.0.2"
   },
