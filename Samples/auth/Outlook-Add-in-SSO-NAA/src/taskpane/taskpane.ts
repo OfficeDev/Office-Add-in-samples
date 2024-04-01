@@ -6,7 +6,7 @@
 /* global document, Office */
 
 import { AccountManager } from "./authConfig";
-import { getGraphData } from "./msgraph-helper";
+import { makeGraphRequest } from "./msgraph-helper";
 
 const accountManager = new AccountManager();
 const sideloadMsg = document.getElementById("sideload-msg");
@@ -31,7 +31,6 @@ Office.onReady((info) => {
 });
 
 async function writeFileNames(fileNameList: string[]) {
-
   const item = Office.context.mailbox.item;
   let fileNameBody: string = "";
   fileNameList.map((item) => fileNameBody += "<br/>" + item);
@@ -43,7 +42,6 @@ async function writeFileNames(fileNameList: string[]) {
     }
   );
 }
-
 
 /**
  * Gets the user data such as name and email and displays it
@@ -73,19 +71,25 @@ async function getUserData() {
  */
 async function getUserFiles() {
   try {
-    const accessToken = await accountManager.ssoGetToken();
+    const names = await getFileNames(10);
 
-    const root = "/me/drive/root/children";
-    const params = "?$select=name&$top=10";
-    const results = await getGraphData(accessToken, root, params);
-    // Get item names from the results
-    const itemNames = [];
-    const oneDriveItems = results["value"];
-    for (let item of oneDriveItems) {
-      itemNames.push(item["name"]);
-    }
-    writeFileNames(itemNames);
+    writeFileNames(names);
   } catch (error) {
     console.error(error);
   }
+}
+
+/**
+ * Gets item names (files or folders) from the user's OneDrive.
+ */
+async function getFileNames(count = 10) {
+  const accessToken = await accountManager.ssoGetToken();
+  const response: { value: { name: string }[] } = await makeGraphRequest(
+    accessToken,
+    "/me/drive/root/children",
+    `?$select=name&$top=${count}`
+  );
+
+  const names = response.value.map((item: { name: string }) => item.name);
+  return names;
 }
