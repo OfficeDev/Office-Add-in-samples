@@ -5,6 +5,10 @@ import { AxiosResponse } from 'axios';
      Interacting with the Office document
 */
 
+function delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
+
 export const writeFileNamesToWorksheet = async (result: AxiosResponse,
                                           displayError: (x: string) => void) => {
 
@@ -36,6 +40,7 @@ const dialogLoginUrl: string = location.protocol + '//' + location.hostname + (l
 
 export const signInO365 = async (setState: (x: AppState) => void,
                                  setToken: (x: string) => void,
+                                 setUserName: (x: string) => void,
                                  displayError: (x: string) => void) => {
 
     setState({ authStatus: 'loginInProcess' });
@@ -63,6 +68,7 @@ export const signInO365 = async (setState: (x: AppState) => void,
             // We now have a valid access token.
             loginDialog.close();
             setToken(messageFromDialog.result);
+            setUserName(messageFromDialog.userName);
             setState( { authStatus: 'loggedIn',
                         headerMessage: 'Get Data' });
         }
@@ -82,18 +88,22 @@ let logoutDialog: Office.Dialog;
 const dialogLogoutUrl: string = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/logout/logout.html';
 
 export const logoutFromO365 = async (setState: (x: AppState) => void,
+                                     setUserName: (x: string) => void,
+                                     userName: string,
                                      displayError: (x: string) => void) => {
 
     Office.context.ui.displayDialogAsync(dialogLogoutUrl,
             {height: 40, width: 30},
-            (result) => {
+           async  (result) => {
                 if (result.status === Office.AsyncResultStatus.Failed) {
                     displayError(`${result.error.code} ${result.error.message}`);
                 }
-                else {
+                else {                    
                     logoutDialog = result.value;
                     logoutDialog.addEventHandler(Office.EventType.DialogMessageReceived, processLogoutMessage);
                     logoutDialog.addEventHandler(Office.EventType.DialogEventReceived, processLogoutDialogEvent);
+                    await delay(5000); // Wait for dialog to initialize and register handler for messaging.
+                    logoutDialog.messageChild(JSON.stringify({"userName": userName}));
                 }
             }
         );
@@ -102,6 +112,7 @@ export const logoutFromO365 = async (setState: (x: AppState) => void,
         logoutDialog.close();
         setState({ authStatus: 'notLoggedIn',
                    headerMessage: 'Welcome' });
+        setUserName('');
     };
 
     const processLogoutDialogEvent = (arg) => {

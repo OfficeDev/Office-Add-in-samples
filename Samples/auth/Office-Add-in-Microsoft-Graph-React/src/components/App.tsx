@@ -38,6 +38,7 @@ export default class App extends React.Component<AppProps, AppState> {
         // so code that passes boundSetState is more self-documenting.
         this.boundSetState = this.setState.bind(this);
         this.setToken = this.setToken.bind(this);
+        this.setUserName = this.setUserName.bind(this);
         this.displayError = this.displayError.bind(this);
         this.login = this.login.bind(this);
     }
@@ -49,6 +50,7 @@ export default class App extends React.Component<AppProps, AppState> {
     // The access token is not part of state because React is all about the
     // UI and the token is not used to affect the UI in any way.
     accessToken: string;
+    userName: string;
 
     listItems: HeroListItem[] = [
         {
@@ -75,6 +77,10 @@ export default class App extends React.Component<AppProps, AppState> {
         this.accessToken = accesstoken;
     }
 
+    setUserName = (userName: string) => {
+        this.userName = userName;
+    }
+
     displayError = (error: string) => {
         this.setState({ errorMessage: error });
     }
@@ -98,11 +104,11 @@ export default class App extends React.Component<AppProps, AppState> {
     }
 
     login = async () => {
-        await signInO365(this.boundSetState, this.setToken, this.displayError);
+        await signInO365(this.boundSetState, this.setToken, this.setUserName, this.displayError);
     }
 
     logout = async () => {
-        await logoutFromO365(this.boundSetState, this.displayError);
+        await logoutFromO365(this.boundSetState, this.setUserName, this.userName, this.displayError);
     }
 
     getFileNames = async () => {
