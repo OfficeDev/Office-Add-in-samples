@@ -71,10 +71,7 @@ Version  | Date | Comments
 1.1  | December 10th, 2020 | Upgrade MSAL.js to v2
 1.0  | August 29th, 2019| Initial release
 1.1  | January 14th, 2021| Changed system for creating and installing the SSL certificates for HTTPS.
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+1.2  | April 4th, 2024 | Updated to MSAL 3.7.1. Refactored code.
 
 ----------
 
@@ -100,6 +97,7 @@ Version  | Date | Comments
 ### Configure the sample
 
 1. In a code editor, open the `/login/login.ts` file in the project. Near the top is a configuration property called `clientId`. Replace the `YOUR APP ID HERE` placeholder value with the application ID you copied in the previous step. Save and close the file.
+1. Open the `/logout/logkout.ts` file in the project. Near the top is a configuration property called `clientId`. Replace the `YOUR APP ID HERE` placeholder value with the application ID you copied in the previous step. Save and close the file.
 1. Open a **Command Prompt** *as an administrator*.
 1. Navigate to the root of the sample, which would normally be `[PATH-TO-YOUR-PROJECTS]\Office-Add-in-samples\Samples\auth\Office-Add-in-Microsoft-Graph-React`.
 1. Run the command `npm install`.

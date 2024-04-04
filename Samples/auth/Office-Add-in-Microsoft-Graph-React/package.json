@@ -13,7 +13,7 @@
         "validate": "office-toolbox validate -m manifest.xml"
     },
     "dependencies": {
-        "@azure/msal-browser": "^3.11.1",
+        "@azure/msal-browser": "3.7.1",
         "axios": "^1.6.8",
         "core-js": "^3.36.1",
         "office-ui-fabric-react": "^7.204.0",

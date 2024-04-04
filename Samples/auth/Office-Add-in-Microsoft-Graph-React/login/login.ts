@@ -8,7 +8,7 @@ import { PublicClientApplication } from "@azure/msal-browser";
 Office.onReady(async () => {
   const pca = new PublicClientApplication({
     auth: {
-      clientId: 'd07d3469-dcbf-4dda-a3d5-1dc6672681f6',
+      clientId: 'YOUR APP ID HERE',
       authority: 'https://login.microsoftonline.com/common',
       redirectUri: 'https://localhost:3000/login/login.html' // Must be registered as "spa" type
     },
@@ -23,7 +23,7 @@ Office.onReady(async () => {
     // handleRedirectPromise should be invoked on every page load
     const response = await pca.handleRedirectPromise();
     if (response) {
-      Office.context.ui.messageParent(JSON.stringify({ status: 'success', token: response.accessToken, userName: response.account.username }));
+      Office.context.ui.messageParent(JSON.stringify({ status: 'success', token: response.accessToken, userName: response.account.username}));
     } else {
       // Problem occurred, so invoke login
       pca.loginRedirect({

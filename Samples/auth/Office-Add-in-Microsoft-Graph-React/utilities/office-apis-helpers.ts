@@ -5,30 +5,27 @@ import { AxiosResponse } from 'axios';
      Interacting with the Office document
 */
 
-function delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
-
 export const writeFileNamesToWorksheet = async (result: AxiosResponse,
-                                          displayError: (x: string) => void) => {
+    displayError: (x: string) => void) => {
 
-        return Excel.run( (context: Excel.RequestContext) => {
+    try {
+        await Excel.run((context: Excel.RequestContext) => {
             const sheet = context.workbook.worksheets.getActiveWorksheet();
 
             const data = [
-                 [result.data.value[0].name],
-                 [result.data.value[1].name],
-                 [result.data.value[2].name]];
+                [result.data.value[0].name],
+                [result.data.value[1].name],
+                [result.data.value[2].name]];
 
             const range = sheet.getRange('B5:B7');
             range.values = data;
             range.format.autofitColumns();
 
             return context.sync();
-        })
-        .catch( (error) => {
-            displayError(error.toString());
         });
+    } catch (error) {
+        displayError(error.toString());
+    }
 };
 
 /*
@@ -39,38 +36,40 @@ let loginDialog: Office.Dialog;
 const dialogLoginUrl: string = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/login/login.html';
 
 export const signInO365 = async (setState: (x: AppState) => void,
-                                 setToken: (x: string) => void,
-                                 setUserName: (x: string) => void,
-                                 displayError: (x: string) => void) => {
+    setToken: (x: string) => void,
+    setUserName: (x: string) => void,
+    displayError: (x: string) => void) => {
 
     setState({ authStatus: 'loginInProcess' });
 
     await Office.context.ui.displayDialogAsync(
-            dialogLoginUrl,
-            {height: 40, width: 30},
-            (result) => {
-                if (result.status === Office.AsyncResultStatus.Failed) {
-                    displayError(`${result.error.code} ${result.error.message}`);
-                }
-                else {
-                    loginDialog = result.value;
-                    loginDialog.addEventHandler(Office.EventType.DialogMessageReceived, processLoginMessage);
-                    loginDialog.addEventHandler(Office.EventType.DialogEventReceived, processLoginDialogEvent);
-                }
+        dialogLoginUrl,
+        { height: 40, width: 30 },
+        (result) => {
+            if (result.status === Office.AsyncResultStatus.Failed) {
+                displayError(`${result.error.code} ${result.error.message}`);
             }
-        );
+            else {
+                loginDialog = result.value;
+                loginDialog.addEventHandler(Office.EventType.DialogMessageReceived, processLoginMessage);
+                loginDialog.addEventHandler(Office.EventType.DialogEventReceived, processLoginDialogEvent);
+            }
+        }
+    );
 
-    const processLoginMessage = (arg: {message: string, origin: string}) => {
+    const processLoginMessage = (arg: { message: string, origin: string }) => {
 
         let messageFromDialog = JSON.parse(arg.message);
-        if (messageFromDialog.status === 'success') { 
+        if (messageFromDialog.status === 'success') {
 
             // We now have a valid access token.
             loginDialog.close();
-            setToken(messageFromDialog.result);
+            setToken(messageFromDialog.token);
             setUserName(messageFromDialog.userName);
-            setState( { authStatus: 'loggedIn',
-                        headerMessage: 'Get Data' });
+            setState({
+                authStatus: 'loggedIn',
+                headerMessage: 'Get Data'
+            });
         }
         else {
             // Something went wrong with authentication or the authorization of the web application.
@@ -87,31 +86,38 @@ export const signInO365 = async (setState: (x: AppState) => void,
 let logoutDialog: Office.Dialog;
 const dialogLogoutUrl: string = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/logout/logout.html';
 
+// From https://stackoverflow.com/questions/37764665/how-to-implement-sleep-function-in-typescript
+function delay(milliSeconds: number) {
+    return new Promise(resolve => setTimeout(resolve, milliSeconds));
+}
+
 export const logoutFromO365 = async (setState: (x: AppState) => void,
-                                     setUserName: (x: string) => void,
-                                     userName: string,
-                                     displayError: (x: string) => void) => {
+    setUserName: (x: string) => void,
+    userName: string,
+    displayError: (x: string) => void) => {
 
     Office.context.ui.displayDialogAsync(dialogLogoutUrl,
-            {height: 40, width: 30},
-           async  (result) => {
-                if (result.status === Office.AsyncResultStatus.Failed) {
-                    displayError(`${result.error.code} ${result.error.message}`);
-                }
-                else {                    
-                    logoutDialog = result.value;
-                    logoutDialog.addEventHandler(Office.EventType.DialogMessageReceived, processLogoutMessage);
-                    logoutDialog.addEventHandler(Office.EventType.DialogEventReceived, processLogoutDialogEvent);
-                    await delay(5000); // Wait for dialog to initialize and register handler for messaging.
-                    logoutDialog.messageChild(JSON.stringify({"userName": userName}));
-                }
+        { height: 40, width: 30 },
+        async (result) => {
+            if (result.status === Office.AsyncResultStatus.Failed) {
+                displayError(`${result.error.code} ${result.error.message}`);
             }
-        );
+            else {
+                logoutDialog = result.value;
+                logoutDialog.addEventHandler(Office.EventType.DialogMessageReceived, processLogoutMessage);
+                logoutDialog.addEventHandler(Office.EventType.DialogEventReceived, processLogoutDialogEvent);
+                await delay(5000); // Wait for dialog to initialize and register handler for messaging.
+                logoutDialog.messageChild(JSON.stringify({ "userName": userName }));
+            }
+        }
+    );
 
     const processLogoutMessage = () => {
         logoutDialog.close();
-        setState({ authStatus: 'notLoggedIn',
-                   headerMessage: 'Welcome' });
+        setState({
+            authStatus: 'notLoggedIn',
+            headerMessage: 'Welcome'
+        });
         setUserName('');
     };
 
@@ -120,9 +126,9 @@ export const logoutFromO365 = async (setState: (x: AppState) => void,
     };
 };
 
-const processDialogEvent = (arg: {error: number, type: string},
-                            setState: (x: AppState) => void,
-                            displayError: (x: string) => void) => {
+const processDialogEvent = (arg: { error: number, type: string },
+    setState: (x: AppState) => void,
+    displayError: (x: string) => void) => {
 
     switch (arg.error) {
         case 12002:
@@ -136,8 +142,10 @@ const processDialogEvent = (arg: {error: number, type: string},
             // It is not known if the user completed the login or logout, so assume the user is
             // logged out and revert to the app's starting state. It does no harm for a user to
             // press the login button again even if the user is logged in.
-            setState({ authStatus: 'notLoggedIn',
-                       headerMessage: 'Welcome' });
+            setState({
+                authStatus: 'notLoggedIn',
+                headerMessage: 'Welcome'
+            });
             break;
         default:
             displayError('Unknown error in dialog box.');
