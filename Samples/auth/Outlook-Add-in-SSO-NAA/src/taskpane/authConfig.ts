@@ -21,7 +21,7 @@ const msalConfig = {
 
 // Encapsulate functions for getting user account and token information.
 class AccountManager {
-  loginHint: string;
+  loginHint: string = "";
   pca: IPublicClientApplication | undefined = undefined;
 
   // Initialize MSAL public client application.
@@ -30,31 +30,42 @@ class AccountManager {
     this.pca = await PublicClientNext.createPublicClientApplication(msalConfig);
   }
 
-  async ssoGetToken() {
-    const userAccount = this.ssoGetUserIdentity();
-    return (await userAccount).accessToken;
+  /**
+   * 
+   * @param scopes the minimum scopes needed.
+   * @returns An access token.
+   */
+  async ssoGetToken(scopes: string[]) {
+    const userAccount = await this.ssoGetUserIdentity(scopes);
+    return userAccount.accessToken;
   }
 
   /**
+   * 
    * Uses MSAL and nested app authentication to get the user account from Office SSO.
    * This demonstrates how to work with user identity from the token.
-   *
-   * @returns The user account data (identity).
+   * 
+   * @param scopes The minimum scopes needed.
+   * @returns The user account data (including identity).
    */
-  async ssoGetUserIdentity() {
+  async ssoGetUserIdentity(scopes: string[]) {
     if (this.pca === undefined) {
       throw new Error("AccountManager is not initialized!");
     }
 
     // Specify minimum scopes needed for the access token.
     const tokenRequest = {
-      scopes: ["openid"],
+      scopes: scopes,
       loginHint: this.loginHint,
     };
 
     try {
       console.log("Trying to acquire token silently...");
-      const userAccount = await this.pca.acquireTokenSilent(tokenRequest);
+
+      //acquireTokenSilent requires an active account. Check if one exists, otherwise use ssoSilent.
+      const account = this.pca.getActiveAccount();
+      const userAccount = account ? await this.pca.acquireTokenSilent(tokenRequest) : await this.pca.ssoSilent(tokenRequest);
+
       console.log("Acquired token silently.");
       return userAccount;
     } catch (error) {

@@ -18,8 +18,8 @@ const userEmail = document.getElementById("userEmail");
 
 Office.onReady((info) => {
   if (info.host === Office.HostType.Outlook) {
-    sideloadMsg.style.display = "none";
-    appBody.style.display = "flex";
+    if (sideloadMsg) sideloadMsg.style.display = "none";
+    if (appBody) appBody.style.display = "flex";
     if (getUserDataButton) {
       getUserDataButton.onclick = getUserData;
     }
@@ -53,8 +53,8 @@ async function writeFileNames(fileNameList: string[]) {
  */
 async function getUserData() {
   const userDataElement = document.getElementById("userData");
-  const userAccount = await accountManager.ssoGetUserIdentity();
-  const idTokenClaims = userAccount.idTokenClaims as { name?: string; email?: string };
+  const userAccount = await accountManager.ssoGetUserIdentity(["user.read"]);
+  const idTokenClaims = userAccount.idTokenClaims as { name?: string; preferred_username?: string };
 
   console.log(userAccount);
 
@@ -65,7 +65,7 @@ async function getUserData() {
     userName.innerText = idTokenClaims.name ?? "";
   }
   if (userEmail) {
-    userEmail.innerText = idTokenClaims.email ?? "";
+    userEmail.innerText = idTokenClaims.preferred_username ?? "";
   }
 }
 
@@ -87,7 +87,8 @@ async function getUserFiles() {
  * Gets item names (files or folders) from the user's OneDrive.
  */
 async function getFileNames(count = 10) {
-  const accessToken = await accountManager.ssoGetToken();
+  // Specify minimum scopes for the token needed.
+  const accessToken = await accountManager.ssoGetToken(["Files.Read"]);
   const response: { value: { name: string }[] } = await makeGraphRequest(
     accessToken,
     "/me/drive/root/children",

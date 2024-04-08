@@ -4,10 +4,12 @@
     "baseUrl": ".",
     "esModuleInterop": true,
     "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "noEmitOnError": true,
     "outDir": "lib",
     "sourceMap": true,
+    "strict": true,
     "target": "es5",
     "lib": [
       "es2015",
