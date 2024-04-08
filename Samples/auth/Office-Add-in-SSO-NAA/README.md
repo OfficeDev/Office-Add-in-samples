@@ -43,7 +43,7 @@ IMPORTANT: Nested app authentication is currently in preview. To try this featur
 
 ### Create an application registration
 
-1. Navigate to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page to register your app.
+1. Go to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page to register your app.
 1. Sign in with the ***admin*** credentials to your Microsoft 365 tenancy. For example, **MyName@contoso.onmicrosoft.com**.
 1. Select **New registration**. On the **Register an application** page, set the values as follows.
 
@@ -77,7 +77,7 @@ This will start the web server and sideload the add-in to Excel.
 1. In Excel, look for the **Show task pane** button and select it.
 1. When the task pane opens, there are two buttons: **Get user data** and **Get user files**.
 1. To see the signed in user's name and email, select **Get user data**.
-1. To insert the first 10 filenames from the signed in user's Microsoft OneDrive, select **Get user files** .
+1. To insert the first 10 filenames from the signed in user's Microsoft OneDrive, select **Get user files**.
 
 You'll be prompted to consent to the scopes the sample needs when you select the buttons.  
 
