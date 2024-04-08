@@ -30,7 +30,7 @@ IMPORTANT: Nested app authentication is currently in preview. To try this featur
 
 ## Applies to
 
-- Word, Excel, and Powerpoint on Windows, Mac, and in a browser.
+- Word, Excel, and PowerPoint on Windows, Mac, and on the web.
 
 ## Prerequisites
 
@@ -74,12 +74,12 @@ For more information on how to register your application, see [Register an appli
 
 This will start the web server and sideload the add-in to Excel.
 
-1. In Excel, on the ribbon, look for the **Show task pane** button and select it.
+1. In Excel, look for the **Show task pane** button and select it.
 1. When the task pane opens, there are two buttons: **Get user data** and **Get user files**.
-1. Select **Get user data** if you want to see the signed in user's name and email.
-1. Select **Get user files** to insert the first 10 filenames from the signed in user's Microsoft OneDrive.
+1. To see the signed in user's name and email, select **Get user data**.
+1. To insert the first 10 filenames from the signed in user's Microsoft OneDrive, select **Get user files** .
 
-You will be prompted to consent to the scopes the sample needs when you select the buttons.  
+You'll be prompted to consent to the scopes the sample needs when you select the buttons.  
 
 ## Selecting hosts and debugging steps
 
@@ -113,7 +113,7 @@ The `src/taskpane/msgraph-helper.ts` file contains code to construct and make a 
 
 ## Security reporting
 
-If you find a security issue with our libraries or services, report the issue to [secure@microsoft)](secure@microsoft).com with as much detail as you can provide. Your submission may be eligible for a bounty through the [Microsoft Bounty](https://aka.ms/bugbounty) program. Don't post security issues to [GitHub Issues](https://github.com/AzureAD/microsoft-authentication-library-for-android/issues) or any other public site. We'll contact you shortly after receiving your issue report. We encourage you to get new security incident notifications by visiting [Microsoft technical security notifications](https://technet.microsoft.com/security/dd252948) to subscribe to Security Advisory Alerts.
+If you find a security issue with our libraries or services, report the issue to [secure@microsoft.com](mailto:secure@microsoft.com) with as much detail as you can provide. Your submission may be eligible for a bounty through the [Microsoft Bounty](https://aka.ms/bugbounty) program. Don't post security issues to [GitHub Issues](https://github.com/AzureAD/microsoft-authentication-library-for-android/issues) or any other public site. We'll contact you shortly after receiving your issue report. We encourage you to get new security incident notifications by visiting [Microsoft technical security notifications](https://technet.microsoft.com/security/dd252948) to subscribe to Security Advisory Alerts.
 
 ## Questions and feedback
 
