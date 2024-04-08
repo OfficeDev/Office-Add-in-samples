@@ -9,8 +9,7 @@ import { PublicClientNext, type IPublicClientApplication } from "@azure/msal-bro
 
 export { AccountManager };
 
-const applicationId = "Enter_the_Application_Id_Here";
-const myloginHint = "Enter_the_Login_Hint_Here";
+const applicationId = "57e00eca-d992-4e1c-bef6-a238cd0236c4";
 
 const msalConfig = {
   auth: {
@@ -22,10 +21,12 @@ const msalConfig = {
 
 // Encapsulate functions for getting user account and token information.
 class AccountManager {
+  loginHint: string;
   pca: IPublicClientApplication | undefined = undefined;
 
   // Initialize MSAL public client application.
-  async initialize() {
+  async initialize(loginHint: string) {
+    this.loginHint = loginHint;
     this.pca = await PublicClientNext.createPublicClientApplication(msalConfig);
   }
 
@@ -48,7 +49,7 @@ class AccountManager {
     // Specify minimum scopes needed for the access token.
     const tokenRequest = {
       scopes: ["openid"],
-      loginHint: myloginHint,
+      loginHint: this.loginHint,
     };
 
     try {

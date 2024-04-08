@@ -26,7 +26,11 @@ Office.onReady((info) => {
     if (getUserFilesButton) {
       getUserFilesButton.onclick = getUserFiles;
     }
-    accountManager.initialize();
+
+    // Initialize MSAL. MSAL need's a loginHint for when running in a browser.
+    const accountType = Office.context.mailbox.userProfile.accountType;
+    const loginHint = (accountType === "office365" || accountType === "outlookCom") ? Office.context.mailbox.userProfile.emailAddress : "";
+    accountManager.initialize(loginHint);
   }
 });
 

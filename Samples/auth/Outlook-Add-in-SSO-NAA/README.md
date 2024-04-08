@@ -51,6 +51,19 @@ IMPORTANT: Nested app authentication is currently in preview. To try this featur
     - Select **Register**.
 
 1. On the **Outlook-Add-in-SSO-NAA** page, copy and save the value for the **Application (client) ID**. You'll use it in the next section.
+1. Select the link to modify redirect URIs which should appear as **0 web, 1 spa, 0 public client**.
+
+      ![The redirect URIs link](/assets/ui-add-redirect-link.png)
+
+1. In the **Single-page application Redirect URIs** section, select **Add URI**.
+
+      ![The Add URI link](/assets/ui-add-redirects-link.png)
+
+1. Enter the new URI value `https://localhost:3000/taskpane.html` and select **Save**.
+
+      ![The completed redirects in the application registration](/assets/ui-completed-redirects.png)
+
+**Note**: The `brk-multihub://localhost:3000` redirect is used when running in native hosts like Outlook on Windows or Mac. NAA is required on native hosts. The `https://localhost:3000/taskpane.html` takspane redirect is used when running in a browser where NAA is not used.
 
 For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://learn.microsoft.com/graph/auth-register-app-v2).
 
