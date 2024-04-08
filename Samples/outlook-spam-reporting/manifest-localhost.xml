@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp 
+          xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+          xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" 
+          xsi:type="MailApp">
+
+  <Id>942c5096-e075-4dd3-b5c8-dcaeee5c8e6a</Id>
+  <!-- IMPORTANT: ID must be unique for your add-in. If you reuse this manifest, ensure that you change this ID to a new GUID. -->
+  <Version>1.0.0.0</Version>
+  <ProviderName>Eric Legault Consulting Inc.</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Office Add-ins Outlook spam-reporting sample"/>
+  <Description DefaultValue="Report spam or phishing emails using a spam-reporting add-in."/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
+  <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/outlook/spam-reporting" />
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
+  <AppDomains>
+    <AppDomain>https://officedev.github.io</AppDomain>
+  </AppDomains>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="Mailbox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+    <Host Name="Mailbox"/>
+        <SourceLocation DefaultValue="https://localhost:3000/src/spamreporting.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+
+  <Permissions>ReadItem</Permissions>
+  <Rule xsi:type="RuleCollection" Mode="Or">
+    <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  </Rule>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.13">
+          <bt:Set Name="Mailbox" MinVersion="1.3"/>
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <Runtimes>
+            <Runtime resid="WebViewRuntime.Url">
+              <!-- References the JavaScript file that contains the spam-reporting event handler. This is used by Outlook on Windows. -->
+              <Override type="javascript" resid="JSRuntime.Url"/>
+            </Runtime>
+          </Runtimes>
+          <DesktopFormFactor>
+            <FunctionFile resid="WebViewRuntime.Url"/>
+            <!-- Implements the integrated spam-reporting feature in the add-in. -->
+            <ExtensionPoint xsi:type="ReportPhishingCommandSurface">
+              <ReportPhishingCustomization>
+                <!-- Configures the ribbon button. -->
+                <Control xsi:type="Button" id="spamReportingButton">
+                  <Label resid="spamButton.Label"/>
+                  <Supertip>
+                    <Title resid="spamButton.Label"/>
+                    <Description resid="spamSuperTip.Text"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>onSpamReport</FunctionName>
+                  </Action>
+                </Control>
+                <!-- Configures the preprocessing dialog. -->
+                <PreProcessingDialog>
+                  <Title resid="PreProcessingDialog.Label"/>
+                  <Description resid="PreProcessingDialog.Text"/>
+                  <ReportingOptions>
+                    <Title resid="OptionsTitle.Label"/>
+                    <Option resid="Option1.Label"/>
+                    <Option resid="Option2.Label"/>
+                    <Option resid="Option3.Label"/>
+                  </ReportingOptions>
+                  <FreeTextLabel resid="FreeText.Label"/>
+                  <MoreInfo>
+                    <MoreInfoText resid="MoreInfo.Label"/>
+                    <MoreInfoUrl resid="MoreInfo.Url"/>
+                  </MoreInfo>
+                </PreProcessingDialog>
+                <!-- Identifies the runtime to be used. This is also referenced by the Runtime element. -->
+                <SourceLocation resid="WebViewRuntime.Url"/>
+              </ReportPhishingCustomization>
+            </ExtensionPoint>
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+      <Resources>
+        <bt:Images>
+          <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/src/spamreporting.html"/>
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/spamreporting.js"/>
+          <bt:Url id="MoreInfo.Url" DefaultValue="https://learn.microsoft.com/en-us/office/dev/add-ins/outlook/spam-reporting"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="spamButton.Label" DefaultValue="Report Spam Message"/>
+          <bt:String id="PreProcessingDialog.Label" DefaultValue="Report Spam Message"/>
+          <bt:String id="OptionsTitle.Label" DefaultValue="Why are you reporting this email?"/>
+          <bt:String id="FreeText.Label" DefaultValue="Provide additional information, if any:"/>
+          <bt:String id="MoreInfo.Label" DefaultValue="To learn more about reporting unsolicited messages, see "/>
+          <bt:Url id="MoreInfo.Url" DefaultValue="https://learn.microsoft.com/office/dev/add-ins/outlook/spam-reporting"/>
+          <bt:String id="Option2.Label" DefaultValue="Received a phishing email."/>
+          <bt:String id="Option3.Label" DefaultValue="I'm not sure this is a legitimate email."/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="spamSuperTip.Text" DefaultValue="Report an unsolicited message."/>
+          <bt:String id="PreProcessingDialog.Text" DefaultValue="Thank you for reporting this message."/>
+        </bt:LongStrings>
+      </Resources>
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>
