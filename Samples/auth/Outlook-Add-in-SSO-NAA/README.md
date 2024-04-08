@@ -63,8 +63,6 @@ IMPORTANT: Nested app authentication is currently in preview. To try this featur
 
       ![The completed redirects in the application registration](/assets/ui-completed-redirects.png)
 
-**Note**: The `brk-multihub://localhost:3000` redirect is used when running in native hosts like Outlook on Windows or Mac. NAA is required on native hosts. The `https://localhost:3000/taskpane.html` takspane redirect is used when running in a browser where NAA is not used.
-
 For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://learn.microsoft.com/graph/auth-register-app-v2).
 
 ### Configure the sample
