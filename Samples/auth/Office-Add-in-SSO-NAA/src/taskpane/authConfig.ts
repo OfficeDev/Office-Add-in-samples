@@ -10,7 +10,6 @@ import { PublicClientNext, type IPublicClientApplication } from "@azure/msal-bro
 export { AccountManager };
 
 const applicationId = "Enter_the_Application_Id_Here";
-const myloginHint = "Enter_the_Login_Hint_Here";
 
 const msalConfig = {
   auth: {
@@ -29,9 +28,9 @@ class AccountManager {
     this.pca = await PublicClientNext.createPublicClientApplication(msalConfig);
   }
 
-  async ssoGetToken() {
-    const userAccount = this.ssoGetUserIdentity();
-    return (await userAccount).accessToken;
+  async ssoGetToken(scopes: string[]) {
+    const userAccount = await this.ssoGetUserIdentity(scopes);
+    return userAccount.accessToken;
   }
 
   /**
@@ -40,15 +39,14 @@ class AccountManager {
    *
    * @returns The user account data (identity).
    */
-  async ssoGetUserIdentity() {
+  async ssoGetUserIdentity(scopes: string[]) {
     if (this.pca === undefined) {
       throw new Error("AccountManager is not initialized!");
     }
 
     // Specify minimum scopes needed for the access token.
     const tokenRequest = {
-      scopes: ["openid"],
-      loginHint: myloginHint,
+      scopes: scopes
     };
 
     try {

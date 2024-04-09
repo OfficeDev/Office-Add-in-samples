@@ -30,7 +30,8 @@ IMPORTANT: Nested app authentication is currently in preview. To try this featur
 
 ## Applies to
 
-- Word, Excel, and PowerPoint on Windows, Mac, and on the web.
+- Word, Excel, and PowerPoint on Windows build 16.0.17531.20000 or later.
+- Word, Excel, and PowerPoint on Mac build 16.85.24040319 or later.
 
 ## Prerequisites
 
@@ -62,7 +63,6 @@ For more information on how to register your application, see [Register an appli
 1. From the command line, or a terminal window, go to the root folder of this sample at `/samples/auth/Office-Add-in-SSO-NAA`.
 1. Open the `src/taskpane/authConfig.ts` file.
 1. Replace the placeholder "Enter_the_Application_Id_Here" with the Application ID that you copied.
-1. Replace the placeholder "Enter_the_Login_Hint_Here" with your Microsoft 365 user name. For example: **admin@contoso.onmicrosoft.com**.
 1. Save the file.
 
 ## Run the sample

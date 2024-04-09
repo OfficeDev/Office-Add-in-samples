@@ -46,8 +46,8 @@ Office.onReady((info) => {
 async function getUserData() {
   try {
     const userDataElement = document.getElementById("userData");
-    const userAccount = await accountManager.ssoGetUserIdentity();
-    const idTokenClaims = userAccount.idTokenClaims as { name?: string; email?: string };
+    const userAccount = await accountManager.ssoGetUserIdentity(["user.read"]);
+    const idTokenClaims = userAccount.idTokenClaims as { name?: string; preferred_username?: string };
 
     console.log(userAccount);
 
@@ -58,7 +58,7 @@ async function getUserData() {
       userName.innerText = idTokenClaims.name ?? "";
     }
     if (userEmail) {
-      userEmail.innerText = idTokenClaims.email ?? "";
+      userEmail.innerText = idTokenClaims.preferred_username ?? "";
     }
   } catch (error) {
     console.error(error);
@@ -80,7 +80,7 @@ async function getUserFiles() {
 }
 
 async function getFileNames(count = 10) {
-  const accessToken = await accountManager.ssoGetToken();
+  const accessToken = await accountManager.ssoGetToken(["Files.Read"]);
   const response: { value: { name: string }[] } = await makeGraphRequest(
     accessToken,
     "/me/drive/root/children",
