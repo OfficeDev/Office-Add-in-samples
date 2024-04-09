@@ -28,7 +28,9 @@ IMPORTANT: Nested app authentication is currently in preview. To try this featur
 
 ## Applies to
 
-- Outlook on Windows, Mac, and in a browser.
+- Outlook on Windows build 16.0.17531.20000 or later.
+- Outlook on Mac build 16.85.24040319 or later.
+- Outlook in a browser.
 
 ## Prerequisites
 
@@ -77,10 +79,10 @@ For more information on how to register your application, see [Register an appli
 
 1. Run the following commands.
 
-`npm install`
-`npm run start`
+    `npm install`
+    `npm run start`
 
-This will start the web server and sideload the add-in to Outlook.
+    This will start the web server and sideload the add-in to Outlook.
 
 1. In Outlook, compose a new email message.
 1. On the ribbon for the message, look for the **Show task pane** button and select it.
@@ -113,6 +115,10 @@ The `src/taskpane/authConfig.ts` file contains the MSAL code for configuring and
 The `src/taskpane/taskpane.ts` file contains code that runs when the user chooses buttons in the task pane. They use the AccountManager class to get tokens or user information depending on which button is chosen.
 
 The `src/taskpane/msgraph-helper.ts` file contains code to construct and make a REST call to the Microsoft Graph API.
+
+## Security reporting
+
+If you find a security issue with our libraries or services, report the issue to [secure@microsoft.com](mailto:secure@microsoft.com) with as much detail as you can provide. Your submission may be eligible for a bounty through the [Microsoft Bounty](https://aka.ms/bugbounty) program. Don't post security issues to [GitHub Issues](https://github.com/AzureAD/microsoft-authentication-library-for-android/issues) or any other public site. We'll contact you shortly after receiving your issue report. We encourage you to get new security incident notifications by visiting [Microsoft technical security notifications](https://technet.microsoft.com/security/dd252948) to subscribe to Security Advisory Alerts.
 
 ## Questions and feedback
 
