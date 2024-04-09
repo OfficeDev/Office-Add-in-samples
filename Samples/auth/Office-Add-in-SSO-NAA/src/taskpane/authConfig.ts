@@ -5,12 +5,12 @@
 
 /* global console */
 
-import { PublicClientNext, type IPublicClientApplication } from "@azure/msal-browser";
+import { PublicClientNext, type IPublicClientApplication, AccountInfo } from "@azure/msal-browser";
 
 export { AccountManager };
 
 const applicationId = "Enter_the_Application_Id_Here";
-const myloginHint = "Enter_the_Login_Hint_Here";
+const myloginHint = "";
 
 const msalConfig = {
   auth: {
@@ -23,6 +23,7 @@ const msalConfig = {
 // Encapsulate functions for getting user account and token information.
 class AccountManager {
   pca: IPublicClientApplication | undefined = undefined;
+  activeAccount: AccountInfo | undefined = undefined;
 
   // Initialize MSAL public client application.
   async initialize() {
@@ -45,16 +46,21 @@ class AccountManager {
       throw new Error("AccountManager is not initialized!");
     }
 
+    const account = this.activeAccount ?? this.pca.getAccountByUsername(myloginHint);
     // Specify minimum scopes needed for the access token.
     const tokenRequest = {
-      scopes: ["openid"],
+      scopes: ["User.Read", "Files.Read", "email"],
       loginHint: myloginHint,
+      account: account ?? undefined,
     };
 
     try {
       console.log("Trying to acquire token silently...");
-      const userAccount = await this.pca.acquireTokenSilent(tokenRequest);
+      const userAccount = await (account
+        ? this.pca.acquireTokenSilent(tokenRequest)
+        : this.pca.ssoSilent(tokenRequest));
       console.log("Acquired token silently.");
+      this.activeAccount = userAccount.account;
       return userAccount;
     } catch (error) {
       console.log(`Unable to acquire token silently: ${error}`);
@@ -65,6 +71,7 @@ class AccountManager {
       console.log("Trying to acquire token interactively...");
       const userAccount = await this.pca.acquireTokenPopup(tokenRequest);
       console.log("Acquired token interactively.");
+      this.activeAccount = userAccount.account;
       return userAccount;
     } catch (popupError) {
       // Acquire token interactive failure.
