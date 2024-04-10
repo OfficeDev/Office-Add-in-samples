@@ -18,7 +18,7 @@ description: "Learn how to create an integrated spam-reporting add-in in Outlook
 
 # Report spam or phishing emails in Outlook (preview)
 
-**Applies to**: Outlook on Windows - classic and new (preview) | Outlook on Mac (preview) | Outlook on the web (preview)
+**Applies to**: Outlook on Windows
 
 ![A sample spam-reporting dialog.](./assets/readme/outlook-spam-processing-dialog.png)
 
@@ -33,14 +33,11 @@ This sample showcases how to build an integrated spam-reporting solution that:
 To learn about key components of this sample, see [Implement an integrated spam-reporting add-in (preview)](https://learn.microsoft.com/office/dev/add-ins/outlook/spam-reporting).
 
 > [!IMPORTANT]
-> The integrated spam-reporting feature is currently in preview in Outlook on Windows (classic and new), on Mac, and on the web. Features in preview shouldn't be used in production add-ins. We invite you to try out this feature in test or development environments and welcome feedback on your experience through [GitHub](https://github.com/OfficeDev/office-js/issues/new/choose).
+> The integrated spam-reporting feature is currently in preview in Outlook on Windows. Features in preview shouldn't be used in production add-ins. We invite you to try out this feature in test or development environments and welcome feedback on your experience through [GitHub](https://github.com/OfficeDev/office-js/issues/new/choose).
 
 ## Applies to
 
-- Outlook on Windows starting in Version 2307 (Build 16626.10000)
-- Outlook on Mac starting in Version 16.81.1217.0
-- Outlook on the web
-- [new Outlook on Windows (preview)](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627)
+Outlook on Windows starting in Version 2307 (Build 16626.10000).
 
 > [!NOTE]
 > If you don't have a Microsoft 365 subscription, you might qualify for a free developer subscription that's renewable for 90 days and comes configured with sample data. For details, see the [Microsoft 365 Developer Program FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-).
@@ -48,8 +45,7 @@ To learn about key components of this sample, see [Implement an integrated spam-
 ## Prerequisites
 
 - Microsoft 365 subscription
-- If you're on classic Outlook on Windows or on Mac, you must join the [Microsoft 365 Insider program](https://insider.microsoft365.com/join) and select the **Beta Channel** option to access Office beta builds.
-- If you're on Outlook on the web or new Outlook on Windows (preview), you must [configure targeted release on your Microsoft 365 tenant](https://learn.microsoft.com/microsoft-365/admin/manage/release-options-in-office-365#set-up-the-release-option-in-the-admin-center) to access Office beta builds.
+- You must join the [Microsoft 365 Insider program](https://insider.microsoft365.com/join/windows) and select the **Beta Channel** option to access Office beta builds.
 
 > [!TIP]
 > If you're unable to choose a channel in your Outlook client, see [Let users choose which Microsoft 365 Insider channel to install on Windows devices](https://learn.microsoft.com/deployoffice/insider/deploy/user-choice).
@@ -73,7 +69,7 @@ Run this sample in Outlook on Windows using one of the following add-in file hos
 ### Run the sample from GitHub
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on Windows by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=windows-web#sideload-manually).
+1. Sideload the add-in manifest in Outlook on Windows by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#sideload-manually).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
 ### Run the sample from localhost
@@ -163,6 +159,5 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 | Version | Date | Comments |
 | ----- | ----- | ----- |
 | 1.0 | March 26, 2024 | Initial release |
-| 1.1 | April 5, 2024 | Adds other supported platforms |
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-spam-reporting" />
