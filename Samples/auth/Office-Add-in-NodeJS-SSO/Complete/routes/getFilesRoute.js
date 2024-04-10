@@ -22,9 +22,9 @@ router.get(
       // In this case we look for a scope value of access_as_user, or full access to the service as the user.
       const tokenScopes = jwt.decode(oboRequest.oboAssertion).scp.split(' ');
       let accessAsUserScope = tokenScopes.find(
-        (scope) => scope === 'access_as_user'
+        (scope) => scope === 'access_as_users'
       );
-      if (accessAsUserScope !== 'access_as_user' ) {
+      if (accessAsUserScope !== 'access_as_users' ) {
         res.status(401).send({ type: "Missing access_as_user" });
         return;
       }
