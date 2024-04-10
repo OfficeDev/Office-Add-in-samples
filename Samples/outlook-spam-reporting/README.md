@@ -18,7 +18,7 @@ description: "Learn how to create an integrated spam-reporting add-in in Outlook
 
 # Report spam or phishing emails in Outlook (preview)
 
-**Applies to**: Outlook on Windows (preview)
+**Applies to**: Outlook on Windows
 
 ![A sample spam-reporting dialog.](./assets/readme/outlook-spam-processing-dialog.png)
 
@@ -43,7 +43,9 @@ Outlook on Windows starting in Version 2307 (Build 16626.10000).
 > If you don't have a Microsoft 365 subscription, you might qualify for a free developer subscription that's renewable for 90 days and comes configured with sample data. For details, see the [Microsoft 365 Developer Program FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-).
 
 ## Prerequisites
+
 - Microsoft 365 subscription
+- You must join the [Microsoft 365 Insider program](https://insider.microsoft365.com/join/windows) and select the **Beta Channel** option to access Office beta builds.
 
 > [!TIP]
 > If you're unable to choose a channel in your Outlook client, see [Let users choose which Microsoft 365 Insider channel to install on Windows devices](https://learn.microsoft.com/deployoffice/insider/deploy/user-choice).
@@ -67,7 +69,7 @@ Run this sample in Outlook on Windows using one of the following add-in file hos
 ### Run the sample from GitHub
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on Windows by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=windows-web#sideload-manually).
+1. Sideload the add-in manifest in Outlook on Windows by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#sideload-manually).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
 ### Run the sample from localhost
@@ -80,29 +82,31 @@ If you prefer to host the web server for the sample on your computer, follow the
    ```console
    npm install --global http-server
    ```
+
 1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet, you can do this with the following command.
 
     ```console
     npm install --global office-addin-dev-certs
     ```
+
 1. Clone or download this sample to a folder on your computer, then go to that folder in a console or terminal window.
 1. Run the following command to generate a self-signed certificate to use for the web server.
 
    ```console
     npx office-addin-dev-certs install
     ```
-	
+
     This command will display the folder location where it generated the certificate files.
-	
+
 1. Go to the folder location where the certificate files were generated, then copy the **localhost.crt** and **localhost.key** files to the cloned or downloaded sample folder.
 1. Run the following command.
 
     ```console
     http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
     ```
-	
+
     The http-server will run and host the current folder's files on localhost:3000.
-	
+
 1. Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the sample folder. To sideload the manifest, follow the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=windows-web#sideload-manually).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
@@ -120,7 +124,7 @@ Once the add-in is loaded in Outlook, use the following steps to try out its fun
 
 ## References
 
-- [Implement an integrated spam-reporting add-in](https://learn.microsoft.com/en-us/office/dev/add-ins/outlook/spam-reporting)
+- [Implement an integrated spam-reporting add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/spam-reporting)
 - [ReportPhishingCommandSurface Extension Point](https://learn.microsoft.com/javascript/api/manifest/extensionpoint?view=outlook-js-preview&preserve-view=true#reportphishingcommandsurface-preview)
 - [Office.MessageRead.getAsFileAsync() method](https://learn.microsoft.com/javascript/api/outlook/office.messageread?view=outlook-js-preview&preserve-view=true#outlook-office-messageread-getasfileasync-member(1))
 - [Troubleshoot event-based and spam-reporting add-ins](https://learn.microsoft.com/office/dev/add-ins/outlook/troubleshoot-event-based-and-spam-reporting-add-ins)
@@ -144,9 +148,6 @@ Copyright (c) 2024 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-spam-reporting" />Run this sample in Outlook on Windows using one of the following add-in file hosting options.
-Run this sample in Outlook on Windows using one of the following add-in file hosting options.
-
 ## Solution
 
 | Solution | Author(s) |
@@ -158,3 +159,5 @@ Run this sample in Outlook on Windows using one of the following add-in file hos
 | Version | Date | Comments |
 | ----- | ----- | ----- |
 | 1.0 | March 26, 2024 | Initial release |
+
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-spam-reporting" />
