@@ -114,9 +114,12 @@
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
-                    <TaskpaneId>ButtonId1</TaskpaneId>
-                    <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
+                    <!-- Taskpane prepared to be activated as AutoOpen Taskpane -->
+                    <!-- See: Samples/office-add-in-commands/auto-open-task-pane -->
+                    <TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>
                     <SourceLocation resid="Contoso.Shared.Url" />
+                    <!--<TaskpaneId>SampleAddinTaskpaneId</TaskpaneId>-->
+                    <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
                   </Action>
                 </Control>
               </Group>
@@ -241,34 +244,34 @@
         <bt:Image id="Contoso.tpicon_80x80" DefaultValue="~remoteAppUrl/Images/Button80x80.png" />
       </bt:Images>
       <bt:Urls>
+        <!-- This manifest is using Shared Runtime, to switch use the DesktopFunctionFile URL. -->
         <!--<bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="~remoteAppUrl/functions" />-->
-        <!--<bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="~remoteAppUrl/" />-->
         <bt:Url id="Contoso.Shared.Url" DefaultValue="~remoteAppUrl/" />
         <bt:Url id="Contoso.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
       </bt:Urls>
 
       <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
-        <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Show Taskpane" />
-        <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Insert Name Index" />
-        <bt:String id="Contoso.FunctionButton2.Label" DefaultValue="Insert Name Bubble" />
-        <bt:String id="Contoso.FunctionButton3.Label" DefaultValue="Write JS" />
-        <bt:String id="Contoso.FunctionButton4.Label" DefaultValue="Bubbles" />
+        <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with your sample add-in!" />
+        <bt:String id="Contoso.CustomTabLabel" DefaultValue="Sample Add-in" />
         <bt:String id="Contoso.Group1Label" DefaultValue="TaskPane" />
         <bt:String id="Contoso.Group2Label" DefaultValue="Texts" />
         <bt:String id="Contoso.Group3Label" DefaultValue="Bubbles" />
-        <bt:String id="Contoso.CustomTabLabel" DefaultValue="Custom Tab Label" />
-        <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with your sample add-in!" />
+        <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Show Taskpane" />
+        <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Insert Name From Index" />
+        <bt:String id="Contoso.FunctionButton2.Label" DefaultValue="Insert Name From Bubble" />
+        <bt:String id="Contoso.FunctionButton3.Label" DefaultValue="Write JS" />
+        <bt:String id="Contoso.FunctionButton4.Label" DefaultValue="Bubbles" />
       </bt:ShortStrings>
 
       <!-- LongStrings max characters==250. -->
       <bt:LongStrings>
         <bt:String id="Contoso.TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane" />
-        <bt:String id="Contoso.FunctionButton1.Tooltip" DefaultValue="Click to Run a Function" />
-        <bt:String id="Contoso.FunctionButton3.Tooltip" DefaultValue="Click to Run a Function" />
-        <bt:String id="Contoso.FunctionButton2.Tooltip" DefaultValue="Click to Run a Function" />
-        <bt:String id="Contoso.FunctionButton4.Tooltip" DefaultValue="Click to Run a Function" />
-        <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started." />
+        <bt:String id="Contoso.FunctionButton1.Tooltip" DefaultValue="Click to insert text from Index Page" />
+        <bt:String id="Contoso.FunctionButton3.Tooltip" DefaultValue="Click to insert text from BubbleChart Page" />
+        <bt:String id="Contoso.FunctionButton2.Tooltip" DefaultValue="Click to insert text from commands.js" />
+        <bt:String id="Contoso.FunctionButton4.Tooltip" DefaultValue="Click to Run CreateBubbles from BubbleChart Page" />
+        <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the Sample Add-in tab and click the 'Show Taskpane' button to get started." />
       </bt:LongStrings>
 
     </Resources>

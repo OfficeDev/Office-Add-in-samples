@@ -131,6 +131,7 @@ Version  | Date             | Comments
 ---------| ---------------- | ------------------
 1.0      | May 27, 2022     | Initial release
 2.0      | February 1, 2024 | Upgraded to .NET 8
+3.0      | April 11, 2024   | Added Add-in Commands, demo JS and C# Interop from the Ribbon
 
 ## Copyright
 
