@@ -50,7 +50,7 @@ export default class App extends React.Component<AppProps, AppState> {
         Properties
     */
 
-  // The access token is not part of state because React is all about the
+  // The access token is not part of state because React is concerned with the
   // UI and the token is not used to affect the UI in any way.
   accessToken: string;
   userName: string;
@@ -94,7 +94,7 @@ export default class App extends React.Component<AppProps, AppState> {
   errorDismissed = () => {
     this.setState({ errorMessage: "" });
 
-    // If the error occured during a "in process" phase (logging in or getting files),
+    // If the error occurred during an "in process" phase (logging in or getting files),
     // the action didn't complete, so return the UI to the preceding state/view.
     this.setState((prevState) => {
       if (prevState.authStatus === "loginInProcess") {
@@ -135,9 +135,8 @@ export default class App extends React.Component<AppProps, AppState> {
       await writeFileNamesToWorksheet(response, this.displayError);
       this.setState({ fileFetch: "fetched", headerMessage: "Success" });
     } catch (requestError) {
-      // This error must be
-      // from the Axios request in getGraphData, not the Office.js in
-      // writeFileNamesToWorksheet
+      // This error must be from the Axios request in getGraphData, 
+      // not the Office.js in writeFileNamesToWorksheet.
       this.displayError(requestError);
     }
   };

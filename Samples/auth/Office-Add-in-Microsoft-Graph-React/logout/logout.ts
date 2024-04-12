@@ -14,11 +14,11 @@ Office.onReady(async () => {
     auth: {
       clientId: 'YOUR APP ID HERE',
       authority: 'https://login.microsoftonline.com/common',
-      redirectUri: 'https://localhost:3000/login/login.html' // Must be registered as "spa" type
+      redirectUri: 'https://localhost:3000/login/login.html' // Must be registered as "spa" type.
     },
     cache: {
-      cacheLocation: 'localStorage', // needed to avoid "login required" error
-      storeAuthStateInCookie: true   // recommended to avoid certain IE/Edge issues
+      cacheLocation: 'localStorage', // Needed to avoid a "login required" error.
+      storeAuthStateInCookie: true   // Recommended to avoid certain IE/Edge issues.
     }
   });
   await pca.initialize();
@@ -27,7 +27,7 @@ Office.onReady(async () => {
 async function onMessageFromParent(arg) {
   const messageFromParent = JSON.parse(arg.message);
 
-  // you can select which account application should sign out
+  // You can select which account application should sign out.
   const logoutRequest = {
     account: messageFromParent.userName,
     postLogoutRedirectUri: "https://localhost:3000/logoutcomplete/logoutcomplete.html",
