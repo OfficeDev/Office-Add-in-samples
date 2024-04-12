@@ -3,7 +3,13 @@
     "description": "",
     "author": "",
     "version": "1.1.0",
-    "browserslist": ["Safari >= 8", "last 2 versions"],
+    "browserslist": [
+        "Safari >= 8",
+        "last 2 versions"
+    ],
+    "engines": {
+        "node": ">=18.20.2"
+    },
     "scripts": {
         "clean": "rimraf dist && rimraf .awcache",
         "lint": "tslint --project tsconfig.json",

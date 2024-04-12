@@ -44,9 +44,9 @@ Integrating data from online service providers increases the value and adoption 
 
 To run this code sample, the following are required.
 
-* [Node and npm](https://nodejs.org/en/), version 10.15.3 or later (npm version 6.2.0 or later). The sample was not tested on earlier versions, but may work with them.
+* [Node and npm](https://nodejs.org/en/), version 18.20.2 or later (npm version 10.5.0 or later).
 
-* TypeScript version 3.1.6 or later. The sample was not tested on earlier versions, but may work with them.
+* TypeScript version 5.4.3 or later.
 
 * A Microsoft 365 account. You can get one if you qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 
