@@ -97,7 +97,7 @@ Version  | Date | Comments
 ### Configure the sample
 
 1. In a code editor, open the `/login/login.ts` file in the project. Near the top is a configuration property called `clientId`. Replace the `YOUR APP ID HERE` placeholder value with the application ID you copied in the previous step. Save and close the file.
-1. Open the `/logout/logkout.ts` file in the project. Near the top is a configuration property called `clientId`. Replace the `YOUR APP ID HERE` placeholder value with the application ID you copied in the previous step. Save and close the file.
+1. Open the `/logout/logout.ts` file in the project. Near the top is a configuration property called `clientId`. Replace the `YOUR APP ID HERE` placeholder value with the application ID you copied in the previous step. Save and close the file.
 1. Open a **Command Prompt** *as an administrator*.
 1. Navigate to the root of the sample, which would normally be `[PATH-TO-YOUR-PROJECTS]\Office-Add-in-samples\Samples\auth\Office-Add-in-Microsoft-Graph-React`.
 1. Run the command `npm install`.
