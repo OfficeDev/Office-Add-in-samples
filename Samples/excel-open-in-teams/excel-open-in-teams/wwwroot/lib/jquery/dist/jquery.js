@@ -142,7 +142,7 @@ function toType( obj ) {
 }
 /* global Symbol */
 // Defining this global in .eslintrc.json would create a danger of using the global
-// protected in another place, it seems safer to define global only for this module
+// unprotected in another place, it seems safer to define global only for this module
 
 
 
