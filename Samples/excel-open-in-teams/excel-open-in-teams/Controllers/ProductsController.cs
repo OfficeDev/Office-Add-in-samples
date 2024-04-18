@@ -82,7 +82,7 @@ namespace excel_open_in_teams.Controllers
         [AuthorizeForScopes(Scopes = new[] { "Channel.ReadBasic.All" })]
         public async Task<ActionResult> ChannelsListForTeam(string teamIDSelection)
         {
-            //Guard against script injection attack
+            //Protect against script injection attack
             teamIDSelection = System.Web.HttpUtility.HtmlEncode(teamIDSelection);
             try
             {
@@ -126,7 +126,7 @@ namespace excel_open_in_teams.Controllers
                 // Deserialize the JSON channel information from the selection
                 Channel channel = JsonConvert.DeserializeObject<Channel>(channelSelection);
 
-                //Guard against script injection attack
+                //Protect against script injection attack
                 channel.TeamId = System.Web.HttpUtility.HtmlEncode(channel.TeamId);
                 channel.Id = System.Web.HttpUtility.HtmlEncode(channel.Id);
                 channel.Name = System.Web.HttpUtility.HtmlEncode(channel.Name);

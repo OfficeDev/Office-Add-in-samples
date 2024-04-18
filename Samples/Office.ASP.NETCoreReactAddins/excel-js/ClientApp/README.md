@@ -1022,7 +1022,7 @@ If you are still having issues or if you’re using a more exotic environment li
 
 ```
 # NOTE: THIS IS DANGEROUS!
-# It exposes your machine to attacks from the websites you visit.
+# It exposes your machine to cyberattacks from the websites you visit.
 DANGEROUSLY_DISABLE_HOST_CHECK=true
 ```
 
