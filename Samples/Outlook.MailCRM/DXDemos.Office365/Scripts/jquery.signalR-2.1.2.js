@@ -121,7 +121,7 @@
                 connection.reconnecting(function () {
                     var connection = this;
 
-                    // Guard against state changing in a previous user defined even handler
+                    // Protect against state changing in a previous user defined even handler
                     if (connection.state === signalR.connectionState.reconnecting) {
                         stopReconnectingTimeout = window.setTimeout(function () { onReconnectTimeout(connection); }, connection.disconnectTimeout);
                     }
