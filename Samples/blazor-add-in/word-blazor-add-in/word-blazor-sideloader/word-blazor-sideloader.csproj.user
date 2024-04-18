@@ -2,6 +2,13 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <BlazorAppUrl>https://localhost:7096/</BlazorAppUrl>
-    <InspectUri>{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}</InspectUri>   
+    <InspectUri>{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}</InspectUri>
+    <GeneratedFeatureId>066cd169-4190-4cae-8918-8adc8a6d19e8</GeneratedFeatureId>
+    <GeneratedPackageId>580ce8eb-d935-4aa7-898d-297ac214382c</GeneratedPackageId>
+    <GeneratedModuleId>{8ca22c83-864a-4a1e-a916-779f16bcee04}</GeneratedModuleId>
+    <GeneratedListId>{7d529eb2-50e1-4ed5-87fa-6f6c09693388}</GeneratedListId>
+    <GeneratedProductId>{304599e9-53a7-4a84-b8e3-ce4e49d19658}</GeneratedProductId>
+    <GeneratedAppVersion>1.0.0.0</GeneratedAppVersion>
+    <GeneratedClientSecret>w8upFKfaPjGWYDRwcu8+de7JPzhWRIcXUehWtSFcaM0=</GeneratedClientSecret>
   </PropertyGroup>
 </Project>

@@ -55,7 +55,7 @@ namespace BlazorAddIn.Pages
         [JSInvokable]
         public static string SayHelloBubble(string name)
         {
-            return $"Hello Bubble, {name} from BlazorFunctionFile!";
+            return $"Hello Bubble, {name} from BubbleChart!";
         }
     }
 }

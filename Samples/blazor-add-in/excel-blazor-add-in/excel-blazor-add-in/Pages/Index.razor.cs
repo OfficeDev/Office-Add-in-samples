@@ -36,7 +36,7 @@ namespace BlazorAddIn.Pages
         [JSInvokable]
         public static string SayHelloIndex(string name)
         {
-            return $"Hello Index, {name} from BlazorFunctionFile!";
+            return $"Hello Index, {name} from Index!";
         }
     }
 }

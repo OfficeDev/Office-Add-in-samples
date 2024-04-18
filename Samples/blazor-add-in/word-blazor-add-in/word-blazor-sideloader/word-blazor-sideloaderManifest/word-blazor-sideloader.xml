@@ -177,7 +177,7 @@
                 <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Prepare Document" />
                 <bt:String id="Contoso.Group1Label" DefaultValue="TaskPane" />
                 <bt:String id="Contoso.Group2Label" DefaultValue="Content Controls" />
-                <bt:String id="Contoso.CustomTabLabel" DefaultValue="Custom Tab Label" />
+                <bt:String id="Contoso.CustomTabLabel" DefaultValue="Sample Add-in" />
                 <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with your sample add-in!" />                
             </bt:ShortStrings>
             <!-- LongStrings max characters==250. -->

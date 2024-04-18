@@ -24,6 +24,8 @@ This sample shows how to build an Excel add-in using .NET Blazor technologies. B
 - Initialize the Office JavaScript API library in Blazor context.
 - Interact with Excel to manipulate worksheets.
 - Interact with workbook content through Office JavaScript APIs.
+- Added examples to show how to interact with methods defined on the Blazor Pages.
+- Interop between OfficeJS - JavaScript - C# and back to JavaScript.
 
 ## Applies to
 
@@ -38,9 +40,9 @@ This sample shows how to build an Excel add-in using .NET Blazor technologies. B
 1. Download or clone the [Office Add-ins samples repository](https://github.com/OfficeDev/Office-Add-in-samples).
 1. Open Visual Studio 2022 and open the **Office-Add-in-samples\Samples\blazor-add-in\excel-blazor-add-in\excel-blazor-add-in.sln** solution. (Do **not** open Visual Studio "as administrator". There is a bug that will prevent the add-in from sideloading when Visual Studio is elevated in this way.)
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
-1. When Excel opens, choose **Home** > **Show Taskpane**.
-
-Next, try out the controls.
+1. When Excel opens, choose **Sample Add-in** > **Show Taskpane**.
+1. Try out the controls on the TaskPanes.
+1. Try using the Ribbon Buttons to trigger the Add-in Commands.
 
 ## Understand an Office Add-in in Blazor Context
 
@@ -52,6 +54,8 @@ Building the Office Add-in as a Blazor Webassembly allows you to build a .NET Co
 This sample uses a Blazor Webassembly file that runs cross-platform in various browsers supporting WASM (Webassembly). The Blazor WASM App demonstrates some basic Excel functions.
 
 The purpose of this sample is to show you how to build and interact with the Blazor, C# and JavaScript Interop options. If you're looking for more examples of interacting with Excel and Office JS APIs, see [Script Lab](https://aka.ms/getscriptlab).
+
+We now added interop examples to trigger Add-in Commands from the Ribbon to interact with the Excel Workbook.
 
 ### Blazor pages
 
@@ -94,6 +98,9 @@ The fundamental pattern includes the following steps.
 1. Use **JSModule.InvokeVoidAsync** to call JavaScript functions from your C# code.
 1. Call Office JS APIs to interact with the worksheet from JavaScript code.
 
+### Blazor interop with Add-in Commands
+In this version of the sample we added interop functionality between OfficeJS - JavaScript and C# through the Blazor Pages to show how interact between the Ribbon and the Blazor back-end. This example shows you how to trigger the same functions defined on the TaskPane using the Ribbon Controls as entrypoint.
+
 ## Debugging
 
 This sample is configured to support debugging both JavaScript and C# files. New Blazor projects need the following file updates to support C# debugging.
@@ -131,7 +138,7 @@ Version  | Date             | Comments
 ---------| ---------------- | ------------------
 1.0      | May 27, 2022     | Initial release
 2.0      | February 1, 2024 | Upgraded to .NET 8
-3.0      | April 11, 2024   | Added Add-in Commands, demo JS and C# Interop from the Ribbon
+3.0      | April 18, 2024   | Added Add-in Commands, demo JS and C# Interop from the Ribbon
 
 ## Copyright
 
