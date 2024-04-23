@@ -55,15 +55,15 @@ IMPORTANT: Nested app authentication is currently in preview. To try this featur
 1. On the **Outlook-Add-in-SSO-NAA** page, copy and save the value for the **Application (client) ID**. You'll use it in the next section.
 1. Select the link to modify redirect URIs which should appear as **0 web, 1 spa, 0 public client**.
 
-      ![The redirect URIs link](/assets/ui-add-redirect-link.png)
+      ![The redirect URIs link.](./assets/ui-add-redirect-link.png)
 
 1. In the **Single-page application Redirect URIs** section, select **Add URI**.
 
-      ![The Add URI link](/assets/ui-add-redirects-link.png)
+      ![The Add URI link.](./assets/ui-add-redirects-link.png)
 
 1. Enter the new URI value `https://localhost:3000/taskpane.html` and select **Save**.
 
-      ![The completed redirects in the application registration](/assets/ui-completed-redirects.png)
+      ![The completed redirects in the application registration.](./assets/ui-completed-redirects.png)
 
 For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://learn.microsoft.com/graph/auth-register-app-v2).
 
@@ -100,7 +100,7 @@ You can debug the sample by opening the project in VS Code.
 1. Select the launch configuration you want from the **Configuration dropdown** in the **Run and Debug** view. For example, **Outlook Desktop (Edge Chromium)**.
 1. Start your debug session with **F5**, or **Run > Start Debugging**.
 
-![VS Code debug view](./assets/vs-code-debug-view.png)
+![The VS Code debug view.](./assets/vs-code-debug-view.png)
 
 For more information on debugging with VS Code, see [Debugging](https://code.visualstudio.com/Docs/editor/debugging). For more information on debugging Office Add-ins in VS Code, see [Debug Office Add-ins on Windows using Visual Studio Code and Microsoft Edge WebView2 (Chromium-based)](https://learn.microsoft.com/office/dev/add-ins/testing/debug-desktop-using-edge-chromium)
 
