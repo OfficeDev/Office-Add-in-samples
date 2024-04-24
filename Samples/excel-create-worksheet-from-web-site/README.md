@@ -61,43 +61,14 @@ or download and extract the repository *.zip* file.
 
 ### Step 3: Register the sample application(s) in your tenant
 
-The **WebApp** must be registered in Azure AD. To register it, you can:
-
-- follow the steps below for manually register your apps
-- or use PowerShell scripts that:
-  - **automatically** creates the Azure AD applications and related objects (passwords, permissions, dependencies) for you.
-  - modify the projects' configuration files.
-
-<details>
-  <summary>Expand this section if you want to use automation to register your apps:</summary>
-  <p>
-    <b>Warning:</b> If you have never used <b>Microsoft Graph PowerShell</b> before, we recommend you go through the <a href="./WebApplication/AppCreationScripts/AppCreationScripts.md">App Creation Scripts Guide</a> once to ensure that your environment is prepared correctly for this step.
-  </p>
-  <p>
-    <ol>
-    <li>On Windows, run PowerShell as **Administrator** and navigate to the root of the cloned directory</li>
-    <li>In PowerShell run:</li>
-    <b>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force</b>
-    <li>Run the script to create your Azure AD application and configure the code of the sample application accordingly.</li>
-    <li>For interactive process -in PowerShell, run:</li>
-    <section>
-    <b>cd .\AppCreationScripts\<br>
-       .\Configure.ps1 -TenantId "[Optional] - your tenant id" -AzureEnvironmentName "[Optional] - Azure environment, defaults to 'Global'"</b>
-    </section>
-    </ol></p>
-    Other ways of running the scripts are described in <a href="./AppCreationScripts/AppCreationScripts.md">App Creation Scripts guide</a> The scripts also provide a guide to automated application registration, configuration and removal which can help in your CI/CD scenarios.
-</details>
-
 #### Choose the Azure AD tenant where you want to create your applications
-
-To manually register the apps, as a first step you'll need to:
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
 1. If your account is present in more than one Azure AD tenant, select your profile at the top right corner in the menu on top of the page, and then **switch directory** to change your portal session to the desired Azure AD tenant.
 
 #### Register the client app (contoso-addin-data-to-excel)
 
-1. Navigate to the [Azure portal](https://portal.azure.com) and select the **Azure Active Directory** service.
+1. Go to the [Azure portal](https://portal.azure.com) and select the **Azure Active Directory** service.
 1. Select the **App Registrations** blade on the left, then select **New registration**.
 1. In the **Register an application page** that appears, enter your application's registration information:
     1. In the **Name** section, enter a meaningful application name that will be displayed to users of the app, for example `contoso-addin-data-to-excel`.
@@ -176,7 +147,7 @@ This sample was built using the code from [Vanilla JavaScript single-page applic
 
 ### Implement the Excel button
 
-The `WebApplicatoin/App/index.html` page has an `<img>` tag that displays the Excel icon. The click handler calls `openInExcel()` which is in the `WebApplication/App/authPopup.js` file. The `openInExcel` function sends the sales data from `WebApplication/App/tableData.js` in a POST request to the `FunctionCreateSpreadsheet` Azure Functions app.
+The `WebApplication/App/index.html` page has an `<img>` tag that displays the Excel icon. The click handler calls `openInExcel()` which is in the `WebApplication/App/authPopup.js` file. The `openInExcel` function sends the sales data from `WebApplication/App/tableData.js` in a POST request to the `FunctionCreateSpreadsheet` Azure Functions app.
 
 ### Construct the spreadsheet
 
