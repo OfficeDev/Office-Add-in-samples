@@ -69,26 +69,23 @@ The **WebApp** must be registered in Azure AD. To register it, you can:
   - modify the projects' configuration files.
 
 <details>
-   <summary>Expand this section if you want to use this automation:</summary>
-
-    > :warning: If you have never used **Microsoft Graph PowerShell** before, we recommend you go through the [App Creation Scripts Guide](./WebApplication/AppCreationScripts/AppCreationScripts.md) once to ensure that your environment is prepared correctly for this step.
-  
-    1. On Windows, run PowerShell as **Administrator** and navigate to the root of the cloned directory
-    1. In PowerShell run:
-
-       ```PowerShell
-       Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force
-       ```
-
-    1. Run the script to create your Azure AD application and configure the code of the sample application accordingly.
-    1. For interactive process -in PowerShell, run:
-
-       ```PowerShell
-       cd .\AppCreationScripts\
-       .\Configure.ps1 -TenantId "[Optional] - your tenant id" -AzureEnvironmentName "[Optional] - Azure environment, defaults to 'Global'"
-       ```
-
-    > Other ways of running the scripts are described in [App Creation Scripts guide](./AppCreationScripts/AppCreationScripts.md). The scripts also provide a guide to automated application registration, configuration and removal which can help in your CI/CD scenarios.
+  <summary>Expand this section if you want to use automation to register your apps:</summary>
+  <p>
+    <b>Warning:</b> If you have never used <b>Microsoft Graph PowerShell</b> before, we recommend you go through the <a href="./WebApplication/AppCreationScripts/AppCreationScripts.md">App Creation Scripts Guide</a> once to ensure that your environment is prepared correctly for this step.
+  </p>
+  <p>
+    <ol>
+    <li>On Windows, run PowerShell as **Administrator** and navigate to the root of the cloned directory</li>
+    <li>In PowerShell run:</li>
+    <b>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force</b>
+    <li>Run the script to create your Azure AD application and configure the code of the sample application accordingly.</li>
+    <li>For interactive process -in PowerShell, run:</li>
+    <section>
+    <b>cd .\AppCreationScripts\<br>
+       .\Configure.ps1 -TenantId "[Optional] - your tenant id" -AzureEnvironmentName "[Optional] - Azure environment, defaults to 'Global'"</b>
+    </section>
+    </ol></p>
+    Other ways of running the scripts are described in <a href="./AppCreationScripts/AppCreationScripts.md">App Creation Scripts guide</a> The scripts also provide a guide to automated application registration, configuration and removal which can help in your CI/CD scenarios.
 </details>
 
 #### Choose the Azure AD tenant where you want to create your applications
@@ -259,6 +256,7 @@ Open data from your web page in a spreadsheet | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0  | January 31, 2023 | Initial release
+1.1  | April 24, 2024 | Update package versions
 
 ## Copyright
 
