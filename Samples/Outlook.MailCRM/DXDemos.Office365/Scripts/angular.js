@@ -1661,7 +1661,7 @@ function getBlockNodes(nodes) {
 
 /**
  * Creates a new object without a prototype. This object is useful for lookup without having to
- * guard against prototypically inherited properties via hasOwnProperty.
+ * protect against prototypically inherited properties via hasOwnProperty.
  *
  * Related micro-benchmarks:
  * - http://jsperf.com/object-create2
@@ -9152,7 +9152,7 @@ function $HttpProvider() {
      * - [JSON vulnerability](http://haacked.com/archive/2008/11/20/anatomy-of-a-subtle-json-vulnerability.aspx)
      * - [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
      *
-     * Both server and the client must cooperate in order to eliminate these threats. Angular comes
+     * Both server and the client must cooperate in order to protect against these threats. Angular comes
      * pre-configured with strategies that address these issues, but for this to work backend server
      * cooperation is required.
      *
@@ -9169,7 +9169,7 @@ function $HttpProvider() {
      * ['one','two']
      * ```
      *
-     * which is vulnerable to attack, your server can return:
+     * which is vulnerable to cyberattack, your server can return:
      * ```js
      * )]}',
      * ['one','two']
@@ -10313,96 +10313,6 @@ function $IntervalProvider() {
       * @param {boolean=} [invokeApply=true] If set to `false` skips model dirty checking, otherwise
       *   will invoke `fn` within the {@link ng.$rootScope.Scope#$apply $apply} block.
       * @returns {promise} A promise which will be notified on each iteration.
-      *
-      * @example
-      * <example module="intervalExample">
-      * <file name="index.html">
-      *   <script>
-      *     angular.module('intervalExample', [])
-      *       .controller('ExampleController', ['$scope', '$interval',
-      *         function($scope, $interval) {
-      *           $scope.format = 'M/d/yy h:mm:ss a';
-      *           $scope.blood_1 = 100;
-      *           $scope.blood_2 = 120;
-      *
-      *           var stop;
-      *           $scope.fight = function() {
-      *             // Don't start a new fight if we are already fighting
-      *             if ( angular.isDefined(stop) ) return;
-      *
-      *             stop = $interval(function() {
-      *               if ($scope.blood_1 > 0 && $scope.blood_2 > 0) {
-      *                 $scope.blood_1 = $scope.blood_1 - 3;
-      *                 $scope.blood_2 = $scope.blood_2 - 4;
-      *               } else {
-      *                 $scope.stopFight();
-      *               }
-      *             }, 100);
-      *           };
-      *
-      *           $scope.stopFight = function() {
-      *             if (angular.isDefined(stop)) {
-      *               $interval.cancel(stop);
-      *               stop = undefined;
-      *             }
-      *           };
-      *
-      *           $scope.resetFight = function() {
-      *             $scope.blood_1 = 100;
-      *             $scope.blood_2 = 120;
-      *           };
-      *
-      *           $scope.$on('$destroy', function() {
-      *             // Make sure that the interval is destroyed too
-      *             $scope.stopFight();
-      *           });
-      *         }])
-      *       // Register the 'myCurrentTime' directive factory method.
-      *       // We inject $interval and dateFilter service since the factory method is DI.
-      *       .directive('myCurrentTime', ['$interval', 'dateFilter',
-      *         function($interval, dateFilter) {
-      *           // return the directive link function. (compile function not needed)
-      *           return function(scope, element, attrs) {
-      *             var format,  // date format
-      *                 stopTime; // so that we can cancel the time updates
-      *
-      *             // used to update the UI
-      *             function updateTime() {
-      *               element.text(dateFilter(new Date(), format));
-      *             }
-      *
-      *             // watch the expression, and update the UI on change.
-      *             scope.$watch(attrs.myCurrentTime, function(value) {
-      *               format = value;
-      *               updateTime();
-      *             });
-      *
-      *             stopTime = $interval(updateTime, 1000);
-      *
-      *             // listen on DOM destroy (removal) event, and cancel the next UI update
-      *             // to prevent updating time after the DOM element was removed.
-      *             element.on('$destroy', function() {
-      *               $interval.cancel(stopTime);
-      *             });
-      *           }
-      *         }]);
-      *   </script>
-      *
-      *   <div>
-      *     <div ng-controller="ExampleController">
-      *       Date format: <input ng-model="format"> <hr/>
-      *       Current time is: <span my-current-time="format"></span>
-      *       <hr/>
-      *       Blood 1 : <font color='red'>{{blood_1}}</font>
-      *       Blood 2 : <font color='red'>{{blood_2}}</font>
-      *       <button type="button" data-ng-click="fight()">Fight</button>
-      *       <button type="button" data-ng-click="stopFight()">StopFight</button>
-      *       <button type="button" data-ng-click="resetFight()">resetFight</button>
-      *     </div>
-      *   </div>
-      *
-      * </file>
-      * </example>
       */
     function interval(fn, delay, count, invokeApply) {
       var setInterval = $window.setInterval,
@@ -24568,7 +24478,7 @@ var ngRepeatDirective = ['$parse', '$animate', function($parse, $animate) {
         //   - element: previous element.
         //   - index: position
         //
-        // We are using no-proto object so that we don't need to guard against inherited props via
+        // We are using no-proto object so that we don't need to protect against inherited props via
         // hasOwnProperty.
         var lastBlockMap = createMap();
 

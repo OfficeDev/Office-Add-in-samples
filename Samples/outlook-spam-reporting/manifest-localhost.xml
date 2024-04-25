@@ -14,8 +14,8 @@
   <DisplayName DefaultValue="Office Add-ins Outlook spam-reporting sample"/>
   <Description DefaultValue="Report spam or phishing emails using a spam-reporting add-in."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/outlook/spam-reporting" />
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://learn.microsoft.com/office/dev/add-ins/outlook/spam-reporting" />
   <AppDomains>
     <AppDomain>https://officedev.github.io</AppDomain>
   </AppDomains>
@@ -29,7 +29,7 @@
   </Requirements>
   <FormSettings>
     <Form xsi:type="ItemRead">
-    <Host Name="Mailbox"/>
+      <DesktopSettings>
         <SourceLocation DefaultValue="https://localhost:3000/src/spamreporting.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
@@ -90,6 +90,9 @@
                   </ReportingOptions>
                   <FreeTextLabel resid="FreeText.Label"/>
                   <MoreInfo>
+                    <!-- Starting in Outlook on Windows Version 2404 (Build 17526.15020), the URL specified in
+                         the MoreInfoUrl element is added after the "For more info go to:" line in the preprocessing
+                         dialog. In earlier supported versions, the aforementioned line doesn't appear in the dialog. -->
                     <MoreInfoText resid="MoreInfo.Label"/>
                     <MoreInfoUrl resid="MoreInfo.Url"/>
                   </MoreInfo>
@@ -117,8 +120,8 @@
           <bt:String id="PreProcessingDialog.Label" DefaultValue="Report Spam Message"/>
           <bt:String id="OptionsTitle.Label" DefaultValue="Why are you reporting this email?"/>
           <bt:String id="FreeText.Label" DefaultValue="Provide additional information, if any:"/>
-          <bt:String id="MoreInfo.Label" DefaultValue="To learn more about reporting unsolicited messages, see "/>
-          <bt:Url id="MoreInfo.Url" DefaultValue="https://learn.microsoft.com/office/dev/add-ins/outlook/spam-reporting"/>
+          <bt:String id="MoreInfo.Label" DefaultValue="Implement an integrated spam-reporting add-in (preview)"/>
+          <bt:String id="Option1.Label" DefaultValue="Received spam email."/>
           <bt:String id="Option2.Label" DefaultValue="Received a phishing email."/>
           <bt:String id="Option3.Label" DefaultValue="I'm not sure this is a legitimate email."/>
         </bt:ShortStrings>
