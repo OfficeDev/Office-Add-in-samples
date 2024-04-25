@@ -24,7 +24,7 @@ This sample shows how to build an Excel add-in using .NET Blazor technologies. B
 - Initialize the Office JavaScript API library in Blazor context.
 - Interact with Excel to manipulate worksheets.
 - Interact with workbook content through Office JavaScript APIs.
-- Added examples to show how to interact with methods defined on the Blazor Pages.
+- Interact with methods defined on the Blazor Pages.
 - Interop between OfficeJS - JavaScript - C# and back to JavaScript.
 
 ## Applies to
