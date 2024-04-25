@@ -42,7 +42,7 @@ This sample shows how to build an Excel add-in using .NET Blazor technologies. B
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
 1. When Excel opens, choose **Sample Add-in** > **Show Taskpane**.
 1. Try out the controls on the task panes.
-1. Try using the Ribbon Buttons to trigger the Add-in Commands.
+1. Try out the custom buttons on the **Sample Add-in** tab on the ribbon.
 
 ## Understand an Office Add-in in Blazor Context
 
