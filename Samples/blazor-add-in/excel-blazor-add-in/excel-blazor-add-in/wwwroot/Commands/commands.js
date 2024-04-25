@@ -164,7 +164,7 @@ async function callStaticLocalComponentMethodinit(methodname) {
     }
 }
 
-// You must register the function with the following line.
+// Associate the functions with their named counterparts in the manifest XML.
 Office.actions.associate("writeValue", writeValue);
 Office.actions.associate("createBubbles", createBubbles);
 Office.actions.associate("highlightSelectionIndex", highlightSelectionIndex);
