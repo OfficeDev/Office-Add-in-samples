@@ -84,7 +84,7 @@ Version  | Date | Comments
 1. Select **New registration**. On the **Register an application** page, set the values as follows.
 
     * Set **Name** to `ExcelGraphDemo`.
-    * Set **Supported account types** to **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
+    * Set **Supported account types** to **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
     * In the **Redirect URI** section, ensure that **Single-page application (SPA)** is selected in the drop down and then set the URI to `https://localhost:3000/login/login.html`.
     * Select **Register**.
 

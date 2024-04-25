@@ -10,11 +10,10 @@ Office.onReady(async () => {
     auth: {
       clientId: 'YOUR APP ID HERE',
       authority: 'https://login.microsoftonline.com/common',
-      redirectUri: 'https://localhost:3000/login/login.html' // Must be registered as "spa" type.
+      redirectUri: `${window.location.origin}/login/login.html` // Must be registered as "spa" type.
     },
     cache: {
-      cacheLocation: 'localStorage', // Needed to avoid a "login required" error.
-      storeAuthStateInCookie: true   // Recommended to avoid certain IE/Edge issues.
+      cacheLocation: 'localStorage' // Needed to avoid a "login required" error.
     }
   });
   await pca.initialize();
@@ -26,7 +25,7 @@ Office.onReady(async () => {
       Office.context.ui.messageParent(JSON.stringify({ status: 'success', token: response.accessToken, userName: response.account.username}));
     } else {
       // A problem occurred, so invoke login.
-      pca.loginRedirect({
+      await pca.loginRedirect({
         scopes: ['user.read', 'files.read.all']
       });
     }

@@ -35,14 +35,14 @@ export const writeFileNamesToWorksheet = async (result: AxiosResponse,
 let loginDialog: Office.Dialog;
 const dialogLoginUrl: string = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '') + '/login/login.html';
 
-export const signInO365 = async (setState: (x: AppState) => void,
+export const signInO365 = (setState: (x: AppState) => void,
     setToken: (x: string) => void,
     setUserName: (x: string) => void,
     displayError: (x: string) => void) => {
 
     setState({ authStatus: 'loginInProcess' });
 
-    await Office.context.ui.displayDialogAsync(
+    Office.context.ui.displayDialogAsync(
         dialogLoginUrl,
         { height: 40, width: 30 },
         (result) => {
@@ -58,6 +58,10 @@ export const signInO365 = async (setState: (x: AppState) => void,
     );
 
     const processLoginMessage = (arg: { message: string, origin: string }) => {
+        // Confirm origin is correct.
+        if (arg.origin !== window.location.origin) {
+            throw new Error("Incorrect origin passed to processLoginMessage.");
+        }
 
         let messageFromDialog = JSON.parse(arg.message);
         if (messageFromDialog.status === 'success') {
