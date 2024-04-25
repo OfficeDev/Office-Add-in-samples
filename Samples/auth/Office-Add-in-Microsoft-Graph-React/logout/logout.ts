@@ -5,18 +5,34 @@
 
 import { PublicClientApplication } from '@azure/msal-browser';
 
-(() => {
-  // The initialize function must be run each time a new page is loaded
-  Office.initialize = () => {
+let pca;
 
-    const msalInstance = new PublicClientApplication({
-        auth: {
-            clientId: 'fc19440a-334e-471e-af53-a1c1f53c9226',
-            redirectUri: 'https://localhost:3000/logoutcomplete/logoutcomplete.html', 
-            postLogoutRedirectUri: 'https://localhost:3000/logoutcomplete/logoutcomplete.html'
-        }
-    });
+Office.onReady(async () => {
+  Office.context.ui.addHandlerAsync(Office.EventType.DialogParentMessageReceived,
+    onMessageFromParent);
+  pca = new PublicClientApplication({
+    auth: {
+      clientId: 'YOUR APP ID HERE',
+      authority: 'https://login.microsoftonline.com/common',
+      redirectUri: `${window.location.origin}/login/login.html` // Must be registered as "spa" type.
+    },
+    cache: {
+      cacheLocation: 'localStorage' // Needed to avoid a "login required" error.
+    }
+  });
+  await pca.initialize();
+});
 
-    msalInstance.logout();
+async function onMessageFromParent(arg) {
+  const messageFromParent = JSON.parse(arg.message);
+  const currentAccount = pca.getAccountByHomeId(messageFromParent.userName);
+  // You can select which account application should sign out.
+  const logoutRequest = {
+    account: currentAccount,
+    postLogoutRedirectUri: `${window.location.origin}/logoutcomplete/logoutcomplete.html`,
   };
-})();
+  await pca.logoutRedirect(logoutRequest);
+  const messageObject = { messageType: "dialogClosed" };
+  const jsonMessage = JSON.stringify(messageObject);
+  Office.context.ui.messageParent(jsonMessage);
+}

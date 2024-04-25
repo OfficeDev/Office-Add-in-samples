@@ -44,9 +44,9 @@ Integrating data from online service providers increases the value and adoption 
 
 To run this code sample, the following are required.
 
-* [Node and npm](https://nodejs.org/en/), version 10.15.3 or later (npm version 6.2.0 or later). The sample was not tested on earlier versions, but may work with them.
+* [Node and npm](https://nodejs.org/en/), version 18.20.2 or later (npm version 10.5.0 or later).
 
-* TypeScript version 3.1.6 or later. The sample was not tested on earlier versions, but may work with them.
+* TypeScript version 5.4.3 or later.
 
 * A Microsoft 365 account. You can get one if you qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 
@@ -71,10 +71,7 @@ Version  | Date | Comments
 1.1  | December 10th, 2020 | Upgrade MSAL.js to v2
 1.0  | August 29th, 2019| Initial release
 1.1  | January 14th, 2021| Changed system for creating and installing the SSL certificates for HTTPS.
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+1.2  | April 4th, 2024 | Updated to MSAL 3.7.1. Refactored code.
 
 ----------
 
@@ -87,7 +84,7 @@ Version  | Date | Comments
 1. Select **New registration**. On the **Register an application** page, set the values as follows.
 
     * Set **Name** to `ExcelGraphDemo`.
-    * Set **Supported account types** to **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
+    * Set **Supported account types** to **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
     * In the **Redirect URI** section, ensure that **Single-page application (SPA)** is selected in the drop down and then set the URI to `https://localhost:3000/login/login.html`.
     * Select **Register**.
 
@@ -100,6 +97,7 @@ Version  | Date | Comments
 ### Configure the sample
 
 1. In a code editor, open the `/login/login.ts` file in the project. Near the top is a configuration property called `clientId`. Replace the `YOUR APP ID HERE` placeholder value with the application ID you copied in the previous step. Save and close the file.
+1. Open the `/logout/logout.ts` file in the project. Near the top is a configuration property called `clientId`. Replace the `YOUR APP ID HERE` placeholder value with the application ID you copied in the previous step. Save and close the file.
 1. Open a **Command Prompt** *as an administrator*.
 1. Navigate to the root of the sample, which would normally be `[PATH-TO-YOUR-PROJECTS]\Office-Add-in-samples\Samples\auth\Office-Add-in-Microsoft-Graph-React`.
 1. Run the command `npm install`.
