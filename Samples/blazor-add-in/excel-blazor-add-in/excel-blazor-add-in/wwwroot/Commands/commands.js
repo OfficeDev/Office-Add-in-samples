@@ -132,7 +132,7 @@ async function callStaticLocalComponentMethodinit(methodname) {
     console.log("In callStaticLocalComponentMethodinit");
 
     try {
-        var name = "Initializing";
+        let name = "Initializing";
 
         // Call JSInvokable Function here ...
         name = await DotNet.invokeMethodAsync("BlazorAddIn", methodname, "Blazor Fan");
