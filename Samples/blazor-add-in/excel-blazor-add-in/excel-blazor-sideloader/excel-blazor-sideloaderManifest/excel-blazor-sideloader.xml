@@ -271,7 +271,7 @@
         <bt:String id="Contoso.FunctionButton3.Tooltip" DefaultValue="Click to insert text from BubbleChart Page" />
         <bt:String id="Contoso.FunctionButton2.Tooltip" DefaultValue="Click to insert text from commands.js" />
         <bt:String id="Contoso.FunctionButton4.Tooltip" DefaultValue="Click to Run CreateBubbles from BubbleChart Page" />
-        <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the Sample Add-in tab and click the 'Show Taskpane' button to get started." />
+        <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the Sample Add-in tab and click the 'Show Task Pane' button to get started." />
       </bt:LongStrings>
 
     </Resources>
