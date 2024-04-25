@@ -102,7 +102,7 @@ The fundamental pattern includes the following steps.
 1. Call Office JS APIs to interact with the document from JavaScript code.
 
 ### Blazor interop with Add-in Commands
-In this version of the sample we added interop functionality between OfficeJS - JavaScript and C# through the Blazor Pages to show how interact between the Ribbon and the Blazor back-end. This example shows you how to trigger the same functions defined on the TaskPane using the Ribbon Controls as entrypoint.
+This sample shows how to use Blazor with custom buttons on the ribbon. The buttons call the same functions that are defined on the task pane. This sample is configured to use the shared runtime which is required for this interop to work correctly.
 
 ## Debugging
 
