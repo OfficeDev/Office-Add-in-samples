@@ -19,7 +19,6 @@ Office.onReady(() => {
  * Writes the event source id to the document when ExecuteFunction runs.
  * @param event {Office.AddinCommands.Event}
  */
-
 function writeValue(event) {
     Office.context.document.setSelectedDataAsync(
         "ExecuteFunction works. Button ID=" + event.source.id,
@@ -49,6 +48,10 @@ function getGlobal() {
 
 const g = getGlobal();
 
+/**
+ * Calls the JSInvokable function CreateBubbles to create a bubble chart, after adding the data in the active worksheet.
+ * @param event {Office.AddinCommands.Event}
+ */
 async function createBubbles(event) {
 
     console.log("Running createBubbles");
@@ -70,7 +73,10 @@ async function createBubbles(event) {
     event.completed();
 }
 
-// The command function.
+/**
+ * 
+ * @param event {Office.AddinCommands.Event}
+ */
 async function highlightSelectionIndex(event) {
 
     // Implement your custom code here. The following code is a simple Excel example.  
