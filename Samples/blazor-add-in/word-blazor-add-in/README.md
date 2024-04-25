@@ -24,7 +24,7 @@ This sample shows how to build a Word add-in using .NET Blazor technologies. Bla
 - Initialize the Office JavaScript API library in Blazor context.
 - Interact with Word to manipulate paragraphs and content controls.
 - Interact with document content through Office JavaScript APIs.
-- Added examples to show how to interact with methods defined on the Blazor Pages.
+- Interact with methods defined on the Blazor Pages.
 - Interop between OfficeJS - JavaScript - C# and back to JavaScript.
 
 ## Applies to
