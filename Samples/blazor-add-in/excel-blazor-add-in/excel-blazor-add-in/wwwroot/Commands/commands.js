@@ -6,24 +6,39 @@
 
 console.log("Loading command.js");
 
-/* global global, Office, self, window */
-
 /**
  * Writes the event source id to the document when ExecuteFunction runs.
  * @param event {Office.AddinCommands.Event}
  */
-function writeValue(event) {
-    Office.context.document.setSelectedDataAsync(
-        "ExecuteFunction works. Button ID=" + event.source.id,
-        function (asyncResult) {
-            var error = asyncResult.error;
-            if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                console.log("writeValue Failed");
-            } else {
-                console.log("writeValue Succeeded");
-            }
-        }
-    );
+async function writeValue(event) {
+
+    console.log("In writeValue");
+
+    try {
+        let message = "ExecuteFunction works. Button ID=" + event.source.id;
+
+        await Excel.run(async (context) => {
+            const range = context.workbook.getSelectedRange();
+            range.values = [[message]];
+            range.getEntireColumn().format.autofitColumns();
+            await context.sync();
+        });
+
+        console.log("writeValue Succeeded");
+
+    } catch (err) {
+        await Excel.run(async (context) => {
+            const range = context.workbook.getSelectedRange();
+            const cellRange = range.getCell(0, 0);
+            cellRange.values = [[err.message]];
+            await context.sync();
+        });
+        console.log();
+        console.log("Error call : " + err.message);
+    }
+    finally {
+        console.log("Finish callStaticLocalComponentMethodinit");
+    }
 
     // Calling event.completed is required. event.completed lets the platform know that processing has completed.
     event.completed();
@@ -55,7 +70,7 @@ async function createBubbles(event) {
 }
 
 /**
- * 
+ * Writes the text from the Index Blazor Page to the Worksheet when highlightSelectionIndex runs.
  * @param event {Office.AddinCommands.Event}
  */
 async function highlightSelectionIndex(event) {
@@ -68,9 +83,11 @@ async function highlightSelectionIndex(event) {
         await callStaticLocalComponentMethodinit("SayHelloIndex");
         console.log("After callStaticLocalComponentMethodinit");
 
+        // Used to verify the previous function call, if that fails, this will not run.
+        // It will be skipped on error and jump into the catch block.
         await Excel.run(async (context) => {
             const range = context.workbook.getSelectedRange();
-            range.format.fill.color = "red";
+            range.format.fill.color = "LightBlue";
             await context.sync();
         });
 
@@ -83,6 +100,10 @@ async function highlightSelectionIndex(event) {
     event.completed();
 }
 
+/**
+ * Writes the text from the BubbleChart Blazor Page to the Worksheet when highlightSelectionIndex runs.
+ * @param event {Office.AddinCommands.Event}
+ */
 async function highlightSelectionBubble(event) {
 
     // Implement your custom code here. The following code is a simple Excel example.  
@@ -93,13 +114,22 @@ async function highlightSelectionBubble(event) {
         await callStaticLocalComponentMethodinit("SayHelloBubble");
         console.log("After callStaticLocalComponentMethodinit");
 
+        // Used to verify the previous function call, if that fails, this will not run.
+        // It will be skipped on error and jump into the catch block.
         await Excel.run(async (context) => {
             const range = context.workbook.getSelectedRange();
-            range.format.fill.color = "red";
+            range.format.fill.color = "LightBlue";
             await context.sync();
         });
 
     } catch (error) {
+
+        await Excel.run(async (context) => {
+            const range = context.workbook.getSelectedRange();
+            range.format.fill.color = "Red";
+            await context.sync();
+        });
+
         // Note: In a production add-in, notify the user through your add-in's UI.
         console.error(error);
     }
@@ -108,6 +138,10 @@ async function highlightSelectionBubble(event) {
     event.completed();
 }
 
+/**
+ * Local function to call the JSInvokable function in the Blazor Component.
+ * @param methodname {methodname}
+ */
 async function callStaticLocalComponentMethodinit(methodname) {
 
     console.log("In callStaticLocalComponentMethodinit");
@@ -122,9 +156,12 @@ async function callStaticLocalComponentMethodinit(methodname) {
         await Excel.run(async (context) => {
             const range = context.workbook.getSelectedRange();
             range.values = [[name]];
+            range.getEntireColumn().format.autofitColumns();
             await context.sync();
         });
 
+        // Used to verify the previous function call, if that fails, this will not run.
+        // It will be skipped on error and jump into the catch block.
         await Excel.run(async (context) => {
             const range = context.workbook.getSelectedRange();
             range.format.fill.color = "yellow";
@@ -134,9 +171,17 @@ async function callStaticLocalComponentMethodinit(methodname) {
     catch (err) {
         await Excel.run(async (context) => {
             const range = context.workbook.getSelectedRange();
-            range.values = [[err.message]];
+            const cellRange = range.getCell(0, 0);
+            cellRange.values = [[err.message]];
             await context.sync();
         });
+
+        await Excel.run(async (context) => {
+            const range = context.workbook.getSelectedRange();
+            range.format.fill.color = "red";
+            await context.sync();
+        });
+
         console.log();
         console.log("Error call : " + err.message);
     }
