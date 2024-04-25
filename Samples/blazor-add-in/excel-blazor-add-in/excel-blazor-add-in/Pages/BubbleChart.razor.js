@@ -10,7 +10,7 @@ export async function createTable() {
         context.workbook.worksheets.getItemOrNullObject("Sample").delete();
         const sheet = context.workbook.worksheets.add("Sample");
 
-        let inventoryTable = sheet.tables.add("A1:D1", true);
+        const inventoryTable = sheet.tables.add("A1:D1", true);
         inventoryTable.name = "Sales";
         inventoryTable.getHeaderRowRange().values = [["Product", "Inventory", "Price", "Current Market Share"]];
 
