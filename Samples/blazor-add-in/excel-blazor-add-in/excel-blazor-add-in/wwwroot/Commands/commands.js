@@ -2,18 +2,11 @@
  * Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT license.
  * See LICENSE in the project root for license information.
  * 
- * For this to work, change the manifest 
- * Uncomment the line with Contoso.DesktopFunctionFile.Url
- * Comment the uncommented with Contoso.DesktopFunctionFile.Url
  */
 
 console.log("Loading command.js");
 
 /* global global, Office, self, window */
-
-Office.onReady(() => {
-    // If needed, Office.js is ready to be called
-});
 
 /**
  * Writes the event source id to the document when ExecuteFunction runs.
@@ -25,9 +18,9 @@ function writeValue(event) {
         function (asyncResult) {
             var error = asyncResult.error;
             if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                // Show error message.
+                console.log("writeValue Failed");
             } else {
-                // Show success message.
+                console.log("writeValue Succeeded");
             }
         }
     );
@@ -35,18 +28,6 @@ function writeValue(event) {
     // Calling event.completed is required. event.completed lets the platform know that processing has completed.
     event.completed();
 }
-
-function getGlobal() {
-    return typeof self !== "undefined"
-        ? self
-        : typeof window !== "undefined"
-            ? window
-            : typeof global !== "undefined"
-                ? global
-                : undefined;
-}
-
-const g = getGlobal();
 
 /**
  * Calls the JSInvokable function CreateBubbles to create a bubble chart, after adding the data in the active worksheet.
@@ -84,7 +65,7 @@ async function highlightSelectionIndex(event) {
         console.log("Running highlightSelectionIndex");
 
         console.log("Before callStaticLocalComponentMethodinit");
-        callStaticLocalComponentMethodinit("SayHelloIndex");
+        await callStaticLocalComponentMethodinit("SayHelloIndex");
         console.log("After callStaticLocalComponentMethodinit");
 
         await Excel.run(async (context) => {
@@ -109,7 +90,7 @@ async function highlightSelectionBubble(event) {
         console.log("Running highlightSelectionBubble");
 
         console.log("Before callStaticLocalComponentMethodinit");
-        callStaticLocalComponentMethodinit("SayHelloBubble");
+        await callStaticLocalComponentMethodinit("SayHelloBubble");
         console.log("After callStaticLocalComponentMethodinit");
 
         await Excel.run(async (context) => {

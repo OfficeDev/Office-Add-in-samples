@@ -55,8 +55,6 @@ This sample uses a Blazor Webassembly file that runs cross-platform in various b
 
 The purpose of this sample is to show you how to build and interact with the Blazor, C# and JavaScript Interop options. If you're looking for more examples of interacting with Word and Office JS APIs, see [Script Lab](https://aka.ms/getscriptlab).
 
-We now added interop examples to trigger Add-in Commands from the Ribbon to interact with the Word Document.
-
 ### Blazor pages
 
 The **Pages** folder contains the Blazor pages, such as **HelloWorld.razor**. Each **.razor** page also contain two code-behind pages, for example, named **HelloWorld.razor.cs** and **HelloWorld.razor.js**. The C# file first establishes an interop connection with the JavaScript file.

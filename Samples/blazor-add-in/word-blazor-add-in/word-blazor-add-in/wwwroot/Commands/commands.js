@@ -1,8 +1,14 @@
+/*
+ * Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ * 
+ */
+
 async function prepareDocument(event) {
 
     console.log("Running prepareDocument");
 
-    // Implement your custom code here. The following code is a simple Excel example.  
+    // Implement your custom code here. The following code is a simple Word example.  
     try {
 
         // Call JSInvokable Function here ...
