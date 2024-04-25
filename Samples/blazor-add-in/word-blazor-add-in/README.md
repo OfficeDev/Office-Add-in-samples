@@ -24,7 +24,7 @@ This sample shows how to build a Word add-in using .NET Blazor technologies. Bla
 - Initialize the Office JavaScript API library in Blazor context.
 - Interact with Word to manipulate paragraphs and content controls.
 - Interact with document content through Office JavaScript APIs.
-- Added examples to show how to interact with methods defined on the Blazor Pages.
+- Interact with methods defined on the Blazor Pages.
 - Interop between OfficeJS - JavaScript - C# and back to JavaScript.
 
 ## Applies to
@@ -40,9 +40,9 @@ This sample shows how to build a Word add-in using .NET Blazor technologies. Bla
 1. Download or clone the [Office Add-ins samples repository](https://github.com/OfficeDev/Office-Add-in-samples).
 1. Open Visual Studio 2022 and open the: **Office-Add-in-samples\Samples\blazor-add-in\word-blazor-add-in\word-blazor-add-in.sln** solution.
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
-1. When Word opens, choose **Sample Add-in** > **Show Taskpane** (if not autoloaded).
-1. Try out the controls on the TaskPanes.
-1. Try using the Ribbon Buttons to trigger the Add-in Commands.
+1. When Word opens, choose **Sample Add-in** > **Show task pane** (if not already open).
+1. Try out the controls on the task panes.
+1. Try out the custom buttons on the **Sample Add-in** tab on the ribbon.
 
 ## Understand an Office Add-in in Blazor Context
 
