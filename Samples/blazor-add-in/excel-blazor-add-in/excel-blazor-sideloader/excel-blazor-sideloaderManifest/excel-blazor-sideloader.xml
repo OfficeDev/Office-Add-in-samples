@@ -257,7 +257,7 @@
         <bt:String id="Contoso.Group1Label" DefaultValue="TaskPane" />
         <bt:String id="Contoso.Group2Label" DefaultValue="Texts" />
         <bt:String id="Contoso.Group3Label" DefaultValue="Bubbles" />
-        <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Show Taskpane" />
+        <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Show Task Pane" />
         <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Insert Name From Index" />
         <bt:String id="Contoso.FunctionButton2.Label" DefaultValue="Insert Name From Bubble" />
         <bt:String id="Contoso.FunctionButton3.Label" DefaultValue="Write JS" />
