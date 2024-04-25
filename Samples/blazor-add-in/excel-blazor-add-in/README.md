@@ -41,7 +41,7 @@ This sample shows how to build an Excel add-in using .NET Blazor technologies. B
 1. Open Visual Studio 2022 and open the **Office-Add-in-samples\Samples\blazor-add-in\excel-blazor-add-in\excel-blazor-add-in.sln** solution. (Do **not** open Visual Studio "as administrator". There is a bug that will prevent the add-in from sideloading when Visual Studio is elevated in this way.)
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
 1. When Excel opens, choose **Sample Add-in** > **Show Taskpane**.
-1. Try out the controls on the TaskPanes.
+1. Try out the controls on the task panes.
 1. Try using the Ribbon Buttons to trigger the Add-in Commands.
 
 ## Understand an Office Add-in in Blazor Context
