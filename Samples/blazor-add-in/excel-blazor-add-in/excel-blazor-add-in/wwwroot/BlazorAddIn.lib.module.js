@@ -7,6 +7,8 @@
  * - Configuring Blazor settings.
  */
 
+console.log("Loading BlazorAddin.lib.module.js");
+
 /**
  * beforeStart(options, extensions): 
  * 
@@ -19,6 +21,10 @@ export async function beforeStart(wasmoptions, extensions) {
     console.log("We are now entering function: beforeStart");
 
     Office.onReady((info) => {
+
+        // Office Finished Loading
+        console.log("Office onReady.");
+
         // Check that we loaded into Excel.
         if (info.host === Office.HostType.Excel) {
             console.log("We are now hosting in Excel.");
@@ -26,7 +32,6 @@ export async function beforeStart(wasmoptions, extensions) {
         else {
             console.log("We are now hosting in The Browser (of your choice).");
         }
-        console.log("Office onReady.");
     });
 }
 
@@ -39,3 +44,4 @@ export async function beforeStart(wasmoptions, extensions) {
 export async function afterStarted(blazor) {
     console.log("We are now entering function: afterStarted");
 }
+

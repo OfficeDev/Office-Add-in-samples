@@ -6,7 +6,9 @@
  * - Initializing libraries before Blazor starts up.
  * - Configuring Blazor settings.
  */
- 
+
+console.log("Loading BlazorAddin.lib.module.js");
+
 /**
  * beforeStart(options, extensions): 
  * 
@@ -19,6 +21,10 @@ export async function beforeStart(wasmoptions, extensions) {
     console.log("We are now entering function: beforeStart");
 
     Office.onReady((info) => {
+
+        // Office Finished Loading
+        console.log("Office onReady.");
+
         // Check that we loaded into Word
         if (info.host === Office.HostType.Word) {
             console.log("We are now hosting in Word");
@@ -26,7 +32,6 @@ export async function beforeStart(wasmoptions, extensions) {
         else {
             console.log("We are now hosting in The Browser (of your choice)");
         }
-        console.log("Office onReady");
     });
 }
 

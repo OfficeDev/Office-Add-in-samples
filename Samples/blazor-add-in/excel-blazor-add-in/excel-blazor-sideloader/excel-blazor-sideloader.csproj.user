@@ -3,5 +3,13 @@
   <PropertyGroup>
     <BlazorAppUrl>https://localhost:7287/</BlazorAppUrl>
     <InspectUri>{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}</InspectUri>
+    <ProjectView>ShowAllFiles</ProjectView>
+    <GeneratedFeatureId>c4ff1608-2872-4976-bfbe-36a1100b47e2</GeneratedFeatureId>
+    <GeneratedPackageId>ff9b7763-2e6e-45cb-a0e6-3b4375c4bc76</GeneratedPackageId>
+    <GeneratedModuleId>{981cac76-6e01-4f68-a45b-1f4166ce176c}</GeneratedModuleId>
+    <GeneratedListId>{7ec6e44b-2635-4c5b-94b8-e8e52b0fe0c0}</GeneratedListId>
+    <GeneratedProductId>{3d0e8b92-853a-47d1-b3da-e39faadd1a3a}</GeneratedProductId>
+    <GeneratedAppVersion>1.0.0.0</GeneratedAppVersion>
+    <GeneratedClientSecret>JQH0lynzkXtzxYCHMCCnPKqBhLuEGirA3ah9wzcUeTk=</GeneratedClientSecret>
   </PropertyGroup>
 </Project>

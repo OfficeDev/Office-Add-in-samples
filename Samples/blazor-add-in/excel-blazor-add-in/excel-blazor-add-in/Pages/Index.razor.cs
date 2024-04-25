@@ -3,6 +3,9 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
+
 namespace BlazorAddIn.Pages
 {
     /// <summary>
@@ -10,14 +13,16 @@ namespace BlazorAddIn.Pages
     /// </summary>
     public partial class Index
     {
-        [Inject]
-        public IJSRuntime JSRuntime { get; set; } = default!;
-        public IJSObjectReference JSModule { get; set; } = default!;
+        [Inject, AllowNull]
+        private IJSRuntime JSRuntime { get; set; } 
+        private IJSObjectReference JSModule { get; set; } = default!;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
             {
+                Debug.WriteLine("Hit OnAfterRenderAsync in Index.razor.cs!");
+                Console.WriteLine("Hit OnAfterRenderAsync in Index.razor.cs in Console!");
                 JSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/Index.razor.js");
             }
         }
@@ -27,5 +32,11 @@ namespace BlazorAddIn.Pages
         /// </summary>
         private async Task HelloButton() =>
             await JSModule.InvokeVoidAsync("helloButton");
+
+        [JSInvokable]
+        public static string SayHelloIndex(string name)
+        {
+            return $"Hello Index, {name} from Index!";
+        }
     }
 }

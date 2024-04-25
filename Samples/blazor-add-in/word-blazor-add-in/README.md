@@ -24,6 +24,8 @@ This sample shows how to build a Word add-in using .NET Blazor technologies. Bla
 - Initialize the Office JavaScript API library in Blazor context.
 - Interact with Word to manipulate paragraphs and content controls.
 - Interact with document content through Office JavaScript APIs.
+- Interact with methods defined on the Blazor Pages.
+- Interop between OfficeJS - JavaScript - C# and back to JavaScript.
 
 ## Applies to
 
@@ -38,9 +40,9 @@ This sample shows how to build a Word add-in using .NET Blazor technologies. Bla
 1. Download or clone the [Office Add-ins samples repository](https://github.com/OfficeDev/Office-Add-in-samples).
 1. Open Visual Studio 2022 and open the: **Office-Add-in-samples\Samples\blazor-add-in\word-blazor-add-in\word-blazor-add-in.sln** solution.
 1. Choose **Debug** > **Start Debugging**. Or press F5 to start the solution.
-1. When Word opens, choose **Home** > **Show Taskpane**.
-
-Next, try out the controls.
+1. When Word opens, choose **Sample Add-in** > **Show task pane** (if not already open).
+1. Try out the controls on the task panes.
+1. Try out the custom buttons on the **Sample Add-in** tab on the ribbon.
 
 ## Understand an Office Add-in in Blazor Context
 
@@ -97,6 +99,9 @@ The fundamental pattern includes the following steps.
 1. Use **JSModule.InvokeVoidAsync** to call JavaScript functions from your C# code.
 1. Call Office JS APIs to interact with the document from JavaScript code.
 
+### Blazor interop with Add-in Commands
+This sample shows how to use Blazor with custom buttons on the ribbon. The buttons call the same functions that are defined on the task pane. This sample is configured to use the shared runtime which is required for this interop to work correctly.
+
 ## Debugging
 
 This sample is configured to support debugging both JavaScript and C# files. New Blazor projects need the following file updates to support C# debugging.
@@ -134,6 +139,7 @@ This sample is configured to support debugging both JavaScript and C# files. New
 | ------- | ---------------- | ------------------ |
 | 1.0     | April 25, 2022   | Initial release    |
 | 2.0     | February 1, 2024 | Upgraded to .NET 8 |
+| 3.0     | April 18, 2024   | Added Add-in Commands, demo JS and C# Interop from the Ribbon |
 
 ## Copyright
 
