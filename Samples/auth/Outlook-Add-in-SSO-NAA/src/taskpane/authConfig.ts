@@ -3,35 +3,107 @@
 
 /* This file provides MSAL auth configuration to get access token through nested app authentication. */
 
-/* global console */
+/* global console, Office */
 
-import { PublicClientNext, type IPublicClientApplication } from "@azure/msal-browser";
+import {
+  type AccountInfo,
+  PublicClientNext,
+  type IPublicClientApplication,
+  Configuration,
+  LogLevel,
+} from "@azure/msal-browser";
 
 export { AccountManager };
 
+interface AuthContext {
+  loginHint: string;
+  userPrincipalName: string;
+  userObjectId: string;
+  tenantId: string;
+}
+
 const applicationId = "Enter_the_Application_Id_Here";
 
-const msalConfig = {
-  auth: {
-    clientId: applicationId,
-    authority: "https://login.microsoftonline.com/common",
-    supportsNestedAppAuth: true,
-  },
-};
+function getMsalConfig(enableDebugLogging: boolean) {
+  const msalConfig: Configuration = {
+    auth: {
+      clientId: applicationId,
+      authority: "https://login.microsoftonline.com/common",
+      supportsNestedAppAuth: true,
+    },
+    system: {},
+  };
+  if (enableDebugLogging) {
+    msalConfig.system.loggerOptions = {
+      logLevel: LogLevel.Verbose,
+      loggerCallback: (level: LogLevel, message: string) => {
+        switch (level) {
+          case LogLevel.Error:
+            console.error(message);
+            return;
+          case LogLevel.Info:
+            console.info(message);
+            return;
+          case LogLevel.Verbose:
+            console.debug(message);
+            return;
+          case LogLevel.Warning:
+            console.warn(message);
+            return;
+        }
+      },
+      piiLoggingEnabled: true,
+    };
+  }
+  return msalConfig;
+}
 
 // Encapsulate functions for getting user account and token information.
 class AccountManager {
-  loginHint: string = "";
-  pca: IPublicClientApplication | undefined = undefined;
+  private pca: IPublicClientApplication | undefined = undefined;
+  private account: AccountInfo | undefined = undefined;
+  private loginHint: string | undefined = undefined;
 
   // Initialize MSAL public client application.
-  async initialize(loginHint: string) {
-    this.loginHint = loginHint;
-    this.pca = await PublicClientNext.createPublicClientApplication(msalConfig);
+  async initialize() {
+    // If auth is not working, enable debug logging to help diagnose.
+    this.pca = await PublicClientNext.createPublicClientApplication(getMsalConfig(false));
+
+    // Initialize account by matching account known by Outlook with MSAL.js
+    let username = "";
+    let tenantId = "";
+    let localAccountId = "";
+    try {
+      const authContext: AuthContext = await Office.auth.getAuthContext();
+      username = authContext.userPrincipalName;
+      tenantId = authContext.tenantId;
+      localAccountId = authContext.userObjectId;
+      this.loginHint = authContext.loginHint || authContext.userPrincipalName;
+    } catch {
+      // Intentionally empty catch block.
+    }
+
+    if (!this.loginHint) {
+      const accountType = Office.context.mailbox.userProfile.accountType;
+      this.loginHint =
+        accountType === "office365" || accountType === "outlookCom"
+          ? Office.context.mailbox.userProfile.emailAddress
+          : "";
+    }
+
+    // Try to use auth context to find account
+    this.account = this.pca.getAllAccounts().find((account) => {
+      return (
+        (localAccountId && account.localAccountId?.toLowerCase() === localAccountId.toLowerCase()) ||
+        (account.username &&
+          account.username === username.toLowerCase() &&
+          account.tenantId?.toLowerCase() === tenantId)
+      );
+    });
   }
 
   /**
-   * 
+   *
    * @param scopes the minimum scopes needed.
    * @returns An access token.
    */
@@ -41,10 +113,10 @@ class AccountManager {
   }
 
   /**
-   * 
+   *
    * Uses MSAL and nested app authentication to get the user account from Office SSO.
    * This demonstrates how to work with user identity from the token.
-   * 
+   *
    * @param scopes The minimum scopes needed.
    * @returns The user account data (including identity).
    */
@@ -57,17 +129,20 @@ class AccountManager {
     const tokenRequest = {
       scopes: scopes,
       loginHint: this.loginHint,
+      account: this.account,
     };
 
     try {
       console.log("Trying to acquire token silently...");
 
       //acquireTokenSilent requires an active account. Check if one exists, otherwise use ssoSilent.
-      const account = this.pca.getActiveAccount();
-      const userAccount = account ? await this.pca.acquireTokenSilent(tokenRequest) : await this.pca.ssoSilent(tokenRequest);
+      const authResult = this.account
+        ? await this.pca.acquireTokenSilent(tokenRequest)
+        : await this.pca.ssoSilent(tokenRequest);
+      this.account = authResult.account;
 
       console.log("Acquired token silently.");
-      return userAccount;
+      return authResult;
     } catch (error) {
       console.log(`Unable to acquire token silently: ${error}`);
     }
@@ -75,9 +150,10 @@ class AccountManager {
     // Acquire token silent failure. Send an interactive request via popup.
     try {
       console.log("Trying to acquire token interactively...");
-      const userAccount = await this.pca.acquireTokenPopup(tokenRequest);
+      const authResult = await this.pca.acquireTokenPopup(tokenRequest);
+      this.account = authResult.account;
       console.log("Acquired token interactively.");
-      return userAccount;
+      return authResult;
     } catch (popupError) {
       // Acquire token interactive failure.
       console.log(`Unable to acquire token interactively: ${popupError}`);
