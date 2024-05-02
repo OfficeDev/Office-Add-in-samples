@@ -34,11 +34,9 @@
   "dependencies": {
     "express": "^4.19.2",
     "morgan": "^1.10.0",
-    "office-addin-debugging": "^5.0.2"
+    "office-addin-debugging": "^5.1.1"
   },
   "devDependencies": {
-    "jest": "^27.0.6",
-    "nodemon": "^2.0.20",
-    "supertest": "^6.1.4"
+    "nodemon": "^3.1.0"
   }
 }
