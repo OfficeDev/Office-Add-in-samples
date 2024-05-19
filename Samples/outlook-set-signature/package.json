@@ -24,12 +24,12 @@
     "signin": "office-addin-dev-settings m365-account login",
     "signout": "office-addin-dev-settings m365-account logout",
     "prettier": "office-addin-lint prettier",
-    "start": "office-addin-debugging start manifest-localhost.xml --app outlook",
-    "start:unified": "office-addin-debugging start manifest.json --app outlook",
-    "start:unified:prod": "office-addin-dev-settings sideload ./dist/manifest.json --app outlook",
-    "stop": "office-addin-debugging stop manifest-localhost.xml",
-    "stop:unified": "office-addin-debugging stop manifest.json",
-    "validate": "office-addin-manifest validate manifest.xml"
+    "start": "office-addin-debugging start manifest.json --app outlook",
+    "start:prod": "office-addin-dev-settings sideload ./dist/manifest.json --app outlook",
+    "start:xml": "office-addin-debugging start manifest-localhost.xml --app outlook",
+    "stop": "office-addin-debugging stop manifest.json",
+    "stop:xml": "office-addin-debugging stop manifest-localhost.xml",
+    "validate:xml": "office-addin-manifest validate manifest.xml"
   },
   "dependencies": {
     "core-js": "^3.9.1",
