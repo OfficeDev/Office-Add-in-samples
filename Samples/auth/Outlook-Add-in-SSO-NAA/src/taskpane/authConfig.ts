@@ -29,7 +29,6 @@ function getMsalConfig(enableDebugLogging: boolean) {
     auth: {
       clientId: applicationId,
       authority: "https://login.microsoftonline.com/common",
-      supportsNestedAppAuth: true,
     },
     system: {},
   };
