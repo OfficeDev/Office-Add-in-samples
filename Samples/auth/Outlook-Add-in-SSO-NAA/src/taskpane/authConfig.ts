@@ -7,7 +7,7 @@
 
 import {
   type AccountInfo,
-  PublicClientNext,
+  createNestablePublicClientApplication,
   type IPublicClientApplication,
   Configuration,
   LogLevel,
@@ -29,7 +29,6 @@ function getMsalConfig(enableDebugLogging: boolean) {
     auth: {
       clientId: applicationId,
       authority: "https://login.microsoftonline.com/common",
-      supportsNestedAppAuth: true,
     },
     system: {},
   };
@@ -67,18 +66,23 @@ class AccountManager {
   // Initialize MSAL public client application.
   async initialize() {
     // If auth is not working, enable debug logging to help diagnose.
-    this.pca = await PublicClientNext.createPublicClientApplication(getMsalConfig(false));
+    this.pca = await createNestablePublicClientApplication(getMsalConfig(false));
 
     // Initialize account by matching account known by Outlook with MSAL.js
-    let username = "";
-    let tenantId = "";
-    let localAccountId = "";
     try {
       const authContext: AuthContext = await Office.auth.getAuthContext();
-      username = authContext.userPrincipalName;
-      tenantId = authContext.tenantId;
-      localAccountId = authContext.userObjectId;
+      const username = authContext.userPrincipalName;
+      const tenantId = authContext.tenantId;
+      const localAccountId = authContext.userObjectId;
       this.loginHint = authContext.loginHint || authContext.userPrincipalName;
+      const account = this.pca.getAccount({
+        username,
+        localAccountId,
+        tenantId,
+      });
+      if (account) {
+        this.account = account;
+      }
     } catch {
       // Intentionally empty catch block.
     }
@@ -90,16 +94,6 @@ class AccountManager {
           ? Office.context.mailbox.userProfile.emailAddress
           : "";
     }
-
-    // Try to use auth context to find account
-    this.account = this.pca.getAllAccounts().find((account) => {
-      return (
-        (localAccountId && account.localAccountId?.toLowerCase() === localAccountId.toLowerCase()) ||
-        (account.username &&
-          account.username === username.toLowerCase() &&
-          account.tenantId?.toLowerCase() === tenantId)
-      );
-    });
   }
 
   /**
