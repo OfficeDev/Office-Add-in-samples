@@ -61,9 +61,9 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 
 1. Open Word on Windows, on Mac, or in a browser.
 
-1. Go to the Home tab and choose the **Show Task Pane** button in the ribbon to open the add-in task pane.
+1. To open the add-in task pane, go to the **Home** tab and choose **Show Task Pane**.
 
-1. In the "Template" section of the add-in UI, select the **Choose File** button. Navigate to the location of your .docx file then open the file. The template is automatically applied to your document, replacing any preexisting content.
+1. In the "Template" section of the add-in UI, select **Choose File**. Navigate to the location of your .docx file then open the file. The template is automatically applied to your document, replacing any preexisting content.
 
     ![The initial screen displaying the button to choose a file.](./resources/word-import-template-initial-screen.png)
 
