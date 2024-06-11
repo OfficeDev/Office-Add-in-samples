@@ -1,6 +1,6 @@
 [
     {
-        "name": "word-insert-template",
+        "name": "word-import-template",
         "reponame": "office-add-in-samples",
         "source": "officedev",
         "title": "Import templates in a Word document",
