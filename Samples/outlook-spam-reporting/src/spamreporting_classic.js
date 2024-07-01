@@ -1,10 +1,7 @@
 ﻿/*
- * Copyright (c) Eric Legault Consulting Inc.
- * Licensed under the MIT license.
+ * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
  */
-
-// Ensures the Office.js library is loaded.
-Office.onReady();
 
 // Handles the SpamReporting event to process a reported message.
 function onSpamReport(event) {
@@ -45,3 +42,10 @@ function onSpamReport(event) {
     }
   );
 }
+
+/**
+ * IMPORTANT: To ensure your add-in is supported in the classic Outlook client on Windows,
+ * remember to map the event handler name specified in the manifest to its JavaScript counterpart.
+ */
+if (Office.context.platform === Office.PlatformType.PC || Office.context.platform == null) {
+  Office.actions.associate("onSpamReport", onSpamReport); }

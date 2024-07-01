@@ -144,5 +144,6 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 | Version | Date | Comments |
 | ----- | ----- | ----- |
 | 1.0 | March 26, 2024 | Initial release |
+| 1.1 | July 1, 2024 | Create separate JavaScript files for supported clients |
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-spam-reporting" />
