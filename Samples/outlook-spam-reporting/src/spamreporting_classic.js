@@ -48,4 +48,5 @@ function onSpamReport(event) {
  * remember to map the event handler name specified in the manifest to its JavaScript counterpart.
  */
 if (Office.context.platform === Office.PlatformType.PC || Office.context.platform == null) {
-  Office.actions.associate("onSpamReport", onSpamReport); }
+  Office.actions.associate("onSpamReport", onSpamReport);
+}
