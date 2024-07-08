@@ -20,7 +20,7 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "~1.10.0",
     "node-fetch": "^3.3.2",
-    "pug": "^3.0.2",
+    "pug": "^3.0.3",
     "@azure/msal-node": "2.6.6",
     "jwks-rsa": "^3.1.0",
     "uuid": "^9.0.1"
