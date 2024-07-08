@@ -39,7 +39,7 @@
         "less": "^4.2.0",
         "less-loader": "^12.2.0",
         "mini-css-extract-plugin": "2.8.1",
-        "office-addin-dev-settings": "^2.2.3",
+        "office-addin-dev-settings": "^2.3.3",
         "office-addin-dev-certs": "^1.12.2",
         "postcss-loader": "8.1.1",
         "react-hot-loader": "^4.13.1",
