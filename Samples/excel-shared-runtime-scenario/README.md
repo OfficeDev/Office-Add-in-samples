@@ -2,14 +2,15 @@
 page_type: sample
 urlFragment: office-add-in-ribbon-task-pane-ui
 products:
-- office-excel
-- office-365
+  - office
+  - office-excel
+  - office-365
 languages:
-- typescript
+  - typescript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 3/09/2020 1:25:00 PM
 description: "This sample shows how to create contextual ribbon buttons that are enabled based on the state of your add-in. It also shows how to use the Office.js API to show or hide the task pane. This sample also demonstrates how to run code when the task pane is closed, such as on document open."
 ---

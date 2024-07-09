@@ -2,13 +2,15 @@
 page_type: sample
 urlFragment: outlook-add-in-sso-naa
 products:
-- office-outlook
+  - office
+  - office-365
+  - office-outlook
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: "03/19/2024 10:00:00 AM"
 description: "This sample shows how to implement SSO in an Outlook add-in by using nested app authentication."
 ---

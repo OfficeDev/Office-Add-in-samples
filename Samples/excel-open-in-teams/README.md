@@ -2,15 +2,16 @@
 page_type: sample
 urlFragment: office-excel-add-in-open-in-teams
 products:
-- office-excel
-- office-teams
-- m365
+  - office
+  - office-365
+  - office-excel
+  - office-teams
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 02/11/2021 1:25:00 PM
 description: "Learn how to open data from your web site in a spreadsheet in Teams for team collaboration."
 ---

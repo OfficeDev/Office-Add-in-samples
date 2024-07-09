@@ -2,14 +2,15 @@
 page_type: sample
 urlFragment: office-outlook-add-in-tutorial
 products:
-- office-outlook
-- m365
+  - office
+  - office-365
+  - office-outlook
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 09/12/2023 4:00:00 PM
 description: "A completed version of the step-by-step Outlook tutorial hosted on learn.microsoft.com."
 ---

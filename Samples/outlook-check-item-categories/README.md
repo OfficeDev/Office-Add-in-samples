@@ -3,15 +3,15 @@ title: "Verify the color categories of a message or appointment before it's sent
 page_type: sample
 urlFragment: outlook-add-in-check-item-categories
 products:
-- office-add-ins
-- office-outlook
-- office
+  - office-outlook
+  - office
+  - office-365
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 05/05/2022 10:00:00 AM
 description: "Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent."
 ---

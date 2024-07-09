@@ -2,14 +2,15 @@
 page_type: sample
 urlFragment: office-excel-add-in-tutorial
 products:
-- office-excel
-- m365
+  - office
+  - office-365
+  - office-excel
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 01/13/2023 4:00:00 PM
 description: "A completed version of the step-by-step Excel tutorial hosted on learn.microsoft.com."
 ---

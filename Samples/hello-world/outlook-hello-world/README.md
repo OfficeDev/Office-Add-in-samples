@@ -2,9 +2,9 @@
 page_type: sample
 urlFragment: outlook-add-in-hello-world
 products:
-  - office-add-ins
   - office-outlook
   - office
+  - office-365
 languages:
   - javascript
 extensions:

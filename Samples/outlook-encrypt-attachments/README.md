@@ -3,14 +3,15 @@ title: "Encrypt attachments, process meeting request attendees, and react to app
 page_type: sample
 urlFragment: outlook-add-in-encrypt-attachments
 products:
-- office-outlook
-- office
+  - office-outlook
+  - office
+  - office-365
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 10/14/2021 10:00:00 AM
 description: "Use Outlook event-based activation to encrypt attachments, process meeting request attendees, and react to appointment date/time changes."
 ---

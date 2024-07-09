@@ -2,14 +2,15 @@
 page_type: sample
 urlFragment: office-excel-add-in-data-types-explorer
 products:
-- office-excel
-- m365
+  - office
+  - office-365
+  - office-excel
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 09/07/2022 4:00:00 PM
 description: "Create data types in Excel workbooks and explore existing data types in Excel workbooks."
 ---

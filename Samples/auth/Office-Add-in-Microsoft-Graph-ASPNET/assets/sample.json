@@ -12,7 +12,8 @@
       "creationDateTime": "2019-07-08",
       "updateDateTime": "2021-09-29",
       "products": [
-        "Office"
+        "Office",
+        "Microsoft Graph"
       ],
       "metadata": [
         {

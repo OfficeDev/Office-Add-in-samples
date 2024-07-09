@@ -1,0 +1,46 @@
+[
+    {
+        "name": "outlook-verify-sensitivity-label",
+        "reponame": "OfficeDev",
+        "source": "officedev",
+        "title": "Verify the sensitivity label of a message",
+        "shortDescription": "Learn how to verify and update the sensitivity label of a message using an event-based add-in.",
+        "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-tag-external",
+        "longDescription": [
+            "This sample uses the sensitivity label API in an event-based add-in to verify and apply the **Highly Confidential** sensitivity label to outgoing messages that contain at least one attachment or a recipient who's a member of the fictitious Fabrikam legal team."
+        ],
+        "creationDateTime": "2023-04-18",
+        "updateDateTime": "2024-01-11",
+        "products": [
+            "Office"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "JavaScript"
+            }
+        ],
+        "thumbnails": [
+            {
+                "type": "image",
+                "order": 100,
+                "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/assets/outlook-verify-sensitivity-label.png",
+                "alt": "The Smart Alert dialog notifying the sender that the sensitivity label was updated to Highly Confidential because of the presence of an attachment or the email address of a Fabrikam legal team member in the message."
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "microsoft",
+                "pictureUrl": "https://github.com/microsoft.png",
+                "name": "Microsoft"
+            }
+        ],
+        "references": [
+            {
+                "name": "Manage the sensitivity label of your message or appointment in compose mode",
+                "description": "Learn how to manage the sensitivity label of your message or appointment in compose mode.",
+                "url": "https://learn.microsoft.com/office/dev/add-ins/outlook/sensitivity-label"
+            }
+        ]
+    }
+]

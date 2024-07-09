@@ -2,14 +2,15 @@
 page_type: sample
 urlFragment: excel-add-in-create-spreadsheet-from-web-page
 products:
-- office-excel
-- m365
+  - office
+  - office-365
+  - office-excel
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 01/31/2023 1:25:00 PM
 description: "Learn how to create a spreadsheet from your web page, populate it with data, and embed your Excel add-in."
 ---

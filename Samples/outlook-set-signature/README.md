@@ -3,14 +3,16 @@ title: "Set your signature using Outlook event-based activation"
 page_type: sample
 urlFragment: outlook-add-in-set-signature
 products:
-- office-outlook
-- office
+  - office-outlook
+  - office
+  - office-365
+  - office-teams
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 04/02/2021 10:00:00 AM
 description: "Use Outlook event-based activation to set the signature."
 ---

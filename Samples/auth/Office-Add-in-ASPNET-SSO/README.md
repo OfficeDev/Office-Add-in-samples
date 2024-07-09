@@ -2,21 +2,22 @@
 page_type: sample
 urlFragment: office-add-in-sso-aspnet
 products:
-- office-excel
-- office-powerpoint
-- office-word
-- m365
+  - office
+  - office-365
+  - office-excel
+  - office-powerpoint
+  - office-word
 languages:
-- javascript
-- aspx
+  - javascript
+  - aspx
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
-  - Microsoft Graph
+    - Add-ins
+    - Microsoft Graph
   services:
-  - Excel
-  - Microsoft 365
+    - Excel
+    - Microsoft 365
   createdDate: 5/1/2017 2:09:09 PM
 ---
 # Office Add-in that supports Single Sign-on to Office, the add-in, and Microsoft Graph

@@ -2,14 +2,15 @@
 page_type: sample
 urlFragment: word-import-template
 products:
-- office-word
-- office
+  - office-word
+  - office
+  - office-365
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 03/08/2024 4:00:00 PM
 description: "Shows how to import templates in a Word document."
 ---

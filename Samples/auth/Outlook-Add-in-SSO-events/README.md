@@ -3,15 +3,15 @@ title: "Use SSO with event-based activation in an Outlook add-in"
 page_type: sample
 urlFragment: outlook-add-in-sso-event-based-activation
 products:
-- office-add-ins
-- office-outlook
-- office
+  - office-365
+  - office-outlook
+  - office
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 02/21/2023 10:00:00 AM
 description: "Use SSO with event-based activation in an Outlook add-in."
 ---

@@ -2,15 +2,16 @@
 page_type: sample
 urlFragment: word-blazor-add-in
 products:
-  - office-add-ins
   - office
+  - office-365
+  - office-word
 languages:
   - javascript
   - C#
 extensions:
   contentType: samples
   technologies: 
-  - Add-ins
+    - Add-ins
   createdDate: '04/14/2022 10:00:00 PM'
 description: 'Create a Blazor Webassembly Word add-in showcasing some samples.'
 ---

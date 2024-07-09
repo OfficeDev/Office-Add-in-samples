@@ -2,14 +2,15 @@
 page_type: sample
 urlFragment: excel-add-in-insert-external-file
 products:
-- office-excel
-- office
+  - office-365
+  - office-excel
+  - office
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: "5/18/2021 10:00:00 AM"
 description: "This sample shows how to insert a template from an external Excel file and populate it with JSON data."
 ---
