@@ -2,14 +2,14 @@
 page_type: sample
 urlFragment: outlook-add-in-sso-aspnet
 products:
-- office
-- office-outlook
+  - office
+  - office-outlook
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 05/06/2021 10:00:00 AM
 description: "An Outlook add-in sample that accesses Microsoft Graph using single sign-on and adds buttons to the Outlook ribbon."
 ---

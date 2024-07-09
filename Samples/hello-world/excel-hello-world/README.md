@@ -2,10 +2,8 @@
 page_type: sample
 urlFragment: excel-add-in-hello-world
 products:
-  - office-add-ins
   - office-excel
   - office
-  - office-365
 languages:
   - javascript
 extensions:

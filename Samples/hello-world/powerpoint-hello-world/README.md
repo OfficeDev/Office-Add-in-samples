@@ -2,7 +2,6 @@
 page_type: sample
 urlFragment: powerpoint-add-in-hello-world
 products:
-  - office-add-ins
   - office-powerpoint
   - office
 languages:

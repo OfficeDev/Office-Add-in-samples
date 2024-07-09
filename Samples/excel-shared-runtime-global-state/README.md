@@ -2,14 +2,14 @@
 page_type: sample
 urlFragment: office-add-in-shared-runtime-global-data
 products:
-- office-excel
-- office-365
+  - office
+  - office-excel
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 3/15/2020 1:25:00 PM
 description: "This sample shows how to share data across the ribbon, task pane, and custom functions."
 ---

@@ -2,7 +2,7 @@
 page_type: sample
 urlFragment: excel-blazor-add-in 
 products:
-  - office-add-ins
+  - office-excel
   - office
 languages:
   - javascript
@@ -10,7 +10,7 @@ languages:
 extensions:
   contentType: samples
   technologies: 
-  - Add-ins
+    - Add-ins
   createdDate: '05/26/2022 10:00:00 PM'
 description: 'Create a Blazor Webassembly Excel add-in showcasing some samples.'
 ---

@@ -2,10 +2,8 @@
 page_type: sample
 urlFragment: word-get-set-edit-ooxml
 products:
-  - office-add-ins
   - office-word
   - office
-  - office-365
 languages:
   - javascript
 extensions:

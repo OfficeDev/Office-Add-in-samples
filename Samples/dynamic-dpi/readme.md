@@ -2,13 +2,18 @@
 page_type: sample
 urlFragment: dynamic-dpi-code-samples
 products:
-- office-365
+  - office
+  - office-excel
+  - office-outlook
+  - office-powerpoint
+  - office-word
+  - office-visio
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 9/30/2019 1:25:00 PM
 description: "Update your ActiveX, COM, VSTO and related Office solutions to handle high DPI and DPI scaling."
 ---

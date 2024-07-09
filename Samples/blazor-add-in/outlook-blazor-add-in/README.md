@@ -2,7 +2,6 @@
 page_type: sample
 urlFragment: outlook-blazor-add-in
 products:
-  - office-add-ins
   - office
   - office-outlook
 languages:
@@ -11,7 +10,7 @@ languages:
 extensions:
   contentType: samples
   technologies: 
-  - Add-ins
+    - Add-ins
   createdDate: '08/25/2022 11:13:00 PM'
 description: 'Create a Blazor Webassembly Outlook add-in showcasing some samples.'
 ---

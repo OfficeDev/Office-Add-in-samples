@@ -3,16 +3,16 @@ title:  Save custom settings in your Office Add-in
 page_type: sample
 urlFragment: office-add-in-save-custom-settings
 products:
-- office-excel
-- office-word
-- office-powerpoint
-- office
+  - office-excel
+  - office-word
+  - office-powerpoint
+  - office
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: "08/26/2022 10:00:00 AM"
 description: "This sample shows how to save custom settings in Office Add-in."
 ---

@@ -3,15 +3,14 @@ title: "Verify the sensitivity label of a message"
 page_type: sample
 urlFragment: outlook-verify-sensitivity-label
 products:
-- office-add-ins
-- office-outlook
-- office
+  - office-outlook
+  - office
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 04/18/2023 10:00:00 AM
 description: "Learn how to verify and update the sensitivity label of a message using an event-based add-in."
 ---

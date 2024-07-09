@@ -2,14 +2,14 @@
 page_type: sample
 urlFragment: office-add-in-keyboard-shortcuts
 products:
-- office-excel
-- office
+  - office-excel
+  - office
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: "11/5/2020 10:00:00 AM"
 description: "This sample shows how to add keyboard shortcuts to your Office Add-in."
 ---

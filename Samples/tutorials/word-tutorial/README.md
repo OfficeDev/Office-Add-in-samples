@@ -2,8 +2,8 @@
 page_type: sample
 urlFragment: office-word-add-in-tutorial
 products:
-- office-word
-- m365
+  - office
+  - office-word
 languages:
 - javascript
 extensions:

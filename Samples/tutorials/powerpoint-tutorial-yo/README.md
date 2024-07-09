@@ -2,8 +2,8 @@
 page_type: sample
 urlFragment: office-powerpoint-add-in-tutorial-yo
 products:
-- office-powerpoint
-- m365
+  - office
+  - office-powerpoint
 languages:
 - javascript
 extensions:

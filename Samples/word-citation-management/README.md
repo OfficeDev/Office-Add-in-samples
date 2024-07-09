@@ -2,14 +2,14 @@
 page_type: sample
 urlFragment: word-citation-management
 products:
-- office-word
-- office
+  - office-word
+  - office
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 11/28/2023 4:00:00 PM
 description: "Shows how to manage citations in a Word document."
 ---

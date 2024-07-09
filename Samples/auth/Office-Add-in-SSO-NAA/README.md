@@ -2,15 +2,16 @@
 page_type: sample
 urlFragment: office-add-in-sso-naa
 products:
-- office-excel
-- office-word
-- office-powerpoint
+  - office
+  - office-excel
+  - office-word
+  - office-powerpoint
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: "03/19/2024 10:00:00 AM"
 description: "This sample shows how to implement SSO in an Office Add-in by using nested app authentication."
 ---

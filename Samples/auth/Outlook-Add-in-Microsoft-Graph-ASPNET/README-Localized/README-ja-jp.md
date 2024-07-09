@@ -1,14 +1,14 @@
 ---
 page_type: sample
 products:
-- office-outlook
-- office-365
+  - office
+  - office-outlook
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 5/1/2019 1:25:00 PM
 description: "Microsoft Graph に接続する Microsoft Outlook アドインを構築する方法を学習します。"
 ---

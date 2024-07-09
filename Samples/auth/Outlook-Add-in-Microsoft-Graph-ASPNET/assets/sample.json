@@ -11,7 +11,10 @@
     ],
     "creationDateTime": "2019-07-08",
     "updateDateTime": "2019-07-08",
-    "products": ["Office"],
+    "products": [
+      "Office",
+      "Microsoft Graph"
+    ],
     "metadata": [
       {
         "key": "CLIENT-SIDE-DEV",

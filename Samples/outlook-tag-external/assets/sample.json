@@ -4,7 +4,7 @@
         "reponame": "OfficeDev",
         "source": "officedev",
         "title": "Use Outlook event-based activation to tag external recipients",
-        "shortDescription": "This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. ",
+        "shortDescription": "This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message.",
         "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-tag-external",
         "longDescription": [
             "This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the appendOnSendAsync API. If external recipients are added, the add-in prepends \"[External]\" to the message subject and appends a disclaimer to the message body on send."

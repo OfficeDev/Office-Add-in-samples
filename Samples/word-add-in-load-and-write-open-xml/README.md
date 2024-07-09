@@ -2,14 +2,14 @@
 page_type: sample
 urlFragment: word-add-in-load-and-write-open-xml
 products:
-- office-word
-- office
+  - office-word
+  - office
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 07/06/2015 2:00:00 PM
 description: "Shows how to add a variety of rich content types to a Word document using the setSelectedDataAsync method with ooxml coercion type."
 ---

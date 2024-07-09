@@ -3,15 +3,14 @@ title: "Report spam or phishing emails in Outlook"
 page_type: sample
 urlFragment: outlook-spam-reporting
 products:
-- office-add-ins
-- office-outlook
-- office
+  - office-outlook
+  - office
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 03/26/2024 10:00:00 AM
 description: "Learn how to create an integrated spam-reporting add-in in Outlook."
 ---

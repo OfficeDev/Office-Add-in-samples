@@ -2,20 +2,20 @@
 page_type: sample
 urlFragment: office-add-in-sso-nodejs
 products:
-- office-excel
-- office-powerpoint
-- office-word
-- m365
+  - office
+  - office-excel
+  - office-powerpoint
+  - office-word
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
-  - Microsoft Graph
+    - Add-ins
+    - Microsoft Graph
   services:
-  - Excel
-  - Microsoft 365
+    - Excel
+    - Microsoft 365
   createdDate: 5/1/2017 2:09:09 PM
 ---
 # Office Add-in that supports Single Sign-on to Office, the Add-in, and Microsoft Graph

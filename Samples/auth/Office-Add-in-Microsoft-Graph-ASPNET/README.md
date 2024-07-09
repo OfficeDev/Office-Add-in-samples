@@ -2,14 +2,15 @@
 page_type: sample
 urlFragment: office-add-in-auth-aspnet-graph
 products:
-- office-excel
-- office-365
+  - office
+  - office-excel
+  - ms-graph
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 5/1/2019 1:25:00 PM
 description: "Learn how to build a Microsoft Office Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into an Office document using Office.js."
 ---

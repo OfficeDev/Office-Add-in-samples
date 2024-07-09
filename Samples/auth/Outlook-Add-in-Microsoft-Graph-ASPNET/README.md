@@ -2,14 +2,16 @@
 page_type: sample
 urlFragment: outlook-add-in-auth-aspnet-graph
 products:
-- office-outlook
-- office-365
+  - office
+  - office-outlook
+  - ms-graph
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
+    - Microsoft Graph
   createdDate: 5/1/2019 1:25:00 PM
 description: "Learn how to build a Microsoft Outlook Add-in that connects to Microsoft Graph."
 ---
@@ -23,7 +25,7 @@ Learn how to build a Microsoft Outlook Add-in that connects to Microsoft Graph, 
 Integrating data from online service providers increases the value and adoption of your add-ins. This code sample shows you how to connect your Outlook add-in to Microsoft Graph. Use this code sample to:
 
 * Connect to Microsoft Graph from an Office Add-in.
-* Use the MSAL .NET Library to implement the OAuth 2.0 authorization framework in an add-in.
+* Use the MSAL.NET Library to implement the OAuth 2.0 authorization framework in an add-in.
 * Use the OneDrive REST APIs from Microsoft Graph.
 * Show a dialog using the Office UI namespace.
 * Build an Add-in using ASP.NET MVC, MSAL 3.x.x for .NET,  and Office.js.

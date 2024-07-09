@@ -2,8 +2,8 @@
 page_type: sample
 urlFragment: office-add-in-contextual-tabs
 products:
-- office-excel
-- office-365
+  - office-excel
+  - office
 languages:
 - javascript
 extensions:
