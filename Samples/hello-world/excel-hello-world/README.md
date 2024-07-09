@@ -4,7 +4,6 @@ urlFragment: excel-add-in-hello-world
 products:
   - office-excel
   - office
-  - office-365
 languages:
   - javascript
 extensions:

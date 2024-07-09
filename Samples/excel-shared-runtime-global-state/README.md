@@ -4,7 +4,6 @@ urlFragment: office-add-in-shared-runtime-global-data
 products:
   - office
   - office-excel
-  - office-365
 languages:
   - javascript
 extensions:

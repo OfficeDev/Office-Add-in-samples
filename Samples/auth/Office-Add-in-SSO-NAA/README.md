@@ -3,7 +3,6 @@ page_type: sample
 urlFragment: office-add-in-sso-naa
 products:
   - office
-  - office-365
   - office-excel
   - office-word
   - office-powerpoint

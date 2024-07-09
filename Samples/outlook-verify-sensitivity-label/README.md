@@ -5,7 +5,6 @@ urlFragment: outlook-verify-sensitivity-label
 products:
   - office-outlook
   - office
-  - office-365
 languages:
   - javascript
 extensions:

@@ -7,7 +7,6 @@ products:
   - office-word
   - office-powerpoint
   - office
-  - office-365
 languages:
   - javascript
 extensions:

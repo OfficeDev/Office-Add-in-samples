@@ -4,7 +4,6 @@ urlFragment: outlook-blazor-add-in
 products:
   - office
   - office-outlook
-  - office-365
 languages:
   - javascript
   - C#

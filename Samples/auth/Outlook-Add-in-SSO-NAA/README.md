@@ -3,7 +3,6 @@ page_type: sample
 urlFragment: outlook-add-in-sso-naa
 products:
   - office
-  - office-365
   - office-outlook
 languages:
   - javascript

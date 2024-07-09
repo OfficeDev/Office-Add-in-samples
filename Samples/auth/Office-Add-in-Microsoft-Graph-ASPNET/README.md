@@ -4,7 +4,6 @@ urlFragment: office-add-in-auth-aspnet-graph
 products:
   - office
   - office-excel
-  - office-365
   - ms-graph
 languages:
   - javascript

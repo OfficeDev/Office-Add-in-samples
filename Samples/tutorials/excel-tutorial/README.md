@@ -3,7 +3,6 @@ page_type: sample
 urlFragment: office-excel-add-in-tutorial
 products:
   - office
-  - office-365
   - office-excel
 languages:
   - javascript

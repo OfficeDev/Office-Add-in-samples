@@ -3,7 +3,6 @@ page_type: sample
 urlFragment: office-excel-add-in-data-types-explorer
 products:
   - office
-  - office-365
   - office-excel
 languages:
   - javascript

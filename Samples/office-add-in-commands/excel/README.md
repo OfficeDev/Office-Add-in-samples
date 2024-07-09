@@ -5,7 +5,6 @@ products:
   - office-add-ins
   - office-excel
   - office
-  - office-365
 languages:
   - javascript
 extensions:

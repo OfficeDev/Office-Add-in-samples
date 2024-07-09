@@ -5,7 +5,6 @@ urlFragment: outlook-add-in-tag-external-recipients
 products:
   - office-outlook
   - office
-  - office-365
 languages:
   - javascript
 extensions:

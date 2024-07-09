@@ -3,7 +3,6 @@ page_type: sample
 urlFragment: office-excel-add-in-open-in-teams
 products:
   - office
-  - office-365
   - office-excel
   - office-teams
 languages:

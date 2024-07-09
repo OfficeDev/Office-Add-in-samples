@@ -2,14 +2,14 @@
 page_type: sample
 urlFragment: excel-custom-function-web-worker-pattern
 products:
+  - office
   - office-excel
-  - office-365
 languages:
   - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 12/16/2020 1:25:00 PM
 description: "This sample shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in."
 ---

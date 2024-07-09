@@ -5,7 +5,6 @@ urlFragment: outlook-add-in-set-signature
 products:
   - office-outlook
   - office
-  - office-365
   - office-teams
 languages:
   - javascript

@@ -4,7 +4,6 @@ urlFragment: word-add-in-load-and-write-open-xml
 products:
   - office-word
   - office
-  - office-365
 languages:
   - javascript
 extensions:

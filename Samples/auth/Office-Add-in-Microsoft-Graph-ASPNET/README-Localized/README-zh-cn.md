@@ -1,14 +1,14 @@
 ---
 page_type: sample
 products:
-- office-excel
-- office-365
+  - office
+  - office-excel
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 5/1/2019 1:25:00 PM
 ---
 # 使用 Microsoft Graph 和 MSAL.NET 在 Office 外接程序中获取 OneDrive 数据 

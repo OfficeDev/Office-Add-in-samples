@@ -4,7 +4,6 @@ urlFragment: powerpoint-add-in-hello-world
 products:
   - office-powerpoint
   - office
-  - office-365
 languages:
   - javascript
 extensions:

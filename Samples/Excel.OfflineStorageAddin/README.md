@@ -4,7 +4,6 @@ urlFragment: office-add-in-access-data-offline
 products:
   - office
   - office-excel
-  - office-365
   - office-powerpoint
   - office-word
 languages:

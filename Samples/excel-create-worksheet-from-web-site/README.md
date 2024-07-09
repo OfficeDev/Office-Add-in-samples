@@ -3,7 +3,6 @@ page_type: sample
 urlFragment: excel-add-in-create-spreadsheet-from-web-page
 products:
   - office
-  - office-365
   - office-excel
 languages:
   - javascript

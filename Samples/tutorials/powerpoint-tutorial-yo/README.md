@@ -3,7 +3,6 @@ page_type: sample
 urlFragment: office-powerpoint-add-in-tutorial-yo
 products:
   - office
-  - office-365
   - office-powerpoint
 languages:
 - javascript

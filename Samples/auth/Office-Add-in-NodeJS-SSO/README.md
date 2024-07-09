@@ -3,7 +3,6 @@ page_type: sample
 urlFragment: office-add-in-sso-nodejs
 products:
   - office
-  - office-365
   - office-excel
   - office-powerpoint
   - office-word

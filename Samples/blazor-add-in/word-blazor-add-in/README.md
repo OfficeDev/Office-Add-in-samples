@@ -3,7 +3,6 @@ page_type: sample
 urlFragment: word-blazor-add-in
 products:
   - office
-  - office-365
   - office-word
 languages:
   - javascript

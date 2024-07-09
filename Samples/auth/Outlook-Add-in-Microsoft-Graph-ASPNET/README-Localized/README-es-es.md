@@ -1,14 +1,14 @@
 ---
 page_type: sample
 products:
-- office-outlook
-- office-365
+  - office
+  - office-outlook
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 5/1/2019 1:25:00 PM
 description: "Obtenga más información sobre cómo crear un complemento de Microsoft Outlook que se conecte a Microsoft Graph"
 ---

@@ -2,15 +2,15 @@
 page_type: sample
 urlFragment: azure-function-with-excel-custom-function
 products:
-- office-excel
-- office-365
-- azure-functions
+  - office
+  - office-excel
+  - azure-functions
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 10/2/2019 1:25:00 PM
 description: "You can expand the capabilities of Excel custom functions by integrating with Azure Functions."
 ---

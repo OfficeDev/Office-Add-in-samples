@@ -1,14 +1,13 @@
 ---
 page_type: sample
 products:
-- office-excel
-- office-365
+  - office-excel
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 5/1/2019 1:25:00 PM
 ---
 # Obtener datos de OneDrive usando Microsoft Graph y MSAL.NET en un complemento de Office 

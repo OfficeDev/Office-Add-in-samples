@@ -3,7 +3,6 @@ page_type: sample
 urlFragment: office-word-add-in-tutorial
 products:
   - office
-  - office-365
   - office-word
 languages:
 - javascript

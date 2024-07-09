@@ -2,14 +2,14 @@
 page_type: sample
 urlFragment: excel-custom-function-batching-pattern
 products:
-- office-excel
-- office-365
+  - office
+  - office-excel
 languages:
-- javascript
+  - javascript
 extensions:
   contentType: samples
   technologies:
-  - Add-ins
+    - Add-ins
   createdDate: 5/1/2019 1:25:00 PM
 description: "If your functions call a remote service you may want to use a batching pattern to reduce the number of network calls to the service."
 ---

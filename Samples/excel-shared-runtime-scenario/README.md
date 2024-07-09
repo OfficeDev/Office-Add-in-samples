@@ -4,7 +4,6 @@ urlFragment: office-add-in-ribbon-task-pane-ui
 products:
   - office
   - office-excel
-  - office-365
 languages:
   - typescript
 extensions:

@@ -4,7 +4,6 @@ urlFragment: office-add-in-keyboard-shortcuts
 products:
   - office-excel
   - office
-  - office-365
 languages:
   - javascript
 extensions:

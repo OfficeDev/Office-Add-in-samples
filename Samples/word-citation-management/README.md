@@ -4,7 +4,6 @@ urlFragment: word-citation-management
 products:
   - office-word
   - office
-  - office-365
 languages:
   - javascript
 extensions:

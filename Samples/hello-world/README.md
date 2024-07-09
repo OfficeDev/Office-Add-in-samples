@@ -3,7 +3,6 @@ page_type: sample
 urlFragment: office-add-in-hello-world
 products:
   - office
-  - office-365
   - office-excel
   - office-outlook
   - office-powerpoint
