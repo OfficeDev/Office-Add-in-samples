@@ -82,8 +82,8 @@ UI code and document interaction code will need to be rewritten for the Office w
 You'll need to install the required NuGet packages, and add test certificates for the solution to build and run correctly.
 
 1. Start Visual Studio 2019 and open the **/completed/Cell-Analyzer.sln** solution.
-2. In **Solution Explorer**, select and hold (or right-click) **Solution 'Cell-Analyzer'**, and choose **Restore NuGet Packages**.
-3. In **Solution Explorer**, select and hold (or right-click) the **Cell-Analyzer** project, and choose **Properties**.
+2. In **Solution Explorer**, right-click (or select and hold) **Solution 'Cell-Analyzer'** and choose **Restore NuGet Packages**.
+3. In **Solution Explorer**, right-click (or select and hold) the **Cell-Analyzer** project and choose **Properties**.
 4. Choose the **Signing** category in the properties.
 5. Choose **Sign the ClickOnce manifests**, and then chose **Create Test Certificate**.
 6. In the **Create Test Certificate** dialog, enter and confirm a password. Then choose **OK**.
@@ -102,7 +102,7 @@ The method **GetUnicodeFromText** is the shared function between both the VSTO a
 ### Run the VSTO add-in with the shared class library
 
 1. Start Visual Studio 2019 and open the **/completed/Cell-Analyzer.sln** solution.
-2. In **Solution Explorer** select and hold (or right-click) the **Cell-Analyzer** project and choose **Set as Startup Project**.
+2. In **Solution Explorer**, right-click (or select and hold) the **Cell-Analyzer** project and choose **Set as Startup Project**.
 3. From the **Debug** menu, choose **Start Debugging**.
 
 > **Note:** In the completed folder, the Cell Analyzer add-in is already configured to use the shared class library.
@@ -121,7 +121,7 @@ The method **AnalyzeUnicode** is a wrapper that calls into the shared class libr
 ### Run the REST API project
 
 1. Start Visual Studio 2019 and open the **/completed/Cell-Analyzer.sln** solution.
-2. In **Solution Explorer** select and hold (or right-click) the **CellAnalyzerRESTAPI** project and choose **Set as Startup Project**.
+2. In **Solution Explorer**, right-click (or select and hold) the **CellAnalyzerRESTAPI** project and choose **Set as Startup Project**.
 3. From the **Debug** menu, choose **Start Debugging**.
 4. In the browser that opens, enter the following URL: **https://localhost:44323/api/analyzeunicode?value=test**
 
@@ -141,7 +141,7 @@ The method **AnalyzeUnicode** is a wrapper that calls into the shared class libr
 ### Run the Office web add-in project
 
 1. Start Visual Studio 2019 and open the **/completed/Cell-Analyzer.sln** solution.
-2. In **Solution Explorer** select and hold (or right-click) the top node **Solution 'Cell-Analyzer'** and choose **Set Startup Projects**.
+2. In **Solution Explorer**, right-click (or select and hold) the top node **Solution 'Cell-Analyzer'** and choose **Set Startup Projects**.
 3. In the **Solution 'Cell-Analyzer' Property Pages** dialog, select **Multiple startup projects**.
 4. Enable the Start action for each of the following projects.
     - CellAnalyzerRESTAPI

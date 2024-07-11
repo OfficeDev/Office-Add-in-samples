@@ -41,7 +41,7 @@ The code samples included here will help you with handling DPI changes in your c
   - Office/SharePoint development
   - latest version of Windows SDK
 
-  > **Note:** Some samples may not compile because they might target an older Windows SDK. If this happens you can select and hold (or right-click) the solution and choose **Retarget solution**. Then choose the version of the Windows SDK you have installed.
+  > **Note:** Some samples may not compile because they might target an older Windows SDK. If this happens you can right-click (or select and hold) the solution and choose **Retarget solution**. Then choose the version of the Windows SDK you have installed.
 - A Microsoft 365 account. You can get one if you qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 
 > **Note:** Many of the samples use the **Developer** tab in Microsoft Excel. If you haven't enabled the **Developer** tab, follow these instructions in the article [Show the Developer tab](https://support.office.com/article/show-the-developer-tab-e1192344-5e56-4d45-931b-e5fd9bea2d45)
@@ -101,7 +101,7 @@ This shows how to handle DPI changes in a VSTO Add-in. It contains folders for e
 3. Open the **VSTOSharedAddin.sln** file.
 
 You'll need to create a test certificate for each project. To do so:
-1. Select and hold (or right-click) on a project, such as **OutlookAddIn1** and choose **Properties**.
+1. Right-click (or select and hold) on a project, such as **OutlookAddIn1** and choose **Properties**.
 2. Choose the **Signing** category in the properties.
 3. Choose **Sign the ClickOnce manifests** and then chose **Create Test Certificate**.
 4. In the **Create Test Certificate** dialog, enter and confirm a password. Then choose **OK**.
@@ -110,7 +110,7 @@ You'll need to create a test certificate for each project. To do so:
 Now you can build and run the solution
 1. On the menu bar choose **Build** > **Build Solution**.
     > **Note:** Set your build target to **Win32** or **x64** to match the version of Microsoft Excel you will run (32-bit or 64-bit).
-2. Set one of the projects as the startup project. For example, select and hold (or right-click) the **ExcelAddin1** project and choose **Set as StartUp Project**.
+2. Set one of the projects as the startup project. For example, right-click (or select and hold) the **ExcelAddin1** project and choose **Set as StartUp Project**.
 3. Choose **Start** (or press F5). The debugger will launch Excel and load the add-in.
 
 The task pane for the VSTO Add-in will appear. You can drag Excel to a monitor with a different DPI to see displayed information change. You can explore different scnearios by changing the **Template** and **Context** fields. Then choose **Open Top-level Form** and a top-level form will open using the settings you specified. You can drag it to monitors with different DPI settings to see how it handles the DPI changes.
@@ -134,7 +134,7 @@ This is an ActiveX control created from the MFC template that is dynamic DPI awa
 6. On the **Developer** > **Controls** tab, choose **Insert**. Then choose the **More Controls** icon which is in the **ActiveX Controls** section.
 7. Choose **MFCActiveX Control**. Then choose **OK**.
 8. Insert the control on the workbook by drawing a rectangle representing the size it should be.
-9. You can select and hold (or right-click) on the control and choose **MFCActiveX Control Object** > **Properties**.
+9. Right-click (or select and hold) on the control and choose **MFCActiveX Control Object** > **Properties**.
 10. On the **MFCActiveX Control Properties** box, enable the **Utilize Dynamic DPI Code** checkbox.
 
 ### DPI code
