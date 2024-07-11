@@ -143,14 +143,14 @@ You can also deploy and run the Azure Function from your own Azure account.
 
 1. Select the Azure icon on the Activity bar. You should see an Azure Functions area in the Side Bar.
     ![Screenshot of the Azure icon on the Activity bar.](images/azure-icon.png)
-1. In the **Azure: Functions** area, expand the new function app under your subscription. Expand **Functions**, right-click **AddTwo**, and then choose **Copy function URL**.
+1. In the **Azure: Functions** area, expand the new function app under your subscription. Expand **Functions**, right-click (or select and hold) **AddTwo**, and then choose **Copy function URL**.
 1. You can test that the Azure Function is working by calling it from a browser. Open a browser window and enter the URL you just copied. If you want to add numbers, append the following query string to the URL `?first=1&second=2`. You should see the result `{ "answer": 3}` returned to the browser.
 
 ### Add CORS support for the custom function
 
 You'll need to enable CORS support for the Office Add-in before it can call the Azure Function online.
 
-1. Open the Azure portal and sign in. You can do this by selecting the Azure icon on the Activity bar in Visual Studio Code. Then right-click your Azure subscription for the Azure Function and choose **Open in Portal**.
+1. Open the Azure portal and sign in. You can do this by selecting the Azure icon on the Activity bar in Visual Studio Code. Then, right-click (or select and hold) your Azure subscription for the Azure Function and choose **Open in Portal**.
 1. In the Azure portal, select the function app.
 1. Choose **CORS** in the **API** section.
 1. Add a new entry in the **Allowed Origins** list for `https://localhost:3000`. This will enable the custom function to call into the Azure Function app.

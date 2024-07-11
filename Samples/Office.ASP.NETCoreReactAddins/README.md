@@ -47,9 +47,9 @@ We'd like to hear about your experience with this sample and using ASP.NET Core 
 ### Add the ASP.NET Core React.js web project to the solution
 
 1. Download or clone this repo. This will create a **Office-Add-in-samples** folder.
-2. In Visual Studio, right-click the solution in **Solution Explorer** and choose **Add > Existing Project**.
+2. In Visual Studio, right-click (or select and hold) the solution in **Solution Explorer** and choose **Add > Existing Project**.
 3. In the **Add Existing Project** dialog, go to the **Office-Add-in-samples/Samples/Office.ASP.NETCoreReactAddins** folder. There are two project folders there: **excel-js** (JavaScript) and **excel-ts** (TypeScript). Choose the folder for the language you want to use, select the .csproj file in the folder, and then choose **Open**.
-4. Right-click the project that you just added in **Solution Explorer** and choose **Build**.
+4. Right-click (or select and hold) the project that you just added in **Solution Explorer** and choose **Build**.
 5. Select the add-in project in Solution Explorer. It will have the name you gave the project (such as `MyWebAddin`) and have the icon shown in the following screen shot.
 
    ![Screen shot of the MyWebAddin project in the solution explorer](web-addin-project.png)

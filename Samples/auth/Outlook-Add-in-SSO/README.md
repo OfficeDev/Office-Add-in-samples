@@ -94,7 +94,7 @@ The browser will attempt to redirect back to your app, which may not be running.
 
 ## Run the Sample
 
-1. In the **Solution Explorer**, right-click the **AttachmentDemo** project and select **Properties**.
+1. In the **Solution Explorer**, right-click (or select and hold) the **AttachmentDemo** project and select **Properties**.
 1. In the **Properties** window, set the following property values.
 
 | Property | Value |
