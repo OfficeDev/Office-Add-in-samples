@@ -28,7 +28,7 @@ This sample demonstrates the basics of working with a compose message in Outlook
 
 ## Applies to
 
-- Outlook on Windows
+- Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic)
 - Outlook on Mac
 - Outlook on the web
 
@@ -75,7 +75,7 @@ This sample demonstrates the basics of working with a compose message in Outlook
 
 1. In the message window, choose the **Insert default gist** button in the ribbon. This opens a dialog where you add your GitHub username and select the default gist.
 
-    > In Outlook on Windows, you may need to close and reopen the new message window to pick up the latest settings from the dialog.
+    > In classic Outlook on Windows, you may need to close and reopen the new message window to pick up the latest settings from the dialog.
 
 1. In the message window, choose the **Insert gist** button in ribbon. This opens a task pane where you select the GitHub gist you want to insert into the message body.
 

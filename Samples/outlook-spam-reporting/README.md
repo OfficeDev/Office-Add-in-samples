@@ -17,7 +17,7 @@ description: "Learn how to create an integrated spam-reporting add-in in Outlook
 
 # Report spam or phishing emails in Outlook
 
-**Applies to**: Outlook on the web, Outlook on Windows (classic and new)
+**Applies to**: Outlook on the web, Outlook on Windows (new and classic)
 
 ![A sample spam-reporting dialog.](./assets/readme/outlook-spam-processing-dialog.png)
 
@@ -34,7 +34,7 @@ To learn about key components of this sample, see [Implement an integrated spam-
 ## Applies to
 
 - Outlook on the web
-- [new Outlook on Windows (preview)](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627)
+- [new Outlook on Windows](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627)
 - classic Outlook on Windows starting in Version 2307 (Build 16626.10000)
 
 ## Prerequisites
@@ -46,12 +46,12 @@ A Microsoft 365 subscription.
 
 ## Run the sample
 
-Run this sample in Outlook on Windows using one of the following add-in file hosting options.
+Run this sample in Outlook on Windows (new or classic) or on the web using one of the following add-in file hosting options.
 
 ### Run the sample from GitHub
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on Windows by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#sideload-manually).
+1. Sideload the add-in manifest in Outlook on Windows (new or classic) or on the web by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#sideload-manually).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
 ### Run the sample from localhost
@@ -89,7 +89,7 @@ If you prefer to host the web server for the sample on your computer, follow the
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-1. Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the sample folder. To sideload the manifest, follow the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=windows-web#sideload-manually).
+1. Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the sample folder. To sideload the manifest, follow the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#sideload-manually).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
 ## Try it out

@@ -17,7 +17,7 @@ description: "Use Outlook event-based activation to tag external recipients."
 
 # Identify and tag external recipients using Outlook event-based activation
 
-**Applies to:** Outlook on Windows | Outlook on the web
+**Applies to:** Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic) | Outlook on the web
 
 ## Summary
 
@@ -36,7 +36,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 ## Applies to
 
 - Outlook
-  - Windows
+  - Windows (new and classic)
   - web browser
 
 ## Prerequisites
@@ -53,7 +53,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 
 ## Version history
 
-Version  | Date | Comments
+| Version | Date | Comments |
 |---------|------|---------|
 | 1.0 | 7-6-2021 | Initial release |
 | 1.1 | 11-1-2021 | Update for GA of SessionData API and OnMessageRecipientsChanged event |
@@ -66,16 +66,16 @@ In this scenario, if the message has external recipients, the add-in prepends "[
 
 ## Run the sample
 
-You can run this sample in Outlook on Windows or in a browser. The add-in web files are served from this repo on GitHub.
+You can run this sample in Outlook on Windows (new or classic) or in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on the web or on Windows (new or classic) by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 ### Try it out
 
 Once the add-in is loaded, use the following steps to try out the functionality.
 
-1. Open Outlook on Windows or in a browser.
+1. Open Outlook on Windows (new or classic) or in a browser.
 1. Create a new message.
 1. Add a recipient email address that's external to your organization.
 
@@ -114,12 +114,12 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000 
     ```
 
-1. Sideload `manifest-localhost.xml` in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload `manifest-localhost.xml` in Outlook on the web or on Windows (new or classic) by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 1. [Try out the sample!](#try-it-out)
 
 ## Configure event-based activation and AppendOnSend in the manifest
 
-The manifest configures a runtime that is loaded specifically to handle event-based activation. The following `<Runtime>` element specifies an HTML page resource ID that loads the runtime in Outlook on the web. The `<Override>` element specifies the JavaScript file to load the runtime for Outlook on Windows because Outlook on Windows doesn't use the HTML page to load the runtime.
+The manifest configures a runtime that is loaded specifically to handle event-based activation. The following `<Runtime>` element specifies an HTML page resource ID that loads the runtime in Outlook on the web and new Outlook on Windows. The `<Override>` element specifies the JavaScript file to load the runtime for classic Outlook on Windows because the client doesn't use the HTML page to load the runtime.
 
 ```xml
 <Runtime resid="WebViewRuntime.Url">
@@ -150,7 +150,7 @@ Since the add-in calls `Office.context.mailbox.item.body.appendOnSendAsync`, the
 
 ## Handle the OnMessageRecipientsChanged event, manage session data, and call the appendOnSendAsync API
 
-When the user composes a message (including replies and forwards) and changes any recipients, Outlook will load the files specified in the manifest to handle the `OnMessageRecipientsChanged` event. Outlook on the web loads the **commands.html** page, which then also loads **commands.js**. In Outlook on Windows, **commands.js** is loaded directly but **commands.html** is not loaded.
+When the user composes a message (including replies and forwards) and changes any recipients, Outlook will load the files specified in the manifest to handle the `OnMessageRecipientsChanged` event. Outlook on the web and new Outlook on Windows load the **commands.html** page, which then also loads **commands.js**. In classic Outlook on Windows, **commands.js** is loaded directly but **commands.html** is not loaded.
 
 The **commands.js** file contains the `tagExternal_onMessageRecipientsChangedHandler` function that handles the `OnMessageRecipientsChanged` event from Outlook.
 
@@ -166,11 +166,11 @@ Also, the **commands.js** file contains the following helper functions.
 
 > **Note**
 >
-> You can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web but other code that applies to both Outlook on the web and on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature).
+> You can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web and new Outlook on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature).
 
 ## Known issues
 
-- In Outlook on Windows, the `OnMessageRecipientsChanged` event fires on reply or reply all. The expected behavior is implemented in Outlook on the web where this event doesn't fire in those cases.
+- In classic Outlook on Windows, the `OnMessageRecipientsChanged` event fires on reply or reply all. The expected behavior is implemented in Outlook on the web and new Outlook on Windows where this event doesn't fire in those cases.
 
 ## Questions and feedback
 

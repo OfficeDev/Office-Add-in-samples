@@ -18,7 +18,7 @@ description: "Use Outlook event-based activation to set the signature."
 
 # Set your signature using Outlook event-based activation
 
-**Applies to:** Outlook on Windows | Outlook on the web | Outlook on Mac (new UI)
+**Applies to:** Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic) | Outlook on the web | Outlook on Mac (new UI)
 
 ## Summary
 
@@ -36,7 +36,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 ## Applies to
 
 - Outlook
-  - Windows
+  - Windows (new and classic)
   - Web browser
   - new Mac UI
 
@@ -78,7 +78,7 @@ There are multiple ways to run this sample.
 The quickest way to run the sample is to use GitHub as the web host. However you can't debug or change the source code. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on the web, on Windows, or on Mac by following the instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on the web, on Windows (new or classic), or on Mac by following the instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 ### Run the sample on localhost with the unified Microsoft 365 manifest
 
@@ -120,7 +120,7 @@ To debug task pane code, see [Debug add-ins on Windows using Visual Studio Code 
 
 Once the add-in is loaded use the following steps to try out the functionality.
 
-1. Open Outlook on Windows, on Mac, or in a browser.
+1. Open Outlook on Windows (new or classic), on Mac, or in a browser.
 1. Create a new message or appointment.
 
     > You should see a notification at the top of the message that reads: **Please set your signature with the Office Add-ins sample.**
@@ -155,7 +155,7 @@ The manifest configures a runtime that is loaded specifically to handle event-ba
 
 ### Configure event-based activation in the manifest.xml file
 
-The following `<Runtime>` element specifies an HTML page resource ID that loads the runtime on Outlook on the web and on Mac. The `<Override>` element specifies the JavaScript file instead, to load the runtime for Outlook on Windows. Outlook on Windows doesn't use the HTML page to load the runtime.
+The following `<Runtime>` element specifies an HTML page resource ID that loads the runtime on Outlook on the web, on Mac, and in new Outlook on Windows. The `<Override>` element specifies the JavaScript file instead, to load the runtime for Outlook on Windows. Outlook on Windows doesn't use the HTML page to load the runtime.
 
 ```xml
 <Runtime resid="Autorun">
@@ -178,7 +178,7 @@ The add-in handles two events that are mapped to the `checkSignature()` function
 
 ### Configure event-based activation in the unified manifest file
 
-If you use the unified manifest, the `manifest.json` file specifies an HTML page resource ID that loads the runtime on Outlook on the web and on Mac. The `runtimes` array includes a runtime entry that describes the event-based activation required. The `code` object identities the HTML file to load. It also identifies a Javascript file to load when using Outlook on Windows.
+If you use the unified manifest, the `manifest.json` file specifies an HTML page resource ID that loads the runtime on Outlook on the web, on Mac, and in new Outlook on Windows. The `runtimes` array includes a runtime entry that describes the event-based activation required. The `code` object identities the HTML file to load. It also identifies a Javascript file to load when using Outlook on Windows.
 
 ```json
  "runtimes": [
@@ -241,15 +241,15 @@ The add-in handles two events that are mapped to the `checkSignature()` function
 
 ### Handling the events and using the setSignatureAsync API
 
-When the user creates a new message or appointment, Outlook will load the files specified in the manifest to handle the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events. Outlook on the web and on Mac will load the `autorunweb.html` page, which then also loads `autorunweb.js` and `autorunshared.js`.
+When the user creates a new message or appointment, Outlook will load the files specified in the manifest to handle the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events. Outlook on the web, on Mac, and new Outlook on Windows will load the `autorunweb.html` page, which then also loads `autorunweb.js` and `autorunshared.js`.
 
-The `autorunweb.js` file contains a version of the `insert_auto_signature` function used specifically when running on Outlook on the web. The [setSignatureAsync() API cannot be used in Outlook on the web for appointments](https://learn.microsoft.com/javascript/api/outlook/office.body#outlook-office-body-setsignatureasync-member(1)). Therefore, `insert_auto_signature` inserts the signature into a new appointment by directly writing to the body text of the appointment.
+The `autorunweb.js` file contains a version of the `insert_auto_signature` function used specifically when running on Outlook on the web or new Outlook on Windows. The [setSignatureAsync() API can't be used in Outlook on the web or new Outlook on Windows for appointments](https://learn.microsoft.com/javascript/api/outlook/office.body#outlook-office-body-setsignatureasync-member(1)). Therefore, `insert_auto_signature` inserts the signature into a new appointment by directly writing to the body text of the appointment.
 
-The `autorunshared.js` file contains the `checkSignature` function that handles the events from Outlook. It also contains additional code that is shared and loaded when the add-in is used in Outlook on the web, on Windows, and on Mac. In Outlook on Windows, this file is loaded directly and `autorunweb.html` and `autorunweb.js` aren't loaded.
+The `autorunshared.js` file contains the `checkSignature` function that handles the events from Outlook. It also contains additional code that is shared and loaded when the add-in is used in Outlook on the web, on Windows (new and classic), and on Mac. In classic Outlook on Windows, this file is loaded directly and `autorunweb.html` and `autorunweb.js` aren't loaded.
 
 The `autorunshared.js` file contains a version of the `insert_auto_signature` function that uses the `setSignatureAsync()` API to set the signature for both messages and appointments.
 
-Note that you can use a similar pattern when handling events. If you need code that only applies to Outlook on the web, you can load it in a separate file like `autorunweb.js`. And for code that applies to Outlook on the web, on Windows, and on Mac, you can load it in a shared file like `autorunshared.js`.
+Note that you can use a similar pattern when handling events. If you need code that only applies to Outlook on the web and new Outlook on Windows, you can load it in a separate file like `autorunweb.js`. And for code that applies to Outlook on the web, on Windows (new and classic), and on Mac, you can load it in a shared file like `autorunshared.js`.
 
 ### Embedding images with the signature
 

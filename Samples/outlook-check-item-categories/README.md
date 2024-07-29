@@ -17,7 +17,7 @@ description: "Use Outlook Smart Alerts to verify that required color categories 
 
 # Verify the color categories of a message or appointment before it's sent using Smart Alerts
 
-**Applies to**: Outlook on Windows | [new Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439)
+**Applies to**: classic Outlook on Windows | [new Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439)
 
 ## Summary
 
@@ -47,9 +47,9 @@ For documentation related to this sample, see the following articles.
 - Outlook on Windows starting in Version 2206 (Build 15330.20196)
 - [New Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439) starting in Version 16.65.827.0
 
-> **Note**: Although the Smart Alerts feature is supported in Outlook on the web, Windows, and new Mac UI (see the "Supported clients and platforms" section of [Use Smart Alerts and the onMessageSend and OnAppointmentSend events in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events#supported-clients-and-platforms)), this sample only runs in Outlook on Windows and Mac.
+> **Note**: Although the Smart Alerts feature is supported in Outlook on the web, Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic), and new Mac UI (see the "Supported clients and platforms" section of [Use Smart Alerts and the onMessageSend and OnAppointmentSend events in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events#supported-clients-and-platforms)), this sample only runs in classic Outlook on Windows and Mac.
 >
-> As the Office.Categories API can't be used in Compose mode in Outlook on the web, this sample isn't supported on that client. To learn how to develop a Smart Alerts add-in for Outlook on the web, see the [Smart Alerts walkthrough](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough).
+> As the Office.Categories API can't be used in Compose mode in Outlook on the web and new Outlook on Windows, this sample isn't supported on these client. To learn how to develop a Smart Alerts add-in for Outlook on the web and new Outlook on Windows, see the [Smart Alerts walkthrough](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough).
 
 ## Prerequisites
 

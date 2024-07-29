@@ -53,7 +53,7 @@
         <Host xsi:type="MailHost">
           <Runtimes>
             <Runtime resid="WebViewRuntime.Url">
-              <!-- References the JavaScript file that contains the spam-reporting event handler. This is used by Outlook on Windows. -->
+              <!-- References the JavaScript file that contains the spam-reporting event handler. This is used by classic Outlook on Windows. -->
               <Override type="javascript" resid="JSRuntime.Url"/>
             </Runtime>
           </Runtimes>

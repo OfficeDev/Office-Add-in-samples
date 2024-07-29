@@ -3,7 +3,7 @@
       "name": "outlook-spam-reporting",
       "reponame": "office-add-in-samples",
       "source": "officedev",
-      "title": "Report spam or phishing emails in Outlook (preview)",
+      "title": "Report spam or phishing emails in Outlook",
       "shortDescription": "Build an integrated spam-reporting add-in that's displayed in a prominent spot on the Outlook ribbon.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-spam-reporting",
       "longDescription": [
@@ -37,7 +37,7 @@
       ],
       "references": [
         {
-          "name": "Implement an integrated spam-reporting add-in (preview)",
+          "name": "Implement an integrated spam-reporting add-in",
           "description": "Learn how to implement an integrated spam-reporting add-in in Outlook.",
           "url": "https://learn.microsoft.com/office/dev/add-ins/outlook/spam-reporting"
         }

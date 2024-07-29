@@ -17,7 +17,7 @@ description: "Use Outlook event-based activation to encrypt attachments, process
 
 # Encrypt attachments, process meeting request attendees, and react to appointment date/time changes using Outlook event-based activation
 
-**Applies to**: Outlook on Windows | Outlook on the web
+**Applies to**: Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic) | Outlook on the web
 
 ![Message in compose mode with an attachment that has additional encrypted and decrypted versions created by the sample add-in.](./assets/readme/outlook-encrypt-attachments-overview.png)
 
@@ -28,7 +28,7 @@ description: "Use Outlook event-based activation to encrypt attachments, process
 This sample showcases how to use event-based activation in an Outlook add-in when the user composes an email or appointment/meeting request.  It demonstrates how to run tasks based on events that fire when certain data changes when the user:
 
 - adds an attachment to an email or appointment/meeting request
-- adds recipients or distributions lists as required or optional attendeees in a meeting request
+- adds recipients or distributions lists as required or optional attendees in a meeting request
 - changes the start or end date or time in an appointment/meeting request
 - adds a notification message to the item when a new email or appointment/meeting request is created, instructing the user to open the task pane for further information.
 
@@ -52,7 +52,7 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 ---
 
 - Outlook
-  - Windows
+  - Windows (new and classic)
   - web browser
 
 ## Prerequisites
@@ -86,7 +86,7 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 Run this sample in Outlook on Windows or in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the add-in manifest in Outlook on the web or on Windows (new or classic) by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 ### Try it out
 
@@ -101,7 +101,7 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 
 #### Set up meetings
 
-1. Create a new meeting request. In Outlook on the web, choose **More options** to expand the request and include all details. Otherwise, you won't see the notifications in the next steps.
+1. Create a new meeting request. In Outlook on the web and new Outlook on Windows, choose **More options** to expand the request and include all details. Otherwise, you won't see the notifications in the next steps.
 1. Add a user as a required or optional attendee.
     > A notification appears at the top of the message that reads **Your appointment has 1 required and 0 optional attendees**. | Dismiss
 1. Add a distribution list as a required or optional attendee.
@@ -139,14 +139,14 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000 
     ```
 
-1. Sideload `manifest.xml` in Outlook on the web or on Windows by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload `manifest.xml` in Outlook on the web or on Windows (new or classic) by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 1. [Try out the sample!](#try-it-out)
 
 ## Key parts of this sample
 
 ### Configure event-based activation in the manifest
 
-The manifest configures a runtime that loads a single JavaScript file to handle event-based activation. The following `<Runtime>` element specifies a `commands.html` page resource id that loads the `commands.js` file on Outlook on the web. The `<Override>` element directly specifies the `commands.js` JavaScript file to load when running on Outlook on Windows. Outlook on Windows doesn't use the HTML page to load the JavaScript file.
+The manifest configures a runtime that loads a single JavaScript file to handle event-based activation. The following `<Runtime>` element specifies a `commands.html` page resource ID that loads the `commands.js` file in Outlook on the web and new Outlook on Windows. The `<Override>` element directly specifies the `commands.js` JavaScript file to load when running on classic Outlook on Windows. Classic Outlook on Windows doesn't use the HTML page to load the JavaScript file.
 
 ```xml
 <Runtime resid="WebViewRuntime.Url">
@@ -185,7 +185,7 @@ When the user creates a new message or appointment, Outlook loads the `commands.
 > [!NOTE]
 > The onItemAttachmentsChangedHandler function handles both OnMessageAttachmentsChanged and OnAppointmentAttachmentsChanged.
 
-Outlook on the web loads the `commands.html` page, which then also loads `commands.js`.
+Outlook on the web and new Outlook on Windows load the `commands.html` page, which then also loads `commands.js`.
 
 ### Task pane code
 
@@ -196,10 +196,10 @@ The task pane code is located under the `taskpane` folder of this project. The t
 
 ## Known Issues
 
-- At present, imports are not supported in the JavaScript file where you implement the handling for event-based activation. This means that external libraries (like the `crypto-js` library used in this sample) cannot be required directly in the `commands.js` file and must be loaded in `commands.html`. Since Outlook on Windows only loads `commands.js`, the `crypto-js` library cannot be loaded to perform the encryption of attachments. Only Outlook on the web can load supporting .html files with external library references. Therefore encryption is only implemented for that scenario.
-- `console.dir()` methods cannot be used in event-based activation code on Outlook on Windows.
-- `window.localStorage` cannot be used in event-based activation code on Outlook on Windows.
-- Choosing the **Open task pane** link in the InfoBar may not work in Outlook on the web. A fix has been deployed. For more information, see [Can't open task pane from link in Outlook NotificationMessages](https://github.com/OfficeDev/office-js/issues/2125) issue on GitHub.
+- At present, imports are not supported in the JavaScript file where you implement the handling for event-based activation. This means that external libraries (like the `crypto-js` library used in this sample) can't be required directly in the `commands.js` file and must be loaded in `commands.html`. Since classic Outlook on Windows only loads `commands.js`, the `crypto-js` library can't be loaded to perform the encryption of attachments. Only Outlook on the web and new Outlook on Windows can load supporting `.html` files with external library references. Therefore encryption is only implemented for that scenario.
+- `console.dir()` methods can't be used in event-based activation code in classic Outlook on Windows.
+- `window.localStorage` can't be used in event-based activation code in classic Outlook on Windows.
+- Choosing the **Open task pane** link in the InfoBar may not work in Outlook on the web and new Outlook on Windows. A fix has been deployed. For more information, see [Can't open task pane from link in Outlook NotificationMessages](https://github.com/OfficeDev/office-js/issues/2125) issue on GitHub.
 
 ## References
 
