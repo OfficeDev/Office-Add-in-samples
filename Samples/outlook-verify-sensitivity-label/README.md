@@ -17,7 +17,7 @@ description: "Learn how to verify and update the sensitivity label of a message 
 
 # Verify the sensitivity label of a message
 
-**Applies to**: Outlook on Windows | Outlook on Mac | modern Outlook on the web
+**Applies to**: Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic) | Outlook on Mac | modern Outlook on the web
 
 ## Summary
 
@@ -44,9 +44,10 @@ For documentation related to this sample, see the following:
 
 ## Applies to
 
-- Outlook on Windows starting in Version 2304 (Build 16327.20248)
-- Outlook on Mac starting in Version 16.77.816.0
 - Outlook on the web (modern)
+- classic Outlook on Windows starting in Version 2304 (Build 16327.20248)
+- new Outlook on Windows
+- Outlook on Mac starting in Version 16.77.816.0
 
 ## Prerequisites
 
@@ -58,7 +59,7 @@ For documentation related to this sample, see the following:
 
 ## Run the sample
 
-Run this sample in Outlook on Windows, on Mac, or on the web using one of the following add-in file hosting options.
+Run this sample in Outlook on Windows (new or classic), on Mac, or on the web using one of the following add-in file hosting options.
 
 ### Run the sample from GitHub
 
@@ -161,12 +162,12 @@ To use the sensitivity label API, the **\<Permissions\>** element of the manifes
 <Permissions>ReadWriteItem</Permissions>
 ```
 
-The manifest configures a runtime to handle event-based activation. Because the Outlook platform uses the client to determine whether to use HTML or JavaScript to load the runtime, both of these files must be referenced in the manifest. An HTML page resource ID is specified in the **\<Runtime\>** element, and a JavaScript file resource ID is specified in the **\<Override\>** element, as shown next. Outlook on Windows uses the referenced JavaScript file to load the runtime, while Outlook on Mac and on the web use the HTML file.
+The manifest configures a runtime to handle event-based activation. Because the Outlook platform uses the client to determine whether to use HTML or JavaScript to load the runtime, both of these files must be referenced in the manifest. An HTML page resource ID is specified in the **\<Runtime\>** element, and a JavaScript file resource ID is specified in the **\<Override\>** element, as shown next. Classic Outlook on Windows uses the referenced JavaScript file to load the runtime, while Outlook on the web, on Mac, and new Outlook on Windows use the HTML file.
 
 ```xml
-<!-- HTML file that references the JavaScript event handlers. This is used by Outlook on the web. -->
+<!-- HTML file that references the JavaScript event handlers. This is used by Outlook on the web and on Mac, and in new Outlook on Windows. -->
 <Runtime resid="WebViewRuntime.Url">
-    <!-- JavaScript file that contains the event handlers. This is used by Outlook on Windows. -->
+    <!-- JavaScript file that contains the event handlers. This is used by classic Outlook on Windows. -->
     <Override type="javascript" resid="JSRuntime.Url"/>
 </Runtime>
 ...
@@ -187,12 +188,12 @@ The **\<LaunchEvents\>** element maps the three events that activate the add-in 
 
 ### Configure the event handlers
 
-The event object is passed to its respective handler in the **commands.js** file for processing. To ensure that the event-based add-in runs in Outlook on Windows, the JavaScript file that contains your handlers (in this case, **commands.js**) must call `Office.actions.associate`. This method maps the function ID specified in the manifest to its respective event handler in the JavaScript file.
+The event object is passed to its respective handler in the **commands.js** file for processing. To ensure that the event-based add-in runs in classic Outlook on Windows, the JavaScript file that contains your handlers (in this case, **commands.js**) must call `Office.actions.associate`. This method maps the function ID specified in the manifest to its respective event handler in the JavaScript file.
 
 ```javascript
 /** 
  * Maps the event handler name specified in the manifest's LaunchEvent element to its JavaScript counterpart.
- * This ensures support in Outlook on Windows. 
+ * This ensures support in classic Outlook on Windows. 
  */
 if (Office.context.platform === Office.PlatformType.PC || Office.context.platform == null) {
     Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipientsChangedHandler);

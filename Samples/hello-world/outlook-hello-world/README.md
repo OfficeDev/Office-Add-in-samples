@@ -29,7 +29,7 @@ Learn how to build the simplest Office Add-in with only a manifest, HTML web pag
 
 ## Applies to
 
-- Outlook on Windows, Mac, and in a browser.
+- Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic), Mac, and in a browser.
 
 ## Prerequisites
 
@@ -102,7 +102,7 @@ An Office Add-in requires you to configure a web server to provide all the resou
 The hello world sample is configured so that the files are hosted directly from this GitHub repo.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the manifest in Outlook on Windows, on Mac, or on the web by following the instructions in [Sideload Outlook add-in on Windows or Mac](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#outlook-on-the-desktop).
+1. Sideload the manifest in Outlook on Windows (new or classic), on Mac, or on the web by following the instructions in [Sideload Outlook add-in on Windows or Mac](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
 ### Configure a localhost web server and run the sample from localhost
 
@@ -141,7 +141,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
    The http-server will run and host the current folder's files on `localhost:3000`.
 
-1. Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the **outlook-hello-world** folder. Using the **manifest-localhost.xml** file, follow the steps in [Sideload Outlook add-in on Windows or Mac](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#outlook-on-the-desktop) to sideload and run the add-in.
+1. Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the **outlook-hello-world** folder. Using the **manifest-localhost.xml** file, follow the steps in [Sideload Outlook add-in on Windows or Mac](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing) to sideload and run the add-in.
 
 ## Test the sample on Outlook
 

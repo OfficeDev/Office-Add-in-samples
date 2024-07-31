@@ -45,9 +45,9 @@
           <!-- Specifies the event-based activation runtime. -->
           <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch. -->
           <Runtimes>
-            <!-- HTML file that references the JavaScript event handlers. This is used by Outlook on the web. -->
+            <!-- HTML file that references the JavaScript event handlers. This is used by Outlook on the web and on Mac, and in new Outlook on Windows. -->
             <Runtime resid="WebViewRuntime.Url">
-              <!-- JavaScript file that contains the event handlers. This is used by Outlook on Windows. -->
+              <!-- JavaScript file that contains the event handlers. This is used by classic Outlook on Windows. -->
               <Override type="javascript" resid="JSRuntime.Url"/>
             </Runtime>
           </Runtimes>

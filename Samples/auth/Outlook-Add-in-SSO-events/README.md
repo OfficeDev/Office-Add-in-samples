@@ -28,7 +28,7 @@ The sample shows how to use SSO to access a user's Microsoft Graph data from an 
 
 ## Applies to
 
-- Outlook on Windows
+- Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic)
 - Outlook on the web
 - [new Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439)
 
