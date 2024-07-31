@@ -28,7 +28,7 @@ description: "Use Outlook event-based activation to encrypt attachments, process
 This sample showcases how to use event-based activation in an Outlook add-in when the user composes an email or appointment/meeting request.  It demonstrates how to run tasks based on events that fire when certain data changes when the user:
 
 - adds an attachment to an email or appointment/meeting request
-- adds recipients or distributions lists as required or optional attendees in a meeting request
+- Adds recipients or distributions lists as required or optional attendees in a meeting request.
 - changes the start or end date or time in an appointment/meeting request
 - adds a notification message to the item when a new email or appointment/meeting request is created, instructing the user to open the task pane for further information.
 
