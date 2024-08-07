@@ -35,7 +35,7 @@ This sample shows how to insert an existing template from an external Excel file
 
 ## Prerequisites
 
-To use this sample, you'll need to [join the Microsoft 365 Insider program](https://insider.microsoft365.com/join).
+- Microsoft 365
 
 ## Solution
 
@@ -49,6 +49,7 @@ Version  | Date | Comments
 ---------| -----| --------
 1.0 | 5-18-2021 | Initial release
 1.1 | 8-17-2023 | Fix localhost setup steps
+1.2 | 7-31-2024 | Use release version of office.js instead of preview
 
 ----------
 
@@ -59,7 +60,7 @@ To run the sample you just need to sideload the manifest. The add-in web files a
 1. Download the **manifest.xml** and **SalesTemplate.xlsx** files from this sample to a folder on your computer.
 1. Open [Office on the web](https://www.office.com/).
 1. Choose **Excel**, and then open a new document.
-1. Select the **Insert** tab, and choose **Add-ins**.
+1. Under **Home** > **Add-ins**, select **More Add-ins**.
 1. On the **Office Add-ins** dialog, select **MY ADD-INS** , choose the **Manage My Add-ins** drop-down, and then choose **Upload My Add-in**.
 
     ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../images/office-add-ins-my-account.png)
