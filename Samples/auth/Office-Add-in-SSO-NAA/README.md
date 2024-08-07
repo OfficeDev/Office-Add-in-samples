@@ -31,8 +31,7 @@ IMPORTANT: Nested app authentication is currently in preview. To try this featur
 
 ## Applies to
 
-- Word, Excel, and PowerPoint on Windows build 16.0.17531.20000 or later.
-- Word, Excel, and PowerPoint on Mac build 16.85.24040319 or later.
+For a list of supported hosts, see [NAA supported accounts and hosts](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in#naa-supported-accounts-and-hosts).
 
 ## Prerequisites
 

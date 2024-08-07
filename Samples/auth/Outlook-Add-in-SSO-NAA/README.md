@@ -29,9 +29,7 @@ IMPORTANT: Nested app authentication is currently in preview. To try this featur
 
 ## Applies to
 
-- Outlook on Windows build 16.0.17531.20000 or later.
-- Outlook on Mac build 16.85.24040319 or later.
-- Outlook in a browser.
+For a list of supported platforms, see [NAA supported accounts and hosts](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in#naa-supported-accounts-and-hosts).
 
 ## Prerequisites
 
