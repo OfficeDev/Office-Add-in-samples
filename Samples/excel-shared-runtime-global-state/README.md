@@ -14,7 +14,7 @@ extensions:
 description: "This sample shows how to share data across the ribbon, task pane, and custom functions."
 ---
 
-# Share global data with a shared runtime
+# Share global data across add-in components
 
 ## Summary
 
@@ -29,7 +29,7 @@ This sample shows how to set up a basic project that uses the shared runtime. Th
 
 ## Applies to
 
--  Excel on Windows, Mac, and in a browser.
+- Excel on Windows, Mac, and in a browser.
 
 ## Prerequisites
 
@@ -101,30 +101,30 @@ There are no commands.html or functions.html files. These are not necessary beca
 If you prefer to host the web server for the sample on your computer, follow these steps:
 
 1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
-    
+
     ```console
     npm install --global http-server
     ```
-    
+
 2. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
 3. From a command prompt, go to the root folder and run the following command:
-    
+
     ```console
     http-server -S --cors . -p 3000
     ```
-    
+
 4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
-    
+
     ```console
     npm install --global office-addin-https-reverse-proxy
     ```
-    
+
     To reroute run the following in another command prompt:
-    
+
     ```console
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
-    
+
 5. Follow the steps in [Run the sample](#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Questions and feedback
