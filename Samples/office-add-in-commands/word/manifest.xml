@@ -146,7 +146,7 @@
 			  <bt:String id="Contoso.Menu.Tooltip" DefaultValue="Show the dropdown menu" />
 
 			  <bt:String id="Contoso.WriteValueButton.Tooltip" DefaultValue="Choose to write value to document" />
-			  <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and choose the 'Show task pane' button to get started." />
+			  <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and choose the 'Show task pane' button to get started." />
 		  </bt:LongStrings>
 	  </Resources>
   </VersionOverrides>

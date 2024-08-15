@@ -154,7 +154,7 @@
         <bt:String id="CommandsGroup.Label" DefaultValue="SSO Node.js" />
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show Taskpane' button to get started." />
+        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Taskpane' button to get started." />
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to show the SSO add-in." />
       </bt:LongStrings>
     </Resources>

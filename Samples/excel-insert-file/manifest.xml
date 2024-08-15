@@ -75,7 +75,7 @@
         <bt:String id="TaskpaneButton.Label" DefaultValue="PnP Insert Excel file"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'PnP Insert Excel file' button to get started."/>
+        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'PnP Insert Excel file' button to get started."/>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to insert Excel file"/>
       </bt:LongStrings>
     </Resources>

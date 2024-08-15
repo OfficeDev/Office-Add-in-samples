@@ -153,7 +153,7 @@
       <!-- LongStrings max characters==250. -->
       <bt:LongStrings>
         <bt:String id="OEP.TaskpaneButton.Tooltip" DefaultValue="Click to Show a task pane" />
-        <bt:String id="OEP.GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Show WebWorker task pane' button to get started." />
+        <bt:String id="OEP.GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show WebWorker task pane' button to get started." />
         <bt:String id="OEP.TestFuncButton.Tooltip" DefaultValue="Test AppCmd button" />
       </bt:LongStrings>
     </Resources>
