@@ -80,7 +80,7 @@
         <bt:String id="TaskpaneButton.SupertipTitle" DefaultValue="Hello world"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Hello world' button to get started."/>
+        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Hello world' button to get started."/>
         <bt:String id="TaskpaneButton.SupertipText" DefaultValue="Open the Hello world add-in"/>
       </bt:LongStrings>
     </Resources>
