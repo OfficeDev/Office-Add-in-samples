@@ -97,10 +97,10 @@ Note: You can also consent using the following URL. This avoids needing to sign 
 https://login.microsoftonline.com/{tenant}/v2.0/adminconsent
         ?client_id={appRegistrationID}
         &scope=https://graph.microsoft.com/User.Read https://graph.microsoft.com/openid https://graph.microsoft.com/profile
-        &redirect_uri=http://localhost:3000/brk
+        &redirect_uri=brk-multihub://localhost:3000
 
-where {tenant} is the ID of the tenant that is granting admin consent.
-{appRegistrationID} is the ID of the app registration you created for the add-in.
+- {tenant} is the ID of the tenant that is granting admin consent.
+- {appRegistrationID} is the ID of the app registration you created for the add-in.
 
 ## Debugging steps
 

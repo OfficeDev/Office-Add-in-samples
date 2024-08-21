@@ -33,7 +33,7 @@ async function getUserName() {
   };
   let accessToken = null;
 
-  // TODO 1: Call acquireTokenSilent.
+  // Call acquireTokenSilent.
   try {
     console.log("Trying to acquire token silently...");
     const userAccount = await pca.acquireTokenSilent(tokenRequest);
@@ -42,60 +42,37 @@ async function getUserName() {
   } catch (error) {
     console.log(`Unable to acquire token silently: ${error}`);
   }
-  // TODO 2: Call acquireTokenPopup.
+
+  //Log error if token still null.
   if (accessToken === null) {
-    // Acquire token silent failure. Send an interactive request via popup.
-    try {
-      console.log("Trying to acquire token interactively...");
-      const userAccount = await pca.acquireTokenPopup(tokenRequest);
-      console.log("Acquired token interactively.");
-      accessToken = userAccount.accessToken;
-    } catch (popupError) {
-      // Acquire token interactive failure.
-      console.log(`Unable to acquire token interactively: ${popupError}`);
-    }
-  }
-  // TODO 3: Log error if token still null.
-  // Log error if both silent and popup requests failed.
-  if (accessToken === null) {
-    // console.error(`Unable to acquire access token.`);
+    console.log(`Unable to acquire access token. Access token is null.`);
     return;
   }
-  // TODO 4: Call the Microsoft Graph API.
+
   // Call the Microsoft Graph API with the access token.
   const response = await fetch(`https://graph.microsoft.com/v1.0/me`, {
     headers: { Authorization: accessToken },
   });
 
   if (response.ok) {
-    // Write file names to the console.
+    // Get the user name from response JSON.
     const data = await response.json();
-    console.log("data is " + JSON.stringify(data));
     const name = data.displayName;
 
-    // Be sure the taskpane.html has an element with Id = item-subject.
-    // const label = document.getElementById("item-subject");
-
-    // Write file names to task pane and the console.
-    //const nameText = names.join(", ");
-    //if (label) label.textContent = nameText;
-    // console.log(nameText);
     return name;
   } else {
     const errorText = await response.text();
-    console.error("Microsoft Graph call failed - error text: " + errorText);
+    console.log("Microsoft Graph call failed - error text: " + errorText);
   }
 }
 
 function onNewMessageComposeHandler(event) {
-  console.log("OnNewMessageComposeHandler");
   setSignature(event);
 }
 function onNewAppointmentComposeHandler(event) {
   setSignature(event);
 }
 async function setSignature(event) {
-  
   const item = Office.context.mailbox.item;
 
   // Check if a default Outlook signature is already configured.
@@ -115,54 +92,18 @@ async function setSignature(event) {
       );
     }
   });
-
 }
-
 
 // Callback function to add a signature to the mail item.
 function addSignatureCallback(result) {
   if (result.status === Office.AsyncResultStatus.Failed) {
-      console.log(result.error.message);
-      return;
+    console.log(result.error.message);
+    return;
   }
 
   console.log("Successfully added signature.");
   result.asyncContext.completed();
 }
-
-/**
- * Creates information bar to display when new message or appointment is created
- */
-// Not used at this time.
-function display_insight_infobar() {
-  console.log("display insight infobar");
-  Office.context.mailbox.item.notificationMessages.addAsync("16c028c6-f97d-4b09-96eb-3821219e0a47", {
-    type: "insightMessage",
-    message: "Add-in unable to process events. Please sign in using the task pane.",
-    icon: "Icon.16x16",
-    actions: [
-      {
-        actionType: "showTaskPane",
-        actionText: "Sign in",
-        commandId: get_command_id(),
-        contextData: "{''}",
-      },
-    ],
-  });
-}
-
-/**
- * Gets correct command id to match to item type (appointment or message)
- * @returns The command id
- */
-function get_command_id() {
-  console.log("getting command id");
-  if (Office.context.mailbox.item.itemType == "appointment") {
-    return "MRCS_TpBtn1";
-  }
-  return "MRCS_TpBtn0";
-}
-
 
 // IMPORTANT: To ensure your add-in is supported in the Outlook client on Windows, remember to map the event handler name specified in the manifest to its JavaScript counterpart.
 if (Office.context.platform === Office.PlatformType.PC || Office.context.platform == null) {
