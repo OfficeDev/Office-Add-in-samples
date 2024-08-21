@@ -85,9 +85,12 @@ First ensure you have signed in and consented to the add-in's scopes. Once you a
 1. Run the following commands.
 
     `npm install`
+    `npm run build:dev`
     `npm run start`
 
     This will start the web server and sideload the add-in to Outlook.
+
+    **IMPORTANT:** The dev build uses the `https://localhost:3000/public/launchevent.js` path. If you change to the production build, you also need to change the URL to `https://localhost:3000/launchevent.js` in the `manifest.xml` file.
 
 1. Start Outlook (classic) and sign in.
 1. Open an existing email item.
