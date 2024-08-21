@@ -74,9 +74,13 @@ For more information on how to register your application, see [Register an appli
 1. From the command line, or a terminal window, go to the root folder of this sample at `/samples/auth/Outlook-Event-SSO-NAA`.
 1. Open the `src/launchevent/launchevent.js` file.
 1. Replace the placeholder "Enter_the_Application_Id_Here" with the Application ID that you copied.
+1. Open the `src/taskpane/taskpane.js` file.
+1. Replace the placeholder "Enter_the_Application_Id_Here" with the Application ID that you copied.
 1. Save the file.
 
 ## Run the sample
+
+First ensure you have signed in and consented to the add-in's scopes. Once you approve consent, you no longer need to do these steps.
 
 1. Run the following commands.
 
@@ -86,13 +90,15 @@ For more information on how to register your application, see [Register an appli
     This will start the web server and sideload the add-in to Outlook.
 
 1. Start Outlook (classic) and sign in.
-1. Create a new email.
-1. Open the task pane and sign in. Be sure to consent to allow the app registration access with the specified scopes.
-1. Close the email and create a new email (to restart the add-in event).
+1. Open an existing email item.
+1. Choose "Show Task Pane" from the ribbon. This will open the task pane of the add-in.
+1. Select the **Sign in** button to sign in. You may be prompted to consent to the scopes of the add-in. The task pane will indicate it signed in by displaying your user name.
 
-The add-in will automatically add a signature with your signed in name.
+Now you can use the event-based code.
 
-Note: You can also consent using the following URL. This avoids needing to sign in using the task pane.
+1. Create a new email. The add-in will automatically add a signature with your signed in name.
+
+**Note:** You can also consent using the following URL. This avoids the steps of signing in by using the task pane.
 
 https://login.microsoftonline.com/{tenant}/v2.0/adminconsent
         ?client_id={appRegistrationID}
@@ -104,7 +110,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/adminconsent
 
 ## Debugging steps
 
-To debug this sample, follow the instructions in [Debug your event-based or spam-reporting Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch)
+To debug this sample, follow the instructions in [Debug your event-based or spam-reporting Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch). All `console.log` statements from the event code appear in the [runtime log](https://learn.microsoft.com/office/dev/add-ins/testing/runtime-logging).
 
 ## Key parts of this sample
 
