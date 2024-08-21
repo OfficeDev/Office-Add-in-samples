@@ -90,8 +90,8 @@ First ensure you have signed in and consented to the add-in's scopes. Once you a
 
     This will start the web server and sideload the add-in to Outlook.
 
-    > [!IMPORTANT]
-    > The dev build uses the `https://localhost:3000/public/launchevent.js` path. If you change to the production build, you also need to change the URL to `https://localhost:3000/launchevent.js` in the `manifest.xml` file.
+> [!IMPORTANT]
+> The dev build uses the `https://localhost:3000/public/launchevent.js` path. If you change to the production build, you also need to change the URL to `https://localhost:3000/launchevent.js` in the `manifest.xml` file.
 
 1. Start Outlook (classic) and sign in.
 1. Open an existing email item.
@@ -102,7 +102,8 @@ Now you can use the event-based code.
 
 1. Create a new email. The add-in will automatically add a signature with your signed in name.
 
-    > [!Note] You can also consent using the following URL. This avoids the steps of signing in by using the task pane.
+> [!Note]
+> You can also consent using the following URL. This avoids the steps of signing in by using the task pane.
 
 https://login.microsoftonline.com/{tenant}/v2.0/adminconsent
         ?client_id={appRegistrationID}
