@@ -31,7 +31,9 @@ This sample shows how to implement SSO in an event in an Outlook add-in. It uses
 
 ## Applies to
 
-For a list of supported platforms, see [NAA supported accounts and hosts](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in#naa-supported-accounts-and-hosts).
+- Outlook (Beta Channel for classic Outlook only, new Outlook coming soon)
+
+For more information on supported platforms, see [NAA supported accounts and hosts](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in#naa-supported-accounts-and-hosts).
 
 ## Prerequisites
 
