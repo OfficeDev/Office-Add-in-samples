@@ -15,7 +15,7 @@ async function initializePCA() {
   try {
     pca = await createNestablePublicClientApplication({
       auth: {
-        clientId: "605f8396-522e-4d3c-a83d-829fd2fcf47e", //[Enter_the_Application_Id_Here]
+        clientId: "605f8396-522e-4d3c-a83d-829fd2fcf47e", //Enter_the_Application_Id_Here
         authority: "https://login.microsoftonline.com/common",
       },
     });

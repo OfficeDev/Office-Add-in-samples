@@ -5,24 +5,83 @@
 
 /* global document, Office */
 
-Office.onReady((info) => {
+import { createNestablePublicClientApplication } from "@azure/msal-browser";
+
+const sideloadMsg = document.getElementById("sideload-msg");
+const appBody = document.getElementById("app-body");
+const signInButton = document.getElementById("btnSignIn");
+const itemSubject = document.getElementById("item-subject");
+
+let pca = undefined;
+
+Office.onReady(async (info) => {
   if (info.host === Office.HostType.Outlook) {
-    document.getElementById("sideload-msg").style.display = "none";
-    document.getElementById("app-body").style.display = "flex";
-    document.getElementById("run").onclick = run;
+    if (sideloadMsg) sideloadMsg.style.display = "none";
+    if (appBody) appBody.style.display = "flex";
+    if (signInButton) {
+      signInButton.onclick = signInUser;
+    }
+    // Initialize the public client application
+    pca = await createNestablePublicClientApplication({
+      auth: {
+        clientId: "605f8396-522e-4d3c-a83d-829fd2fcf47e", //Enter_the_Application_Id_Here
+        authority: "https://login.microsoftonline.com/common"
+      },
+    });
   }
 });
 
-export async function run() {
-  /**
-   * Insert your Outlook code here
-   */
+async function signInUser() {
+  // Specify minimum scopes needed for the access token.
+  const tokenRequest = {
+    scopes: ["User.Read", "openid", "profile"],
+  };
+  let accessToken = null;
 
-  const item = Office.context.mailbox.item;
-  let insertAt = document.getElementById("item-subject");
-  let label = document.createElement("b").appendChild(document.createTextNode("Subject: "));
-  insertAt.appendChild(label);
-  insertAt.appendChild(document.createElement("br"));
-  insertAt.appendChild(document.createTextNode(item.subject));
-  insertAt.appendChild(document.createElement("br"));
+  // Call acquireTokenSilent.
+  try {
+    console.log("Trying to acquire token silently...");
+    const userAccount = await pca.acquireTokenSilent(tokenRequest);
+    console.log("Acquired token silently.");
+    accessToken = userAccount.accessToken;
+  } catch (error) {
+    console.log(`Unable to acquire token silently: ${error}`);
+  }
+  // Call acquireTokenPopup.
+  if (accessToken === null) {
+    // Acquire token silent failure. Send an interactive request via popup.
+    try {
+      console.log("Trying to acquire token interactively...");
+      const userAccount = await pca.acquireTokenPopup(tokenRequest);
+      console.log("Acquired token interactively.");
+      accessToken = userAccount.accessToken;
+    } catch (popupError) {
+      // Acquire token interactive failure.
+      console.log(`Unable to acquire token interactively: ${popupError}`);
+    }
+  }
+  // Log error if both silent and popup requests failed.
+  if (accessToken === null) {
+    console.error(`Unable to acquire access token.`);
+    return;
+  }
+
+  // Call the Microsoft Graph API with the access token.
+  const response = await fetch(`https://graph.microsoft.com/v1.0/me`, {
+    headers: { Authorization: accessToken },
+  });
+
+  if (response.ok) {
+    // Get the user name from response JSON.
+    const data = await response.json();
+    const name = data.displayName;
+
+    if (itemSubject) {
+      itemSubject.innerText = "You are now signed in as " + name + ".";
+    }
+
+  } else {
+    const errorText = await response.text();
+    console.log("Microsoft Graph call failed - error text: " + errorText);
+  }
 }
