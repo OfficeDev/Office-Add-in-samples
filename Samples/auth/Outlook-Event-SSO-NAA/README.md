@@ -21,7 +21,7 @@ description: "This sample shows how to implement SSO in an event in an Outlook a
 This sample shows how to implement SSO in an event in an Outlook add-in. It uses the Microsoft Authentication Library for JavaScript (MSAL.js) and nested app authentication (NAA) to access Microsoft Graph APIs for the signed in user. The sample displays the signed in user's name as a signature in the body of a new email or calendar item.
 
 > [!IMPORTANT]
-> Nested app authentication is currently in preview. To try this feature, you need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) and choose **Current Channel (Preview)**. Don't use NAA in production add-ins. We invite you to try out NAA in test or development environments and welcome feedback on your experience through GitHub (see https://github.com/OfficeDev/office-js/issues).
+> Nested app authentication is currently in preview. To try this feature, you need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) and choose **Beta Channel**. Don't use NAA in production add-ins. We invite you to try out NAA in test or development environments and welcome feedback on your experience through GitHub (see https://github.com/OfficeDev/office-js/issues).
 
 ## Features
 
