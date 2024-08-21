@@ -21,11 +21,10 @@ module.exports = async (env, options) => {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
       commands: "./src/commands/commands.js",
-      launchevent: "./src/launchevent/launchevent.js",
+      launchevent: "./src/launchevent/launchevent.js", // Your event code needs to be listed as an entry.
     },
     output: {
       clean: true,
-     // iife: false,
     },
     resolve: {
       extensions: [".html", ".js"],
@@ -96,6 +95,7 @@ module.exports = async (env, options) => {
       }),
     ],
     devServer: {
+      // Set up a static public path to host the launchevent.js code in dev mode.
       static: {
         directory: path.join(__dirname, "dist"),
         publicPath: "/public",
