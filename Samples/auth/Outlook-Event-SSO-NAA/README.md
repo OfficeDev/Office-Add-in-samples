@@ -115,6 +115,8 @@ https://login.microsoftonline.com/{tenant}/v2.0/adminconsent
 - {tenant} is the ID of the tenant that is granting admin consent.
 - {appRegistrationID} is the ID of the app registration you created for the add-in.
 
+For more information, see [Admin consent on the Microsoft identity platform](https://learn.microsoft.com/entra/identity-platform/v2-admin-consent)
+
 ## Debugging steps
 
 To debug this sample, follow the instructions in [Debug your event-based or spam-reporting Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch). All `console.log` statements from the event code appear in the [runtime log](https://learn.microsoft.com/office/dev/add-ins/testing/runtime-logging).
