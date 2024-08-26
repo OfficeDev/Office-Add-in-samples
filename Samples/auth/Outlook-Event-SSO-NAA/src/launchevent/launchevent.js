@@ -9,9 +9,11 @@ let pca = undefined;
 let isPCAInitialized = false;
 
 async function initializePCA() {
-  if (isPCAInitialized) return;
+  if (isPCAInitialized) {
+    return;
+  }
 
-  // Initialize the public client application
+  // Initialize the public client application.
   try {
     pca = await createNestablePublicClientApplication({
       auth: {
@@ -43,7 +45,7 @@ async function getUserName() {
     console.log(`Unable to acquire token silently: ${error}`);
   }
 
-  //Log error if token still null.
+  // Log an error if the token is still null.
   if (accessToken === null) {
     console.log(`Unable to acquire access token. Access token is null.`);
     return;
@@ -55,7 +57,7 @@ async function getUserName() {
   });
 
   if (response.ok) {
-    // Get the user name from response JSON.
+    // Get the username from the response JSON.
     const data = await response.json();
     const name = data.displayName;
 
@@ -69,9 +71,11 @@ async function getUserName() {
 function onNewMessageComposeHandler(event) {
   setSignature(event);
 }
+
 function onNewAppointmentComposeHandler(event) {
   setSignature(event);
 }
+
 async function setSignature(event) {
   const item = Office.context.mailbox.item;
 
@@ -106,7 +110,7 @@ function addSignatureCallback(result) {
 }
 
 // IMPORTANT: To ensure your add-in is supported in the Outlook client on Windows, remember to map the event handler name specified in the manifest to its JavaScript counterpart.
-if (Office.context.platform === Office.PlatformType.PC || Office.context.platform == null) {
+if (Office.context.platform === Office.PlatformType.PC || Office.context.platform === null) {
   Office.actions.associate("onNewMessageComposeHandler", onNewMessageComposeHandler);
   Office.actions.associate("onNewAppointmentComposeHandler", onNewAppointmentComposeHandler);
 }

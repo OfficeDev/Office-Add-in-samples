@@ -21,7 +21,7 @@ Office.onReady(async (info) => {
     if (signInButton) {
       signInButton.onclick = signInUser;
     }
-    // Initialize the public client application
+    // Initialize the public client application.
     pca = await createNestablePublicClientApplication({
       auth: {
         clientId: "Enter_the_Application_Id_Here",
@@ -49,14 +49,14 @@ async function signInUser() {
   }
   // Call acquireTokenPopup.
   if (accessToken === null) {
-    // Acquire token silent failure. Send an interactive request via popup.
+    // If silently acquiring the token fails, send an interactive request via popup.
     try {
       console.log("Trying to acquire token interactively...");
       const userAccount = await pca.acquireTokenPopup(tokenRequest);
       console.log("Acquired token interactively.");
       accessToken = userAccount.accessToken;
     } catch (popupError) {
-      // Acquire token interactive failure.
+      // Failed to acquire the token with the popup.
       console.log(`Unable to acquire token interactively: ${popupError}`);
     }
   }

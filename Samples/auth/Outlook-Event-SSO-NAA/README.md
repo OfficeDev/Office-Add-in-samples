@@ -18,7 +18,7 @@ description: "This sample shows how to implement SSO in an event in an Outlook a
 
 ## Summary
 
-This sample shows how to implement SSO in an event in an Outlook add-in. It uses the Microsoft Authentication Library for JavaScript (MSAL.js) and nested app authentication (NAA) to access Microsoft Graph APIs for the signed in user. The sample displays the signed in user's name as a signature in the body of a new email or calendar item.
+This sample shows how to implement single sign-on (SSO) in an event in an Outlook add-in. It uses the Microsoft Authentication Library for JavaScript (MSAL.js) and nested app authentication (NAA) to access Microsoft Graph APIs for the signed-in user. The sample displays the signed-in user's name as a signature in the body of a new email or calendar item.
 
 > [!IMPORTANT]
 > Nested app authentication is currently in preview. To try this feature, you need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) and choose **Beta Channel**. Don't use NAA in production add-ins. We invite you to try out NAA in test or development environments and welcome feedback on your experience through GitHub (see https://github.com/OfficeDev/office-js/issues).
@@ -26,8 +26,8 @@ This sample shows how to implement SSO in an event in an Outlook add-in. It uses
 ## Features
 
 - Use MSAL.js NAA to get an access token for the signed in user to call Microsoft Graph APIs.
-- Get an access token through NAA in the OnNewMessageCompose and OnNewAppointmentOrganizer events.
-- Add a signature to an email or calendar invite with the signed in user's name.
+- Get an access token through NAA in the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events.
+- Add a signature to an email or calendar invite with the signed-in user's name.
 
 ## Applies to
 
@@ -82,7 +82,7 @@ For more information on how to register your application, see [Register an appli
 
 ## Run the sample
 
-First ensure you have signed in and consented to the add-in's scopes. Once you approve consent, you no longer need to do these steps.
+First ensure you have signed in and consented to the add-in's scopes. Once you approve consent, you no longer need to do those steps.
 
 1. Run the following commands.
 
@@ -104,7 +104,7 @@ Now you can use the event-based code.
 
 1. Create a new email. The add-in will automatically add a signature with your signed in name.
 
-> [!Note]
+> [!NOTE]
 > You can also consent using the following URL. This avoids the steps of signing in by using the task pane.
 
 https://login.microsoftonline.com/{tenant}/v2.0/adminconsent
