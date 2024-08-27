@@ -126,7 +126,7 @@ function get_command_id() {
 }
 
 function addInsight() {
-  Office.context.mailbox.item.notificationMessages.addAsync("fd90eb33431b46f58a68720c36154b4a", {
+  Office.context.mailbox.item.notificationMessages.addAsync("16c028c6_sign_in_notification", {
     type: "insightMessage",
     message: "Please sign in using the task pane to start using the Office Add-ins sample.",
     icon: "Icon.16x16",
