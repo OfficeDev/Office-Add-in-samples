@@ -74,9 +74,7 @@ For more information on how to register your application, see [Register an appli
 
 1. Clone or download this repository.
 1. From the command line, or a terminal window, go to the root folder of this sample at `/samples/auth/Outlook-Event-SSO-NAA`.
-1. Open the `src/launchevent/launchevent.js` file.
-1. Replace the placeholder "Enter_the_Application_Id_Here" with the Application ID that you copied.
-1. Open the `src/taskpane/taskpane.js` file.
+1. Open the `src/launchevent/authconfig.js` file.
 1. Replace the placeholder "Enter_the_Application_Id_Here" with the Application ID that you copied.
 1. Save the file.
 

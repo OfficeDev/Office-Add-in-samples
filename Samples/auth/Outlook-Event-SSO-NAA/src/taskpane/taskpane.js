@@ -6,6 +6,7 @@
 /* global document, Office */
 
 import { createNestablePublicClientApplication } from "@azure/msal-browser";
+import { auth } from "../launchevent/authconfig";
 
 const sideloadMsg = document.getElementById("sideload-msg");
 const appBody = document.getElementById("app-body");
@@ -23,10 +24,7 @@ Office.onReady(async (info) => {
     }
     // Initialize the public client application
     pca = await createNestablePublicClientApplication({
-      auth: {
-        clientId: "Enter_the_Application_Id_Here",
-        authority: "https://login.microsoftonline.com/common"
-      },
+      auth: auth,
     });
   }
 });

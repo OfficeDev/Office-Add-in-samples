@@ -4,6 +4,7 @@
  */
 
 import { createNestablePublicClientApplication } from "@azure/msal-browser";
+import { auth } from "./authconfig";
 
 let pca = undefined;
 let isPCAInitialized = false;
@@ -14,10 +15,7 @@ async function initializePCA() {
   // Initialize the public client application
   try {
     pca = await createNestablePublicClientApplication({
-      auth: {
-        clientId: "Enter_the_Application_Id_Here",
-        authority: "https://login.microsoftonline.com/common",
-      },
+      auth: auth,
     });
     isPCAInitialized = true;
   } catch (error) {
@@ -41,11 +39,13 @@ async function getUserName() {
     accessToken = userAccount.accessToken;
   } catch (error) {
     console.log(`Unable to acquire token silently: ${error}`);
+    throw error; //rethrow
   }
 
   //Log error if token still null.
   if (accessToken === null) {
     console.log(`Unable to acquire access token. Access token is null.`);
+    throw new Error("Unable to acquire access token. Access token is null.");
     return;
   }
 
@@ -67,6 +67,7 @@ async function getUserName() {
 }
 
 function onNewMessageComposeHandler(event) {
+  //addInsight();
   setSignature(event);
 }
 function onNewAppointmentComposeHandler(event) {
@@ -84,12 +85,16 @@ async function setSignature(event) {
 
     // Add a signature if there's no default Outlook signature configured.
     if (result.value === false) {
-      const userName = await getUserName();
-      item.body.setSignatureAsync(
-        "<b>From the desk of " + userName + ".",
-        { asyncContext: result.asyncContext, coercionType: Office.CoercionType.Html },
-        addSignatureCallback
-      );
+      try {
+        const userName = await getUserName();
+        item.body.setSignatureAsync(
+          "<b>From the desk of " + userName + ".",
+          { asyncContext: result.asyncContext, coercionType: Office.CoercionType.Html },
+          addSignatureCallback
+        );
+      } catch (error) {
+        addInsight();
+      }
     }
   });
 }
@@ -103,6 +108,33 @@ function addSignatureCallback(result) {
 
   console.log("Successfully added signature.");
   result.asyncContext.completed();
+}
+
+/**
+ * Gets correct command id to match to item type (appointment or message)
+ * @returns The command id
+ */
+function get_command_id() {
+  if (Office.context.mailbox.item.itemType == "appointment") {
+    return "MRCS_TpBtn1";
+  }
+  return "MRCS_TpBtn0";
+}
+
+function addInsight() {
+  Office.context.mailbox.item.notificationMessages.addAsync("fd90eb33431b46f58a68720c36154b4a", {
+    type: "insightMessage",
+    message: "Please sign in using the task pane to start using the Office Add-ins sample.",
+    icon: "Icon.16x16",
+    actions: [
+      {
+        actionType: "showTaskPane",
+        actionText: "Sign in",
+        commandId: get_command_id(),
+        contextData: "{''}",
+      },
+    ],
+  });
 }
 
 // IMPORTANT: To ensure your add-in is supported in the Outlook client on Windows, remember to map the event handler name specified in the manifest to its JavaScript counterpart.
