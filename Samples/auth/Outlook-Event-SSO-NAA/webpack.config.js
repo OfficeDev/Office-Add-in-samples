@@ -20,7 +20,6 @@ module.exports = async (env, options) => {
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
-      //commands: "./src/commands/commands.js",
       launchevent: "./src/launchevent/launchevent.js", // Your event code needs to be listed as an entry.
     },
     output: {
@@ -62,6 +61,10 @@ module.exports = async (env, options) => {
             from: "./src/well-known",
             to: ".well-known",
           },
+          {
+            from: "./src/launchevent/commands.html",
+            to: ".",
+          },
         ],
       }),
       new HtmlWebpackPlugin({
@@ -88,11 +91,6 @@ module.exports = async (env, options) => {
           },
         ],
       }),
-      // new HtmlWebpackPlugin({
-      //   filename: "commands.html",
-      //   template: "./src/commands/commands.html",
-      //   chunks: ["polyfill", "commands"],
-      // }),
     ],
     devServer: {
       // Set up a static public path to host the launchevent.js code in dev mode.

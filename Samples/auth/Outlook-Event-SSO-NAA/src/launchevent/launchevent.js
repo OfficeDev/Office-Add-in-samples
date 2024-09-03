@@ -3,12 +3,20 @@
  * See LICENSE in the project root for license information.
  */
 
+/* global console, fetch, Office */
+
 import { createNestablePublicClientApplication } from "@azure/msal-browser";
 import { auth } from "./authconfig";
 
 let pca = undefined;
 let isPCAInitialized = false;
 
+// Called when loaded into Outlook on web.
+Office.onReady(() => {});
+
+/**
+ * Initialize the public client application to work with SSO through NAA.
+ */
 async function initializePCA() {
   if (isPCAInitialized) {
     return;
@@ -21,10 +29,15 @@ async function initializePCA() {
     });
     isPCAInitialized = true;
   } catch (error) {
+    // All console.log statements write to the runtime log. For more information, see https://learn.microsoft.com/office/dev/add-ins/testing/runtime-logging
     console.log(`Error creating pca: ${error}`);
   }
 }
 
+/**
+ * Gets the user name from Microsoft Graph. Uses an access token acquired through NAA and SSO.
+ * @returns the user name (display name).
+ */
 async function getUserName() {
   await initializePCA();
   // Specify minimum scopes needed for the access token.
@@ -33,7 +46,7 @@ async function getUserName() {
   };
   let accessToken = null;
 
-  // Call acquireTokenSilent.
+  // Acquire the access token silently.
   try {
     console.log("Trying to acquire token silently...");
     const userAccount = await pca.acquireTokenSilent(tokenRequest);
@@ -41,18 +54,17 @@ async function getUserName() {
     accessToken = userAccount.accessToken;
   } catch (error) {
     console.log(`Unable to acquire token silently: ${error}`);
-    throw error; //rethrow
+    throw error;
   }
 
-  // Log an error if the token is still null.
+  // Throw an error if the token is still null.
   if (accessToken === null) {
     console.log(`Unable to acquire access token. Access token is null.`);
     throw new Error("Unable to acquire access token. Access token is null.");
-    return;
   }
 
   // Call the Microsoft Graph API with the access token.
-  const response = await fetch(`https://graph.microsoft.com/v1.0/me`, {
+  const response = await fetch("https://graph.microsoft.com/v1.0/me", {
     headers: { Authorization: accessToken },
   });
 
@@ -60,7 +72,6 @@ async function getUserName() {
     // Get the username from the response JSON.
     const data = await response.json();
     const name = data.displayName;
-
     return name;
   } else {
     const errorText = await response.text();
@@ -68,15 +79,26 @@ async function getUserName() {
   }
 }
 
+/**
+ * Called when the user creates a new email. Will set the signature using the signed-in user's name.
+ * @param {*} event The event context from Office.
+ */
 function onNewMessageComposeHandler(event) {
-  //addInsight();
   setSignature(event);
 }
 
+/**
+ * Called when the user creates a new appointment. Will set the signature using the signed-in user's name.
+ * @param {*} event The event context from Office.
+ */
 function onNewAppointmentComposeHandler(event) {
   setSignature(event);
 }
 
+/**
+ * Sets the signature in the email item to indicate it is from the signed-in user.
+ * @param {*} event The event context from Office.
+ */
 async function setSignature(event) {
   const item = Office.context.mailbox.item;
 
@@ -97,26 +119,28 @@ async function setSignature(event) {
           addSignatureCallback
         );
       } catch (error) {
-        addInsight();
+        notifyUserToSignIn();
       }
     }
   });
 }
 
-// Callback function to add a signature to the mail item.
+/**
+ * Callback function to handle the result of adding a signature to the mail item.
+ * @param {*} result The result from attemting to set the signature
+ */
 function addSignatureCallback(result) {
   if (result.status === Office.AsyncResultStatus.Failed) {
     console.log(result.error.message);
-    return;
+  } else {
+    console.log("Successfully added signature.");
+    result.asyncContext.completed();
   }
-
-  console.log("Successfully added signature.");
-  result.asyncContext.completed();
 }
 
 /**
- * Gets correct command id to match to item type (appointment or message)
- * @returns The command id
+ * Gets correct command id to match to item type (appointment or message).
+ * @returns The command id.
  */
 function get_command_id() {
   if (Office.context.mailbox.item.itemType == "appointment") {
@@ -125,7 +149,10 @@ function get_command_id() {
   return "MRCS_TpBtn0";
 }
 
-function addInsight() {
+/**
+ * Adds a notification to the email item requesting the user to sign in using the task pane.
+ */
+function notifyUserToSignIn() {
   Office.context.mailbox.item.notificationMessages.addAsync("16c028c6_sign_in_notification", {
     type: "insightMessage",
     message: "Please sign in using the task pane to start using the Office Add-ins sample.",
