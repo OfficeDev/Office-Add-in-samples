@@ -1,0 +1,46 @@
+[
+  {
+    "name": "office-add-in-first-run-experience-tutorial",
+    "reponame": "office-add-in-samples",
+    "source": "officedev",
+    "title": "Office Add-in First-run Experience Tutorial - Completed",
+    "shortDescription": "A completed version of the step-by-step first-run experience tutorial hosted on learn.microsoft.com.",
+    "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/tutorials/first-run-experience-tutorial",
+    "longDescription": [
+      "The tutorial gives step-by-step instructions on how to add functionality alongside explanations as to why code is being added. Use this sample if you want to explore and try the completed code, or if you need to debug any issues you may have encountered while following the tutorial."
+    ],
+    "creationDateTime": "2024-09-05",
+    "updateDateTime": "2024-09-05",
+    "products": [
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "JavaScript"
+      }
+    ],
+    "thumbnails": [
+      {
+          "type": "Image",
+          "order": 100,
+          "url": "https://learn.microsoft.com/en-us/office/dev/add-ins/images/fre-tutorial-addin-first-run.png",
+          "alt": "The add-in task pane UI on first run."
+        }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "microsoft",
+        "pictureUrl": "https://github.com/microsoft.png",
+        "name": "Microsoft"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build an Office Add-in with a basic first-run experience",
+        "description": "Update a task pane add-in to include a first-run experience using the value placemat pattern.",
+        "url": "https://learn.microsoft.com/office/dev/add-ins/tutorials/first-run-experience-tutorial"
+      }
+    ]
+  }
+] 
