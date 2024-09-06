@@ -102,27 +102,18 @@ function onNewAppointmentComposeHandler(event) {
 async function setSignature(event) {
   const item = Office.context.mailbox.item;
 
-  // Check if a default Outlook signature is already configured.
-  item.isClientSignatureEnabledAsync({ asyncContext: event }, async (result) => {
-    if (result.status === Office.AsyncResultStatus.Failed) {
-      console.log(result.error.message);
-      return;
-    }
-
-    // Add a signature if there's no default Outlook signature configured.
-    if (result.value === false) {
-      try {
-        const userName = await getUserName();
-        item.body.setSignatureAsync(
-          "<b>From the desk of " + userName + ".",
-          { asyncContext: result.asyncContext, coercionType: Office.CoercionType.Html },
-          addSignatureCallback
-        );
-      } catch (error) {
-        notifyUserToSignIn();
-      }
-    }
-  });
+  // Add the signature.
+  try {
+    const userName = await getUserName();
+    item.body.setSignatureAsync(
+      "<b>From the desk of " + userName + ".",
+      { asyncContext: event, coercionType: Office.CoercionType.Html },
+      addSignatureCallback
+    );
+  } catch (error) {
+    notifyUserToSignIn();
+  }
+  event.completed();
 }
 
 /**
@@ -168,8 +159,5 @@ function notifyUserToSignIn() {
   });
 }
 
-// IMPORTANT: To ensure your add-in is supported in the Outlook client on Windows, remember to map the event handler name specified in the manifest to its JavaScript counterpart.
-if (Office.context.platform === Office.PlatformType.PC || Office.context.platform === null) {
-  Office.actions.associate("onNewMessageComposeHandler", onNewMessageComposeHandler);
-  Office.actions.associate("onNewAppointmentComposeHandler", onNewAppointmentComposeHandler);
-}
+Office.actions.associate("onNewMessageComposeHandler", onNewMessageComposeHandler);
+Office.actions.associate("onNewAppointmentComposeHandler", onNewAppointmentComposeHandler);
