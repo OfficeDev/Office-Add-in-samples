@@ -3,6 +3,12 @@ page_type: sample
 urlFragment: office-add-in-first-run-experience-tutorial
 products:
   - office
+  - office-excel
+  - office-onenote
+  - office-outlook
+  - office-powerpoint
+  - office-project
+  - office-word
 languages:
   - javascript
 extensions:
@@ -30,6 +36,14 @@ This sample demonstrates the basics of implementing a first-run experience (FRE)
 - Excel on Windows
 - Excel on Mac
 - Excel on the web
+
+The first-run experience pattern demonstrated in this sample can also be applied to the following Office applications. However, you won't be able to run this sample directly in these applications. See the [step-by-step tutorial](https://learn.microsoft.com/office/dev/add-ins/tutorials/first-run-experience-tutorial) for details.
+
+- OneNote on the web
+- Outlook
+- PowerPoint
+- Project on Windows
+- Word
 
 ## Prerequisites
 
@@ -82,7 +96,7 @@ Version  | Date | Comments
 
       If your add-in doesn't sideload in the document, manually sideload it by following the instructions in [Manually sideload add-ins to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing).
 
-1. If the add-in task pane isn't already open in Excel, go to the Home tab and choose the **Show Taskpane** button in the ribbon to open it.
+1. If the add-in task pane isn't already open in Excel, go to the Home tab and choose the **Show Task Pane** button in the ribbon to open it.
 
 1. Verify that the list of Office Add-ins features is displayed. This indicates that the first-run experience was shown.
 
@@ -95,7 +109,7 @@ Version  | Date | Comments
 
 ## See also
 
-The version of this sample that you create step-by-step is found in the article [Build an Office Add-in with a basic first-run experience](https://learn.microsoft.com/office/dev/add-ins/tutorials/first-run-experience-tutorial).
+The version of this sample that you create step-by-step is found in the [Build an Office Add-in with a basic first-run experience](https://learn.microsoft.com/office/dev/add-ins/tutorials/first-run-experience-tutorial) tutorial.
 
 ## Copyright
 
