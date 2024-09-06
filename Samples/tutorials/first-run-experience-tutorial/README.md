@@ -17,7 +17,7 @@ description: "A completed version of the step-by-step first-run experience tutor
 
 ## Summary
 
-This sample is the result of completing the [Build an Office Add-in with a basic first-run experience](https://learn.microsoft.com/office/dev/add-ins/tutorials/first-run-experience-tutorial). It was constructed with the [Yeoman generator for Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/yeoman-generator-overview).
+This sample is the result of completing the [Build an Office Add-in with a basic first-run experience](https://learn.microsoft.com/office/dev/add-ins/tutorials/first-run-experience-tutorial) tutorial. It's built from the [Yeoman generator for Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/yeoman-generator-overview).
 
 The tutorial gives step-by-step instructions on how to add functionality alongside explanations as to why code is being added. Use this sample if you want to explore and try the completed code, or if you need to debug any issues you encountered while following the tutorial.
 
