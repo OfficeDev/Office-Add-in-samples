@@ -11,7 +11,7 @@ import { auth } from "./authconfig";
 let pca = undefined;
 let isPCAInitialized = false;
 
-// Called when loaded into Outlook on web.
+// Called when loaded into Outlook on the web.
 Office.onReady(() => {});
 
 /**
