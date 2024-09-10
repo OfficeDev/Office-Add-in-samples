@@ -1,0 +1,41 @@
+[
+    {
+      "name": "outlook-event-sso-naa",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Outlook event-based add-in using SSO with nested app authentication (preview)",
+      "shortDescription": "This sample shows how to implement SSO in an Outlook event-based add-in.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/auth/Outlook-Add-in-SSO-NAA",
+      "longDescription": [
+        "This sample shows how to implement SSO in an event in an Outlook add-in by using nested app authentication."
+      ],
+      "creationDateTime": "2024-08-21",
+      "updateDateTime": "2024-08-21",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+       
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+        {
+          "name": "Use SSO in events in an Outlook add-in using nested app authentication (preview)",
+          "description": "This sample shows how to implement SSO in an event in an Outlook add-in by using nested app authentication.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in"
+        }
+      ]
+    }
+  ] 
