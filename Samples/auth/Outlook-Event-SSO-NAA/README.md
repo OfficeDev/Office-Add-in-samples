@@ -31,7 +31,8 @@ This sample demonstrates how to use single sign-on (SSO) in an Outlook add-in ev
 
 ## Applies to
 
-- Outlook (Beta Channel for classic Outlook only, new Outlook coming soon)
+- Outlook (Beta Channel for classic Outlook only, new Outlook coming soon).
+- Outlook on the web.
 
 For more information on supported platforms, see [NAA supported accounts and hosts](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in#naa-supported-accounts-and-hosts).
 
