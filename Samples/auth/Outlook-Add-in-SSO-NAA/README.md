@@ -30,7 +30,8 @@ This sample shows how to use MSAL.js nested app authentication (NAA) in an Outlo
 
 ## Applies to
 
-- Outlook (Beta Channel for classic Outlook only, new Outlook coming soon)
+- Outlook (Current Channel (previeiw) for classic Outlook only, new Outlook coming soon).
+- Outlook on the web.
 
 For more information on supported platforms, see [NAA supported accounts and hosts](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in#naa-supported-accounts-and-hosts).
 
@@ -55,17 +56,6 @@ For more information on supported platforms, see [NAA supported accounts and hos
     - Select **Register**.
 
 1. On the **Outlook-Add-in-SSO-NAA** page, copy and save the value for the **Application (client) ID**. You'll use it in the next section.
-1. Select the link to modify redirect URIs which should appear as **0 web, 1 spa, 0 public client**.
-
-      ![The redirect URIs link.](./assets/ui-add-redirect-link.png)
-
-1. In the **Single-page application Redirect URIs** section, select **Add URI**.
-
-      ![The Add URI link.](./assets/ui-add-redirects-link.png)
-
-1. Enter the new URI value `https://localhost:3000/taskpane.html` and select **Save**.
-
-      ![The completed redirects in the application registration.](./assets/ui-completed-redirects.png)
 
 For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://learn.microsoft.com/graph/auth-register-app-v2).
 
@@ -111,8 +101,8 @@ For more information on debugging with VS Code, see [Debugging](https://code.vis
 The `src/taskpane/authConfig.ts` file contains the MSAL code for configuring and using NAA. It contains a class named AccountManager which manages getting user account and token information.
 
 - The `initialize` function is called from Office.onReady to configure and intitialize MSAL to use NAA.
-- The `ssoGetToken` function gets an access token for the signed in user to call Microsoft Graph APIs.
-- The `ssoGetUserIdentity` function gets the account information of the signed in user. This can be used to get user details such as name and email.
+- The `ssoGetAccessToken` function gets an access token for the signed in user to call Microsoft Graph APIs.
+- The `ssoGetUserAccount` function gets the account information of the signed in user. This can be used to get user details such as name and email.
 
 The `src/taskpane/taskpane.ts` file contains code that runs when the user chooses buttons in the task pane. They use the AccountManager class to get tokens or user information depending on which button is chosen.
 
@@ -121,6 +111,15 @@ The `src/taskpane/msgraph-helper.ts` file contains code to construct and make a 
 ## Security reporting
 
 If you find a security issue with our libraries or services, report the issue to [secure@microsoft.com](mailto:secure@microsoft.com) with as much detail as you can provide. Your submission may be eligible for a bounty through the [Microsoft Bounty](https://aka.ms/bugbounty) program. Don't post security issues to [GitHub Issues](https://github.com/AzureAD/microsoft-authentication-library-for-android/issues) or any other public site. We'll contact you shortly after receiving your issue report. We encourage you to get new security incident notifications by visiting [Microsoft technical security notifications](https://technet.microsoft.com/security/dd252948) to subscribe to Security Advisory Alerts.
+
+## More resources
+
+- NAA public preview blog: https://aka.ms/NAApreviewblog 
+- [Updates on deprecating legacy Exchange Online tokens for Outlook add-ins](https://devblogs.microsoft.com/microsoft365dev/updates-on-deprecating-legacy-exchange-online-tokens-for-outlook-add-ins/?commentid=1131)
+- NAA docs to get started: https://aka.ms/NAAdocs 
+- NAA FAQ: https://aka.ms/NAAFAQ 
+- NAA Outlook sample: https://aka.ms/NAAsampleOutlook 
+- NAA Word, Excel, and PowerPoint sample: https://aka.ms/NAAsampleOffice 
 
 ## Questions and feedback
 
