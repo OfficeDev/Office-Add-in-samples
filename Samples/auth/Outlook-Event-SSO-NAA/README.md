@@ -14,14 +14,14 @@ extensions:
 description: "This sample shows how to implement SSO in an event in an Outlook add-in by using nested app authentication."
 ---
 
-# Use SSO in events in an Outlook add-in using nested app authentication (preview)
+# Implement SSO in events in an Outlook add-in using nested app authentication (preview)
 
 ## Summary
 
-This sample shows how to implement single sign-on (SSO) in an event in an Outlook add-in. It uses the Microsoft Authentication Library for JavaScript (MSAL.js) and nested app authentication (NAA) to access Microsoft Graph APIs for the signed-in user. The sample displays the signed-in user's name as a signature in the body of a new email or calendar item.
+This sample demonstrates how to use single sign-on (SSO) in an Outlook add-in event using the Microsoft Authentication Library for JavaScript (MSAL.js) and nested app authentication (NAA) to access Microsoft Graph APIs for the authenticated user. The sample displays the signed-in user's name as a signature in the body of a new email or calendar item.
 
 > [!IMPORTANT]
-> Nested app authentication is currently in preview. To try this feature, you need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) and choose **Beta Channel**. Don't use NAA in production add-ins. We invite you to try out NAA in test or development environments and welcome feedback on your experience through GitHub (see https://github.com/OfficeDev/office-js/issues).
+> Nested app authentication is currently in preview. To try this feature, join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) and choose **Beta Channel**. Don't use NAA in production add-ins. We invite you to try out NAA in test or development environments and welcome feedback on your experience through GitHub (see https://github.com/OfficeDev/office-js/issues).
 
 ## Features
 
@@ -69,7 +69,7 @@ For more information on how to register your application, see [Register an appli
 
 ## Run the sample
 
-First ensure you have signed in and consented to the add-in's scopes. Once you approve consent, you no longer need to do those steps.
+First ensure you're signed in and consent to the add-in's scopes. Once you approve consent, you no longer need to do those steps.
 
 1. Run the following commands.
 
