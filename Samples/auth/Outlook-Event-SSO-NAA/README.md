@@ -38,7 +38,7 @@ For more information on supported platforms, see [NAA supported accounts and hos
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- You need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) to use the NAA preview features. Choose the **Current Channel (Preview)** insider level.
+- You need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) to use the NAA preview features. Choose the **Beta Channel** insider level.
 - [Node.js](https://nodejs.org/) version 16 or greater.
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
@@ -56,17 +56,6 @@ For more information on supported platforms, see [NAA supported accounts and hos
     - Select **Register**.
 
 1. On the **Outlook-Add-in-SSO-NAA** page, copy and save the value for the **Application (client) ID**. You'll use it in the next section.
-1. Select the link to modify redirect URIs which should appear as **0 web, 1 spa, 0 public client**.
-
-      ![The redirect URIs link.](./assets/ui-add-redirect-link.png)
-
-1. In the **Single-page application Redirect URIs** section, select **Add URI**.
-
-      ![The Add URI link.](./assets/ui-add-redirects-link.png)
-
-1. Enter the new URI value `https://localhost:3000/taskpane.html` and select **Save**.
-
-      ![The completed redirects in the application registration.](./assets/ui-completed-redirects.png)
 
 For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://learn.microsoft.com/graph/auth-register-app-v2).
 
@@ -90,9 +79,6 @@ First ensure you have signed in and consented to the add-in's scopes. Once you a
 
     This will start the web server and sideload the add-in to Outlook.
 
-> [!IMPORTANT]
-> The dev build uses the `https://localhost:3000/public/launchevent.js` path. If you change to the production build, you also need to change the URL to `https://localhost:3000/launchevent.js` in the `manifest.xml` file.
-
 1. Start Outlook (classic) and sign in.
 1. Open an existing email item.
 1. Choose "Show Task Pane" from the ribbon. This will open the task pane of the add-in.
@@ -101,19 +87,6 @@ First ensure you have signed in and consented to the add-in's scopes. Once you a
 Now you can use the event-based code.
 
 1. Create a new email. The add-in will automatically add a signature with your signed in name.
-
-> [!NOTE]
-> You can also consent using the following URL. This avoids the steps of signing in by using the task pane.
-
-https://login.microsoftonline.com/{tenant}/v2.0/adminconsent
-        ?client_id={appRegistrationID}
-        &scope=https://graph.microsoft.com/User.Read https://graph.microsoft.com/openid https://graph.microsoft.com/profile
-        &redirect_uri=brk-multihub://localhost:3000
-
-- {tenant} is the ID of the tenant that is granting admin consent.
-- {appRegistrationID} is the ID of the app registration you created for the add-in.
-
-For more information, see [Admin consent on the Microsoft identity platform](https://learn.microsoft.com/entra/identity-platform/v2-admin-consent)
 
 ## Debugging steps
 
@@ -142,6 +115,15 @@ If you find a security issue with our libraries or services, report the issue to
 - Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
 - We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
 - For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
+
+## More resources
+
+- NAA public preview blog: https://aka.ms/NAApreviewblog 
+- [Updates on deprecating legacy Exchange Online tokens for Outlook add-ins](https://devblogs.microsoft.com/microsoft365dev/updates-on-deprecating-legacy-exchange-online-tokens-for-outlook-add-ins/?commentid=1131)
+- NAA docs to get started: https://aka.ms/NAAdocs 
+- NAA FAQ: https://aka.ms/NAAFAQ 
+- NAA Outlook sample: https://aka.ms/NAAsampleOutlook 
+- NAA Word, Excel, and PowerPoint sample: https://aka.ms/NAAsampleOffice 
 
 ## Copyright
 

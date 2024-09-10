@@ -20,6 +20,7 @@ module.exports = async (env, options) => {
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
+      commands: ["./src/launchevent/launchevent.js", "./src/launchevent/commands.html"],
       launchevent: "./src/launchevent/launchevent.js", // Your event code needs to be listed as an entry.
     },
     output: {
@@ -32,6 +33,8 @@ module.exports = async (env, options) => {
       rules: [
         {
           test: /\.js$/,
+          // exclude: /node_modules/, // Exclude all node_modules except @azure
+          include: [path.resolve(__dirname, "node_modules/@azure"), path.resolve(__dirname, "src")],
           exclude: /node_modules/,
           use: {
             loader: "babel-loader",
@@ -55,22 +58,15 @@ module.exports = async (env, options) => {
       ],
     },
     plugins: [
-      new CopyWebpackPlugin({
-        patterns: [
-          {
-            from: "./src/well-known",
-            to: ".well-known",
-          },
-          {
-            from: "./src/launchevent/commands.html",
-            to: ".",
-          },
-        ],
-      }),
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
         chunks: ["polyfill", "taskpane"],
+      }),
+      new HtmlWebpackPlugin({
+        filename: "commands.html",
+        template: "./src/launchevent/commands.html",
+        chunks: ["polyfill", "commands"],
       }),
       new CopyWebpackPlugin({
         patterns: [
@@ -89,11 +85,16 @@ module.exports = async (env, options) => {
               }
             },
           },
+          {
+            from: "./src/well-known",
+            to: ".well-known",
+          },
         ],
       }),
     ],
     devServer: {
-      // Set up a static public path to host the launchevent.js code in dev mode.
+      hot: false,
+      client: false,
       static: {
         directory: path.join(__dirname, "dist"),
         publicPath: "/public",

@@ -43,14 +43,12 @@ async function signInUser() {
     return;
   }
 
-  let tokenRequest = null;
+  // Specify minimum scopes needed for the access token.
+  const tokenRequest = {
+    scopes: ["User.Read"],
+  };
   let accessToken = null;
   try {
-    // Specify minimum scopes needed for the access token.
-    const tokenRequest = {
-      scopes: ["User.Read"],
-    };
-
     const authResult = await pca.acquireTokenSilent(tokenRequest);
     accessToken = authResult.accessToken;
     console.log("Acquired token silently.");

@@ -125,7 +125,7 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html" />
         <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/commands.html" />
         <!-- Entry needed for classic Outlook on Windows. -->
-        <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/public/launchevent.js" />
+        <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/launchevent.js" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="Contoso Add-in"/>
