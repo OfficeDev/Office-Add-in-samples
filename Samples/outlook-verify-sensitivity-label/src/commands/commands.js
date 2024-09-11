@@ -329,8 +329,6 @@ function containsLegalTeamMember(recipients) {
 /**
  * Maps the event handler name specified in the manifest to its JavaScript counterpart.
  */
-if (Office.context.platform === Office.PlatformType.PC || Office.context.platform == null) {
-  Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipientsChangedHandler);
-  Office.actions.associate("onMessageSendHandler", onMessageSendHandler);
-  Office.actions.associate("onSensitivityLabelChangedHandler", onSensitivityLabelChangedHandler);
-}
+Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipientsChangedHandler);
+Office.actions.associate("onMessageSendHandler", onMessageSendHandler);
+Office.actions.associate("onSensitivityLabelChangedHandler", onSensitivityLabelChangedHandler);
