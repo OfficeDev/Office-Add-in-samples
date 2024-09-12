@@ -6,17 +6,7 @@
 /**
  * Ensures the Office.js library is loaded.
  */
-Office.onReady((info) => {
-  /** 
-   * Maps the event handler name specified in the manifest's LaunchEvent element to its JavaScript counterpart.
-   * This ensures support in Outlook on Windows. 
-   */
-  if (Office.context.platform === Office.PlatformType.PC || Office.context.platform == null) {
-    Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipientsChangedHandler);
-    Office.actions.associate("onMessageSendHandler", onMessageSendHandler);
-    Office.actions.associate("onSensitivityLabelChangedHandler", onSensitivityLabelChangedHandler);
-  }
-});
+Office.onReady();
 
 /**
  * The legal hold email account of the fictitious company, Fabrikam. It's added to the Bcc field of a
@@ -335,3 +325,10 @@ function containsLegalTeamMember(recipients) {
 
   return false;
 }
+
+/**
+ * Maps the event handler name specified in the manifest to its JavaScript counterpart.
+ */
+Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipientsChangedHandler);
+Office.actions.associate("onMessageSendHandler", onMessageSendHandler);
+Office.actions.associate("onSensitivityLabelChangedHandler", onSensitivityLabelChangedHandler);
