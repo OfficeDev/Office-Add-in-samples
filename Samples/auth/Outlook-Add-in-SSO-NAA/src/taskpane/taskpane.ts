@@ -3,7 +3,7 @@
  * See LICENSE in the project root for license information.
  */
 
-/* global document, Office */
+/* global document, Office, console */
 
 import { AccountManager } from "./authConfig";
 import { makeGraphRequest } from "./msgraph-helper";
@@ -36,14 +36,13 @@ Office.onReady((info) => {
 async function writeFileNames(fileNameList: string[]) {
   const item = Office.context.mailbox.item;
   let fileNameBody: string = "";
-  fileNameList.map((item) => fileNameBody += "<br/>" + item);
+  fileNameList.map((fileName) => (fileNameBody += "<br/>" + fileName));
 
-  Office.context.mailbox.item.body.setAsync(
-    fileNameBody,
-    {
+  if (item) {
+    item.body.setAsync(fileNameBody, {
       coercionType: "html",
-    }
-  );
+    });
+  }
 }
 
 /**
@@ -52,7 +51,7 @@ async function writeFileNames(fileNameList: string[]) {
  */
 async function getUserData() {
   const userDataElement = document.getElementById("userData");
-  const userAccount = await accountManager.ssoGetUserIdentity(["user.read"]);
+  const userAccount = await accountManager.ssoGetUserAccount(["files.read"]);
   const idTokenClaims = userAccount.idTokenClaims as { name?: string; preferred_username?: string };
 
   console.log(userAccount);
@@ -87,7 +86,7 @@ async function getUserFiles() {
  */
 async function getFileNames(count = 10) {
   // Specify minimum scopes for the token needed.
-  const accessToken = await accountManager.ssoGetToken(["Files.Read"]);
+  const accessToken = await accountManager.ssoGetAccessToken(["Files.Read"]);
   const response: { value: { name: string }[] } = await makeGraphRequest(
     accessToken,
     "/me/drive/root/children",
