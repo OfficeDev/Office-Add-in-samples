@@ -14,6 +14,7 @@ import {
   AuthenticationResult,
 } from "@azure/msal-browser";
 import { createLocalUrl } from "./util";
+import { AccountContext } from "./msalcommon";
 
 export { AccountManager };
 
@@ -80,6 +81,17 @@ class AccountManager {
   }
 
   /**
+   * Gets the user account information object from MSAL.
+   *
+   * @param scopes the minimum scopes needed.
+   * @returns The user account info.
+   */
+  async ssoGetUserAccount(scopes: string[]) {
+    const userAccount = await this.ssoGetAccessToken(scopes);
+    return userAccount;
+  }
+
+  /**
    *
    * Uses MSAL and nested app authentication to get an access token from Office SSO.
    * This demonstrates how to work with user identity from the token.
@@ -88,44 +100,8 @@ class AccountManager {
    * @returns The access token.
    */
   async ssoGetAccessToken(scopes: string[]) {
-    let accessToken = "";
-    if (this.authMethod === "") {
-      throw new Error("AccountManager is not initialized!");
-    }
-
-    // Specify minimum scopes needed for the access token.
-    const tokenRequest = {
-      scopes: scopes,
-    };
-
-    try {
-      console.log("Trying to acquire token silently...");
-      const authResult = await this.pca.acquireTokenSilent(tokenRequest);
-      console.log("Acquired token silently.");
-      accessToken = authResult.accessToken;
-    } catch (error) {
-      console.log(`Unable to acquire token silently: ${error}`);
-    }
-
-    if (accessToken !== "") {
-      // Acquire token silent failure. Send an interactive request via popup.
-      try {
-        console.log("Trying to acquire token interactively...");
-        const authResult = await this.pca.acquireTokenPopup(tokenRequest);
-        console.log("Acquired token interactively.");
-        accessToken = authResult.accessToken;
-      } catch (popupError) {
-        // Optional fallback if about:blank popup should not be shown
-        if (popupError instanceof BrowserAuthError && popupError.errorCode === "popup_window_error") {
-          accessToken = await this.getTokenWithDialogApi();
-        } else {
-          // Acquire token interactive failure.
-          console.log(`Unable to acquire token interactively: ${popupError}`);
-          throw new Error(`Unable to acquire access token: ${popupError}`);
-        }
-      }
-    }
-    return accessToken;
+    const userAccount = await this.ssoGetUserIdentity(scopes);
+    return userAccount.accessToken;
   }
 
   async getTokenWithDialogApi(isInternetExplorer?: boolean): Promise<string> {
@@ -141,5 +117,54 @@ class AccountManager {
         }
       );
     });
+  }
+  /**
+   *
+   * Uses MSAL and nested app authentication to get the user account from Office SSO.
+   * This demonstrates how to work with user identity from the token.
+   *
+   * @param scopes The minimum scopes needed.
+   * @returns The user account data (including identity).
+   */
+  async ssoGetUserIdentity(scopes: string[]) {
+    let userAccount: AuthenticationResult | undefined;
+    if (this.authMethod === "") {
+      throw new Error("AccountManager is not initialized!");
+    }
+
+    // Specify minimum scopes needed for the access token.
+    const tokenRequest = {
+      scopes: scopes,
+    };
+
+    try {
+      console.log("Trying to acquire token silently...");
+      const authResult = await this.pca.acquireTokenSilent(tokenRequest);
+      console.log("Acquired token silently.");
+      userAccount = authResult;
+    } catch (error) {
+      console.log(`Unable to acquire token silently: ${error}`);
+    }
+
+    if (userAccount === undefined) {
+      // Acquire token silent failure. Send an interactive request via popup.
+      try {
+        console.log("Trying to acquire token interactively...");
+        const authResult = await this.pca.acquireTokenPopup(tokenRequest);
+        console.log("Acquired token interactively.");
+        userAccount = authResult;
+      } catch (popupError) {
+        // Optional fallback if about:blank popup should not be shown
+        if (popupError instanceof BrowserAuthError && popupError.errorCode === "popup_window_error") {
+          let accessToken = await this.getTokenWithDialogApi();
+          console.log(accessToken);
+        } else {
+          // Acquire token interactive failure.
+          console.log(`Unable to acquire token interactively: ${popupError}`);
+          throw new Error(`Unable to acquire access token: ${popupError}`);
+        }
+      }
+    }
+    return userAccount;
   }
 }
