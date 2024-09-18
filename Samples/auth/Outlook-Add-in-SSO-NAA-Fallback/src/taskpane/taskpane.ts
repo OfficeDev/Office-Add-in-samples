@@ -18,6 +18,7 @@ const getUserDataButton = document.getElementById("getUserData");
 const getUserFilesButton = document.getElementById("getUserFiles");
 const userName = document.getElementById("userName");
 const userEmail = document.getElementById("userEmail");
+const userFiles = document.getElementById("userFiles");
 
 Office.onReady(async (info) => {
   if (info.host === Office.HostType.Outlook) {
@@ -47,8 +48,9 @@ async function writeFileNames(fileNameList: string[]) {
   console.log("file names are:" + fileNameList);
   let fileNameBody: string = "";
   for (let i = 0; i < fileNameList.length; i++) {
-    fileNameBody += "<br/>" + fileNameList[i];
+    fileNameBody += "<p>" + fileNameList[i] + "</p>";
   }
+  userFiles.innerHTML = fileNameBody;
   console.log(fileNameBody);
   // Office.context.mailbox.item.body.setAsync(fileNameBody, {
   //   coercionType: "html",
