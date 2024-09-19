@@ -18,7 +18,7 @@ import { AccountContext } from "./msalcommon";
 
 export { AccountManager };
 
-const applicationId = "fccd3bcf-08f0-4b8a-b36f-520cfaa4ab51";
+const applicationId = "b3b6dc33-016b-4bf7-b4b6-c97fa56c1879";
 
 function getMsalConfig(enableDebugLogging: boolean) {
   const msalConfig: Configuration = {

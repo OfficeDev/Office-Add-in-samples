@@ -8,9 +8,9 @@ import "unfetch/polyfill";
 
 /* global console, document, Office, window */
 
-let isTridentWebView = false;
-let accountModule;
+let msalAccountManager;
 let gAccessToken = "";
+let isInternetExplorer = false;
 
 const sideloadMsg = document.getElementById("sideload-msg");
 const appBody = document.getElementById("app-body");
@@ -32,13 +32,13 @@ Office.onReady(async (info) => {
     }
     // Check if Trident IE11 webview is in use.
     if (navigator.userAgent.indexOf("Trident") !== -1) {
-      // Set flag so that future auth requests use MSAL v2 compatible library.
-      isTridentWebView = true;
-      console.log("ie11!!!!!");
+      isInternetExplorer = true;
     } else {
-      let accountModule = await import("./authConfig");
-      let account = new accountModule.AccountManager();
-      account.initialize();
+      // Initialize the MSAL v3 (NAA) library.
+      // This will dynamically import the auth config code (MSAL v3 won't load in the IE11 webview.)
+      const accountModule = await import("./authConfig");
+      msalAccountManager = new accountModule.AccountManager();
+      msalAccountManager.initialize();
     }
   }
 });
@@ -106,7 +106,8 @@ async function getFileNames(count = 10) {
     if (gAccessToken !== "") {
       accessToken = gAccessToken;
     } else {
-      accessToken = await getTokenWithDialogApi(true);
+      // accessToken = await getTokenWithDialogApi(true);
+      accessToken = await getAccessToken(["Files.Read"]);
       gAccessToken = accessToken;
       console.log(gAccessToken);
       console.log(accessToken);
@@ -140,6 +141,19 @@ async function getFileNames(count = 10) {
     // });
   } catch (error) {
     console.error("error: " + error);
+  }
+}
+
+/**
+ * Gets an access token for requested scopes.
+ */
+async function getAccessToken(scopes) {
+  // If IE11 webview is in use, call getTokenWithDIalogApi(true) to use the MSAL v2 compatible library.
+  if (isInternetExplorer) {
+    return getTokenWithDialogApi(true);
+  } else {
+    // Use the MSAL v3 NAA library.
+    return msalAccountManager.ssoGetAccessToken(scopes);
   }
 }
 
