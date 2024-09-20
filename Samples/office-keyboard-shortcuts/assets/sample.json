@@ -3,12 +3,12 @@
         "name": "office-add-in-keyboard-shortcuts",
         "reponame": "OfficeDev",
         "source": "officedev",
-        "title": "Use keyboard shortcuts for Office add-in actions",
-        "shortDescription": "This sample shows how to set up a basic Excel add-in project that utilizes keyboard shortcuts. ",
-        "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-keyboard-shortcuts",
-        "longDescription": "This sample shows how to set up a basic Excel add-in project that utilizes keyboard shortcuts. Currently, the shortcuts are configured to show and hide the task pane as well as cycle through colors for a selected cell. Keyboard shortcuts can be used to achieve any action within the add-in runtime.",
+        "title": "Use keyboard shortcuts for Office Add-in actions",
+        "shortDescription": "This sample shows how to create custom keyboard shortcuts to invoke certain actions for your Office Add-in. ",
+        "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-keyboard-shortcuts",
+        "longDescription": "This sample shows how to create custom keyboard shortcuts for your add-in. Keyboard shortcuts can be used to achieve any action within the add-in runtime.",
         "creationDateTime": "2020-11-05",
-        "updateDateTime": "2021-05-11",
+        "updateDateTime": "2024-09-27",
         "products": [
             "Office"
         ],
@@ -22,8 +22,8 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://officedev.github.io/Office-Add-in-samples/Samples/excel-keyboard-shortcuts/assets/excel-keyboard-shortcuts-overview.jpg",
-                "alt": "Screen shot of Excel showing the use of CTRL+SHIFT+UP to open the task pane, and CTRL+SHIFT+DOWN to close the task pane."
+                "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts/assets/office-keyboard-shortcuts-overview.jpg",
+                "alt": "The sample's task pane displaying a list of available keyboard shortcuts."
             }
         ],
         "authors": [
