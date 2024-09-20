@@ -24,7 +24,7 @@ This sample shows how to create custom keyboard shortcuts for an Office Add-in. 
 - **Ctrl+Alt+1**: Opens the add-in's task pane.
 - **Ctrl+Alt+2**: Hides the add-in's task pane.
 - **Ctrl+Alt+3**: Performs an action that's specific to the current Office host.
-  - **Excel**: Cycles through colors for the currently selected cell.
+  - **Excel**: Cycles through colors in the currently selected cell.
   - **Word**: Adds text to the document.
 
 Keyboard shortcuts can be used to achieve any action within the add-in runtime.
@@ -120,7 +120,11 @@ If you prefer to host the web server for the sample on your computer, follow the
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-1. Sideload the **manifest-localhost.xml** file in Excel or Word by following the steps in [Manually sideload an add-in to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing#manually-sideload-an-add-in-to-office-on-the-web).
+1. Sideload the **manifest-localhost.xml** file in Excel or Word. The sideloading process varies depending on your platform.
+
+    - **Office on the web**: [Manually sideload an add-in to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing#manually-sideload-an-add-in-to-office-on-the-web).
+    - **Office on Windows**: [Sideload Office Add-ins for testing from a network share](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins).
+    - **Office on Mac**: [Sideload Office Add-ins on Mac for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac)
 1. Verify that the add-in loaded successfully. You'll see a **Keyboard shortcuts** button on the **Home** tab of the ribbon.
 1. Test the sample by following the steps in [Try it out](#try-it-out).
 
@@ -130,10 +134,10 @@ Once the add-in is loaded, try out its functionality.
 
 1. Press **Ctrl+Alt+1** on your keyboard to open the add-in's task pane.
 
-  > [!NOTE]
-  > If the keyboard shortcut is already in use in Excel or Word, a dialog will be shown, so that you can select which action you'd like to map to the shortcut. Once you select an action, you can change your preference by invoking the **Reset Office Add-in Shortcut Preferences** command from the search field.
-  >
-  > ![The Reset Office Add-in Shortcut Preferences option in Excel.](./assets/office-keyboard-shortcuts-reset.png)
+    > [!NOTE]
+    > If the keyboard shortcut is already in use in Excel or Word, a dialog will be shown, so that you can select which action you'd like to map to the shortcut. Once you select an action, you can change your preference by invoking the **Reset Office Add-in Shortcut Preferences** command from the search field.
+    >
+    > ![The Reset Office Add-in Shortcut Preferences option in Excel.](./assets/office-keyboard-shortcuts-reset.png)
 
 1. Try the other available shortcuts shown in the task pane.
 
