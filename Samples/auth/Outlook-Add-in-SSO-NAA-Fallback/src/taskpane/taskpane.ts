@@ -19,6 +19,7 @@ const getUserFilesButton = document.getElementById("getUserFiles");
 const userName = document.getElementById("userName");
 const userEmail = document.getElementById("userEmail");
 const userFiles = document.getElementById("userFiles");
+const signOutButton = document.getElementById("signOutButton");
 
 Office.onReady(async (info) => {
   if (info.host === Office.HostType.Outlook) {
@@ -30,8 +31,11 @@ Office.onReady(async (info) => {
     if (getUserFilesButton) {
       getUserFilesButton.onclick = getUserFiles;
     }
+    if (signOutButton) {
+      signOutButton.onclick = signOutUser;
+    }
     // Check if Trident IE11 webview is in use.
-    if (navigator.userAgent.indexOf("Trident") !== -1) {
+    if (window.navigator.userAgent.indexOf("Trident") !== -1) {
       isInternetExplorer = true;
     } else {
       // Initialize the MSAL v3 (NAA) library.
@@ -42,6 +46,43 @@ Office.onReady(async (info) => {
     }
   }
 });
+
+function setSignOutButtonVisibility(visible: boolean) {
+  if (!signOutButton) return;
+  if (visible) {
+    signOutButton.classList.remove("is-disabled");
+  } else {
+    signOutButton.classList.add("is-disabled");
+  }
+}
+
+/**
+ * Sign out the user from MSAL.
+ */
+async function signOutUser(): Promise<void> {
+  if (isInternetExplorer) {
+    // use MSAL v2 sign out
+    return new Promise((resolve) => {
+      Office.context.ui.displayDialogAsync(
+        createLocalUrl("signoutdialogie.html"),
+        { height: 60, width: 30 },
+        (result) => {
+          result.value.addEventHandler(
+            Office.EventType.DialogMessageReceived,
+            (arg: { message: string; origin: string | undefined }) => {
+              const parsedMessage = JSON.parse(arg.message);
+              resolve();
+              result.value.close();
+            }
+          );
+        }
+      );
+    });
+  } else {
+    // use MSAL v3 sign out
+    msalAccountManager.signOut();
+  }
+}
 
 async function writeFileNames(fileNameList: string[]) {
   //  const item = Office.context.mailbox.item;
@@ -99,6 +140,7 @@ async function getUserFiles() {
  * Gets item names (files or folders) from the user's OneDrive.
  */
 async function getFileNames(count = 10) {
+  setSignOutButtonVisibility(false);
   try {
     let accessToken = "";
     // Specify minimum scopes for the token needed.

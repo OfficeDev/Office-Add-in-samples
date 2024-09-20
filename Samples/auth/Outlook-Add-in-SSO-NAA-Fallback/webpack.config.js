@@ -21,6 +21,7 @@ module.exports = async (env, options) => {
       taskpane: ["./src/taskpane/taskpane.ts", "./src/taskpane/taskpane.html"],
       dialogie: ["./src/taskpane/fallbackauthdialogie.ts"],
       dialog: ["./src/taskpane/fallbackauthdialog.ts"],
+      signoutdialogie: ["./src/taskpane/signoutdialogie.ts"],
     },
     output: {
       clean: true,
@@ -61,9 +62,14 @@ module.exports = async (env, options) => {
         chunks: ["dialog"],
       }),
       new HtmlWebpackPlugin({
+        filename: "signoutdialogie.html",
+        template: "./src/taskpane/signoutdialogie.html",
+        chunks: ["polyfill", "signoutdialogie"],
+      }),
+      new HtmlWebpackPlugin({
         filename: "dialogie.html",
         template: "./src/taskpane/dialog.html",
-        chunks: ["polyfill","dialogie"],
+        chunks: ["polyfill", "dialogie"],
       }),
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
