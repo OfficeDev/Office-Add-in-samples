@@ -3,14 +3,18 @@
  * See LICENSE in the project root for license information.
  */
 
-import { makeGraphRequest2 } from "./msgraph-helper";
+import { signOutUser, initializeAuth, getAccessToken } from "./taskpaneAuthHelper";
+import { makeGraphRequest } from "./msgraph-helper";
+//import { UserProfile } from "./userProfile";
 import "unfetch/polyfill";
 
-/* global console, document, Office, window */
+/* global console, document, Office */
 
-let msalAccountManager;
-let gAccessToken = "";
-let isInternetExplorer = false;
+// let userProfile: UserProfile = {
+//   userName: "",
+//   userEmail: "",
+//   accessToken: "",
+// };
 
 const sideloadMsg = document.getElementById("sideload-msg");
 const appBody = document.getElementById("app-body");
@@ -34,68 +38,48 @@ Office.onReady(async (info) => {
     if (signOutButton) {
       signOutButton.onclick = signOutUser;
     }
-    // Check if Trident IE11 webview is in use.
-    if (window.navigator.userAgent.indexOf("Trident") !== -1) {
-      isInternetExplorer = true;
-    } else {
-      // Initialize the MSAL v3 (NAA) library.
-      // This will dynamically import the auth config code (MSAL v3 won't load in the IE11 webview.)
-      const accountModule = await import("./authConfig");
-      msalAccountManager = new accountModule.AccountManager();
-      msalAccountManager.initialize();
-    }
+    await initializeAuth();
   }
 });
 
-function setSignOutButtonVisibility(visible: boolean) {
-  if (!signOutButton) return;
-  if (visible) {
-    signOutButton.classList.remove("is-disabled");
-  } else {
-    signOutButton.classList.add("is-disabled");
-  }
-}
+/**
+ * Makes the Sign out button visible or invisible on the task pane.
+ *
+ * @param visible true if the sign out button should be visible; otherwise, false.
+ * @returns
+ */
+// function setSignOutButtonVisibility(visible: boolean) {
+//   if (!signOutButton) return;
+//   if (visible) {
+//     signOutButton.classList.remove("is-disabled");
+//   } else {
+//     signOutButton.classList.add("is-disabled");
+//   }
+// }
 
 /**
- * Sign out the user from MSAL.
+ * Writes the file names to the task pane.
+ * @param fileNameList The list of file names.
  */
-async function signOutUser(): Promise<void> {
-  if (isInternetExplorer) {
-    // use MSAL v2 sign out
-    return new Promise((resolve) => {
-      Office.context.ui.displayDialogAsync(
-        createLocalUrl("signoutdialogie.html"),
-        { height: 60, width: 30 },
-        (result) => {
-          result.value.addEventHandler(
-            Office.EventType.DialogMessageReceived,
-            (arg: { message: string; origin: string | undefined }) => {
-              const parsedMessage = JSON.parse(arg.message);
-              resolve();
-              result.value.close();
-            }
-          );
-        }
-      );
-    });
-  } else {
-    // use MSAL v3 sign out
-    msalAccountManager.signOut();
-  }
-}
-
-async function writeFileNames(fileNameList: string[]) {
-  //  const item = Office.context.mailbox.item;
-  console.log("file names are:" + fileNameList);
+function writeFileNames(fileNameList: string[]) {
   let fileNameBody: string = "";
   for (let i = 0; i < fileNameList.length; i++) {
     fileNameBody += "<p>" + fileNameList[i] + "</p>";
   }
-  userFiles.innerHTML = fileNameBody;
-  console.log(fileNameBody);
-  // Office.context.mailbox.item.body.setAsync(fileNameBody, {
-  //   coercionType: "html",
-  // });
+  if (userFiles) {
+    userFiles.innerHTML = fileNameBody;
+  }
+}
+
+/**
+ * click event handler for the Get user files button.
+ * Gets list of files from User's OneDrive and writes them to the task pane.
+ */
+async function getUserFiles() {
+  const names = await getFileNames();
+  if (names) {
+    writeFileNames(names);
+  }
 }
 
 /**
@@ -105,7 +89,7 @@ async function writeFileNames(fileNameList: string[]) {
 async function getUserData() {
   const userDataElement = document.getElementById("userData");
   //const userAccount = await accountManager.ssoGetUserIdentity(["user.read"]);
-  const token = await getTokenWithDialogApi(true);
+  const token = await getAccessToken(["user.read"]);
   //const idTokenClaims = userAccount.idTokenClaims as { name?: string; preferred_username?: string };
   //console.log(userAccount.accessToken);
   console.log(token);
@@ -122,109 +106,24 @@ async function getUserData() {
 }
 
 /**
- * Gets the first 10 item names (files or folders) from the user's OneDrive.
- * Inserts the item names into the document.
- */
-async function getUserFiles() {
-  try {
-    console.log("going to get the anmes");
-    const names = await getFileNames(10);
-    console.log("got hte names" + names);
-    writeFileNames(names);
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-/**
  * Gets item names (files or folders) from the user's OneDrive.
  */
-async function getFileNames(count = 10) {
-  setSignOutButtonVisibility(false);
+async function getFileNames(count = 10): Promise<string[] | undefined> {
   try {
-    let accessToken = "";
     // Specify minimum scopes for the token needed.
-    //const accessToken = await accountManager.ssoGetToken(["Files.Read"]);
-    if (gAccessToken !== "") {
-      accessToken = gAccessToken;
-    } else {
-      // accessToken = await getTokenWithDialogApi(true);
-      accessToken = await getAccessToken(["Files.Read"]);
-      gAccessToken = accessToken;
-      console.log(gAccessToken);
-      console.log(accessToken);
-    }
-    let names = [];
-    const response: { value: { name: string }[] } = await makeGraphRequest2(
+    const accessToken = await getAccessToken(["files.read"]);
+    const response: { value: { name: string }[] } = await makeGraphRequest(
       accessToken,
       "/me/drive/root/children",
       `?$select=name&$top=${count}`
     );
+    let names = [];
     for (let i = 0; i < response.value.length; i++) {
       names.push(response.value[i].name);
     }
     console.log("names response: " + names);
     return names;
-    // makeGraphRequest2(accessToken, "/me/drive/root/children", `?$select=name&$top=${count}`).then((response) => {
-    //   console.log(response);
-    //   let names: string[] = [];
-    //   if ("response.value" + response.value) {
-    //     console.log(response.value);
-    //     if (response.value.length) {
-    //       console.log("lenghth +" + response.value.length);
-    //     }
-    //   }
-
-    //   for (let i = 0; i < response.value.length; i++) {
-    //     names.push(response.value[i]);
-    //   }
-    //   console.log("names" + names);
-    //   return names;
-    // });
   } catch (error) {
     console.error("error: " + error);
   }
-}
-
-/**
- * Gets an access token for requested scopes.
- */
-async function getAccessToken(scopes) {
-  // If IE11 webview is in use, call getTokenWithDIalogApi(true) to use the MSAL v2 compatible library.
-  if (isInternetExplorer) {
-    return getTokenWithDialogApi(true);
-  } else {
-    // Use the MSAL v3 NAA library.
-    return msalAccountManager.ssoGetAccessToken(scopes);
-  }
-}
-
-async function getTokenWithDialogApi(isInternetExplorer?: boolean): Promise<string> {
-  // following code not possible in trident. Is there a way to get auth context in trident?
-  //const accountContext = await getAccountContext();
-  if (gAccessToken !== "") return gAccessToken;
-  return new Promise((resolve) => {
-    Office.context.ui.displayDialogAsync(
-      // createLocalUrl(
-      //   `${isInternetExplorer ? "dialogie.html" : "dialog.html"}?accountContext=${encodeURIComponent(JSON.stringify(accountContext))}`
-      // ),
-      createLocalUrl(`${isInternetExplorer ? "dialogie.html" : "dialog.html"}`),
-      { height: 60, width: 30 },
-      (result) => {
-        result.value.addEventHandler(
-          Office.EventType.DialogMessageReceived,
-          (arg: { message: string; origin: string | undefined }) => {
-            const parsedMessage = JSON.parse(arg.message);
-
-            resolve(parsedMessage.token);
-            result.value.close();
-          }
-        );
-      }
-    );
-  });
-}
-
-function createLocalUrl(path: string) {
-  return `${window.location.origin}/${path}`;
 }
