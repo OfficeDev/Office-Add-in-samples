@@ -3,18 +3,12 @@
  * See LICENSE in the project root for license information.
  */
 
-import { signOutUser, initializeAuth, getAccessToken } from "./taskpaneAuthHelper";
+import { signOutUser, initializeAuth, getAccessToken, getUserProfile } from "./taskpaneAuthHelper";
 import { makeGraphRequest } from "./msgraph-helper";
-//import { UserProfile } from "./userProfile";
+import { UserProfile } from "./userProfile";
 import "unfetch/polyfill";
 
 /* global console, document, Office */
-
-// let userProfile: UserProfile = {
-//   userName: "",
-//   userEmail: "",
-//   accessToken: "",
-// };
 
 const sideloadMsg = document.getElementById("sideload-msg");
 const appBody = document.getElementById("app-body");
@@ -89,20 +83,19 @@ async function getUserFiles() {
 async function getUserData() {
   const userDataElement = document.getElementById("userData");
   //const userAccount = await accountManager.ssoGetUserIdentity(["user.read"]);
-  const token = await getAccessToken(["user.read"]);
+  const userProfile: UserProfile = await getUserProfile();
   //const idTokenClaims = userAccount.idTokenClaims as { name?: string; preferred_username?: string };
   //console.log(userAccount.accessToken);
-  console.log(token);
 
   if (userDataElement) {
     userDataElement.style.visibility = "visible";
   }
-  // if (userName) {
-  //   userName.innerText = idTokenClaims.name ?? "";
-  // }
-  // if (userEmail) {
-  //   userEmail.innerText = idTokenClaims.preferred_username ?? "";
-  // }
+  if (userName) {
+    userName.innerText = userProfile.userName ?? "";
+  }
+  if (userEmail) {
+    userEmail.innerText = userProfile.userEmail ?? "";
+  }
 }
 
 /**

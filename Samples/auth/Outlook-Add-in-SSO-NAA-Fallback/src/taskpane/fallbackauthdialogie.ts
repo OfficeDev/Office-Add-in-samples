@@ -1,17 +1,24 @@
 /* global Office */
 
 import { PublicClientApplication } from "@azure/msal-browser-v2";
-import { defaultScopes, msalConfig } from "./msalconfig";
+import { defaultScopes, getMsalConfig } from "./msalconfig";
 import { createLocalUrl } from "./util";
+import { UserProfile } from "./userProfile";
 
 export async function initializeMsal() {
-  const publicClientApp = new PublicClientApplication(msalConfig);
+  const publicClientApp = new PublicClientApplication(getMsalConfig(true));
   try {
     const result = await publicClientApp.handleRedirectPromise();
     if (result) {
       publicClientApp.setActiveAccount(result.account);
       await Office.onReady();
-      Office.context.ui.messageParent(JSON.stringify({ token: result.accessToken }));
+      const idTokenClaims = result.idTokenClaims as { name?: string; preferred_username?: string };
+      const userProfile: UserProfile = {
+        userName: idTokenClaims.name,
+        userEmail: idTokenClaims.preferred_username,
+        accessToken: result.accessToken,
+      };
+      Office.context.ui.messageParent(JSON.stringify(userProfile));
       return;
     }
   } catch (ex) {

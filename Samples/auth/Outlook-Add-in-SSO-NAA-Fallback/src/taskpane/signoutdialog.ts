@@ -1,6 +1,6 @@
 /* global Office */
 
-import { PublicClientApplication } from "@azure/msal-browser-v2";
+import { PublicClientApplication } from "@azure/msal-browser";
 import { getMsalConfig } from "./msalconfig";
 
 export async function initializeMsal() {

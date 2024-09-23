@@ -9,86 +9,24 @@ import {
   BrowserAuthError,
   createNestablePublicClientApplication,
   type IPublicClientApplication,
-  Configuration,
-  LogLevel,
   AuthenticationResult,
 } from "@azure/msal-browser";
 import { createLocalUrl } from "./util";
-import { AccountContext } from "./msalcommon";
+import { getMsalConfig } from "./msalconfig";
+import { UserProfile } from "./userProfile";
 
 export { AccountManager };
-
-const applicationId = "b3b6dc33-016b-4bf7-b4b6-c97fa56c1879";
-
-function getMsalConfig(enableDebugLogging: boolean) {
-  const msalConfig: Configuration = {
-    auth: {
-      clientId: applicationId,
-      authority: "https://login.microsoftonline.com/common",
-    },
-    system: {},
-  };
-  if (enableDebugLogging && msalConfig.system) {
-    msalConfig.system.loggerOptions = {
-      logLevel: LogLevel.Verbose,
-      loggerCallback: (level: LogLevel, message: string) => {
-        switch (level) {
-          case LogLevel.Error:
-            console.error(message);
-            return;
-          case LogLevel.Info:
-            console.info(message);
-            return;
-          case LogLevel.Verbose:
-            console.debug(message);
-            return;
-          case LogLevel.Warning:
-            console.warn(message);
-            return;
-        }
-      },
-      piiLoggingEnabled: true,
-    };
-  }
-  return msalConfig;
-}
 
 // Encapsulate functions for getting user account and token information.
 class AccountManager {
   private pca: IPublicClientApplication | undefined = undefined;
-  private authMethod: string = ""; // Track authentication method (NAA/Dialog/IE MSAL v2)
+  private fallbackPopup = false; // true if Outlook client has the about:blank popup bug and we need to fall back.
+  private gUserProfile: UserProfile = {};
 
   // Initialize MSAL public client application.
   async initialize() {
-    // Check if running in the IE webview. If so need to use the MSAL v2 library
-    if (this.isWebViewIE()) {
-      this.initializeForIE();
-      return;
-    } else {
-      this.authMethod = "NAA";
-
-      // If auth is not working, enable debug logging to help diagnose.
-      this.pca = await createNestablePublicClientApplication(getMsalConfig(true));
-    }
-  }
-
-  initializeForIE() {
-    this.authMethod = "IE MSAL v2"; //todo
-  }
-
-  isWebViewIE() {
-    return false; //todo
-  }
-
-  /**
-   * Gets the user account information object from MSAL.
-   *
-   * @param scopes the minimum scopes needed.
-   * @returns The user account info.
-   */
-  async ssoGetUserAccount(scopes: string[]) {
-    const userAccount = await this.ssoGetAccessToken(scopes);
-    return userAccount;
+    // If auth is not working, enable debug logging to help diagnose.
+    this.pca = await createNestablePublicClientApplication(getMsalConfig(true));
   }
 
   /**
@@ -99,48 +37,67 @@ class AccountManager {
    * @param scopes The minimum scopes needed.
    * @returns The access token.
    */
-  async ssoGetAccessToken(scopes: string[]) {
-    const userAccount = await this.ssoGetUserIdentity(scopes);
-    return userAccount.accessToken;
+  async ssoGetAccessToken(scopes: string[]): Promise<string | undefined> {
+    // Check if access token is already stored.
+    if (this.gUserProfile.accessToken) {
+      return this.gUserProfile.accessToken;
+    } else {
+      const userProfile = await this.ssoGetUserIdentity();
+      return userProfile.accessToken;
+    }
   }
 
-  async getTokenWithDialogApi(isInternetExplorer?: boolean): Promise<string> {
+  async getTokenWithDialogApi(isInternetExplorer?: boolean): Promise<UserProfile> {
     return new Promise((resolve) => {
       Office.context.ui.displayDialogAsync(
         createLocalUrl(`${isInternetExplorer ? "dialogie.html" : "dialog.html"}`),
         (result) => {
-          result.value.addEventHandler(Office.EventType.DialogMessageReceived, (arg) => {
-            const parsedMessage = JSON.parse(arg.message);
-            resolve(parsedMessage.token);
-            result.value.close();
-          });
+          result.value.addEventHandler(
+            Office.EventType.DialogMessageReceived,
+            (arg: { message: string; origin: string | undefined }) => {
+              this.gUserProfile = JSON.parse(arg.message);
+              resolve(this.gUserProfile);
+              result.value.close();
+            }
+          );
         }
       );
     });
   }
+
   /**
    *
    * Uses MSAL and nested app authentication to get the user account from Office SSO.
    * This demonstrates how to work with user identity from the token.
    *
    * @param scopes The minimum scopes needed.
-   * @returns The user account data (including identity).
+   * @returns The user account data (including identity). The access token as string if falling back to dialog API.
    */
-  async ssoGetUserIdentity(scopes: string[]) {
+  async ssoGetUserIdentity(): Promise<UserProfile> {
     let userAccount: AuthenticationResult | undefined;
-    if (this.authMethod === "") {
-      throw new Error("AccountManager is not initialized!");
+
+    // Return global user profile if already stored.
+    if (this.gUserProfile.accessToken) {
+      return this.gUserProfile;
     }
 
-    // Specify minimum scopes needed for the access token.
+    if (!this.pca) {
+      throw new Error("AccountManager is not initialized!");
+    }
     const tokenRequest = {
-      scopes: scopes,
+      scopes: ["user.read"],
     };
 
     try {
       console.log("Trying to acquire token silently...");
       const authResult = await this.pca.acquireTokenSilent(tokenRequest);
       console.log("Acquired token silently.");
+      const idTokenClaims = authResult.idTokenClaims as { name?: string; preferred_username?: string };
+      this.gUserProfile = {
+        userName: idTokenClaims.name,
+        userEmail: idTokenClaims.preferred_username,
+        accessToken: authResult.accessToken,
+      };
       userAccount = authResult;
     } catch (error) {
       console.log(`Unable to acquire token silently: ${error}`);
@@ -149,15 +106,20 @@ class AccountManager {
     if (userAccount === undefined) {
       // Acquire token silent failure. Send an interactive request via popup.
       try {
-        console.log("Trying to acquire token interactively...");
-        const authResult = await this.pca.acquireTokenPopup(tokenRequest);
-        console.log("Acquired token interactively.");
-        userAccount = authResult;
+        if (this.fallbackPopup) {
+          // Fall back to popup workaround for about:blank popup bug.
+          this.gUserProfile = await this.getTokenWithDialogApi();
+        } else {
+          console.log("Trying to acquire token interactively...");
+          const authResult = await this.pca.acquireTokenPopup(tokenRequest);
+          console.log("Acquired token interactively.");
+          userAccount = authResult;
+        }
       } catch (popupError) {
         // Optional fallback if about:blank popup should not be shown
         if (popupError instanceof BrowserAuthError && popupError.errorCode === "popup_window_error") {
-          let accessToken = await this.getTokenWithDialogApi();
-          console.log(accessToken);
+          this.fallbackPopup = true;
+          this.gUserProfile = await this.getTokenWithDialogApi();
         } else {
           // Acquire token interactive failure.
           console.log(`Unable to acquire token interactively: ${popupError}`);
@@ -165,6 +127,6 @@ class AccountManager {
         }
       }
     }
-    return userAccount;
+    return this.gUserProfile;
   }
 }

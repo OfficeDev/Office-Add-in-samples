@@ -5,9 +5,9 @@
  * Represents a user profile from an MSAL account.
  */
 export interface UserProfile {
-  userName: string;
-  userEmail: string;
-  accessToken: string;
+  userName?: string;
+  userEmail?: string;
+  accessToken?: string;
 }
 
 export enum AuthMethod {

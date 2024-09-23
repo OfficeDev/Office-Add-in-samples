@@ -4,6 +4,7 @@ import { AuthenticationResult } from "@azure/msal-browser";
 import { getTokenRequest, AccountContext, ensurePublicClient } from "./msalcommon";
 import { createLocalUrl } from "./util";
 import { PublicClientApplication } from "@azure/msal-browser";
+import { UserProfile } from "./userProfile";
 
 // read querystring parameter
 function getQueryParameter(param: string) {
@@ -14,7 +15,13 @@ function getQueryParameter(param: string) {
 async function returnResult(publicClientApp: PublicClientApplication, authResult: AuthenticationResult) {
   publicClientApp.setActiveAccount(authResult.account);
   await Office.onReady();
-  Office.context.ui.messageParent(JSON.stringify({ token: authResult.accessToken }));
+  const idTokenClaims = authResult.idTokenClaims as { name?: string; preferred_username?: string };
+  const userProfile: UserProfile = {
+    userName: idTokenClaims.name,
+    userEmail: idTokenClaims.preferred_username,
+    accessToken: authResult.accessToken,
+  };
+  Office.context.ui.messageParent(JSON.stringify(userProfile));
   return;
 }
 export async function initializeMsal() {

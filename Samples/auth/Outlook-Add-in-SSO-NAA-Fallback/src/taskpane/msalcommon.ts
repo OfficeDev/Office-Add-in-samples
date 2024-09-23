@@ -7,7 +7,7 @@ import {
   type RedirectRequest,
 } from "@azure/msal-browser";
 
-import { defaultScopes, msalConfig } from "./msalconfig";
+import { defaultScopes, getMsalConfig } from "./msalconfig";
 
 export async function getTokenRequest(accountContext?: AccountContext): Promise<RedirectRequest> {
   const account = await getAccountFromContext(accountContext);
@@ -26,7 +26,7 @@ export async function getTokenRequest(accountContext?: AccountContext): Promise<
 let _publicClientApp: PublicClientApplication;
 export async function ensurePublicClient() {
   if (!_publicClientApp) {
-    _publicClientApp = await createNestablePublicClientApplication(msalConfig);
+    _publicClientApp = await createNestablePublicClientApplication(getMsalConfig(true));
   }
   return _publicClientApp;
 }
