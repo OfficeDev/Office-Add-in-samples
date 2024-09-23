@@ -1,4 +1,7 @@
-/* global console */
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// This file provides common functions for the fallbackdialog.ts.
 
 import {
   AccountInfo,
@@ -7,7 +10,7 @@ import {
   type RedirectRequest,
 } from "@azure/msal-browser";
 
-import { defaultScopes, getMsalConfig } from "./msalconfig";
+import { defaultScopes, getMsalConfig } from "../msalconfig";
 
 export async function getTokenRequest(accountContext?: AccountContext): Promise<RedirectRequest> {
   const account = await getAccountFromContext(accountContext);

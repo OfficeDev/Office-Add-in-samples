@@ -1,7 +1,12 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+// This file handles the sign out dialog for MSAL V3.
+
 /* global Office */
 
-import { PublicClientApplication } from "@azure/msal-browser-v2";
-import { getMsalConfig } from "./msalconfig";
+import { PublicClientApplication } from "@azure/msal-browser";
+import { getMsalConfig } from "../msalconfig";
 
 export async function initializeMsal() {
   const publicClientApp = new PublicClientApplication(getMsalConfig(true));

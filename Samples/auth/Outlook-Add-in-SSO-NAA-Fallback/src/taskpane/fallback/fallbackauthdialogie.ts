@@ -1,9 +1,9 @@
 /* global Office */
 
 import { PublicClientApplication } from "@azure/msal-browser-v2";
-import { defaultScopes, getMsalConfig } from "./msalconfig";
-import { createLocalUrl } from "./util";
-import { UserProfile } from "./userProfile";
+import { defaultScopes, getMsalConfig } from "../msalconfig";
+import { createLocalUrl } from "../util";
+import { UserProfile } from "../authhelper";
 
 export async function initializeMsal() {
   const publicClientApp = new PublicClientApplication(getMsalConfig(true));

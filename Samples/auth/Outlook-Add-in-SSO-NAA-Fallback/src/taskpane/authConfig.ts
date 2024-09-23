@@ -13,7 +13,7 @@ import {
 } from "@azure/msal-browser";
 import { createLocalUrl } from "./util";
 import { getMsalConfig } from "./msalconfig";
-import { UserProfile } from "./userProfile";
+import { UserProfile } from "./authhelper";
 
 export { AccountManager };
 
@@ -21,7 +21,7 @@ export { AccountManager };
 class AccountManager {
   private pca: IPublicClientApplication | undefined = undefined;
   private fallbackPopup = false; // true if Outlook client has the about:blank popup bug and we need to fall back.
-  private gUserProfile: UserProfile = {};
+  private userProfile: UserProfile = {}; // Tracks the user profile including access token.
 
   // Initialize MSAL public client application.
   async initialize() {
@@ -39,10 +39,10 @@ class AccountManager {
    */
   async ssoGetAccessToken(scopes: string[]): Promise<string | undefined> {
     // Check if access token is already stored.
-    if (this.gUserProfile.accessToken) {
-      return this.gUserProfile.accessToken;
+    if (this.userProfile.accessToken) {
+      return this.userProfile.accessToken;
     } else {
-      const userProfile = await this.ssoGetUserIdentity();
+      const userProfile = await this.ssoGetUserIdentity(scopes);
       return userProfile.accessToken;
     }
   }
@@ -55,8 +55,8 @@ class AccountManager {
           result.value.addEventHandler(
             Office.EventType.DialogMessageReceived,
             (arg: { message: string; origin: string | undefined }) => {
-              this.gUserProfile = JSON.parse(arg.message);
-              resolve(this.gUserProfile);
+              this.userProfile = JSON.parse(arg.message);
+              resolve(this.userProfile);
               result.value.close();
             }
           );
@@ -73,27 +73,27 @@ class AccountManager {
    * @param scopes The minimum scopes needed.
    * @returns The user account data (including identity). The access token as string if falling back to dialog API.
    */
-  async ssoGetUserIdentity(): Promise<UserProfile> {
-    let userAccount: AuthenticationResult | undefined;
-
+  async ssoGetUserIdentity(scopes: string[]): Promise<UserProfile> {
     // Return global user profile if already stored.
-    if (this.gUserProfile.accessToken) {
-      return this.gUserProfile;
+    if (this.userProfile.accessToken) {
+      return this.userProfile;
     }
 
     if (!this.pca) {
       throw new Error("AccountManager is not initialized!");
     }
     const tokenRequest = {
-      scopes: ["user.read"],
+      scopes,
     };
+
+    let userAccount: AuthenticationResult | undefined;
 
     try {
       console.log("Trying to acquire token silently...");
       const authResult = await this.pca.acquireTokenSilent(tokenRequest);
       console.log("Acquired token silently.");
       const idTokenClaims = authResult.idTokenClaims as { name?: string; preferred_username?: string };
-      this.gUserProfile = {
+      this.userProfile = {
         userName: idTokenClaims.name,
         userEmail: idTokenClaims.preferred_username,
         accessToken: authResult.accessToken,
@@ -108,18 +108,17 @@ class AccountManager {
       try {
         if (this.fallbackPopup) {
           // Fall back to popup workaround for about:blank popup bug.
-          this.gUserProfile = await this.getTokenWithDialogApi();
+          this.userProfile = await this.getTokenWithDialogApi();
         } else {
           console.log("Trying to acquire token interactively...");
-          const authResult = await this.pca.acquireTokenPopup(tokenRequest);
+          userAccount = await this.pca.acquireTokenPopup(tokenRequest);
           console.log("Acquired token interactively.");
-          userAccount = authResult;
         }
       } catch (popupError) {
         // Optional fallback if about:blank popup should not be shown
         if (popupError instanceof BrowserAuthError && popupError.errorCode === "popup_window_error") {
           this.fallbackPopup = true;
-          this.gUserProfile = await this.getTokenWithDialogApi();
+          this.userProfile = await this.getTokenWithDialogApi();
         } else {
           // Acquire token interactive failure.
           console.log(`Unable to acquire token interactively: ${popupError}`);
@@ -127,6 +126,16 @@ class AccountManager {
         }
       }
     }
-    return this.gUserProfile;
+
+    // Create user profile from MSAL user account.
+    if (userAccount !== undefined) {
+      const idTokenClaims = userAccount.idTokenClaims as { name?: string; preferred_username?: string };
+      this.userProfile = {
+        userName: idTokenClaims.name,
+        userEmail: idTokenClaims.preferred_username,
+        accessToken: userAccount.accessToken,
+      };
+      return this.userProfile;
+    }
   }
 }

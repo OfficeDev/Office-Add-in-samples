@@ -3,7 +3,7 @@
  * See LICENSE in the project root for license information.
  */
 
-import { signOutUser, initializeAuth, getAccessToken, getUserProfile } from "./taskpaneAuthHelper";
+import { signOutUser, initializeAuthMethod, getAccessToken, getUserProfile } from "./authhelper";
 import { makeGraphRequest } from "./msgraph-helper";
 import { UserProfile } from "./userProfile";
 import "unfetch/polyfill";
@@ -32,7 +32,7 @@ Office.onReady(async (info) => {
     if (signOutButton) {
       signOutButton.onclick = signOutUser;
     }
-    await initializeAuth();
+    await initializeAuthMethod();
   }
 });
 
@@ -70,7 +70,7 @@ function writeFileNames(fileNameList: string[]) {
  * Gets list of files from User's OneDrive and writes them to the task pane.
  */
 async function getUserFiles() {
-  const names = await getFileNames();
+  const names = await getFileNamesFromMSGraph();
   if (names) {
     writeFileNames(names);
   }
@@ -101,7 +101,7 @@ async function getUserData() {
 /**
  * Gets item names (files or folders) from the user's OneDrive.
  */
-async function getFileNames(count = 10): Promise<string[] | undefined> {
+async function getFileNamesFromMSGraph(count = 10): Promise<string[] | undefined> {
   try {
     // Specify minimum scopes for the token needed.
     const accessToken = await getAccessToken(["files.read"]);

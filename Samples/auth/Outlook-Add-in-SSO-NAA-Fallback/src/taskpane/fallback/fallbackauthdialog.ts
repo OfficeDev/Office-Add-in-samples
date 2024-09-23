@@ -2,9 +2,9 @@
 
 import { AuthenticationResult } from "@azure/msal-browser";
 import { getTokenRequest, AccountContext, ensurePublicClient } from "./msalcommon";
-import { createLocalUrl } from "./util";
+import { createLocalUrl } from "../util";
 import { PublicClientApplication } from "@azure/msal-browser";
-import { UserProfile } from "./userProfile";
+import { UserProfile } from "../authhelper";
 
 // read querystring parameter
 function getQueryParameter(param: string) {
