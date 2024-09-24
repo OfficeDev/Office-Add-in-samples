@@ -3,62 +3,32 @@
 
 /* This file provides MSAL auth configuration to get access token through nested app authentication. */
 
-/* global console*/
+/* global Office, console, window*/
 
 import {
+  BrowserAuthError,
   createNestablePublicClientApplication,
   type IPublicClientApplication,
-  Configuration,
-  LogLevel,
 } from "@azure/msal-browser";
+import { msalConfig } from "./msalconfig";
 
 export { AccountManager };
 
-const applicationId = "Enter_the_Application_Id_Here";
-
-function getMsalConfig(enableDebugLogging: boolean) {
-  const msalConfig: Configuration = {
-    auth: {
-      clientId: applicationId,
-      authority: "https://login.microsoftonline.com/common",
-    },
-    system: {},
-  };
-  if (enableDebugLogging) {
-    if (msalConfig.system) {
-      msalConfig.system.loggerOptions = {
-        logLevel: LogLevel.Verbose,
-        loggerCallback: (level: LogLevel, message: string) => {
-          switch (level) {
-            case LogLevel.Error:
-              console.error(message);
-              return;
-            case LogLevel.Info:
-              console.info(message);
-              return;
-            case LogLevel.Verbose:
-              console.debug(message);
-              return;
-            case LogLevel.Warning:
-              console.warn(message);
-              return;
-          }
-        },
-        piiLoggingEnabled: true,
-      };
-    }
-  }
-  return msalConfig;
-}
+type AccountContext = {
+  loginHint?: string;
+  tenantId?: string;
+  localAccountId?: string;
+};
 
 // Encapsulate functions for getting user account and token information.
 class AccountManager {
   private pca: IPublicClientApplication | undefined = undefined;
+  private _authContext: AccountContext | null = null;
 
   // Initialize MSAL public client application.
   async initialize() {
     // If auth is not working, enable debug logging to help diagnose.
-    this.pca = await createNestablePublicClientApplication(getMsalConfig(false));
+    this.pca = await createNestablePublicClientApplication(msalConfig);
   }
 
   /**
@@ -67,18 +37,6 @@ class AccountManager {
    * @returns An access token.
    */
   async ssoGetAccessToken(scopes: string[]) {
-    const userAccount = await this.ssoGetUserAccount(scopes);
-    return userAccount.accessToken;
-  }
-
-  /**
-   *
-   * Uses MSAL and nested app authentication to get the user account from Office SSO.
-   *
-   * @param scopes The minimum scopes needed.
-   * @returns The user account information from MSAL.
-   */
-  async ssoGetUserAccount(scopes: string[]) {
     if (this.pca === undefined) {
       throw new Error("AccountManager is not initialized!");
     }
@@ -92,7 +50,7 @@ class AccountManager {
       console.log("Trying to acquire token silently...");
       const authResult = await this.pca.acquireTokenSilent(tokenRequest);
       console.log("Acquired token silently.");
-      return authResult;
+      return authResult.accessToken;
     } catch (error) {
       console.log(`Unable to acquire token silently: ${error}`);
     }
@@ -102,11 +60,55 @@ class AccountManager {
       console.log("Trying to acquire token interactively...");
       const authResult = await this.pca.acquireTokenPopup(tokenRequest);
       console.log("Acquired token interactively.");
-      return authResult;
+      return authResult.accessToken;
     } catch (popupError) {
-      // Acquire token interactive failure.
-      console.log(`Unable to acquire token interactively: ${popupError}`);
-      throw new Error(`Unable to acquire access token: ${popupError}`);
+      // Optional fallback if about:blank popup should not be shown
+      if (popupError instanceof BrowserAuthError && popupError.errorCode === "popup_window_error") {
+        const accessToken = await this.getTokenWithDialogApi();
+        return accessToken;
+      } else {
+        // Acquire token interactive failure.
+        console.log(`Unable to acquire token interactively: ${popupError}`);
+        throw new Error(`Unable to acquire access token: ${popupError}`);
+      }
     }
   }
+
+  async getTokenWithDialogApi(): Promise<string> {
+    const accountContext = await this.getAccountContext();
+    return new Promise((resolve) => {
+      Office.context.ui.displayDialogAsync(
+        createLocalUrl(`dialog.html?accountContext=${encodeURIComponent(JSON.stringify(accountContext))}`),
+        (result) => {
+          result.value.addEventHandler(
+            Office.EventType.DialogMessageReceived,
+            (arg: { message: string; origin: string | undefined }) => {
+              const parsedMessage = JSON.parse(arg.message);
+              resolve(parsedMessage.token);
+              result.value.close();
+            }
+          );
+        }
+      );
+    });
+  }
+  async getAccountContext(): Promise<AccountContext | null> {
+    if (!this._authContext) {
+      try {
+        const authContext = await (Office.auth as any).getAuthContext();
+        this._authContext = {
+          loginHint: authContext.loginHint,
+          tenantId: authContext.tenantId,
+          localAccountId: authContext.userObjectId,
+        };
+      } catch {
+        this._authContext = {};
+      }
+    }
+    return this._authContext;
+  }
+}
+
+function createLocalUrl(path: string) {
+  return `${window.location.origin}/${path}`;
 }

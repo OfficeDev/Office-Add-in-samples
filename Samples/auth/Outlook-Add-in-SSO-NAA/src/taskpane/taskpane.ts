@@ -51,19 +51,18 @@ async function writeFileNames(fileNameList: string[]) {
  */
 async function getUserData() {
   const userDataElement = document.getElementById("userData");
-  const userAccount = await accountManager.ssoGetUserAccount(["files.read"]);
-  const idTokenClaims = userAccount.idTokenClaims as { name?: string; preferred_username?: string };
+  const accessToken = await accountManager.ssoGetAccessToken(["user.read"]);
 
-  console.log(userAccount);
+  const response: { displayName: string; mail: string } = await makeGraphRequest(accessToken, "/me", "");
 
   if (userDataElement) {
     userDataElement.style.visibility = "visible";
   }
   if (userName) {
-    userName.innerText = idTokenClaims.name ?? "";
+    userName.innerText = response.displayName ?? "";
   }
   if (userEmail) {
-    userEmail.innerText = idTokenClaims.preferred_username ?? "";
+    userEmail.innerText = response.mail ?? "";
   }
 }
 
