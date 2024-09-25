@@ -8,7 +8,7 @@ import { createLocalUrl } from "./util";
 
 /* global console */
 
-export const clientId = "b3b6dc33-016b-4bf7-b4b6-c97fa56c1879";
+export const clientId = "63e62b68-c5c7-48f9-82bf-8c41d5637b49";
 export const msalConfig = {
   auth: {
     clientId,

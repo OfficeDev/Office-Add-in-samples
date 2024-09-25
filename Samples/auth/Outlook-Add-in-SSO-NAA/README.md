@@ -102,11 +102,17 @@ The `src/taskpane/authConfig.ts` file contains the MSAL code for configuring and
 
 - The `initialize` function is called from Office.onReady to configure and intitialize MSAL to use NAA.
 - The `ssoGetAccessToken` function gets an access token for the signed in user to call Microsoft Graph APIs.
-- The `ssoGetUserAccount` function gets the account information of the signed in user. This can be used to get user details such as name and email.
+- The `getTokenWithDialogApi` function uses the Office dialog API to support a fallback option if NAA fails.
 
-The `src/taskpane/taskpane.ts` file contains code that runs when the user chooses buttons in the task pane. They use the AccountManager class to get tokens or user information depending on which button is chosen.
+The `src/taskpane/taskpane.ts` file contains code that runs when the user chooses buttons in the task pane. It uses the AccountManager class to get tokens or user information depending on which button is chosen.
 
 The `src/taskpane/msgraph-helper.ts` file contains code to construct and make a REST call to the Microsoft Graph API.
+
+### Fallback code
+
+The `fallback` folder contains files to fall back to an alternate authentication method if NAA is unavailable. If NAA is unavailable, MSAL switches signs in the user by opening a dialog box with window.open and "about:blank". Some older Outlook clients don't support the "about:blank" dialog box and cause MSAL to fail. This error condition can be detected and the code in this sample falls back to using the Office dialog API to open the dialog instead.
+
+
 
 ## Security reporting
 

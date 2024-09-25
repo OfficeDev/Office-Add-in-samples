@@ -79,6 +79,7 @@ class AccountManager {
     return new Promise((resolve) => {
       Office.context.ui.displayDialogAsync(
         createLocalUrl(`dialog.html?accountContext=${encodeURIComponent(JSON.stringify(accountContext))}`),
+        { height: 60, width: 30 },
         (result) => {
           result.value.addEventHandler(
             Office.EventType.DialogMessageReceived,
