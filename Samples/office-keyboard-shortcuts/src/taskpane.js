@@ -80,5 +80,5 @@ if (host === Office.HostType.Excel) {
 
 // Display the shortcut conflict dialog for testing.
 Office.actions.associate("TestConflict", () => {
-console.log("Display the shortcut conflict dialog for testing.");
+  console.log("Display the shortcut conflict dialog for testing.");
 });

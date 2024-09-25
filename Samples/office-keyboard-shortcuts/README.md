@@ -19,7 +19,7 @@ description: "This sample shows how to add keyboard shortcuts to your Office Add
 
 ## Summary
 
-This sample shows how to create custom keyboard shortcuts for an Office Add-in. Keyboard shortcuts let power users quickly use you add-in's features and give accessibility options to avoid a mouse. In this sample, the following shortcuts are configured.
+This sample shows how to create custom keyboard shortcuts for an Office Add-in. Keyboard shortcuts let power users quickly use your add-in's features and give accessibility options to avoid using a mouse. In this sample, the following shortcuts are configured.
 
 - **Ctrl+Alt+1**: Opens the add-in's task pane.
 - **Ctrl+Alt+2**: Hides the add-in's task pane.
@@ -90,7 +90,7 @@ Run this sample in Excel or Word. The add-in web files are served from this repo
 If you prefer to host the web server for the sample on your computer, follow these steps.
 
 1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
-1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command.
+1. You need http-server to run the local web server. If you haven't installed this yet, you can do this with the following command.
 
     ```console
     npm install --global http-server
@@ -135,7 +135,7 @@ Once the add-in is loaded, try out its functionality.
 1. Press **Ctrl+Alt+1** on your keyboard to open the add-in's task pane.
 
     > [!NOTE]
-    > If the keyboard shortcut is already in use in Excel or Word, a dialog will be shown, so that you can select which action you'd like to map to the shortcut. Once you select an action, you can change your preference by invoking the **Reset Office Add-in Shortcut Preferences** command from the search field.
+    > If the keyboard shortcut is already in use in Excel or Word, a dialog will be shown so that you can select which action you'd like to map to the shortcut. Once you select an action, you can change your preference by invoking the **Reset Office Add-in Shortcut Preferences** command from the search field.
     >
     > ![The Reset Office Add-in Shortcut Preferences option in Excel.](./assets/office-keyboard-shortcuts-reset.png)
 
