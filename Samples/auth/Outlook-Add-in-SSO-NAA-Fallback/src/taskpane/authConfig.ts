@@ -13,7 +13,7 @@ import {
 } from "@azure/msal-browser";
 import { createLocalUrl } from "./util";
 import { getMsalConfig } from "./msalconfig";
-import { UserProfile } from "./authhelper";
+import { UserProfile, setSignOutButtonVisibility } from "./authhelper";
 
 export { AccountManager };
 
@@ -109,6 +109,7 @@ class AccountManager {
         if (this.fallbackPopup) {
           // Fall back to popup workaround for about:blank popup bug.
           this.userProfile = await this.getTokenWithDialogApi();
+          setSignOutButtonVisibility(true);
         } else {
           console.log("Trying to acquire token interactively...");
           userAccount = await this.pca.acquireTokenPopup(tokenRequest);

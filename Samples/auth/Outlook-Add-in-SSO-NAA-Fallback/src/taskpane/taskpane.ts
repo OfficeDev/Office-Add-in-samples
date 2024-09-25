@@ -5,7 +5,7 @@
 
 import { signOutUser, initializeAuthMethod, getAccessToken, getUserProfile } from "./authhelper";
 import { makeGraphRequest } from "./msgraph-helper";
-import { UserProfile } from "./userProfile";
+import { UserProfile } from "./authhelper";
 import "unfetch/polyfill";
 
 /* global console, document, Office */
@@ -35,21 +35,6 @@ Office.onReady(async (info) => {
     await initializeAuthMethod();
   }
 });
-
-/**
- * Makes the Sign out button visible or invisible on the task pane.
- *
- * @param visible true if the sign out button should be visible; otherwise, false.
- * @returns
- */
-// function setSignOutButtonVisibility(visible: boolean) {
-//   if (!signOutButton) return;
-//   if (visible) {
-//     signOutButton.classList.remove("is-disabled");
-//   } else {
-//     signOutButton.classList.add("is-disabled");
-//   }
-// }
 
 /**
  * Writes the file names to the task pane.
@@ -82,10 +67,7 @@ async function getUserFiles() {
  */
 async function getUserData() {
   const userDataElement = document.getElementById("userData");
-  //const userAccount = await accountManager.ssoGetUserIdentity(["user.read"]);
   const userProfile: UserProfile = await getUserProfile();
-  //const idTokenClaims = userAccount.idTokenClaims as { name?: string; preferred_username?: string };
-  //console.log(userAccount.accessToken);
 
   if (userDataElement) {
     userDataElement.style.visibility = "visible";

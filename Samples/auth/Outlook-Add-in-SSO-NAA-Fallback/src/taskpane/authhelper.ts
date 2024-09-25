@@ -4,9 +4,10 @@
 // This file provides generic auth types and methods for task pane code (taskpane.ts).
 // It handles any compatibility switching based on Edge vs Trident IE11 webviews.
 
-/* global Office, window */
+/* global Office, window, document */
 
 import { createLocalUrl } from "./util";
+import { type AccountManager } from "./authConfig";
 
 /**
  * Represents a user profile from an MSAL account.
@@ -23,7 +24,7 @@ export enum AuthMethod {
 }
 
 // Globals
-let msalAccountManager = null; // Account manager for MSAL v3 (NAA). Imported dynamically only if needed.
+let msalAccountManager: AccountManager | undefined; // Account manager for MSAL v3 (NAA). Imported dynamically only if needed.
 let authMethod = AuthMethod.NAA; // Default to nested app authentication.
 let userProfile: UserProfile = {};
 
@@ -51,8 +52,8 @@ export async function getAccessToken(scopes: string[]) {
   switch (authMethod) {
     case AuthMethod.NAA:
       // Use the MSAL v3 NAA library.
-      if (msalAccountManager === null) throw new Error("msalAccountManager was not initialized!");
-      userProfile.accessToken = msalAccountManager.ssoGetAccessToken(scopes);
+      if (msalAccountManager === undefined) throw new Error("msalAccountManager was not initialized!");
+      userProfile.accessToken = await msalAccountManager.ssoGetAccessToken(scopes);
       break;
     case AuthMethod.MSALV2:
       // If Trident IE11 webview is in use, call getUserProfileWithDialogApi() to use the MSAL v2 compatible library.
@@ -73,11 +74,12 @@ export async function getUserProfile(): Promise<UserProfile> {
   switch (authMethod) {
     case AuthMethod.NAA:
       // Use the MSAL v3 NAA library.
-      userProfile = msalAccountManager.ssoGetUserIdentity();
+      userProfile = await msalAccountManager?.ssoGetUserIdentity();
       break;
     case AuthMethod.MSALV2:
       // IE11 webview is in use. Call getUserProfileWithDialogApi to use the MSAL v2 compatible library.
       userProfile = await getUserProfileWithDialogApi();
+      setSignOutButtonVisibility(true);
       break;
   }
   return userProfile;
@@ -89,8 +91,12 @@ export async function getUserProfile(): Promise<UserProfile> {
  * @returns The access token for the signed in user.
  */
 export async function getUserProfileWithDialogApi(): Promise<UserProfile> {
+  //TODO add check here to be sure not called twice in a row.
+  //lodash has a way to do this.
+  // store the promise in a state variable, and if populated just return the promise
+
   // Return token if already stored.
-  // Note: does not handle case where token expires. CHECK
+  // Note: does not handle case where token expires.
   if (userProfile.accessToken) {
     return userProfile;
   }
@@ -122,12 +128,29 @@ export async function signOutUser(): Promise<void> {
         result.value.addEventHandler(
           Office.EventType.DialogMessageReceived,
           (arg: { message: string; origin: string | undefined }) => {
-            //userProfile = JSON.parse(arg.message);
-            resolve();
+            userProfile = {};
+            setSignOutButtonVisibility(false);
             result.value.close();
+            resolve();
           }
         );
       }
     );
   });
+}
+
+/**
+ * Makes the Sign out button visible or invisible on the task pane.
+ *
+ * @param visible true if the sign out button should be visible; otherwise, false.
+ * @returns
+ */
+export function setSignOutButtonVisibility(visible: boolean) {
+  const signOutButton = document.getElementById("signOutButton");
+  if (!signOutButton) return;
+  if (visible) {
+    signOutButton.classList.remove("is-disabled");
+  } else {
+    signOutButton.classList.add("is-disabled");
+  }
 }

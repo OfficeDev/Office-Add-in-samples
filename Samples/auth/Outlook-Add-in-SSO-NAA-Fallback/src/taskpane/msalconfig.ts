@@ -10,6 +10,8 @@ import { createLocalUrl } from "./util";
 const clientId = "b3b6dc33-016b-4bf7-b4b6-c97fa56c1879";
 
 // CHECK
+// use the imported enums.
+
 /**
  * Log message level generic for local use (copied from MSAL Logger.ts to avoid importing MSAL v3).
  */
