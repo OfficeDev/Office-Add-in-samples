@@ -12,7 +12,7 @@ import {
 } from "@azure/msal-browser";
 import { msalConfig } from "./msalconfig";
 import { getAccountFromContext } from "./msalcommon";
-import { createLocalUrl } from "./util";
+import { createLocalUrl, setSignOutButtonVisibility } from "./util";
 
 export { AccountManager };
 
@@ -91,8 +91,9 @@ class AccountManager {
             Office.EventType.DialogMessageReceived,
             (arg: { message: string; origin: string | undefined }) => {
               const parsedMessage = JSON.parse(arg.message);
-              resolve(parsedMessage.token);
               result.value.close();
+              setSignOutButtonVisibility(true);
+              resolve(parsedMessage.token);
             }
           );
         }

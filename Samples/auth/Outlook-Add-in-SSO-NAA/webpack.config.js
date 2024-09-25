@@ -20,6 +20,7 @@ module.exports = async (env, options) => {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: ["./src/taskpane/taskpane.ts", "./src/taskpane/taskpane.html"],
       dialog: ["./src/taskpane/fallback/fallbackauthdialog.ts"],
+      signoutdialog: ["./src/taskpane/fallback/signoutdialog.ts"],
     },
     output: {
       clean: true,
@@ -68,6 +69,11 @@ module.exports = async (env, options) => {
         filename: "dialog.html",
         template: "./src/taskpane/fallback/dialog.html",
         chunks: ["dialog"],
+      }),
+      new HtmlWebpackPlugin({
+        filename: "signoutdialog.html",
+        template: "./src/taskpane/fallback/dialog.html",
+        chunks: ["signoutdialog"],
       }),
       new CopyWebpackPlugin({
         patterns: [
