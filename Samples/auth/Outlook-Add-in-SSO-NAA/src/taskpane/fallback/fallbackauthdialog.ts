@@ -1,3 +1,8 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+/* This file handls MSAL auth for the fallback dialog page. */
+
 /* global Office, window */
 
 import { AuthenticationResult } from "@azure/msal-browser";

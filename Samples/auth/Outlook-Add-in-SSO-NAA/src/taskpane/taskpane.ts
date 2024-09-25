@@ -16,6 +16,7 @@ const getUserFilesButton = document.getElementById("getUserFiles");
 const userName = document.getElementById("userName");
 const userEmail = document.getElementById("userEmail");
 
+// Initialize when Office is ready.
 Office.onReady((info) => {
   if (info.host === Office.HostType.Outlook) {
     if (sideloadMsg) sideloadMsg.style.display = "none";
@@ -27,12 +28,15 @@ Office.onReady((info) => {
       getUserFilesButton.onclick = getUserFiles;
     }
 
-    // Initialize MSAL. MSAL need's a loginHint for when running in a browser.
-
+    // Initialize MSAL.
     accountManager.initialize();
   }
 });
 
+/**
+ * Writes a list of filenames into the email body.
+ * @param fileNameList The list of filenames.
+ */
 async function writeFileNames(fileNameList: string[]) {
   const item = Office.context.mailbox.item;
   let fileNameBody: string = "";
@@ -51,6 +55,7 @@ async function writeFileNames(fileNameList: string[]) {
  */
 async function getUserData() {
   const userDataElement = document.getElementById("userData");
+  // Specify minimum scopes for the token needed.
   const accessToken = await accountManager.ssoGetAccessToken(["user.read"]);
 
   const response: { displayName: string; mail: string } = await makeGraphRequest(accessToken, "/me", "");

@@ -42,4 +42,5 @@ export const msalConfig = {
   },
 };
 
+// Default scopes to use in the fallback dialog.
 export const defaultScopes = ["user.read", "files.read"];

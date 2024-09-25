@@ -26,11 +26,11 @@ This sample shows how to use MSAL.js nested app authentication (NAA) in an Outlo
 ## Features
 
 - Use MSAL.js NAA to get an access token to call Microsoft Graph APIs.
-- Use MSAL.js NAA to get information about the user signed in to Office.
+- Fall back to using the Office dialog API for auth when NAA unavailable.
 
 ## Applies to
 
-- Outlook (Current Channel (previeiw) for classic Outlook only, new Outlook coming soon).
+- Outlook (Current Channel (preview) for classic Outlook only, new Outlook coming soon).
 - Outlook on the web.
 
 For more information on supported platforms, see [NAA supported accounts and hosts](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in#naa-supported-accounts-and-hosts).
@@ -56,6 +56,9 @@ For more information on supported platforms, see [NAA supported accounts and hos
     - Select **Register**.
 
 1. On the **Outlook-Add-in-SSO-NAA** page, copy and save the value for the **Application (client) ID**. You'll use it in the next section.
+1. Under **Manage** select **Authentication**.
+1. In the **Single-page application** pane, select **Add URI**.
+1. Enter the value `https://localhost:3000/dialog.html` and select **Save**. This redirect handles the fallback scenario when the Office dialog API is used.
 
 For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://learn.microsoft.com/graph/auth-register-app-v2).
 
@@ -110,9 +113,18 @@ The `src/taskpane/msgraph-helper.ts` file contains code to construct and make a 
 
 ### Fallback code
 
-The `fallback` folder contains files to fall back to an alternate authentication method if NAA is unavailable. If NAA is unavailable, MSAL switches signs in the user by opening a dialog box with window.open and "about:blank". Some older Outlook clients don't support the "about:blank" dialog box and cause MSAL to fail. This error condition can be detected and the code in this sample falls back to using the Office dialog API to open the dialog instead.
+The `fallback` folder contains files to fall back to an alternate authentication method if NAA is unavailable and fails. When your code calls `acquireTokenSilent`, and NAA is unavailable, an error is thrown. The next step is the code calls `acquireTokenPopup`. MSAL then attempts to sign in the user by opening a dialog box with `window.open` and `about:blank`. Some older Outlook clients don't support the `about:blank` dialog box and cause the `aquireTokenPopup` method to fail. You can catch this error and fall back to using the Office dialog API to open the auth dialog instead.
 
+- the `src/taskpane/authconfig.ts` file contains the following code to detect the error and fall back to using the Office dialog API.
 
+```typescript
+    // Optional fallback if about:blank popup should not be shown
+    if (popupError instanceof BrowserAuthError && popupError.errorCode === "popup_window_error") {
+        const accessToken = await this.getTokenWithDialogApi();
+        return accessToken;
+```
+
+- The `src/taskpane/fallback/fallbackauthdialog.ts` file contains code to initialize MSAL and acquire an access token. It sends the access token back to the task pane.
 
 ## Security reporting
 
@@ -122,10 +134,9 @@ If you find a security issue with our libraries or services, report the issue to
 
 - NAA public preview blog: https://aka.ms/NAApreviewblog 
 - [Updates on deprecating legacy Exchange Online tokens for Outlook add-ins](https://devblogs.microsoft.com/microsoft365dev/updates-on-deprecating-legacy-exchange-online-tokens-for-outlook-add-ins/?commentid=1131)
-- NAA docs to get started: https://aka.ms/NAAdocs 
-- NAA FAQ: https://aka.ms/NAAFAQ 
-- NAA Outlook sample: https://aka.ms/NAAsampleOutlook 
-- NAA Word, Excel, and PowerPoint sample: https://aka.ms/NAAsampleOffice 
+- NAA docs to get started: https://aka.ms/NAAdocs
+- NAA FAQ: https://aka.ms/NAAFAQ
+- NAA Word, Excel, and PowerPoint sample: https://aka.ms/NAAsampleOffice
 
 ## Questions and feedback
 

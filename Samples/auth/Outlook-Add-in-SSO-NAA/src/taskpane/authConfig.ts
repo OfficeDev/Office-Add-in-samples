@@ -3,7 +3,7 @@
 
 /* This file provides MSAL auth configuration to get access token through nested app authentication. */
 
-/* global Office, console, window*/
+/* global Office, console*/
 
 import {
   BrowserAuthError,
@@ -11,6 +11,8 @@ import {
   type IPublicClientApplication,
 } from "@azure/msal-browser";
 import { msalConfig } from "./msalconfig";
+import { getAccountFromContext } from "./msalcommon";
+import { createLocalUrl } from "./util";
 
 export { AccountManager };
 
@@ -74,8 +76,12 @@ class AccountManager {
     }
   }
 
+  /**
+   * Gets an access token by using the Office dialog API to handle authentication. Used for fallback scenario.
+   * @returns The access token.
+   */
   async getTokenWithDialogApi(): Promise<string> {
-    const accountContext = await this.getAccountContext();
+    const accountContext = await getAccountFromContext();
     return new Promise((resolve) => {
       Office.context.ui.displayDialogAsync(
         createLocalUrl(`dialog.html?accountContext=${encodeURIComponent(JSON.stringify(accountContext))}`),
@@ -93,23 +99,4 @@ class AccountManager {
       );
     });
   }
-  async getAccountContext(): Promise<AccountContext | null> {
-    if (!this._authContext) {
-      try {
-        const authContext = await (Office.auth as any).getAuthContext();
-        this._authContext = {
-          loginHint: authContext.loginHint,
-          tenantId: authContext.tenantId,
-          localAccountId: authContext.userObjectId,
-        };
-      } catch {
-        this._authContext = {};
-      }
-    }
-    return this._authContext;
-  }
-}
-
-function createLocalUrl(path: string) {
-  return `${window.location.origin}/${path}`;
 }

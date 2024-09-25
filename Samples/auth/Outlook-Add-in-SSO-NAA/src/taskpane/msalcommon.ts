@@ -11,6 +11,11 @@ import {
 } from "@azure/msal-browser";
 import { defaultScopes, msalConfig } from "./msalconfig";
 
+/**
+ * Gets a token request for a given account context.
+ * @param accountContext The account context to get the token request for.
+ * @returns The token request.
+ */
 export async function getTokenRequest(accountContext?: AccountContext): Promise<RedirectRequest> {
   const account = await getAccountFromContext(accountContext);
   let additionalProperties: Partial<RedirectRequest> = {};
@@ -28,6 +33,10 @@ export async function getTokenRequest(accountContext?: AccountContext): Promise<
 
 let _publicClientApp: PublicClientApplication;
 
+/**
+ * Returns the existing public client application. Returns a new public client application if it did not exist.
+ * @returns The nested public client application.
+ */
 export async function ensurePublicClient() {
   if (!_publicClientApp) {
     _publicClientApp = await createNestablePublicClientApplication(msalConfig);
@@ -41,6 +50,11 @@ export type AccountContext = {
   localAccountId?: string;
 };
 
+/**
+ * Gets the account information of the given user.
+ * @param accountContext The account context of the user. If not provided the function gets the active account.
+ * @returns The account information of the user.
+ */
 export async function getAccountFromContext(accountContext?: AccountContext): Promise<AccountInfo | null> {
   const pca = await ensurePublicClient();
   if (!accountContext) {
