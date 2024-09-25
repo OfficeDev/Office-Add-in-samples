@@ -54,7 +54,7 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 
 ## Solution
 
-| Solution | Author(s) |
+| Solution | Authors |
 | -------- | --------- |
 | Use keyboard shortcuts for Office Add-in actions | Microsoft |
 
