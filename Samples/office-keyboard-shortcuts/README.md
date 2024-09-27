@@ -134,10 +134,10 @@ Once the add-in is loaded, try out its functionality.
 
 1. Press **Ctrl+Alt+1** on your keyboard to open the add-in's task pane.
 
-    > [!NOTE]
-    > If the keyboard shortcut is already in use in Excel or Word, a dialog will be shown so that you can select which action you'd like to map to the shortcut. Once you select an action, you can change your preference by invoking the **Reset Office Add-in Shortcut Preferences** command from the search field.
-    >
-    > ![The Reset Office Add-in Shortcut Preferences option in Excel.](./assets/office-keyboard-shortcuts-reset.png)
+  > [!NOTE]
+  > If the keyboard shortcut is already in use in Excel or Word, a dialog will be shown so that you can select which action you'd like to map to the shortcut. Once you select an action, you can change your preference by invoking the **Reset Office Add-in Shortcut Preferences** command from the search field.
+  >
+  > ![The Reset Office Add-in Shortcut Preferences option in Excel.](./assets/office-keyboard-shortcuts-reset.png)
 
 1. Try the other available shortcuts shown in the task pane.
 
