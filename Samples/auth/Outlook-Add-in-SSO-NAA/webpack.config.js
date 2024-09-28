@@ -19,6 +19,8 @@ module.exports = async (env, options) => {
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: ["./src/taskpane/taskpane.ts", "./src/taskpane/taskpane.html"],
+      dialog: ["./src/taskpane/fallback/fallbackauthdialog.ts"],
+      signoutdialog: ["./src/taskpane/fallback/signoutdialog.ts"],
     },
     output: {
       clean: true,
@@ -57,6 +59,21 @@ module.exports = async (env, options) => {
         filename: "taskpane.html",
         template: "./src/taskpane/taskpane.html",
         chunks: ["polyfill", "taskpane"],
+      }),
+      new HtmlWebpackPlugin({
+        filename: "auth.html",
+        template: "./src/taskpane/fallback/auth.html",
+        chunks: [],
+      }),
+      new HtmlWebpackPlugin({
+        filename: "dialog.html",
+        template: "./src/taskpane/fallback/dialog.html",
+        chunks: ["dialog"],
+      }),
+      new HtmlWebpackPlugin({
+        filename: "signoutdialog.html",
+        template: "./src/taskpane/fallback/dialog.html",
+        chunks: ["signoutdialog"],
       }),
       new CopyWebpackPlugin({
         patterns: [
