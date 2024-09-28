@@ -7,7 +7,6 @@
 
 import { AccountManager } from "./authConfig";
 import { makeGraphRequest } from "./msgraph-helper";
-import { createLocalUrl, setSignOutButtonVisibility } from "./util";
 
 const accountManager = new AccountManager();
 const sideloadMsg = document.getElementById("sideload-msg");
@@ -16,7 +15,6 @@ const getUserDataButton = document.getElementById("getUserData");
 const getUserFilesButton = document.getElementById("getUserFiles");
 const userName = document.getElementById("userName");
 const userEmail = document.getElementById("userEmail");
-const signOutButton = document.getElementById("signOutButton");
 
 // Initialize when Office is ready.
 Office.onReady((info) => {
@@ -24,13 +22,10 @@ Office.onReady((info) => {
     if (sideloadMsg) sideloadMsg.style.display = "none";
     if (appBody) appBody.style.display = "flex";
     if (getUserDataButton) {
-      getUserDataButton.onclick = getUserData;
+      getUserDataButton.addEventListener("click", getUserData);
     }
     if (getUserFilesButton) {
-      getUserFilesButton.onclick = getUserFiles;
-    }
-    if (signOutButton) {
-      signOutButton.onclick = signOutUser;
+      getUserFilesButton.addEventListener("click", getUserFiles);
     }
     // Initialize MSAL.
     accountManager.initialize();
@@ -103,22 +98,4 @@ async function getFileNames(count = 10) {
 
   const names = response.value.map((item: { name: string }) => item.name);
   return names;
-}
-
-/**
- * Sign out the user from MSAL.
- */
-export async function signOutUser(): Promise<void> {
-  return new Promise((resolve) => {
-    Office.context.ui.displayDialogAsync(createLocalUrl("signoutdialog.html"), { height: 60, width: 30 }, (result) => {
-      result.value.addEventHandler(
-        Office.EventType.DialogMessageReceived,
-        (arg: { message: string; origin: string | undefined }) => {
-          setSignOutButtonVisibility(false);
-          result.value.close();
-          resolve();
-        }
-      );
-    });
-  });
 }

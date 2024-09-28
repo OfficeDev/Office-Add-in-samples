@@ -3,7 +3,7 @@
 
 /* This file provides MSAL auth configuration to get access token through nested app authentication. */
 
-/* global Office, console*/
+/* global Office, console, document*/
 
 import {
   BrowserAuthError,
@@ -11,26 +11,62 @@ import {
   type IPublicClientApplication,
 } from "@azure/msal-browser";
 import { msalConfig } from "./msalconfig";
-import { getAccountFromContext } from "./msalcommon";
-import { createLocalUrl, setSignOutButtonVisibility } from "./util";
+import { createLocalUrl } from "./util";
+import { getTokenRequest } from "./msalcommon";
 
-export { AccountManager };
-
-type AccountContext = {
-  loginHint?: string;
-  tenantId?: string;
-  localAccountId?: string;
+export type AuthDialogResult = {
+  accessToken?: string;
+  error?: string;
 };
 
+type DialogEventMessage = { message: string; origin: string | undefined };
+type DialogEventError = { error: number };
+type DialogEventArg = DialogEventMessage | DialogEventError;
+
 // Encapsulate functions for getting user account and token information.
-class AccountManager {
+export class AccountManager {
   private pca: IPublicClientApplication | undefined = undefined;
-  private _authContext: AccountContext | null = null;
+  private _dialogApiResult: Promise<string> | null = null;
+  private _usingFallbackDialog = false;
+
+  private getSignOutButton() {
+    return document.getElementById("signOutButton");
+  }
+
+  private setSignOutButtonVisibility(isVisible: boolean) {
+    const signOutButton = this.getSignOutButton();
+    if (signOutButton) {
+      signOutButton.style.visibility = isVisible ? "visible" : "hidden";
+    }
+  }
+
+  private isNestedAppAuthSupported() {
+    return Office.context.requirements.isSetSupported("NestedAppAuth", "1.1");
+  }
 
   // Initialize MSAL public client application.
   async initialize() {
+    // Make sure office.js is initialized
+    await Office.onReady();
+
     // If auth is not working, enable debug logging to help diagnose.
     this.pca = await createNestablePublicClientApplication(msalConfig);
+
+    // If Office does not support Nested App Auth provide a sign-out button since the user selects account
+    if (!this.isNestedAppAuthSupported() && this.pca.getActiveAccount()) {
+      this.setSignOutButtonVisibility(true);
+    }
+    this.getSignOutButton()?.addEventListener("click", () => this.signOut());
+  }
+
+  private async signOut() {
+    if (this._usingFallbackDialog) {
+      await this.signOutWithDialogApi();
+    } else {
+      await this.pca?.logoutPopup();
+    }
+
+    this.setSignOutButtonVisibility(false);
   }
 
   /**
@@ -39,29 +75,35 @@ class AccountManager {
    * @returns An access token.
    */
   async ssoGetAccessToken(scopes: string[]) {
+    if (this._dialogApiResult) {
+      return this._dialogApiResult;
+    }
+
     if (this.pca === undefined) {
       throw new Error("AccountManager is not initialized!");
     }
 
-    // Specify minimum scopes needed for the access token.
-    const tokenRequest = {
-      scopes: scopes,
-    };
-
     try {
       console.log("Trying to acquire token silently...");
-      const authResult = await this.pca.acquireTokenSilent(tokenRequest);
+      const authResult = await this.pca.acquireTokenSilent(getTokenRequest(scopes, false));
       console.log("Acquired token silently.");
       return authResult.accessToken;
     } catch (error) {
-      console.log(`Unable to acquire token silently: ${error}`);
+      console.warn(`Unable to acquire token silently: ${error}`);
     }
 
     // Acquire token silent failure. Send an interactive request via popup.
     try {
       console.log("Trying to acquire token interactively...");
-      const authResult = await this.pca.acquireTokenPopup(tokenRequest);
+      const selectAccount = this.pca.getActiveAccount() ? false : true;
+      const authResult = await this.pca.acquireTokenPopup(getTokenRequest(scopes, selectAccount));
       console.log("Acquired token interactively.");
+      if (selectAccount) {
+        this.pca.setActiveAccount(authResult.account);
+      }
+      if (!this.isNestedAppAuthSupported()) {
+        this.setSignOutButtonVisibility(true);
+      }
       return authResult.accessToken;
     } catch (popupError) {
       // Optional fallback if about:blank popup should not be shown
@@ -70,7 +112,7 @@ class AccountManager {
         return accessToken;
       } else {
         // Acquire token interactive failure.
-        console.log(`Unable to acquire token interactively: ${popupError}`);
+        console.error(`Unable to acquire token interactively: ${popupError}`);
         throw new Error(`Unable to acquire access token: ${popupError}`);
       }
     }
@@ -81,21 +123,46 @@ class AccountManager {
    * @returns The access token.
    */
   async getTokenWithDialogApi(): Promise<string> {
-    const accountContext = await getAccountFromContext();
+    this._dialogApiResult = new Promise((resolve, reject) => {
+      Office.context.ui.displayDialogAsync(createLocalUrl(`dialog.html`), { height: 60, width: 30 }, (result) => {
+        result.value.addEventHandler(Office.EventType.DialogEventReceived, (arg: DialogEventArg) => {
+          const errorArg = arg as DialogEventError;
+          if (errorArg.error == 12006) {
+            this._dialogApiResult = null;
+            reject("Dialog closed");
+          }
+        });
+        result.value.addEventHandler(Office.EventType.DialogMessageReceived, (arg: DialogEventArg) => {
+          const messageArg = arg as DialogEventMessage;
+          const parsedMessage = JSON.parse(messageArg.message);
+          result.value.close();
+
+          if (parsedMessage.error) {
+            reject(parsedMessage.error);
+            this._dialogApiResult = null;
+          } else {
+            resolve(parsedMessage.accessToken);
+            this.setSignOutButtonVisibility(true);
+            this._usingFallbackDialog = true;
+          }
+        });
+      });
+    });
+    return this._dialogApiResult;
+  }
+
+  signOutWithDialogApi(): Promise<void> {
     return new Promise((resolve) => {
       Office.context.ui.displayDialogAsync(
-        createLocalUrl(`dialog.html?accountContext=${encodeURIComponent(JSON.stringify(accountContext))}`),
+        createLocalUrl(`dialog.html?logout=1`),
         { height: 60, width: 30 },
         (result) => {
-          result.value.addEventHandler(
-            Office.EventType.DialogMessageReceived,
-            (arg: { message: string; origin: string | undefined }) => {
-              const parsedMessage = JSON.parse(arg.message);
-              result.value.close();
-              setSignOutButtonVisibility(true);
-              resolve(parsedMessage.token);
-            }
-          );
+          result.value.addEventHandler(Office.EventType.DialogMessageReceived, () => {
+            this.setSignOutButtonVisibility(false);
+            this._dialogApiResult = null;
+            resolve();
+            result.value.close();
+          });
         }
       );
     });

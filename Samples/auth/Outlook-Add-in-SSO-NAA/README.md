@@ -47,16 +47,18 @@ For more information on supported platforms, see [NAA supported accounts and hos
 ### Create an application registration
 
 1. Go to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page to register your app.
-1. Sign in with the ***admin*** credentials to your Microsoft 365 tenancy. For example, **MyName@contoso.onmicrosoft.com**.
+1. Sign in with the **_admin_** credentials to your Microsoft 365 tenancy. For example, **MyName@contoso.onmicrosoft.com**.
 1. Select **New registration**. On the **Register an application** page, set the values as follows.
 
-    - Set **Name** to `Outlook-Add-in-SSO-NAA`.
-    - Set **Supported account types** to **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
-    - In the **Redirect URI** section, ensure that **Single-page application (SPA)** is selected in the drop down and then set the URI to `brk-multihub://localhost:3000`.
-    - Select **Register**.
+   - Set **Name** to `Outlook-Add-in-SSO-NAA`.
+   - Set **Supported account types** to **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
+   - In the **Redirect URI** section, ensure that **Single-page application (SPA)** is selected in the drop down and then set the URI to `brk-multihub://localhost:3000`. This allows Office to broker the auth request.
+   - Select **Register**.
 
 1. On the **Outlook-Add-in-SSO-NAA** page, copy and save the value for the **Application (client) ID**. You'll use it in the next section.
 1. Under **Manage** select **Authentication**.
+1. In the **Single-page application** pane, select **Add URI**.
+1. Enter the value `https://localhost:3000/auth.html` and select **Save**. This redirect handles the fallback scenario when browser auth is used from add-in.
 1. In the **Single-page application** pane, select **Add URI**.
 1. Enter the value `https://localhost:3000/dialog.html` and select **Save**. This redirect handles the fallback scenario when the Office dialog API is used.
 
@@ -74,10 +76,10 @@ For more information on how to register your application, see [Register an appli
 
 1. Run the following commands.
 
-    `npm install`
-    `npm run start`
+   `npm install`
+   `npm run start`
 
-    This will start the web server and sideload the add-in to Outlook.
+   This will start the web server and sideload the add-in to Outlook.
 
 1. In Outlook, compose a new email message.
 1. On the ribbon for the message, look for the **Show task pane** button and select it.
@@ -85,7 +87,7 @@ For more information on how to register your application, see [Register an appli
 1. To see the signed in user's name and email, select **Get user data**.
 1. To insert the first 10 filenames from the signed in user's Microsoft OneDrive, select **Get user files**.
 
-You will be prompted to consent to the scopes the sample needs when you select the buttons.  
+You will be prompted to consent to the scopes the sample needs when you select the buttons.
 
 ## Debugging steps
 
@@ -132,7 +134,7 @@ If you find a security issue with our libraries or services, report the issue to
 
 ## More resources
 
-- NAA public preview blog: https://aka.ms/NAApreviewblog 
+- NAA public preview blog: https://aka.ms/NAApreviewblog
 - [Updates on deprecating legacy Exchange Online tokens for Outlook add-ins](https://devblogs.microsoft.com/microsoft365dev/updates-on-deprecating-legacy-exchange-online-tokens-for-outlook-add-ins/?commentid=1131)
 - NAA docs to get started: https://aka.ms/NAAdocs
 - NAA FAQ: https://aka.ms/NAAFAQ

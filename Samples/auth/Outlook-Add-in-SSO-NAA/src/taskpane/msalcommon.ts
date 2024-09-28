@@ -4,34 +4,29 @@
 // This file provides common MSAL functions for use in the add-in project.
 
 import {
-  AccountInfo,
   createNestablePublicClientApplication,
-  PublicClientApplication,
+  type IPublicClientApplication,
   type RedirectRequest,
 } from "@azure/msal-browser";
-import { defaultScopes, msalConfig } from "./msalconfig";
+import { msalConfig } from "./msalconfig";
 
 /**
  * Gets a token request for a given account context.
  * @param accountContext The account context to get the token request for.
  * @returns The token request.
  */
-export async function getTokenRequest(accountContext?: AccountContext): Promise<RedirectRequest> {
-  const account = await getAccountFromContext(accountContext);
+export function getTokenRequest(scopes: string[], selectAccount: boolean, redirectUri?: string): RedirectRequest {
   let additionalProperties: Partial<RedirectRequest> = {};
-  if (account) {
-    additionalProperties = { account };
-  } else if (accountContext) {
-    additionalProperties = {
-      loginHint: accountContext.loginHint,
-    };
-  } else {
+  if (selectAccount) {
     additionalProperties = { prompt: "select_account" };
   }
-  return { scopes: defaultScopes, ...additionalProperties };
+  if (redirectUri) {
+    additionalProperties.redirectUri = redirectUri;
+  }
+  return { scopes, ...additionalProperties };
 }
 
-let _publicClientApp: PublicClientApplication;
+let _publicClientApp: IPublicClientApplication;
 
 /**
  * Returns the existing public client application. Returns a new public client application if it did not exist.
@@ -42,28 +37,4 @@ export async function ensurePublicClient() {
     _publicClientApp = await createNestablePublicClientApplication(msalConfig);
   }
   return _publicClientApp;
-}
-
-export type AccountContext = {
-  loginHint?: string;
-  tenantId?: string;
-  localAccountId?: string;
-};
-
-/**
- * Gets the account information of the given user.
- * @param accountContext The account context of the user. If not provided the function gets the active account.
- * @returns The account information of the user.
- */
-export async function getAccountFromContext(accountContext?: AccountContext): Promise<AccountInfo | null> {
-  const pca = await ensurePublicClient();
-  if (!accountContext) {
-    return pca.getActiveAccount();
-  }
-
-  return pca.getAccount({
-    username: accountContext.loginHint,
-    tenantId: accountContext.tenantId,
-    localAccountId: accountContext.localAccountId,
-  });
 }
