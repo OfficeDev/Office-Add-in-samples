@@ -2,12 +2,12 @@
 
 import { getCurrentPageUrl, sendDialogMessage } from "../util";
 import type { AuthDialogResult } from "../authHelper";
-import { createStandardPublicClientApplication } from "@azure/msal-browser";
-import { defaultScopes, getMsalConfig } from "../msalConfigV3";
+import { PublicClientApplication } from "@azure/msal-browser-v2";
+import { defaultScopes, getMsalConfig } from "../msalConfigV2";
 
 export async function initializeMsal() {
   try {
-    const publicClientApp = await createStandardPublicClientApplication(getMsalConfig(true));
+    const publicClientApp = new PublicClientApplication(getMsalConfig(true));
 
     const result = await publicClientApp.handleRedirectPromise();
 

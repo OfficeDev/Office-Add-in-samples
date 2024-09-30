@@ -14,9 +14,7 @@
  * @returns
  */
 export function makeGraphRequest(accessToken: string, path: string, queryParams: string): Promise<any> {
-  console.log("accesstoken before: " + accessToken);
   return new Promise(function (myResolve, myReject) {
-    console.log("accesstoken: " + accessToken);
     fetch(`https://graph.microsoft.com/v1.0${path}${queryParams}`, {
       headers: { Authorization: accessToken },
     }).then((response) => {

@@ -3,9 +3,8 @@
  * See LICENSE in the project root for license information.
  */
 
-import { signOutUser, initializeAuthMethod, getAccessToken, getUserProfile } from "./authhelper";
+import { initializeAuthMethod, getAccessToken } from "./authHelper";
 import { makeGraphRequest } from "./msgraph-helper";
-import { UserProfile } from "./authhelper";
 import "unfetch/polyfill";
 
 /* global console, document, Office */
@@ -17,22 +16,20 @@ const getUserFilesButton = document.getElementById("getUserFiles");
 const userName = document.getElementById("userName");
 const userEmail = document.getElementById("userEmail");
 const userFiles = document.getElementById("userFiles");
-const signOutButton = document.getElementById("signOutButton");
 
 Office.onReady(async (info) => {
   if (info.host === Office.HostType.Outlook) {
     if (sideloadMsg) sideloadMsg.style.display = "none";
     if (appBody) appBody.style.display = "flex";
+
+    await initializeAuthMethod();
+
     if (getUserDataButton) {
-      getUserDataButton.onclick = getUserData;
+      getUserDataButton.addEventListener("click", getUserData);
     }
     if (getUserFilesButton) {
-      getUserFilesButton.onclick = getUserFiles;
+      getUserFilesButton.addEventListener("click", getUserFiles);
     }
-    if (signOutButton) {
-      signOutButton.onclick = signOutUser;
-    }
-    await initializeAuthMethod();
   }
 });
 
@@ -67,16 +64,24 @@ async function getUserFiles() {
  */
 async function getUserData() {
   const userDataElement = document.getElementById("userData");
-  const userProfile: UserProfile = await getUserProfile();
 
-  if (userDataElement) {
-    userDataElement.style.visibility = "visible";
-  }
-  if (userName) {
-    userName.innerText = userProfile.userName ?? "";
-  }
-  if (userEmail) {
-    userEmail.innerText = userProfile.userEmail ?? "";
+  try {
+    // Specify minimum scopes for the token needed.
+    const accessToken = await getAccessToken(["user.read"]);
+
+    const response: { displayName: string; mail: string } = await makeGraphRequest(accessToken, "/me", "");
+
+    if (userDataElement) {
+      userDataElement.style.visibility = "visible";
+    }
+    if (userName) {
+      userName.innerText = response.displayName ?? "";
+    }
+    if (userEmail) {
+      userEmail.innerText = response.mail ?? "";
+    }
+  } catch (ex) {
+    console.error(ex);
   }
 }
 

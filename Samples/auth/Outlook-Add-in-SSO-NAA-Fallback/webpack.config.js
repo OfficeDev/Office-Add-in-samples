@@ -19,9 +19,9 @@ module.exports = async (env, options) => {
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: ["./src/taskpane/taskpane.ts", "./src/taskpane/taskpane.html"],
-      dialogie: ["./src/taskpane/fallback/fallbackauthdialogie.ts"],
+      dialoginternetexplorer: ["./src/taskpane/fallback/fallbackauthdialoginternetexplorer.ts"],
       dialog: ["./src/taskpane/fallback/fallbackauthdialog.ts"],
-      signoutdialogie: ["./src/taskpane/fallback/signoutdialogie.ts"],
+      signoutdialoginternetexplorer: ["./src/taskpane/fallback/signoutdialoginternetexplorer.ts"],
       signoutdialog: ["./src/taskpane/fallback/signoutdialog.ts"],
     },
     output: {
@@ -58,14 +58,19 @@ module.exports = async (env, options) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
+        filename: "auth.html",
+        template: "./src/taskpane/fallback/auth.html",
+        chunks: [],
+      }),
+      new HtmlWebpackPlugin({
         filename: "dialog.html",
         template: "./src/taskpane/fallback/dialog.html",
         chunks: ["dialog"],
       }),
       new HtmlWebpackPlugin({
-        filename: "signoutdialogie.html",
+        filename: "signoutdialoginternetexplorer.html",
         template: "./src/taskpane/fallback/dialog.html",
-        chunks: ["polyfill", "signoutdialogie"],
+        chunks: ["polyfill", "signoutdialoginternetexplorer"],
       }),
       new HtmlWebpackPlugin({
         filename: "signoutdialog.html",
@@ -73,9 +78,9 @@ module.exports = async (env, options) => {
         chunks: ["polyfill", "signoutdialog"],
       }),
       new HtmlWebpackPlugin({
-        filename: "dialogie.html",
+        filename: "dialoginternetexplorer.html",
         template: "./src/taskpane/fallback/dialog.html",
-        chunks: ["polyfill", "dialogie"],
+        chunks: ["polyfill", "dialoginternetexplorer"],
       }),
       new HtmlWebpackPlugin({
         filename: "taskpane.html",
