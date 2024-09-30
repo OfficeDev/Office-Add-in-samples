@@ -75,7 +75,7 @@ For more information on how to register your application, see [Register an appli
 ### Configure the sample
 
 1. Clone or download this repository.
-1. From the command line, or a terminal window, go to the root folder of this sample at `/samples/auth/Outlook-Add-in-SSO-NAA-IE-Fallback`.
+1. From the command line, or a terminal window, go to the root folder of this sample at `/samples/auth/Outlook-Add-in-SSO-NAA-IE`.
 1. Open the `src/taskpane/msalConfig.ts` file.
 1. Replace the placeholder "Enter_the_Application_Id_Here" with the Application ID that you copied.
 1. Save the file.
