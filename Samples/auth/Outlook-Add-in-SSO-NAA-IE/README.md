@@ -45,7 +45,7 @@ For a list of supported platforms, see [NAA supported accounts and hosts](https:
 
 1. Go to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page to register your app.
 1. Sign in with the **_admin_** credentials to your Microsoft 365 tenancy. For example, **MyName@contoso.onmicrosoft.com**.
-1. Select **New registration**. On the **Register an application** page, set the values as follows.
+1. Select **New registration**. On the **Register an application** page, take the following actions.
 
    - Set **Name** to `Outlook-Add-in-SSO-NAA-IE`.
    - Set **Supported account types** to **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
