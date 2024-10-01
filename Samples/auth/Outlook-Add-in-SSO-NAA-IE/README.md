@@ -10,7 +10,7 @@ extensions:
   contentType: samples
   technologies:
     - Add-ins
-  createdDate: "03/19/2024 10:00:00 AM"
+  createdDate: "09/30/2024 10:00:00 AM"
 description: "This sample shows how to implement SSO in an Outlook add-in by using nested app authentication with Internet Explorer fallback auth."
 ---
 
