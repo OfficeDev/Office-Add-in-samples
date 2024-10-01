@@ -1,6 +1,6 @@
 [
   {
-    "name": "outlook-add-in-sso-naa",
+    "name": "outlook-add-in-sso-naa-ie",
     "reponame": "office-add-in-samples",
     "source": "officedev",
     "title": "Outlook add-in with SSO using nested app authentication including Internet Explorer fallback (preview)",
