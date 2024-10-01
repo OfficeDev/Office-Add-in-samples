@@ -1,6 +1,6 @@
 ---
 page_type: sample
-urlFragment: outlook-add-in-sso-naa
+urlFragment: outlook-add-in-sso-naa-ie
 products:
   - office
   - office-outlook
