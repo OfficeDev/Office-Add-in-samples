@@ -1,6 +1,6 @@
 ---
 page_type: sample
-urlFragment: outlook-add-in-sso-naa
+urlFragment: outlook-add-in-sso-naa-ie
 products:
   - office
   - office-outlook
@@ -11,7 +11,7 @@ extensions:
   technologies:
     - Add-ins
   createdDate: "09/30/2024 10:00:00 AM"
-description: "This sample shows how to implement SSO in an Outlook add-in by using nested app authentication with Internet Explorer fallback auth."
+description: "This sample shows how to implement SSO in an Outlook add-in by using nested app authentication with a fallback that supports internet explorer."
 ---
 
 # Outlook add-in with SSO using nested app authentication including Internet Explorer fallback (preview)
@@ -47,7 +47,7 @@ For a list of supported platforms, see [NAA supported accounts and hosts](https:
 1. Sign in with the **_admin_** credentials to your Microsoft 365 tenancy. For example, **MyName@contoso.onmicrosoft.com**.
 1. Select **New registration**. On the **Register an application** page, set the values as follows.
 
-   - Set **Name** to `Outlook-Add-in-SSO-NAA`.
+   - Set **Name** to `Outlook-Add-in-SSO-NAA-IE`.
    - Set **Supported account types** to **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
    - In the **Redirect URI** section, ensure that **Single-page application (SPA)** is selected in the drop down and then set the URI to `brk-multihub://localhost:3000`.
    - Select **Register**.
