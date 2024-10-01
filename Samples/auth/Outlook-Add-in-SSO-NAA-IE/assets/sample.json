@@ -3,7 +3,7 @@
       "name": "outlook-add-in-sso-naa",
       "reponame": "office-add-in-samples",
       "source": "officedev",
-      "title": "Outlook add-in with SSO using nested app authentication (preview)",
+      "title": "Outlook add-in with SSO using nested app authentication including Internet Explorer fallback (preview)",
       "shortDescription": "This sample shows how to implement SSO in an Outlook add-in by using nested app authentication.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/auth/Outlook-Add-in-SSO-NAA",
       "longDescription": [
