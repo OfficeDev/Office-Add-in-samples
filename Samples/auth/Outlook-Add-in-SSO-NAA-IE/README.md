@@ -11,7 +11,7 @@ extensions:
   technologies:
     - Add-ins
   createdDate: "09/30/2024 10:00:00 AM"
-description: "This sample shows how to implement SSO in an Outlook add-in by using nested app authentication with a fallback that supports internet explorer."
+description: "This sample shows how to implement SSO in an Outlook add-in by using nested app authentication with a fallback that supports Internet Explorer."
 ---
 
 # Outlook add-in with SSO using nested app authentication including Internet Explorer fallback (preview)
