@@ -1,6 +1,3 @@
 {
-    "allowed":
-    [
-        "https://localhost:3000/public/launchevent.js"
-    ]
+  "allowed": ["https://localhost:3000/launchevent.js"]
 }
