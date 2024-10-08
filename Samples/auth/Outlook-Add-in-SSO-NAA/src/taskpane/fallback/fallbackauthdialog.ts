@@ -36,7 +36,7 @@ async function returnResult(publicClientApp: IPublicClientApplication, authResul
 }
 
 export async function initializeMsal() {
-  // Use standard Public Client instead of nested because this is a fallback path when nested app authentication is not available.
+  // Use standard Public Client instead of nested because this is a fallback path when nested app authentication isn't available.
   const publicClientApp = await createStandardPublicClientApplication(msalConfig);
   try {
     if (getQueryParameter("logout") === "1") {
