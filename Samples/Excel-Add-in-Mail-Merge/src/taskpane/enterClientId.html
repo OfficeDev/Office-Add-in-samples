@@ -1,0 +1,77 @@
+<!-- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. -->
+<!-- This file shows how to create an empty HTML file to load a function file. -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.35.0/js/msal-browser.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+    <style>
+        body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+    
+        h2 {
+            color: #2d63c8;
+        }
+    
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+    
+        button {
+            color: #ffffff;
+	        background-color: #2d63c8;
+            font-size: 14px;
+	        border: 1px solid #2d63c8;
+	        padding: 10px 30px;
+	        cursor: pointer
+        }
+    
+        button:hover {
+            color: #2d63c8;
+	        background-color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Get your Application Id</h2>
+        <p>This code sample illustrates the process of connecting to the Graph API. For this sample to function effectively and send emails on your behalf, <strong>developers are required to utilize their own application ID to access the Graph API.</strong></p>
+        <div style="display: flex; align-items: center;">
+            <input type="text" id="clientId" placeholder="Enter Client ID Here" style="flex-grow: 1; height: 30px;">
+            <button onclick="submitClientId()" style="margin-left: 10px; height: 30px; padding: 0 30px;">Submit</button>
+        </div>
+        <p>Or you can spend <strong>5 minutes</strong> applying for an application ID<a
+            href="#" onclick="window.open('https://github.com/SiruiSun-MSFT/Excel-Scenario-based-Add-in-Samples/tree/main/Mail-Merge-Sample-Add-in#register-a-web-application-with-the-azure-active-directory-admin-center'); return false;"> here</a>.</p>
+        <script>
+            function submitClientId() {
+                var clientId = document.getElementById('clientId').value;
+                Office.context.ui.messageParent(clientId);
+            }
+        </script>
+    </div>
+</body>
+
+</html>

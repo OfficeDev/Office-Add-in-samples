@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.35.0/js/msal-browser.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@microsoft/microsoft-graph-client/lib/graph-js-sdk.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+    <link rel="stylesheet" href="taskpane.css"/>
+    <title>Contoso Mail Merge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div class="container">
+    <h1 style="margin: 8px;">Mail Merge Example</h1>
+    <p>Please follow the steps outlined below to delve into the capabilities of Excel add-ins and unlock their potential when
+    integrated with the Graph API, specifically in the context of a mail merger.</p>
+    <p></p>
+    <p><strong>Step 1: Generating Sample Data for Mail Merge </strong></p>
+    <p>Click on "Create Sample Data" to import the provided sample data into the spreadsheet.</p>
+    <button type="button" id="createSampleData">Create Sample Data</button>
+    <p><strong>Step 2: Verify the Email Template </strong></p>
+    <p>Review the email template below, ensuring that the parameters inside &lt;&lt;...&gt;&gt; align with the column names in your current
+        spreadsheet. Click "Send Email" to dispatch emails based on the information in each data row.</p>
+    <P>
+        <form method="post" action="">
+            <p><strong>To : </strong></p>
+            <p><textarea id="ToLine" cols="50" rows="1" class="html-text-box" >&lt;&lt;Email&gt;&gt;</textarea></p>
+            <p><strong>Subject : </strong></p>
+            <p><textarea id="Subject" cols="50" rows="1" class="html-text-box">Invoice &lt;&lt;Invoice Number&gt;&gt; for &lt;&lt;Name&gt;&gt;</textarea></p>
+            <p><strong>Content : </strong></p>
+            <p><textarea id="Content" cols="50" rows="10" class="html-text-box">
+Dear &lt;&lt;Name&gt;&gt;,
+
+We have issued an invoice for your account. Please find the details below:  
+                        
+    Invoice Number: &lt;&lt;Invoice Number&gt;&gt;  
+    Amount Due: &lt;&lt;Amount&gt;&gt;  
+    Due Date: &lt;&lt;Due Date&gt;&gt;  
+                        
+If you have any questions or concerns, please don't hesitate to contact us.  
+                        
+Best regards,  
+Contoso Corporation
+            </textarea></p>
+        </form>
+    </P>
+    <p><strong>Step 3: Send Emails </strong></p>
+    <p>Click "Send emails" to send email in bulk using the data in the current spreadsheet. Alternatively, click "Create Draft" to check emails in your Outlook draft before sending them </p>
+    <button type="button" id="sendEmail">Send Email</button>
+    <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
+    <div style="height: 1px; width: 1px;">
+        <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-mail-merge-script">
+    </div>
+    <div class="status"></div>
+    <script type="text/javascript" src="./taskpane.js"></script>
+    <div class="fixed-footer">
+        <p  style="font-size: 16px;"><strong>&nbsp;&nbsp;&nbsp;For next steps:</strong><p>
+        <div class="styled-text">
+            <p><strong>&gt&nbsp;<a href="#" onclick="window.open('https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples/tree/main/Mail-Merge-Sample-Add-in'); return false;">Start your project from this sample</a></strong></p>
+            <p><strong>&gt&nbsp;<a href="#" onclick="window.open('https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples'); return false;">See more samples</a></strong></p>
+            <p><strong>&gt&nbsp;<a href="#" onclick="window.open('https://learn.microsoft.com/en-us/office/dev/add-ins/'); return false;">Office Add-in documentation</a></strong></p>
+        </div>
+    </div>
+    </div>
+</body>
+
+
+</html>
