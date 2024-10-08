@@ -1,0 +1,41 @@
+{
+    "filterOptions": {
+        "capabilities": [
+            "Word",
+            "Excel",
+            "PowerPoint"
+        ],
+        "languages": [
+            "TS",
+            "JS"
+        ],
+        "technologies": [
+            "Custom Function",
+            "SSO",
+            "Graph"
+        ]
+    },
+    "samples": [
+        {
+            "id": "Excel-Add-in-ChartAPI-Analysis-Data",
+            "onboardDate": "2024-02-27",
+            "title": "Using chart API to analyse data",
+            "shortId": "Chart API analyse data",
+            "shortDescription": "Using chart API to analyse data and showout using chart.",
+            "fullDescription": "The sample add-in demonstrates Excel add-in capablities to help users using chart API to analyse data.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "TS",
+                "Chart",
+                "Excel"
+            ],
+            "time": "5min to run",
+            "configuration": "Ready for debug",
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chart API to analyse data</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric ms-bgColor-neutralLighter">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" />
+        <p class="sampleTitle">Chart API to analyse data</p>
+    </header>
+    <section class="ms-welcome__main">
+        <p class="sampleDescription">The sample add-in showcases capablities for using chart API to analyse data</p>
+    </section>
+    <div id = "status"></div>
+    <section class="samples ms-font-m">
+        <p class="sampleSubTitle">Add Sample data and Insert chart</p>
+        <button id = "add-sample-data" class="ms-Button">
+        <span class="ms-Button-label">Add Sample data</span>
+        </button>
+        <button id="create-bar-chart" class="ms-Button">
+            <span class="ms-Button-label">Sales in different locations</span>
+        </button>
+        <p>Customize chart UI</p>
+        <button id="reverse-plot-order" class="ms-Button">
+            <span class="ms-Button-label">Reverse vertical axis order</span>
+        </button>
+        <button id="move-chart-title" class="ms-Button">
+            <span class="ms-Button-label">Customize title and legend</span>
+        </button>
+        <p>Do analysis against source data</p>
+        <button id="show-correlation-1" class="ms-Button">
+            <span class="ms-Button-label">Sales/Temper correlation</span>
+        </button>
+        <button id="highlight-top-10" class="ms-Button">
+            <span class="ms-Button-label">Highlight top 10</span>
+        </button>
+        <button id="show-correlation-2" class="ms-Button">
+            <span class="ms-Button-label">Sales/Leaflets correlation</span>
+        </button>
+        <button id="highlight-top-5" class="ms-Button">
+            <span class="ms-Button-label">Highlight top 5</span>
+        </button>
+        <button id="show-sales-trend" class="ms-Button">
+            <span class="ms-Button-label">Overall sales trend</span>
+        </button>
+        <button id="highlight-highest-sales" class="ms-Button">
+            <span class="ms-Button-label">Highlight highest sales</span>
+        </button>
+    </section>
+
+</body>
+
+</html>
