@@ -1,0 +1,120 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+
+<html>
+    <head>
+        <title>Custom functions using WebWorker</title>
+        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+        <script src="../functions/functions.js" type="text/javascript"></script>
+        <script type="text/javascript">
+
+        let ballX = 100;
+        let ballY = 10;
+        let ballDirection = 'downRight';
+
+        Office.onReady(function() {
+            animate();
+            console.log("Office.onReady");
+        });
+
+        function animate() {
+            
+            setInterval(drawBall, 10);
+         }
+
+         const drawBall = () => {
+            const canvas = document.getElementById('mycanvas');
+
+            if (canvas.getContext) {
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                moveBall(ctx.canvas.width, ctx.canvas.height);
+                const radius = 20;
+
+                ctx.beginPath();
+                ctx.arc(ballX, ballY, radius, 0, 2*Math.PI, false);
+                ctx.fillStyle = 'green';
+                ctx.fill();
+                ctx.lineWidth = 4;
+                ctx.strokeStyle = '#003300';
+                ctx.stroke();
+            }
+         }
+
+         const moveBall = (width,height) => {
+             //check for ball collision with context boundaries
+           
+             if (ballX <= 0) {
+                 if (ballDirection === 'upLeft') {
+                     ballDirection = 'upRight';
+                 } else {
+                     ballDirection = "downRight";
+                 }
+             }
+            if (ballY <=0) {
+                if (ballDirection === 'upLeft') {
+                    ballDirection = 'downLeft';
+
+                } else {
+                    ballDirection = "downRight";
+                }
+            }
+            if (ballX >= width) {
+                if (ballDirection ==='upRight'){
+                    ballDirection = 'upLeft';
+
+                } else {
+                    ballDirection = 'downLeft';
+                }
+            }
+            if (ballY >= height) {
+                if (ballDirection ==='downRight'){
+                    ballDirection = 'upRight';
+                } else {
+                    ballDirection = 'upLeft';
+                }
+            }
+            switch (ballDirection) {
+                case 'upRight': {
+                    ballX++;
+                    ballY--;
+                    break;
+                }
+                case 'upLeft': {
+                    ballX--;
+                    ballY--;
+                    break;
+                }
+                case 'downRight': {
+                    ballX++;
+                    ballY++;
+                    break;
+                }
+                case 'downLeft': {
+                    ballX--;
+                    ballY++;
+                    break;
+                }
+            }
+         }
+
+        </script>
+    </head>
+    <body>
+        <script src="./taskpane.js" type="text/javascript"></script>
+        <div class="container">
+            <h1 style="margin: 8px;">Custom Function Using WebWorker</h1>
+            <p>This sample shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in.</p>
+            <p></p>
+            <p><strong>Execute Custom Function without WebWorker</strong></p>
+            <p>Click the button will block the below ball</p>
+        <button type="button" id="executeCFWithoutWebWorker">Execute CF without WebWorker</button>
+
+            <p><strong>Execute Custom Function with WebWorker</strong></p>
+            <p>Click the button will not block the below ball</p>
+        <button type="button" id="executeCFWithWebWorker">Execute CF with WebWorker</button>
+        <p></p>
+        <canvas id = "mycanvas" width = "200" height = "200"></canvas>
+    </div>
+    </body>
+</html>
