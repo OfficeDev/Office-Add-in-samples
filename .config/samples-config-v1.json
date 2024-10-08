@@ -31,8 +31,6 @@
                 "Hello World",
                 "Excel"
             ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
@@ -52,8 +50,6 @@
                 "Hello World",
                 "Word"
             ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
@@ -73,8 +69,6 @@
                 "AIGC",
                 "Word"
             ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
@@ -94,8 +88,6 @@
                 "Writing Assistant",
                 "Word"
             ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
@@ -115,8 +107,6 @@
                 "Chart",
                 "Excel"
             ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
@@ -138,8 +128,6 @@
                 "SSO",
                 "Graph"
             ],
-            "time": "10min to run",
-            "configuration": "Ready for debug",
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
@@ -160,8 +148,6 @@
                 "Excel",
                 "WebWorker"
             ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
@@ -181,8 +167,6 @@
                 "Shape",
                 "Excel"
             ],
-            "time": "5min to run",
-            "configuration": "Ready for debug",
             "thumbnailPath": "assets/thumbnail.png",
             "gifPath": "assets/sampleDemo.gif",
             "suggested": false
