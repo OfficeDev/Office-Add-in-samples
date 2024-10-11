@@ -3,8 +3,8 @@
       "name": "word-add-in-hello-world",
       "reponame": "office-add-in-samples",
       "source": "officedev",
-      "title": "Create an Word Add-in that displays hello world",
-      "shortDescription": "Create a simple Word Add-in that displays hello world.",
+      "title": "Create an Word add-in that displays hello world",
+      "shortDescription": "Create a simple Word add-in that displays hello world.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/hello-world/word-hello-world",
       "longDescription": [
         "Learn how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. Understand the fundamental parts of an Office Add-in."
