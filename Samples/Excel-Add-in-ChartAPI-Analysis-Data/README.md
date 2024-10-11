@@ -46,7 +46,7 @@ We recommend you try this sample by using the [Office Add-ins Development Kit](h
 
 ## Use the sample add-in
 
-1. Select the **Add Sample data** button to import some sample data representing sales figures. This adds a new table with content into a worksheet named "Sample".
+1. Select the **Add Sample data** button to import sample sales figures. This adds a new table to a worksheet named "Sample".
 1. Select the **Sales in different locations** button. This adds a new chart that uses the sample data.
 1. Select the **Reverse vertical axis order** button. This reverses the vertical axis order on the chart.
 1. Select the **Customize title and legend** button. This changes the chart title and legend.
