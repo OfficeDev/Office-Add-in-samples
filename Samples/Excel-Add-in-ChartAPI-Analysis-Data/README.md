@@ -6,8 +6,8 @@ This sample add-in shows how to use the Excel chart APIs to analyze data.
 
 ## Features
 
-- Use Table and Range APIs to insert sample data.
-- Use Chart APIs to help with data analysis, such as chart formatting, trend lines, and top-value calculations.
+-Insert sample data into tables and ranges.
+- Use charts features, such as formatting, trend lines, and top-value calculations, to help with data analysis.
 
 ## How to run this sample
 
