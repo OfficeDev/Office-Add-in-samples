@@ -78,8 +78,6 @@ These are the important files in the sample project.
 | README.md                     
 | RUN_WITH_EXTENSION.md         
 | src/                          Add-ins source code
-|   | commands/
-|   |   | commands.ts
 |   | taskpane/
 |   |   | components/           React components
 |   |   | css/                  Task pane style

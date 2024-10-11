@@ -71,9 +71,6 @@ These are the important files in the sample project.
 | README.md                     
 | RUN_WITH_EXTENSION.md         
 | src/                          Add-in source code
-|   | commands/
-|   |   | commands.html        
-|   |   | commands.ts
 |   | taskpane/
 |   |   | taskpane.css          Task pane style
 |   |   | taskpane.html         Task pane entry HTML

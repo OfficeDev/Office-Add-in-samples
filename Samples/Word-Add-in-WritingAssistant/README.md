@@ -71,9 +71,6 @@ These are the important files in the sample project.
 | README.md                     
 | RUN_WITH_EXTENSION.md         
 | src/                          Add-ins source code
-|   | commands/
-|   |   | commands.html
-|   |   | commands.ts
 |   | taskpane/
 |   |   | componets/            React components used in this sample
 |   |   |   |Annotations.tsx

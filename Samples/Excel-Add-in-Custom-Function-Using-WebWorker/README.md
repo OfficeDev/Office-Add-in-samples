@@ -81,8 +81,6 @@ These are the important files in the sample project.
 | RUN_WITH_EXTENSION.md         
 | SECURITY.md
 | src/                          Add-ins source code
-|   | commands/
-|   |   | commands.js
 |   | taskpane/
 |   |   | taskpane.html         Task pane entry HTML
 |   |   | taskpane.js           Add API calls and logic here
