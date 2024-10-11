@@ -50,7 +50,7 @@ We recommend you try this sample by using the [Office Add-ins Development Kit](h
 1. Select the **Sales in different locations** button. This adds a new chart that uses the sample data.
 1. Select the **Reverse vertical axis order** button. This reverses the vertical axis order on the chart.
 1. Select the **Customize title and legend** button. This changes the chart title and legend.
-1. Select the buttons under **Do analysis against source data** for different ways to view the sample data with charts.
+1. Select the buttons under **Analyze source data** for different ways to view the sample data with charts.
 
 ## Explore sample files
 

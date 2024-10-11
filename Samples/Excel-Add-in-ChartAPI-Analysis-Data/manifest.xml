@@ -5,7 +5,7 @@
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="UsingChartAPIAnylysisData"/>
-  <Description DefaultValue="The sample add-in showcases capablities for using chart API to analyse data"/>
+  <Description DefaultValue="The sample add-in showcases capablities for using chart API to analyze data"/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>

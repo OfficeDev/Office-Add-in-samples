@@ -11,10 +11,10 @@ extensions:
   technologies:
     - Add-ins
   createdDate: '10/11/2021 10:00:00 AM'
-description: 'Create a simple Word Add-in that displays hello world.'
+description: 'Create a simple Word add-in that displays hello world.'
 ---
 
-# Create a Word Add-in that displays hello world
+# Create a Word add-in that displays hello world
 
 ## Summary
 
