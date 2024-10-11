@@ -19,6 +19,7 @@ We recommend you try this sample by using the [Office Add-ins Development Kit](h
     Once you are finished testing and debugging the add-in, select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
 
 ## Explore the add-in code
+
 To explore an Office add-in project, you can start with the key files listed below.
 
 - The `./manifest.xml` file in the root directory of the project defines the settings and capabilities of the add-in.  <br>You can check whether your manifest file is valid by selecting **Validate Manifest File** option from the Office Add-ins Development Kit.
