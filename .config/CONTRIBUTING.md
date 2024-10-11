@@ -9,7 +9,7 @@ Default branch is `dev`. You should set `dev` as the target branch of PRs. `dev`
 TBD
 
 ## Add new sample
-1. Add a new project folder under Samples directory.
+1. Add a new project folder under the **Samples** directory.
     1. Make sure it's runnable and well tested.
     2. Add README.md and RUN_WITH_EXTENSION.md. You can use the README_TEMPLATE.md under root directory.
 2. Add a new config to the [config file](samples-config-v1.json) with following format.
