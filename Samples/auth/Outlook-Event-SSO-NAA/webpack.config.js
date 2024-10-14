@@ -32,14 +32,22 @@ module.exports = async (env, options) => {
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.m?js$/,
           // exclude: /node_modules/, // Exclude all node_modules except @azure
           include: [path.resolve(__dirname, "node_modules/@azure"), path.resolve(__dirname, "src")],
-          exclude: /node_modules/,
           use: {
             loader: "babel-loader",
             options: {
-              presets: ["@babel/preset-env"],
+              presets: [
+                [
+                  "@babel/preset-env",
+                  {
+                    targets: {
+                      browsers: ["since 2015"], // Create a bundle that is compatible with loading in older versions of Office clients.
+                    },
+                  },
+                ],
+              ],
             },
           },
         },
