@@ -179,7 +179,7 @@ If you prefer to run the web server and host the add-in's web files from your co
 
    The http-server will run and host the current folder's files on localhost:3000.
 
-1. Follow the steps in [Run the sample](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/excel-keyboard-shortcuts#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
+1. Follow the steps in [Run the sample](#run-the-sample), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Questions and feedback
 

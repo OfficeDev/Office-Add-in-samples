@@ -188,18 +188,15 @@ The **\<LaunchEvents\>** element maps the three events that activate the add-in 
 
 ### Configure the event handlers
 
-The event object is passed to its respective handler in the **commands.js** file for processing. To ensure that the event-based add-in runs in classic Outlook on Windows, the JavaScript file that contains your handlers (in this case, **commands.js**) must call `Office.actions.associate`. This method maps the function ID specified in the manifest to its respective event handler in the JavaScript file.
+The event object is passed to its respective handler in the **commands.js** file for processing. To ensure that the event-based add-in runs in Outlook, the JavaScript file that contains your handlers (in this case, **commands.js**) must call `Office.actions.associate`. This method maps the function ID specified in the manifest to its respective event handler in the JavaScript file.
 
 ```javascript
 /** 
- * Maps the event handler name specified in the manifest's LaunchEvent element to its JavaScript counterpart.
- * This ensures support in classic Outlook on Windows. 
+ * Maps the event handler name specified in the manifest to its JavaScript counterpart.
  */
-if (Office.context.platform === Office.PlatformType.PC || Office.context.platform == null) {
-    Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipientsChangedHandler);
-    Office.actions.associate("onMessageSendHandler", onMessageSendHandler);
-    Office.actions.associate("onSensitivityLabelChangedHandler", onSensitivityLabelChangedHandler);
-}
+Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipientsChangedHandler);
+Office.actions.associate("onMessageSendHandler", onMessageSendHandler);
+Office.actions.associate("onSensitivityLabelChangedHandler", onSensitivityLabelChangedHandler);
 ```
 
 The handler calls the [event.completed](https://learn.microsoft.com/javascript/api/outlook/office.mailboxevent#outlook-office-mailboxevent-completed-member(1)) method to signify when it completes processing an event. In the `onMessageSendHandler` function, the `event.completed` call specifies the [allowEvent](https://learn.microsoft.com/javascript/api/outlook/office.smartalertseventcompletedoptions#outlook-office-smartalertseventcompletedoptions-allowevent-member) property to indicate whether the event can continue to execute or must terminate. It also specifies the [errorMessage](https://learn.microsoft.com/javascript/api/outlook/office.smartalertseventcompletedoptions#outlook-office-smartalertseventcompletedoptions-errormessage-member) property to display the Smart Alerts dialog to indicate that the sensitivity label was updated.

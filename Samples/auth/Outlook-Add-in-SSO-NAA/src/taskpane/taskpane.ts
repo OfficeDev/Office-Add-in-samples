@@ -3,7 +3,7 @@
  * See LICENSE in the project root for license information.
  */
 
-/* global document, Office */
+/* global document, Office, console */
 
 import { AccountManager } from "./authConfig";
 import { makeGraphRequest } from "./msgraph-helper";
@@ -16,34 +16,36 @@ const getUserFilesButton = document.getElementById("getUserFiles");
 const userName = document.getElementById("userName");
 const userEmail = document.getElementById("userEmail");
 
+// Initialize when Office is ready.
 Office.onReady((info) => {
   if (info.host === Office.HostType.Outlook) {
     if (sideloadMsg) sideloadMsg.style.display = "none";
     if (appBody) appBody.style.display = "flex";
     if (getUserDataButton) {
-      getUserDataButton.onclick = getUserData;
+      getUserDataButton.addEventListener("click", getUserData);
     }
     if (getUserFilesButton) {
-      getUserFilesButton.onclick = getUserFiles;
+      getUserFilesButton.addEventListener("click", getUserFiles);
     }
-
-    // Initialize MSAL. MSAL need's a loginHint for when running in a browser.
-
+    // Initialize MSAL.
     accountManager.initialize();
   }
 });
 
+/**
+ * Writes a list of filenames into the email body.
+ * @param fileNameList The list of filenames.
+ */
 async function writeFileNames(fileNameList: string[]) {
   const item = Office.context.mailbox.item;
   let fileNameBody: string = "";
-  fileNameList.map((item) => fileNameBody += "<br/>" + item);
+  fileNameList.map((fileName) => (fileNameBody += "<br/>" + fileName));
 
-  Office.context.mailbox.item.body.setAsync(
-    fileNameBody,
-    {
+  if (item) {
+    item.body.setAsync(fileNameBody, {
       coercionType: "html",
-    }
-  );
+    });
+  }
 }
 
 /**
@@ -52,19 +54,19 @@ async function writeFileNames(fileNameList: string[]) {
  */
 async function getUserData() {
   const userDataElement = document.getElementById("userData");
-  const userAccount = await accountManager.ssoGetUserIdentity(["user.read"]);
-  const idTokenClaims = userAccount.idTokenClaims as { name?: string; preferred_username?: string };
+  // Specify minimum scopes for the token needed.
+  const accessToken = await accountManager.ssoGetAccessToken(["user.read"]);
 
-  console.log(userAccount);
+  const response: { displayName: string; mail: string } = await makeGraphRequest(accessToken, "/me", "");
 
   if (userDataElement) {
     userDataElement.style.visibility = "visible";
   }
   if (userName) {
-    userName.innerText = idTokenClaims.name ?? "";
+    userName.innerText = response.displayName ?? "";
   }
   if (userEmail) {
-    userEmail.innerText = idTokenClaims.preferred_username ?? "";
+    userEmail.innerText = response.mail ?? "";
   }
 }
 
@@ -87,7 +89,7 @@ async function getUserFiles() {
  */
 async function getFileNames(count = 10) {
   // Specify minimum scopes for the token needed.
-  const accessToken = await accountManager.ssoGetToken(["Files.Read"]);
+  const accessToken = await accountManager.ssoGetAccessToken(["Files.Read"]);
   const response: { value: { name: string }[] } = await makeGraphRequest(
     accessToken,
     "/me/drive/root/children",

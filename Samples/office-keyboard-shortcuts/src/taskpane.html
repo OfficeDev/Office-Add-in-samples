@@ -1,0 +1,66 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contoso Task Pane Add-in</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+    <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="taskpane.js"></script>
+
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
+    <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/office-keyboard-shortcuts-run" />
+    
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <img width="90" height="90" src="../assets/logo-filled.png" alt="Contoso" title="Contoso" />
+        <h1 class="ms-font-su">Keyboard shortcuts sample</h1>
+    </header>
+    <section id="sideload-msg" class="ms-welcome__main">
+        <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
+    </section>
+    <main id="app-body" class="ms-welcome__main" style="display: none;">
+        <div id="task-pane-content">
+            <p class="ms-font-m"> Try the following keyboard shortcuts.</p>
+            <ul class="ms-List ms-welcome__features">
+                <li class="ms-ListItem">
+                    <span class="ms-font-m"><b>Ctrl+Alt+1</b>: Open the add-in's task pane.</span>
+                </li>
+                <li class="ms-ListItem">
+                    <span class="ms-font-m"><b>Ctrl+Alt+2</b>: Hide the add-in's task pane.</span>
+                </li>
+                <li class="ms-ListItem">
+                    <span class="ms-font-m">
+                        <b>Ctrl+Alt+3</b>: Run an action that's specific to the current Office host.
+                        In Excel, this shortcut cycles through colors in the currently selected cell.
+                        In Word, this shortcut adds text to the document.
+                    </span>
+                </li>
+            </ul>
+            <hr>
+            <p class="ms-font-m">
+                If a custom shortcut conflicts with an existing shortcut that's defined in the host application or in another add-in, a dialog will be shown.
+                This dialog will ask you to confirm which action you want to be mapped to the keyboard shortcut.
+            </p>
+            <p class="ms-font-m">To test this now, press <b>Ctrl+R</b>.</p>
+            <p class="ms-font-m">After you select an action, you can change your preference by invoking <b>Reset Office Add-in Shortcut Preferences</b> from the search field.</p>
+        </div>
+    </main>
+</body>
+
+</html>

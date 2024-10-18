@@ -303,7 +303,7 @@ function onAppointmentAttendeesChangedHandler(event) {
  * Method that fires when an attachment is being added or removed from the compose email or appointment
  * @param {Office.AsyncResult} event default: Office.AsyncResult
  */
-function onItemAttachmentsChangedHandler(event) {  
+function onItemAttachmentsChangedHandler(event) {
   if (Office.context.platform  !== Office.PlatformType.OfficeOnline){
     console.warn(`onItemAttachmentsChangedHandler(): Unsupported platform for encrypting/decrypting attachments (${Office.context.platform}); leaving...`);
     event.completed();
@@ -546,7 +546,7 @@ function onAppointmentTimeChangedHandler(event) {
       console.error(`onAppointmentTimeChangedHandler(): Action failed with message ${asyncResult.error.message}`);
       event.completed();
     }
-  });    
+  });
 }
 
 // 1st parameter: FunctionName of LaunchEvent in the manifest; 2nd parameter: Its implementation in this .js file.
