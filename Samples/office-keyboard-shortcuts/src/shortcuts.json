@@ -1,48 +1,48 @@
 {
     "actions": [
         {
-            "id": "SHOWTASKPANE",
+            "id": "ShowTaskpane",
             "type": "ExecuteFunction",
             "name": "Show task pane for add-in"
         },
         {
-            "id": "HIDETASKPANE",
+            "id": "HideTaskpane",
             "type": "ExecuteFunction",
             "name": "Hide task pane for add-in"
         },
         {
-            "id": "SETCOLOR",
+            "id": "RunAction",
             "type": "ExecuteFunction",
-            "name": "Cycle through cell colors"
+            "name": "Run an action specific to the Office host"
         },
         {
-            "id": "TESTCONFLICT",
+            "id": "TestConflict",
             "type": "ExecuteFunction",
-            "name": "Test the conflict modal"
+            "name": "Test the conflict dialog"
         }
 
     ],
     "shortcuts": [
         {
-            "action": "SHOWTASKPANE",
+            "action": "ShowTaskpane",
             "key": {
                 "default": "Ctrl+Alt+1"
             }
         },
         {
-            "action": "HIDETASKPANE",
+            "action": "HideTaskpane",
             "key": {
                 "default": "Ctrl+Alt+2"
             }
         },
         {
-            "action": "SETCOLOR",
+            "action": "RunAction",
             "key": {
                 "default": "Ctrl+Alt+3"
             }
         },
         {
-            "action": "TESTCONFLICT",
+            "action": "TestConflict",
             "key": {
                 "default": "Ctrl+R"
             }

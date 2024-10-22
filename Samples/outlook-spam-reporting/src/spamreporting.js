@@ -45,3 +45,9 @@ function onSpamReport(event) {
     }
   );
 }
+
+/**
+ * IMPORTANT: To ensure your add-in is supported in Outlook, remember to map the event handler name
+ * specified in the manifest to its JavaScript counterpart.
+ */
+Office.actions.associate("onSpamReport", onSpamReport);
