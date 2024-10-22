@@ -74,25 +74,6 @@
             "suggested": false
         },
         {
-            "id": "Word-Add-in-WritingAssistant",
-            "onboardDate": "2024-03-06",
-            "title": "Word Writing Assistant",
-            "shortId": "Word Writing Assistant",
-            "shortDescription": "A Word add-in to assist with writing a Word document.",
-            "fullDescription": "This add-in demonstrates Word add-in capabilities to help users check errors, improve writing, and rephrase content.",
-            "types": [
-                "Word"
-            ],
-            "tags": [
-                "TS",
-                "Writing Assistant",
-                "Word"
-            ],
-            "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
-            "suggested": false
-        },
-        {
             "id": "Excel-Add-in-ChartAPI-Analysis-Data",
             "onboardDate": "2024-02-27",
             "title": "Use the Excel Chart APIs to analyze data",
