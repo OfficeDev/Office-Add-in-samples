@@ -44,6 +44,9 @@ When you are submitting a new sample solution, please name the sample solution f
 * If your solution is demonstrating multiple technologies, please use functional terms as the name for the solution folder.
 * Do not use a period in the folder name of the provided sample.
 
+### Add your sample into sample gallery of Office Add-ins Development Kit
+[See steps here](./ADD_SAMPLE_INTO_DEV_KIT.md)
+
 ## Add your code sample to a pull request
 
 Use the following steps to submit a pull request for your new code sample.

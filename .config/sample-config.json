@@ -1,0 +1,55 @@
+{
+    "filterOptions": {
+        "capabilities": [
+            "Word",
+            "Excel",
+            "PowerPoint"
+        ],
+        "languages": [
+            "TypeScript",
+            "JavaScript"
+        ],
+        "technologies": [
+        ]
+    },
+    "samples": [
+        {
+            "id": "Excel-HelloWorld-TaskPane-JS",
+            "onboardDate": "2024-10-24",
+            "title": "Excel Hello World Add-in",
+            "shortId": "Excel Hello World",
+            "shortDescription": "A simple Excel task pane Add-in using JavaScript.",
+            "fullDescription": "This sample demonstrates how to create a simple Excel task pane Add-in using JavaScript.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "JavaScript",
+                "Hello World",
+                "Excel"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false
+        },
+        {
+            "id": "Word-HelloWorld-TaskPane-JS",
+            "onboardDate": "2024-10-24",
+            "title": "Word Hello World Add-in",
+            "shortId": "Word Hello World",
+            "shortDescription": "A simple Word task pane Add-in using JavaScript.",
+            "fullDescription": "This sample demonstrates how to create a simple Word task pane Add-in using JavaScript.",
+            "types": [
+                "Word"
+            ],
+            "tags": [
+                "JavaScript",
+                "Hello World",
+                "Word"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "gifPath": "assets/sampleDemo.gif",
+            "suggested": false
+        }
+    ]
+}
