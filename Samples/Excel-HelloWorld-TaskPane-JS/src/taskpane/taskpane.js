@@ -21,7 +21,7 @@ export async function run() {
        */
       const range = context.workbook.getSelectedRange();
 
-      // Read the range address
+      // Read the range address.
       range.load("address");
 
       // Update the fill color
