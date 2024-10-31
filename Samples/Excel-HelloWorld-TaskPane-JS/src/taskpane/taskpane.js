@@ -24,7 +24,7 @@ export async function run() {
       // Read the range address.
       range.load("address");
 
-      // Update the fill color
+      // Update the fill color.
       range.format.fill.color = "yellow";
 
       await context.sync();
