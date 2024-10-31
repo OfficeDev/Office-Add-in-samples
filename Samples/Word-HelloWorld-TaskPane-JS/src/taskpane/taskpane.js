@@ -19,7 +19,7 @@ export async function run() {
      * Insert your Word code here
      */
 
-    // insert a paragraph at the end of the document.
+    // Insert a paragraph at the end of the document.
     const paragraph = context.document.body.insertParagraph("Hello World", Word.InsertLocation.end);
 
     // change the paragraph color to blue.
