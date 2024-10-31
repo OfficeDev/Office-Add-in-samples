@@ -14,18 +14,18 @@
     },
     "samples": [
         {
-            "id": "Excel-HelloWorld-TaskPane-JS",
-            "onboardDate": "2024-10-24",
-            "title": "Excel Hello World Add-in",
-            "shortId": "Excel Hello World",
-            "shortDescription": "A simple Excel task pane Add-in using JavaScript.",
-            "fullDescription": "This sample demonstrates how to create a simple Excel task pane Add-in using JavaScript.",
+            "id": "Excel-Get-Started-With-Dev-Kit",
+            "onboardDate": "2024-11-01",
+            "title": "Excel - Get Started with the Dev Kit",
+            "shortId": "Excel Get started",
+            "shortDescription": "A simple Excel task pane Add-in using JavaScript to help you get started with the Office Add-ins Development Kit.",
+            "fullDescription": "This sample demonstrates how to create a simple Word task pane Add-in using JavaScript.",
             "types": [
                 "Excel"
             ],
             "tags": [
                 "JavaScript",
-                "Hello World",
+                "Get Started",
                 "Excel"
             ],
             "thumbnailPath": "assets/thumbnail.png",
@@ -33,18 +33,18 @@
             "suggested": false
         },
         {
-            "id": "Word-HelloWorld-TaskPane-JS",
-            "onboardDate": "2024-10-24",
-            "title": "Word Hello World Add-in",
-            "shortId": "Word Hello World",
-            "shortDescription": "A simple Word task pane Add-in using JavaScript.",
+            "id": "Word-Get-Started-With-Dev-Kit",
+            "onboardDate": "2024-11-01",
+            "title": "Word - Get Started with the Dev Kit",
+            "shortId": "Word Get Started",
+            "shortDescription": "A simple Word task pane Add-in using JavaScript to help you get started with the Office Add-ins Development Kit.",
             "fullDescription": "This sample demonstrates how to create a simple Word task pane Add-in using JavaScript.",
             "types": [
                 "Word"
             ],
             "tags": [
                 "JavaScript",
-                "Hello World",
+                "Get Started",
                 "Word"
             ],
             "thumbnailPath": "assets/thumbnail.png",
