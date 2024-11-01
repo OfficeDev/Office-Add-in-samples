@@ -32,7 +32,7 @@
             "id": "word-get-started-with-dev-kit",
             "onboardDate": "2024-11-01",
             "title": "Word - Get Started with the Dev Kit",
-            "description": "A basic Word task pane Add-in using JavaScript to help you get started with the Office Add-ins Development Kit.",
+            "description": "This sample demonstrates how to create a basic Word add-in with a task pane that uses JavaScript.",
             "types": [
                 "Word"
             ],
