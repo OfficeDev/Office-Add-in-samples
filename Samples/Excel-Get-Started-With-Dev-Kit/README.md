@@ -2,9 +2,9 @@
 
 <img src="./assets/thumbnail.png" width="800"/>
 
-This is an Excel hello-world add-in that simply sets background color of selected range.
+This is a basic Excel add-in that sets background color of selected range. It uses a button in the add-in's task pane to do this.
 
-Excel add-ins are integrations built by third parties into Excel by using [Excel JavaScript API](https://learn.microsoft.com/en-us/office/dev/add-ins/reference/overview/excel-add-ins-reference-overview) and [Office Platform capabilities](https://learn.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins).
+Excel add-ins are integrations that use the [Excel JavaScript APIs](https://learn.microsoft.com/office/dev/add-ins/reference/overview/excel-add-ins-reference-overview) and [Office Platform capabilities](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins) to connect web services to the workbook.
 
 ## How to run this sample
 
@@ -15,15 +15,13 @@ Excel add-ins are integrations built by third parties into Excel by using [Excel
 - Node.js (the latest LTS version). Visit the [Node.js site](https://nodejs.org/) to download and install the right version for your operating system. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 - Office connected to a Microsoft 365 subscription. You might qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program), see [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-) for details. Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try?rtc=1) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/buy/compare-all-microsoft-365-products).
   
-### Run the add-in using Office Add-ins Development Kit extension
+### Run the add-in from the Office Add-ins Development Kit
 
 We recommend you try this sample by using the [Office Add-ins Development Kit](https://marketplace.visualstudio.com/items?itemName=msoffice.microsoft-office-add-in-debugger). The Office Add-ins Development Kit is an end-to-end developer tool for building Office add-ins. It helps create, run, and debug an Office Add-in.
 
 1. **Download the sample code**
 
-   To download this sample code, either:
-   * Open the Office Add-ins Development Kit extension and view samples in the **Sample gallery**. Select the **Create** button in the top-right corner of the sample page.
-   * [Clone](https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository) this repository or download this sample to a folder on your computer. Then, open the folder in Visual Studio Code.
+   Open the Office Add-ins Development Kit extension and view samples in the **Sample gallery**. Select the **Create** button in the top-right corner of the sample page.
    
 1. **Open the Office Add-ins Development Kit**
     
@@ -35,7 +33,7 @@ We recommend you try this sample by using the [Office Add-ins Development Kit](h
 
     <img src="./assets/devkit_preview.png" width="500" alt="Screenshot shows Preview your Office add-in in Office Add-ins Development Kit"/>
 
-    The extension then checks that the prerequisites are met before debugging starts. Check the terminal for detailed information if there are issues with your environment. After this process, the Excel desktop application launches and opens a new workbook with the sample add-in.
+    The extension checks that the prerequisites are met before debugging starts. The terminal will alert you to any issues with your environment. After this process, the Excel desktop application launches and opens a new workbook with the sample add-in sideloaded. The add-in automatically opens as well.
 
 1. **Stop Previewing Your Office Add-in**
 
@@ -43,8 +41,8 @@ We recommend you try this sample by using the [Office Add-ins Development Kit](h
 
 ## Use the sample add-in
 
-1. Select a cell in sheet
-2. Click `Run` in task pane
+1. Select a cell in the current worksheet.
+2. Select `Run` in the task pane.
 
 ## Explore sample files
 
@@ -68,7 +66,7 @@ These are the important files in the sample project.
 |   | taskpane/
 |   |   | taskpane.css          Task pane style
 |   |   | taskpane.html         Task pane entry HTML
-|   |   | taskpane.js           Add API calls and logic here
+|   |   | taskpane.js           Office JS API calls and add-in logic
 | webpack.config.js             Webpack config
 ```
 
