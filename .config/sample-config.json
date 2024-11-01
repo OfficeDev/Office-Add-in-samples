@@ -14,7 +14,7 @@
     },
     "samples": [
         {
-            "id": "Excel-Get-Started-With-Dev-Kit",
+            "id": "excel-get-started-with-dev-kit",
             "onboardDate": "2024-11-01",
             "title": "Excel - Get Started with the Dev Kit",
             "shortId": "Excel Get started",
@@ -33,7 +33,7 @@
             "suggested": false
         },
         {
-            "id": "Word-Get-Started-With-Dev-Kit",
+            "id": "word-get-started-with-dev-kit",
             "onboardDate": "2024-11-01",
             "title": "Word - Get Started with the Dev Kit",
             "shortId": "Word Get Started",

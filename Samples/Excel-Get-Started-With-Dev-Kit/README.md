@@ -17,8 +17,6 @@ Excel add-ins are integrations that use the [Excel JavaScript APIs](https://lear
   
 ### Run the add-in from the Office Add-ins Development Kit
 
-We recommend you try this sample by using the [Office Add-ins Development Kit](https://marketplace.visualstudio.com/items?itemName=msoffice.microsoft-office-add-in-debugger). The Office Add-ins Development Kit is an end-to-end developer tool for building Office add-ins. It helps create, run, and debug an Office Add-in.
-
 1. **Download the sample code**
 
    Open the Office Add-ins Development Kit extension and view samples in the **Sample gallery**. Select the **Create** button in the top-right corner of the sample page.

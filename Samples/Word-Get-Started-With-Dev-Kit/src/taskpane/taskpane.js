@@ -15,16 +15,8 @@ Office.onReady((info) => {
 
 export async function run() {
   return Word.run(async (context) => {
-    /**
-     * Insert your Word code here
-     */
-
     // Insert a paragraph at the end of the document.
     const paragraph = context.document.body.insertParagraph("Hello World", Word.InsertLocation.end);
-
-    // Change the paragraph color to blue.
-    paragraph.font.color = "blue";
-
     await context.sync();
   });
 }
