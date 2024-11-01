@@ -38,7 +38,7 @@
             "title": "Word - Get Started with the Dev Kit",
             "shortId": "Word Get Started",
             "shortDescription": "A basic Word task pane Add-in using JavaScript to help you get started with the Office Add-ins Development Kit.",
-            "fullDescription": "This sample demonstrates how to create a simple Word task pane Add-in using JavaScript.",
+            "fullDescription": "This sample demonstrates how to create a basic Word add-in with a task pane that uses JavaScript.",
             "types": [
                 "Word"
             ],
