@@ -2,9 +2,9 @@
 
 <img src="./assets/thumbnail.png" width="800" alt="A document with 'Hello World' inserted by the add-in."/>
 
-This is an Word hello-world add-in that simply inserts "Hello World" to canvas.
+This is a basic Word add-in that inserts "Hello World" into the document text.
 
-Word add-ins are integrations built by third parties into Word by using [Word JavaScript API](https://learn.microsoft.com/en-us/office/dev/add-ins/reference/overview/word-add-ins-reference-overview) and [Office Platform capabilities](https://learn.microsoft.com/en-us/office/dev/add-ins/overview/office-add-ins).
+Word add-ins are integrations that use the [Word JavaScript APIs](https://learn.microsoft.com/office/dev/add-ins/reference/overview/word-add-ins-reference-overview) and [Office Platform capabilities](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins) to connect web services to the document.
 
 ## How to run this sample
 
