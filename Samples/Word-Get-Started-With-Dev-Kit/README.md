@@ -65,7 +65,7 @@ These are the important files in the sample project.
 |   | taskpane/
 |   |   | taskpane.css          Task pane style
 |   |   | taskpane.html         Task pane entry html
-|   |   | taskpane.js           Add API calls and logic here
+|   |   | taskpane.js           Office JS API calls and add-in logic
 | webpack.config.js             Webpack config
 ```
 
