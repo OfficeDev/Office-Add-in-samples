@@ -1,4 +1,4 @@
-# Excel Hello World Task Pane Add-in
+# Get Started with the Office Add-ins Dev Kit in Word
 
 <img src="./assets/thumbnail.png" width="800"/>
 

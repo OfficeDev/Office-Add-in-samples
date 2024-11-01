@@ -2,8 +2,7 @@
     "filterOptions": {
         "capabilities": [
             "Word",
-            "Excel",
-            "PowerPoint"
+            "Excel"
         ],
         "languages": [
             "TypeScript",
@@ -17,9 +16,7 @@
             "id": "excel-get-started-with-dev-kit",
             "onboardDate": "2024-11-01",
             "title": "Excel - Get Started with the Dev Kit",
-            "shortId": "Excel Get started",
-            "shortDescription": "A basic Excel task pane Add-in using JavaScript to help you get started with the Office Add-ins Development Kit.",
-            "fullDescription": "This sample demonstrates how to create a basic Excel add-in with a task pane that uses JavaScript.",
+            "description": "This sample demonstrates how to create a basic Excel add-in with a task pane that uses JavaScript.",
             "types": [
                 "Excel"
             ],
@@ -29,16 +26,13 @@
                 "Excel"
             ],
             "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         },
         {
             "id": "word-get-started-with-dev-kit",
             "onboardDate": "2024-11-01",
             "title": "Word - Get Started with the Dev Kit",
-            "shortId": "Word Get Started",
-            "shortDescription": "A basic Word task pane Add-in using JavaScript to help you get started with the Office Add-ins Development Kit.",
-            "fullDescription": "This sample demonstrates how to create a basic Word add-in with a task pane that uses JavaScript.",
+            "description": "A basic Word task pane Add-in using JavaScript to help you get started with the Office Add-ins Development Kit.",
             "types": [
                 "Word"
             ],
@@ -48,7 +42,6 @@
                 "Word"
             ],
             "thumbnailPath": "assets/thumbnail.png",
-            "gifPath": "assets/sampleDemo.gif",
             "suggested": false
         }
     ]
