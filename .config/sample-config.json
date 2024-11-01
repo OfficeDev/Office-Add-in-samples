@@ -37,7 +37,7 @@
             "onboardDate": "2024-11-01",
             "title": "Word - Get Started with the Dev Kit",
             "shortId": "Word Get Started",
-            "shortDescription": "A simple Word task pane Add-in using JavaScript to help you get started with the Office Add-ins Development Kit.",
+            "shortDescription": "A basic Word task pane Add-in using JavaScript to help you get started with the Office Add-ins Development Kit.",
             "fullDescription": "This sample demonstrates how to create a simple Word task pane Add-in using JavaScript.",
             "types": [
                 "Word"
