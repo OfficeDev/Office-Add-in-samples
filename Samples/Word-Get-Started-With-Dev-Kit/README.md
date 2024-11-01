@@ -2,7 +2,7 @@
 
 <img src="./assets/thumbnail.png" width="800" alt="A document with 'Hello World' inserted by the add-in."/>
 
-This is a basic Word add-in that inserts "Hello World" into the document text.
+This is a basic Word add-in that inserts "Hello World" into the document text set the paragraph font color to blue.
 
 Word add-ins are integrations that use the [Word JavaScript APIs](https://learn.microsoft.com/office/dev/add-ins/reference/overview/word-add-ins-reference-overview) and [Office Platform capabilities](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins) to connect web services to the document.
 
@@ -15,13 +15,11 @@ Word add-ins are integrations that use the [Word JavaScript APIs](https://learn.
 - Node.js (the latest LTS version). Visit the [Node.js site](https://nodejs.org/) to download and install the right version for your operating system. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 - Office connected to a Microsoft 365 subscription. You might qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program), see [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-) for details. Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try?rtc=1) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/buy/compare-all-microsoft-365-products).
   
-### Run the add-in using Office Add-ins Development Kit extension
+### Run the add-in from the Office Add-ins Development Kit
 
 1. **Download the sample code**
 
-   To download this sample code, either:
-   * Open the Office Add-ins Development Kit extension and view samples in the **Sample gallery**. Select the **Create** button in the top-right corner of the sample page.
-   * [Clone](https://docs.github.com/repositories/creating-and-managing-repositories/cloning-a-repository) this repository or download this sample to a folder on your computer. Then, open the folder in Visual Studio Code.
+   Open the Office Add-ins Development Kit extension and view samples in the **Sample gallery**. Select the **Create** button in the top-right corner of the sample page.
    
 1. **Open the Office Add-ins Development Kit**
     
@@ -33,7 +31,7 @@ Word add-ins are integrations that use the [Word JavaScript APIs](https://learn.
 
     <img src="./assets/devkit_preview.png" width="500" alt="Screenshot shows Preview your Office add-in in Office Add-ins Development Kit"/>
 
-    The extension then checks that the prerequisites are met before debugging starts. Check the terminal for detailed information if there are issues with your environment. After this process, the Excel desktop application launches and opens a new workbook with the sample add-in.
+    The extension checks that the prerequisites are met before debugging starts. The terminal will alert you to any issues with your environment. After this process, the Word desktop application launches and opens a new workbook with the sample add-in sideloaded. The add-in automatically opens as well.
 
 1. **Stop Previewing Your Office Add-in**
 
@@ -90,7 +88,7 @@ If you edit the manifest as part of your changes, use the **Validate Manifest Fi
 
 ## Engage with the team
 
-Did you experience any problems with the sample? [Create an issue]( https://github.com/OfficeDev/Office-Samples/issues/new) and we'll help you out.
+Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
 
 Want to learn more about new features and best practices for the Office platform? [Join the Microsoft Office Add-ins community call](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins-community-call).
 
