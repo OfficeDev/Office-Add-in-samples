@@ -18,7 +18,7 @@
             "onboardDate": "2024-11-01",
             "title": "Excel - Get Started with the Dev Kit",
             "shortId": "Excel Get started",
-            "shortDescription": "A simple Excel task pane Add-in using JavaScript to help you get started with the Office Add-ins Development Kit.",
+            "shortDescription": "A basic Excel task pane Add-in using JavaScript to help you get started with the Office Add-ins Development Kit.",
             "fullDescription": "This sample demonstrates how to create a simple Word task pane Add-in using JavaScript.",
             "types": [
                 "Excel"
