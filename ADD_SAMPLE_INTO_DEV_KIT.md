@@ -1,6 +1,6 @@
 # How to add samples into sample gallery of Office Add-ins Development Kit
 ## How it works?
-When developers open the sample gallery of the Dev Kit. It will try to fetch the [samples-config-v1.json](./samples-config-v1.json) file in the `main` branch and consumes it. When developer decides to create from a sample in the sample gallery, the Dev Kit will concat the repo url and sample config id to construct a url and fetch it, to download the zip of sample project from this repo and unzip it to the designated path.
+The Dev Kit sample gallery uses the [samples-config-v1.json](./samples-config-v1.json) file in this repo's `main` branch. It uses the sample configuration ID find the files, downloads a .zip file of the sample project from this repo, and unzips that file in the designated path.
 ```
 "filterOptions": { // Consumed by the search filters
     "capabilities": [
