@@ -8,7 +8,7 @@
 
     Select **Preview Your Office Add-in(F5)** to launch the add-in and debug the code. In the drop down menu, select the option **Desktop (Edge Chromium)**.
 
-    <img src="./assets/devkit_preview.png" width="500" alt="Screenshot shows Preview your Office add-in in Office Add-ins Development Kit"/>
+    <img src="./assets/devkit_preview.png" width="500" alt="The 'Preview your Office Add-in' option in the Office Add-ins Development Kit's task pane."/>
 
     The extension checks that the prerequisites are met before debugging starts. The terminal will alert you to any issues with your environment. After this process, the Word desktop application launches and opens a new workbook with the sample add-in sideloaded. The add-in automatically opens as well.
 

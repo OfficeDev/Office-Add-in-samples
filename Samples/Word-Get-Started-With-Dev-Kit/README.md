@@ -2,7 +2,7 @@
 
 <img src="./assets/thumbnail.png" width="800" alt="A document with 'Hello World' inserted by the add-in."/>
 
-This is a basic Word add-in that inserts "Hello World" into the document text set the paragraph font color to blue.
+This is a basic Word add-in that inserts "Hello World" into the document text and sets the paragraph font color to blue.
 
 Word add-ins are integrations that use the [Word JavaScript APIs](https://learn.microsoft.com/office/dev/add-ins/reference/overview/word-add-ins-reference-overview) and [Office Platform capabilities](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins) to connect web services to the document.
 
@@ -29,7 +29,7 @@ Word add-ins are integrations that use the [Word JavaScript APIs](https://learn.
 
     Select **Preview Your Office Add-in(F5)** to launch the add-in and debug the code. In the drop down menu, select the option **Desktop (Edge Chromium)**.
 
-    <img src="./assets/devkit_preview.png" width="500" alt="Screenshot shows Preview your Office add-in in Office Add-ins Development Kit"/>
+    <img src="./assets/devkit_preview.png" width="500" alt="The 'Preview your Office Add-in' option in the Office Add-ins Development Kit's task pane."/>
 
     The extension checks that the prerequisites are met before debugging starts. The terminal will alert you to any issues with your environment. After this process, the Word desktop application launches and opens a new workbook with the sample add-in sideloaded. The add-in automatically opens as well.
 
