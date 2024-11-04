@@ -39,7 +39,7 @@ Word add-ins are integrations that use the [Word JavaScript APIs](https://learn.
 
 ## Use the sample add-in
 
-1. Click `Run` in task pane
+1. Select `Run` in the add-in's task pane.
 
 ## Explore sample files
 

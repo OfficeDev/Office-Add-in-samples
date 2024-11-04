@@ -1,6 +1,6 @@
 # Get Started with the Office Add-ins Dev Kit in Word
 
-<img src="./assets/thumbnail.png" width="800"/>
+<img src="./assets/thumbnail.png" width="800" alt="A workbook with a cell with yellow background color changed by the add-in."/>
 
 This is a basic Excel add-in that sets background color of selected range. It uses a button in the add-in's task pane to do this.
 
@@ -23,7 +23,7 @@ Excel add-ins are integrations that use the [Excel JavaScript APIs](https://lear
    
 1. **Open the Office Add-ins Development Kit**
     
-    Select the <img src="./assets/Icon_Office_Add-ins_Development_Kit.png" width="30" alt="Office Add-ins Development Kit"/> icon in the **Activity Bar** to open the extension.
+    Select the <img src="./assets/Icon_Office_Add-ins_Development_Kit.png" width="30" alt="The Office Add-ins Development Kit icon in the activity bar of VSCode"/> icon in the **Activity Bar** to open the extension.
 
 1. **Preview Your Office Add-in (F5)**
 
