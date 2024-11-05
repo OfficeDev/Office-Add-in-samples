@@ -15,7 +15,7 @@
         {
             "id": "excel-get-started-with-dev-kit",
             "onboardDate": "2024-11-01",
-            "title": "Excel - Get Started with the Dev Kit",
+            "title": "Excel - Get started with the Office Add-ins Development Kit",
             "description": "This sample demonstrates how to create a basic Excel add-in with a task pane that uses JavaScript.",
             "types": [
                 "Excel"
@@ -31,7 +31,7 @@
         {
             "id": "word-get-started-with-dev-kit",
             "onboardDate": "2024-11-01",
-            "title": "Word - Get Started with the Dev Kit",
+            "title": "Word - Get started with the Office Add-ins Development Kit ",
             "description": "This sample demonstrates how to create a basic Word add-in with a task pane that uses JavaScript.",
             "types": [
                 "Word"
