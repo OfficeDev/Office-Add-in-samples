@@ -14,14 +14,11 @@ extensions:
 description: "This sample shows how to implement SSO in an Outlook add-in by using nested app authentication."
 ---
 
-# Outlook add-in with SSO using nested app authentication (preview)
+# Outlook add-in with SSO using nested app authentication
 
 ## Summary
 
 This sample shows how to use MSAL.js nested app authentication (NAA) in an Outlook Add-in to access Microsoft Graph APIs for the signed in user. The sample displays the signed in user's name and email. It also inserts the names of files from the user's Microsoft OneDrive account into a new message body.
-
-> [!IMPORTANT]
-> Nested app authentication is currently in preview. To try this feature, you need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) and choose **Current Channel (Preview)**. Don't use NAA in production add-ins. We invite you to try out NAA in test or development environments and welcome feedback on your experience through GitHub (see https://github.com/OfficeDev/office-js/issues).
 
 ## Features
 
@@ -30,15 +27,11 @@ This sample shows how to use MSAL.js nested app authentication (NAA) in an Outlo
 
 ## Applies to
 
-- Outlook (Current Channel (preview) for classic Outlook only, new Outlook coming soon).
-- Outlook on the web.
-
-For more information on supported platforms, see [NAA supported accounts and hosts](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in#naa-supported-accounts-and-hosts).
+- Outlook on Windows (new and classic), Mac, iOS, and on the web.
 
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- You need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) to use the NAA preview features. Choose the **Current Channel (Preview)** insider level.
 - [Node.js](https://nodejs.org/) version 16 or greater.
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
@@ -134,8 +127,6 @@ If you find a security issue with our libraries or services, report the issue to
 
 ## More resources
 
-- NAA public preview blog: https://aka.ms/NAApreviewblog
-- [Updates on deprecating legacy Exchange Online tokens for Outlook add-ins](https://devblogs.microsoft.com/microsoft365dev/updates-on-deprecating-legacy-exchange-online-tokens-for-outlook-add-ins/?commentid=1131)
 - NAA docs to get started: https://aka.ms/NAAdocs
 - NAA FAQ: https://aka.ms/NAAFAQ
 - NAA Word, Excel, and PowerPoint sample: https://aka.ms/NAAsampleOffice
