@@ -1,4 +1,4 @@
-# Get Started with the Office Add-ins Developer Kit in Word
+# Get Started with the Office Add-ins Development Kit in Excel
 
 <img src="./assets/thumbnail.png" width="800" alt="A workbook with a cell with yellow background color changed by the add-in."/>
 
@@ -74,6 +74,7 @@ If you have problems running the sample, take these steps.
 
 - Close any open instances of Excel.
 - Close the previous web server started for the sample with the **Stop Previewing Your Office Add-in** Office Add-ins Development Kit extension option.
+- Try running again.
 
 If you still have problems, see [troubleshoot development errors](https://learn.microsoft.com//office/dev/add-ins/testing/troubleshoot-development-errors) or [create a GitHub issue](https://aka.ms/officedevkitnewissue) and we'll help you.  
 
@@ -97,7 +98,3 @@ Want to learn more about new features and best practices for the Office platform
 
 Copyright (c) 2024 Microsoft Corporation. All rights reserved.
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-## Disclaimer
-
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
