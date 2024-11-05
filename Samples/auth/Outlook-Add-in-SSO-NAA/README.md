@@ -27,7 +27,7 @@ This sample shows how to use MSAL.js nested app authentication (NAA) in an Outlo
 
 ## Applies to
 
-- Outlook on Windows (new and classic), Mac, iOS, and on the web.
+- Outlook on Windows (new and classic), Mac, mobile, and on the web.
 
 ## Prerequisites
 
