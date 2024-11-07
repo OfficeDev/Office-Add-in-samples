@@ -70,7 +70,7 @@ These are the important files in the sample project.
 
 ## Troubleshooting
 
-If you have problems running the sample, take these steps.
+If you have problems running the sample, take the following steps.
 
 - Close any open instances of Excel.
 - Close the previous web server started for the sample with the **Stop Previewing Your Office Add-in** Office Add-ins Development Kit extension option.
@@ -86,7 +86,7 @@ For information on debugging on older versions of Office, see [Debug add-ins usi
 
 Once you understand the sample, make it your own! All the information about Office Add-ins is found in our [official documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins). You can also explore more samples in the Office Add-ins Development Kit. Select **View Samples** to see more samples of real-world scenarios.
 
-If you edit the manifest as part of your changes, use the **Validate Manifest File** option in the Office Add-ins Development Kit. This shows you errors in the manifest syntax.
+If you edit the manifest as part of your changes, use the **Validate Manifest File** option in the Office Add-ins Development Kit. This shows you any errors in the manifest syntax.
 
 ## Engage with the team
 
