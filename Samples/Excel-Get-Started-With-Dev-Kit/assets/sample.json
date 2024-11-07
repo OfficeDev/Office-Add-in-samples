@@ -1,0 +1,37 @@
+[
+    {
+      "name": "excel-get-started-with-dev-kit",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Excel - Get Started with the Dev Kit",
+      "shortDescription": "This sample demonstrates how to create a basic Excel add-in with a task pane that uses JavaScript.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-get-started-with-dev-kit",
+      "longDescription": [
+        "A simple Excel task pane Add-in using JavaScript to help you get started with the Office Add-ins Development Kit."
+      ],
+      "creationDateTime": "2024-11-01",
+      "updateDateTime": "2024-11-01",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+       
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+      
+      ]
+    }
+  ] 
