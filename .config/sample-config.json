@@ -59,6 +59,22 @@
             ],
             "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
+        },
+        {
+            "id": "excel-add-in-shapeapi-dashboard",
+            "onboardDate": "2024-11-11",
+            "title": "Use Excel Shape API to Work as a Dashboard",
+            "description": "The sample add-in demonstrates Excel add-in capabilities to help users using shape API to work as a dashboard.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "TypeScript",
+                "Shape",
+                "Excel"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
         }
     ]
 }
