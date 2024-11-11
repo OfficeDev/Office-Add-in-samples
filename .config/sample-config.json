@@ -43,6 +43,22 @@
             ],
             "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
+        },
+        {
+            "id": "excel-add-in-chartapi-analyze-data",
+            "onboardDate": "2024-11-11",
+            "title": "Use the Excel Chart APIs to analyze data",
+            "description": "The sample add-in demonstrates Excel add-in capabilities to help users using chart API to analyze data.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "TypeScript",
+                "Chart",
+                "Excel"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
         }
     ]
 }
