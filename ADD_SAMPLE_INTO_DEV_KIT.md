@@ -12,9 +12,9 @@ For new samples, use `dev` as the target branch for pull requests. The `dev` bra
 
 ## Testing
 
-1. Download the [test package](./assets/dev-kit-test-package.vsix).
-2. Set the environment variable `OTK_SAMPLE_CONFIG_BRANCH` to `dev` or other branch with a valid [sample-config.json](./.config/sample-config.json) of this repo on your devbox. Setting this env variable will force sample gallery to consume the config of dedicated branch.
-3. Uninstall the installed Office Add-ins Development Kit and install the `dev-kit-test-package.vsix` manually in VSCode.
+1. Uninstall the installed Office Add-ins Development Kit 
+2. Download the [test package extension](./assets/dev-kit-test-package.vsix) and install it manually in VSCode.
+3. Set the environment variable `OTK_SAMPLE_CONFIG_BRANCH` to `dev` or other branch with a valid [sample-config.json](./.config/sample-config.json) of this repo on your development machine. Setting this variable will force sample gallery to use the config in the dedicated branch instead of `main`.
 4. Open Dev Kit. Select `View Samples` to view sample gallery and do testing. 
 
 ## Check in the new sample into the sample gallery

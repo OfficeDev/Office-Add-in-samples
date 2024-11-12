@@ -45,10 +45,10 @@
             "suggested": false
         },
         {
-            "id": "excel-add-in-chartapi-analyze-data",
+            "id": "excel-add-in-chart-analyze-data",
             "onboardDate": "2024-11-11",
-            "title": "Use the Excel Chart APIs to analyze data",
-            "description": "The sample add-in demonstrates Excel add-in capabilities to help users using chart API to analyze data.",
+            "title": "Analyze Excel data with charts",
+            "description": "The sample Excel add-in shows how to use charts to help analyze data.",
             "types": [
                 "Excel"
             ],
@@ -61,7 +61,7 @@
             "suggested": false
         },
         {
-            "id": "excel-add-in-shapeapi-dashboard",
+            "id": "excel-add-in-shape-dashboard",
             "onboardDate": "2024-11-11",
             "title": "Use Excel Shape API to Work as a Dashboard",
             "description": "The sample add-in demonstrates Excel add-in capabilities to help users using shape API to work as a dashboard.",
