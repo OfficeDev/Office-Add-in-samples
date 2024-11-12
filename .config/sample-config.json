@@ -63,8 +63,8 @@
         {
             "id": "excel-add-in-shape-dashboard",
             "onboardDate": "2024-11-11",
-            "title": "Use Excel Shape API to Work as a Dashboard",
-            "description": "The sample add-in demonstrates Excel add-in capabilities to help users using shape API to work as a dashboard.",
+            "title": "Create a dashboard in Excel with shapes",
+            "description": "The sample Excel add-in uses shapes to create a dashboard in the workbook.",
             "types": [
                 "Excel"
             ],
