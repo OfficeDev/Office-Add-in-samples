@@ -5,23 +5,20 @@
 
 /* global console, document, Excel, Office */
 
-Office.onReady((info) => {
-  if (info.host === Office.HostType.Excel) {
-    document.getElementById("add-sample-data").onclick = addSampleData;
-    document.getElementById("create-bar-chart").onclick = createBarChart;
-    document.getElementById("reverse-plot-order").onclick = reversePlotOrder;
-    document.getElementById("move-chart-title").onclick = moveChartTitle;
-    document.getElementById("show-correlation-1").onclick = showCorrelation1;
-    document.getElementById("highlight-top-10").onclick = hightlight1;
-    document.getElementById("show-correlation-2").onclick = showCorrelation2;
-    document.getElementById("highlight-top-5").onclick = hightlight2;
-    document.getElementById("show-sales-trend").onclick = showSalesTrendline;
-    document.getElementById("highlight-highest-sales").onclick = highlightSales;
-  }
+Office.onReady(() => {
+  document.getElementById("add-sample-data").onclick = addSampleData;
+  document.getElementById("create-bar-chart").onclick = createBarChart;
+  document.getElementById("reverse-plot-order").onclick = reversePlotOrder;
+  document.getElementById("move-chart-title").onclick = moveChartTitle;
+  document.getElementById("insert-sales-temperature-correlation").onclick = insertSalesTemperatureCorrelation;
+  document.getElementById("highlight-top-10").onclick = highlight1;
+  document.getElementById("insert-sales-leaflets-correlation").onclick = insertSalesLeafletsCorrelation;
+  document.getElementById("highlight-top-5").onclick = highlight2;
+  document.getElementById("show-sales-trend").onclick = showSalesTrendline;
+  document.getElementById("highlight-highest-sales").onclick = highlightSales;
 });
 
-//Creates a bar chart based on the sample data
-var index;
+// Creates a bar chart based on the sample data.
 async function createBarChart() {
   try {
     await Excel.run(async (context) => {
@@ -29,11 +26,11 @@ async function createBarChart() {
       const sheet = context.workbook.worksheets.getItem("Sample");
 
       const dataRange = sheet.getRange("A36:C38");
-      let chart = sheet.charts.add("BarClustered", dataRange, "auto");
+      let chart = sheet.charts.add(Excel.ChartType.barClustered, dataRange, Excel.ChartSeriesBy.auto);
       chart.name = "salesLocation";
       chart.title.text = "Sales in different locations";
       chart.setPosition("K2", "P15");
-      chart.legend.position = "right";
+      chart.legend.position = Excel.ChartLegendPosition.right;
 
       await context.sync();
       showStatus('Success for "Sales in different locations".', false);
@@ -52,7 +49,7 @@ async function reversePlotOrder() {
       let chart = sheet.charts.getItem("salesLocation");
 
       chart.axes.categoryAxis.reversePlotOrder = true;
-      chart.axes.valueAxis.displayUnit = "Thousands";
+      chart.axes.valueAxis.displayUnit = Excel.ChartAxisDisplayUnit.thousands;
 
       await context.sync();
       showStatus('Success for "Reverse vertical axis order".', false);
@@ -69,7 +66,7 @@ async function moveChartTitle() {
       const sheet = context.workbook.worksheets.getItem("Sample");
 
       let chart = sheet.charts.getItem("salesLocation");
-      chart.legend.position = "Bottom";
+      chart.legend.position = Excel.ChartLegendPosition.bottom;
       chart.legend.left = 0;
       chart.legend.top = 230;
       chart.legend.width = 80;
@@ -85,14 +82,14 @@ async function moveChartTitle() {
   }
 }
 
-async function showCorrelation1() {
+async function insertSalesTemperatureCorrelation() {
   try {
     await Excel.run(async (context) => {
       showStatus("Running...", false);
       const sheet = context.workbook.worksheets.getItem("Sample");
 
       let dataRange = sheet.getRange("A40:A41");
-      let chart = sheet.charts.add("XYScatter", dataRange, "auto");
+      let chart = sheet.charts.add(Excel.ChartType.xyscatter, dataRange, Excel.ChartSeriesBy.auto);
       chart.name = "correlation1";
       chart.title.text = "Sales and Temperature correlation";
       chart.title.format.font.size = 12;
@@ -117,10 +114,10 @@ async function showCorrelation1() {
 
       seriesCollection.getItemAt(0).delete();
 
-      chart.axes.valueAxis.displayUnit = "Thousands";
+      chart.axes.valueAxis.displayUnit = Excel.ChartAxisDisplayUnit.thousands;
 
       // Show trendline.
-      series.trendlines.add("Exponential");
+      series.trendlines.add(Excel.ChartTrendlineType.exponential);
       let trendline = series.trendlines.getItem(0);
       trendline.displayRSquared = true;
 
@@ -143,7 +140,7 @@ async function highlight1() {
       let chart = sheet.charts.getItem("correlation1");
 
       let seriesCollection = chart.series;
-      //grey out previous points
+      // Gray out previous points.
       let points = chart.series.getItemAt(0).points;
       points.load("count");
       await context.sync();
@@ -184,7 +181,7 @@ async function highlight2() {
       points.load("count");
       await context.sync();
       let count = points.count;
-      //grey out previous points
+      // Gray out previous points.
       for (let i = 0; i < count; i++) {
         let point = points.getItemAt(i);
         point.markerBackgroundColor = "gray";
@@ -210,14 +207,14 @@ async function highlight2() {
   }
 }
 
-async function showCorrelation2() {
+async function insertSalesLeafletsCorrelation() {
   try {
     await Excel.run(async (context) => {
       showStatus("Running...", false);
       const sheet = context.workbook.worksheets.getItem("Sample");
 
       let dataRange = sheet.getRange("A40:A41");
-      let chart = sheet.charts.add("XYScatter", dataRange, "auto");
+      let chart = sheet.charts.add(Excel.ChartType.xyscatter, dataRange, Excel.ChartSeriesBy.auto);
       chart.name = "correlation2";
       chart.title.text = "Sales and Leaflets correlation";
       chart.title.left = 8;
@@ -243,15 +240,15 @@ async function showCorrelation2() {
 
       seriesCollection.getItemAt(0).delete();
 
-      chart.axes.valueAxis.displayUnit = "Thousands";
+      chart.axes.valueAxis.displayUnit = Excel.ChartAxisDisplayUnit.thousands;
 
       // Show trendline.
-      series.trendlines.add("Exponential");
+      series.trendlines.add(Excel.ChartTrendlineType.exponential);
       let trendline = series.trendlines.getItem(0);
       trendline.displayRSquared = true;
 
       // Highlight title.
-      chart.title.getSubstring(21, 5).font.color= = "#FF7F50";
+      chart.title.getSubstring(21, 5).font.color = "#FF7F50";
       chart.title.getSubstring(31, 11).font.color = "#FF7F50";
 
       await context.sync();
@@ -269,7 +266,7 @@ async function showSalesTrendline() {
       showStatus("Running...", false);
       const sheet = context.workbook.worksheets.getItem("Sample");
       let dataRange = sheet.getRange("H2:H33");
-      let chart = sheet.charts.add("Line", dataRange, "auto");
+      let chart = sheet.charts.add(Excel.ChartType.line, dataRange, Excel.ChartSeriesBy.auto);
       chart.activate();
       chart.name = "overallSales";
       chart.title.text = "Total Sales Trend for September";
@@ -281,12 +278,12 @@ async function showSalesTrendline() {
 
       let axis = chart.axes.categoryAxis;
       let yaxis = chart.axes.valueAxis;
-      yaxis.displayUnit = "Thousands";
+      yaxis.displayUnit = Excel.ChartAxisDisplayUnit.thousands;
       let categoryNameRange = sheet.getRange("A2:A33");
       axis.setCategoryNames(categoryNameRange);
 
       let trendlines = chart.series.getItemAt(0).trendlines;
-      trendlines.add("MovingAverage");
+      trendlines.add(Excel.ChartTrendlineType.movingAverage);
       let tre = trendlines.getItem(0);
       tre.movingAveragePeriod = 7;
       showStatus('Success for "Overall sales trend".', false);
@@ -304,7 +301,7 @@ async function clearDatalables() {
       let points = chart.series.getItemAt(0).points;
       points.load();
       await context.sync();
-      
+
       let count = points.count;
       for (let i = 0; i < count; i++) {
         let point = points.getItemAt(i);
@@ -329,19 +326,18 @@ async function highlightSales() {
       await context.sync();
       let count = points.count;
       let max = 0;
+      let maxIndex = 0;
       for (let i = 0; i < count; i++) {
         let point = points.getItemAt(i);
-        //point.hasDataLabel = false;
         point.load("value");
         await context.sync();
         if (point.value > max) {
-          index = i;
+          maxIndex = i;
           max = point.value;
         }
       }
-      clearDatalables();
-      highlight();
-      await context.sync();
+      await clearDatalables();
+      await highlightPoint(maxIndex);
       showStatus('Success for "Highlight highest sales".', false);
     });
   } catch (error) {
@@ -349,13 +345,14 @@ async function highlightSales() {
   }
 }
 
-async function highlight() {
+async function highlightPoint(index) {
   try {
     await Excel.run(async (context) => {
       const sheet = context.workbook.worksheets.getItem("Sample");
       let chart = sheet.charts.getItem("overallSales");
       chart.load("series");
       await context.sync();
+
       let points = chart.series.getItemAt(0).points;
       let maxPoint = points.getItemAt(index);
       maxPoint.hasDataLabel = true;
