@@ -1,5 +1,4 @@
 <!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
-<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
 
 <!DOCTYPE html>
 <html>
@@ -26,39 +25,41 @@
         <p class="sampleTitle">Analyze data with charts</p>
     </header>
     <section class="ms-welcome__main">
-        <p class="sampleDescription">Use the buttons to create and format charts that highlight data patterns.</p>
+        <p class="sampleDescription">Insert charts to analyze data. Select buttons in each sections to insert chart and change chart settings.</p>
     </section>
     <div id = "status"></div>
     <section class="samples ms-font-m">
-        <p class="sampleSubTitle">Add sample data and insert chart</p>
+        <p class="sampleSubTitle">Intialize sample data before inserting charts</p>
         <button id = "add-sample-data" class="ms-Button">
-        <span class="ms-Button-label">Add sample data</span>
+        <span class="ms-Button-label">Intialize data</span>
         </button>
+        <p>Analyze sales in different locations</p>
         <button id="create-bar-chart" class="ms-Button">
-            <span class="ms-Button-label">Sales in different locations</span>
+            <span class="ms-Button-label">Insert chart</span>
         </button>
-        <p>Customize chart UI</p>
         <button id="reverse-plot-order" class="ms-Button">
-            <span class="ms-Button-label">Reverse vertical axis order</span>
+            <span class="ms-Button-label">Invert axis direction</span>
         </button>
         <button id="move-chart-title" class="ms-Button">
             <span class="ms-Button-label">Customize title and legend</span>
         </button>
-        <p>Analyze source data</p>
+        <p>Analyze sales/temperature correlation</p>
         <button id="show-correlation-1" class="ms-Button">
-            <span class="ms-Button-label">Sales/temperature correlation</span>
+            <span class="ms-Button-label">Insert chart</span>
         </button>
         <button id="highlight-top-10" class="ms-Button">
             <span class="ms-Button-label">Highlight top 10</span>
         </button>
+        <p>Analyze sales/leaflets correlation</p>
         <button id="show-correlation-2" class="ms-Button">
-            <span class="ms-Button-label">Sales/leaflets correlation</span>
+            <span class="ms-Button-label">Insert chart</span>
         </button>
         <button id="highlight-top-5" class="ms-Button">
             <span class="ms-Button-label">Highlight top 5</span>
         </button>
+        <p>Analyze overall sales trend</p>
         <button id="show-sales-trend" class="ms-Button">
-            <span class="ms-Button-label">Overall sales trend</span>
+            <span class="ms-Button-label">Insert chart</span>
         </button>
         <button id="highlight-highest-sales" class="ms-Button">
             <span class="ms-Button-label">Highlight highest sales</span>

@@ -44,11 +44,8 @@ This sample Excel add-in shows how to use charts to help analyze data.
 
 The add-in provides a task pane that gives users control over the sample data and charts. Use the buttons to interact with the workbook.
 
-1. Select the **Add Sample data** button to import sample sales figures. This adds a new table to a worksheet named "Sample".
-1. Select the **Sales in different locations** button. This adds a new chart that uses the sample data.
-1. Select the **Reverse vertical axis order** button. This reverses the vertical axis order on the chart.
-1. Select the **Customize title and legend** button. This changes the chart title and legend.
-1. Select the buttons under **Analyze source data** for different ways to view the sample data with charts.
+1. Select the **Intialize data** button to import sample sales figures. This adds a new table to a worksheet named "Sample".
+1. There are four analyze scenarios. In each section, select the **Insert chart** button to insert a chart and select the button below to change chart setting of the chart inserted. 
 
 ## Explore sample files
 
