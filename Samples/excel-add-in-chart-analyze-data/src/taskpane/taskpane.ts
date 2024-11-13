@@ -9,6 +9,7 @@ Office.onReady(() => {
   document.getElementById("add-sample-data").onclick = addSampleData;
   document.getElementById("create-bar-chart").onclick = createBarChart;
   document.getElementById("reverse-plot-order").onclick = reversePlotOrder;
+  document.getElementById("format-value-axis").onclick = formatValueAxis;
   document.getElementById("move-chart-title").onclick = moveChartTitle;
   document.getElementById("insert-sales-temperature-correlation").onclick = insertSalesTemperatureCorrelation;
   document.getElementById("highlight-top-10").onclick = highlight1;
@@ -17,357 +18,6 @@ Office.onReady(() => {
   document.getElementById("show-sales-trend").onclick = showSalesTrendline;
   document.getElementById("highlight-highest-sales").onclick = highlightSales;
 });
-
-// Creates a bar chart based on the sample data.
-async function createBarChart() {
-  try {
-    await Excel.run(async (context) => {
-      showStatus("Running...", false);
-      const sheet = context.workbook.worksheets.getItem("Sample");
-
-      const dataRange = sheet.getRange("A36:C38");
-      let chart = sheet.charts.add(Excel.ChartType.barClustered, dataRange, Excel.ChartSeriesBy.auto);
-      chart.name = "salesLocation";
-      chart.title.text = "Sales in different locations";
-      chart.setPosition("K2", "P15");
-      chart.legend.position = Excel.ChartLegendPosition.right;
-
-      await context.sync();
-      showStatus('Success for "Sales in different locations".', false);
-    });
-  } catch (error) {
-    showStatus(error, true);
-  }
-}
-
-async function reversePlotOrder() {
-  try {
-    await Excel.run(async (context) => {
-      showStatus("Running...", false);
-      const sheet = context.workbook.worksheets.getItem("Sample");
-
-      let chart = sheet.charts.getItem("salesLocation");
-
-      chart.axes.categoryAxis.reversePlotOrder = true;
-      chart.axes.valueAxis.displayUnit = Excel.ChartAxisDisplayUnit.thousands;
-
-      await context.sync();
-      showStatus('Success for "Reverse vertical axis order".', false);
-    });
-  } catch (error) {
-    showStatus(error, true);
-  }
-}
-
-async function moveChartTitle() {
-  try {
-    await Excel.run(async (context) => {
-      showStatus("Running...", false);
-      const sheet = context.workbook.worksheets.getItem("Sample");
-
-      let chart = sheet.charts.getItem("salesLocation");
-      chart.legend.position = Excel.ChartLegendPosition.bottom;
-      chart.legend.left = 0;
-      chart.legend.top = 230;
-      chart.legend.width = 80;
-      chart.legend.height = 20;
-      chart.title.left = 8;
-      chart.title.top = 8;
-      chart.title.setFormula("=Sample!L37");
-      await context.sync();
-      showStatus('Success for "Customize title and legend".', false);
-    });
-  } catch (error) {
-    showStatus(error, true);
-  }
-}
-
-async function insertSalesTemperatureCorrelation() {
-  try {
-    await Excel.run(async (context) => {
-      showStatus("Running...", false);
-      const sheet = context.workbook.worksheets.getItem("Sample");
-
-      let dataRange = sheet.getRange("A40:A41");
-      let chart = sheet.charts.add(Excel.ChartType.xyscatter, dataRange, Excel.ChartSeriesBy.auto);
-      chart.name = "correlation1";
-      chart.title.text = "Sales and Temperature correlation";
-      chart.title.format.font.size = 12;
-      chart.title.left = 8;
-      chart.title.top = 8;
-      chart.left = 600;
-      chart.top = 250;
-      chart.width = 300;
-      chart.legend.visible = false;
-      chart.setPosition("K16", "P30");
-
-      let seriesCollection = chart.series;
-      let series = seriesCollection.add("Sales and Temperature");
-
-      let rangeX = "E2:E33";
-      let xValue = sheet.getRange(rangeX);
-      series.setXAxisValues(xValue);
-
-      let rangeY = "H2:H33";
-      let value = sheet.getRange(rangeY);
-      series.setValues(value);
-
-      seriesCollection.getItemAt(0).delete();
-
-      chart.axes.valueAxis.displayUnit = Excel.ChartAxisDisplayUnit.thousands;
-
-      // Show trendline.
-      series.trendlines.add(Excel.ChartTrendlineType.exponential);
-      let trendline = series.trendlines.getItem(0);
-      trendline.displayRSquared = true;
-
-      // Highlight title.
-      chart.title.getSubstring(21, 5).font.color = "#FF7F50";
-      chart.title.getSubstring(31, 11).font.color = "#FF7F50";
-      await context.sync();
-      showStatus('Success for "Sales/temperature correlation".', false);
-    });
-  } catch (error) {
-    showStatus(error, true);
-  }
-}
-
-async function highlight1() {
-  try {
-    await Excel.run(async (context) => {
-      showStatus("Running...", false);
-      const sheet = context.workbook.worksheets.getItem("Sample");
-      let chart = sheet.charts.getItem("correlation1");
-
-      let seriesCollection = chart.series;
-      // Gray out previous points.
-      let points = chart.series.getItemAt(0).points;
-      points.load("count");
-      await context.sync();
-      let count = points.count;
-      for (let i = 0; i < count; i++) {
-        let point = points.getItemAt(i);
-        point.markerBackgroundColor = "gray";
-        point.markerForegroundColor = "gray";
-        await context.sync();
-      }
-
-      let series = seriesCollection.add("top5");
-
-      let rangeX = "I2:I33";
-      let xValue = sheet.getRange(rangeX);
-      series.setXAxisValues(xValue);
-
-      let rangeY = "H2:H33";
-      let value = sheet.getRange(rangeY);
-      series.setValues(value);
-
-      await context.sync();
-      showStatus('Success for "Highlight top 10".', false);
-    });
-  } catch (error) {
-    showStatus(error, true);
-  }
-}
-async function highlight2() {
-  try {
-    await Excel.run(async (context) => {
-      showStatus("Running...", false);
-      const sheet = context.workbook.worksheets.getItem("Sample");
-      let chart = sheet.charts.getItem("correlation2");
-
-      let seriesCollection = chart.series;
-      let points = chart.series.getItemAt(0).points;
-      points.load("count");
-      await context.sync();
-      let count = points.count;
-      // Gray out previous points.
-      for (let i = 0; i < count; i++) {
-        let point = points.getItemAt(i);
-        point.markerBackgroundColor = "gray";
-        point.markerForegroundColor = "gray";
-        await context.sync();
-      }
-
-      let series = seriesCollection.add("top5");
-
-      let rangeX = "J2:J33";
-      let xValue = sheet.getRange(rangeX);
-      series.setXAxisValues(xValue);
-
-      let rangeY = "H2:H33";
-      let value = sheet.getRange(rangeY);
-      series.setValues(value);
-
-      await context.sync();
-      showStatus('Success for "Highlight top 5".', false);
-    });
-  } catch (error) {
-    showStatus(error, true);
-  }
-}
-
-async function insertSalesLeafletsCorrelation() {
-  try {
-    await Excel.run(async (context) => {
-      showStatus("Running...", false);
-      const sheet = context.workbook.worksheets.getItem("Sample");
-
-      let dataRange = sheet.getRange("A40:A41");
-      let chart = sheet.charts.add(Excel.ChartType.xyscatter, dataRange, Excel.ChartSeriesBy.auto);
-      chart.name = "correlation2";
-      chart.title.text = "Sales and Leaflets correlation";
-      chart.title.left = 8;
-      chart.title.top = 8;
-      chart.title.format.font.size = 12;
-      chart.left = 900;
-      chart.top = 250;
-      chart.width = 300;
-      chart.setPosition("Q2", "V15");
-
-      chart.legend.visible = false;
-
-      let seriesCollection = chart.series;
-      let series = seriesCollection.add("Sales and Leaflets");
-
-      let rangeX = "F2:F33";
-      let xValue = sheet.getRange(rangeX);
-      series.setXAxisValues(xValue);
-
-      let rangeY = "H2:H33";
-      let value = sheet.getRange(rangeY);
-      series.setValues(value);
-
-      seriesCollection.getItemAt(0).delete();
-
-      chart.axes.valueAxis.displayUnit = Excel.ChartAxisDisplayUnit.thousands;
-
-      // Show trendline.
-      series.trendlines.add(Excel.ChartTrendlineType.exponential);
-      let trendline = series.trendlines.getItem(0);
-      trendline.displayRSquared = true;
-
-      // Highlight title.
-      chart.title.getSubstring(21, 5).font.color = "#FF7F50";
-      chart.title.getSubstring(31, 11).font.color = "#FF7F50";
-
-      await context.sync();
-      showStatus('Success for "Sales/Leaflets correlation".', false);
-    });
-  } catch (error) {
-    showStatus(error, true);
-  }
-}
-
-// Add a title to the first chart in the sample worksheet.
-async function showSalesTrendline() {
-  try {
-    await Excel.run(async (context) => {
-      showStatus("Running...", false);
-      const sheet = context.workbook.worksheets.getItem("Sample");
-      let dataRange = sheet.getRange("H2:H33");
-      let chart = sheet.charts.add(Excel.ChartType.line, dataRange, Excel.ChartSeriesBy.auto);
-      chart.activate();
-      chart.name = "overallSales";
-      chart.title.text = "Total Sales Trend for September";
-      chart.left = 900;
-      chart.top = 20;
-      chart.width = 300;
-      chart.setPosition("Q16", "V30");
-      chart.legend.visible = false;
-
-      let axis = chart.axes.categoryAxis;
-      let yaxis = chart.axes.valueAxis;
-      yaxis.displayUnit = Excel.ChartAxisDisplayUnit.thousands;
-      let categoryNameRange = sheet.getRange("A2:A33");
-      axis.setCategoryNames(categoryNameRange);
-
-      let trendlines = chart.series.getItemAt(0).trendlines;
-      trendlines.add(Excel.ChartTrendlineType.movingAverage);
-      let tre = trendlines.getItem(0);
-      tre.movingAveragePeriod = 7;
-      showStatus('Success for "Overall sales trend".', false);
-    });
-  } catch (error) {
-    showStatus(error, true);
-  }
-}
-
-async function clearDatalables() {
-  try {
-    await Excel.run(async (context) => {
-      const sheet = context.workbook.worksheets.getItem("Sample");
-      let chart = sheet.charts.getItem("overallSales");
-      let points = chart.series.getItemAt(0).points;
-      points.load();
-      await context.sync();
-
-      let count = points.count;
-      for (let i = 0; i < count; i++) {
-        let point = points.getItemAt(i);
-        point.hasDataLabel = false;
-      }
-      await context.sync();
-    });
-  } catch (error) {
-    showStatus(error, true);
-  }
-}
-
-// Add a title to the category axis of the first chart in the worksheet.
-async function highlightSales() {
-  try {
-    await Excel.run(async (context) => {
-      showStatus("Running...", false);
-      const sheet = context.workbook.worksheets.getItem("Sample");
-      let chart = sheet.charts.getItem("overallSales");
-      let points = chart.series.getItemAt(0).points;
-      points.load();
-      await context.sync();
-      let count = points.count;
-      let max = 0;
-      let maxIndex = 0;
-      for (let i = 0; i < count; i++) {
-        let point = points.getItemAt(i);
-        point.load("value");
-        await context.sync();
-        if (point.value > max) {
-          maxIndex = i;
-          max = point.value;
-        }
-      }
-      await clearDatalables();
-      await highlightPoint(maxIndex);
-      showStatus('Success for "Highlight highest sales".', false);
-    });
-  } catch (error) {
-    showStatus(error, true);
-  }
-}
-
-async function highlightPoint(index) {
-  try {
-    await Excel.run(async (context) => {
-      const sheet = context.workbook.worksheets.getItem("Sample");
-      let chart = sheet.charts.getItem("overallSales");
-      chart.load("series");
-      await context.sync();
-
-      let points = chart.series.getItemAt(0).points;
-      let maxPoint = points.getItemAt(index);
-      maxPoint.hasDataLabel = true;
-      let datalabel = maxPoint.dataLabel;
-      datalabel.showCategoryName = true;
-      datalabel.showValue = true;
-      datalabel.showLegendKey = true;
-
-      maxPoint.markerStyle = "Diamond";
-      await context.sync();
-    });
-  } catch (error) {
-    showStatus(error, true);
-  }
-}
 
 async function addSampleData() {
   try {
@@ -530,9 +180,8 @@ async function addSampleData() {
       sheet.activate();
       sheet.gridlines = false;
 
-      sheet.onChanged.add(onDataChanged);
       await context.sync();
-      showStatus('Success for "Add sample data".', false);
+      showStatus('Success for "Intialize sample data".', false);
     });
   } catch (error) {
     showStatus(error, true);
@@ -545,6 +194,370 @@ async function onDataChanged(event) {
       console.log("data changed");
       highlightSales();
 
+      await context.sync();
+    });
+  } catch (error) {
+    showStatus(error, true);
+  }
+}
+
+async function createBarChart() {
+  try {
+    await Excel.run(async (context) => {
+      showStatus("Running...", false);
+      const sheet = context.workbook.worksheets.getItem("Sample");
+
+      const dataRange = sheet.getRange("A36:C38");
+      let chart = sheet.charts.add(Excel.ChartType.barClustered, dataRange, Excel.ChartSeriesBy.auto);
+      chart.name = "salesLocation";
+      chart.title.text = "Sales in different locations";
+      chart.setPosition("K2", "P15");
+      chart.legend.position = Excel.ChartLegendPosition.right;
+
+      await context.sync();
+      showStatus('Success for "Sales in different locations".', false);
+    });
+  } catch (error) {
+    showStatus(error, true);
+  }
+}
+
+async function insertSalesTemperatureCorrelation() {
+  try {
+    await Excel.run(async (context) => {
+      showStatus("Running...", false);
+      const sheet = context.workbook.worksheets.getItem("Sample");
+
+      let dataRange = sheet.getRange("A40:A41");
+      let chart = sheet.charts.add(Excel.ChartType.xyscatter, dataRange, Excel.ChartSeriesBy.auto);
+      chart.name = "correlation1";
+      chart.title.text = "Sales and Temperature correlation";
+      chart.title.format.font.size = 12;
+      chart.title.left = 8;
+      chart.title.top = 8;
+      chart.left = 600;
+      chart.top = 250;
+      chart.width = 300;
+      chart.legend.visible = false;
+      chart.setPosition("K16", "P30");
+
+      let seriesCollection = chart.series;
+      let series = seriesCollection.add("Sales and Temperature");
+
+      let rangeX = "E2:E33";
+      let xValue = sheet.getRange(rangeX);
+      series.setXAxisValues(xValue);
+
+      let rangeY = "H2:H33";
+      let value = sheet.getRange(rangeY);
+      series.setValues(value);
+
+      seriesCollection.getItemAt(0).delete();
+
+      chart.axes.valueAxis.displayUnit = Excel.ChartAxisDisplayUnit.thousands;
+
+      // Show trendline.
+      series.trendlines.add(Excel.ChartTrendlineType.exponential);
+      let trendline = series.trendlines.getItem(0);
+      trendline.displayRSquared = true;
+
+      // Highlight title.
+      chart.title.getSubstring(21, 5).font.color = "#FF7F50";
+      chart.title.getSubstring(31, 11).font.color = "#FF7F50";
+      await context.sync();
+      showStatus('Success for "Sales/temperature correlation".', false);
+    });
+  } catch (error) {
+    showStatus(error, true);
+  }
+}
+
+async function insertSalesLeafletsCorrelation() {
+  try {
+    await Excel.run(async (context) => {
+      showStatus("Running...", false);
+      const sheet = context.workbook.worksheets.getItem("Sample");
+
+      let dataRange = sheet.getRange("A40:A41");
+      let chart = sheet.charts.add(Excel.ChartType.xyscatter, dataRange, Excel.ChartSeriesBy.auto);
+      chart.name = "correlation2";
+      chart.title.text = "Sales and Leaflets correlation";
+      chart.title.left = 8;
+      chart.title.top = 8;
+      chart.title.format.font.size = 12;
+      chart.left = 900;
+      chart.top = 250;
+      chart.width = 300;
+      chart.setPosition("Q2", "V15");
+
+      chart.legend.visible = false;
+
+      let seriesCollection = chart.series;
+      let series = seriesCollection.add("Sales and Leaflets");
+
+      let rangeX = "F2:F33";
+      let xValue = sheet.getRange(rangeX);
+      series.setXAxisValues(xValue);
+
+      let rangeY = "H2:H33";
+      let value = sheet.getRange(rangeY);
+      series.setValues(value);
+
+      seriesCollection.getItemAt(0).delete();
+
+      chart.axes.valueAxis.displayUnit = Excel.ChartAxisDisplayUnit.thousands;
+
+      // Show trendline.
+      series.trendlines.add(Excel.ChartTrendlineType.exponential);
+      let trendline = series.trendlines.getItem(0);
+      trendline.displayRSquared = true;
+
+      // Highlight title.
+      chart.title.getSubstring(21, 5).font.color = "#FF7F50";
+      chart.title.getSubstring(31, 11).font.color = "#FF7F50";
+
+      await context.sync();
+      showStatus('Success for "Sales/Leaflets correlation".', false);
+    });
+  } catch (error) {
+    showStatus(error, true);
+  }
+}
+
+// Add a title to the first chart in the sample worksheet.
+async function showSalesTrendline() {
+  try {
+    await Excel.run(async (context) => {
+      showStatus("Running...", false);
+      const sheet = context.workbook.worksheets.getItem("Sample");
+      let dataRange = sheet.getRange("H2:H33");
+      let chart = sheet.charts.add(Excel.ChartType.line, dataRange, Excel.ChartSeriesBy.auto);
+      chart.activate();
+      chart.name = "overallSales";
+      chart.title.text = "Total Sales Trend for September";
+      chart.left = 900;
+      chart.top = 20;
+      chart.width = 300;
+      chart.setPosition("Q16", "V30");
+      chart.legend.visible = false;
+
+      let axis = chart.axes.categoryAxis;
+      let yaxis = chart.axes.valueAxis;
+      yaxis.displayUnit = Excel.ChartAxisDisplayUnit.thousands;
+      let categoryNameRange = sheet.getRange("A2:A33");
+      axis.setCategoryNames(categoryNameRange);
+
+      let trendlines = chart.series.getItemAt(0).trendlines;
+      trendlines.add(Excel.ChartTrendlineType.movingAverage);
+      let tre = trendlines.getItem(0);
+      tre.movingAveragePeriod = 7;
+
+      sheet.onChanged.add(onDataChanged);
+      await context.sync();
+      showStatus('Success for "Overall sales trend".', false);
+    });
+  } catch (error) {
+    showStatus(error, true);
+  }
+}
+
+// Chart modification functions
+async function reversePlotOrder() {
+  try {
+    await Excel.run(async (context) => {
+      showStatus("Running...", false);
+      const sheet = context.workbook.worksheets.getItem("Sample");
+
+      let chart = sheet.charts.getItem("salesLocation");
+
+      chart.axes.categoryAxis.reversePlotOrder = true;
+
+      await context.sync();
+      showStatus('Success for "Reverse vertical axis order".', false);
+    });
+  } catch (error) {
+    showStatus(error, true);
+  }
+}
+
+async function moveChartTitle() {
+  try {
+    await Excel.run(async (context) => {
+      showStatus("Running...", false);
+      const sheet = context.workbook.worksheets.getItem("Sample");
+
+      let chart = sheet.charts.getItem("salesLocation");
+      chart.legend.position = Excel.ChartLegendPosition.bottom;
+      chart.legend.left = 0;
+      chart.legend.top = 230;
+      chart.legend.width = 80;
+      chart.legend.height = 20;
+      chart.title.left = 8;
+      chart.title.top = 8;
+      chart.title.setFormula("=Sample!L37");
+      await context.sync();
+      showStatus('Success for "Customize title and legend".', false);
+    });
+  } catch (error) {
+    showStatus(error, true);
+  }
+}
+
+async function formatValueAxis() {
+  try {
+    await Excel.run(async (context) => {
+      showStatus("Running...", false);
+      const sheet = context.workbook.worksheets.getItem("Sample");
+
+      let chart = sheet.charts.getItem("salesLocation");
+      chart.axes.valueAxis.displayUnit = Excel.ChartAxisDisplayUnit.thousands;
+
+      await context.sync();
+      showStatus('Success for "Format value axis".', false);
+    });
+  } catch (error) {
+    showStatus(error, true);
+  }
+}
+
+async function highlight1() {
+  try {
+    await Excel.run(async (context) => {
+      showStatus("Running...", false);
+      const sheet = context.workbook.worksheets.getItem("Sample");
+      let chart = sheet.charts.getItem("correlation1");
+
+      let seriesCollection = chart.series;
+      let points = chart.series.getItemAt(0).points;
+      points.load("count");
+      await context.sync();
+      let count = points.count;
+
+      let pointUpdates = [];
+      for (let i = 0; i < count; i++) {
+        let point = points.getItemAt(i);
+        point.markerBackgroundColor = "gray";
+        point.markerForegroundColor = "gray";
+        pointUpdates.push(point.load());
+      }
+      await context.sync();
+
+      let series = seriesCollection.add("top10");
+      let rangeX = "I2:I33";
+      let xValue = sheet.getRange(rangeX);
+      series.setXAxisValues(xValue);
+
+      let rangeY = "H2:H33";
+      let value = sheet.getRange(rangeY);
+      series.setValues(value);
+
+      await context.sync();
+      showStatus('Success for "Highlight top 10".', false);
+    });
+  } catch (error) {
+    showStatus(error, true);
+  }
+}
+
+async function highlight2() {
+  try {
+    await Excel.run(async (context) => {
+      showStatus("Running...", false);
+      const sheet = context.workbook.worksheets.getItem("Sample");
+      let chart = sheet.charts.getItem("correlation2");
+
+      let seriesCollection = chart.series;
+      let points = chart.series.getItemAt(0).points;
+      points.load("count");
+      await context.sync();
+      let count = points.count;
+
+      let pointUpdates = [];
+      for (let i = 0; i < count; i++) {
+        let point = points.getItemAt(i);
+        point.markerBackgroundColor = "gray";
+        point.markerForegroundColor = "gray";
+        pointUpdates.push(point.load());
+      }
+      await context.sync();
+
+      let series = seriesCollection.add("top5");
+      let rangeX = "J2:J33";
+      let xValue = sheet.getRange(rangeX);
+      series.setXAxisValues(xValue);
+
+      let rangeY = "H2:H33";
+      let value = sheet.getRange(rangeY);
+      series.setValues(value);
+
+      await context.sync();
+      showStatus('Success for "Highlight top 5".', false);
+    });
+  } catch (error) {
+    showStatus(error, true);
+  }
+}
+
+// Add a title to the category axis of the first chart in the worksheet.
+async function highlightSales() {
+  try {
+    await Excel.run(async (context) => {
+      showStatus("Running...", false);
+      const sheet = context.workbook.worksheets.getItem("Sample");
+      let chart = sheet.charts.getItem("overallSales");
+      let points = chart.series.getItemAt(0).points;
+      points.load();
+      await context.sync();
+
+      let count = points.count;
+      let max = 0;
+      let maxIndex = 0;
+      let pointValues = [];
+      for (let i = 0; i < count; i++) {
+        let point = points.getItemAt(i);
+        point.load("value");
+        pointValues.push(point);
+      }
+      await context.sync();
+
+      await clearDatalables();
+      // Highlight the points
+      for (let i = 0; i < count; i++) {
+        if (pointValues[i].value > max) {
+          maxIndex = i;
+          max = pointValues[i].value;
+        }
+      }
+      let maxPoint = points.getItemAt(maxIndex);
+      maxPoint.hasDataLabel = true;
+      let datalabel = maxPoint.dataLabel;
+      datalabel.showCategoryName = true;
+      datalabel.showValue = true;
+      datalabel.showLegendKey = true;
+      maxPoint.markerStyle = "Diamond";
+      await context.sync();
+
+      showStatus('Success for "Highlight highest sales".', false);
+    });
+  } catch (error) {
+    showStatus(error, true);
+  }
+}
+
+async function clearDatalables() {
+  try {
+    await Excel.run(async (context) => {
+      const sheet = context.workbook.worksheets.getItem("Sample");
+      let chart = sheet.charts.getItem("overallSales");
+      let points = chart.series.getItemAt(0).points;
+      points.load();
+      await context.sync();
+
+      let count = points.count;
+      for (let i = 0; i < count; i++) {
+        let point = points.getItemAt(i);
+        point.hasDataLabel = false;
+      }
       await context.sync();
     });
   } catch (error) {
