@@ -42,11 +42,13 @@ This sample add-in shows how to use shapes to build a dashboard in Excel.
 
 ## Use the sample add-in
 
-1. Click the button "Add Sample data" to import some sample data.
+The add-in provides a task pane that gives users control over the sample data and shapes. Use the buttons to interact with the workbook.
+
+1. Select the button **Add Sample data** to import some sample data.
 2. Then a new table with content will be inserted into worksheet "Sample"
-3. Click the button "Create Empty Dashboard", it will use create some shapes whose content is empty to work as an empty dashboard.
-4. Click the button "Add information to Dashboard" to analyze some information from sample data and write them into the shapes.
-5. Click the button "Change information Format" to format the content in the shapes.
+3. Select the button **Create Empty Dashboard**, it will use create some shapes whose content is empty to work as an empty dashboard.
+4. Select the button **Add information to Dashboard** to analyze some information from sample data and write them into the shapes.
+5. Select the button **Change information Format** to format the content in the shapes.
 
 ## Explore sample files
 

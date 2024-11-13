@@ -3,7 +3,7 @@
  * See LICENSE in the project root for license information.
  */
 
-/* global console, document, Excel, Office */
+/* global document, Excel, Office */
 
 Office.onReady(() => {
   document.getElementById("add-sample-data").onclick = addSampleData;
@@ -163,7 +163,7 @@ async function addSampleData() {
       state.formulas = [["=SUMPRODUCT(1/COUNTIF(H2:H98,H2:H98))"]];
 
       await context.sync();
-      showStatus('Add sample data - success!', false);
+      showStatus("Add sample data - success!", false);
     });
   } catch (error) {
     showStatus(error, true);
@@ -177,56 +177,56 @@ async function createDashboard() {
       let shapes = context.workbook.worksheets.getItem("Sample").shapes;
       let array = [];
 
-      let region = shapes.addGeometricShape("RoundRectangle");
+      let region = shapes.addGeometricShape(Excel.GeometricShapeType.roundRectangle);
       region.left = 550;
       region.top = 100;
       region.width = 100;
       region.height = 100;
       array.push(region);
 
-      let state = shapes.addGeometricShape("RoundRectangle");
+      let state = shapes.addGeometricShape(Excel.GeometricShapeType.roundRectangle);
       state.left = 700;
       state.top = 100;
       state.width = 100;
       state.height = 100;
       array.push(state);
 
-      let line = shapes.addGeometricShape("Rectangle");
+      let line = shapes.addGeometricShape(Excel.GeometricShapeType.rectangle);
       line.left = 500;
       line.top = 230;
       line.width = 350;
       line.height = 1;
       array.push(line);
 
-      let category = shapes.addGeometricShape("RoundRectangle");
+      let category = shapes.addGeometricShape(Excel.GeometricShapeType.roundRectangle);
       category.left = 550;
       category.top = 260;
       category.width = 100;
       category.height = 100;
       array.push(category);
 
-      let subCategory = shapes.addGeometricShape("RoundRectangle");
+      let subCategory = shapes.addGeometricShape(Excel.GeometricShapeType.roundRectangle);
       subCategory.left = 700;
       subCategory.top = 260;
       subCategory.width = 100;
       subCategory.height = 100;
       array.push(subCategory);
 
-      let line2 = shapes.addGeometricShape("Rectangle");
+      let line2 = shapes.addGeometricShape(Excel.GeometricShapeType.rectangle);
       line2.left = 500;
       line2.top = 390;
       line2.width = 350;
       line2.height = 1;
       array.push(line2);
 
-      let maxScale = shapes.addGeometricShape("RoundRectangle");
+      let maxScale = shapes.addGeometricShape(Excel.GeometricShapeType.roundRectangle);
       maxScale.left = 550;
       maxScale.top = 420;
       maxScale.width = 100;
       maxScale.height = 100;
       array.push(maxScale);
 
-      let sumScale = shapes.addGeometricShape("RoundRectangle");
+      let sumScale = shapes.addGeometricShape(Excel.GeometricShapeType.roundRectangle);
       sumScale.left = 700;
       sumScale.top = 420;
       sumScale.width = 100;
@@ -236,7 +236,7 @@ async function createDashboard() {
       shapes.addGroup(array);
       await context.sync();
 
-      showStatus('Create empty dashboard - success!', false);
+      showStatus("Create empty dashboard - success!", false);
     });
   } catch (error) {
     showStatus(error, true);
@@ -299,7 +299,7 @@ async function changeColor() {
       sumSale.textFrame.textRange.text = text7.values.toString() + "\nSum Sale";
 
       await context.sync();
-      showStatus('Add information to dashboard - success!', false);
+      showStatus("Add information to dashboard - success!", false);
     });
   } catch (error) {
     showStatus(error, true);
@@ -325,7 +325,7 @@ async function changeFontFormat() {
         shp.textFrame.textRange.font.name = "Consolas";
 
         shp.textFrame.verticalAlignment = "Middle";
-        shp.textFrame.horizontalAlignment = "Center";
+        shp.textFrame.horizontalAlignment = Excel.VerticalAlignment.center;
       }
 
       let region = shapeGroup.items[0];
@@ -359,7 +359,7 @@ async function changeFontFormat() {
       sumSale.textFrame.textRange.getSubstring(9).font.color = "FFFF66";
 
       await context.sync();
-      showStatus('Change information format - success!', false);
+      showStatus("Change information format - success!", false);
     });
   } catch (error) {
     showStatus(error, true);
@@ -378,22 +378,22 @@ async function onActivate() {
 
       let region = shapeGroup.items[0];
       region.textFrame.textRange.text = "-Central\n-South\n-West\n-East";
-      region.textFrame.horizontalAlignment = "Left";
+      region.textFrame.horizontalAlignment = Excel.HorizontalAlignment.left;
       region.textFrame.textRange.font.size = 13;
 
       let state = shapeGroup.items[1];
       state.textFrame.textRange.text = "Top 3:\n-California\n-Washington\n-New York";
-      state.textFrame.horizontalAlignment = "Left";
+      state.textFrame.horizontalAlignment = Excel.HorizontalAlignment.left;
       state.textFrame.textRange.font.size = 12;
 
       let category = shapeGroup.items[3];
       category.textFrame.textRange.text = "-OfficeSupply\n-Furniture\n-Technology";
-      category.textFrame.horizontalAlignment = "Left";
+      category.textFrame.horizontalAlignment = Excel.HorizontalAlignment.left;
       category.textFrame.textRange.font.size = 10;
 
       let subCategory = shapeGroup.items[4];
       subCategory.textFrame.textRange.text = "Top 3:\n-Phone\n-Tables\n-Accessories";
-      subCategory.textFrame.horizontalAlignment = "Left";
+      subCategory.textFrame.horizontalAlignment = Excel.HorizontalAlignment.left;
       subCategory.textFrame.textRange.font.size = 10;
 
       let maxScale = shapeGroup.items[6];
@@ -402,7 +402,7 @@ async function onActivate() {
 
       let subScale = shapeGroup.items[7];
       subScale.textFrame.textRange.text = "Top 3:\nUS2015126214\nCA2017137596\nCA2014115812";
-      subScale.textFrame.horizontalAlignment = "Left";
+      subScale.textFrame.horizontalAlignment = Excel.HorizontalAlignment.left;
       subScale.textFrame.textRange.font.size = 11;
 
       await context.sync();
