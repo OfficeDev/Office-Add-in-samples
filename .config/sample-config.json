@@ -48,7 +48,7 @@
             "id": "excel-add-in-chart-analyze-data",
             "onboardDate": "2024-11-11",
             "title": "Analyze Excel data with charts",
-            "description": "The sample Excel add-in shows how to use charts to help analyze data.",
+            "description": "This sample Excel add-in shows how to use charts to help analyze data.",
             "types": [
                 "Excel"
             ],

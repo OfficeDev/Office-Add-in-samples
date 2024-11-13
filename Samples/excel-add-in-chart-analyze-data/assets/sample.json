@@ -4,10 +4,10 @@
     "reponame": "office-add-in-samples",
     "source": "officedev",
     "title": "Analyze Excel data with charts",
-    "shortDescription": "This sample demonstrates how to create a basic Excel add-in with a task pane that uses JavaScript.",
+    "shortDescription": "Use Excel charts to help analyze data.",
     "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-add-in-chart-analyze-data",
     "longDescription": [
-      "The sample Excel add-in shows how to use charts to help analyze data."
+      "This sample Excel add-in shows how to use charts to help analyze data."
     ],
     "creationDateTime": "2024-11-11",
     "updateDateTime": "2024-11-11",
