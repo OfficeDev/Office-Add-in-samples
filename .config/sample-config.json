@@ -9,6 +9,8 @@
             "JavaScript"
         ],
         "technologies": [
+            "Custom Function",
+            "WebWorker"
         ]
     },
     "samples": [
@@ -72,6 +74,23 @@
                 "TypeScript",
                 "Shape",
                 "Excel"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "excel-add-in-custom-function-using-webworker",
+            "onboardDate": "2024-11-11",
+            "title": "Custom Function Sample Using Web Worker",
+            "description": "Use web workers in custom functions to prevent blocking UI of your Office Add-in.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "JavaScript",
+                "Custom Function",
+                "Excel",
+                "WebWorker"
             ],
             "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
