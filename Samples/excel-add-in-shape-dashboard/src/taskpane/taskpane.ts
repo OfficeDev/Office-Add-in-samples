@@ -8,8 +8,9 @@
 Office.onReady(() => {
   document.getElementById("add-sample-data").onclick = () => tryCatch(addSampleData);
   document.getElementById("create-dash-board").onclick = () => tryCatch(createDashboard);
-  document.getElementById("add-information").onclick = () => tryCatch(changeColor);
-  document.getElementById("change-font-format").onclick = () => tryCatch(changeFontFormat);
+  document.getElementById("add-information").onclick = () => tryCatch(addInformation);
+  document.getElementById("change-format").onclick = () => tryCatch(changeFormat);
+  document.getElementById("add-event-handler").onclick = () => tryCatch(addEventHandler);
 });
 
 async function addSampleData() {
@@ -235,7 +236,7 @@ async function createDashboard() {
   });
 }
 
-async function changeColor() {
+async function addInformation() {
   await Excel.run(async (context) => {
     showStatus("Running...", false);
     let shapes = context.workbook.worksheets.getItem("Sample").shapes;
@@ -294,26 +295,21 @@ async function changeColor() {
   });
 }
 
-async function changeFontFormat() {
+async function changeFormat() {
   await Excel.run(async (context) => {
     showStatus("Running...", false);
     let shapes = context.workbook.worksheets.getItem("Sample").shapes;
     shapes.load("items");
     await context.sync();
-
     let shapeGroup = shapes.items[0].group.shapes;
-    shapes.items[0].onActivated.add(() => tryCatch(onActivate));
-    shapes.items[0].onDeactivated.add(() => tryCatch(onDeactivate));
     shapeGroup.load("items");
     await context.sync();
 
-    for (let i = 0; i < shapeGroup.items.length; i++) {
-      let shp = shapeGroup.items[i];
-      shp.textFrame.textRange.font.name = "Consolas";
-
-      shp.textFrame.verticalAlignment = Excel.ShapeTextVerticalAlignment.middle;
-      shp.textFrame.horizontalAlignment = Excel.HorizontalAlignment.center;
-    }
+    shapeGroup.items.forEach((shape) => {
+      shape.textFrame.textRange.font.name = "Consolas";
+      shape.textFrame.verticalAlignment = Excel.ShapeTextVerticalAlignment.middle;
+      shape.textFrame.horizontalAlignment = Excel.HorizontalAlignment.center;
+    });
 
     let region = shapeGroup.items[0];
     region.textFrame.textRange.getSubstring(0, 1).font.size = 30;
@@ -350,7 +346,21 @@ async function changeFontFormat() {
   });
 }
 
-async function onActivate() {
+async function addEventHandler() {
+  await Excel.run(async (context) => {
+    let shapes = context.workbook.worksheets.getItem("Sample").shapes;
+    shapes.load("items");
+    await context.sync();
+
+    let shapeGroup = shapes.items[0].group.shapes;
+    shapes.items[0].onActivated.add(() => tryCatch(changeDashbaordInfo));
+    shapes.items[0].onDeactivated.add(() => tryCatch(addInformation));
+    shapeGroup.load("items");
+    await context.sync();
+  });
+}
+
+async function changeDashbaordInfo() {
   await Excel.run(async (context) => {
     let shapes = context.workbook.worksheets.getItem("Sample").shapes;
     shapes.load("items");
@@ -390,11 +400,6 @@ async function onActivate() {
 
     await context.sync();
   });
-}
-
-async function onDeactivate() {
-  await changeColor();
-  await changeFontFormat();
 }
 
 async function tryCatch(callback) {
