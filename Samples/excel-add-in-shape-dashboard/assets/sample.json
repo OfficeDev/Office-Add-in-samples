@@ -4,10 +4,10 @@
       "reponame": "office-add-in-samples",
       "source": "officedev",
       "title": "Create a dashboard in Excel with shapes",
-      "shortDescription": "The sample Excel add-in uses shapes to create a dashboard in the workbook.",
+      "shortDescription": "This sample Excel add-in uses shapes to create a dashboard in the workbook.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-add-in-shape-dashboard",
       "longDescription": [
-        "The sample Excel add-in uses shapes to create a dashboard in the workbook."
+        "This sample Excel add-in uses shapes to create a dashboard in the workbook."
       ],
       "creationDateTime": "2024-11-11",
       "updateDateTime": "2024-11-11",
