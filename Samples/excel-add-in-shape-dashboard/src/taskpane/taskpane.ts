@@ -353,14 +353,14 @@ async function addEventHandler() {
     await context.sync();
 
     let shapeGroup = shapes.items[0].group.shapes;
-    shapes.items[0].onActivated.add(() => tryCatch(changeDashbaordInfo));
+    shapes.items[0].onActivated.add(() => tryCatch(changeDashboardInfo));
     shapes.items[0].onDeactivated.add(() => tryCatch(addInformation));
     shapeGroup.load("items");
     await context.sync();
   });
 }
 
-async function changeDashbaordInfo() {
+async function changeDashboardInfo() {
   await Excel.run(async (context) => {
     let shapes = context.workbook.worksheets.getItem("Sample").shapes;
     shapes.load("items");
