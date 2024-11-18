@@ -16,6 +16,7 @@
 
     Once you are finished testing and debugging the add-in, select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
 
+
 ## Explore the add-in code
 To explore an Office add-in project, you can start with the key files listed below.
 
