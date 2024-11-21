@@ -6,10 +6,10 @@ xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov=
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Mail Merge Add-in for Excel"/>
-  <Description DefaultValue="An add-in that sends email from Excel using Microsoft Graph."/>
+  <Description DefaultValue="This sample Office Add-in sends emails from inside Excel using the Microsoft Graph JavaScript SDK."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
-  <SupportUrl DefaultValue="https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples/issues"/>
+  <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
   </AppDomains>
