@@ -5,8 +5,6 @@ import Home from "./components/Home";
 
 /* global document, Office, module, require */
 
-const title = "Contoso Task Pane Add-in";
-
 const rootElement: HTMLElement = document.getElementById("container");
 const root = createRoot(rootElement);
 

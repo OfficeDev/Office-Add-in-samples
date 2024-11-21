@@ -1,68 +1,55 @@
 import { Input, Modal } from "antd";
-import React from "react";
+import React, { useState } from "react";
 
 export interface ApiKeyConfigProps {
-    isOpen: boolean;
-    apiKey: string;
-    endpoint: string;
-    deployment: string;
-    setKey: (key: string) => void;
-    setEndpoint: (endpoint: string) => void;
-    setDeployment: (deployment: string) => void;
-    setOpen: (isOpen: boolean) => void;
+  isOpen: boolean;
+  apiKey: string;
+  endpoint: string;
+  deployment: string;
+  setKey: (key: string) => void;
+  setEndpoint: (endpoint: string) => void;
+  setDeployment: (deployment: string) => void;
+  setOpen: (isOpen: boolean) => void;
 }
 
 export interface ApiKeyConfigState {
-    inputKey: string;
-    inputEndpoint: string;
-    inputDeployment: string;
+  inputKey: string;
+  inputEndpoint: string;
+  inputDeployment: string;
 }
 
-export default class AIKeyConfigDialog extends React.Component<ApiKeyConfigProps, ApiKeyConfigState> {
-    constructor(props, context) {
-        super(props, context);
+export default function AIKeyConfigDialog(props: ApiKeyConfigProps) {
+  const [inputKey, setInputKey] = useState(props.apiKey);
+  const [inputEndpoint, setInputEndpoint] = useState(props.endpoint);
+  const [inputDeployment, setInputDeployment] = useState(props.deployment);
+
+  const handleOk = () => {
+    if (inputKey.length > 0) {
+      props.setKey(inputKey);
     }
-
-    handleOk = () => {
-        if (this.state != null && (this.state.inputKey != null && this.state.inputKey.length > 0)) {
-            this.props.setKey(this.state.inputKey);
-        }
-        if (this.state != null && (this.state.inputEndpoint != null && this.state.inputEndpoint.length > 0)) {
-            this.props.setEndpoint(this.state.inputEndpoint);
-        }
-        if (this.state != null && (this.state.inputDeployment != null && this.state.inputDeployment.length > 0)) {
-            this.props.setDeployment(this.state.inputDeployment);
-        }
-        this.props.setOpen(false);
-    };
-
-    handleCancel = () => {
-        this.props.setOpen(false);
-    };
-
-    inputApiKeyChange = (e) => {
-        this.setState({ inputKey: e.target.value });
+    if (inputEndpoint.length > 0) {
+      props.setEndpoint(inputEndpoint);
     }
-
-    inputEndpointChange = (e) => {
-        this.setState({ inputEndpoint: e.target.value });
+    if (inputDeployment.length > 0) {
+      props.setDeployment(inputDeployment);
     }
+    props.setOpen(false);
+  };
 
-    inputDeploymentChange = (e) => {
-        this.setState({ inputDeployment: e.target.value });
-    }
+  const handleCancel = () => {
+    props.setOpen(false);
+  };
 
-    render() {
-        return <>
-            <Modal
-                title="Connect to Azure OpenAI Service"
-                open={this.props.isOpen}
-                onOk={this.handleOk}
-                onCancel={this.handleCancel}>
-                <label>Endpoint</label><Input defaultValue={this.props.apiKey} onChange={this.inputEndpointChange} />
-                <label>Deployment</label><Input defaultValue={this.props.deployment} onChange={this.inputDeploymentChange} />
-                <label>API Key</label><Input defaultValue={this.props.apiKey} onChange={this.inputApiKeyChange} />
-            </Modal>
-        </>;
-    }
+  return (
+    <>
+      <Modal title="Connect to Azure OpenAI Service" open={props.isOpen} onOk={handleOk} onCancel={handleCancel}>
+        <label>Endpoint</label>
+        <Input value={inputEndpoint} onChange={(e) => setInputEndpoint(e.target.value)} />
+        <label>Deployment</label>
+        <Input value={inputDeployment} onChange={(e) => setInputDeployment(e.target.value)} />
+        <label>API Key</label>
+        <Input value={inputKey} onChange={(e) => setInputKey(e.target.value)} />
+      </Modal>
+    </>
+  );
 }
