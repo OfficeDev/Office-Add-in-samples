@@ -80,6 +80,69 @@ These are the important files in the sample project.
 | webpack.config.js             Webpack config
 ```
 
+## Feature details
+
+`./src/taskpane` contains all the main page rendering, mail merge code logic, and Graph consent process.
+
+1. The `taskpane.html` file is the main page of this project. In our sample project, we use several `text-area` boxes and `buttons` to interact with the backend for data and commands.
+2. The `taskpane.js` file contains the main code logic of this add-in:
+- The `createSampleData()` function uses the Excel JavaScript API to interact with the workbook. It inserts a sample table named "InvoiceTable" and fills it with the necessary data (email addresses) and other information.
+- Your add-in can `get authorization to Microsoft Graph data` by obtaining an access token from the Microsoft identity platform. Use either the Authorization Code flow or the Implicit flow just as you would in other web applications, but with one exception: The Microsoft identity platform doesn't allow its sign-in page to open in an iframe. When an Office Add-in is running in Office on the web, the task pane is an iframe. This means you'll need to open the sign-in page in a dialog box using the Office dialog API. This affects how you use authentication and authorization helper libraries. For more information, see [Authentication with the Office dialog API](https://learn.microsoft.com/office/dev/add-ins/develop/auth-with-office-dialog-api).
+
+- In our project, we use the `DialogAPIAuthProvider` class to open the sign-in page and get consent for Graph, which contains two functions: `getAccessToken()` and `login()`.
+    - `getAccessToken()` checks whether the token already exists.
+    - `login()` constructs a URL for the Graph login dialog and uses the Office JavaScript API to display this dialog. It sets up event handlers for dialog events. If the dialog sends a message with a status of 'success', it stores the received access token and resolves the Promise with it.
+
+- The `sendEmail()` function replaces the column names in the to/subject/content text areas with the corresponding values in the table and sends emails row by row.
+    
+    The code for sending an email via `Microsoft Graph` is as follows:
+    ```
+    const sendMail = 
+    {
+        message: {
+            subject: finalSubject,
+            body: {
+                contentType: 'Text',
+                content: finalContent
+            },
+            toRecipients: [{
+                emailAddress: {
+                    address: addressValue[i][0]
+                }
+            }]
+        }
+    };
+
+    await graphClient.api('me/SendMail')
+        .post(sendMail);
+    ```
+
+## Reference
+
+-   [Microsoft Graph website](https://graph.microsoft.io)
+- For more information about Graph, please visit to the official documation: [Overview of Microsoft Graph](https://learn.microsoft.com/en-us/graph/overview)
+-   The Microsoft Graph TypeScript definitions enable editors to provide intellisense on Microsoft Graph objects including users, messages, and groups.
+    -   [@microsoft/microsoft-graph-types](https://www.npmjs.com/package/@microsoft/microsoft-graph-types) or [@types/microsoft-graph](https://www.npmjs.com/package/@types/microsoft-graph)
+    -   [@microsoft/microsoft-graph-types-beta](https://www.npmjs.com/package/@microsoft/microsoft-graph-types-beta)
+-   [Microsoft Graph Toolkit: UI Components and Authentication Providers for Microsoft Graph](https://docs.microsoft.com/graph/toolkit/overview)
+-   [Office Dev Center](http://dev.office.com/)
+
+## Additional resources
+
+- Step-by-step training exercises that guide you through creating a basic application that accesses data via the Microsoft Graph:
+
+    -   [Build Angular single-page apps with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/angular)
+    -   [Build Node.js Express apps with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/node)
+    -   [Build React Native apps with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/react-native)
+    -   [Build React single-page apps with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/react)
+    -   [Build JavaScript single-page apps with Microsoft Graph](https://docs.microsoft.com/graph/tutorials/javascript)
+    -   [Explore Microsoft Graph scenarios for JavaScript development](https://docs.microsoft.com/learn/paths/m365-msgraph-scenarios/)
+
+## Tips and Tricks
+
+- [Microsoft Graph SDK `n.call is not a function` by Lee Ford](https://www.lee-ford.co.uk/posts/graph-sdk-is-not-a-function/)
+- [Example of using the Graph JS library with ESM and `importmaps` ](https://github.com/waldekmastykarz/js-graph-101/blob/main/index_esm.html)
+
 ## Troubleshooting
 
 If you have problems running the sample, take the following steps.

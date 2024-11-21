@@ -1,7 +1,7 @@
 Office.onReady(function () {
-  let params = new URLSearchParams(location.search);
+  const params = new URLSearchParams(location.search);
   let userClientId = params.get('data');
-  if (userClientId != null) {
+  if (userClientId) {
     localStorage.setItem('userClientId', userClientId);
   }
   else {
