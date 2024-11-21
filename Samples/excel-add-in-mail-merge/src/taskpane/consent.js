@@ -17,7 +17,7 @@ Office.onReady(function () {
     },
     cache: {
       cacheLocation: 'localStorage', // Needed to avoid "login required" error.
-      storeAuthStateInCookie: true   // Recommended to avoid certain IE/Edge issues.
+      storeAuthStateInCookie: false
     }
   });
 
