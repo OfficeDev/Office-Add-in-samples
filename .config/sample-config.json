@@ -9,8 +9,8 @@
             "JavaScript"
         ],
         "technologies": [
-            "Custom Function",
-            "WebWorker"
+            "Custom Functions",
+            "Web Workers"
         ]
     },
     "samples": [
@@ -79,18 +79,18 @@
             "suggested": false
         },
         {
-            "id": "excel-add-in-custom-function-using-webworker",
+            "id": "excel-add-in-custom-functions-using-web-workers",
             "onboardDate": "2024-11-11",
             "title": "Custom Function Sample Using Web Worker",
-            "description": "Use web workers in custom functions to prevent blocking UI of your Office Add-in.",
+            "description": "Use web workers in custom Excel functions to prevent your Office Add-in UI from being blocked.",
             "types": [
                 "Excel"
             ],
             "tags": [
                 "JavaScript",
-                "Custom Function",
+                "Custom Functions",
                 "Excel",
-                "WebWorker"
+                "Web Workers"
             ],
             "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
@@ -98,8 +98,8 @@
         {
             "id": "excel-add-in-mail-merge",
             "onboardDate": "2024-11-11",
-            "title": "Using the Microsoft Graph API to send emails in Excel",
-            "description": "This sample demonstrates how to use the Microsoft Graph JavaScript SDK to send emails in Excel from Office Add-ins.",
+            "title": "Send emails from Excel with Microsoft Graph",
+            "description": "This sample Office Add-in sends emails from inside Excel using the Microsoft Graph JavaScript SDK.",
             "types": [
                 "Excel"
             ],

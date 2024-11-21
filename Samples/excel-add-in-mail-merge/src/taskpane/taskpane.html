@@ -18,17 +18,15 @@
 <body>
     <div class="container">
         <h1 style="margin: 8px;">Mail Merge Example</h1>
-        <p>Please follow the steps outlined below to delve into the capabilities of Excel add-ins and unlock their
-            potential when
-            integrated with the Graph API, specifically in the context of a mail merger.</p>
+        <p>Follow the steps below use mail merge in Excel from an Office Add-in.</p>
         <p></p>
-        <p><strong>Step 1: Generating Sample Data for Mail Merge </strong></p>
-        <p>Click on "Create Sample Data" to import the provided sample data into the spreadsheet.</p>
-        <button type="button" id="createSampleData">Create Sample Data</button>
-        <p><strong>Step 2: Verify the Email Template </strong></p>
-        <p>Review the email template below, ensuring that the parameters inside &lt;&lt;...&gt;&gt; align with the
+        <p><strong>Step 1: Generate sample data</strong></p>
+        <p>Select "Create Sample Data" to import sample data into the spreadsheet.</p>
+        <button type="button" id="createSampleData">Create sample data</button>
+        <p><strong>Step 2: Verify the email template </strong></p>
+        <p>Review this email template. Ensure that the parameters inside &lt;&lt;...&gt;&gt; match the
             column names in your current
-            spreadsheet. Click "Send Email" to dispatch emails based on the information in each data row.</p>
+            spreadsheet. Select "Send Email" to dispatch emails based on the information in each data row.</p>
         <P>
         <form method="post" action="">
             <p><strong>To : </strong></p>
@@ -54,8 +52,8 @@ Contoso Corporation
         </form>
         </P>
         <p><strong>Step 3: Send Emails </strong></p>
-        <p>Click "Send emails" to send email in bulk using the data in the current spreadsheet. Alternatively, click
-            "Create Draft" to check emails in your Outlook draft before sending them </p>
+        <p>Select "Send emails" to send email in bulk using the data in the current spreadsheet. Alternatively, select
+            "Create Draft" to check emails as an Outlook draft before sending them </p>
         <button type="button" id="sendEmail">Send Email</button>
         <div class="status"></div>
         <script type="text/javascript" src="./taskpane.js"></script>

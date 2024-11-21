@@ -5,8 +5,8 @@ xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov=
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Mail Management Add-in for Excel"/>
-  <Description DefaultValue="An add-in that shows how to call Microsoft Graph to send email from excel."/>
+  <DisplayName DefaultValue="Mail Merge Add-in for Excel"/>
+  <Description DefaultValue="An add-in that sends email from Excel using Microsoft Graph."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
   <SupportUrl DefaultValue="https://github.com/OfficeDev/Excel-Scenario-based-Add-in-Samples/issues"/>
@@ -79,8 +79,8 @@ xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov=
         <bt:String id="TaskpaneButton.Label" DefaultValue="Send Emails"/>
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Send Emails' button to get started."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to open Mail Merge Taskpane"/>
+        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and select the 'Send Emails' button to get started."/>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to open Mail Merge task pane"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>

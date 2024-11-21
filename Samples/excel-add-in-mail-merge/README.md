@@ -1,12 +1,12 @@
-# Excel Mail Merge Sample Office Add-in
+# Mail merge in an Excel add-in
 
 <img src="./assets/thumbnail.png" width="800" alt="A workbook with mail merge add-in open.">
 
-This sample demonstrates how to use the Microsoft Graph JavaScript SDK to send emails in Excel from Office Add-ins. You'll learn how to:
+This sample Office Add-in sends emails from inside Excel using the Microsoft Graph JavaScript SDK. You'll learn how to:
 
-- Create Sample Data, including valid email address (required) and other information.
-- Verify Template and Data, the To Line must contain the column name of the email address.
-- Send Email, which will pop up a dialog to get the consent of Microsoft Graph. After signing-in, the email will be sent.
+- Verify and validate data, such as email addresses.
+- Send email with Microsoft Graph.
+- Sign-in to Microsoft Graph to get proper permissions.
 
 ## How to run this sample
 
