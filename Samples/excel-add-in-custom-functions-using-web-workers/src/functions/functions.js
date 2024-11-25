@@ -74,7 +74,7 @@ const SampleNamespace = {};
   // The array of web workers.
   const g_webworkers = [];
 
-  // Next job id.
+  // Next job ID.
   let g_nextJobId = 0;
 
   // The promise info for the job. It stores the {resolve: resolve, reject: reject} information for the job.
