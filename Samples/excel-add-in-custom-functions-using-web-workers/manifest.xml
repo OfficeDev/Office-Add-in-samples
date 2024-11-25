@@ -17,8 +17,8 @@
   <DefaultLocale>en-US</DefaultLocale>
 
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
-  <DisplayName DefaultValue="PnP WebWorker sample" />
-  <Description DefaultValue="PnP WebWorker sample" />
+  <DisplayName DefaultValue="Web worker sample" />
+  <Description DefaultValue="Use web workers in custom Excel functions to prevent your Office Add-in UI from being blocked." />
 
   <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
   <IconUrl DefaultValue="https://localhost:3000/images/icon-32.png" />
