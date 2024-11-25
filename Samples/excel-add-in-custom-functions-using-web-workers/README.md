@@ -1,4 +1,4 @@
-# Custom Function Sample Using Web Worker
+# Build Asynchronous Custom Functions in Excel with Web Workers
 
 <img src="./assets/thumbnail.png" width="800" alt="A workbook with custom function using web worker.">
 
@@ -45,11 +45,11 @@ This sample shows how to use web workers in custom functions to prevent blocking
 
 The add-in adds the following custom functions to the workbook.
 
-- `=WebWorkerSample.TEST(<??>)`: Description.
-- `=WebWorkerSample.TEST_PROMISE(<??>)`: Description.
-- `=WebWorkerSample.TEST_ERROR(<??>)`: Description.
-- `=WebWorkerSample.TEST_ERROR_PROMISE(<??>)`: Description.
-- `=WebWorkerSample.TEST_UI_THREAD(<??>)`: Description.
+- `=WebWorkerSample.TEST(2)`: Post the TEST function to web worker to do the calculation that returns the computing result.
+- `=WebWorkerSample.TEST_PROMISE(2)`: Post the TEST_PROMISE function to web worker that returns a promise that resolves with the calculation result.
+- `=WebWorkerSample.TEST_ERROR(2)`: Post the TEST_ERROR function to web worker that returns an error.
+- `=WebWorkerSample.TEST_ERROR_PROMISE(2)`: Post the TEST_ERROR_PROMISE function to web worker that returns a promise that rejects with an error.
+- `=WebWorkerSample.TEST_UI_THREAD(2)`: Do the calculation using the UI thread.
 
 Open the task pane to see an animated ball bouncing. This shows the effect of blocking the UI thread. Enter `=WebWorkerSample.TEST_UI_THREAD(50000)` into a cell to cause the thread to be blocked for five seconds. The bouncing ball will stop while the function result is calculated.
 

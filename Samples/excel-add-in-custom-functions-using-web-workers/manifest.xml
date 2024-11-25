@@ -42,29 +42,24 @@
   <!-- Begin Add-in Commands Mode integration. -->
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
     
-    <!-- The Hosts node is required. -->
     <Hosts>
-      <!-- Each host can have a different set of commands. -->
-      <!-- Excel host is Workbook, Word host is Document, and PowerPoint host is Presentation. -->
-      <!-- Make sure the hosts you override match the hosts declared in the top section of the manifest. -->
       <Host xsi:type="Workbook">
         <Runtimes>
-          <Runtime resid="OEP.SharedRuntime.Url" lifetime="long" />
+          <Runtime resid="SharedRuntime.Url" lifetime="long" />
         </Runtimes>
 
         <AllFormFactors>
           <ExtensionPoint xsi:type="CustomFunctions">
             <Script>
-              <!-- For now, we still need to have Script URL until the real SharedApp support is ready -->
-              <SourceLocation resid="OEP.CustomFunctions.Script" />
+              <SourceLocation resid="CustomFunctions.Script" />
             </Script>
             <Page>
-              <SourceLocation resid="OEP.SharedRuntime.Url"/>
+              <SourceLocation resid="SharedRuntime.Url"/>
             </Page>
             <Metadata>
-              <SourceLocation resid="OEP.CustomFunctions.Json" />
+              <SourceLocation resid="CustomFunctions.Json" />
             </Metadata>
-            <Namespace resid="OEP.CustomFunctions.NameSpace" />
+            <Namespace resid="CustomFunctions.NameSpace" />
           </ExtensionPoint>
         </AllFormFactors>
 
@@ -73,54 +68,54 @@
           <!--"This code enables a customizable message to be displayed when the add-in is loaded successfully upon individual install."-->
           <GetStarted>
             <!-- Title of the Getting Started callout. resid points to a ShortString resource -->
-            <Title resid="OEP.GetStarted.Title" />
+            <Title resid="GetStarted.Title" />
 
             <!-- Description of the Getting Started callout. resid points to a LongString resource -->
-            <Description resid="OEP.GetStarted.Description" />
+            <Description resid="GetStarted.Description" />
 
             <!-- Point to a url resource which details how the add-in should be used. -->
-            <LearnMoreUrl resid="OEP.GetStarted.LearnMoreUrl" />
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl" />
           </GetStarted>
 
             <!-- Function file is a HTML page that includes the JavaScript where functions for ExecuteAction will be called. 
             Think of the FunctionFile as the code behind ExecuteFunction. -->
-            <FunctionFile resid="OEP.SharedRuntime.Url" />
+            <FunctionFile resid="SharedRuntime.Url" />
 
             <!-- PrimaryCommandSurface is the main Office Ribbon. -->
             <ExtensionPoint xsi:type="PrimaryCommandSurface">
                 <!-- Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab. -->
                 <OfficeTab id="TabHome">
                 <!-- Ensure you provide a unique id for the group. Recommendation for any IDs is to namespace using your company name. -->
-                <Group id="OEP.Group1">
+                <Group id="Group1">
                 <!-- Label for your group. resid must point to a ShortString resource. -->
-                <Label resid="OEP.Group1Label" />
+                <Label resid="Group1Label" />
                 <!-- Icons. Required sizes 16,32,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX. -->
                 <!-- Use PNG icons. All URLs on the resources section must use HTTPS. -->
                 <Icon>
-                  <bt:Image size="16" resid="OEP.tpicon_16x16" />
-                  <bt:Image size="32" resid="OEP.tpicon_32x32" />
-                  <bt:Image size="80" resid="OEP.tpicon_80x80" />
+                  <bt:Image size="16" resid="tpicon_16x16" />
+                  <bt:Image size="32" resid="tpicon_32x32" />
+                  <bt:Image size="80" resid="tpicon_80x80" />
                 </Icon>
 
                 <!-- Control. It can be of type "Button" or "Menu". -->
-                <Control xsi:type="Button" id="OEP.TaskpaneButton">
-                  <Label resid="OEP.TaskpaneButton.Label" />
+                <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label" />
                   <Supertip>
                     <!-- ToolTip title. resid must point to a ShortString resource. -->
-                    <Title resid="OEP.TaskpaneButton.Label" />
+                    <Title resid="TaskpaneButton.Label" />
                     <!-- ToolTip description. resid must point to a LongString resource. -->
-                    <Description resid="OEP.TaskpaneButton.Tooltip" />
+                    <Description resid="TaskpaneButton.Tooltip" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="OEP.tpicon_16x16" />
-                    <bt:Image size="32" resid="OEP.tpicon_32x32" />
-                    <bt:Image size="80" resid="OEP.tpicon_80x80" />
+                    <bt:Image size="16" resid="tpicon_16x16" />
+                    <bt:Image size="32" resid="tpicon_32x32" />
+                    <bt:Image size="80" resid="tpicon_80x80" />
                   </Icon>
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
                     <!-- Provide a url resource id for the location that will be displayed on the task pane. -->
-                    <SourceLocation resid="OEP.SharedRuntime.Url" />
+                    <SourceLocation resid="SharedRuntime.Url" />
                   </Action>
                 </Control>
               </Group>
@@ -133,28 +128,28 @@
     <!-- You can use resources across hosts and form factors. -->
      <Resources>
       <bt:Images>
-        <bt:Image id="OEP.tpicon_16x16" DefaultValue="https://localhost:3000/images/icon-16.png" />
-        <bt:Image id="OEP.tpicon_32x32" DefaultValue="https://localhost:3000/images/icon-32.png" />
-        <bt:Image id="OEP.tpicon_80x80" DefaultValue="https://localhost:3000/images/icon-80.png" />
+        <bt:Image id="tpicon_16x16" DefaultValue="https://localhost:3000/images/icon-16.png" />
+        <bt:Image id="tpicon_32x32" DefaultValue="https://localhost:3000/images/icon-32.png" />
+        <bt:Image id="tpicon_80x80" DefaultValue="https://localhost:3000/images/icon-80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="OEP.CustomFunctions.Script" DefaultValue="https://localhost:3000/functions.js" />
-        <bt:Url id="OEP.CustomFunctions.Json" DefaultValue="https://localhost:3000/functions.json" />
-        <bt:Url id="OEP.SharedRuntime.Url" DefaultValue="https://localhost:3000/taskpane.html" />
-        <bt:Url id="OEP.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
+        <bt:Url id="CustomFunctions.Script" DefaultValue="https://localhost:3000/functions.js" />
+        <bt:Url id="CustomFunctions.Json" DefaultValue="https://localhost:3000/functions.json" />
+        <bt:Url id="SharedRuntime.Url" DefaultValue="https://localhost:3000/taskpane.html" />
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
       </bt:Urls>
       <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
-        <bt:String id="OEP.TaskpaneButton.Label" DefaultValue="Show task pane" />
-        <bt:String id="OEP.Group1Label" DefaultValue="Web worker sample" />
-        <bt:String id="OEP.GetStarted.Title" DefaultValue="Web worker sample" />
-        <bt:String id="OEP.CustomFunctions.NameSpace" DefaultValue="WebWorkerSample" />
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Show task pane" />
+        <bt:String id="Group1Label" DefaultValue="Web worker sample" />
+        <bt:String id="GetStarted.Title" DefaultValue="Web worker sample" />
+        <bt:String id="CustomFunctions.NameSpace" DefaultValue="WebWorkerSample" />
       </bt:ShortStrings>
       <!-- LongStrings max characters==250. -->
       <bt:LongStrings>
-        <bt:String id="OEP.TaskpaneButton.Tooltip" DefaultValue="Click to Show a task pane" />
-        <bt:String id="OEP.GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show task pane' button to get started." />
-        <bt:String id="OEP.TestFuncButton.Tooltip" DefaultValue="Test AppCmd button" />
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a task pane" />
+        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show task pane' button to get started." />
+        <bt:String id="TestFuncButton.Tooltip" DefaultValue="Test AppCmd button" />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
