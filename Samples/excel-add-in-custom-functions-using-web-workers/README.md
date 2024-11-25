@@ -4,8 +4,8 @@
 
 This sample shows how to use web workers in custom functions to prevent blocking UI of your add-in. You'll learn how to:
 
-- Use Custom Functions
-- Use Web workers
+- Create custom functions in Excel
+- Use web workers
 
 ## How to run this sample
 
@@ -40,20 +40,18 @@ This sample shows how to use web workers in custom functions to prevent blocking
 
 ## Use the sample add-in
 
-1. Click the executeCFWithoutWebWorker button, a CustomFunction without WebWorker will be instered into the 'A1' Cell and executed, and the ball inside the taskpane will be blocked.
-2. Click the executeCFWithWebWorker button, a CustomFunction with WebWorker will be instered into the 'A1' Cell and executed, and the ball inside the taskpane will not be blocked.
+1. Select the **Run function without web workers** button. A custom function without a web worker will be inserted in the cell **A1** and run. Note that this stops the bouncing ball inside the task pane.
+2. Select the **Run function with web worker** button. A custom function with a web worker will be inserted in cell **A1** and run. Note that the bouncing ball inside the task pane doesn't stop.
 
-Now you can use the following custom functions:
+The add-in adds the following custom functions to the workbook.
 
-```
-=WebWorkerSample.TEST(2)
-=WebWorkerSample.TEST_PROMISE(2)
-=WebWorkerSample.TEST_ERROR(2)
-=WebWorkerSample.TEST_ERROR_PROMISE(2)
-=WebWorkerSample.TEST_UI_THREAD(2)
-```
+- `=WebWorkerSample.TEST(<??>)`: Description.
+- `=WebWorkerSample.TEST_PROMISE(<??>)`: Description.
+- `=WebWorkerSample.TEST_ERROR(<??>)`: Description.
+- `=WebWorkerSample.TEST_ERROR_PROMISE(<??>)`: Description.
+- `=WebWorkerSample.TEST_UI_THREAD(<??>)`: Description.
 
-If you open the task pane you will see an animated bouncing ball. You can see the effect of blocking the UI thread by entering `=WebWorkerSample.TEST_UI_THREAD(50000)` into a cell. The bouncing ball will stop for a few seconds while the result is calculated.
+Open the task pane to see an animated ball bouncing. This shows the effect of blocking the UI thread. Enter `=WebWorkerSample.TEST_UI_THREAD(50000)` into a cell to cause the thread to be blocked for five seconds. The bouncing ball will stop while the function result is calculated.
 
 ## Explore sample files
 
@@ -88,14 +86,14 @@ These are the important files in the sample project.
 
 ### Dispatch to web worker
 
-When a custom function needs to use a web worker, we turn the calculation into a job and dispatch it to a web worker. The **dispatchCalculationJob** function takes the function name and parameters from a custom function, and creates a job object that is posted to a web worker. For more details see the **dispatchCalculationJob** function in [functions.js](functions.js).
+To have a custom function use a web worker, turn the calculation into a job and dispatch it to the web worker. In this sample, the `dispatchCalculationJob` function takes the function name and parameters from a custom function. It then creates a job object that is posted to a web worker. For more details see the `dispatchCalculationJob` function in [functions.js](src/functions/functions.js).
 
 ```JavaScript
-    // Post a job to the web worker to do the calculation
+    // Post a job to the web worker to do the calculation.
     function dispatchCalculationJob(functionName, parameters) {
         const jobId = g_nextJobId++;
         return new Promise(function(resolve, reject) {
-            // store the promise information.
+            // Store the promise information.
             g_jobIdToPromiseInfoMap[jobId] = {resolve: resolve, reject: reject};
             const worker = getOrCreateWebWorker(jobId);
             worker.postMessage({
@@ -107,13 +105,13 @@ When a custom function needs to use a web worker, we turn the calculation into a
     }
 ```
 
-### Web worker runs the job and returns the result
+### Run the job and return the result
 
-The web worker runs the job specified in the job object to do the actual calculation. The web worker code is in a separate file in [functions-worker.js](functions-worker.js).
+The web worker runs the job specified in the job object for the actual calculation. This sample's web worker code is in a separate file, [functions-worker.js](src/functions/functions-worker.js).
 
 The functions-worker.js will:
 
-1. Receive a message containing the job to run.
+1. Receive a message that contains the job to run.
 1. Invoke a function to perform the calculation.
 1. Call **postMessage** to post the result back to the main thread.
 
@@ -169,7 +167,7 @@ Most of the previous code handles the error case and Promise case.
 
 ### Process results from the web worker
 
-In [functions.js](functions.js), when a new web worker is created, it is provided a callback function to process the result. The callback function parses the data to determine the outcome of the job. It resolves or rejects the promise as determined by the job result data.
+In [functions.js](src/functions/functions.js), when a new web worker is created, it's provided a callback function to process the result. The callback function parses the data to determine the outcome of the job. It resolves or rejects the promise, as determined by the job result data.
 
 ```JavaScript
         // create a new web worker
