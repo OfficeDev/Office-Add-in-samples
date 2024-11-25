@@ -6,12 +6,7 @@
     xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" 
     xsi:type="TaskPaneApp">
 
-  <!-- Begin Basic Settings: Add-in metadata, used for all versions of Office unless override provided. -->
-
-  <!-- IMPORTANT! Id must be unique for your add-in, if you reuse this manifest ensure that you change this id to a new GUID. -->
   <Id>91dd5cf9-9c42-4425-8b1e-8a5d90cca373</Id>
-
-  <!--Version. Updates from the store only get triggered if there is a version change. -->
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
@@ -20,10 +15,7 @@
   <DisplayName DefaultValue="Web worker sample" />
   <Description DefaultValue="Use web workers in custom Excel functions to prevent your Office Add-in UI from being blocked." />
 
-  <!-- Icon for your add-in. Used on installation screens and the add-ins dialog. -->
   <IconUrl DefaultValue="https://localhost:3000/images/icon-32.png" />
-  <!--End Basic Settings. -->
-  <!--Begin TaskPane Mode integration. This section is used if there are no VersionOverrides or if the Office client version does not support add-in commands. -->
   <Hosts>
     <Host Name="Workbook" />
   </Hosts>
@@ -35,13 +27,8 @@
   <DefaultSettings>
     <SourceLocation DefaultValue="https://localhost:3000/taskpane.html" />
   </DefaultSettings>
-  <!-- End TaskPane Mode integration.  -->
-
   <Permissions>ReadWriteDocument</Permissions>
-
-  <!-- Begin Add-in Commands Mode integration. -->
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
-    
     <Hosts>
       <Host xsi:type="Workbook">
         <Runtimes>
@@ -62,48 +49,26 @@
             <Namespace resid="CustomFunctions.NameSpace" />
           </ExtensionPoint>
         </AllFormFactors>
-
-        <!-- Form factor. Currently only DesktopFormFactor is supported. -->
         <DesktopFormFactor>
-          <!--"This code enables a customizable message to be displayed when the add-in is loaded successfully upon individual install."-->
           <GetStarted>
-            <!-- Title of the Getting Started callout. resid points to a ShortString resource -->
             <Title resid="GetStarted.Title" />
-
-            <!-- Description of the Getting Started callout. resid points to a LongString resource -->
             <Description resid="GetStarted.Description" />
-
-            <!-- Point to a url resource which details how the add-in should be used. -->
             <LearnMoreUrl resid="GetStarted.LearnMoreUrl" />
           </GetStarted>
-
-            <!-- Function file is a HTML page that includes the JavaScript where functions for ExecuteAction will be called. 
-            Think of the FunctionFile as the code behind ExecuteFunction. -->
             <FunctionFile resid="SharedRuntime.Url" />
-
-            <!-- PrimaryCommandSurface is the main Office Ribbon. -->
             <ExtensionPoint xsi:type="PrimaryCommandSurface">
-                <!-- Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab. -->
                 <OfficeTab id="TabHome">
-                <!-- Ensure you provide a unique id for the group. Recommendation for any IDs is to namespace using your company name. -->
                 <Group id="Group1">
-                <!-- Label for your group. resid must point to a ShortString resource. -->
                 <Label resid="Group1Label" />
-                <!-- Icons. Required sizes 16,32,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX. -->
-                <!-- Use PNG icons. All URLs on the resources section must use HTTPS. -->
                 <Icon>
                   <bt:Image size="16" resid="tpicon_16x16" />
                   <bt:Image size="32" resid="tpicon_32x32" />
                   <bt:Image size="80" resid="tpicon_80x80" />
                 </Icon>
-
-                <!-- Control. It can be of type "Button" or "Menu". -->
                 <Control xsi:type="Button" id="TaskpaneButton">
                   <Label resid="TaskpaneButton.Label" />
                   <Supertip>
-                    <!-- ToolTip title. resid must point to a ShortString resource. -->
                     <Title resid="TaskpaneButton.Label" />
-                    <!-- ToolTip description. resid must point to a LongString resource. -->
                     <Description resid="TaskpaneButton.Tooltip" />
                   </Supertip>
                   <Icon>
@@ -112,9 +77,7 @@
                     <bt:Image size="80" resid="tpicon_80x80" />
                   </Icon>
 
-                  <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
-                    <!-- Provide a url resource id for the location that will be displayed on the task pane. -->
                     <SourceLocation resid="SharedRuntime.Url" />
                   </Action>
                 </Control>
@@ -124,8 +87,6 @@
         </DesktopFormFactor>
       </Host>
     </Hosts>
-    
-    <!-- You can use resources across hosts and form factors. -->
      <Resources>
       <bt:Images>
         <bt:Image id="tpicon_16x16" DefaultValue="https://localhost:3000/images/icon-16.png" />
@@ -138,14 +99,12 @@
         <bt:Url id="SharedRuntime.Url" DefaultValue="https://localhost:3000/taskpane.html" />
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
       </bt:Urls>
-      <!-- ShortStrings max characters==125. -->
       <bt:ShortStrings>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Show task pane" />
         <bt:String id="Group1Label" DefaultValue="Web worker sample" />
         <bt:String id="GetStarted.Title" DefaultValue="Web worker sample" />
         <bt:String id="CustomFunctions.NameSpace" DefaultValue="WebWorkerSample" />
       </bt:ShortStrings>
-      <!-- LongStrings max characters==250. -->
       <bt:LongStrings>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a task pane" />
         <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show task pane' button to get started." />
@@ -153,5 +112,4 @@
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
-  <!-- End Add-in Commands Mode integration. -->
 </OfficeApp>
