@@ -101,16 +101,15 @@
   <script src="./taskpane.js" type="text/javascript"></script>
   <div class="container">
     <h1 style="margin: 8px;">Custom Function Using WebWorker</h1>
-    <p>This sample shows how to use web workers in custom functions to prevent blocking the UI of your Office
-      Add-in.</p>
+    <p>See how web workers in custom Excel functions prevent your Office Add-in UI from being blocked.</p>
     <p></p>
     <p><strong>Execute Custom Function without WebWorker.</strong></p>
-    <p>Select the button will block the below ball.</p>
-    <button type="button" id="executeCFWithoutWebWorker">Execute CF without WebWorker</button>
+    <p>When you select this button, a function will start that blocks the bouncing ball.</p>
+    <button type="button" id="executeCFWithoutWebWorker">Run function without a web worker</button>
 
     <p><strong>Execute Custom Function with Web Worker.</strong></p>
-    <p>Select the button will not block the below ball.</p>
-    <button type="button" id="executeCFWithWebWorker">Execute CF with WebWorker</button>
+    <p>When you select this button, a function will start that doesn't block the bouncing ball.</p>
+    <button type="button" id="executeCFWithWebWorker">Run function with web workers</button>
     <p></p>
     <canvas id="mycanvas" width="200" height="200"></canvas>
   </div>
