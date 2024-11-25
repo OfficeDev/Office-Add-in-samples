@@ -6,46 +6,43 @@
 /* global console, document, Excel, Office */
 
 Office.onReady(() => {
-  document.getElementById("executeCFWithoutWebWorker").onclick = executeCFWithoutWebWorker;
-  document.getElementById("executeCFWithWebWorker").onclick = executeCFWithWebWorker;
+  document.getElementById("runCFWithoutWebWorker").onclick = () => tryCatch(runCFWithoutWebWorker);
+  document.getElementById("runCFWithWebWorker").onclick = () => tryCatch(runCFWithWebWorker);
 });
 
 
-// Execute Custom Function without WebWorker.
-async function executeCFWithoutWebWorker() {
-  try {
-    await Excel.run(async (context) => {
-      context.workbook.worksheets.getItemOrNullObject("Sample").delete();
-      const sheet = context.workbook.worksheets.add("Sample");
+async function runCFWithoutWebWorker() {
+  await Excel.run(async (context) => {
+    context.workbook.worksheets.getItemOrNullObject("Sample").delete();
+    const sheet = context.workbook.worksheets.add("Sample");
 
-      let range = sheet.getRange('A1');
-      range.values = [["=WebWorkerSample.TEST_UI_THREAD(20000)"]];
-      range.calculate();
+    let range = sheet.getRange('A1');
+    range.values = [["=WebWorkerSample.TEST_UI_THREAD(20000)"]];
+    range.calculate();
 
-      sheet.activate();
-      await context.sync();
-    });
-  } catch (error) {
-    showStatus(`Exception when executeCFWithoutWebWorker: ${JSON.stringify(error)}.`, true);
-  }
+    sheet.activate();
+    await context.sync();
+  });
 }
 
-// Execute Custom Function with WebWorker.
-async function executeCFWithWebWorker() {
-  try {
-    await Excel.run(async (context) => {
-      context.workbook.worksheets.getItemOrNullObject("Sample").delete();
-      const sheet = context.workbook.worksheets.add("Sample");
+async function runCFWithWebWorker() {
+  await Excel.run(async (context) => {
+    context.workbook.worksheets.getItemOrNullObject("Sample").delete();
+    const sheet = context.workbook.worksheets.add("Sample");
 
-      let range = sheet.getRange('A1');
-      range.values = [["=WebWorkerSample.TEST(20000)"]];
-      range.calculate();
+    let range = sheet.getRange('A1');
+    range.values = [["=WebWorkerSample.TEST(20000)"]];
+    range.calculate();
 
-      sheet.activate();
-      await context.sync();
-    });
-  } catch (error) {
-    showStatus(`Exception when executeCFWithWebWorker: ${JSON.stringify(error)}.`, true);
-  }
+    sheet.activate();
+    await context.sync();
+  });
 }
 
+async function tryCatch(callback) {
+  try {
+    await callback();
+  } catch (error) {
+    showStatus(error, true);
+  }
+}

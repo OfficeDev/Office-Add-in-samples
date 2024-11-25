@@ -69,21 +69,21 @@ const SampleNamespace = {};
 
 (function (SampleNamespace) {
   // The max number of web workers to be created.
-  const g_maxWebWorkers = 4;
+  const maxWebWorkers = 4;
 
   // The array of web workers.
-  const g_webworkers = [];
+  const webworkers = [];
 
   // Next job ID.
-  let g_nextJobId = 0;
+  let nextJobId = 0;
 
   // The promise info for the job. It stores the {resolve: resolve, reject: reject} information for the job.
-  const g_jobIdToPromiseInfoMap = {};
+  const jobIdToPromiseInfoMap = {};
 
   function getOrCreateWebWorker(jobId) {
-    const index = jobId % g_maxWebWorkers;
-    if (g_webworkers[index]) {
-      return g_webworkers[index];
+    const index = jobId % maxWebWorkers;
+    if (webworkers[index]) {
+      return webworkers[index];
     }
 
     // Create a new web worker.
@@ -97,7 +97,7 @@ const SampleNamespace = {};
       if (typeof (jobResult.jobId) == "number") {
         const jobId = jobResult.jobId;
         // Get the promise info associated with the job id.
-        const promiseInfo = g_jobIdToPromiseInfoMap[jobId];
+        const promiseInfo = jobIdToPromiseInfoMap[jobId];
         if (promiseInfo) {
           if (jobResult.error) {
             // The web worker returned an error.
@@ -107,21 +107,21 @@ const SampleNamespace = {};
             // The web worker returned a result.
             promiseInfo.resolve(jobResult.result);
           }
-          delete g_jobIdToPromiseInfoMap[jobId];
+          delete jobIdToPromiseInfoMap[jobId];
         }
       }
     });
 
-    g_webworkers[index] = webWorker;
+    webworkers[index] = webWorker;
     return webWorker;
   }
 
   // Post a job to the web worker to do the calculation.
   function dispatchCalculationJob(functionName, parameters) {
-    const jobId = g_nextJobId++;
+    const jobId = nextJobId++;
     return new Promise(function (resolve, reject) {
       // Store the promise information.
-      g_jobIdToPromiseInfoMap[jobId] = { resolve: resolve, reject: reject };
+      jobIdToPromiseInfoMap[jobId] = { resolve: resolve, reject: reject };
       const worker = getOrCreateWebWorker(jobId);
       worker.postMessage({
         jobId: jobId,

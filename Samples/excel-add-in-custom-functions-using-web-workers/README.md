@@ -88,23 +88,6 @@ These are the important files in the sample project.
 
 To have a custom function use a web worker, turn the calculation into a job and dispatch it to the web worker. In this sample, the `dispatchCalculationJob` function takes the function name and parameters from a custom function. It then creates a job object that is posted to a web worker. For more details see the `dispatchCalculationJob` function in [functions.js](src/functions/functions.js).
 
-```JavaScript
-    // Post a job to the web worker to do the calculation.
-    function dispatchCalculationJob(functionName, parameters) {
-        const jobId = g_nextJobId++;
-        return new Promise(function(resolve, reject) {
-            // Store the promise information.
-            g_jobIdToPromiseInfoMap[jobId] = {resolve: resolve, reject: reject};
-            const worker = getOrCreateWebWorker(jobId);
-            worker.postMessage({
-                jobId: jobId,
-                name: functionName,
-                parameters: parameters
-            });
-        });
-    }
-```
-
 ### Run the job and return the result
 
 The web worker runs the job specified in the job object for the actual calculation. This sample's web worker code is in a separate file, [functions-worker.js](src/functions/functions-worker.js).
@@ -115,87 +98,11 @@ The functions-worker.js will:
 1. Invoke a function to perform the calculation.
 1. Call **postMessage** to post the result back to the main thread.
 
-```JavaScript
-self.addEventListener('message',
-    function(event) {
-        let data = event.data;
-        if (typeof(data) == "string") {
-            data = JSON.parse(data);
-        }
-
-        const jobId = data.jobId;
-        try {
-            const result = invokeFunction(data.name, data.parameters);
-            // check whether the result is a promise
-            if (typeof(result) == "function" || typeof(result) == "object" && typeof(result.then) == "function") {
-                result.then(function(realResult) {
-                    postMessage(
-                        {
-                            jobId: jobId,
-                            result: realResult
-                        }
-                    );
-                })
-                .catch(function(ex) {
-                    postMessage(
-                        {
-                            jobId: jobId,
-                            error: true
-                        }
-                    )
-                });
-            }
-            else {
-                postMessage({
-                    jobId: jobId,
-                    result: result
-                });
-            }
-        }
-        catch(ex) {
-            postMessage({
-                jobId: jobId,
-                error: true
-            });
-        }
-    }
-);
-
-```
-
-Most of the previous code handles the error case and Promise case.
+Most of the code handles the error case and Promise case.
 
 ### Process results from the web worker
 
 In [functions.js](src/functions/functions.js), when a new web worker is created, it's provided a callback function to process the result. The callback function parses the data to determine the outcome of the job. It resolves or rejects the promise, as determined by the job result data.
-
-```JavaScript
-        // create a new web worker
-        const webWorker = new Worker("functions-worker.js");
-        webWorker.addEventListener('message', function(event) {
-            let data = event.data;
-            if (typeof(data) == "string") {
-                data = JSON.parse(data);
-            }
-
-            if (typeof(data.jobId) == "number") {
-                const jobId = data.jobId;
-                // get the promise info associated with the job id
-                const promiseInfo = g_jobIdToPromiseInfoMap[jobId];
-                if (promiseInfo) {
-                    if (data.error) {
-                        // The web worker returned an error
-                        promiseInfo.reject(new Error());
-                    }
-                    else {
-                        // The web worker returned a result
-                        promiseInfo.resolve(data.result);
-                    }
-                    delete g_jobIdToPromiseInfoMap[jobId];
-                }
-            }
-        });
-```
 
 ## Troubleshooting
 
