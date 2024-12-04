@@ -21,13 +21,13 @@
 
     // Create a new web worker.
     const webWorker = new Worker("functionssWorker.js");
-    webWorker.addEventListener('message', function (event) {
+    webWorker.addEventListener("message", function (event) {
       let jobResult = event.data;
-      if (typeof (jobResult) == "string") {
+      if (typeof jobResult == "string") {
         jobResult = JSON.parse(jobResult);
       }
 
-      if (typeof (jobResult.jobId) == "number") {
+      if (typeof jobResult.jobId == "number") {
         const jobId = jobResult.jobId;
         // Get the promise info associated with the job id.
         const promiseInfo = jobIdToPromiseInfoMap[jobId];
@@ -35,8 +35,7 @@
           if (jobResult.error) {
             // The web worker returned an error.
             promiseInfo.reject(new Error());
-          }
-          else {
+          } else {
             // The web worker returned a result.
             promiseInfo.resolve(jobResult.result);
           }
@@ -59,7 +58,7 @@
       worker.postMessage({
         jobId: jobId,
         name: functionName,
-        parameters: parameters
+        parameters: parameters,
       });
     });
   }
@@ -70,8 +69,8 @@
 /**
  * Dispatches a calculation job for the TEST function.
  * @customfunction
- * @param {number} n - The input number for the TEST function.
- * @returns {Promise} - A promise that resolves with the result of the calculation.
+ * @param {number} n - The input number for the TEST_PROMISE function.
+ * @returns {any} - The computing result of the calculation.
  */
 export function TEST(n) {
   return SampleNamespace.dispatchCalculationJob("TEST", [n]);
@@ -80,8 +79,8 @@ export function TEST(n) {
 /**
  * Dispatches a calculation job for the TEST_PROMISE function.
  * @customfunction
- * @param {number} n - The input number for the TEST_PROMISE function.
- * @returns {result} - The computing result of the calculation.
+ * @param {number} n - The input number for the TEST function.
+ * @returns {any} - A promise that resolves with the result of the calculation.
  */
 export function TEST_PROMISE(n) {
   return SampleNamespace.dispatchCalculationJob("TEST_PROMISE", [n]);
@@ -90,8 +89,8 @@ export function TEST_PROMISE(n) {
 /**
  * Dispatches a calculation job for the TEST_ERROR function.
  * @customfunction
- * @param {number} n - The input number for the TEST_ERROR function.
- * @returns {Promise} - A promise that resolves the computing result of the calculation.
+ * @param {number} n - The input number for the TEST_ERROR_PROMISE function.
+ * @returns {any} - Rejects with an error.
  */
 export function TEST_ERROR(n) {
   return SampleNamespace.dispatchCalculationJob("TEST_ERROR", [n]);
@@ -100,21 +99,28 @@ export function TEST_ERROR(n) {
 /**
  * Dispatches a calculation job for the TEST_ERROR_PROMISE function.
  * @customfunction
- * @param {number} n - The input number for the TEST_ERROR_PROMISE function.
- * @returns {Promise} - A promise that rejects with an error.
+ * @param {number} n - The input number for the TEST_ERROR function.
+ * @returns {any} - A promise that rejects with an error.
  */
 export function TEST_ERROR_PROMISE(n) {
   return SampleNamespace.dispatchCalculationJob("TEST_ERROR_PROMISE", [n]);
 }
 
-// This function will show what happens when calculations are run on the main UI thread.
-// The task pane will be blocked until this method completes.
+/**
+ * This function will show what happens when calculations are run on the main UI thread.
+ * The task pane will be blocked until this method completes.
+ * @customfunction
+ * @param {number} n - The input number for the TEST_ERROR function.
+ * @returns {any} - The computing result of the calculation.
+ */
 export function TEST_UI_THREAD(n) {
   let ret = 0;
   for (let i = 0; i < n; i++) {
     ret += Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(50))))))))));
     for (let l = 0; l < n; l++) {
-      ret -= Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(50))))))))));
+      ret -= Math.tan(
+        Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(Math.tan(Math.atan(50)))))))))
+      );
     }
   }
   return ret;
