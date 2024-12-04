@@ -48,9 +48,26 @@ An Excel desktop application will be auto-launched and the Mail Merge add-in wil
 
 Please follow the steps below:
 
-1. Create sample data, including valid email address (required) and other information.
-2. Verify template and data. the To Line must contain the column name of the email address.
-3. Send email, which will pop up a dialog to get the consent of Microsoft Graph. After sign-in, the email will be sent. <br><img src="./assets/mail.png" width="600" altText="A mail to be sent">
+1. If you have an application ID already, please ensure: 
+
+    In [Microsoft Entra admin center](https://aad.portal.azure.com) under **Identity > Applications > App registrations**: 
+    - Navigate to **Redirect URI**, set the first drop-down to `Single-page application (SPA)` and its value to `https://localhost:3000/consent.html`.
+
+    Otherwise, if you haven't registered a web application with the Azure Active Directory admin center, please follow the steps below:
+    * Log into [Microsoft Entra admin center](
+    https://aad.portal.azure.com) using a personal or business Microsoft account.
+    * In the navigation, select **Identity > Applications > App registrations**.
+    * Choose **New registration**. On the **App registrations** page, configure the values as follows: 
+        - Set **Name** to `Office Add-in Graph Tutorial`.
+        - Set **Supported account types** to **Accounts in any organizational directory and personal Microsoft accounts**.
+        - Under **Redirect URI**, set the first drop-down to `Single-page application (SPA)` and set the value to `
+    https://localhost:3000/consent.html`.
+    * Click **Register** and copy the value of the **Application (client) ID**.
+
+2. In Visual Studio Code: edit the `taskpane.js` file and replace `YOUR_APP_ID_HERE` with the **Application Id** you got from the App Registration Portal. 
+3. Create sample data, including valid email address (required) and other information.
+4. Verify template and data. the To Line must contain the column name of the email address.
+5. Send email, which will pop up a dialog to get the consent of Microsoft Graph. After sign-in, the email will be sent. <br><img src="./assets/mail.png" width="600" altText="A mail to be sent">
 
 ## Explore sample files
 
