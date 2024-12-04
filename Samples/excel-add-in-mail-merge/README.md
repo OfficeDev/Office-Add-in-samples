@@ -21,7 +21,7 @@ This sample Office Add-in sends emails from inside Excel using the Microsoft Gra
 
 1. **Download the sample code**
 
-   Open the Office Add-ins Development Kit extension and view samples in the **Sample gallery**. Select the **Create** button in the top-right corner of the sample page.
+   Open the Office Add-ins Development Kit extension and view samples in the **Sample gallery**. Select the **Create** button in the top-right corner of the sample page. The new project will open in a second Visual Studio Code window. Close the original VSC window.
    
 1. **Open the Office Add-ins Development Kit**
     
