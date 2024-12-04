@@ -26,19 +26,19 @@
         {
             "action": "ShowTaskpane",
             "key": {
-                "default": "Ctrl+Alt+1"
+                "default": "Ctrl+Alt+Up"
             }
         },
         {
             "action": "HideTaskpane",
             "key": {
-                "default": "Ctrl+Alt+2"
+                "default": "Ctrl+Alt+Down"
             }
         },
         {
             "action": "RunAction",
             "key": {
-                "default": "Ctrl+Alt+3"
+                "default": "Ctrl+Alt+Q"
             }
         },
         {
