@@ -10,6 +10,9 @@ self.addEventListener("message", function (event) {
   }
 
   const jobId = job.jobId;
+  if (typeof jobId != "number") {
+    return;
+  }
   try {
     const result = invokeFunction(job.name, job.parameters);
     // check whether the result is a promise.

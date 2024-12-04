@@ -20,7 +20,7 @@
     }
 
     // Create a new web worker.
-    const webWorker = new Worker("functionssWorker.js");
+    const webWorker = new Worker("functionsWorker.js");
     webWorker.addEventListener("message", function (event) {
       let jobResult = event.data;
       if (typeof jobResult == "string") {
@@ -69,7 +69,7 @@
 /**
  * Dispatches a calculation job for the TEST function.
  * @customfunction
- * @param {number} n - The input number for the TEST_PROMISE function.
+ * @param {number} n - The input number for the TEST function.
  * @returns {any} - The computing result of the calculation.
  */
 export function TEST(n) {
@@ -79,7 +79,7 @@ export function TEST(n) {
 /**
  * Dispatches a calculation job for the TEST_PROMISE function.
  * @customfunction
- * @param {number} n - The input number for the TEST function.
+ * @param {number} n - The input number for the TEST_PROMISE function.
  * @returns {any} - A promise that resolves with the result of the calculation.
  */
 export function TEST_PROMISE(n) {
