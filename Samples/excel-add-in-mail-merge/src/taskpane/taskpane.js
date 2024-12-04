@@ -95,10 +95,10 @@ async function createSampleData() {
       invoiceTable.getHeaderRowRange().values = [["Email", "Name", "Invoice Number", "Amount", "Due Date"]];
 
       invoiceTable.rows.add(0, [
-        ["client1@email.com", "John", "INV001", "$500", "2023-11-15"],
-        ["client2@email.com", "Sarah", "INV002", "$750", "2023-11-20"],
-        ["client3@microsoft.com", "Michael", "INV003", "$300", "2023-11-10"],
-        ["client4@microsoft.com", "Lisa", "INV004", "$900", "2023-11-15"]
+        ["client1@contoso.com", "John", "INV001", "$500", "2023-11-15"],
+        ["client2@contoso.com", "Sarah", "INV002", "$750", "2023-11-20"],
+        ["client3@contoso.com", "Michael", "INV003", "$300", "2023-11-10"],
+        ["client4@contoso.com", "Lisa", "INV004", "$900", "2023-11-15"]
       ]);
 
       invoiceTable.getRange().format.autofitColumns();

@@ -1,10 +1,10 @@
 # Run the add-in from the Office Add-ins Development Kit
    
-1. **Open the Office Add-ins Development Kit**
+1. Open the Office Add-ins Development Kit
     
     Select the <img src="./assets/Icon_Office_Add-ins_Development_Kit.png" width="30" alt="Office Add-ins Development Kit"/> icon in the **Activity Bar** to open the extension.
 
-1. **Preview Your Office Add-in (F5)**
+1. Preview Your Office Add-in (F5)
 
     Select **Preview Your Office Add-in(F5)** to launch the add-in and debug the code. In the drop down menu, select the option **Desktop (Edge Chromium)**.
 
@@ -12,7 +12,7 @@
 
     The extension checks that the prerequisites are met before debugging starts. The terminal will alert you to any issues with your environment. After this process, the Word desktop application launches and opens a new workbook with the sample add-in sideloaded. The add-in automatically opens as well.
 
-1. **Stop Previewing Your Office Add-in**
+1. Stop Previewing Your Office Add-in
 
     Once you are finished testing and debugging the add-in, select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
 
