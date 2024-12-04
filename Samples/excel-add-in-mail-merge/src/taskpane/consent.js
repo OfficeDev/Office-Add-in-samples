@@ -1,3 +1,8 @@
+/* 
+ * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
+
 Office.onReady(function () {
   const params = new URLSearchParams(location.search);
   let userClientId = params.get('data');

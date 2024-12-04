@@ -1,4 +1,9 @@
-﻿const SampleNamespace = {};
+﻿/* 
+ * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
+ * See LICENSE in the project root for license information.
+ */
+
+const SampleNamespace = {};
 
 (function (SampleNamespace) {
   // The max number of web workers to be created.
