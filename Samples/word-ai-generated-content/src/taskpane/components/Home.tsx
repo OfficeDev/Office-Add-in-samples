@@ -45,8 +45,8 @@ export default function Home() {
     setOpenKeyConfigDialog(isOpen);
   };
 
-  const insertTemplateDocument = () => {
-    return Word.run(async (context) => {
+  const insertTemplateDocument = async () => {
+    await Word.run(async (context) => {
       setImportTemplateLoading(true);
       context.document.body.insertText("\n", Word.InsertLocation.end);
       const range = context.document.body.insertFileFromBase64(
@@ -56,154 +56,153 @@ export default function Home() {
       // Locate the start position of the document.
       range.getRange(Word.RangeLocation.start).select();
       await context.sync();
-    }).finally(() => {
-      setImportTemplateLoading(false);
-      setDisplayMainFunc(true);
     });
+    setImportTemplateLoading(false);
+    setDisplayMainFunc(true);
   };
 
   // This is the code interacting with the Word document.
-  const insertTitle = (titleStr: string) => {
-    return Word.run(async (context) => {
+  const insertTitle = async (titleStr: string) => {
+    try {
       setTitleLoading(true);
-      const title = context.document.body.insertParagraph(titleStr, Word.InsertLocation.start);
-      let myLanguage = Office.context.displayLanguage;
-      switch (myLanguage) {
-        case "en-US":
-          title.style = "Heading 1";
-          break;
-        case "fr-FR":
-          title.style = "Titre 1";
-          break;
-        case "zh-CN":
-          title.style = "标题 1";
-          break;
-      }
-      // Locate the inserted title.
-      title.select();
-      await context.sync();
-    }).finally(async () => {
+      await Word.run(async (context) => {
+        const title = context.document.body.insertParagraph(titleStr, Word.InsertLocation.start);
+        let myLanguage = Office.context.displayLanguage;
+        switch (myLanguage) {
+          case "en-US":
+            title.style = "Heading 1";
+            break;
+          case "fr-FR":
+            title.style = "Titre 1";
+            break;
+          case "zh-CN":
+            title.style = "标题 1";
+            break;
+        }
+        title.select();
+        await context.sync();
+      });
+    } finally {
       setTitleLoading(false);
-    });
+    }
   };
 
-  const insertFootnote = (citation: string) => {
-    return Word.run(async (context) => {
+  const insertFootnote = async (citation: string) => {
+    try {
       setCitationLoading(true);
-      const range = context.document.getSelection();
-      const footnote = range.insertFootnote(citation);
-      // Locate the inserted footnote.
-      footnote.body.getRange().select();
-      await context.sync();
-    }).finally(() => {
+      await Word.run(async (context) => {
+        const range = context.document.getSelection();
+        const footnote = range.insertFootnote(citation);
+        footnote.body.getRange().select();
+        await context.sync();
+      });
+    } finally {
       setCitationLoading(false);
-    });
+    }
   };
 
-  const insertComment = (commentStr: string) => {
-    return Word.run(async (context) => {
+  const insertComment = async (commentStr: string) => {
+    try {
       setCommentLoading(true);
-      const range = context.document.getSelection();
-      const comment = range.insertComment(commentStr);
-      // Locate the inserted comment.
-      comment.getRange().select();
-      await context.sync();
-    }).finally(() => {
+      await Word.run(async (context) => {
+        const range = context.document.getSelection();
+        const comment = range.insertComment(commentStr);
+        comment.getRange().select();
+        await context.sync();
+      });
+    } finally {
       setCommentLoading(false);
-    });
+    }
   };
 
-  const insertPicture = (pictureBase64: string) => {
-    return Word.run(async (context) => {
+  const insertPicture = async (pictureBase64: string) => {
+    try {
       setPictureLoading(true);
-      const range = context.document.getSelection();
-      const picture = range.insertInlinePictureFromBase64(pictureBase64, Word.InsertLocation.start);
-      // Locate the inserted picture
-      picture.getRange().select();
-      await context.sync();
-    }).finally(() => {
+      await Word.run(async (context) => {
+        const range = context.document.getSelection();
+        const picture = range.insertInlinePictureFromBase64(pictureBase64, Word.InsertLocation.start);
+        picture.getRange().select();
+        await context.sync();
+      });
+    } finally {
       setPictureLoading(false);
-    });
+    }
   };
 
-  const formatDocument = () => {
-    return Word.run(async (context) => {
+  const formatDocument = async () => {
+    try {
       setFormatLoading(true);
-      // Set title to Heading 1 and text center alignment.
-      const firstPara = context.document.body.paragraphs.getFirst();
-      let myLanguage = Office.context.displayLanguage;
-      switch (myLanguage) {
-        case "en-US":
-          firstPara.style = "Heading 1";
-          break;
-        case "fr-FR":
-          firstPara.style = "Titre 1";
-          break;
-        case "zh-CN":
-          firstPara.style = "标题 1";
-          break;
-      }
-      firstPara.alignment = "Centered";
-      await context.sync();
-
-      // Unify the Headings to Heading 2 and bold font.
-      const paragraphs = context.document.body.paragraphs;
-      paragraphs.load();
-      await context.sync();
-      // Skip the Title
-      for (let i = 1; i < paragraphs.items.length; i++) {
-        if (paragraphs.items[i].style == "Subtitle") {
-          paragraphs.items[i].style = "Heading 2";
-          paragraphs.items[i].font.bold = true;
+      await Word.run(async (context) => {
+        const firstPara = context.document.body.paragraphs.getFirst();
+        let myLanguage = Office.context.displayLanguage;
+        switch (myLanguage) {
+          case "en-US":
+            firstPara.style = "Heading 1";
+            break;
+          case "fr-FR":
+            firstPara.style = "Titre 1";
+            break;
+          case "zh-CN":
+            firstPara.style = "标题 1";
+            break;
         }
-      }
-      await context.sync();
-
-      // Set the list items of first level to bold.
-      const lists = context.document.body.lists;
-      lists.load();
-      await context.sync();
-      for (let i = 0; i < lists.items.length; i++) {
-        const list = lists.items[i];
-        list.setLevelNumbering(0, Word.ListNumbering.upperRoman);
-        const levelParas = list.getLevelParagraphs(0);
-        levelParas.load();
+        firstPara.alignment = "Centered";
         await context.sync();
-        for (let j = 0; j < levelParas.items.length; j++) {
-          const para = levelParas.items[j];
-          para.font.bold = true;
+
+        const paragraphs = context.document.body.paragraphs;
+        paragraphs.load();
+        await context.sync();
+        for (let i = 1; i < paragraphs.items.length; i++) {
+          if (paragraphs.items[i].style == "Subtitle") {
+            paragraphs.items[i].style = "Heading 2";
+            paragraphs.items[i].font.bold = true;
+          }
         }
         await context.sync();
-      }
 
-      // If there's pictures, set the pictures to be center alignment.
-      const pictures = context.document.body.inlinePictures;
-      pictures.load();
-      await context.sync();
-      if (pictures.items.length > 0) {
-        for (let k = 0; k < pictures.items.length; k++) {
-          pictures.items[0].paragraph.alignment = "Centered";
+        const lists = context.document.body.lists;
+        lists.load();
+        await context.sync();
+        for (let i = 0; i < lists.items.length; i++) {
+          const list = lists.items[i];
+          list.setLevelNumbering(0, Word.ListNumbering.upperRoman);
+          const levelParas = list.getLevelParagraphs(0);
+          levelParas.load();
+          await context.sync();
+          for (let j = 0; j < levelParas.items.length; j++) {
+            const para = levelParas.items[j];
+            para.font.bold = true;
+          }
           await context.sync();
         }
-      }
 
-      // If there's TBD or DONE keywords, set TBD to be red and DONE to be green.
-      const tbdRanges = context.document.body.search("TBD", { matchCase: true });
-      const doneRanges = context.document.body.search("DONE", { matchCase: true });
-      tbdRanges.load();
-      doneRanges.load();
-      await context.sync();
-      for (let i = 0; i < tbdRanges.items.length; i++) {
-        tbdRanges.items[i].font.highlightColor = "yellow";
-      }
-      await context.sync();
-      for (let i = 0; i < doneRanges.items.length; i++) {
-        doneRanges.items[i].font.highlightColor = "Turquoise";
-      }
-      await context.sync();
-    }).finally(() => {
+        const pictures = context.document.body.inlinePictures;
+        pictures.load();
+        await context.sync();
+        if (pictures.items.length > 0) {
+          for (let k = 0; k < pictures.items.length; k++) {
+            pictures.items[0].paragraph.alignment = "Centered";
+            await context.sync();
+          }
+        }
+
+        const tbdRanges = context.document.body.search("TBD", { matchCase: true });
+        const doneRanges = context.document.body.search("DONE", { matchCase: true });
+        tbdRanges.load();
+        doneRanges.load();
+        await context.sync();
+        for (let i = 0; i < tbdRanges.items.length; i++) {
+          tbdRanges.items[i].font.highlightColor = "yellow";
+        }
+        await context.sync();
+        for (let i = 0; i < doneRanges.items.length; i++) {
+          doneRanges.items[i].font.highlightColor = "Turquoise";
+        }
+        await context.sync();
+      });
+    } finally {
       setFormatLoading(false);
-    });
+    }
   };
 
   const onMenuClick = async (e) => {
@@ -215,30 +214,32 @@ export default function Home() {
       return;
     }
     switch (e.key) {
-      case "titleAI":
-        await generateText(apiKey, endpoint, deployment, "generate a title of meeting notes", 50).then((text) => {
-          insertTitle(text);
-        });
+      case "titleAI": {
+        const titleText = await generateText(apiKey, endpoint, deployment, "generate a title of meeting notes", 50);
+        await insertTitle(titleText);
         break;
+      }
       case "titlePredefined":
         await insertTitle(predefinedTitle);
         break;
-      case "citationAI":
-        await generateText(apiKey, endpoint, deployment, "generate a title of meeting notes", 50).then((text) => {
-          insertFootnote(text);
-        });
+      case "citationAI": {
+        const citationText = await generateText(apiKey, endpoint, deployment, "generate a title of meeting notes", 50);
+        await insertFootnote(citationText);
         break;
-      case "citationPredefined":
+      }
+      case "citationPredefined": {
         await insertFootnote(predefinedCitation);
         break;
-      case "commentAI":
-        await generateText(apiKey, endpoint, deployment, "generate a title of meeting notes", 50).then((text) => {
-          insertComment(text);
-        });
+      }
+      case "commentAI": {
+        const commentText = await generateText(apiKey, endpoint, deployment, "generate a title of meeting notes", 50);
+        await insertComment(commentText);
         break;
-      case "commentPredefined":
+      }
+      case "commentPredefined": {
         await insertComment(predefinedComment);
         break;
+      }
     }
   };
 

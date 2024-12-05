@@ -3,9 +3,8 @@
  * See LICENSE in the project root for license information.
  */
 
-import { AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { message } from "antd";
-import { post } from "./Request";
 
 export const dropdownMenus = {
   title: [
@@ -73,7 +72,7 @@ export interface AzureTextGenRes {
   };
 }
 
-export const generateText = (
+export const generateText = async (
   apiKey: string,
   endpoint: string,
   deployment: string,
@@ -83,24 +82,24 @@ export const generateText = (
   let requestBody: AzureTextGenAPI = { prompt: content, max_tokens: maxTokens };
   let axiosConfig: AxiosRequestConfig = {
     headers: {
-      "api-key": apiKey, // Use the passed apiKey.
+      "api-key": apiKey,
       "Content-Type": "application/json",
     },
     params: {
       "api-version": "2023-05-15",
     },
   };
-  let url = endpoint + "/openai/deployments/" + deployment + "/completions";
 
-  return post(url, requestBody, axiosConfig).then((res) => {
-    if (res.status == 200 && res.data != null) {
-      let resObj: AzureTextGenRes = res.data;
-      if (resObj.choices == null || resObj.choices.length == 0) {
-        message.error("get no choices from the azure service.");
-      }
-      return resObj.choices[0].text.replace("\n\r\n", "").replace("\n", "").replace("\n", "");
-    } else {
-      throw Error(res.data.error);
+  let url = endpoint + "/openai/deployments/" + deployment + "/completions";
+  const res = await axios.post(url, requestBody, axiosConfig);
+
+  if (res.status == 200 && res.data != null) {
+    let resObj: AzureTextGenRes = res.data;
+    if (resObj.choices == null || resObj.choices.length == 0) {
+      message.error("get no choices from the azure service.");
     }
-  });
+    return resObj.choices[0].text.replace("\n\r\n", "").replace("\n", "").replace("\n", "");
+  } else {
+    throw Error(res.data.error);
+  }
 };
