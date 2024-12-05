@@ -1,0 +1,65 @@
+<!-- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script type="text/javascript" src="https://alcdn.msauth.net/browser/2.35.0/js/msal-browser.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@microsoft/microsoft-graph-client/lib/graph-js-sdk.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet"
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
+    <link rel="stylesheet" href="taskpane.css" />
+    <title>Contoso Mail Merge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="margin: 8px;">Mail Merge Example</h1>
+        <p>Follow the steps below use mail merge in Excel from an Office Add-in.</p>
+        <p></p>
+        <p><strong>Step 1: Generate sample data</strong></p>
+        <p>Select "Create Sample Data" to import sample data into the spreadsheet.</p>
+        <button type="button" id="createSampleData">Create sample data</button>
+        <p><strong>Step 2: Verify the email template </strong></p>
+        <p>Review this email template. Ensure that the parameters inside &lt;&lt;...&gt;&gt; match the
+            column names in your current
+            spreadsheet. Select "Send Email" to dispatch emails based on the information in each data row.</p>
+        <P>
+        <form method="post" action="">
+            <p><strong>To : </strong></p>
+            <p><textarea id="ToLine" cols="50" rows="1" class="html-text-box">&lt;&lt;Email&gt;&gt;</textarea></p>
+            <p><strong>Subject : </strong></p>
+            <p><textarea id="Subject" cols="50" rows="1"
+                    class="html-text-box">Invoice &lt;&lt;Invoice Number&gt;&gt; for &lt;&lt;Name&gt;&gt;</textarea></p>
+            <p><strong>Content : </strong></p>
+            <p><textarea id="Content" cols="50" rows="10" class="html-text-box">
+Dear &lt;&lt;Name&gt;&gt;,
+
+We have issued an invoice for your account. Please find the details below:  
+                        
+    Invoice Number: &lt;&lt;Invoice Number&gt;&gt;  
+    Amount Due: &lt;&lt;Amount&gt;&gt;  
+    Due Date: &lt;&lt;Due Date&gt;&gt;  
+                        
+If you have any questions or concerns, please don't hesitate to contact us.  
+                        
+Best regards,  
+Contoso Corporation
+            </textarea></p>
+        </form>
+        </P>
+        <p><strong>Step 3: Send Emails </strong></p>
+        <p>Select "Send emails" to send email in bulk using the data in the current spreadsheet.</p>
+        <button type="button" id="sendEmail">Send Email</button>
+        <div class="status"></div>
+        <script type="text/javascript" src="./taskpane.js"></script>
+    </div>
+</body>
+
+
+</html>

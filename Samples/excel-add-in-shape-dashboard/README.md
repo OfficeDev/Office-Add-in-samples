@@ -19,15 +19,15 @@ This sample add-in shows how to use shapes to build a dashboard in Excel to help
   
 ### Run the add-in from the Office Add-ins Development Kit
 
-1. **Download the sample code**
+1. Create a new project with the sample code.
 
-   Open the Office Add-ins Development Kit extension and view samples in the **Sample gallery**. Select the **Create** button in the top-right corner of the sample page.
+   Open the Office Add-ins Development Kit extension and view samples in the **Sample gallery**. Select the **Create** button in the top-right corner of the sample page. The new project will open in a second Visual Studio Code window. Close the original VSC window.
    
-1. **Open the Office Add-ins Development Kit**
+1. Open the Office Add-ins Development Kit.
     
     Select the <img src="./assets/Icon_Office_Add-ins_Development_Kit.png" width="30" alt="The Office Add-ins Development Kit icon in the activity bar of VSCode"/> icon in the **Activity Bar** to open the extension.
 
-1. **Preview Your Office Add-in (F5)**
+1. Preview Your Office Add-in (F5).
 
     Select **Preview Your Office Add-in(F5)** to launch the add-in and debug the code. In the drop down menu, select the option **Desktop (Edge Chromium)**.
 
@@ -35,7 +35,9 @@ This sample add-in shows how to use shapes to build a dashboard in Excel to help
 
     The extension checks that the prerequisites are met before debugging starts. The terminal will alert you to any issues with your environment. After this process, the Excel desktop application launches and opens a new workbook with the sample add-in sideloaded. The add-in automatically opens as well.
 
-1. **Stop Previewing Your Office Add-in**
+    If this is the first time that you have sideloaded an Office Add-in on your computer (or the first time in over a month), you may be prompted to delete an old certificate and/or to install a new one. Agree to both prompts. The first run requires installing dependency of this project, which might take 2~3 minutes or longer. During this time, there might be a dialog pop up at the lower right of the VSC screen. You should not interact with this dialog before the Office application launched.
+
+1. Stop Previewing Your Office Add-in.
 
     Once you are finished testing and debugging the add-in, select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
 

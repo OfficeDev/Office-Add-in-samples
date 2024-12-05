@@ -9,6 +9,8 @@
             "JavaScript"
         ],
         "technologies": [
+            "Custom Functions",
+            "Web Workers"
         ]
     },
     "samples": [
@@ -72,6 +74,56 @@
                 "TypeScript",
                 "Shape",
                 "Excel"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "excel-add-in-custom-functions-using-web-workers",
+            "onboardDate": "2024-11-11",
+            "title": "Build asynchronous custom functions in Excel with web workers",
+            "description": "Use web workers in custom Excel functions to prevent your Office Add-in UI from being blocked.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "JavaScript",
+                "Custom Functions",
+                "Excel",
+                "Web Workers"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "excel-add-in-mail-merge",
+            "onboardDate": "2024-11-11",
+            "title": "Send emails from Excel with Microsoft Graph",
+            "description": "This sample Office Add-in sends emails from inside Excel using the Microsoft Graph JavaScript SDK.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "JavaScript",
+                "Excel",
+                "SSO",
+                "Graph"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "word-ai-generated-content",
+            "onboardDate": "2024-11-11",
+            "title": "Insert AI-generated content in a document",
+            "description": "Insert AI-generated or preset content into a Word document from an add-in.",
+            "types": [
+                "Word"
+            ],
+            "tags": [
+                "TypeScript",
+                "Word",
+                "React"
             ],
             "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
