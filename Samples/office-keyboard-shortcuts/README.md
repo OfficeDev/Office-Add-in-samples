@@ -21,9 +21,9 @@ description: "This sample shows how to add keyboard shortcuts to your Office Add
 
 This sample shows how to create custom keyboard shortcuts for an Office Add-in. Keyboard shortcuts let power users quickly use your add-in's features and give accessibility options to avoid using a mouse. In this sample, the following shortcuts are configured.
 
-- **Ctrl+Alt+1**: Opens the add-in's task pane.
-- **Ctrl+Alt+2**: Hides the add-in's task pane.
-- **Ctrl+Alt+3**: Performs an action that's specific to the current Office host.
+- **Ctrl+Alt+Up arrow key**: Opens the add-in's task pane.
+- **Ctrl+Alt+Down arrow key**: Hides the add-in's task pane.
+- **Ctrl+Alt+Q**: Performs an action that's specific to the current Office host.
   - **Excel**: Cycles through colors in the currently selected cell.
   - **Word**: Adds text to the document.
 
@@ -41,6 +41,9 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 - Office on the web
   - Excel
   - Word
+
+    > **Note**: The keyboard shortcut feature is currently being rolled out to Word on the web. If you test the feature in Word on the web at this time, the shortcuts may not work if they're activated from within the add-in's task pane. We recommend to periodically check [Keyboard Shortcuts requirement sets](https://learn.microsoft.com/javascript/api/requirement-sets/common/keyboard-shortcuts-requirement-sets) to find out when the feature is fully supported.
+
 - Office on Windows
   - Excel: Version 2111 (Build 14701.10000)
   - Word: Version 2408 (Build 17928.20114)
@@ -65,6 +68,7 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 | 1.0 | 11-5-2020 | Initial release |
 | 1.1 | May 11, 2021 | Removed yo office and modified to be GitHub hosted |
 | 2.0 | September 27, 2024 | Added support for Word |
+| 2.1 | December 5, 2024 | Updated keyboard shortcuts |
 
 ## Disclaimer
 
@@ -132,7 +136,7 @@ If you prefer to host the web server for the sample on your computer, follow the
 
 Once the add-in is loaded, try out its functionality.
 
-1. Press **Ctrl+Alt+1** on your keyboard to open the add-in's task pane.
+1. Press **Ctrl+Alt+Up arrow key** on your keyboard to open the add-in's task pane.
 
   > [!NOTE]
   > If the keyboard shortcut is already in use in Excel or Word, a dialog will be shown so that you can select which action you'd like to map to the shortcut. Once you select an action, you can change your preference by invoking the **Reset Office Add-in Shortcut Preferences** command from the search field.
