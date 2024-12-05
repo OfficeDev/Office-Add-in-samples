@@ -10,8 +10,8 @@ import Home from "./components/Home";
 
 /* global document, Office, module, require */
 
-const rootElement: HTMLElement = document.getElementById("container");
-const root = createRoot(rootElement);
+const rootElement: HTMLElement | null = document.getElementById("container");
+const root = rootElement ? createRoot(rootElement) : undefined;
 
 /* Render application after Office initializes */
 Office.onReady().then(() => {

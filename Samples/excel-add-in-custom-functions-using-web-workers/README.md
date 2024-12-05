@@ -1,3 +1,19 @@
+---
+page_type: sample
+urlFragment: excel-add-in-custom-functions-using-web-workers
+products:
+  - office-excel
+  - office
+languages:
+  - javascript
+extensions:
+  contentType: samples
+  technologies:
+    - Add-ins
+  createdDate: 12/05/2024 4:00:00 PM
+description: "Shows how to use web workers in custom functions to prevent blocking UI of your add-in."
+---
+
 # Build Asynchronous Custom Functions in Excel with Web Workers
 
 <img src="./assets/thumbnail.png" width="800" alt="A workbook with custom function using web worker.">

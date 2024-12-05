@@ -1,3 +1,19 @@
+---
+page_type: sample
+urlFragment: excel-get-started-with-dev-kit
+products:
+  - office-excel
+  - office
+languages:
+  - javascript
+extensions:
+  contentType: samples
+  technologies:
+    - Add-ins
+  createdDate: 11/11/2024 4:00:00 PM
+description: "This is a basic Excel add-in that sets the background color of a selected range."
+---
+
 # Get Started with the Office Add-ins Development Kit in Excel
 
 <img src="./assets/thumbnail.png" width="800" alt="A workbook with a cell with yellow background color changed by the add-in."/>
