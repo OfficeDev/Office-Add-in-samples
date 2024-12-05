@@ -14,14 +14,11 @@ extensions:
 description: "This sample shows how to implement SSO in an Outlook add-in by using nested app authentication with a fallback that supports Internet Explorer."
 ---
 
-# Outlook add-in with SSO using nested app authentication including Internet Explorer fallback (preview)
+# Outlook add-in with SSO using nested app authentication including Internet Explorer fallback
 
 ## Summary
 
 This sample shows how to use MSAL.js nested app authentication (NAA) in an Outlook Add-in to access Microsoft Graph APIs for the signed-in user. The sample displays the signed-in user's name and email. It also retrieves file names from the user's Microsoft OneDrive account. This sample includes an auth fallback when NAA isn't available, which also supports [Outlook versions that still use Internet Explorer 11](https://learn.microsoft.com/office/dev/add-ins/concepts/browsers-used-by-office-web-add-ins). `@azure/msal-browser` version 2.x is used to support Internet Explorer. Version 3.x is the first version with NAA support. This sample uses both versions of the library for maximum browser support.
-
-> [!IMPORTANT]
-> Nested app authentication is currently in preview. To try this feature, you need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) and choose **Current Channel (Preview)**. Don't use NAA in production add-ins. We invite you to try out NAA in test or development environments and welcome feedback on your experience through GitHub (see https://github.com/OfficeDev/office-js/issues).
 
 ## Features
 
@@ -30,12 +27,11 @@ This sample shows how to use MSAL.js nested app authentication (NAA) in an Outlo
 
 ## Applies to
 
-For a list of supported platforms, see [NAA supported accounts and hosts](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in#naa-supported-accounts-and-hosts).
+- Outlook on Windows (new and classic), Mac, mobile, and on the web.
 
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- You need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) to use the NAA preview features. Choose the **Current Channel (Preview)** insider level.
 - [Node.js](https://nodejs.org/) version 16 or greater.
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
@@ -140,4 +136,4 @@ Copyright (c) 2024 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-add-in-sso-naa" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-add-in-sso-naa-ie" />
