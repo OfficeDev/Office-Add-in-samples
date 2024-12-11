@@ -12,7 +12,7 @@
     "cookie-parser": "~1.4.6",
     "debug": "~4.3.4",
     "dotenv": "^16.4.5",
-    "express": "~4.19.2",
+    "express": "~4.21.2",
     "form-urlencoded": "^6.1.4",
     "http-errors": "~2.0.0",
     "jquery": "^3.7.1",
