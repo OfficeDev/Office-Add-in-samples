@@ -1,0 +1,132 @@
+{
+    "filterOptions": {
+        "capabilities": [
+            "Word",
+            "Excel"
+        ],
+        "languages": [
+            "TypeScript",
+            "JavaScript"
+        ],
+        "technologies": [
+            "Custom Functions",
+            "Web Workers"
+        ]
+    },
+    "samples": [
+        {
+            "id": "excel-get-started-with-dev-kit",
+            "onboardDate": "2024-11-01",
+            "title": "Excel - Get started with the Office Add-ins Development Kit",
+            "description": "This sample demonstrates how to create a basic Excel add-in with a task pane that uses JavaScript.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "JavaScript",
+                "Get Started",
+                "Excel"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "word-get-started-with-dev-kit",
+            "onboardDate": "2024-11-01",
+            "title": "Word - Get started with the Office Add-ins Development Kit ",
+            "description": "This sample demonstrates how to create a basic Word add-in with a task pane that uses JavaScript.",
+            "types": [
+                "Word"
+            ],
+            "tags": [
+                "JavaScript",
+                "Get Started",
+                "Word"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "excel-add-in-chart-analyze-data",
+            "onboardDate": "2024-11-11",
+            "title": "Analyze Excel data with charts",
+            "description": "This sample Excel add-in shows how to use charts to help analyze data.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "TypeScript",
+                "Chart",
+                "Excel"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "excel-add-in-shape-dashboard",
+            "onboardDate": "2024-11-11",
+            "title": "Create a dashboard in Excel with shapes",
+            "description": "The sample Excel add-in uses shapes to create a dashboard in the workbook.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "TypeScript",
+                "Shape",
+                "Excel"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "excel-add-in-custom-functions-using-web-workers",
+            "onboardDate": "2024-11-11",
+            "title": "Build asynchronous custom functions in Excel with web workers",
+            "description": "Use web workers in custom Excel functions to prevent your Office Add-in UI from being blocked.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "JavaScript",
+                "Custom Functions",
+                "Excel",
+                "Web Workers"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "excel-add-in-mail-merge",
+            "onboardDate": "2024-11-11",
+            "title": "Send emails from Excel with Microsoft Graph",
+            "description": "This sample Office Add-in sends emails from inside Excel using the Microsoft Graph JavaScript SDK.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "JavaScript",
+                "Excel",
+                "SSO",
+                "Graph"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
+            "id": "word-ai-generated-content",
+            "onboardDate": "2024-11-11",
+            "title": "Insert AI-generated content in a document",
+            "description": "Insert AI-generated or preset content into a Word document from an add-in.",
+            "types": [
+                "Word"
+            ],
+            "tags": [
+                "TypeScript",
+                "Word",
+                "React"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        }
+    ]
+}

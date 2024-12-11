@@ -1,0 +1,55 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shape Dashboard</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet"
+        href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric ms-bgColor-neutralLighter">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" />
+        <p class="sampleTitle">Shape dashboard</p>
+    </header>
+    <section class="ms-welcome__main">
+        <p class="sampleDescription">This sample add-in shows how to use shapes to build a dashboard in Excel.</p>
+    </section>
+    <div id="status"></div>
+    <section class="samples ms-font-m" contentType="text/html; charset=UTF-8">
+        <p class="sampleSubTitle">Add sample data</p>
+        <button id="add-sample-data" class="ms-Button">
+            <span class="ms-Button-label">Add sample data</span>
+        </button>
+        <p class="sampleSubTitle">Create and format the dashboard</p>
+        <button id="create-dash-board" class="ms-Button">
+            <span class="ms-Button-label">Create empty dashboard</span>
+        </button>
+        <button id="add-information" class="ms-Button">
+            <span class="ms-Button-label">Add information to dashboard</span>
+        </button>
+        <button id="change-format" class="ms-Button">
+            <span class="ms-Button-label">Change information format</span>
+        </button>
+        <p class="sampleSubTitle">Add event handler to dashboard. When dashbaord is activated/deactivated, the information will change.</p>
+        <button id="add-event-handler" class="ms-Button">
+            <span class="ms-Button-label">Add event handler</span>
+        </button>
+    </section>
+
+</body>
+
+</html>

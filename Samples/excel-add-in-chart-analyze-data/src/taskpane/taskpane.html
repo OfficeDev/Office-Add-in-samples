@@ -1,0 +1,74 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chart API to analyze data</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric ms-bgColor-neutralLighter">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" />
+        <p class="sampleTitle">Analyze data with charts</p>
+    </header>
+    <section class="ms-welcome__main">
+        <p class="sampleDescription">Insert charts to analyze data. Select buttons in each sections to insert chart and change chart settings.</p>
+    </section>
+    <div id = "status"></div>
+    <section class="samples ms-font-m">
+        <p class="sampleSubTitle">Intialize sample data before inserting charts</p>
+        <button id = "add-sample-data" class="ms-Button">
+        <span class="ms-Button-label">Intialize data</span>
+        </button>
+        <p>Analyze sales in different locations</p>
+        <button id="create-bar-chart" class="ms-Button">
+            <span class="ms-Button-label">Insert chart</span>
+        </button>
+        <button id="reverse-plot-order" class="ms-Button">
+            <span class="ms-Button-label">Invert axis direction</span>
+        </button>
+        <button id="format-value-axis" class="ms-Button">
+            <span class="ms-Button-label">Format value axis</span>
+        </button>
+        <button id="move-chart-title" class="ms-Button">
+            <span class="ms-Button-label">Customize title and legend</span>
+        </button>
+        <p>Analyze sales/temperature correlation</p>
+        <button id="insert-sales-temperature-correlation" class="ms-Button">
+            <span class="ms-Button-label">Insert chart</span>
+        </button>
+        <button id="highlight-top-10" class="ms-Button">
+            <span class="ms-Button-label">Highlight top 10</span>
+        </button>
+        <p>Analyze sales/leaflets correlation</p>
+        <button id="insert-sales-leaflets-correlation" class="ms-Button">
+            <span class="ms-Button-label">Insert chart</span>
+        </button>
+        <button id="highlight-top-5" class="ms-Button">
+            <span class="ms-Button-label">Highlight top 5</span>
+        </button>
+        <p>Analyze overall sales trend</p>
+        <button id="show-sales-trend" class="ms-Button">
+            <span class="ms-Button-label">Insert chart</span>
+        </button>
+        <button id="highlight-highest-sales" class="ms-Button">
+            <span class="ms-Button-label">Highlight highest sales</span>
+        </button>
+    </section>
+
+</body>
+
+</html>
