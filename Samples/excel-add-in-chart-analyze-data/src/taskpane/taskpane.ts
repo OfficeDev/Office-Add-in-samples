@@ -11,7 +11,8 @@ Office.onReady(() => {
   document.getElementById("reverse-plot-order").onclick = () => tryCatch(reversePlotOrder);
   document.getElementById("format-value-axis").onclick = () => tryCatch(formatValueAxis);
   document.getElementById("move-chart-title").onclick = () => tryCatch(moveChartTitle);
-  document.getElementById("insert-sales-temperature-correlation").onclick = () => tryCatch(insertSalesTemperatureCorrelation);
+  document.getElementById("insert-sales-temperature-correlation").onclick = () =>
+    tryCatch(insertSalesTemperatureCorrelation);
   document.getElementById("highlight-top-10").onclick = () => tryCatch(highlight1);
   document.getElementById("insert-sales-leaflets-correlation").onclick = () => tryCatch(insertSalesLeafletsCorrelation);
   document.getElementById("highlight-top-5").onclick = () => tryCatch(highlight2);
@@ -74,7 +75,7 @@ async function addSampleData() {
       ["7/28/2016", "Park", 9216, 3969, 82, 90, 0.35, 0, 0, 0],
       ["7/29/2016", "Park", 10000, 4356, 81, 95, 0.35, 0, 0, 0],
       ["7/30/2016", "Beach", 7744, 3249, 82, 81, 0.35, 0, 0, 0],
-      ["7/31/2016", "Beach", 5776, 2209, 82, 68, 0.35, 0, 0, 0]
+      ["7/31/2016", "Beach", 5776, 2209, 82, 68, 0.35, 0, 0, 0],
     ]);
 
     let totalSalesRange = sheet.getRange("H2:H33");
@@ -123,33 +124,37 @@ async function addSampleData() {
     range4.formulas = [["=B5"]];
     range4.format.autofitColumns();
 
-    const range11 = sheet.getRange("B37");
-    range11.formulas = [['=SUMIF($B$2:$B$33,"=Park",$C$2:$C$33)']];
+    const range5 = sheet.getRange("B37");
+    range5.formulas = [['=SUMIF($B$2:$B$33,"=Park",$C$2:$C$33)']];
+    range5.format.autofitColumns();
+
+    const range6 = sheet.getRange("C37");
+    range6.formulas = [['=SUMIF($B$2:$B$33,"=Park",$D$2:$D$33)']];
+    range6.format.autofitColumns();
+
+    const range7 = sheet.getRange("B38");
+    range7.formulas = [['=SUMIF($B$2:$B$33,"=Beach",$C$2:$C$33)']];
+    range7.format.autofitColumns();
+
+    const range8 = sheet.getRange("C38");
+    range8.formulas = [['=SUMIF($B$2:$B$33,"=Beach",$D$2:$D$33)']];
+    range8.format.autofitColumns();
+
+    const range9 = sheet.getRange("L35");
+    range9.formulas = [["Customized Chart Title in L35"]];
+    range9.format.autofitColumns();
+
+    const range10 = sheet.getRange("L36");
+    range10.formulas = [["=MAX(H2:H33)"]];
+    range10.format.autofitColumns();
+
+    const range11 = sheet.getRange("L37");
+    range11.formulas = [["=AVERAGE(H2:H33)"]];
     range11.format.autofitColumns();
 
-    const range12 = sheet.getRange("C37");
-    range12.formulas = [['=SUMIF($B$2:$B$33,"=Park",$D$2:$D$33)']];
+    const range12 = sheet.getRange("M36");
+    range12.formulas = [["=INDEX(A2:A33,MATCH(L36,H2:H33,0),0)"]];
     range12.format.autofitColumns();
-
-    const range21 = sheet.getRange("B38");
-    range21.formulas = [['=SUMIF($B$2:$B$33,"=Beach",$C$2:$C$33)']];
-    range21.format.autofitColumns();
-
-    const range22 = sheet.getRange("C38");
-    range22.formulas = [['=SUMIF($B$2:$B$33,"=Beach",$D$2:$D$33)']];
-    range22.format.autofitColumns();
-
-    const range33 = sheet.getRange("L36");
-    range33.formulas = [["=MAX(H2:H33)"]];
-    range33.format.autofitColumns();
-
-    const range36 = sheet.getRange("L37");
-    range36.formulas = [["=AVERAGE(H2:H33)"]];
-    range36.format.autofitColumns();
-
-    const range34 = sheet.getRange("M36");
-    range34.formulas = [["=INDEX(A2:A33,MATCH(L36,H2:H33,0),0)"]];
-    range34.format.autofitColumns();
 
     let dateRange = sheet.getRange("A2:A33");
 
@@ -249,8 +254,7 @@ async function insertSalesTemperatureCorrelation() {
     trendline.displayRSquared = true;
 
     // Highlight title.
-    chart.title.getSubstring(21, 5).font.color = "#FF7F50";
-    chart.title.getSubstring(31, 11).font.color = "#FF7F50";
+    chart.title.getSubstring(21, 12).font.color = "#FF7F50";
     await context.sync();
     showStatus('Success for "Sales/temperature correlation".', false);
   });
@@ -365,7 +369,7 @@ async function moveChartTitle() {
     chart.legend.height = 20;
     chart.title.left = 8;
     chart.title.top = 8;
-    chart.title.setFormula("=Sample!L37");
+    chart.title.setFormula(`=Sample!L35`);
     await context.sync();
     showStatus('Success for "Customize title and legend".', false);
   });
@@ -515,9 +519,9 @@ async function clearDatalables() {
 
 async function tryCatch(callback) {
   try {
-      await callback();
+    await callback();
   } catch (error) {
-      showStatus(error, true);
+    showStatus(error, true);
   }
 }
 
