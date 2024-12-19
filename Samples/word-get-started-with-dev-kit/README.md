@@ -11,7 +11,7 @@ extensions:
   technologies:
     - Add-ins
   createdDate: 12//2023 4:00:00 PM
-description: "Inserts "Hello World" into document and sets paragraph font color to blue."
+description: "Insert "Hello World" into document and set font color to blue."
 ---
 
 # Get Started with the Office Add-ins Development Kit in Word
