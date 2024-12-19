@@ -1,19 +1,3 @@
----
-page_type: sample
-urlFragment: word-get-started-with-dev-kit
-products:
-  - office-word
-  - office
-languages:
-  - javascript
-extensions:
-  contentType: samples
-  technologies:
-    - Add-ins
-  createdDate: 12/06/2024 4:00:00 PM
-description: "This is a basic Word add-in that inserts "Hello World" into the document text and sets the paragraph font color to blue."
----
-
 # Get Started with the Office Add-ins Development Kit in Word
 
 <img src="./assets/thumbnail.png" width="800" alt="A document with 'Hello World' inserted by the add-in."/>
