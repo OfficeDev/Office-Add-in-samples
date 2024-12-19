@@ -1,6 +1,6 @@
 ---
 page_type: sample
-urlFragment: word-citation-management
+urlFragment: word-get-started-with-dev-kit
 products:
   - office-word
   - office
@@ -10,8 +10,8 @@ extensions:
   contentType: samples
   technologies:
     - Add-ins
-  createdDate: 11/28/2023 4:00:00 PM
-description: "Shows how to manage citations in a Word document."
+  createdDate: 12//2023 4:00:00 PM
+description: "A basic Word add-in that inserts "Hello World" and sets the paragraph font color to blue."
 ---
 
 # Get Started with the Office Add-ins Development Kit in Word
