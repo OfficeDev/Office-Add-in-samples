@@ -1,3 +1,19 @@
+---
+page_type: sample
+urlFragment: word-citation-management
+products:
+  - office-word
+  - office
+languages:
+  - javascript
+extensions:
+  contentType: samples
+  technologies:
+    - Add-ins
+  createdDate: 11/28/2023 4:00:00 PM
+description: "Shows how to manage citations in a Word document."
+---
+
 # Get Started with the Office Add-ins Development Kit in Word
 
 <img src="./assets/thumbnail.png" width="800" alt="A document with 'Hello World' inserted by the add-in."/>
