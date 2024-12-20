@@ -5,7 +5,7 @@
     <title></title>
     <script src="../Scripts/jquery-1.9.1.js" type="text/javascript"></script>
     <link href="../Content/Office.css" rel="stylesheet" type="text/css" />
-    <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js" type="text/javascript"></script>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
     <!-- To enable offline debugging using a local reference to Office.js, use:                        -->
     <!-- <script src="../../Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>  -->
     <!-- <script src="../../Scripts/Office/1.1/office.js" type="text/javascript"></script>  -->
