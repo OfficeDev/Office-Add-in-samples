@@ -57,7 +57,7 @@ This sample shows how to use a Word add-in to insert predefined or AI-generated 
 
 1. Stop Previewing Your Office Add-in.
 
-    Once you are finished testing and debugging the add-in, select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
+    Once you are finished testing and debugging the add-in, select the <img src="./assets/Icon_Office_Add-ins_Development_Kit.png" width="30" alt="The Office Add-ins Development Kit icon in the activity bar of VSCode"/> icon and then select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
 
 ## Use the sample add-in
 

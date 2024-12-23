@@ -10,8 +10,8 @@ extensions:
   contentType: samples
   technologies:
     - Add-ins
-  createdDate: 11/11/2024 4:00:00 PM
-description: "This is a basic Word add-in that inserts "Hello World" into the document text and sets the paragraph font color to blue."
+  createdDate: 12//2023 4:00:00 PM
+description: Insert 'Hello World' into document and set font color to blue.
 ---
 
 # Get Started with the Office Add-ins Development Kit in Word
@@ -53,7 +53,7 @@ Word add-ins use the [Word JavaScript APIs](https://learn.microsoft.com/office/d
 
 1. Stop Previewing Your Office Add-in.
 
-    Once you are finished testing and debugging the add-in, select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
+    Once you are finished testing and debugging the add-in, select the <img src="./assets/Icon_Office_Add-ins_Development_Kit.png" width="30" alt="The Office Add-ins Development Kit icon in the activity bar of VSCode"/> icon and then select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
 
 
 ## Use the sample add-in
