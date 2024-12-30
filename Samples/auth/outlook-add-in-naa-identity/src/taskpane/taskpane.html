@@ -1,0 +1,80 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contoso Task Pane Add-in</title>
+
+    <!-- Load the Office JavaScript APIs -->
+    <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js" type="text/javascript"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" />
+        <h1 class="ms-font-su">Welcome</h1>
+    </header>
+    <main class="ms-firstrun-instructionstep">
+        <ul class="ms-List ms-welcome__features">
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--Ribbon ms-font-xl"></i>
+                <span class="ms-font-m">Achieve more with Office integration</span>
+            </li>
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--Unlock ms-font-xl"></i>
+                <span class="ms-font-m">Unlock features and functionality</span>
+            </li>
+            <li class="ms-ListItem">
+                <i class="ms-Icon ms-Icon--Design ms-font-xl"></i>
+                <span class="ms-font-m">Create and visualize like a pro</span>
+            </li>
+        </ul>
+        <section class="ms-firstrun-instructionstep__header">
+            <h2 class="ms-font-m"> This add-in demonstrates how to use single sign-on by making a call to Microsoft
+                Graph to get user profile data.</h2>
+            <div class="ms-firstrun-instructionstep__header--image"></div>
+        </section>
+        <div class="ms-firstrun-instructionstep__welcome-body">
+            <p class="ms-font-m ms-firstrun-instructionstep__welcome-intro"><b>To use this add-in:</b></p>
+            <ul class="ms-List ms-firstrun-instructionstep__list">
+                <li class="ms-ListItem">
+                    <span class="ms-ListItem-primaryText">Click the <b>Get My User Profile Information</b>
+                        button.</span>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="ms-ListItem">
+                    <span class="ms-ListItem-secondaryText">If you are not signed into Office, you are prompted to sign
+                        in.</span>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="ms-ListItem">
+                    <span class="ms-ListItem-primaryText">You may also be prompted to accept the app's permissions request.</span>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="ms-ListItem">
+                    <span class="ms-ListItem-primaryText">Your user profile information will be displayed in the document.</span>
+                    <div class="clearfix"></div>
+                </li>
+            </ul>
+            <br>
+            <p align="center">
+                <button id="getProfileButton" class="popupButton ms-Button ms-Button--primary"><span
+                        class="ms-Button-label">Get My User Profile Information </span></button>
+            </p>
+        </div>
+        <p><label id="message-area"></label></p>
+    </main>
+</body>
+
+</html>
