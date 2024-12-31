@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.5.0",
+    "bootstrap": "^5.0.1",
     "core-js": "^3.9.1",
     "es6-promise": "^4.2.8",
     "jquery": "^3.5.1",
