@@ -12,10 +12,9 @@ For new samples, use `dev` as the target branch for pull requests. The `dev` bra
 
 ## Testing
 
-1. Uninstall the installed Office Add-ins Development Kit.
-2. Download the [test version of Dev Kit](./assets/dev-kit-test-package.vsix) and install it manually in VSCode.
-3. Set the environment variable `OTK_SAMPLE_CONFIG_BRANCH` to `dev` or other branch with a valid [sample-config.json](./.config/sample-config.json) of this repo on your development machine. Setting this variable will force sample gallery to use the config in the dedicated branch instead of `main`.
-4. Open Dev Kit. Select `View Samples` to view sample gallery and do testing. 
+1. Install the latest Office Add-ins Development Kit, make sure the version is equal or higher than 1.0.1.
+2. Set the environment variable `OTK_SAMPLE_CONFIG_BRANCH` to `dev` or other branch with a valid [sample-config.json](./.config/sample-config.json) of this repo on your development machine. Setting this variable will force sample gallery to use the config in the dedicated branch instead of `main`.
+3. Open Dev Kit. Select `View Samples` to view sample gallery and do testing. 
 
 ## Check in the new sample into the sample gallery
 
