@@ -15,6 +15,7 @@ const welcomeDiv = document.getElementById('welcome-div');
 const tableDiv = document.getElementById('table-div');
 const tableBody = document.getElementById('table-body-div');
 const addTodoButton = document.getElementById('addTodoButton');
+const getTodoListbutton = document.getElementById('getTodoListButton');
 const textInput = document.getElementById('textInput');
 const toDoListDiv = document.getElementById('groupDiv');
 const todoListItems = document.getElementById('toDoListItems');
@@ -26,7 +27,9 @@ Office.onReady((info) => {
   if (addTodoButton) {
     addTodoButton.addEventListener("click", addTodo);
   }
-
+  if (getTodoListbutton) {
+    getTodoListbutton.addEventListener("click", getTodoList);
+  }
   // Initialize MSAL.
   accountManager.initialize();
 });
@@ -45,6 +48,7 @@ async function getTodoList (){
   const accessToken = await accountManager.ssoGetAccessToken(protectedResources.todolistApi.scopes.read);
   const endpoint = protectedResources.todolistApi.endpoint + "/todolist";
   const response = await callApi('GET',endpoint,accessToken);
+  showToDoListItems(response);
   const body = await response.text();
   console.log(body);
 //  handleToDoListActions(task, 'POST', protectedResources.todolistApi.endpoint);
@@ -57,8 +61,6 @@ function welcomeUser(username) {
 
 function showToDoListItems(response) {
   todoListItems.replaceChildren();
-  tableDiv.classList.add('d-none');
-  toDoListDiv.classList.remove('d-none');
   if (!!response.length) {
       response.forEach((task) => {
           AddTaskToToDoList(task);
