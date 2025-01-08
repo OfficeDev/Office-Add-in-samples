@@ -1,7 +1,7 @@
 const passportConfig = {
     credentials: {
-        tenantID: "Enter_the_Tenant_Info_Here",
-        clientID: "Enter_the_Application_Id_Here"
+        tenantID: "255cd1be-82ef-4e95-9fb2-a2d9b705151f",
+        clientID: "d0ff5b49-5a37-4b63-889e-86cf8821eb07"
     },
     metadata: {
         authority: "login.microsoftonline.com",

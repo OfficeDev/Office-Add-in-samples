@@ -15,8 +15,7 @@ module.exports = async (env, options) => {
       entry: {
         polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
         taskpane: ["./src/taskpane/taskpane.ts", "./src/taskpane/taskpane.html"],
-        commands: "./src/commands/commands.ts",
-        fallbackauthdialog: "./src/helpers/fallbackauthdialog.ts",
+        dialog: ["./src/fallback/fallbackauthdialog.ts"],
       },
       resolve: {
         extensions: [".ts", ".html", ".js"],
@@ -57,10 +56,10 @@ module.exports = async (env, options) => {
           chunks: ["polyfill", "taskpane"],
         }),
         new HtmlWebpackPlugin({
-          filename: "fallbackauthdialog.html",
-          template: "./src/helpers/fallbackauthdialog.html",
-          chunks: ["polyfill", "fallbackauthdialog"],
-        }),
+          filename: "auth.html",
+          template: "./src/fallback/auth.html",
+          chunks: [],
+        }),  
         new CopyWebpackPlugin({
           patterns: [
             {
@@ -80,38 +79,7 @@ module.exports = async (env, options) => {
             },
           ],
         }),
-        new HtmlWebpackPlugin({
-          filename: "commands.html",
-          template: "./src/commands/commands.html",
-          chunks: ["polyfill", "commands"],
-        }),
       ],
-    },
-    {
-      devtool: "source-map",
-      target: "node",
-      entry: {
-        middletier: "./src/middle-tier/app.ts",
-      },
-      output: {
-        clean: true,
-      },
-      externals: [nodeExternals()],
-      resolve: {
-        extensions: [".ts", ".js"],
-      },
-      module: {
-        rules: [
-          {
-            test: /\.ts$/,
-            exclude: /node_modules/,
-            use: {
-              loader: "babel-loader",
-            },
-          },
-        ],
-      },
-      plugins: [],
     },
   ];
 
