@@ -31,7 +31,15 @@ Office.onReady((info) => {
   accountManager.initialize();
 });
 
-async function addTodo (){
+async function addTodo(){
+  const accessToken = await accountManager.ssoGetAccessToken(protectedResources.todolistApi.scopes.write);
+  const endpoint = protectedResources.todolistApi.endpoint + "/todolist";
+  const response = await callApi('POST',endpoint,accessToken,{description: textInput.value});
+  const body = await response.text();
+  console.log(body);
+}
+
+async function getTodoList (){
   let task = { description: textInput.innerText };
   // Specify minimum scopes for the token needed.
   const accessToken = await accountManager.ssoGetAccessToken(protectedResources.todolistApi.scopes.read);

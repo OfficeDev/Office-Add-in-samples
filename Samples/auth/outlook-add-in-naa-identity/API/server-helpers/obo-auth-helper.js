@@ -39,32 +39,21 @@ exports.validateJwt = function (req, res, next) {
   const authHeader = req.headers.authorization;
   if (authHeader) {
     const token = authHeader.split(" ")[1];
-
+    req.token = token;
     const validationOptions = {
       audience: config.auth.clientId, // v2.0 token
       //issuer: config.auth.authority + "/v2.0", // v2.0 token  **can't use this one
     };
 
+    
     jwt.verify(token, getSigningKeys, validationOptions, (err, payload) => {
-      //custom logic to regex search for tenant id in the issuer.
-      //test multi tenant setup.
-      //test msa
-
-      if (err) {
-        // On rare occasions the SSO access token is unexpired when Office validates it,
-        // but expires by the time it is used in the OBO flow. Microsoft identity platform will respond
-        // with "The provided value for the 'assertion' is not valid. The assertion has expired."
-        // Construct an error message to return to the client so it can refresh the SSO token.
-        if (err.name === "TokenExpiredError") {
-          return res
-            .status(401)
-            .send({ type: "TokenExpiredError", errorDetails: err });
-        } else {
-          return res.status(403).send({ type: "Unknown", errorDetails: err });
-        }
-      }
+      // Put claims in the request object for downstream use.
+      req.authInfo = payload;
+      
       next();
     });
+    
+
   } else {
     res.status(401).send({ type: "Unknown", errorDetails: "Missing authorization header." });
   }

@@ -12,10 +12,10 @@ const router = express.Router();
 
 router.get('/todolist', authHelper.validateJwt, todolist.getTodos);
 
-router.get('/todolist/:id', todolist.getTodo);
+router.get('/todolist/:id', authHelper.validateJwt, todolist.getTodo);
 
-router.post('/todolist', todolist.postTodo);
+router.post('/todolist', authHelper.validateJwt, todolist.postTodo);
 
-router.delete('/todolist/:id', todolist.deleteTodo);
+router.delete('/todolist/:id', authHelper.validateJwt, todolist.deleteTodo);
 
 module.exports = router;
