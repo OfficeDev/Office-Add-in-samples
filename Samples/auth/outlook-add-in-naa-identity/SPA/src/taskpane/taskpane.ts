@@ -51,7 +51,15 @@ async function getTodoList (){
   showToDoListItems(response);
   const body = await response.text();
   console.log(body);
-//  handleToDoListActions(task, 'POST', protectedResources.todolistApi.endpoint);
+
+}
+
+async function deleteTodo(id:string){
+  // Specify minimum scopes for the token needed.
+  const accessToken = await accountManager.ssoGetAccessToken(protectedResources.todolistApi.scopes.read);
+  const endpoint = protectedResources.todolistApi.endpoint + "/todolist" + `/${id}`;
+  const response = await callApi('DELETE',endpoint,accessToken);
+  getTodoList();
 }
 
 function welcomeUser(username) {
@@ -74,7 +82,7 @@ function AddTaskToToDoList(task) {
   button.innerHTML = 'Delete';
   button.classList.add('btn', 'btn-danger');
   button.addEventListener('click', () => {
-      handleToDoListActions(task, 'DELETE', protectedResources.todolistApi.endpoint + `/${task.id}`);
+      deleteTodo(task.id);
   });
   li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
   li.innerHTML = task.description;

@@ -10,13 +10,15 @@
 //   hasRequiredApplicationPermissions
 // } = require('../auth/permissionUtils');
 
-// const authConfig = require('../authConfig');
+const authConfig = require('../authConfig');
 
 exports.getTodo = (req, res, next) => {
    res.send("test");
 }
 
 exports.getTodos = (req, res, next) => {
+    if (hasRequiredDelegatedPermissions(req.authInfo, authConfig.protectedRoutes.todolist.delegatedPermissions.read)){
+
     try {
         const owner = req.authInfo['oid'];
 
@@ -28,9 +30,14 @@ exports.getTodos = (req, res, next) => {
     } catch (error) {
         next(error);
     }
+} else (
+    next(new Error('User does not have the required permissions.'))
+)
 }
 
 exports.postTodo = (req, res, next) => {
+    if (hasRequiredDelegatedPermissions(req.authInfo, authConfig.protectedRoutes.todolist.delegatedPermissions.write)){
+   
     try {
         const todo = {
             description: req.body.description,
@@ -44,8 +51,43 @@ exports.postTodo = (req, res, next) => {
     } catch (error) {
         next(error);
     }
+} else (
+    next(new Error('User does not have the required permissions.'))
+)
 }
 
 exports.deleteTodo = (req, res, next) => {
-   res.send("test");
+    if (hasRequiredDelegatedPermissions(req.authInfo, authConfig.protectedRoutes.todolist.delegatedPermissions.write)) {
+        try {
+            const id = req.params.id;
+            const owner = req.authInfo['oid'];
+
+            db.get('todos')
+                .remove({ owner: owner, id: id })
+                .write();
+
+            res.status(200).json({ message: "success" });
+        } catch (error) {
+            next(error);
+        }
+    } else {
+        next(new Error('User does not have the required permissions'))
+    }
+}
+
+/**
+ * Ensures that the access token has the specified delegated permissions.
+ * @param {Object} accessTokenPayload: Parsed access token payload
+ * @param {Array} requiredPermission: list of required permissions
+ * @returns {boolean}
+ */
+const hasRequiredDelegatedPermissions = (accessTokenPayload, requiredPermission) => {
+    const normalizedRequiredPermissions = requiredPermission.map(permission => permission.toUpperCase());
+
+    if (accessTokenPayload.hasOwnProperty('scp') && accessTokenPayload.scp.split(' ')
+        .some(claim => normalizedRequiredPermissions.includes(claim.toUpperCase()))) {
+        return true;
+    }
+
+    return false;
 }
