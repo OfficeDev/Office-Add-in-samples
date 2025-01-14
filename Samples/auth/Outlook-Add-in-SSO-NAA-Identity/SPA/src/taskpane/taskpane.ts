@@ -6,22 +6,17 @@
 /* global document, Office */
 
 import { AccountManager, protectedResources } from "./authConfig";
-
 // Use AccountManager to access msal-browser for authentication.
 const accountManager = new AccountManager();
 
 // Select DOM elements to work with.
-const welcomeDiv = document.getElementById('welcome-div');
-const tableDiv = document.getElementById('table-div');
-const tableBody = document.getElementById('table-body-div');
 const addTodoButton = document.getElementById('addTodoButton');
 const getTodoListbutton = document.getElementById('getTodoListButton');
 const textInput = document.getElementById('textInput');
-const toDoListDiv = document.getElementById('groupDiv');
 const todoListUI = document.getElementById('toDoListItems');
 
 // The initialize function must be run each time a new page is loaded.
-Office.onReady((info) => {
+Office.onReady(async (info) => {
   document.getElementById("sideload-msg").style.display = "none";
   document.getElementById("app-body").style.display = "flex";
 
@@ -34,7 +29,7 @@ Office.onReady((info) => {
   }
 
   // Initialize Microsoft authentication library (MSAL).
-  accountManager.initialize();
+  await accountManager.initialize();
 });
 
 async function addTodo() {
@@ -63,11 +58,6 @@ async function deleteTodo(id: string) {
   const endpoint = protectedResources.todolistApi.endpoint + "/todolist" + `/${id}`;
   await callApi('DELETE', endpoint, accessToken);
   getTodoList();
-}
-
-function welcomeUser(username) {
-  welcomeDiv.classList.remove('d-none');
-  welcomeDiv.innerHTML = `Welcome ${username}!`;
 }
 
 function showToDoListItems(todoListItems) {
