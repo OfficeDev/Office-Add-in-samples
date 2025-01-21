@@ -6,6 +6,7 @@
 /* global document, Office */
 
 import { AccountManager, protectedResources } from "./authConfig";
+
 // Use AccountManager to access msal-browser for authentication.
 const accountManager = new AccountManager();
 
@@ -32,6 +33,9 @@ Office.onReady(async (info) => {
   await accountManager.initialize();
 });
 
+/**
+ * Adds a new todo item to the user's todo list.
+ */
 async function addTodo() {
   logMessage(null); // Clear messages.
   // Specify minimum scopes for the token needed.
@@ -40,6 +44,9 @@ async function addTodo() {
   callApi('POST', endpoint, accessToken, { description: textInput.value });
 }
 
+/**
+ * Gets the todo list for the current user.
+ */
 async function getTodoList() {
   logMessage(null); // Clear messages.
   // Specify minimum scopes for the token needed.
@@ -51,6 +58,11 @@ async function getTodoList() {
   }
 }
 
+/**
+ * Delets a todo item from the user's todo list.
+ * 
+ * @param id The id of the todo item to delete.
+ */
 async function deleteTodo(id: string) {
   logMessage(null); // Clear messages.
   // Specify minimum scopes for the token needed.
@@ -60,6 +72,11 @@ async function deleteTodo(id: string) {
   getTodoList();
 }
 
+/**
+ * Shows a list of todo items on the task pane.
+ * 
+ * @param todoListItems An array of todo list items.
+ */
 function showToDoListItems(todoListItems) {
   todoListUI.replaceChildren();
   if (!!todoListItems.length) {
@@ -72,6 +89,11 @@ function showToDoListItems(todoListItems) {
   }
 }
 
+/**
+ * Adds a new task to the todo item list on the task pane.
+ * 
+ * @param task The todo item to add.
+ */
 function AddTaskToToDoList(task) {
   let li = document.createElement('li');
   let button = document.createElement('button');
@@ -93,7 +115,17 @@ function AddTaskToToDoList(task) {
  * @param {Object} data: The data to send to the endpoint, if any
  * @returns response
  */
-async function callApi(method, endpoint, token, data = null) {
+
+
+/**
+ * Execute a fetch request with the given options.
+ * @param {string} method: GET, POST, PUT, DELETE.
+ * @param {String} endpoint: The endpoint to call.
+ * @param {String} token: The access token for the API.
+ * @param {Object} data: The data to send to the endpoint, if any.
+ * @returns The JSON response if there is one, otherwise the response object.
+ */
+async function callApi(method: string, endpoint: string, token: string, data: object = null): Promise<any> {
   const headers = new Headers();
   const bearer = `Bearer ${token}`;
   headers.append('Authorization', bearer);
@@ -127,50 +159,10 @@ async function callApi(method, endpoint, token, data = null) {
   }
 }
 
-
 /**
-* Handles todolist actions
-* @param {Object} task
-* @param {string} method
-* @param {string} endpoint
-*/
-export async function handleToDoListActions(task, method, endpoint) {
-  let listData;
-
-  try {
-    let scopes = null;
-    if (method === "DELETE") {
-      scopes = protectedResources.todolistApi.scopes.write;
-    }
-    else {
-      scopes = protectedResources.todolistApi.scopes.read;
-    }
-    const accessToken = await accountManager.ssoGetAccessToken(scopes);
-    const data = await callApi(method, endpoint, accessToken, task);
-
-    switch (method) {
-      case 'POST':
-        listData = JSON.parse(localStorage.getItem('todolist'));
-        listData = [data, ...listData];
-        localStorage.setItem('todolist', JSON.stringify(listData));
-        AddTaskToToDoList(data);
-        break;
-      case 'DELETE':
-        listData = JSON.parse(localStorage.getItem('todolist'));
-        const index = listData.findIndex((todoItem) => todoItem.id === task.id);
-        localStorage.setItem('todolist', JSON.stringify([...listData.splice(index, 1)]));
-        showToDoListItems(listData);
-        break;
-      default:
-        console.log('Unrecognized method.')
-        break;
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-
+ * Shows a message on the task pane such as status updates.
+ * @param message The message to show.
+ */
 function logMessage(message) {
   const messageLabel = document.getElementById('messages');
   if (message) {

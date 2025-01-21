@@ -23,6 +23,8 @@ type DialogEventMessage = { message: string; origin: string | undefined };
 type DialogEventError = { error: number };
 type DialogEventArg = DialogEventMessage | DialogEventError;
 
+const webApplicationID = "Enter_API_Application_Id_Here";
+
 /**
  * Contains the endpoints and scopes for obtaining an access token for protected web APIs. For more information, see:
  * https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-browser/docs/resources-and-scopes.md
@@ -31,8 +33,8 @@ export const protectedResources = {
   todolistApi: {
     endpoint: 'https://localhost:5000/api',
     scopes: {
-      read: ['api://d0ff5b49-5a37-4b63-889e-86cf8821eb07/Todolist.Read'],
-      write: ['api://d0ff5b49-5a37-4b63-889e-86cf8821eb07/Todolist.ReadWrite'],
+      read: [`api://${webApplicationID}/Todolist.Read`],
+      write: [`api://${webApplicationID}/Todolist.ReadWrite`],
     },
   },
 };

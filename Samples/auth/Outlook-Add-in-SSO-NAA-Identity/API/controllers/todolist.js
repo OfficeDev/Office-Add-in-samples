@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 const lowdb = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('./data/db.json');
@@ -6,6 +9,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const authConfig = require('../server-helpers/authConfig');
 
+// Get todo list for user identified by oid claim and return the list to caller.
 exports.getTodos = (req, res, next) => {
     // Check that caller has the delegated todolist.read permission from the user.
     if (hasRequiredDelegatedPermissions(req.authInfo, authConfig.protectedRoutes.todolist.delegatedPermissions.read)) {
@@ -26,6 +30,7 @@ exports.getTodos = (req, res, next) => {
     }
 }
 
+// Add a new todo item to the db for the user identified by oid claim.
 exports.postTodo = (req, res, next) => {
     // Check that caller has the delegated todolist.readwrite permission from the user.
     if (hasRequiredDelegatedPermissions(req.authInfo, authConfig.protectedRoutes.todolist.delegatedPermissions.readWrite)) {
@@ -48,6 +53,7 @@ exports.postTodo = (req, res, next) => {
     )
 }
 
+// Delete a todo item by id and user's oid claim.
 exports.deleteTodo = (req, res, next) => {
     // Check that caller has the delegated todolist.readwrite permission from the user.
     if (hasRequiredDelegatedPermissions(req.authInfo, authConfig.protectedRoutes.todolist.delegatedPermissions.readWrite)) {
@@ -70,8 +76,8 @@ exports.deleteTodo = (req, res, next) => {
 
 /**
  * Ensures that the access token has the specified delegated permissions.
- * @param {Object} accessTokenPayload: Parsed access token payload
- * @param {Array} requiredPermission: list of required permissions
+ * @param {Object} accessTokenPayload: Parsed access token payload.
+ * @param {Array} requiredPermission: list of required permissions.
  * @returns {boolean}
  */
 const hasRequiredDelegatedPermissions = (accessTokenPayload, requiredPermission) => {
@@ -83,8 +89,4 @@ const hasRequiredDelegatedPermissions = (accessTokenPayload, requiredPermission)
     }
 
     return false;
-}
-
-exports.getTodo = (req, res, next) => {
-    res.send("test");
 }
