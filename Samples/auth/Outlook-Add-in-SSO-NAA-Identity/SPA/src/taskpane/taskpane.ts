@@ -59,7 +59,7 @@ async function getTodoList() {
 }
 
 /**
- * Delets a todo item from the user's todo list.
+ * Deletes a todo item from the user's todo list.
  * 
  * @param id The id of the todo item to delete.
  */
