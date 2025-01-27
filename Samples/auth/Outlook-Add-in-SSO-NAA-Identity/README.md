@@ -60,15 +60,15 @@ The web API service is a Node.js server that requires an application registratio
 
 All APIs must publish a minimum of one scope, also called Delegated Permission, for the client apps to obtain an access token for a user successfully. To publish a scope, follow these steps:
 
-1. Select **Add a scope** button open the **Add a scope** screen and Enter the values as indicated below:
-- For **Scope name**, use `Todolist.Read`.
+1. Select **Add a scope** and enter the values as indicated below.
+- For **Scope name**, select `Todolist.Read`.
 - Select **Admins and users** options for **Who can consent?**.
-- For **Admin consent display name** type in `Todolist.Read`.
-- For **Admin consent description** type in `Allows the app to read the signed-in user's files.`
-- For **User consent display name** type in `Todolist.Read`.
-- For **User consent description** type in eg. `Allows the app to read your files.`
-- Keep **State** set to **Enabled**.
-- Select the **Add scope** button on the bottom to save this scope.
+- For **Admin consent display name** enter `Todolist.Read`.
+- For **Admin consent description** enter `Allows the app to read the signed-in user's files.`
+- For **User consent display name** enter `Todolist.Read`.
+- For **User consent description** enter a description. For example, `Allows the app to read your files.`
+- For **State**, select **Enabled**.
+- To save this scope, select the **Add scope** button.
 
 Repeat the previous steps to add a second scope named `Todolist.ReadWrite` along with descriptions that indicate the scope will read and write files.
 
@@ -78,17 +78,17 @@ All APIs should publish a minimum of one [App role for applications](https://doc
 
 1. Still on the same app registration, select the **App roles** blade to the left.
 1. Select **Create app role**:
-    1. For **Display name**, enter a suitable name for your application permission, for instance `Todolist.Read.All`.
+    1. For **Display name**, enter a suitable name for your application permission, for example `Todolist.Read.All`.
     1. For **Allowed member types**, choose **Application** to ensure other applications can be granted this permission.
     1. For **Value**, enter `Todolist.Read.All`.
     1. For **Description**, enter `Allows the app to read the signed-in user's files.`
-    1. Select **Apply** to save your changes.
+    1. To save your changes, select **Apply**.
 
 Repeat the previous steps to add another app permission named `Todolist.ReadWrite.All`.
 
 ### Configure the service app (Contoso-Web-API-Server) to use your app registration
 
-Open the sample project in Visual Studio Code to configure the code. In the steps below, "ClientID" is the same as "Application ID" or "AppId".
+Open the sample project in Visual Studio Code to configure the code. In the following steps, "ClientID" is the same as "Application ID" or "AppId".
 
 1. Open the API/server-helpers/authConfig.js file.
 1. Find the key `Enter_API_Application_Id_Here` and replace the existing value with the application ID (clientId) of Contoso-Web-API-Server app copied from the Microsoft Entra admin center.
@@ -100,24 +100,23 @@ Open the sample project in Visual Studio Code to configure the code. In the step
 1. Sign in with the **_admin_** credentials to your Microsoft 365 tenancy. For example, **MyName@contoso.onmicrosoft.com**.
 1. Select **New registration**. On the **Register an application** page, set the values as follows.
 
-   - Set **Name** to `Contoso-Outlook-Add-in`.
-   - Set **Supported account types** to **Accounts in this organizational directory only**.
+   - For **Name**, enter `Contoso-Outlook-Add-in`.
+   - For **Supported account types**, select **Accounts in this organizational directory only**.
    - Select **Register**.
 
 1. In the **Overview** blade, find and note the **Application (client) ID**. You use this value in your app's configuration file(s) later in your code.
-1. In the app's registration screen, select the **Authentication** blade to the left.
-1. If you don't have a platform added, select **Add a platform** and select the **Single-page application** option.
-    1. In the **Redirect URI** section enter the following redirect URIs:
+1. In the app's registration screen, select the **Authentication** blade on the left pane.
+1. If you don't have a platform added, select **Add a platform** and choose the **Single-page application** option.
+    1. In the **Redirect URI** section, enter the following redirect URIs:
         1. `http://localhost:3000`
         1. `http://localhost:3000/redirect`
         1. `brk-multihub://localhost:3000`
-    1. Click **Save** to save your changes.
+    1. To save your changes, select **Save**.
 
-Since this app signs-in users, we will now proceed to select **delegated permissions**, which is is required by apps signing-in users.
+Since this app signs-in users, you'll now proceed to select **delegated permissions**, which is required by apps signing-in users.
 
-  1. In the app's registration screen, select the **API permissions** blade in the left to open the page where we add access to the APIs that your application needs:
-  1. Select the **Add a permission** button and then:
-  1. Ensure that the **My APIs** tab is selected.
+  1. In the app's registration screen, select the **API permissions** blade on the left pane. This opens the page where you add access to the APIs that your application needs.
+  1. Select the **Add a permission** button, and choose the **My APIs** tab.
   1. In the list of APIs, select the API `Contoso-Web-API-Server`.
   1. In the **Delegated permissions** section, select **Todolist.Read**, **Todolist.ReadWrite** in the list. Use the search box if necessary.
   1. Select the **Add permissions** button at the bottom.
