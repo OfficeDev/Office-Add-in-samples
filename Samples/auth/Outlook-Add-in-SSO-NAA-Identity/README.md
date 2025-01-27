@@ -41,7 +41,7 @@ This sample shows how to implement a todo list for multiple users with an Outloo
 
 The web API service is a Node.js server that requires an application registration to authorize calls to the todo list database.
 
-1. Go to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page to register your app.
+1. To register your app, go to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page.
 1. Sign in with the **_admin_** credentials to your Microsoft 365 tenancy. For example, **MyName@contoso.onmicrosoft.com**.
 1. Select **New registration**. On the **Register an application** page, set the values as follows.
 
@@ -117,15 +117,15 @@ Since this app signs-in users, you'll now proceed to select **delegated permissi
 
   1. In the app's registration screen, select the **API permissions** blade on the left pane. This opens the page where you add access to the APIs that your application needs.
   1. Select the **Add a permission** button, and choose the **My APIs** tab.
-  1. In the list of APIs, select the API `Contoso-Web-API-Server`.
+  1. In the list of APIs, choose the API `Contoso-Web-API-Server`.
   1. In the **Delegated permissions** section, select **Todolist.Read**, **Todolist.ReadWrite** in the list. Use the search box if necessary.
-  1. Select the **Add permissions** button at the bottom.
+  1. Select the **Add permissions** button.
 
 ### Configure the client app (Contoso-Outlook-Add-in) to use your app registration
 
 Open the sample project in Visual Studio Code to configure the code.
 
-> In the steps below, "ClientID" is the same as "Application ID" or "AppId".
+> In the following steps, "ClientID" is the same as "Application ID" or "AppId".
 
 1. Open the `SPA/src/taskpane/msalconfig.ts` file.
 1. Find the key `Enter_Application_Client_Id_Here` and replace the existing value with the application ID (clientId) of `Contoso-Outlook-Add-in` app copied from the Microsoft Entra admin center.
@@ -158,7 +158,7 @@ The following instructions assume you are sideloading in Outlook for Windows. To
 1. Select **Get todo list** to get the task list.
 1. You can also delete tasks in the list itself.
 
-If you sign in as a different user, you will get a list just for that user.
+If you sign in as a different user, you'll get a list just for that user.
 
 ## About the code
 
@@ -218,9 +218,8 @@ exports.getTodos = (req, res, next) => {
 
 When granting access to data based on scopes, be sure to follow [the principle of least privilege](https://docs.microsoft.com/azure/active-directory/develop/secure-least-privileged-access).
 
-## More information
+## Learn more about the Microsoft identity platform
 
-Learn more about the Microsoft identity platform:
 
 - [Microsoft identity platform (Microsoft Entra ID for developers)](https://docs.microsoft.com/azure/active-directory/develop/)
 - [Overview of Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)

@@ -15,7 +15,7 @@ import { createLocalUrl } from "../taskpane/util";
 import { defaultScopes, msalConfig } from "../taskpane/msalconfig";
 import type { AuthDialogResult } from "../taskpane/authConfig";
 
-// read querystring parameter
+// Read querystring parameter.
 function getQueryParameter(param: string) {
   const params = new URLSearchParams(window.location.search);
   return params.get(param);
