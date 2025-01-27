@@ -7,7 +7,7 @@ const todolist = require('../controllers/todolist');
 const authHelper = require('../server-helpers/validation-helper');
 
 
-// initialize router
+// Initialize router.
 const router = express.Router();
 
 router.get('/todolist', authHelper.validateJwt, todolist.getTodos);

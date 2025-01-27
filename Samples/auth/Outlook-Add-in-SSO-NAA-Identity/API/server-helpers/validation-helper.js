@@ -8,7 +8,7 @@ const authConfig = require("./authConfig");
 const DISCOVERY_KEYS_ENDPOINT =
  "https://login.microsoftonline.com/common/discovery/v2.0/keys";
 
-// wrap this with one parameter that returns a new function (req,res,next)
+// Wrap this with one parameter that returns a new function (req, res, next).
 exports.validateJwt = function (req, res, next) {
   const authHeader = req.headers.authorization;
   if (authHeader) {

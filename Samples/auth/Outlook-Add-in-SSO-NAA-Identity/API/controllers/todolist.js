@@ -39,7 +39,7 @@ exports.postTodo = (req, res, next) => {
             const todo = {
                 description: req.body.description,
                 id: uuidv4(),
-                owner: req.authInfo['oid'] // oid is the only claim that should be used to uniquely identify a user in an Azure AD tenant
+                owner: req.authInfo['oid'] // oid is the only claim that should be used to uniquely identify a user in an Entra tenant.
             };
 
             db.get('todos').push(todo).write();
