@@ -94,7 +94,7 @@ Office アドイン Microsoft Graph ASP.NET | Microsoft
 
     ![必要な Office ホスト アプリケーションを選択する:Excel、PowerPoint、または Word](images/SelectHost.JPG)
 
-6. F5 キーを押します。 
+6. <kbd>F5</kbd> キーを押します。 
 7. Office アプリケーションで、[**OneDrive ファイル**] グループから [**挿入**]、[**アドインを開く**] の順に選択して、タスク ウィンドウのアドインを開きます。
 8. アドインのページとボタンは、わかりやすく説明不要です。 
 

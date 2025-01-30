@@ -98,7 +98,7 @@ Version  | Date | Comments
 
     ![Choose the desired Office host application: Excel or PowerPoint or Word](images/SelectHost.JPG)
 
-1. Press F5.
+1. Press <kbd>F5</kbd>.
 1. In the Office application, choose **Insert** > **Open Add-in** in the **OneDrive Files** group to open the task pane add-in.
 1. The pages and buttons in the add-in are self-explanatory.
 

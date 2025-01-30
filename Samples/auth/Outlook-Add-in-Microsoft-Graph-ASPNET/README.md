@@ -96,7 +96,7 @@ Version  | Date | Comments
 
     ![Choose the desired Outlook host: desktop or one of the browsers](images/StartAction.JPG)
 
-1. Press F5. The first time you do this, you will be prompted to specify the email and password of the user that you will use for debugging the add-in. Use the credentials of an admin for your O365 tenancy.
+1. Press <kbd>F5</kbd>. The first time you do this, you will be prompted to specify the email and password of the user that you will use for debugging the add-in. Use the credentials of an admin for your O365 tenancy.
 
     ![Form with text boxes for user's email and password](images/CredentialsPrompt.JPG)
 

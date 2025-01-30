@@ -21,9 +21,9 @@ description: "This sample shows how to add keyboard shortcuts to your Office Add
 
 This sample shows how to create custom keyboard shortcuts for an Office Add-in. Keyboard shortcuts let power users quickly use your add-in's features and give accessibility options to avoid using a mouse. In this sample, the following shortcuts are configured.
 
-- **Ctrl+Alt+Up arrow key**: Opens the add-in's task pane.
-- **Ctrl+Alt+Down arrow key**: Hides the add-in's task pane.
-- **Ctrl+Alt+Q**: Performs an action that's specific to the current Office host.
+- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Up arrow key</kbd>: Opens the add-in's task pane.
+- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Down arrow key</kbd>: Hides the add-in's task pane.
+- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Q</kbd>: Performs an action that's specific to the current Office host.
   - **Excel**: Cycles through colors in the currently selected cell.
   - **Word**: Adds text to the document.
 
@@ -136,7 +136,7 @@ If you prefer to host the web server for the sample on your computer, follow the
 
 Once the add-in is loaded, try out its functionality.
 
-1. Press **Ctrl+Alt+Up arrow key** on your keyboard to open the add-in's task pane.
+1. Press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Up arrow key</kbd> on your keyboard to open the add-in's task pane.
 
   > [!NOTE]
   > If the keyboard shortcut is already in use in Excel or Word, a dialog will be shown so that you can select which action you'd like to map to the shortcut. Once you select an action, you can change your preference by invoking the **Reset Office Add-in Shortcut Preferences** command from the search field.

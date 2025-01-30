@@ -32,7 +32,7 @@ This sample shows how to move the code from the `Add` custom function into an Az
 To set up your development environment:
 
 1. Install [Visual Studio Code](https://code.visualstudio.com) on one of the supported platforms.
-2. Install the [Azure Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions). You can also search for the Azure Functions extension in the VS Code Extensions view (Ctrl + Shift + X) and typing 'Azure Functions'.
+2. Install the [Azure Functions extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions). You can also search for the Azure Functions extension in the VS Code Extensions view (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd>) and typing 'Azure Functions'.
 
 You will also need the following:
 
@@ -124,15 +124,15 @@ If you prefer to host the web server for the custom function on your computer, f
 You can also deploy and run the Azure Function from your own Azure account.
 
 1. Start Visual Studio Code and open the **AzureFunction/AzureFunctionProject** folder in the project.
-1. In Visual Studio Code, press F1 to open the command palette. In the command palette, search for and select **Azure Functions: Deploy to function app....** and then choose your subscription.
+1. In Visual Studio Code, press <kbd>F1</kbd> to open the command palette. In the command palette, search for and select **Azure Functions: Deploy to function app....** and then choose your subscription.
     ![Screenshot of selecting Azure Functions: Deploy to function app in the command palette](images/azure-deploy-task.png)
     >Note: If you are not signed-in, you are prompted to **Sign in to Azure**. You can also **Create a free Azure account**. After successful sign in from the browser, go back to Visual Studio Code.
 1. Choose **+ Create New Function App in Azure**.
-1. Type a globally unique name that identifies your function app and press Enter. Valid characters for a function app name are `a-z`, `0-9`, and `-`.
+1. Type a globally unique name that identifies your function app and press <kbd>Enter</kbd>. Valid characters for a function app name are `a-z`, `0-9`, and `-`.
 1. Select the most recent Node.js LTS version for the runtime stack.
 1. Select a geographical location near you for the location for new resources.
 
-    When you press Enter, the following Azure resources are created in your subscription:
+    When you press <kbd>Enter</kbd>, the following Azure resources are created in your subscription:
   
     - Resource group: Contains all of the created Azure resources. The name is based on your function app name.
     - Storage account: A standard Storage account is created with a unique name that is based on your function app name.

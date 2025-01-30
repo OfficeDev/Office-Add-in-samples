@@ -57,7 +57,7 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 
 1. Open the **HelloWord.sln** file in Visual Studio.
 
-1. Press **F5** or choose the **Start** button to launch PowerPoint with the **Show Taskpane** add-in button displayed on the ribbon. The add-in will be hosted locally on IIS.
+1. Press <kbd>F5</kbd> or choose the **Start** button to launch PowerPoint with the **Show Taskpane** add-in button displayed on the ribbon. The add-in will be hosted locally on IIS.
 
 1. If the add-in task pane isn't already open in PowerPoint, go to the Home tab and choose the **Show Taskpane** button in the ribbon to open it.
 

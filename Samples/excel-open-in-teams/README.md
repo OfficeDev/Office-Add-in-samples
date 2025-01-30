@@ -94,7 +94,7 @@ Before you run the sample, you'll need to do a few things to make it work proper
 
 ## Run the sample
 
-1. Press **F5** to build and debug the project. The Contoso Web application will open in a browser.
+1. Press <kbd>F5</kbd> to build and debug the project. The Contoso Web application will open in a browser.
 
     ![Screenshot of Contoso web app with Products button on the ribbon](./images/contoso-web-app.png)
 

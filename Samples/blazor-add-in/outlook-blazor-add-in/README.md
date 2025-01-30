@@ -42,7 +42,7 @@ Working with Blazor Webassembly in the framework of Office, you can:
 1. In the **Properties** window, set the **Email Address** to the email address of the account you want to use with this sample.
    In case this was not set before running you might also see this dialog:
    ![Start Action](./images/Connect.png)
-1. To start the solution, choose **Debug** > **Start Debugging** or press **F5**.
+1. To start the solution, choose **Debug** > **Start Debugging** or press <kbd>F5</kbd>.
 1. When Outlook opens, choose **Home** > **Show Taskpane**.
 
 Next, try out the controls. The task pane will display information about the currently selected email item.
