@@ -282,7 +282,7 @@ In the WebStorm menu `Run` select `Edit Configurations...`. Then click `+` and s
 
 >Note: the URL may be different if you've made adjustments via the [HOST or PORT environment variables](#advanced-configuration).
 
-Start your app by running `npm start`, then press <kbd>^D<kbd> on macOS or <kbd>F9</kbd> on Windows and Linux or click the green debug icon to start debugging in WebStorm.
+Start your app by running `npm start`, then press <kbd>Ctrl</kbd>+<kbd>D</kbd> on macOS or <kbd>F9</kbd> on Windows and Linux or click the green debug icon to start debugging in WebStorm.
 
 The same way you can debug your application in IntelliJ IDEA Ultimate, PhpStorm, PyCharm Pro, and RubyMine. 
 
