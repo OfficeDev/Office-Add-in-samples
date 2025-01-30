@@ -111,7 +111,7 @@ Once the add-in is loaded, use the following steps to try out its functionality.
 
     The **Office Add-ins Smart Alerts sample** task pane appears.
 
-1. Select the applicable categories from the category list. To apply multiple categories, select and hold **Ctrl** while selecting the categories.
+1. Select the applicable categories from the category list. To apply multiple categories, select and hold <kbd>Ctrl</kbd> while selecting the categories.
 
 1. Select **Apply Selected Categories**.
 

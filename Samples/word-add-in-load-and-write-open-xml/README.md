@@ -76,11 +76,11 @@ To configure the sample, open the LoadingAndWritingOOXML.sln file with Visual St
 
 ## Build the sample
 
-To build the sample, choose the Ctrl+Shift+B keys.
+To build the sample, choose the <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> keys.
 
 ## Run and test the sample
 
-To run the sample, choose the F5 key.
+To run the sample, choose the <kbd>F5</kbd> key.
 
 ## Troubleshooting
 

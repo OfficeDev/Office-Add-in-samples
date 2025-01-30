@@ -270,7 +270,7 @@ Then add the block below to your `launch.json` file and put it inside the `.vsco
 ```
 >Note: the URL may be different if you've made adjustments via the [HOST or PORT environment variables](#advanced-configuration).
 
-Start your app by running `npm start`, and start debugging in VS Code by pressing `F5` or by clicking the green debug icon. You can now write code, set breakpoints, make changes to the code, and debug your newly modified code—all from your editor.
+Start your app by running `npm start`, and start debugging in VS Code by pressing <kbd>F5</kbd> or by clicking the green debug icon. You can now write code, set breakpoints, make changes to the code, and debug your newly modified code—all from your editor.
 
 Having problems with VS Code Debugging? Please see their [troubleshooting guide](https://github.com/Microsoft/vscode-chrome-debug/blob/master/README.md#troubleshooting).
 
@@ -282,7 +282,7 @@ In the WebStorm menu `Run` select `Edit Configurations...`. Then click `+` and s
 
 >Note: the URL may be different if you've made adjustments via the [HOST or PORT environment variables](#advanced-configuration).
 
-Start your app by running `npm start`, then press `^D` on macOS or `F9` on Windows and Linux or click the green debug icon to start debugging in WebStorm.
+Start your app by running `npm start`, then press <kbd>^D<kbd> on macOS or <kbd>F9</kbd> on Windows and Linux or click the green debug icon to start debugging in WebStorm.
 
 The same way you can debug your application in IntelliJ IDEA Ultimate, PhpStorm, PyCharm Pro, and RubyMine. 
 
@@ -1217,7 +1217,7 @@ The watcher includes an interactive command-line interface with the ability to r
 
 By default, when you run `npm test`, Jest will only run the tests related to files changed since the last commit. This is an optimization designed to make your tests run fast regardless of how many tests you have. However it assumes that you don’t often commit the code that doesn’t pass the tests.
 
-Jest will always explicitly mention that it only ran tests related to the files changed since the last commit. You can also press `a` in the watch mode to force Jest to run all tests.
+Jest will always explicitly mention that it only ran tests related to the files changed since the last commit. You can also press <kbd>a</kbd> in the watch mode to force Jest to run all tests.
 
 Jest will always run all tests on a [continuous integration](#continuous-integration) server or if the project is not inside a Git or Mercurial repository.
 

@@ -111,7 +111,7 @@ Now you can build and run the solution
 1. On the menu bar choose **Build** > **Build Solution**.
     > **Note:** Set your build target to **Win32** or **x64** to match the version of Microsoft Excel you will run (32-bit or 64-bit).
 2. Set one of the projects as the startup project. For example, right-click (or select and hold) the **ExcelAddin1** project and choose **Set as StartUp Project**.
-3. Choose **Start** (or press F5). The debugger will launch Excel and load the add-in.
+3. Choose **Start** (or press <kbd>F5</kbd>). The debugger will launch Excel and load the add-in.
 
 The task pane for the VSTO Add-in will appear. You can drag Excel to a monitor with a different DPI to see displayed information change. You can explore different scnearios by changing the **Template** and **Context** fields. Then choose **Open Top-level Form** and a top-level form will open using the settings you specified. You can drag it to monitors with different DPI settings to see how it handles the DPI changes.
 

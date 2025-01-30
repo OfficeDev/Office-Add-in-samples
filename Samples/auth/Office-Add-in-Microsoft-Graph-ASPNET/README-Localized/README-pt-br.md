@@ -94,7 +94,7 @@ Versão | Data | Comentários
 
     ![Escolha o aplicativo host do Office desejado: Excel ou PowerPoint ou Word](images/SelectHost.JPG)
 
-6. Pressione F5. 
+6. Pressione <kbd>F5</kbd>. 
 7. No aplicativo do Office, escolha **Inserir** > **Abrir Suplemento** no grupo **Arquivos do OneDrive** para abrir o suplemento do painel de tarefas.
 8. As páginas e os botões do suplemento são auto-explicativos. 
 

@@ -85,14 +85,15 @@ You'll be prompted to consent to the scopes the sample needs when you select the
 ## Selecting hosts and debugging steps
 
 If you want to choose Word or PowerPoint, modify the `start` command in the `package.json` file to match one of the following entries.
+
 - For Word: `"start": "office-addin-debugging start manifest.xml desktop --app word",`
 - For PowerPoint: `"start": "office-addin-debugging start manifest.xml desktop --app powerpoint",`
 
 You can also debug the sample by opening the project in VS Code.
 
-1. Select the **Run and Debug** icon in the **Activity Bar** on the side of VS Code. You can also use the keyboard shortcut **Ctrl+Shift+D**.
+1. Select the **Run and Debug** icon in the **Activity Bar** on the side of VS Code. You can also use the keyboard shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd>.
 1. Select the launch configuration you want from the **Configuration dropdown** in the **Run and Debug** view. For example, **Word Desktop (Edge Chromium)**.
-1. Start your debug session with **F5**, or **Run > Start Debugging**.
+1. Start your debug session with **F5**, or **Run** > **Start Debugging**.
 
 ![VS Code debug view](./assets/vs-code-debug-view.png)
 
@@ -102,7 +103,7 @@ For more information on debugging with VS Code, see [Debugging](https://code.vis
 
 The `src/taskpane/authConfig.ts` file contains the MSAL code for configuring and using NAA. It contains a class named AccountManager which manages getting user account and token information.
 
-- The `initialize` function is called from Office.onReady to configure and intitialize MSAL to use NAA.
+- The `initialize` function is called from Office.onReady to configure and initialize MSAL to use NAA.
 - The `ssoGetToken` function gets an access token for the signed in user to call Microsoft Graph APIs.
 - The `ssoGetUserIdentity` function gets the account information of the signed in user. This can be used to get user details such as name and email.
 

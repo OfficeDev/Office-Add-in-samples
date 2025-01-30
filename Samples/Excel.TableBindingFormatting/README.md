@@ -34,7 +34,7 @@ Version  | Date | Comments
 ## Building the Sample ##
 1. Open `ExcelFormattingSample.sln` in Visual Studio 2013. 
 2. Right-click (or select and hold) on the `ExcelFormattingSample` project in Solution Explorer and choose **Set as startup project**. 
-3. Press the F5 key to build the solution and run it in Excel 2013 
+3. Press the <kbd>F5</kbd> key to build the solution and run it in Excel 2013.
 
 ## Description ##
 
