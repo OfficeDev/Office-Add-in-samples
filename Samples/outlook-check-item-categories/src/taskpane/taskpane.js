@@ -34,7 +34,7 @@ function getCategories() {
     selection.multiple = true;
     let label = document.createElement("label");
     label.innerHTML =
-      "<br/>Select the applicable categories.<br/><br/>Select and hold <b>Ctrl</b> to choose multiple categories.<br/>";
+      "<br/>Select the applicable categories.<br/><br/>Select and hold <kbd>Ctrl</kbd> to choose multiple categories.<br/>";
     label.htmlFor = "applicable-categories";
 
     asyncResult.value.forEach((category, index) => {
