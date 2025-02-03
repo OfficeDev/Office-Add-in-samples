@@ -49,9 +49,12 @@ The web API service is a Node.js server that requires an application registratio
    - Set **Supported account types** to **Accounts in this organizational directory only**.
    - Select **Register**.
 
-1. In the app's registration screen, select the **Expose an API** blade to the left to open the page where you can publish the permission as an API for which client applications can obtain access tokens for. The first thing that we need to do is to declare the unique resource URI that the clients will be using to obtain access tokens for this API. To declare an resource URI(Application ID URI), follow the following steps:
+1. In the app's registration screen, select **Manage > Expose an API** to open the page where you can publish the permission as an API for which client applications can obtain access tokens for. The first thing that we need to do is to declare the unique resource URI that the clients will be using to obtain access tokens for this API. To declare a resource URI(Application ID URI), follow the following steps:
 
     - Select **Add** next to the **Application ID URI** to generate a URI that is unique for this app.
+
+        ![Expose an api](./images/expose-an-api.png)
+
     - For this sample, accept the proposed **Application ID URI** (`api://{clientId}`) by selecting **Save**.
 
     Read more about Application ID URI at [Validation differences by supported account types (signInAudience)](https://docs.microsoft.com/azure/active-directory/develop/supported-accounts-validation).
@@ -61,16 +64,23 @@ The web API service is a Node.js server that requires an application registratio
 All APIs must publish a minimum of one scope, also called Delegated Permission, for the client apps to obtain an access token for a user successfully. To publish a scope, follow these steps:
 
 1. Select **Add a scope** and enter the values as indicated below.
-- For **Scope name**, select `Todolist.Read`.
-- Select **Admins and users** options for **Who can consent?**.
-- For **Admin consent display name** enter `Todolist.Read`.
-- For **Admin consent description** enter `Allows the app to read the signed-in user's files.`
-- For **User consent display name** enter `Todolist.Read`.
-- For **User consent description** enter a description. For example, `Allows the app to read your files.`
-- For **State**, select **Enabled**.
-- To save this scope, select the **Add scope** button.
+
+    ![Add scope](./images/add-a-scope.png)
+
+    - For **Scope name**, select `Todolist.Read`.
+    - Select **Admins and users** options for **Who can consent?**.
+    - For **Admin consent display name** enter `Todolist.Read`.
+    - For **Admin consent description** enter `Allows the app to read the signed-in user's files.`
+    - For **User consent display name** enter `Todolist.Read`.
+    - For **User consent description** enter a description. For example, `Allows the app to read your files.`
+    - For **State**, select **Enabled**.
+    - To save this scope, select the **Add scope** button.
 
 Repeat the previous steps to add a second scope named `Todolist.ReadWrite` along with descriptions that indicate the scope will read and write files.
+
+Your scopes should appear as shown in the following screenshot.
+
+![scopes](./images/scopes-added.png)
 
 ### Publish application permissions
 
@@ -78,6 +88,9 @@ All APIs should publish a minimum of one [App role for applications](https://doc
 
 1. Still on the same app registration, select the **App roles** blade to the left.
 1. Select **Create app role**:
+
+    ![app roles](./images/create-app-roles.png)
+
     1. For **Display name**, enter a suitable name for your application permission, for example `Todolist.Read.All`.
     1. For **Allowed member types**, choose **Application** to ensure other applications can be granted this permission.
     1. For **Value**, enter `Todolist.Read.All`.
@@ -85,12 +98,15 @@ All APIs should publish a minimum of one [App role for applications](https://doc
     1. To save your changes, select **Apply**.
 
 Repeat the previous steps to add another app permission named `Todolist.ReadWrite.All`.
+Your app roles should appear as shown in the following screenshot.
+
+![app roles complete](./images/app-roles-complete.png)
 
 ### Configure the service app (Contoso-Web-API-Server) to use your app registration
 
 Open the sample project in Visual Studio Code to configure the code. In the following steps, "ClientID" is the same as "Application ID" or "AppId".
 
-1. Open the API/server-helpers/authConfig.js file.
+1. Open the `API/server-helpers/authConfig.js` file.
 1. Find the key `Enter_API_Application_Id_Here` and replace the existing value with the application ID (clientId) of Contoso-Web-API-Server app copied from the Microsoft Entra admin center.
 1. Save the file.
 
@@ -107,31 +123,44 @@ Open the sample project in Visual Studio Code to configure the code. In the foll
 1. In the **Overview** blade, find and note the **Application (client) ID**. You use this value in your app's configuration file(s) later in your code.
 1. In the app's registration screen, select the **Authentication** blade on the left pane.
 1. If you don't have a platform added, select **Add a platform** and choose the **Single-page application** option.
+
+    ![select redirect platform](./images/add-platform.png)
+
     1. In the **Redirect URI** section, enter the following redirect URIs:
         1. `http://localhost:3000`
         1. `http://localhost:3000/redirect`
         1. `brk-multihub://localhost:3000`
     1. To save your changes, select **Save**.
 
+    ![redirect uris](./images/redirect-uris-completed.png)
+
 Since this app signs-in users, you'll now proceed to select **delegated permissions**, which is required by apps signing-in users.
 
-  1. In the app's registration screen, select the **API permissions** blade on the left pane. This opens the page where you add access to the APIs that your application needs.
-  1. Select the **Add a permission** button, and choose the **My APIs** tab.
-  1. In the list of APIs, choose the API `Contoso-Web-API-Server`.
-  1. In the **Delegated permissions** section, select **Todolist.Read**, **Todolist.ReadWrite** in the list. Use the search box if necessary.
-  1. Select the **Add permissions** button.
+1. In the app's registration screen, select the **API permissions** blade on the left pane. This opens the page where you add access to the APIs that your application needs.
+1. Select the **Add a permission** button, and choose the **APIs my organization uses** tab.
+1. In the list of APIs, choose the API `Contoso-Web-API-Server`.
+  
+    ![select permissions](./images/select-permissions.png)
+
+1. In the **Delegated permissions** section, select **Todolist.Read**, **Todolist.ReadWrite** in the list. Use the search box if necessary.
+1. Select the **Add permissions** button.
+
+Your scopes should appear as shown in the following screenshot.
+
+![list of scopes](./images/scopes-added-client.png)
 
 ### Configure the client app (Contoso-Outlook-Add-in) to use your app registration
 
 Open the sample project in Visual Studio Code to configure the code.
 
-> In the following steps, "ClientID" is the same as "Application ID" or "AppId".
-
 1. Open the `SPA/src/taskpane/msalconfig.ts` file.
-1. Find the key `Enter_Application_Client_Id_Here` and replace the existing value with the application ID (clientId) of `Contoso-Outlook-Add-in` app copied from the Microsoft Entra admin center.
+1. Find the key `Enter_Application_Client_Id_Here` and replace the existing value with the application ID (clientId) of `Contoso-Outlook-Add-in` app copied from the Microsoft Azure app registration page.
 1. Save the file.
+
+Next you need to add the API web server's application ID. **This is not the same ID as the previous steps**.
+
 1. Open the `SPA/src/taskpane/authConfig.ts` file.
-1. Find the key `Enter_API_Application_Id_Here` and replace the existing value with the application ID (clientId) of Contoso-Web-API-Server` app copied from the Microsoft Entra admin center.
+1. Find the key `Enter_API_Application_Id_Here` and replace the existing value with the application ID (clientId) of `Contoso-Web-API-Server` app copied from the Microsoft Azure app registration page.
 
 ## Run the sample
 
@@ -139,6 +168,7 @@ First, start the web API service. In a console window, go to the root project fo
 
 ```console
     cd API
+    npm install
     npm start
 ```
 
@@ -146,6 +176,7 @@ Next, start and sideload the Outlook add-in. In a new console window, go to the 
 
 ```console
     cd SPA
+    npm install
     npm start
 ```
 
