@@ -1,0 +1,265 @@
+BEGIN:VCALENDAR
+PRODID:-//Microsoft Corporation//Outlook 16.0 MIMEDIR//EN
+VERSION:2.0
+METHOD:PUBLISH
+X-MS-OLK-FORCEINSPECTOROPEN:TRUE
+BEGIN:VTIMEZONE
+TZID:Pacific Standard Time
+BEGIN:STANDARD
+DTSTART:16011104T020000
+RRULE:FREQ=YEARLY;BYDAY=1SU;BYMONTH=11
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+END:STANDARD
+BEGIN:DAYLIGHT
+DTSTART:16010311T020000
+RRULE:FREQ=YEARLY;BYDAY=2SU;BYMONTH=3
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+CLASS:PUBLIC
+CREATED:20250212T085203Z
+DESCRIPTION:Go to this link to join the meeting: https://aka.ms/officeaddin
+	scall-join <https://nam06.safelinks.protection.outlook.com/?url=https%3A%2
+	F%2Faka.ms%2Fofficeaddinscall-join&data=05%7C02%7Cmingjialiu%40microsoft.c
+	om%7C6348f16cc14b41cb566408dc002d6aa5%7C72f988bf86f141af91ab2d7cd011db47%7
+	C1%7C0%7C638385442381031256%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLC
+	JQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=xoycnKL
+	LDuWH6B4BL3d%2FmDDyRcgRbJ%2BFVb0Wv660Njs%3D&reserved=0> \n\n \n\nThe Offic
+	e Add-ins community call is our monthly event for developers to connect in
+	 real-time with the folks who are building the Office JS platform and APIs
+	. During each call\, we share updates related to the Office JS platform an
+	d APIs and provide tips about useful tools\, samples\, and resources for d
+	eveloping Office Add-ins.\n\n \n\nTime details\n\nThe call is from 7am –
+	 8am PST. This invite reserves 15 minutes pre-call for setup. If you’re 
+	presenting\, please plan to join by 6:45am to coordinate logistics\; other
+	wise (if you’re not presenting)\, feel free to join at 7am when the call
+	 officially begins.\n\n \n\nMore about Office Add-ins community call\n\nCa
+	ll details as well as a list of previous calls and upcoming agenda: https:
+	//aka.ms/office-add-ins-community-call <https://nam06.safelinks.protection
+	.outlook.com/?url=https%3A%2F%2Faka.ms%2Foffice-add-ins-community-call&dat
+	a=05%7C02%7Cmingjialiu%40microsoft.com%7C6348f16cc14b41cb566408dc002d6aa5%
+	7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C638385442381050220%7CUnknown%
+	7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6
+	Mn0%3D%7C3000%7C%7C%7C&sdata=gl2nNKrcsDXxRLxTzUHZEVuRjiJds2FAopN5JstWpos%3
+	D&reserved=0> \n\n \n\n \n\n \n\n_________________________________________
+	_______________________________________\n\nMicrosoft Teams Need help? <htt
+	ps://aka.ms/JoinTeamsMeeting?omkt=en-US> \n\nJoin the meeting now <https:/
+	/teams.microsoft.com/l/meetup-join/19%3ameeting_ZDhhOTBmYzMtM2MxMi00MjNjLW
+	FmNWMtOWQ2NWY3ZTRjYTFm%40thread.v2/0?context=%7b%22Tid%22%3a%2272f988bf-86
+	f1-41af-91ab-2d7cd011db47%22%2c%22Oid%22%3a%220b79f3c6-8ab6-4178-b4dc-d9e6
+	71171c5a%22%7d> \n\nMeeting ID: 287 682 356 718\n\nPasscode: jS7mG2H7\n\n_
+	_______________________________\n\nDial in by phone\n\n+1 206-800-4384\,\,
+	356492727# United States\, Richmond Beach\n\nFind a local number <https://
+	dialin.teams.microsoft.com/8551f4c1-bea3-441a-8738-69aa517a91c5?id=3564927
+	27> \n\nPhone conference ID: 356 492 727#\n\nFor organizers: Meeting optio
+	ns <https://teams.microsoft.com/meetingOptions/?organizerId=0b79f3c6-8ab6-
+	4178-b4dc-d9e671171c5a&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47&threa
+	dId=19_meeting_ZDhhOTBmYzMtM2MxMi00MjNjLWFmNWMtOWQ2NWY3ZTRjYTFm@thread.v2&
+	messageId=0&language=en-US>  | Reset dial-in PIN <https://dialin.teams.mic
+	rosoft.com/usp/pstnconferencing> \n\n_____________________________________
+	___________________________________________\n\n\n
+DTEND;TZID="Pacific Standard Time":20250212T080000
+DTSTAMP:20250212T085203Z
+DTSTART;TZID="Pacific Standard Time":20250212T070000
+LAST-MODIFIED:20250212T085203Z
+LOCATION:Microsoft Teams Meeting
+PRIORITY:5
+RRULE:FREQ=MONTHLY;COUNT=13;BYDAY=WE;BYSETPOS=2
+SEQUENCE:0
+SUMMARY;LANGUAGE=en-us:Office Add-ins community call
+TRANSP:OPAQUE
+UID:040000008200E00074C5B7101A82E00800000000C1009CF52A7DDB01000000000000000
+	010000000362F5A2AA245774799498C36C6E2AB3C
+X-ALT-DESC;FMTTYPE=text/html:<p class="elementToProof" style="text-align: l
+	eft\; text-indent: 0px\; background-color: white\; margin-right: 0in\; mar
+	gin-left: 0in\;"><span style="font-family: &quot\;Segoe UI&quot\;\, sans-s
+	erif\; font-size: 10.5pt\; color: rgb(66\, 66\, 66)\;"><b>Go to this link 
+	to join the meeting: </b></span><span style="font-family: &quot\;Segoe UI&
+	quot\;\, sans-serif\; font-size: 10.5pt\; color: blue\;"><b><u><a href="ht
+	tps://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Faka.ms%2Fo
+	fficeaddinscall-join&amp\;data=05%7C02%7Cmingjialiu%40microsoft.com%7C6348
+	f16cc14b41cb566408dc002d6aa5%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C
+	638385442381031256%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2l
+	uMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp\;sdata=xoycnKLLDuW
+	H6B4BL3d%2FmDDyRcgRbJ%2BFVb0Wv660Njs%3D&amp\;reserved=0" target="_blank" i
+	d="OWA420847d9-0a47-1c5b-d168-919bb3d1f2c9" class="OWAAutoLink" title="Ori
+	ginal URL: https://aka.ms/officeaddinscall-join. Click or tap if you trust
+	 this link." rel="noopener noreferrer" data-auth="NotApplicable" style="co
+	lor: blue\; margin: 0px\;">https://aka.ms/officeaddinscall-join</a></u></b
+	></span></p><p class="elementToProof" style="text-align: left\; text-inden
+	t: 0px\; background-color: white\; margin-right: 0in\; margin-left: 0in\;"
+	><span style="font-family: &quot\;Segoe UI&quot\;\, sans-serif\; font-size
+	: 10.5pt\; color: rgb(66\, 66\, 66)\;"><b>&nbsp\;</b></span></p><p class="
+	elementToProof" style="text-align: left\; text-indent: 0px\; background-co
+	lor: white\; margin-right: 0in\; margin-left: 0in\;"><span style="font-fam
+	ily: &quot\;Segoe UI&quot\;\, sans-serif\; font-size: 10.5pt\; color: rgb(
+	66\, 66\, 66)\;">The Office Add-ins community call is our monthly event fo
+	r developers to connect in real-time with the folks who are building the O
+	ffice JS platform and APIs. During each call\, we share updates related to
+	 the Office JS platform and APIs and provide tips about useful tools\, sam
+	ples\, and resources for developing Office Add-ins.</span></p><p class="el
+	ementToProof" style="text-align: left\; text-indent: 0px\; background-colo
+	r: white\; margin-right: 0in\; margin-left: 0in\;"><span style="font-famil
+	y: Aptos\, sans-serif\; font-size: 12pt\; color: rgb(66\, 66\, 66)\;">&nbs
+	p\;</span></p><p class="elementToProof" style="text-align: left\; text-ind
+	ent: 0px\; background-color: white\; margin-right: 0in\; margin-left: 0in\
+	;"><span style="font-family: &quot\;Segoe UI&quot\;\, sans-serif\; font-si
+	ze: 10.5pt\; color: rgb(66\, 66\, 66)\;"><b>Time details</b></span></p><p 
+	class="elementToProof" style="text-align: left\; text-indent: 0px\; backgr
+	ound-color: white\; margin-right: 0in\; margin-left: 0in\;"><span style="f
+	ont-family: &quot\;Segoe UI&quot\;\, sans-serif\; font-size: 10.5pt\; colo
+	r: rgb(66\, 66\, 66)\;">The call is from 7am – 8am PST. This invite rese
+	rves 15 minutes pre-call for setup. If you’re presenting\, please plan t
+	o join by 6:45am to coordinate logistics\; otherwise (if you’re not pres
+	enting)\, feel free to join at 7am when the call officially begins.</span>
+	</p><p class="elementToProof" style="text-align: left\; text-indent: 0px\;
+	 background-color: white\; margin-right: 0in\; margin-left: 0in\;"><span s
+	tyle="font-family: &quot\;Segoe UI&quot\;\, sans-serif\; font-size: 10.5pt
+	\; color: rgb(66\, 66\, 66)\;">&nbsp\;</span></p><p class="elementToProof"
+	 style="text-align: left\; text-indent: 0px\; background-color: white\; ma
+	rgin-right: 0in\; margin-left: 0in\;"><span style="font-family: &quot\;Seg
+	oe UI&quot\;\, sans-serif\; font-size: 10.5pt\; color: rgb(66\, 66\, 66)\;
+	"><b>More about Office Add-ins community call</b></span></p><p class="elem
+	entToProof" style="text-align: left\; text-indent: 0px\; background-color:
+	 white\; margin-right: 0in\; margin-left: 0in\;"><span style="font-family:
+	 &quot\;Segoe UI&quot\;\, sans-serif\; font-size: 10.5pt\; color: rgb(66\,
+	 66\, 66)\;">Call details as well as a list of previous calls and upcoming
+	 agenda: </span><span style="font-family: &quot\;Segoe UI&quot\;\, sans-se
+	rif\; font-size: 10.5pt\; color: blue\;"><u><a href="https://nam06.safelin
+	ks.protection.outlook.com/?url=https%3A%2F%2Faka.ms%2Foffice-add-ins-commu
+	nity-call&amp\;data=05%7C02%7Cmingjialiu%40microsoft.com%7C6348f16cc14b41c
+	b566408dc002d6aa5%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C63838544238
+	1050220%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTi
+	I6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&amp\;sdata=gl2nNKrcsDXxRLxTzUHZEV
+	uRjiJds2FAopN5JstWpos%3D&amp\;reserved=0" target="_blank" id="OWA69e2a483-
+	6ad3-903a-e7c6-815380d2fc9c" class="OWAAutoLink" title="Original URL: http
+	s://aka.ms/office-add-ins-community-call. Click or tap if you trust this l
+	ink." rel="noopener noreferrer" data-auth="NotApplicable" style="color: bl
+	ue\; margin: 0px\;">https://aka.ms/office-add-ins-community-call</a></u></
+	span></p><div style="background-color: rgb(255\, 255\, 255)\; margin: 0px\
+	;"><p class="elementToProof" style="text-align: left\; text-indent: 0px\; 
+	margin: 0in\; font-family: Aptos\, sans-serif\; font-size: 12pt\;"><span s
+	tyle="color: black\;">&nbsp\;</span></p></div><div style="background-color
+	: rgb(255\, 255\, 255)\; margin: 0px\;"><p class="elementToProof" style="t
+	ext-align: left\; text-indent: 0px\; margin: 0in\; font-family: Aptos\, sa
+	ns-serif\; font-size: 12pt\;"><span style="color: black\;">&nbsp\;</span><
+	/p></div><p class="elementToProof" style="text-align: left\; text-indent: 
+	0px\; background-color: rgb(255\, 255\, 255)\; margin: 0in\;"><span style=
+	"font-family: Aptos\, sans-serif\; font-size: 12pt\; color: rgb(66\, 66\, 
+	66)\;">&nbsp\;</span></p><div style="background-color: rgb(255\, 255\, 255
+	)\; margin: 0px\;"><p class="elementToProof" style="text-align: left\; tex
+	t-indent: 0px\; margin: 0in 0px\; font-family: Aptos\, sans-serif\; font-s
+	ize: 12pt\;"><span style="font-family: &quot\;Segoe UI&quot\;\, sans-serif
+	\; color: rgb(36\, 36\, 36)\;">___________________________________________
+	_____________________________________</span></p><div style="margin: 0px 0p
+	x 9pt\;"><p class="elementToProof" style="text-align: left\; text-indent: 
+	0px\; margin: 0in\; font-family: Aptos\, sans-serif\; font-size: 12pt\;"><
+	span style="font-family: &quot\;Segoe UI&quot\;\, sans-serif\; font-size: 
+	18pt\; color: rgb(36\, 36\, 36)\;"><b>Microsoft Teams</b></span><span styl
+	e="font-family: &quot\;Segoe UI&quot\;\, sans-serif\; color: rgb(36\, 36\,
+	 36)\;">&nbsp\;</span><span style="font-family: &quot\;Segoe UI&quot\;\, s
+	ans-serif\; font-size: 10.5pt\; color: rgb(91\, 95\, 199)\;"><u><a href="h
+	ttps://aka.ms/JoinTeamsMeeting?omkt=en-US" target="_blank" id="OWA896b21dc
+	-61b2-8af4-8b60-805f58a7d650" class="OWAAutoLink" title="https://aka.ms/Jo
+	inTeamsMeeting?omkt=en-US" rel="noopener noreferrer" data-auth="NotApplica
+	ble" style="color: rgb(91\, 95\, 199)\; margin: 0px\;">Need help?</a></u><
+	/span></p></div><div style="margin: 0px 0px 4.5pt\;"><p class="elementToPr
+	oof" style="text-align: left\; text-indent: 0px\; margin: 0in\; font-famil
+	y: Aptos\, sans-serif\; font-size: 12pt\;"><span style="font-family: &quot
+	\;Segoe UI&quot\;\, sans-serif\; font-size: 15pt\; color: rgb(91\, 95\, 19
+	9)\;"><b><u><a href="https://teams.microsoft.com/l/meetup-join/19%3ameetin
+	g_ZDhhOTBmYzMtM2MxMi00MjNjLWFmNWMtOWQ2NWY3ZTRjYTFm%40thread.v2/0?context=%
+	7b%22Tid%22%3a%2272f988bf-86f1-41af-91ab-2d7cd011db47%22%2c%22Oid%22%3a%22
+	0b79f3c6-8ab6-4178-b4dc-d9e671171c5a%22%7d" target="_blank" id="OWA14c6e0d
+	c-3e3f-3fab-2b11-4a2c88107c7b" class="OWAAutoLink" title="https://teams.mi
+	crosoft.com/l/meetup-join/19%3ameeting_ZDhhOTBmYzMtM2MxMi00MjNjLWFmNWMtOWQ
+	2NWY3ZTRjYTFm%40thread.v2/0?context=%7b%22Tid%22%3a%2272f988bf-86f1-41af-9
+	1ab-2d7cd011db47%22%2c%22Oid%22%3a%220b79f3c6-8ab6-4178-b4dc-d9e671171c5a%
+	22%7d" rel="noopener noreferrer" data-auth="NotApplicable" style="color: r
+	gb(91\, 95\, 199)\; margin: 0px\;">Join the meeting now</a></u></b></span>
+	</p></div><div style="margin: 0px 0px 4.5pt\;"><p class="elementToProof" s
+	tyle="text-align: left\; text-indent: 0px\; margin: 0in\; font-family: Apt
+	os\, sans-serif\; font-size: 12pt\;"><span style="font-family: &quot\;Sego
+	e UI&quot\;\, sans-serif\; font-size: 10.5pt\; color: rgb(97\, 97\, 97)\;"
+	>Meeting ID: </span><span style="font-family: &quot\;Segoe UI&quot\;\, san
+	s-serif\; font-size: 10.5pt\; color: rgb(36\, 36\, 36)\;">287 682 356 718<
+	/span></p></div><p class="elementToProof" style="text-align: left\; text-i
+	ndent: 0px\; margin: 0in 0px\; font-family: Aptos\, sans-serif\; font-size
+	: 12pt\;"><span style="font-family: &quot\;Segoe UI&quot\;\, sans-serif\; 
+	font-size: 10.5pt\; color: rgb(97\, 97\, 97)\;">Passcode: </span><span sty
+	le="font-family: &quot\;Segoe UI&quot\;\, sans-serif\; font-size: 10.5pt\;
+	 color: rgb(36\, 36\, 36)\;">jS7mG2H7</span></p><hr align="center" style="
+	text-indent: 0px\; margin-right: 0px\; margin-left: 0px\; width: 100%\;"><
+	div style="margin: 0px 0px 4.5pt\;"><p class="elementToProof" style="text-
+	align: left\; text-indent: 0px\; margin: 0in\; font-family: Aptos\, sans-s
+	erif\; font-size: 12pt\;"><span style="font-family: &quot\;Segoe UI&quot\;
+	\, sans-serif\; color: rgb(36\, 36\, 36)\;"><b>Dial in by phone</b></span>
+	</p></div><div style="margin: 0px 0px 4.5pt\;"><p class="elementToProof" s
+	tyle="text-align: left\; text-indent: 0px\; margin: 0in\; font-family: Apt
+	os\, sans-serif\; font-size: 12pt\;"><span style="font-family: &quot\;Sego
+	e UI&quot\;\, sans-serif\; font-size: 10.5pt\; color: rgb(91\, 95\, 199)\;
+	"><u>+1 206-800-4384\,\,356492727#</u></span><span style="font-family: &qu
+	ot\;Segoe UI&quot\;\, sans-serif\; color: rgb(36\, 36\, 36)\;">&nbsp\;</sp
+	an><span style="font-family: &quot\;Segoe UI&quot\;\, sans-serif\; font-si
+	ze: 10.5pt\; color: rgb(97\, 97\, 97)\;">United States\, Richmond Beach</s
+	pan></p></div><div style="margin: 0px 0px 4.5pt\;"><p class="elementToProo
+	f" style="text-align: left\; text-indent: 0px\; margin: 0in\; font-family:
+	 Aptos\, sans-serif\; font-size: 12pt\;"><span style="font-family: &quot\;
+	Segoe UI&quot\;\, sans-serif\; font-size: 10.5pt\; color: rgb(91\, 95\, 19
+	9)\;"><u><a href="https://dialin.teams.microsoft.com/8551f4c1-bea3-441a-87
+	38-69aa517a91c5?id=356492727" target="_blank" id="OWA8a67b1a2-c302-c311-d5
+	67-b3b40bd37c34" class="OWAAutoLink" title="https://dialin.teams.microsoft
+	.com/8551f4c1-bea3-441a-8738-69aa517a91c5?id=356492727" rel="noopener nore
+	ferrer" data-auth="NotApplicable" style="color: rgb(91\, 95\, 199)\; margi
+	n: 0px\;">Find a local number</a></u></span></p></div><p class="elementToP
+	roof" style="text-align: left\; text-indent: 0px\; margin: 0in 0px\; font-
+	family: Aptos\, sans-serif\; font-size: 12pt\;"><span style="font-family: 
+	&quot\;Segoe UI&quot\;\, sans-serif\; font-size: 10.5pt\; color: rgb(97\, 
+	97\, 97)\;">Phone conference ID: </span><span style="font-family: &quot\;S
+	egoe UI&quot\;\, sans-serif\; font-size: 10.5pt\; color: rgb(36\, 36\, 36)
+	\;">356 492 727#</span></p><p class="elementToProof" style="text-align: le
+	ft\; text-indent: 0px\; margin: 0in 0px\; font-family: Aptos\, sans-serif\
+	; font-size: 12pt\;"><span style="font-family: &quot\;Segoe UI&quot\;\, sa
+	ns-serif\; font-size: 10.5pt\; color: rgb(97\, 97\, 97)\;">For organizers:
+	 </span><span style="font-family: &quot\;Segoe UI&quot\;\, sans-serif\; fo
+	nt-size: 10.5pt\; color: rgb(91\, 95\, 199)\;"><u><a href="https://teams.m
+	icrosoft.com/meetingOptions/?organizerId=0b79f3c6-8ab6-4178-b4dc-d9e671171
+	c5a&amp\;tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47&amp\;threadId=19_me
+	eting_ZDhhOTBmYzMtM2MxMi00MjNjLWFmNWMtOWQ2NWY3ZTRjYTFm@thread.v2&amp\;mess
+	ageId=0&amp\;language=en-US" target="_blank" id="OWA18b3ed53-1f26-18c3-95d
+	0-bcc128f29256" class="OWAAutoLink" title="https://teams.microsoft.com/mee
+	tingOptions/?organizerId=0b79f3c6-8ab6-4178-b4dc-d9e671171c5a&amp\;tenantI
+	d=72f988bf-86f1-41af-91ab-2d7cd011db47&amp\;threadId=19_meeting_ZDhhOTBmYz
+	MtM2MxMi00MjNjLWFmNWMtOWQ2NWY3ZTRjYTFm@thread.v2&amp\;messageId=0&amp\;lan
+	guage=en-US" rel="noopener noreferrer" data-auth="NotApplicable" style="co
+	lor: rgb(91\, 95\, 199)\; margin: 0px\;">Meeting options</a></u></span><sp
+	an style="font-family: &quot\;Segoe UI&quot\;\, sans-serif\; color: rgb(36
+	\, 36\, 36)\;">&nbsp\;</span><span style="font-family: &quot\;Segoe UI&quo
+	t\;\, sans-serif\; color: rgb(209\, 209\, 209)\;">|</span><span style="fon
+	t-family: &quot\;Segoe UI&quot\;\, sans-serif\; color: rgb(36\, 36\, 36)\;
+	">&nbsp\;</span><span style="font-family: &quot\;Segoe UI&quot\;\, sans-se
+	rif\; font-size: 10.5pt\; color: rgb(91\, 95\, 199)\;"><u><a href="https:/
+	/dialin.teams.microsoft.com/usp/pstnconferencing" target="_blank" id="OWA9
+	cc708cb-f767-afa5-8ccf-7248e7da627a" class="OWAAutoLink" title="https://di
+	alin.teams.microsoft.com/usp/pstnconferencing" rel="noopener noreferrer" d
+	ata-auth="NotApplicable" style="color: rgb(91\, 95\, 199)\; margin: 0px\;"
+	>Reset dial-in PIN</a></u></span></p><p class="elementToProof" style="text
+	-align: left\; text-indent: 0px\; margin: 0in 0px\; font-family: Aptos\, s
+	ans-serif\; font-size: 12pt\;"><span style="font-family: &quot\;Segoe UI&q
+	uot\;\, sans-serif\; color: rgb(36\, 36\, 36)\;">_________________________
+	_______________________________________________________</span></p></div><d
+	iv class="elementToProof" style="font-family: Aptos\, Aptos_EmbeddedFont\,
+	 Aptos_MSFontService\, Calibri\, Helvetica\, sans-serif\; font-size: 12pt\
+	; color: rgb(0\, 0\, 0)\;"><br></div>
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+X-MICROSOFT-CDO-IMPORTANCE:1
+BEGIN:VALARM
+TRIGGER:-PT15M
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR
