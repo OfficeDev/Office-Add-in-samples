@@ -41,8 +41,7 @@ To learn about key components of this sample, see [Implement an integrated spam-
 
 - A Microsoft 365 subscription.
 
-    > [!NOTE]
-    > If you don't have a Microsoft 365 subscription, you might qualify for a free developer subscription that's renewable for 90 days and comes configured with sample data. For details, see the [Microsoft 365 Developer Program FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-).
+    > **Note**: If you don't have a Microsoft 365 subscription, you might qualify for a free developer subscription that's renewable for 90 days and comes configured with sample data. For details, see the [Microsoft 365 Developer Program FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-).
 
 - (Optional) If you want to run the web server on localhost, install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org) on your computer. To check if you've already installed these tools, from a command prompt, run the following commands.
 
@@ -51,18 +50,26 @@ To learn about key components of this sample, see [Implement an integrated spam-
     npm -v
     ```
 
-- (Optional) If you want to run the sample with a [unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview) using GitHub as the web host, install the [Teams Toolkit command line interface (CLI)](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli). From a command prompt, run `npm install -g @microsoft/teamsapp-cli`.
-- (Optional) If you want to deploy the sample with the unified manifest for Microsoft 365 to Microsoft Azure, install the following:
+- (Optional) If you want to run the sample with a [unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview) using GitHub as the web host, install the [Teams Toolkit command line interface (CLI)](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli). From a command prompt, run the following command.
+
+    ```console
+    npm install -g @microsoft/teamsapp-cli
+    ```
+
+- (Optional) If you want to deploy the sample with the unified manifest for Microsoft 365 to Microsoft Azure, you'll need the following:
   - An Azure subscription.
-  - [Visual Studio Code](https://code.visualstudio.com/)
-  - [Teams Toolkit extension for Visual Studio Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/install-teams-toolkit)
+  - [Visual Studio Code](https://code.visualstudio.com/).
+  - [Teams Toolkit extension for Visual Studio Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/install-teams-toolkit).
 
 ## Run the sample
 
 Run this sample with a [unified manifest for Microsoft 365](#run-with-the-unified-manifest-for-microsoft-365) or [add-in only manifest](#run-with-the-add-in-only-manifest). Use one of the following add-in file hosting options.
 
 > [!NOTE]
-> The spam-reporting sample with the unified manifest for Microsoft 365 is currently only supported in classic Outlook on Windows. To run the sample in Outlook on the web or the new Outlook on Windows, use the add-in only manifest.
+>
+> - The spam-reporting sample with the unified manifest for Microsoft 365 is currently only supported in classic Outlook on Windows. To run the sample in Outlook on the web or the new Outlook on Windows, use the add-in only manifest.
+>
+> - To learn more about manifests, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests).
 
 ### Run with the unified manifest for Microsoft 365
 
@@ -79,7 +86,7 @@ The quickest way to run the sample is to use GitHub as the web host. However, yo
 If you prefer to host the web server on localhost, follow these steps.
 
 1. Clone or download this repository.
-1. From a command prompt, go to the project folder **/samples/outlook-spam-reporting**.
+1. From a command prompt, go to the root of the project folder **/samples/outlook-spam-reporting**.
 1. Run the following commands.
 
     ```console
@@ -91,8 +98,7 @@ If you prefer to host the web server on localhost, follow these steps.
 
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
-    > [!NOTE]
-    > You can't debug a spam-reporting add-in that uses the unified manifest at this time.
+    > **Note**: You can't debug a spam-reporting add-in that uses the unified manifest at this time.
 
 1. To stop the web server and uninstall the add-in from Outlook, run the following command.
 
@@ -105,7 +111,7 @@ If you prefer to host the web server on localhost, follow these steps.
 You can deploy this sample with the unified manifest to Microsoft Azure using the Teams Toolkit extension in Visual Studio Code.
 
 1. In Visual Studio Code, go to the activity bar, then open the Teams Toolkit extension.
-1. In the Accounts section of the Teams Toolkit pane, choose **Sign in to Azure** to sign in to your Azure account.
+1. In the Accounts section of the Teams Toolkit pane, choose **Sign in to Azure**.
 1. After you sign in, select a subscription under your account.
 1. In the Development section of the Teams Toolkit pane, choose **Provision in the cloud**. Alternatively, open the command palette and choose **Teams: Provision in the cloud**.
 1. Choose **Deploy to the cloud**. Alternatively, open the command palette and choose **Teams: Deploy to the cloud**.
@@ -117,7 +123,7 @@ Once the sample is successfully deployed, follow these steps.
     - In the Azure portal, go to the new storage account. Then, choose **Data management** > **Static website** and copy the **Primary endpoint** value.
 1. Open the **./webpack.config.js** file.
 1. Change the `urlProd` constant to use the endpoint of your Azure deployment.
-1. Save your change then run the following command.
+1. Save your change. Then, run the following command.
 
     ```console
     npm run build
@@ -164,8 +170,7 @@ If you prefer to host the web server on localhost, follow these steps.
 
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
-    > [!TIP]
-    > To debug a spam-reporting add-in, see [Debug your event-based or spam-reporting Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch).
+    > **Tip**: To debug a spam-reporting add-in, see [Debug your event-based or spam-reporting Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch).
 
 1. To stop the web server and uninstall the add-in from Outlook, run the following command.
 
