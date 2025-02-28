@@ -39,58 +39,139 @@ To learn about key components of this sample, see [Implement an integrated spam-
 
 ## Prerequisites
 
-A Microsoft 365 subscription.
+- A Microsoft 365 subscription.
 
-> [!NOTE]
-> If you don't have a Microsoft 365 subscription, you might qualify for a free developer subscription that's renewable for 90 days and comes configured with sample data. For details, see the [Microsoft 365 Developer Program FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-).
+    > [!NOTE]
+    > If you don't have a Microsoft 365 subscription, you might qualify for a free developer subscription that's renewable for 90 days and comes configured with sample data. For details, see the [Microsoft 365 Developer Program FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-).
+
+- (Optional) If you want to run the web server on localhost, install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org) on your computer. To check if you've already installed these tools, from a command prompt, run the following commands.
+
+    ```console
+    node -v
+    npm -v
+    ```
+
+- (Optional) If you want to run the sample with a [unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview) using GitHub as the web host, install the [Teams Toolkit command line interface (CLI)](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli). From a command prompt, run `npm install -g @microsoft/teamsapp-cli`.
+- (Optional) If you want to deploy the sample with the unified manifest for Microsoft 365 to Microsoft Azure, install the following:
+  - An Azure subscription.
+  - [Visual Studio Code](https://code.visualstudio.com/)
+  - [Teams Toolkit extension for Visual Studio Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/install-teams-toolkit)
 
 ## Run the sample
 
-Run this sample in Outlook on Windows (new or classic) or on the web using one of the following add-in file hosting options.
+Run this sample with a [unified manifest for Microsoft 365](#run-with-the-unified-manifest-for-microsoft-365) or [add-in only manifest](#run-with-the-add-in-only-manifest). Use one of the following add-in file hosting options.
 
-### Run the sample from GitHub
+> [!NOTE]
+> The spam-reporting sample with the unified manifest for Microsoft 365 is currently only supported in classic Outlook on Windows. To run the sample in Outlook on the web or the new Outlook on Windows, use the add-in only manifest.
 
-1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on Windows (new or classic) or on the web by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#sideload-manually).
+### Run with the unified manifest for Microsoft 365
+
+#### Use GitHub as the web host
+
+The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
+
+1. Download the **outlook-spam-reporting.zip** file from this sample to a folder on your computer.
+1. Sideload the sample to Outlook by following the instructions in [Sideload with the Teams Toolkit CLI (command-line interface)](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest#sideload-with-the-teams-toolkit-cli-command-line-interface).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
-### Run the sample from localhost
+#### Use localhost
 
-If you prefer to host the web server for the sample on your computer, follow these steps.
+If you prefer to host the web server on localhost, follow these steps.
 
-1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
-1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
-
-   ```console
-   npm install --global http-server
-   ```
-
-1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet, you can do this with the following command.
+1. Clone or download this repository.
+1. From a command prompt, go to the project folder **/samples/outlook-spam-reporting**.
+1. Run the following commands.
 
     ```console
-    npm install --global office-addin-dev-certs
+    npm install
+    npm start
     ```
 
-1. Clone or download this sample to a folder on your computer, then go to that folder in a console or terminal window.
-1. Run the following command to generate a self-signed certificate to use for the web server.
+    This starts the web server on localhost and sideloads the **manifest.json** file to Outlook.
 
-   ```console
-    npx office-addin-dev-certs install
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+
+    > [!NOTE]
+    > You can't debug a spam-reporting add-in that uses the unified manifest at this time.
+
+1. To stop the web server and uninstall the add-in from Outlook, run the following command.
+
+    ```console
+    npm stop
     ```
 
-    This command will display the folder location where it generated the certificate files.
+#### Use Microsoft Azure
 
-1. Go to the folder location where the certificate files were generated, then copy the **localhost.crt** and **localhost.key** files to the cloned or downloaded sample folder.
+You can deploy this sample with the unified manifest to Microsoft Azure using the Teams Toolkit extension in Visual Studio Code.
+
+1. In Visual Studio Code, go to the activity bar, then open the Teams Toolkit extension.
+1. In the Accounts section of the Teams Toolkit pane, choose **Sign in to Azure** to sign in to your Azure account.
+1. After you sign in, select a subscription under your account.
+1. In the Development section of the Teams Toolkit pane, choose **Provision in the cloud**. Alternatively, open the command palette and choose **Teams: Provision in the cloud**.
+1. Choose **Deploy to the cloud**. Alternatively, open the command palette and choose **Teams: Deploy to the cloud**.
+
+Once the sample is successfully deployed, follow these steps.
+
+1. Copy the endpoint of your new Azure deployment. Use one of the following methods.
+    - In Visual Studio Code, select **View** > **Output** to open the Output window. Then, copy the endpoint for your new Azure deployment.
+    - In the Azure portal, go to the new storage account. Then, choose **Data management** > **Static website** and copy the **Primary endpoint** value.
+1. Open the **./webpack.config.js** file.
+1. Change the `urlProd` constant to use the endpoint of your Azure deployment.
+1. Save your change then run the following command.
+
+    ```console
+    npm run build
+    ```
+
+    This generates a new **manifest.json** file in the **dist** folder of your project that will load the add-in resources from your storage account.
 1. Run the following command.
 
     ```console
-    http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
+    npm run start:prod
     ```
 
-    The http-server will run and host the current folder's files on localhost:3000.
-
-1. Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the sample folder. To sideload the manifest, follow the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#sideload-manually).
+    Classic Outlook on Windows starts and the **manifest.json** file is sideloaded from the **dist** folder.
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+1. To stop the web server and uninstall the add-in from Outlook, run the following command.
+
+    ```console
+    npm run stop:prod
+    ```
+
+### Run with the add-in only manifest
+
+#### Use GitHub as the web host
+
+The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
+
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Sideload the add-in only manifest in Outlook on the web or on Windows (new or classic) by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#sideload-manually).
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+
+#### Use localhost
+
+If you prefer to host the web server on localhost, follow these steps.
+
+1. Clone or download this repository.
+1. From a command prompt, run the following commands.
+
+    ```console
+    npm install
+    npm run start:xml
+    ```
+
+    This starts the web server on localhost and sideloads the **manifest-localhost.xml** file to Outlook.
+
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+
+    > [!TIP]
+    > To debug a spam-reporting add-in, see [Debug your event-based or spam-reporting Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch).
+
+1. To stop the web server and uninstall the add-in from Outlook, run the following command.
+
+    ```console
+    npm run stop:xml
+    ```
 
 ## Try it out
 
@@ -145,5 +226,6 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 | 1.0 | March 26, 2024 | Initial release |
 | 1.1 | July 1, 2024 | Create separate JavaScript files for supported clients |
 | 1.2 | September 11, 2024 | Correct the `Office.actions.associate` call and consolidate the JavaScript files |
+| 1.3 | February 28, 2025 | Add support for the unified manifest for Microsoft 365 |
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-spam-reporting" />
