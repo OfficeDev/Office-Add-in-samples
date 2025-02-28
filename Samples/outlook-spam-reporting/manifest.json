@@ -79,7 +79,6 @@
                         {
                             "id": "onSpamReport",
                             "type": "executeFunction",
-                            "displayName": "onSpamReport",
                             "multiselect": false,
                             "supportsNoItemContext": false
                         }

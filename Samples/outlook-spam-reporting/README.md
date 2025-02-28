@@ -80,6 +80,11 @@ The quickest way to run the sample is to use GitHub as the web host. However, yo
 1. Download the **outlook-spam-reporting.zip** file from this sample to a folder on your computer.
 1. Sideload the sample to Outlook by following the instructions in [Sideload with the Teams Toolkit CLI (command-line interface)](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest#sideload-with-the-teams-toolkit-cli-command-line-interface).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+1. To uninstall the add-in from Outlook, run the following command. Replace *{title ID}* with the add-in's title ID that was generated when you sideloaded the add-in.
+
+    ```console
+    teamsapp uninstall --mode title-id --title-id {title ID} --interactive false
+    ```
 
 #### Use localhost
 
@@ -98,7 +103,7 @@ If you prefer to host the web server on localhost, follow these steps.
 
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
-    > **Note**: You can't debug a spam-reporting add-in that uses the unified manifest at this time.
+    > **Tip**: To debug a spam-reporting add-in, see [Debug your event-based or spam-reporting Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch).
 
 1. To stop the web server and uninstall the add-in from Outlook, run the following command.
 
@@ -153,6 +158,7 @@ The quickest way to run the sample is to use GitHub as the web host. However, yo
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 1. Sideload the add-in only manifest in Outlook on the web or on Windows (new or classic) by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#sideload-manually).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+1. To uninstall the add-in from Outlook, follow the instructions in [Remove a sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#remove-a-sideloaded-add-in).
 
 #### Use localhost
 
