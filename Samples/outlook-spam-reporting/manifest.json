@@ -1,0 +1,142 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
+    "manifestVersion": "devPreview",
+    "version": "1.0.0",
+    "id": "6a400915-dad1-4d85-98c0-6b2d204056c6",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us"
+    },
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://www.contoso.com/help",
+        "privacyUrl": "https://www.contoso.com/help",
+        "termsOfUseUrl": "https://www.contoso.com/help"
+    },
+    "name": {
+        "short": "Spam-reporting add-in sample",
+        "full": "Spam-reporting add-in sample"
+    },
+    "description": {
+        "short": "Report spam or phishing emails using a spam-reporting add-in.",
+        "full": "Report spam or phishing emails using a spam-reporting add-in."
+    },
+    "icons": {
+        "outline": "assets/icon-64.png",
+        "color": "assets/icon-128.png"
+    },
+    "accentColor": "#230201",
+    "validDomains": [
+        "https://www.contoso.com",
+        "https://officedev.github.io"
+    ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "defaultBlockUntilAdminAction": false,
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "MailboxItem.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "extensions": [
+        {
+            "requirements": {
+                "capabilities": [
+                    {
+                        "name": "Mailbox",
+                        "minVersion": "1.14"
+                    }
+                ],
+                "scopes": [
+                    "mail"
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.14"
+                            }
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "id": "runtime_1",
+                    "type": "general",
+                    "code": {
+                        "page": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-spam-reporting/src/spamreporting.html",
+                        "script": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-spam-reporting/src/spamreporting.js"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "onSpamReport",
+                            "type": "executeFunction",
+                            "multiselect": false,
+                            "supportsNoItemContext": false
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "contexts": [
+                        "spamReportingOverride"
+                    ],
+                    "tabs": [],
+                    "fixedControls": [
+                        {
+                            "id": "spamReportingButton",
+                            "type": "button",
+                            "label": "Report Spam Message",
+                            "enabled": false,
+                            "icons": [
+                                {
+                                    "size": 16,
+                                    "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-spam-reporting/assets/icon-16.png"
+                                },
+                                {
+                                    "size": 32,
+                                    "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-spam-reporting/assets/icon-32.png"
+                                },
+                                {
+                                    "size": 80,
+                                    "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-spam-reporting/assets/icon-80.png"
+                                }
+                            ],
+                            "supertip": {
+                                "title": "Report Spam Message (GH)",
+                                "description": "Report an unsolicited message."
+                            },
+                            "actionId": "onSpamReport"
+                        }
+                    ],
+                    "spamPreProcessingDialog": {
+                        "title": "Report Spam Message",
+                        "description": "Thank you for reporting this message.",
+                        "spamReportingOptions": {
+                            "title": "Why are you reporting this email?",
+                            "options": [
+                                "Received spam email.",
+                                "Received a phishing email.",
+                                "I'm not sure this is a legitimate email."
+                            ]
+                        },
+                        "spamFreeTextSectionTitle": "Provide additional information, if any:",
+                        "spamMoreInfo": {
+                            "text": "Reporting unsolicited messages",
+                            "url": "https://www.contoso.com/spamreporting"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
