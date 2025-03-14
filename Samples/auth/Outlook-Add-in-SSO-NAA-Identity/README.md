@@ -37,18 +37,19 @@ This sample shows how to implement a todo list for multiple users with an Outloo
 
 ## Register the sample applications with your Microsoft Entra tenant
 
-### Register the web API service
+### Create the app registration
 
-The web API service is a Node.js server that requires an application registration to authorize calls to the todo list database.
+The web API service is a Node.js server that requires an application registration to authorize calls to the todo list database. Also the Outlook add-in will require app registration to request access tokens. Although you can create two app registrations for the API service and the add-in client code, this sample combines both into a single app registration to keep it simple.
 
 1. To register your app, go to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page.
 1. Sign in with the **_admin_** credentials to your Microsoft 365 tenancy. For example, **MyName@contoso.onmicrosoft.com**.
 1. Select **New registration**. On the **Register an application** page, set the values as follows.
 
-   - Set **Name** to `Contoso-Web-API-Server`.
+   - Set **Name** to `Contoso-Outlook-Identity-Sample`.
    - Set **Supported account types** to **Accounts in this organizational directory only**.
    - Select **Register**.
 
+1. In the **Overview** blade, find and note the **Application (client) ID**. You use this value in your app's configuration file(s) later in your code.
 1. In the app's registration screen, select **Manage > Expose an API** to open the page where you can publish the permission as an API for which client applications can obtain access tokens for. The first thing that we need to do is to declare the unique resource URI that the clients will be using to obtain access tokens for this API. To declare a resource URI(Application ID URI), follow the following steps:
 
     - Select **Add** next to the **Application ID URI** to generate a URI that is unique for this app.
@@ -82,6 +83,16 @@ Your scopes should appear as shown in the following screenshot.
 
 ![scopes](./images/scopes-added.png)
 
+### Pre-authorize the app registration
+
+You need to pre-authorize the app registration to allow calls to itself.
+
+1. In the same **Expose an API** pane, select **Add a client application**.
+1. Enter the client ID of this app registration which is found on the **Overview** page
+1. Select both authorized scopes and then select **Add application**.
+
+![client ID added to list of client applications.](./images/pre-authorized-client.png)
+
 ### Publish application permissions
 
 All APIs should publish a minimum of one [App role for applications](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#assign-app-roles-to-applications), also called [Application Permission](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#permission-types), for the client apps to obtain an access token as themselves, i.e. when they are not signing-in a user. Application permissions are the type of permissions that APIs should publish when they want to enable client applications to successfully authenticate as themselves and not need to sign-in users. To publish an application permission, follow these steps:
@@ -97,70 +108,63 @@ All APIs should publish a minimum of one [App role for applications](https://doc
     1. For **Description**, enter `Allows the app to read the signed-in user's files.`
     1. To save your changes, select **Apply**.
 
-Repeat the previous steps to add another app permission named `Todolist.ReadWrite.All`.
+Repeat the previous steps to add another app role named `Todolist.ReadWrite.All`.
 Your app roles should appear as shown in the following screenshot.
 
 ![app roles complete](./images/app-roles-complete.png)
 
-### Configure the service app (Contoso-Web-API-Server) to use your app registration
-
-Open the sample project in Visual Studio Code to configure the code. In the following steps, "ClientID" is the same as "Application ID" or "AppId".
-
-1. Open the `API/server-helpers/authConfig.js` file.
-1. Find the key `Enter_API_Application_Id_Here` and replace the existing value with the application ID (clientId) of Contoso-Web-API-Server app copied from the Microsoft Entra admin center.
-1. Save the file.
-
-### Register the client app (Contoso-Outlook-Add-in)
-
-1. Go to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page to register your app.
-1. Sign in with the **_admin_** credentials to your Microsoft 365 tenancy. For example, **MyName@contoso.onmicrosoft.com**.
-1. Select **New registration**. On the **Register an application** page, set the values as follows.
-
-   - For **Name**, enter `Contoso-Outlook-Add-in`.
-   - For **Supported account types**, select **Accounts in this organizational directory only**.
-   - Select **Register**.
-
-1. In the **Overview** blade, find and note the **Application (client) ID**. You use this value in your app's configuration file(s) later in your code.
-1. In the app's registration screen, select the **Authentication** blade on the left pane.
-1. If you don't have a platform added, select **Add a platform** and choose the **Single-page application** option.
+1. In the app's registration screen, select the **Manage** > **Authentication** blade on the left pane.
+1. Select **Add a platform** and choose the **Single-page application** option.
 
     ![select redirect platform](./images/add-platform.png)
 
-    1. In the **Redirect URI** section, enter the following redirect URIs:
+    1. In the **Redirect URI** section, enter the following redirect URI:
         1. `http://localhost:3000`
+    1. Select **Configure**.
+    1. After the page updates with the new URI, select **Add URI** and add the following redirect URIs:
         1. `http://localhost:3000/redirect`
         1. `brk-multihub://localhost:3000`
     1. To save your changes, select **Save**.
 
     ![redirect uris](./images/redirect-uris-completed.png)
 
-Since this app signs-in users, you'll now proceed to select **delegated permissions**, which is required by apps signing-in users.
+Since this app signs-in users, you'll now proceed to select delegated permissions, which is required by apps signing-in users.
 
 1. In the app's registration screen, select the **API permissions** blade on the left pane. This opens the page where you add access to the APIs that your application needs.
 1. Select the **Add a permission** button, and choose the **APIs my organization uses** tab.
-1. In the list of APIs, choose the API `Contoso-Web-API-Server`.
+1. In the list of APIs, choose the API `Contoso-Outlook-Identity-Sample`.
   
     ![select permissions](./images/select-permissions.png)
 
 1. In the **Delegated permissions** section, select **Todolist.Read**, **Todolist.ReadWrite** in the list. Use the search box if necessary.
 1. Select the **Add permissions** button.
 
-Your scopes should appear as shown in the following screenshot.
+Your permissions should appear as shown in the following screenshot.
 
-![list of scopes](./images/scopes-added-client.png)
+![list of permissions](./images/scopes-added-client.png)
 
-### Configure the client app (Contoso-Outlook-Add-in) to use your app registration
+### Configure the service app (API) to use your app registration
+
+Open the sample project in Visual Studio Code to configure the code. In the following steps, "ClientID" is the same as "Application ID" or "AppId".
+
+1. Open the `API/server-helpers/authConfig.js` file.
+1. Find the key `Enter_API_Application_Id_Here` and replace the existing value with the application ID (clientId) of `Contoso-Outlook-Identity-Sample` app copied from when you created the app registration earlier.
+1. Save the file.
+
+### Configure the client app (SPA) to use your app registration
 
 Open the sample project in Visual Studio Code to configure the code.
 
 1. Open the `SPA/src/taskpane/msalconfig.ts` file.
-1. Find the key `Enter_Application_Client_Id_Here` and replace the existing value with the application ID (clientId) of `Contoso-Outlook-Add-in` app copied from the Microsoft Azure app registration page.
+1. Find the key `Enter_Application_Client_Id_Here` and replace the existing value with the application ID (clientId) of `Contoso-Outlook-Identity-Sample`.
 1. Save the file.
 
-Next you need to add the API web server's application ID. **This is not the same ID as the previous steps**.
+Next you need to add the API web server's application ID.
 
 1. Open the `SPA/src/taskpane/authConfig.ts` file.
-1. Find the key `Enter_API_Application_Id_Here` and replace the existing value with the application ID (clientId) of `Contoso-Web-API-Server` app copied from the Microsoft Azure app registration page.
+1. Find the key `Enter_API_Application_Id_Here` and replace the existing value with the application ID (clientId) of `Contoso-Outlook-Identity-Sample`.
+
+Note: If you chose to create a separate app registration for the API server, you'd use that client ID for `Enter_API_Application_Id_Here` placeholders.
 
 ## Run the sample
 
