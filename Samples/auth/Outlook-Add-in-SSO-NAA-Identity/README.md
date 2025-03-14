@@ -54,7 +54,7 @@ The web API service is a Node.js server that requires an application registratio
 
     - Select **Add** next to the **Application ID URI** to generate a URI that is unique for this app.
 
-        ![Expose an api](./images/expose-an-api.png)
+        ![A screenshot showing to select Expose an API and then the Add link on the Expose an API page.](./images/expose-an-api.png)
 
     - For this sample, accept the proposed **Application ID URI** (`api://{clientId}`) by selecting **Save**.
 
@@ -66,7 +66,7 @@ All APIs must publish a minimum of one scope, also called Delegated Permission, 
 
 1. Select **Add a scope** and enter the values as indicated below.
 
-    ![Add scope](./images/add-a-scope.png)
+    ![A screenshot showing to select the Add a scope item on the Expose an API page.](./images/add-a-scope.png)
 
     - For **Scope name**, select `Todolist.Read`.
     - Select **Admins and users** options for **Who can consent?**.
@@ -81,7 +81,7 @@ Repeat the previous steps to add a second scope named `Todolist.ReadWrite` along
 
 Your scopes should appear as shown in the following screenshot.
 
-![scopes](./images/scopes-added.png)
+![A screenshot showing the two scopes successfully list on the Expose an API page.](./images/scopes-added.png)
 
 ### Pre-authorize the app registration
 
@@ -91,7 +91,7 @@ You need to pre-authorize the app registration to allow calls to itself.
 1. Enter the client ID of this app registration which is found on the **Overview** page
 1. Select both authorized scopes and then select **Add application**.
 
-![client ID added to list of client applications.](./images/pre-authorized-client.png)
+![A screenshot showing the client ID added to list of client applications.](./images/pre-authorized-client.png)
 
 ### Publish application permissions
 
@@ -100,7 +100,7 @@ All APIs should publish a minimum of one [App role for applications](https://doc
 1. Still on the same app registration, select the **App roles** blade to the left.
 1. Select **Create app role**:
 
-    ![app roles](./images/create-app-roles.png)
+    ![A screenshot showing to select App roles, then Create app role, on the App roles page.](./images/create-app-roles.png)
 
     1. For **Display name**, enter a suitable name for your application permission, for example `Todolist.Read.All`.
     1. For **Allowed member types**, choose **Application** to ensure other applications can be granted this permission.
@@ -111,7 +111,7 @@ All APIs should publish a minimum of one [App role for applications](https://doc
 Repeat the previous steps to add another app role named `Todolist.ReadWrite.All`.
 Your app roles should appear as shown in the following screenshot.
 
-![app roles complete](./images/app-roles-complete.png)
+![A screenshot showing the two app roles successfully listed on the App roles page.](./images/app-roles-complete.png)
 
 1. In the app's registration screen, select the **Manage** > **Authentication** blade on the left pane.
 1. Select **Add a platform** and choose the **Single-page application** option.
@@ -126,7 +126,7 @@ Your app roles should appear as shown in the following screenshot.
         1. `brk-multihub://localhost:3000`
     1. To save your changes, select **Save**.
 
-    ![redirect uris](./images/redirect-uris-completed.png)
+    ![A screenshot showing the three redirect uris successfully listed on the Authentication page.](./images/redirect-uris-completed.png)
 
 Since this app signs-in users, you'll now proceed to select delegated permissions, which is required by apps signing-in users.
 
@@ -134,14 +134,14 @@ Since this app signs-in users, you'll now proceed to select delegated permission
 1. Select the **Add a permission** button, and choose the **APIs my organization uses** tab.
 1. In the list of APIs, choose the API `Contoso-Outlook-Identity-Sample`.
   
-    ![select permissions](./images/select-permissions.png)
+    ![A screenshot showing to select API permissions, Add a permission, APIs my organization uses, and then the Contoso-Outlook-Identity-Sample on the API permissions page.](./images/select-permissions.png)
 
 1. In the **Delegated permissions** section, select **Todolist.Read**, **Todolist.ReadWrite** in the list. Use the search box if necessary.
 1. Select the **Add permissions** button.
 
 Your permissions should appear as shown in the following screenshot.
 
-![list of permissions](./images/scopes-added-client.png)
+![A screenshot showing to select Delegated permissions, then select the Todolist.Read and Todolist.ReadWrite permissions.](./images/scopes-added-client.png)
 
 ### Configure the service app (API) to use your app registration
 
@@ -168,7 +168,9 @@ Note: If you chose to create a separate app registration for the API server, you
 
 ## Run the sample
 
-First, start the web API service. In a console window, go to the root project folder of the sample. Run the following commands.
+The following instructions sideload the sample in Outlook for Windows. To sideload on other platforms, see [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing)
+
+Start the web API service. In a console window, go to the root project folder of the sample. Run the following commands.
 
 ```console
     cd API
@@ -183,8 +185,6 @@ Next, start and sideload the Outlook add-in. In a new console window, go to the 
     npm install
     npm start
 ```
-
-The following instructions assume you are sideloading in Outlook for Windows. To sideload on other platforms, see [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing)
 
 1. Open Outlook (if it isn't already opened) and sign in.
 1. Open an existing email item.
@@ -254,7 +254,6 @@ exports.getTodos = (req, res, next) => {
 When granting access to data based on scopes, be sure to follow [the principle of least privilege](https://docs.microsoft.com/azure/active-directory/develop/secure-least-privileged-access).
 
 ## Learn more about the Microsoft identity platform
-
 
 - [Microsoft identity platform (Microsoft Entra ID for developers)](https://docs.microsoft.com/azure/active-directory/develop/)
 - [Overview of Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
