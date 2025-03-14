@@ -24,12 +24,6 @@ module.exports = async (env, options) => {
       },
       resolve: {
         extensions: [".ts", ".html", ".js"],
-        fallback: {
-          buffer: require.resolve("buffer/"),
-          http: require.resolve("stream-http"),
-          https: require.resolve("https-browserify"),
-          url: require.resolve("url/"),
-        },
       },
       module: {
         rules: [
