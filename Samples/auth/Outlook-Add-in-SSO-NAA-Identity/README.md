@@ -23,7 +23,7 @@ This sample shows how to implement a todo list for multiple users with an Outloo
 1. The Outlook add-in (SPA client) uses the MSAL.js library to obtain an access token from Microsoft Entra ID. The MSAL.js library returns an ID token, access token, and refresh token.
 1. The access token is passed in a web request to a protected web API service. The web request validates the access token and confirms the user has permissions to perform the action in the API. The access token contains any identity claims the web API needs.
 
-![A diagram showing the Outlook add-in getting an access token from Microsoft Entra ID and calling the protected web API with the access token.](architecture-diagram.png)
+![A diagram showing the Outlook add-in getting an access token from Microsoft Entra ID and calling the protected web API with the access token.](./images/architecture-diagram.png)
 
 ## Applies to
 
