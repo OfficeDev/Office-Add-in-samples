@@ -19,11 +19,12 @@ exports.validateJwt = async function (req, res, next) {
       // Validate issuer (see https://learn.microsoft.com/entra/identity-platform/access-tokens#multitenant-applications)
       const decodedToken = jwt.decode(token, { complete: true });
       const iss = decodedToken.payload.iss;
+      const tid = decodedToken.payload.tid;
       const response = await fetch('https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration');
       const openidConfiguration = await response.json();
       
       // Replace the placeholder with the actual tenant ID.
-      const expectedIssuer = openidConfiguration.issuer.replace("{tenantid}",authConfig.credentials.tenantID);
+      const expectedIssuer = openidConfiguration.issuer.replace("{tenantid}",tid);
       if (iss !== expectedIssuer) {
         return res.status(401).send({ type: "Unknown", errorDetails: "Invalid issuer." });
       }
