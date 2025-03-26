@@ -15,7 +15,9 @@ exports.getTodos = (req, res, next) => {
     if (hasRequiredDelegatedPermissions(req.authInfo, authConfig.protectedRoutes.todolist.delegatedPermissions.read)) {
 
         try {
-            const owner = req.authInfo['oid'];
+            // For multi-tenant apps, the owner is a combination of oid and tid claims.
+            // For more information, see https://learn.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token-overview#multi-tenant-apps
+            const owner = req.authInfo['oid'] + req.authInfo['tid'];
 
             const todos = db.get('todos')
                 .filter({ owner: owner })
@@ -26,7 +28,7 @@ exports.getTodos = (req, res, next) => {
             next(error);
         }
     } else {
-        next(new Error('User does not have the required permissions.'));
+        res.status(403).send('User does not have the required permissions.');
     }
 }
 
@@ -39,7 +41,9 @@ exports.postTodo = (req, res, next) => {
             const todo = {
                 description: req.body.description,
                 id: uuidv4(),
-                owner: req.authInfo['oid'] // oid is the only claim that should be used to uniquely identify a user in an Entra tenant.
+                // For multi-tenant apps, the owner is a combination of oid and tid claims.
+                // For more information, see https://learn.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token-overview#multi-tenant-apps
+                owner: req.authInfo['oid'] + req.authInfo['tid']
             };
 
             db.get('todos').push(todo).write();
@@ -48,9 +52,9 @@ exports.postTodo = (req, res, next) => {
         } catch (error) {
             next(error);
         }
-    } else (
-        next(new Error('User does not have the required permissions.'))
-    )
+    } else {
+        res.status(403).send('User does not have the required permissions.');
+}
 }
 
 // Delete a todo item by id and user's oid claim.
@@ -59,7 +63,9 @@ exports.deleteTodo = (req, res, next) => {
     if (hasRequiredDelegatedPermissions(req.authInfo, authConfig.protectedRoutes.todolist.delegatedPermissions.readWrite)) {
         try {
             const id = req.params.id;
-            const owner = req.authInfo['oid'];
+            // For multi-tenant apps, the owner is a combination of oid and tid claims.
+            // For more information, see https://learn.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token-overview#multi-tenant-apps
+            const owner = req.authInfo['oid'] + req.authInfo['tid'];
 
             db.get('todos')
                 .remove({ owner: owner, id: id })
@@ -70,7 +76,7 @@ exports.deleteTodo = (req, res, next) => {
             next(error);
         }
     } else {
-        next(new Error('User does not have the required permissions'))
+        res.status(403).send('User does not have the required permissions.');
     }
 }
 

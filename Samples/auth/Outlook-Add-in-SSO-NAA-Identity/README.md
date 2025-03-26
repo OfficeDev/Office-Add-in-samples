@@ -10,7 +10,7 @@ extensions:
   contentType: samples
   technologies:
     - Add-ins
-  createdDate: "01/14/2025 10:00:00 AM"
+  createdDate: "03/24/2025 10:00:00 AM"
 description: "This sample shows how to send identity claims across the network to resources like a web API service."
 ---
 
@@ -20,7 +20,7 @@ The scenario for this sample is that you need to send the signed-in user's ident
 
 This sample shows how to implement a todo list for multiple users with an Outlook add-in.
 
-1. The Outlook add-in (SPA client) uses the MSAL.js library to obtain an access token from Microsoft Entra ID. The MSAL.js library returns an ID token, access token, and refresh token.
+1. The Outlook add-in (SPA client) uses the MSAL.js library to obtain an access token from Microsoft Entra ID. The MSAL.js library returns an ID token and access token.
 1. The access token is passed in a web request to a protected web API service. The web request validates the access token and confirms the user has permissions to perform the action in the API. The access token contains any identity claims the web API needs.
 
 ![A diagram showing the Outlook add-in getting an access token from Microsoft Entra ID and calling the protected web API with the access token.](./images/architecture-diagram.png)
@@ -46,10 +46,10 @@ The web API service is a Node.js server that requires an application registratio
 1. Select **New registration**. On the **Register an application** page, set the values as follows.
 
    - Set **Name** to `Contoso-Outlook-Identity-Sample`.
-   - Set **Supported account types** to **Accounts in this organizational directory only**.
+   - Set **Supported account types** to **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
    - Select **Register**.
 
-1. In the **Overview** blade, find and note the **Application (client) ID**. You use this value in your app's configuration file(s) later in your code.
+1. In the **Overview** blade, find and note the **Application (client) ID** and **Directory (tenant) ID**. Save these values to use in the project files later in these steps.
 1. In the app's registration screen, select **Manage > Expose an API** to open the page where you can publish the permission as an API for which client applications can obtain access tokens for. The first thing that we need to do is to declare the unique resource URI that the clients will be using to obtain access tokens for this API. To declare a resource URI(Application ID URI), follow the following steps:
 
     - Select **Add** next to the **Application ID URI** to generate a URI that is unique for this app.
@@ -64,9 +64,11 @@ The web API service is a Node.js server that requires an application registratio
 
 All APIs must publish a minimum of one scope, also called Delegated Permission, for the client apps to obtain an access token for a user successfully. To publish a scope, follow these steps:
 
-1. Select **Add a scope** and enter the values as indicated below.
+1. Select **Add a scope**.
 
     ![A screenshot showing to select the Add a scope item on the Expose an API page.](./images/add-a-scope.png)
+
+1. Enter the following values.
 
     - For **Scope name**, select `Todolist.Read`.
     - Select **Admins and users** options for **Who can consent?**.
@@ -93,25 +95,7 @@ You need to pre-authorize the app registration to allow calls to itself.
 
 ![A screenshot showing the client ID added to list of client applications.](./images/pre-authorized-client.png)
 
-### Publish application permissions
-
-All APIs should publish a minimum of one [App role for applications](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#assign-app-roles-to-applications), also called [Application Permission](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#permission-types), for the client apps to obtain an access token as themselves, i.e. when they are not signing-in a user. Application permissions are the type of permissions that APIs should publish when they want to enable client applications to successfully authenticate as themselves and not need to sign-in users. To publish an application permission, follow these steps:
-
-1. Still on the same app registration, select the **App roles** blade to the left.
-1. Select **Create app role**:
-
-    ![A screenshot showing to select App roles, then Create app role, on the App roles page.](./images/create-app-roles.png)
-
-    1. For **Display name**, enter a suitable name for your application permission, for example `Todolist.Read.All`.
-    1. For **Allowed member types**, choose **Application** to ensure other applications can be granted this permission.
-    1. For **Value**, enter `Todolist.Read.All`.
-    1. For **Description**, enter `Allows the app to read the signed-in user's files.`
-    1. To save your changes, select **Apply**.
-
-Repeat the previous steps to add another app role named `Todolist.ReadWrite.All`.
-Your app roles should appear as shown in the following screenshot.
-
-![A screenshot showing the two app roles successfully listed on the App roles page.](./images/app-roles-complete.png)
+### Add redirects
 
 1. In the app's registration screen, select the **Manage** > **Authentication** blade on the left pane.
 1. Select **Add a platform** and choose the **Single-page application** option.
@@ -143,12 +127,21 @@ Your permissions should appear as shown in the following screenshot.
 
 ![A screenshot showing to select Delegated permissions, then select the Todolist.Read and Todolist.ReadWrite permissions.](./images/scopes-added-client.png)
 
+### Define the access token version
+
+The access token version can change if you chose an account type other than **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**. Use the following steps to ensure the access token version is correct for Office SSO usage.
+
+1. From the left pane, select **Manifest**.
+1. Enter **2** as the value for the **requestedAccessTokenVersion** property (in the **api** object).
+1. Select **Save**.
+
 ### Configure the service app (API) to use your app registration
 
 Open the sample project in Visual Studio Code to configure the code. In the following steps, "ClientID" is the same as "Application ID" or "AppId".
 
 1. Open the `API/server-helpers/authConfig.js` file.
 1. Find the key `Enter_API_Application_Id_Here` and replace the existing value with the application ID (clientId) of `Contoso-Outlook-Identity-Sample` app copied from when you created the app registration earlier.
+1. Find the key `Enter_API_Application_Id_Here` and replace the existing value with the directory (tenant) ID of `Contoso-Outlook-Identity-Sample` app copied from when you created the app registration earlier.
 1. Save the file.
 
 ### Configure the client app (SPA) to use your app registration
