@@ -5,8 +5,7 @@ const jwt = require("jsonwebtoken");
 const jwksClient = require("jwks-rsa");
 const authConfig = require("./authConfig");
 
-const DISCOVERY_KEYS_ENDPOINT =
-  "https://login.microsoftonline.com/common/discovery/v2.0/keys";
+let DISCOVERY_KEYS_ENDPOINT = ""; // This will be set when the first request is made to the validateJwt function.
 
 // Wrap this with one parameter that returns a new function (req, res, next).
 exports.validateJwt = async function (req, res, next) {
@@ -33,8 +32,9 @@ exports.validateJwt = async function (req, res, next) {
         audience: authConfig.credentials.clientID, // v2.0 token
       };
 
+      DISCOVERY_KEYS_ENDPOINT = openidConfiguration.jwks_uri;
       jwt.verify(token, getSigningKeys, validationOptions, (err, payload) => {
-
+        
         if (err) {
           if (err.name === "TokenExpiredError") {
             return res
