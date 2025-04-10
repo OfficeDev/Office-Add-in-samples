@@ -57,7 +57,12 @@ module.exports = async (env, options) => {
           filename: "auth.html",
           template: "./src/fallback/auth.html",
           chunks: [],
-        }),  
+        }),
+        new HtmlWebpackPlugin({
+          filename: "dialog.html",
+          template: "./src/fallback/dialog.html",
+          chunks: ["dialog"],
+        }), 
         new CopyWebpackPlugin({
           patterns: [
             {

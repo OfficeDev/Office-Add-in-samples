@@ -18,6 +18,7 @@ exports.validateJwt = async function (req, res, next) {
       // Validate issuer (see https://learn.microsoft.com/entra/identity-platform/access-tokens#multitenant-applications)
       const decodedToken = jwt.decode(token, { complete: true });
       const iss = decodedToken.payload.iss;
+      const oid = decodedToken.payload.oid;
       const tid = decodedToken.payload.tid;
       const response = await fetch('https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration');
       const openidConfiguration = await response.json();
@@ -47,6 +48,11 @@ exports.validateJwt = async function (req, res, next) {
 
         // Put claims in the request object for downstream use.
         req.authInfo = payload;
+
+        // Add unique user id to the request object for downstream use.
+        // For multi-tenant apps, the unique user id is a combination of oid and tid claims.
+        // For more information, see https://learn.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token-overview#multi-tenant-apps        
+        req.uniqueUserId = oid + tid;
         next();
       });
 

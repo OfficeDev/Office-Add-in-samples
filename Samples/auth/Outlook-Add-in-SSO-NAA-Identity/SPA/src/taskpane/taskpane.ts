@@ -97,13 +97,13 @@ function showToDoListItems(todoListItems) {
 function AddTaskToToDoList(task) {
   let li = document.createElement('li');
   let button = document.createElement('button');
-  button.innerHTML = 'Delete';
+  button.textContent = 'Delete';
   button.classList.add('btn', 'btn-danger');
   button.addEventListener('click', () => {
     deleteTodo(task.id);
   });
   li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
-  li.innerHTML = task.description;
+  li.textContent = task.description;
   li.appendChild(button);
   todoListUI.appendChild(li);
 }

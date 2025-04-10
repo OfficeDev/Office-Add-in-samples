@@ -15,10 +15,7 @@ exports.getTodos = (req, res, next) => {
     if (hasRequiredDelegatedPermissions(req.authInfo, authConfig.protectedRoutes.todolist.delegatedPermissions.read)) {
 
         try {
-            // For multi-tenant apps, the owner is a combination of oid and tid claims.
-            // For more information, see https://learn.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token-overview#multi-tenant-apps
-            const owner = req.authInfo['oid'] + req.authInfo['tid'];
-
+            const owner = req.uniqueUserId;
             const todos = db.get('todos')
                 .filter({ owner: owner })
                 .value();
@@ -41,9 +38,7 @@ exports.postTodo = (req, res, next) => {
             const todo = {
                 description: req.body.description,
                 id: uuidv4(),
-                // For multi-tenant apps, the owner is a combination of oid and tid claims.
-                // For more information, see https://learn.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token-overview#multi-tenant-apps
-                owner: req.authInfo['oid'] + req.authInfo['tid']
+                owner: req.uniqueUserId
             };
 
             db.get('todos').push(todo).write();
@@ -62,10 +57,8 @@ exports.deleteTodo = (req, res, next) => {
     // Check that caller has the delegated todolist.readwrite permission from the user.
     if (hasRequiredDelegatedPermissions(req.authInfo, authConfig.protectedRoutes.todolist.delegatedPermissions.readWrite)) {
         try {
-            const id = req.params.id;
-            // For multi-tenant apps, the owner is a combination of oid and tid claims.
-            // For more information, see https://learn.microsoft.com/azure/active-directory/develop/scenario-desktop-acquire-token-overview#multi-tenant-apps
-            const owner = req.authInfo['oid'] + req.authInfo['tid'];
+            const id = req.params.id;            
+            const owner = req.uniqueUserId;
 
             db.get('todos')
                 .remove({ owner: owner, id: id })

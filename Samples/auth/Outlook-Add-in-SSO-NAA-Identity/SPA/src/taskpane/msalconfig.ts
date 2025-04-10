@@ -3,13 +3,13 @@
 
 // This file provides the default MSAL configuration for the add-in project.
 
-import { LogLevel } from "@azure/msal-browser";
+import { LogLevel, Configuration } from "@azure/msal-browser";
 import { createLocalUrl } from "./util";
 
 /* global console */
 
 export const clientId = "Enter_Application_Client_Id_Here";
-export const msalConfig = {
+export const msalConfig: Configuration = {
   auth: {
     clientId,
     redirectUri: createLocalUrl("auth.html"),
