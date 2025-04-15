@@ -3,9 +3,6 @@
  * Licensed under the MIT license.
  */
 
-// Ensures the Office.js library is loaded.
-Office.onReady();
-
 // Handles the SpamReporting event to process a reported message.
 function onSpamReport(event) {
   // Get the Base64-encoded EML format of a reported message.

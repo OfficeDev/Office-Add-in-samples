@@ -8,7 +8,7 @@
 
   <Id>942c5096-e075-4dd3-b5c8-dcaeee5c8e6a</Id>
   <!-- IMPORTANT: ID must be unique for your add-in. If you reuse this manifest, ensure that you change this ID to a new GUID. -->
-  <Version>1.0.0.0</Version>
+  <Version>1.0.0</Version>
   <ProviderName>Eric Legault Consulting Inc.</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Office Add-ins Outlook spam-reporting sample"/>
