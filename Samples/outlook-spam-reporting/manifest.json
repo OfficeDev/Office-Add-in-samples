@@ -111,7 +111,7 @@
                                 }
                             ],
                             "supertip": {
-                                "title": "Report Spam Message (GH)",
+                                "title": "Report Spam Message",
                                 "description": "Report an unsolicited message."
                             },
                             "actionId": "onSpamReport"
