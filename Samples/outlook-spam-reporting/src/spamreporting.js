@@ -3,6 +3,12 @@
  * Licensed under the MIT license.
  */
 
+/**
+ * In Outlook on the web and new Outlook on Windows, ensures that the
+ * Office.js library is loaded before running the event handler.
+ */
+Office.onReady();
+
 // Handles the SpamReporting event to process a reported message.
 function onSpamReport(event) {
   // Get the Base64-encoded EML format of a reported message.
