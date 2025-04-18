@@ -3,7 +3,10 @@
  * Licensed under the MIT license.
  */
 
-// Ensures the Office.js library is loaded.
+/**
+ * In Outlook on the web and new Outlook on Windows, ensures that the
+ * Office.js library is loaded before running the event handler.
+ */
 Office.onReady();
 
 // Handles the SpamReporting event to process a reported message.

@@ -26,8 +26,7 @@
     },
     "accentColor": "#230201",
     "validDomains": [
-        "https://www.contoso.com",
-        "https://officedev.github.io"
+        "https://www.contoso.com"
     ],
     "showLoadingIndicator": false,
     "isFullScreen": false,
@@ -71,8 +70,8 @@
                     "id": "runtime_1",
                     "type": "general",
                     "code": {
-                        "page": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-spam-reporting/src/spamreporting.html",
-                        "script": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-spam-reporting/src/spamreporting.js"
+                        "page": "https://localhost:3000/spamreporting.html",
+                        "script": "https://localhost:3000/spamreporting.js"
                     },
                     "lifetime": "short",
                     "actions": [
@@ -100,19 +99,19 @@
                             "icons": [
                                 {
                                     "size": 16,
-                                    "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-spam-reporting/assets/icon-16.png"
+                                    "url": "https://localhost:3000/assets/icon-16.png"
                                 },
                                 {
                                     "size": 32,
-                                    "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-spam-reporting/assets/icon-32.png"
+                                    "url": "https://localhost:3000/assets/icon-32.png"
                                 },
                                 {
                                     "size": 80,
-                                    "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-spam-reporting/assets/icon-80.png"
+                                    "url": "https://localhost:3000/assets/icon-80.png"
                                 }
                             ],
                             "supertip": {
-                                "title": "Report Spam Message (GH)",
+                                "title": "Report Spam Message",
                                 "description": "Report an unsolicited message."
                             },
                             "actionId": "onSpamReport"

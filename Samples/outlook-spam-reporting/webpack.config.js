@@ -18,7 +18,6 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      spamreporting: "./src/spamreporting.js",
     },
     output: {
       clean: true,
@@ -57,7 +56,7 @@ module.exports = async (env, options) => {
             to: "assets/[name][ext][query]",
           },
           {
-            from: "manifest*.json",
+            from: "manifest*.*",
             to: "[name]" + "[ext]",
             transform(content) {
               if (dev) {
@@ -67,12 +66,16 @@ module.exports = async (env, options) => {
               }
             },
           },
+          {
+            from: "./src/spamreporting.js",
+            to: "spamreporting.js",
+          }
         ],
       }),
       new HtmlWebpackPlugin({
         filename: "spamreporting.html",
         template: "./src/spamreporting.html",
-        chunks: ["polyfill", "spamreporting"],
+        chunks: ["polyfill"],
       }),
     ],
     devServer: {

@@ -8,7 +8,7 @@
 
   <Id>942c5096-e075-4dd3-b5c8-dcaeee5c8e6a</Id>
   <!-- IMPORTANT: ID must be unique for your add-in. If you reuse this manifest, ensure that you change this ID to a new GUID. -->
-  <Version>1.0.0.0</Version>
+  <Version>1.0.0</Version>
   <ProviderName>Eric Legault Consulting Inc.</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Office Add-ins Outlook spam-reporting sample"/>
@@ -30,7 +30,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3000/src/spamreporting.html"/>
+        <SourceLocation DefaultValue="https://localhost:3000/spamreporting.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -111,9 +111,9 @@
           <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/src/spamreporting.html"/>
-          <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/spamreporting.js"/>
-          <bt:Url id="MoreInfo.Url" DefaultValue="https://learn.microsoft.com/en-us/office/dev/add-ins/outlook/spam-reporting"/>
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/spamreporting.html"/>
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/spamreporting.js"/>
+          <bt:Url id="MoreInfo.Url" DefaultValue="https://learn.microsoft.com/office/dev/add-ins/outlook/spam-reporting"/>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="spamButton.Label" DefaultValue="Report Spam Message"/>
