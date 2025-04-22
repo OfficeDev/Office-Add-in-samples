@@ -18,9 +18,9 @@
 <script>
     Office.onReady((info) => {
         // Check that we loaded into PowerPoint
-          if (info.host === Office.HostType.PowerPoint) {
+        if (info.host === Office.HostType.PowerPoint) {
             document.getElementById("helloButton").onclick = sayHello;
-       }
+        }
     });
 
     async function sayHello() {
