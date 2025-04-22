@@ -70,11 +70,7 @@
                     "actions": [
                         {
                             "id": "OpenTaskPane",
-                            "type": "openPage",
-                            "pinnable": false,
-                            "view": "ButtonId1",
-                            "multiselect": false,
-                            "supportsNoItemContext": false
+                            "type": "openPage"
                         }
                     ]
                 }
