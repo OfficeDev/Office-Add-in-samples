@@ -5,7 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const urlDev = "https://localhost:3000/";
-const urlProd = "https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/powerpoint-hello-world/"; // CHANGE THIS TO YOUR PRODUCTION DEPLOYMENT LOCATION
+const urlProd = "https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/powerpoint-hello-world/"; 
 
 async function getHttpsOptions() {
   const httpsOptions = await devCerts.getHttpsServerOptions();
