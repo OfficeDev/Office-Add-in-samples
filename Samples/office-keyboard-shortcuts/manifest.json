@@ -1,0 +1,230 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
+    "manifestVersion": "devPreview",
+    "version": "1.0.0",
+    "id": "05c2e1c9-3e1d-406e-9a91-e9ac64854143",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us"
+    },
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts",
+        "privacyUrl": "https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts",
+        "termsOfUseUrl": "https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts"
+    },
+    "name": {
+        "short": "Keyboard shortcuts sample",
+        "full": "Keyboard shortcuts sample"
+    },
+    "description": {
+        "short": "Shows how to add keyboard shortcuts to your Office Add-in.",
+        "full": "Shows how to add keyboard shortcuts to your Office Add-in."
+    },
+    "icons": {
+        "outline": "https://localhost:3000/assets/icon-32.png",
+        "color": "https://localhost:3000/assets/icon-80.png"
+    },
+    "accentColor": "#230201",
+    "validDomains": [
+        "https://www.contoso.com",
+        "https://officedev.github.io"
+    ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "defaultBlockUntilAdminAction": false,
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "Document.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "extensions": [
+        {
+            "requirements": {
+                "scopes": [
+                    "document",
+                    "workbook"
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "AddinCommands",
+                                "minVersion": "1.1"
+                            }
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "id": "runtime_1",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/src/taskpane.html"
+                    },
+                    "lifetime": "long",
+                    "actions": [
+                        {
+                            "id": "ShowTaskpaneButton_1",
+                            "type": "openPage",
+                            "displayName": "ShowTaskpaneButton_1",
+                            "pinnable": false,
+                            "view": "ShowTaskpaneButton",
+                            "multiselect": false,
+                            "supportsNoItemContext": false
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "AddinCommands",
+                                "minVersion": "1.1"
+                            }
+                        ],
+                        "scopes": [
+                            "document",
+                            "workbook"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "contexts": [
+                        "default"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabHome",
+                            "groups": [
+                                {
+                                    "id": "CommandsGroup",
+                                    "label": "Commands Group",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "TaskpaneButton",
+                                            "type": "button",
+                                            "label": "Keyboard shortcuts",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Keyboard shortcuts",
+                                                "description": "Open the add-in task pane."
+                                            },
+                                            "actionId": "ShowTaskpaneButton_1",
+                                            "overriddenByRibbonApi": false,
+                                            "enabled": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "keyboardShortcuts": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "SharedRuntime",
+                                "minVersion": "1.1"
+                            }
+                        ]
+                    },
+                    "shortcuts": [
+                        {
+                            "key": {
+                                "default": "Ctrl+Alt+Up"
+                            },
+                            "actionId": "ShowTaskpane"
+                        },
+                        {
+                            "key": {
+                                "default": "Ctrl+Alt+Down"
+                            },
+                            "actionId": "HideTaskpane"
+                        },
+                        {
+                            "key": {
+                                "default": "Ctrl+Alt+Q"
+                            },
+                            "actionId": "RunAction"
+                        },
+                        {
+                            "key": {
+                                "default": "Ctrl+R"
+                            },
+                            "actionId": "TestConflict"
+                        }
+                    ]
+                }
+            ],
+            "alternates": [
+                {
+                    "alternateIcons": {
+                        "icon": {
+                            "size": 32,
+                            "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        "highResolutionIcon": {
+                            "size": 64,
+                            "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                    }
+                }
+            ],
+            "getStartedMessages": [
+                {
+                    "requirements": {
+                        "scopes": [
+                            "document",
+                            "workbook"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "title": "Get started with your sample add-in!",
+                    "description": "Your sample add-in loaded successfully. Go to the HOME tab and click the 'Keyboard shortcuts' button to get started.",
+                    "learnMoreUrl": "https://go.microsoft.com/fwlink/?LinkId=276812"
+                }
+            ]
+        }
+    ]
+}

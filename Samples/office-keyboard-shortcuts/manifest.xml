@@ -11,7 +11,7 @@
   <Description DefaultValue="Shows how to add keyboard shortcuts to your Office Add-in."/>
   <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts/assets/icon-32.png"/>
   <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts/assets/icon-80.png"/>
-  <SupportUrl DefaultValue="https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/office-keyboard-shortcuts"/>
+  <SupportUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
   </AppDomains>

@@ -76,9 +76,95 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 
 ## Run the sample
 
-### Run the sample from GitHub
+Run this sample with a [unified manifest for Microsoft 365](#run-with-the-unified-manifest-for-microsoft-365) or [add-in only manifest](#run-with-the-add-in-only-manifest). Use one of the following add-in file hosting options.
 
-Run this sample in Excel or Word. The add-in web files are served from this repository on GitHub.
+> [!NOTE]
+>
+> - Implementing keyboard shortcuts with the unified manifest for Microsoft 365 is currently in public developer preview. This shouldn't be used in production add-ins. We invite you to try it out in test or development environments. For more information, see the [Microsoft 365 app manifest schema reference](https://learn.microsoft.com/microsoft-365/extensibility/schema/?view=m365-app-prev&preserve-view=true).
+
+### Run with the unified manifest for Microsoft 365
+
+#### Use GitHub as the web host
+
+The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
+
+1. Download the **office-keyboard-shortcuts.zip** file from this sample to a folder on your computer.
+1. Sideload the sample to Excel or Word by following the instructions in [Sideload with the Teams Toolkit CLI (command-line interface)](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest#sideload-with-the-teams-toolkit-cli-command-line-interface).
+1. Verify that the add-in loaded successfully. You'll see a **Keyboard shortcuts** button on the **Home** tab of the ribbon.
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+1. To uninstall the add-in, run the following command. Replace *{title ID}* with the add-in's title ID that was generated when you sideloaded the add-in.
+
+    ```console
+    teamsapp uninstall --mode title-id --title-id {title ID} --interactive false
+    ```
+
+#### Use localhost
+
+If you prefer to host the web server on localhost, follow these steps.
+
+1. Clone or download this repository.
+1. From a command prompt, go to the root of the project folder **/samples/office-keyboard-shortcuts**.
+1. Run the following commands.
+
+    ```console
+    npm install
+    npm start
+    ```
+
+    This starts the web server on localhost and sideloads the **manifest.json** file.
+
+1. Verify that the add-in loaded successfully. You'll see a **Keyboard shortcuts** button on the **Home** tab of the ribbon.
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+1. To stop the web server and uninstall the add-in, run the following command.
+
+    ```console
+    npm stop
+    ```
+
+#### Use Microsoft Azure
+
+You can deploy this sample with the unified manifest to Microsoft Azure using the Teams Toolkit extension in Visual Studio Code.
+
+1. In Visual Studio Code, go to the activity bar, then open the Teams Toolkit extension.
+1. In the Accounts section of the Teams Toolkit pane, choose **Sign in to Azure**.
+1. After you sign in, select a subscription under your account.
+1. In the Development section of the Teams Toolkit pane, choose **Provision in the cloud**. Alternatively, open the command palette and choose **Teams: Provision in the cloud**.
+1. Choose **Deploy to the cloud**. Alternatively, open the command palette and choose **Teams: Deploy to the cloud**.
+
+Once the sample is successfully deployed, follow these steps.
+
+1. Copy the endpoint of your new Azure deployment. Use one of the following methods.
+    - In Visual Studio Code, select **View** > **Output** to open the Output window. Then, copy the endpoint for your new Azure deployment.
+    - In the Azure portal, go to the new storage account. Then, choose **Data management** > **Static website** and copy the **Primary endpoint** value.
+1. Open the **./webpack.config.js** file.
+1. Change the `urlProd` constant to use the endpoint of your Azure deployment.
+1. Save your change. Then, run the following command.
+
+    ```console
+    npm run build
+    ```
+
+    This generates a new **manifest.json** file in the **dist** folder of your project that will load the add-in resources from your storage account.
+1. Run the following command.
+
+    ```console
+    npm run start:prod
+    ```
+
+    //TODO starts and the **manifest.json** file is sideloaded from the **dist** folder.
+1. Verify that the add-in loaded successfully. You'll see a **Keyboard shortcuts** button on the **Home** tab of the ribbon.
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+1. To stop the web server and uninstall the add-in, run the following command.
+
+    ```console
+    npm run stop:prod
+    ```
+
+### Run with the add-in only manifest
+
+#### Use GitHub as the web host
+
+The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 1. Sideload the manifest file in Excel or Word. The sideloading process varies depending on your platform.
@@ -87,50 +173,33 @@ Run this sample in Excel or Word. The add-in web files are served from this repo
     - **Office on Windows**: [Sideload Office Add-ins for testing from a network share](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
     - **Office on Mac**: [Sideload Office Add-ins on Mac for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac)
 1. Verify that the add-in loaded successfully. You'll see a **Keyboard shortcuts** button on the **Home** tab of the ribbon.
-1. Test the sample by following the steps in [Try it out](#try-it-out).
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+1. To uninstall the add-in, follow the instructions for the applicable platform.
 
-### Run the sample from localhost
+    - [Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing#remove-a-sideloaded-add-in)
+    - [Office on Windows](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins#remove-a-sideloaded-add-in)
+    - [Office on Mac](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac#remove-a-sideloaded-add-in)
 
-If you prefer to host the web server for the sample on your computer, follow these steps.
+#### Use localhost
 
-1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
-1. You need http-server to run the local web server. If you haven't installed this yet, you can do this with the following command.
+If you prefer to host the web server on localhost, follow these steps.
 
-    ```console
-    npm install --global http-server
-    ```
-
-1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet, you can do this with the following command.
-
-    ```console
-    npm install --global office-addin-dev-certs
-    ```
-
-1. Clone or download this sample to a folder on your computer, then go to that folder in a console or terminal window.
-1. Run the following command to generate a self-signed certificate to use for the web server.
-
-   ```console
-    npx office-addin-dev-certs install
-    ```
-
-    This command will display the folder location where it generated the certificate files.
-
-1. Go to the folder location where the certificate files were generated, then copy the **localhost.crt** and **localhost.key** files to the cloned or downloaded sample folder.
-1. Run the following command.
+1. Clone or download this repository.
+1. From a command prompt, run the following commands.
 
     ```console
-    http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
+    npm install
+    npm run start:xml
     ```
 
-    The http-server will run and host the current folder's files on localhost:3000.
-
-1. Sideload the **manifest-localhost.xml** file in Excel or Word. The sideloading process varies depending on your platform.
-
-    - **Office on the web**: [Manually sideload an add-in to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing#manually-sideload-an-add-in-to-office-on-the-web)
-    - **Office on Windows**: [Sideload Office Add-ins for testing from a network share](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
-    - **Office on Mac**: [Sideload Office Add-ins on Mac for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac)
+    This starts the web server on localhost and sideloads the **manifest-localhost.xml** file.
 1. Verify that the add-in loaded successfully. You'll see a **Keyboard shortcuts** button on the **Home** tab of the ribbon.
-1. Test the sample by following the steps in [Try it out](#try-it-out).
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+1. To stop the web server and uninstall the add-in, run the following command.
+
+    ```console
+    npm run stop:xml
+    ```
 
 ## Try it out
 
@@ -149,9 +218,11 @@ Once the add-in is loaded, try out its functionality.
 
 The custom keyboard shortcuts implemented in this sample rely on the following components.
 
-- The add-in manifest (**manifest.xml**) is configured to use a shared runtime. For guidance on how to implement a shared runtime in your add-in, see [Configure your Office Add-in to use a shared runtime](https://learn.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime).
-- A shortcuts JSON file (**shortcuts.json**) is included in the sample to define the add-in's actions and their keyboard shortcuts. For guidance on how to construct the JSON file, see the [JSON file schema](https://developer.microsoft.com/json-schemas/office-js/extended-manifest.schema.json).
-- The custom actions defined in the JSON file are then mapped to their specific JavaScript functions (**taskpane.js**) using the [Office.actions.associate](https://learn.microsoft.com/javascript/api/office/office.actions#office-office-actions-associate-member(1)) method.
+- The add-in manifest is configured to use a shared runtime. For guidance on how to implement a shared runtime in your add-in, see [Configure your Office Add-in to use a shared runtime](https://learn.microsoft.com/office/dev/add-ins/develop/configure-your-add-in-to-use-a-shared-runtime).
+- The method to define an add-in's actions and their keyboard shortcuts differs depending on the type of manifest your add-in uses.
+  - **Unified manifest for Microsoft 365**: The actions and keyboard shortcuts are defined in the ["extensions.keyboardShortcuts.shortcuts"](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-shortcut?view=m365-app-prev&preserve-view=true) array of the **manifest.json** file.
+  - **Add-in only manifest**: The actions and keyboard shortcuts are defined in a shortcuts JSON file (**shortcuts.json**). For guidance on how to construct the JSON file, see the [JSON file schema](https://developer.microsoft.com/json-schemas/office-js/extended-manifest.schema.json).
+- The custom actions defined are then mapped to their specific JavaScript functions (**taskpane.js**) using the [Office.actions.associate](https://learn.microsoft.com/javascript/api/office/office.actions#office-office-actions-associate-member(1)) method.
 
 To learn more about each component, see [Add custom keyboard shortcuts to your Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/design/keyboard-shortcuts).
 
