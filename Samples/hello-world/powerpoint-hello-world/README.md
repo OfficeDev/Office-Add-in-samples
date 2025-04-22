@@ -14,7 +14,7 @@ extensions:
 description: 'Create a simple PowerPoint add-in that displays hello world.'
 ---
 
-# Create an PowerPoint add-in that displays "Hello World"
+# Create a PowerPoint add-in that displays "Hello World"
 
 ## Summary
 
@@ -47,11 +47,11 @@ The Hello World sample implements the **Manifest** and **Web app** components id
 
 ### Manifest
 
-The manifest file describes your add-in to Office. It contains information such as a unique identifier, name, what buttons to show on the ribbon, and more. Importantly, the manifest provides URL locations for where Office can find and download the add-in's resource files. The manifest, and two icon files, are combined into a zip package file that is sideloaded to Office.
+The manifest file describes your add-in to Office. It contains information such as a unique identifier, name, what buttons to show on the ribbon, and more. Importantly, the manifest provides URL locations for where Office can find and download the add-in's resource files. The manifest and two icon files are combined into a zip package file that is sideloaded to Office.
 
 ### Web app
 
-The Hello World sample implements a task pane named **taskpane.html** that contains HTML and JavaScript. The **taskpane.html** file contains all the code necessary to display a task pane, interact with the user, and write "Hello world!" into a text box on a presentation slide.
+The Hello World sample implements a task pane in a file named **taskpane.html** that contains HTML and JavaScript. The **taskpane.html** file contains all the code necessary to display a task pane, interact with the user, and write "Hello world!" into a text box on a presentation slide.
 
 ### Initialize the Office JavaScript API library
 
@@ -95,17 +95,17 @@ An Office Add-in requires you to configure a web server to provide all the resou
 1.  Position your cursor in the slide where you want to insert the text.
 1.  Choose the **Say Hello** button to insert "Hello world!" into the current PowerPoint slide.
 
-When you are finished working with the add-in, close PowerPoint, and then in the window where you ran the three npm commands, run `npm run stop:prod`.
+When you're finished working with the add-in, close PowerPoint, and then in the window where you ran the three npm commands, run `npm run stop:prod`.
 
 ## Configure a localhost web server and run the sample from localhost
 
-If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps:
+If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
 1.  Clone or download this sample to a folder on your computer. Then in a command prompt, bash shell, or **TERMINAL** in Visual Studio Code, navigate to the root of the sample folder.
 1. Run the command `npm install`.
 1. Run the command `npm start`.
 
-   - If you have never developed an Office add-in on this computer before or it has been more than 30 days since you last did, you will be prompted to delete and old security cert and/or install a new one. Agree to both prompts. 
+   - If you've never developed an Office add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security cert and/or install a new one. Agree to both prompts. 
    - After a few seconds a **webpack** dev-server window will open and your files will be hosted there on localhost:3000.
    - When the server is successfully running, desktop PowerPoint opens, and after a few seconds more, a **Hello World** button appears on the right end of the **Home** ribbon. 
 
@@ -113,7 +113,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 1.  Position your cursor in the slide where you want to insert the text.
 1.  Choose the **Say Hello** button to insert "Hello world!" into the current PowerPoint slide.
 
-When you are finished working with the add-in, close PowerPoint, and then in the window where you ran the two npm commands, run `npm stop`.
+When you're finished working with the add-in, close PowerPoint, and then in the window where you ran the two npm commands, run `npm stop`.
 
 ## Questions and feedback
 
