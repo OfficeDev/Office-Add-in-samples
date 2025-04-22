@@ -9,7 +9,7 @@
 
 <body>
     <p>This add-in will insert 'Hello world!' in the current selection of the slide.</p>
-    <button onclick="sayHello()">Say hello</button>
+    <button id="helloButton">Say hello</button>
 
     <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
     <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/powerpoint-add-in-hello-world-run" />
@@ -18,9 +18,9 @@
 <script>
     Office.onReady((info) => {
         // Check that we loaded into PowerPoint
-        if (info.host === Office.HostType.PowerPoint) {
+          if (info.host === Office.HostType.PowerPoint) {
             document.getElementById("helloButton").onclick = sayHello;
-        }
+       }
     });
 
     async function sayHello() {
