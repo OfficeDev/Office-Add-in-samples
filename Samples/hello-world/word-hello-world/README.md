@@ -66,7 +66,7 @@ Office.onReady((info) => {});
 
 When the user chooses the **Say hello** button, the `sayHello()` function is called. This function then calls `Word.run` to run code and call the Office JavaScript APIs. It uses a `context` object provided by the Office JS API library to get the document body and inserts a paragraph with the text "Hello World". Calling `context.sync()` runs the command.
 
-For more information see [Tutorial: Create an Word task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/word-tutorial)
+For more information, see [Tutorial: Create an Word task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/word-tutorial).
 
 ```javascript
 function sayHello() {
