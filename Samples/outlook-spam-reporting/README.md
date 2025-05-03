@@ -17,7 +17,7 @@ description: "Learn how to create an integrated spam-reporting add-in in Outlook
 
 # Report spam or phishing emails in Outlook
 
-**Applies to**: Outlook on the web, Outlook on Windows (new and classic)
+**Applies to**: Outlook on the web, Outlook on Windows (new and classic), Outlook on Mac
 
 ![A sample spam-reporting dialog.](./assets/readme/outlook-spam-processing-dialog.png)
 
@@ -36,6 +36,7 @@ To learn about key components of this sample, see [Implement an integrated spam-
 - Outlook on the web
 - [new Outlook on Windows](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627)
 - classic Outlook on Windows starting in Version 2307 (Build 16626.10000)
+- Outlook on Mac starting in Version //TODO
 
 ## Prerequisites
 
@@ -238,5 +239,6 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 | 1.1 | July 1, 2024 | Create separate JavaScript files for supported clients |
 | 1.2 | September 11, 2024 | Correct the `Office.actions.associate` call and consolidate the JavaScript files |
 | 1.3 | February 28, 2025 | Add support for the unified manifest for Microsoft 365 |
+| 1.4 | May 6, 2025 | Add support in Outlook on Mac |
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-spam-reporting" />
