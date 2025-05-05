@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: office-add-in-auth-graph-react
 products:
+  - m365
   - office
   - office-excel
   - office-powerpoint

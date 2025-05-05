@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: excel-add-in-create-spreadsheet-from-web-page
 products:
+  - m365
   - office
   - office-excel
 languages:

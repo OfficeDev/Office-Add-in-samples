@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: outlook-add-in-sso-naa-ie
 products:
+  - m365
   - office
   - office-outlook
 languages:

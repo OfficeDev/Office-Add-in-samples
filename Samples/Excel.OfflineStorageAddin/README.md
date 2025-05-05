@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: office-add-in-access-data-offline
 products:
+  - m365
   - office
   - office-excel
   - office-powerpoint

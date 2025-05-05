@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: outlook-event-sso-naa
 products:
+  - m365
   - office
   - office-outlook
 languages:

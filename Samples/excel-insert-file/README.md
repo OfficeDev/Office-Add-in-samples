@@ -4,6 +4,7 @@ urlFragment: excel-add-in-insert-external-file
 products:
   - office-excel
   - office
+  - m365
 languages:
   - javascript
 extensions:

@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: office-powerpoint-add-in-tutorial
 products:
+  - m365
   - office
   - office-powerpoint
 languages:

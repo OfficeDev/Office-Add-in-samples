@@ -1,6 +1,8 @@
 ---
 page_type: sample
 products:
+  - m365
+  - office
   - office-excel
 languages:
   - javascript

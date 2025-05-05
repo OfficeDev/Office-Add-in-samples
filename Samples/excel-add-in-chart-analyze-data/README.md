@@ -4,6 +4,7 @@ urlFragment: excel-add-in-chart-analyze-data
 products:
   - office-excel
   - office
+  - m365
 languages:
   - javascript
 extensions:

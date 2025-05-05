@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: office-add-in-sso-aspnet
 products:
+  - m365
   - office
   - office-excel
   - office-powerpoint

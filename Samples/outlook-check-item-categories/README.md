@@ -5,6 +5,7 @@ urlFragment: outlook-add-in-check-item-categories
 products:
   - office-outlook
   - office
+  - m365
 languages:
   - javascript
 extensions:

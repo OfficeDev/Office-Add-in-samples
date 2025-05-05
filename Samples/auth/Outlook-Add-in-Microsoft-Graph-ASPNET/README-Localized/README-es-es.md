@@ -1,6 +1,7 @@
 ---
 page_type: sample
 products:
+  - m365
   - office
   - office-outlook
 languages:

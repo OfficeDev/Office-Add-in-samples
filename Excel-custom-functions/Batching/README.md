@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: excel-custom-function-batching-pattern
 products:
+  - m365
   - office
   - office-excel
 languages:

@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: office-add-in-first-run-experience-tutorial
 products:
+  - m365
   - office
   - office-excel
   - office-onenote

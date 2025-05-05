@@ -5,6 +5,7 @@ products:
   - office-add-ins
   - office-word
   - office
+  - m365
 languages:
   - javascript
 extensions:

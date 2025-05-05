@@ -4,6 +4,7 @@ urlFragment: word-add-in-hello-world
 products:
   - office-word
   - office
+  - m365
 languages:
   - javascript
 extensions:

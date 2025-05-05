@@ -4,6 +4,7 @@ urlFragment: excel-get-started-with-dev-kit
 products:
   - office-excel
   - office
+  - m365
 languages:
   - javascript
 extensions:

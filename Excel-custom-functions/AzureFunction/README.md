@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: azure-function-with-excel-custom-function
 products:
+  - m365
   - office
   - office-excel
   - azure-functions

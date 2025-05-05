@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: office-excel-add-in-open-in-teams
 products:
+  - m365
   - office
   - office-excel
   - office-teams

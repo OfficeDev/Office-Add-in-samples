@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: outlook-add-in-auth-aspnet-graph
 products:
+  - m365
   - office
   - office-outlook
   - ms-graph

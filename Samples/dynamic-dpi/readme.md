@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: dynamic-dpi-code-samples
 products:
+  - m365
   - office
   - office-excel
   - office-outlook

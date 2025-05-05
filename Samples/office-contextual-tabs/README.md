@@ -4,6 +4,7 @@ urlFragment: office-add-in-contextual-tabs
 products:
   - office-excel
   - office
+  - m365
 languages:
 - javascript
 extensions:

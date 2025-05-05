@@ -4,6 +4,7 @@ urlFragment: excel-add-in-shape-dashboard
 products:
   - office-excel
   - office
+  - m365
 languages:
   - javascript
 extensions:
