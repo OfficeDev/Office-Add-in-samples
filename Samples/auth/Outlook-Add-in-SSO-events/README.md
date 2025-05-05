@@ -5,6 +5,7 @@ urlFragment: outlook-add-in-sso-event-based-activation
 products:
   - office-outlook
   - office
+  - m365
 languages:
   - javascript
 extensions:

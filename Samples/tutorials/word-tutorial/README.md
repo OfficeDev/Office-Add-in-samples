@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: office-word-add-in-tutorial
 products:
+  - m365
   - office
   - office-word
 languages:

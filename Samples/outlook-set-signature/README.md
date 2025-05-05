@@ -6,6 +6,7 @@ products:
   - office-outlook
   - office
   - office-teams
+  - m365
 languages:
   - javascript
 extensions:

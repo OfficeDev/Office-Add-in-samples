@@ -4,6 +4,7 @@ urlFragment: word-get-set-edit-ooxml
 products:
   - office-word
   - office
+  - m365
 languages:
   - javascript
 extensions:

@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: outlook-blazor-add-in
 products:
+  - m365
   - office
   - office-outlook
 languages:

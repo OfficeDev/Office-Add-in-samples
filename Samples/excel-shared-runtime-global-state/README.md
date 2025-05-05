@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: office-add-in-shared-runtime-global-data
 products:
+  - m365
   - office
   - office-excel
 languages:

@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: office-add-in-migrate-vsto-to-web
 products:
+  - m365
   - office
   - office-excel
   - office-outlook

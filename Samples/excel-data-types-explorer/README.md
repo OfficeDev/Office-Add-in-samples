@@ -2,6 +2,7 @@
 page_type: sample
 urlFragment: office-excel-add-in-data-types-explorer
 products:
+  - m365
   - office
   - office-excel
 languages:

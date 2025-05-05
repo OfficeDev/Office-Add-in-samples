@@ -4,6 +4,7 @@ urlFragment: excel-blazor-add-in
 products:
   - office-excel
   - office
+  - m365
 languages:
   - javascript
   - C#

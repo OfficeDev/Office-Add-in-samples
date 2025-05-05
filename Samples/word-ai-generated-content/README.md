@@ -4,6 +4,7 @@ urlFragment: word-ai-generated-content
 products:
   - office-word
   - office
+  - m365
 languages:
   - typescript
 extensions:

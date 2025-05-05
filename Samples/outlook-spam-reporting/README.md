@@ -5,6 +5,7 @@ urlFragment: outlook-spam-reporting
 products:
   - office-outlook
   - office
+  - m365
 languages:
   - javascript
 extensions:

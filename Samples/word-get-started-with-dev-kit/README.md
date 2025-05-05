@@ -4,6 +4,7 @@ urlFragment: word-get-started-with-dev-kit
 products:
   - office-word
   - office
+  - m365
 languages:
   - javascript
 extensions:

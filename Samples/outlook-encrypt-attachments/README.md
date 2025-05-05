@@ -5,6 +5,7 @@ urlFragment: outlook-add-in-encrypt-attachments
 products:
   - office-outlook
   - office
+  - m365
 languages:
   - javascript
 extensions:

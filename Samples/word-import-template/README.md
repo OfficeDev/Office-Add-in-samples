@@ -4,6 +4,7 @@ urlFragment: word-import-template
 products:
   - office-word
   - office
+  - m365
 languages:
   - javascript
 extensions:
