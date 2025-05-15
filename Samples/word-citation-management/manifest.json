@@ -26,7 +26,7 @@
     },
     "accentColor": "#230201",
     "validDomains": [
-        "https://www.contoso.com",
+        "https://www.contoso.com"
     ],
     "showLoadingIndicator": false,
     "isFullScreen": false,
@@ -53,58 +53,26 @@
                     "requirements": {
                         "capabilities": [
                             {
-                                "name": "Taskpane",
+                                "name": "AddinCommands",
                                 "minVersion": "1.1"
                             }
-                        ],
-                        "scopes": [
-                            "document"
                         ],
                         "formFactors": [
                             "desktop"
                         ]
                     },
-                    "id": "TaskpaneRuntime",
+                    "id": "TaskPaneRuntime",
                     "type": "general",
                     "code": {
-                        "page": "https://localhost:3000/taskpane.html",
-                        "script": "https://localhost:3000/taskpane.js"
-                    },
-                    "lifetime": "short"
-                },
-                {
-                    "requirements": {
-                        "capabilities": [
-                            {
-                                "name": "AddinCommands",
-                                "minVersion": "1.1"
-                            }
-                        ]
-                    },
-                    "id": "runtime_2",
-                    "type": "general",
-                    "code": {
-                        "page": "https://localhost:3000/taskpane.html",
-                        "script": "https://localhost:3000/taskpane.js"
+                        "page": "https://localhost:3000/taskpane.html"
                     },
                     "lifetime": "short",
                     "actions": [
                         {
-                            "id": "ButtonId1_1",
-                            "type": "openPage",
-                            "pinnable": false,
-                            "view": "ButtonId1",
-                            "multiselect": false,
-                            "supportsNoItemContext": false
+                            "id": "ShowTaskPane",
+                            "type": "openPage"
                         }
                     ]
-                }
-            ],
-            "getStartedMessages": [
-                {
-                    "title": "Get started with your sample add-in!",
-                    "description": "Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Task Pane' button to get started.",
-                    "learnMoreUrl": "https://go.microsoft.com/fwlink/?LinkId=276812"
                 }
             ],
             "ribbons": [
@@ -115,6 +83,9 @@
                                 "name": "AddinCommands",
                                 "minVersion": "1.1"
                             }
+                        ],
+                        "scopes": [
+                            "document"
                         ],
                         "formFactors": [
                             "desktop"
@@ -129,7 +100,7 @@
                             "groups": [
                                 {
                                     "id": "CommandsGroup",
-                                    "label": "Commands Group",
+                                    "label": "Contoso add-in",
                                     "icons": [
                                         {
                                             "size": 16,
@@ -146,7 +117,7 @@
                                     ],
                                     "controls": [
                                         {
-                                            "id": "TaskpaneButton",
+                                            "id": "TaskPaneButton",
                                             "type": "button",
                                             "label": "Show Task Pane",
                                             "icons": [
@@ -167,7 +138,7 @@
                                                 "title": "Show Task Pane",
                                                 "description": "Click to show a task pane."
                                             },
-                                            "actionId": "ButtonId1_1",
+                                            "actionId": "ShowTaskPane",
                                             "overriddenByRibbonApi": false,
                                             "enabled": true
                                         }
@@ -191,7 +162,14 @@
                         }
                     }
                 }
+            ],
+             "getStartedMessages": [
+                {
+                    "title": "Get started with your sample add-in!",
+                    "description": "Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Task Pane' button to get started.",
+                    "learnMoreUrl": "https://go.microsoft.com/fwlink/?LinkId=276812"
+                }
             ]
-        }
+       }
     ]
 }
