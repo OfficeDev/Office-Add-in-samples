@@ -27,7 +27,6 @@
     "accentColor": "#230201",
     "validDomains": [
         "https://www.contoso.com",
-        "https://localhost:3000"
     ],
     "showLoadingIndicator": false,
     "isFullScreen": false,
@@ -65,7 +64,7 @@
                             "desktop"
                         ]
                     },
-                    "id": "runtime_1",
+                    "id": "TaskpaneRuntime",
                     "type": "general",
                     "code": {
                         "page": "https://localhost:3000/taskpane.html",
@@ -103,20 +102,6 @@
             ],
             "getStartedMessages": [
                 {
-                    "requirements": {
-                        "capabilities": [
-                            {
-                                "name": "Taskpane",
-                                "minVersion": "1.1"
-                            }
-                        ],
-                        "scopes": [
-                            "document"
-                        ],
-                        "formFactors": [
-                            "desktop"
-                        ]
-                    },
                     "title": "Get started with your sample add-in!",
                     "description": "Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Task Pane' button to get started.",
                     "learnMoreUrl": "https://go.microsoft.com/fwlink/?LinkId=276812"
@@ -130,9 +115,6 @@
                                 "name": "AddinCommands",
                                 "minVersion": "1.1"
                             }
-                        ],
-                        "scopes": [
-                            "document"
                         ],
                         "formFactors": [
                             "desktop"
