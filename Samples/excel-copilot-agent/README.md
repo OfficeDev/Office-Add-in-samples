@@ -26,7 +26,7 @@ This sample shows how to include a custom Copilot agent in an Excel add-in, and 
 
 ## Description
 
-This add-in lets the user create charts using Copilot's natural language processing. The user begins by opening the task pane and using it to insert sample data. Then, the user opens Copilot and opens the **Chart Analyze Agent**. Using natural language, the user asks Copilot to insert into the open worksheet a chart that plots the data of one column in a table against the data of another column. The user specifies the columns but doesn't have to use the precise column names in the table.
+This add-in lets the user create charts using Copilot's natural language processing. The user begins by opening the task pane and using it to insert sample data. Then, the user opens Copilot and opens the **Chart Analysis Agent**. Using natural language, the user asks Copilot to insert into the open worksheet a chart that plots the data of one column in a table against the data of another column. The user specifies the columns but doesn't have to use the precise column names in the table.
 
 ![Chart Analysis Agent pane with inserted chart](./resources/chart-analysis-agent-and-add-in.png)
 
