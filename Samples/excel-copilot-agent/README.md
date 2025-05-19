@@ -26,9 +26,9 @@ This sample shows how to include a custom Copilot agent in an Excel add-in, and 
 
 ## Description
 
-The user begins my opening the task pane and using it to insert sample data. Then the user opens Copilot, and opens the **Chart Analyze Agent**. Using natural language, the user asks Copilot to insert into the open worksheet a chart that plots the data of one column in a table against the data of another column. The user specifies the columns, but doesn't have to use the precise column names in the table.
+The user begins my opening the task pane and using it to insert sample data. Then the user opens Copilot, and opens the **Chart Analysis Agent**. Using natural language, the user asks Copilot to insert into the open worksheet a chart that plots the data of one column in a table against the data of another column. The user specifies the columns, but doesn't have to use the precise column names in the table.
 
-![Chart Analyze Agent pane with inserted chart](./resources/chart-analyse-agent-and-add-in.png)
+![Chart Analysis Agent pane with inserted chart](./resources/chart-analysis-agent-and-add-in.png)
 
 ## Applies to
 
@@ -42,7 +42,7 @@ The user begins my opening the task pane and using it to insert sample data. The
 - [Node.js](https://nodejs.org/) version 16 or greater.
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 - Visual Studio Code
-= Teams Toolkit extension for Visual Studio Code
+- Microsoft 365 Agents Toolkit extension for Visual Studio Code
 
 ## Solution
 
@@ -60,11 +60,11 @@ The user begins my opening the task pane and using it to insert sample data. The
 
 1. Clone or download this repo.
 
-1. Go to the **Samples\excel-copilot-management** folder and open it in Visual Studio Code.
+1. Go to the **Samples\excel-copilot-agent** folder and open it in Visual Studio Code.
 
-1. In command prompt, bash shell, or **TERMINAL** in Visual Studio Code, navigate to the **Samples\excel-copilot-management** folder and run `npm install`.
+1. In command prompt, bash shell, or **TERMINAL** in Visual Studio Code, navigate to the **Samples\excel-copilot-agent** folder and run `npm install`.
 
-1. Open **Teams Toolkit** from the **Activity Bar** in Visual Studio Code.
+1. Open **Microsoft 365 Agents Toolkit** from the **Activity Bar** in Visual Studio Code.
 
 1. In the **ACCOUNTS** pane, ensure that support is enabled for both Copilot and uploading custom apps.
 
@@ -91,26 +91,26 @@ The user begins my opening the task pane and using it to insert sample data. The
     - To test in Office on Windows, open Excel, and then open (or create) a workbook.
     - To test in Office on the web, in a browser, navigate to `https://excel.cloud.microsoft`, and then open (or create) a workbook.
 
-1. Wait until the add-in has loaded. This may take as much as two minutes. The **Show Task Pane** button should appear on the **Home** ribbon automatically. If it doesn't, you need to manually activate the add-in: Select the **Add-ins** button on the **Home** ribbon, and then in the flyout that opens, select the **Chart Analyze** add-in. 
+1. Wait until the add-in has loaded. This may take as much as two minutes. The **Show Task Pane** button should appear on the **Home** ribbon automatically. If it doesn't, you need to manually activate the add-in: Select the **Add-ins** button on the **Home** ribbon, and then in the flyout that opens, select the **Chart Analysis** add-in. 
 
 1. On the **Home** tab and choose the **Show Task Pane** button in the ribbon to open it.
 
-   ![Task pane of Chart Analyze add-in](./resources/chart-analyze-task-pane.png)
+   ![Task pane of Chart Analysis add-in](./resources/chart-analysis-task-pane.png)
 
 1. Select the **Initialize data** button on the task pane to insert a table of sample data into the workbook. Because this table gets focus, the **Table Design** ribbon opens. 
 
 1. Switch back to the **Home** ribbon.
 
-1. Open **Copilot** from the ribbon and select the hamburger control in the Copilot pane. The **Chart Analyze Agent** agent should be be in the list of agents. You may need to select **See more** to ensure that all agents are listed. If the agent isn't listed, try one or both of the following actions.
+1. Open **Copilot** from the ribbon and select the hamburger control in the Copilot pane. The **Chart Analysis Agent** agent should be be in the list of agents. You may need to select **See more** to ensure that all agents are listed. If the agent isn't listed, try one or both of the following actions.
 
    - Wait a few minutes and reload Copilot.
    - With Copilot open to the list of agents, click the cursor on the Copilot window and press Ctrl+R.
 
-   ![List of agents in Copilot with Chart Analyze Agent circled in red.](./resources/copilot-agent-list.png)
+   ![List of agents in Copilot with Chart Analysis Agent circled in red.](./resources/copilot-agent-list.png)
 
 1. When the agent is listed, select it and the pane for the agent opens.
 
-   ![Chart Analyze Agent pane](./resources/chart-analyze-agent-pane.png)
+   ![Chart Analysis Agent pane](./resources/chart-analysis-agent-pane.png)
 
 1. Select the **Show me a chart that correlates sales and temperature** conversation starter, and then press the arrow head (send) control in the conversation box at the bottom of the pane. After a few moments, you are prompted to confirm. Select **Confirm**. A chart is inserted onto the worksheet. See the screen shot at the top of this readme file.
 
@@ -130,7 +130,7 @@ Live reloading is supported for task pane portion of the app, but not the Copilo
 
 1. Open Teams and select **Apps** from the **Activity Bar**, then select **Manage your apps** at the bottom of the **Apps** pane.
 
-1. Find the **Chart Analyze Agent** agent in the list of apps.
+1. Find the **Chart Analysis Agent** agent in the list of apps.
 
 1. Select the arrow head to the left of the name to expand its row.
 

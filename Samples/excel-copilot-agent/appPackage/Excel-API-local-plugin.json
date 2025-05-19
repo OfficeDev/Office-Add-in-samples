@@ -1,7 +1,7 @@
 {
      "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.3/schema.json",
      "schema_version": "v2.3",
-     "name_for_human": "Chart Analyze Agent",
+     "name_for_human": "Chart Analysis Agent",
      "description_for_human": "Excel actions that show correlations in data",
      "namespace": "addinfunction",
      "functions": [

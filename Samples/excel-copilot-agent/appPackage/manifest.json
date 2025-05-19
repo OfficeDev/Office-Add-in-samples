@@ -13,8 +13,8 @@
         "termsOfUseUrl": "https://www.contoso.com/help"
     },
     "name": {
-        "short": "Chart Analyze",
-        "full": "Chart Analyze"
+        "short": "Chart Analysis",
+        "full": "Chart Analysis"
     },
     "description": {
         "short": "This sample Excel add-in shows how to use charts to help analyze data.",
