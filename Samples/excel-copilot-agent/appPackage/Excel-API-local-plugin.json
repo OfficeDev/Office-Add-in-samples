@@ -1,0 +1,52 @@
+{
+     "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.3/schema.json",
+     "schema_version": "v2.3",
+     "name_for_human": "Chart Analysis Agent",
+     "description_for_human": "Excel actions that show correlations in data",
+     "namespace": "addinfunction",
+     "functions": [
+         {
+             "name": "ShowCorrelationChart",
+             "description": "This function shows a chart of two columns of data.",
+             "parameters": {
+                 "type": "object",
+                 "properties": {
+                     "XAxisColumn": {
+                         "type": "string",
+                         "description": "The name of a column in a table in Excel that will be the X-axis in a chart.",
+                         "default" : "Temperature"
+                     },
+                     "YAxisColumn": {
+                         "type": "string",
+                         "description": "The name of a column in a table in Excel that will be the Y-axis in a chart.",
+                         "default" : "Total Sales"
+                     }
+                 },
+                 "required": ["XAxisColumn", "YAxisColumn"]
+             },
+             "returns": {
+                 "type": "string",
+                 "description": "A string indicating the result of the action."
+             },
+             "states": {
+                 "reasoning": {
+                     "description": "`ShowCorrelationChart` inserts a chart into the Excel spreadsheet that shows the data from two columns in a table as the X and Y axes.",
+                     "instructions": "The user will identify two columns in a table and ask for a chart that correlates them. You must match the user's request with two of the following 'Date', 'Location', 'Temperature', 'Leaflets', 'Price', 'Lemon Drink Sales', 'Orange Drink Sales', or 'Total Sales'. If the user uses a column name that is not on this list, use the name from the list that is the best match."
+                 },
+                 "responding": {
+                     "description": "`ShowCorrelationChart` inserts a chart into the Excel spreadsheet that shows the data from two columns in a table as the X and Y axes.",
+                     "instructions": "If there is no error present, tell the user that the chart was created."
+                 }
+             }
+         }
+     ],
+     "runtimes": [
+         {
+             "type": "LocalPlugin",
+             "spec": {
+                 "local_endpoint": "Microsoft.Office.Addin"
+             },
+             "run_for_functions": ["ShowCorrelationChart"]
+         }
+     ]
+ }
