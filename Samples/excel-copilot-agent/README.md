@@ -26,7 +26,7 @@ This sample shows how to include a custom Copilot agent in an Excel add-in, and 
 
 ## Description
 
-The user begins my opening the task pane and using it to insert sample data. Then the user opens Copilot, and opens the **Chart Analysis Agent**. Using natural language, the user asks Copilot to insert into the open worksheet a chart that plots the data of one column in a table against the data of another column. The user specifies the columns, but doesn't have to use the precise column names in the table.
+This add-in lets the user create charts using Copilot's natural language processing. The user begins by opening the task pane and using it to insert sample data. Then, the user opens Copilot and opens the **Chart Analyze Agent**. Using natural language, the user asks Copilot to insert into the open worksheet a chart that plots the data of one column in a table against the data of another column. The user specifies the columns but doesn't have to use the precise column names in the table.
 
 ![Chart Analysis Agent pane with inserted chart](./resources/chart-analysis-agent-and-add-in.png)
 
@@ -42,7 +42,7 @@ The user begins my opening the task pane and using it to insert sample data. The
 - [Node.js](https://nodejs.org/) version 16 or greater.
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 - Visual Studio Code
-- Microsoft 365 Agents Toolkit extension for Visual Studio Code
+- [Microsoft 365 Agents Toolkit extension for Visual Studio Code](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/agents-toolkit-fundamentals)
 
 ## Solution
 
@@ -76,7 +76,7 @@ The user begins my opening the task pane and using it to insert sample data. The
 
 1. In a command prompt, bash shell, or **TERMINAL** in Visual Studio Code at the root of the project, run `npm run dev-server` to start the server on localhost. 
 
-   **Note**: If you are prompted to delete an old certificate and/or to install a new one, agree to both prompts.
+   **Note**: If you are prompted to delete an old certificate or to install a new one, agree to both prompts.
 
    Wait until a line that is similar to the following appears at the bottom of the server window before continuing.
 
@@ -88,8 +88,8 @@ The user begins my opening the task pane and using it to insert sample data. The
 
 1. The first step in testing depends on the platform.
 
-    - To test in Office on Windows, open Excel, and then open (or create) a workbook.
-    - To test in Office on the web, in a browser, navigate to `https://excel.cloud.microsoft`, and then open (or create) a workbook.
+    - **Office on Windows**: Open Excel, and then open (or create) a workbook.
+    - **Office on the web**: In a browser, navigate to `https://excel.cloud.microsoft`, and then open or create a workbook.
 
 1. Wait until the add-in has loaded. This may take as much as two minutes. The **Show Task Pane** button should appear on the **Home** ribbon automatically. If it doesn't, you need to manually activate the add-in: Select the **Add-ins** button on the **Home** ribbon, and then in the flyout that opens, select the **Chart Analysis** add-in. 
 
@@ -112,13 +112,13 @@ The user begins my opening the task pane and using it to insert sample data. The
 
    ![Chart Analysis Agent pane](./resources/chart-analysis-agent-pane.png)
 
-1. Select the **Show me a chart that correlates sales and temperature** conversation starter, and then press the arrow head (send) control in the conversation box at the bottom of the pane. After a few moments, you are prompted to confirm. Select **Confirm**. A chart is inserted onto the worksheet. See the screen shot at the top of this readme file.
+1. Select the **Show me a chart that correlates sales and temperature** conversation starter, and then press the arrowhead (send) control in the conversation box at the bottom of the pane. After a few moments, you are prompted to confirm. Select **Confirm**. A chart is inserted onto the worksheet. See the screenshot at the top of this readme file.
 
 1. Try entering natural language prompts for other combinations of columns in the table. 
 
 ## Make changes in the app
 
-Live reloading is supported for task pane portion of the app, but not the Copilot agent portion. To make changes, first shut down the server and uninstall the combind agent and add-in with these steps.
+Live reloading is supported for task pane portion of the app, but not the Copilot agent portion. To make changes, first shut down the server and uninstall the combined agent and add-in with these steps.
 
 1. Close the Office application.
 
@@ -126,13 +126,13 @@ Live reloading is supported for task pane portion of the app, but not the Copilo
 
    **Note**: If the web server doesn't shut down, in a command prompt, bash shell, or Visual Studio Code **TERMINAL** in the root of the project, run `npm run stop`.
 
-1. Clear the Office cache following the instructions at [Manually clear the cache](https://learn.microsoft.com/en-us/office/dev/add-ins/testing/clear-cache#manually-clear-the-cache-in-excel-word-and-powerpoint).
+1. Clear the Office cache following the instructions at [Manually clear the cache](https://learn.microsoft.com/office/dev/add-ins/testing/clear-cache#manually-clear-the-cache-in-excel-word-and-powerpoint).
 
 1. Open Teams and select **Apps** from the **Activity Bar**, then select **Manage your apps** at the bottom of the **Apps** pane.
 
 1. Find the **Chart Analysis Agent** agent in the list of apps.
 
-1. Select the arrow head to the left of the name to expand its row.
+1. Select the arrowhead to the left of the name to expand its row.
 
 1. Select the trash can icon near the right end of the row, and then select **Remove** in the prompt.
 
