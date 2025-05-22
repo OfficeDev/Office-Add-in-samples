@@ -26,7 +26,9 @@
     "signout": "office-addin-dev-settings m365-account logout",
     "start": "office-addin-debugging start manifest.json",
     "start:desktop:word": "office-addin-debugging start manifest.json desktop --app word",
+    "start:prod": "office-addin-dev-settings sideload ./dist/manifest.json",
     "stop": "office-addin-debugging stop manifest.json",
+    "stop:prod": "office-addin-dev-settings unregister ./dist/manifest.json",
     "validate": "office-addin-manifest validate manifest.json",
     "watch": "webpack --mode development --watch"
   },
