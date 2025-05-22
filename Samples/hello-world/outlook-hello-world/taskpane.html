@@ -30,10 +30,10 @@
         Office.context.mailbox.item.body.setAsync(
             "Hello world!",
             {
-                coercionType: "html", // Write text as HTML
+                coercionType: "html", // Write text as HTML.
             },
 
-            // Callback method to check that setAsync succeeded
+            // Callback method to check that setAsync succeeded.
             function (asyncResult) {
                 if (asyncResult.status ==
                     Office.AsyncResultStatus.Failed) {

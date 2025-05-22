@@ -1,0 +1,139 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.21/MicrosoftTeams.schema.json",
+    "id": "d1517bbe-5214-44cd-8e91-2446d37d25af",
+    "manifestVersion": "1.21",
+    "version": "1.0.0",
+    "name": {
+        "short": "Hello world",
+        "full": "Hello world"
+    },
+    "description": {
+        "short": "A simple Hello World Office Add-in.",
+        "full": "A simple Hello World Office Add-in."
+    },
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples",
+        "privacyUrl": "https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples",
+        "termsOfUseUrl": "https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"
+    },
+    "icons": {
+        "outline": "assets/icon-32.png",
+        "color": "assets/icon-64.png"
+    },
+    "accentColor": "#230201",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us"
+    },
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "MailboxItem.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "validDomains": [
+        "https://localhost:3000"
+    ],
+    "extensions": [
+        {
+            "requirements": {
+                "scopes": [
+                    "mail"
+                ],
+                "capabilities": [
+                    {
+                        "name": "Mailbox",
+                        "minVersion": "1.15"
+                    }
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.15"
+                            }
+                        ]
+                    },
+                    "id": "TaskPaneRuntime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/taskpane.html"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "TaskPaneRuntimeShow",
+                            "type": "openPage",
+                            "pinnable": true
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "contexts": [
+                        "mailCompose"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabDefault",
+                            "groups": [
+                                {
+                                    "id": "msgComposeGroup",
+                                    "label": "Contoso Add-in",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "msgComposeOpenPaneButton",
+                                            "type": "button",
+                                            "label": "Show Task Pane",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Hello world",
+                                                "description": "Open the Hello world add-in"
+                                            },
+                                            "actionId": "TaskPaneRuntimeShow"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
