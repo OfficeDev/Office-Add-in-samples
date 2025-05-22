@@ -10,7 +10,7 @@
             "This sample shows how to manage citations in Word with an add-in. The add-in uses the insertEndnote API to list inserted citations at the end of the document."
         ],
         "creationDateTime": "2023-11-28",
-        "updateDateTime": "2023-11-28",
+        "updateDateTime": "2025-05-13",
         "products": [
             "Office",
             "Teams",
