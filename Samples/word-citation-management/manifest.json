@@ -2,7 +2,7 @@
     "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
     "manifestVersion": "devPreview",
     "version": "1.0.1.0",
-    "id": "26FEC3DD-D707-4BF5-9AA7-576131C096EC",
+    "id": "96bbbbae-0592-4137-a0c0-33deb1b43b32",
     "localizationInfo": {
         "defaultLanguageTag": "en-us"
     },
@@ -78,15 +78,6 @@
             "ribbons": [
                 {
                     "requirements": {
-                        "capabilities": [
-                            {
-                                "name": "AddinCommands",
-                                "minVersion": "1.1"
-                            }
-                        ],
-                        "scopes": [
-                            "document"
-                        ],
                         "formFactors": [
                             "desktop"
                         ]
