@@ -5,6 +5,7 @@ products:
   - office-word
   - office
   - m365
+  - office-teams
 languages:
   - javascript
 extensions:
@@ -48,6 +49,7 @@ The user updates their Word document with the content from another Word document
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 03-08-2024 | Initial release |
+| 1.1 | 05-22-2025 | Convert to the unified manifest for Microsoft 365 |
 
 ## Run the sample
 
