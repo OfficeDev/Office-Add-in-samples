@@ -15,7 +15,7 @@ extensions:
 description: 'Create a simple Outlook add-in that displays hello world.'
 ---
 
-# Create an Outlook add-in that displays hello world
+# Create an Outlook add-in that displays "Hello World"
 
 ## Summary
 
@@ -64,17 +64,17 @@ Office.onReady((info) => {});
 
 ### Write to the email message
 
-When the user chooses the **Say hello** button, the `sayHello()` function is called as shown in the following code sample. This function then calls `Office.context.mailbox.item.body.setAsync()`, which is an Office JavaScript API. The `setAsync()` method overwrites the body of the message with "Hello world!". Then, it calls the anonymous callback method `function (asyncResult)`. Most Outlook functions in the Office JavaScript API use this callback pattern. In this sample, the callback method checks that the call was successful. If not, it writes an error message to the console.
+When the user chooses the **Say hello** button from the task pane, the `sayHello()` function is called, as shown in the following code sample. This function then calls `Office.context.mailbox.item.body.setAsync()`, which is an Office JavaScript API. The `setAsync()` method overwrites the body of the message with "Hello world!". Then, it calls the anonymous callback method `function (asyncResult)`. Most Outlook functions in the Office JavaScript API use this callback pattern. In this sample, the callback method checks that the call was successful. If not, it writes an error message to the console.
 
 ```javascript
 /**
- * Writes 'Hello world!' to a new message body.
+ * Writes "Hello world!" to a new message body.
  */
 function sayHello() {
   Office.context.mailbox.item.body.setAsync(
-    'Hello world!',
+    "Hello world!",
     {
-      coercionType: 'html', // Write text as HTML.
+      coercionType: Office.CoercionType.Html, // Write text as HTML.
     },
 
     // Callback method to check that setAsync succeeded.

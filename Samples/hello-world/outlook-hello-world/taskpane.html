@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <p>This add-in will insert the text 'Hello world!' in a new message.</p>
+    <p>This add-in will insert the text "Hello world!" in a new message.</p>
     <button id="helloButton">Say hello</button>
 
     <!-- The following image URL tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project. -->
@@ -24,13 +24,13 @@
     });
 
     /**
-     * Writes 'Hello world!' to a new message body.
+     * Writes "Hello world!" to a new message body.
      */
     function sayHello() {
         Office.context.mailbox.item.body.setAsync(
             "Hello world!",
             {
-                coercionType: "html", // Write text as HTML.
+                coercionType: Office.CoercionType.Html, // Write text as HTML.
             },
 
             // Callback method to check that setAsync succeeded.
