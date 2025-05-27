@@ -81,7 +81,7 @@ The quickest way to run the sample is to use GitHub as the web host. However, yo
 
 ### Use localhost
 
-If you prefer to host the web server on localhost, follow these steps.
+If you prefer to host the web server on localhost, follow these steps:
 
 1. Clone or download this repository.
 1. From a command prompt, go to the root of the project folder **/samples/word-import-template**.
@@ -115,7 +115,7 @@ You can deploy this sample with the unified manifest to Microsoft Azure using th
 1. In the Development section of the Teams Toolkit pane, choose **Provision in the cloud**. Alternatively, open the command palette and choose **Teams: Provision in the cloud**.
 1. Choose **Deploy to the cloud**. Alternatively, open the command palette and choose **Teams: Deploy to the cloud**.
 
-Once the sample is successfully deployed, follow these steps.
+Once the sample is successfully deployed, follow these steps:
 
 1. Copy the endpoint of your new Azure deployment. Use one of the following methods.
     - In Visual Studio Code, select **View** > **Output** to open the Output window. Then, copy the endpoint for your new Azure deployment.
