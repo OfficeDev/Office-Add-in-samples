@@ -107,9 +107,9 @@ If you prefer to host the web server on localhost, follow these steps.
 
 ### Use Microsoft Azure
 
-You can deploy this sample with the unified manifest to Microsoft Azure using the Teams Toolkit extension in Visual Studio Code.
+You can deploy this sample with the unified manifest to Microsoft Azure using the Microsoft 365 Agents Toolkit extension in Visual Studio Code.
 
-1. In Visual Studio Code, go to the activity bar, then open the Teams Toolkit extension.
+1. In Visual Studio Code, go to the activity bar, then open the Microsoft 365 Agents Toolkit extension.
 1. In the Accounts section of the Teams Toolkit pane, choose **Sign in to Azure**.
 1. After you sign in, select a subscription under your account.
 1. In the Development section of the Teams Toolkit pane, choose **Provision in the cloud**. Alternatively, open the command palette and choose **Teams: Provision in the cloud**.
