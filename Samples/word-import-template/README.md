@@ -43,16 +43,11 @@ The user updates their Word document with the content from another Word document
     npm -v
     ```
 
-- (Optional) If you want to run the sample with a [unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview) using GitHub as the web host, install the [Microsoft 365 Agents Toolkit command line interface (CLI)](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli). From a command prompt, run the following command.
+- (Optional) If you want to run the sample with the [unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview) using GitHub as the web host, install the [Microsoft 365 Agents Toolkit command line interface (CLI)](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli). From a command prompt, run the following command.
 
     ```console
     npm install -g @microsoft/teamsapp-cli
     ```
-
-- (Optional) If you want to deploy the sample with the unified manifest for Microsoft 365 to Microsoft Azure, you'll need the following:
-  - An Azure subscription.
-  - [Visual Studio Code](https://code.visualstudio.com/).
-- [Microsoft 365 Agents Toolkit extension for Visual Studio Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/install-teams-toolkit).
 
 ## Solution
 
@@ -103,44 +98,6 @@ If you prefer to host the web server on localhost, follow these steps:
 
     ```console
     npm stop
-    ```
-
-### Use Microsoft Azure
-
-You can deploy this sample with the unified manifest to Microsoft Azure using the Microsoft 365 Agents Toolkit extension in Visual Studio Code.
-
-1. In Visual Studio Code, go to the activity bar, then open the Microsoft 365 Agents Toolkit extension.
-1. In the Accounts section of the Teams Toolkit pane, choose **Sign in to Azure**.
-1. After you sign in, select a subscription under your account.
-1. In the Development section of the Teams Toolkit pane, choose **Provision in the cloud**. Alternatively, open the command palette and choose **Teams: Provision in the cloud**.
-1. Choose **Deploy to the cloud**. Alternatively, open the command palette and choose **Teams: Deploy to the cloud**.
-
-Once the sample is successfully deployed, follow these steps:
-
-1. Copy the endpoint of your new Azure deployment. Use one of the following methods.
-    - In Visual Studio Code, select **View** > **Output** to open the Output window. Then, copy the endpoint for your new Azure deployment.
-    - In the Azure portal, go to the new storage account. Then, choose **Data management** > **Static website** and copy the **Primary endpoint** value.
-1. Open the **./webpack.config.js** file.
-1. Change the `urlProd` constant to use the endpoint of your Azure deployment.
-1. Save your change. Then, run the following command.
-
-    ```console
-    npm run build
-    ```
-
-    This generates a new **manifest.json** file in the **dist** folder of your project that will load the add-in resources from your storage account.
-1. Run the following command.
-
-    ```console
-    npm run start:prod
-    ```
-
-    Word on Windows starts and the **manifest.json** file is sideloaded from the **dist** folder.
-1. Follow the steps in [Try it out](#try-it-out) to test the sample.
-1. To stop the web server and uninstall the add-in from Word, run the following command.
-
-    ```console
-    npm run stop:prod
     ```
 
 ## Try it out
