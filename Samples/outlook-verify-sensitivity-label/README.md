@@ -302,6 +302,7 @@ Office.context.mailbox.item.sensitivityLabel.setAsync(highlyConfidentialLabel, {
 |1.1|May 19, 2023|Update for General Availability (GA) of the sensitivity label API|
 |1.2|October 12, 2023|Update supported version of Outlook on Mac|
 |1.3|January 11, 2024|Remove Microsoft 365 Insider Program requirement|
+|1.4|March 29, 2025|Add support for the unified manifest for Microsoft 365|
 
 ## Copyright
 
