@@ -106,7 +106,7 @@
                                         {
                                             "id": "msgComposeOpenPaneButton",
                                             "type": "button",
-                                            "label": "Show Task Pane",
+                                            "label": "Hello world",
                                             "icons": [
                                                 {
                                                     "size": 16,

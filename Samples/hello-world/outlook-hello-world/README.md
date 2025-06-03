@@ -12,7 +12,7 @@ extensions:
   technologies:
     - Add-ins
   createdDate: '10/11/2021 10:00:00 AM'
-description: 'Create a simple Outlook add-in that displays hello world.'
+description: 'Create a simple Outlook add-in that displays Hello World.'
 ---
 
 # Create an Outlook add-in that displays "Hello World"
@@ -30,7 +30,9 @@ Learn how to build the simplest Office Add-in with only a manifest, HTML web pag
 
 ## Applies to
 
-- Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic), Mac, and in a browser.
+- Outlook on the web
+- Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic)
+- Outlook on Mac
 
 ## Prerequisites
 
@@ -48,7 +50,7 @@ The Hello World sample implements the **Manifest** and **Web app** components id
 
 ### Manifest
 
-The manifest file describes your add-in to Office. It contains information such as a unique identifier, name, what buttons to show on the ribbon, and more. Importantly, the manifest provides URL locations for where Office can find and download the add-in's resource files. The manifest and two icon files are combined into a zip package file that is sideloaded to Office.
+The manifest file describes your add-in to Office. It contains information such as a unique identifier, name, what buttons to show on the ribbon, and more. Importantly, the manifest provides URL locations for where Office can find and download the add-in's resource files.
 
 ### Web app
 
@@ -91,9 +93,17 @@ For more information see [Build your first Outlook add-in](https://learn.microso
 
 ## Run the sample
 
-An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. Select one of the following options to run the Hello World sample.
+An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. To run the Hello World sample, use any of the add-in file hosting options applicable to your Outlook client.
 
-### Run the sample using GitHub as a web host
+- [Run in Outlook on the web or on Windows (new or classic)](#run-in-outlook-on-the-web-or-on-windows-new-or-classic)
+- [Run in Outlook on Mac](#run-in-outlook-on-mac)
+
+> [!NOTE]
+> The unified manifest for Microsoft 365 is directly supported in Outlook on the web and on Windows (new and classic). For more information on manifests and their supported platforms, see [Office Add-in manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests).
+
+### Run in Outlook on the web or on Windows (new or classic)
+
+#### Use GitHub as the web host
 
 The Hello World sample is configured so that the add-in files are hosted directly from this GitHub repository.
 
@@ -108,7 +118,7 @@ The Hello World sample is configured so that the add-in files are hosted directl
 
 When you're finished working with the add-in, close Outlook. Then, in the window where you ran the npm commands, run `npm run stop:prod`.
 
-### Configure a localhost web server and run the sample from localhost
+#### Use localhost
 
 If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
@@ -124,13 +134,51 @@ If you prefer to configure a web server and host the add-in's web files from you
 
 When you're finished working with the add-in, close Outlook. Then, in the window where you ran the npm commands, run `npm stop`.
 
+### Run in Outlook on Mac
+
+#### Use GitHub as the web host
+
+The Hello World sample is configured so that the add-in files are hosted directly from this GitHub repository.
+
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Sideload the manifest by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#sideload-manually).
+
+    The **Hello World** button appears on the Message tab of the ribbon in Message Compose mode. The add-in is also sideloaded to other supported Outlook clients, such as Outlook on the web and new Outlook on Windows.
+
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+
+When you're finished working with the add-in, [remove the sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#remove-a-sideloaded-add-in).
+
+#### Use localhost
+
+If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
+
+1. Clone or download this repository.
+1. From a command prompt, run the following commands.
+
+    ```console
+    npm install
+    npm run start:xml
+    ```
+
+    - If you've never developed an Office add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security certificate and/or install a new one. Agree to both prompts.
+    - After a few seconds, a webpack dev-server window will open and your files will be hosted there on localhost:3000.
+
+1. After starting the server, sideload the manifest by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#sideload-manually).
+
+    The **Hello World** button appears on the Message tab of the ribbon in Message Compose mode. The add-in is also sideloaded to other supported Outlook clients, such as Outlook on the web.
+
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+
+When you're finished working with the add-in, close Outlook. Then, in the window where you ran the npm commands, run `npm run stop:xml`. Then, [remove the sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#remove-a-sideloaded-add-in).
+
 ## Test the sample on Outlook
 
 1. Create a new message.
-1. Choose the **Hello World** button on the ribbon to see the add-in task pane with the text, "This add-in will insert the text 'Hello world!' in a new message."
+1. Choose the **Hello world** button on the ribbon to see the add-in task pane with the text, "This add-in will insert the text 'Hello world!' in a new message."
 1. Choose the **Say hello** button to insert "Hello world!" in the message body.
 
-![A new email message in Outlook showing the hello world button and task pane.](../images/outlook-for-windows-new-message.png)
+![A new email message in Outlook showing the Hello world button and task pane.](../images/outlook-for-windows-new-message.png)
 
 ## Questions and feedback
 
