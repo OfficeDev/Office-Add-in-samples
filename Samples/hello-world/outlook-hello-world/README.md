@@ -164,13 +164,16 @@ If you prefer to configure a web server and host the add-in's web files from you
     - If you've never developed an Office add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security certificate and/or install a new one. Agree to both prompts.
     - After a few seconds, a webpack dev-server window will open and your files will be hosted there on localhost:3000.
 
+    > [!TIP]
+    > Disregard any errors about the add-in not being sideloaded. You'll manually sideload the add-in in the next step.
+
 1. After starting the server, sideload the manifest by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#sideload-manually).
 
     The **Hello World** button appears on the Message tab of the ribbon in Message Compose mode. The add-in is also sideloaded to other supported Outlook clients, such as Outlook on the web.
 
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
-When you're finished working with the add-in, close Outlook. Then, in the window where you ran the npm commands, run `npm run stop:xml`. Then, [remove the sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#remove-a-sideloaded-add-in).
+When you're finished working with the add-in, in the window where you ran the npm commands, run `npm run stop:xml`. Then, [remove the sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#remove-a-sideloaded-add-in).
 
 ## Test the sample on Outlook
 
