@@ -146,8 +146,15 @@ function ensureHighlyConfidentialLabelSet(event) {
         return;
       }
 
-      const highlyConfidentialLabel = getLabelId("Highly Confidential", result.value);
-      Office.context.mailbox.item.sensitivityLabel.getAsync({ asyncContext: { event: event, highlyConfidentialLabel: highlyConfidentialLabel } }, (result) => {
+      const highlyConfidentialLabel = getLabel("Highly Confidential", result.value);
+      let labelId = highlyConfidentialLabel.id;
+
+      // Check if the Highly Confidential label has children labels. If so, apply the first child label.
+      if (highlyConfidentialLabel.children.length > 0) {
+        labelId = highlyConfidentialLabel.children[0].id;
+      }
+
+      Office.context.mailbox.item.sensitivityLabel.getAsync({ asyncContext: { event: event, highlyConfidentialLabel: labelId } }, (result) => {
         const event = result.asyncContext.event;
         if (result.status === Office.AsyncResultStatus.Failed) {
           console.log("Unable to get the sensitivity label of the message.");
@@ -202,8 +209,15 @@ function checkForLegalHoldAccount(event) {
         return;
       }
 
-      const highlyConfidentialLabel = getLabelId("Highly Confidential", result.value);
-      Office.context.mailbox.item.sensitivityLabel.getAsync({ asyncContext: { event: event, highlyConfidentialLabel: highlyConfidentialLabel, } }, (result) => {
+      const highlyConfidentialLabel = getLabel("Highly Confidential", result.value);
+      let labelId = highlyConfidentialLabel.id;
+
+      // Check if the Highly Confidential label has children labels. If so, get the first child label.
+      if (highlyConfidentialLabel.children.length > 0) {
+        labelId = highlyConfidentialLabel.children[0].id;
+      }
+
+      Office.context.mailbox.item.sensitivityLabel.getAsync({ asyncContext: { event: event, highlyConfidentialLabel: labelId, } }, (result) => {
         const event = result.asyncContext.event;
         if (result.status === Office.AsyncResultStatus.Failed) {
           console.log("Unable to get the sensitivity label of the message.");
@@ -301,13 +315,13 @@ function addLegalHoldAccount(event, recipientField) {
 }
 
 /**
- * Get the unique identifier (GUID) of a sensitivity label.
+ * Get a sensitivity label from the catalog.
  * @param {string} sensitivityLabel The name of a sensitivity label.
  * @param {Office.SensitivityLabelDetails[]} sensitivityLabelCatalog The catalog of sensitivity labels.
- * @returns {number} The GUID of a sensitivity label. 
+ * @returns {number} The sensitivity label requested. 
  */
-function getLabelId(sensitivityLabel, sensitivityLabelCatalog) {
-  return (sensitivityLabelCatalog.find((label) => label.name === sensitivityLabel)).id;
+function getLabel(sensitivityLabel, sensitivityLabelCatalog) {
+  return (sensitivityLabelCatalog.find((label) => label.name === sensitivityLabel));
 }
 
 /**

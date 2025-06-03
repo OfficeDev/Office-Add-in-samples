@@ -21,12 +21,11 @@
     "full": "Verify the sensitivity label of a message in an event-based add-in."
   },
   "icons": {
-    "outline": "assets/outline.png",
-    "color": "assets/color.png"
+    "outline": "https://localhost:3000/assets/outline.png",
+    "color": "https://localhost:3000/assets/color.png"
   },
   "accentColor": "#230201",
   "validDomains": [
-    "https://www.fabrikam.com",
     "https://officedev.github.io"
   ],
   "showLoadingIndicator": false,
@@ -71,8 +70,8 @@
           "id": "event_runtime",
           "type": "general",
           "code": {
-            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/commands/commands.html",
-            "script": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/commands/commands.js"
+            "page": "https://localhost:3000/src/commands/commands.html",
+            "script": "https://localhost:3000/src/commands/commands.js"
           },
           "lifetime": "short",
           "actions": [
@@ -114,7 +113,7 @@
           "id": "takpane_runtime",
           "type": "general",
           "code": {
-            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/taskpane/taskpane.html"
+            "page": "https://localhost:3000/src/taskpane/taskpane.html"
           },
           "lifetime": "short",
           "actions": [
@@ -163,15 +162,15 @@
                       "icons": [
                         {
                           "size": 16,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/assets/icon-16.png"
+                          "url": "https://localhost:3000/assets/icon-16.png"
                         },
                         {
                           "size": 32,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/assets/icon-32.png"
+                          "url": "https://localhost:3000/assets/icon-32.png"
                         },
                         {
                           "size": 80,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/assets/icon-80.png"
+                          "url": "https://localhost:3000/assets/icon-80.png"
                         }
                       ],
                       "supertip": {
@@ -227,11 +226,11 @@
           "alternateIcons": {
             "icon": {
               "size": 64,
-              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/assets/icon-64.png"
+              "url": "https://localhost:3000/assets/icon-64.png"
             },
             "highResolutionIcon": {
               "size": 64,
-              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/assets/icon-128.png"
+              "url": "https://localhost:3000/assets/icon-128.png"
             }
           }
         }
