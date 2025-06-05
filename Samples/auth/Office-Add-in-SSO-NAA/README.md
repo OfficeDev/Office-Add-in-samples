@@ -56,6 +56,11 @@ For a list of supported hosts, see [NAA supported accounts and hosts](https://le
     - Select **Register**.
 
 1. On the **Office-Add-in-SSO-NAA** page, copy and save the value for the **Application (client) ID**. You'll use it in the next section.
+1. Under **Manage** select **Authentication**.
+1. In the **Single-page application** pane, select **Add URI**.
+1. Enter the value `https://localhost:3000/auth.html` and select **Save**. This redirect handles the fallback scenario when browser auth is used from add-in.
+1. In the **Single-page application** pane, select **Add URI**.
+1. Enter the value `https://localhost:3000/dialog.html` and select **Save**. This redirect handles the fallback scenario when the Office dialog API is used.
 
 For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://learn.microsoft.com/graph/auth-register-app-v2).
 
@@ -105,8 +110,7 @@ For more information on debugging with VS Code, see [Debugging](https://code.vis
 The `src/taskpane/authConfig.ts` file contains the MSAL code for configuring and using NAA. It contains a class named AccountManager which manages getting user account and token information.
 
 - The `initialize` function is called from Office.onReady to configure and initialize MSAL to use NAA.
-- The `ssoGetToken` function gets an access token for the signed in user to call Microsoft Graph APIs.
-- The `ssoGetUserIdentity` function gets the account information of the signed in user. This can be used to get user details such as name and email.
+- The `ssoGetAccessToken` function gets an access token for the signed in user to call Microsoft Graph APIs.
 
 The `src/taskpane/document.ts` file contains code to write a list of file names, retrieved from Microsoft Graph, into the document. This works for Word, Excel, and PowerPoint documents.
 

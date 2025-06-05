@@ -8,7 +8,7 @@ import { createLocalUrl } from "./util";
 
 /* global console */
 
-export const clientId = "Enter your Application ID here"; // Replace with your actual Application ID
+export const clientId = "Enter_the_Application_Id_Here"; // Replace with your actual Application ID
 export const msalConfig = {
   auth: {
     clientId,

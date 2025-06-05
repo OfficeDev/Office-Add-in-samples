@@ -109,6 +109,7 @@ export class AccountManager {
       // Optional fallback if about:blank popup should not be shown
       if (popupError instanceof BrowserAuthError && popupError.errorCode === "popup_window_error") {
         const accessToken = await this.getTokenWithDialogApi();
+        this.setSignOutButtonVisibility(true);
         return accessToken;
       } else {
         // Acquire token interactive failure.
