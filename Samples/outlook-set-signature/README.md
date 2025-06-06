@@ -140,8 +140,8 @@ This sample supports deployment to Azure with the unified manifest.
 
 1. Open Microsoft 365 Agents Toolkit, and sign into Azure by choosing `Sign in to Azure` under the **ACCOUNTS** section from sidebar.
 1. After you sign in, select a subscription under your account.
-1. Choose `Provision in the cloud` from the **DEVELOPMENT** section or open the command palette and select: `Microsoft 365 Agents: Provision in the cloud`.
-1. Choose `Deploy to the cloud` or open the command palette and select: `Microsoft 365 Agents: Deploy to the cloud`.
+1. Choose `Provision` from the **LIFECYCLE** section or open the command palette and select: `Microsoft 365 Agents: Provision`.
+1. Choose `Deploy` or open the command palette and select: `Microsoft 365 Agents: Deploy`.
 
 Once the sample is successfully deployed follow these steps:
 
