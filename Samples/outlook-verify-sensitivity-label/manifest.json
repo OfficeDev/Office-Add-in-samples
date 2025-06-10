@@ -62,39 +62,30 @@
                 "name": "Mailbox",
                 "minVersion": "1.13"
               }
-            ],
-            "formFactors": [
-              "desktop"
             ]
           },
           "id": "event_runtime",
           "type": "general",
           "code": {
-            "page": "https://localhost:3000/src/commands/commands.html",
-            "script": "https://localhost:3000/src/commands/commands.js"
+            "page": "https://localhost:3000/taskpane.html",
+            "script": "https://localhost:3000/launchevent.js"
           },
           "lifetime": "short",
           "actions": [
             {
               "id": "onMessageRecipientsChangedHandler",
               "type": "executeFunction",
-              "displayName": "onMessageRecipientsChangedHandler",
-              "multiselect": false,
-              "supportsNoItemContext": false
+              "displayName": "onMessageRecipientsChangedHandler"
             },
             {
               "id": "onMessageSendHandler",
               "type": "executeFunction",
-              "displayName": "onMessageSendHandler",
-              "multiselect": false,
-              "supportsNoItemContext": false
+              "displayName": "onMessageSendHandler"
             },
             {
               "id": "onSensitivityLabelChangedHandler",
               "type": "executeFunction",
-              "displayName": "onSensitivityLabelChangedHandler",
-              "multiselect": false,
-              "supportsNoItemContext": false
+              "displayName": "onSensitivityLabelChangedHandler"
             }
           ]
         },
@@ -113,17 +104,14 @@
           "id": "takpane_runtime",
           "type": "general",
           "code": {
-            "page": "https://localhost:3000/src/taskpane/taskpane.html"
+            "page": "https://localhost:3000/taskpane.html"
           },
           "lifetime": "short",
           "actions": [
             {
               "id": "action_1",
               "type": "openPage",
-              "displayName": "open_taskpane",
-              "pinnable": false,
-              "multiselect": false,
-              "supportsNoItemContext": false
+              "pinnable": false
             }
           ]
         }
@@ -197,9 +185,6 @@
             ],
             "scopes": [
               "mail"
-            ],
-            "formFactors": [
-              "desktop"
             ]
           },
           "events": [

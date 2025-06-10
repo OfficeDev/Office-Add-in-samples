@@ -18,8 +18,7 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
-      commands: "./src/commands/commands.js",
+      taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"]
     },
     output: {
       clean: true,
@@ -33,7 +32,7 @@ module.exports = async (env, options) => {
           test: /\.js$/,
           exclude: /node_modules/,
           use: {
-            loader: "babel-loader"
+            loader: "babel-loader",
           },
         },
         {
@@ -72,13 +71,12 @@ module.exports = async (env, options) => {
                 return content.toString().replace(new RegExp(urlDev, "g"), urlProd);
               }
             },
-        },
+          },
+          {
+            from: "./src/launchevents.js",
+            to: "launchevents.js",
+          },
         ],
-      }),
-      new HtmlWebpackPlugin({
-        filename: "commands.html",
-        template: "./src/commands/commands.html",
-        chunks: ["polyfill", "commands"],
       }),
     ],
     devServer: {

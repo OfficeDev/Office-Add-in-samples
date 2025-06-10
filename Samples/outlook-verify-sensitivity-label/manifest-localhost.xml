@@ -94,9 +94,9 @@
           <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.js"/>
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/launchevent.js"/>
           <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/src/taskpane/taskpane.html"/>
-          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.html"/>
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/src/taskpane/taskpane.html"/>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GroupLabel" DefaultValue="Verify sensitivity label"/>
