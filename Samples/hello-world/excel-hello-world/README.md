@@ -34,13 +34,13 @@ Learn how to build the simplest Office Add-in with only a manifest, HTML web pag
 
 ## Prerequisites
 
-- Microsoft 365 - You can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
+- Microsoft 365 - You can get a free developer sandbox by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program#Subscription).
 
 ## Understand an Office Add-in
 
 An Office Add-in is a web application that can extend Office with additional functionality for the user. For example, an add-in can add ribbon buttons, a task pane, or a content pane with the functionality you want. Because an Office Add-in is a web application you must provide a web server to host the files.
 
-The sample contained in this folder is a sample that is designed to run in Excel.
+The sample contained in this folder is designed to run in Excel.
 
 ## Key components
 
@@ -48,12 +48,7 @@ The hello world sample implements the **Manifest** and **Web app** components id
 
 ### Manifest
 
-The manifest file is an XML file that describes your add-in to Office. It contains information such as a unique identifier, name, what buttons to show on the ribbon, and more. Importantly the manifest provides URL locations for where Office can find and download the add-in's resource files.
-
-The hello world sample contains two manifest files to support two different web hosting scenarios.
-
-- **manifest.xml**: This manifest file gets the add-in's HTML page from the original GitHub repo location. This is the quickest way to try out the sample. To get started running the add-in with this manifest, see [Run the sample on Excel on Windows or Mac](#run-the-sample-on-excel-on-windows-or-mac).
-- **manifest.localhost.xml**: This manifest file gets the add-in's HTML page from a local web server that you configure. Use this manifest if you want to change the code and experiment. For more information, see [Configure a localhost web server](#configure-a-localhost-web-server).
+The manifest file describes your add-in to Office. It contains information such as a unique identifier, name, what buttons to show on the ribbon, and more. Importantly, the manifest provides URL locations for where Office can find and download the add-in's resource files. The manifest and two icon files are combined into a zip package file that is sideloaded to Office.
 
 ### Web app
 
@@ -84,25 +79,21 @@ function sayHello() {
 }
 ```
 
-## Run the sample on Excel on web
+## Run the sample with GitHub as host
 
-An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The hello world sample is configured so that the files are hosted directly from this GitHub repo. Use the following steps to sideload the manifest.xml file to see the sample run.
+An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The Hello World sample is configured so that the files are hosted directly from this GitHub repo, so all you need to do is build the manifest and package, and then sideload the package. 
 
-1.  Download the **manifest.xml** file from the sample folder for Excel.
-1.  Open [Office on the web](https://office.live.com/).
-1.  Choose **Excel**, and then open a new document.
-1.  On the **Insert** tab on the ribbon in the **Add-ins** section, choose **Office Add-ins**.
-1.  On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+1. Clone or download this sample to a folder on your computer. Then in a command prompt, bash shell, or **TERMINAL** in Visual Studio Code, navigate to the root of the sample folder.
+1. Run the command `npm install`.
+1. Run the command `npm run build`.
+1. Run the command `npm run start:prod`.
 
-    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../images/office-add-ins-excel-web.png)
+After a few seconds, desktop Word opens, and after a few seconds more, a **Hello World** button appears on the right end of the **Home** ribbon. 
 
-1.  Browse to the add-in manifest file, and then select **Upload**.
+1. Choose the **Hello world** button to display the task pane of the add-in.
+1. Choose the **Say hello** button to insert "Hello world!" in cell A1.
 
-    ![The upload add-in dialog with buttons for browse, upload, and cancel.](../images/office-upload-add-ins-excel-web.png)
-
-1.  Verify that the add-in loaded successfully. You will see a **Hello world** button on the **Home** tab on the ribbon.
-
-Choose the **Hello world** button on the **Home** tab to display the task pane of the add-in. Choose the **Say hello** button to insert "Hello world!" in cell A1.
+When you're finished working with the add-in, close Excel, and then in the window where you ran the three npm commands, run `npm run stop:prod`.
 
 ## Run the sample on Excel on Windows or Mac
 
@@ -114,42 +105,20 @@ Office Add-ins are cross-platform so you can also run them on Windows, Mac, and 
 
 ## Configure a localhost web server and run the sample from localhost
 
-If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps:
+If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
-1.  Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+1. Clone or download this sample to a folder on your computer. Then in a command prompt, bash shell, or **TERMINAL** in Visual Studio Code, navigate to the root of the sample folder.
+1. Run the command `npm install`.
+1. Run the command `npm start`.
 
-2.  You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command:
+- If you've never developed an Office add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security cert and/or install a new one. Agree to both prompts. 
+- After a few seconds a **webpack** dev-server window will open and your files will be hosted there on localhost:3000.
+- When the server is successfully running, desktop Excel opens, and after a few seconds more, a **Hello World** button appears on the right end of the **Home** ribbon.
 
-    ```console
-    npm install --global http-server
-    ```
+1.  Choose the **Hello world** button to display the task pane of the add-in.
+1.  Choose the **Say Hello** button to insert "Hello World" into the document.
 
-3.  You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command:
-
-    ```console
-    npm install --global office-addin-dev-certs
-    ```
-
-4.  Clone or download this sample to a folder on your computer. Then go to that folder in a console or terminal window.
-5.  Run the following command to generate a self-signed certificate that you can use for the web server.
-
-    ```console
-    npx office-addin-dev-certs install
-    ```
-
-    The previous command will display the folder location where it generated the certificate files.
-
-6.  Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the hello world sample folder.
-
-7.  Run the following command:
-
-    ```console
-    http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
-    ```
-
-    The http-server will run and host the current folder's files on localhost:3000.
-
-Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the excel-hello-world folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Excel on web](#run-the-sample-on-excel-on-web) to sideload and run the add-in.
+When you're finished working with the add-in, close Excel, and then in the window where you ran the two npm commands, run `npm stop`.
 
 ## Questions and feedback
 
