@@ -88,7 +88,7 @@ An Office Add-in requires you to configure a web server to provide all the resou
 1. Run the command `npm run build`.
 1. Run the command `npm run start:prod`.
 
-After a few seconds, desktop Word opens, and after a few seconds more, a **Hello World** button appears on the right end of the **Home** ribbon. 
+After a few seconds, desktop Excel opens, and after a few seconds more, a **Hello World** button appears on the right end of the **Home** ribbon. 
 
 1. Choose the **Hello world** button to display the task pane of the add-in.
 1. Choose the **Say hello** button to insert "Hello world!" in cell A1.
