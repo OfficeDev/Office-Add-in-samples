@@ -76,7 +76,7 @@ module.exports = async (env, options) => {
             to: "assets/[name][ext][query]",
           },
           {
-            from: "manifest*.xml",
+            from: "manifest*.json",
             to: "[name]" + "[ext]",
             transform(content) {
               if (dev) {
