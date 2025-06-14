@@ -1,6 +1,6 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
-    "id": "df410791-1dd8-466e-8b9c-ad98b92423b2",
+    "id": "df423391-1dd8-466e-8b9c-ad98b92423b2",
     "manifestVersion": "devPreview",
     "version": "1.0.1",
     "name": {
@@ -13,13 +13,13 @@
     },
     "developer": {
         "name": "Contoso",
-        "websiteUrl": "https://www.contoso.com",
-        "privacyUrl": "https://www.contoso.com/privacy",
-        "termsOfUseUrl": "https://www.contoso.com/servicesagreement"
+        "websiteUrl": "https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples",
+        "privacyUrl": "https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples",
+        "termsOfUseUrl": "https://learn.microsoft.com/office/dev/add-ins/overview/office-add-in-code-samples"
     },
     "icons": {
-        "outline": "assets/outline.png",
-        "color": "assets/color.png"
+        "outline": "assets/icon-32.png",
+        "color": "assets/icon-64.png"
     },
     "accentColor": "#230201",
     "localizationInfo": {
@@ -39,17 +39,14 @@
     "validDomains": [
         "https://localhost:3000"
     ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "defaultBlockUntilAdminAction": false,
     "extensions": [
         {
             "requirements": {
                 "scopes": [
                     "workbook"
-                ],
-                "capabilities": [
-                    {
-                        "name": "AddinCommands",
-                        "minVersion": "1.1"
-                    }
                 ]
             },
             "runtimes": [
@@ -60,29 +57,15 @@
                                 "name": "AddinCommands",
                                 "minVersion": "1.1"
                             }
+                        ],
+                        "formFactors": [
+                            "desktop"
                         ]
                     },
                     "id": "TaskPaneRuntime",
                     "type": "general",
                     "code": {
                         "page": "https://localhost:3000/taskpane.html"
-                    },
-                    "lifetime": "short",
-                    "actions": [
-                        {
-                            "id": "TaskPaneRuntimeShow",
-                            "type": "openPage",
-                            "pinnable": false,
-                            "view": "dashboard"
-                        }
-                    ]
-                },
-                {
-                    "id": "CommandsRuntime",
-                    "type": "general",
-                    "code": {
-                        "page": "https://localhost:3000/commands.html",
-                        "script": "https://localhost:3000/commands.js"
                     },
                     "lifetime": "short",
                     "actions": [
@@ -95,6 +78,20 @@
             ],
             "ribbons": [
                 {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "AddinCommands",
+                                "minVersion": "1.1"
+                            }
+                        ],
+                        "scopes": [
+                            "workbook"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
                     "contexts": [
                         "default"
                     ],
@@ -103,7 +100,7 @@
                             "builtInTabId": "TabHome",
                             "groups": [
                                 {
-                                    "id": "msgReadGroup",
+                                    "id": "CommandsGroup",
                                     "label": "Contoso Add-in",
                                     "icons": [
                                         {
@@ -142,13 +139,44 @@
                                                 "title": "Hello world",
                                                 "description": "Open the Hello world add-in"
                                             },
-                                            "actionId": "OpenTaskPane"
+                                            "actionId": "OpenTaskPane",
+                                            "overriddenByRibbonApi": false,
+                                            "enabled": true
                                         }
                                     ]
                                 }
                             ]
                         }
                     ]
+                }
+            ],
+            "alternates": [
+                {
+                    "alternateIcons": {
+                        "icon": {
+                            "size": 32,
+                            "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        "highResolutionIcon": {
+                            "size": 64,
+                            "url": "https://localhost:3000/assets/icon-64.png"
+                        }
+                    }
+                }
+            ],
+            "getStartedMessages": [
+                {
+                    "requirements": {
+                        "scopes": [
+                            "workbook"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "title": "Get started with the Hello world add-in!",
+                    "description": "Your sample add-in loaded successfully. Go to the HOME tab and click the 'Hello world' button to get started.",
+                    "learnMoreUrl": "http://go.microsoft.com/fwlink/?LinkId=276812"
                 }
             ]
         }
