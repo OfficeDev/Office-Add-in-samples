@@ -55,6 +55,7 @@ Version  | Date | Comments
 ---------| -----| --------
 1.0 | 9-7-2022 | Initial release
 1.1 | 10-12-2022 | Promote from Preview to GA
+1.2 | 06-11-2025 | Convert to unified manifest
 
 ----------
 
