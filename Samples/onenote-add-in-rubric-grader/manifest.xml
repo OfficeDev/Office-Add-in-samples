@@ -10,7 +10,7 @@
     <Host Name="Notebook"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://alexjerabek.github.io/Office-Add-in-samples/app/home/grader.html"/>
+    <SourceLocation DefaultValue="https://alexjerabek.github.io/Office-Add-in-samples/Samples/onenote-add-in-rubric-grader/app/home/grader.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
 </OfficeApp>
