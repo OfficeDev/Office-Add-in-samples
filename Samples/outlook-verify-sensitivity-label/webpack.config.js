@@ -18,7 +18,7 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"]
+      taskpane: ["./src/taskpane/taskpane.js", "./src/taskpane/taskpane.html"],
     },
     output: {
       clean: true,
@@ -55,6 +55,19 @@ module.exports = async (env, options) => {
         template: "./src/taskpane/taskpane.html",
         chunks: ["polyfill", "taskpane"],
       }),
+      new HtmlWebpackPlugin({
+        filename: "launchevent.html",
+        template: "./src/launchevent/launchevent.html",
+        chunks: ["polyfill"],
+      }),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: "./src/launchevent/launchevent.js",
+            to: "launchevent.js",
+          },
+        ],
+      }),
       new CopyWebpackPlugin({
         patterns: [
           {
@@ -71,10 +84,6 @@ module.exports = async (env, options) => {
                 return content.toString().replace(new RegExp(urlDev, "g"), urlProd);
               }
             },
-          },
-          {
-            from: "./src/launchevents.js",
-            to: "launchevents.js",
           },
         ],
       }),

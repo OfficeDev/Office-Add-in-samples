@@ -4,7 +4,8 @@
  */
 
 /**
- * Ensures the Office.js library is loaded.
+ * In classic Outlook on Windows, when the event handler runs, code in Office.onReady() or Office.initialize isn't run.
+ * Add any startup logic needed by handlers to the event handler itself.
  */
 Office.onReady();
 

@@ -21,8 +21,8 @@
     "full": "Verify the sensitivity label of a message in an event-based add-in."
   },
   "icons": {
-    "outline": "https://localhost:3000/assets/outline.png",
-    "color": "https://localhost:3000/assets/color.png"
+    "outline": "assets/outline.png",
+    "color": "assets/color.png"
   },
   "accentColor": "#230201",
   "validDomains": [
@@ -67,7 +67,7 @@
           "id": "event_runtime",
           "type": "general",
           "code": {
-            "page": "https://localhost:3000/taskpane.html",
+            "page": "https://localhost:3000/launchevent.html",
             "script": "https://localhost:3000/launchevent.js"
           },
           "lifetime": "short",
@@ -96,12 +96,9 @@
                 "name": "Mailbox",
                 "minVersion": "1.13"
               }
-            ],
-            "formFactors": [
-              "desktop"
             ]
           },
-          "id": "takpane_runtime",
+          "id": "taskpane_runtime",
           "type": "general",
           "code": {
             "page": "https://localhost:3000/taskpane.html"
@@ -109,7 +106,7 @@
           "lifetime": "short",
           "actions": [
             {
-              "id": "action_1",
+              "id": "open_taskpane",
               "type": "openPage",
               "pinnable": false
             }
@@ -127,9 +124,6 @@
             ],
             "scopes": [
               "mail"
-            ],
-            "formFactors": [
-              "desktop"
             ]
           },
           "contexts": [
