@@ -103,6 +103,7 @@ Check out these samples if you want to take advantage of the [shared runtime](ht
 | [Use a shared library to migrate your Visual Studio Tools for Office add-in to an Office web add-in](Samples/VSTO-shared-code-migration) | Provides a strategy for code reuse when migrating from VSTO Add-ins to Office Add-ins. |
 | [Integrate an Azure function with your Excel custom function](Excel-custom-functions/AzureFunction) | Learn how to integrate Azure functions with custom functions to move to the cloud or integrate additional services. |
 | [Dynamic DPI code samples](Samples/dynamic-dpi) | A collection of samples for handling DPI changes in COM, VSTO, and Office Add-ins. |
+| [Rubric grader task pane add-in for OneNote on the web](Samples/onenote-add-in-rubric-grader/) | Explore the basics of OneNote add-ins with a sample tool for teachers. |
 
 ## Learn more
 
