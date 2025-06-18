@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license.
+ See LICENSE in the project root for license information -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Rubric Grader</title>
+  <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.js"></script>
+  <script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/jquery-ui.min.js"></script>
+  <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.15.1/jquery.validate.min.js"></script>
+  <link href="//appsforoffice.microsoft.com/fabric/2.0/fabric.min.css" rel="stylesheet">
+  <link href="//appsforoffice.microsoft.com/fabric/2.0/fabric.components.min.css" rel="stylesheet">
+  <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+
+  <link href="../App.css" rel="stylesheet" type="text/css" />
+  <script src="../App.js"></script>
+
+  <script src="Grader.js"></script>
+  <script src="Grader.FabricDropdownHelper.js"></script>
+</head>
+<body class="ms-font-m">
+    <div class="home flex-container">
+        <div class="ms-Grid" id="header">
+            <div class="ms-Grid-row ms-bgColor-themeDarker">
+                <div class="ms-Grid-col padding-header">
+                    <span class="ms-font-xl ms-fontColor-themeLighter ms-fontWeight-semibold">Rubric Grader</span>
+                </div>
+            </div>
+        </div>
+        <div class="ms-Grid padding-body">
+            <div class="ms-Grid-row padding-top">
+                <div class="ms-Grid-col">
+                    <button class="ms-Button ms-Button" id="getStats">
+                        <span class="ms-Button-icon"><i class="ms-Icon"></i></span>
+                        <span class="ms-Button-label">Get count</span>
+                        <span class="ms-Button-description">Gets the sentence and word count.</span>
+                    </button>
+                </div>
+                <div class="ms-Grid-col ms-font-s">
+                    <textbox id="wordCount" cols="25">Words:</textbox>
+                    <br />
+                    <textbox id="sentenceCount" cols="25">Sentences:</textbox>
+                </div>
+            </div>
+            <div class="ms-Grid-row padding-top">
+                <div class="ms-Grid-col">
+                    <div class="ms-Dropdown" id="content-wrapper">
+                        <label class="ms-Label score-width">Content</label>
+                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
+                        <select class="ms-Dropdown-select" id="content"></select>
+                    </div>
+                </div>
+                <div class="ms-Grid-col">
+                    <div class="ms-Dropdown" id="organization-wrapper">
+                        <label class="ms-Label score-width">Organization</label>
+                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
+                        <select class="ms-Dropdown-select" id="organization"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="ms-Grid-row">
+                <div class="ms-Grid-col">
+                    <div class="ms-Dropdown" id="style-wrapper">
+                        <label class="ms-Label score-width">Style</label>
+                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
+                        <select class="ms-Dropdown-select" id="style"></select>
+                    </div>
+                </div>
+                <div class="ms-Grid-col">
+                    <div class="ms-Dropdown" id="grammar-wrapper">
+                        <label class="ms-Label score-width">Grammar</label>
+                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
+                        <select class="ms-Dropdown-select" id="grammar"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="ms-Grid-row padding-top">
+                <div class="ms-Grid-col">
+                    <label class="ms-Label">Comments</label>
+                    <div class="ms-TextField">
+                        <textarea id="commentBox" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="ms-Grid-row">
+                <div class="ms-Grid-col">
+                    <button class="ms-Button ms-Button--primary" id="addGrade">
+                        <span class="ms-Button-icon"><i class="ms-Icon"></i></span>
+                        <span class="ms-Button-label">Grade it</span>
+                        <span class="ms-Button-description">Calculates the grade and adds it to the target page.</span>
+                    </button>
+                </div>
+                <div class="ms-Grid-col">
+                    <button class="ms-Button ms-Button" id="clear">
+                        <span class="ms-Button-icon"><i class="ms-Icon"></i></span>
+                        <span class="ms-Button-label">Clear</span>
+                        <span class="ms-Button-description">Resets the scores and clears any comments.</span>
+                    </button>
+                </div>
+            </div>
+            <div class="ms-Grid-row padding-top">
+                <div class="ms-Grid-col">
+                    <div class="ms-Dropdown" id="page-picker-wrapper">
+                        <label class="ms-Label ms-font-m">Choose a page to open</label>
+                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
+                        <select class="ms-Dropdown-select" id="page-picker"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="ms-Grid-row">                    
+                <div class="ms-Grid-col">
+                    <button class="ms-Button ms-Button" id="openPage">
+                        <span class="ms-Button-icon "><i class="ms-Icon"></i></span>
+                        <span class="ms-Button-label">Open page</span>
+                        <span class="ms-Button-description">Opens the selected page.</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
