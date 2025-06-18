@@ -2,3 +2,5 @@ bower_components/
 node_modules/
 .vscode/
 npm-debug.log
+localhost.crt
+localhost.key
