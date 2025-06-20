@@ -79,9 +79,9 @@ For more information on how to register your application, see [Register an appli
 `npm install`
 `npm run start`
 
-This will start the web server and sideload the add-in to Excel.
+This will start the web server and sideload the add-in to Word.
 
-1. In Excel, look for the **Show task pane** button and select it.
+1. In Word, look for the **Show task pane** button and select it.
 1. When the task pane opens, there are two buttons: **Get user data** and **Get user files**.
 1. To see the signed in user's name and email, select **Get user data**.
 1. To insert the first 10 filenames from the signed in user's Microsoft OneDrive, select **Get user files**.
@@ -90,9 +90,9 @@ You'll be prompted to consent to the scopes the sample needs when you select the
 
 ## Selecting hosts and debugging steps
 
-If you want to choose Word or PowerPoint, modify the `start` command in the `package.json` file to match one of the following entries.
+If you want to choose Excel or PowerPoint, modify the `start` command in the `package.json` file to match one of the following entries.
 
-- For Word: `"start": "office-addin-debugging start manifest.xml desktop --app word",`
+- For Word: `"start": "office-addin-debugging start manifest.xml desktop --app excel",`
 - For PowerPoint: `"start": "office-addin-debugging start manifest.xml desktop --app powerpoint",`
 
 You can also debug the sample by opening the project in VS Code.
