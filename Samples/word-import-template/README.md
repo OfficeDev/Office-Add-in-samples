@@ -34,7 +34,30 @@ The user updates their Word document with the content from another Word document
 - Word on Mac
 - Word on the web
 
-## Prerequisites
+## Solution
+
+| Solution | Authors |
+|----------|-----------|
+| How to import a template in a Word document | Microsoft |
+
+## Version history
+
+| Version  | Date | Comments |
+|----------|------|----------|
+| 1.0 | 03-08-2024 | Initial release |
+| 1.1 | 06-27-2025 | Add support for the unified manifest for Microsoft 365 |
+
+## Decide on a version of the manifest
+
+- Unified manifest for Microsoft 365
+  - By default, the sample supports the unified manifest for Microsoft 365, which is the **manifest.json** file in the sample's root directory **Samples/word-import-template**.
+  - To run this version, go to the [Unified manifest](#unified-manifest) section.
+- Add-in only manifest
+  - To run the add-in only manifest, which is the **manifest-xml** file in the sample's root directory **Samples/word-import-template**, go to the [Add-in only manifest](#add-in-only-manifest) section.
+
+## Unified manifest
+
+### Prerequisites
 
 - (Optional) If you want to run the web server on localhost, install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org) on your computer. To check if you've already installed these tools, from a command prompt, run the following commands.
 
@@ -49,24 +72,11 @@ The user updates their Word document with the content from another Word document
     npm install -g @microsoft/teamsapp-cli
     ```
 
-## Solution
-
-| Solution | Authors |
-|----------|-----------|
-| How to import a template in a Word document | Microsoft |
-
-## Version history
-
-| Version  | Date | Comments |
-|----------|------|----------|
-| 1.0 | 03-08-2024 | Initial release |
-| 1.1 | 05-22-2025 | Convert to the unified manifest for Microsoft 365 |
-
-## Run the sample
+### Run the sample
 
 You can run this sample in Word on Windows, on Mac, or in a browser. Use one of the following add-in file hosting options.
 
-### Use GitHub as the web host
+#### Use GitHub as the web host
 
 The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
 
@@ -74,7 +84,7 @@ The quickest way to run the sample is to use GitHub as the web host. However, yo
 1. Sideload the add-in manifest in Word by following the appropriate instructions in the article [Sideload Office Add-ins that use the unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
-### Use localhost
+#### Use localhost
 
 If you prefer to host the web server on localhost, follow these steps:
 
@@ -99,6 +109,56 @@ If you prefer to host the web server on localhost, follow these steps:
     ```console
     npm stop
     ```
+
+## Add-in only manifest
+
+### Run the sample
+
+Use one of the following add-in file hosting options to run the sample.
+
+#### Use GitHub as the web host
+
+You can run this sample in Word on Windows, on Mac, or in a browser. The add-in web files are served from this repo on GitHub.
+
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Sideload the add-in manifest in Word by following the appropriate instructions in the article [Sideload an Office Add-in for testing](https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing).
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+
+#### Use localhost
+
+If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
+
+1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+
+1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
+
+    ```console
+    npm install --global http-server
+    ```
+
+1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
+
+1. From a command prompt, go to the root folder and run the following command.
+
+    ```console
+    http-server -S --cors . -p 3000
+    ```
+
+1. To reroute to localhost, run office-addin-https-reverse-proxy. If you haven't installed this, run the following command.
+
+    ```console
+    npm install --global office-addin-https-reverse-proxy
+    ```
+
+    To reroute, run the following in another command prompt.
+
+    ```console
+    office-addin-https-reverse-proxy --url http://localhost:3000
+    ```
+
+1. Sideload `manifest-localhost.xml` in Word by following the appropriate instructions in the article [Sideload an Office Add-in for testing](https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing).
+
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
 ## Try it out
 
