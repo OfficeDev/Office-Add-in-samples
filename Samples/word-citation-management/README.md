@@ -56,13 +56,21 @@ The sample uses the [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJ
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 11-28-2023 | Initial release |
-| 1.1 | 5-13-2025 | Convert to the unified manifest for Microsoft 365 |
+| 1.1 | 6-27-2025 | Add support for the unified manifest for Microsoft 365 |
+
+## Decide on a version of the manifest
+
+- Unified manifest for Microsoft 365
+  - By default, the sample supports the unified manifest for Microsoft 365, which is the **manifest.json** file in the sample's root directory **Samples/word-citation-management**. For convenience, a copy of the config files specific to that version can be found in the **configs-json** subfolder.
+  - To run this version, you can skip to the [Run the sample](#run-the-sample) section.
+- Add-in only manifest
+  - To use the add-in only manifest, which is the **manifest.xml** file in the sample's root directory **Samples/word-citation-management**, you need to copy the files from the **configs-xml** subfolder to the sample's root directory, replacing the existing config files.
 
 ## Run the sample
 
 1. Clone or download this repo.
 
-1. Go to the **Samples\word-citation-management** folder via the command line.
+1. Go to the **Samples/word-citation-management** folder via the command line.
 
 1. Run `npm install`.
 
