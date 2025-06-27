@@ -86,6 +86,11 @@
               "id": "onSensitivityLabelChangedHandler",
               "type": "executeFunction",
               "displayName": "onSensitivityLabelChangedHandler"
+            },
+            {
+              "id": "onMessageAttachmentsChangedHandler",
+              "type": "executeFunction",
+              "displayName": "onMessageAttachmentsChangedHandler"
             }
           ]
         },
@@ -196,6 +201,10 @@
             {
               "type": "sensitivityLabelChanged",
               "actionId": "onSensitivityLabelChangedHandler"
+            },
+            {
+              "type": "messageAttachmentsChanged",
+              "actionId": "onMessageAttachmentsChangedHandler"
             }
           ]
         }
