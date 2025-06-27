@@ -32,10 +32,14 @@ This sample uses the sensitivity label API in an event-based add-in to verify an
   - Verify that the catalog of sensitivity labels is enabled on the mailbox where the add-in is installed.
   - Get the available sensitivity labels from the catalog.
   - Get the sensitivity label of a message.
+  - Set the sensitivity label of a message.
 - Event-based activation is used to handle the following events.
-  - When the `OnMessageRecipientsChanged` event occurs, the add-in checks if the legal hold account (`legalhold@fabrikam.com`) was added to the **To**, **Cc**, or **Bcc** field. If the account appears in the **To** or **Cc** field, it's automatically removed from the message. On the other hand, if it was added to the **Bcc** field, the add-in checks whether the sensitivity label of the message is set to **Highly Confidential**. If it isn't, the account is removed from the message.
-  - When the `OnSensitivityLabelChanged` event occurs, the add-in checks if the sensitivity label is set to **Highly Confidential**, then adds the legal hold account, if applicable.
-  - When the `OnMessageSend` event occurs, the add-in checks whether the message contains an attachment or a recipient who's a member of the Fabrikam legal team. If one of these conditions is met, the sensitivity label of the message is set to **Highly Confidential**. A Smart Alerts dialog is then shown to notify that the sensitivity label was updated.
+  - When the `OnMessageRecipientsChanged` event occurs, the add-in performs the following:
+    - It checks for the legal hold account (`legalhold@fabrikam.com`). If the account is added to the **To** or **Cc** field, it's automatically removed. If the account is added to the **Bcc** field, the add-in verifies the message has the **Highly Confidential** sensitivity label and adds it if it isn't set.
+    - It checks for an email address with the `-legal@fabrikam.com` format. If the address is present in the message, the add-in verifies the message has the **Highly Confidential** sensitivity label and adds it if it isn't set.
+  - When the `OnSensitivityLabelChanged` event occurs, if the message has an attachment or a recipient who's a member of the Fabrikam legal team (`-legal@fabrikam.com`), the add-in verifies that the **Highly Confidential** label is set. It then adds the legal hold account, if applicable.
+  - When the `OnMessageAttachmentsChanged` event occurs, if it contains at least one attachment, the add-in verifies that the **Highly Confidential** sensitivity label is set on the message.
+  - When the `OnMessageSend` event occurs, if the **Highly Confidential** label is set and the legal hold account is in the **Bcc** field of the message, a Smart Alerts dialog is displayed to notify the user.
 
 For documentation related to this sample, see the following:
 
@@ -158,10 +162,12 @@ Once the add-in is loaded, use the following steps to try out its functionality.
     - Add an attachment to the message.
     - Add the email address of a fictitious Fabrikam legal team member to the **To**, **Cc**, or **Bcc** field using the format, `-legal@fabrikam.com`. For example, `eli-legal@fabrikam.com`.
 
+    The sensitivity label of the message is set to **Highly Confidential** and the `legalhold@fabrikam.com` account is added to the **Bcc** field.
+
 1. (Optional) Add a subject or content to the body of the message.
 1. Select **Send**.
 
-    The sensitivity label of the message is set to **Highly Confidential** and the `legalhold@fabrikam.com` account is added to the **Bcc** field. A Smart Alerts dialog appears that reads, "Due to the contents of your message, the sensitivity label has been set to Highly Confidential and the legal hold account has been added to the **Bcc** field. To learn more, see Fabrikam's information protection policy. Do you need to make changes to your message?"
+    A Smart Alerts dialog appears that reads, "Due to the contents of your message, the sensitivity label has been set to Highly Confidential and the legal hold account has been added to the **Bcc** field. To learn more, see Fabrikam's information protection policy. Do you need to make changes to your message?"
 1. If you're ready to send your message, select **Send anyway**. Otherwise, select **Don't send**.
 
    > **Note**: Sending a message to the fabrikam.com domain will result in an undeliverable message.
@@ -233,8 +239,8 @@ The manifest configures the runtime to handle event-based activation. Because th
         "id": "event_runtime",
         "type": "general",
         "code": {
-            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/commands/commands.html",
-            "script": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/commands/commands.js"
+            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/launchevent/launchevent.html",
+            "script": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/launchevent/launchevent.js"
         },
         ...
       },
@@ -251,8 +257,8 @@ The manifest configures the runtime to handle event-based activation. Because th
         <Override type="javascript" resid="JSRuntime.Url"/>
     </Runtime>
     ...
-    <bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/commands/commands.js"/>
-    <bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/commands/commands.html"/>
+    <bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/launchevent/launchevent.js"/>
+    <bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-verify-sensitivity-label/src/launchevent/launchevent.html"/>
     ```
 
 The manifest also maps the events that activate the add-in to the functions that handle each event.
@@ -278,6 +284,10 @@ The manifest also maps the events that activate the add-in to the functions that
           {
             "type": "sensitivityLabelChanged",
             "actionId": "onSensitivityLabelChangedHandler"
+          },
+          {
+            "type": "messageAttachmentsChanged",
+            "actionId": "onMessageAttachmentsChangedHandler"
           }
         ]
       }
@@ -292,14 +302,15 @@ The manifest also maps the events that activate the add-in to the functions that
         <LaunchEvent Type="OnMessageRecipientsChanged" FunctionName="onMessageRecipientsChangedHandler"/>
         <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler" SendMode="PromptUser"/>
         <LaunchEvent Type="OnSensitivityLabelChanged" FunctionName="onSensitivityLabelChangedHandler"/>
+        <LaunchEvent Type="OnMessageAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler"/>
     </LaunchEvents>
     ```
 
-The `OnMessageSend` event specifies how the add-in handles the event if certain conditions aren't met. In this sample, the **prompt user** send mode option is implemented to notify the sender that the sensitivity label of a message has been updated to meet the company's data loss prevention policies. To learn more about send mode options, see [Available send mode options](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events#available-send-mode-options).
+In this sample, the **prompt user** send mode option is implemented for the `OnMessageSend` event to notify the sender that the sensitivity label of a message has been updated to meet the company's data loss prevention policies. To learn more about send mode options, see [Available send mode options](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events#available-send-mode-options).
 
 ### Configure the event handlers
 
-The event object is passed to its respective handler in the **commands.js** file for processing. To ensure that the event-based add-in runs in Outlook, the JavaScript file that contains your handlers (in this case, **commands.js**) must call `Office.actions.associate`. This method maps the function ID specified in the manifest to its respective event handler in the JavaScript file.
+The event object is passed to its respective handler in the **launchevent.js** file for processing. To ensure that the event-based add-in runs in Outlook, the JavaScript file that contains your handlers (in this case, **launchevent.js**) must call `Office.actions.associate`. This method maps the function ID specified in the manifest to its respective event handler in the JavaScript file.
 
 ```javascript
 /** 
@@ -308,6 +319,7 @@ The event object is passed to its respective handler in the **commands.js** file
 Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipientsChangedHandler);
 Office.actions.associate("onMessageSendHandler", onMessageSendHandler);
 Office.actions.associate("onSensitivityLabelChangedHandler", onSensitivityLabelChangedHandler);
+Office.actions.associate("onMessageAttachmentsChangedHandler", onMessageAttachmentsChangedHandler);
 ```
 
 The handler calls the [event.completed](https://learn.microsoft.com/javascript/api/outlook/office.mailboxevent#outlook-office-mailboxevent-completed-member(1)) method to signify when it completes processing an event. In the `onMessageSendHandler` function, the `event.completed` call specifies the [allowEvent](https://learn.microsoft.com/javascript/api/outlook/office.smartalertseventcompletedoptions#outlook-office-smartalertseventcompletedoptions-allowevent-member) property to indicate whether the event can continue to execute or must terminate. It also specifies the [errorMessage](https://learn.microsoft.com/javascript/api/outlook/office.smartalertseventcompletedoptions#outlook-office-smartalertseventcompletedoptions-errormessage-member) property to display the Smart Alerts dialog to indicate that the sensitivity label was updated.
@@ -342,57 +354,55 @@ The [Office.context.mailbox.item.sensitivityLabel.getAsync](https://learn.micros
 Office.context.sensitivityLabelsCatalog.getAsync({ asyncContext: event }, (result) => {
     const event = result.asyncContext;
     if (result.status === Office.AsyncResultStatus.Failed) {
-        console.log("Unable to retrieve the catalog of sensitivity labels.");
-        console.log(`Error: ${result.error.message}`);
-        event.completed({ allowEvent: false, errorMessage: "Unable to retrieve the catalog of sensitivity labels. Save your message, then restart Outlook." });
-        return;
-    }
-
-    // Gets the Highly Confidential sensitivity label from the catalog.
-    const highlyConfidentialLabel = getLabel("Highly Confidential", result.value);
-    let labelId = highlyConfidentialLabel.id;
-
-    // Checks if the Highly Confidential label has children labels. If so, applies the first child label.
-    if (highlyConfidentialLabel.children.length > 0) {
-    labelId = highlyConfidentialLabel.children[0].id;
+      console.log("Unable to retrieve the catalog of sensitivity labels.");
+      console.log(`Error: ${result.error.message}`);
+      if (callback) {
+        callback();
+      } else {
+        event.completed();
+      }
+      return;
     }
 
     // Gets the sensitivity label of the current message.
-    Office.context.mailbox.item.sensitivityLabel.getAsync({ asyncContext: { event: event, highlyConfidentialLabel: labelId } }, (result) => {
-        const event = result.asyncContext.event;
-        if (result.status === Office.AsyncResultStatus.Failed) {
-            console.log("Unable to get the sensitivity label of the message.");
-            console.log(`Error: ${result.error.message}`);
-            event.completed({ allowEvent: false, errorMessage: "Unable to get the sensitivity label applied to the message. Save your message, then restart Outlook." });
-            return;
-        }
-
-        const highlyConfidentialLabel = result.asyncContext.highlyConfidentialLabel;
-        if (result.value === highlyConfidentialLabel) {
-            event.completed({ allowEvent: true });
+    const sensitivityLabelCatalog = result.value;
+    Office.context.mailbox.item.sensitivityLabel.getAsync({ asyncContext: { event: event, sensitivityLabelCatalog: sensitivityLabelCatalog } }, (result) => {
+      const event = result.asyncContext;
+      if (result.status === Office.AsyncResultStatus.Failed) {
+        console.log("Unable to get the sensitivity label of the message.");
+        console.log(`Error: ${result.error.message}`);
+        if (callback) {
+          callback();
         } else {
-            ...
+          event.completed();
         }
+        return;
+      }
+
+      ...
     });
 });
 ```
 
-To set the sensitivity label of a message to **Highly Confidential**, the add-in passes the applicable `SensitivityLabelDetails` object as a parameter to [Office.context.mailbox.item.sensitivityLabel.setAsync](https://learn.microsoft.com/javascript/api/outlook/office.sensitivitylabel#outlook-office-sensitivitylabel-setasync-member(1)).
+To set the sensitivity label of a message to **Highly Confidential**, the add-in passes the label's unique identifier (GUID) as a parameter to [Office.context.mailbox.item.sensitivityLabel.setAsync](https://learn.microsoft.com/javascript/api/outlook/office.sensitivitylabel#outlook-office-sensitivitylabel-setasync-member(1)).
 
 > **Tip**: When you test this sample and adopt it for your scenario, you can also pass the `SensitivityLabelDetails` object returned by `Office.context.sensitivityLabelsCatalog.getAsync` to the `setAsync` method.
 
 ```javascript
 // Sets the sensitivity label of the message to Highly Confidential using the label's GUID.
-Office.context.mailbox.item.sensitivityLabel.setAsync(highlyConfidentialLabel, { asyncContext: event }, (result) => {
+Office.context.mailbox.item.sensitivityLabel.setAsync(labelId, { asyncContext: event }, (result) => {
     const event = result.asyncContext;
     if (result.status === Office.AsyncResultStatus.Failed) {
         console.log("Unable to set the Highly Confidential sensitivity label to the message.");
         console.log(`Error: ${result.error.message}`);
-        event.completed({ allowEvent: false, errorMessage: "Unable to set the Highly Confidential sensitivity label to the message. Save your message, then restart Outlook." });
+        if (callback) {
+          callback();
+        } else {
+          event.completed();
+        }
         return;
     }
-    
-    event.completed({ allowEvent: false, errorMessage: "Due to the contents of your message, the sensitivity label has been set to Highly Confidential and the legal hold account has been added to the Bcc field.\nTo learn more, see Fabrikam's information protection policy.\n\nDo you need to make changes to your message?" });
+    ...
 });
 ```
 
@@ -416,7 +426,7 @@ Office.context.mailbox.item.sensitivityLabel.setAsync(highlyConfidentialLabel, {
 |1.1|May 19, 2023|Update for General Availability (GA) of the sensitivity label API|
 |1.2|October 12, 2023|Update supported version of Outlook on Mac|
 |1.3|January 11, 2024|Remove Microsoft 365 Insider Program requirement|
-|1.4|March 29, 2025|Add support for the unified manifest for Microsoft 365|
+|1.4|July 1, 2025|Add support for the unified manifest for Microsoft 365 and move add-in logic to other event handlers|
 
 ## Copyright
 
