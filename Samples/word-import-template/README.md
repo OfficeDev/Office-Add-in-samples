@@ -50,10 +50,9 @@ The user updates their Word document with the content from another Word document
 ## Decide on a version of the manifest
 
 - Unified manifest for Microsoft 365
-  - By default, the sample supports the unified manifest for Microsoft 365, which is the **manifest.json** file in the sample's root directory **Samples/word-import-template**.
-  - To run this version, go to the [Unified manifest](#unified-manifest) section.
+  - To run the unified manifest for Microsoft 365, which is the **manifest.json** file in the sample's root directory **Samples/word-import-template**, go to the [Unified manifest](#unified-manifest) section.
 - Add-in only manifest
-  - To run the add-in only manifest, which is the **manifest-xml** file in the sample's root directory **Samples/word-import-template**, go to the [Add-in only manifest](#add-in-only-manifest) section.
+  - To run the add-in only manifest, which is the **manifest.xml** file in the sample's root directory **Samples/word-import-template**, go to the [Add-in only manifest](#add-in-only-manifest) section.
 
 ## Unified manifest
 
@@ -89,7 +88,7 @@ The quickest way to run the sample is to use GitHub as the web host. However, yo
 If you prefer to host the web server on localhost, follow these steps:
 
 1. Clone or download this repository.
-1. From a command prompt, go to the root of the project folder **/samples/word-import-template**.
+1. From a command prompt, go to the root of the project folder **/Samples/word-import-template**.
 1. Run the following commands.
 
     ```console
