@@ -17,7 +17,6 @@ resource swa 'Microsoft.Web/staticSites@2022-09-01' = {
   properties: {}
 }
 
-
 var siteDomain = swa.properties.defaultHostname
 
 // The output will be persisted in .env.{envName}. Visit https://aka.ms/teamsfx-actions/arm-deploy for more details.

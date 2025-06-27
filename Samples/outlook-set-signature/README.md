@@ -48,7 +48,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
     > **Note**: If you don't have a Microsoft 365 subscription, you might qualify for a Microsoft 365 E5 developer subscription for development purposes through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 
 - A recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) installed on your computer. These are required if you want to run the web server on localhost. To check if you have already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
-- (Optional) [Teams Toolkit extension for VS Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/install-teams-toolkit) if you want to deploy the sample to Microsoft Azure with the [unified Microsoft 365 manifest](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
+- (Optional) [Microsoft 365 Agents Toolkit extension for VS Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/install-teams-toolkit) if you want to deploy the sample to Microsoft Azure with the [unified Microsoft 365 manifest](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
 
 ## Solution
 
@@ -138,10 +138,10 @@ This sample supports deployment to Azure with the unified manifest.
 
 ### From Visual Studio Code
 
-1. Open Teams Toolkit, and sign into Azure by choosing `Sign in to Azure` under the **ACCOUNTS** section from sidebar.
+1. Open Microsoft 365 Agents Toolkit, and sign into Azure by choosing `Sign in to Azure` under the **ACCOUNTS** section from sidebar.
 1. After you sign in, select a subscription under your account.
-1. Choose `Provision in the cloud` from the **DEVELOPMENT** section or open the command palette and select: `Teams: Provision in the cloud`.
-1. Choose `Deploy to the cloud` or open the command palette and select: `Teams: Deploy to the cloud`.
+1. Choose `Provision` from the **LIFECYCLE** section or open the command palette and select: `Microsoft 365 Agents: Provision`.
+1. Choose `Deploy` or open the command palette and select: `Microsoft 365 Agents: Deploy`.
 
 Once the sample is successfully deployed follow these steps:
 
