@@ -67,7 +67,7 @@ For more information about how to deploy an add-in, please refer to [Deploy and 
 
 1. Run `npm install`.
 
-1. Run `npm start` to launch the web server. **Ignore the Word document that is opened**.
+1. Run `npm start` to build the project and launch the web server. **Ignore the Word document that is opened**.
 
 1. Manually sideload your add-in in Word on the web by following the guidance at [Sideload Office Add-ins to Office on the web](../testing/sideload-office-add-ins-for-testing.md#manually-sideload-an-add-in-to-office-on-the-web)
 
