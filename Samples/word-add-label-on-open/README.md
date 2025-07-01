@@ -39,7 +39,6 @@ For more information about how to deploy an add-in, please refer to [Deploy and 
 ## Applies to
 
 - Word on Windows
-- Word on Mac
 - Word on the web
 
 ## Prerequisites
@@ -67,8 +66,6 @@ For more information about how to deploy an add-in, please refer to [Deploy and 
 1. Go to the **Samples\word-add-label-on-open** folder via the command line.
 
 1. Run `npm install`.
-
-1. Run `npm run build`.
 
 1. Run `npm start` to launch the web server. **Ignore the Word document that is opened**.
 

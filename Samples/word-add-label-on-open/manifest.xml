@@ -83,7 +83,7 @@
           <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
           <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
           <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/commands.html"/>
-          <bt:Url id="JsRuntimeWord.Url" DefaultValue="https://localhost:3000/commands/commands.js"/>
+          <bt:Url id="JsRuntimeWord.Url" DefaultValue="https://localhost:3000/commands.js"/>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
