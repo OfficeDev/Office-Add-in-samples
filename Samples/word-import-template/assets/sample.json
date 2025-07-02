@@ -10,7 +10,7 @@
             "The user updates their Word document with the content from another Word document, treating the external document like a template. The user selects a Word document through the add-in UI then it's applied to the current document."
         ],
         "creationDateTime": "2024-03-08",
-        "updateDateTime": "2025-06-27",
+        "updateDateTime": "2025-07-02",
         "products": [
             "Office",
             "Teams",
