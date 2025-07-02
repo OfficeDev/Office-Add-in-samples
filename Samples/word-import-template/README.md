@@ -100,7 +100,7 @@ If you prefer to configure a web server and host the add-in's web files from you
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
 
-1. Sideload `manifest-localhost.xml` in Word by following the appropriate instructions in the article [Sideload an Office Add-in for testing](https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing).
+1. Sideload **manifest-localhost.xml** in Word by following the appropriate instructions in the article [Sideload an Office Add-in for testing](https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing).
 
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
@@ -129,7 +129,7 @@ You can run this sample in Word on Windows, on Mac, or in a browser. Use one of 
 
 The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
 
-1. Download the **word-import-template.zip** file from this sample to a folder on your computer.
+1. Download the **manifest-configurations/unified/word-import-template.zip** file from this sample to a folder on your computer.
 1. Sideload the add-in manifest in Word by following the appropriate instructions in the article [Sideload Office Add-ins that use the unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
@@ -139,6 +139,7 @@ If you prefer to host the web server on localhost, follow these steps:
 
 1. Clone or download this repository.
 1. From a command prompt, go to the root of the project folder **/Samples/word-import-template**.
+1. Copy the files from the **manifest-configurations/unified** subfolder to the root folder.
 1. Run the following commands.
 
     ```console
