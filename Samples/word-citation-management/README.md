@@ -65,6 +65,7 @@ The sample uses the [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJ
   - To run this version, you can skip to the [Run the sample](#run-the-sample) section.
 - Unified manifest for Microsoft 365
   - To run the unified manifest for Microsoft 365 (**manifest.json**), you need to copy the files from the **manifest-configurations/unified** subfolder to the sample's root directory, replacing the existing config files.
+  - Optionally, you can delete the **manifest.xml** file from root directory so only files needed for the unified manifest are present. For convenience, a copy of the .xml manifest is available in the **manifest-configurations/add-in-only** subfolder.
 
 ## Run the sample
 
