@@ -45,14 +45,14 @@ The user updates their Word document with the content from another Word document
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 03-08-2024 | Initial release |
-| 1.1 | 07-02-2025 | Add support for the unified manifest for Microsoft 365 |
+| 1.1 | 07-07-2025 | Add support for the unified manifest for Microsoft 365 |
 
 ## Decide on a version of the manifest
 
 - Add-in only manifest
   - To run the add-in only manifest, which is the **manifest.xml** file in the sample's root directory **Samples/word-import-template**, go to the [Add-in only manifest](#add-in-only-manifest) section.
 - Unified manifest for Microsoft 365
-  - To run the unified manifest for Microsoft 365, which is the **manifest.json** file in the sample's root directory **Samples/word-import-template**, go to the [Unified manifest](#unified-manifest) section.
+  - To run the unified manifest for Microsoft 365 (**manifest.json**), go to the [Unified manifest](#unified-manifest) section.
 
 ## Add-in only manifest
 
