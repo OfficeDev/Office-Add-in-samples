@@ -51,7 +51,7 @@ The user updates their Word document with the content from another Word document
 
 - Add-in only manifest
   - To run the add-in only manifest, which is the **manifest.xml** file in the sample's root directory **Samples/word-import-template**, go to the [Add-in only manifest](#add-in-only-manifest) section.
-- Unified manifest for Microsoft 365
+- [Unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview)
   - To run the unified manifest for Microsoft 365 (**manifest.json**), go to the [Unified manifest](#unified-manifest) section.
 
 ## Add-in only manifest
@@ -108,14 +108,14 @@ If you prefer to configure a web server and host the add-in's web files from you
 
 ### Prerequisites
 
-- (Optional) If you want to run the web server on localhost, install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org) on your computer. To check if you've already installed these tools, from a command prompt, run the following commands.
+- If you want to run the web server on localhost, install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org) on your computer. To check if you've already installed these tools, from a command prompt, run the following commands.
 
     ```console
     node -v
     npm -v
     ```
 
-- (Optional) If you want to run the sample with the [unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview) using GitHub as the web host, install the [Microsoft 365 Agents Toolkit command line interface (CLI)](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli). From a command prompt, run the following command.
+- If you want to run the sample using GitHub as the web host, install the [Microsoft 365 Agents Toolkit command line interface (CLI)](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli). From a command prompt, run the following command.
 
     ```console
     npm install -g @microsoft/teamsapp-cli
