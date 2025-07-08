@@ -39,8 +39,8 @@
         "less": "^4.2.0",
         "less-loader": "^12.2.0",
         "mini-css-extract-plugin": "2.8.1",
-        "office-addin-dev-settings": "^2.3.3",
         "office-addin-dev-certs": "^1.12.2",
+        "office-addin-dev-settings": "^2.3.3",
         "postcss-loader": "8.1.1",
         "react-hot-loader": "^4.13.1",
         "rimraf": "5.0.5",
@@ -50,7 +50,7 @@
         "typescript": "^5.4.3",
         "webpack": "^5.91.0",
         "webpack-cli": "^5.1.4",
-        "webpack-dev-server": "5.0.4",
+        "webpack-dev-server": "^5.2.2",
         "webpack-merge": "^5.10.0"
     }
 }
