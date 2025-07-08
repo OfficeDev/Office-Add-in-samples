@@ -5,6 +5,7 @@ products:
   - office-word
   - office
   - m365
+  - office-teams
 languages:
   - javascript
 extensions:
@@ -33,10 +34,6 @@ The user updates their Word document with the content from another Word document
 - Word on Mac
 - Word on the web
 
-## Prerequisites
-
-- Office connected to a Microsoft 365 subscription (including Office on the web).
-
 ## Solution
 
 | Solution | Authors |
@@ -48,33 +45,30 @@ The user updates their Word document with the content from another Word document
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 03-08-2024 | Initial release |
+| 1.1 | 07-07-2025 | Add support for the unified manifest for Microsoft 365 |
 
-## Run the sample
+## Decide on a version of the manifest
+
+- Add-in only manifest
+  - To run the add-in only manifest, which is the **manifest.xml** file in the sample's root directory **Samples/word-import-template**, go to the [Add-in only manifest](#add-in-only-manifest) section.
+- [Unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview)
+  - To run the unified manifest for Microsoft 365 (**manifest.json**), go to the [Unified manifest](#unified-manifest) section.
+
+## Add-in only manifest
+
+### Run the sample
+
+Use one of the following add-in file hosting options to run the sample.
+
+#### Use GitHub as the web host
 
 You can run this sample in Word on Windows, on Mac, or in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 1. Sideload the add-in manifest in Word by following the appropriate instructions in the article [Sideload an Office Add-in for testing](https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing).
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
-### Try it out
-
-Once the add-in is loaded, use the following steps to try out the functionality.
-
-1. Open Word on Windows, on Mac, or in a browser.
-
-1. To open the add-in task pane, go to the **Home** tab and choose **Show Task Pane**.
-
-1. In the "Template" section of the add-in UI, select **Choose File**. Navigate to the location of your .docx file then open the file. The template is automatically applied to your document, replacing any preexisting content.
-
-    ![The initial screen displaying the button to choose a file.](./resources/word-import-template-initial-screen.png)
-
-    For convenience, the resources folder of this project includes a *template example.docx* file.
-
-    ![Screen showing the imported template.](./resources/word-import-template-applied.png)
-
-1. In the document, update the text and other content.
-
-## Run the sample from localhost
+#### Use localhost
 
 If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
@@ -106,9 +100,83 @@ If you prefer to configure a web server and host the add-in's web files from you
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
 
-1. Sideload `manifest-localhost.xml` in Word by following the appropriate instructions in the article [Sideload an Office Add-in for testing](https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing).
+1. Sideload **manifest-localhost.xml** in Word by following the appropriate instructions in the article [Sideload an Office Add-in for testing](https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing).
 
-1. [Try out the sample!](#try-it-out)
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+
+## Unified manifest
+
+### Prerequisites
+
+- If you want to run the web server on localhost, install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org) on your computer. To check if you've already installed these tools, from a command prompt, run the following commands.
+
+    ```console
+    node -v
+    npm -v
+    ```
+
+- If you want to run the sample using GitHub as the web host, install the [Microsoft 365 Agents Toolkit command line interface (CLI)](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli). From a command prompt, run the following command.
+
+    ```console
+    npm install -g @microsoft/teamsapp-cli
+    ```
+
+### Run the sample
+
+You can run this sample in Word on Windows, on Mac, or in a browser. Use one of the following add-in file hosting options.
+
+#### Use GitHub as the web host
+
+The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
+
+1. Download the **manifest-configurations/unified/word-import-template.zip** file from this sample to a folder on your computer.
+1. Sideload the add-in manifest in Word by following the appropriate instructions in the article [Sideload Office Add-ins that use the unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest).
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+
+#### Use localhost
+
+If you prefer to host the web server on localhost, follow these steps:
+
+1. Clone or download this repository.
+1. From a command prompt, go to the root of the project folder **/Samples/word-import-template**.
+1. Copy the files from the **manifest-configurations/unified** subfolder to the root folder.
+1. Run the following commands.
+
+    ```console
+    npm install
+    ```
+
+    ```console
+    npm start
+    ```
+
+    This starts the web server on localhost and sideloads the **manifest.json** file to Word.
+
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+
+1. To stop the web server and uninstall the add-in from Word, run the following command.
+
+    ```console
+    npm stop
+    ```
+
+## Try it out
+
+Once the add-in is loaded, use the following steps to try out the functionality.
+
+1. Open Word on Windows, on Mac, or in a browser.
+
+1. To open the add-in task pane, go to the **Home** tab and choose **Show Task Pane**.
+
+1. In the "Template" section of the add-in UI, select **Choose File**. Navigate to the location of your .docx file then open the file. The template is automatically applied to your document, replacing any preexisting content.
+
+    ![The initial screen displaying the button to choose a file.](./resources/word-import-template-initial-screen.png)
+
+    For convenience, the resources folder of this project includes a *template example.docx* file.
+
+    ![Screen showing the imported template.](./resources/word-import-template-applied.png)
+
+1. In the document, update the text and other content.
 
 ## Make it yours
 
