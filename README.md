@@ -82,6 +82,7 @@ The following samples show how to access and work with a user's Microsoft Graph 
 
 | Name           | Description  |
 | -------------- | ------------ |
+| [Automatically add labels with an add-in when a Word document opens](Samples/word-add-label-on-open)| Shows how to configure a Word add-in to activate when a document opens. |
 | [Get, edit, and set OOXML content in a Word document with a Word add-in](Samples/word-add-in-get-set-edit-openxml)| Shows how to get, edit, and set OOXML content in a Word document.|
 | [Import a Word document template with a Word add-in](Samples/word-import-template)| Shows how to import templates in a Word document.|
 | [Load and write Open XML in your Word add-in](Samples/word-add-in-load-and-write-open-xml) | Shows how to add a variety of rich content types to a Word document using the **setSelectedDataAsync** method with **ooxml** coercion type.|
