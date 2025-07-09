@@ -1,0 +1,167 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.22/MicrosoftTeams.schema.json#",
+    "manifestVersion": "1.22",
+    "version": "1.0.0",
+    "id": "350aa9c8-c793-4378-862f-39c12dd8e5ef",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us"
+    },
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://www.contoso.com/help",
+        "privacyUrl": "https://www.contoso.com/help",
+        "termsOfUseUrl": "https://www.contoso.com/help"
+    },
+    "name": {
+        "short": "Office Add-in sample with NAA",
+        "full": "Office Add-in sample with NAA"
+    },
+    "description": {
+        "short": "Office Add-in sample showing nested app authentication with Office SSO.",
+        "full": "Office Add-in sample showing nested app authentication with Office SSO."
+    },
+    "icons": {
+        "outline": "assets/icon-32.png",
+        "color": "assets/icon-64.png"
+    },
+    "accentColor": "#230201",
+    "validDomains": [
+        "https://www.contoso.com",
+        "https://localhost:3000"
+    ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "defaultBlockUntilAdminAction": false,
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "Document.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "extensions": [
+        {
+            "requirements": {
+                "scopes": [
+                    "workbook",
+                    "document",
+                    "presentation"
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "AddinCommands",
+                                "minVersion": "1.1"
+                            }
+                        ]
+                    },
+                    "id": "runtime_2",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/taskpane.html"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "ButtonId1_1",
+                            "type": "openPage",
+                            "view": "ButtonId1"
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "AddinCommands",
+                                "minVersion": "1.1"
+                            }
+                        ],
+                        "scopes": [
+                            "document"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "contexts": [
+                        "default"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabHome",
+                            "groups": [
+                                {
+                                    "id": "CommandsGroup",
+                                    "label": "Commands Group",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "TaskpaneButton",
+                                            "type": "button",
+                                            "label": "Show task pane",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Show task pane",
+                                                "description": "Click to Show a Taskpane"
+                                            },
+                                            "actionId": "ButtonId1_1"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "alternates": [
+                {
+                    "alternateIcons": {
+                        "icon": {
+                            "size": 32,
+                            "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        "highResolutionIcon": {
+                            "size": 64,
+                            "url": "https://localhost:3000/assets/icon-64.png"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
