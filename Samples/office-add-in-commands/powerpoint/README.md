@@ -67,7 +67,7 @@ Office Add-ins are cross-platform so you can also run them on Windows, Mac, and 
 
 ## Configure a localhost web server and run the sample from localhost
 
-If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps:
+If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
 1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
