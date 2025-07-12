@@ -67,6 +67,24 @@ For more information on how to register your application, see [Register an appli
 1. Replace the placeholder "Enter_the_Application_Id_Here" with the Application ID that you copied.
 1. Save the file.
 
+## Decide on a manifest type
+
+There are two types of manifests for Office Add-ins. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/add-in-manifests).
+
+- **Add-in only manifest**: By default, the sample supports the add-in only manifest. In the root of the sample, there are two versions of the add-in only manifest to support the two ways of hosting the web app part of the add-in: **manifest.xml** and **manifest-localhost.xml**. For convenience, a copy of the files needed for using the add-in only manifest can be found in the **manifest-configurations/add-in-only** subfolder.
+
+   To work with the add-in only manifest continue with the [Run the sample](#run-the-sample) section.
+
+- **Unified manifest for Microsoft 365**: To work the unified manifest (**manifest.json**), you need to copy all the files from the **manifest-configurations/unified** subfolder to the sample's root directory, replacing any existing files that have the same names. (We recommend that you also delete the **manifest.xml** file from root directory, so only files needed for the unified manifest are present in the root.) Then continue with the [Run the sample](#run-the-sample) section.
+
+   > **Note:** If you ever want to switch back to the add-in only manifest, copy the files in the **manifest-configurations/add-in-only** subfolder to the sample's root directory. We recommend that you delete the following files the root of the sample, so only files needed for the add-only manifest are present in the root.
+   >
+   > - **manifest.json**
+   > - **package.json**
+   > - **package-lock.json**
+   > - **webpack.config.js**
+
+
 ## Run the sample
 
 1. Run the following commands.
