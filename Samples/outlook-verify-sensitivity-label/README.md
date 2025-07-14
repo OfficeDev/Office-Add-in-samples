@@ -79,7 +79,7 @@ For documentation related to this sample, see the following:
 Run this sample with a [unified manifest for Microsoft 365](#run-with-the-unified-manifest-for-microsoft-365) or [add-in only manifest](#run-with-the-add-in-only-manifest). Use one of the following add-in file hosting options.
 
 > [!NOTE]
-> The unified manifest for Microsoft 365 is directly supported in Outlook on the web and on Windows (new and classic). If you're running the sample on macOS, use the [add-in only manifest](#run-with-the-add-in-only-manifest). For more information on manifests and their supported platforms, see [Office Add-in manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests).
+> To run the sample in Outlook on the web, on Mac, or in the new Outlook on Windows, use the [add-in only manifest](#run-with-the-add-in-only-manifest). For more information on manifests and their supported platforms, see [Office Add-in manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). For information about events and their supported platforms, see [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation#supported-events).
 
 ### Run with the unified manifest for Microsoft 365
 
