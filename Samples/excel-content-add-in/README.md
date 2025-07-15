@@ -63,7 +63,8 @@ Take the following steps to run this sample and set up this add-in.
 1. Go to the **Samples/excel-content-add-in** folder via the command line.
 1. Run `npm install` to set up the add-in dependencies.
 1. Run `npm start`. This command opens Excel, sideloads the add-in in Excel, and embeds the content add-in in the grid.
-1. Use the dropdown menus to add new insurance client prospects.
+1. Resize the content add-in as needed.
+1. Use the dropdown menus and the **Save prospect** button to add new insurance client prospects.
 
 Note: To sideload this add-in sample in Excel on the web, see [Sideload Office Add-ins to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing).
 
