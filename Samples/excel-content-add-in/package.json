@@ -1,0 +1,64 @@
+{
+  "name": "humongous-insurance-excel-addin",
+  "version": "1.0.0",
+  "description": "Excel Content Add-in for Humongous Insurance Agents",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "dev-server": "webpack serve --mode development",
+    "start": "npm run build:dev && office-addin-debugging start manifest.xml",
+    "start:web": "npm run build:dev && office-addin-debugging start manifest.xml web",
+    "start:desktop": "npm run build:dev && office-addin-debugging start manifest.xml desktop",
+    "stop": "office-addin-debugging stop manifest.xml",
+    "validate": "office-addin-manifest validate manifest.xml",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "license": "MIT",
+  "config": {
+    "app_to_debug": "excel",
+    "app_type_to_debug": "desktop",
+    "dev_server_port": 3000
+  },
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "regenerator-runtime": "^0.13.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.0",
+    "@babel/preset-env": "^7.22.0",
+    "@types/office-js": "^1.0.302",
+    "babel-loader": "^9.1.0",
+    "concurrently": "^8.2.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.0",
+    "eslint": "^8.44.0",
+    "file-loader": "^6.2.0",
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "office-addin-debugging": "^5.0.10",
+    "office-addin-dev-certs": "^1.11.3",
+    "office-addin-manifest": "^1.12.3",
+    "source-map-loader": "^4.0.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "es5"
+  },
+  "browserslist": [
+    "ie 11"
+  ]
+}

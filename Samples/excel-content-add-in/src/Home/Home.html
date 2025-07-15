@@ -1,0 +1,169 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license.
+ See LICENSE in the project root for license information -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humongous Insurance Agents Center</title>
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="../Scripts/FabricUI/MessageBanner.js" type="text/javascript"></script>
+    <script src="dropdown.js" type="text/javascript"></script>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+    <!-- To enable offline debugging using a local reference to Office.js, use: -->
+    <!-- <script src="../Scripts/Office/MicrosoftAjax.js" type="text/javascript"></script>  -->
+    <!-- <script src="../Scripts/Office/1/office.js" type="text/javascript"></script>  -->
+
+    <!-- For the Office UI Fabric, go to http://aka.ms/office-ui-fabric to learn more. -->
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.min.css">
+    <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.components.min.css">
+
+    <link href="Home.css" rel="stylesheet" type="text/css" />
+    <script src="Home.js" type="text/javascript"></script>
+    <!-- To enable the offline use of Office UI Fabric, use: -->
+    <!-- link rel="stylesheet" href="../Content/fabric.min.css" -->
+    <!-- link rel="stylesheet" href="../Content/fabric.components.min.css" -->
+</head>
+<body>
+    <section class="row">
+        <section class="column">
+            <h1 class="ms-font-xxl ms-fontColor-themeDarkAlt ms-fontWeight-semilight">Manage Prospects</h1>
+        </section>
+    </section>
+
+    <section class="row">
+        <section class="column">
+            <div class="ms-Dropdown" tabindex="0">
+                <label class="ms-Label">Agent Name</label>
+                <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
+                <select id="agent-name" class="ms-Dropdown-select"></select>
+            </div>
+        </section>
+    </section>
+
+    <section class="row">
+        <section class="column margin15">
+            <section class="row">
+                <h2 class="ms-font-m-plus ms-fontColor-themePrimary">Application Details</h2>
+            </section>
+            <section class="row">
+                <section class="column alpha omega">
+                    <div class="ms-Dropdown" tabindex="0">
+                        <label class="ms-Label">Applicant Name</label>
+                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
+                        <select id="applicant-name" class="ms-Dropdown-select"></select>
+                    </div>
+                </section>
+            </section>
+            <section class="row">
+                <section class="column alpha">
+                    <div class="ms-font-m ms-fontColor-themeLight header--text header--spacer">
+                        <div class="ms-TextField ms-TextField--placeholder header--spacer">
+                            <p class="custom-header ms-fontColor-neutralPrimary ms-font-s ms-fontWeight-regular">Age</p>
+                            <label class="object left ms-Label ms-font-s ms-fontWeight-light ms-fontColor-themePrimary"></label>
+                            <input id="applicant-age" class="object ms-TextField-field" type="text" readonly="readonly">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="column omega">
+                    <div class="ms-font-m ms-fontColor-themeLight header--text header--spacer">
+                        <div class="ms-TextField ms-TextField--placeholder header--spacer">
+                            <p class="custom-header ms-fontColor-neutralPrimary ms-font-s ms-fontWeight-regular">Gender</p>
+                            <label class="object left ms-Label ms-font-s ms-fontWeight-light ms-fontColor-themePrimary"></label>
+                            <input id="applicant-gender" class="object ms-TextField-field" type="text" readonly="readonly">
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </section>
+        <section class="column">
+            <section class="row">
+                <h2 class="ms-font-m-plus ms-fontColor-themePrimary">Policy Details</h2>
+            </section>
+
+            <section class="row">
+                <section class="column alpha omega">
+                    <div class="ms-Dropdown" tabindex="0">
+                        <label class="ms-Label">Policy Name</label>
+                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
+                        <select id="policy-name" class="ms-Dropdown-select"></select>
+                    </div>
+                </section>
+            </section>
+
+            <section class="row">
+                <section class="column alpha">
+                    <div class="ms-Toggle">
+                        <span class="ms-Toggle-description">Medical exam required</span>
+                        <input type="checkbox" id="exam-required" disabled="disabled" class="ms-Toggle-input">
+                        <label for="demo-toggle-3" class="ms-Toggle-field">
+                            <span class="ms-Label ms-Label--off">No</span>
+                            <span class="ms-Label ms-Label--on">Yes</span>
+                        </label>
+                    </div>
+                </section>
+                <section class="column omega">
+                    <div class="ms-TextField ms-TextField--placeholder header--spacer">
+                        <p class="custom-header ms-fontColor-neutralPrimary ms-font-s ms-fontWeight-regular">Sample rate</p>
+                        <label class="object ms-Label ms-font-s ms-fontWeight-light ms-fontColor-themePrimary"></label>
+                        <input id="sample-rate" class="object ms-TextField-field" type="text" disabled="disabled">
+                    </div>
+                </section>
+            </section>
+
+            <section class="row">
+                <section class="column alpha">
+                    <div class="ms-font-m ms-fontColor-themeLight header--text header--spacer">
+                        <div class="ms-TextField ms-TextField--placeholder header--spacer">
+                            <p class="custom-header ms-fontColor-neutralPrimary ms-font-s ms-fontWeight-regular">Insurance amount</p>
+                            <label class="object ms-Label ms-font-s ms-fontWeight-light ms-fontColor-themePrimary"></label>
+                            <input id="insurance-amount" class="object ms-TextField-field" type="text">
+                        </div>
+                    </div>
+
+                </section>
+                <section class="column omega">
+                    <div class="ms-font-m ms-fontColor-themeLight header--text header--spacer">
+                        <div class="ms-TextField ms-TextField--placeholder header--spacer">
+                            <p class="custom-header ms-fontColor-neutralPrimary ms-font-s ms-fontWeight-regular">Approx monthly payment</p>
+                            <p class="ms-font-xxl ms-fontWeight-semibold monthly" id="monthly-payment">$</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </section>
+    </section>
+
+    <section class="row">
+        <section class="column">
+            <button class="object ms-Button ms-Button--primary" id="save-prospect">
+                <span class="ms-Button-icon"><i class="ms-Icon ms-Icon--plus"></i></span>
+                <span class="ms-Button-label ms-font-s ms-fontWeight-light ms-fontColor-themePrimary">Save prospect</span>
+                <span class="ms-Button-description">Saves the prospect in the workbook.</span>
+            </button>
+        </section>
+    </section>
+
+    <div class="ms-MessageBanner" style="position:absolute;bottom: 0;">
+        <div class="ms-MessageBanner-content">
+            <div class="ms-MessageBanner-text">
+                <div class="ms-MessageBanner-clipper">
+                    <div class="ms-font-m-plus ms-fontWeight-semibold" id="notificationHeader"></div>
+                    <div class="ms-font-m ms-fontWeight-semilight" id="notificationBody"></div>
+                </div>
+            </div>
+            <button class="ms-MessageBanner-expand" style="display:none"><i class="ms-Icon ms-Icon--chevronsDown"></i> </button>
+            <div class="ms-MessageBanner-action"></div>
+        </div>
+        <button class="ms-MessageBanner-close"> <i class="ms-Icon ms-Icon--x"></i> </button>
+    </div>
+
+    <script type="text/javascript">
+        $('.ms-Dropdown').Dropdown();
+    </script>
+</body>
+</html>
+<!-- Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See full license in root of repo. -->
