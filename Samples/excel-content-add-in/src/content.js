@@ -552,7 +552,7 @@ import "./content.css";
                 document.getElementById("applicant-age").value, 
                 document.getElementById("applicant-gender").value, 
                 document.getElementById("policy-name").value, 
-                "false", 
+                document.getElementById('exam-required').checked, 
                 document.getElementById("sample-rate").value, 
                 document.getElementById("insurance-amount").value, 
                 document.getElementById("monthly-payment").textContent
