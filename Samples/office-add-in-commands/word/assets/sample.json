@@ -10,9 +10,11 @@
         "Learn how to build an Office Add-in that has a command button to show the task pane and a menu dropdown button that shows the task pane or gets data."
       ],
       "creationDateTime": "2021-12-09",
-      "updateDateTime": "2021-12-09",
+      "updateDateTime": "2025-07-10",
       "products": [
-        "Office"
+        "Office",
+        "Teams",
+        "Microsoft 365 Agent Toolkit"
       ],
       "metadata": [
         {

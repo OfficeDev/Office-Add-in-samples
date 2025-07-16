@@ -1,0 +1,237 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
+  "manifestVersion": "devPreview",
+  "version": "1.0.0",
+  "id": "1752701e-e44f-496d-b4cc-3f3144491978",
+  "packageName": "com.contoso.exceladdincommands",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us"
+  },
+  "developer": {
+    "name": "Contoso",
+    "websiteUrl": "https://officedev.github.io",
+    "privacyUrl": "https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands",
+    "termsOfUseUrl": "https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands"
+  },
+  "name": {
+    "short": "Excel Add-in Commands",
+    "full": "Excel Add-in Commands - Office Add-in Sample"
+  },
+  "description": {
+    "short": "A template to get started with Excel add-in commands.",
+    "full": "This is a sample Excel add-in that demonstrates how to implement add-in commands in the ribbon. It provides examples of button controls and menu controls that can be used to extend Excel's functionality with task panes and function execution."
+  },
+  "icons": {
+    "outline": "assets/icon-32.png",
+    "color": "assets/icon-64.png"
+  },
+  "accentColor": "#4464ee",
+  "configurableTabs": [],
+  "staticTabs": [
+    {
+      "entityId": "excelTaskPane",
+      "name": "Excel Add-in Commands",
+      "contentUrl": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/taskpane/taskpane.html",
+      "websiteUrl": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/taskpane/taskpane.html",
+      "scopes": ["personal"]
+    }
+  ],
+  "bots": [],
+  "connectors": [],
+  "composeExtensions": [],
+  "permissions": [
+    "identity"
+  ],
+  "validDomains": [
+    "officedev.github.io",
+    "learn.microsoft.com",
+    "go.microsoft.com"
+  ],
+  "webApplicationInfo": {
+    "id": "1752701e-e44f-496d-b4cc-3f3144491978",
+    "resource": "https://officedev.github.io"
+  },
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": ["workbook"],
+        "formFactors": ["desktop"]
+      },
+      "runtimes": [
+        {
+          "id": "CommandsRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/src/commands/commands.html"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "writeValue",
+              "type": "executeFunction",
+              "displayName": "Write Value"
+            },
+            {
+              "id": "showTaskPane",
+              "type": "openPage",
+              "displayName": "Show Task Pane",
+              "view": "taskpane"
+            }
+          ]
+        },
+        {
+          "id": "TaskpaneRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/src/taskpane/taskpane.html"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "taskpaneAction",
+              "type": "openPage",
+              "displayName": "Task Pane",
+              "view": "taskpane"
+            }
+          ]
+        }
+      ],
+      "ribbons": [
+        {
+          "contexts": ["default"],
+          "tabs": [
+            {
+              "builtInTabId": "TabHome",
+              "groups": [
+                {
+                  "id": "Contoso.Group1",
+                  "label": "Commands group",
+                  "icons": [
+                    {
+                      "size": 16,
+                      "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-16.png"
+                    },
+                    {
+                      "size": 32,
+                      "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-32.png"
+                    },
+                    {
+                      "size": 80,
+                      "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-80.png"
+                    }
+                  ],
+                  "controls": [
+                    {
+                      "id": "Contoso.TaskpaneButton",
+                      "type": "button",
+                      "label": "Show task pane",
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Show task pane",
+                        "description": "Choose to show a task pane"
+                      },
+                      "actionId": "showTaskPane"
+                    },
+                    {
+                      "id": "Contoso.Menu",
+                      "type": "menu",
+                      "label": "Dropdown menu",
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Dropdown menu",
+                        "description": "Show the dropdown menu"
+                      },
+                      "items": [
+                        {
+                          "id": "itemShowTaskPane",
+                          "type": "menuItem",
+                          "label": "Show task pane",
+                          "icons": [
+                            {
+                              "size": 16,
+                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-16.png"
+                            },
+                            {
+                              "size": 32,
+                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-32.png"
+                            },
+                            {
+                              "size": 80,
+                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-80.png"
+                            }
+                          ],
+                          "supertip": {
+                            "title": "Show task pane",
+                            "description": "Choose to show a task pane"
+                          },
+                          "actionId": "showTaskPane"
+                        },
+                        {
+                          "id": "itemExecuteFunction",
+                          "type": "menuItem",
+                          "label": "Write value",
+                          "icons": [
+                            {
+                              "size": 16,
+                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-16.png"
+                            },
+                            {
+                              "size": 32,
+                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-32.png"
+                            },
+                            {
+                              "size": 80,
+                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-80.png"
+                            }
+                          ],
+                          "supertip": {
+                            "title": "Write value",
+                            "description": "Choose to show a task pane"
+                          },
+                          "actionId": "writeValue"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "getStartedMessages": [
+        {
+          "title": "Get started with your sample add-in!",
+          "description": "Your sample add-in loaded successfully. Go to the HOME tab and choose the 'Show task pane' button to get started.",
+          "learnMoreUrl": "https://go.microsoft.com/fwlink/?LinkId=276812"
+        }
+      ]
+    }
+  ]
+}

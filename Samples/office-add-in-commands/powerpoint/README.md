@@ -6,6 +6,7 @@ products:
   - office-powerpoint
   - office
   - m365
+  - office-teams
 languages:
   - javascript
 extensions:
@@ -37,6 +38,13 @@ Learn how to build an Office Add-in that has a command button to show the task p
 
 - Microsoft 365 - Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
+## Version history
+
+| Version  | Date | Comments |
+|----------|------|----------|
+| 1.0 | 12-09-2021 | Initial release |
+| 1.1 | 07-10-2025 | Add support for the unified manifest for Microsoft 365 |
+
 ## Run the sample on PowerPoint on the web
 
 This sample is hosted directly from this GitHub repo. Use the following steps to sideload the manifest.xml file to see the sample run.
@@ -55,7 +63,7 @@ This sample is hosted directly from this GitHub repo. Use the following steps to
 
 1. Verify that the add-in loaded successfully. You will see a **Show task pane** button and **Dropdown menu** button on the **Home** tab on the ribbon.
 
-On the **Home** tab, choose the **Show task pane** button to display the task pane of the add-in. Choose the **Dropdown menu** button to see a drop down menu. On the menu you can show the task pane, or choose **Write value** to call a command that writes the button's id to the current cell.
+On the **Home** tab, choose the **Show task pane** button to display the task pane of the add-in. Choose the **Dropdown menu** button to see a drop down menu. On the menu you can show the task pane, or choose **Write value** to call a command that writes the button's ID to the current cell.
 
 ## Run the sample on PowerPoint on Windows or Mac
 
@@ -115,7 +123,7 @@ For more information about ExtensionPoint elements and options, see [Add Extensi
 
 ### Commands JavaScript
 
-The **manifest.xml** file contains a `<FunctionFile resid="Commands.Url"/>` element that specifies where to find the JavaScript commands to run when buttons are used. The `Commands.Url` resource id points to `/src/commands/commands.html`. When a button command is chosen, `commands.html` is loaded, which then loads `/src/commands/commands.js`. This is where the `ExecuteFunction` actions are mapped from the `manifest.xml` file.
+The **manifest.xml** file contains a `<FunctionFile resid="Commands.Url"/>` element that specifies where to find the JavaScript commands to run when buttons are used. The `Commands.Url` resource ID points to `/src/commands/commands.html`. When a button command is chosen, `commands.html` is loaded, which then loads `/src/commands/commands.js`. This is where the `ExecuteFunction` actions are mapped from the `manifest.xml` file.
 
 For example the following manifest XML maps to the `writeValue` function in `commands.js`.
 
