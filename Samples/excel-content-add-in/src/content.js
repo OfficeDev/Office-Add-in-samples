@@ -65,7 +65,7 @@ import "./content.css";
             insuranceAmountInput.addEventListener('change', function (e) {
                 var insuranceAmount = document.getElementById('insurance-amount').value;
                 var sampleRate = document.getElementById('sample-rate').value;
-                document.getElementById('monthly-payment').textContent = insuranceAmount * sampleRate / 10000 + '$';
+                document.getElementById('monthly-payment').textContent = '$' + insuranceAmount * sampleRate / 10000;
             });
         }
 
@@ -438,7 +438,7 @@ import "./content.css";
             .then(function () {
                 var insuranceAmount = document.getElementById('insurance-amount').value;
                 var sampleRate = document.getElementById('sample-rate').value;
-                document.getElementById('monthly-payment').textContent = insuranceAmount * sampleRate / 10000 + '$';
+                document.getElementById('monthly-payment').textContent = '$' + insuranceAmount * sampleRate / 10000;
             })
         })
         .catch(function (error) {

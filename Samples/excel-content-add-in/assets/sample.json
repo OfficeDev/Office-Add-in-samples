@@ -24,7 +24,7 @@
         {
             "type": "Image",
             "order": 100,
-            "url": "https://github.com/OfficeDev/Office-Add-in-samples/raw/main/Samples/excel-content-add-in/images/content-add-in.png",
+            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/excel-content-add-in/images/content-add-in.png",
             "alt": "Screenshot of the Humongous Insurance Excel content add-in interface showing a control panel embedded in the Excel grid."
           }
       ],

@@ -65,6 +65,7 @@ Take the following steps to run this sample and set up this add-in.
 1. Run `npm start`. This command opens Excel, sideloads the add-in in Excel, and embeds the content add-in in the grid.
 1. Resize the content add-in as needed.
 1. Use the dropdown menus and the **Save prospect** button to add new insurance client prospects.
+1. To stop the server and uninstall the add-in from Excel, run `npm stop`.
 
 Note: To sideload this add-in sample in Excel on the web, see [Sideload Office Add-ins to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing).
 
