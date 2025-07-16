@@ -19,7 +19,7 @@ description: "A content add-in that sits in the grid and reads and writes workbo
 
 ## Summary
 
-This sample is a content add-in for the fictional Humongous Insurance company. shows how to use the Office JavaScript APIs to create an Excel add-in that exists in the grid, instead of as a task pane or ribbon button. Build upon this sample to embed rich, interactive objects into Office documents.
+This sample is a content add-in for the fictional Humongous Insurance company. It shows how to use the Office JavaScript APIs to create an Excel add-in that exists in the grid, instead of as a task pane or ribbon button. Build upon this sample to embed rich, interactive objects into Office documents.
 
 ## Features
 
@@ -27,7 +27,7 @@ The Humongous Insurance add-in loads and embeds the content add-in in the grid. 
 
 The sample also populates the workbook with data when it loads.
 
-[![Screenshot of the Humongous Insurance Excel content add-in interface](images/content-add-in.png)](images/content-add-in.png)
+![Screenshot of the Humongous Insurance Excel content add-in interface.](images/content-add-in.png)
 
 ## Applies to
 

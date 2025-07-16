@@ -10,7 +10,7 @@ import "./content.css";
 
     var messageBanner;
 
-    // The initialize function must be run each time a new page is loaded.
+    // The onReady function must be run each time a new page is loaded.
     Office.onReady((info) => {
         if (info.host === Office.HostType.Excel) {
             // Initialize immediately since Office.onReady already waits for DOM.

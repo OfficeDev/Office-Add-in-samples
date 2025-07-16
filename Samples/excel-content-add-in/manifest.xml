@@ -9,7 +9,7 @@
   <ProviderName>Humongous Insurance</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Humongous Insurance Agents Center" />
-  <Description DefaultValue="Excel Content Add-in for managing insurance prospects" />
+  <Description DefaultValue="Excel Content Add-in for managing insurance prospects." />
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-64.png" />
   <SupportUrl DefaultValue="https://github.com/" />
