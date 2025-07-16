@@ -25,15 +25,8 @@
     "app_type_to_debug": "desktop",
     "dev_server_port": 3000
   },
-  "dependencies": {
-    "core-js": "^3.6.5",
-    "regenerator-runtime": "^0.13.7"
-  },
   "devDependencies": {
-    "@babel/core": "^7.22.0",
-    "@babel/preset-env": "^7.22.0",
     "@types/office-js": "^1.0.302",
-    "babel-loader": "^9.1.0",
     "concurrently": "^8.2.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.0",
@@ -58,7 +51,7 @@
     "singleQuote": false,
     "trailingComma": "es5"
   },
-  "browserslist": [
-    "ie 11"
-  ]
+  "dependencies": {
+    "semver": "^7.7.2"
+  }
 }

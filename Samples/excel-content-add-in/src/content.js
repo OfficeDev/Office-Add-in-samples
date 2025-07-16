@@ -26,14 +26,11 @@ import "./content.css";
                 }
             }
             
-            // Initialize dropdowns.
-            initializeDropdowns();
-            
             // Set up event handlers.
             setupEventHandlers();
             
             // Initialize the workbook.
-            createMyProspectsTrackerSheet();
+            createProspectsTrackerSheet();
             
             // Import sample data with proper error handling.
             importSampleData().then(() => {
@@ -89,93 +86,8 @@ import "./content.css";
         }
     }
 
-    function initializeDropdowns() {
-        console.log("Initializing Fabric UI dropdowns");
-        
-        // Initialize each dropdown manually since we don't have jQuery.
-        const dropdownSelectors = ['#agent-name', '#applicant-name', '#policy-name'];
-        
-        dropdownSelectors.forEach(selector => {
-            const selectElement = document.querySelector(selector);
-            const dropdownContainer = selectElement?.closest('.ms-Dropdown');
-            
-            if (selectElement && dropdownContainer) {
-                console.log("Initializing dropdown:", selector);
-                
-                // Hide the original select element.
-                selectElement.style.display = 'none';
-                
-                // Create the dropdown title element.
-                let titleElement = dropdownContainer.querySelector('.ms-Dropdown-title');
-                if (!titleElement) {
-                    titleElement = document.createElement('span');
-                    titleElement.className = 'ms-Dropdown-title';
-                    titleElement.textContent = selectElement.options[0]?.text || 'Select...';
-                    dropdownContainer.appendChild(titleElement);
-                }
-                
-                // Create the dropdown items list.
-                let itemsList = dropdownContainer.querySelector('.ms-Dropdown-items');
-                if (!itemsList) {
-                    itemsList = document.createElement('ul');
-                    itemsList.className = 'ms-Dropdown-items';
-                    dropdownContainer.appendChild(itemsList);
-                    
-                    // Populate items from select options.
-                    Array.from(selectElement.options).forEach((option, index) => {
-                        const item = document.createElement('li');
-                        item.className = 'ms-Dropdown-item';
-                        item.textContent = option.text;
-                        item.dataset.value = option.value;
-                        
-                        // Add click handler.
-                        item.addEventListener('click', () => {
-                            // Update title.
-                            titleElement.textContent = option.text;
-                            
-                            // Update original select.
-                            selectElement.value = option.value;
-                            selectElement.dispatchEvent(new Event('change'));
-                            
-                            // Close dropdown.
-                            dropdownContainer.classList.remove('is-open');
-                            
-                            // Remove selection from other items.
-                            itemsList.querySelectorAll('.ms-Dropdown-item').forEach(i => i.classList.remove('is-selected'));
-                            item.classList.add('is-selected');
-                        });
-                        
-                        itemsList.appendChild(item);
-                    });
-                }
-                
-                // Add click handler to title.
-                titleElement.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    
-                    // Close other dropdowns.
-                    document.querySelectorAll('.ms-Dropdown.is-open').forEach(d => {
-                        if (d !== dropdownContainer) d.classList.remove('is-open');
-                    });
-                    
-                    // Toggle this dropdown.
-                    dropdownContainer.classList.toggle('is-open');
-                });
-                
-                console.log("Dropdown initialized:", selector);
-            }
-        });
-        
-        // Close dropdowns when clicking outside.
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.ms-Dropdown')) {
-                document.querySelectorAll('.ms-Dropdown.is-open').forEach(d => d.classList.remove('is-open'));
-            }
-        });
-    }
-
-    // Create the My ProspectsTracker sheet.
-    function createMyProspectsTrackerSheet() {
+    // Create the sheet to track prospects.
+    function createProspectsTrackerSheet() {
         // Run a batch operation against the Excel object model.
         Excel.run(function (ctx) {
             var prospectsSheet = ctx.workbook.worksheets.getActiveWorksheet();
@@ -440,14 +352,7 @@ import "./content.css";
                     console.log("Added policy option:", name);
                 }
                 
-                console.log("Finished populating all dropdowns - now refreshing UI");
-                
-                // Refresh the custom dropdown UI to show the new options.
-                refreshDropdownUI("agent-name");
-                refreshDropdownUI("applicant-name");
-                refreshDropdownUI("policy-name");
-                
-                console.log("All dropdown UIs refreshed");
+                console.log("Finished populating all dropdowns");
             });
         })
         .catch(function (error) {
@@ -636,62 +541,6 @@ import "./content.css";
         showNotification("Error: " + error);
         if (error instanceof OfficeExtension.Error) {
             // Silent debug info handling.
-        }
-    }
-
-    // Simple Dropdown implementation (replacing the Fabric UI dependency).
-    function Dropdown(element) {
-        this.element = element;
-        this.select = element.querySelector('.ms-Dropdown-select');
-        this.init();
-    }
-
-    Dropdown.prototype.init = function() {
-        // Basic dropdown functionality.
-        // This is a simplified version - you may want to implement full Fabric UI dropdown functionality.
-    };
-
-    function refreshDropdownUI(selectElementId) {
-        const selectElement = document.getElementById(selectElementId);
-        const dropdownContainer = selectElement?.closest('.ms-Dropdown');
-        
-        if (selectElement && dropdownContainer) {
-            // Update the items list.
-            const itemsList = dropdownContainer.querySelector('.ms-Dropdown-items');
-            if (itemsList) {
-                // Clear existing items.
-                itemsList.innerHTML = '';
-                
-                // Recreate items from updated select options.
-                Array.from(selectElement.options).forEach((option, index) => {
-                    const item = document.createElement('li');
-                    item.className = 'ms-Dropdown-item';
-                    item.textContent = option.text;
-                    item.dataset.value = option.value;
-                    
-                    // Add click handler.
-                    item.addEventListener('click', () => {
-                        // Update title.
-                        const titleElement = dropdownContainer.querySelector('.ms-Dropdown-title');
-                        if (titleElement) titleElement.textContent = option.text;
-                        
-                        // Update original select.
-                        selectElement.value = option.value;
-                        selectElement.dispatchEvent(new Event('change'));
-                        
-                        // Close dropdown.
-                        dropdownContainer.classList.remove('is-open');
-                        
-                        // Remove selection from other items.
-                        itemsList.querySelectorAll('.ms-Dropdown-item').forEach(i => i.classList.remove('is-selected'));
-                        item.classList.add('is-selected');
-                    });
-                    
-                    itemsList.appendChild(item);
-                });
-                
-                console.log("Refreshed dropdown UI for:", selectElementId);
-            }
         }
     }
 

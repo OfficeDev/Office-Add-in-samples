@@ -18,7 +18,6 @@ module.exports = async (env, options) => {
   const config = {
     devtool: "source-map",
     entry: {
-      polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       content: "./src/content.js"
     },
     resolve: {
@@ -26,16 +25,6 @@ module.exports = async (env, options) => {
     },
     module: {
       rules: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: "babel-loader",
-            options: {
-              presets: ["@babel/preset-env"]
-            }
-          }
-        },
         {
           test: /\.css$/,
           use: ["style-loader", "css-loader"]
@@ -58,7 +47,7 @@ module.exports = async (env, options) => {
       new HtmlWebpackPlugin({
         filename: "content.html",
         template: "./src/content.html",
-        chunks: ["polyfill", "content"]
+        chunks: ["content"]
       }),
       new CopyWebpackPlugin({
         patterns: [
