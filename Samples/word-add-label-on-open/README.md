@@ -84,7 +84,8 @@ The following are a few suggestions for how you could tailor this to your scenar
 
 ## Related content
 
-- [Implement event-based activation in Excel, PowerPoint, and Word add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/wxp-event-based-activation.md)
+- [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation)
+- [Debug event-based or spam-reporting add-ins](https://learn.microsoft.com/office/dev/add-ins/testing/debug-autolaunch)
 - [Word add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/word/)
 
 ## Questions and feedback
