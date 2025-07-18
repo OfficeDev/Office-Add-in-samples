@@ -142,10 +142,10 @@
 		  <bt:LongStrings>
 			  <bt:String id="Contoso.TaskpaneButton.Tooltip" DefaultValue="Choose to show a task pane" />
 			  <bt:String id="Contoso.Item1.Tooltip" DefaultValue="Choose to show a task pane" />
-			  <bt:String id="Contoso.Item2.Tooltip" DefaultValue="Choose to show a task pane" />
+			  <bt:String id="Contoso.Item2.Tooltip" DefaultValue="Choose to write a value on the page" />
 			  <bt:String id="Contoso.Menu.Tooltip" DefaultValue="Show the dropdown menu" />
 
-			  <bt:String id="Contoso.WriteValueButton.Tooltip" DefaultValue="Choose to write value to document" />
+			  <bt:String id="Contoso.WriteValueButton.Tooltip" DefaultValue="Choose to write a value to the document" />
 			  <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and choose the 'Show task pane' button to get started." />
 		  </bt:LongStrings>
 	  </Resources>

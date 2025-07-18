@@ -202,7 +202,7 @@
                           ],
                           "supertip": {
                             "title": "Write value",
-                            "description": "Choose to show a task pane"
+                            "description": "Choose to write a value to the document"
                           },
                           "actionId": "writeValue"
                         }

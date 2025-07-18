@@ -43,7 +43,7 @@ Learn how to build an Office Add-in that has a command button to show the task p
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 12-09-2021 | Initial release |
-| 1.1 | 07-10-2025 | Add support for the unified manifest for Microsoft 365 |
+| 1.1 | 07-18-2025 | Add support for the unified manifest for Microsoft 365 |
 
 ## Run the sample on Excel on the web
 
