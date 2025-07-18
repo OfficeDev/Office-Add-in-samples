@@ -5,8 +5,8 @@ products:
   - office-excel
   - office
   - m365
-  - Teams
-  - TeamsToolkit
+  - office-teams
+  - microsoft-365-copilot
 languages:
   - javascript
   - typescript
@@ -15,20 +15,20 @@ extensions:
   technologies:
     - Add-ins
   createdDate: 05/15/2025 8:00:00 PM
-description: "Shows how to a custom Copilot agent to analyze an Excel spreadsheet."
+description: "Shows how to create a custom Copilot agent to analyze an Excel spreadsheet."
 ---
 
 # Create data analysis charts in Excel with a Copilot agent
 
 ## Summary
 
-This sample shows how to include a custom Copilot agent in an Excel add-in, and use it to insert charts that plot one column of data against another. 
+This sample shows how to include a custom Copilot agent in an Excel add-in, and use it to insert charts that plot one column of data against another.
 
 ## Description
 
 This add-in lets the user create charts using Copilot's natural language processing. The user begins by opening the task pane and using it to insert sample data. Then, the user opens Copilot and opens the **Chart Analysis Agent**. Using natural language, the user asks Copilot to insert into the open worksheet a chart that plots the data of one column in a table against the data of another column. The user specifies the columns but doesn't have to use the precise column names in the table.
 
-![Chart Analysis Agent pane with inserted chart](./resources/chart-analysis-agent-and-add-in.png)
+![Chart Analysis Agent pane with inserted chart.](./resources/chart-analysis-agent-and-add-in.png)
 
 ## Applies to
 
@@ -38,11 +38,11 @@ This add-in lets the user create charts using Copilot's natural language process
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- A Teams subscription, if it is not included in your Microsoft 365 subscription.
+- A Teams subscription, if it isn't included in your Microsoft 365 subscription.
 - [Node.js](https://nodejs.org/) version 16 or greater.
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 - Visual Studio Code
-- [Microsoft 365 Agents Toolkit extension for Visual Studio Code](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/agents-toolkit-fundamentals)
+- [Microsoft 365 Agents Toolkit extension for Visual Studio Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/agents-toolkit-fundamentals)
 
 ## Solution
 
@@ -68,17 +68,17 @@ This add-in lets the user create charts using Copilot's natural language process
 
 1. In the **ACCOUNTS** pane, ensure that support is enabled for both Copilot and uploading custom apps.
 
-   ![Account pane in the toolkit](./resources/account-pane.png)
+   ![Account pane in the toolkit.](./resources/account-pane.png)
 
 ## Sideload the sample and start the server
 
 1. In the **LIFECYCLE** pane, select **Provision**. This sideloads the add-in to Microsoft 365, including Excel.
 
-1. In a command prompt, bash shell, or **TERMINAL** in Visual Studio Code at the root of the project, run `npm run dev-server` to start the server on localhost. 
+1. In a command prompt, bash shell, or **TERMINAL** in Visual Studio Code at the root of the project, run `npm run dev-server` to start the server on localhost.
 
    **Note**: If you are prompted to delete an old certificate or to install a new one, agree to both prompts.
 
-   Wait until a line that is similar to the following appears at the bottom of the server window before continuing.
+   Wait until a line that is similar to the following appears at the end of the server window before continuing.
 
    ```console
    webpack 5.99.8 compiled successfully in 102 ms
@@ -91,13 +91,13 @@ This add-in lets the user create charts using Copilot's natural language process
     - **Office on Windows**: Open Excel, and then open (or create) a workbook.
     - **Office on the web**: In a browser, navigate to `https://excel.cloud.microsoft`, and then open or create a workbook.
 
-1. Wait until the add-in has loaded. This may take as much as two minutes. The **Show Task Pane** button should appear on the **Home** ribbon automatically. If it doesn't, you need to manually activate the add-in: Select the **Add-ins** button on the **Home** ribbon, and then in the flyout that opens, select the **Chart Analysis** add-in. 
+1. Wait until the add-in has loaded. This may take as much as two minutes. The **Show Task Pane** button should appear on the **Home** ribbon automatically. If it doesn't, you need to manually activate the add-in: Select the **Add-ins** button on the **Home** ribbon, and then in the flyout that opens, select the **Chart Analysis** add-in.
 
 1. On the **Home** tab and choose the **Show Task Pane** button in the ribbon to open it.
 
-   ![Task pane of Chart Analysis add-in](./resources/chart-analysis-task-pane.png)
+   ![Task pane of Chart Analysis add-in.](./resources/chart-analysis-task-pane.png)
 
-1. Select the **Initialize data** button on the task pane to insert a table of sample data into the workbook. Because this table gets focus, the **Table Design** ribbon opens. 
+1. Select the **Initialize data** button on the task pane to insert a table of sample data into the workbook. Because this table gets focus, the **Table Design** ribbon opens.
 
 1. Switch back to the **Home** ribbon.
 
@@ -110,11 +110,11 @@ This add-in lets the user create charts using Copilot's natural language process
 
 1. When the agent is listed, select it and the pane for the agent opens.
 
-   ![Chart Analysis Agent pane](./resources/chart-analysis-agent-pane.png)
+   ![Chart Analysis Agent pane.](./resources/chart-analysis-agent-pane.png)
 
-1. Select the **Show me a chart that correlates sales and temperature** conversation starter, and then press the arrowhead (send) control in the conversation box at the bottom of the pane. After a few moments, you are prompted to confirm. Select **Confirm**. A chart is inserted onto the worksheet. See the screenshot at the top of this readme file.
+1. Select the **Show me a chart that correlates sales and temperature** conversation starter, and then press the arrowhead (send) control in the conversation box at the end of the pane. After a few moments, you are prompted to confirm. Select **Confirm**. A chart is inserted onto the worksheet. See the screenshot at the beginning of this readme file.
 
-1. Try entering natural language prompts for other combinations of columns in the table. 
+1. Try entering natural language prompts for other combinations of columns in the table.
 
 ## Make changes in the app
 
@@ -122,13 +122,13 @@ Live reloading is supported for task pane portion of the app, but not the Copilo
 
 1. Close the Office application.
 
-1. In the web server window press Ctrl+C. Choose "Y" in response to the prompt to end the process. 
+1. In the web server window, press <kbd>Ctrl</kbd>+<kbd>C</kbd>. Choose **Y** in response to the prompt to end the process.
 
    **Note**: If the web server doesn't shut down, in a command prompt, bash shell, or Visual Studio Code **TERMINAL** in the root of the project, run `npm run stop`.
 
 1. Clear the Office cache following the instructions at [Manually clear the cache](https://learn.microsoft.com/office/dev/add-ins/testing/clear-cache#manually-clear-the-cache-in-excel-word-and-powerpoint).
 
-1. Open Teams and select **Apps** from the **Activity Bar**, then select **Manage your apps** at the bottom of the **Apps** pane.
+1. Open Teams and select **Apps** from the **Activity Bar**, then select **Manage your apps** at the end of the **Apps** pane.
 
 1. Find the **Chart Analysis Agent** agent in the list of apps.
 
@@ -136,7 +136,7 @@ Live reloading is supported for task pane portion of the app, but not the Copilo
 
 1. Select the trash can icon near the right end of the row, and then select **Remove** in the prompt.
 
-1. Make your changes and then repeat the steps in **Sideload the sample and start the server** and **Try it out**.
+1. Make your changes and then repeat the steps in [Sideload the sample and start the server](#sideload-the-sample-and-start-the-server) and [Try it out](#try-it-out).
 
 ## Questions and feedback
 

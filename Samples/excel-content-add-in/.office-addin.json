@@ -1,0 +1,10 @@
+{
+  "webpackDevServerURL": "https://localhost:3000",
+  "enableLogging": true,
+  "enableLiveReload": true,
+  "sourceBundleUrlComponents": {
+    "host": "localhost",
+    "port": 3000,
+    "scheme": "https"
+  }
+}

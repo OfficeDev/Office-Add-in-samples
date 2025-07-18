@@ -77,6 +77,7 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | [Custom function sample using web worker](Excel-custom-functions/web-worker) | Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in. |
 | [Use storage techniques to access data from an Office Add-in when offline](Samples/Excel.OfflineStorageAddin) | Demonstrates how you can implement localStorage to enable limited functionality for your Office Add-in when a user experiences lost connection. |
 | [Custom function batching pattern](Excel-custom-functions/Batching)| Batch multiple calls into a single call to reduce the number of network calls to a remote service.|
+| [Excel content add-in](Samples/excel-content-add-in) | Embed a content add-in in the Excel grid. |
 
 ## Word
 
