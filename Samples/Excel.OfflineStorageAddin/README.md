@@ -43,6 +43,7 @@ Excel.OfflineStorageAddin | Nancy Wang, Albert Dotson (**Microsoft**)
 Version  | Date | Comments
 ---------| -----| --------
 1.0  | July 19, 2019 | Initial release
+1.1  | July 21, 2025 | Added option for unified manifest
 
 ## Scenario: Storing data using local storage
 
@@ -53,7 +54,7 @@ While this add-in gets its data from a local server, implementation of `localSto
 **Note**: `localStorage` can store up to 5MB of data. To store larger amounts of data offline and for improved performance, consider using [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API). Note that as of now, IndexedDB isn't supported by all browsers used by Office Add-ins. Check [here](https://learn.microsoft.com/office/dev/add-ins/concepts/browsers-used-by-office-web-add-ins) to see which browsers are supported by Office Add-ins and [here](https://caniuse.com/#search=indexedDB) to see which browsers can support IndexedDB.
 As another option, you can store your add-in's data in [`Office.Settings`](https://learn.microsoft.com/javascript/api/office/office.settings?view=office-js). Using Office.Settings will enable your add-in's offline capabilities to persist within the file (e.g. if you'd like to share your file with others).
 
-## Build and run the sample
+## Download the sample
 
 1. Clone or download this repository. 
 2. In the command line, go to the **Excel.OfflineStorageAddin** folder from your root directory.
@@ -66,7 +67,25 @@ $ cd PnP-OfficeAddins
 $ cd Samples
 $ cd Excel.OfflineStorageAddin
 ```
+
+## Choose a manifest type
+
+By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/add-in-manifests).
+
+If you want to continue with the add-in only manifest, skip ahead to the [Run the sample](#run-the-sample) section.
+
+### To switch to the Unified manifest for Microsoft 365
+
+Copy all files from the **manifest-configurations/unified** subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.xml** file from the root folder, so only files needed for the unified manifest are present in the root. Then continue with the [Run the sample](#run-the-sample) section.
+
+### To switch back to the Add-in only manifest
+
+If you want to switch back to the add-in only manifest, copy the files in the **manifest-configurations/add-in-only** subfolder to the sample's root folder. We recommend that you delete the **manifest.json** file from the root folder.
+
+## Run the sample
+
 You can try out this sample by running the following commands:
+
 ```command&nbsp;line
 # this will download the node modules needed to run this add-in
 $ npm install
@@ -76,11 +95,8 @@ $ npm run build
 
 # this will start the server on your desktop and launch your add-in on Excel
 $ npm run start
-
-# this will start the server and launch your add-in on Excel on the web
-$ npm run start:web
-
 ```
+
 To simulate the add-in in offline mode, keep the add-in open in the taskpane and shut down the server by closing the terminal window running the server. You will see that you can still create the table of basketball player stats without an online connection, indicating that the data has been stored successfully into `localStorage`.
 
 ## Key parts of this sample
@@ -105,6 +121,7 @@ $.ajax({
         createTable(result);
     },
 ```
+
 If the function fails to successfully get the data from the AJAX call, the function first checks if the basketball player data was previously cached into local storage, as shown in the code below. If it exists, the data is parsed from JSON into a readable text format before being passed to `createTable()`, a function which creates a table from the given data. Otherwise, the function returns an error back to the console.
 
 ```js
@@ -144,10 +161,12 @@ npx office-addin-dev-certs uninstall
 - For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Additional resources
+
 * [Office Add-ins documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Copyright
-Copyright (c) 2019 Microsoft Corporation. All rights reserved.
+
+Copyright (c) 2019 - 2025, Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
