@@ -19,13 +19,13 @@ description: "This sample shows how to add keyboard shortcuts to your Office Add
 
 ## Summary
 
-This sample shows how to create custom keyboard shortcuts for an Office Add-in. Keyboard shortcuts let power users quickly use your add-in's features and give accessibility options to avoid using a mouse. In this sample, the following shortcuts are configured.
+This sample shows how to create custom keyboard shortcuts for an Office Add-in. Keyboard shortcuts let power users quickly use your add-in's features and give accessibility options to avoid using a mouse. In this sample, the following shortcuts are configured for each supported platform.
 
-- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Up arrow key</kbd>: Opens the add-in's task pane.
-- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Down arrow key</kbd>: Hides the add-in's task pane.
-- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Q</kbd>: Performs an action that's specific to the current Office host.
-  - **Excel**: Cycles through colors in the currently selected cell.
-  - **Word**: Adds text to the document.
+| Action | Windows | Mac | Web |
+| ----- | ----- | ----- | ----- |
+| Open the add-in's task pane | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Up arrow key</kbd> | <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>Up arrow key</kbd> | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>1</kbd> |
+| Hide the add-in's task pane | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Down arrow key</kbd> | <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>Down arrow key</kbd> | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>2</kbd> |
+| Perform an action that's specific to the current Office host<br>- **Excel**: Cycle through colors in the currently selected cell<br>- **Word**: Add text to the document | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Q</kbd> | <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>Q</kbd> | <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>3</kbd> |
 
 Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 
@@ -41,9 +41,6 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 - Office on the web
   - Excel
   - Word
-
-    > **Note**: The keyboard shortcut feature is currently being rolled out to Word on the web. If you test the feature in Word on the web at this time, the shortcuts may not work if they're activated from within the add-in's task pane. We recommend to periodically check [Keyboard Shortcuts requirement sets](https://learn.microsoft.com/javascript/api/requirement-sets/common/keyboard-shortcuts-requirement-sets) to find out when the feature is fully supported.
-
 - Office on Windows
   - Excel: Version 2111 (Build 14701.10000)
   - Word: Version 2408 (Build 17928.20114)
@@ -65,51 +62,41 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 
 | Version | Date | Comments |
 | ------- | ---- | -------- |
-| 1.0 | 11-5-2020 | Initial release |
+| 1.0 | November 5, 2020 | Initial release |
 | 1.1 | May 11, 2021 | Removed yo office and modified to be GitHub hosted |
 | 2.0 | September 27, 2024 | Added support for Word |
 | 2.1 | December 5, 2024 | Updated keyboard shortcuts |
+| 2.2 | July 29, 2025 | Added support for the unified manifest for Microsoft 365 and updated support in Word on the web |
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
+## Choose a manifest type
+
+By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest for Microsoft 365. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the add-in only manifest, skip ahead to the [Run the sample](#run-the-sample) section.
+
+### To switch to the unified manifest for Microsoft 365
+
+Copy all the files from the **manifest-configurations/unified** subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.xml** and **manifest-localhost.xml** files from the root folder, so only files needed for the unified manifest are present. Then, [run the sample](#run-the-sample).
+
+### To switch back to the add-in only manifest
+
+To switch back to the add-in only manifest, copy the files from the **manifest-configurations/add-in-only** subfolder to the sample's root folder. We recommend that you delete the **manifest.json** file from the root folder.
+
 ## Run the sample
 
-Run this sample with a [unified manifest for Microsoft 365](#run-with-the-unified-manifest-for-microsoft-365) or [add-in only manifest](#run-with-the-add-in-only-manifest). Use one of the following add-in file hosting options.
-
-> [!NOTE]
->
-> - Implementing keyboard shortcuts with the unified manifest for Microsoft 365 is currently in public developer preview. This shouldn't be used in production add-ins. We invite you to try it out in test or development environments. For more information, see the [Microsoft 365 app manifest schema reference](https://learn.microsoft.com/microsoft-365/extensibility/schema/?view=m365-app-prev&preserve-view=true).
+Run this sample with the [add-in only manifest](#run-with-the-add-in-only-manifest) or [unified manifest for Microsoft 365](#run-with-the-unified-manifest-for-microsoft-365). Use one of the following add-in file hosting options.
 
 ### Run with the unified manifest for Microsoft 365
 
-#### Use GitHub as the web host
-
-The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
-
-1. Download the **office-keyboard-shortcuts.zip** file from this sample to a folder on your computer.
-1. Sideload the sample to Excel or Word by following the instructions in [Sideload with the Teams Toolkit CLI (command-line interface)](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest#sideload-with-the-teams-toolkit-cli-command-line-interface).
-1. Verify that the add-in loaded successfully. You'll see a **Keyboard shortcuts** button on the **Home** tab of the ribbon.
-1. Follow the steps in [Try it out](#try-it-out) to test the sample.
-1. To uninstall the add-in, run the following command. Replace *{title ID}* with the add-in's title ID that was generated when you sideloaded the add-in.
-
-    ```console
-    teamsapp uninstall --mode title-id --title-id {title ID} --interactive false
-    ```
-
-#### Use localhost
-
-If you prefer to host the web server on localhost, follow these steps.
-
 1. Clone or download this repository.
 1. From a command prompt, go to the root of the project folder **/samples/office-keyboard-shortcuts**.
-1. Run the following commands.
+1. Run `npm install`.
+1. Run the applicable command for your Office application.
 
-    ```console
-    npm install
-    npm start
-    ```
+  - **Excel**: `npm run start:desktop:excel`
+  - **Word**: `npm run start:desktop:word`
 
     This starts the web server on localhost and sideloads the **manifest.json** file.
 
@@ -121,46 +108,9 @@ If you prefer to host the web server on localhost, follow these steps.
     npm stop
     ```
 
-#### Use Microsoft Azure
-
-You can deploy this sample with the unified manifest to Microsoft Azure using the Teams Toolkit extension in Visual Studio Code.
-
-1. In Visual Studio Code, go to the activity bar, then open the Teams Toolkit extension.
-1. In the Accounts section of the Teams Toolkit pane, choose **Sign in to Azure**.
-1. After you sign in, select a subscription under your account.
-1. In the Development section of the Teams Toolkit pane, choose **Provision in the cloud**. Alternatively, open the command palette and choose **Teams: Provision in the cloud**.
-1. Choose **Deploy to the cloud**. Alternatively, open the command palette and choose **Teams: Deploy to the cloud**.
-
-Once the sample is successfully deployed, follow these steps.
-
-1. Copy the endpoint of your new Azure deployment. Use one of the following methods.
-    - In Visual Studio Code, select **View** > **Output** to open the Output window. Then, copy the endpoint for your new Azure deployment.
-    - In the Azure portal, go to the new storage account. Then, choose **Data management** > **Static website** and copy the **Primary endpoint** value.
-1. Open the **./webpack.config.js** file.
-1. Change the `urlProd` constant to use the endpoint of your Azure deployment.
-1. Save your change. Then, run the following command.
-
-    ```console
-    npm run build
-    ```
-
-    This generates a new **manifest.json** file in the **dist** folder of your project that will load the add-in resources from your storage account.
-1. Run the following command.
-
-    ```console
-    npm run start:prod
-    ```
-
-    //TODO starts and the **manifest.json** file is sideloaded from the **dist** folder.
-1. Verify that the add-in loaded successfully. You'll see a **Keyboard shortcuts** button on the **Home** tab of the ribbon.
-1. Follow the steps in [Try it out](#try-it-out) to test the sample.
-1. To stop the web server and uninstall the add-in, run the following command.
-
-    ```console
-    npm run stop:prod
-    ```
-
 ### Run with the add-in only manifest
+
+To run the sample using the add-in only manifest, you can choose to host the web server on [GitHub](#use-github-as-the-web-host) or (localhost)[#use-localhost].
 
 #### Use GitHub as the web host
 
@@ -182,30 +132,31 @@ The quickest way to run the sample is to use GitHub as the web host. However, yo
 
 #### Use localhost
 
-If you prefer to host the web server on localhost, follow these steps.
+To host the web server on localhost:
 
 1. Clone or download this repository.
-1. From a command prompt, run the following commands.
+1. From a command prompt, go to the root of the project folder **/samples/office-keyboard-shortcuts**.
+1. Run `npm install`.
+1. Run the applicable command for your Office application.
 
-    ```console
-    npm install
-    npm run start:xml
-    ```
+  - **Excel**: `npm run start:desktop:excel`
+  - **Word**: `npm run start:desktop:word`
 
     This starts the web server on localhost and sideloads the **manifest-localhost.xml** file.
+
 1. Verify that the add-in loaded successfully. You'll see a **Keyboard shortcuts** button on the **Home** tab of the ribbon.
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 1. To stop the web server and uninstall the add-in, run the following command.
 
     ```console
-    npm run stop:xml
+    npm stop
     ```
 
 ## Try it out
 
 Once the add-in is loaded, try out its functionality.
 
-1. Press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Up arrow key</kbd> on your keyboard to open the add-in's task pane.
+1. Press the [applicable shortcut](#summary) on your keyboard to open the add-in's task pane.
 
   > [!NOTE]
   > If the keyboard shortcut is already in use in Excel or Word, a dialog will be shown so that you can select which action you'd like to map to the shortcut. Once you select an action, you can change your preference by invoking the **Reset Office Add-in Shortcut Preferences** command from the search field.

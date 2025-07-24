@@ -3,12 +3,12 @@
         {
             "id": "ShowTaskpane",
             "type": "ExecuteFunction",
-            "name": "Show task pane for add-in"
+            "name": "Show task pane"
         },
         {
             "id": "HideTaskpane",
             "type": "ExecuteFunction",
-            "name": "Hide task pane for add-in"
+            "name": "Hide task pane"
         },
         {
             "id": "RunAction",
@@ -26,25 +26,37 @@
         {
             "action": "ShowTaskpane",
             "key": {
-                "default": "Ctrl+Alt+Up"
+                "default": "Ctrl+Alt+Up",
+                "mac": "Command+Shift+Up",
+                "web": "Ctrl+Alt+1",
+                "windows": "Ctrl+Alt+Up"
             }
         },
         {
             "action": "HideTaskpane",
             "key": {
-                "default": "Ctrl+Alt+Down"
+                "default": "Ctrl+Alt+Down",
+                "mac": "Command+Shift+Down",
+                "web": "Ctrl+Alt+2",
+                "windows": "Ctrl+Alt+Down"
             }
         },
         {
             "action": "RunAction",
             "key": {
-                "default": "Ctrl+Alt+Q"
+                "default": "Ctrl+Alt+Q",
+                "mac": "Command+Shift+Q",
+                "web": "Ctrl+Alt+3",
+                "windows": "Ctrl+Alt+Q"
             }
         },
         {
             "action": "TestConflict",
             "key": {
-                "default": "Ctrl+R"
+                "default": "Ctrl+R",
+                "mac": "Command+Shift+R",
+                "web": "Ctrl+R",
+                "windows": "Ctrl+R"
             }
         }
     ]

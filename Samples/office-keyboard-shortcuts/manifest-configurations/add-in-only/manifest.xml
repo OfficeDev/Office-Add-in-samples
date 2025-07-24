@@ -9,8 +9,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Keyboard shortcuts sample"/>
   <Description DefaultValue="Shows how to add keyboard shortcuts to your Office Add-in."/>
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+  <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts/assets/icon-80.png"/>
   <SupportUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
@@ -20,7 +20,7 @@
     <Host Name="Workbook"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+    <SourceLocation DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts/src/taskpane.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -110,13 +110,13 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
-        <bt:Url id="ContosoAddin.Url" DefaultValue="https://localhost:3000/taskpane.html" />
+        <bt:Url id="ContosoAddin.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts/src/taskpane.html" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!" />
@@ -129,5 +129,5 @@
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
-  <ExtendedOverrides Url="https://localhost:3000/shortcuts.json"></ExtendedOverrides>
+  <ExtendedOverrides Url="https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts/src/shortcuts.json"></ExtendedOverrides>
 </OfficeApp>
