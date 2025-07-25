@@ -1,0 +1,206 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
+    "manifestVersion": "devPreview",
+    "version": "1.0.0",
+    "id": "05c2e1c9-3e1d-406e-9a91-e9ac64854143",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us"
+    },
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts",
+        "privacyUrl": "https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts",
+        "termsOfUseUrl": "https://officedev.github.io/Office-Add-in-samples/Samples/office-keyboard-shortcuts"
+    },
+    "name": {
+        "short": "Keyboard shortcuts sample",
+        "full": "Keyboard shortcuts sample"
+    },
+    "description": {
+        "short": "Shows how to add keyboard shortcuts to your Office Add-in.",
+        "full": "Shows how to add keyboard shortcuts to your Office Add-in."
+    },
+    "icons": {
+        "outline": "assets/outline.png",
+        "color": "assets/color.png"
+    },
+    "accentColor": "#230201",
+    "validDomains": [
+        "https://www.contoso.com"
+    ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "defaultBlockUntilAdminAction": false,
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "Document.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "extensions": [
+        {
+            "requirements": {
+                "scopes": [
+                    "document",
+                    "workbook"
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "AddinCommands",
+                                "minVersion": "1.1"
+                            }
+                        ]
+                    },
+                    "id": "TaskPaneRuntime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/taskpane.html"
+                    },
+                    "lifetime": "long",
+                    "actions": [
+                        {
+                            "id": "OpenTaskPane",
+                            "type": "openPage"
+                        },
+                        {
+                            "id": "ShowTaskpane",
+                            "type": "executeFunction",
+                            "displayName": "Show task pane"
+                        },
+                        {
+                            "id": "HideTaskpane",
+                            "type": "executeFunction",
+                            "displayName": "Hide task pane"
+                        },
+                        {
+                            "id": "RunAction",
+                            "type": "executeFunction",
+                            "displayName": "Run an action specific to the Office host"
+                        },
+                        {
+                            "id": "TestConflict",
+                            "type": "executeFunction",
+                            "displayName": "Test the conflict dialog"
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "contexts": [
+                        "default"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabHome",
+                            "groups": [
+                                {
+                                    "id": "CommandsGroup",
+                                    "label": "Commands Group",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "TaskpaneButton",
+                                            "type": "button",
+                                            "label": "Keyboard shortcuts",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Keyboard shortcuts",
+                                                "description": "Open the add-in task pane."
+                                            },
+                                            "actionId": "OpenTaskPane"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "keyboardShortcuts": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "SharedRuntime",
+                                "minVersion": "1.1"
+                            }
+                        ]
+                    },
+                    "shortcuts": [
+                        {
+                            "key": {
+                                "default": "Ctrl+Alt+Up",
+                                "mac": "Command+Shift+Up",
+                                "web": "Ctrl+Alt+1",
+                                "windows": "Ctrl+Alt+Up"
+                            },
+                            "actionId": "ShowTaskpane"
+                        },
+                        {
+                            "key": {
+                                "default": "Ctrl+Alt+Down",
+                                "mac": "Command+Shift+Down",
+                                "web": "Ctrl+Alt+2",
+                                "windows": "Ctrl+Alt+Down"
+                            },
+                            "actionId": "HideTaskpane"
+                        },
+                        {
+                            "key": {
+                                "default": "Ctrl+Alt+Q",
+                                "mac": "Command+Shift+Q",
+                                "web": "Ctrl+Alt+3",
+                                "windows": "Ctrl+Alt+Q"
+                            },
+                            "actionId": "RunAction"
+                        },
+                        {
+                            "key": {
+                                "default": "Ctrl+R",
+                                "mac": "Command+Shift+R",
+                                "web": "Ctrl+R",
+                                "windows": "Ctrl+R"
+                            },
+                            "actionId": "TestConflict"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
