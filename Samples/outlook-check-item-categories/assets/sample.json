@@ -12,7 +12,9 @@
       "creationDateTime": "2022-05-05",
       "updateDateTime": "2022-12-02",
       "products": [
-        "Office"
+        "Office",
+        "Teams",
+        "Microsoft 365 Agent Toolkit"
       ],
       "metadata": [
         {
