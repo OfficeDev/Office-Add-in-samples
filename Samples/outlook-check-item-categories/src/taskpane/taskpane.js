@@ -3,8 +3,6 @@
  * See LICENSE in the project root for license information.
  */
 
-/* global document, Office */
-
 Office.onReady((info) => {
   if (info.host === Office.HostType.Outlook) {
     document.getElementById("sideload-msg").style.display = "none";
@@ -28,6 +26,7 @@ function getCategories() {
       return;
     }
 
+    clearElement("categories-container"); 
     let selection = document.createElement("select");
     selection.name = "applicable-categories";
     selection.id = "applicable-categories";
@@ -48,10 +47,9 @@ function getCategories() {
       }
     });
 
-    document
-      .getElementById("categories-container")
-      .appendChild(label)
-      .appendChild(selection);
+    const container = document.getElementById("categories-container");
+    container.appendChild(label);
+    container.appendChild(selection);
   });
 }
 
