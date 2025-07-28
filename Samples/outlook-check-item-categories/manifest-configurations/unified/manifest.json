@@ -23,8 +23,7 @@
     },
     "accentColor": "#230201",
     "localizationInfo": {
-        "defaultLanguageTag": "en-us",
-        "additionalLanguages": []
+        "defaultLanguageTag": "en-us"
     },
     "authorization": {
         "permissions": {
@@ -87,23 +86,19 @@
                     "actions": [
                         {
                             "id": "onMessageComposeHandler",
-                            "type": "executeFunction",
-                            "displayName": "onMessageComposeHandler"
+                            "type": "executeFunction"
                         },
                         {
                             "id": "onAppointmentComposeHandler",
-                            "type": "executeFunction",
-                            "displayName": "onAppointmentComposeHandler"
+                            "type": "executeFunction"
                         },
                         {
                             "id": "onMessageSendHandler",
-                            "type": "executeFunction",
-                            "displayName": "onMessageSendHandler"
+                            "type": "executeFunction"
                         },
                         {
                             "id": "onAppointmentSendHandler",
-                            "type": "executeFunction",
-                            "displayName": "onAppointmentSendHandler"
+                            "type": "executeFunction"
                         }
                     ]
                 }
