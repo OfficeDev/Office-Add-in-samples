@@ -69,40 +69,31 @@ For documentation related to this sample, see the following:
     npm -v
     ```
 
-- (Optional) If you want to run the sample with a [unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview) using GitHub as the web host, install the [Microsoft 365 Agents Toolkit command line interface (CLI)](https://learn.microsoft.com/microsoftteams/platform/toolkit/microsoft-365-agents-toolkit-cli). From a command prompt, run the following command.
+## Choose a manifest type
 
-    ```console
-    npm install -g @microsoft/m365agentstoolkit-cli
-    ```
-
-## Run the sample
-
-Run this sample with a [unified manifest for Microsoft 365](#run-with-the-unified-manifest-for-microsoft-365) or [add-in only manifest](#run-with-the-add-in-only-manifest). Use one of the following add-in file hosting options.
+By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest for Microsoft 365. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the add-in only manifest, skip ahead to the [Run the sample](#run-the-sample) section.
 
 > [!NOTE]
 > To run the sample in Outlook on the web, on Mac, or in the new Outlook on Windows, use the [add-in only manifest](#run-with-the-add-in-only-manifest). For more information on manifests and their supported platforms, see [Office Add-in manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). For information about events and their supported platforms, see [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation#supported-events).
 
-### Run with the unified manifest for Microsoft 365
+### To switch to the unified manifest for Microsoft 365
 
-#### Use GitHub as the web host
+Copy all the files from the **manifest-configurations/unified** subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.xml** and **manifest-localhost.xml** files from the root folder, so only files needed for the unified manifest are present. Then, [run the sample](#run-the-sample).
 
-The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
+### To switch back to the add-in only manifest
 
-1. Download the **outlook-verify-sensitivity-label.zip** file from this sample to a folder on your computer.
-1. Sideload the sample to Outlook by following the instructions in [Sideload with Microsoft 365 Agents Toolkit CLI (command-line interface)](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest#sideload-with-microsoft-365-agents-toolkit-cli-command-line-interface). Skip the steps to create a zip package.
-1. Follow the steps in [Try it out](#try-it-out) to test the sample.
-1. To uninstall the add-in from Outlook, run the following command. Replace *{title ID}* with the add-in's title ID that was generated when you sideloaded the add-in.
+To switch back to the add-in only manifest, copy the files from the **manifest-configurations/add-in-only** subfolder to the sample's root folder. We recommend that you delete the **manifest.json** file from the root folder.
 
-    ```console
-    atk uninstall --mode title-id --title-id {title ID} --interactive false
-    ```
+## Run the sample
 
-#### Use localhost
+To run the sample, choose whether to host the add-in's web files on localhost or on GitHub.
+
+### Use localhost
 
 If you prefer to host the web server on localhost, follow these steps.
 
 1. Clone or download this repository.
-1. From a command prompt, go to the root of the project folder **/samples/outlook-verify-sensitivity-label**.
+1. From a command prompt, go to the root of the project folder **/Samples/outlook-verify-sensitivity-label**.
 1. Run the following commands.
 
     ```console
@@ -110,7 +101,7 @@ If you prefer to host the web server on localhost, follow these steps.
     npm start
     ```
 
-    This starts the web server on localhost and sideloads the **manifest.json** file to Outlook.
+    This starts the web server on localhost and sideloads the manifest file.
 
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
@@ -120,9 +111,10 @@ If you prefer to host the web server on localhost, follow these steps.
     npm stop
     ```
 
-### Run with the add-in only manifest
+### Use GitHub
 
-#### Use GitHub as the web host
+> [!NOTE]
+> The option to use GitHub as the web host only applies to the add-in only manifest.
 
 The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
 
@@ -130,28 +122,6 @@ The quickest way to run the sample is to use GitHub as the web host. However, yo
 1. Sideload the add-in only manifest by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#sideload-manually).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 1. To uninstall the add-in from Outlook, follow the instructions in [Remove a sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#remove-a-sideloaded-add-in).
-
-#### Use localhost
-
-If you prefer to host the web server on localhost, follow these steps.
-
-1. Clone or download this repository.
-1. From a command prompt, run the following commands.
-
-    ```console
-    npm install
-    npm run start:xml
-    ```
-
-    This starts the web server on localhost and sideloads the **manifest-localhost.xml** file to Outlook.
-
-1. Follow the steps in [Try it out](#try-it-out) to test the sample.
-
-1. To stop the web server and uninstall the add-in from Outlook, run the following command.
-
-    ```console
-    npm run stop:xml
-    ```
 
 ## Try it out
 
