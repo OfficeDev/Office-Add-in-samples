@@ -6,6 +6,7 @@ products:
   - office-outlook
   - office
   - m365
+  - office-teams
 languages:
   - javascript
 extensions:
@@ -44,7 +45,7 @@ This sample uses the sensitivity label API in an event-based add-in to verify an
 For documentation related to this sample, see the following:
 
 - [Manage the sensitivity label of your message or appointment in compose mode](https://learn.microsoft.com/office/dev/add-ins/outlook/sensitivity-label)
-- [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch)
+- [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation)
 - [Handle OnMessageSend and OnAppointmentSend events in your Outlook add-in with Smart Alerts](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events)
 
 ## Applies to
@@ -426,7 +427,7 @@ Office.context.mailbox.item.sensitivityLabel.setAsync(labelId, { asyncContext: e
 |1.1|May 19, 2023|Update for General Availability (GA) of the sensitivity label API|
 |1.2|October 12, 2023|Update supported version of Outlook on Mac|
 |1.3|January 11, 2024|Remove Microsoft 365 Insider Program requirement|
-|1.4|July 1, 2025|Add support for the unified manifest for Microsoft 365 and move add-in logic to other event handlers|
+|1.4|July 28, 2025|Add support for the unified manifest for Microsoft 365 and move add-in logic to other event handlers|
 
 ## Copyright
 
