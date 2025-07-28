@@ -70,7 +70,8 @@ $ cd Excel.OfflineStorageAddin
 
 ## Choose a manifest type
 
-By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/add-in-manifests).
+By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests).
+
 
 If you want to continue with the add-in only manifest, skip ahead to the [Run the sample](#run-the-sample) section.
 
@@ -84,16 +85,16 @@ If you want to switch back to the add-in only manifest, copy the files in the **
 
 ## Run the sample
 
-You can try out this sample by running the following commands:
+You can try out this sample by running the following commands.
 
 ```command&nbsp;line
-# this will download the node modules needed to run this add-in
+# This will download the node modules needed to run this add-in.
 $ npm install
 
 # this will build the add-in 
 $ npm run build
 
-# this will start the server on your desktop and launch your add-in on Excel
+# This will start the server on your desktop and launch your add-in on Excel.
 $ npm run start
 ```
 
