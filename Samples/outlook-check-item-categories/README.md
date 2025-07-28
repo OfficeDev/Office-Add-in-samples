@@ -80,14 +80,13 @@ To switch back to the add-in only manifest, copy the files from the **manifest-c
 
 ## Run the sample
 
-To run the sample, you can choose to host the add-in's web files on localhost or on GitHub.
+To run the sample, choose whether to host the add-in's web files on localhost or on GitHub.
 
 ### Use localhost
 
 1. Clone or download this repository.
 1. From a command prompt, go to the root of the project folder **Samples/outlook-check-item-categories**.
 1. Run `npm install`.
-1. Run `npm run build`.
 1. Run `npm start`. This starts the web server on localhost and sideloads the manifest file.
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 1. To stop the web server and uninstall the add-in, run `npm stop`.
