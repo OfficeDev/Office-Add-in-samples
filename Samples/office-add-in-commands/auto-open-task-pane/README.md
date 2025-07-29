@@ -3,6 +3,7 @@ page_type: sample
 urlFragment: word-auto-open-with-document
 products:
   - office-add-ins
+  - office-teams
   - office-word
   - office
   - m365
