@@ -38,7 +38,7 @@ Your Office Add-in may need the task pane to automatically open in certain docum
 
 ## Decide on a manifest type
 
-There are two types of manifests for Office Add-ins. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/add-in-manifests).
+There are two types of manifests for Office Add-ins. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests).
 
 - **Add-in only manifest**: By default, the sample supports the add-in only manifest. In the root of the sample, there are two versions of the add-in only manifest to support the two ways of hosting the web app part of the add-in: **manifest.xml** and **manifest-localhost.xml**. For convenience, a copy of the files needed for using the add-in only manifest can be found in the **manifest-configurations/add-in-only** subfolder.
 
@@ -48,7 +48,7 @@ There are two types of manifests for Office Add-ins. For more information about 
 
    To work with the unified manifest continue with the [Use the unified manifest](#use-the-unified-manifest) section.
 
-   > **Note:** If you ever want to switch back to the add-in only manifest, copy the files in the **manifest-configurations/add-in-only** subfolder to the sample's root directory. We recommend that you delete the following files the root of the sample, so only files needed for the add-only manifest are present in the root.
+   > **Note**: If you ever want to switch back to the add-in only manifest, copy the files in the **manifest-configurations/add-in-only** subfolder to the sample's root directory. We recommend that you delete the following files the root of the sample, so only files needed for the add-only manifest are present in the root.
    >
    > - **manifest.json**
    > - **package.json**
@@ -117,17 +117,17 @@ Now that your localhost web server is running, you can sideload the **manifest-l
 
 #### Run the sample with GitHub as the host
 
-An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The Hello World sample is configured so that the files are hosted directly from this GitHub repo, so all you need to do is build the manifest and package, and then sideload the package. 
+An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The Auto-open sample is configured so that the files are hosted directly from this GitHub repo, so all you need to do is build the manifest and package, and then sideload the package. 
 
 1. Clone or download this sample to a folder on your computer. Then in a command prompt, bash shell, or **TERMINAL** in Visual Studio Code, navigate to the root of the sample folder.
 1. Run the command `npm install`.
 1. Run the command `npm run build`.
 1. Run the command `npm run start:prod`.
 
-   After a few seconds, desktop Word opens, and after a few seconds more, a **Auto-open Sample** button appears on the right end of the **Home** tab.
+   After a few seconds, desktop Word opens, and after a few seconds more, an **Auto-open Sample** button appears on the right end of the **Home** tab.
 
 1. Choose the **Auto-open Sample** button to display the task pane of the add-in.
-1. Choose **Set auto-open ON**. Then, close and reopen the document. The add-in will open automatically. If you choose **Set auto-open OFF**, then when you reopen the document, the task pane will not open.
+1. Choose **Set auto-open ON**. Then, close and reopen the document. The add-in will open automatically. If you choose **Set auto-open OFF**, then when you reopen the document, the task pane won't open.
 
 When you're finished working with the add-in, close Word, and then in the window where you ran the three npm commands, run `npm run stop:prod`.
 
@@ -139,9 +139,9 @@ If you prefer to configure a web server and host the add-in's web files from you
 1. Run the command `npm install`.
 1. Run the command `npm start`.
 
-   - If you've never developed an Office add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security cert and/or install a new one. Agree to both prompts. 
+   - If you've never developed an Office Add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security cert and install a new one. Agree to both prompts. 
    - After a few seconds a **webpack** dev-server window will open and your files will be hosted there on localhost:3000.
-   - When the server is successfully running, desktop Word opens, and after a few seconds more, a **Auto-open Sample** button appears on the right end of the **Home** tab. 
+   - When the server is successfully running, desktop Word opens, and after a few seconds more, an **Auto-open Sample** button appears on the right end of the **Home** tab. 
 
 1. Choose the **Auto-open Sample** button to display the task pane of the add-in.
 1. Choose **Set auto-open ON**. Then, close and reopen the document. The add-in will open automatically. If you choose **Set auto-open OFF**, then when you reopen the document, the task pane will not open.

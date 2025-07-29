@@ -157,7 +157,7 @@
                         },
                         "highResolutionIcon": {
                             "size": 64,
-                            "url": "https://localhost:300/assets/icon-64.png"
+                            "url": "https://localhost:3000/assets/icon-64.png"
                         }
                     }
                 }
