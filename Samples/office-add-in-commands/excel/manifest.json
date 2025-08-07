@@ -3,13 +3,12 @@
   "manifestVersion": "devPreview",
   "version": "1.0.0",
   "id": "1752701e-e44f-496d-b4cc-3f3144491978",
-  "packageName": "com.contoso.exceladdincommands",
   "localizationInfo": {
     "defaultLanguageTag": "en-us"
   },
   "developer": {
     "name": "Contoso",
-    "websiteUrl": "https://officedev.github.io",
+    "websiteUrl": "https://www.contoso.com/help",
     "privacyUrl": "https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands",
     "termsOfUseUrl": "https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands"
   },
@@ -26,30 +25,18 @@
     "color": "assets/icon-64.png"
   },
   "accentColor": "#4464ee",
-  "configurableTabs": [],
-  "staticTabs": [
-    {
-      "entityId": "excelTaskPane",
-      "name": "Excel Add-in Commands",
-      "contentUrl": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/taskpane/taskpane.html",
-      "websiteUrl": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/taskpane/taskpane.html",
-      "scopes": ["personal"]
-    }
-  ],
-  "bots": [],
-  "connectors": [],
-  "composeExtensions": [],
-  "permissions": [
-    "identity"
-  ],
   "validDomains": [
-    "officedev.github.io",
-    "learn.microsoft.com",
-    "go.microsoft.com"
+    "https://www.contoso.com"
   ],
-  "webApplicationInfo": {
-    "id": "1752701e-e44f-496d-b4cc-3f3144491978",
-    "resource": "https://officedev.github.io"
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Document.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
   },
   "extensions": [
     {
@@ -59,10 +46,18 @@
       },
       "runtimes": [
         {
+          "requirements": {
+            "capabilities": [
+              {
+                "name": "AddinCommands",
+                "minVersion": "1.1"
+              }
+            ]
+          },
           "id": "CommandsRuntime",
           "type": "general",
           "code": {
-            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/src/commands/commands.html"
+            "page": "https://localhost:3000/commands/commands.html"
           },
           "lifetime": "short",
           "actions": [
@@ -70,28 +65,20 @@
               "id": "writeValue",
               "type": "executeFunction",
               "displayName": "Write Value"
-            },
-            {
-              "id": "showTaskPane",
-              "type": "openPage",
-              "displayName": "Show Task Pane",
-              "view": "taskpane"
             }
           ]
         },
         {
-          "id": "TaskpaneRuntime",
+          "id": "TaskPaneRuntime",
           "type": "general",
           "code": {
-            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/src/taskpane/taskpane.html"
+            "page": "https://localhost:3000/taskpane/taskpane.html"
           },
           "lifetime": "short",
           "actions": [
             {
-              "id": "taskpaneAction",
-              "type": "openPage",
-              "displayName": "Task Pane",
-              "view": "taskpane"
+              "id": "showTaskPane",
+              "type": "openPage"
             }
           ]
         }
@@ -109,41 +96,42 @@
                   "icons": [
                     {
                       "size": 16,
-                      "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-16.png"
+                      "url": "https://localhost:3000/assets/icon-16.png"
                     },
                     {
                       "size": 32,
-                      "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-32.png"
+                      "url": "https://localhost:3000/assets/icon-32.png"
                     },
                     {
                       "size": 80,
-                      "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-80.png"
+                      "url": "https://localhost:3000/assets/icon-80.png"
                     }
                   ],
                   "controls": [
                     {
-                      "id": "Contoso.TaskpaneButton",
+                      "id": "Contoso.TaskPaneButton",
                       "type": "button",
                       "label": "Show task pane",
                       "icons": [
                         {
                           "size": 16,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-16.png"
+                          "url": "https://localhost:3000/assets/icon-16.png"
                         },
                         {
                           "size": 32,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-32.png"
+                          "url": "https://localhost:3000/assets/icon-32.png"
                         },
                         {
                           "size": 80,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-80.png"
+                          "url": "https://localhost:3000/assets/icon-80.png"
                         }
                       ],
                       "supertip": {
                         "title": "Show task pane",
-                        "description": "Choose to show a task pane"
+                        "description": "Choose to show a task pane."
                       },
-                      "actionId": "showTaskPane"
+                      "actionId": "showTaskPane",
+                      "enabled": true
                     },
                     {
                       "id": "Contoso.Menu",
@@ -152,20 +140,20 @@
                       "icons": [
                         {
                           "size": 16,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-16.png"
+                          "url": "https://localhost:3000/assets/icon-16.png"
                         },
                         {
                           "size": 32,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-32.png"
+                          "url": "https://localhost:3000/assets/icon-32.png"
                         },
                         {
                           "size": 80,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-80.png"
+                          "url": "https://localhost:3000/assets/icon-80.png"
                         }
                       ],
                       "supertip": {
                         "title": "Dropdown menu",
-                        "description": "Show the dropdown menu"
+                        "description": "Show the dropdown menu."
                       },
                       "items": [
                         {
@@ -175,22 +163,23 @@
                           "icons": [
                             {
                               "size": 16,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-16.png"
+                              "url": "https://localhost:3000/assets/icon-16.png"
                             },
                             {
                               "size": 32,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-32.png"
+                              "url": "https://localhost:3000/assets/icon-32.png"
                             },
                             {
                               "size": 80,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-80.png"
+                              "url": "https://localhost:3000/assets/icon-80.png"
                             }
                           ],
                           "supertip": {
                             "title": "Show task pane",
-                            "description": "Choose to show a task pane"
+                            "description": "Choose to show a task pane."
                           },
-                          "actionId": "showTaskPane"
+                          "actionId": "showTaskPane",
+                          "enabled": true
                         },
                         {
                           "id": "itemExecuteFunction",
@@ -199,22 +188,23 @@
                           "icons": [
                             {
                               "size": 16,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-16.png"
+                              "url": "https://localhost:3000/assets/icon-16.png"
                             },
                             {
                               "size": 32,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-32.png"
+                              "url": "https://localhost:3000/assets/icon-32.png"
                             },
                             {
                               "size": 80,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/excel/assets/icon-80.png"
+                              "url": "https://localhost:3000/assets/icon-80.png"
                             }
                           ],
                           "supertip": {
                             "title": "Write value",
-                            "description": "Choose to show a task pane"
+                            "description": "Choose to write a value to the document."
                           },
-                          "actionId": "writeValue"
+                          "actionId": "writeValue",
+                          "enabled": true
                         }
                       ]
                     }

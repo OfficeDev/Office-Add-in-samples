@@ -3,7 +3,6 @@
   "manifestVersion": "devPreview",
   "version": "1.0.0",
   "id": "67c8205e-f6ff-4e77-ad0f-8b4b7cc98b38",
-  "packageName": "com.contoso.powerpointaddincommands",
   "localizationInfo": {
     "defaultLanguageTag": "en-us"
   },
@@ -26,49 +25,39 @@
     "color": "assets/icon-64.png"
   },
   "accentColor": "#4464ee",
-  "configurableTabs": [],
-  "staticTabs": [
-    {
-      "entityId": "powerpointTaskPane",
-      "name": "PowerPoint Add-in Commands",
-      "contentUrl": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/src/taskpane/taskpane.html",
-      "websiteUrl": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/src/taskpane/taskpane.html",
-      "scopes": ["personal"]
-    }
-  ],
-  "bots": [],
-  "connectors": [],
-  "composeExtensions": [],
-  "permissions": [
-    "identity"
-  ],
   "validDomains": [
-    "officedev.github.io",
-    "learn.microsoft.com",
-    "go.microsoft.com"
+    "https://www.contoso.com"
   ],
-  "webApplicationInfo": {
-    "id": "67c8205e-f6ff-4e77-ad0f-8b4b7cc98b38",
-    "resource": "https://officedev.github.io"
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Document.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
   },
   "extensions": [
     {
       "requirements": {
         "scopes": ["presentation"],
-        "formFactors": ["desktop"],
-        "capabilities": [
-          {
-            "name": "AddinCommands",
-            "minVersion": "1.1"
-          }
-        ]
+        "formFactors": ["desktop"]
       },
       "runtimes": [
         {
+          "requirements": {
+            "capabilities": [
+              {
+                "name": "AddinCommands",
+                "minVersion": "1.1"
+              }
+            ]
+          },
           "id": "CommandsRuntime",
           "type": "general",
           "code": {
-            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/src/commands/commands.html"
+            "page": "https://localhost:3000/commands/commands.html"
           },
           "lifetime": "short",
           "actions": [
@@ -76,28 +65,20 @@
               "id": "writeValue",
               "type": "executeFunction",
               "displayName": "Write Value"
-            },
-            {
-              "id": "showTaskPane",
-              "type": "openPage",
-              "displayName": "Show Task Pane",
-              "view": "taskpane"
             }
           ]
         },
         {
-          "id": "TaskpaneRuntime",
+          "id": "TaskPaneRuntime",
           "type": "general",
           "code": {
-            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/src/taskpane/taskpane.html"
+            "page": "https://localhost:3000/taskpane/taskpane.html"
           },
           "lifetime": "short",
           "actions": [
             {
-              "id": "taskpaneAction",
-              "type": "openPage",
-              "displayName": "Task Pane",
-              "view": "taskpane"
+              "id": "showTaskPane",
+              "type": "openPage"
             }
           ]
         }
@@ -115,41 +96,42 @@
                   "icons": [
                     {
                       "size": 16,
-                      "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-16.png"
+                      "url": "https://localhost:3000/assets/icon-16.png"
                     },
                     {
                       "size": 32,
-                      "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-32.png"
+                      "url": "https://localhost:3000/assets/icon-32.png"
                     },
                     {
                       "size": 80,
-                      "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-80.png"
+                      "url": "https://localhost:3000/assets/icon-80.png"
                     }
                   ],
                   "controls": [
                     {
-                      "id": "Contoso.TaskpaneButton",
+                      "id": "Contoso.TaskPaneButton",
                       "type": "button",
                       "label": "Show task pane",
                       "icons": [
                         {
                           "size": 16,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-16.png"
+                          "url": "https://localhost:3000/assets/icon-16.png"
                         },
                         {
                           "size": 32,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-32.png"
+                          "url": "https://localhost:3000/assets/icon-32.png"
                         },
                         {
                           "size": 80,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-80.png"
+                          "url": "https://localhost:3000/assets/icon-80.png"
                         }
                       ],
                       "supertip": {
                         "title": "Show task pane",
-                        "description": "Choose to show a task pane"
+                        "description": "Choose to show a task pane."
                       },
-                      "actionId": "showTaskPane"
+                      "actionId": "showTaskPane",
+                      "enabled": true
                     },
                     {
                       "id": "Contoso.Menu",
@@ -158,20 +140,20 @@
                       "icons": [
                         {
                           "size": 16,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-16.png"
+                          "url": "https://localhost:3000/assets/icon-16.png"
                         },
                         {
                           "size": 32,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-32.png"
+                          "url": "https://localhost:3000/assets/icon-32.png"
                         },
                         {
                           "size": 80,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-80.png"
+                          "url": "https://localhost:3000/assets/icon-80.png"
                         }
                       ],
                       "supertip": {
                         "title": "Dropdown menu",
-                        "description": "Show the dropdown menu"
+                        "description": "Show the dropdown menu."
                       },
                       "items": [
                         {
@@ -181,22 +163,23 @@
                           "icons": [
                             {
                               "size": 16,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-16.png"
+                              "url": "https://localhost:3000/assets/icon-16.png"
                             },
                             {
                               "size": 32,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-32.png"
+                              "url": "https://localhost:3000/assets/icon-32.png"
                             },
                             {
                               "size": 80,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-80.png"
+                              "url": "https://localhost:3000/assets/icon-80.png"
                             }
                           ],
                           "supertip": {
                             "title": "Show task pane",
-                            "description": "Choose to show a task pane"
+                            "description": "Choose to show a task pane."
                           },
-                          "actionId": "showTaskPane"
+                          "actionId": "showTaskPane",
+                          "enabled": true
                         },
                         {
                           "id": "itemExecuteFunction",
@@ -205,22 +188,23 @@
                           "icons": [
                             {
                               "size": 16,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-16.png"
+                              "url": "https://localhost:3000/assets/icon-16.png"
                             },
                             {
                               "size": 32,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-32.png"
+                              "url": "https://localhost:3000/assets/icon-32.png"
                             },
                             {
                               "size": 80,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/powerpoint/assets/icon-80.png"
+                              "url": "https://localhost:3000/assets/icon-80.png"
                             }
                           ],
                           "supertip": {
                             "title": "Write value",
-                            "description": "Choose to show a task pane"
+                            "description": "Choose to write a value to the document."
                           },
-                          "actionId": "writeValue"
+                          "actionId": "writeValue",
+                          "enabled": true
                         }
                       ]
                     }
