@@ -43,7 +43,7 @@ Learn how to build an Office Add-in that has a command button to show the task p
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 12-09-2021 | Initial release |
-| 1.1 | 07-18-2025 | Add support for the unified manifest for Microsoft 365 |
+| 1.1 | 08-07-2025 | Add support for the unified manifest for Microsoft 365 |
 
 ## Decide on a version of the manifest
 
@@ -72,13 +72,13 @@ If you prefer to configure a web server and host the add-in's web files from you
 
 1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
-1. You need http-server to run the local web server. If you haven't installed this yet you can do this with the following command.
+1. You need http-server to run the local web server. If you haven't installed this yet, you can do this with the following command.
 
     ```console
     npm install --global http-server
     ```
 
-1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command.
+1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet, you can do this with the following command.
 
     ```console
     npm install --global office-addin-dev-certs
@@ -95,7 +95,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 
 1. Go to the folder location where the certificate files were generated. Copy the localhost.crt and localhost.key files to the hello world sample folder.
 
-1. Run the following command:
+1. Run the following command.
 
     ```console
     http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
@@ -106,6 +106,34 @@ If you prefer to configure a web server and host the add-in's web files from you
 1. Sideload **manifest-localhost.xml** in Word by following the appropriate instructions in the article [Sideload an Office Add-in for testing](https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing).
 
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+
+### Key parts of this sample
+
+#### Commands UI
+
+The **manifest.xml** file defines all of the commands UI in the `<ExtensionPoint>` element.
+The ribbon buttons and dropdown menu are specified in the `<OfficeTab>` section. Because `<OfficeTab id="TabHome">` specifies `TabHome`, the buttons are located on the **Home** ribbon tab.
+
+For more information about ExtensionPoint elements and options, see [Add ExtensionPoint elements](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-4-add-extensionpoint-elements).
+
+#### Commands JavaScript
+
+The **manifest.xml** file contains a `<FunctionFile resid="Commands.Url"/>` element that specifies where to find the JavaScript commands to run when buttons are used. The `Commands.Url` resource ID points to `/src/commands/commands.html`. When a button command is chosen, **commands.html** is loaded, which then loads `/src/commands/commands.js`. This is where the `ExecuteFunction` actions are mapped from the **manifest.xml** file.
+
+For example, the following manifest XML maps to the `writeValue` function in **commands.js**.
+
+```xml
+<Action xsi:type="ExecuteFunction">
+  <FunctionName>writeValue</FunctionName>
+</Action>
+```
+
+```javascript
+async function writeValue(event) {
+...
+```
+
+For more information about adding commands, see [Add the FunctionFile element](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-3-add-the-functionfile-element).
 
 ## Unified manifest
 
@@ -163,31 +191,29 @@ If you prefer to host the web server on localhost, follow these steps:
     npm stop
     ```
 
-## Try it out
-
-1. Verify that the add-in loaded successfully. You'll see a **Show task pane** button and **Dropdown menu** button on the **Home** tab on the ribbon.
-
-1. On the **Home** tab, choose the **Show task pane** button to display the task pane of the add-in. Choose the **Dropdown menu** button to see a dropdown menu. From the menu, you can show the task pane, or choose **Write value** to call a command that writes the button's ID to the current cell.
-
 ## Key parts of this sample
 
 ### Commands UI
 
-The **manifest.xml** file defines all of the commands UI in the `<ExtensionPoint>` element.
-The ribbon buttons and dropdown menu are specified in the `<OfficeTab>` section. Because `<OfficeTab id="TabHome">` specifies `TabHome`, the buttons are located on the **Home** ribbon tab.
+The **manifest.json** file defines all of the commands UI in the "extensions" array.
+The ribbon buttons and dropdown menu are specified in the "ribbons.tabs" array. Because "builtInTabId" specifies `TabHome`, the buttons are located on the **Home** ribbon tab.
 
-For more information about ExtensionPoint elements and options, see [Add ExtensionPoint elements](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-6-add-extensionpoint-elements).
+For more information about adding ribbon buttons, see [Menu and menu items](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands-unified-manifest#menu-and-menu-items).
 
 ### Commands JavaScript
 
-The **manifest.xml** file contains a `<FunctionFile resid="Commands.Url"/>` element that specifies where to find the JavaScript commands to run when buttons are used. The `Commands.Url` resource ID points to `/src/commands/commands.html`. When a button command is chosen, `commands.html` is loaded, which then loads `/src/commands/commands.js`. This is where the `ExecuteFunction` actions are mapped from the `manifest.xml` file.
+The **manifest.json** file contains a runtime in the "extensions.runtimes" array with "id" set to "CommandsRuntime" that specifies where to find the JavaScript commands to run when buttons are used. The "code.page" property points to `/src/commands/commands.html`. When a button command is chosen, **commands.html** is loaded, which then loads `/src/commands/commands.js`. This is where the `executeFunction` actions are mapped from the **manifest.json** file.
 
-For example the following manifest XML maps to the `writeValue` function in `commands.js`.
+For example, the following manifest JSON maps to the `writeValue` function in **commands.js**.
 
-```xml
-<Action xsi:type="ExecuteFunction">
-  <FunctionName>writeValue</FunctionName>
-</Action>
+```json
+"actions": [
+  {
+    "id": "writeValue",
+    "type": "executeFunction",
+    "displayName": "Write Value"
+  }
+]
 ```
 
 ```javascript
@@ -195,7 +221,13 @@ async function writeValue(event) {
 ...
 ```
 
-For more information about adding commands, see [Add the FunctionFile element](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-5-add-the-functionfile-element).
+For more information about adding commands, see [Add a function command](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands-unified-manifest#add-a-function-command).
+
+## Try it out
+
+1. Verify that the add-in loaded successfully. You'll see a **Show task pane** button and **Dropdown menu** button on the **Home** tab on the ribbon.
+
+1. On the **Home** tab, choose the **Show task pane** button to display the task pane of the add-in. Choose the **Dropdown menu** button to see a dropdown menu. From the menu, you can show the task pane, or choose **Write value** to call a command that writes the button's ID to the current cell.
 
 ## Copyright
 

@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
   "manifestVersion": "devPreview",
   "version": "1.0.0",
-  "id": "1752701e-e44f-496d-b4cc-3f3144491978",
+  "id": "85c389da-047f-406c-bb4c-d9ede06884ce",
   "localizationInfo": {
     "defaultLanguageTag": "en-us"
   },
@@ -13,12 +13,12 @@
     "termsOfUseUrl": "https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands"
   },
   "name": {
-    "short": "Excel Add-in Commands",
-    "full": "Excel Add-in Commands - Office Add-in Sample"
+    "short": "Word Add-in Commands",
+    "full": "Word Add-in Commands - Office Add-in Sample"
   },
   "description": {
-    "short": "A template to get started with Excel add-in commands.",
-    "full": "This is a sample Excel add-in that demonstrates how to implement add-in commands in the ribbon. It provides examples of button controls and menu controls that can be used to extend Excel's functionality with task panes and function execution."
+    "short": "A template to get started with Word add-in commands.",
+    "full": "This is a sample Word add-in that demonstrates how to implement add-in commands in the ribbon. It provides examples of button controls and menu controls that can be used to extend Word's functionality with task panes and function execution."
   },
   "icons": {
     "outline": "assets/icon-32.png",
@@ -41,23 +41,15 @@
   "extensions": [
     {
       "requirements": {
-        "scopes": ["workbook"],
+        "scopes": ["document"],
         "formFactors": ["desktop"]
       },
       "runtimes": [
         {
-          "requirements": {
-            "capabilities": [
-              {
-                "name": "AddinCommands",
-                "minVersion": "1.1"
-              }
-            ]
-          },
           "id": "CommandsRuntime",
           "type": "general",
           "code": {
-            "page": "https://localhost:3000/commands/commands.html"
+            "page": "https://localhost:3000/commands.html"
           },
           "lifetime": "short",
           "actions": [
@@ -72,7 +64,7 @@
           "id": "TaskPaneRuntime",
           "type": "general",
           "code": {
-            "page": "https://localhost:3000/taskpane/taskpane.html"
+            "page": "https://localhost:3000/taskpane.html"
           },
           "lifetime": "short",
           "actions": [
