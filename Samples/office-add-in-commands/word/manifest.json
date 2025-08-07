@@ -8,7 +8,7 @@
   },
   "developer": {
     "name": "Contoso",
-    "websiteUrl": "https://officedev.github.io",
+    "websiteUrl": "https://www.contoso.com/help",
     "privacyUrl": "https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands",
     "termsOfUseUrl": "https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands"
   },
@@ -18,7 +18,7 @@
   },
   "description": {
     "short": "A template to get started with Word add-in commands.",
-    "full": "This is a sample Word add-in that demonstrates how to implement add-in commands in the ribbon. It provides examples of button controls and menu controls that can be used to extend Word's functionality."
+    "full": "This is a sample Word add-in that demonstrates how to implement add-in commands in the ribbon. It provides examples of button controls and menu controls that can be used to extend Word's functionality with task panes and function execution."
   },
   "icons": {
     "outline": "assets/icon-32.png",
@@ -26,11 +26,8 @@
   },
   "accentColor": "#4464ee",
   "validDomains": [
-    "officedev.github.io"
+    "https://www.contoso.com"
   ],
-  "showLoadingIndicator": false,
-  "isFullScreen": false,
-  "defaultBlockUntilAdminAction": false,
   "authorization": {
     "permissions": {
       "resourceSpecific": [
@@ -49,10 +46,18 @@
       },
       "runtimes": [
         {
+          "requirements": {
+            "capabilities": [
+              {
+                "name": "AddinCommands",
+                "minVersion": "1.1"
+              }
+            ]
+          },
           "id": "CommandsRuntime",
           "type": "general",
           "code": {
-            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/src/commands/commands.html"
+            "page": "https://localhost:3000/commands/commands.html"
           },
           "lifetime": "short",
           "actions": [
@@ -60,28 +65,20 @@
               "id": "writeValue",
               "type": "executeFunction",
               "displayName": "Write Value"
-            },
-            {
-              "id": "showTaskPane",
-              "type": "openPage",
-              "displayName": "Show Task Pane",
-              "view": "taskpane"
             }
           ]
         },
         {
-          "id": "TaskpaneRuntime",
+          "id": "TaskPaneRuntime",
           "type": "general",
           "code": {
-            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/src/taskpane/taskpane.html"
+            "page": "https://localhost:3000/taskpane/taskpane.html"
           },
           "lifetime": "short",
           "actions": [
             {
-              "id": "taskpaneAction",
-              "type": "openPage",
-              "displayName": "Task Pane",
-              "view": "taskpane"
+              "id": "showTaskPane",
+              "type": "openPage"
             }
           ]
         }
@@ -99,41 +96,42 @@
                   "icons": [
                     {
                       "size": 16,
-                      "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-16.png"
+                      "url": "https://localhost:3000/assets/icon-16.png"
                     },
                     {
                       "size": 32,
-                      "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-32.png"
+                      "url": "https://localhost:3000/assets/icon-32.png"
                     },
                     {
                       "size": 80,
-                      "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-80.png"
+                      "url": "https://localhost:3000/assets/icon-80.png"
                     }
                   ],
                   "controls": [
                     {
-                      "id": "Contoso.TaskpaneButton",
+                      "id": "Contoso.TaskPaneButton",
                       "type": "button",
                       "label": "Show task pane",
                       "icons": [
                         {
                           "size": 16,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-16.png"
+                          "url": "https://localhost:3000/assets/icon-16.png"
                         },
                         {
                           "size": 32,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-32.png"
+                          "url": "https://localhost:3000/assets/icon-32.png"
                         },
                         {
                           "size": 80,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-80.png"
+                          "url": "https://localhost:3000/assets/icon-80.png"
                         }
                       ],
                       "supertip": {
                         "title": "Show task pane",
-                        "description": "Choose to show a task pane"
+                        "description": "Choose to show a task pane."
                       },
-                      "actionId": "showTaskPane"
+                      "actionId": "showTaskPane",
+                      "enabled": true
                     },
                     {
                       "id": "Contoso.Menu",
@@ -142,20 +140,20 @@
                       "icons": [
                         {
                           "size": 16,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-16.png"
+                          "url": "https://localhost:3000/assets/icon-16.png"
                         },
                         {
                           "size": 32,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-32.png"
+                          "url": "https://localhost:3000/assets/icon-32.png"
                         },
                         {
                           "size": 80,
-                          "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-80.png"
+                          "url": "https://localhost:3000/assets/icon-80.png"
                         }
                       ],
                       "supertip": {
                         "title": "Dropdown menu",
-                        "description": "Show the dropdown menu"
+                        "description": "Show the dropdown menu."
                       },
                       "items": [
                         {
@@ -165,22 +163,23 @@
                           "icons": [
                             {
                               "size": 16,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-16.png"
+                              "url": "https://localhost:3000/assets/icon-16.png"
                             },
                             {
                               "size": 32,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-32.png"
+                              "url": "https://localhost:3000/assets/icon-32.png"
                             },
                             {
                               "size": 80,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-80.png"
+                              "url": "https://localhost:3000/assets/icon-80.png"
                             }
                           ],
                           "supertip": {
                             "title": "Show task pane",
-                            "description": "Choose to show a task pane"
+                            "description": "Choose to show a task pane."
                           },
-                          "actionId": "showTaskPane"
+                          "actionId": "showTaskPane",
+                          "enabled": true
                         },
                         {
                           "id": "itemExecuteFunction",
@@ -189,22 +188,23 @@
                           "icons": [
                             {
                               "size": 16,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-16.png"
+                              "url": "https://localhost:3000/assets/icon-16.png"
                             },
                             {
                               "size": 32,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-32.png"
+                              "url": "https://localhost:3000/assets/icon-32.png"
                             },
                             {
                               "size": 80,
-                              "url": "https://officedev.github.io/Office-Add-in-samples/Samples/office-add-in-commands/word/assets/icon-80.png"
+                              "url": "https://localhost:3000/assets/icon-80.png"
                             }
                           ],
                           "supertip": {
                             "title": "Write value",
-                            "description": "Choose to write a value to the document"
+                            "description": "Choose to write a value to the document."
                           },
-                          "actionId": "writeValue"
+                          "actionId": "writeValue",
+                          "enabled": true
                         }
                       ]
                     }
