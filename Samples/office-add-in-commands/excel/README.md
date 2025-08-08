@@ -6,6 +6,7 @@ products:
   - office-excel
   - office
   - m365
+  - office-teams
 languages:
   - javascript
 extensions:
@@ -37,47 +38,47 @@ Learn how to build an Office Add-in that has a command button to show the task p
 
 - Microsoft 365 - Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
-## Run the sample on Excel on the web
+## Version history
 
-This sample is hosted directly from this GitHub repo. Use the following steps to sideload the manifest.xml file to see the sample run.
+| Version  | Date | Comments |
+|----------|------|----------|
+| 1.0 | 12-09-2021 | Initial release |
+| 1.1 | 08-08-2025 | Add support for the unified manifest for Microsoft 365 |
 
-1. Download the **manifest.xml** file from the sample folder for Excel.
-1. Open [Office on the web](https://office.live.com/).
-1. Choose **Excel**, and then open a new document.
-1. On the **Insert** tab, in the **Add-ins** section, choose **Office Add-ins**.
-1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+## Decide on a version of the manifest
 
-    ![The Office Add-ins dialog with a dropdown control in the upper right reading "Manage my add-ins" and a dropdown list below it with the option "Upload My Add-in".](https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/images/office-add-ins-excel-web.png)
+- Add-in only manifest
+  - To run the add-in only manifest, which is the **manifest.xml** file in the sample's root directory **Samples/add-in-commands/excel**, go to the [Add-in only manifest](#add-in-only-manifest) section.
+- [Unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview)
+  - To run the unified manifest for Microsoft 365 (**manifest.json**), go to the [Unified manifest](#unified-manifest) section.
 
-1. Browse to the add-in manifest file, and then select **Upload**.
+## Add-in only manifest
 
-    ![The upload add-in dialog with buttons for browse, upload, and cancel.](https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/images/upload-add-in.png)
+### Run the sample
 
-1. Verify that the add-in loaded successfully. On the ribbon, you'll see a **Show task pane** button and **Dropdown menu** button on the **Home** tab.
+Use one of the following add-in file hosting options to run the sample.
 
-On the **Home** tab, choose the **Show task pane** button to display the task pane of the add-in. Choose the **Dropdown menu** button to see a drop down menu. On the menu, you can show the task pane or choose **Write value** to call a command that writes the button's id to the current cell.
+#### Use GitHub as the web host
 
-## Run the sample on Excel on Windows or Mac
+You can run this sample in Excel on Windows, on Mac, or in a browser. The add-in web files are served from this repo on GitHub.
 
-Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation on how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the Hello world sample. Then follow the sideloading instructions for your platform.
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Sideload the add-in manifest in Excel by following the appropriate instructions in the article [Sideload an Office Add-in for testing](https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing).
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
-- [Sideload Office Add-ins for testing from a network share](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
-- [Sideload Office Add-ins on Mac for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac)
-- [Sideload Office Add-ins on iPad for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad)
-
-## Configure a localhost web server and run the sample from localhost
+#### Configure a localhost web server and run the sample from localhost
 
 If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
 1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
-1. You need http-server to run the local web server. If you haven't installed this yet. you can do this with the following command.
+1. You need http-server to run the local web server. If you haven't installed this yet, you can do this with the following command.
 
     ```console
     npm install --global http-server
     ```
 
-1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet you can do this with the following command.
+1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet, you can do this with the following command.
 
     ```console
     npm install --global office-addin-dev-certs
@@ -102,22 +103,24 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-Now that your localhost web server is running, sideload the **manifest-localhost.xml** file provided in the excel-hello-world folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample on Excel on the web](#run-the-sample-on-excel-on-the-web) to sideload and run the add-in.
+1. Sideload **manifest-localhost.xml** in Excel by following the appropriate instructions in the article [Sideload an Office Add-in for testing](https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing).
 
-## Key parts of this sample
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 
-### Commands UI
+### Key parts of this sample
+
+#### Commands UI
 
 The **manifest.xml** file defines all of the commands UI in the `<ExtensionPoint>` element.
 The ribbon buttons and dropdown menu are specified in the `<OfficeTab>` section. Because `<OfficeTab id="TabHome">` specifies `TabHome`, the buttons are located on the **Home** ribbon tab.
 
-For more information about ExtensionPoint elements and options, see [Add ExtensionPoint elements](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-6-add-extensionpoint-elements).
+For more information about ExtensionPoint elements and options, see [Add ExtensionPoint elements](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-4-add-extensionpoint-elements).
 
-### Commands JavaScript
+#### Commands JavaScript
 
-The **manifest.xml** file contains a `<FunctionFile resid="Commands.Url"/>` element that specifies where to find the JavaScript commands to run when buttons are used. The `Commands.Url` resource id points to `/src/commands/commands.html`. When a button command is chosen, `commands.html` is loaded, which then loads `/src/commands/commands.js`. This is where the `ExecuteFunction` actions are mapped from the `manifest.xml` file.
+The **manifest.xml** file contains a `<FunctionFile resid="Commands.Url"/>` element that specifies where to find the JavaScript commands to run when buttons are used. The `Commands.Url` resource ID points to `/src/commands/commands.html`. When a button command is chosen, **commands.html** is loaded, which then loads `/src/commands/commands.js`. This is where the `ExecuteFunction` actions are mapped from the **manifest.xml** file.
 
-For example, the following manifest XML maps to the `writeValue` function in `commands.js`.
+For example, the following manifest XML maps to the `writeValue` function in **commands.js**.
 
 ```xml
 <Action xsi:type="ExecuteFunction">
@@ -130,7 +133,100 @@ async function writeValue(event) {
 ...
 ```
 
-For more information about adding commands, see [Add the FunctionFile element](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-5-add-the-functionfile-element).
+For more information about adding commands, see [Add the FunctionFile element](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands#step-3-add-the-functionfile-element).
+
+## Unified manifest
+
+### Prerequisites
+
+- If you want to run the web server on localhost, install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org) on your computer. To check if you've already installed these tools, from a command prompt, run the following commands.
+
+    ```console
+    node -v
+    npm -v
+    ```
+
+- If you want to run the sample using GitHub as the web host, install the [Microsoft 365 Agents Toolkit command line interface (CLI)](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli). From a command prompt, run the following command.
+
+    ```console
+    npm install -g @microsoft/teamsapp-cli
+    ```
+
+### Run the sample
+
+You can run this sample in Excel on Windows, on Mac, or in a browser. Use one of the following add-in file hosting options.
+
+#### Use GitHub as the web host
+
+The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
+
+1. Download the **manifest-configurations/unified/excel-add-in-commands.zip** file from this sample to a folder on your computer.
+1. Sideload the add-in manifest in Excel by following the appropriate instructions in the article [Sideload Office Add-ins that use the unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest).
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+
+#### Use localhost
+
+If you prefer to host the web server on localhost, follow these steps:
+
+1. Clone or download this repository.
+1. From a command prompt, go to the root of the project folder **/Samples/add-in-commands/excel**.
+1. Copy the files from the **manifest-configurations/unified** subfolder to the root folder.
+1. Run the following commands.
+
+    ```console
+    npm install
+    ```
+
+    ```console
+    npm start
+    ```
+
+    This starts the web server on localhost and sideloads the **manifest.json** file to Excel.
+
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+
+1. To stop the web server and uninstall the add-in from Excel, run the following command.
+
+    ```console
+    npm stop
+    ```
+
+## Key parts of this sample
+
+### Commands UI
+
+The **manifest.json** file defines all of the commands UI in the "extensions" array.
+The ribbon buttons and dropdown menu are specified in the "ribbons.tabs" array. Because "builtInTabId" specifies `TabHome`, the buttons are located on the **Home** ribbon tab.
+
+For more information about adding ribbon buttons, see [Menu and menu items](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands-unified-manifest#menu-and-menu-items).
+
+### Commands JavaScript
+
+The **manifest.json** file contains a runtime in the "extensions.runtimes" array with "id" set to "CommandsRuntime" that specifies where to find the JavaScript commands to run when buttons are used. The "code.page" property points to `/src/commands/commands.html`. When a button command is chosen, **commands.html** is loaded, which then loads `/src/commands/commands.js`. This is where the `executeFunction` actions are mapped from the **manifest.json** file.
+
+For example, the following manifest JSON maps to the `writeValue` function in **commands.js**.
+
+```json
+"actions": [
+  {
+    "id": "writeValue",
+    "type": "executeFunction"
+  }
+]
+```
+
+```javascript
+async function writeValue(event) {
+...
+```
+
+For more information about adding commands, see [Add a function command](https://learn.microsoft.com/office/dev/add-ins/develop/create-addin-commands-unified-manifest#add-a-function-command).
+
+## Try it out
+
+1. Verify that the add-in loaded successfully. You'll see a **Show task pane** button and **Dropdown menu** button on the **Home** tab on the ribbon.
+
+1. On the **Home** tab, choose the **Show task pane** button to display the task pane of the add-in. Choose the **Dropdown menu** button to see a dropdown menu. From the menu, you can show the task pane, or choose **Write value** to call a command that writes the button's ID to the current cell.
 
 ## Copyright
 
