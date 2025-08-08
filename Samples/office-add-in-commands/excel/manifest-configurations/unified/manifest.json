@@ -56,7 +56,6 @@
             {
               "id": "writeValue",
               "type": "executeFunction",
-              "displayName": "Write Value"
             }
           ]
         },

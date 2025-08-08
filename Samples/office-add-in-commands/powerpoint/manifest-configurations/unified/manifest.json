@@ -56,7 +56,6 @@
             {
               "id": "writeValue",
               "type": "executeFunction",
-              "displayName": "Write Value"
             }
           ]
         },
@@ -123,7 +122,6 @@
                         "description": "Choose to show a task pane."
                       },
                       "actionId": "showTaskPane",
-                      "enabled": true
                     },
                     {
                       "id": "Contoso.Menu",

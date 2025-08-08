@@ -211,7 +211,6 @@ For example, the following manifest JSON maps to the `writeValue` function in **
   {
     "id": "writeValue",
     "type": "executeFunction",
-    "displayName": "Write Value"
   }
 ]
 ```
