@@ -43,7 +43,7 @@ Learn how to build an Office Add-in that has a command button to show the task p
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 12-09-2021 | Initial release |
-| 1.1 | 08-07-2025 | Add support for the unified manifest for Microsoft 365 |
+| 1.1 | 08-08-2025 | Add support for the unified manifest for Microsoft 365 |
 
 ## Decide on a version of the manifest
 
@@ -210,7 +210,7 @@ For example, the following manifest JSON maps to the `writeValue` function in **
 "actions": [
   {
     "id": "writeValue",
-    "type": "executeFunction",
+    "type": "executeFunction"
   }
 ]
 ```

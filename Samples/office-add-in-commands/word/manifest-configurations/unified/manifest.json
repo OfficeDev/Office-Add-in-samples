@@ -55,7 +55,7 @@
           "actions": [
             {
               "id": "writeValue",
-              "type": "executeFunction",
+              "type": "executeFunction"
             }
           ]
         },
@@ -121,8 +121,7 @@
                         "title": "Show task pane",
                         "description": "Choose to show a task pane."
                       },
-                      "actionId": "showTaskPane",
-                      "enabled": true
+                      "actionId": "showTaskPane"
                     },
                     {
                       "id": "Contoso.Menu",
@@ -169,8 +168,7 @@
                             "title": "Show task pane",
                             "description": "Choose to show a task pane."
                           },
-                          "actionId": "showTaskPane",
-                          "enabled": true
+                          "actionId": "showTaskPane"
                         },
                         {
                           "id": "itemExecuteFunction",
@@ -194,8 +192,7 @@
                             "title": "Write value",
                             "description": "Choose to write a value to the document."
                           },
-                          "actionId": "writeValue",
-                          "enabled": true
+                          "actionId": "writeValue"
                         }
                       ]
                     }
