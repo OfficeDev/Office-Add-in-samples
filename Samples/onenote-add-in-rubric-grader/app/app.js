@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
 const app = (function(){  // jshint ignore:line
   'use strict';
 

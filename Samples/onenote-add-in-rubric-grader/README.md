@@ -58,10 +58,10 @@ You can run this sample in Onenote in a browser. The add-in web files are served
 1. Open [Office on the web](https://office.live.com/).
 1. Under **Apps**, choose **OneNote**.
 1. Open a notebook that contains a couple of pages. Make sure at least one page has a paragraph of content.
-1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
-1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Upload My Add-in**.
+1. On the **Insert** tab, choose **Office Add-ins**.
+1. In the **Office Add-ins** dialog, select **MY ADD-INS** and choose **Upload My Add-in**.
 1. Browse to the add-in manifest file, and then select **Upload**.
-1. Verify that the add-in loaded successfully. You will see a **Show Taskpane** button on the **Home** tab on the ribbon.
+1. If the add-in loaded successfully, you'll see a **Show Taskpane** button on the **Home** tab.
 
 Once the add-in is loaded use the following steps to try out the functionality.
 
@@ -69,7 +69,7 @@ Once the add-in is loaded use the following steps to try out the functionality.
 
 If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
-1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
+1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/). To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 
 1. You need http-server to run the local web server. If you haven't installed this yet, you can do this with the following command.
 
@@ -91,7 +91,7 @@ If you prefer to configure a web server and host the add-in's web files from you
     npx office-addin-dev-certs install
     ```
 
-    This command will display the folder location where it generated the certificate files.
+    This command displays the folder location where it generated the certificate files.
 
 1. Go to the folder location where the certificate files were generated, then copy the **localhost.crt** and **localhost.key** files to the cloned or downloaded sample folder.
 
