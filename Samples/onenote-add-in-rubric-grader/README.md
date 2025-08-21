@@ -12,7 +12,7 @@ extensions:
   contentType: samples
   technologies:
   - Add-ins
-  createdDate: 6/17/2025 4:00:00 PM
+  createdDate: 8/21/2025 4:00:00 PM
 description: Explore the basics of OneNote add-ins with a sample tool for teachers.
 ---
 
@@ -22,7 +22,7 @@ description: Explore the basics of OneNote add-ins with a sample tool for teache
 
 The Rubric Grader sample shows you how to use the OneNote JavaScript API in a OneNote task pane add-in. The add-in gets page content, adds an outline to the page, and opens a different page.
 
-The add-in helps teachers grade writing assignments based on a grading rubric.
+The add-in helps teachers grade writing assignments based on a grading rubric. It provides a standard template for adding feedback. Please note that the add-in doesn't evaluate the content itself.
 
 ![Rubric Grader task pane add-in in OneNote Online](assets/readme-images/rubric-grader.png)
 
@@ -51,8 +51,8 @@ The add-in helps teachers grade writing assignments based on a grading rubric.
 | 1.0 | 6-17-2025 | Initial release |
 
 ## Run the sample
-  
-You can run this sample in Onenote in a browser. The add-in web files are served from this repo on GitHub.
+
+You can run this sample in OneNote in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 1. Open [Office on the web](https://office.live.com/).

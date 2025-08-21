@@ -6,9 +6,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Rubric Grader</title>
-  <script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.js"></script>
-  <script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.11.4/jquery-ui.min.js"></script>
-  <script src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.15.1/jquery.validate.min.js"></script>
   <link href="//appsforoffice.microsoft.com/fabric/2.0/fabric.min.css" rel="stylesheet">
   <link href="//appsforoffice.microsoft.com/fabric/2.0/fabric.components.min.css" rel="stylesheet">
   <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
@@ -17,7 +14,6 @@
   <script src="../app.js"></script>
 
   <script src="grader.js"></script>
-  <script src="grader.fabricdropdownhelper.js"></script>
 </head>
 <body class="ms-font-m">
     <div class="home flex-container">
@@ -38,41 +34,37 @@
                     </button>
                 </div>
                 <div class="ms-Grid-col ms-font-s">
-                    <textbox id="wordCount" cols="25">Words:</span></textbox>
+                    <div id="wordCount">Words:</div>
                     <br />
-                    <textbox id="sentenceCount" cols="25">Sentences:</span></textbox>
+                    <div id="sentenceCount">Sentences:</div>
                 </div>
             </div>
             <div class="ms-Grid-row padding-top">
                 <div class="ms-Grid-col">
-                    <div class="ms-Dropdown" id="content-wrapper">
-                        <label class="ms-Label score-width">Content</label>
-                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
-                        <select class="ms-Dropdown-select" id="content"></select>
-                    </div>
+                    <label class="ms-Label">Content</label>
+                    <select class="ms-Dropdown-select" id="content">
+                        <option value="5">Loading...</option>
+                    </select>
                 </div>
                 <div class="ms-Grid-col">
-                    <div class="ms-Dropdown" id="organization-wrapper">
-                        <label class="ms-Label score-width">Organization</label>
-                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
-                        <select class="ms-Dropdown-select" id="organization"></select>
-                    </div>
+                    <label class="ms-Label">Organization</label>
+                    <select class="ms-Dropdown-select" id="organization">
+                        <option value="5">Loading...</option>
+                    </select>
                 </div>
             </div>
             <div class="ms-Grid-row">
                 <div class="ms-Grid-col">
-                    <div class="ms-Dropdown" id="style-wrapper">
-                        <label class="ms-Label score-width">Style</label>
-                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
-                        <select class="ms-Dropdown-select" id="style"></select>
-                    </div>
+                    <label class="ms-Label">Style</label>
+                    <select class="ms-Dropdown-select" id="style">
+                        <option value="5">Loading...</option>
+                    </select>
                 </div>
                 <div class="ms-Grid-col">
-                    <div class="ms-Dropdown" id="grammar-wrapper">
-                        <label class="ms-Label score-width">Grammar</label>
-                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
-                        <select class="ms-Dropdown-select" id="grammar"></select>
-                    </div>
+                    <label class="ms-Label">Grammar</label>
+                    <select class="ms-Dropdown-select" id="grammar">
+                        <option value="5">Loading...</option>
+                    </select>
                 </div>
             </div>
             <div class="ms-Grid-row padding-top">
@@ -101,11 +93,8 @@
             </div>
             <div class="ms-Grid-row padding-top">
                 <div class="ms-Grid-col">
-                    <div class="ms-Dropdown" id="page-picker-wrapper">
-                        <label class="ms-Label ms-font-m">Choose a page to open</label>
-                        <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--caretDown"></i>
-                        <select class="ms-Dropdown-select" id="page-picker"></select>
-                    </div>
+                    <label class="ms-Label">Choose a page to open</label>
+                    <select class="ms-Dropdown-select" id="page-picker"></select>
                 </div>
             </div>
             <div class="ms-Grid-row">                    

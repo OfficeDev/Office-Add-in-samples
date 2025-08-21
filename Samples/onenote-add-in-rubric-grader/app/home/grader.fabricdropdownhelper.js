@@ -1,5 +1,5 @@
 /* 
-* Copyright (c) Microsoft.  All rights reserved. Licensed under the MIT license. 
+* Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. 
 * See LICENSE in the project root for license information. 
 */ 
 
@@ -7,140 +7,175 @@
 // creates a "fake" dropdown that can be more easily styled across browsers.
 // http://dev.office.com/fabric/components/dropdown
 function useFabricDropdown (id) {
-    var $dropdownWrapper = $('#' + id),
-        $originalDropdown = $dropdownWrapper.children('.ms-Dropdown-select'),
-        $originalDropdownOptions = $originalDropdown.children('option'),
-        newDropdownTitle = '',
-        newDropdownItems = '',
-        newDropdownSource = '';
+    const dropdownWrapper = document.getElementById(id);
+    const originalDropdown = dropdownWrapper.querySelector('.ms-Dropdown-select');
+    const originalDropdownOptions = originalDropdown.querySelectorAll('option');
+    let newDropdownTitle = '';
+    let newDropdownItems = '';
+    let newDropdownSource = '';
 
     /** Go through the options to fill up newDropdownTitle and newDropdownItems. */
-    $originalDropdownOptions.each(function (index, option) {
+    originalDropdownOptions.forEach((option, index) => {
 
         /** If the option is selected, it should be the new dropdown's title. */
         if (option.selected) {
-            newDropdownTitle = option.text;
+            newDropdownTitle = option.textContent;
         }
 
         /** Add this option to the list of items. */
-        newDropdownItems += '<li class="ms-Dropdown-item' + ( (option.disabled) ? ' is-disabled"' : '"' ) + '>' + option.text + '</li>';
+        newDropdownItems += '<li class="ms-Dropdown-item' + ( (option.disabled) ? ' is-disabled"' : '"' ) + '>' + option.textContent + '</li>';
     
     });
 
     /** Insert the replacement dropdown. */
     newDropdownSource = '<span class="ms-Dropdown-title">' + newDropdownTitle + '</span><ul class="ms-Dropdown-items">' + newDropdownItems + '</ul>';
-    $dropdownWrapper.append(newDropdownSource);
+    dropdownWrapper.insertAdjacentHTML('beforeend', newDropdownSource);
 
     function _openDropdown(evt) {
-        if (!$dropdownWrapper.hasClass('is-disabled')) {
+        if (!dropdownWrapper.classList.contains('is-disabled')) {
 
             /** First, let's close any open dropdowns on this page. */
-            $dropdownWrapper.find('.is-open').removeClass('is-open');
+            const openDropdowns = dropdownWrapper.querySelectorAll('.is-open');
+            openDropdowns.forEach(el => el.classList.remove('is-open'));
 
             /** Stop the click event from propagating, which would just close the dropdown immediately. */
             evt.stopPropagation();
 
             /** Before opening, size the items list to match the dropdown. */
-            var dropdownWidth = $(this).parents(".ms-Dropdown").width();
-            $(this).next(".ms-Dropdown-items").css('width', dropdownWidth + 'px');
+            const dropdownWidth = dropdownWrapper.offsetWidth;
+            const itemsList = dropdownWrapper.querySelector('.ms-Dropdown-items');
+            if (itemsList) {
+                itemsList.style.width = dropdownWidth + 'px';
+            }
         
             /** Go ahead and open that dropdown. */
-            $dropdownWrapper.toggleClass('is-open');
-            $('.ms-Dropdown').each(function(){
-                if ($(this)[0] !== $dropdownWrapper[0]) {
-                    $(this).removeClass('is-open');
+            dropdownWrapper.classList.toggle('is-open');
+            
+            // Close other dropdowns
+            const allDropdowns = document.querySelectorAll('.ms-Dropdown');
+            allDropdowns.forEach(dropdown => {
+                if (dropdown !== dropdownWrapper) {
+                    dropdown.classList.remove('is-open');
                 }
             });
 
             /** Temporarily bind an event to the document that will close this dropdown when clicking anywhere. */
-            $(document).bind("click.dropdown", function() {
-                $dropdownWrapper.removeClass('is-open');
-                $(document).unbind('click.dropdown');
-            });
+            function closeDropdown() {
+                dropdownWrapper.classList.remove('is-open');
+                document.removeEventListener('click', closeDropdown);
+            }
+            document.addEventListener('click', closeDropdown);
         }
     }
 
     /** Toggle open/closed state of the dropdown when clicking its title. */
-    $dropdownWrapper.on('click', '.ms-Dropdown-title', function(event) {
-        _openDropdown(event);
+    dropdownWrapper.addEventListener('click', function(event) {
+        if (event.target.classList.contains('ms-Dropdown-title')) {
+            _openDropdown(event);
+        }
     });
 
     /** Keyboard accessibility */
-    $dropdownWrapper.on('keyup', function(event) {
-        var keyCode = event.keyCode || event.which;
+    dropdownWrapper.addEventListener('keyup', function(event) {
+        const keyCode = event.keyCode || event.which;
         // Open dropdown on enter or arrow up or arrow down and focus on first option
-        if (!$(this).hasClass('is-open')) {
+        if (!this.classList.contains('is-open')) {
             if (keyCode === 13 || keyCode === 38 || keyCode === 40) {
                 _openDropdown(event);
-                if (!$(this).find('.ms-Dropdown-item').hasClass('is-selected')) {
-                $(this).find('.ms-Dropdown-item:first').addClass('is-selected');
+                const firstItem = this.querySelector('.ms-Dropdown-item');
+                if (firstItem && !this.querySelector('.ms-Dropdown-item.is-selected')) {
+                    firstItem.classList.add('is-selected');
                 }
             }
         }
-        else if ($(this).hasClass('is-open')) {
+        else if (this.classList.contains('is-open')) {
+            const selectedItem = this.querySelector('.ms-Dropdown-item.is-selected');
             // Up arrow focuses previous option
-            if (keyCode === 38) {
-                if ($(this).find('.ms-Dropdown-item.is-selected').prev().siblings().size() > 0) {
-                    $(this).find('.ms-Dropdown-item.is-selected').removeClass('is-selected').prev().addClass('is-selected');
+            if (keyCode === 38 && selectedItem) {
+                const prevItem = selectedItem.previousElementSibling;
+                if (prevItem && prevItem.classList.contains('ms-Dropdown-item')) {
+                    selectedItem.classList.remove('is-selected');
+                    prevItem.classList.add('is-selected');
                 }
             }
             // Down arrow focuses next option
-            if (keyCode === 40) {
-                if ($(this).find('.ms-Dropdown-item.is-selected').next().siblings().size() > 0) {
-                    $(this).find('.ms-Dropdown-item.is-selected').removeClass('is-selected').next().addClass('is-selected');
+            if (keyCode === 40 && selectedItem) {
+                const nextItem = selectedItem.nextElementSibling;
+                if (nextItem && nextItem.classList.contains('ms-Dropdown-item')) {
+                    selectedItem.classList.remove('is-selected');
+                    nextItem.classList.add('is-selected');
                 }
             }
             // Enter to select item
             if (keyCode === 13) {
-                if (!$dropdownWrapper.hasClass('is-disabled')) {
+                if (!dropdownWrapper.classList.contains('is-disabled') && selectedItem) {
 
                     // Item text
-                    var selectedItemText = $(this).find('.ms-Dropdown-item.is-selected').text();
+                    const selectedItemText = selectedItem.textContent;
 
-                    $(this).find('.ms-Dropdown-title').html(selectedItemText);
+                    const titleElement = this.querySelector('.ms-Dropdown-title');
+                    if (titleElement) {
+                        titleElement.textContent = selectedItemText;
+                    }
 
                     /** Update the original dropdown. */
-                    $originalDropdown.find("option").each(function(key, value) {
-                        if (value.text === selectedItemText) {
-                            $(this).prop('selected', true);
+                    const options = originalDropdown.querySelectorAll('option');
+                    options.forEach(option => {
+                        if (option.textContent === selectedItemText) {
+                            option.selected = true;
                         } else {
-                            $(this).prop('selected', false);
+                            option.selected = false;
                         }
                     });
-                    $originalDropdown.change();
+                    
+                    // Trigger change event
+                    const changeEvent = new Event('change', { bubbles: true });
+                    originalDropdown.dispatchEvent(changeEvent);
 
-                    $(this).removeClass('is-open');
+                    this.classList.remove('is-open');
                 }
             }                
         }
 
         // Close dropdown on esc
         if (keyCode === 27) {
-            $(this).removeClass('is-open');
+            this.classList.remove('is-open');
         }
     });
 
     /** Select an option from the dropdown. */
-    $dropdownWrapper.on('click', '.ms-Dropdown-item', function () {
-        if (!$dropdownWrapper.hasClass('is-disabled')) {
+    dropdownWrapper.addEventListener('click', function(event) {
+        if (event.target.classList.contains('ms-Dropdown-item')) {
+            const clickedItem = event.target;
+            
+            if (!dropdownWrapper.classList.contains('is-disabled')) {
 
-            /** Deselect all items and select this one. */
-            $(this).siblings('.ms-Dropdown-item').removeClass('is-selected');
-            $(this).addClass('is-selected');
+                /** Deselect all items and select this one. */
+                const allItems = dropdownWrapper.querySelectorAll('.ms-Dropdown-item');
+                allItems.forEach(item => item.classList.remove('is-selected'));
+                clickedItem.classList.add('is-selected');
 
-            /** Update the replacement dropdown's title. */
-            $(this).parents().siblings('.ms-Dropdown-title').html($(this).text());
-
-            /** Update the original dropdown. */
-            var selectedItemText = $(this).text();
-            $originalDropdown.find("option").each(function(key, value) {
-                if (value.text === selectedItemText) {
-                    $(this).prop('selected', true);
-                } else {
-                    $(this).prop('selected', false);
+                /** Update the replacement dropdown's title. */
+                const titleElement = dropdownWrapper.querySelector('.ms-Dropdown-title');
+                if (titleElement) {
+                    titleElement.textContent = clickedItem.textContent;
                 }
-            });
-            $originalDropdown.change();
+
+                /** Update the original dropdown. */
+                const selectedItemText = clickedItem.textContent;
+                const options = originalDropdown.querySelectorAll('option');
+                options.forEach(option => {
+                    if (option.textContent === selectedItemText) {
+                        option.selected = true;
+                    } else {
+                        option.selected = false;
+                    }
+                });
+                
+                // Trigger change event
+                const changeEvent = new Event('change', { bubbles: true });
+                originalDropdown.dispatchEvent(changeEvent);
+            }
         }
     });
 }
