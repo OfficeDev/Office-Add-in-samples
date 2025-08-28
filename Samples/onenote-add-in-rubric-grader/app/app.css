@@ -1,0 +1,71 @@
+/* Common app styling */
+
+.padding-header {
+    padding: 30px 30px 20px 20px;
+}
+
+.padding-body {
+    padding: 5px 20px;
+}
+
+.padding-top {
+    padding: 25px 0px 0px 0px;
+}
+
+/* Standard select dropdown styling */
+.ms-Dropdown-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    font-size: 14px;
+    background-color: white;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: block !important;
+    visibility: visible !important;
+    height: auto;
+    min-height: 32px;
+}
+
+.ms-Dropdown-select:focus {
+    border-color: #0078d4;
+    outline: none;
+    box-shadow: 0 0 3px rgba(0, 120, 212, 0.5);
+}
+
+.ms-Label {
+    display: block;
+    font-weight: 600;
+    color: #323130;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+#notification-message {
+    background-color: #818285;
+    color: #fff;
+    position: absolute;
+    width: 100%;
+    min-height: 80px;
+    right: 0;
+    z-index: 100;
+    bottom: 0;
+    display: none; /* Hidden until invoked */
+}
+
+    #notification-message #notification-message-header {
+        font-size: medium;
+        margin-bottom: 10px;
+    }
+
+    #notification-message #notification-message-close {
+        background-image: url("../Images/Close.png");
+        background-repeat: no-repeat;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        cursor: pointer;
+    }
