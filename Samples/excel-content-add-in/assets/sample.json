@@ -1,0 +1,46 @@
+[
+    {
+      "name": "office-excel-content-add-in",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Excel content add-in: Humongous Insurance",
+      "shortDescription": "A content add-in that sits in the grid and reads and writes workbook data.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-content-add-in",
+      "longDescription": [
+        "This sample is a content add-in for the fictional Humongous Insurance company. It shows how to use the Office JavaScript APIs to create an Excel add-in that exists in the grid, instead of as a task pane or ribbon button. Build upon this sample to embed rich, interactive objects into Office documents. The add-in loads and embeds the content add-in in the grid with a control panel that can be resized and moved as needed. The dropdown menus are populated from tables in the workbook and the Save Prospect button saves the user's input to the workbook."
+      ],
+      "creationDateTime": "2016-08-23",
+      "updateDateTime": "2025-07-15",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+        {
+            "type": "Image",
+            "order": 100,
+            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/excel-content-add-in/images/content-add-in.png",
+            "alt": "Screenshot of the Humongous Insurance Excel content add-in interface showing a control panel embedded in the Excel grid."
+          }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+        {
+          "name": "Content Office Add-ins",
+          "description": "Learn about content add-ins and how they differ from task pane and dialog add-ins.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/design/content-add-ins"
+        }
+      ]
+    }
+  ] 
