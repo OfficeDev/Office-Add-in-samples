@@ -1,18 +1,19 @@
 [
     {
-      "name": "word-add-in-hello-world",
+      "name": "onenote-add-in-rubric-grader",
       "reponame": "office-add-in-samples",
       "source": "officedev",
-      "title": "Create an Word Add-in that displays hello world",
-      "shortDescription": "Create a simple Word Add-in that displays hello world.",
-      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/hello-world/word-hello-world",
+      "title": "Rubric grader task pane add-in for OneNote on the web",
+      "shortDescription": "A OneNote add-in that helps teachers grade writing assignments based on a grading rubric.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/onenote-add-in-rubric-grader",
       "longDescription": [
-        "Learn how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. Understand the fundamental parts of an Office Add-in."
+        "The Rubric Grader sample shows you how to use the OneNote JavaScript API in a OneNote task pane add-in. The add-in gets page content, adds an outline to the page, and opens a different page. It helps teachers grade writing assignments based on a grading rubric and provides a standard template for adding feedback."
       ],
-      "creationDateTime": "2021-10-11",
-      "updateDateTime": "2021-10-11",
+      "creationDateTime": "2025-06-17",
+      "updateDateTime": "2025-08-21",
       "products": [
-        "Office"
+        "Office",
+        "OneNote"
       ],
       "metadata": [
         {
@@ -24,8 +25,8 @@
         {
             "type": "Image",
             "order": 100,
-            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/hello-world/images/hello-world-introduction.png",
-            "alt": "Diagram showing a hello project consists of a manifest, HTML page, and image assets."
+            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/onenote-add-in-rubric-grader/assets/readme-images/rubric-grader.png",
+            "alt": "Screenshot of the Rubric Grader task pane add-in running in OneNote Online showing the grading interface."
           }
       ],
       "authors": [
@@ -36,6 +37,11 @@
         }
       ],
       "references": [
+        {
+          "name": "OneNote JavaScript API overview",
+          "description": "Learn about the OneNote JavaScript API and how to use it to build OneNote add-ins.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/onenote/onenote-add-ins-programming-overview"
+        },
         {
           "name": "Office Add-ins platform overview",
           "description": "You can use the Office Add-ins platform to build solutions that extend Office applications and interact with content in Office documents.",
