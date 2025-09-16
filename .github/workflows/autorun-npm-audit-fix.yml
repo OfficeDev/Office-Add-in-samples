@@ -3,7 +3,7 @@ run-name: Automatically run npm audit fix
 on:
   schedule:
     - cron: '45 08 15 * *' # Run at 1:45 AM PDT on the 15th of every month
-    - cron: '45 18 * * TUE' # Testing testing
+    - cron: '00 19 * * TUE' # Testing testing
 jobs:
   autorun-npm-audit-fix:
     runs-on: ubuntu-latest
@@ -18,7 +18,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
       - name: Make the script file executable
-        run: chmod +x npm-audit-fix.sh
+        run: chmod +x ./npm-audit-fix.sh
       - name: Set up node
         uses: actions/setup-node@v4
         with:
@@ -26,11 +26,11 @@ jobs:
       - name: Run npm-audit-fix script
         run: |
           echo "Running npm-audit-fix script (breaking changes will need to be addressed manually)"
-          npm-audit-fix.sh
+          ./npm-audit-fix.sh
       - name: Undo chmod
         run: |
           echo "Undoing script file chmod"
-          chmod -x npm-audit-fix.sh
+          chmod -x ./npm-audit-fix.sh
       - name: Get whether autorun-npm-audit-fix branch exists
         run: |
           echo "Getting whether autorun-npm-audit-fix branch exists"
