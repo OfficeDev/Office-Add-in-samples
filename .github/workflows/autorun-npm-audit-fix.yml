@@ -3,13 +3,11 @@ run-name: Automatically run npm audit fix
 on:
   schedule:
     - cron: '45 08 15 * *' # Run at 1:45 AM PDT on the 15th of every month
-    - cron: '05 19 * * TUE' # Testing testing
 jobs:
   autorun-npm-audit-fix:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
     defaults:
       run:
         shell: bash
@@ -68,10 +66,3 @@ jobs:
           echo "Committing and pushing changes to autorun-npm-audit-fix branch"
           git commit -m "Automatically run npm audit fix"
           git push --set-upstream origin autorun-npm-audit-fix
-      - name: Create pull request if there were changes
-        if: ${{ !contains(steps.run_git_status.outputs.git_status, 'nothing to commit, working tree clean') }}
-        run: |
-          echo "Creating pull request"
-          gh pr create --title "Automatically run npm audit fix" --body "This pull request was created automatically by the autorun-npm-audit-fix GitHub Actions workflow." --base main --head autorun-npm-audit-fix
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
