@@ -94,7 +94,7 @@ async function populateCitationsFromFile() {
     }
     populateRadio.appendChild(radioButtons);
 
-    // Add event listeners to all radio buttons
+    // Add event listeners to all radio buttons.
     const citationRadios = document.querySelectorAll("input[name='citation'][type='radio']");
     citationRadios.forEach(radio => {
       radio.addEventListener("click", function () {
