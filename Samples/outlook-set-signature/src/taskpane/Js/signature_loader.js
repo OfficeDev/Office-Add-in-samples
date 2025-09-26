@@ -12,16 +12,16 @@ function on_initialization_complete()
 {
 	$(document).ready
 	(
-		function()
+		async function()
 		{
-      lazy_init_user_info();
+      await lazy_init_user_info();
       populate_templates();
       show_signature_settings();
 		}
 	);
 }
 
-function lazy_init_user_info()
+async function lazy_init_user_info()
 {
   if (!_user_info)
   {
@@ -46,9 +46,9 @@ function populate_templates()
   populate_template_C();
 }
 
-function populate_template_A()
+async function populate_template_A()
 {
-  let str = get_template_A_str(_user_info);
+  let str = await get_template_A_str(_user_info);
   $("#box_1").html(str);
 }
 

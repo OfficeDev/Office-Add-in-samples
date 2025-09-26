@@ -9,16 +9,24 @@ const bibtexParser = require("@orcid/bibtex-parse-js");
 let bibFileContent;
 
 Office.onReady((info) => {
-  $(document).ready(function () {
-    if (info.host === Office.HostType.Word) {
-      document.getElementById("app-body").style.display = "flex";
-      $("#bib-file").on("change", () => tryCatch(getFileContents));
-      search();
-      $("#insert-citation").on("click", () => tryCatch(insertCitation));
-      $("#clear").on("click", () => tryCatch(clearSelection));
-    }
-  });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+      initializeApp(info);
+    });
+  } else {
+    initializeApp(info);
+  }
 });
+
+function initializeApp(info) {
+  if (info.host === Office.HostType.Word) {
+    document.getElementById("app-body").style.display = "flex";
+    document.getElementById("bib-file").addEventListener("change", () => tryCatch(getFileContents));
+    search();
+    document.getElementById("insert-citation").addEventListener("click", () => tryCatch(insertCitation));
+    document.getElementById("clear").addEventListener("click", () => tryCatch(clearSelection));
+  }
+}
 
 // Gets the contents of the selected file.
 async function getFileContents() {
@@ -29,38 +37,45 @@ async function getFileContents() {
     populateCitationsFromFile();
     showReferencesSection();
   };
-  reader.readAsBinaryString(myBibFile.files[0]);
+  reader.readAsText(myBibFile.files[0]);
 }
 
 // Searches the references list for the search text.
 async function search() {
-  let $search = $("#search");
-  let $radioButtons = $("#radio-buttons");
-  $search.on("search keyup", function () {
-    let searchText = $(this).val();
+  const searchElement = document.getElementById("search");
+  const radioButtons = document.getElementById("radio-buttons");
+  
+  searchElement.addEventListener("search", searchHandler);
+  searchElement.addEventListener("keyup", searchHandler);
+  
+  function searchHandler() {
+    const searchText = searchElement.value;
+    const children = radioButtons.children;
+    
     if (searchText) {
-      $radioButtons.children().each(function () {
-        let $this = $(this);
-        if ($this.text().search(new RegExp(searchText, "i")) < 0) {
-          $this.hide();
+      Array.from(children).forEach(function (child) {
+        if (child.textContent.search(new RegExp(searchText, "i")) < 0) {
+          child.style.display = "none";
         } else {
-          $this.show();
+          child.style.display = "block";
         }
       });
     } else {
-      $("#radio-buttons").children().each(function () {
-        $(this).show();
+      Array.from(children).forEach(function (child) {
+        child.style.display = "block";
       });
     }
-    $radioButtons.change();
-  });
+    
+    // Trigger change event
+    radioButtons.dispatchEvent(new Event('change', { bubbles: true }));
+  }
 }
 
 // Shows the reference section.
 async function showReferencesSection() {
-  let $referenceSection = $("#references-section");
-  $referenceSection.show();
-  $referenceSection.change();
+  const referenceSection = document.getElementById("references-section");
+  referenceSection.style.display = "block";
+  referenceSection.dispatchEvent(new Event('change', { bubbles: true }));
 }
 
 // Populates the radio buttons with the citations from the file.
@@ -68,32 +83,39 @@ async function populateCitationsFromFile() {
     let citationsFromFile = bibtexParser.toJSON(bibFileContent);
     console.log(citationsFromFile);
 
-    let $populateRadio = $("#populate-radio");
-    let $radioButtons = $("#radio-buttons");
-    $radioButtons.empty();
+    const populateRadio = document.getElementById("populate-radio");
+    const radioButtons = document.getElementById("radio-buttons");
+    radioButtons.innerHTML = "";
+    
     for (let citation in citationsFromFile) {
       let citationHtml = `<section><input type="radio" id="${citationsFromFile[citation].citationKey}" name="citation" value='${citationsFromFile[citation].entryTags.author}, "${citationsFromFile[citation].entryTags.title}"'>
       <label for="${citationsFromFile[citation].citationKey}"><b>${citationsFromFile[citation].entryTags.title}</b><br>${citationsFromFile[citation].entryTags.author}</label><br><br></section>`;
-      $radioButtons.append(citationHtml);
+      radioButtons.insertAdjacentHTML('beforeend', citationHtml);
     }
-    $radioButtons.appendTo($populateRadio);
+    populateRadio.appendChild(radioButtons);
 
-    $("input[name='citation'][type='radio']").on("click", function () {
-      if ($(this).prop("checked")) {
-        setSelected(`Current selection: ${$(this).prop("id")}`);
-        enableButtons();
-      } else {
-        clearSelected();
-        disableButtons();
-      }
+    // Add event listeners to all radio buttons.
+    const citationRadios = document.querySelectorAll("input[name='citation'][type='radio']");
+    citationRadios.forEach(radio => {
+      radio.addEventListener("click", function () {
+        if (this.checked) {
+          setSelected(`Current selection: ${this.id}`);
+          enableButtons();
+        } else {
+          clearSelected();
+          disableButtons();
+        }
+      });
     });
-    $populateRadio.change();
+    
+    populateRadio.dispatchEvent(new Event('change', { bubbles: true }));
 }
 
 // Inserts the citation at the cursor location in the document.
 async function insertCitation() {
   await Word.run(async (context) => {
-    const citation = $("input[name='citation'][type='radio']:checked").val();
+    const checkedRadio = document.querySelector("input[name='citation'][type='radio']:checked");
+    const citation = checkedRadio ? checkedRadio.value : "";
     context.document.getSelection().insertEndnote(citation);
     await context.sync();
 
@@ -103,29 +125,38 @@ async function insertCitation() {
 
 // Clears the selected radio button.
 async function clearSelection() {
-  $("input[name='citation'][type='radio']:checked").prop("checked", false);
+  const checkedRadio = document.querySelector("input[name='citation'][type='radio']:checked");
+  if (checkedRadio) {
+    checkedRadio.checked = false;
+  }
   clearSelected();
   disableButtons();
 }
 
 // Sets the selected item.
 async function setSelected(text) {
-  $("#selected").text(text);
+  document.getElementById("selected").textContent = text;
 }
 
 // Clears the selected item.
 async function clearSelected() {
-  $("#selected").text("");
+  document.getElementById("selected").textContent = "";
 }
 
 // Enables the buttons.
 async function enableButtons() {
-  $(".ms-Button").removeAttr("disabled");
+  const buttons = document.querySelectorAll(".ms-Button");
+  buttons.forEach(button => {
+    button.removeAttribute("disabled");
+  });
 }
 
 // Disables the buttons.
 async function disableButtons() {
-  $(".ms-Button").attr("disabled", "disabled");
+  const buttons = document.querySelectorAll(".ms-Button");
+  buttons.forEach(button => {
+    button.setAttribute("disabled", "disabled");
+  });
 }
 
 // Default helper for invoking an action and handling errors.
