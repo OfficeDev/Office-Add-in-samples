@@ -37,7 +37,7 @@ async function getFileContents() {
     populateCitationsFromFile();
     showReferencesSection();
   };
-  reader.readAsBinaryString(myBibFile.files[0]);
+  reader.readAsText(myBibFile.files[0]);
 }
 
 // Searches the references list for the search text.
