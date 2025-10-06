@@ -83,67 +83,40 @@ export class AccountManager {
       throw new Error("AccountManager is not initialized!");
     }
 
+    // Construct the token request.
+    let tokenRequest = getTokenRequest(scopes, false);
+      if (claimsChallenge) {
+        // Add the claims challenge to the request.
+        console.log("Adding claims challenge to token request.");
+        tokenRequest = { ...tokenRequest, claims: window.atob(claimsChallenge) };        
+      }
+
     try {
       console.log("Trying to acquire token silently...");
-      let tokenRequest = getTokenRequest(scopes, false);
-      if (claimsChallenge) {
-        tokenRequest = { ...tokenRequest, claims: window.atob(claimsChallenge) };
-        let accessToken = await this.getTokenPopup(scopes, claimsChallenge);
-        return accessToken;
-      }
       const authResult = await this.pca.acquireTokenSilent(tokenRequest);
       console.log("Acquired token silently.");
       return authResult.accessToken;
     } catch (error) {
       console.warn(`Unable to acquire token silently: ${error}`);
       console.log(error);
-      // Check if interaction required.
-      // if (error instanceof BrowserAuthError && error.errorCode !== "interaction_required") {
-      //   claimsChallenge = (error as any).claims;
     }
 
     // Acquire token silent failure. Send an interactive request via popup.
     try {
       console.log("Trying to acquire token interactively...");
-      const selectAccount = this.pca.getActiveAccount() ? false : true;
-      const authResult = await this.pca.acquireTokenPopup(getTokenRequest(scopes, selectAccount));
-      console.log("Acquired token interactively.");
-      if (selectAccount) {
-        this.pca.setActiveAccount(authResult.account);
-      }
-      if (!this.isNestedAppAuthSupported()) {
-        this.setSignOutButtonVisibility(true);
-      }
-      return authResult.accessToken;
-    } catch (popupError) {
-      // Optional fallback if about:blank popup should not be shown
-      if (popupError instanceof BrowserAuthError && popupError.errorCode === "popup_window_error") {
-        const accessToken = await this.getTokenWithDialogApi();
-        return accessToken;
-      } else {
-        // Acquire token interactive failure.
-        console.error(`Unable to acquire token interactively: ${popupError}`);
-        throw new Error(`Unable to acquire access token: ${popupError}`);
-      }
-    }
-  }
-
-private async getTokenPopup(scopes: string[], claimsChallenge: string | null): Promise<string> {
-  console.log("Trying to acquire token interactively...");
-    if (this.pca === undefined) {
-      throw new Error("AccountManager is not initialized!");
-    }
-    try {
-      const selectAccount = this.pca.getActiveAccount() ? false : true;
-      let tokenRequest = getTokenRequest(scopes, selectAccount);
+      const activeAccount = this.pca.getActiveAccount() ? false : true;
+      // Construct the token request.
+      let tokenRequest = getTokenRequest(scopes, activeAccount);
       if (claimsChallenge) {
-        tokenRequest = { ...tokenRequest, claims: window.atob(claimsChallenge) };
+        // Add the claims challenge to the request.
+        console.log("Adding claims challenge to token request.");
+        tokenRequest = { ...tokenRequest, claims: window.atob(claimsChallenge) };        
       }
       const authResult = await this.pca.acquireTokenPopup(tokenRequest);
       console.log("Acquired token interactively.");
-      if (selectAccount) {
-        this.pca.setActiveAccount(authResult.account);
-      }
+      // if (activeAccount) {
+      //   this.pca.setActiveAccount(authResult.account);
+      // }
       if (!this.isNestedAppAuthSupported()) {
         this.setSignOutButtonVisibility(true);
       }

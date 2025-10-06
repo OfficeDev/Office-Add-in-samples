@@ -38,7 +38,7 @@ export async function makeGraphRequest(accountManager: AccountManager, scopes: s
       const claimsChallenge = parseChallenges(authenticateHeader).claims;
       // use the claims challenge to acquire a new access token...
       accessToken = await accountManager.ssoGetAccessToken(scopes, claimsChallenge);
-      // Attempt the Graph call again.
+      // Attempt the MS Graph call again.
       const response2 = await fetch(`https://graph.microsoft.com/v1.0${path}${queryParams}`, {
         headers: { Authorization: accessToken },
       });
@@ -48,13 +48,15 @@ export async function makeGraphRequest(accountManager: AccountManager, scopes: s
         console.log(data);
         return data;
       } else {
-        // Still no luck. Give up.
+        // Still not successful. Throw the error.
         throw new Error(response2.statusText);
       }
+    } else {
+      throw new Error(response.statusText);
     }
-    throw new Error(response.statusText);
   }
 }
+
 // helper function to parse the www-authenticate header
 function parseChallenges(header: string): { [key: string]: string } {
   const schemeSeparator = header.indexOf(' ');
