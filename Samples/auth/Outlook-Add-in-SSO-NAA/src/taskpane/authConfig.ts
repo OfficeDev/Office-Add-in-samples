@@ -84,7 +84,8 @@ export class AccountManager {
     }
 
     // Construct the token request.
-    let tokenRequest = getTokenRequest(scopes, false);
+    const activeAccount = this.pca.getActiveAccount() ? false : true;
+    let tokenRequest = getTokenRequest(scopes, activeAccount);
       if (claimsChallenge) {
         // Add the claims challenge to the request.
         console.log("Adding claims challenge to token request.");
@@ -104,22 +105,8 @@ export class AccountManager {
     // Acquire token silent failure. Send an interactive request via popup.
     try {
       console.log("Trying to acquire token interactively...");
-      const activeAccount = this.pca.getActiveAccount() ? false : true;
-      // Construct the token request.
-      let tokenRequest = getTokenRequest(scopes, activeAccount);
-      if (claimsChallenge) {
-        // Add the claims challenge to the request.
-        console.log("Adding claims challenge to token request.");
-        tokenRequest = { ...tokenRequest, claims: window.atob(claimsChallenge) };        
-      }
       const authResult = await this.pca.acquireTokenPopup(tokenRequest);
-      console.log("Acquired token interactively.");
-      // if (activeAccount) {
-      //   this.pca.setActiveAccount(authResult.account);
-      // }
-      if (!this.isNestedAppAuthSupported()) {
-        this.setSignOutButtonVisibility(true);
-      }
+      console.log("Acquired token interactively.");      
       return authResult.accessToken;
     } catch (popupError) {
       // Optional fallback if about:blank popup should not be shown
