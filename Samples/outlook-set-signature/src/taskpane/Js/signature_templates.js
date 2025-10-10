@@ -28,15 +28,13 @@ async function get_template_A_str(user_info)
   })()
 
 
-  let prom = Office.context.mailbox.item.addFileAttachmentFromBase64Async(jpg, "test.jpg", { isInline: true }, function (result) {
-
-    return new Promise( function( resolve, reject ) {
+  let prom = await new Promise( function( resolve, reject ) {
+    Office.context.mailbox.item.addFileAttachmentFromBase64Async(jpg, "test.jpg", { isInline: true }, function (result) {
       if (result.status!=="succeeded") {
-        console.error("Attaching failed:", result)
+        reject("Attaching failed:", result)
       }
       resolve(result.value);
     });
-    
   });
 
   let cid = await prom;
