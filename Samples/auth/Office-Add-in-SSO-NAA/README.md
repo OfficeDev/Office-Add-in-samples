@@ -39,7 +39,7 @@ For a list of supported hosts, see [NAA supported accounts and hosts](https://le
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
 - You need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) to use the NAA preview features. Choose the **Current Channel (Preview)** insider level.
-- [Node.js](https://nodejs.org/) version 16 or greater.
+- [Node.js](https://nodejs.org/) (latest recommended version).
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
 ## Build and run the solution
