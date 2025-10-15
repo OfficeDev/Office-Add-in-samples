@@ -7,7 +7,7 @@
   },
   "license": "MIT",
   "config": {
-    "app_to_debug": "excel",
+    "app_to_debug": "word",
     "app_type_to_debug": "desktop",
     "dev_server_port": 3000
   },
@@ -20,7 +20,7 @@
     "prettier": "office-addin-lint prettier",
     "signin": "office-addin-dev-settings m365-account login",
     "signout": "office-addin-dev-settings m365-account logout",
-    "start": "office-addin-debugging start manifest.xml desktop --app excel",
+    "start": "office-addin-debugging start manifest.xml desktop --app word",
     "start:desktop": "office-addin-debugging start manifest.xml desktop",
     "start:web": "office-addin-debugging start manifest.xml web",
     "stop": "office-addin-debugging stop manifest.xml",
@@ -35,7 +35,7 @@
   "devDependencies": {
     "@babel/core": "^7.24.7",
     "@babel/preset-typescript": "^7.24.7",
-    "@types/office-js": "^1.0.396",
+    "@types/office-js": "^1.0.547",
     "@types/office-runtime": "^1.0.35",
     "acorn": "^8.12.0",
     "babel-loader": "^9.1.3",

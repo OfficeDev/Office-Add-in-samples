@@ -15,10 +15,14 @@ import { msalConfig } from "./msalconfig";
  * @param accountContext The account context to get the token request for.
  * @returns The token request.
  */
-export function getTokenRequest(scopes: string[], selectAccount: boolean, redirectUri?: string): RedirectRequest {
+export function getTokenRequest(scopes: string[], selectAccount: boolean, redirectUri?: string, loginHint?: string): RedirectRequest {
   let additionalProperties: Partial<RedirectRequest> = {};
+  
+  if (loginHint) {
+    additionalProperties = { loginHint };
+  }
   if (selectAccount) {
-    additionalProperties = { prompt: "select_account" };
+    additionalProperties.prompt = "select_account";
   }
   if (redirectUri) {
     additionalProperties.redirectUri = redirectUri;

@@ -83,9 +83,17 @@ export class AccountManager {
       throw new Error("AccountManager is not initialized!");
     }
 
+    // If running in Office on the web, use the login hint from getAuthContext to avoid an extra account prompt.
+    let loginHint: string | undefined;
+    if (Office.context.platform === Office.PlatformType.OfficeOnline) {
+      const authCtx = await Office.auth.getAuthContext();
+      loginHint = authCtx.userPrincipalName;
+    }
+
     try {
       console.log("Trying to acquire token silently...");
-      const authResult = await this.pca.acquireTokenSilent(getTokenRequest(scopes, false));
+      let tokenRequest = getTokenRequest(scopes, false, undefined, loginHint);
+      const authResult = await this.pca.acquireTokenSilent(tokenRequest);
       console.log("Acquired token silently.");
       return authResult.accessToken;
     } catch (error) {
@@ -96,7 +104,7 @@ export class AccountManager {
     try {
       console.log("Trying to acquire token interactively...");
       const selectAccount = this.pca.getActiveAccount() ? false : true;
-      const authResult = await this.pca.acquireTokenPopup(getTokenRequest(scopes, selectAccount));
+      const authResult = await this.pca.acquireTokenPopup(getTokenRequest(scopes, selectAccount, undefined, loginHint));
       console.log("Acquired token interactively.");
       if (selectAccount) {
         this.pca.setActiveAccount(authResult.account);
