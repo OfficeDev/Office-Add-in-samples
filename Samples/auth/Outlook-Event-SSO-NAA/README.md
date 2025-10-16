@@ -34,7 +34,7 @@ This sample demonstrates how to use single sign-on (SSO) in an Outlook add-in ev
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- [Node.js](https://nodejs.org/) version 16 or greater.
+- [Node.js](https://nodejs.org/) (latest recommended version).
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
 ## Build and run the solution
