@@ -4,41 +4,47 @@
 // This file provides common MSAL functions for use in the add-in project.
 
 import {
-  createNestablePublicClientApplication,
-  type IPublicClientApplication,
   type RedirectRequest,
 } from "@azure/msal-browser";
-import { msalConfig } from "./msalconfig";
+
+// Constants
+const PROMPT_SELECT_ACCOUNT = "select_account" as const;
 
 /**
- * Gets a token request for a given account context.
- * @param accountContext The account context to get the token request for.
- * @returns The token request.
+ * Creates a token request object with the specified parameters.
+ * @param scopes - Array of OAuth 2.0 scopes to request access for.
+ * @param selectAccount - Whether to prompt for account selection.
+ * @param redirectUri - Optional redirect URI for the authentication flow.
+ * @param loginHint - Optional login hint to pre-populate the username field.
+ * @returns A properly configured RedirectRequest object.
+ * @throws {Error} When scopes array is empty or invalid.
  */
-export function getTokenRequest(scopes: string[], selectAccount: boolean, redirectUri?: string, loginHint?: string): RedirectRequest {
-  let additionalProperties: Partial<RedirectRequest> = {};
-  
+export function getTokenRequest(
+  scopes: string[], 
+  selectAccount: boolean, 
+  redirectUri?: string, 
+  loginHint?: string
+): RedirectRequest {
+  // Validate required parameters.
+  if (!scopes || scopes.length === 0) {
+    throw new Error("Scopes array cannot be empty");
+  }
+
+  // Build request object.
+  const request: RedirectRequest = { scopes };
+
   if (loginHint) {
-    additionalProperties = { loginHint };
+    request.loginHint = loginHint;
   }
+
   if (selectAccount) {
-    additionalProperties.prompt = "select_account";
+    request.prompt = PROMPT_SELECT_ACCOUNT;
   }
+
   if (redirectUri) {
-    additionalProperties.redirectUri = redirectUri;
+    request.redirectUri = redirectUri;
   }
-  return { scopes, ...additionalProperties };
+
+  return request;
 }
 
-let _publicClientApp: IPublicClientApplication;
-
-/**
- * Returns the existing public client application. Returns a new public client application if it did not exist.
- * @returns The nested public client application.
- */
-export async function ensurePublicClient() {
-  if (!_publicClientApp) {
-    _publicClientApp = await createNestablePublicClientApplication(msalConfig);
-  }
-  return _publicClientApp;
-}
