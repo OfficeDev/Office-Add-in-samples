@@ -39,7 +39,7 @@ This add-in lets the user create charts using Copilot's natural language process
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
 - A Teams subscription, if it isn't included in your Microsoft 365 subscription.
-- [Node.js](https://nodejs.org/) version 16 or greater.
+- [Node.js](https://nodejs.org/) (latest recommended version).
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 - Visual Studio Code
 - [Microsoft 365 Agents Toolkit extension for Visual Studio Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/agents-toolkit-fundamentals)
