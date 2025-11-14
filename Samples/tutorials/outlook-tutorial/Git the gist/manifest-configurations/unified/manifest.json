@@ -1,0 +1,199 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.24/MicrosoftTeams.schema.json#",
+    "manifestVersion": "1.24",
+    "version": "1.0.0",
+    "id": "fe3bd144-bde6-4057-91d6-d28e1ac7faf4",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us"
+    },
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://www.contoso.com/help",
+        "privacyUrl": "https://www.contoso.com/help",
+        "termsOfUseUrl": "https://www.contoso.com/help"
+    },
+    "name": {
+        "short": "Git the gist",
+        "full": "Git the gist"
+    },
+    "description": {
+        "short": "Gets gists.",
+        "full": "Allows users to access their GitHub gists."
+    },
+    "icons": {
+        "outline": "assets/icon-64.png",
+        "color": "assets/icon-128.png"
+    },
+    "accentColor": "#230201",
+    "validDomains": [
+        "https://www.contoso.com",
+        "https://localhost:3000"
+    ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "defaultBlockUntilAdminAction": false,
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "MailboxItem.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "extensions": [
+        {
+            "requirements": {
+                "capabilities": [
+                    {
+                        "name": "Mailbox",
+                        "minVersion": "1.1"
+                    }
+                ],
+                "scopes": [
+                    "mail"
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.3"
+                            }
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "id": "commandsRuntime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/commands.html"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "insertDefaultGist",
+                            "type": "executeFunction",
+                            "multiselect": false,
+                            "supportsNoItemContext": false
+                        }
+                    ]
+                },
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.3"
+                            }
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "id": "taskPaneRuntime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/taskpane.html"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "insertGist",
+                            "type": "openPage",
+                            "pinnable": false,
+                            "multiselect": false,
+                            "supportsNoItemContext": false
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.3"
+                            }
+                        ],
+                        "scopes": [
+                            "mail"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "contexts": [
+                        "mailCompose"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabDefault",
+                            "groups": [
+                                {
+                                    "id": "msgComposeCmdGroup",
+                                    "label": "Git the gist",
+                                    "controls": [
+                                        {
+                                            "id": "msgComposeInsertGist",
+                                            "type": "button",
+                                            "label": "Insert gist",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Insert gist",
+                                                "description": "Displays a list of your gists and allows you to insert their contents into the current message."
+                                            },
+                                            "actionId": "insertGist"
+                                        },
+                                        {
+                                            "id": "msgComposeInsertDefaultGist",
+                                            "type": "button",
+                                            "label": "Insert default gist",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Insert default gist",
+                                                "description": "Inserts the content of the gist you mark as default into the current message."
+                                            },
+                                            "actionId": "insertDefaultGist"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

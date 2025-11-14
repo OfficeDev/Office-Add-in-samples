@@ -41,36 +41,38 @@ This sample demonstrates the basics of working with a compose message in Outlook
 - [Showdown](https://github.com/showdownjs/showdown).
 - [URI.js](https://github.com/medialize/URI.js).
 - [jQuery](https://jquery.com/).
-
 - [Set up GitHub gists](https://learn.microsoft.com/office/dev/add-ins/tutorials/outlook-tutorial#setup) on your account.
 
-## Solution
+## Choose a manifest type
 
-| Solution | Author(s) |
-|----------|-----------|
-| Learn the basics of Outlook add-ins | Microsoft |
+By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest for Microsoft 365. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the add-in only manifest, skip ahead to the [Run the sample](#run-the-sample) section.
 
-## Version history
+> [!NOTE]
+> To run the sample in Outlook on Mac, use the [add-in only manifest](#run-with-the-add-in-only-manifest). For more information on manifests and their supported platforms, see [Office Add-in manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests).
 
-| Version  | Date | Comments |
-|----------|------|----------|
-| 1.0 | 9-12-2023 | Initial release |
+### To switch to the unified manifest for Microsoft 365
+
+Copy all the files from the **manifest-configurations/unified** subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.xml** and **manifest-localhost.xml** files from the root folder, so only files needed for the unified manifest are present. Then, [run the sample](#run-the-sample).
+
+### To switch back to the add-in only manifest
+
+To switch back to the add-in only manifest, copy the files from the **manifest-configurations/add-in-only** subfolder to the sample's root folder. We recommend that you delete the **manifest.json** file from the root folder.
 
 ## Run the sample
 
-1. Fork and download this repo.
+1. Fork and download this repository.
 
 1. Go to the **Samples/tutorials/outlook-tutorial/Git the gist** folder via the command line.
 
 1. Run `npm install`.
 
-1. Start the local web server and sideload your add-in.
+1. Run the following command to start the local web server and sideload your add-in in Outlook.
 
-    - To test your add-in in Outlook, run the following command in the root directory of your `Git the gist` project. This starts the local web server (if it's not already running) and opens Outlook with your add-in loaded.
+    ```console
+    npm start
+    ```
 
-      `npm start`
-
-      If your add-in doesn't sideload in Outlook, manually sideload it by following the instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#sideload-manually).
+    > If your add-in doesn't sideload in Outlook, manually sideload it by following the instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#sideload-manually).
 
 1. In Outlook, compose a new message.
 
@@ -83,6 +85,19 @@ This sample demonstrates the basics of working with a compose message in Outlook
 ## See also
 
 The version of this sample that you create step-by-step is found in the article [Tutorial: Build a message compose Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/outlook-tutorial).
+
+## Solution
+
+| Solution | Author(s) |
+|----------|-----------|
+| Learn the basics of Outlook add-ins | Microsoft |
+
+## Version history
+
+| Version  | Date | Comments |
+|----------|------|----------|
+| 1.0 | 9-12-2023 | Initial release |
+| 1.1 | 11-14-2025 | Added support for the unified manifest for Microsoft 365 |
 
 ## Copyright
 
