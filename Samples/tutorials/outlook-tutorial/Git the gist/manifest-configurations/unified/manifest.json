@@ -77,11 +77,9 @@
                     },
                     "actions": [
                         {
-                            "id": "insertGist",
+                            "id": "showGistListTaskPane",
                             "type": "openPage",
-                            "pinnable": true,
-                            "multiselect": false,
-                            "supportsNoItemContext": false
+                            "pinnable": true
                         }
                     ]
                 }
@@ -102,7 +100,7 @@
                                         {
                                             "id": "msgComposeInsertGist",
                                             "type": "button",
-                                            "label": "Insert gist",
+                                            "label": "Display gist list",
                                             "icons": [
                                                 {
                                                     "size": 16,
@@ -121,7 +119,7 @@
                                                 "title": "Insert gist",
                                                 "description": "Displays a list of your gists and allows you to insert their contents into the current message."
                                             },
-                                            "actionId": "insertGist"
+                                            "actionId": "showGistListTaskPane"
                                         },
                                         {
                                             "id": "msgComposeInsertDefaultGist",
