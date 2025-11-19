@@ -48,7 +48,7 @@
                 "capabilities": [
                     {
                         "name": "Mailbox",
-                        "minVersion": "1.1"
+                        "minVersion": "1.3"
                     }
                 ],
                 "scopes": [
@@ -57,55 +57,29 @@
             },
             "runtimes": [
                 {
-                    "requirements": {
-                        "capabilities": [
-                            {
-                                "name": "Mailbox",
-                                "minVersion": "1.3"
-                            }
-                        ],
-                        "formFactors": [
-                            "desktop"
-                        ]
-                    },
                     "id": "commandsRuntime",
                     "type": "general",
                     "code": {
                         "page": "https://localhost:3000/commands.html"
                     },
-                    "lifetime": "short",
                     "actions": [
                         {
                             "id": "insertDefaultGist",
-                            "type": "executeFunction",
-                            "multiselect": false,
-                            "supportsNoItemContext": false
+                            "type": "executeFunction"
                         }
                     ]
                 },
                 {
-                    "requirements": {
-                        "capabilities": [
-                            {
-                                "name": "Mailbox",
-                                "minVersion": "1.3"
-                            }
-                        ],
-                        "formFactors": [
-                            "desktop"
-                        ]
-                    },
                     "id": "taskPaneRuntime",
                     "type": "general",
                     "code": {
                         "page": "https://localhost:3000/taskpane.html"
                     },
-                    "lifetime": "short",
                     "actions": [
                         {
                             "id": "insertGist",
                             "type": "openPage",
-                            "pinnable": false,
+                            "pinnable": true,
                             "multiselect": false,
                             "supportsNoItemContext": false
                         }
@@ -114,20 +88,6 @@
             ],
             "ribbons": [
                 {
-                    "requirements": {
-                        "capabilities": [
-                            {
-                                "name": "Mailbox",
-                                "minVersion": "1.3"
-                            }
-                        ],
-                        "scopes": [
-                            "mail"
-                        ],
-                        "formFactors": [
-                            "desktop"
-                        ]
-                    },
                     "contexts": [
                         "mailCompose"
                     ],
