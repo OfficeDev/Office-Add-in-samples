@@ -25,7 +25,7 @@ The tutorial gives step-by-step instructions on how to add functionality alongsi
 
 ## Features
 
-This sample demonstrates the basics of working with a compose message in Outlook. The functions collect information from the user, fetch data from an external service, implement a function command, and implement a task pane that inserts content into the body of a message. The sample also shows how to use a dialog box.
+This sample demonstrates the basics of working with a compose message in Outlook. The functions collect information from the user, fetch data from an external service, implement a function command, and implement a task pane that displays and inserts content into the body of a message. The sample also shows how to use a dialog box.
 
 ## Applies to
 
@@ -80,7 +80,7 @@ To switch back to the add-in only manifest, copy the files from the **manifest-c
 
     > In classic Outlook on Windows, you may need to close and reopen the new message window to pick up the latest settings from the dialog.
 
-1. In the message window, choose the **Insert gist** button in ribbon. This opens a task pane where you select the GitHub gist you want to insert into the message body.
+1. In the message window, choose the **Display gist list** button in ribbon. This opens a task pane where you select the GitHub gist you want to insert into the message body.
 
 ## See also
 

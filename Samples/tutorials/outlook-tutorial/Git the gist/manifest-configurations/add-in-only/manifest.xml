@@ -48,7 +48,7 @@
             <OfficeTab id="TabDefault">
               <Group id="msgComposeCmdGroup">
                 <Label resid="GroupLabel"/>
-                <Control xsi:type="Button" id="msgComposeInsertGist">
+                <Control xsi:type="Button" id="msgComposeShowGistListTaskPane">
                   <Label resid="TaskpaneButton.Label"/>
                   <Supertip>
                     <Title resid="TaskpaneButton.Title"/>

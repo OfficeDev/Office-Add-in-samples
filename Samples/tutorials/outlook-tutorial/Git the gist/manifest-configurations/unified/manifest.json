@@ -98,7 +98,7 @@
                                     "label": "Git the gist",
                                     "controls": [
                                         {
-                                            "id": "msgComposeInsertGist",
+                                            "id": "msgComposeShowGistListTaskPane",
                                             "type": "button",
                                             "label": "Display gist list",
                                             "icons": [
@@ -116,7 +116,7 @@
                                                 }
                                             ],
                                             "supertip": {
-                                                "title": "Insert gist",
+                                                "title": "Display gist list",
                                                 "description": "Displays a list of your gists and allows you to insert their contents into the current message."
                                             },
                                             "actionId": "showGistListTaskPane"

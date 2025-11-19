@@ -48,7 +48,7 @@
             <OfficeTab id="TabDefault">
               <Group id="msgComposeCmdGroup">
                 <Label resid="GroupLabel"/>
-                <Control xsi:type="Button" id="msgComposeInsertGist">
+                <Control xsi:type="Button" id="msgComposeShowGistListTaskPane">
                   <Label resid="TaskpaneButton.Label"/>
                   <Supertip>
                     <Title resid="TaskpaneButton.Title"/>
@@ -96,8 +96,8 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="Git the gist"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Insert gist"/>
-        <bt:String id="TaskpaneButton.Title" DefaultValue="Insert gist"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Display gist list"/>
+        <bt:String id="TaskpaneButton.Title" DefaultValue="Display gist list"/>
         <bt:String id="FunctionButton.Label" DefaultValue="Insert default gist"/>
         <bt:String id="FunctionButton.Title" DefaultValue="Insert default gist"/>
       </bt:ShortStrings>
