@@ -96,8 +96,8 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="Git the gist"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Insert gist"/>
-        <bt:String id="TaskpaneButton.Title" DefaultValue="Insert gist"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Display gist list"/>
+        <bt:String id="TaskpaneButton.Title" DefaultValue="Display gist list"/>
         <bt:String id="FunctionButton.Label" DefaultValue="Insert default gist"/>
         <bt:String id="FunctionButton.Title" DefaultValue="Insert default gist"/>
       </bt:ShortStrings>
