@@ -77,11 +77,13 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | [Custom function sample using web worker](Excel-custom-functions/web-worker) | Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in. |
 | [Use storage techniques to access data from an Office Add-in when offline](Samples/Excel.OfflineStorageAddin) | Demonstrates how you can implement localStorage to enable limited functionality for your Office Add-in when a user experiences lost connection. |
 | [Custom function batching pattern](Excel-custom-functions/Batching)| Batch multiple calls into a single call to reduce the number of network calls to a remote service.|
+| [Excel content add-in](Samples/excel-content-add-in) | Embed a content add-in in the Excel grid. |
 
 ## Word
 
 | Name           | Description  |
 | -------------- | ------------ |
+| [Automatically add labels with an add-in when a Word document opens](Samples/word-add-label-on-open)| Shows how to configure a Word add-in to activate when a document opens. |
 | [Get, edit, and set OOXML content in a Word document with a Word add-in](Samples/word-add-in-get-set-edit-openxml)| Shows how to get, edit, and set OOXML content in a Word document.|
 | [Import a Word document template with a Word add-in](Samples/word-import-template)| Shows how to import templates in a Word document.|
 | [Load and write Open XML in your Word add-in](Samples/word-add-in-load-and-write-open-xml) | Shows how to add a variety of rich content types to a Word document using the **setSelectedDataAsync** method with **ooxml** coercion type.|
@@ -103,6 +105,7 @@ Check out these samples if you want to take advantage of the [shared runtime](ht
 | [Use a shared library to migrate your Visual Studio Tools for Office add-in to an Office web add-in](Samples/VSTO-shared-code-migration) | Provides a strategy for code reuse when migrating from VSTO Add-ins to Office Add-ins. |
 | [Integrate an Azure function with your Excel custom function](Excel-custom-functions/AzureFunction) | Learn how to integrate Azure functions with custom functions to move to the cloud or integrate additional services. |
 | [Dynamic DPI code samples](Samples/dynamic-dpi) | A collection of samples for handling DPI changes in COM, VSTO, and Office Add-ins. |
+| [Rubric grader task pane add-in for OneNote on the web](Samples/onenote-add-in-rubric-grader/) | Explore the basics of OneNote add-ins with a sample tool for teachers. |
 
 ## Learn more
 

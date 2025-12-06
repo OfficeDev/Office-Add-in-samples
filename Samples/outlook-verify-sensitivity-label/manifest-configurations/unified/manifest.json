@@ -1,0 +1,228 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.22/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.22",
+  "version": "1.0.0",
+  "id": "f9abed2a-5bf7-42ad-8ff7-65711751b50a",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us"
+  },
+  "developer": {
+    "name": "Fabrikam",
+    "websiteUrl": "https://www.fabrikam.com/help",
+    "privacyUrl": "https://www.fabrikam.com/help",
+    "termsOfUseUrl": "https://www.fabrikam.com/help"
+  },
+  "name": {
+    "short": "Verify the sensitivity label",
+    "full": "Office Add-ins Outlook sensitivity label sample"
+  },
+  "description": {
+    "short": "Verify the sensitivity label of a message in an event-based add-in.",
+    "full": "Verify the sensitivity label of a message in an event-based add-in."
+  },
+  "icons": {
+    "outline": "assets/outline.png",
+    "color": "assets/color.png"
+  },
+  "accentColor": "#230201",
+  "validDomains": [
+    "https://officedev.github.io"
+  ],
+  "showLoadingIndicator": false,
+  "isFullScreen": false,
+  "defaultBlockUntilAdminAction": false,
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "MailboxItem.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "extensions": [
+    {
+      "requirements": {
+        "capabilities": [
+          {
+            "name": "Mailbox",
+            "minVersion": "1.13"
+          }
+        ],
+        "scopes": [
+          "mail"
+        ]
+      },
+      "runtimes": [
+        {
+          "requirements": {
+            "capabilities": [
+              {
+                "name": "Mailbox",
+                "minVersion": "1.13"
+              }
+            ]
+          },
+          "id": "event_runtime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/launchevent.html",
+            "script": "https://localhost:3000/launchevent.js"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "onMessageRecipientsChangedHandler",
+              "type": "executeFunction",
+              "displayName": "onMessageRecipientsChangedHandler"
+            },
+            {
+              "id": "onMessageSendHandler",
+              "type": "executeFunction",
+              "displayName": "onMessageSendHandler"
+            },
+            {
+              "id": "onSensitivityLabelChangedHandler",
+              "type": "executeFunction",
+              "displayName": "onSensitivityLabelChangedHandler"
+            },
+            {
+              "id": "onMessageAttachmentsChangedHandler",
+              "type": "executeFunction",
+              "displayName": "onMessageAttachmentsChangedHandler"
+            }
+          ]
+        },
+        {
+          "requirements": {
+            "capabilities": [
+              {
+                "name": "Mailbox",
+                "minVersion": "1.13"
+              }
+            ]
+          },
+          "id": "taskpane_runtime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/taskpane.html"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "open_taskpane",
+              "type": "openPage",
+              "pinnable": false
+            }
+          ]
+        }
+      ],
+      "ribbons": [
+        {
+          "requirements": {
+            "capabilities": [
+              {
+                "name": "Mailbox",
+                "minVersion": "1.13"
+              }
+            ],
+            "scopes": [
+              "mail"
+            ]
+          },
+          "contexts": [
+            "mailCompose"
+          ],
+          "tabs": [
+            {
+              "builtInTabId": "TabDefault",
+              "groups": [
+                {
+                  "id": "msgComposeGroup",
+                  "label": "Verify sensitivity label",
+                  "controls": [
+                    {
+                      "id": "msgComposeOpenPaneButton",
+                      "type": "button",
+                      "label": "Sample Instructions",
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Sample Instructions",
+                        "description": "Opens a pane listing the steps to run the add-in sample."
+                      },
+                      "actionId": "open_taskpane"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "autoRunEvents": [
+        {
+          "requirements": {
+            "capabilities": [
+              {
+                "name": "Mailbox",
+                "minVersion": "1.13"
+              }
+            ],
+            "scopes": [
+              "mail"
+            ]
+          },
+          "events": [
+            {
+              "type": "messageRecipientsChanged",
+              "actionId": "onMessageRecipientsChangedHandler"
+            },
+            {
+              "type": "messageSending",
+              "actionId": "onMessageSendHandler",
+              "options": {
+                "sendMode": "promptUser"
+              }
+            },
+            {
+              "type": "sensitivityLabelChanged",
+              "actionId": "onSensitivityLabelChangedHandler"
+            },
+            {
+              "type": "messageAttachmentsChanged",
+              "actionId": "onMessageAttachmentsChangedHandler"
+            }
+          ]
+        }
+      ],
+      "alternates": [
+        {
+          "alternateIcons": {
+            "icon": {
+              "size": 64,
+              "url": "https://localhost:3000/assets/icon-64.png"
+            },
+            "highResolutionIcon": {
+              "size": 64,
+              "url": "https://localhost:3000/assets/icon-128.png"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

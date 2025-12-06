@@ -1,0 +1,206 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.22/MicrosoftTeams.schema.json",
+    "id": "dac64749-60d7-4579-9036-cb7308b6d444",
+    "manifestVersion": "1.22",
+    "version": "1.0.0",
+    "name": {
+        "short": "Check item categories on send",
+        "full": "Office Add-ins Outlook Smart Alerts Sample"
+    },
+    "description": {
+        "short": "Checks mail item categories on send.",
+        "full": "This sample checks a mail item's categories before the item is sent."
+    },
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-check-item-categories",
+        "privacyUrl": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-check-item-categories",
+        "termsOfUseUrl": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-check-item-categories"
+    },
+    "icons": {
+        "outline": "assets/outline.png",
+        "color": "assets/color.png"
+    },
+    "accentColor": "#230201",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us"
+    },
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "Mailbox.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "validDomains": [
+        "contoso.com"
+    ],
+    "extensions": [
+        {
+            "requirements": {
+                "scopes": [
+                    "mail"
+                ],
+                "capabilities": [
+                    {
+                        "name": "Mailbox",
+                        "minVersion": "1.12"
+                    }
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.12"
+                            }
+                        ]
+                    },
+                    "id": "TaskPaneRuntime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/taskpane.html"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "TaskPaneRuntimeShow",
+                            "type": "openPage",
+                            "pinnable": true
+                        }
+                    ]
+                },
+                {
+                    "id": "EventBasedRuntime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/commands.html",
+                        "script": "https://localhost:3000/commands.js"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "onMessageComposeHandler",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "onAppointmentComposeHandler",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "onMessageSendHandler",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "onAppointmentSendHandler",
+                            "type": "executeFunction"
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "contexts": [
+                        "mailCompose",
+                        "meetingDetailsOrganizer"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabDefault",
+                            "groups": [
+                                {
+                                    "id": "categoriesGroup",
+                                    "label": "Office Add-ins Sample",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "categoriesOpenPaneButton",
+                                            "type": "button",
+                                            "label": "Select categories",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Select categories",
+                                                "description": "Opens a task pane to select and apply categories to an email or appointment."
+                                            },
+                                            "actionId": "TaskPaneRuntimeShow"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "autoRunEvents": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.12"
+                            }
+                        ],
+                        "scopes": [
+                            "mail"
+                        ]
+                    },
+                    "events": [
+                        {
+                            "type": "newMessageComposeCreated",
+                            "actionId": "onMessageComposeHandler"
+                        },
+                        {
+                            "type": "newAppointmentOrganizerCreated",
+                            "actionId": "onAppointmentComposeHandler"
+                        },
+                        {
+                            "type": "messageSending",
+                            "actionId": "onMessageSendHandler",
+                            "options": {
+                                "sendMode": "softBlock"
+                            }
+                        },
+                        {
+                            "type": "appointmentSending",
+                            "actionId": "onAppointmentSendHandler",
+                            "options": {
+                                "sendMode": "block"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

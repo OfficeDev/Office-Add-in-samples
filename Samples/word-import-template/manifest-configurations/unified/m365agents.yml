@@ -1,0 +1,64 @@
+# yaml-language-server: $schema=https://aka.ms/teams-toolkit/v1.7/yaml.schema.json
+# Visit https://aka.ms/teamsfx-v5.0-guide for details on this file
+# Visit https://aka.ms/teamsfx-actions for details on actions
+version: v1.7
+
+environmentFolderPath: ./env
+
+# Triggered when 'teamsapp provision' is executed
+provision:
+  - uses: arm/deploy # Deploy given ARM templates parallelly.
+    with:
+      # AZURE_SUBSCRIPTION_ID is a built-in environment variable,
+      # if its value is empty, TeamsFx will prompt you to select a subscription.
+      # Referencing other environment variables with empty values
+      # will skip the subscription selection prompt.
+      subscriptionId: ${{AZURE_SUBSCRIPTION_ID}}
+      # AZURE_RESOURCE_GROUP_NAME is a built-in environment variable,
+      # if its value is empty, TeamsFx will prompt you to select or create one
+      # resource group.
+      # Referencing other environment variables with empty values
+      # will skip the resource group selection prompt.
+      resourceGroupName: ${{AZURE_RESOURCE_GROUP_NAME}}
+      templates:
+        - path: ./infra/azure.bicep # Relative path to this file
+          # Relative path to this yaml file.
+          # Placeholders will be replaced with corresponding environment
+          # variable before ARM deployment.
+          parameters: ./infra/azure.parameters.json
+          # Required when deploying ARM template
+          deploymentName: Create-resources-for-tab
+      # Teams Toolkit will download this bicep CLI version from github for you,
+      # will use bicep CLI in PATH if you remove this config.
+      bicepCliVersion: v0.9.1
+
+  # Get the deployment token from Azure Static Web Apps
+  - uses: azureStaticWebApps/getDeploymentToken
+    with:
+      resourceId: ${{AZURE_STATIC_WEB_APPS_RESOURCE_ID}}
+    # Save deployment token to the environment file for the deployment action
+    writeToEnvironmentFile:
+      deploymentToken: SECRET_TAB_SWA_DEPLOYMENT_TOKEN
+
+# Triggered when 'teamsapp deploy' is executed
+deploy:
+  # Run npm command
+  - uses: cli/runNpmCommand
+    name: install dependencies
+    with:
+      args: install
+  - uses: cli/runNpmCommand
+    name: build app
+    with:
+      args: run build --if-present
+  # Azure Static Web Apps needs index.html
+  - uses: cli/runNpxCommand
+    with:
+      args: shx touch dist/index.html
+  # Deploy bits to Azure Static Web Apps
+  - uses: cli/runNpxCommand
+    name: deploy to Azure Static Web Apps
+    with:
+      args: '@azure/static-web-apps-cli deploy ./dist -d
+        ${{SECRET_TAB_SWA_DEPLOYMENT_TOKEN}} --env production'
+projectId: 445fce6e-0384-4531-ade7-dd7b25673031
