@@ -1,6 +1,6 @@
 {
-     "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.3/schema.json",
-     "version": "v1.3",
+     "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.4/schema.json",
+     "version": "v1.4",
      "name": "Chart Analysis Agent",
      "description": "Agent for displaying charts that show correlations in data.",
      "instructions": "You are an agent for working with an add-in.",

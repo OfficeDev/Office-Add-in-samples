@@ -1,0 +1,46 @@
+	[
+	    {
+	      "name": "onenote-add-in-rubric-grader",
+	      "reponame": "office-add-in-samples",
+	      "source": "officedev",
+	      "title": "Rubric grader task pane add-in for OneNote on the web",
+	      "shortDescription": "Explore the basics of OneNote add-ins with a sample add-in.",
+	      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/onenote-add-in-rubric-grader",
+	      "longDescription": [
+	        "Explore the basics of OneNote add-ins with a sample tool for teachers."
+	      ],
+	      "creationDateTime": "8/21/2025",
+	      "updateDateTime": "8/21/2025",
+	      "products": [
+	        "Office"
+	      ],
+	      "metadata": [
+	        {
+	          "key": "CLIENT-SIDE-DEV",
+	          "value": "JavaScript"
+	        }
+	      ],
+	      "thumbnails": [
+	        {
+	            "type": "Image",
+	            "order": 100,
+	            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/onenote-add-in-rubric-grader/assets/readme-images/rubric-grader.png" ,
+	            "alt": "The add-in task pane next to a OneNote notebook page."
+	          }
+	      ],
+	      "authors": [
+	        {
+	          "gitHubAccount": "microsoft",
+	          "pictureUrl": "https://github.com/microsoft.png",
+	          "name": "Microsoft"
+	        }
+	      ],
+	      "references": [
+	        {
+	          "name": "Office Add-ins platform overview",
+	          "description": "You can use the Office Add-ins platform to build solutions that extend Office applications and interact with content in Office documents.",
+	          "url": "https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins"
+	        }
+	      ]
+	    }
+	  ]

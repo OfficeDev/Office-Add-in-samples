@@ -1,0 +1,68 @@
+name: autorun-npm-audit-fix
+run-name: Automatically run npm audit fix
+on:
+  schedule:
+    - cron: '45 08 15 * *' # Run at 1:45 AM PDT on the 15th of every month
+jobs:
+  autorun-npm-audit-fix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Make the script file executable
+        run: chmod +x ./npm-audit-fix.sh
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Run npm-audit-fix script
+        run: |
+          echo "Running npm-audit-fix script (breaking changes will need to be addressed manually)"
+          ./npm-audit-fix.sh
+      - name: Undo chmod
+        run: |
+          echo "Undoing script file chmod"
+          chmod -x ./npm-audit-fix.sh
+      - name: Get whether autorun-npm-audit-fix branch exists
+        run: |
+          echo "Getting whether autorun-npm-audit-fix branch exists"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          {
+            echo 'git_ls_remote_origin_autorun_npm_audit_fix<<EOF'
+            git ls-remote origin autorun-npm-audit-fix
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+        id: run_git_ls_remote_origin_autorun_npm_audit_fix
+      - name: Delete autorun-npm-audit-fix if it exists
+        if: ${{ contains(steps.run_git_ls_remote_origin_autorun_npm_audit_fix.outputs.git_ls_remote_origin_autorun_npm_audit_fix, '/autorun-npm-audit-fix') }}
+        run: |
+          echo "Deleting remote autorun-npm-audit-fix branch"
+          git push origin --delete autorun-npm-audit-fix
+      - name: Add any changes
+        run: |
+          echo "Determining if there are any changes"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git checkout -b autorun-npm-audit-fix
+          git add .
+      - name: Run git status
+        run: |
+          {
+            echo 'git_status<<EOF'
+            git status
+            echo EOF
+          } >> "$GITHUB_OUTPUT"
+        id: run_git_status
+      - name: Commit and push changes if any
+        if: ${{ !contains(steps.run_git_status.outputs.git_status, 'nothing to commit, working tree clean') }}
+        run: |
+          echo "Committing and pushing changes to autorun-npm-audit-fix branch"
+          git commit -m "Automatically run npm audit fix"
+          git push --set-upstream origin autorun-npm-audit-fix
