@@ -9,6 +9,7 @@
 
 import {
   BrowserAuthError,
+  InteractionRequiredAuthError,
   createNestablePublicClientApplication,
   type IPublicClientApplication,
 } from "@azure/msal-browser";
@@ -83,48 +84,31 @@ export class AccountManager {
     this.setSignOutButtonVisibility(false);
   }
 
-  /**
-   * Get an access token using SSO with error handling and retry logic.
-   * @param scopes the minimum scopes needed.
-   * @returns An access token.
-   */
-  async ssoGetAccessToken(scopes: string[]): Promise<string> {
-    // Check if the user is already signed in via fallback dialog API.
-    if (this._dialogApiResult) {
-      return this._dialogApiResult;
-    }
-
-    if (this.pca === undefined) {
-      throw new Error("AccountManager is not initialized!");
-    }
-
-    // Get login hint if needed to avoid extra account prompt in Word, Excel, or PowerPoint on the web.
-    const loginHint = await this.getLoginHint();
-
-    // Try silent token acquisition first
-    const silentToken = await this.tryAcquireTokenSilently(scopes, loginHint);
-    if (silentToken) {
-      return silentToken;
-    }
-
-    // Fall back to interactive token acquisition
-    return this.acquireTokenInteractively(scopes, loginHint);
-  }
-
   // Get login hint for Word, Excel, or PowerPoint on the web from the auth context.
   private async getLoginHint(): Promise<string | undefined> {
     try {
-      if (Office.context.platform === Office.PlatformType.OfficeOnline && Office.context.host !== Office.HostType.Outlook) {
-        const authCtx = await Office.auth.getAuthContext();
-        return authCtx.userPrincipalName;
-      }
+      if (typeof Office !== "undefined" && Office.context) {
+            const authContext = await Office.auth.getAuthContext();
+            if (authContext?.userPrincipalName) return authContext.userPrincipalName;
+        }
     } catch (error) {
       console.warn("Could not get login hint:", error);
     }
     return undefined;
   }
 
-  private async tryAcquireTokenSilently(scopes: string[], loginHint: string | undefined): Promise<string | null> {
+  async acquireToken(scopes: string[]): Promise<string> {
+    // Check if the user is already signed in via fallback dialog API.
+    if (this._dialogApiResult) {
+      return this._dialogApiResult;
+    }
+    
+    if (this.pca === undefined) {
+      throw new Error("AccountManager is not initialized!");
+    }
+    const loginHint = await this.getLoginHint();
+    console.log(loginHint);
+    
     try {
       console.log("Trying to acquire token silently...");
       const tokenRequest = getTokenRequest(scopes, false, undefined, loginHint);
@@ -134,18 +118,28 @@ export class AccountManager {
         : await this.pca!.acquireTokenSilent(tokenRequest);
       console.log("Acquired token silently.");
       return authResult.accessToken;
-    } catch (error) {
-      console.warn(`Unable to acquire token silently: ${error}`);
-      return null;
+    } catch (silentError) {
+      if (silentError instanceof InteractionRequiredAuthError) {
+        return this.acquireTokenInteractively(scopes, loginHint);
+      } else {
+        // For running on a localhost server, use the following line of code
+        // to work around CORS errors with localhost.
+        // Comment this code when deploying to production.
+        return this.acquireTokenInteractively(scopes, loginHint);
+
+        // For production uncomment the following code.
+        // throw new Error(`Unable to acquire access token: ${silentError}`);
+        
+      }
     }
   }
 
   private async acquireTokenInteractively(scopes: string[], loginHint: string | undefined): Promise<string> {
     try {
       console.log("Trying to acquire token interactively...");
-      const selectAccount = !this.pca!.getActiveAccount();
+      
       const authResult = await this.pca!.acquireTokenPopup(
-        getTokenRequest(scopes, selectAccount, undefined, loginHint)
+        getTokenRequest(scopes, false, undefined, loginHint)
       );
       console.log("Acquired token interactively.");
       

@@ -46,7 +46,7 @@ Office.onReady((info) => {
 async function getUserData() {
   try {
     const userDataElement = document.getElementById("userData");
-    const accessToken = await accountManager.ssoGetAccessToken(["User.Read"]);
+    const accessToken = await accountManager.acquireToken(["User.Read"]);
     const response: { displayName: string; mail: string } = await makeGraphRequest(accessToken, "/me", "");
     
     console.log(response);
@@ -80,7 +80,7 @@ async function getUserFiles() {
 }
 
 async function getFileNames(count = 10) {
-  const accessToken = await accountManager.ssoGetAccessToken(["Files.Read"]);
+  const accessToken = await accountManager.acquireToken(["Files.Read"]);
   const response: { value: { name: string }[] } = await makeGraphRequest(
     accessToken,
     "/me/drive/root/children",
