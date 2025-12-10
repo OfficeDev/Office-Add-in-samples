@@ -17,14 +17,11 @@ extensions:
 description: "This sample shows how to implement SSO in an Office Add-in by using nested app authentication."
 ---
 
-# Office Add-in with SSO using nested app authentication (preview)
+# Office Add-in with SSO using nested app authentication
 
 ## Summary
 
 This sample shows how to use MSAL.js nested app authentication (NAA) in an Office Add-in to access Microsoft Graph APIs for the signed in user. The sample displays the signed in user's name and email. It also inserts the names of files from the user's Microsoft OneDrive account into the document.
-
-> [!IMPORTANT]
-> Nested app authentication is currently in preview. To try this feature, you need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) and choose **Current Channel (Preview)**. Don't use NAA in production add-ins. We invite you to try out NAA in test or development environments and welcome feedback on your experience through GitHub (see https://github.com/OfficeDev/office-js/issues).
 
 ## Features
 
@@ -38,7 +35,6 @@ For a list of supported hosts, see [NAA supported accounts and hosts](https://le
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- You need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) to use the NAA preview features. Choose the **Current Channel (Preview)** insider level.
 - [Node.js](https://nodejs.org/) (latest recommended version).
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
