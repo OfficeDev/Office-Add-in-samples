@@ -15,6 +15,9 @@
 **/wwwroot/Commands/**/*.js
 **/wwwroot/Commands/**/*.map
 
+# But keep specific JS files that are not generated
+!**/wwwroot/lib/**/*.js
+
 # dotenv files
 .env
 

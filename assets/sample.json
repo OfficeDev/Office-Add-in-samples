@@ -9,8 +9,8 @@
     "longDescription": [
       "This sample shows how to build a Excel add-in using .NET Hybrid Blazor technologies. Hybrid Blazor technologies allows you to build Office Add-ins using .NET, C#, and JavaScript to interact with the Office JS API. The add-in uses JavaScript to work with the document and Office JS APIs, but you build the user interface and all other non-Office interactions in C# and .NET Core Blazor technologies."
     ],
-    "creationDateTime": "2025-02-21",
-    "updateDateTime": "2025-02-21",
+    "creationDateTime": "2025-12-09",
+    "updateDateTime": "2025-12-09",
     "products": ["Office"],
     "metadata": [
       {

@@ -19,27 +19,21 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Blazor.Excel.AddIn.Client\Blazor.Excel.AddIn.Client.csproj" />
 		
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.0-rc.2.25502.107" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.13.1" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.13.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.0" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.13.2" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.13.2" />
 	</ItemGroup>
 
   <!-- Incremental, reproducible npm restore -->
-  <Target Name="NpmRestore"
-          BeforeTargets="Build"
-          Inputs="package-lock.json"
-          Outputs="node_modules/.package-lock.stamp">
+  <Target Name="NpmRestore" BeforeTargets="Build" Inputs="package-lock.json" Outputs="node_modules/.package-lock.stamp">
     <Message Importance="high" Text="Running npm ci (only when package-lock.json changes)..." />
-    <Exec Command="npm ci"
-          Condition="Exists('package.json') and Exists('package-lock.json')" />
+    <Exec Command="npm ci" Condition="Exists('package.json') and Exists('package-lock.json')" />
     <Touch Files="node_modules/.package-lock.stamp" AlwaysCreate="true" />
   </Target>
 
 
   <!-- Only start local dev process when running (F5), controlled by RunStartLocalDev property -->
-  <Target Name="StartLocalDev"
-          AfterTargets="Build"
-          Condition="'$(Configuration)'=='Debug' and '$(BuildingInsideVisualStudio)'=='true' and '$(CI)'!='true'">
+  <Target Name="StartLocalDev" AfterTargets="Build" Condition="'$(Configuration)'=='Debug' and '$(BuildingInsideVisualStudio)'=='true' and '$(CI)'!='true'">
     <Message Importance="high" Text="Starting local dev environment..." />
     <Exec Command="npm run start-local" WorkingDirectory="..\Blazor.Excel.AddIn\" />
   </Target>
