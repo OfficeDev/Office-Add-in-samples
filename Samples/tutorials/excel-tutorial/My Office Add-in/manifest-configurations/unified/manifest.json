@@ -2,7 +2,7 @@
     "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
     "manifestVersion": "devPreview",
     "version": "1.0.0",
-    "id": "bf04b6b3-0a86-437d-8d4b-4247d7f74a25",
+    "id": "c51634b6-ffa0-473a-8cd1-914d01e7c2cf",
     "localizationInfo": {
         "defaultLanguageTag": "en-us",
         "additionalLanguages": []
