@@ -50,7 +50,7 @@ Learn the basics of Excel add-ins | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0 | 1-13-2023 | Initial release
-1.1 | 12-9-2025 | Added support for the unified manifest for Microsoft 365
+1.1 | 12-17-2025 | Added support for the unified manifest for Microsoft 365
 
 ## Choose a manifest type
 
@@ -103,6 +103,9 @@ To switch back to the add-in only manifest, copy the files from the **manifest-c
 1. If the add-in task pane isn't already open in Excel, go to the Home tab and choose the **Show Task Pane** button in the ribbon to open it.
 
 1. Use the buttons in the task pane and the **Toggle Worksheet Protection** button to interact with the workbook through your add-in.
+
+    > [!IMPORTANT]
+    > The unified manifest doesn't include the configuration changes that display the **Toggle Worksheet Protection** button at this time. We're working on getting that added as soon as possible.
 
 ## See also
 

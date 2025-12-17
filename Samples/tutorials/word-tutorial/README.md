@@ -50,7 +50,7 @@ This sample demonstrates the basics of working with a document in Word. The add-
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 9-20-2023 | Initial release |
-| 1.1 | 12-16-2025 | Added support for the unified manifest for Microsoft 365 |
+| 1.1 | 12-17-2025 | Added support for the unified manifest for Microsoft 365 |
 
 ## Choose a manifest type
 
