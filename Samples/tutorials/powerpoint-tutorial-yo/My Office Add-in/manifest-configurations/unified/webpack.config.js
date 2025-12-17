@@ -20,7 +20,6 @@ module.exports = async (env, options) => {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: ["./src/taskpane/taskpane.ts", "./src/taskpane/taskpane.html"],
       commands: "./src/commands/commands.ts",
-      popup: "./src/dialogs/popup.js"
     },
     output: {
       clean: true,
@@ -34,7 +33,10 @@ module.exports = async (env, options) => {
           test: /\.ts$/,
           exclude: /node_modules/,
           use: {
-            loader: "babel-loader"
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-typescript"],
+            },
           },
         },
         {
@@ -64,7 +66,7 @@ module.exports = async (env, options) => {
             to: "assets/[name][ext][query]",
           },
           {
-            from: "manifest*.xml",
+            from: "manifest*.json",
             to: "[name]" + "[ext]",
             transform(content) {
               if (dev) {
@@ -81,11 +83,6 @@ module.exports = async (env, options) => {
         template: "./src/commands/commands.html",
         chunks: ["polyfill", "commands"],
       }),
-      new HtmlWebpackPlugin({
-        filename: "popup.html",
-        template: "./src/dialogs/popup.html",
-        chunks: ["polyfill", "popup"]
-      })
     ],
     devServer: {
       headers: {
