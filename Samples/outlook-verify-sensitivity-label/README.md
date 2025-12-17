@@ -398,7 +398,7 @@ Office.context.mailbox.item.sensitivityLabel.setAsync(labelId, { asyncContext: e
 |1.2|October 12, 2023|Update supported version of Outlook on Mac|
 |1.3|January 11, 2024|Remove Microsoft 365 Insider Program requirement|
 |1.4|July 28, 2025|Add support for the unified manifest for Microsoft 365 and move add-in logic to other event handlers|
-|1.5|December 16, 2025|Update support for the unified manifest in Outlook on the web and the new Outlook on Windows|
+|1.5|December 17, 2025|Update support for the unified manifest in Outlook on the web and the new Outlook on Windows|
 
 ## Copyright
 
