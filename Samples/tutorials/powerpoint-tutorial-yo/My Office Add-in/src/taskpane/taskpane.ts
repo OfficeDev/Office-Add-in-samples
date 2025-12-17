@@ -53,7 +53,7 @@ function getSlideMetadata() {
     }
   });
 }
-  
+
 async function addSlides() {
   await PowerPoint.run(async function (context) {
     context.presentation.slides.add();
@@ -107,7 +107,7 @@ function setMessage(message) {
   document.getElementById("message").innerText = message;
 }
 
-/** Default helper for invoking an action and handling errors. */
+// Default helper for invoking an action and handling errors.
 async function tryCatch(callback) {
   try {
     document.getElementById("message").innerText = "";
