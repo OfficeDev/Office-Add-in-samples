@@ -1,6 +1,5 @@
-
 Office.onReady((info) => {
-    document.getElementById("ok-button").onclick = (() => tryCatch(sendStringToParentPage));
+    document.getElementById("ok-button").onclick = () => tryCatch(sendStringToParentPage);
 });
 
 function sendStringToParentPage() {
