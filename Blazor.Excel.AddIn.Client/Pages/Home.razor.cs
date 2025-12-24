@@ -1,36 +1,40 @@
 /* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
-using Blazor.Excel.AddIn.Client.Model;
+using System.Runtime.InteropServices.JavaScript;
+using System.Runtime.Versioning;
+
+using Blazor.Excel.AddIn.Client.Services;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Blazor.Excel.AddIn.Client.Pages;
 
 /// <summary>
 /// Starter class to demo how to insert a paragraph
 /// </summary>
+[SupportedOSPlatform("browser")]
 public partial class Home : ComponentBase
 {
-    private HostInformation hostInformation = new();
-
-    [Inject, AllowNull]
-    private IJSRuntime JSRuntime { get; set; } = default!;
-    private IJSObjectReference JSModule { get; set; } = default!;
+    private bool HostInformation;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            hostInformation = await JSRuntime.InvokeAsync<HostInformation>("Office.onReady");
+            try
+            {
+                await JSHost.ImportAsync("Home", "../Pages/Home.razor.js");
+                Console.WriteLine($"Imported Home module");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error importing Home module: {ex.Message}");
+            }
 
-            Debug.WriteLine("Hit OnAfterRenderAsync in Home.razor.cs!");
-            Console.WriteLine("Hit OnAfterRenderAsync in Home.razor.cs in Console!");
-            JSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/Home.razor.js");
+            HostInformation = await OfficeUtilities.IsRunningInHostAsync();
+            Console.WriteLine($"Home HostInformation: {HostInformation}");
 
-            if (hostInformation.IsInitialized)
+            if (HostInformation)
             {
                 StateHasChanged();
             }
@@ -40,19 +44,20 @@ public partial class Home : ComponentBase
     /// <summary>
     /// Basic function to invoke inserting 'Hello world!' text.
     /// </summary>
-    private async Task HelloButton() =>
-        await JSModule.InvokeVoidAsync("helloButton");
-
+    [JSImport("insertText", "Home")]
+    internal static partial Task InsertText();
 
     [JSInvokable]
     public static Task<string> SayHelloHome(string name)
     {
-        return Task.FromResult($"Hello, {name} from Home Page!");
+        Console.WriteLine("Invoking SayHelloHome");
+        return Task.FromResult($"Hello Home, {name} from Home Page!");
     }
 
     [JSInvokable]
     public static Task<string> PreloaderDummy()
     {
+        Console.WriteLine("Invoking PreloaderDummy");
         return Task.FromResult("Loaded");
     }
 }

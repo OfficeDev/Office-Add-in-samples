@@ -17,7 +17,7 @@
         </FluentStack>
         <FluentLabel>Welcome to your new Excel Add-in.</FluentLabel>
 
-        @if (!hostInformation.IsInitialized)
+        @if (!HostInformation)
         {
             <FluentLabel Typo="Typography.H4">
                 Please <FluentAnchor Href="https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing" Appearance="Appearance.Hypertext" Target="_blank">sideload</FluentAnchor> your add-in to see app body.
@@ -28,7 +28,7 @@
             <FluentLabel Typo="Typography.Body" Alignment="HorizontalAlignment.Center">
                 Set cell A1 to the value of 'Hello world!!!' using JavaScript interop between Blazor and the Office JavaScript API.
             </FluentLabel>
-            <FluentButton OnClick="HelloButton" Appearance="Appearance.Accent">Say Hello World in Excel!</FluentButton>
+            <FluentButton OnClick="InsertText" Appearance="Appearance.Accent">Say Hello World in Excel!</FluentButton>
         }
 
     </FluentStack>

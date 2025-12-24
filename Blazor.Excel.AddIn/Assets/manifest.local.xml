@@ -394,6 +394,8 @@
 
 			<!-- LongStrings max characters==250. -->
 			<bt:LongStrings>
+				<bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the Sample Add-in tab and click the 'Show Taskpane' button to get started." />
+        
 				<bt:String id="Contoso.Taskpane.Home.Tooltip" DefaultValue="Click to Show Home Taskpane" />
 				<bt:String id="Contoso.Taskpane.Weather.Tooltip" DefaultValue="Click to Show Weather Taskpane" />
 				<bt:String id="Contoso.Taskpane.Counter.Tooltip" DefaultValue="Click to Show Counter Taskpane" />
@@ -406,7 +408,6 @@
 				<bt:String id="Contoso.FunctionButton2.Tooltip" DefaultValue="Click to Run CreateBubbles from BubbleChart Page" />
 				<bt:String id="Contoso.FunctionButton4.Tooltip" DefaultValue="Click to insert name from Home" />
 
-				<bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the Sample Add-in tab and click the 'Show Taskpane' button to get started." />
 			</bt:LongStrings>
 
 		</Resources>

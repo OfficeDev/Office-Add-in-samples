@@ -1,16 +1,19 @@
 /* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
 
+console.log("Loading Home.razor.ts");
+
 /**
  * Basic function to show how to insert a value into cell A1 on the selected Excel worksheet.
  * Inserts 'Hello world!!!' text into cell A1 of the active worksheet.
- * 
- * @returns A promise that resolves when the operation completes
  */
-export async function helloButton(): Promise<void> {
-  console.log("We are now entering function: helloButton");
+
+export async function insertText() {
+
+  console.log("We are now entering function: insertText");
 
   try {
-    await Excel.run(async (context: Excel.RequestContext): Promise<void> => {
+    await Excel.run(async function (context) {
+
       // Insert text 'Hello world!' into cell A1.
       const activeWorksheet: Excel.Worksheet = context.workbook.worksheets.getActiveWorksheet();
       const range: Excel.Range = activeWorksheet.getRange("A1");
