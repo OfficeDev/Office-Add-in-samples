@@ -3,6 +3,9 @@
 # Visit https://aka.ms/teamsfx-actions for details on actions
 version: 1.0.0
 
+additionalMetadata:
+  sampleTag: Office-Add-in-samples:outlook-add-in-set-signature
+
 environmentFolderPath: ./env
 
 # Triggered when 'teamsfx provision' is executed
