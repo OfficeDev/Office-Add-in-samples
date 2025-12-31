@@ -53,5 +53,8 @@
   },
   "dependencies": {
     "semver": "^7.7.2"
+  },
+  "overrides": {
+    "tmp": "^0.2.3"
   }
 }
