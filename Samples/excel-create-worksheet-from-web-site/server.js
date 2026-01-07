@@ -24,21 +24,30 @@ app.use(express.static('WebApplication/App'));
 app.post('/api/create-spreadsheet', async (req, res) => {
     try {
         const tableData = req.body;
+
+        // Basic validation of request body structure
+        if (!tableData || !Array.isArray(tableData.rows)) {
+            return res.status(400).json({ error: 'Invalid request body: "rows" must be an array.' });
+        }
         
         // Create a new workbook and worksheet
         const workbook = new ExcelJS.Workbook();
         const worksheet = workbook.addWorksheet('Web Data');
         
         // Insert data from the request
-        if (tableData && tableData.rows) {
-            tableData.rows.forEach((row, rowIndex) => {
-                const excelRow = worksheet.getRow(rowIndex + 1);
-                row.columns.forEach((column, colIndex) => {
+        tableData.rows.forEach((row, rowIndex) => {
+            if (!row || !Array.isArray(row.columns)) {
+                // Skip malformed rows instead of throwing
+                return;
+            }
+            const excelRow = worksheet.getRow(rowIndex + 1);
+            row.columns.forEach((column, colIndex) => {
+                if (column && Object.prototype.hasOwnProperty.call(column, 'value')) {
                     excelRow.getCell(colIndex + 1).value = column.value;
-                });
-                excelRow.commit();
+                }
             });
-        }
+            excelRow.commit();
+        });
         
         // Auto-fit columns
         worksheet.columns.forEach((column, index) => {
@@ -73,7 +82,11 @@ app.post('/api/create-spreadsheet', async (req, res) => {
         
     } catch (error) {
         console.error('Error creating spreadsheet:', error);
-        res.status(500).json({ error: 'Failed to create spreadsheet', details: error.message });
+        const responseBody = { error: 'Failed to create spreadsheet' };
+        if (process.env.NODE_ENV !== 'production' && error && error.message) {
+            responseBody.details = error.message;
+        }
+        res.status(500).json(responseBody);
     }
 });
 
