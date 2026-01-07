@@ -148,7 +148,7 @@ function seeProfile() {
 let sheetWindow; // Used for opening a new browser tab to load the created spreadsheet.
 
 /**
- * Calls FunctionCreateSpreadsheet in the Azure Functions project to create the spreadsheet.
+ * Calls the Node.js server endpoint to create the spreadsheet.
  * Calls uploadFile to then upload the new spreadsheet to OneDrive.
  */
 function openInExcel() {
@@ -158,12 +158,12 @@ function openInExcel() {
     // Get mock data.
     const bodyJSON = JSON.stringify(tableData);
     
-    const url = 'http://localhost:7071/api/FunctionCreateSpreadsheet';
+    const url = 'http://localhost:3000/api/create-spreadsheet';
     
-     // Use Azure Function to create spreadsheet
+     // Use Node.js server endpoint to create spreadsheet
     fetch(url, {
         headers: {
-            'Content-Type': 'application/octet-stream',
+            'Content-Type': 'application/json',
         },
         method: 'POST',
         body: bodyJSON,
