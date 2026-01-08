@@ -22,11 +22,11 @@ This sample accomplishes the following tasks.
 - Creates a new Excel spreadsheet from a web page.
 - Populates the spreadsheet with data from the web page.
 - Embeds the Script Lab add-in into the Excel spreadsheet.
-- Opens the spreadsheet on a new browser tab.
+- Opens the spreadsheet in a new browser tab.
 
 ![Sequence diagram showing an "Open in Microsoft Excel" button on your web page that creates a spreadsheet with your data which contains your add-in](./images/open-in-excel-overview.png)
 
-This sample implements the pattern described in [Create an Excel spreadsheet from your web page, populate it with data, and embed your Office Add-in](https://learn.microsoft.com/office/dev/add-ins/excel/pnp-open-in-excel)
+This sample implements the pattern described in [Create an Excel spreadsheet from your web page, populate it with data, and embed your Office Add-in](https://learn.microsoft.com/office/dev/add-ins/excel/pnp-open-in-excel).
 
 ## Applies to
 
@@ -35,7 +35,7 @@ This sample implements the pattern described in [Create an Excel spreadsheet fro
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) version 16 or later.
-- [Visual Studio Code.](https://code.visualstudio.com/Download)
+- [Visual Studio Code](https://code.visualstudio.com/Download).
 - A Microsoft 365 account. You can get one if you qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 - At least a few files and folders stored on OneDrive for Business in your Microsoft 365 subscription.
 
@@ -43,26 +43,26 @@ This sample implements the pattern described in [Create an Excel spreadsheet fro
 
 ### Step 1: Clone or download this repository
 
-From your shell or command line:
+From your shell or command line, use the following command:
 
 ```console
 git clone https://github.com/OfficeDev/Office-Add-in-samples.git
 ```
 
-or download and extract the repository *.zip* file.
+Or, you can download and extract the repository *.zip* file.
 
-> :warning: To avoid path length limitations on Windows, we recommend cloning into a directory near the root of your drive.
+> :warning: To avoid path length limitations on Windows, clone the repository into a directory near the root of your drive.
 
 ### Step 2: Install project dependencies
 
-Navigate to the sample folder and install the dependencies:
+Go to the sample folder and install the dependencies:
 
 ```console
 cd Samples/excel-create-worksheet-from-web-site
 npm install
 ```
 
-### Step 3: Register the sample application(s) in your tenant
+### Step 3: Register the sample applications in your tenant
 
 #### Register the client app (contoso-addin-data-to-excel)
 
@@ -89,7 +89,7 @@ npm install
 
 #### Add delegated permissions
 
-Since this app signs-in users, we'll add delegated permissions, which are required by apps signing-in users.
+Since this app signs-in users, add delegated permissions, which are required by apps that sign in users.
 
 1. In the app's registration screen, select the **Manage > API permissions** blade on the left pane.
 1. Select **Add a permission**.
@@ -100,15 +100,15 @@ Since this app signs-in users, we'll add delegated permissions, which are requir
     - **Files.ReadWrite**
 1. Select the **Add permissions** button at the bottom.
 
-##### Configure Optional Claims
+##### Configure optional claims
 
 1. Still on the same app registration, select the **Manage > Token configuration** blade on the left pane.
 1. Select **Add optional claim**:
-    1. Select **optional claim type**, then choose **ID**.
+    1. Select **optional claim type**, and then choose **ID**.
     1. Select the optional claim **acct**.
     > Provides user's account status in tenant. If the user is a **member** of the tenant, the value is *0*. If they're a **guest**, the value is *1*.
     1. Select the optional claim **login_hint**.
-    > An opaque, reliable login hint claim. This claim is the best value to use for the login_hint OAuth parameter in all flows to get SSO. See [optional claims](https://learn.microsoft.com/entra/identity-platform/optional-claims) for more details on this optional claim.
+    > An opaque, reliable login hint claim. This claim is the best value to use for the `login_hint` OAuth parameter in all flows to get SSO. See [optional claims](https://learn.microsoft.com/entra/identity-platform/optional-claims) for more details on this optional claim.
     1. Select **Add** to save your changes.
 
 ##### Configure the client app (contoso-addin-data-to-excel) to use your app registration
@@ -131,52 +131,57 @@ Open the project in your IDE (like Visual Studio or Visual Studio Code) to confi
     npm start
     ```
 
-   This will start the Node.js server which serves both the web application and provides the API endpoint for creating spreadsheets.
+   This command starts the Node.js server. The server serves the web application and provides the API endpoint for creating spreadsheets.
 
 1. In a browser, go to the URL `http://localhost:3000/index.html`.
     ![Contoso web app with sign-in button.](./images/web-page-sign-in-button.png)
-1. Choose the **Sign In** button.
-1. You will be prompted to sign in. Sign in with a user name and password from your Microsoft 365 account.
+1. Select the **Sign In** button.
+1. You're prompted to sign in. Sign in with a user name and password from your Microsoft 365 account.
 
-    > Note: You may also be prompted to consent to the app permissions. You'll need to consent before the app can continue successfully.
+    > Note: You might also be prompted to consent to the app permissions. You need to consent before the app can continue successfully.
 
-    Once you sign in, the page will display a table of sales data.
+    After you sign in, the page displays a table of sales data.
     ![Screenshot of Contoso web app listing rows of data with product name, quarter 1, quarter 2, quarter 3, and quarter 4 sales numbers](./images/web-page-product-data.png)
-1. Choose the Excel icon to open a new tab with a new spreadsheet.
+1. Select the Excel icon to open a new tab with a new spreadsheet.
 
-When the spreadsheet opens, you will see the sales data. The embedded Script Lab add-in will be available on the ribbon.
+When the spreadsheet opens, you see the sales data. The embedded Script Lab add-in is available on the ribbon. After the first time you open the file and accept the prompt to trust Script Lab, the add-in task pane automatically opens whenever you open the spreadsheet.
 
 ## Key parts of this sample
 
 ### Authentication
 
-This sample was built using the code from [Vanilla JavaScript single-page application using MSAL.js to authenticate users to call Microsoft Graph](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/2-Authorization-I/1-call-graph/README.md). Please refer to the [readme](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/2-Authorization-I/1-call-graph/README.md) for more information on how the authentication works.
+This sample uses code from [Vanilla JavaScript single-page application using MSAL.js to authenticate users to call Microsoft Graph](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/2-Authorization-I/1-call-graph/README.md). For more information about how authentication works, see the [readme](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/2-Authorization-I/1-call-graph/README.md).
 
 ### Implement the Excel button
 
-The [WebApplication/App/index.html](WebApplication/App/index.html) page has an `<img>` tag that displays the Excel icon. The click handler calls `openInExcel()` which is in the [WebApplication/App/authPopup.js](WebApplication/App/authPopup.js) file. The `openInExcel` function sends the sales data from [WebApplication/App/tableData.js](WebApplication/App/tableData.js) in a POST request to the Node.js server endpoint at `/api/create-spreadsheet`.
+The [WebApplication/App/index.html](WebApplication/App/index.html) page has an `<img>` tag that displays the Excel icon. The click handler calls `openInExcel()`, which is in the [WebApplication/App/authPopup.js](WebApplication/App/authPopup.js) file. The `openInExcel` function sends the sales data from [WebApplication/App/tableData.js](WebApplication/App/tableData.js) in a POST request to the Node.js server endpoint at `/api/create-spreadsheet`.
 
 ### Construct the spreadsheet
 
 The Node.js server in [server.js](server.js) provides an API endpoint at `/api/create-spreadsheet` that constructs the spreadsheet. The endpoint is triggered by an HTTP POST request. The body of the request contains JSON describing rows and columns of data to populate the spreadsheet. The endpoint expects data in the format shown in [WebApplication/App/tableData.js](WebApplication/App/tableData.js). The endpoint returns the raw data of the new spreadsheet as a binary blob.
 
-The server uses the [ExcelJS](https://github.com/exceljs/exceljs) library to construct the spreadsheet in memory. The code that constructs the spreadsheet is in the `/api/create-spreadsheet` endpoint handler in [server.js](server.js).
+The server uses the [ExcelJS](https://github.com/exceljs/exceljs) library to construct the spreadsheet in memory, then uses [JSZip](https://www.npmjs.com/package/jszip) and [xml2js](https://www.npmjs.com/package/xml2js) to manipulate the Office Open XML (OOXML) structure to embed the Script Lab add-in. The code that constructs the spreadsheet is in the `/api/create-spreadsheet` endpoint handler in [server.js](server.js).
 
 - The endpoint inserts the data values from the request into the worksheet.
 - Formatting is applied to the header row (bold font, gray background).
-- The `embedAddin` function provides a placeholder for embedding add-ins. Note: Full web extension embedding requires additional OOXML manipulation that goes beyond the scope of this sample.
+- The `embedAddin` function manipulates the OOXML structure by:
+  - Adding `webextension1.xml` with Script Lab add-in reference.
+  - Adding `taskpanes.xml` to configure the task pane behavior.
+  - Updating `[Content_Types].xml` to register the web extension parts.
+  - Updating `workbook.xml.rels` to link the taskpane configuration.
+  - Setting `visibility="0"` so users install the add-in once, then it auto-opens on subsequent opens.
 
 ### Upload the spreadsheet to OneDrive
 
-Once the binary blob of the new spreadsheet is returned to the `openInExcel` function, it calls `uploadFile`. The `uploadFile` function uses the Microsoft Graph API to upload the spreadsheet to OneDrive. It creates the URI `'https://graph.microsoft.com/v1.0/me/drive/root:/` for the Microsoft Graph API and adds the folder location and filename. It passes the binary blob as the body, and calls the `callGraph` function to make the actual REST API call.
+After the `openInExcel` function receives the binary blob of the new spreadsheet, it calls `uploadFile`. The `uploadFile` function uses the Microsoft Graph API to upload the spreadsheet to OneDrive. It creates the URI `'https://graph.microsoft.com/v1.0/me/drive/root:/` for the Microsoft Graph API and adds the folder location and filename. It passes the binary blob as the body, and calls the `callGraph` function to make the actual REST API call.
 
 ## Modify the sample for your own web site
 
-To repurpose the code in this sample for your own web site, you'll want to make the following changes.
+To repurpose the code in this sample for your own web site, make the following changes.
 
 ### Use your own data
 
-The sample uses mock data described in [WebApplication/App/tableData.js](WebApplication/App/tableData.js). You'll need to replace this code to use the actual data from your web site. The data structure is simple JSON with rows and columns:
+The sample uses mock data described in [WebApplication/App/tableData.js](WebApplication/App/tableData.js). Replace this code to use the actual data from your web site. The data structure is simple JSON with rows and columns.
 
 ```javascript
 {
@@ -191,38 +196,48 @@ The spreadsheet creation endpoint in [server.js](server.js) iterates through thi
 
 ### Embed your add-in
 
-The current implementation creates a workbook with data but does not embed an add-in by default. Embedding Office Add-ins requires manipulating the Office Open XML (OOXML) structure of the Excel file, which involves:
+The sample embeds the Script Lab add-in from Microsoft AppSource. To embed your own add-in instead, modify the `createWebExtensionXml` function in [server.js](server.js).
 
-1. Creating `webextension.xml` and `webextensions.xml` files
-2. Updating `[Content_Types].xml` to register the web extension parts
-3. Adding relationships in the `_rels` folder
-4. Setting add-in properties like Store ID, version, and visibility
+Use the following key configuration in the webextension XML:
 
-For a complete implementation of add-in embedding, you would need to:
+```xml
+<we:webextension xmlns:we="http://schemas.microsoft.com/office/webextensions/webextension/2010/11" id="{YOUR-ADDIN-GUID}">
+    <we:reference id="ASSET-OR-GUID" version="1.0.0.0" store="STORE-LOCALE" storeType="STORE-TYPE"/>
+    <we:properties>
+        <we:property name="Office.AutoShowTaskpaneWithDocument" value="true"/>
+    </we:properties>
+</we:webextension>
+```
 
-- Use a library like [jszip](https://www.npmjs.com/package/jszip) to manipulate the OOXML structure
-- Add the necessary XML files for web extensions
-- Configure the add-in reference (AppSource ID or centrally deployed add-in GUID)
+**Key attributes to configure:**
 
-Key properties to configure:
-- **StoreType**: "OMEX" for AppSource add-ins, or "excatalog" for centrally deployed add-ins
-- **Store**: Culture code like "en-US"
-- **Id**: The AppSource asset ID or add-in GUID
-- **Visibility**: Whether the task pane auto-opens
+- **id**: A GUID for the web extension instance (can be any GUID).
+- **reference id**: Depends on `storeType`:
+  - For AppSource (`storeType="OMEX"`): Use the AppSource asset ID (for example, "wa104380862" for Script Lab).
+  - For centralized deployment (`storeType="EXCatalog"`): Use your add-in's GUID from the manifest.
+  - For network share (`storeType="FileSystem"`): Use your add-in's GUID from the manifest.
+- **version**: Your add-in version.
+- **store**: For AppSource, use locale ("en-US"). For centralized deployment, use "EXCatalog".
+- **storeType**: "OMEX" (AppSource), "EXCatalog" (centralized), "FileSystem" (network share), or "WOPICatalog" (WOPI hosts).
+
+**Task pane visibility:**
+
+In the `createTaskpaneXml` function, the `visibility` attribute controls behavior:
+
+- `visibility="0"`: User must install add-in from ribbon first. After installation, task pane auto-opens on subsequent file opens. Users can toggle auto-open via Office.js.
+- `visibility="1"`: Task pane opens immediately when file opens (prompts to trust add-in). Users can't toggle off via Office.js.
 
 For more information, see [Automatically open a task pane with a document](https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document).
 
-Users can manually add the desired add-in after opening the spreadsheet using the **Insert** > **Add-ins** ribbon button.
-
 ## Security notes
 
-- There may be security issues in packages used by this sample. Be sure to run `npm audit` to identify any security vulnerabilities and update packages regularly.
+- This sample might use packages that have security problems. Run `npm audit` to find any security vulnerabilities and update packages regularly.
 - This sample runs on `localhost` for development purposes only. In production, you should:
-  - Use HTTPS
-  - Implement proper CORS configuration
-  - Add authentication and authorization for the API endpoint
-  - Validate and sanitize all input data
-  - Consider rate limiting to prevent abuse
+  - Use HTTPS.
+  - Implement proper CORS configuration.
+  - Add authentication and authorization for the API endpoint.
+  - Validate and sanitize all input data.
+  - Consider rate limiting to prevent abuse.
 
 ## Questions and feedback
 
@@ -248,6 +263,6 @@ Version  | Date | Comments
 
 Copyright (c) 2023 Microsoft Corporation. All rights reserved.
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+This project adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-create-spreadsheet-from-web-page" />
