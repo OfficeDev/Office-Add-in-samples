@@ -1,0 +1,37 @@
+{
+  "name": "excel-create-worksheet-from-web-site",
+  "version": "1.0.0",
+  "description": "Create a spreadsheet from your web page, populate it with data, and embed your Excel add-in",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OfficeDev/Office-Add-in-samples.git"
+  },
+  "keywords": [
+    "javascript",
+    "msal",
+    "excel",
+    "office-add-in",
+    "microsoft-graph",
+    "office365",
+    "spreadsheet"
+  ],
+  "author": "Microsoft",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OfficeDev/Office-Add-in-samples/issues"
+  },
+  "homepage": "https://github.com/OfficeDev/Office-Add-in-samples#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "exceljs": "^4.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

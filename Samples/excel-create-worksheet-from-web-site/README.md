@@ -34,7 +34,7 @@ This sample implements the pattern described in [Create an Excel spreadsheet fro
 
 ## Prerequisites
 
-- [Visual Studio 2022 or later.](https://aka.ms/VSDownload) Add the Office/SharePoint development workload when configuring Visual Studio.
+- [Node.js](https://nodejs.org/) version 16 or later.
 - [Visual Studio Code.](https://code.visualstudio.com/Download)
 - A Microsoft 365 account. You can get one if you qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 - At least a few files and folders stored on OneDrive for Business in your Microsoft 365 subscription.
@@ -55,50 +55,60 @@ or download and extract the repository *.zip* file.
 
 ### Step 2: Install project dependencies
 
+Navigate to the sample folder and install the dependencies:
+
 ```console
-    cd <WebApplication-folder>
-    npm install
+cd Samples/excel-create-worksheet-from-web-site
+npm install
 ```
 
 ### Step 3: Register the sample application(s) in your tenant
 
-#### Choose the Azure AD tenant where you want to create your applications
-
-1. Sign in to the [Azure portal](https://portal.azure.com).
-1. If your account is present in more than one Azure AD tenant, select your profile at the top right corner in the menu on top of the page, and then **switch directory** to change your portal session to the desired Azure AD tenant.
-
 #### Register the client app (contoso-addin-data-to-excel)
 
-1. Go to the [Azure portal](https://portal.azure.com) and select the **Azure Active Directory** service.
-1. Select the **App Registrations** blade on the left, then select **New registration**.
-1. In the **Register an application page** that appears, enter your application's registration information:
-    1. In the **Name** section, enter a meaningful application name that will be displayed to users of the app, for example `contoso-addin-data-to-excel`.
-    1. Under **Supported account types**, select **Accounts in this organizational directory only**
-    1. Select **Register** to create the application.
-1. In the **Overview** blade, find and note the **Application (client) ID**. You use this value in your app's configuration file(s) later in your code.
-1. In the app's registration screen, select the **Authentication** blade to the left.
-1. If you don't have a platform added, select **Add a platform** and select the **Single-page application** option.
-    1. In the **Redirect URI** section enter the following redirect URIs:
-        1. `http://localhost:3000`
-        1. `http://localhost:3000/redirect`
-    1. Click **Save** to save your changes.
-1. Since this app signs-in users, we will now proceed to select **delegated permissions**, which is is required by apps signing-in users.
-    1. In the app's registration screen, select the **API permissions** blade in the left to open the page where we add access to the APIs that your application needs:
-    1. Select the **Add a permission** button and then:
-    1. Ensure that the **Microsoft APIs** tab is selected.
-    1. In the *Commonly used Microsoft APIs* section, select **Microsoft Graph**
-    1. In the **Delegated permissions** section, select **User.Read**, **Contacts.Read**, and **Files.ReadWrite** in the list. Use the search box if necessary.
-    1. Select the **Add permissions** button at the bottom.
+1. To register your app, go to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page.
+1. Sign in with the **_admin_** credentials to your Microsoft 365 tenancy. For example, **MyName@contoso.onmicrosoft.com**.
+1. Select **New registration**. On the **Register an application** page, set the values as follows.
+
+   - Set **Name** to `contoso-addin-data-to-excel`.
+   - Set **Supported account types** to **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
+   - Select **Register**.
+
+1. In the **Overview** blade, find and note the **Application (client) ID**. Save this value to use in the project files later in these steps.
+
+#### Add redirect URIs
+
+1. In the app's registration screen, select the **Manage > Authentication** blade to the left.
+1. Select **Add Redirect URI**.
+1. Select the **Single-page application** option.
+1. In the **Redirect URI** section enter `http://localhost:3000` as the redirect URI:
+1. Select **Configure**.
+1. Select the **Single-page application** option again.
+1. In the **Redirect URI** section enter `http://localhost:3000/redirect` as a new redirect URI.
+1. Select **Configure**.
+
+#### Add delegated permissions
+
+Since this app signs-in users, we'll add delegated permissions, which are required by apps signing-in users.
+
+1. In the app's registration screen, select the **Manage > API permissions** blade on the left pane.
+1. Select **Add a permission**.
+1. Select **Microsoft Graph**. Then select **Delegated permissions**.
+1. Use the search box and list of permissions to find and select the following permissions.
+    - **User.Read**
+    - **Contacts.Read**
+    - **Files.ReadWrite**
+1. Select the **Add permissions** button at the bottom.
 
 ##### Configure Optional Claims
 
-1. Still on the same app registration, select the **Token configuration** blade to the left.
+1. Still on the same app registration, select the **Manage > Token configuration** blade on the left pane.
 1. Select **Add optional claim**:
     1. Select **optional claim type**, then choose **ID**.
     1. Select the optional claim **acct**.
     > Provides user's account status in tenant. If the user is a **member** of the tenant, the value is *0*. If they're a **guest**, the value is *1*.
     1. Select the optional claim **login_hint**.
-    > An opaque, reliable login hint claim. This claim is the best value to use for the login_hint OAuth parameter in all flows to get SSO.See $[optional claims](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) for more details on this optional claim.
+    > An opaque, reliable login hint claim. This claim is the best value to use for the login_hint OAuth parameter in all flows to get SSO. See [optional claims](https://learn.microsoft.com/entra/identity-platform/optional-claims) for more details on this optional claim.
     1. Select **Add** to save your changes.
 
 ##### Configure the client app (contoso-addin-data-to-excel) to use your app registration
@@ -106,26 +116,22 @@ or download and extract the repository *.zip* file.
 Open the project in your IDE (like Visual Studio or Visual Studio Code) to configure the code.
 
 > In the steps below, "ClientID" is the same as "Application ID" or "AppId".
+
 1. Open the `WebApplication/App/authConfig.js` file.
 1. Find the key `Enter_the_Application_Id_Here` and replace the existing value with the application ID (clientId) of `contoso-addin-data-to-excel` app copied from the Azure portal.
-1. Find the key `Enter_the_Tenant_Id_Here` and replace the existing value with your Azure AD tenant/directory ID.
+1. Find the key `Enter_the_Tenant_Id_Here` and replace the existing value with your Microsoft Entra ID tenant/directory ID.
 
 ## Run the sample
 
-### Start the Azure Functions project
+### Start the Node.js server
 
-1. Open FunctionCreateSpreadsheet.sln in Visual Studio.
-1. Press **F5** (or choose **Debug** > **Start Debugging**) to build and start the Azure function project. The function will run locally using the Azure Functions Core Tools. You should see the following output in a new console window.
-
-![Console output after starting the Azure Functions project.](./images/azure-function-running.png)
-
-### Start the web application
-
-1. From your shell or command line go to the `WebApplication/` folder, then run the following command:
+1. From your shell or command line in the sample root folder, run the following command:
 
     ```console
     npm start
     ```
+
+   This will start the Node.js server which serves both the web application and provides the API endpoint for creating spreadsheets.
 
 1. In a browser, go to the URL `http://localhost:3000/index.html`.
     ![Contoso web app with sign-in button.](./images/web-page-sign-in-button.png)
@@ -148,21 +154,21 @@ This sample was built using the code from [Vanilla JavaScript single-page applic
 
 ### Implement the Excel button
 
-The `WebApplication/App/index.html` page has an `<img>` tag that displays the Excel icon. The click handler calls `openInExcel()` which is in the `WebApplication/App/authPopup.js` file. The `openInExcel` function sends the sales data from `WebApplication/App/tableData.js` in a POST request to the `FunctionCreateSpreadsheet` Azure Functions app.
+The [WebApplication/App/index.html](WebApplication/App/index.html) page has an `<img>` tag that displays the Excel icon. The click handler calls `openInExcel()` which is in the [WebApplication/App/authPopup.js](WebApplication/App/authPopup.js) file. The `openInExcel` function sends the sales data from [WebApplication/App/tableData.js](WebApplication/App/tableData.js) in a POST request to the Node.js server endpoint at `/api/create-spreadsheet`.
 
 ### Construct the spreadsheet
 
-The **FunctionCreateSpreadsheet** app uses Azure Functions to provide a function that constructs the spreadsheet. The function is triggered by an HTTP POST request. The body of the request contains JSON describing rows and columns of data to populate the spreadsheet. The function expects data in the format shown in `./WebApplication/App/tableData.js`. The function returns the raw data of the new spreadsheet as a Base64 string.
+The Node.js server in [server.js](server.js) provides an API endpoint at `/api/create-spreadsheet` that constructs the spreadsheet. The endpoint is triggered by an HTTP POST request. The body of the request contains JSON describing rows and columns of data to populate the spreadsheet. The endpoint expects data in the format shown in [WebApplication/App/tableData.js](WebApplication/App/tableData.js). The endpoint returns the raw data of the new spreadsheet as a binary blob.
 
-The function uses the [Open XML SDK](https://learn.microsoft.com/office/open-xml/open-xml-sdk) to construct the spreadsheet in memory. The code that constructs the spreadsheet is in `FunctionCreateSpreadsheet/SpreadsheetBuilder.cs`.
+The server uses the [ExcelJS](https://github.com/exceljs/exceljs) library to construct the spreadsheet in memory. The code that constructs the spreadsheet is in the `/api/create-spreadsheet` endpoint handler in [server.js](server.js).
 
-- The `InsertData` method inserts the data values for the sales data table.
-- The `EmbedAddin` method embeds the script lab add-in.
-- Modify the `GenerateWebExtensionPart1Content` method to embed your add-in instead of the script lab add-in. Note that there is a *CUSTOM MODIFICATION BEGIN/END* section where you can specify custom properties that your add-in needs to load when it starts.
+- The endpoint inserts the data values from the request into the worksheet.
+- Formatting is applied to the header row (bold font, gray background).
+- The `embedAddin` function provides a placeholder for embedding add-ins. Note: Full web extension embedding requires additional OOXML manipulation that goes beyond the scope of this sample.
 
 ### Upload the spreadsheet to OneDrive
 
-Once the Base64 encoded string of the new spreadsheet is returned to the `openInExcel` function, it calls `uploadFile`. The `uploadFile` function uses the Microsoft Graph API to upload the spreadsheet to the OneDrive. It creates the URI `'https://graph.microsoft.com/v1.0/me/drive/root:/` for the Microsoft Graph API and adds the folder location and filename. It adds the Base64 string as the body, and calls the `callGraph` function to make the actual REST API call.
+Once the binary blob of the new spreadsheet is returned to the `openInExcel` function, it calls `uploadFile`. The `uploadFile` function uses the Microsoft Graph API to upload the spreadsheet to OneDrive. It creates the URI `'https://graph.microsoft.com/v1.0/me/drive/root:/` for the Microsoft Graph API and adds the folder location and filename. It passes the binary blob as the body, and calls the `callGraph` function to make the actual REST API call.
 
 ## Modify the sample for your own web site
 
@@ -170,46 +176,53 @@ To repurpose the code in this sample for your own web site, you'll want to make 
 
 ### Use your own data
 
-The sample uses mock data described in `WebApplication/App/tableData.js`. You'll need to replace this code to use the actual data from your web site. If your data uses a different data model, you'll need to update the `FunctionCreateSpreadsheet/Product.cs` file.
-The `FunctionCreateSpreadsheet/SpreadsheetBuilder.cs` file contains an `InsertData` method that is bound to the product model data of this sample. You'll need to update it handle any changes you make to the data model.
+The sample uses mock data described in [WebApplication/App/tableData.js](WebApplication/App/tableData.js). You'll need to replace this code to use the actual data from your web site. The data structure is simple JSON with rows and columns:
+
+```javascript
+{
+  rows: [
+    { columns: [{ value: 'Header1' }, { value: 'Header2' }] },
+    { columns: [{ value: 'Data1' }, { value: 'Data2' }] }
+  ]
+}
+```
+
+The spreadsheet creation endpoint in [server.js](server.js) iterates through this structure to populate the Excel worksheet. If you need to change the data model, update both the client-side data structure and the server endpoint handler.
 
 ### Embed your add-in
 
-The sample embeds the script lab add-in. You'll need to change the code to embed your own add-in.
-In the **SpreadsheetBuilder.cs** file, the `GenerateWebExtensionPart1Content` method sets the reference to Script Lab.
+The current implementation creates a workbook with data but does not embed an add-in by default. Embedding Office Add-ins requires manipulating the Office Open XML (OOXML) structure of the Excel file, which involves:
 
-```csharp
-We.WebExtension webExtension1 = new We.WebExtension() { Id = "{635BF0CD-42CC-4174-B8D2-6D375C9A759E}" };
-webExtension1.AddNamespaceDeclaration("we", "http://schemas.microsoft.com/office/webextensions/webextension/2010/11");
-We.WebExtensionStoreReference webExtensionStoreReference1 = new We.WebExtensionStoreReference() { Id = "wa104380862", Version = "1.1.0.0", Store = "en-US", StoreType = "OMEX" };
-```
+1. Creating `webextension.xml` and `webextensions.xml` files
+2. Updating `[Content_Types].xml` to register the web extension parts
+3. Adding relationships in the `_rels` folder
+4. Setting add-in properties like Store ID, version, and visibility
 
-In the previous code:
+For a complete implementation of add-in embedding, you would need to:
 
-- The **StoreType** value is "OMEX", an alias for the Office Store.
-- The **Store** value is "en-US" the culture section of the store where Script Lab is.
-- The **Id** value is the Office Store's asset ID for Script Lab.
+- Use a library like [jszip](https://www.npmjs.com/package/jszip) to manipulate the OOXML structure
+- Add the necessary XML files for web extensions
+- Configure the add-in reference (AppSource ID or centrally deployed add-in GUID)
 
-The `GenerateWebExtensionPart1Content` method contains commented code that shows how to set values for a centrally deployed add-in.
+Key properties to configure:
+- **StoreType**: "OMEX" for AppSource add-ins, or "excatalog" for centrally deployed add-ins
+- **Store**: Culture code like "en-US"
+- **Id**: The AppSource asset ID or add-in GUID
+- **Visibility**: Whether the task pane auto-opens
 
-> **Note**: For more information about alternative values for these attributes, see [Automatically open a task pane with a document](https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document).
+For more information, see [Automatically open a task pane with a document](https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document).
 
-The `GeneratePartContent` method specifies the visibility of the task pane when the file opens.
-
-```csharp
-Wetp.WebExtensionTaskpane webExtensionTaskpane1 = new Wetp.WebExtensionTaskpane() { DockState = "right", Visibility = true, Width = 350D, Row = (UInt32Value)4U };
-```
-
-In the previous code, the `Visibility` property of the `WebExtensionTaskpane` object is set to `true`. This ensures that the first time that the file is opened after the code is run, the task pane opens with Script Lab in it (after the user accepts the prompt to trust Script Lab). This is what we want for this sample. However, in most scenarios you will probably want this set to `false`. The effect of setting it to false is that the *first* time the file is opened, the user has to install the add-in, from the **Add-in** button on the ribbon. On every *subsequent* opening of the file, the task pane with the add-in opens automatically.
-
-The advantage of setting this property to `false` is that you can use the Office.js to give users the ability to turn on and off the auto-opening of the add-in. Specifically, your script sets the **Office.AutoShowTaskpaneWithDocument** document setting to `true` or `false`. However, if `WebExtensionTaskpane.Visibility` is set to `true`, there is no way for Office.js or, hence, your users to turn off the auto-opening of the add-in. Only editing the OOXML of the document can change `WebExtensionTaskpane.Visibility` to false.
-
-> **Note**: For more information about task pane visibility at the level of the Open XML that these .NET APIs represent, see [Automatically open a task pane with a document](https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document).
+Users can manually add the desired add-in after opening the spreadsheet using the **Insert** > **Add-ins** ribbon button.
 
 ## Security notes
 
-- There may be security issues in packages used by this sample. Be sure to run `npm audit` to identify any security vulnerabilities.
-- In the `FunctionCreateSpreadsheet/FunctionCreateSpreadsheet/local.settings.json` file, "CORS" is set to "*". This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
+- There may be security issues in packages used by this sample. Be sure to run `npm audit` to identify any security vulnerabilities and update packages regularly.
+- This sample runs on `localhost` for development purposes only. In production, you should:
+  - Use HTTPS
+  - Implement proper CORS configuration
+  - Add authentication and authorization for the API endpoint
+  - Validate and sanitize all input data
+  - Consider rate limiting to prevent abuse
 
 ## Questions and feedback
 
@@ -229,6 +242,7 @@ Version  | Date | Comments
 ---------| -----| --------
 1.0  | January 31, 2023 | Initial release
 1.1  | April 24, 2024 | Update package versions
+1.2 | January 7, 2026 | Changed to no longer require Visual Studio
 
 ## Copyright
 
