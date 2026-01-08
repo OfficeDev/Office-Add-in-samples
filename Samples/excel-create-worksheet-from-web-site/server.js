@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(express.static('WebApplication/App'));
 
 // API endpoint to create spreadsheet
+// Security note: This API is public and can be called by any client. Be sure to add authentication and authorization for this API in a production environment.
 app.post('/api/create-spreadsheet', async (req, res) => {
     try {
         const tableData = req.body;
