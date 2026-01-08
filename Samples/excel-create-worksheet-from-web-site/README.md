@@ -64,37 +64,45 @@ npm install
 
 ### Step 3: Register the sample application(s) in your tenant
 
-#### Choose the Microsoft Entra ID tenant where you want to create your applications
-
-1. Sign in to the [Azure portal](https://portal.azure.com).
-1. If your account is present in more than one Microsoft Entra ID tenant, select your profile at the top right corner in the menu on top of the page, and then **switch directory** to change your portal session to the desired Microsoft Entra ID tenant.
-
 #### Register the client app (contoso-addin-data-to-excel)
 
-1. Go to the [Azure portal](https://portal.azure.com) and select the **Microsoft Entra ID** service.
-1. Select the **App Registrations** blade on the left, then select **New registration**.
-1. In the **Register an application page** that appears, enter your application's registration information:
-    1. In the **Name** section, enter a meaningful application name that will be displayed to users of the app, for example `contoso-addin-data-to-excel`.
-    1. Under **Supported account types**, select **Accounts in this organizational directory only**
-    1. Select **Register** to create the application.
-1. In the **Overview** blade, find and note the **Application (client) ID**. You use this value in your app's configuration file(s) later in your code.
-1. In the app's registration screen, select the **Authentication** blade to the left.
-1. If you don't have a platform added, select **Add a platform** and select the **Single-page application** option.
-    1. In the **Redirect URI** section enter the following redirect URIs:
-        1. `http://localhost:3000`
-        1. `http://localhost:3000/redirect`
-    1. Click **Save** to save your changes.
-1. Since this app signs-in users, we will now proceed to select **delegated permissions**, which is is required by apps signing-in users.
-    1. In the app's registration screen, select the **API permissions** blade in the left to open the page where we add access to the APIs that your application needs:
-    1. Select the **Add a permission** button and then:
-    1. Ensure that the **Microsoft APIs** tab is selected.
-    1. In the *Commonly used Microsoft APIs* section, select **Microsoft Graph**
-    1. In the **Delegated permissions** section, select **User.Read**, **Contacts.Read**, and **Files.ReadWrite** in the list. Use the search box if necessary.
-    1. Select the **Add permissions** button at the bottom.
+1. To register your app, go to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) page.
+1. Sign in with the **_admin_** credentials to your Microsoft 365 tenancy. For example, **MyName@contoso.onmicrosoft.com**.
+1. Select **New registration**. On the **Register an application** page, set the values as follows.
+
+   - Set **Name** to `contoso-addin-data-to-excel`.
+   - Set **Supported account types** to **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
+   - Select **Register**.
+
+1. In the **Overview** blade, find and note the **Application (client) ID**. Save this value to use in the project files later in these steps.
+
+#### Add redirect URIs
+
+1. In the app's registration screen, select the **Manage > Authentication** blade to the left.
+1. Select **Add Redirect URI**.
+1. Select the **Single-page application** option.
+1. In the **Redirect URI** section enter `http://localhost:3000` as the redirect URI:
+1. Select **Configure**.
+1. Select the **Single-page application** option again.
+1. In the **Redirect URI** section enter `http://localhost:3000/redirect` as a new redirect URI.
+1. Select **Configure**.
+
+#### Add delegated permissions
+
+Since this app signs-in users, we'll add delegated permissions, which are required by apps signing-in users.
+
+1. In the app's registration screen, select the **Manage > API permissions** blade on the left pane.
+1. Select **Add a permission**.
+1. Select **Microsoft Graph**. Then select **Delegated permissions**.
+1. Use the search box and list of permissions to find and select the following permissions.
+    - **User.Read**
+    - **Contacts.Read**
+    - **Files.ReadWrite**
+1. Select the **Add permissions** button at the bottom.
 
 ##### Configure Optional Claims
 
-1. Still on the same app registration, select the **Token configuration** blade to the left.
+1. Still on the same app registration, select the **Manage > Token configuration** blade on the left pane.
 1. Select **Add optional claim**:
     1. Select **optional claim type**, then choose **ID**.
     1. Select the optional claim **acct**.
