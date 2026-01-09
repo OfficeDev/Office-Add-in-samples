@@ -6,8 +6,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Office Add-ins Sample Encryption Add-in"/>
   <Description DefaultValue="Encrypt and decrypt messages in Outlook."/>
-  <IconUrl DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-encrypt-decrypt-messages/assets/icon-64.png"/>
-  <HighResolutionIconUrl DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-encrypt-decrypt-messages/assets/icon-128.png"/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
@@ -23,7 +23,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-encrypt-decrypt-messages/src/launchevents/launchevents.html"/>
+        <SourceLocation DefaultValue="https://localhost:3000/launchevents.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -61,13 +61,13 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-encrypt-decrypt-messages/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-encrypt-decrypt-messages/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-encrypt-decrypt-messages/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="WebViewRuntime.Url" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-encrypt-decrypt-messages/src/launchevents/launchevents.html" />
-        <bt:Url id="JSRuntime.Url" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-encrypt-decrypt-messages/src/launchevents/launchevents.js" />
+        <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/launchevents.html" />
+        <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/public/launchevents.js" />
       </bt:Urls>
     </Resources>
   </VersionOverrides>

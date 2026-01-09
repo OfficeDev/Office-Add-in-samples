@@ -59,18 +59,7 @@ To learn about key components of this sample, see [Create an encryption Outlook 
 
 ## Run the sample
 
-### Use GitHub as the web host
-
-The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
-
-1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in only manifest in classic Outlook on Windows by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#sideload-manually).
-1. Follow the steps in [Try it out](#try-it-out) to test the sample.
-1. To uninstall the add-in from Outlook, follow the instructions in [Remove a sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#remove-a-sideloaded-add-in).
-
-### Use localhost
-
-If you prefer to host the web server on localhost, follow these steps.
+To host the web server on localhost, follow these steps.
 
 1. Clone or download this repository.
 1. From a command prompt, go to the root of the project folder **/samples/outlook-encrypt-decrypt-messages**.
@@ -78,14 +67,13 @@ If you prefer to host the web server on localhost, follow these steps.
 
     ```console
     npm install
+    npm run build
     npm start
     ```
 
-    This starts the web server on localhost and sideloads the **manifest-localhost.xml** file to Outlook.
+    This starts the web server on localhost and sideloads the **manifest.xml** file to Outlook.
 
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
-
-    > **Tip**: To debug an event-based add-in, see [Debug your event-based or spam-reporting Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch).
 
 1. To stop the web server and uninstall the add-in from Outlook, run the following command.
 
@@ -128,7 +116,7 @@ Once decryption is complete, the message body and attachments are shown and the 
 
 ## Copyright
 
-Copyright (c) 2024 Microsoft Corporation. All rights reserved.
+Copyright (c) 2026 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
