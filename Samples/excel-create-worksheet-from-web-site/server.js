@@ -127,9 +127,7 @@ async function embedAddin(workbook) {
     zip.file('xl/webextensions/_rels/webextension1.xml.rels', createWebExtensionRels());
     
     // Add the taskpane file.
-    if (!zip.folder('xl').file('webextensions')) {
-        zip.folder('xl/webextensions');
-    }
+    zip.folder('xl/webextensions');
     
     // Update or create [Content_Types].xml.
     await updateContentTypes(zip);
@@ -152,15 +150,15 @@ async function embedAddin(workbook) {
  */
 function createWebExtensionXml() {
     return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-            <we:webextension xmlns:we="http://schemas.microsoft.com/office/webextensions/webextension/2010/11" id="{635BF0CD-42CC-4174-B8D2-6D375C9A759E}">
-                <we:reference id="wa104380862" version="1.1.0.0" store="en-US" storeType="OMEX"/>
-                <we:alternateReferences/>
-                <we:properties>
-                    <we:property name="Office.AutoShowTaskpaneWithDocument" value="true"/>
-                </we:properties>
-                <we:bindings/>
-                <we:snapshot xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/>
-            </we:webextension>`;
+<we:webextension xmlns:we="http://schemas.microsoft.com/office/webextensions/webextension/2010/11" id="{635BF0CD-42CC-4174-B8D2-6D375C9A759E}">
+    <we:reference id="wa104380862" version="1.1.0.0" store="en-US" storeType="OMEX"/>
+    <we:alternateReferences/>
+    <we:properties>
+        <we:property name="Office.AutoShowTaskpaneWithDocument" value="true"/>
+    </we:properties>
+    <we:bindings/>
+    <we:snapshot xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/>
+</we:webextension>`;
 }
 
 /**
@@ -170,11 +168,11 @@ function createWebExtensionXml() {
  */
 function createTaskpaneXml() {
     return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-            <wetp:taskpanes xmlns:wetp="http://schemas.microsoft.com/office/webextensions/taskpanes/2010/11">
-                <wetp:taskpane dockstate="right" visibility="0" width="350" row="4">
-                    <wetp:webextensionref xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" r:id="rId1"/>
-                </wetp:taskpane>
-            </wetp:taskpanes>`;
+<wetp:taskpanes xmlns:wetp="http://schemas.microsoft.com/office/webextensions/taskpanes/2010/11">
+    <wetp:taskpane dockstate="right" visibility="0" width="350" row="4">
+        <wetp:webextensionref xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" r:id="rId1"/>
+    </wetp:taskpane>
+</wetp:taskpanes>`;
 }
 
 /**
@@ -182,9 +180,9 @@ function createTaskpaneXml() {
  */
 function createWebExtensionRels() {
     return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-            <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-                <Relationship Id="rId1" Type="http://schemas.microsoft.com/office/2011/relationships/webextension" Target="webextension1.xml"/>
-            </Relationships>`;
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+    <Relationship Id="rId1" Type="http://schemas.microsoft.com/office/2011/relationships/webextension" Target="webextension1.xml"/>
+</Relationships>`;
 }
 
 /**
