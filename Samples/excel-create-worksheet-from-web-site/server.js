@@ -126,9 +126,6 @@ async function embedAddin(workbook) {
     zip.file('xl/webextensions/webextension1.xml', webExtensionXml);
     zip.file('xl/webextensions/_rels/webextension1.xml.rels', createWebExtensionRels());
     
-    // Add the taskpane file.
-    zip.folder('xl/webextensions');
-    
     // Update or create [Content_Types].xml.
     await updateContentTypes(zip);
     
