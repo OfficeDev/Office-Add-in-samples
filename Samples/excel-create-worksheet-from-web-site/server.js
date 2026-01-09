@@ -192,9 +192,16 @@ function createWebExtensionRels() {
  */
 async function updateContentTypes(zip) {
     const contentTypesPath = '[Content_Types].xml';
-    const contentTypesXml = await zip.file(contentTypesPath).async('string');
+    const contentTypesFile = zip.file(contentTypesPath);
+    if (!contentTypesFile) {
+        throw new Error(`Missing required file "${contentTypesPath}" in workbook package.`);
+    }
+    const contentTypesXml = await contentTypesFile.async('string');
     
     const parser = new xml2js.Parser();
+    // Use compact XML (pretty: false) to keep the Office Open XML package small and consistent
+    // with the original workbook. This makes manual debugging a bit harder but preserves the
+    // existing file layout produced by Excel.
     const builder = new xml2js.Builder({ headless: false, renderOpts: { pretty: false } });
     
     const result = await parser.parseStringPromise(contentTypesXml);
@@ -242,7 +249,11 @@ async function updateContentTypes(zip) {
  */
 async function updateWorkbookRels(zip) {
     const relsPath = 'xl/_rels/workbook.xml.rels';
-    const relsXml = await zip.file(relsPath).async('string');
+    const relsFile = zip.file(relsPath);
+    if (!relsFile) {
+        throw new Error(`Relationships file not found in workbook: ${relsPath}`);
+    }
+    const relsXml = await relsFile.async('string');
     
     const parser = new xml2js.Parser();
     const builder = new xml2js.Builder({ headless: false, renderOpts: { pretty: false } });
