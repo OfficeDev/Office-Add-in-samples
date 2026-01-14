@@ -154,7 +154,7 @@ If you prefer not to use OneDrive:
 
 ### Server-side workbook generation
 
-The Node.js server uses ExcelJS to create a workbook programmatically:
+The Node.js server uses ExcelJS to create a workbook programmatically.
 
 ```javascript
 const workbook = new ExcelJS.Workbook();
@@ -171,7 +171,7 @@ tableData.rows.forEach((row, rowIndex) => {
 
 ### Embedding the add-in
 
-After creating the workbook, the server embeds a reference to the custom add-in by manipulating the Office Open XML (OOXML) structure:
+After creating the workbook, the server embeds a reference to the custom add-in by manipulating the Office Open XML (OOXML) structure.
 
 1. **Generate buffer**: Convert the ExcelJS workbook to a buffer.
 1. **Load ZIP**: Load the buffer into JSZip (Excel files are ZIP archives).
@@ -184,7 +184,7 @@ After creating the workbook, the server embeds a reference to the custom add-in 
 
 ### Auto-open configuration
 
-Configure the auto-open feature through Office.js in the task pane:
+Configure the auto-open feature through Office.js in the task pane.
 
 ```javascript
 function setAutoOpenOn() {
