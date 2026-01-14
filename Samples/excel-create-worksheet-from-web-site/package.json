@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "generate-cert": "node generate-cert.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
     "xml2js": "^0.6.2"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "office-addin-dev-certs": "^1.13.5"
   }
 }

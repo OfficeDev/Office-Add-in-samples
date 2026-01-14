@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 const express = require('express');
+const https = require('https');
 const morgan = require('morgan');
 const path = require('path');
 const fs = require('fs');
@@ -22,6 +23,34 @@ app.use(express.json());
 
 // Set up app folders.
 app.use(express.static('WebApplication/App'));
+
+// Serve add-in files from root directory
+app.use(express.static(__dirname));
+
+// Serve manifest file
+app.get('/manifest.xml', (req, res) => {
+    res.sendFile(path.join(__dirname, 'manifest.xml'));
+});
+
+// Serve taskpane files
+app.get('/taskpane.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'taskpane.html'));
+});
+
+app.get('/taskpane.css', (req, res) => {
+    res.sendFile(path.join(__dirname, 'taskpane.css'));
+});
+
+app.get('/taskpane.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'taskpane.js'));
+});
+
+app.get('/commands.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'commands.html'));
+});
+
+// Serve icon files
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // API endpoint to create spreadsheet.
 // Security note: This API is public and can be called by any client. Be sure to add authentication and authorization for this API in a production environment.
@@ -74,14 +103,8 @@ app.post('/api/create-spreadsheet', async (req, res) => {
             fgColor: { argb: 'FFD3D3D3' }
         };
         
-        // Embed Script Lab add-in and get the modified buffer.
+        // Embed the custom add-in and get the modified buffer.
         const buffer = await embedAddin(workbook);
-        
-        // For debugging: save to local file system to verify embedding works.
-        const fs = require('fs');
-        const debugPath = path.join(__dirname, 'debug_spreadsheet.xlsx');
-        fs.writeFileSync(debugPath, buffer);
-        console.log('Debug file saved to:', debugPath);
         
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         res.setHeader('Content-Disposition', 'attachment; filename=spreadsheet.xlsx');
@@ -119,12 +142,9 @@ app.post('/api/create-spreadsheet', async (req, res) => {
 async function embedAddin(workbook) {
     // First, generate the workbook as a buffer.
     const buffer = await workbook.xlsx.writeBuffer();
-    console.log('Original buffer size:', buffer.length);
     
     // Load the buffer into JSZip.
     const zip = await JSZip.loadAsync(buffer);
-    console.log('Files in original zip:', Object.keys(zip.files).length);
-    console.log('Original files list:', Object.keys(zip.files).filter(f => !f.endsWith('/')).slice(0, 10));
     
     // Create the webextension part XML.
     const webExtensionXml = createWebExtensionXml();
@@ -132,34 +152,17 @@ async function embedAddin(workbook) {
     // Create the taskpane part XML.
     const taskpaneXml = createTaskpaneXml();
     
-    // Ensure the webextensions folder structure exists.
-    // Note: JSZip automatically creates parent folders when adding files with paths.
-    
     // Add the webextension files to the zip.
+    // JSZip automatically creates parent folders when adding files with paths.
     zip.file('xl/webextensions/webextension1.xml', webExtensionXml);
     zip.file('xl/webextensions/_rels/taskpanes.xml.rels', createWebExtensionRels());
     zip.file('xl/webextensions/taskpanes.xml', taskpaneXml);
-    
-    console.log('Files after adding webextensions:', Object.keys(zip.files).length);
-    console.log('New files added:', Object.keys(zip.files).filter(f => f.includes('webextension')));
-    
-    // Verify the files were actually added by checking their content.
-    const webExtFile = zip.file('xl/webextensions/webextension1.xml');
-    if (webExtFile) {
-        const content = await webExtFile.async('string');
-        console.log('webextension1.xml exists, length:', content.length);
-    } else {
-        console.error('ERROR: webextension1.xml was not added to zip!');
-    }
     
     // Update or create [Content_Types].xml.
     await updateContentTypes(zip);
     
     // Update workbook.xml.rels.
     await updateWorkbookRels(zip);
-    
-    // List all files before generating buffer.
-    console.log('All files before generateAsync:', Object.keys(zip.files).filter(f => !f.endsWith('/')));
     
     // Return the modified zip as a buffer.
     const modifiedBuffer = await zip.generateAsync({ 
@@ -170,19 +173,20 @@ async function embedAddin(workbook) {
         }
     });
     
-    console.log('Modified buffer size:', modifiedBuffer.length);
-    console.log('Buffer changed:', buffer.length !== modifiedBuffer.length);
-    
     return modifiedBuffer;
 }
 
 /**
- * Creates the webextension XML content for Script Lab add-in.
+ * Creates the webextension XML content for our custom add-in.
+ * Note: The store path should match where the manifest.xml is sideloaded from.
+ * For network share sideloading, use UNC path format: //COMPUTERNAME/ShareName/manifest.xml
  */
 function createWebExtensionXml() {
+    // Use "developer" for sideloaded add-ins as per Microsoft documentation
+    // https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document
     return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<we:webextension xmlns:we="http://schemas.microsoft.com/office/webextensions/webextension/2010/11" id="{635BF0CD-42CC-4174-B8D2-6D375C9A759E}">
-    <we:reference id="wa104380862" version="1.1.0.0" store="en-US" storeType="OMEX"/>
+<we:webextension xmlns:we="http://schemas.microsoft.com/office/webextensions/webextension/2010/11" id="{12345678-1234-1234-1234-123456789012}">
+    <we:reference id="12345678-1234-1234-1234-123456789012" version="1.0.0.0" store="developer" storeType="Registry"/>
     <we:alternateReferences/>
     <we:properties>
         <we:property name="Office.AutoShowTaskpaneWithDocument" value="true"/>
@@ -194,8 +198,8 @@ function createWebExtensionXml() {
 
 /**
  * Creates the taskpane XML content.
- * visibility="0" means users must install the add-in first, then it auto-opens.
- * visibility="1" means the task pane opens immediately (prompts to trust add-in).
+ * visibility="1" means the task pane will open automatically when the document is opened.
+ * After opening manually once, Office.js code in the taskpane can control the auto-open setting.
  */
 function createTaskpaneXml() {
     return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -327,8 +331,24 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'WebApplication/App/index.html'));
 });
 
-app.listen(DEFAULT_PORT, () => {
-    console.log(`Sample app listening on port ${DEFAULT_PORT}!`);
-});
+// Start HTTPS server
+const certPath = path.join(__dirname, 'localhost.crt');
+const keyPath = path.join(__dirname, 'localhost.key');
+
+if (fs.existsSync(certPath) && fs.existsSync(keyPath)) {
+    const httpsOptions = {
+        key: fs.readFileSync(keyPath),
+        cert: fs.readFileSync(certPath)
+    };
+    
+    https.createServer(httpsOptions, app).listen(DEFAULT_PORT, () => {
+        console.log(`Sample app listening on https://localhost:${DEFAULT_PORT}!`);
+    });
+} else {
+    console.error('ERROR: SSL certificate files not found!');
+    console.error(`Please ensure localhost.crt and localhost.key exist in the root folder.`);
+    console.error(`Run 'npm run generate-cert' to generate self-signed certificates.`);
+    process.exit(1);
+}
 
 module.exports = app;

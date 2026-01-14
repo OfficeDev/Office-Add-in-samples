@@ -154,7 +154,7 @@ function downloadDirectly() {
     // Get mock data.
     const bodyJSON = JSON.stringify(tableData);
     
-    const url = 'http://localhost:3000/api/create-spreadsheet';
+    const url = 'https://localhost:3000/api/create-spreadsheet';
     
     // Use Node.js server endpoint to create spreadsheet.
     fetch(url, {
@@ -200,7 +200,7 @@ function openInExcel() {
     // Get mock data.
     const bodyJSON = JSON.stringify(tableData);
     
-    const url = 'http://localhost:3000/api/create-spreadsheet';
+    const url = 'https://localhost:3000/api/create-spreadsheet';
     
      // Use Node.js server endpoint to create spreadsheet.
     fetch(url, {
