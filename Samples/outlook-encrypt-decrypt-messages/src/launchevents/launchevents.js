@@ -16,35 +16,6 @@ function handleError(event, errorMessage, logMessage) {
   });
 }
 
-// Creates attachment details object based on attachment type.
-function createAttachmentDetails(attachment) {
-  const attachmentType = attachment.attachmentType;
-  const attachmentName = attachment.name;
-
-  switch (attachmentType) {
-    case Office.MailboxEnums.AttachmentType.Cloud:
-      return {
-        attachmentType: attachmentType,
-        name: attachmentName,
-        path: attachment.url,
-      };
-    case Office.MailboxEnums.AttachmentType.File:
-      return {
-        attachmentType: attachmentType,
-        isInline: attachment.isInline,
-        contentId: attachment.contentId,
-        name: attachmentName,
-      };
-    case Office.MailboxEnums.AttachmentType.Item:
-      return {
-        attachmentType: attachmentType,
-        name: attachmentName,
-      };
-    default:
-      return null;
-  }
-}
-
 // Creates decrypted attachment object based on attachment details.
 function createDecryptedAttachment(decryptedDetails) {
   const attachmentType = decryptedDetails.attachmentType;
@@ -160,14 +131,12 @@ function onMessageSendHandler(event) {
                     .filter((attachment) => attachment.name !== "encrypted_body.txt")
                     .map((attachment, i) => {
                       return new Promise((resolve, reject) => {
-                        const attachmentDetails = createAttachmentDetails(attachment);
-
                         Office.context.mailbox.item.getAttachmentContentAsync(
                           attachment.id,
                           {
                             asyncContext: {
                               attachmentNumber: i,
-                              attachmentDetails: attachmentDetails,
+                              attachmentDetails: attachment,
                               attachmentId: attachment.id,
                             },
                           },
