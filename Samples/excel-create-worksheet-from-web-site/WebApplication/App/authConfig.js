@@ -8,10 +8,10 @@
  */
 const msalConfig = {
     auth: {
-        clientId: 'Enter_the_Application_Id_Here', // This is the ONLY mandatory field that you need to supply.
-        authority: 'https://login.microsoftonline.com/Enter_the_Tenant_Id_Here', // Defaults to "https://login.microsoftonline.com/common"
-        redirectUri: '/', // You must register this URI on Azure Portal/App Registration. Defaults to window.location.href
-        postLogoutRedirectUri: '/', //Indicates the page to navigate after logout.
+        clientId: 'fab26fb8-5f6f-4030-bb80-0ff78978f4aa', // This is the ONLY mandatory field that you need to supply.
+        authority: 'https://login.microsoftonline.com/8ef5695c-8176-4c68-b914-189ef51e1378', // Defaults to "https://login.microsoftonline.com/common"
+        redirectUri: 'http://localhost:3000/redirect', // You must register this URI on Azure Portal/App Registration.
+        postLogoutRedirectUri: 'http://localhost:3000/', // Indicates the page to navigate after logout.
         clientCapabilities: ['CP1'], // this lets the resource owner know that this client is capable of handling claims challenge.
     },
     cache: {
@@ -73,7 +73,7 @@ const graphConfig = {
  * https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-permissions-and-consent#openid-connect-scopes
  */
 const loginRequest = {
-    scopes: ["User.Read Files.ReadWrite"]
+    scopes: ["User.Read", "Files.ReadWrite"]
 };
 
 // exporting config object for jest

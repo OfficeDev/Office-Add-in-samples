@@ -4,6 +4,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const fs = require('fs');
 const ExcelJS = require('exceljs');
 const JSZip = require('jszip');
 const xml2js = require('xml2js');
@@ -76,6 +77,12 @@ app.post('/api/create-spreadsheet', async (req, res) => {
         // Embed Script Lab add-in and get the modified buffer.
         const buffer = await embedAddin(workbook);
         
+        // For debugging: save to local file system to verify embedding works.
+        const fs = require('fs');
+        const debugPath = path.join(__dirname, 'debug_spreadsheet.xlsx');
+        fs.writeFileSync(debugPath, buffer);
+        console.log('Debug file saved to:', debugPath);
+        
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
         res.setHeader('Content-Disposition', 'attachment; filename=spreadsheet.xlsx');
         res.send(buffer);
@@ -112,9 +119,12 @@ app.post('/api/create-spreadsheet', async (req, res) => {
 async function embedAddin(workbook) {
     // First, generate the workbook as a buffer.
     const buffer = await workbook.xlsx.writeBuffer();
+    console.log('Original buffer size:', buffer.length);
     
     // Load the buffer into JSZip.
     const zip = await JSZip.loadAsync(buffer);
+    console.log('Files in original zip:', Object.keys(zip.files).length);
+    console.log('Original files list:', Object.keys(zip.files).filter(f => !f.endsWith('/')).slice(0, 10));
     
     // Create the webextension part XML.
     const webExtensionXml = createWebExtensionXml();
@@ -122,12 +132,25 @@ async function embedAddin(workbook) {
     // Create the taskpane part XML.
     const taskpaneXml = createTaskpaneXml();
     
+    // Ensure the webextensions folder structure exists.
+    // Note: JSZip automatically creates parent folders when adding files with paths.
+    
     // Add the webextension files to the zip.
     zip.file('xl/webextensions/webextension1.xml', webExtensionXml);
-    zip.file('xl/webextensions/_rels/webextension1.xml.rels', createWebExtensionRels());
+    zip.file('xl/webextensions/_rels/taskpanes.xml.rels', createWebExtensionRels());
+    zip.file('xl/webextensions/taskpanes.xml', taskpaneXml);
     
-    // Add the taskpane file.
-    zip.folder('xl/webextensions');
+    console.log('Files after adding webextensions:', Object.keys(zip.files).length);
+    console.log('New files added:', Object.keys(zip.files).filter(f => f.includes('webextension')));
+    
+    // Verify the files were actually added by checking their content.
+    const webExtFile = zip.file('xl/webextensions/webextension1.xml');
+    if (webExtFile) {
+        const content = await webExtFile.async('string');
+        console.log('webextension1.xml exists, length:', content.length);
+    } else {
+        console.error('ERROR: webextension1.xml was not added to zip!');
+    }
     
     // Update or create [Content_Types].xml.
     await updateContentTypes(zip);
@@ -135,14 +158,22 @@ async function embedAddin(workbook) {
     // Update workbook.xml.rels.
     await updateWorkbookRels(zip);
     
-    // Add taskpanes.xml.
-    zip.file('xl/webextensions/taskpanes.xml', taskpaneXml);
+    // List all files before generating buffer.
+    console.log('All files before generateAsync:', Object.keys(zip.files).filter(f => !f.endsWith('/')));
     
     // Return the modified zip as a buffer.
-    return await zip.generateAsync({ 
+    const modifiedBuffer = await zip.generateAsync({ 
         type: 'nodebuffer',
-        compression: 'DEFLATE'
+        compression: 'DEFLATE',
+        compressionOptions: {
+            level: 9
+        }
     });
+    
+    console.log('Modified buffer size:', modifiedBuffer.length);
+    console.log('Buffer changed:', buffer.length !== modifiedBuffer.length);
+    
+    return modifiedBuffer;
 }
 
 /**
@@ -169,14 +200,14 @@ function createWebExtensionXml() {
 function createTaskpaneXml() {
     return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <wetp:taskpanes xmlns:wetp="http://schemas.microsoft.com/office/webextensions/taskpanes/2010/11">
-    <wetp:taskpane dockstate="right" visibility="0" width="350" row="4">
+    <wetp:taskpane dockstate="right" visibility="1" width="350" row="4">
         <wetp:webextensionref xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" r:id="rId1"/>
     </wetp:taskpane>
 </wetp:taskpanes>`;
 }
 
 /**
- * Creates the relationship file for webextension.
+ * Creates the relationship file for taskpanes to reference the webextension.
  */
 function createWebExtensionRels() {
     return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
