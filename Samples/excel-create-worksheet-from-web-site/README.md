@@ -209,7 +209,7 @@ Save this setting in the document to tell Office to automatically open this spec
    - Save and close the file
    - **Subsequent opens**: The task pane now auto-opens automatically
 
-   This is standard Office Add-in behavior and matches the original C# sample.
+   This is standard Office Add-in behavior.
 
 1. **Production considerations**:
    - Replace the self-signed certificate with a proper SSL certificate.
@@ -217,17 +217,6 @@ Save this setting in the document to tell Office to automatically open this spec
    - Update the manifest.xml URLs to point to your production server.
    - Add proper authentication and authorization to the API endpoints.
    - Consider distributing the add-in through AppSource instead of sideloading.
-
-## Key differences from the original sample
-
-This sample refactored a C#/Azure Functions implementation to Node.js/Express. Key changes include:
-
-- **Technology stack**: Uses Node.js with Express instead of C#
-- **Spreadsheet generation**: Uses ExcelJS instead of .NET OpenXML SDK
-- **OOXML manipulation**: Uses JSZip and xml2js instead of .NET System.IO.Packaging
-- **Custom add-in**: Hosts a custom add-in instead of embedding Script Lab
-- **Auto-open implementation**: Uses Office.js `settings` API instead of an OOXML-only approach
-- **Development environment**: Requires only VS Code, no Visual Studio needed
 
 ## Troubleshooting
 
