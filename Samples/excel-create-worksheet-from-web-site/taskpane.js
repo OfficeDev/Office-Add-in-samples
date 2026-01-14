@@ -35,7 +35,7 @@ function setAutoOpenOff() {
 function showNotification(content) {
     const footer = document.querySelector('footer');
     const messageText = document.getElementById('message-text');
-    const turnOffButton = document.getElementById('turn-off-message');
+
     
     messageText.innerText = content;
     footer.style.display = 'block';

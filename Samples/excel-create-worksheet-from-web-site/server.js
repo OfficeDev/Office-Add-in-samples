@@ -121,7 +121,7 @@ app.post('/api/create-spreadsheet', async (req, res) => {
 });
 
 /**
- * Embeds the Script Lab add-in into the workbook.
+ * Embeds the custom Office add-in defined in manifest.xml into the workbook.
  * This manipulates the Open Office XML (OOXML) structure to embed a web extension.
  * 
  * The process:

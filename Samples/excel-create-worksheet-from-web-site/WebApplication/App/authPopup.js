@@ -173,13 +173,13 @@ function downloadDirectly() {
         .then((blob) => {
             console.log('Spreadsheet created, size:', blob.size);
             // Create a download link and trigger it.
-            const url = window.URL.createObjectURL(blob);
+            const blobUrl = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
-            a.href = url;
+            a.href = blobUrl;
             a.download = 'spreadsheet.xlsx';
             document.body.appendChild(a);
             a.click();
-            window.URL.revokeObjectURL(url);
+            window.URL.revokeObjectURL(blobUrl);
             document.body.removeChild(a);
             console.log('Download triggered');
         })
