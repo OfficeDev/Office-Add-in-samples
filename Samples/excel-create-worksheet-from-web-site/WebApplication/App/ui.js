@@ -15,6 +15,7 @@ const profileButton = document.getElementById("seeProfile");
 const profileDiv = document.getElementById("profile-div");
 const listGroup = document.getElementById('list-group');
 const openInExcelIcon = document.getElementById('openInExcelIcon');
+const downloadDirectlyBtn = document.getElementById('downloadDirectlyBtn');
 
 function showWelcomeMessage(username, accounts) {
     // Reconfiguring DOM elements
@@ -23,6 +24,7 @@ function showWelcomeMessage(username, accounts) {
     console.log(convertJSONtoHTMLTable(tableData));
     tableDiv.innerHTML = convertJSONtoHTMLTable(tableData);
     openInExcelIcon.disabled = false;
+    downloadDirectlyBtn.disabled = false;
     signInButton.style.visibility = 'hidden';    
     welcomeDiv.innerHTML = `Welcome ${username}`;
     tableSection.innerHTML = `Sales data for ${username}`;

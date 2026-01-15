@@ -148,6 +148,48 @@ function seeProfile() {
 let sheetWindow; // Used for opening a new browser tab to load the created spreadsheet.
 
 /**
+ * Downloads the spreadsheet directly without uploading to OneDrive.
+ */
+function downloadDirectly() {
+    // Get mock data.
+    const bodyJSON = JSON.stringify(tableData);
+    
+    const url = 'https://localhost:3000/api/create-spreadsheet';
+    
+    // Use Node.js server endpoint to create spreadsheet.
+    fetch(url, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        method: 'POST',
+        body: bodyJSON,
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status} ${response.statusText}`);
+            }
+            return response.blob();
+        })
+        .then((blob) => {
+            console.log('Spreadsheet created, size:', blob.size);
+            // Create a download link and trigger it.
+            const blobUrl = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = blobUrl;
+            a.download = 'spreadsheet.xlsx';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(blobUrl);
+            document.body.removeChild(a);
+            console.log('Download triggered');
+        })
+        .catch((error) => {
+            console.error('Error creating spreadsheet:', error);
+            alert('Error: ' + error.message);
+        });
+}
+
+/**
  * Calls the Node.js server endpoint to create the spreadsheet.
  * Calls uploadFile to then upload the new spreadsheet to OneDrive.
  */
@@ -158,9 +200,9 @@ function openInExcel() {
     // Get mock data.
     const bodyJSON = JSON.stringify(tableData);
     
-    const url = 'http://localhost:3000/api/create-spreadsheet';
+    const url = 'https://localhost:3000/api/create-spreadsheet';
     
-     // Use Node.js server endpoint to create spreadsheet
+     // Use Node.js server endpoint to create spreadsheet.
     fetch(url, {
         headers: {
             'Content-Type': 'application/json',
@@ -168,11 +210,23 @@ function openInExcel() {
         method: 'POST',
         body: bodyJSON,
     })
-        .then((response) => response.blob())
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status} ${response.statusText}`);
+            }
+            return response.blob();
+        })
         .then((blob) => {
-            console.log(blob);
-            uploadFile('openinexcel', 'spreadsheet.xlsx', blob);
-            
+            console.log('Spreadsheet created, size:', blob.size);
+            return uploadFile('openinexcel', 'spreadsheet.xlsx', blob);
+        })
+        .catch((error) => {
+            console.error('Error creating or uploading spreadsheet:', error);
+            // Close the blank tab if there was an error.
+            if (sheetWindow) {
+                sheetWindow.close();
+            }
+            alert('Error: ' + error.message);
         });
 }
 
@@ -180,28 +234,40 @@ function openInExcel() {
  * Creates a new spreadsheet on Microsoft OneDrive.
  * @param {*} folderName Name of folder off root to place the spreadsheet.
  * @param {*} fileName Name to give the spreadsheet file.
- * @param {*} data Base64 encoded raw data of the spreadsheet.
+ * @param {*} data Blob data of the spreadsheet.
  */
 async function uploadFile(folderName, fileName, data) {    
-    const uri =
-        'https://graph.microsoft.com/v1.0/me/drive/root:/' +
-        folderName +
-        '/' +
-        fileName +
-        ':/content';
+    try {
+        const uri =
+            'https://graph.microsoft.com/v1.0/me/drive/root:/' +
+            folderName +
+            '/' +
+            fileName +
+            ':/content';
 
-    const result = await callGraph(
-        username,
-        graphConfig.graphFilesEndpoint.scopes,
-        uri,
-        msal.InteractionType.Popup,
-        myMSALObj,
-        data
-    );
+        console.log('Uploading to OneDrive:', uri);
 
-    // Update the browser tab (opened previously) to open the new spreadsheet file.
-    sheetWindow.location = result.webUrl;
-  
+        const result = await callGraph(
+            username,
+            graphConfig.graphFilesEndpoint.scopes,
+            uri,
+            msal.InteractionType.Popup,
+            myMSALObj,
+            data
+        );
+
+        console.log('Upload successful, webUrl:', result.webUrl);
+
+        // Update the browser tab (opened previously) to open the new spreadsheet file.
+        sheetWindow.location = result.webUrl;
+    } catch (error) {
+        console.error('Error uploading file to OneDrive:', error);
+        // Close the blank tab if there was an error.
+        if (sheetWindow) {
+            sheetWindow.close();
+        }
+        throw error;
+    }
 }
 
 selectAccount();
