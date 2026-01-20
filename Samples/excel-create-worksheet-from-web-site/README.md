@@ -89,10 +89,24 @@ This sample demonstrates how to create an Excel workbook from web site data usin
 
 Office Add-ins require HTTPS. You need to generate and trust self-signed certificates for local development.
 
-1. Run `npm run generate-cert` to generate SSL certificates.
-   - This command creates `localhost.crt` and `localhost.key` files in the root folder.
+1. If you haven't already installed `office-addin-dev-certs`, install it globally with the following command:
+
+   ```bash
+   npm install --global office-addin-dev-certs
+   ```
+
+1. Run the following command to generate a self-signed certificate:
+
+   ```bash
+   npx office-addin-dev-certs install
+   ```
+
+   This command will display the folder location where it generated the certificate files.
    - On Windows, you might be prompted to trust the certificate - select **Yes**.
    - On Mac, you might need to add the certificate to your keychain and mark it as trusted.
+
+1. Copy the **localhost.crt** and **localhost.key** files from the certificate folder (typically `~/.office-addin-dev-certs/` or `%USERPROFILE%\.office-addin-dev-certs\` on Windows) to the root folder of this sample.
+
 1. The server automatically uses the certificate files when you run `npm start`.
 
 ## Run the sample

@@ -33,20 +33,20 @@ app.get('/manifest.xml', (req, res) => {
 });
 
 // Serve taskpane files
-app.get('/taskpane.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'taskpane.html'));
+app.get('/src/taskpane.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src', 'taskpane.html'));
 });
 
-app.get('/taskpane.css', (req, res) => {
-    res.sendFile(path.join(__dirname, 'taskpane.css'));
+app.get('/src/taskpane.css', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src', 'taskpane.css'));
 });
 
-app.get('/taskpane.js', (req, res) => {
-    res.sendFile(path.join(__dirname, 'taskpane.js'));
+app.get('/src/taskpane.js', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src', 'taskpane.js'));
 });
 
-app.get('/commands.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'commands.html'));
+app.get('/src/commands.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'src', 'commands.html'));
 });
 
 // Serve icon files
