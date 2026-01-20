@@ -29,9 +29,12 @@
   "dependencies": {
     "express": "^4.19.2",
     "morgan": "^1.10.0",
-    "exceljs": "^4.4.0"
+    "exceljs": "^4.4.0",
+    "jszip": "^3.10.1",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "office-addin-dev-certs": "^1.13.5"
   }
 }
