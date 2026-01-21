@@ -19,24 +19,19 @@ extensions:
     - Microsoft 365
   createdDate: 5/1/2017 2:09:09 PM
 ---
-# Office Add-in that supports Single Sign-on to Office, the Add-in, and Microsoft Graph
+# Office Add-in that supports legacy Office Single Sign-on, the Add-in, and Microsoft Graph
 
-The `getAccessToken` API in Office.js enables users who are signed into Office to get access to an AAD-protected add-in and to Microsoft Graph without needing to sign-in again. 
+**Note:** This sample uses legacy Office single sign-on (SSO). For a modern authentication experience with support across a wider range of platforms, use the Microsoft Authentication Library (MSAL) with nested app authentication (NAA). For more information, see [Enable single sign-on in an Office Add-in with nested app authentication](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in).
 
-There are two versions of the sample in this repo:
+The `getAccessToken` API in Office.js enables users who are signed into Office to get access to an AAD-protected add-in and to Microsoft Graph without needing to sign-in again.
 
-- In the **Begin** folder is the starting point for the SSO walkthrough at [Create a Node.js Office Add-in that uses single sign-on](https://learn.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs). Please follow the instructions in the article.
-- In the **Complete** folder is the completed sample. To use this version, follow the instructions in [Create a Node.js Office Add-in that uses single sign-on](https://learn.microsoft.com/office/dev/add-ins/develop/create-sso-office-add-ins-nodejs), but with the following changes:
-  - Substitute "Complete" for "Begin"
-  - Skip the sections **Code the client-side** and **Code the server-side**
-
-These samples are built on Node.JS, Express, and Microsoft Authentication Library for JavaScript (msal.js).
+This sample is built on Node.JS, Express, and [Microsoft Authentication Library for Node (msal-node)](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node).
 
 ## Features
 
 Integrating data from online service providers increases the value and adoption of your add-ins. This code sample shows you how to connect your add-in to Microsoft Graph. Use this code sample to:
 
-- Build an add-in using Node.js, Express, msal.js, and Office.js
+- Build an add-in using Node.js, Express, msal-node, and Office.js
 - Connect to Microsoft Graph from an Office Add-in
 - Use the OneDrive REST APIs from Microsoft Graph
 - Use the Express routes and middleware to implement the OAuth 2.0 authorization framework in an add-in
@@ -56,33 +51,102 @@ Integrating data from online service providers increases the value and adoption 
 
 To run this code sample, the following are required:
 
-- A code editor. We recommend Visual Studio Code which was used to create the sample.
-- A Microsoft 365 account. You can get one if you qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
-- At least a few files and folders stored on OneDrive for Business in your Microsoft 365 subscription.
-- A Microsoft Azure Tenant. This add-in requires Azure Active Directory (AD). Azure AD provides identity services that applications use for authentication and authorization. A trial subscription can be acquired here: [Microsoft Azure](https://account.windowsazure.com/SignUp).
+- [Node.js](https://nodejs.org/) (the latest [LTS](https://nodejs.org/en/about/previous-releases) version)
+- [Git Bash](https://git-scm.com/downloads) (or another git client)
+- A code editor - we recommend Visual Studio Code
+- At least a few files and folders stored on OneDrive for Business in your Microsoft 365 subscription
+- A build of Microsoft 365 that supports the [IdentityAPI 1.3 requirement set](/javascript/api/requirement-sets/common/identity-api-requirement-sets). You might qualify for a Microsoft 365 E5 developer subscription, which includes a developer sandbox, through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). The [developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) includes a Microsoft Azure subscription that you can use for app registrations in later steps in this article. If you prefer, you can use a separate Microsoft Azure subscription for app registrations. Get a trial subscription at [Microsoft Azure](https://account.windowsazure.com/SignUp).
 
-## Solution
+## Configure the app registration
 
-Solution | Author(s)
----------|----------
-Office Add-in Microsoft Graph Node.js | Microsoft
+Follow the instructions at [Register an Office Add-in that uses single sign-on (SSO) with the Microsoft identity platform](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/register-sso-add-in-aad-v2). Use the following values for placeholders in the app registration steps from the previous article.
 
-## Version history
+| Placeholder                     | Value                                 |
+|---------------------------------|---------------------------------------|
+| `<add-in-name>`                 | **Office-Add-in-NodeJS-SSO**          |
+| `<fully-qualified-domain-name>` | `localhost:3000`                      |
+| Microsoft Graph permissions     | profile, openid, Files.Read           |
 
-Version  | Date | Comments
----------| -----| --------
-1.0 | May 10, 2017| Initial release
-1.0 | September 15, 2017 | Added support for 2FA.
-1.0 | December 8, 2017 | Added extensive error handling.
-1.0 | January 7, 2019 | Added information about web application security practices.
-2.0 | October 26, 2019 | Changed to use new API and added Display Dialog API fallback.
-2.1 | August 11, 2020 | Removed preview note because the API has released.
-2.2 | July 7, 2022 | Fixed middle-tier token handling and MSAL fallback approach to be consistent with Microsoft identity platform guidance.
-2.3 | February 16, 2023 | Refactored code to simplify.
+## Configure the add-in to use the app registration
 
-## Security note
+1. Open a command prompt in the root folder of this project.
 
-These samples send a hardcoded query parameter on the URL for the Microsoft Graph REST API. If you modify this code in a production add-in and any part of query parameter comes from user input, be sure that it is sanitized so that it cannot be used in a Response header injection attack.
+1. Enter `npm install` in the console to install all of the dependencies itemized in the package.json file.
+
+1. Run the command `npm run install-dev-certs`. Select **Yes** to the prompt to install the certificate.
+
+1. Open the project in a code editor.
+
+1. Open the `.ENV` file and use the values that you copied earlier from the **Office-Add-in-NodeJS-SSO** app registration. Set the values as follows:
+
+    | Name              | Value                                                            |
+    | ----------------- | ---------------------------------------------------------------- |
+    | **CLIENT_ID**     | **Application (client) ID** from app registration overview page. |
+    | **CLIENT_SECRET** | **Client secret** saved from **Certificates & Secrets** page.    |
+
+    The values should **not** be in quotation marks.
+
+1. Open the add-in manifest file "manifest\manifest_local.xml" and then scroll to the bottom of the file. Just above the `</VersionOverrides>` end tag, you'll find the following markup.
+
+   ```xml
+   <WebApplicationInfo>
+     <Id>$app-id-guid$</Id>
+     <Resource>api://localhost:3000/$app-id-guid$</Resource>
+     <Scopes>
+         <Scope>Files.Read</Scope>
+         <Scope>profile</Scope>
+         <Scope>openid</Scope>
+     </Scopes>
+   </WebApplicationInfo>
+   ```
+
+1. Replace the placeholder "$app-id-guid$" _in both places_ in the markup with the **Application ID** that you copied when you created the **Office-Add-in-NodeJS-SSO** app registration. The "$" symbols are not part of the ID, so don't include them. This is the same ID you used for the CLIENT_ID in the .ENV file.
+
+   **Note:** The `<Resource>` value is the **Application ID URI** you set when you registered the add-in. The `<Scopes>` section is used only to generate a consent dialog box if the add-in is sold through Microsoft Marketplace.
+
+1. Open the `\public\javascripts\fallback-msal\authConfig.js` file. Replace the placeholder "$app-id-guid$" with the application ID that you saved from the **Office-Add-in-NodeJS-SSO** app registration you created previously.
+
+1. Save the changes to the file.
+
+## Run the project
+
+1. Ensure that you have some files in your OneDrive so that you can verify the results.
+
+1. Open a command prompt in the root of this project.
+
+1. Run the command `npm install` to install all package dependencies.
+
+1. Run the command `npm start` to start the middle-tier server.
+
+1. You need to sideload the add-in into an Office application (Excel, Word, or PowerPoint) to test it. The instructions depend on your platform. There are links to instructions at [Sideload an Office Add-in for Testing](https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing).
+
+1. In the Office application, on the **Home** ribbon, select the **Show Add-in** button in the **SSO Node.js** group to open the task pane add-in.
+
+1. Click the **Get OneDrive File Names** button. If you're logged into Office with either a Microsoft 365 Education or work account, or a Microsoft account, and SSO is working as expected the first 10 file and folder names in your OneDrive for Business are inserted into the document. (It may take as much as 15 seconds the first time.) If you're not logged in, or you're in a scenario that doesn't support SSO, or SSO isn't working for any reason, you'll be prompted to sign in. After you sign in, the file and folder names appear.
+
+**Note:** If you were previously signed into Office with a different ID, and some Office applications that were open at the time are still open, Office may not reliably change your ID even if it appears to have done so. If this happens, the call to Microsoft Graph may fail or data from the previous ID may be returned. To prevent this, be sure to _close all other Office applications_ before you press **Get OneDrive File Names**.
+
+## Stop running the project
+
+When you're ready to stop the middle-tier server and uninstall the add-in, follow these instructions:
+
+1. Run the following command to stop the middle-tier server.
+
+    ```console
+    npm stop
+    ```
+
+1. To uninstall or remove the add-in, see the specific sideload article you used for details.
+
+## Security notes
+
+- The `/getuserfilenames` route in `getFilesroute.js` uses a literal string to compose the call for Microsoft Graph. If you change the call so that any part of the string comes from user input, sanitize the input so that it cannot be used in a Response header injection attack.
+
+- In `app.js` the following content security policy is in place for scripts. You may want to specify additional restrictions depending on your add-in security needs.
+
+    `"Content-Security-Policy": "script-src https://appsforoffice.microsoft.com https://ajax.aspnetcdn.com https://alcdn.msauth.net " +  process.env.SERVER_SOURCE,`
+
+Always follow security best practices in the [Microsoft identity platform documentation](https://learn.microsoft.com/entra/identity-platform/).
 
 ## Questions and feedback
 
@@ -106,6 +170,26 @@ You might also qualify for a free developer subscription that's renewable for 90
 Copyright (c) 2021 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Solution
+
+| Solution | Author(s) |
+| --------- | ---------- |
+| Office Add-in Microsoft Graph Node.js | Microsoft |
+
+## Version history
+
+| Version | Date | Comments |
+| --------- | ----- | -------- |
+| 1.0 | May 10, 2017 | Initial release |
+| 1.0 | September 15, 2017 | Added support for 2FA. |
+| 1.0 | December 8, 2017 | Added extensive error handling. |
+| 1.0 | January 7, 2019 | Added information about web application security practices. |
+| 2.0 | October 26, 2019 | Changed to use new API and added Display Dialog API fallback. |
+| 2.1 | August 11, 2020 | Removed preview note because the API has released. |
+| 2.2 | July 7, 2022 | Fixed middle-tier token handling and MSAL fallback approach to be consistent with Microsoft identity platform guidance. |
+| 2.3 | February 16, 2023 | Refactored code to simplify. |
+| 2.4 | January 21, 2026 | Security reviewed. Updated as legacy content as MSAL SSO via nested app authentication is preferred. |
 
 **Note**: The index.pug file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
 

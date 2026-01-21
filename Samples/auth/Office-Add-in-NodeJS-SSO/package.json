@@ -7,23 +7,23 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@types/jquery": "^3.5.29",
-    "@types/office-js": "^1.0.378",
+    "@types/jquery": "^3.5.33",
+    "@types/office-js": "^1.0.568",
     "cookie-parser": "~1.4.7",
-    "debug": "~4.3.4",
-    "dotenv": "^16.4.5",
-    "express": "~4.22.1",
-    "form-urlencoded": "^6.1.4",
-    "http-errors": "~2.0.0",
-    "jquery": "^3.7.1",
+    "debug": "~4.4.3",
+    "dotenv": "^17.2.3",
+    "express": "~5.2.1",
+    "form-urlencoded": "^6.1.6",
+    "http-errors": "~2.0.1",
+    "jquery": "^4.0.0",
     "jshint": "^2.13.6",
-    "jsonwebtoken": "^9.0.2",
-    "morgan": "~1.10.0",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "~1.10.1",
     "node-fetch": "^3.3.2",
     "pug": "^3.0.3",
-    "@azure/msal-node": "2.6.6",
-    "jwks-rsa": "^3.1.0",
-    "uuid": "^9.0.1"
+    "@azure/msal-node": "5.0.2",
+    "jwks-rsa": "^3.2.1",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "office-addin-dev-certs": "1.12.2"
