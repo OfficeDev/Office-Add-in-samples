@@ -17,9 +17,9 @@ import { msalConfig } from "./msalconfig";
  */
 export function getTokenRequest(scopes: string[], selectAccount: boolean, redirectUri?: string): RedirectRequest {
   let additionalProperties: Partial<RedirectRequest> = {};
-  if (selectAccount) {
-    additionalProperties = { prompt: "select_account" };
-  }
+  // if (selectAccount) {
+  //   additionalProperties = { prompt: "select_account" };
+  // }
   if (redirectUri) {
     additionalProperties.redirectUri = redirectUri;
   }

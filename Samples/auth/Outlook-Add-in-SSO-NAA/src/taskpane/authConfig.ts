@@ -95,12 +95,13 @@ export class AccountManager {
     // Acquire token silent failure. Send an interactive request via popup.
     try {
       console.log("Trying to acquire token interactively...");
-      const selectAccount = this.pca.getActiveAccount() ? false : true;
-      const authResult = await this.pca.acquireTokenPopup(getTokenRequest(scopes, selectAccount));
+      //const selectAccount = this.pca.getActiveAccount() ? false : true;
+      const tokenRequest = getTokenRequest(scopes, true);
+      const authResult = await this.pca.acquireTokenPopup(tokenRequest);
       console.log("Acquired token interactively.");
-      if (selectAccount) {
-        this.pca.setActiveAccount(authResult.account);
-      }
+      // if (selectAccount) {
+      //   this.pca.setActiveAccount(authResult.account);
+      // }
       if (!this.isNestedAppAuthSupported()) {
         this.setSignOutButtonVisibility(true);
       }

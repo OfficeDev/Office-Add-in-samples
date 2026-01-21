@@ -8,12 +8,13 @@ import { createLocalUrl } from "./util";
 
 /* global console */
 
-export const clientId = "Enter_the_Application_Id_Here";
+export const clientId = "bf62f07c-cfad-4df2-aac2-99e905f1610e";
 export const msalConfig = {
   auth: {
     clientId,
-    redirectUri: createLocalUrl("auth.html"),
-    postLogoutRedirectUri: createLocalUrl("auth.html"),
+    authority: "https://login.microsoftonline.com/common"
+    // redirectUri: createLocalUrl("auth.html"),
+    // postLogoutRedirectUri: createLocalUrl("auth.html"),
   },
   cache: {
     cacheLocation: "localStorage",
