@@ -3,50 +3,6 @@
  * See LICENSE in the project root for license information.
  */
 
-// Helper functions
-
-// Handles errors and complete the event with failure.
-function handleError(event, errorMessage, logMessage) {
-  if (logMessage) {
-    console.log(logMessage);
-  }
-  event.completed({
-    allowEvent: false,
-    errorMessage: errorMessage,
-  });
-}
-
-// Creates decrypted attachment object based on attachment details.
-function createDecryptedAttachment(decryptedDetails) {
-  const attachmentType = decryptedDetails.attachmentType;
-  const attachmentName = decryptedDetails.name;
-
-  switch (attachmentType) {
-    case Office.MailboxEnums.AttachmentType.Cloud:
-      return {
-        attachmentType: attachmentType,
-        name: attachmentName,
-        path: decryptedDetails.path,
-      };
-    case Office.MailboxEnums.AttachmentType.File:
-      return {
-        attachmentType: attachmentType,
-        content: decryptedDetails.content,
-        isInline: decryptedDetails.isInline,
-        contentId: decryptedDetails.contentId,
-        name: attachmentName,
-      };
-    case Office.MailboxEnums.AttachmentType.Item:
-      return {
-        attachmentType: attachmentType,
-        content: decryptedDetails.content,
-        name: attachmentName,
-      };
-    default:
-      return null;
-  }
-}
-
 // Event handlers
 
 // Handles the OnMessageSend event to encrypt the message body and attachments.
@@ -217,7 +173,8 @@ function onMessageSendHandler(event) {
                         "Unable to encrypt the contents of this message.",
                         `Unable to encrypt attachments: ${error}`
                       );
-                    });
+                    }
+                  );
                 }
               );
             }
@@ -261,7 +218,6 @@ function onMessageReadHandler(event) {
           const encryptedAttachmentName = result.asyncContext.attachmentName;
           if (encryptedAttachmentName.includes("encrypted_attachment")) {
             const decryptedAttachmentDetails = JSON.parse(decryptedData);
-
             const decryptedAttachment = createDecryptedAttachment(decryptedAttachmentDetails);
             if (decryptedAttachment) {
               decryptedAttachments.push(decryptedAttachment);
@@ -390,6 +346,44 @@ function decrypt(encryptedText, key = "OfficeAddInSampleKey") {
   } catch (error) {
     console.error("Decryption error:", error);
     return encryptedText;
+  }
+}
+
+// Helper functions
+
+// Handles errors and complete the event with failure.
+function handleError(event, errorMessage, logMessage) {
+  if (logMessage) {
+    console.log(logMessage);
+  }
+  event.completed({
+    allowEvent: false,
+    errorMessage: errorMessage,
+  });
+}
+
+// Creates decrypted attachment object based on attachment details.
+function createDecryptedAttachment(decryptedDetails) {
+  const attachmentType = decryptedDetails.attachmentType;
+  const attachmentName = decryptedDetails.name;
+
+  switch (attachmentType) {
+    case Office.MailboxEnums.AttachmentType.Cloud:
+      return {
+        attachmentType: attachmentType,
+        name: attachmentName,
+        path: decryptedDetails.path,
+      };
+    case Office.MailboxEnums.AttachmentType.File:
+      return {
+        attachmentType: attachmentType,
+        content: decryptedDetails.content,
+        isInline: decryptedDetails.isInline,
+        contentId: decryptedDetails.contentId,
+        name: attachmentName,
+      };
+    default:
+      return null;
   }
 }
 

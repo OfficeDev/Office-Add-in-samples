@@ -92,6 +92,8 @@ Once the add-in is loaded in Outlook, use the following steps to try out its fun
 
    **Note**: The recipient must also have the add-in installed to decrypt the message. To test this sample, send the message to yourself.
 1. Optionally, add attachments to the message.
+
+   **Note**: The decryption API doesn't currently support attachments of type `Office.MailboxEnums.AttachmentType.Item`.
 1. Select **Send**.
 
    When the **OnMessageSend** event occurs, the encrypted message body and attachments are added as .txt files to the message. The body is replaced with a placeholder message and the original attachments are removed from the message.
@@ -130,6 +132,6 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 | Version | Date | Comments |
 | ----- | ----- | ----- |
-| 1.0 | January 9, 2026 | Initial release |
+| 1.0 | January 27, 2026 | Initial release |
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-encrypt-decrypt-messages" />
