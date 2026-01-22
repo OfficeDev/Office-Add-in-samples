@@ -65,6 +65,7 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | [Verify the color categories of a message or appointment before it's sent using Smart Alerts](Samples/outlook-check-item-categories/) | Uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent.|
 | [Verify the sensitivity label of a message](Samples/outlook-verify-sensitivity-label/) | Uses the sensitivity label API in an event-based add-in to verify and apply the **Highly Confidential** sensitivity label to applicable outgoing messages. |
 | [Report spam or phishing emails in Outlook](Samples/outlook-spam-reporting/) | Builds an integrated spam-reporting add-in that's displayed in a prominent spot on the Outlook ribbon. |
+| [Encrypt and decrypt messages in Outlook](Samples/outlook-encrypt-decrypt-messages/) | Uses Outlook Smart Alerts and the decryption APIs to encrypt and decrypt messages. |
 
 ## Excel
 
