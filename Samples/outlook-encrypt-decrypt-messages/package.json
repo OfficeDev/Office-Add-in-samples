@@ -1,9 +1,9 @@
 {
-  "name": "office-addin-taskpane-js",
+  "name": "outlook-encrypt-decrypt-messages",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/Office-Addin-TaskPane-JS.git"
+    "url": "https://github.com/OfficeDev/Office-Add-in-samples.git"
   },
   "license": "MIT",
   "config": {

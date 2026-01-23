@@ -12,7 +12,7 @@ extensions:
   contentType: samples
   technologies:
     - Add-ins
-  createdDate: 01/09/2026 10:00:00 AM
+  createdDate: 01/27/2026 10:00:00 AM
 description: "Learn how to create an Outlook add-in that encrypts and decrypts messages."
 ---
 
