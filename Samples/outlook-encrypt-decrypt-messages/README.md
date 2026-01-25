@@ -31,7 +31,7 @@ To learn about key components of this sample, see [Create an encryption Outlook 
 
 > [!NOTE]
 >
-> - The `OnMessageRead` event and decryption APIs are in preview. Features in preview shouldn't be used in production add-ins.
+> - The `OnMessageRead` event is in preview. Features in preview shouldn't be used in production add-ins.
 > - This sample uses simplified encryption and decryption protocols for demonstration purposes only. Don't use these protocols in production add-ins.
 
 ## Applies to
@@ -44,7 +44,7 @@ To learn about key components of this sample, see [Create an encryption Outlook 
 
     > **Note**: If you don't have a Microsoft 365 subscription, you might qualify for a free developer subscription that's renewable for 90 days and comes configured with sample data. For details, see the [Microsoft 365 Developer Program FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-).
 
-- To preview the decryption APIs in classic Outlook on Windows:
+- To preview the `OnMessageRead` event in classic Outlook on Windows:
   1. Join the [Microsoft 365 Insider program](https://aka.ms/MSFT365InsiderProgram) and choose the **Beta Channel** in the Outlook client. Your client must be on **Version 2510 (Build 19312.20000)** or later.
   1. Configure your computer's registry to reference the local beta copy of the Office.js API:
         1. In the registry, navigate to `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Outlook\Options\WebExt\Developer`. If the key doesn't exist, create it.

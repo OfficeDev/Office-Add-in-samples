@@ -4,10 +4,10 @@
       "reponame": "office-add-in-samples",
       "source": "officedev",
       "title": "Encrypt and decrypt messages in Outlook",
-      "shortDescription": "Use Outlook Smart Alerts and the decryption APIs to encrypt and decrypt messages.",
+      "shortDescription": "Use Outlook Smart Alerts and the `OnMessageRead` event to encrypt and decrypt messages.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-encrypt-decrypt-messages",
       "longDescription": [
-        "Use Outlook Smart Alerts and the decryption APIs to encrypt and decrypt messages."
+        "Use Outlook Smart Alerts and the `OnMessageRead` event to encrypt and decrypt messages."
       ],
       "creationDateTime": "2026-01-27",
       "updateDateTime": "2026-01-27",
@@ -38,7 +38,7 @@
       "references": [
         {
           "name": "Encrypt and decrypt messages in Outlook",
-          "description": "Use Outlook Smart Alerts and the decryption APIs to encrypt and decrypt messages.",
+          "description": "Use Outlook Smart Alerts and the `OnMessageRead` event to encrypt and decrypt messages.",
           "url": "https://learn.microsoft.com/office/dev/add-ins/outlook/encryption-decryption"
         }
       ]
