@@ -73,7 +73,7 @@ Follow the instructions at [Register an Office Add-in that uses single sign-on (
 
 1. Enter `npm install` in the console to install all of the dependencies itemized in the package.json file.
 
-1. Run the command `npm run install-dev-certs`. Select **Yes** to the prompt to install the certificate.
+1. Run the command `npm run install-dev-certs`. You may receive a prompt asking if you want to delete a certificate and/or a prompt to install a certificate. Select **Yes** to both.
 
 1. Open the project in a code editor.
 
