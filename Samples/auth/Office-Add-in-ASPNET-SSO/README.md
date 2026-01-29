@@ -51,7 +51,7 @@ To run this code sample, the following are required:
 
 ## Configure the app registration
 
-Follow the instructions at [Register an Office Add-in that uses single sign-on (SSO) with the Microsoft identity platform](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/register-sso-add-in-aad-v2). Use the following values for placeholders in the app registration steps from the previous article.
+Follow the instructions at [Register an Office Add-in that uses single sign-on (SSO) with the Microsoft identity platform](https://learn.microsoft.com/office/dev/add-ins/develop/register-sso-add-in-aad-v2). Use the following values to replace the placeholders in the app registration steps from that article.
 
 | Placeholder                     | Value                                 |
 |---------------------------------|---------------------------------------|
