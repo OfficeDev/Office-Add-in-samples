@@ -1,0 +1,53 @@
+[
+    {
+      "name": "powerpoint-content-add-in-hello-world",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Create a PowerPoint content add-in that displays slide details",
+      "shortDescription": "Create a simple PowerPoint content add-in that displays slide details.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/hello-world/powerpoint-content-hello-world",
+      "longDescription": [
+        "Learn how to build an Office content add-in that displays details about the current slide in a PowerPoint presentation."
+      ],
+      "creationDateTime": "2026-01-30",
+      "updateDateTime": "2026-01-30",
+      "products": [
+        "Office",
+        "Teams",
+        "Microsoft 365 Agents Toolkit"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+        {
+            "type": "Image",
+            "order": 100,
+            "url": "https://learn.microsoft.com/office/dev/add-ins/images/powerpoint-quickstart-content-ui.png",
+            "alt": "The content add-in open in PowerPoint."
+          }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+        {
+          "name": "Office Add-ins platform overview",
+          "description": "You can use the Office Add-ins platform to build solutions that extend Office applications and interact with content in Office documents.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins"
+        },
+        {
+          "name": "Content add-ins",
+          "description": "Content add-ins are surfaces that can be embedded directly into Excel or PowerPoint documents.",
+          "url": "https://learn.microsoft.com/office/dev/add-ins/design/content-add-ins?tabs=jsonmanifest"
+        }
+      ]
+    }
+  ] 
