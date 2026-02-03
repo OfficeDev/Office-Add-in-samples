@@ -1,5 +1,9 @@
 # Office Add-ins code samples
 
+[![autorun-npm-audit-fix](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/autorun-npm-audit-fix.yml/badge.svg?branch=main)](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/autorun-npm-audit-fix.yml)
+[![Dependabot Updates](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/dependabot/dependabot-updates/badge.svg?branch=main)](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/dependabot/dependabot-updates)
+[![pages-build-deployment](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/pages/pages-build-deployment)
+
 Office Add-ins code samples are provided in this repo to help you learn, study, and build great Office Add-ins!
 
 ## Getting started
@@ -65,6 +69,7 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | [Verify the color categories of a message or appointment before it's sent using Smart Alerts](Samples/outlook-check-item-categories/) | Uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent.|
 | [Verify the sensitivity label of a message](Samples/outlook-verify-sensitivity-label/) | Uses the sensitivity label API in an event-based add-in to verify and apply the **Highly Confidential** sensitivity label to applicable outgoing messages. |
 | [Report spam or phishing emails in Outlook](Samples/outlook-spam-reporting/) | Builds an integrated spam-reporting add-in that's displayed in a prominent spot on the Outlook ribbon. |
+| [Encrypt and decrypt messages in Outlook](Samples/outlook-encrypt-decrypt-messages/) | Uses Outlook Smart Alerts and the `OnMessageRead` event to encrypt and decrypt messages. |
 
 ## Excel
 
