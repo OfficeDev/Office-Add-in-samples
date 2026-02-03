@@ -26,7 +26,7 @@
         {
             "type": "Image",
             "order": 100,
-            "url": "https://learn.microsoft.com/office/dev/add-ins/images/powerpoint-quickstart-content-ui.png",
+            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/hello-world/images/powerpoint-content-hello-world.png",
             "alt": "The content add-in open in PowerPoint."
           }
       ],

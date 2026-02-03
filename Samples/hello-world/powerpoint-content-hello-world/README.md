@@ -21,6 +21,8 @@ description: 'Create a PowerPoint content add-in that displays slide details.'
 
 Learn how to build an Office content add-in that displays details about the current slide in a PowerPoint presentation.
 
+![The content add-in open in PowerPoint.](../images/powerpoint-content-add-in-hello-world.png)
+
 ## Applies to
 
 - PowerPoint on Windows, Mac, and in a browser.

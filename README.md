@@ -15,6 +15,8 @@ The following samples show how to build the simplest Office Add-in with only a m
 * [PowerPoint "Hello world" add-in](Samples/hello-world/powerpoint-hello-world)
 * [Word "Hello world" add-in](Samples/hello-world/word-hello-world)
 
+* [PowerPoint "Hello world" content add-in](Samples/hello-world/powerpoint-content-hello-world/)
+
 ### Completed tutorials
 
 The following samples are the completed versions of various tutorials for Office Add-ins.
