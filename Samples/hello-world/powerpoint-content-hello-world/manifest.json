@@ -7,18 +7,18 @@
     "defaultLanguageTag": "en-us"
   },
   "developer": {
-    "name": "Testing content 4",
+    "name": "Contoso",
     "websiteUrl": "https://www.contoso.com",
     "privacyUrl": "https://www.contoso.com/privacy",
     "termsOfUseUrl": "https://www.contoso.com/terms"
   },
   "name": {
-    "short": "PowerPointWebAddIn4-ContentJSN",
-    "full": "PowerPointWebAddIn4-Content JSON"
+    "short": "PowerPoint Content Add-in",
+    "full": "PowerPoint Hello-World Content Add-in"
   },
   "description": {
-    "short": "A content add-in for PowerPoint JSON.",
-    "full": "A content add-in for PowerPoint JSON."
+    "short": "A content add-in for PowerPoint.",
+    "full": "A hello-world content add-in for PowerPoint."
   },
   "icons": {
     "outline": "assets/icon-32.png",
