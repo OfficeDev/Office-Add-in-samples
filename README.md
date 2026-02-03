@@ -1,5 +1,9 @@
 # Office Add-ins code samples
 
+[![autorun-npm-audit-fix](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/autorun-npm-audit-fix.yml/badge.svg?branch=main)](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/autorun-npm-audit-fix.yml)
+[![Dependabot Updates](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/dependabot/dependabot-updates/badge.svg?branch=main)](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/dependabot/dependabot-updates)
+[![pages-build-deployment](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/pages/pages-build-deployment)
+
 Office Add-ins code samples are provided in this repo to help you learn, study, and build great Office Add-ins!
 
 ## Getting started
