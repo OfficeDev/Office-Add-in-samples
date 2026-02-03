@@ -22,7 +22,7 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
-    "@azure/msal-browser": "^4.7.0",
+    "@azure/msal-browser": "^5.1.0",
     "core-js": "^3.36.0",
     "regenerator-runtime": "^0.14.1"
   },
@@ -39,7 +39,7 @@
     "html-loader": "^5.0.0",
     "html-webpack-plugin": "^5.6.0",
     "office-addin-cli": "^2.0.3",
-    "office-addin-debugging": "^6.0.3",
+    "office-addin-debugging": "^6.0.6",
     "office-addin-dev-certs": "^2.0.3",
     "office-addin-lint": "^3.0.3",
     "office-addin-manifest": "^2.0.3",
