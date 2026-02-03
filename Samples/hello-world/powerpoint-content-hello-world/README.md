@@ -11,7 +11,7 @@ extensions:
   contentType: samples
   technologies:
     - Add-ins
-  createdDate: '01/30/2026 10:00:00 AM'
+  createdDate: '02/03/2026 10:00:00 AM'
 description: 'Create a PowerPoint content add-in that displays slide details.'
 ---
 
@@ -81,7 +81,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 1. Run the command `npm install`.
 1. Run the command `npm start`.
 
-   - If you've never developed an Office add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security cert and/or install a new one. Agree to both prompts.
+   - If you've never developed an Office Add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security cert and/or install a new one. Agree to both prompts.
    - After a few seconds, a **webpack** dev-server window will open and your files will be hosted there on localhost:3000.
    - When the server is successfully running, desktop PowerPoint opens, and after a few seconds more, the content add-in appears over the current slide with a **Get slide details** button.
      - If the content add-in doesn't appear, open the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in.

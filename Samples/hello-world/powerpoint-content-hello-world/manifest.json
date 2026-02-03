@@ -8,9 +8,9 @@
   },
   "developer": {
     "name": "Testing content 4",
-    "websiteUrl": "http://www.contoso.com",
-    "privacyUrl": "http://www.contoso.com/privacy",
-    "termsOfUseUrl": "http://www.contoso.com/terms"
+    "websiteUrl": "https://www.contoso.com",
+    "privacyUrl": "https://www.contoso.com/privacy",
+    "termsOfUseUrl": "https://www.contoso.com/terms"
   },
   "name": {
     "short": "PowerPointWebAddIn4-ContentJSN",
