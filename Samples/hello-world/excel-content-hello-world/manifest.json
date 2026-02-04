@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.24/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.24",
+  "version": "1.0.0",
+  "id": "95cc3425-923a-496c-a3c2-8d91f29146bc",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us"
+  },
+  "developer": {
+    "name": "Contoso",
+    "websiteUrl": "https://www.contoso.com",
+    "privacyUrl": "https://www.contoso.com/privacy",
+    "termsOfUseUrl": "https://www.contoso.com/terms"
+  },
+  "name": {
+    "short": "Excel Content Add-in",
+    "full": "Excel Hello-World Content Add-in"
+  },
+  "description": {
+    "short": "A content add-in for Excel.",
+    "full": "A hello-world content add-in for Excel."
+  },
+  "icons": {
+    "outline": "assets/icon-32.png",
+    "color": "assets/icon-64.png"
+  },
+  "accentColor": "#FFFFFF",
+  "validDomains": [
+    "AppDomain1",
+    "AppDomain2",
+    "AppDomain3"
+  ],
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Document.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": [ "workbook" ],
+        "capabilities": [
+          {
+            "name": "ExcelApi",
+            "minVersion": "1.1"
+          }
+        ]
+      },
+      "contentRuntimes": [
+        {
+          "id": "ContentRuntime",
+          "code": {
+            "page": "https://localhost:3000/content.html"
+          },
+          "requestedWidth": 400,
+          "requestedHeight": 400,
+          "disableSnapshot": true
+        }
+      ]
+    }
+  ]
+}

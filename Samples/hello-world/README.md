@@ -52,6 +52,7 @@ A sample was created for each Office application. Each folder is a sample that i
 - word-hello-world: [Hello world sample for Word](word-hello-world/README.md)
 - powerpoint-hello-world: [Hello world sample for PowerPoint](powerpoint-hello-world/README.md)
 
+- excel-content-hello-world: ["Hello world" content add-in sample for Excel](excel-content-hello-world/README.md)
 - powerpoint-content-hello-world: ["Hello world" content add-in sample for PowerPoint](powerpoint-content-hello-world/README.md)
 
 To work with the samples, clone or download this repo. Then go to the folder containing the sample for the Office application you want to work with. All of the following guidance will apply to the sample you choose to work with. Details on internals and how to run the add-in for each host can be found in the matching subfolder.
