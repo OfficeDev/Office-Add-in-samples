@@ -1,0 +1,298 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.17/MicrosoftTeams.schema.json#",
+    "manifestVersion": "1.17",
+    "version": "1.0.0",
+    "id": "16c028c6-f97d-4b09-96eb-3821219e0a47",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us"
+    },
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://www.contoso.com/help",
+        "privacyUrl": "https://www.contoso.com/help",
+        "termsOfUseUrl": "https://www.contoso.com/help"
+    },
+    "name": {
+        "short": "test-event-naa",
+        "full": "test-event-naa"
+    },
+    "description": {
+        "short": "A template to get started.",
+        "full": "A template to get started."
+    },
+    "icons": {
+        "outline": "assets/icon-64.png",
+        "color": "assets/icon-128.png"
+    },
+    "accentColor": "#230201",
+    "validDomains": [
+        "https://www.contoso.com",
+        "https://localhost:3000"
+    ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "defaultBlockUntilAdminAction": false,
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "Mailbox.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "extensions": [
+        {
+            "requirements": {
+                "capabilities": [
+                    {
+                        "name": "Mailbox",
+                        "minVersion": "1.1"
+                    }
+                ],
+                "scopes": [
+                    "mail"
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.5"
+                            }
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "id": "runtime_1",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/commands.html",
+                        "script": "https://localhost:3000/launchevent.js"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "onNewMessageComposeHandler",
+                            "type": "executeFunction",
+                            "displayName": "onNewMessageComposeHandler",
+                            "multiselect": false,
+                            "supportsNoItemContext": false
+                        },
+                        {
+                            "id": "onNewAppointmentComposeHandler",
+                            "type": "executeFunction",
+                            "displayName": "onNewAppointmentComposeHandler",
+                            "multiselect": false,
+                            "supportsNoItemContext": false
+                        }
+                    ]
+                },
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.5"
+                            }
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "id": "runtime_2",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/taskpane.html"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "action_1",
+                            "type": "openPage",
+                            "displayName": "action_1",
+                            "pinnable": false,
+                            "view": "view_1",
+                            "multiselect": false,
+                            "supportsNoItemContext": false
+                        },
+                        {
+                            "id": "action_2",
+                            "type": "openPage",
+                            "displayName": "action_2",
+                            "pinnable": false,
+                            "view": "view_2",
+                            "multiselect": false,
+                            "supportsNoItemContext": false
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.5"
+                            }
+                        ],
+                        "scopes": [
+                            "mail"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "contexts": [
+                        "mailCompose"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabDefault",
+                            "groups": [
+                                {
+                                    "id": "mccsG0",
+                                    "label": "Office NAA sample",
+                                    "controls": [
+                                        {
+                                            "id": "MRCS_TpBtn0",
+                                            "type": "button",
+                                            "label": "Open task pane",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Open task pane",
+                                                "description": "Opens the pane for the Office NAA sample."
+                                            },
+                                            "actionId": "action_1",
+                                            "overriddenByRibbonApi": false,
+                                            "enabled": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.5"
+                            }
+                        ],
+                        "scopes": [
+                            "mail"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "contexts": [
+                        "meetingDetailsOrganizer"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabDefault",
+                            "groups": [
+                                {
+                                    "id": "aocsG0",
+                                    "label": "Office NAA sample",
+                                    "controls": [
+                                        {
+                                            "id": "MRCS_TpBtn1",
+                                            "type": "button",
+                                            "label": "Open task pane",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Open task pane",
+                                                "description": "Opens the pane for the Office NAA sample."
+                                            },
+                                            "actionId": "action_2",
+                                            "overriddenByRibbonApi": false,
+                                            "enabled": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "autoRunEvents": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.5"
+                            }
+                        ],
+                        "scopes": [
+                            "mail"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "events": [
+                        {
+                            "type": "newMessageComposeCreated",
+                            "actionId": "onNewMessageComposeHandler"
+                        },
+                        {
+                            "type": "newAppointmentOrganizerCreated",
+                            "actionId": "onNewAppointmentComposeHandler"
+                        }
+                    ]
+                }
+            ],
+            "alternates": [
+                {
+                    "alternateIcons": {
+                        "icon": {
+                            "size": 64,
+                            "url": "https://localhost:3000/assets/icon-64.png"
+                        },
+                        "highResolutionIcon": {
+                            "size": 64,
+                            "url": "https://localhost:3000/assets/icon-128.png"
+                        }
+                    }
+                }
+            ],
+            "audienceClaimUrl": "https://localhost:3000/taskpane.html"
+        }
+    ]
+}
