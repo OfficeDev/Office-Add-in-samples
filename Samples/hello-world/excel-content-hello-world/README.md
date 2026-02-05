@@ -83,7 +83,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 1. Run the command `npm install`.
 1. Run the command `npm start`.
 
-   - If you've never developed an Office Add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security cert and/or install a new one. Agree to both prompts.
+   - If you've never developed an Office Add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security cert or install a new one. Agree to both prompts.
    - After a few seconds, a **webpack** dev-server window will open and your files will be hosted there on localhost:3000.
    - When the server is successfully running, desktop Excel opens, and after a few seconds more, the content add-in appears over the current worksheet with a **Get data from selection** button.
      - If the content add-in doesn't appear, open the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "Excel Content Add-in".
