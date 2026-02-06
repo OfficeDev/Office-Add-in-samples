@@ -25,6 +25,7 @@ Learn how to build the simplest Office Add-in with only a manifest, HTML web pag
 
 - Display hello world in Excel.
 - Learn fundamentals of the manifest.
+- Uses the unified manifest for Microsoft 365 (v1.25 JSON format).
 - Learn how to initialize the Office JavaScript API library.
 - Interact with document content through Office JavaScript APIs.
 
@@ -35,6 +36,7 @@ Learn how to build the simplest Office Add-in with only a manifest, HTML web pag
 ## Prerequisites
 
 - Microsoft 365 - You can get a free developer sandbox by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program#Subscription).
+- Office 2304 (Build 16320.20000) or later for unified manifest support.
 
 ## Understand an Office Add-in
 
@@ -48,7 +50,11 @@ The hello world sample implements the **Manifest** and **Web app** components id
 
 ### Manifest
 
-The manifest file describes your add-in to Office. It contains information such as a unique identifier, name, what buttons to show on the ribbon, and more. Importantly, the manifest provides URL locations for where Office can find and download the add-in's resource files. The manifest and two icon files are combined into a zip package file that is sideloaded to Office.
+The manifest file describes your add-in to Office. It contains information such as a unique identifier, name, what buttons to show on the ribbon, and more. Importantly, the manifest provides URL locations for where Office can find and download the add-in's resource files.
+
+This sample uses the **unified manifest for Microsoft 365** (v1.25), which is a JSON-based format that works across Microsoft 365 applications and supports Office Add-ins with a single manifest format.
+
+The manifest (`manifest.json`) and icon files are used to sideload the add-in to Office.
 
 ### Web app
 
