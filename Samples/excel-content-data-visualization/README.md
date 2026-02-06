@@ -52,7 +52,7 @@ function bindToExistingData() {
 }
 ```
 
-The content add-in displays a second button, **Insert sample data**, if the APIs used by the function are supported by the user's Excel client version. When the user chooses the **Insert sample data** button, the `getDataFromSelection()` function is called. This function calls `Office.context.document.setSelectedDataAsync()` to set generated sample data to a table binding. The content add-in then redirects from the "Bind to data" screen to display the data on the add-in's home screen.
+The content add-in displays a second button, **Insert sample data**, if the APIs used by its click handler are supported by the user's Excel client version. When the user chooses the **Insert sample data** button, the `getDataFromSelection()` function is called. This function calls `Office.context.document.setSelectedDataAsync()` to set generated sample data to a table binding. The content add-in then redirects from the "Bind to data" screen to display the data on the add-in's home screen.
 
 ```javascript
 // Inserts sample data into the current selection (if supported).
@@ -133,6 +133,6 @@ Copyright (c) Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-**Note**: The home.html and data-binding.html files contain an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
+**Note**: The home.html and data-binding.html files contain an image URL that tracks diagnostic data for this sample add-in. Please remove those image tags if you reuse this sample in your own code project.
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-content-add-in-data-visualization" />

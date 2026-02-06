@@ -10,10 +10,14 @@ Office Add-ins code samples are provided in this repo to help you learn, study, 
 
 The following samples show how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. They will help you understand the fundamental parts of an Office Add-in. For additional getting started information, see our [quick starts](https://learn.microsoft.com/office/dev/add-ins/quickstarts/excel-quickstart-jquery) and [tutorials](https://learn.microsoft.com/search/?terms=tutorial&scope=Office%20Add-ins).
 
+### Task pane add-ins
+
 * [Excel "Hello world" add-in](Samples/hello-world/excel-hello-world)
 * [Outlook "Hello world" add-in](Samples/hello-world/outlook-hello-world)
 * [PowerPoint "Hello world" add-in](Samples/hello-world/powerpoint-hello-world)
 * [Word "Hello world" add-in](Samples/hello-world/word-hello-world)
+
+### Content add-ins
 
 * [Excel "Hello world" content add-in](Samples/hello-world/excel-content-hello-world/)
 * [PowerPoint "Hello world" content add-in](Samples/hello-world/powerpoint-content-hello-world/)
@@ -85,8 +89,9 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | [Create custom contextual tabs on the ribbon](Samples/office-contextual-tabs) | This sample shows how to create a custom contextual tab on the ribbon in the Office UI. The sample creates a table, and when the user moves the focus inside the table, the custom tab is displayed. When the user moves outside the table, the custom tab is hidden. |
 | [Custom function sample using web worker](Excel-custom-functions/web-worker) | Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in. |
 | [Use storage techniques to access data from an Office Add-in when offline](Samples/Excel.OfflineStorageAddin) | Demonstrates how you can implement localStorage to enable limited functionality for your Office Add-in when a user experiences lost connection. |
-| [Custom function batching pattern](Excel-custom-functions/Batching)| Batch multiple calls into a single call to reduce the number of network calls to a remote service.|
+| [Custom function batching pattern](Excel-custom-functions/Batching) | Batch multiple calls into a single call to reduce the number of network calls to a remote service. |
 | [Excel content add-in](Samples/excel-content-add-in) | Embed a content add-in in the Excel grid. |
+| [Excel content add-in with data visualization](Samples/excel-content-data-visualization) | Create an Excel content add-in that includes data visualization. |
 
 ## Word
 
