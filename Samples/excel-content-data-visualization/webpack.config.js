@@ -5,8 +5,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const urlDev = "https://localhost:3000/";
-//const urlProd = "https://officedev.github.io/Office-Add-in-samples/Samples/excel-content-data-visualization/dist/";
-const urlProd = "https://elizabethsamuel-msft.github.io/PnP-OfficeAddins/Samples/excel-content-data-visualization/dist/";
+const urlProd = "https://officedev.github.io/Office-Add-in-samples/Samples/excel-content-data-visualization/dist/";
 
 async function getHttpsOptions() {
   const httpsOptions = await devCerts.getHttpsServerOptions();
