@@ -108,9 +108,9 @@
 										<Description resid="Contoso.Taskpane.Home.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Contoso.tpicon_16x16" />
-										<bt:Image size="32" resid="Contoso.tpicon_32x32" />
-										<bt:Image size="80" resid="Contoso.tpicon_80x80" />
+										<bt:Image size="16" resid="home_16_regular" />
+										<bt:Image size="32" resid="home_32_regular" />
+										<bt:Image size="80" resid="home_80_regular" />
 									</Icon>
 
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
@@ -135,9 +135,9 @@
 										<Description resid="Contoso.Taskpane.Weather.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Contoso.tpicon_16x16" />
-										<bt:Image size="32" resid="Contoso.tpicon_32x32" />
-										<bt:Image size="80" resid="Contoso.tpicon_80x80" />
+										<bt:Image size="16" resid="weather_partly_cloudy_day_16" />
+										<bt:Image size="32" resid="weather_partly_cloudy_day_32" />
+										<bt:Image size="80" resid="weather_partly_cloudy_day_80" />
 									</Icon>
 
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
@@ -162,9 +162,9 @@
 										<Description resid="Contoso.Taskpane.Weather.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Contoso.tpicon_16x16" />
-										<bt:Image size="32" resid="Contoso.tpicon_32x32" />
-										<bt:Image size="80" resid="Contoso.tpicon_80x80" />
+										<bt:Image size="16" resid="number_symbol_square_16" />
+										<bt:Image size="32" resid="number_symbol_square_32" />
+										<bt:Image size="80" resid="number_symbol_square_80" />
 									</Icon>
 
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
@@ -189,9 +189,9 @@
 										<Description resid="Contoso.Taskpane.Theme.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Contoso.tpicon_16x16" />
-										<bt:Image size="32" resid="Contoso.tpicon_32x32" />
-										<bt:Image size="80" resid="Contoso.tpicon_80x80" />
+										<bt:Image size="16" resid="dark_theme_16" />
+										<bt:Image size="32" resid="dark_theme_32" />
+										<bt:Image size="80" resid="dark_theme_80" />
 									</Icon>
 
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
@@ -216,9 +216,9 @@
 										<Description resid="Contoso.Taskpane.Bubble.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Contoso.tpicon_16x16" />
-										<bt:Image size="32" resid="Contoso.tpicon_32x32" />
-										<bt:Image size="80" resid="Contoso.tpicon_80x80" />
+										<bt:Image size="16" resid="document_table_16" />
+										<bt:Image size="32" resid="document_table_32" />
+										<bt:Image size="80" resid="document_table_80" />
 									</Icon>
 
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
@@ -257,9 +257,9 @@
 										<Description resid="Contoso.FunctionButton0.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Contoso.tpicon_16x16" />
-										<bt:Image size="32" resid="Contoso.tpicon_32x32" />
-										<bt:Image size="80" resid="Contoso.tpicon_80x80" />
+										<bt:Image size="16" resid="webassembly-16" />
+										<bt:Image size="32" resid="webassembly-32" />
+										<bt:Image size="80" resid="webassembly-80" />
 									</Icon>
 
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
@@ -277,9 +277,9 @@
 										<Description resid="Contoso.FunctionButton1.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Contoso.tpicon_16x16" />
-										<bt:Image size="32" resid="Contoso.tpicon_32x32" />
-										<bt:Image size="80" resid="Contoso.tpicon_80x80" />
+										<bt:Image size="16" resid="blazor-16" />
+										<bt:Image size="32" resid="blazor-32" />
+										<bt:Image size="80" resid="blazor-80" />
 									</Icon>
 
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
@@ -297,9 +297,9 @@
 										<Description resid="Contoso.FunctionButton2.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Contoso.tpicon_16x16" />
-										<bt:Image size="32" resid="Contoso.tpicon_32x32" />
-										<bt:Image size="80" resid="Contoso.tpicon_80x80" />
+										<bt:Image size="16" resid="Typescript_logo_16" />
+										<bt:Image size="32" resid="Typescript_logo_32" />
+										<bt:Image size="80" resid="Typescript_logo_80" />
 									</Icon>
 
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
@@ -331,9 +331,9 @@
 										<Description resid="Contoso.FunctionButton3.Tooltip" />
 									</Supertip>
 									<Icon>
-										<bt:Image size="16" resid="Contoso.tpicon_16x16" />
-										<bt:Image size="32" resid="Contoso.tpicon_32x32" />
-										<bt:Image size="80" resid="Contoso.tpicon_80x80" />
+										<bt:Image size="16" resid="balloon_16" />
+										<bt:Image size="32" resid="balloon_32" />
+										<bt:Image size="80" resid="balloon_80" />
 									</Icon>
 
 									<!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
@@ -355,6 +355,42 @@
 				<bt:Image id="Contoso.tpicon_16x16" DefaultValue="https://localhost:7217/Images/Button16x16.png" />
 				<bt:Image id="Contoso.tpicon_32x32" DefaultValue="https://localhost:7217/Images/Button32x32.png" />
 				<bt:Image id="Contoso.tpicon_80x80" DefaultValue="https://localhost:7217/Images/Button80x80.png" />
+
+        <bt:Image id="home_16_regular" DefaultValue="https://localhost:7217/Images/ic_fluent_home_16_regular.png" />
+        <bt:Image id="home_32_regular" DefaultValue="https://localhost:7217/Images/ic_fluent_home_32_regular.png" />
+        <bt:Image id="home_80_regular" DefaultValue="https://localhost:7217/Images/ic_fluent_home_80_regular.png" />
+
+        <bt:Image id="weather_partly_cloudy_day_16" DefaultValue="https://localhost:7217/Images/ic_fluent_weather_partly_cloudy_day_16_regular.png" />
+        <bt:Image id="weather_partly_cloudy_day_32" DefaultValue="https://localhost:7217/Images/ic_fluent_weather_partly_cloudy_day_32_regular.png" />
+        <bt:Image id="weather_partly_cloudy_day_80" DefaultValue="https://localhost:7217/Images/ic_fluent_weather_partly_cloudy_day_80_regular.png" />
+
+        <bt:Image id="number_symbol_square_16" DefaultValue="https://localhost:7217/Images/ic_fluent_number_symbol_square_16_regular.png" />
+        <bt:Image id="number_symbol_square_32" DefaultValue="https://localhost:7217/Images/ic_fluent_number_symbol_square_32_regular.png" />
+        <bt:Image id="number_symbol_square_80" DefaultValue="https://localhost:7217/Images/ic_fluent_number_symbol_square_80_regular.png" />
+
+        <bt:Image id="balloon_16" DefaultValue="https://localhost:7217/Images/ic_fluent_balloon_16_regular.png" />
+        <bt:Image id="balloon_32" DefaultValue="https://localhost:7217/Images/ic_fluent_balloon_32_regular.png" />
+        <bt:Image id="balloon_80" DefaultValue="https://localhost:7217/Images/ic_fluent_balloon_80_regular.png" />
+
+        <bt:Image id="document_table_16" DefaultValue="https://localhost:7217/Images/ic_fluent_document_table_16_regular.png" />
+        <bt:Image id="document_table_32" DefaultValue="https://localhost:7217/Images/ic_fluent_document_table_32_regular.png" />
+        <bt:Image id="document_table_80" DefaultValue="https://localhost:7217/Images/ic_fluent_document_table_80_regular.png" />
+        
+        <bt:Image id="dark_theme_16" DefaultValue="https://localhost:7217/Images/ic_fluent_dark_theme_16_regular.png" />
+        <bt:Image id="dark_theme_32" DefaultValue="https://localhost:7217/Images/ic_fluent_dark_theme_32_regular.png" />
+        <bt:Image id="dark_theme_80" DefaultValue="https://localhost:7217/Images/ic_fluent_dark_theme_80_regular.png" />
+
+        <bt:Image id="blazor-16" DefaultValue="https://localhost:7217/Images/blazor-16.png" />
+        <bt:Image id="blazor-32" DefaultValue="https://localhost:7217/Images/blazor-32.png" />
+        <bt:Image id="blazor-80" DefaultValue="https://localhost:7217/Images/blazor-80.png" />
+
+        <bt:Image id="Typescript_logo_16" DefaultValue="https://localhost:7217/Images/Typescript_logo_2020_16.png" />
+        <bt:Image id="Typescript_logo_32" DefaultValue="https://localhost:7217/Images/Typescript_logo_2020_32.png" />
+        <bt:Image id="Typescript_logo_80" DefaultValue="https://localhost:7217/Images/Typescript_logo_2020_80.png" />
+
+        <bt:Image id="webassembly-16" DefaultValue="https://localhost:7217/Images/webassembly-16.png" />
+        <bt:Image id="webassembly-32" DefaultValue="https://localhost:7217/Images/webassembly-32.png" />
+        <bt:Image id="webassembly-80" DefaultValue="https://localhost:7217/Images/webassembly-80.png" />
 			</bt:Images>
 			<bt:Urls>
 				<bt:Url id="Contoso.Shared.Url" DefaultValue="https://localhost:7217/" />

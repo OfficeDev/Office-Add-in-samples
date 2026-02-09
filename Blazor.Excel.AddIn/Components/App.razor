@@ -51,8 +51,13 @@
     <HeadOutlet />
 </head>
 
+@using Blazor.Excel.AddIn.Client.Components
+
 <body>
     <Routes />
+    @* Preload WebAssembly runtime and Client assembly for ribbon command interop *@
+    <WasmPreloader />
+
     <script src="_framework/blazor.web.js"></script>
     <script src="./commands/commands.js" type="text/javascript"></script>
 </body>

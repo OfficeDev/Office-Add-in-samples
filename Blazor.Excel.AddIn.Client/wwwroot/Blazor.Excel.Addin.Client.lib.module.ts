@@ -1,5 +1,20 @@
 ﻿/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
 
+// Promise that resolves when .NET runtime AND Client assembly are ready
+let resolveDotNetReady: () => void;
+const dotNetReadyPromise = new Promise<void>((resolve) => {
+  resolveDotNetReady = resolve;
+});
+
+// Expose to window for commands.ts to await
+(window as any).dotNetReady = dotNetReadyPromise;
+
+// Function called by WasmPreloader component when WebAssembly runtime and assembly are ready
+(window as any).signalDotNetReady = () => {
+  console.log("signalDotNetReady: WebAssembly runtime and Client assembly are now ready");
+  resolveDotNetReady();
+};
+
 /**
  * JavaScript Initializers
  *
