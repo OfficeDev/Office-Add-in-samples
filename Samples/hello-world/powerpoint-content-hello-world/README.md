@@ -27,6 +27,12 @@ Learn how to build an Office content add-in that displays details about the curr
 
 - PowerPoint on Windows, Mac, and in a browser.
 
+## Version history
+
+| Version  | Date | Comments |
+|----------|------|----------|
+| 1.0 | 02-03-2026 | Initial release |
+
 ## Prerequisites
 
 - Microsoft 365 - You can get a free developer sandbox by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program#Subscription).
