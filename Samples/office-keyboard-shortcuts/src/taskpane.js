@@ -3,7 +3,7 @@
  * See LICENSE in the project root for license information.
  */
 
-/* global console, document, Excel, Office */
+/* global console, document, Excel, Office, PowerPoint */
 
 // Initialize the Office JavaScript API library.
 Office.onReady(() => {
@@ -75,10 +75,51 @@ if (host === Office.HostType.Excel) {
     );
     return context.sync();
   });
+} else if (host === Office.HostType.PowerPoint) {
+  // Insert a text box into the PowerPoint slide.
+  return PowerPoint.run(async (context) => {
+    const slide = context.presentation.getSelectedSlides().getItemAt(0);
+    const textBox = slide.shapes.addTextBox("Added using a custom keyboard shortcut.");
+    textBox.left = 100;
+    textBox.top = 100;
+    textBox.height = 50;
+    textBox.width = 300;
+    await context.sync();
+  });
 }
 });
 
 // Display the shortcut conflict dialog for testing.
 Office.actions.associate("TestConflict", () => {
   console.log("Display the shortcut conflict dialog for testing.");
+});
+
+// Configure the keyboard shortcut to add a new item based on the Office host.
+Office.actions.associate("AddNew", () => {
+const host = Office.context.host;
+
+// Add a new worksheet in Excel.
+if (host === Office.HostType.Excel) {
+  const context = new Excel.RequestContext();
+  return context.sync().then(() => {
+    const sheets = context.workbook.worksheets;
+    const newSheet = sheets.add();
+    newSheet.activate();
+    return context.sync();
+  });
+} else if (host === Office.HostType.Word) {
+  // Insert a page break in Word.
+  const context = new Word.RequestContext();
+  return context.sync().then(() => {
+    const range = context.document.getSelection();
+    range.insertBreak(Word.BreakType.page, Word.InsertLocation.after);
+    return context.sync();
+  });
+} else if (host === Office.HostType.PowerPoint) {
+  // Add a new slide in PowerPoint.
+  return PowerPoint.run(async (context) => {
+    context.presentation.slides.add();
+    await context.sync();
+  });
+}
 });
