@@ -5,7 +5,7 @@
 
 import { createLocalUrl } from "./util";
 
-const clientId = "ce1d7062-13da-48b5-940c-564e1f66b535";
+const clientId = "Enter_the_Application_Id_Here";
 
 export const getMsalConfigShared = () => {
   const msalConfig = {
