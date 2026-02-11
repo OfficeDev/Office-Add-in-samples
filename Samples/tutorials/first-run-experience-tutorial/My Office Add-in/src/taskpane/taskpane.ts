@@ -19,9 +19,9 @@ Office.onReady((info) => {
   }
 });
 
-async function showFirstRunExperience() {
+function showFirstRunExperience() {
   document.getElementById("first-run-experience").style.display = "flex";
-  localStorage.setItem("showedFRE", true);
+  localStorage.setItem("showedFRE", "true");
 }
 
 export async function run() {
