@@ -78,7 +78,8 @@ To switch back to the add-in only manifest, copy the files from the **manifest-c
 
 1. In the message window, choose the **Insert default gist** button in the ribbon. This opens a dialog where you add your GitHub username and select the default gist.
 
-    > In classic Outlook on Windows, you may need to close and reopen the new message window to pick up the latest settings from the dialog.
+    > - For guidance on how to locate your add-in on the ribbon, see [Use add-ins in Outlook](https://support.microsoft.com/office/1ee261f9-49bf-4ba6-b3e2-2ba7bcab64c8).
+    > - In classic Outlook on Windows, you may need to close and reopen the new message window to pick up the latest settings from the dialog.
 
 1. In the message window, choose the **Display gist list** button in ribbon. This opens a task pane where you select the GitHub gist you want to insert into the message body.
 
