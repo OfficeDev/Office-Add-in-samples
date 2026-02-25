@@ -41,9 +41,10 @@ function prepopulate_from_userprofile() {
 }
 
 function load_saved_user_info() {
-  let user_info_value = localStorage.getItem("user_info");
+  // Prefer roamingSettings (synced across clients) over localStorage (local-only).
+  let user_info_value = Office.context.roamingSettings.get("user_info");
   if (!user_info_value) {
-    user_info_value = Office.context.roamingSettings.get("user_info");
+    user_info_value = localStorage.getItem("user_info");
   }
 
   if (user_info_value) {
