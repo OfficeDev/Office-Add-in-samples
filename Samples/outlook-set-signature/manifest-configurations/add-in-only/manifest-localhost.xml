@@ -3,14 +3,14 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
   xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="MailApp">
-  <Id>{C341AD31-BF7A-4C1D-99F1-D2E5896BEB0A}</Id>
+  <Id>C341AD31-BF7A-4C1D-99F1-D2E5896BEB0A</Id>
   <Version>1.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-us</DefaultLocale>
   <DisplayName DefaultValue="Office Add-ins signature sample"/>
   <Description DefaultValue="Insert your signature with ease."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/final_logo.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/final_logo.jpg"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/final_logo.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>

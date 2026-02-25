@@ -3,7 +3,7 @@
 
 // This file contains code only used by autorunweb.html when loaded in Outlook on the web.
 
-Office.initialize = function (reason) {};
+Office.onReady();
 
 /**
  * For Outlook on the web, insert signature into appointment or message.
@@ -32,7 +32,6 @@ function insert_auto_signature(compose_type, user_info, eventObj) {
  * @param {*} eventObj Office event object
  */
 function set_body(signatureDetails, eventObj) {
-
   if (is_valid_data(signatureDetails.logoBase64) === true) {
     //If a base64 image was passed we need to attach it.
     Office.context.mailbox.item.addFileAttachmentFromBase64Async(
@@ -41,19 +40,19 @@ function set_body(signatureDetails, eventObj) {
       {
         isInline: true,
       },
-      function (result) { 
+      function (result) {
         Office.context.mailbox.item.body.setAsync(
-        "<br/><br/>" + signatureDetails.signature,
-        {
-          coercionType: "html",
-          asyncContext: eventObj,
-        },
-        function (asyncResult) {
-
-          asyncResult.asyncContext.completed();
-        }
-      );
-    });
+          "<br/><br/>" + signatureDetails.signature,
+          {
+            coercionType: "html",
+            asyncContext: eventObj,
+          },
+          function (asyncResult) {
+            asyncResult.asyncContext.completed();
+          }
+        );
+      }
+    );
   } else {
     Office.context.mailbox.item.body.setAsync(
       "<br/><br/>" + signatureDetails.signature,
@@ -62,10 +61,8 @@ function set_body(signatureDetails, eventObj) {
         asyncContext: eventObj,
       },
       function (asyncResult) {
-
         asyncResult.asyncContext.completed();
       }
     );
   }
-  
 }

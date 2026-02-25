@@ -48,23 +48,23 @@ For documentation related to this sample, see [Configure your Outlook add-in for
     > **Note**: If you don't have a Microsoft 365 subscription, you might qualify for a Microsoft 365 E5 developer subscription for development purposes through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 
 - A recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/en/) installed on your computer. These are required if you want to run the web server on localhost. To check if you have already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
-- (Optional) [Microsoft 365 Agents Toolkit extension for VS Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/install-teams-toolkit) if you want to deploy the sample to Microsoft Azure with the [unified Microsoft 365 manifest](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
 
 ## Solution
 
 | Solution | Author(s) |
-|---------|----------|
+| -------- | --------- |
 | Use Outlook event-based activation to set the signature | Microsoft |
 
 ## Version history
 
-| Version  | Date | Comments |
-|---------|------|---------|
-| 1.0 | 4-1-2021 | Initial release |
-| 1.1 | 6-1-2021 | Update for GA of setSignature API |
-| 1.2 | 7-27-2021 | Convert to GitHub hosting |
-| 1.3 | 4-17-2023 | Add support for unified Microsoft 365 manifest |
-| 1.4 | 5-20-2024 | Normalize use of unified Microsoft 365 manifest |
+| Version | Date | Comments |
+| ------- | ---- | -------- |
+| 1.0 | 04-01-2021 | Initial release |
+| 1.1 | 06-01-2021 | Update for GA of setSignature API |
+| 1.2 | 07-27-2021 | Convert to GitHub hosting |
+| 1.3 | 04-17-2023 | Add support for unified Microsoft 365 manifest |
+| 1.4 | 05-20-2024 | Normalize use of unified Microsoft 365 manifest |
+| 1.5 | 02-05-2026 | Reorganize the manifest files and apply minor fixes |
 
 ## Scenario: Event-based activation
 
@@ -78,12 +78,12 @@ There are multiple ways to run this sample.
 
 The quickest way to run the sample is to use GitHub as the web host. However you can't debug or change the source code. The add-in web files are served from this repo on GitHub.
 
-1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Download the **manifest.xml** file from the `manifest-configurations/add-in-only` folder of this sample to a folder on your computer.
 1. Sideload the add-in manifest in Outlook on the web, on Windows (new or classic), or on Mac by following the instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
 
-### Run the sample on localhost with the unified Microsoft 365 manifest
+### Run the sample on localhost with the unified manifest for Microsoft 365
 
-You can run the sample using the [unified Microsoft 365 manifest](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
+You can run the sample using the [unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
 
 1. Clone or download this repository.
 1. From the command line, or a terminal window, go to the project folder ```/samples/outlook-set-signature```.
@@ -98,11 +98,9 @@ This will start the web server on localhost. When you want to stop the web serve
 
 To debug task pane code, see [Debug add-ins on Windows using Visual Studio Code and Microsoft Edge WebView2 (Chromium-based)](https://learn.microsoft.com/office/dev/add-ins/testing/debug-desktop-using-edge-chromium) and related articles.
 
->Note: You can't debug event-based activation code using the unified manifest at this time.
-
 ### Run the sample on localhost with manifest.xml
 
-You can host the web server on localhost and use the manifest.xml file to sideload and run the sample.
+You can host the web server on localhost and use the `manifest-configurations/add-in-only/manifest.xml` file to sideload and run the sample.
 
 1. Run the following commands.
 
@@ -131,24 +129,6 @@ Once the add-in is loaded use the following steps to try out the functionality.
 1. The task pane will load a page of sample templates. You can assign the templates to a **New Mail**, **Reply**, or **Forward** action. Once you've assign the templates you want to use, choose **Save**.
 
 The next time you create a message or appointment, you'll see the signature you selected applied by the add-in.
-
-## Deploy to Azure
-
-This sample supports deployment to Azure with the unified manifest.
-
-### From Visual Studio Code
-
-1. Open Microsoft 365 Agents Toolkit, and sign into Azure by choosing `Sign in to Azure` under the **ACCOUNTS** section from sidebar.
-1. After you sign in, select a subscription under your account.
-1. Choose `Provision` from the **LIFECYCLE** section or open the command palette and select: `Microsoft 365 Agents: Provision`.
-1. Choose `Deploy` or open the command palette and select: `Microsoft 365 Agents: Deploy`.
-
-Once the sample is successfully deployed follow these steps:
-
-1. Open the `./webpack.config.js` file.
-1. Change the `urlProd` constant to use the endpoint of your new Azure deployment. The correct endpoint is listed in the VS Code **OUTPUT** window from running previous commands. Or you can go to your Azure portal and go to the new storage account. Then choose **Data management > Static website** and copy the **Primary endpoint** value.
-1. Save the changes to `webpack.config.js` and run the `npm run build` command. This will generate a new `manifest.json` file in the `dist` folder that will load the add-in resources from your storage account.
-1. Run the command `npm run start:prod` to start Outlook and sideload the manifest.json from the `dist` folder. Outlook will start and then load the sample add-in from the deployed storage account.
 
 ## Key parts of this sample
 
@@ -183,61 +163,53 @@ If you use the unified manifest, the `manifest.json` file specifies an HTML page
 
 ```json
  "runtimes": [
-                {
-                    "requirements": {
-                        "capabilities": [
-                            {
-                                "name": "Mailbox",
-                                "minVersion": "1.5"
-                            }
-                        ]
-                    },
-                    "id": "runtime_1",
-                    "type": "general",
-                    "code": {
-                        "page": "https://localhost:3000/autorunweb.html",
-                        "script": "https://localhost:3000/autorunshared.js"
-                    },
-                    "lifetime": "short",
-                    "actions": [
-                        {
-                            "id": "checkSignature",
-                            "type": "executeFunction",
-                            "displayName": "checkSignature"
-                        }
-                    ]
-                },
-...
+    {
+        "id": "runtime_1",
+        "type": "general",
+        "code": {
+            "page": "https://localhost:3000/autorunweb.html",
+            "script": "https://localhost:3000/autorunshared.js"
+        },
+        "lifetime": "short",
+        "actions": [
+            {
+                "id": "checkSignature",
+                "type": "executeFunction"
+            }
+        ]
+    },
+    ...
+ ],
 ```
 
 The add-in handles two events that are mapped to the `checkSignature()` function. They are described in the `autoRunEvents` array. Note that the `actionID` must match an `id` specified in the previous `actions` array.
 
 ```json
- "autoRunEvents": [
-      {
-          "requirements": {
-              "capabilities": [
-                  {
-                      "name": "Mailbox",
-                      "minVersion": "1.5"
-                  }
-              ],
-              "scopes": [
-                  "mail"
-              ]
-          },
-          "events": [
-              {
-                  "type": "newMessageComposeCreated",
-                  "actionId": "checkSignature"
-              },
-              {
-                  "type": "newAppointmentOrganizerCreated",
-                  "actionId": "checkSignature"
-              }
-          ]
-      }
-  ],
+"autoRunEvents": [
+    {
+        "requirements": {
+            "capabilities": [
+                {
+                    "name": "Mailbox",
+                    "minVersion": "1.10"
+                }
+            ],
+            "scopes": [
+                "mail"
+            ]
+        },
+        "events": [
+            {
+                "type": "newMessageComposeCreated",
+                "actionId": "checkSignature"
+            },
+            {
+                "type": "newAppointmentOrganizerCreated",
+                "actionId": "checkSignature"
+            }
+        ]
+    }
+],
 ```
 
 ### Handling the events and using the setSignatureAsync API
