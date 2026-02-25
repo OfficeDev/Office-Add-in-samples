@@ -52,6 +52,7 @@ h2 {
   border: none;
   border-radius: 2px;
   opacity: 1;
+  cursor: pointer;
 }
 
 #reset_all_config_btn {
