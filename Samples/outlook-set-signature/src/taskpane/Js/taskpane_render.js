@@ -41,19 +41,21 @@ function prepopulate_from_userprofile() {
 }
 
 function load_saved_user_info() {
-  let user_info_str = localStorage.getItem("user_info");
-  if (!user_info_str) {
-    user_info_str = Office.context.roamingSettings.get("user_info");
+  let user_info_value = localStorage.getItem("user_info");
+  if (!user_info_value) {
+    user_info_value = Office.context.roamingSettings.get("user_info");
   }
 
-  if (user_info_str) {
-    const user_info = JSON.parse(user_info_str);
+  if (user_info_value) {
+    // roamingSettings.get() may return an already-parsed object or a JSON string.
+    const user_info =
+      typeof user_info_value === "string" ? JSON.parse(user_info_value) : user_info_value;
 
-    _display_name.value = user_info.name;
-    _email_id.value = user_info.email;
-    _job_title.value = user_info.job;
-    _phone_number.value = user_info.phone;
-    _greeting_text.value = user_info.greeting;
+    _display_name.value = user_info.name || "";
+    _email_id.value = user_info.email || "";
+    _job_title.value = user_info.job || "";
+    _phone_number.value = user_info.phone || "";
+    _greeting_text.value = user_info.greeting || "";
 
     let pronoun = user_info.pronoun;
     if (pronoun && pronoun.length >= 3) {
