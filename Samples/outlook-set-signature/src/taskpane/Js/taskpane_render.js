@@ -14,19 +14,25 @@ Office.onReady(() => {
 });
 
 function on_initialization_complete() {
-  document.addEventListener("DOMContentLoaded", function () {
-    _output = document.getElementById("output");
-    _display_name = document.getElementById("display_name");
-    _email_id = document.getElementById("email_id");
-    _job_title = document.getElementById("job_title");
-    _phone_number = document.getElementById("phone_number");
-    _greeting_text = document.getElementById("greeting_text");
-    _preferred_pronoun = document.getElementById("preferred_pronoun");
-    _message = document.getElementById("message");
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initPage);
+  } else {
+    initPage();
+  }
+}
 
-    prepopulate_from_userprofile();
-    load_saved_user_info();
-  });
+function initPage() {
+  _output = document.getElementById("output");
+  _display_name = document.getElementById("display_name");
+  _email_id = document.getElementById("email_id");
+  _job_title = document.getElementById("job_title");
+  _phone_number = document.getElementById("phone_number");
+  _greeting_text = document.getElementById("greeting_text");
+  _preferred_pronoun = document.getElementById("preferred_pronoun");
+  _message = document.getElementById("message");
+
+  prepopulate_from_userprofile();
+  load_saved_user_info();
 }
 
 function prepopulate_from_userprofile() {
@@ -161,3 +167,7 @@ function reset_all_configuration() {
   clear_all_localstorage_data();
   clear_roaming_settings();
 }
+
+// Expose functions referenced by inline onclick handlers to global scope
+window.create_user_info = create_user_info;
+window.reset_all_configuration = reset_all_configuration;

@@ -58,3 +58,8 @@ function get_template_C_str(user_info) {
 
   return str;
 }
+
+// Expose for cross-module access in webpack bundles
+window.get_template_A_str = get_template_A_str;
+window.get_template_B_str = get_template_B_str;
+window.get_template_C_str = get_template_C_str;

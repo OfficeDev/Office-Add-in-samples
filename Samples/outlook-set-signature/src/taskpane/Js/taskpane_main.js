@@ -19,8 +19,8 @@ function save_signature_settings() {
   let user_info_str = localStorage.getItem("user_info");
 
   if (user_info_str) {
-    if (!_user_info) {
-      _user_info = JSON.parse(user_info_str);
+    if (!window._user_info) {
+      window._user_info = JSON.parse(user_info_str);
     }
 
     Office.context.roamingSettings.set("user_info", user_info_str);
@@ -77,21 +77,21 @@ function insert_signature(str) {
 }
 
 function test_template_A() {
-  let str = get_template_A_str(_user_info);
+  let str = get_template_A_str(window._user_info);
   console.log("test_template_A - " + str);
 
   insert_signature(str);
 }
 
 function test_template_B() {
-  let str = get_template_B_str(_user_info);
+  let str = get_template_B_str(window._user_info);
   console.log("test_template_B - " + str);
 
   insert_signature(str);
 }
 
 function test_template_C() {
-  let str = get_template_C_str(_user_info);
+  let str = get_template_C_str(window._user_info);
   console.log("test_template_C - " + str);
 
   insert_signature(str);
@@ -100,3 +100,10 @@ function test_template_C() {
 function navigate_to_taskpane2() {
   window.location.href = "editsignature.html";
 }
+
+// Expose functions referenced by inline onclick handlers to global scope
+window.test_template_A = test_template_A;
+window.test_template_B = test_template_B;
+window.test_template_C = test_template_C;
+window.save_signature_settings = save_signature_settings;
+window.navigate_to_taskpane2 = navigate_to_taskpane2;
