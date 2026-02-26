@@ -29,7 +29,7 @@ This sample shows how to create custom keyboard shortcuts for an Office Add-in. 
   - **Excel**: Cycles through colors in the currently selected cell.
   - **Word**: Adds text to the document.
   - **PowerPoint**: Adds a text box to the selected slide.
-- <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> (Windows) or <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> (Mac): Adds a new item based on the current Office host.
+- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> (Windows) or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> (Mac): Adds a new item based on the current Office host.
   - **Excel**: Adds a new worksheet.
   - **Word**: Adds a page break.
   - **PowerPoint**: Adds a new slide.
