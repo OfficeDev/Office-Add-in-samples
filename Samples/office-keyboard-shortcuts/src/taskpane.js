@@ -3,7 +3,7 @@
  * See LICENSE in the project root for license information.
  */
 
-/* global console, document, Excel, Office, PowerPoint */
+/* global console, document, Excel, Word, PowerPoint, Office */
 
 // Initialize the Office JavaScript API library.
 Office.onReady(() => {
