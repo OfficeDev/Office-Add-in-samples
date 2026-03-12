@@ -81,15 +81,13 @@
                     "id": "CommandsRuntime",
                     "type": "general",
                     "code": {
-                        "page": "https://localhost:3000/commands.html",
-                        "script": "https://localhost:3000/commands.js"
+                        "page": "https://localhost:3000/commands.html"
                     },
                     "lifetime": "short",
                     "actions": [
                         {
-                            "id": "action",
-                            "type": "executeFunction",
-                            "displayName": "action"
+                            "id": "toggleProtection",
+                            "type": "executeFunction"
                         }
                     ]
                 }
@@ -146,9 +144,9 @@
                                             "actionId": "TaskPaneRuntimeShow"
                                         },
                                         {
-                                            "id": "ActionButton",
+                                            "id": "toggleProtectionButton",
                                             "type": "button",
-                                            "label": "Perform an action",
+                                            "label": "Toggle worksheet protection",
                                             "icons": [
                                                 {
                                                     "size": 16,
@@ -164,10 +162,10 @@
                                                 }
                                             ],
                                             "supertip": {
-                                                "title": "Perform an action",
-                                                "description": "Perform an action when clicked."
+                                                "title": "Toggle worksheet protection",
+                                                "description": "Enables or disables worksheet protection."
                                             },
-                                            "actionId": "action"
+                                            "actionId": "toggleProtection"
                                         }
                                     ]
                                 }
