@@ -301,36 +301,17 @@ async function callStaticLocalComponentMethodinit(methodname: string): Promise<v
       console.error("Error during DotNet invocation: " + name);
     }
 
-    await Excel.run(async (context: Excel.RequestContext): Promise<void> => {
-      const range: Excel.Range = context.workbook.getSelectedRange();
-      range.values = [[name]];
-      range.getEntireColumn().format.autofitColumns();
-      await context.sync();
-    });
+    await insertText(name);
 
     // Used to verify the previous function call, if that fails, this will not run.
     // It will be skipped on error and jump into the catch block.
-    await Excel.run(async (context: Excel.RequestContext): Promise<void> => {
-      const range: Excel.Range = context.workbook.getSelectedRange();
-      range.format.fill.color = "yellow";
-      await context.sync();
-    });
+    await setColor("yellow")
   }
   catch (error: unknown) {
     const errorMessage: string = error instanceof Error ? error.message : String(error);
 
-    await Excel.run(async (context: Excel.RequestContext): Promise<void> => {
-      const range: Excel.Range = context.workbook.getSelectedRange();
-      const cellRange: Excel.Range = range.getCell(0, 0);
-      cellRange.values = [[errorMessage]];
-      await context.sync();
-    });
-
-    await Excel.run(async (context: Excel.RequestContext): Promise<void> => {
-      const range: Excel.Range = context.workbook.getSelectedRange();
-      range.format.fill.color = "red";
-      await context.sync();
-    });
+    await insertText("Error: " + errorMessage)
+    await setColor("red")
 
     console.log();
     console.log("Error call : " + errorMessage);
@@ -340,6 +321,36 @@ async function callStaticLocalComponentMethodinit(methodname: string): Promise<v
   }
 }
 
+
+/**
+ * Inserts text into a text box on the currently selected PowerPoint slide.
+ * 
+ * @param text - The text to insert into the slide
+ * @param options - Optional positioning options for the text box
+ */
+async function insertText(
+  text: string
+): Promise<void> {
+
+  await Excel.run(async (context: Excel.RequestContext): Promise<void> => {
+    const range: Excel.Range = context.workbook.getSelectedRange();
+    const cellRange: Excel.Range = range.getCell(0, 0);
+    cellRange.values = [[text]];
+    range.getEntireColumn().format.autofitColumns();
+    await context.sync();
+  });
+}
+
+async function setColor(
+  text: string
+): Promise<void> {
+
+  await Excel.run(async (context: Excel.RequestContext): Promise<void> => {
+    const range: Excel.Range = context.workbook.getSelectedRange();
+    range.format.fill.color = text;
+    await context.sync();
+  });
+}
 /**
  * Local function to preload the .NET runtime and ensure it is ready for use.
  *

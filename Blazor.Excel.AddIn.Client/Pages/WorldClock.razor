@@ -1,0 +1,36 @@
+@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+@page "/worldclock"
+@rendermode InteractiveWebAssembly
+
+<PageTitle>World Clock</PageTitle>
+
+<RenderModeInfo />
+
+<LoadingProgress>
+    <FluentStack Orientation="Orientation.Vertical"
+                 HorizontalAlignment="HorizontalAlignment.Center"
+                 VerticalAlignment="VerticalAlignment.Center">
+        <FluentStack Orientation=Orientation.Horizontal
+                     HorizontalAlignment="HorizontalAlignment.Center"
+                     VerticalAlignment="VerticalAlignment.Center">
+            <FluentEmoji Value="@(new Emojis.TravelPlaces.Color.Default.GlobeShowingEuropeAfrica())" />
+            <FluentLabel Typo="Typography.H1">World Clock</FluentLabel>
+        </FluentStack>
+
+        <FluentCard Style="padding: 1rem; margin: 0.5rem;">
+            <FluentStack Orientation="Orientation.Vertical" HorizontalAlignment="HorizontalAlignment.Center">
+                <FluentLabel Typo="Typography.H4">🇺🇸 Eastern Standard Time (EST)</FluentLabel>
+                <FluentLabel Typo="Typography.H3">@EstTime</FluentLabel>
+            </FluentStack>
+        </FluentCard>
+
+        <FluentCard Style="padding: 1rem; margin: 0.5rem;">
+            <FluentStack Orientation="Orientation.Vertical" HorizontalAlignment="HorizontalAlignment.Center">
+                <FluentLabel Typo="Typography.H4">🇪🇺 Central European Time (CET)</FluentLabel>
+                <FluentLabel Typo="Typography.H3">@CestTime</FluentLabel>
+            </FluentStack>
+        </FluentCard>
+
+        <FluentButton Appearance="Appearance.Accent" @onclick="RefreshTime">Refresh Time</FluentButton>
+    </FluentStack>
+</LoadingProgress>

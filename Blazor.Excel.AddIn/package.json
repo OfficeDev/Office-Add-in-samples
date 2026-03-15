@@ -23,8 +23,8 @@
     "validate-local": "office-addin-manifest validate ..\\Blazor.Excel.AddIn\\Assets\\manifest.local.xml"
   },
   "devDependencies": {
-    "@types/office-js-preview": "^1.0.673",
-    "office-addin-debugging": "^6.0.4",
+    "@types/office-js-preview": "^1.0.683",
+    "office-addin-debugging": "^6.0.6",
     "office-addin-manifest": "^2.1.2"
   }
 }

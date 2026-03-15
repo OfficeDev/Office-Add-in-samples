@@ -1,4 +1,5 @@
 ﻿/* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
+using Blazor.Excel.AddIn.Client.Services;
 using Blazor.Excel.AddIn.Components;
 
 using Microsoft.FluentUI.AspNetCore.Components;
@@ -11,6 +12,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddFluentUIComponents();
+builder.Services.AddScoped<ServerCommandHandler>();
 
 var app = builder.Build();
 
@@ -30,9 +32,11 @@ else
 app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
 app.UseHttpsRedirection();
 
+// Fallback for files not in the build-time manifest (e.g. TypeScript-compiled outputs)
 app.UseStaticFiles();
 app.UseAntiforgery();
 
+// Serves fingerprinted/cached assets from the build-time static web assets manifest
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()

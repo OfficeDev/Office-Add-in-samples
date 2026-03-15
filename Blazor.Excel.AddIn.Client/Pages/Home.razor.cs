@@ -51,13 +51,6 @@ public partial class Home : ComponentBase
     public static Task<string> SayHelloHome(string name)
     {
         Console.WriteLine("Invoking SayHelloHome");
-        return Task.FromResult($"Hello Home, {name} from Home Page!");
-    }
-
-    [JSInvokable]
-    public static Task<string> PreloaderDummy()
-    {
-        Console.WriteLine("Invoking PreloaderDummy");
-        return Task.FromResult("Loaded");
+        return Task.FromResult($"Hello, {name} from Home Page!");
     }
 }

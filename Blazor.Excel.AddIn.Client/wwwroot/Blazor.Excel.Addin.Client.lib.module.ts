@@ -1,33 +1,24 @@
-﻿/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
+﻿
+/* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
 
-// Promise that resolves when .NET runtime AND Client assembly are ready
-let resolveDotNetReady: () => void;
-const dotNetReadyPromise = new Promise<void>((resolve) => {
-  resolveDotNetReady = resolve;
-});
-
-// Expose to window for commands.ts to await
-(window as any).dotNetReady = dotNetReadyPromise;
-
-// Function called by WasmPreloader component when WebAssembly runtime and assembly are ready
-(window as any).signalDotNetReady = () => {
-  console.log("signalDotNetReady: WebAssembly runtime and Client assembly are now ready");
-  resolveDotNetReady();
-};
+// NOTE: window.signalDotNetReady, window.dotNetReady, and window.dotNetRefs
+// are defined in an inline <script> in App.razor so they are available before
+// blazor.web.js loads. This ensures both the Server and WebAssembly interactive
+// runtimes can call signalDotNetReady when their bridge components render.
 
 /**
  * JavaScript Initializers
- *
+ * 
  * JavaScript (JS) initializers execute logic before and after a Blazor app loads.
  * JS initializers are useful in the following scenarios:
- *
+ * 
  * - Customizing how a Blazor app loads.
  * - Initializing libraries before Blazor starts up.
  * - Configuring Blazor settings.
- *
- * To define a JS initializer, add a JS module to the project named {NAME}.lib.module.js,
+ * 
+ * To define a JS initializer, add a JS module to the project named {NAME}.lib.module.js, 
  * where the {NAME} placeholder is the assembly name, library name, or package identifier.
- *
+ * 
  * Place the file in the project's web root, which is typically the wwwroot folder.
  */
 

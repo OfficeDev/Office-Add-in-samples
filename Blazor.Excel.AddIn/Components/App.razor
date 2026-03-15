@@ -55,8 +55,38 @@
 
 <body>
     <Routes />
-    @* Preload WebAssembly runtime and Client assembly for ribbon command interop *@
-    <WasmPreloader />
+    @* Bridge components register DotNetObjectReference handlers with JavaScript *@
+    <WasmBridge />
+    <ServerBridge />
+
+    <script type="text/javascript">
+        // Global bridge infrastructure: must load before blazor.web.js so that
+        // both Server and WebAssembly interactive runtimes can call signalDotNetReady.
+        // Each bridge gets its own promise so commands only wait for the bridge they need.
+        (function () {
+        console.log("[bridge] Initializing bridge infrastructure");
+        var dotNetRefs = new Map();
+        var resolvers = {};
+
+        window.dotNetReady = {
+        wasm: new Promise(function (resolve) { resolvers.wasm = resolve; }),
+        server: new Promise(function (resolve) { resolvers.server = resolve; })
+        };
+        window.dotNetRefs = dotNetRefs;
+
+        window.signalDotNetReady = function (name, dotNetRef) {
+        console.log("[bridge] signalDotNetReady: " + name + " bridge ready");
+        dotNetRefs.set(name, dotNetRef);
+        if (resolvers[name]) {
+        console.log("[bridge] Resolving " + name + " promise");
+        resolvers[name]();
+        } else {
+        console.warn("[bridge] No resolver found for: " + name);
+        }
+        };
+        console.log("[bridge] Infrastructure ready, waiting for bridges");
+        })();
+    </script>
 
     <script src="_framework/blazor.web.js"></script>
     <script src="./commands/commands.js" type="text/javascript"></script>
