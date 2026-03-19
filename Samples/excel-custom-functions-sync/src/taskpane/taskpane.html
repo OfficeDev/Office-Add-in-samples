@@ -1,0 +1,33 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Synchronous Custom Function Sample</title>
+    <script src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+    <script src="./taskpane.js" type="text/javascript"></script>
+    <div class="container">
+      <h1>Synchronous Custom Function</h1>
+      <p>
+        This sample demonstrates a <strong>synchronous custom function</strong>
+        (<code>@supportSync</code>) that reads a cell value in tandem with
+        Excel's calculation process.
+      </p>
+      <p>
+        Unlike asynchronous custom functions, synchronous custom functions
+        evaluate during Excel's calculation cycle, which means they can be used
+        in scenarios such as conditional formatting rules.
+      </p>
+      <section>
+        <h3>Try it out</h3>
+        <p>Click <strong>Set up sample data</strong> to populate cells with values, then use the custom function in a formula.</p>
+        <button type="button" id="setup">Set up sample data</button>
+        <p id="status"></p>
+      </section>
+    </div>
+  </body>
+</html>
