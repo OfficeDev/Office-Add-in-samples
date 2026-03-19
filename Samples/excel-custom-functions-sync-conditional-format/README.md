@@ -32,6 +32,12 @@ This sample shows how to use a synchronous custom function inside a conditional 
 - Node.js (the latest LTS version). Visit the [Node.js site](https://nodejs.org/) to download and install the right version for your operating system. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 - Microsoft Office connected to a Microsoft 365 subscription. You might qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program), see [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-) for details. Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try?rtc=1) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/buy/compare-all-microsoft-365-products).
 
+### Run the add-in locally
+
+1. Open a terminal in the `Samples/excel-custom-functions-sync-conditional-format` folder.
+2. Run `npm install`.
+3. Run `npm start`.
+
 ### Run the add-in from the Office Add-ins Development Kit
 
 1. Create a new project with the sample code.
@@ -55,12 +61,6 @@ This sample shows how to use a synchronous custom function inside a conditional 
 1. Stop Previewing Your Office Add-in.
 
     Once you are finished testing and debugging the add-in, select the <img src="./assets/Icon_Office_Add-ins_Development_Kit.png" width="30" alt="The Office Add-ins Development Kit icon in the activity bar of VSCode"/> icon and then select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
-
-### Run the add-in locally
-
-1. Open a terminal in the `Samples/excel-custom-functions-sync-conditional-format` folder.
-2. Run `npm install`.
-3. Run `npm start`.
 
 ## Use the sample add-in
 
