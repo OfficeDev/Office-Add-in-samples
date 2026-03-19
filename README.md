@@ -92,6 +92,7 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | [Custom function batching pattern](Excel-custom-functions/Batching) | Batch multiple calls into a single call to reduce the number of network calls to a remote service. |
 | [Excel content add-in](Samples/excel-content-add-in) | Embed a content add-in in the Excel grid. |
 | [Excel content add-in with data visualization](Samples/excel-content-data-visualization) | Create an Excel content add-in that includes data visualization. |
+| [Synchronous custom function - conditional formatting](Samples/excel-custom-functions-sync-conditional-format) | Uses a synchronous custom function in a conditional format rule to highlight cells that exceed a target value. |
 
 ## Word
 
