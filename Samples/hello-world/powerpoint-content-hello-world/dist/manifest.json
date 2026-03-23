@@ -1,0 +1,67 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.24/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.24",
+  "version": "1.0.0",
+  "id": "f3f6aab2-a9d3-4378-95a6-9526a6a62cd5",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us"
+  },
+  "developer": {
+    "name": "Contoso",
+    "websiteUrl": "https://www.contoso.com",
+    "privacyUrl": "https://www.contoso.com/privacy",
+    "termsOfUseUrl": "https://www.contoso.com/terms"
+  },
+  "name": {
+    "short": "PowerPoint Content Add-in",
+    "full": "PowerPoint Hello-World Content Add-in"
+  },
+  "description": {
+    "short": "A content add-in for PowerPoint.",
+    "full": "A hello-world content add-in for PowerPoint."
+  },
+  "icons": {
+    "outline": "assets/icon-32.png",
+    "color": "assets/icon-64.png"
+  },
+  "accentColor": "#FFFFFF",
+  "validDomains": [
+    "AppDomain1",
+    "AppDomain2",
+    "AppDomain3"
+  ],
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Document.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": [ "presentation" ],
+        "capabilities": [
+          {
+            "name": "PowerPointApi",
+            "minVersion": "1.1"
+          }
+        ]
+      },
+      "contentRuntimes": [
+        {
+          "id": "ContentRuntime",
+          "code": {
+            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/hello-world/powerpoint-content-hello-world/dist/content.html"
+          },
+          "requestedWidth": 400,
+          "requestedHeight": 400,
+          "disableSnapshot": true
+        }
+      ]
+    }
+  ]
+}
