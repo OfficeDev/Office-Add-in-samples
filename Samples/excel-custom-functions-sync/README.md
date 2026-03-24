@@ -14,14 +14,16 @@ extensions:
 description: "Shows how to create a synchronous custom function that reads a cell value in tandem with Excel's calculation process."
 ---
 
-# Create Synchronous Custom Functions in Excel
+# Create Synchronous Custom Functions in Excel (preview)
 
 <img src="./assets/thumbnail.png" width="800" alt="A workbook with a synchronous custom function reading cell values.">
 
-This sample shows how to create a synchronous custom function that reads a cell value in tandem with Excel's calculation process. You'll learn how to:
+This sample shows how to create a synchronous custom function that reads a cell value in tandem with Excel calculation processes. You'll learn how to:
 
 - Create synchronous custom functions in Excel
 - Use the shared runtime
+
+> **Note:** Synchronous custom functions are currently in public preview and require the [preview version of the Office JavaScript API](https://appsforoffice.microsoft.com/lib/beta/hosted/office.js). Do not use this feature in a production add-in.
 
 ## How to run this sample
 
@@ -72,7 +74,6 @@ The add-in adds the following custom function to the workbook.
 
 - `=SyncCFSample.GETCELLVALUE("A1")`: Reads the value of the specified cell, evaluated synchronously with Excel's calculation.
 
-> **Note:** Synchronous custom functions are currently in public preview and require the beta Office JavaScript API. Do not use in production add-ins.
 
 ## Explore sample files
 
@@ -110,7 +111,7 @@ The `getCellValue` function in [functions.ts](src/functions/functions.ts) is mar
 
 ### Set up and use the custom function
 
-The [taskpane.js](src/taskpane/taskpane.js) file populates sample data in column A and inserts formulas using `GETCELLVALUE` in column B. When you change a value in column A, the synchronous custom function re-evaluates during Excel's calculation and column B updates automatically.
+The [taskpane.js](src/taskpane/taskpane.js) file populates sample data in column A and inserts formulas using `GETCELLVALUE` in column B. When you change a value in column A, the synchronous custom function re-evaluates during the Excel calculation and column B updates automatically.
 
 ## Troubleshooting
 

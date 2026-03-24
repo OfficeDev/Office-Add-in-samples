@@ -7,7 +7,7 @@
  * Gets the value of a cell, evaluated synchronously with Excel's calculation.
  * @customfunction
  * @supportSync
- * @param {string} address The cell address, e.g. "A1"
+ * @param {string} address The cell address, such as "A1".
  * @param {CustomFunctions.Invocation} invocation
  * @returns {Promise<any>} The cell value.
  */
