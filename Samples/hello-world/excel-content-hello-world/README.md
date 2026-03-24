@@ -25,7 +25,7 @@ Learn how to build an Office content add-in that gets and displays the text sele
 
 ## Applies to
 
-- Excel on Windows, Mac, and in a browser.
+- Excel on Windows and in a browser.
 
 ## Version history
 
@@ -75,9 +75,12 @@ An Office Add-in requires you to configure a web server to provide all the resou
 1. Run the command `npm run start:prod`.
 
    After a few seconds, desktop Excel opens, and after a few seconds more, the content add-in appears over the current worksheet with a **Get data from selection** button.
-     - If the content add-in doesn't appear, open the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "Excel Content Add-in".
+     - If the content add-in doesn't appear, use the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "Excel Content Add-in".
 
 1. Choose the **Get data from selection** button to display "Hello, world!" and the selected text.
+1. To try this out in Excel on the web:
+   1. Open a workbook.
+   1. Use the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "Excel Content Add-in". If the add-in is absent, select the **Manage** link then open the add-in from there.
 
 When you're finished working with the add-in, close Excel, and then in the window where you ran the three npm commands, run `npm run stop:prod`.
 
@@ -92,10 +95,14 @@ If you prefer to configure a web server and host the add-in's web files from you
    - If you've never developed an Office Add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security cert or install a new one. Agree to both prompts.
    - After a few seconds, a **webpack** dev-server window will open and your files will be hosted there on localhost:3000.
    - When the server is successfully running, desktop Excel opens, and after a few seconds more, the content add-in appears over the current worksheet with a **Get data from selection** button.
-     - If the content add-in doesn't appear, open the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "Excel Content Add-in".
+     - If the content add-in doesn't appear, use the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "Excel Content Add-in".
 
 1. Ensure that there's text in the worksheet, then select any range of cells containing text in the worksheet.
 1. Choose the **Get data from selection** button to display "Hello, world!" and the selected text.
+1. To try this out in Excel on the web:
+   1. Open a workbook.
+   1. Use the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "Excel Content Add-in". If the add-in is absent, select the **Manage** link then open the add-in from there.
+      - **Note**: Depending on your machine's network or security settings, the add-in's web conent might not be accessible.
 
 When you're finished working with the add-in, close Excel, and then in the window where you ran the two npm commands, run `npm stop`.
 
