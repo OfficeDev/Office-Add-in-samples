@@ -13,7 +13,7 @@
  */
 export async function getCellValue(address: string, invocation: CustomFunctions.Invocation): Promise<any> {
   const context = new Excel.RequestContext();
-  context.setInvocation(invocation); // The invocation object must be passed in the setInvocation method for synchronous functions.
+  context.setInvocation(invocation); // The `invocation` object must be passed in the `setInvocation` method for synchronous functions.
 
   const range = context.workbook.worksheets.getActiveWorksheet().getRange(address);
   range.load("values");
