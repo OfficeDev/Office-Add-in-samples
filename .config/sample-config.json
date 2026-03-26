@@ -130,6 +130,23 @@
             "suggested": false
         },
         {
+            "id": "excel-custom-functions-sync",
+            "onboardDate": "2026-03-19",
+            "title": "Create synchronous custom functions in Excel",
+            "description": "A synchronous custom function that reads a cell value in tandem with Excel's calculation process using @supportSync.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "TypeScript",
+                "Custom Functions",
+                "Excel",
+                "Synchronous Custom Functions"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
+        },
+        {
             "id": "excel-custom-functions-sync-conditional-format",
             "onboardDate": "2026-03-19",
             "title": "Use synchronous custom functions with conditional formatting in Excel",
