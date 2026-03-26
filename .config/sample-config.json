@@ -141,7 +141,7 @@
                 "TypeScript",
                 "Custom Functions",
                 "Excel",
-                "Synchronous Custom Functions"
+                "Synchronous supported Custom Functions"
             ],
             "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
@@ -158,7 +158,7 @@
                 "TypeScript",
                 "Custom Functions",
                 "Excel",
-                "Synchronous Custom Functions"
+                "Synchronous supported Custom Functions"
             ],
             "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
