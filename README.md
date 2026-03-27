@@ -93,6 +93,7 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | [Excel content add-in](Samples/excel-content-add-in) | Embed a content add-in in the Excel grid. |
 | [Excel content add-in with data visualization](Samples/excel-content-data-visualization) | Create an Excel content add-in that includes data visualization. |
 | [Synchronous custom function sample (preview)](Samples/excel-custom-functions-sync) | A synchronous custom function that reads a cell value in tandem with Excel's calculation process using `@supportSync.` This feature is in public preview. |
+| [Synchronous custom function - conditional formatting](Samples/excel-custom-functions-sync-conditional-format) | Uses a synchronous custom function in a conditional format rule to highlight cells that exceed a target value. |
 
 ## Word
 

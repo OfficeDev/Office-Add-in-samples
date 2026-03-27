@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+    xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+    xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+    xsi:type="TaskPaneApp">
+
+  <Id>b2c3d4e5-f6a7-8901-bcde-f12345678901</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Contoso</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+
+  <DisplayName DefaultValue="Synchronous custom function - conditional formatting" />
+  <Description DefaultValue="Uses a synchronous custom function in a conditional format rule to highlight cells that exceed a target value." />
+
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
+  <Hosts>
+    <Host Name="Workbook" />
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="SharedRuntime" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html" />
+  </DefaultSettings>
+  <Permissions>ReadWriteDocument</Permissions>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <Hosts>
+      <Host xsi:type="Workbook">
+        <Runtimes>
+          <Runtime resid="SharedRuntime.Url" lifetime="long" />
+        </Runtimes>
+
+        <AllFormFactors>
+          <ExtensionPoint xsi:type="CustomFunctions">
+            <Script>
+              <SourceLocation resid="CustomFunctions.Script" />
+            </Script>
+            <Page>
+              <SourceLocation resid="SharedRuntime.Url"/>
+            </Page>
+            <Metadata>
+              <SourceLocation resid="CustomFunctions.Json" />
+            </Metadata>
+            <Namespace resid="CustomFunctions.NameSpace" />
+          </ExtensionPoint>
+        </AllFormFactors>
+        <DesktopFormFactor>
+          <GetStarted>
+            <Title resid="GetStarted.Title" />
+            <Description resid="GetStarted.Description" />
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl" />
+          </GetStarted>
+            <FunctionFile resid="SharedRuntime.Url" />
+            <ExtensionPoint xsi:type="PrimaryCommandSurface">
+                <OfficeTab id="TabHome">
+                <Group id="Group1">
+                <Label resid="Group1Label" />
+                <Icon>
+                  <bt:Image size="16" resid="tpicon_16x16" />
+                  <bt:Image size="32" resid="tpicon_32x32" />
+                  <bt:Image size="80" resid="tpicon_80x80" />
+                </Icon>
+                <Control xsi:type="Button" id="TaskpaneButton">
+                  <Label resid="TaskpaneButton.Label" />
+                  <Supertip>
+                    <Title resid="TaskpaneButton.Label" />
+                    <Description resid="TaskpaneButton.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="tpicon_16x16" />
+                    <bt:Image size="32" resid="tpicon_32x32" />
+                    <bt:Image size="80" resid="tpicon_80x80" />
+                  </Icon>
+
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="SharedRuntime.Url" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+     <Resources>
+      <bt:Images>
+        <bt:Image id="tpicon_16x16" DefaultValue="https://localhost:3000/assets/icon-16.png" />
+        <bt:Image id="tpicon_32x32" DefaultValue="https://localhost:3000/assets/icon-32.png" />
+        <bt:Image id="tpicon_80x80" DefaultValue="https://localhost:3000/assets/icon-80.png" />
+      </bt:Images>
+      <bt:Urls>
+        <bt:Url id="CustomFunctions.Script" DefaultValue="https://localhost:3000/functions.js" />
+        <bt:Url id="CustomFunctions.Json" DefaultValue="https://localhost:3000/functions.json" />
+        <bt:Url id="SharedRuntime.Url" DefaultValue="https://localhost:3000/taskpane.html" />
+        <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
+      </bt:Urls>
+      <bt:ShortStrings>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Show task pane" />
+        <bt:String id="Group1Label" DefaultValue="Sync CF Conditional Format" />
+        <bt:String id="GetStarted.Title" DefaultValue="Synchronous custom function - conditional formatting" />
+        <bt:String id="CustomFunctions.NameSpace" DefaultValue="SyncCFConditionalFormat" />
+      </bt:ShortStrings>
+      <bt:LongStrings>
+        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to show the task pane" />
+        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show task pane' button to get started." />
+      </bt:LongStrings>
+    </Resources>
+  </VersionOverrides>
+</OfficeApp>

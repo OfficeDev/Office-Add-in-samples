@@ -145,6 +145,23 @@
             ],
             "thumbnailPath": "assets/thumbnail.png",
             "suggested": false
+        },
+        {
+            "id": "excel-custom-functions-sync-conditional-format",
+            "onboardDate": "2026-03-19",
+            "title": "Use synchronous custom functions with conditional formatting in Excel",
+            "description": "Uses a synchronous custom function in a conditional format rule to highlight cells that exceed a target value.",
+            "types": [
+                "Excel"
+            ],
+            "tags": [
+                "TypeScript",
+                "Custom Functions",
+                "Excel",
+                "Synchronous Custom Functions"
+            ],
+            "thumbnailPath": "assets/thumbnail.png",
+            "suggested": false
         }
     ]
 }
