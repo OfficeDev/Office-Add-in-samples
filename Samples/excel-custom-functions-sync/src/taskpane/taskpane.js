@@ -29,7 +29,7 @@ async function setup() {
     await context.sync();
 
     document.getElementById("status").textContent =
-      "Data ready. Cells B2:B3 use GETCELLVALUE to synchronously read cells A2:A3.";
+      "Status: Data ready. Cells B2:B3 use GETCELLVALUE to synchronously read cells A2:A3.";
   });
 }
 
