@@ -26,7 +26,8 @@ This sample shows how to set up a basic project that uses the shared runtime. Th
 ## Features
 
 - Share data globally with ribbon buttons, the task pane, and custom functions.
-- To get started, use a provided manifest XML file to create a new project with a shared runtime.
+- Demonstrates shared runtime with custom functions in a unified manifest (JSON format).
+- To get started, use either the unified manifest (manifest.json) or the XML manifest (manifest.xml).
 
 ## Applies to
 
@@ -48,6 +49,7 @@ Version  | Date | Comments
 ---------| -----| --------
 1.0 | 3-15-2020 | Initial release
 1.1 | May 26, 2021 | Updated to use GitHub pages for hosting
+1.2 | February 2026 | Added unified manifest (manifest.json) with custom functions support
 
 ----------
 
@@ -96,6 +98,65 @@ In other parts of the manifest, you'll see that the custom functions and task pa
 Global state is tracked in a window object retrieved using a `getGlobal()` function. This is accessible to custom functions, the task pane, and the ribbon (because all the code is running in the same JavaScript runtime.) 
 
 There are no commands.html or functions.html files. These are not necessary because their purpose is to load individual runtimes. These do not apply when using the shared runtime.
+
+## Unified Manifest (JSON) Version
+
+This sample now includes a **manifest.json** file that uses the unified manifest format for Microsoft 365. The unified manifest provides:
+
+- Modern JSON format instead of XML
+- Support for custom functions with shared runtime
+- Streamlined configuration for Office Add-ins
+
+### Using the Unified Manifest
+
+The unified manifest configures the shared runtime and custom functions in a single `runtime` object:
+
+```json
+{
+  "runtimes": [
+    {
+      "id": "SharedRuntime",
+      "type": "general",
+      "lifetime": "long",
+      "code": {
+        "page": "https://localhost:3000/src/taskpane/taskpane.html",
+        "script": "https://localhost:3000/src/functions/functions.js"
+      },
+      "actions": [...],
+      "customFunctions": {
+        "functions": [...],
+        "namespace": {
+          "id": "CONTOSO",
+          "name": "CONTOSO"
+        },
+        "metadataUrl": "https://localhost:3000/src/functions/functions.json"
+      }
+    }
+  ]
+}
+```
+
+### Building and Running with Unified Manifest
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start the development server:
+   ```bash
+   npm start
+   ```
+
+3. The add-in will load in Excel with the unified manifest.
+
+For production builds with GitHub Pages URLs:
+```bash
+npm run build
+npm run start:prod
+```
+
+**Note:** The unified manifest requires Office 2304 (Build 16320.20000) or later. Custom functions support in unified manifest is available in schema version 1.25+.
 
 ## Run the sample from Localhost
 
