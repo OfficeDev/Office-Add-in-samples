@@ -30,6 +30,7 @@ This sample shows how to create contextual ribbon buttons that are enabled based
 - Open and close the task pane through the Office.js API.
 - Handle Office.js events even when the task pane is closed.
 - Share data globally, such as between custom functions and the task pane.
+- Uses unified manifest for Microsoft 365 (v1.25) with custom tab and ExecuteFunction actions.
 
 ## Applies to
 
@@ -40,6 +41,7 @@ This sample shows how to create contextual ribbon buttons that are enabled based
 ## Prerequisites
 
 - A Microsoft 365 tenant
+- Office 2304 (Build 16320.20000) or later for unified manifest support
 
 ## Solution
 
@@ -53,6 +55,7 @@ Version  | Date | Comments
 ---------| -----| --------
 1.0 | 3-9-2020 | Initial release
 1.1 | 8-5-2021 | Update to GitHub page hosting
+1.2 | February 2026 | Added unified manifest support
 
 ## Scenario: A contextual add-in
 
@@ -89,6 +92,80 @@ The add-in's ribbon buttons have the following behavior:
 - **Close task pane:** Closes the task pane. The task pane is not shut down and will remember its state.
 
 If the add-in is not connected to a service, the task pane will show a button to connect. Once connected, the task pane lets you choose a category from the data and insert a custom function. The custom function will filter data displayed to the selected category.
+
+## Unified Manifest (JSON) Version
+
+This sample includes a **manifest.json** file that uses the unified manifest format for Microsoft 365 (v1.25). The unified manifest provides:
+
+- Modern JSON format instead of XML
+- Support for custom functions with shared runtime
+- Custom ribbon tab with multiple groups
+- ExecuteFunction actions for ribbon buttons
+- Dynamic button enabling/disabling support
+
+### Using the Unified Manifest
+
+The unified manifest configures the shared runtime, custom functions, and custom ribbon tab in a single structure:
+
+```json
+{
+  "runtimes": [
+    {
+      "id": "SharedRuntime",
+      "lifetime": "long",
+      "actions": [
+        { "id": "btnconnectservice", "type": "executeFunction" },
+        { "id": "btnopentaskpane", "type": "executeFunction" },
+        ...
+      ],
+      "customFunctions": {
+        "functions": [
+          { "id": "ADD", "name": "ADD", ... },
+          { "id": "GETDATA", "name": "GETDATA", ... }
+        ],
+        "namespace": { "id": "CONTOSOSHARE", "name": "CONTOSOSHARE" }
+      }
+    }
+  ],
+  "ribbons": [
+    {
+      "tabs": [
+        {
+          "id": "ShareTime",
+          "label": "Contoso Data",
+          "groups": [
+            { "id": "ServiceGroup", "label": "Services", "controls": [...] },
+            { "id": "StartupGroup", "label": "Startup behavior", "controls": [...] },
+            { "id": "TaskpaneGroup", "label": "Task pane", "controls": [...] }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Building and running with Unified Manifest
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start the development server:
+   ```bash
+   npm start
+   ```
+
+3. The add-in will load in Excel with the unified manifest and custom tab.
+
+For production builds with GitHub Pages URLs:
+```bash
+npm run build
+npm run start:prod
+```
+
+**Note:** The unified manifest requires Office 2304 (Build 16320.20000) or later. Custom functions and ExecuteFunction actions in unified manifest are available in schema version 1.25+.
 
 ## Key parts of this sample
 
@@ -138,7 +215,6 @@ export async function monitorSheetChanges() {
         }
       ...
 ```
-
 
 ## Run the sample from Localhost
 
