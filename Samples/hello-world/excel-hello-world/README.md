@@ -122,7 +122,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 - When the server is successfully running, desktop Excel opens, and after a few seconds more, a **Hello World** button appears on the right end of the **Home** ribbon.
 
 1.  Choose the **Hello world** button to display the task pane of the add-in.
-1.  Choose the **Say Hello** button to insert "Hello World" into the document.
+1.  Choose the **Say hello** button to insert "Hello world!" into the document.
 
 When you're finished working with the add-in, close Excel, and then in the window where you ran the two npm commands, run `npm stop`.
 

@@ -37,7 +37,8 @@
         }
     },
     "validDomains": [
-        "https://localhost:3000"
+        "https://localhost:3000",
+        "https://officedev.github.io"
     ],
     "showLoadingIndicator": false,
     "isFullScreen": false,
