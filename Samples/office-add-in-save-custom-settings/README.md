@@ -20,47 +20,65 @@ description: "This sample shows how to save custom settings in Office Add-in."
 
 # Save custom settings in your Office Add-in
 
-This sample shows how to save custom settings inside an Office Add-in. The add-in stores data as key/value pairs, using the JavaScript API for Office property bag, browser cookies, web storage (**localStorage** and **sessionStorage**), or by storing the data in a hidden div in the document.
+This sample shows how to save custom settings inside an Office Add-in. The add-in stores data as key/value pairs, using the JavaScript API for an Office property bag, browser cookies, web storage (**localStorage** and **sessionStorage**), or by storing the data in a hidden div in the document.
 
 ## Applies to
 
-- Excel, Word, and PowerPoint on Windows, Mac, and in a browser.
+- Excel, Word, and PowerPoint on Windows, Mac, and the web.
 
 ## Prerequisites
 
 - Microsoft 365 - Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
-## Run the sample
+## Choose a manifest type
+
+By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest for Microsoft 365. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests).
+
+If you want to continue with the add-in only manifest, skip ahead to the [Work with the add-in only manifest](#work-with-the-add-in-only-manifest) section.
+
+### To switch to the unified manifest for Microsoft 365
+
+Copy all files from the **manifest-configurations/unified** subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.xml** and **manifest-localhost.xml** files from the root folder, so only files needed for the unified manifest are present in the root. Then continue with the [Work with the unified manifest for Microsoft 365](#work-with-the-unified-manifest-for-microsoft-365) section.
+
+### To switch back to the Add-in only manifest
+
+If you want to switch back to the add-in only manifest, copy the files in the **manifest-configurations/add-in-only** subfolder to the sample's root folder. We recommend that you delete the **local-hosting.zip** and **remote-hosting.zip** files from the root folder.
+
+## Work with the add-in only manifest
+
+### Run the sample on the web
 
 You can run this sample in Excel, Word, or PowerPoint in a browser. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Open [Office on the web](https://office.live.com/).
-1. Choose **Excel**, **Word**, or **PowerPoint**, and then open a new document.
+1. Open one of the following URLs in a browser.
+
+   - https://word.cloud.microsoft/
+   - https://excel.cloud.microsoft/
+   - https://powerpoint.cloud.microsoft/
+
+1. Open a new document.
 1. Select **Home > Add-ins**, then select **Advanced**.
 1. On the **Office Add-ins** dialog, select **Upload My Add-in**.
+
    ![The upload add-in dialog with buttons for browse, upload, and cancel.](../../Samples/images/upload-add-in.png)
+
 1. Browse to the add-in manifest file, and then select **Upload**.
 1. Verify the add-in loaded successfully. You'll see a **Custom settings** button on the **Home** tab on the ribbon.
 
-## Try the sample
+After sideloading, continue with the [Try the sample](#try-the-sample) section below.
 
-Once the add-in is loaded, you can use the task pane to create, save, and retrieve custom settings:
+### Run the sample on Office on Windows or Mac
 
-1. **Create a new setting**: Enter a name and value in the text fields, then click **Create setting**. The setting will be saved using the currently selected storage type.
-2. **Get a setting**: Enter the name of a setting you created, then click **Get setting** to retrieve its value.
-3. **Change storage type**: Use the dropdown menu to switch between different storage methods (Property bag, Browser cookies, Local storage, Session storage, or HTML document div).
-4. **View feedback**: All actions display feedback messages in the blue banner at the bottom of the task pane, confirming operations or displaying retrieved values.
-
-## Run the sample on Office on Windows or Mac
-
-Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the manifest.xml file for the custom settings sample. Then follow the sideloading instructions for your platform.
+Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Use the **manifest.xml** file for the custom settings sample. Then follow the sideloading instructions for your platform.
 
 - [Sideload Office Add-ins for testing from a network share](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
 - [Sideload Office Add-ins on Mac for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac)
 - [Sideload Office Add-ins on iPad for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-ipad)
 
-## Configure a localhost web server and run the sample from localhost
+After sideloading, continue with the [Try the sample](#try-the-sample) section below.
+
+### Configure a localhost web server and run the sample from localhost
 
 If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
 
@@ -97,7 +115,71 @@ If you prefer to configure a web server and host the add-in's web files from you
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-Now that your localhost web server is running, sideload the **manifest-localhost.xml** file provided in the office-add-in-save-custom-settings folder. Using the **manifest-localhost.xml** file, follow the steps in [Run the sample](#run-the-sample) to sideload and run the add-in.
+1. Now that your localhost web server is running, sideload the **manifest-localhost.xml** file provided in the office-add-in-save-custom-settings folder. Using the **manifest-localhost.xml** file, follow the steps in either [Run the sample on the web](#run-the-sample-on-the-web) or [Run the sample on Office on Windows or Mac](#run-the-sample-on-office-on-windows-or-mac) to sideload and run the add-in.
+
+## Work with the unified manifest for Microsoft 365
+
+After you have completed the steps in [To switch to the unified manifest for Microsoft 365](#to-switch-to-the-unified-manifest-for-microsoft-365), there are two app package (zip) files in the root of the folder. To see the contents of either file, you can double-click it in Windows or open it with any zip utility. Both contain a manifest.json file and two required icon files. They differ only in the URLs in the manifest files. The URLs in the **remote-hosting.zip** point to the add-ins css, html, and JavaScript files served on this repo. The URLs in the **local-hosting.zip** point to the localhost:3000 domain.
+
+You can test the add-in either on the web or on Windows as described in the following sections.
+
+> [!NOTE}
+> At this time, the unified manifest is not supported on Mac or mobile platforms. For more information, see [Unified manifest for Microsoft 365: Client and platform support](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview#client-and-platform-support).
+
+### Run the unified manifest sample on the web
+
+1. Close all Office applications, and then clear the Office cache following the instructions at [Manually clear the cache](https://learn.microsoft.com/office/dev/add-ins/testing/clear-cache#manually-clear-the-cache).
+1. In a browser, open https://teams.cloud.microsoft and sign-in if you aren't already.
+1. Select **Apps** from the app bar, then select **Manage your apps** at the bottom of the **Apps** pane.
+1. Select **Upload an app** in the **Apps** dialog, and then in the dialog that opens, select **Upload a custom app**.
+1. In the **Open** dialog, navigate to, and select, the **remote-hosting.zip** in the root for the project.
+1. Select **Add** in the dialog that opens.
+1. When you're prompted that the app was added, don't open it in Teams. Just close the dialog.
+1. Open one of the following URLs in a browser.
+
+   - https://word.cloud.microsoft/
+   - https://excel.cloud.microsoft/
+   - https://powerpoint.cloud.microsoft/
+
+1. Open a new document. 
+1. Wait at least a minute for the add-in to completely load. If the **Custom settings** button doesn't appear on the **Home** ribbon, select **Home > Add-ins**, and then select the add-in **office-add-in-save-custom-settings**. (The name may be truncated.)
+
+After sideloading, continue with the [Try the sample](#try-the-sample) section below.
+
+### Run the unified manifest sample on Windows
+
+1. Close all Office applications, and then clear the Office cache following the instructions at [Manually clear the cache](https://learn.microsoft.com/office/dev/add-ins/testing/clear-cache#manually-clear-the-cache).
+1. Open Teams.
+1. Select **Apps** from the app bar, then select **Manage your apps** at the bottom of the **Apps** pane.
+1. Select **Upload an app** in the **Apps** dialog, and then in the dialog that opens, select **Upload a custom app**.
+1. In the **Open** dialog, navigate to, and select, the **remote-hosting.zip** in the root for the project.
+1. Select **Add** in the dialog that opens.
+1. When you're prompted that the app was added, don't open it in Teams. Just close the dialog.
+1. Open Word, Excel, or PowerPoint.
+1. Open a new document. 
+1. Wait at least a minute for the add-in to completely load. If the **Custom settings** button doesn't appear on the **Home** ribbon, select **Home > Add-ins**, and then select the add-in **office-add-in-save-custom-settings**. (The name may be truncated.)
+
+After sideloading, continue with the [Try the sample](#try-the-sample) section below.
+
+### Work with a localhost server
+
+To run the sample on localhost, follow the steps in the section [Configure a localhost web server and run the sample from localhost](#configure-a-localhost-web-server-and-run-the-sample-from-localhost), ***but don't do the last step***. 
+
+Now that your localhost web server is running, sideload the **localhost-hosting.zip** package provided in the office-add-in-save-custom-settings folder. 
+
+Follow the steps in either [Run the unified manifest sample on the web](#run-the-unified-manifest-sample-on-the-web) or [Run the unified manifest sample on Windows](#run-the-unified-manifest-sample-on-windows) to sideload and run the add-in. ***But be sure to upload the*** **localhost-hosting.zip** ***package, not the*** **remote-hosting.zip** ***package.***
+
+After sideloading, continue with the [Try the sample](#try-the-sample) section below.
+
+## Try the sample
+
+Use the task pane to create, save, and retrieve custom settings:
+
+1. Select the **Custom settings** button.
+1. **Create a new setting**: Enter a name and value in the text fields, then click **Create setting**. The setting will be saved using the currently selected storage type.
+2. **Get a setting**: Enter the name of a setting you created (case-sensitive), then click **Get setting** to retrieve its value.
+3. **Change storage type**: Use the dropdown menu to switch between different storage methods (Property bag, Browser cookies, Local storage, Session storage, or HTML document div).
+4. **View feedback**: All actions display feedback messages in the task pane below the buttons and text boxes, confirming operations or displaying retrieved values.
 
 ## Use the sample in your own project
 
@@ -129,7 +211,7 @@ Office.context.document.settings.saveAsync(function (asyncResult) {
 
 ## Copyright
 
-Copyright (c) 2022 Microsoft Corporation. All rights reserved.
+Copyright (c) 2022 - 2026 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
