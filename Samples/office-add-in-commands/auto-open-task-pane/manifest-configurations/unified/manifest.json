@@ -1,0 +1,167 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.22/MicrosoftTeams.schema.json#",
+    "manifestVersion": "1.22",
+    "version": "1.0.1",
+    "id": "586501d9-982d-4fdb-a163-67ffb34d7aa3",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us"
+    },
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-add-in-commands/auto-open-task-pane",
+        "privacyUrl": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-add-in-commands/auto-open-task-pane",
+        "termsOfUseUrl": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-add-in-commands/auto-open-task-pane"
+    },
+    "name": {
+        "short": "Auto-Open Sample",
+        "full": "Auto-Open Sample"
+    },
+    "description": {
+        "short": "Automatically open the add-in's task pane when the doc opens.",
+        "full": "Configure a document to automatically open your Office Add-in's task pane when the document is opened."
+    },
+    "icons": {
+        "outline": "assets/icon-32.png",
+        "color": "assets/icon-64.png"
+    },
+    "accentColor": "#230201",
+    "validDomains": [
+        "https://localhost:3000"
+    ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "defaultBlockUntilAdminAction": false,
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "Document.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "extensions": [
+        {
+            "requirements": {
+                "scopes": [
+                    "document"
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "AddinCommands",
+                                "minVersion": "1.1"
+                            }
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "id": "runtime_1",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/home.html"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "Office.AutoShowTaskpaneWithDocument_1",
+                            "type": "openPage",
+                            "view": "Office.AutoShowTaskpaneWithDocument",
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "AddinCommands",
+                                "minVersion": "1.1"
+                            }
+                        ],
+                        "scopes": [
+                            "document"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "contexts": [
+                        "default"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabHome",
+                            "groups": [
+                                {
+                                    "id": "Contoso.Group1",
+                                    "label": "Auto-open Group",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://localhost:3000/assets/Button16x16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://localhost:3000/assets/Button32x32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://localhost:3000/assets/Button80x80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "Contoso.TaskpaneButton",
+                                            "type": "button",
+                                            "label": "Auto-open Sample",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/Button16x16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/Button32x32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/Button80x80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Auto-open Sample",
+                                                "description": "Click to show a task pane"
+                                            },
+                                            "actionId": "Office.AutoShowTaskpaneWithDocument_1",
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "alternates": [
+                {
+                    "alternateIcons": {
+                        "icon": {
+                            "size": 32,
+                            "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        "highResolutionIcon": {
+                            "size": 64,
+                            "url": "https://localhost:3000/assets/icon-64.png"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

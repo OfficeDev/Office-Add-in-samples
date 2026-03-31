@@ -12,228 +12,283 @@ extensions:
   technologies:
     - Add-ins
   createdDate: 01/31/2023 1:25:00 PM
-description: "Learn how to create a spreadsheet from your web page, populate it with data, and embed your Excel add-in."
+description: "Learn how to create a spreadsheet from your web page, populate it with data, and embed a custom Office Add-in that auto-opens."
 ---
 
-# Create a spreadsheet from your web page, populate it with data, and embed your Excel add-in
+# Create an Excel workbook from a web site with an auto-open task pane
 
-This sample accomplishes the following tasks.
+## Summary
 
-- Creates a new Excel spreadsheet from a web page.
-- Populates the spreadsheet with data from the web page.
-- Embeds the Script Lab add-in into the Excel spreadsheet.
-- Opens the spreadsheet on a new browser tab.
+This sample demonstrates how to create an Excel workbook from web site data using Node.js, and configure it so that a custom Office Add-in task pane automatically opens when the document is opened. This approach combines server-side workbook generation with the auto-open task pane feature.
 
-![Sequence diagram showing an "Open in Microsoft Excel" button on your web page that creates a spreadsheet with your data which contains your add-in](./images/open-in-excel-overview.png)
+![Screenshot showing Excel with auto-opened task pane](./images/open-in-excel-overview.png)
 
-This sample implements the pattern described in [Create an Excel spreadsheet from your web page, populate it with data, and embed your Office Add-in](https://learn.microsoft.com/office/dev/add-ins/excel/pnp-open-in-excel)
+## Features
+
+- Create Excel workbooks programmatically using ExcelJS.
+- Populate worksheets with data from a web source.
+- Upload generated workbooks to OneDrive using Microsoft Graph API.
+- Embed a custom Office Add-in into the workbook.
+- Configure the add-in to automatically open when the workbook is opened.
+- Use Office.js to control auto-open behavior.
 
 ## Applies to
 
-- Microsoft Excel
+- Excel on Windows
+- Excel on Mac  
+- Excel on the web
 
 ## Prerequisites
 
-- [Visual Studio 2022 or later.](https://aka.ms/VSDownload) Add the Office/SharePoint development workload when configuring Visual Studio.
-- [Visual Studio Code.](https://code.visualstudio.com/Download)
-- A Microsoft 365 account. You can get one if you qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
-- At least a few files and folders stored on OneDrive for Business in your Microsoft 365 subscription.
-
-## Set up the sample
-
-### Step 1: Clone or download this repository
-
-From your shell or command line:
-
-```console
-git clone https://github.com/OfficeDev/Office-Add-in-samples.git
-```
-
-or download and extract the repository *.zip* file.
-
-> :warning: To avoid path length limitations on Windows, we recommend cloning into a directory near the root of your drive.
-
-### Step 2: Install project dependencies
-
-```console
-    cd <WebApplication-folder>
-    npm install
-```
-
-### Step 3: Register the sample application(s) in your tenant
-
-#### Choose the Azure AD tenant where you want to create your applications
-
-1. Sign in to the [Azure portal](https://portal.azure.com).
-1. If your account is present in more than one Azure AD tenant, select your profile at the top right corner in the menu on top of the page, and then **switch directory** to change your portal session to the desired Azure AD tenant.
-
-#### Register the client app (contoso-addin-data-to-excel)
-
-1. Go to the [Azure portal](https://portal.azure.com) and select the **Azure Active Directory** service.
-1. Select the **App Registrations** blade on the left, then select **New registration**.
-1. In the **Register an application page** that appears, enter your application's registration information:
-    1. In the **Name** section, enter a meaningful application name that will be displayed to users of the app, for example `contoso-addin-data-to-excel`.
-    1. Under **Supported account types**, select **Accounts in this organizational directory only**
-    1. Select **Register** to create the application.
-1. In the **Overview** blade, find and note the **Application (client) ID**. You use this value in your app's configuration file(s) later in your code.
-1. In the app's registration screen, select the **Authentication** blade to the left.
-1. If you don't have a platform added, select **Add a platform** and select the **Single-page application** option.
-    1. In the **Redirect URI** section enter the following redirect URIs:
-        1. `http://localhost:3000`
-        1. `http://localhost:3000/redirect`
-    1. Click **Save** to save your changes.
-1. Since this app signs-in users, we will now proceed to select **delegated permissions**, which is is required by apps signing-in users.
-    1. In the app's registration screen, select the **API permissions** blade in the left to open the page where we add access to the APIs that your application needs:
-    1. Select the **Add a permission** button and then:
-    1. Ensure that the **Microsoft APIs** tab is selected.
-    1. In the *Commonly used Microsoft APIs* section, select **Microsoft Graph**
-    1. In the **Delegated permissions** section, select **User.Read**, **Contacts.Read**, and **Files.ReadWrite** in the list. Use the search box if necessary.
-    1. Select the **Add permissions** button at the bottom.
-
-##### Configure Optional Claims
-
-1. Still on the same app registration, select the **Token configuration** blade to the left.
-1. Select **Add optional claim**:
-    1. Select **optional claim type**, then choose **ID**.
-    1. Select the optional claim **acct**.
-    > Provides user's account status in tenant. If the user is a **member** of the tenant, the value is *0*. If they're a **guest**, the value is *1*.
-    1. Select the optional claim **login_hint**.
-    > An opaque, reliable login hint claim. This claim is the best value to use for the login_hint OAuth parameter in all flows to get SSO.See $[optional claims](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) for more details on this optional claim.
-    1. Select **Add** to save your changes.
-
-##### Configure the client app (contoso-addin-data-to-excel) to use your app registration
-
-Open the project in your IDE (like Visual Studio or Visual Studio Code) to configure the code.
-
-> In the steps below, "ClientID" is the same as "Application ID" or "AppId".
-1. Open the `WebApplication/App/authConfig.js` file.
-1. Find the key `Enter_the_Application_Id_Here` and replace the existing value with the application ID (clientId) of `contoso-addin-data-to-excel` app copied from the Azure portal.
-1. Find the key `Enter_the_Tenant_Id_Here` and replace the existing value with your Azure AD tenant/directory ID.
-
-## Run the sample
-
-### Start the Azure Functions project
-
-1. Open FunctionCreateSpreadsheet.sln in Visual Studio.
-1. Press **F5** (or choose **Debug** > **Start Debugging**) to build and start the Azure function project. The function will run locally using the Azure Functions Core Tools. You should see the following output in a new console window.
-
-![Console output after starting the Azure Functions project.](./images/azure-function-running.png)
-
-### Start the web application
-
-1. From your shell or command line go to the `WebApplication/` folder, then run the following command:
-
-    ```console
-    npm start
-    ```
-
-1. In a browser, go to the URL `http://localhost:3000/index.html`.
-    ![Contoso web app with sign-in button.](./images/web-page-sign-in-button.png)
-1. Choose the **Sign In** button.
-1. You will be prompted to sign in. Sign in with a user name and password from your Microsoft 365 account.
-
-    > Note: You may also be prompted to consent to the app permissions. You'll need to consent before the app can continue successfully.
-
-    Once you sign in, the page will display a table of sales data.
-    ![Screenshot of Contoso web app listing rows of data with product name, quarter 1, quarter 2, quarter 3, and quarter 4 sales numbers](./images/web-page-product-data.png)
-1. Choose the Excel icon to open a new tab with a new spreadsheet.
-
-When the spreadsheet opens, you will see the sales data. The embedded Script Lab add-in will be available on the ribbon.
-
-## Key parts of this sample
-
-### Authentication
-
-This sample was built using the code from [Vanilla JavaScript single-page application using MSAL.js to authenticate users to call Microsoft Graph](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/2-Authorization-I/1-call-graph/README.md). Please refer to the [readme](https://github.com/Azure-Samples/ms-identity-javascript-tutorial/blob/main/2-Authorization-I/1-call-graph/README.md) for more information on how the authentication works.
-
-### Implement the Excel button
-
-The `WebApplication/App/index.html` page has an `<img>` tag that displays the Excel icon. The click handler calls `openInExcel()` which is in the `WebApplication/App/authPopup.js` file. The `openInExcel` function sends the sales data from `WebApplication/App/tableData.js` in a POST request to the `FunctionCreateSpreadsheet` Azure Functions app.
-
-### Construct the spreadsheet
-
-The **FunctionCreateSpreadsheet** app uses Azure Functions to provide a function that constructs the spreadsheet. The function is triggered by an HTTP POST request. The body of the request contains JSON describing rows and columns of data to populate the spreadsheet. The function expects data in the format shown in `./WebApplication/App/tableData.js`. The function returns the raw data of the new spreadsheet as a Base64 string.
-
-The function uses the [Open XML SDK](https://learn.microsoft.com/office/open-xml/open-xml-sdk) to construct the spreadsheet in memory. The code that constructs the spreadsheet is in `FunctionCreateSpreadsheet/SpreadsheetBuilder.cs`.
-
-- The `InsertData` method inserts the data values for the sales data table.
-- The `EmbedAddin` method embeds the script lab add-in.
-- Modify the `GenerateWebExtensionPart1Content` method to embed your add-in instead of the script lab add-in. Note that there is a *CUSTOM MODIFICATION BEGIN/END* section where you can specify custom properties that your add-in needs to load when it starts.
-
-### Upload the spreadsheet to OneDrive
-
-Once the Base64 encoded string of the new spreadsheet is returned to the `openInExcel` function, it calls `uploadFile`. The `uploadFile` function uses the Microsoft Graph API to upload the spreadsheet to the OneDrive. It creates the URI `'https://graph.microsoft.com/v1.0/me/drive/root:/` for the Microsoft Graph API and adds the folder location and filename. It adds the Base64 string as the body, and calls the `callGraph` function to make the actual REST API call.
-
-## Modify the sample for your own web site
-
-To repurpose the code in this sample for your own web site, you'll want to make the following changes.
-
-### Use your own data
-
-The sample uses mock data described in `WebApplication/App/tableData.js`. You'll need to replace this code to use the actual data from your web site. If your data uses a different data model, you'll need to update the `FunctionCreateSpreadsheet/Product.cs` file.
-The `FunctionCreateSpreadsheet/SpreadsheetBuilder.cs` file contains an `InsertData` method that is bound to the product model data of this sample. You'll need to update it handle any changes you make to the data model.
-
-### Embed your add-in
-
-The sample embeds the script lab add-in. You'll need to change the code to embed your own add-in.
-In the **SpreadsheetBuilder.cs** file, the `GenerateWebExtensionPart1Content` method sets the reference to Script Lab.
-
-```csharp
-We.WebExtension webExtension1 = new We.WebExtension() { Id = "{635BF0CD-42CC-4174-B8D2-6D375C9A759E}" };
-webExtension1.AddNamespaceDeclaration("we", "http://schemas.microsoft.com/office/webextensions/webextension/2010/11");
-We.WebExtensionStoreReference webExtensionStoreReference1 = new We.WebExtensionStoreReference() { Id = "wa104380862", Version = "1.1.0.0", Store = "en-US", StoreType = "OMEX" };
-```
-
-In the previous code:
-
-- The **StoreType** value is "OMEX", an alias for the Office Store.
-- The **Store** value is "en-US" the culture section of the store where Script Lab is.
-- The **Id** value is the Office Store's asset ID for Script Lab.
-
-The `GenerateWebExtensionPart1Content` method contains commented code that shows how to set values for a centrally deployed add-in.
-
-> **Note**: For more information about alternative values for these attributes, see [Automatically open a task pane with a document](https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document).
-
-The `GeneratePartContent` method specifies the visibility of the task pane when the file opens.
-
-```csharp
-Wetp.WebExtensionTaskpane webExtensionTaskpane1 = new Wetp.WebExtensionTaskpane() { DockState = "right", Visibility = true, Width = 350D, Row = (UInt32Value)4U };
-```
-
-In the previous code, the `Visibility` property of the `WebExtensionTaskpane` object is set to `true`. This ensures that the first time that the file is opened after the code is run, the task pane opens with Script Lab in it (after the user accepts the prompt to trust Script Lab). This is what we want for this sample. However, in most scenarios you will probably want this set to `false`. The effect of setting it to false is that the *first* time the file is opened, the user has to install the add-in, from the **Add-in** button on the ribbon. On every *subsequent* opening of the file, the task pane with the add-in opens automatically.
-
-The advantage of setting this property to `false` is that you can use the Office.js to give users the ability to turn on and off the auto-opening of the add-in. Specifically, your script sets the **Office.AutoShowTaskpaneWithDocument** document setting to `true` or `false`. However, if `WebExtensionTaskpane.Visibility` is set to `true`, there is no way for Office.js or, hence, your users to turn off the auto-opening of the add-in. Only editing the OOXML of the document can change `WebExtensionTaskpane.Visibility` to false.
-
-> **Note**: For more information about task pane visibility at the level of the Open XML that these .NET APIs represent, see [Automatically open a task pane with a document](https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document).
-
-## Security notes
-
-- There may be security issues in packages used by this sample. Be sure to run `npm audit` to identify any security vulnerabilities.
-- In the `FunctionCreateSpreadsheet/FunctionCreateSpreadsheet/local.settings.json` file, "CORS" is set to "*". This is only for development purposes. In production code, you should list the allowed domains and not leave this header open to all domains.
-
-## Questions and feedback
-
-- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
-- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
-- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
+- [Node.js](https://nodejs.org/) version 16 or higher
+- [npm](https://www.npmjs.com/) (included with Node.js)
+- Microsoft 365 account with OneDrive - Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
 ## Solution
 
-Solution | Authors
----------|----------
-Open data from your web page in a spreadsheet | Microsoft
+| Solution | Authors |
+|----------|-----------|
+| Create Excel worksheet from web site | Microsoft |
 
 ## Version history
 
-Version  | Date | Comments
----------| -----| --------
-1.0  | January 31, 2023 | Initial release
-1.1  | April 24, 2024 | Update package versions
+| Version | Date | Comments |
+|---------|------|----------|
+| 1.0 | January 2023 | Initial release |
+| 2.0 | January 2026 | Refactored to Node.js with custom add-in and auto-open |
+
+## Set up the sample
+
+### Register a Microsoft Entra ID application
+
+1. Go to the [Azure portal - App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) to register your app.
+1. Sign in with your Microsoft 365 administrator credentials.
+1. Select **New registration**.
+1. Enter a name for your application (for example, "Excel Worksheet from Website").
+1. For **Supported account types**, choose **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
+1. Under **Redirect URI**, select **Single-page application (SPA)** and enter `https://localhost:3000/redirect`.
+1. Select **Register**.
+1. On the application's overview page, copy the **Application (client) ID** - you need this value.
+1. Select **API permissions** > **Add a permission** > **Microsoft Graph** > **Delegated permissions**.
+1. Add the following permissions:
+    - `User.Read`
+    - `Files.ReadWrite`
+1. Select **Add permissions**.
+1. Select **Grant admin consent for [your organization]** to grant consent for all users in your organization.
+
+### Configure the application
+
+1. Clone or download this repository.
+1. Navigate to the `Samples/excel-create-worksheet-from-web-site` folder.
+1. Run `npm install` to install dependencies.
+1. Open `WebApplication/App/authConfig.js` and update the following values:
+   - Replace `YOUR_CLIENT_ID` with your Application (client) ID from Microsoft Entra ID
+   - Replace `YOUR_TENANT_ID` with your tenant ID (or use `common` for multitenant)
+
+### Generate and trust SSL certificates
+
+Office Add-ins require HTTPS. You need to generate and trust self-signed certificates for local development.
+
+1. If you haven't already installed `office-addin-dev-certs`, install it globally with the following command:
+
+   ```bash
+   npm install --global office-addin-dev-certs
+   ```
+
+1. Run the following command to generate a self-signed certificate:
+
+   ```bash
+   npx office-addin-dev-certs install
+   ```
+
+   This command will display the folder location where it generated the certificate files.
+   - On Windows, you might be prompted to trust the certificate - select **Yes**.
+   - On Mac, you might need to add the certificate to your keychain and mark it as trusted.
+
+1. Copy the **localhost.crt** and **localhost.key** files from the certificate folder (typically `~/.office-addin-dev-certs/` or `%USERPROFILE%\.office-addin-dev-certs\` on Windows) to the root folder of this sample.
+
+1. The server automatically uses the certificate files when you run `npm start`.
+
+## Run the sample
+
+### Start the server
+
+```bash
+npm start
+```
+
+The server starts on `https://localhost:3000`.
+
+### Sideload the add-in manifest
+
+Before the auto-open feature works, sideload the add-in:
+
+#### Excel on Windows or Mac
+
+1. Open Excel and create a new blank workbook.
+1. Go to **Home** > **Add-ins** > **My Add-ins**.
+1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab.
+1. Choose **Manage My Add-ins** > **Upload My Add-in**.
+1. Browse to and select the `manifest.xml` file in the sample folder.
+1. Select **Upload**.
+
+#### Excel on the web
+
+1. Open [Office on the web](https://office.com/).
+1. Choose **Excel** and create a new blank workbook.
+1. On the ribbon, select **Add-ins**.
+1. In the **My Add-ins** panel on the right, scroll to the bottom.
+1. Select **Advanced...**.
+1. Select **Upload My Add-in**.
+1. Browse to and select the `manifest.xml` file in the sample folder.
+1. Select **Upload**.
+
+After sideloading, you see a **Show Task Pane** button on the **Home** ribbon.
+
+### Use the sample
+
+1. Open a web browser and go to `https://localhost:3000`.
+1. Select **Sign in with Microsoft** and sign in by using your Microsoft 365 account.
+1. Select **Open in Excel** to generate a workbook with sample data.
+1. The app uploads the workbook to OneDrive and opens it in Excel.
+1. Because you previously sideloaded the add-in, the task pane opens automatically.
+1. The task pane contains controls to turn auto-open on or off for subsequent opens.
+
+### Alternative: Download directly
+
+If you prefer not to use OneDrive:
+
+1. After signing in, select **Download Directly** instead of **Open in Excel**.
+1. The app downloads the file to your computer.
+1. Open the downloaded file in Excel.
+1. Because you previously sideloaded the add-in, the task pane opens automatically.
+1. The task pane contains controls to turn auto-open on or off for subsequent opens.
+
+## How it works
+
+### Server-side workbook generation
+
+The Node.js server uses ExcelJS to create a workbook programmatically.
+
+```javascript
+const workbook = new ExcelJS.Workbook();
+const worksheet = workbook.addWorksheet('Web Data');
+
+// Add data to the worksheet
+tableData.rows.forEach((row, rowIndex) => {
+    const excelRow = worksheet.getRow(rowIndex + 1);
+    row.columns.forEach((column, colIndex) => {
+        excelRow.getCell(colIndex + 1).value = column.value;
+    });
+});
+```
+
+### Embedding the add-in
+
+After creating the workbook, the server embeds a reference to the custom add-in by manipulating the Office Open XML (OOXML) structure.
+
+1. **Generate buffer**: Convert the ExcelJS workbook to a buffer.
+1. **Load ZIP**: Load the buffer into JSZip (Excel files are ZIP archives).
+1. **Add webextension files**: Add XML files to the `xl/webextensions/` folder:
+   - `webextension1.xml` - Defines the add-in reference
+   - `taskpanes.xml` - Configures the task pane (visibility, position, size)
+   - `_rels/taskpanes.xml.rels` - Links the taskpane to the webextension
+1. **Update Content Types**: Modify `[Content_Types].xml` to register the new file types.
+1. **Update relationships**: Modify `xl/_rels/workbook.xml.rels` to link the workbook to the taskpanes.
+
+### Auto-open configuration
+
+Configure the auto-open feature through Office.js in the task pane.
+
+```javascript
+function setAutoOpenOn() {
+    Office.context.document.settings.set(
+        'Office.AutoShowTaskpaneWithDocument',
+        true
+    );
+    Office.context.document.settings.saveAsync();
+}
+```
+
+Save this setting in the document to tell Office to automatically open this specific task pane when the document is opened.
+
+### Important notes
+
+1. **Install the add-in first**: The auto-open feature works only if you sideload or install the add-in. If you don't install the add-in, the embedded reference is ignored.
+
+1. **Auto-open requires user consent**: For security, Office Add-ins can't force themselves to open without user interaction on the first load. The expected workflow is:
+   - Open the downloaded file for the **first time**
+   - Manually select the **Show Task Pane** button on the ribbon
+   - Select **Set auto-open ON** in the task pane
+   - Save and close the file
+   - **Subsequent opens**: The task pane now auto-opens automatically
+
+   This is standard Office Add-in behavior.
+
+1. **Production considerations**:
+   - Replace the self-signed certificate with a proper SSL certificate.
+   - Host the add-in on a public HTTPS server.
+   - Update the manifest.xml URLs to point to your production server.
+   - Add proper authentication and authorization to the API endpoints.
+   - Consider distributing the add-in through AppSource instead of sideloading.
+
+## Troubleshooting
+
+### The task pane doesn't auto-open
+
+**Expected behavior**: The task pane doesn't auto-open when you first download and open a file. This behavior is by design for security reasons. You must:
+
+1. Open the file
+1. Manually click the **Show Task Pane** button on the ribbon (next to the add-in name)
+1. Click **Set auto-open ON** in the task pane  
+1. Save and close the file
+1. Reopen the file - the task pane now auto-opens automatically
+
+If auto-open still doesn't work after following these steps:
+
+- Check that the manifest ID in manifest.xml matches the ID in [server.js](server.js) (`createWebExtensionXml()` function)
+- Ensure the add-in is properly sideloaded (visible on the ribbon)
+- Try removing and re-sideloading the manifest
+
+### Certificate and SSL errors
+
+- Make sure you trust the self-signed certificate.
+- Try running `npm start` again and accept the certificate prompt.
+- On Windows, you might need to run PowerShell as Administrator.
+
+### Upload to OneDrive fails
+
+- Verify your Microsoft Entra ID app registration has `Files.ReadWrite` permission.
+- Check that admin consent was granted for the permissions.
+- Ensure the redirect URI is set to `https://localhost:3000/redirect`.
+- Check the browser console for specific error messages.
+
+### Add-in doesn't appear in ribbon
+
+- Verify the manifest.xml was successfully sideloaded.
+- Try restarting Excel.
+- Check that the server is running on https://localhost:3000.
+- Look in **Home** > **Add-ins** > **My Add-ins** to see if the add-in is listed.
+
+## Learn more
+
+- [Automatically open a task pane with a document](https://learn.microsoft.com/office/dev/add-ins/develop/automatically-open-a-task-pane-with-a-document)
+- [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests)
+- [ExcelJS documentation](https://github.com/exceljs/exceljs)
+- [JSZip documentation](https://stuk.github.io/jszip/)
+- [Microsoft Graph API](https://learn.microsoft.com/graph/overview)
+- [Office JavaScript API](https://learn.microsoft.com/office/dev/add-ins/reference/overview/excel-add-ins-reference-overview)
+
+## Questions and feedback
+
+- Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new) and we'll help you out.
+- We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
+- For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
 ## Copyright
 
-Copyright (c) 2023 Microsoft Corporation. All rights reserved.
+Copyright (c) 2026 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-create-spreadsheet-from-web-page" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-create-worksheet-from-web-site" />

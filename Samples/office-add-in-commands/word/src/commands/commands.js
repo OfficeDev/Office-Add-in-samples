@@ -10,19 +10,19 @@ Office.onReady(() => {
 });
 
 /**
- * Writes the event source id to the document when ExecuteFunction runs.
+ * Writes the event source ID to the document when ExecuteFunction runs.
  * @param event {Office.AddinCommands.Event}
  */
 
  async function writeValue(event) {
   Word.run(async (context) => {
-    // insert a paragraph at the end of the document.
+    // Insert a paragraph at the end of the document.
     const paragraph = context.document.body.insertParagraph(
       "ExecuteFunction works. Button ID=" + event.source.id,
       Word.InsertLocation.end
     );
 
-    // change the paragraph color to blue.
+    // Change the paragraph color to blue.
     paragraph.font.color = "blue";
 
     await context.sync();

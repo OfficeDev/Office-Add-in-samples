@@ -1,0 +1,22 @@
+{
+  "extends": ["eslint:recommended"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "globals": {
+    "Office": "readonly",
+    "Excel": "readonly",
+    "OfficeExtension": "readonly",
+    "fabric": "readonly"
+  },
+  "rules": {
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-console": "off"
+  }
+}

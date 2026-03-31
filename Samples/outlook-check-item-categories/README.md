@@ -6,6 +6,7 @@ products:
   - office-outlook
   - office
   - m365
+  - office-teams
 languages:
   - javascript
 extensions:
@@ -18,7 +19,7 @@ description: "Use Outlook Smart Alerts to verify that required color categories 
 
 # Verify the color categories of a message or appointment before it's sent using Smart Alerts
 
-**Applies to**: classic Outlook on Windows | [new Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439)
+**Applies to**: classic Outlook on Windows | Outlook on Mac
 
 ## Summary
 
@@ -28,7 +29,7 @@ For documentation related to this sample, see the following articles.
 
 - [Handle OnMessageSend and OnAppointmentSend events in your Outlook add-in with Smart Alerts](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events)
 - [Automatically check for an attachment before a message is sent](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough)
-- [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch)
+- [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation)
 - [Get and set categories](https://learn.microsoft.com/office/dev/add-ins/outlook/categories)
 
 ## Features
@@ -46,9 +47,9 @@ For documentation related to this sample, see the following articles.
 ## Applies to
 
 - Outlook on Windows starting in Version 2206 (Build 15330.20196)
-- [New Outlook on Mac](https://support.microsoft.com/office/6283be54-e74d-434e-babb-b70cefc77439) starting in Version 16.65.827.0
+- Outlook on Mac starting in Version 16.65.827.0
 
-> **Note**: Although the Smart Alerts feature is supported in Outlook on the web, Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic), and new Mac UI (see the "Supported clients and platforms" section of [Use Smart Alerts and the onMessageSend and OnAppointmentSend events in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events#supported-clients-and-platforms)), this sample only runs in classic Outlook on Windows and Mac.
+> **Note**: Although the Smart Alerts feature is supported in Outlook on the web, on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic), and on Mac (see the "Supported clients and platforms" section of [Use Smart Alerts and the onMessageSend and OnAppointmentSend events in your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events#supported-clients-and-platforms)), this sample only runs in classic Outlook on Windows and Mac.
 >
 > As the Office.Categories API can't be used in Compose mode in Outlook on the web and new Outlook on Windows, this sample isn't supported on these client. To learn how to develop a Smart Alerts add-in for Outlook on the web and new Outlook on Windows, see the [Smart Alerts walkthrough](https://learn.microsoft.com/office/dev/add-ins/outlook/smart-alerts-onmessagesend-walkthrough).
 
@@ -62,21 +63,45 @@ For documentation related to this sample, see the following articles.
 | -------- | --------- |
 | Use Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent. | Microsoft |
 
-## Version history
+## Choose a manifest type
 
-| Version | Date | Comments |
-| ------- | ----- | -------- |
-| 1.0 | 05-05-2022 | Initial release |
-| 1.1 | 09-08-2022 | Update for General Availability (GA) of OnMessageSend and OnAppointmentSend events |
-| 1.2 | 12-02-2022 | Add support for new Outlook on Mac |
+By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest for Microsoft 365. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the add-in only manifest, skip ahead to the [Run the sample](#run-the-sample) section.
+
+> [!NOTE]
+> The unified manifest for Microsoft 365 isn't directly supported in Outlook on Mac. Run the sample with the add-in only manifest instead. For more information about clients and platforms supported by the unified manifest, see [Office Add-ins with the unified app manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview#client-and-platform-support).
+
+### To switch to the unified manifest for Microsoft 365
+
+Copy all the files from the **manifest-configurations/unified** subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.xml** and **manifest-localhost.xml** files from the root folder, so only files needed for the unified manifest are present. Then, [run the sample](#run-the-sample).
+
+### To switch back to the add-in only manifest
+
+To switch back to the add-in only manifest, copy the files from the **manifest-configurations/add-in-only** subfolder to the sample's root folder. We recommend that you delete the **manifest.json** file from the root folder.
 
 ## Run the sample
 
-Run this sample in Outlook on Windows or Mac. The add-in's web files are served from this repository on GitHub.
+To run the sample, choose whether to host the add-in's web files on localhost or on GitHub.
+
+### Use localhost
+
+1. Clone or download this repository.
+1. From a command prompt, go to the root of the project folder **Samples/outlook-check-item-categories**.
+1. Run `npm install`.
+1. Run `npm start`. This starts the web server on localhost and sideloads the manifest file.
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+1. To stop the web server and uninstall the add-in, run `npm stop`.
+
+### Use GitHub
+
+> [!NOTE]
+> The option to use GitHub as the web host only applies to the add-in only manifest.
+
+The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-
-1. Sideload the add-in manifest in Outlook on Windows or Mac by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Sideload the manifest by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#sideload-manually).
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+1. To uninstall the add-in, follow the instructions in [Remove a sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#remove-a-sideloaded-add-in).
 
 ### Try it out
 
@@ -122,71 +147,90 @@ Once the add-in is loaded, use the following steps to try out its functionality.
 
 1. Send the message or appointment.
 
-## Run the sample from localhost
-
-If you prefer to configure a web server and host the add-in's web files from your computer, use the following steps.
-
-1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
-
-1. You need http-server to run the local web server. If you haven't installed this yet, you can do this with the following command.
-
-    ```console
-    npm install --global http-server
-    ```
-
-1. You need Office-Addin-dev-certs to generate self-signed certificates to run the local web server. If you haven't installed this yet, you can do this with the following command.
-
-    ```console
-    npm install --global office-addin-dev-certs
-    ```
-
-1. Clone or download this sample to a folder on your computer, then go to that folder in a console or terminal window.
-
-1. Run the following command to generate a self-signed certificate to use for the web server.
-
-   ```console
-    npx office-addin-dev-certs install
-    ```
-
-    This command will display the folder location where it generated the certificate files.
-
-1. Go to the folder location where the certificate files were generated, then copy the **localhost.crt** and **localhost.key** files to the cloned or downloaded sample folder.
-
-1. Run the following command.
-
-    ```console
-    http-server -S -C localhost.crt -K localhost.key --cors . -p 3000
-    ```
-
-    The http-server will run and host the current folder's files on localhost:3000.
-
-1. Now that your localhost web server is running, you can sideload the **manifest-localhost.xml** file provided in the sample folder. Using this file, follow the steps in [Run the sample](#run-the-sample) to sideload and run the add-in.
-
 ## Key parts of the sample
 
 ### Configure event-based activation in the manifest
 
-The manifest configures a runtime to handle event-based activation. Because the Outlook platform uses the client to determine whether to use HTML or JavaScript to load the runtime, both of these files must be referenced in the manifest. An HTML page resource ID is specified in the `<Runtime>` element, and a JavaScript file resource ID is specified in the `<Override>` element, as shown below. Outlook on Windows uses the referenced JavaScript file to load the runtime, while Outlook on Mac uses the HTML file.
+The manifest configures a runtime to handle event-based activation. Because the Outlook platform uses the client to determine whether to use HTML or JavaScript to load the runtime, both of these files must be referenced in the manifest. Outlook on Windows uses the referenced JavaScript file to load the runtime, while Outlook on Mac uses the HTML file. The markup varies depending on the manifest your add-in uses.
 
-```xml
-<Runtime resid="WebViewRuntime.Url">
-    <Override type="javascript" resid="JSRuntime.Url"/>
-</Runtime>
-...
-<bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/commands.html" />
-<bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/commands/commands.js" />
-```
+- **Unified manifest for Microsoft 365**: In the `"extensions.runtimes.code"` property, the HTML page resource ID is specified in the `"page"` child property while the JavaScript file resource ID is specified in the `"script"` child property.
 
-The `<LaunchEvents>` element maps the four events that activate the add-in to the functions that handle each event. To determine how the add-in will handle the `OnMessageSend` and `OnAppointmentSend` events, an additional `SendMode` attribute is specified.
+    ```json
+    "extensions": [
+        {
+            ...
+            "runtimes": [
+                {
+                    ...
+                    "code": {
+                        "page": "https://localhost:3000/commands.html",
+                        "script": "https://localhost:3000/commands.js"
+                    },
+                    ...
+                },
+            ]
+            ...
+        }
+    ]
+    ```
 
-```xml
-<LaunchEvents>
-    <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler"/>
-    <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler"/>
-    <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler" SendMode="SoftBlock"/>
-    <LaunchEvent Type="OnAppointmentSend" FunctionName="onAppointmentSendHandler" SendMode="Block"/>
-</LaunchEvents>
-```
+- **Add-in only manifest**: The HTML page resource ID is specified in the `<Runtime>` element while the JavaScript file resource ID is specified in the `<Override>` element.
+
+    ```xml
+    <Runtime resid="WebViewRuntime.Url">
+        <Override type="javascript" resid="JSRuntime.Url"/>
+    </Runtime>
+    ...
+    <bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/commands.html" />
+    <bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-check-item-categories/src/commands/commands.js" />
+    ```
+
+Additionally, the events that activate the add-in are specified in the manifest and mapped to their respective handler functions. The markup varies depending on the manifest your add-in uses.
+
+- **Unified manifest for Microsoft 365**: The events are specified in the `"extensions.autoRunEvents"` array. To determine how the add-in will handle the `OnMessageSend` and `OnAppointmentSend` events, an additional `"sendMode"` property is specified.
+
+    ```json
+    "autoRunEvents": [
+        {
+            ...
+            "events": [
+                {
+                    "type": "newMessageComposeCreated",
+                    "actionId": "onMessageComposeHandler"
+                },
+                {
+                    "type": "newAppointmentOrganizerCreated",
+                    "actionId": "onAppointmentComposeHandler"
+                },
+                {
+                    "type": "messageSending",
+                    "actionId": "onMessageSendHandler",
+                    "options": {
+                        "sendMode": "softBlock"
+                    }
+                },
+                {
+                    "type": "appointmentSending",
+                    "actionId": "onAppointmentSendHandler",
+                    "options": {
+                        "sendMode": "block"
+                    }
+                }
+            ]
+        }
+    ]
+    ```
+
+- **Add-in only manifest**: The events are specified in the `<LaunchEvents>` element. To determine how the add-in will handle the `OnMessageSend` and `OnAppointmentSend` events, an additional `SendMode` attribute is specified.
+
+    ```xml
+    <LaunchEvents>
+        <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler"/>
+        <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler"/>
+        <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler" SendMode="SoftBlock"/>
+        <LaunchEvent Type="OnAppointmentSend" FunctionName="onAppointmentSendHandler" SendMode="Block"/>
+    </LaunchEvents>
+    ```
 
 The `OnMessageSend` event uses the `SoftBlock` option to prevent a user from sending a message if any of the required categories are missing. In the event that the add-in becomes unavailable (for example, if the add-in encounters a loading error) and can't check the message for applied categories, the user will still be able to send the message.
 
@@ -224,9 +268,14 @@ Event-based add-ins should be short-running and lightweight. To prevent the poss
 
 A task pane is used to complement event-based activation by providing users with a venue to further interact with the add-in. The `taskpane.html` and `taskpane.js` files configure the UI and functionality of the task pane, respectively. This allows the user to easily choose and apply the required Office Add-ins Sample color categories to the message or appointment.
 
-## Known issues
+## Version history
 
-- In the Windows client, imports are not supported in the JavaScript file where you implement event-based activation handling.
+| Version | Date | Comments |
+| ------- | ----- | -------- |
+| 1.0 | 05-05-2022 | Initial release |
+| 1.1 | 09-08-2022 | Update for General Availability (GA) of OnMessageSend and OnAppointmentSend events |
+| 1.2 | 12-02-2022 | Add support for new Outlook on Mac |
+| 1.3 | 07-28-2025 | Add support for the unified manifest for Microsoft 365 |
 
 ## Questions and feedback
 

@@ -10,9 +10,11 @@
         "Configure a document to automatically open your Office Add-in's task pane when the document opens."
       ],
       "creationDateTime": "2023-05-03",
-      "updateDateTime": "2023-05-03",
+      "updateDateTime": "2025-07-29",
       "products": [
-        "Office"
+        "Office",
+        "Teams",
+        "Microsoft 365 Agents Toolkit"
       ],
       "metadata": [
         {

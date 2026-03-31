@@ -1,0 +1,29 @@
+{
+  "name": "ssoapp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "install-dev-certs": "office-addin-dev-certs install",
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "@types/office-js": "^1.0.568",
+    "cookie-parser": "~1.4.7",
+    "debug": "~4.4.3",
+    "dotenv": "^17.2.3",
+    "express": "~5.2.1",
+    "form-urlencoded": "^6.1.6",
+    "http-errors": "~2.0.1",
+    "jshint": "^2.13.6",
+    "jsonwebtoken": "^9.0.3",
+    "morgan": "~1.10.1",
+    "node-fetch": "^3.3.2",
+    "pug": "^3.0.3",
+    "@azure/msal-node": "5.0.2",
+    "jwks-rsa": "^3.2.1",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "office-addin-dev-certs": "1.12.2"
+  }
+}

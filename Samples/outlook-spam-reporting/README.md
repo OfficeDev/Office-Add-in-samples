@@ -18,7 +18,7 @@ description: "Learn how to create an integrated spam-reporting add-in in Outlook
 
 # Report spam or phishing emails in Outlook
 
-**Applies to**: Outlook on the web, Outlook on Windows (new and classic)
+**Applies to**: Outlook on the web, Outlook on Windows (new and classic), Outlook on Mac
 
 ![A sample spam-reporting dialog.](./assets/readme/outlook-spam-processing-dialog.png)
 
@@ -37,6 +37,7 @@ To learn about key components of this sample, see [Implement an integrated spam-
 - Outlook on the web
 - [new Outlook on Windows](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627)
 - classic Outlook on Windows starting in Version 2307 (Build 16626.10000)
+- Outlook on Mac starting in Version 16.100 (25072537)
 
 ## Prerequisites
 
@@ -51,16 +52,11 @@ To learn about key components of this sample, see [Implement an integrated spam-
     npm -v
     ```
 
-- (Optional) If you want to run the sample with a [unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview) using GitHub as the web host, install the [Teams Toolkit command line interface (CLI)](https://learn.microsoft.com/microsoftteams/platform/toolkit/teams-toolkit-cli). From a command prompt, run the following command.
+- (Optional) If you want to run the sample with a [unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview) using GitHub as the web host, install the [Microsoft 365 Agents Toolkit command line interface (CLI)](https://learn.microsoft.com/microsoftteams/platform/toolkit/microsoft-365-agents-toolkit-cli). From a command prompt, run the following command.
 
     ```console
-    npm install -g @microsoft/teamsapp-cli
+    npm install -g @microsoft/m365agentstoolkit-cli
     ```
-
-- (Optional) If you want to deploy the sample with the unified manifest for Microsoft 365 to Microsoft Azure, you'll need the following:
-  - An Azure subscription.
-  - [Visual Studio Code](https://code.visualstudio.com/).
-  - [Teams Toolkit extension for Visual Studio Code](https://learn.microsoft.com/microsoftteams/platform/toolkit/install-teams-toolkit).
 
 ## Run the sample
 
@@ -79,12 +75,12 @@ Run this sample with a [unified manifest for Microsoft 365](#run-with-the-unifie
 The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
 
 1. Download the **outlook-spam-reporting.zip** file from this sample to a folder on your computer.
-1. Sideload the sample to Outlook by following the instructions in [Sideload with the Teams Toolkit CLI (command-line interface)](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest#sideload-with-the-teams-toolkit-cli-command-line-interface).
+1. Sideload the sample to Outlook by following the instructions in [Sideload with Microsoft 365 Agents Toolkit CLI (command-line interface)](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest#sideload-with-microsoft-365-agents-toolkit-cli-command-line-interface).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 1. To uninstall the add-in from Outlook, run the following command. Replace *{title ID}* with the add-in's title ID that was generated when you sideloaded the add-in.
 
     ```console
-    teamsapp uninstall --mode title-id --title-id {title ID} --interactive false
+    atk uninstall --mode title-id --title-id {title ID} --interactive false
     ```
 
 #### Use localhost
@@ -112,44 +108,6 @@ If you prefer to host the web server on localhost, follow these steps.
     npm stop
     ```
 
-#### Use Microsoft Azure
-
-You can deploy this sample with the unified manifest to Microsoft Azure using the Teams Toolkit extension in Visual Studio Code.
-
-1. In Visual Studio Code, go to the activity bar, then open the Teams Toolkit extension.
-1. In the Accounts section of the Teams Toolkit pane, choose **Sign in to Azure**.
-1. After you sign in, select a subscription under your account.
-1. In the Development section of the Teams Toolkit pane, choose **Provision in the cloud**. Alternatively, open the command palette and choose **Teams: Provision in the cloud**.
-1. Choose **Deploy to the cloud**. Alternatively, open the command palette and choose **Teams: Deploy to the cloud**.
-
-Once the sample is successfully deployed, follow these steps.
-
-1. Copy the endpoint of your new Azure deployment. Use one of the following methods.
-    - In Visual Studio Code, select **View** > **Output** to open the Output window. Then, copy the endpoint for your new Azure deployment.
-    - In the Azure portal, go to the new storage account. Then, choose **Data management** > **Static website** and copy the **Primary endpoint** value.
-1. Open the **./webpack.config.js** file.
-1. Change the `urlProd` constant to use the endpoint of your Azure deployment.
-1. Save your change. Then, run the following command.
-
-    ```console
-    npm run build
-    ```
-
-    This generates a new **manifest.json** file in the **dist** folder of your project that will load the add-in resources from your storage account.
-1. Run the following command.
-
-    ```console
-    npm run start:prod
-    ```
-
-    Classic Outlook on Windows starts and the **manifest.json** file is sideloaded from the **dist** folder.
-1. Follow the steps in [Try it out](#try-it-out) to test the sample.
-1. To stop the web server and uninstall the add-in from Outlook, run the following command.
-
-    ```console
-    npm run stop:prod
-    ```
-
 ### Run with the add-in only manifest
 
 #### Use GitHub as the web host
@@ -157,9 +115,9 @@ Once the sample is successfully deployed, follow these steps.
 The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in only manifest in Outlook on the web or on Windows (new or classic) by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#sideload-manually).
+1. Sideload the add-in only manifest in Outlook on the web or on Windows (new or classic) by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#sideload-manually).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
-1. To uninstall the add-in from Outlook, follow the instructions in [Remove a sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#remove-a-sideloaded-add-in).
+1. To uninstall the add-in from Outlook, follow the instructions in [Remove a sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#remove-a-sideloaded-add-in).
 
 #### Use localhost
 
@@ -239,5 +197,6 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 | 1.1 | July 1, 2024 | Create separate JavaScript files for supported clients |
 | 1.2 | September 11, 2024 | Correct the `Office.actions.associate` call and consolidate the JavaScript files |
 | 1.3 | February 28, 2025 | Add support for the unified manifest for Microsoft 365 |
+| 1.4 | August 26, 2025 | Note support for Outlook on Mac |
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-spam-reporting" />

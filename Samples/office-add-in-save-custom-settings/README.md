@@ -37,12 +37,20 @@ You can run this sample in Excel, Word, or PowerPoint in a browser. The add-in w
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
 1. Open [Office on the web](https://office.live.com/).
 1. Choose **Excel**, **Word**, or **PowerPoint**, and then open a new document.
-1. Open the **Insert** tab on the ribbon and choose **Add-ins** (**Office Add-ins** for Excel).
-1. In the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
-   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
-1. Browse to the add-in manifest file, and then select **Upload**.
+1. Select **Home > Add-ins**, then select **Advanced**.
+1. On the **Office Add-ins** dialog, select **Upload My Add-in**.
    ![The upload add-in dialog with buttons for browse, upload, and cancel.](../../Samples/images/upload-add-in.png)
+1. Browse to the add-in manifest file, and then select **Upload**.
 1. Verify the add-in loaded successfully. You'll see a **Custom settings** button on the **Home** tab on the ribbon.
+
+## Try the sample
+
+Once the add-in is loaded, you can use the task pane to create, save, and retrieve custom settings:
+
+1. **Create a new setting**: Enter a name and value in the text fields, then click **Create setting**. The setting will be saved using the currently selected storage type.
+2. **Get a setting**: Enter the name of a setting you created, then click **Get setting** to retrieve its value.
+3. **Change storage type**: Use the dropdown menu to switch between different storage methods (Property bag, Browser cookies, Local storage, Session storage, or HTML document div).
+4. **View feedback**: All actions display feedback messages in the blue banner at the bottom of the task pane, confirming operations or displaying retrieved values.
 
 ## Run the sample on Office on Windows or Mac
 

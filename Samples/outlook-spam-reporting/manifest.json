@@ -1,6 +1,6 @@
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.20/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.20",
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.22/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.22",
     "version": "1.0.0",
     "id": "6a400915-dad1-4d85-98c0-6b2d204056c6",
     "localizationInfo": {
@@ -120,13 +120,15 @@
                     "spamPreProcessingDialog": {
                         "title": "Report Spam Message",
                         "description": "Thank you for reporting this message.",
+                        "spamNeverShowAgainOption": false,
                         "spamReportingOptions": {
                             "title": "Why are you reporting this email?",
                             "options": [
                                 "Received spam email.",
                                 "Received a phishing email.",
                                 "I'm not sure this is a legitimate email."
-                            ]
+                            ],
+                            "type": "checkbox"
                         },
                         "spamFreeTextSectionTitle": "Provide additional information, if any:",
                         "spamMoreInfo": {
