@@ -184,11 +184,13 @@ Use the task pane to create, save, and retrieve custom settings:
 
 1. Select the **Custom settings** button.
 1. **Create a new setting**: Enter a name and value in the text fields, then choose **Create setting**. The setting will be saved using the currently selected storage type.
-2. **Get a setting**: Enter the name of a setting you created (case-sensitive), then choose **Get setting** to retrieve its value.
-3. **Change storage type**: Use the dropdown menu to switch between different storage methods (Property bag, Browser cookies, Local storage, Session storage, or HTML document div).
-4. **View feedback**: All actions display feedback messages in the task pane after the buttons and text boxes, confirming operations or displaying retrieved values.
+1. **Get a setting**: Enter the name of a setting you created (case-sensitive), then choose **Get setting** to retrieve its value.
+1. **Change storage type**: Use the dropdown menu to switch between different storage methods (Property bag, Browser cookies, Local storage, Session storage, or HTML document div).
+1. **View feedback**: All actions display feedback messages in the task pane after the buttons and text boxes, confirming operations or displaying retrieved values.
 
 ## Use the sample in your own project
+
+We don't recommend that you use this project as the starting point for your own add-in. It doean't have the tooling that is installed when you create an add-in project with [Microsoft 365 Agent Toolkit](https://learn.microsoft.com/office/dev/add-ins/develop/agents-toolkit-overview) or [Yoeman Generator for Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/yeoman-generator-overview). Among other inconveniences, if you are using the unified manifest for Microsoft 365, whenever you make a change in the manifest, you would have to re-zip it into the package file. But this step is done automatically in projects created with the two tools. 
 
 To reuse the code from this sample you'll want to look at the specific functions that save or get settings in the **taskpane.js** file. For example, the **saveToPropertyBag** and **getFromPropertyBag** files work with the Office settings object to access settings in the property bag. Decide which storage method you want to use. Then copy the corresponding methods for that storage method to your own project. The methods are self-contained and can be called directly from your code.
 
