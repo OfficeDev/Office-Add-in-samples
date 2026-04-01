@@ -30,7 +30,7 @@ This sample shows how to create contextual ribbon buttons that are enabled based
 - Open and close the task pane through the Office.js API.
 - Handle Office.js events even when the task pane is closed.
 - Share data globally, such as between custom functions and the task pane.
-- Offers either unified manifest for Microsoft 365 (v1.25) or XML manifest options.
+- Offers either unified manifest for Microsoft 365 or XML manifest options.
 
 ## Applies to
 
@@ -67,7 +67,7 @@ Additionally the add-in has a custom function that can display a filtered view o
 
 ## Run the sample with the unified manifest
 
-This sample includes a **manifest.json** file that uses the unified manifest format for Microsoft 365 (v1.25). The unified manifest provides:
+This sample includes a **manifest.json** file that uses the unified manifest format for Microsoft 365. The unified manifest provides:
 
 - Modern JSON format instead of XML.
 - Support for custom functions with shared runtime.
@@ -128,12 +128,12 @@ The unified manifest configures the shared runtime, custom functions, and custom
    npm install
    ```
 
-2. Start the development server:
+1. Start the development server:
    ```bash
    npm start
    ```
 
-3. The add-in loads in Excel with the unified manifest and custom tab.
+1. The add-in loads in Excel with the unified manifest and custom tab.
 
 For production builds with GitHub Pages URLs:
 ```bash
@@ -228,14 +228,14 @@ If you prefer to host the web server for the sample on your computer, follow the
     npm install --global http-server
     ```
     
-2. Use a tool such as openssl to generate a self-signed certificate for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
-3. From a command prompt, go to the web-worker folder and run the following command:
+1. Use a tool such as openssl to generate a self-signed certificate for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
+1. From a command prompt, go to the web-worker folder and run the following command:
     
     ```console
     http-server -S --cors . -p 3000
     ```
     
-4. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
+1. To reroute to localhost run office-addin-https-reverse-proxy. If you haven't installed this you can do this with the following command:
     
     ```console
     npm install --global office-addin-https-reverse-proxy
@@ -247,7 +247,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
     
-5. Follow the steps in Run the sample, but upload the `manifest-localhost.xml` file for step 6.
+1. Follow the steps in Run the sample, but upload the `manifest-localhost.xml` file for step 6.
 
 ## Security notes
 
