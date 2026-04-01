@@ -25,13 +25,13 @@ Learn how to build the simplest Office Add-in with only a manifest, HTML web pag
 
 - Display hello world in Excel.
 - Learn fundamentals of the manifest.
-- Uses the unified manifest for Microsoft 365 (v1.25 JSON format).
+- Uses the unified manifest for Microsoft 365.
 - Learn how to initialize the Office JavaScript API library.
 - Interact with document content through Office JavaScript APIs.
 
 ## Applies to
 
-- Excel on Windows, Mac, and in a browser.
+- Excel on Windows, Mac, and the web.
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ The hello world sample implements the **Manifest** and **Web app** components id
 
 The manifest file describes your add-in to Office. It contains information such as a unique identifier, name, what buttons to show on the ribbon, and more. Importantly, the manifest provides URL locations for where Office can find and download the add-in's resource files.
 
-This sample uses the **unified manifest for Microsoft 365** (v1.25), which is a JSON-based format that works across Microsoft 365 applications and supports Office Add-ins with a single manifest format.
+This sample uses the **unified manifest for Microsoft 365**, which is a JSON-based format that works across Microsoft 365 applications and supports Office Add-ins with a single manifest format.
 
 The manifest (`manifest.json`) and icon files are used to sideload the add-in to Office.
 
@@ -87,14 +87,14 @@ function sayHello() {
 
 ## Run the sample with GitHub as host
 
-An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The Hello World sample is configured so that the files are hosted directly from this GitHub repo, so all you need to do is build the manifest and package, and then sideload the package. 
+An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The Hello World sample is configured so that the files are hosted directly from this GitHub repo, so all you need to do is build the manifest and package, and then sideload the package.
 
 1. Clone or download this sample to a folder on your computer. Then in a command prompt, bash shell, or **TERMINAL** in Visual Studio Code, navigate to the root of the sample folder.
 1. Run the command `npm install`.
 1. Run the command `npm run build`.
 1. Run the command `npm run start:prod`.
 
-After a few seconds, desktop Excel opens, and after a few seconds more, a **Hello World** button appears on the right end of the **Home** ribbon. 
+After a few seconds, desktop Excel opens, and after a few seconds more, a **Hello World** button appears on the right end of the **Home** ribbon.
 
 1. Choose the **Hello world** button to display the task pane of the add-in.
 1. Choose the **Say hello** button to insert "Hello world!" in cell A1.
@@ -117,12 +117,12 @@ If you prefer to configure a web server and host the add-in's web files from you
 1. Run the command `npm install`.
 1. Run the command `npm start`.
 
-- If you've never developed an Office add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security cert and/or install a new one. Agree to both prompts. 
+- If you've never developed an Office add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security cert and/or install a new one. Agree to both prompts.
 - After a few seconds a **webpack** dev-server window will open and your files will be hosted there on localhost:3000.
 - When the server is successfully running, desktop Excel opens, and after a few seconds more, a **Hello World** button appears on the right end of the **Home** ribbon.
 
-1.  Choose the **Hello world** button to display the task pane of the add-in.
-1.  Choose the **Say hello** button to insert "Hello world!" into the document.
+1. Choose the **Hello world** button to display the task pane of the add-in.
+1. Choose the **Say hello** button to insert "Hello world!" into the document.
 
 When you're finished working with the add-in, close Excel, and then in the window where you ran the two npm commands, run `npm stop`.
 
