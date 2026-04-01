@@ -10,9 +10,10 @@
         "Shows how to save custom settings inside an Office Add-in. The add-in stores data as key/value pairs, using the JavaScript API for Office property bag, browser cookies, web storage (localStorage and sessionStorage), or by storing the data in a hidden div in the document."
       ],
       "creationDateTime": "2022-08-26",
-      "updateDateTime": "2022-08-26",
+      "updateDateTime": "2026-04-01",
       "products": [
-        "Office"
+        "Office",
+        "Teams"
       ],
       "metadata": [
         {
