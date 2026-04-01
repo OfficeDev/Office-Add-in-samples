@@ -188,6 +188,15 @@ Use the task pane to create, save, and retrieve custom settings:
 1. **Change storage type**: Use the dropdown menu to switch between different storage methods (Property bag, Browser cookies, Local storage, Session storage, or HTML document div).
 1. **View feedback**: All actions display feedback messages in the task pane after the buttons and text boxes, confirming operations or displaying retrieved values.
 
+> [!NOTE]
+> When you are done working with the add-in, close all Office applications and [clear the Office cache](https://learn.microsoft.com/office/dev/add-ins/testing/clear-cache). If you were testing the add-in on the web, clear the browser's cache too. If you were working with the unified manifest for Microsoft 365, remove the add-in from Teams with the following steps.
+>
+> 1. If you are using localhost, shut down the server by pressing Ctrl-C twice in the window where the http-server is running.
+> 1. Open Teams (Windows desktop or on the web, depending on which you were testing on) and select **Apps** from the app bar, then select **Manage your apps** at the bottom of the **Apps** pane.
+> 1. Find the add-in **office-add-in-save** in the list of apps.
+> 1. Select the add-in to expand its row.
+> 1. Select the trash can icon and then select **Remove** in the prompt.
+
 ## Use the sample in your own project
 
 We don't recommend that you use this project as the starting point for your own add-in. It doean't have the tooling that is installed when you create an add-in project with [Microsoft 365 Agent Toolkit](https://learn.microsoft.com/office/dev/add-ins/develop/agents-toolkit-overview) or [Yoeman Generator for Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/yeoman-generator-overview). Among other inconveniences, if you are using the unified manifest for Microsoft 365, whenever you make a change in the manifest, you would have to re-zip it into the package file. But this step is done automatically in projects created with the two tools. 
