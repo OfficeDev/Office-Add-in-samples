@@ -30,7 +30,7 @@ This sample shows how to create contextual ribbon buttons that are enabled based
 - Open and close the task pane through the Office.js API.
 - Handle Office.js events even when the task pane is closed.
 - Share data globally, such as between custom functions and the task pane.
-- Uses unified manifest for Microsoft 365 (v1.25) with custom tab and ExecuteFunction actions.
+- Offers either unified manifest for Microsoft 365 (v1.25) or XML manifest options.
 
 ## Applies to
 
@@ -40,68 +40,44 @@ This sample shows how to create contextual ribbon buttons that are enabled based
 
 ## Prerequisites
 
-- A Microsoft 365 tenant
-- Office 2304 (Build 16320.20000) or later for unified manifest support
+- A Microsoft 365 tenant.
+- Office 2304 (Build 16320.20000) or later for unified manifest support.
 
 ## Solution
 
 Solution | Author(s)
 ---------|----------
-Office Add-in Shared Runtime Ribbon/Task pane APIs | Microsoft
+Office Add-in Shared Runtime for Ribbon and Task pane APIs | Microsoft
 
 ## Version history
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0 | 3-9-2020 | Initial release
-1.1 | 8-5-2021 | Update to GitHub page hosting
-1.2 | February 2026 | Added unified manifest support
+1.0 | 3-9-2020 | Initial release.
+1.1 | 8-5-2021 | Update to GitHub page hosting.
+1.2 | April 2026 | Added unified manifest support.
 
 ## Scenario: A contextual add-in
 
 This sample demonstrates a fictional scenario where the add-in connects to a backend data service to help the user import and work with Contoso data. To keep things simple, the data is mock data and the sample does not require an actual backend data service.
 
-The add-in is aware of whether it is connected. When connected you will see the task pane update to allow you to import data, and also the ribbon buttons will be enabled to let you insert a table and work with the data. 
+The add-in is aware of whether it is connected. When connected you will see the task pane update to allow you to import data, and also the ribbon buttons will be enabled to let you insert a table and work with the data.
 
 Additionally the add-in has a custom function that can display a filtered view of the data. The custom function is aware of the connection status, so that when connected, it will display the mock data. When disconnected, it will show `#N/A`.
 
-## Run the sample
-
-You can run this sample in Excel on the web. The add-in web files are served from this repo on GitHub.
-
-1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Open [Office on the web](https://office.live.com/).
-1. Choose **Excel**, and then open a new workbook.
-1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
-1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
-   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
-1. Browse to the add-in manifest file, and then select **Upload**.
-   ![The upload add-in dialog with buttons for browse, upload, and cancel.
-](../../Samples/images/upload-add-in.png)
-1. Verify that the add-in loaded successfully. You will see a **Contoso** tab on the ribbon.
-
-The add-in's ribbon buttons have the following behavior:
-
-- **Connect service:** Connects to a mock Contoso data service. You can choose a CSV file, or database.
-- **Disconnect service:** Disonnects from the mock Contoso data service.
-- **Insert data:** Inserts a table from the mock Contoso data service.
-- **Sum:** Enabled when you are in the table. Select a range of numerical cells and it will output the sum of those cells.
-- **Load on doc open:** Choose this to enable the add-in to run the next time the document is opened. The `Sum` button will work immediately when in the table the next time the document is opened. Note that you need to save the document first to save this change.
-- **No load behavior:** Choose this to disable the add-in from running on document open. The Sum button will not work until you activate the add-in in some way (ribbon, task pane or custom function action).
-- **Open task pane:** Opens the task pane.
-- **Close task pane:** Closes the task pane. The task pane is not shut down and will remember its state.
-
-If the add-in is not connected to a service, the task pane will show a button to connect. Once connected, the task pane lets you choose a category from the data and insert a custom function. The custom function will filter data displayed to the selected category.
-
-## Unified Manifest (JSON) Version
+## Run the sample with the unified manifest
 
 This sample includes a **manifest.json** file that uses the unified manifest format for Microsoft 365 (v1.25). The unified manifest provides:
 
-- Modern JSON format instead of XML
-- Support for custom functions with shared runtime
-- Custom ribbon tab with multiple groups
-- ExecuteFunction actions for ribbon buttons
-- Dynamic button enabling/disabling support
+- Modern JSON format instead of XML.
+- Support for custom functions with shared runtime.
+- Custom ribbon tab with multiple groups.
+- ExecuteFunction actions for ribbon buttons.
+- Dynamic button enabling and disabling support.
+
+**Important:** Custom functions are only available in preview with the unified manifest. Do not use custom functions with the unified manifest in a production add-in.
+
+**Note:** The unified manifest requires Office 2304 (Build 16320.20000) or later.
 
 ### Using the Unified Manifest
 
@@ -145,7 +121,7 @@ The unified manifest configures the shared runtime, custom functions, and custom
 }
 ```
 
-### Building and running with Unified Manifest
+### Building and running with unified manifest
 
 1. Install dependencies:
    ```bash
@@ -157,7 +133,7 @@ The unified manifest configures the shared runtime, custom functions, and custom
    npm start
    ```
 
-3. The add-in will load in Excel with the unified manifest and custom tab.
+3. The add-in loads in Excel with the unified manifest and custom tab.
 
 For production builds with GitHub Pages URLs:
 ```bash
@@ -165,7 +141,33 @@ npm run build
 npm run start:prod
 ```
 
-**Note:** The unified manifest requires Office 2304 (Build 16320.20000) or later. Custom functions and ExecuteFunction actions in unified manifest are available in schema version 1.25+.
+## Run the sample with the XML manifest in Excel on the web
+
+You can run this sample in Excel on the web. The add-in web files are served from this repo on GitHub.
+
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Open [Office on the web](https://office.live.com/).
+1. Choose **Excel**, and then open a new workbook.
+1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
+1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
+1. Browse to the add-in manifest file, and then select **Upload**.
+   ![The upload add-in dialog with buttons for browse, upload, and cancel.
+](../../Samples/images/upload-add-in.png)
+1. Verify that the add-in loaded successfully. You will see a **Contoso** tab on the ribbon.
+
+The add-in's ribbon buttons have the following behavior:
+
+- **Connect service:** Connects to a mock Contoso data service. You can choose a CSV file, or database.
+- **Disconnect service:** Disonnects from the mock Contoso data service.
+- **Insert data:** Inserts a table from the mock Contoso data service.
+- **Sum:** Enabled when you are in the table. Select a range of numerical cells and it will output the sum of those cells.
+- **Load on doc open:** Choose this to enable the add-in to run the next time the document is opened. The `Sum` button will work immediately when in the table the next time the document is opened. Note that you need to save the document first to save this change.
+- **No load behavior:** Choose this to disable the add-in from running on document open. The Sum button will not work until you activate the add-in in some way (ribbon, task pane or custom function action).
+- **Open task pane:** Opens the task pane.
+- **Close task pane:** Closes the task pane. The task pane is not shut down and will remember its state.
+
+If the add-in is not connected to a service, the task pane will show a button to connect. Once connected, the task pane lets you choose a category from the data and insert a custom function. The custom function will filter data displayed to the selected category.
 
 ## Key parts of this sample
 
@@ -216,7 +218,7 @@ export async function monitorSheetChanges() {
       ...
 ```
 
-## Run the sample from Localhost
+## Run the sample with the XML manifest from localhost
 
 If you prefer to host the web server for the sample on your computer, follow these steps:
 
