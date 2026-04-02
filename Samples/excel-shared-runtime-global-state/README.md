@@ -70,7 +70,7 @@ This sample includes a **manifest.json** file that uses the [unified manifest fo
 
 **Note:** The unified manifest requires Office 2304 (Build 16320.20000) or later.
 
-### Using the unified manifest
+### Use the unified manifest
 
 The unified manifest configures the shared runtime and custom functions in a single `runtime` object:
 
@@ -99,7 +99,7 @@ The unified manifest configures the shared runtime and custom functions in a sin
 }
 ```
 
-### Building and running with the unified manifest
+### Build and run with the unified manifest
 
 1. Install dependencies:
    ```bash
