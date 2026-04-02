@@ -55,7 +55,7 @@ Version  | Date | Comments
 ---------| -----| --------
 1.0 | 3-9-2020 | Initial release.
 1.1 | 8-5-2021 | Update to GitHub page hosting.
-1.2 | April 2026 | Added unified manifest support.
+1.2 | April 2026 | Add unified manifest support.
 
 ## Scenario: A contextual add-in
 
@@ -67,7 +67,7 @@ Additionally the add-in has a custom function that can display a filtered view o
 
 ## Run the sample with the unified manifest
 
-This sample includes a **manifest.json** file that uses the unified manifest format for Microsoft 365. The unified manifest provides:
+This sample includes a **manifest.json** file that uses the [unified manifest format for Microsoft 365](https://learn.microsoft.com/microsoft-365/extensibility/schema). The unified manifest provides:
 
 - Modern JSON format instead of XML.
 - Support for custom functions with shared runtime.
@@ -79,7 +79,7 @@ This sample includes a **manifest.json** file that uses the unified manifest for
 
 **Note:** The unified manifest requires Office 2304 (Build 16320.20000) or later.
 
-### Using the Unified Manifest
+### Use the Unified Manifest
 
 The unified manifest configures the shared runtime, custom functions, and custom ribbon tab in a single structure:
 
@@ -121,7 +121,7 @@ The unified manifest configures the shared runtime, custom functions, and custom
 }
 ```
 
-### Building and running with unified manifest
+### Build and run with the unified manifest
 
 1. Install dependencies:
    ```bash
@@ -251,7 +251,7 @@ If you prefer to host the web server for the sample on your computer, follow the
 
 ## Security notes
 
-None
+None.
 
 ## Questions and feedback
 
