@@ -49,8 +49,8 @@ Office Add-in share global data with a shared runtime | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0 | 3-15-2020 | Initial release.
-1.1 | May 26, 2021 | Updated to use GitHub pages for hosting.
-1.2 | April 2026 | Added unified manifest support.
+1.1 | May 26, 2021 | Update to use GitHub pages for hosting.
+1.2 | April 2026 | Add unified manifest support.
 
 ----------
 
@@ -60,11 +60,11 @@ This sample enables a user to store and retrieve key/value pairs by using the ta
 
 ## Run the sample with the unified manifest
 
-This sample includes a **manifest.json** file that uses the unified manifest format for Microsoft 365. The unified manifest provides:
+This sample includes a **manifest.json** file that uses the [unified manifest format for Microsoft 365](https://learn.microsoft.com/microsoft-365/extensibility/schema). The unified manifest provides:
 
-- Modern JSON format instead of XML
-- Support for custom functions with shared runtime
-- Streamlined configuration for Office Add-ins
+- Modern JSON format instead of XML.
+- Support for custom functions with shared runtime.
+- Streamlined configuration for Office Add-ins.
 
 **Important:** Custom functions are only available in preview with the unified manifest. Do not use custom functions with the unified manifest in a production add-in.
 
@@ -99,7 +99,7 @@ The unified manifest configures the shared runtime and custom functions in a sin
 }
 ```
 
-### Building and Running with Unified Manifest
+### Building and running with the unified manifest
 
 1. Install dependencies:
    ```bash
@@ -118,8 +118,6 @@ For production builds with GitHub Pages URLs:
 npm run build
 npm run start:prod
 ```
-
-**Note:** The unified manifest requires Office 2304 (Build 16320.20000) or later. Custom functions support in unified manifest is available in schema version 1.25+.
 
 ## Run the sample with the XML manifest in Excel on the web
 
