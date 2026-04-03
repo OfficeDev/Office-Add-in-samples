@@ -8,7 +8,7 @@
         "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-keyboard-shortcuts",
         "longDescription": "This sample shows how to create custom keyboard shortcuts for your add-in. Keyboard shortcuts can be used to achieve any action within the add-in runtime.",
         "creationDateTime": "2020-11-05",
-        "updateDateTime": "2024-09-27",
+        "updateDateTime": "2026-02-05",
         "products": [
             "Office"
         ],
