@@ -14,14 +14,16 @@ extensions:
 description: "Shows how to use a synchronous custom function in a conditional format rule to highlight cells that exceed a target value."
 ---
 
-# Use Synchronous Custom Functions with Conditional Formatting in Excel
+# Use synchronous custom functions with conditional formatting in Excel (preview)
 
 <img src="./assets/thumbnail.png" width="800" alt="A workbook with conditional formatting powered by a synchronous custom function.">
 
 This sample shows how to use a synchronous custom function inside a conditional format rule to highlight cells dynamically. You'll learn how to:
 
-- Create synchronous custom functions in Excel
-- Apply conditional format rules that use custom functions
+- Create synchronous custom functions in Excel.
+- Apply conditional format rules that use custom functions.
+
+> **Note:** Synchronous custom functions are currently in public preview and require the [preview version of the Office JavaScript API](https://appsforoffice.microsoft.com/lib/beta/hosted/office.js). Do not use this feature in a production add-in.
 
 ## How to run this sample
 
@@ -56,7 +58,7 @@ This sample shows how to use a synchronous custom function inside a conditional 
 
     The extension checks that the prerequisites are met before debugging starts. The terminal will alert you to any issues with your environment. After this process, the Excel desktop application launches and opens a new workbook with the sample add-in sideloaded. The add-in automatically opens as well.
 
-    If this is the first time that you have sideloaded an Office Add-in on your computer (or the first time in over a month), you may be prompted to delete an old certificate and/or to install a new one. Agree to both prompts. The first run requires installing dependency of this project, which might take 2~3 minutes or longer. During this time, there might be a dialog pop up at the lower right of the VSC screen. You should not interact with this dialog before the Office application launched.
+    If this is the first time that you have sideloaded an Office Add-in on your computer (or the first time in over a month), you may be prompted to delete an old certificate and/or install a new one. Agree to both prompts. The first run requires installing dependencies for this project, which might take 2–3 minutes or longer. During this time, a dialog may pop up in the lower-right corner of the VS Code window. Do not interact with this dialog before the Office application launches.
 
 1. Stop Previewing Your Office Add-in.
 
@@ -124,7 +126,7 @@ If you have problems running the sample, take the following steps.
 - Close the previous web server started for the sample with the **Stop Previewing Your Office Add-in** Office Add-ins Development Kit extension option.
 - Try to run the sample again.
 
-If you still have problems, see [troubleshoot development errors](https://learn.microsoft.com//office/dev/add-ins/testing/troubleshoot-development-errors) or [create a GitHub issue](https://aka.ms/officedevkitnewissue) and we'll help you.
+If you still have problems, see [troubleshoot development errors](https://learn.microsoft.com/office/dev/add-ins/testing/troubleshoot-development-errors) or [create a GitHub issue](https://aka.ms/officedevkitnewissue) and we'll help you.
 
 For information on running the sample on Excel on the web, see [Sideload Office Add-ins to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing).
 
