@@ -19,13 +19,13 @@ description: 'Create a simple Excel add-in that displays hello world.'
 
 ## Summary
 
-Learn how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. This sample will help you understand the fundamental parts of an Office Add-in.
+Learn how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. This sample helps you understand the fundamental parts of an Office Add-in.
 
 ## Features
 
 - Display hello world in Excel.
 - Learn fundamentals of the manifest.
-- Use either the unified manifest for Microsoft 365 or the XML manifest.
+- Use either the XML manifest or the unified manifest for Microsoft 365.
 - Learn how to initialize the Office JavaScript API library.
 - Interact with document content through Office JavaScript APIs.
 
@@ -35,12 +35,12 @@ Learn how to build the simplest Office Add-in with only a manifest, HTML web pag
 
 ## Prerequisites
 
-- Microsoft 365 - You can get a free developer sandbox by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program#Subscription).
+- Microsoft 365 - Get a free developer sandbox by joining the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program#Subscription).
 - Office 2304 (Build 16320.20000) or later for unified manifest support.
 
 ## Understand an Office Add-in
 
-An Office Add-in is a web application that can extend Office with additional functionality for the user. For example, an add-in can add ribbon buttons, a task pane, or a content pane with the functionality you want. Because an Office Add-in is a web application you must provide a web server to host the files.
+An Office Add-in is a web application that extends Office with additional functionality for the user. For example, an add-in can add ribbon buttons, a task pane, or a content pane with the functionality you want. Because an Office Add-in is a web application, you must provide a web server to host the files.
 
 The sample contained in this folder is designed to run in Excel.
 
@@ -54,7 +54,7 @@ The manifest file describes your add-in to Office. It contains information such 
 
 ### Web app
 
-The hello world sample implements a task pane named **taskpane.html** that contains HTML and JavaScript. The **taskpane.html** file contains all the code necessary to display a task pane, interact with the user, and write "Hello world!" into cell 'A1' on the active Worksheet.
+The hello world sample implements a task pane named **taskpane.html** that contains HTML and JavaScript. The **taskpane.html** file contains all the code necessary to display a task pane, interact with the user, and write "Hello world!" into cell 'A1' on the active worksheet.
 
 ### Initialize the Office JavaScript API library
 
@@ -66,7 +66,7 @@ Office.onReady((info) => {});
 
 ### Write to the worksheet
 
-When the user chooses the **Say hello** button, the `sayHello()` function is called. This function then calls `Excel.run` to run code and call the Office JavaScript APIs. It uses a `context` object provided by the Office JS API library to get the active worksheet's `A1` range value and set the value to "Hello world!". Calling `context.sync()` runs the command.
+When the user selects the **Say hello** button, the `sayHello()` function is called. This function then calls `Excel.run` to run code and call the Office JavaScript APIs. It uses a `context` object provided by the Office JavaScript API library to get the active worksheet's `A1` range value and set the value to "Hello world!". Calling `context.sync()` runs the command.
 
 For more information see [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial)
 
@@ -102,7 +102,7 @@ There are two types of manifests for Office Add-ins. For more information about 
 
 ### Use the add-in only manifest
 
-#### Run the sample on Excel on the web
+#### Run the sample in Excel on the web
 
 An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The hello world sample is configured so that the files are hosted directly from this GitHub repo. Use the following steps to sideload the manifest.xml file to see the sample run.
 
@@ -123,7 +123,7 @@ An Office Add-in requires you to configure a web server to provide all the resou
 
 #### Run the sample in Excel on Windows or Mac
 
-Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links will take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the **manifest.xml** file for the Hello world sample. Then follow the sideloading instructions for your platform.
+Office Add-ins are cross-platform so you can also run them on Windows, Mac, and iPad. The following links take you to documentation for how to sideload on Windows, Mac, or iPad. Be sure you have a local copy of the **manifest.xml** file for the Hello world sample. Then follow the sideloading instructions for your platform.
 
 - [Sideload Office Add-ins for testing from a network share](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
 - [Sideload Office Add-ins on Mac for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac)
@@ -172,7 +172,7 @@ Now that your localhost web server is running, you can sideload the **manifest-l
 
 #### Run the sample with GitHub as host
 
-An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The Hello World sample is configured so that the files are hosted directly from this GitHub repo, so all you need to do is build the manifest and package, and then sideload the package.
+An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The hello world sample is configured so that the files are hosted directly from this GitHub repo, so all you need to do is build the manifest and package, and then sideload the package.
 
 1. Clone or download this sample to a folder on your computer. Then in a command prompt, bash shell, or **TERMINAL** in Visual Studio Code, navigate to the root of the sample folder.
 1. Run the command `npm install`.
@@ -181,8 +181,8 @@ An Office Add-in requires you to configure a web server to provide all the resou
 
 After a few seconds, desktop Excel opens, and after a few seconds more, a **Hello World** button appears on the right end of the **Home** ribbon.
 
-1. Choose the **Hello world** button to display the task pane of the add-in.
-1. Choose the **Say hello** button to insert "Hello world!" in cell A1.
+1. Select the **Hello world** button to display the task pane of the add-in.
+1. Select the **Say hello** button to insert "Hello world!" in cell A1.
 
 When you're finished working with the add-in, close Excel, and then in the window where you ran the three npm commands, run `npm run stop:prod`.
 
