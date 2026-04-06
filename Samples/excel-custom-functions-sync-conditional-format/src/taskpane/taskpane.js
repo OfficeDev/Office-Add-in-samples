@@ -13,12 +13,12 @@ async function run() {
   await Excel.run(async (context) => {
     const sheet = context.workbook.worksheets.getActiveWorksheet();
 
-    // A1:A2 — label and target threshold.
+    // Set up sample data in A1:A2.
     sheet.getRange("A1").values = [["Target"]];
     sheet.getRange("A2").values = [[70]];
     sheet.getRange("A1:A2").format.font.bold = true;
 
-    // B1:B8 — header and sample scores.
+    // Set up sample data in B1:B8.
     sheet.getRange("B1").values = [["Score"]];
     sheet.getRange("B1").format.font.bold = true;
     sheet.getRange("B2:B8").values = [[45], [82], [91], [60], [78], [55], [88]];
@@ -37,7 +37,7 @@ async function run() {
     await context.sync();
 
     document.getElementById("status").textContent =
-      "Done. Scores in B2:B8 that exceed the target in A2 are highlighted. Change A2 to see the conditional format update live.";
+      "Status: Done. Scores in B2:B8 that exceed the target in A2 are highlighted. Change A2 to see the conditional format update live.";
   });
 }
 

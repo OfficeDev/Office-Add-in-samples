@@ -21,9 +21,9 @@
         .ms-welcome__header { padding: 20px; padding-bottom: 30px; padding-top: 100px; display: flex; flex-direction: column; align-items: center; }
         .ms-welcome__main { display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; flex: 1 0 0; padding: 10px 20px; }
         .ms-welcome__main > h2 { width: 100%; text-align: center; }
-        .ms-welcome__action.ms-Button--hero { margin-top: 30px; }
-        .ms-Button.ms-Button--hero .ms-Button-label { color: #0078d7; }
-        .ms-Button.ms-Button--hero:hover .ms-Button-label, .ms-Button.ms-Button--hero:focus .ms-Button-label { color: #005a9e; cursor: pointer; }
+        .ms-font-m { margin-top: 15px; margin-bottom: 0px; }
+        .ms-Button { font-weight: bold; margin-top: 15px; color: #0078d7; }
+        .ms-Button:hover, .ms-Button:focus { color: #005a9e; cursor: pointer; }
     </style>
 </head>
 
@@ -35,11 +35,9 @@
     <main id="app-body" class="ms-welcome__main">
         <h2 class="ms-font-xl">Synchronous custom function with conditional formatting</h2>
         <p class="ms-font-m">See how a synchronous custom function powers a conditional format rule that highlights cells dynamically.</p>
-        <p class="ms-font-l">Select <b>Set up data and format</b>, then try changing the target in A2.</p>
-        <div role="button" id="run" class="ms-welcome__action ms-Button ms-Button--hero ms-font-xl">
-            <span class="ms-Button-label">Set up data and format</span>
-        </div>
-        <p><label id="status"></label></p>
+        <p class="ms-font-m">Set up the sample data and then try changing the target value in cell A2.</p>
+          <button role="button" id="run" class="ms-Button ms-Button-label ms-font-l">Set up data and format</button>
+        <p id="status"></p>
     </main>
 </body>
 
