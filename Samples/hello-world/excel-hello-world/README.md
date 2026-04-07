@@ -109,8 +109,8 @@ An Office Add-in requires you to configure a web server to provide all the resou
 1. Download the **manifest.xml** file from the sample folder for Excel.
 1. Open [Office on the web](https://office.live.com/).
 1. Choose **Excel**, and then open a new blank workbook.
-1. On the **Insert** tab on the ribbon in the **Add-ins** section, choose **Add-ins**.
-1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+1. On the **Home** tab on the ribbon in the **Add-ins** section, select **Add-ins** and then **Advanced...**.
+1. On the **Office Add-ins** dialog, select **Upload My Add-in**.
 
     ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../images/office-add-ins-excel-web.png)
 
