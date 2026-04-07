@@ -174,7 +174,7 @@ Now that your localhost web server is running, you can sideload the **manifest-l
 
 An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The hello world sample is configured so that the files are hosted directly from this GitHub repo, so all you need to do is build the manifest and package, and then sideload the package.
 
-1. Clone or download this sample to a folder on your computer. Then in a command prompt, bash shell, or **TERMINAL** in Visual Studio Code, navigate to the root of the sample folder.
+1. Clone or download this sample to a folder on your computer. Then in a command prompt, bash shell, or **TERMINAL** in Visual Studio Code, navigate to the root of the sample folder. Remember to copy the files in the **manifest-configurations/add-in-only** subfolder to the sample's root directory.
 1. Run the command `npm install`.
 1. Run the command `npm run build`.
 1. Run the command `npm run start:prod`.
