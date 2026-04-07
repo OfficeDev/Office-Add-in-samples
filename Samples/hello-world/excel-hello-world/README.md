@@ -107,8 +107,8 @@ There are two types of manifests for Office Add-ins. For more information about 
 An Office Add-in requires you to configure a web server to provide all the resources, such as HTML, image, and JavaScript files. The hello world sample is configured so that the files are hosted directly from this GitHub repo. Use the following steps to sideload the manifest.xml file to see the sample run.
 
 1. Download the **manifest.xml** file from the sample folder for Excel.
-1. Open [Office on the web](https://office.live.com/).
-1. Choose **Excel**, and then open a new blank workbook.
+1. Open [Excel on the web](https://excel.cloud.microsoft/).
+1. Open a new blank workbook.
 1. On the **Home** tab on the ribbon in the **Add-ins** section, select **Add-ins** and then **Advanced...**.
 1. On the **Office Add-ins** dialog, select **Upload My Add-in**.
 
