@@ -64,4 +64,8 @@
   "browserslist": [
     "ie 11"
   ]
+,
+  "overrides": {
+    "tmp": "^0.2.5"
+  }
 }

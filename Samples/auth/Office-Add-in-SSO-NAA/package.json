@@ -63,4 +63,8 @@
     "last 2 versions",
     "ie 11"
   ]
+,
+  "overrides": {
+    "tmp": "^0.2.5"
+  }
 }
