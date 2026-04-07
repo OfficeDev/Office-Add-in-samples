@@ -55,9 +55,9 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.2.1"
   },
-  "prettier": "office-addin-prettier-config"
-,
+  "prettier": "office-addin-prettier-config",
   "overrides": {
-    "tmp": "^0.2.5"
+    "tmp": "^0.2.5",
+    "serialize-javascript": "^7.0.5"
   }
 }

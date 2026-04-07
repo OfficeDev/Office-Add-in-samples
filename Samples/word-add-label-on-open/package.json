@@ -61,6 +61,7 @@
     "ie 11"
   ],
   "overrides": {
-    "tmp": "^0.2.3"
+    "tmp": "^0.2.3",
+    "serialize-javascript": "^7.0.5"
   }
 }

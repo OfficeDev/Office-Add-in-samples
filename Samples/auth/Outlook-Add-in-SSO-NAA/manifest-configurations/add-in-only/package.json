@@ -62,5 +62,8 @@
   "prettier": "office-addin-prettier-config",
   "browserslist": [
     "ie 11"
-  ]
+  ],
+  "overrides": {
+    "serialize-javascript": "^7.0.5"
+  }
 }
