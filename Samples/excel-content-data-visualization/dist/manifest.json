@@ -59,7 +59,7 @@
         {
           "id": "ContentRuntime",
           "code": {
-            "page": "https://officedev.github.io/Office-Add-in-samples/Samples/excel-content-data-visualization/dist/home.html"
+            "page": "https://localhost:3000/home.html"
           },
           "requestedWidth": 400,
           "requestedHeight": 400,

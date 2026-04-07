@@ -26,7 +26,7 @@
         {
             "type": "Image",
             "order": 100,
-            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/excel-content-data-visualization/images/excel-content-add-in-show-data-visualization.png",
+            "url": "https://raw.githubusercontent.com/OfficeDev/Office-Add-in-samples/main/Samples/excel-content-data-visualization/resources/excel-content-add-in-show-data-visualization.png",
             "alt": "The content add-in with data visualization in Excel."
           }
       ],
