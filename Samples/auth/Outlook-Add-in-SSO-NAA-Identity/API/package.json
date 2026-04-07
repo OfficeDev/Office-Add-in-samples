@@ -25,5 +25,9 @@
   "devDependencies": {
     "copy-webpack-plugin": "^14.0.0",
     "office-addin-dev-certs": "^2.0.3"
+  },
+  "overrides": {
+    "minimatch": "^10.2.5",
+    "lodash": "^4.18.1"
   }
 }

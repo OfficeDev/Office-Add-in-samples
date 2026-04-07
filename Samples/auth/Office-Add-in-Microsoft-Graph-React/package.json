@@ -53,4 +53,8 @@
         "webpack-dev-server": "^5.2.2",
         "webpack-merge": "^5.10.0"
     }
+,
+  "overrides": {
+    "tmp": "^0.2.5"
+  }
 }
