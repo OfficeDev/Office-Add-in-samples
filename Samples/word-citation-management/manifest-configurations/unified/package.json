@@ -71,7 +71,7 @@
     "fast-xml-parser": "^5.0.0",
     "form-data": "^4.0.5",
     "node-forge": "^1.4.0",
-    "validator": "^13.15.0",
+    "validator": "^13.15.35",
     "flatted": "^3.4.2",
     "tar-fs": "^3.0.0",
     "@xmldom/xmldom": "^0.9.0",
