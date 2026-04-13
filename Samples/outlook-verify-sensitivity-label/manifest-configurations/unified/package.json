@@ -60,6 +60,23 @@
     "ie 11"
   ],
   "overrides": {
-    "tmp": "^0.2.3"
+    "tmp": "^0.2.5",
+    "serialize-javascript": "^7.0.5",
+    "handlebars": "^4.7.9",
+    "fast-xml-parser": "^5.0.0",
+    "form-data": "^4.0.5",
+    "node-forge": "^1.4.0",
+    "validator": "^13.15.0",
+    "flatted": "^3.4.2",
+    "tar-fs": "^3.0.0",
+    "@xmldom/xmldom": "^0.9.0",
+    "jws": "^4.0.1",
+    "minimatch": "^10.0.0",
+    "lodash": "^4.18.1",
+    "qs": "^6.15.0",
+    "picomatch": "^4.0.4",
+    "js-yaml": "^4.1.1",
+    "glob": "^11.0.0",
+    "axios": "^1.15.0"
   }
 }
