@@ -76,8 +76,8 @@ is_expected_failure() {
   local expected_count=$(jq -r '.expectedFailures | length' "$CONFIG_FILE")
 
   for ((i=0; i<expected_count; i++)); do
-    local expected_path=$(jq -r ".expectedFailures[$i].path" "$CONFIG_FILE")
-    if [[ "$sample_path" == *"$expected_path" ]]; then
+    local pattern=$(jq -r ".expectedFailures[$i].pattern // .expectedFailures[$i].path" "$CONFIG_FILE")
+    if [[ "$sample_path" == *"$pattern"* ]]; then
       return 0
     fi
   done
@@ -91,8 +91,8 @@ get_expected_failure_reason() {
   local expected_count=$(jq -r '.expectedFailures | length' "$CONFIG_FILE")
 
   for ((i=0; i<expected_count; i++)); do
-    local expected_path=$(jq -r ".expectedFailures[$i].path" "$CONFIG_FILE")
-    if [[ "$sample_path" == *"$expected_path" ]]; then
+    local pattern=$(jq -r ".expectedFailures[$i].pattern // .expectedFailures[$i].path" "$CONFIG_FILE")
+    if [[ "$sample_path" == *"$pattern"* ]]; then
       jq -r ".expectedFailures[$i].reason" "$CONFIG_FILE"
       return
     fi
