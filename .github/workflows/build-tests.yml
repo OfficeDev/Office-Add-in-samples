@@ -6,12 +6,8 @@ on:
     branches:
       - main
     paths:
-      - 'Samples/**/*.ts'
-      - 'Samples/**/*.js'
-      - 'Samples/**/package.json'
-      - 'Samples/**/package-lock.json'
-      - 'Samples/**/webpack.config.js'
-      - 'Samples/**/tsconfig.json'
+      - 'Samples/**'
+      - '!Samples/**/*.md'
       - '.github/workflows/build-tests.yml'
       - 'scripts/test-builds.sh'
       - 'scripts/build-test-config.json'
@@ -35,10 +31,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-          cache-dependency-path: 'Samples/**/package-lock.json'
 
-      - name: Enhance npm cache with restore-keys
+      - name: Cache npm downloads
         uses: actions/cache@v4
         with:
           path: ~/.npm

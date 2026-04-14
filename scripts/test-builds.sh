@@ -136,16 +136,11 @@ test_sample() {
     FAILED=$((FAILED + 1))
     FAILED_SAMPLES+=("$relative_path (npm ci failed)")
 
-    if is_expected_failure "$relative_path"; then
-      EXPECTED_FAILURES=$((EXPECTED_FAILURES + 1))
-      EXPECTED_FAILURE_SAMPLES+=("$relative_path")
-      reason=$(get_expected_failure_reason "$relative_path")
-      echo -e "  ${YELLOW}  (Expected failure: $reason)${NC}"
-    else
-      UNEXPECTED_FAILURES=$((UNEXPECTED_FAILURES + 1))
-      UNEXPECTED_FAILURE_SAMPLES+=("$relative_path")
-      echo -e "  ${RED}  ⚠ UNEXPECTED FAILURE${NC}"
-    fi
+    # npm ci failures are always unexpected (not build failures)
+    # expectedFailures are for build-time webpack issues, not install issues
+    UNEXPECTED_FAILURES=$((UNEXPECTED_FAILURES + 1))
+    UNEXPECTED_FAILURE_SAMPLES+=("$relative_path")
+    echo -e "  ${RED}  ⚠ UNEXPECTED FAILURE - install should not fail${NC}"
 
     cd "$BASE_DIR"
     return
@@ -223,7 +218,7 @@ while IFS= read -r -d '' package_file; do
   if [[ "$sample_dir" != *"node_modules"* ]]; then
     SAMPLE_DIRS+=("$sample_dir")
   fi
-done < <(find "$SAMPLES_DIR" -name "package.json" -type f -print0 | sort -z)
+done < <(find "$SAMPLES_DIR" -name "package.json" -type f -print0)
 
 echo "Found ${#SAMPLE_DIRS[@]} samples to test"
 echo ""

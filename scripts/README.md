@@ -290,7 +290,6 @@ cat build-logs/Samples_excel-data-types-explorer.log
 
 **Timeout problems:**
 
-- Per-sample timeout: 5 minutes (in script).
 - Workflow timeout: 60 minutes.
 - Adjust in `.github/workflows/build-tests.yml` if needed.
 
@@ -319,7 +318,7 @@ cat build-logs/Samples_excel-data-types-explorer.log
 
 - npm cache reuses downloads across samples
 - Parallel matrix testing (three jobs run simultaneously)
-- Individual logs only for failed builds
+- Individual logs capture install/build output for all samples
 
 ---
 
