@@ -1,133 +1,212 @@
-# Build Test Scripts
+# Build Test Suite
 
-This directory contains scripts for testing Office Add-in sample builds.
+Automated build testing for all 69+ Office Add-in samples. Tests run on every PR to main, catching build regressions before merge.
 
-## Files
+---
 
-### `test-builds.sh`
+## Quick Start
 
-Main test script that builds all samples with package.json files.
+### For PR Authors
 
-**Features:**
-- Tests all 69+ samples (including nested manifest-configurations)
+**Your PR will be automatically tested if it changes:**
+- TypeScript or JavaScript files in `Samples/**`
+- package.json or package-lock.json files
+- Webpack or TypeScript configurations
+- The build test workflow itself
+
+**What happens:**
+1. Tests run against Node.js 20, 22, and 24 (parallel)
+2. Bot posts results to your PR (~15-20 minutes)
+3. ✅ Green check = All builds passed or failed as expected
+4. ❌ Red X = Unexpected build failure - needs fixing
+
+**If tests fail:**
+1. Check bot comment for which samples failed
+2. Download artifacts for detailed error logs
+3. Test locally: `cd Samples/<sample> && npm ci && npm run build`
+4. Fix issues and push
+
+### For Maintainers
+
+**New samples:** Automatically detected and tested - no configuration needed!
+
+**Sample has known build issues:** Add to `build-test-config.json` → `expectedFailures`
+
+**Sample should be skipped:** Add to `build-test-config.json` → `skip`
+
+---
+
+## What Gets Tested
+
+### ✅ Included
+- All root samples (e.g., `Samples/excel-data-types-explorer/`)
+- All nested manifest-configurations
+- Samples with `build` or `build:dev` npm scripts
+- Both build scripts if they exist and are different
+
+### ⊘ Excluded
+- .NET Blazor samples (require dotnet SDK, not Node.js)
+- Samples without package.json
+- Samples without build scripts
+- node_modules directories
+
+---
+
+## Expected Failures
+
+These samples have **known build issues** and are tracked but don't fail the workflow:
+
+1. **Office-Add-in-SSO-NAA/manifest-configurations/unified**
+   - Webpack config references `./src/taskpane` files that don't exist in nested directory
+
+2. **Excel.OfflineStorageAddin/manifest-configurations/add-in-only**
+   - Same webpack path issue
+
+3. **word-citation-management/manifest-configurations/unified**
+   - Same webpack path issue
+
+These are still tested so we know immediately if they get fixed.
+
+---
+
+## Understanding Results
+
+### ✅ Pass Criteria
+- `npm ci` succeeds (clean dependency install)
+- `npm run build:dev` succeeds (if script exists)
+- `npm run build` succeeds (if script exists and different)
+
+### ❌ Failure Types
+
+**Expected failure:**
+- Sample is in known failures list
+- Still tested to track if fixed
+- **Does NOT fail workflow**
+
+**Unexpected failure:**
+- Sample built successfully before but now fails
+- **FAILS workflow**
+- Requires investigation and fixing
+
+### 📊 PR Check Status
+
+- **✅ Green**: All builds passed or failed as expected
+- **❌ Red**: One or more unexpected failures
+- **💬 Comment**: Bot posts detailed summary
+
+---
+
+## Viewing Results
+
+### In PR Comments
+
+Bot automatically posts:
+- Total samples tested
+- Pass/fail counts
+- List of unexpected failures (if any)
+- Collapsible list of passed samples
+
+### In GitHub Actions
+
+1. Click "Details" next to the check
+2. View console output for each Node.js version
+3. Download artifacts (30-day retention):
+   - `build-test-results.json` - Machine-readable results
+   - `build-test-summary.md` - Human-readable summary
+   - `build-logs/` - Individual logs for each sample
+
+### Example Results
+
+**build-test-results.json:**
+```json
+{
+  "timestamp": "2026-04-14T17:30:00Z",
+  "node_version": "v24.0.0",
+  "total": 69,
+  "passed": 65,
+  "failed": 3,
+  "expected_failures": 3,
+  "unexpected_failures": 0,
+  "skipped": 1
+}
+```
+
+---
+
+## Configuration
+
+### Files in This Directory
+
+**`test-builds.sh`** - Main test script
+- Tests all 69+ samples
 - Tracks expected vs unexpected failures
 - Generates JSON and Markdown reports
 - Creates detailed logs for each sample
-- Handles different build script variations (build, build:dev)
 
-**Usage:**
+**`build-test-config.json`** - Configuration
+- `skip`: Samples to exclude from testing
+- `expectedFailures`: Known issues that don't fail workflow
 
-```bash
-# Run locally
-./scripts/test-builds.sh
+### Configuration Examples
 
-# Run with specific Node version
-nvm use 20
-./scripts/test-builds.sh
-```
-
-**Output files:**
-- `build-test-results.json` - Detailed results in JSON format
-- `build-test-summary.md` - Human-readable summary
-- `build-logs/` - Individual log files for each sample
-
-### `build-test-config.json`
-
-Configuration file that defines:
-
-- **skip**: Samples that should not be tested (e.g., .NET Blazor samples)
-- **expectedFailures**: Samples with known build issues that are tracked but don't fail the workflow
-
-**Example:**
-
+**Skip a sample:**
 ```json
 {
   "skip": [
     {
       "path": "Samples/blazor-add-in",
-      "reason": ".NET Blazor samples require different build tooling",
+      "reason": ".NET Blazor samples require dotnet SDK",
       "pattern": "blazor-add-in"
-    }
-  ],
-  "expectedFailures": [
-    {
-      "path": "Samples/auth/Office-Add-in-SSO-NAA/manifest-configurations/unified",
-      "reason": "Webpack config references ./src/taskpane files that don't exist in nested config directory",
-      "issue": "Pre-existing configuration issue"
     }
   ]
 }
 ```
 
-## GitHub Actions Workflow
+**Add expected failure:**
+```json
+{
+  "expectedFailures": [
+    {
+      "path": "Samples/your-sample-name",
+      "reason": "Brief description of why it fails",
+      "issue": "GitHub issue link or more details"
+    }
+  ]
+}
+```
 
-The build tests run automatically on:
-- **Pull requests to main** - Tests all samples
-- **Manual trigger** - Via workflow_dispatch
+---
 
-### Workflow Features
+## Adding New Samples
 
-1. **Matrix testing**: Tests against Node.js 20, 22, and 24
-2. **Smart caching**: Caches npm downloads with restore-keys for partial hits
-3. **Artifact upload**: Saves test results and logs for 30 days
-4. **PR comments**: Posts results summary to pull requests
-5. **Expected failure handling**: Only fails on unexpected failures
+**Most samples (90%):** No action needed - automatically detected and tested!
 
-### Viewing Results
-
-**In GitHub Actions:**
-1. Go to Actions tab
-2. Select "Build Tests" workflow
-3. View run results and download artifacts
-
-**In Pull Requests:**
-- Bot automatically comments with test summary
-- Click "Details" on the check to see full logs
-
-## Adding New Expected Failures
-
-If a sample has a known build issue:
-
+**Sample has known build issue:**
 1. Edit `scripts/build-test-config.json`
-2. Add entry to `expectedFailures` array:
-   ```json
-   {
-     "path": "Samples/your-sample-path",
-     "reason": "Brief description of why it fails",
-     "issue": "GitHub issue link or more details"
-   }
-   ```
-3. Commit the change
+2. Add to `expectedFailures` array
+3. Commit with your PR
 
-The sample will still be tested, but won't fail the workflow.
-
-## Skipping Samples
-
-To skip a sample entirely (e.g., different tech stack):
-
+**Sample uses different tech stack:**
 1. Edit `scripts/build-test-config.json`
-2. Add entry to `skip` array:
-   ```json
-   {
-     "path": "Samples/sample-to-skip",
-     "reason": "Why it should be skipped",
-     "pattern": "pattern-to-match"
-   }
-   ```
+2. Add to `skip` array
+3. Commit with your PR
 
-## Troubleshooting
+See the main repository for detailed examples.
+
+---
+
+## Local Testing
 
 ### Prerequisites
 
-The test script requires:
 - **Node.js** (version 20, 22, or 24)
-- **jq** - JSON processor for parsing configuration files
+- **jq** - JSON processor
   - Ubuntu/Debian: `sudo apt-get install jq`
   - macOS: `brew install jq`
   - Windows: Download from https://jqlang.github.io/jq/download/
-  - GitHub Actions: Pre-installed on ubuntu-latest runners ✅
+  - GitHub Actions: Pre-installed ✅
 
-### Local testing
+### Run Tests
 
 ```bash
 # Check prerequisites
@@ -147,45 +226,110 @@ npm run build
 cat build-logs/Samples_excel-data-types-explorer.log
 ```
 
-### CI/CD issues
+---
+
+## Troubleshooting
+
+### Common Build Failures
+
+**TypeScript errors:**
+- Fix type errors in your code
+- Check tsconfig.json configuration
+
+**Missing dependencies:**
+- Verify package.json is correct
+- Run `npm ci` to ensure clean install
+
+**Webpack errors:**
+- Check webpack.config.js
+- Verify entry points exist
+
+**Import errors:**
+- Check file paths are correct
+- Ensure imports match file structure
+
+### CI/CD Issues
 
 **Cache problems:**
 - Workflow uses restore-keys for partial cache hits
 - Cache key includes Node version and all package-lock.json hashes
-- Manual cache clearing: Re-run workflow with "Re-run all jobs"
+- Clear cache: Re-run workflow with "Re-run all jobs"
 
 **Timeout issues:**
 - Per-sample timeout: 5 minutes (in script)
-- Workflow timeout: 60 minutes (in workflow file)
+- Workflow timeout: 60 minutes
 - Adjust in `.github/workflows/build-tests.yml` if needed
 
 **Node version issues:**
 - Matrix tests Node 20, 22, 24
-- Remove versions from matrix if not needed
-- Ensure sample package.json has compatible engine requirements
+- Ensure package.json has compatible engine requirements
 
-## Maintenance
-
-### Regular tasks
-
-- **Review expected failures monthly** - Check if issues are resolved
-- **Update Node versions** - Add new LTS versions to matrix
-- **Monitor build times** - Optimize slow samples if needed
-
-### After adding new samples
-
-New samples are automatically detected and tested. No configuration needed unless:
-- Sample uses different tech stack → Add to `skip`
-- Sample has known build issue → Add to `expectedFailures`
+---
 
 ## Performance
 
 **Typical run times:**
-- Full test suite (69 samples): ~15-25 minutes
-- With cache hit: ~10-15 minutes
+- Per PR: ~15-20 minutes (3 Node versions in parallel)
+- Per Node version: ~10-15 minutes
+- With cache hit: ~8-12 minutes
 - Single sample: ~15-30 seconds
 
-**Optimization tips:**
+**Cost:**
+- Free for public repos ✅
+- ~40-60 minutes of GitHub Actions time per PR
+
+**Optimization:**
 - npm cache reuses downloads across samples
-- Parallel matrix testing (3 jobs) runs simultaneously
-- Logs only kept for failed builds (configurable)
+- Parallel matrix testing (3 jobs run simultaneously)
+- Individual logs only for failed builds
+
+---
+
+## Maintenance
+
+### Regular Tasks
+
+- **Monthly**: Review expected failures - remove if fixed
+- **Quarterly**: Update Node versions in matrix
+- **As needed**: Optimize slow samples
+
+### Workflow Features
+
+- **Matrix testing**: Node.js 20, 22, 24
+- **Smart caching**: npm downloads with restore-keys
+- **Artifact upload**: Results and logs (30-day retention)
+- **PR comments**: Auto-posted summaries
+- **Expected failures**: Tracked separately from real failures
+
+---
+
+## FAQ
+
+**Q: Can I run tests locally?**
+A: Yes! `./scripts/test-builds.sh` (requires Node.js and jq)
+
+**Q: Why test multiple Node versions?**
+A: Catches compatibility issues. Different versions may have different build behavior.
+
+**Q: What if my sample doesn't have a build script?**
+A: It will be skipped automatically. Add a build script if needed.
+
+**Q: Can I skip my sample temporarily?**
+A: Yes, add to `skip` in `scripts/build-test-config.json` with a reason.
+
+**Q: Tests are too slow in my PR**
+A: Tests only run on file changes in `Samples/**`. Unrelated changes won't trigger tests.
+
+**Q: How do I re-run failed tests?**
+A: Click "Re-run failed jobs" in GitHub Actions, or push a new commit.
+
+**Q: What if an expected failure now passes?**
+A: 🎉 Great! Remove it from `expectedFailures` in the config.
+
+---
+
+## Support
+
+- **Test suite issues**: Open issue with `ci/cd` label
+- **Sample-specific issues**: Open issue referencing sample name
+- **Questions**: Ask in PR comments or check this README
