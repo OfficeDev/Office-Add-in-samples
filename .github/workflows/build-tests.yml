@@ -1,0 +1,138 @@
+name: Build Tests
+run-name: Build and compile all Office Add-in samples
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'Samples/**/*.ts'
+      - 'Samples/**/*.js'
+      - 'Samples/**/package.json'
+      - 'Samples/**/package-lock.json'
+      - 'Samples/**/webpack.config.js'
+      - 'Samples/**/tsconfig.json'
+      - '.github/workflows/build-tests.yml'
+      - 'scripts/test-builds.sh'
+      - 'scripts/build-test-config.json'
+  workflow_dispatch:
+
+jobs:
+  build-tests:
+    name: Test builds (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ['20', '22', '24']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: 'Samples/**/package-lock.json'
+
+      - name: Enhance npm cache with restore-keys
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            npm-${{ runner.os }}-${{ matrix.node-version }}-
+            npm-${{ runner.os }}-
+
+      - name: Make test script executable
+        run: chmod +x ./scripts/test-builds.sh
+
+      - name: Run build tests
+        id: build-tests
+        run: ./scripts/test-builds.sh
+        continue-on-error: true
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-test-results-node-${{ matrix.node-version }}
+          path: |
+            build-test-results.json
+            build-test-summary.md
+            build-logs/
+          retention-days: 30
+
+      - name: Comment PR with results
+        if: always() && github.event_name == 'pull_request' && matrix.node-version == '24'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            // Read test results
+            let summary = 'Build test results not found';
+            try {
+              summary = fs.readFileSync('build-test-summary.md', 'utf8');
+            } catch (error) {
+              summary = '⚠️ Failed to read test results';
+            }
+
+            // Post comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            // Find existing bot comment
+            const botComment = comments.find(comment =>
+              comment.user.type === 'Bot' &&
+              comment.body.includes('Build Test Results')
+            );
+
+            const commentBody = `## Build Test Results (Node.js ${{ matrix.node-version }})\n\n${summary}`;
+
+            if (botComment) {
+              // Update existing comment
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body: commentBody
+              });
+            } else {
+              // Create new comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: commentBody
+              });
+            }
+
+      - name: Check test results
+        if: always()
+        run: |
+          # Exit with error if tests failed (after uploading artifacts and commenting)
+          if [ -f "build-test-results.json" ]; then
+            failed=$(jq -r '.failed' build-test-results.json)
+            unexpected_failures=$(jq -r '.unexpected_failures' build-test-results.json)
+
+            echo "Failed builds: $failed"
+            echo "Unexpected failures: $unexpected_failures"
+
+            if [ "$unexpected_failures" -gt 0 ]; then
+              echo "❌ $unexpected_failures unexpected build failure(s) detected"
+              exit 1
+            else
+              echo "✅ All builds passed or failed as expected"
+              exit 0
+            fi
+          else
+            echo "❌ Test results file not found"
+            exit 1
+          fi

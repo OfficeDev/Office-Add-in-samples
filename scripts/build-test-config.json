@@ -1,0 +1,31 @@
+{
+  "description": "Configuration for build tests - defines expected failures and samples to skip",
+  "skip": [
+    {
+      "path": "Samples/blazor-add-in",
+      "reason": ".NET Blazor samples require different build tooling (dotnet SDK)",
+      "pattern": "blazor-add-in"
+    }
+  ],
+  "expectedFailures": [
+    {
+      "path": "Samples/auth/Office-Add-in-SSO-NAA/manifest-configurations/unified",
+      "reason": "Webpack config references ./src/taskpane files that don't exist in nested config directory",
+      "issue": "Pre-existing configuration issue - source files are in parent directory"
+    },
+    {
+      "path": "Samples/Excel.OfflineStorageAddin/manifest-configurations/add-in-only",
+      "reason": "Webpack config references ./src/taskpane files that don't exist in nested config directory",
+      "issue": "Pre-existing configuration issue - source files are in parent directory"
+    },
+    {
+      "path": "Samples/word-citation-management/manifest-configurations/unified",
+      "reason": "Webpack config references ./src/taskpane files that don't exist in nested config directory",
+      "issue": "Pre-existing configuration issue - source files are in parent directory"
+    }
+  ],
+  "notes": [
+    "expectedFailures: Builds that are known to fail but should still be tested to detect if they get fixed",
+    "skip: Samples that should not be tested at all (different tech stack, etc.)"
+  ]
+}
