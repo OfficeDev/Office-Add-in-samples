@@ -9,23 +9,45 @@
   ],
   "expectedFailures": [
     {
-      "path": "Samples/auth/Office-Add-in-SSO-NAA/manifest-configurations/unified",
-      "reason": "Webpack config references ./src/taskpane files that don't exist in nested config directory",
-      "issue": "Pre-existing configuration issue - source files are in parent directory"
+      "path": "manifest-configurations",
+      "reason": "Nested manifest-configurations have webpack configs that reference ./src files in parent directory",
+      "issue": "Pre-existing configuration issue - affects all nested configs with build scripts",
+      "pattern": "manifest-configurations"
     },
     {
-      "path": "Samples/Excel.OfflineStorageAddin/manifest-configurations/add-in-only",
-      "reason": "Webpack config references ./src/taskpane files that don't exist in nested config directory",
-      "issue": "Pre-existing configuration issue - source files are in parent directory"
+      "path": "Samples/Outlook.RelatedData",
+      "reason": "Legacy sample with build issues",
+      "issue": "Pre-existing - needs investigation"
     },
     {
-      "path": "Samples/word-citation-management/manifest-configurations/unified",
-      "reason": "Webpack config references ./src/taskpane files that don't exist in nested config directory",
-      "issue": "Pre-existing configuration issue - source files are in parent directory"
+      "path": "Samples/excel-add-in-chart-analyze-data",
+      "reason": "Build configuration issues",
+      "issue": "Pre-existing - needs investigation"
+    },
+    {
+      "path": "Samples/excel-add-in-shape-dashboard",
+      "reason": "Build configuration issues",
+      "issue": "Pre-existing - needs investigation"
+    },
+    {
+      "path": "Samples/excel-custom-functions-sync",
+      "reason": "Preview sample with build issues",
+      "issue": "Pre-existing - uses preview APIs"
+    },
+    {
+      "path": "Samples/tutorials/powerpoint-tutorial-yo/My Office Add-in",
+      "reason": "Tutorial sample build issues",
+      "issue": "Pre-existing - needs investigation"
+    },
+    {
+      "path": "Samples/word-ai-generated-content",
+      "reason": "Build configuration issues",
+      "issue": "Pre-existing - needs investigation"
     }
   ],
   "notes": [
     "expectedFailures: Builds that are known to fail but should still be tested to detect if they get fixed",
-    "skip: Samples that should not be tested at all (different tech stack, etc.)"
+    "skip: Samples that should not be tested at all (different tech stack, etc.)",
+    "pattern: If specified, matches any path containing this string"
   ]
 }

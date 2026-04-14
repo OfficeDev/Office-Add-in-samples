@@ -4,3 +4,8 @@
 CLAUDE.md
 node_modules/
 dist/
+
+# Build test outputs
+build-logs/
+build-test-results.json
+build-test-summary.md
