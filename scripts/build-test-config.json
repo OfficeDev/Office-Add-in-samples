@@ -5,28 +5,17 @@
       "path": "Samples/blazor-add-in",
       "reason": ".NET Blazor samples require different build tooling (dotnet SDK)",
       "pattern": "blazor-add-in"
+    },
+    {
+      "path": "manifest-configurations",
+      "reason": "Nested manifest-configurations are not meant to be built in place - files should be copied to parent directory",
+      "pattern": "manifest-configurations"
     }
   ],
   "expectedFailures": [
     {
-      "path": "manifest-configurations",
-      "reason": "Nested manifest-configurations have webpack configs that reference ./src files in parent directory",
-      "issue": "Pre-existing configuration issue - affects all nested configs with build scripts",
-      "pattern": "manifest-configurations"
-    },
-    {
       "path": "Samples/Outlook.RelatedData",
       "reason": "Legacy sample with build issues",
-      "issue": "Pre-existing - needs investigation"
-    },
-    {
-      "path": "Samples/excel-add-in-chart-analyze-data",
-      "reason": "Build configuration issues",
-      "issue": "Pre-existing - needs investigation"
-    },
-    {
-      "path": "Samples/excel-add-in-shape-dashboard",
-      "reason": "Build configuration issues",
       "issue": "Pre-existing - needs investigation"
     },
     {
@@ -37,11 +26,6 @@
     {
       "path": "Samples/tutorials/powerpoint-tutorial-yo/My Office Add-in",
       "reason": "Tutorial sample build issues",
-      "issue": "Pre-existing - needs investigation"
-    },
-    {
-      "path": "Samples/word-ai-generated-content",
-      "reason": "Build configuration issues",
       "issue": "Pre-existing - needs investigation"
     }
   ],

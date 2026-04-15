@@ -214,11 +214,8 @@ echo -e "${BLUE}Finding all samples with package.json...${NC}"
 SAMPLE_DIRS=()
 while IFS= read -r -d '' package_file; do
   sample_dir=$(dirname "$package_file")
-  # Skip node_modules
-  if [[ "$sample_dir" != *"node_modules"* ]]; then
-    SAMPLE_DIRS+=("$sample_dir")
-  fi
-done < <(find "$SAMPLES_DIR" -name "package.json" -type f -print0)
+  SAMPLE_DIRS+=("$sample_dir")
+done < <(find "$SAMPLES_DIR" -name "node_modules" -prune -o -name "package.json" -type f -print0)
 
 echo "Found ${#SAMPLE_DIRS[@]} samples to test"
 echo ""
