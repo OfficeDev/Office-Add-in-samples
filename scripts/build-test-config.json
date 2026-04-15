@@ -18,6 +18,18 @@
     {
       "path": "Samples/excel-custom-functions-sync",
       "reason": "Preview sample missing package-lock.json file"
+    },
+    {
+      "path": "Samples/excel-add-in-shape-dashboard",
+      "reason": "Sample missing package-lock.json file"
+    },
+    {
+      "path": "Samples/excel-add-in-chart-analyze-data",
+      "reason": "Sample missing package-lock.json file"
+    },
+    {
+      "path": "Samples/word-ai-generated-content",
+      "reason": "Sample missing package-lock.json file"
     }
   ],
   "expectedFailures": [],
