@@ -12,8 +12,32 @@
       "pattern": "manifest-configurations"
     },
     {
+      "path": "Samples/Excel.JsonToOfficeTable",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
+      "path": "Samples/Excel.TableBindingFormatting",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
+      "path": "Samples/Outlook.ConsumeGraphAPI",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
+      "path": "Samples/Outlook.MailCRM",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
       "path": "Samples/Outlook.RelatedData",
-      "reason": "Legacy sample missing package-lock.json file"
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
+      "path": "Samples/Outlook.UpsPackageTracker",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
+      "path": "Samples/Outlook.YouTubeApp",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
     },
     {
       "path": "Samples/excel-custom-functions-sync",
