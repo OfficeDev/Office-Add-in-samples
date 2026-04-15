@@ -10,19 +10,17 @@
       "path": "manifest-configurations",
       "reason": "Nested manifest-configurations are not meant to be built in place - files should be copied to parent directory",
       "pattern": "manifest-configurations"
-    }
-  ],
-  "expectedFailures": [
+    },
     {
       "path": "Samples/Outlook.RelatedData",
-      "reason": "Legacy sample with build issues",
-      "issue": "Pre-existing - needs investigation"
+      "reason": "Legacy sample missing package-lock.json file"
     },
     {
       "path": "Samples/excel-custom-functions-sync",
-      "reason": "Preview sample with build issues",
-      "issue": "Pre-existing - uses preview APIs"
-    },
+      "reason": "Preview sample missing package-lock.json file"
+    }
+  ],
+  "expectedFailures": [
     {
       "path": "Samples/tutorials/powerpoint-tutorial-yo/My Office Add-in",
       "reason": "Tutorial sample build issues",
