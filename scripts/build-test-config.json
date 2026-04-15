@@ -20,13 +20,7 @@
       "reason": "Preview sample missing package-lock.json file"
     }
   ],
-  "expectedFailures": [
-    {
-      "path": "Samples/tutorials/powerpoint-tutorial-yo/My Office Add-in",
-      "reason": "Tutorial sample build issues",
-      "issue": "Pre-existing - needs investigation"
-    }
-  ],
+  "expectedFailures": [],
   "notes": [
     "expectedFailures: Builds that are known to fail but should still be tested to detect if they get fixed",
     "skip: Samples that should not be tested at all (different tech stack, etc.)",
