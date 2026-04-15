@@ -63,6 +63,22 @@ Learn the basics of implementing a first-run experience | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0 | 9-5-2024 | Initial release
+1.1 | 2-11-2026 | Added support for the unified manifest for Microsoft 365
+
+## Choose a manifest type
+
+By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest for Microsoft 365. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the add-in only manifest, skip ahead to the [Run the sample](#run-the-sample) section.
+
+> [!NOTE]
+> To run the sample in Outlook on Mac, use the add-in only manifest. For more information on manifests and their supported platforms, see [Office Add-in manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests).
+
+### To switch to the unified manifest for Microsoft 365
+
+Copy all the files from the **manifest-configurations/unified** subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.xml** file from the root folder, so only files needed for the unified manifest are present. Then, [run the sample](#run-the-sample).
+
+### To switch back to the add-in only manifest
+
+To switch back to the add-in only manifest, copy the files from the **manifest-configurations/add-in-only** subfolder to the sample's root folder. We recommend that you delete the **manifest.json** file from the root folder.
 
 ## Run the sample
 
@@ -114,7 +130,7 @@ The version of this sample that you create step-by-step is found in the [Build a
 
 ## Copyright
 
-Copyright (c) 2024 Microsoft Corporation. All rights reserved.
+Copyright (c) Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 

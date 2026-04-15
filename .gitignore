@@ -1,2 +1,6 @@
 *.DS_Store
 .vscode/
+.claude/
+CLAUDE.md
+node_modules/
+dist/

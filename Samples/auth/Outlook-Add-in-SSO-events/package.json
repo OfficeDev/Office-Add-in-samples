@@ -25,5 +25,9 @@
   },
   "devDependencies": {
     "office-addin-dev-certs": "1.12.2"
+  },
+  "overrides": {
+    "minimatch": "^10.2.5",
+    "lodash": "^4.18.1"
   }
 }

@@ -28,7 +28,7 @@
   "devDependencies": {
     "@types/office-js": "^1.0.302",
     "concurrently": "^8.2.0",
-    "copy-webpack-plugin": "^11.0.0",
+    "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^6.8.0",
     "eslint": "^8.44.0",
     "file-loader": "^6.2.0",
