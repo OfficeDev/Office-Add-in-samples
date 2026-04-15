@@ -59,7 +59,7 @@ should_skip() {
   local skip_count=$(jq -r '.skip | length' "$CONFIG_FILE")
 
   for ((i=0; i<skip_count; i++)); do
-    local pattern=$(jq -r ".skip[$i].pattern" "$CONFIG_FILE")
+    local pattern=$(jq -r ".skip[$i].pattern // .skip[$i].path" "$CONFIG_FILE")
     if [[ "$sample_path" == *"$pattern"* ]]; then
       local reason=$(jq -r ".skip[$i].reason" "$CONFIG_FILE")
       echo "$reason"
