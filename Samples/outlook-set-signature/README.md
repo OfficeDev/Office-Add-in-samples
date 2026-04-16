@@ -19,7 +19,7 @@ description: "Use Outlook event-based activation to set the signature."
 
 # Set your signature using Outlook event-based activation
 
-**Applies to:** Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic) | Outlook on the web | Outlook on Mac (new UI)
+**Applies to:** Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic) | Outlook on the web | Outlook on Mac
 
 ## Summary
 
@@ -27,19 +27,22 @@ This sample uses event-based activation to run an Outlook add-in when the user c
 
 ![Sample displaying an information bar prompting the user to set up signatures, the task pane where the signature can be set, and a sample signature inserted into the email.](./assets/outlook-set-signature-overview.png)
 
-For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch).
+For documentation related to this sample, see [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation).
 
 ## Features
 
-- Use event-based activation to respond to events when the task pane isn't open.
+- Respond to the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events to insert a signature into the mail item or provide an option to customize a signature in the task pane.
 - Set a signature for Outlook to use in messages and appointments.
 
 ## Applies to
 
-- Outlook
-  - Windows (new and classic)
-  - Web browser
-  - new Mac UI
+Outlook clients that support [requirement set 1.10](https://learn.microsoft.com/javascript/api/requirement-sets/outlook/outlook-requirement-set-1-10).
+
+- Windows (new and classic)
+- Web browser
+- new Mac UI
+
+For guidance on supported requirement sets, see [Outlook client support](https://learn.microsoft.com/javascript/api/requirement-sets/outlook/outlook-api-requirement-sets#outlook-client-support).
 
 ## Prerequisites
 
@@ -64,69 +67,68 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 | 1.2 | 07-27-2021 | Convert to GitHub hosting |
 | 1.3 | 04-17-2023 | Add support for unified Microsoft 365 manifest |
 | 1.4 | 05-20-2024 | Normalize use of unified Microsoft 365 manifest |
-| 1.5 | 02-05-2026 | Reorganize the manifest files and apply minor fixes |
+| 1.5 | 04-16-2026 | Reorganize the manifest files and apply fixes |
 
 ## Scenario: Event-based activation
 
 In this scenario, the add-in helps the user manage their email signature, even when the task pane isn't open. When the user sends a new message, or creates a new appointment, the add-in displays an information bar prompting the user to create a signature. If the user chooses to set a signature, the add-in opens the task pane for the user to continue setting their signature.
 
+## Choose a manifest type
+
+By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest for Microsoft 365. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the add-in only manifest, skip ahead to the [Run the sample](#run-the-sample) section.
+
+> [!NOTE]
+> The unified manifest for Microsoft 365 isn't directly supported in Outlook on Mac. Run the sample with the add-in only manifest instead. For more information about clients and platforms supported by the unified manifest, see [Office Add-ins with the unified app manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview#client-and-platform-support).
+
+### To switch to the unified manifest for Microsoft 365
+
+Copy all the files from the **manifest-configurations/unified** subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.xml** and **manifest-localhost.xml** files from the root folder, so only files needed for the unified manifest are present. Then, [run the sample](#run-the-sample).
+
+### To switch back to the add-in only manifest
+
+To switch back to the add-in only manifest, copy the files from the **manifest-configurations/add-in-only** subfolder to the sample's root folder. We recommend that you delete the **manifest.json** file from the root folder.
+
 ## Run the sample
 
-There are multiple ways to run this sample.
+To run the sample, choose whether to host the add-in's web files on localhost or on GitHub.
 
-### Run the sample using GitHub as the web host
-
-The quickest way to run the sample is to use GitHub as the web host. However you can't debug or change the source code. The add-in web files are served from this repo on GitHub.
-
-1. Download the **manifest.xml** file from the `manifest-configurations/add-in-only` folder of this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on the web, on Windows (new or classic), or on Mac by following the instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
-
-### Run the sample on localhost with the unified manifest for Microsoft 365
-
-You can run the sample using the [unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview).
+### Use localhost
 
 1. Clone or download this repository.
-1. From the command line, or a terminal window, go to the project folder ```/samples/outlook-set-signature```.
-1. Run the following commands.
+1. From a command prompt, go to the root of the project folder **Samples/outlook-set-signature**.
+1. Run `npm install`.
+1. Run `npm start`. This starts the web server on localhost and sideloads the manifest file.
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+1. To stop the web server and uninstall the add-in, run `npm stop`.
 
-    ```console
-    npm install
-    npm start
-    ```
+### Use GitHub
 
-This will start the web server on localhost. When you want to stop the web server, run `npm stop`.
+> [!NOTE]
+> The option to use GitHub as the web host only applies to the add-in only manifest.
 
-To debug task pane code, see [Debug add-ins on Windows using Visual Studio Code and Microsoft Edge WebView2 (Chromium-based)](https://learn.microsoft.com/office/dev/add-ins/testing/debug-desktop-using-edge-chromium) and related articles.
+The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
 
-### Run the sample on localhost with manifest.xml
-
-You can host the web server on localhost and use the `manifest-configurations/add-in-only/manifest.xml` file to sideload and run the sample.
-
-1. Run the following commands.
-
-    ```console
-    npm install
-    npm run start:xml
-    ```
-
-This will start the web server on localhost. When you want to stop the web server, run `npm run stop:xml`.
-
-To debug event-based activation code, see [Debug your event-based Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch)
-
-To debug task pane code, see [Debug add-ins on Windows using Visual Studio Code and Microsoft Edge WebView2 (Chromium-based)](https://learn.microsoft.com/office/dev/add-ins/testing/debug-desktop-using-edge-chromium) and related articles.
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Sideload the manifest by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#sideload-manually).
+1. Follow the steps in [Try it out](#try-it-out) to test the sample.
+1. To uninstall the add-in, follow the instructions in [Remove a sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#remove-a-sideloaded-add-in).
 
 ### Try it out
 
-Once the add-in is loaded use the following steps to try out the functionality.
+Once the add-in is loaded, use the following steps to try out the functionality.
 
 1. Open Outlook on Windows (new or classic), on Mac, or in a browser.
 1. Create a new message or appointment.
 
-    > You should see a notification at the top of the message that reads: **Please set your signature with the Office Add-ins sample.**
+    > A notification bar with the following message appears at the top of the mail item: **Please set your signature with the Office Add-ins sample.**
 
-1. Choose **Set signatures**. This will open the task pane for the add-in.
-1. In the task pane fill out the fields for your signature data. Then choose **Save**.
-1. The task pane will load a page of sample templates. You can assign the templates to a **New Mail**, **Reply**, or **Forward** action. Once you've assign the templates you want to use, choose **Save**.
+1. Choose **Set signatures** from the notification.
+
+    > The add-in's task pane opens to a form for customizing your signature.
+1. In the task pane, fill out the fields for your signature data. Then, choose **Save**.
+
+    > The task pane loads a page of signature templates containing the data you provided.
+1. Assign a template to a **New Mail**, **Reply**, or **Forward** action. Then, choose **Save**.
 
 The next time you create a message or appointment, you'll see the signature you selected applied by the add-in.
 
@@ -159,7 +161,7 @@ The add-in handles two events that are mapped to the `checkSignature()` function
 
 ### Configure event-based activation in the unified manifest file
 
-If you use the unified manifest, the `manifest.json` file specifies an HTML page resource ID that loads the runtime on Outlook on the web, on Mac, and in new Outlook on Windows. The `runtimes` array includes a runtime entry that describes the event-based activation required. The `code` object identities the HTML file to load. It also identifies a Javascript file to load when using Outlook on Windows.
+If you use the unified manifest, the `manifest.json` file specifies an HTML page resource ID that loads the runtime on Outlook on the web, on Mac, and in new Outlook on Windows. The `runtimes` array includes a runtime entry that describes the event-based activation required. The `code` object identifies the HTML file to load. It also identifies a JavaScript file to load when using Outlook on Windows.
 
 ```json
  "runtimes": [
@@ -182,7 +184,7 @@ If you use the unified manifest, the `manifest.json` file specifies an HTML page
  ],
 ```
 
-The add-in handles two events that are mapped to the `checkSignature()` function. They are described in the `autoRunEvents` array. Note that the `actionID` must match an `id` specified in the previous `actions` array.
+The add-in handles two events that are mapped to the `checkSignature()` function. They are described in the `autoRunEvents` array. Note that the `actionId` must match an `id` specified in the previous `actions` array.
 
 ```json
 "autoRunEvents": [
@@ -212,21 +214,21 @@ The add-in handles two events that are mapped to the `checkSignature()` function
 ],
 ```
 
-### Handling the events and using the setSignatureAsync API
+### Handle the events and use the setSignatureAsync API
 
-When the user creates a new message or appointment, Outlook will load the files specified in the manifest to handle the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events. Outlook on the web, on Mac, and new Outlook on Windows will load the `autorunweb.html` page, which then also loads `autorunweb.js` and `autorunshared.js`.
+When the user creates a new message or appointment, Outlook loads the files specified in the manifest to handle the `OnNewMessageCompose` and `OnNewAppointmentOrganizer` events. Outlook on the web, on Mac, and new Outlook on Windows load the `autorunweb.html` page, which then also loads `autorunweb.js` and `autorunshared.js`.
 
 The `autorunweb.js` file contains a version of the `insert_auto_signature` function used specifically when running on Outlook on the web or new Outlook on Windows. The [setSignatureAsync() API can't be used in Outlook on the web or new Outlook on Windows for appointments](https://learn.microsoft.com/javascript/api/outlook/office.body#outlook-office-body-setsignatureasync-member(1)). Therefore, `insert_auto_signature` inserts the signature into a new appointment by directly writing to the body text of the appointment.
 
-The `autorunshared.js` file contains the `checkSignature` function that handles the events from Outlook. It also contains additional code that is shared and loaded when the add-in is used in Outlook on the web, on Windows (new and classic), and on Mac. In classic Outlook on Windows, this file is loaded directly and `autorunweb.html` and `autorunweb.js` aren't loaded.
+The `autorunshared.js` file contains the `checkSignature` function that handles the events from Outlook. It also contains additional code that's shared and loaded when the add-in is used in Outlook on the web, on Windows (new and classic), and on Mac. In classic Outlook on Windows, this file is loaded directly and `autorunweb.html` and `autorunweb.js` aren't loaded.
 
 The `autorunshared.js` file contains a version of the `insert_auto_signature` function that uses the `setSignatureAsync()` API to set the signature for both messages and appointments.
 
-Note that you can use a similar pattern when handling events. If you need code that only applies to Outlook on the web and new Outlook on Windows, you can load it in a separate file like `autorunweb.js`. And for code that applies to Outlook on the web, on Windows (new and classic), and on Mac, you can load it in a shared file like `autorunshared.js`.
+Note that you can use a similar pattern when handling events. If you need code that only applies to Outlook on the web and new Outlook on Windows, you can load it in a separate file like `autorunweb.js`. For code that applies to Outlook on the web, on Windows (new and classic), and on Mac, you can load it in a shared file like `autorunshared.js`.
 
 ### Embedding images with the signature
 
-Template A shows how to insert an image by embedding it in the signature. This will avoid the image being downloaded from your server when the signature is inserted into new mail items. The HTML uses the following `<img>` tag format with the **src** set to **cid:*imageFileName*** to embed the image.
+Template A shows how to insert an image by embedding it in the signature. This avoids the image being downloaded from your server when the signature is inserted into new mail items. The HTML uses the following `<img>` tag format with the **src** set to **cid:*imageFileName*** to embed the image.
 
 ```xml
 str +=
@@ -235,7 +237,7 @@ str +=
     "' alt='MS Logo' width='24' height='24' /></td>";
 ```
 
-In the **addTemplateSignature** function, if template A is used, it will attach the image by calling the **addFileAttachmentFromBase64Async()** API. Then it calls the **setSignatureAsync()** API.
+In the `addTemplateSignature` function, if template A is used, it attaches the image by calling the `addFileAttachmentFromBase64Async()` API. Then, it calls the `setSignatureAsync()` API.
 
 ### Referencing images from the signature
 
@@ -246,14 +248,14 @@ Template B shows how to reference an image from the HTML. It uses the `<img>` ta
     "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/sample-logo.png' alt='Logo' /></td>";
 ```
 
-This is a simpler approach as you don't need to attach the image. Although your web server will need to provide the image anytime Outlook needs it for a signature.
+This is a simpler approach because you don't need to attach the image. However, your web server must provide the image whenever Outlook needs it for a signature.
 
 ### Task pane code
 
 The task pane code is located under the `taskpane` folder of this project. The task pane HTML and JavaScript files only provide UI and functionality to let the user specify and save a signature.
 
 - `editsignature.html` is loaded when the task pane first opens. It lets the user enter details such as name and title for their signature.
-- `assignsignature.html` is loaded when the user saves their details from the `editsignature.html` page. It lets the user assign the signature to actions such as "new email", "reply", and "forward.
+- `assignsignature.html` is loaded when the user saves their details from the `editsignature.html` page. It lets the user assign the signature to actions, such as **New Mail**, **Reply**, or **Forward**.
 
 ## Questions and feedback
 
