@@ -1,11 +1,11 @@
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.17/MicrosoftTeams.schema.json",
-    "manifestVersion": "1.17",
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.25/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.25",
     "id": "B341AD31-BF7A-4C1D-99F1-D2E5896BEB0A",
-    "version": "1.0.0.0",
+    "version": "1.0.0",
     "name": {
-        "short": "Signature sample",
-        "full": "Signature sample"
+        "short": "Outlook signature sample",
+        "full": "Office Add-ins signature sample in Outlook"
     },
     "description": {
         "short": "Insert your signature with ease.",
@@ -36,7 +36,7 @@
         }
     },
     "validDomains": [
-        "https://localhost:3000"
+        "https://officedev.github.io"
     ],
     "extensions": [
         {
@@ -44,7 +44,7 @@
                 "capabilities": [
                     {
                         "name": "Mailbox",
-                        "minVersion": "1.1"
+                        "minVersion": "1.10"
                     }
                 ],
                 "scopes": [
@@ -53,14 +53,6 @@
             },
             "runtimes": [
                 {
-                    "requirements": {
-                        "capabilities": [
-                            {
-                                "name": "Mailbox",
-                                "minVersion": "1.5"
-                            }
-                        ]
-                    },
                     "id": "runtime_1",
                     "type": "general",
                     "code": {
@@ -71,20 +63,11 @@
                     "actions": [
                         {
                             "id": "checkSignature",
-                            "type": "executeFunction",
-                            "displayName": "checkSignature"
+                            "type": "executeFunction"
                         }
                     ]
                 },
                 {
-                    "requirements": {
-                        "capabilities": [
-                            {
-                                "name": "Mailbox",
-                                "minVersion": "1.5"
-                            }
-                        ]
-                    },
                     "id": "runtime_2",
                     "type": "general",
                     "code": {
@@ -95,15 +78,11 @@
                         {
                             "id": "action_1",
                             "type": "openPage",
-                            "view": "view_1",
-                            "displayName": "action_1",
                             "pinnable": false
                         },
                         {
                             "id": "action_2",
                             "type": "openPage",
-                            "view": "view_2",
-                            "displayName": "action_2",
                             "pinnable": false
                         }
                     ]
@@ -115,7 +94,7 @@
                         "capabilities": [
                             {
                                 "name": "Mailbox",
-                                "minVersion": "1.5"
+                                "minVersion": "1.10"
                             }
                         ],
                         "scopes": [
@@ -143,24 +122,22 @@
                                             "icons": [
                                                 {
                                                     "size": 16,
-                                                    "url": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
                                                 },
                                                 {
                                                     "size": 32,
-                                                    "url": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
                                                 },
                                                 {
                                                     "size": 80,
-                                                    "url": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
                                                 }
                                             ],
                                             "supertip": {
                                                 "title": "Set my signature",
                                                 "description": "Opens a pane displaying all available properties."
                                             },
-                                            "actionId": "action_1",
-                                            "overriddenByRibbonApi": false,
-                                            "enabled": true
+                                            "actionId": "action_1"
                                         }
                                     ]
                                 }
@@ -173,7 +150,7 @@
                         "capabilities": [
                             {
                                 "name": "Mailbox",
-                                "minVersion": "1.5"
+                                "minVersion": "1.10"
                             }
                         ],
                         "scopes": [
@@ -201,24 +178,22 @@
                                             "icons": [
                                                 {
                                                     "size": 16,
-                                                    "url": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
                                                 },
                                                 {
                                                     "size": 32,
-                                                    "url": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
                                                 },
                                                 {
                                                     "size": 80,
-                                                    "url": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
                                                 }
                                             ],
                                             "supertip": {
                                                 "title": "Set my signature",
                                                 "description": "Opens a pane displaying all available properties."
                                             },
-                                            "actionId": "action_2",
-                                            "overriddenByRibbonApi": false,
-                                            "enabled": true
+                                            "actionId": "action_2"
                                         }
                                     ]
                                 }
@@ -233,7 +208,7 @@
                         "capabilities": [
                             {
                                 "name": "Mailbox",
-                                "minVersion": "1.5"
+                                "minVersion": "1.10"
                             }
                         ],
                         "scopes": [
@@ -251,11 +226,7 @@
                         }
                     ]
                 }
-            ],
-            "audienceClaimUrl": "https://localhost:3000/editsignature.html"
+            ]
         }
-    ],
-    "showLoadingIndicator": false,
-    "isFullScreen": false,
-    "defaultBlockUntilAdminAction": false
+    ]
 }
