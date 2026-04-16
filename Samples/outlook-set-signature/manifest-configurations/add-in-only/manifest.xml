@@ -9,8 +9,8 @@
   <DefaultLocale>en-us</DefaultLocale>
   <DisplayName DefaultValue="Office Add-ins signature sample"/>
   <Description DefaultValue="Insert your signature with ease."/>
-  <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/final_logo.png"/>
-  <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/final_logo.png"/>
+  <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
@@ -54,7 +54,7 @@
       <Hosts>
         <Host xsi:type="MailHost">
         <!-- Specify the runtime for event-based activation. -->
-        <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch -->
+        <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation -->
           <Runtimes>
             <Runtime resid="Autorun">
               <Override type="javascript" resid="runtimeJs"/>
@@ -74,8 +74,8 @@
                     </Supertip>
                     <Icon>
                       <bt:Image size="16" resid="Icon16x16" />
-                      <bt:Image size="32" resid="Icon16x16" />
-                      <bt:Image size="80" resid="Icon16x16" />
+                      <bt:Image size="32" resid="Icon32x32" />
+                      <bt:Image size="80" resid="Icon80x80" />
                     </Icon>
                     <Action xsi:type="ShowTaskpane">
                       <SourceLocation resid="residUrl0"/>
@@ -97,8 +97,8 @@
                     </Supertip>
                     <Icon>
                       <bt:Image size="16" resid="Icon16x16" />
-                      <bt:Image size="32" resid="Icon16x16" />
-                      <bt:Image size="80" resid="Icon16x16" />
+                      <bt:Image size="32" resid="Icon32x32" />
+                      <bt:Image size="80" resid="Icon80x80" />
                     </Icon>
                     <Action xsi:type="ShowTaskpane">
                       <SourceLocation resid="residUrl0"/>
@@ -122,7 +122,9 @@
       </Hosts>
       <Resources>
         <bt:Images>
-          <bt:Image id="Icon16x16" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/final_logo.png"></bt:Image>
+          <bt:Image id="Icon16x16" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/icon-16.png"></bt:Image>
+          <bt:Image id="Icon32x32" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/icon-32.png"></bt:Image>
+          <bt:Image id="Icon80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/icon-80.png"></bt:Image>
         </bt:Images>
         <bt:Urls>
           <bt:Url id="residUrl0" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/src/taskpane/HTML/editsignature.html"></bt:Url>
