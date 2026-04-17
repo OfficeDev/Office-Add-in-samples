@@ -69,7 +69,7 @@ Additionally the add-in has a custom function that can display a filtered view o
 
 ### Unified or XML manifest options
 
-There are two types of manifests for Office Add-ins. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/add-in-manifests). 
+There are two types of manifests for Office Add-ins. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). 
 
 To use the unified manifest for Microsoft 365, follow the steps in [Run the sample with the unified manifest](#run-the-sample-with-the-unified-manifest). To use the add-in only manifest, follow the steps in [Run the sample with the XML manifest in Excel on the web](#run-the-sample-with-the-xml-manifest-in-excel-on-the-web) or [Run the sample with the XML manifest from localhost](#run-the-sample-with-the-xml-manifest-from-localhost).
 
