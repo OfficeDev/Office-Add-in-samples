@@ -371,7 +371,7 @@
                                             ],
                                             "supertip": {
                                                 "title": "No load behavior",
-                                                "description": "Add-in will have no load document load beahvior."
+                                                "description": "Add-in will have no load document load behavior."
                                             },
                                             "actionId": "btndisableaddinstart",
                                             "enabled": false
