@@ -65,96 +65,15 @@ The add-in is aware of whether it is connected. When connected you will see the 
 
 Additionally the add-in has a custom function that can display a filtered view of the data. The custom function is aware of the connection status, so that when connected, it will display the mock data. When disconnected, it will show `#N/A`.
 
-## Run the sample with the unified manifest
+## Key parts of this sample
 
-This sample includes a **manifest.json** file that uses the [unified manifest format for Microsoft 365](https://learn.microsoft.com/microsoft-365/extensibility/schema). The unified manifest provides:
+### Unified or XML manifest options
 
-- Modern JSON format instead of XML.
-- Support for custom functions with shared runtime.
-- Custom ribbon tab with multiple groups.
-- ExecuteFunction actions for ribbon buttons.
-- Dynamic button enabling and disabling support.
+There are two types of manifests for Office Add-ins. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/add-in-manifests). 
 
-**Important:** Custom functions are only available in preview with the unified manifest. Do not use custom functions with the unified manifest in a production add-in.
+To use the unified manifest for Microsoft 365, follow the steps in [Run the sample with the unified manifest](#run-the-sample-with-the-unified-manifest). To use the add-in only manifest, follow the steps in [Run the sample with the XML manifest in Excel on the web](#run-the-sample-with-the-xml-manifest-in-excel-on-the-web) or [Run the sample with the XML manifest from localhost](#run-the-sample-with-the-xml-manifest-from-localhost).
 
-**Note:** The unified manifest requires Office 2304 (Build 16320.20000) or later.
-
-### Use the Unified Manifest
-
-The unified manifest configures the shared runtime, custom functions, and custom ribbon tab in a single structure:
-
-```json
-{
-  "runtimes": [
-    {
-      "id": "SharedRuntime",
-      "lifetime": "long",
-      "actions": [
-        { "id": "btnconnectservice", "type": "executeFunction" },
-        { "id": "btnopentaskpane", "type": "executeFunction" },
-        ...
-      ],
-      "customFunctions": {
-        "functions": [
-          { "id": "ADD", "name": "ADD", ... },
-          { "id": "GETDATA", "name": "GETDATA", ... }
-        ],
-        "namespace": { "id": "CONTOSOSHARE", "name": "CONTOSOSHARE" }
-      }
-    }
-  ],
-  "ribbons": [
-    {
-      "tabs": [
-        {
-          "id": "ShareTime",
-          "label": "Contoso Data",
-          "groups": [
-            { "id": "ServiceGroup", "label": "Services", "controls": [...] },
-            { "id": "StartupGroup", "label": "Startup behavior", "controls": [...] },
-            { "id": "TaskpaneGroup", "label": "Task pane", "controls": [...] }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
-
-### Build and run with the unified manifest
-
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-1. Start the development server:
-   ```bash
-   npm start
-   ```
-
-1. The add-in loads in Excel with the unified manifest and custom tab.
-
-For production builds with GitHub Pages URLs:
-```bash
-npm run build
-npm run start:prod
-```
-
-## Run the sample with the XML manifest in Excel on the web
-
-You can run this sample in Excel on the web. The add-in web files are served from this repo on GitHub.
-
-1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Open [Office on the web](https://office.live.com/).
-1. Choose **Excel**, and then open a new workbook.
-1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
-1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
-   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
-1. Browse to the add-in manifest file, and then select **Upload**.
-   ![The upload add-in dialog with buttons for browse, upload, and cancel.
-](../../Samples/images/upload-add-in.png)
-1. Verify that the add-in loaded successfully. You will see a **Contoso** tab on the ribbon.
+### Ribbon buttons
 
 The add-in's ribbon buttons have the following behavior:
 
@@ -169,7 +88,7 @@ The add-in's ribbon buttons have the following behavior:
 
 If the add-in is not connected to a service, the task pane will show a button to connect. Once connected, the task pane lets you choose a category from the data and insert a custom function. The custom function will filter data displayed to the selected category.
 
-## Key parts of this sample
+### Global state
 
 Global state is tracked in a window object retrieved using a `getGlobal()` function. This is accessible to custom functions, the task pane, and the ribbon (because all the code is running in the same JavaScript runtime.) The `ensureStateInitialized()` method initializes global state on startup. The global state tracks many items such as whether the add-in is connected to a service, and whether the task pane is open or closed.
 
@@ -218,6 +137,49 @@ export async function monitorSheetChanges() {
       ...
 ```
 
+## Run the sample with the unified manifest
+
+This sample includes a **manifest.json** file that uses the [unified manifest format for Microsoft 365](https://learn.microsoft.com/microsoft-365/extensibility/schema).
+
+**Important:** Custom functions are only available in preview with the unified manifest. Do not use custom functions with the unified manifest in a production add-in.
+
+**Note:** The unified manifest requires Office 2304 (Build 16320.20000) or later.
+
+### Build and run with the unified manifest
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+1. Start the development server:
+   ```bash
+   npm start
+   ```
+
+1. The add-in loads in Excel with the unified manifest and custom ribbon tab.
+
+For production builds with GitHub Pages URLs:
+```bash
+npm run build
+npm run start:prod
+```
+
+## Run the sample with the XML manifest in Excel on the web
+
+You can run this sample in Excel on the web. The add-in web files are served from this repo on GitHub.
+
+1. Download the **manifest.xml** file from this sample to a folder on your computer.
+1. Open [Office on the web](https://office.live.com/).
+1. Choose **Excel**, and then open a new workbook.
+1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
+1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
+   ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
+1. Browse to the add-in manifest file, and then select **Upload**.
+   ![The upload add-in dialog with buttons for browse, upload, and cancel.
+](../../Samples/images/upload-add-in.png)
+1. Verify that the add-in loaded successfully. You will see a **Contoso** tab on the ribbon.
+
 ## Run the sample with the XML manifest from localhost
 
 If you prefer to host the web server for the sample on your computer, follow these steps:
@@ -247,7 +209,7 @@ If you prefer to host the web server for the sample on your computer, follow the
     office-addin-https-reverse-proxy --url http://localhost:3000
     ```
     
-1. Follow the steps in Run the sample, but upload the `manifest-localhost.xml` file for step 6.
+1. Follow the steps in [Run the sample with the XML manifest in Excel on the web](#run-the-sample-with-the-xml-manifest-in-excel-on-the-web), but upload the `manifest-localhost.xml` file for step 6.
 
 ## Security notes
 
