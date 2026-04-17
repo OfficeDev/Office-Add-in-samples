@@ -1,6 +1,6 @@
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.17/MicrosoftTeams.schema.json#",
-    "manifestVersion": "1.17",
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json#",
+    "manifestVersion": "devPreview",
     "version": "1.0.0",
     "id": "16c028c6-f97d-4b09-96eb-3821219e0a47",
     "localizationInfo": {
@@ -21,8 +21,8 @@
         "full": "Sample on how to use NAA in Outlook events."
     },
     "icons": {
-        "outline": "assets/icon-64.png",
-        "color": "assets/icon-128.png"
+        "outline": "assets/icon-32.png",
+        "color": "assets/logo-filled.png"
     },
     "accentColor": "#230201",
     "validDomains": [
@@ -79,16 +79,10 @@
                         {
                             "id": "onNewMessageComposeHandler",
                             "type": "executeFunction",
-                            "displayName": "onNewMessageComposeHandler",
-                            "multiselect": false,
-                            "supportsNoItemContext": false
                         },
                         {
                             "id": "onNewAppointmentComposeHandler",
                             "type": "executeFunction",
-                            "displayName": "onNewAppointmentComposeHandler",
-                            "multiselect": false,
-                            "supportsNoItemContext": false
                         }
                     ]
                 },
@@ -114,20 +108,12 @@
                         {
                             "id": "action_1",
                             "type": "openPage",
-                            "displayName": "action_1",
-                            "pinnable": false,
                             "view": "view_1",
-                            "multiselect": false,
-                            "supportsNoItemContext": false
                         },
                         {
                             "id": "action_2",
                             "type": "openPage",
-                            "displayName": "action_2",
-                            "pinnable": false,
                             "view": "view_2",
-                            "multiselect": false,
-                            "supportsNoItemContext": false
                         }
                     ]
                 }
@@ -182,8 +168,6 @@
                                                 "description": "Opens the pane for the Office NAA sample."
                                             },
                                             "actionId": "action_1",
-                                            "overriddenByRibbonApi": false,
-                                            "enabled": true
                                         }
                                     ]
                                 }
@@ -240,8 +224,6 @@
                                                 "description": "Opens the pane for the Office NAA sample."
                                             },
                                             "actionId": "action_2",
-                                            "overriddenByRibbonApi": false,
-                                            "enabled": true
                                         }
                                     ]
                                 }
