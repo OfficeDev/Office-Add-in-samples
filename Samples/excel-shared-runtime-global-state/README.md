@@ -19,15 +19,15 @@ description: "This sample shows how to share data across the ribbon, task pane, 
 
 ## Summary
 
-This sample shows how to set up a basic project that uses the shared runtime. The shared runtime runs all parts of the Excel add-in (ribbon buttons, task pane, custom functions) in a single browser runtime. This makes it easy to shared data through local storage, or through global variables.
+This sample shows how to set up a basic project that uses the shared runtime. The shared runtime runs all parts of the Excel add-in (ribbon buttons, task pane, custom functions) in a single browser runtime. This makes it easy to shared data through local storage or through global variables.
 
 ![Screen shot of the add-in with ribbon buttons enabled and disabled](excel-shared-runtime-global.png)
 
 ## Features
 
 - Share data globally with ribbon buttons, the task pane, and custom functions.
-- Demonstrates shared runtime with custom functions in a unified manifest.
-- To get started, use either the unified manifest (manifest.json) or the XML manifest (manifest.xml).
+- Demonstrates shared runtime with custom functions.
+- Offers either unified manifest for Microsoft 365 or XML manifest options.
 
 ## Applies to
 
@@ -58,13 +58,36 @@ Version  | Date | Comments
 
 This sample enables a user to store and retrieve key/value pairs by using the task pane or custom functions. The user can select which type of storage is used. They can choose to store key/value pairs in local storage, or choose to use a global variable.
 
+## Key parts of this sample
+
+### Unified or XML manifest options
+
+There are two types of manifests for Office Add-ins. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests).
+
+To use the unified manifest for Microsoft 365, follow the steps in [Run the sample with the unified manifest](#run-the-sample-with-the-unified-manifest). To use the add-in only manifest, follow the steps in [Run the sample with the XML manifest in Excel on the web](#run-the-sample-with-the-xml-manifest-in-excel-on-the-web) or [Run the sample with the XML manifest from localhost](#run-the-sample-with-the-xml-manifest-from-localhost).
+
+### Global variable
+
+The task pane and custom function share data via a global variable in the shared runtime. You can switch the method of storage by choosing either the `Global variable` or `Local storage` radio buttons on the task pane.
+
+### Global state
+
+Global state is tracked in a window object retrieved using a `getGlobal()` function. This is accessible to custom functions, the task pane, and the ribbon (because all the code is running in the same JavaScript runtime.)
+
+### How to use this sample
+
+Once the add-in is loaded use the following steps to try out the functionality.
+
+1. On the `Home` tab, select `Show TaskPane`.
+1. In the task pane, enter a key/value pair, and select `Store key/value pair`.
+![Screenshot of both key and value input fields, and both store and get buttons.](task-pane-buttons.png)
+1. In any spreadsheet cell, enter the formula `=CONTOSO.GETVALUEFORKEYCF("1")`. Pass the value of the key you created from the task pane.
+1. In any spreadsheet cell, enter the formula `=CONTOSO.SETVALUEFORKEYCF("2","oranges")`. The formula should return the text `Stored key/value pair`.
+1. In the task pane, enter the key from the previous formula `2` and select `Get value for key`. The task pane should display the value `oranges`.
+
 ## Run the sample with the unified manifest
 
-This sample includes a **manifest.json** file that uses the [unified manifest format for Microsoft 365](https://learn.microsoft.com/microsoft-365/extensibility/schema). The unified manifest provides:
-
-- Modern JSON format instead of XML.
-- Support for custom functions with shared runtime.
-- Streamlined configuration for Office Add-ins.
+This sample includes a **manifest.json** file that uses the [unified manifest format for Microsoft 365](https://learn.microsoft.com/microsoft-365/extensibility/schema).
 
 **Important:** Custom functions are only available in preview with the unified manifest. Do not use custom functions with the unified manifest in a production add-in.
 
@@ -134,16 +157,15 @@ You can run this sample in Excel on the web. The add-in web files are served fro
 ](../../Samples/images/upload-add-in.png)
 1. Verify that the add-in loaded successfully. You will see a **Show Taskpane** button on the **Home** tab on the ribbon.
 
-Once the add-in is loaded use the following steps to try out the functionality.
+The XML manifest is configured to use the shared runtime by using the `Runtimes` element as follows:
 
-1. On the `Home` tab, choose `Show TaskPane`.
-1. In the task pane, enter a key/value pair, and choose `Store key/value pair`.
-![Screen shot of both key and value input fields, and both store and get buttons.](task-pane-buttons.png)
-1. In any spreadsheet cell, enter the formula `=CONTOSO.GETVALUEFORKEYCF("1")`. Pass the value of the key you created from the task pane.
-1. In any spreadsheet cell, enter the formula `=CONTOSO.SETVALUEFORKEYCF("2","oranges")`. The formula should return the text `Stored key/value pair`.
-1. In the task pane, enter the key from the previous formula `2` and choose `Get value for key`. The task pane should display the value `oranges`.
+```xml
+<Runtimes>
+   <Runtime resid="Shared.Url" lifetime="long" />
+</Runtimes>
+```
 
-The task pane and custom function share data via a global variable in the shared runtime. You can switch the method of storage by choosing either the `Global variable` or `Local storage` radio buttons on the task pane.
+In other parts of the XML manifest, you'll see that the custom functions and task pane are also configured to use the `Shared.Url` because they all run in the same runtime. `Shared.Url` points to `taskpane.html` which loads the shared runtime.
 
 ## Run the sample with the XML manifest from localhost
 
@@ -175,22 +197,6 @@ If you prefer to host the web server for the sample on your computer, follow the
     ```
 
 1. Follow the steps in [Run the sample with the XML manifest in Excel on the web](#run-the-sample-with-the-xml-manifest-in-excel-on-the-web), but upload the `manifest-localhost.xml` file for step 6.
-
-## Key parts of this sample
-
-The manifest.xml is configured to use the shared runtime by using the `Runtimes` element as follows:
-
-```xml
-<Runtimes>
-   <Runtime resid="Shared.Url" lifetime="long" />
-</Runtimes>
-```
-
-In other parts of the manifest, you'll see that the custom functions and task pane are also configured to use the `Shared.Url` because they all run in the same runtime. `Shared.Url` points to `taskpane.html` which loads the shared runtime.
-
-Global state is tracked in a window object retrieved using a `getGlobal()` function. This is accessible to custom functions, the task pane, and the ribbon (because all the code is running in the same JavaScript runtime.) 
-
-There are no commands.html or functions.html files. These are not necessary because their purpose is to load individual runtimes. These do not apply when using the shared runtime.
 
 ## Questions and feedback
 
