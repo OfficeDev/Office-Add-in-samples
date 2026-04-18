@@ -190,8 +190,8 @@ If you prefer to host the web server for the sample on your computer, follow the
     npm install --global http-server
     ```
     
-1. Use a tool such as openssl to generate a self-signed certificate for the web server. Move the cert.pem and key.pem files to the webworker-customfunction folder for this sample.
-1. From a command prompt, go to the web-worker folder and run the following command:
+1. Use a tool such as openssl to generate a self-signed certificate for the web server. Move the `cert.pem` and `key.pem` files to the `Samples/excel-shared-runtime-scenario` folder for this sample.
+1. From a command prompt, go to the `Samples/excel-shared-runtime-scenario` folder and run the following command:
     
     ```console
     http-server -S --cors . -p 3000
