@@ -1,0 +1,487 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.25/MicrosoftTeams.schema.json",
+    "id": "b8c7d3e5-4f6a-7b8c-9d0e-1f2a3b4c5d6e",
+    "manifestVersion": "1.25",
+    "version": "1.0.0",
+    "name": {
+        "short": "Contoso Data Importer",
+        "full": "Contoso Data Importer - Shared Runtime Scenario"
+    },
+    "description": {
+        "short": "Uses shared runtime for responsive ribbon UI.",
+        "full": "Uses a shared runtime to share global state across all parts of the add-in and provide a responsive ribbon UI with dynamic button enabling/disabling."
+    },
+    "developer": {
+        "name": "Office Developer Education Team",
+        "websiteUrl": "https://www.contoso.com/help",
+        "privacyUrl": "https://www.contoso.com/privacy",
+        "termsOfUseUrl": "https://www.contoso.com/terms"
+    },
+    "icons": {
+        "outline": "assets/icon-32.png",
+        "color": "assets/icon-64.png"
+    },
+    "accentColor": "#230201",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us",
+        "additionalLanguages": []
+    },
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "Document.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "validDomains": [
+        "https://localhost:3000",
+        "https://officedev.github.io"
+    ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "defaultBlockUntilAdminAction": false,
+    "extensions": [
+        {
+            "requirements": {
+                "capabilities": [
+                    {
+                        "name": "SharedRuntime",
+                        "minVersion": "1.1"
+                    }
+                ],
+                "scopes": [
+                    "workbook"
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "SharedRuntime",
+                                "minVersion": "1.1"
+                            }
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "id": "SharedRuntime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/src/taskpane/taskpane.html",
+                        "script": "https://localhost:3000/src/functions/functions.js"
+                    },
+                    "lifetime": "long",
+                    "actions": [
+                        {
+                            "id": "btnconnectservice",
+                            "type": "executeFunction",
+                            "displayName": "Connect service"
+                        },
+                        {
+                            "id": "btndisconnectservice",
+                            "type": "executeFunction",
+                            "displayName": "Disconnect service"
+                        },
+                        {
+                            "id": "btninsertdata",
+                            "type": "executeFunction",
+                            "displayName": "Insert data"
+                        },
+                        {
+                            "id": "btnsumdata",
+                            "type": "executeFunction",
+                            "displayName": "Sum"
+                        },
+                        {
+                            "id": "btnenableaddinstart",
+                            "type": "executeFunction",
+                            "displayName": "Load on doc open"
+                        },
+                        {
+                            "id": "btndisableaddinstart",
+                            "type": "executeFunction",
+                            "displayName": "No load behavior"
+                        },
+                        {
+                            "id": "btnopentaskpane",
+                            "type": "executeFunction",
+                            "displayName": "Open task pane"
+                        },
+                        {
+                            "id": "btnclosetaskpane",
+                            "type": "executeFunction",
+                            "displayName": "Close task pane"
+                        }
+                    ],
+                    "customFunctions": {
+                        "functions": [
+                            {
+                                "id": "ADD",
+                                "name": "ADD",
+                                "description": "Adds two numbers.",
+                                "parameters": [
+                                    {
+                                        "name": "first",
+                                        "description": "First number",
+                                        "type": "number"
+                                    },
+                                    {
+                                        "name": "second",
+                                        "description": "Second number",
+                                        "type": "number"
+                                    }
+                                ],
+                                "result": {
+                                    "dimensionality": "scalar"
+                                }
+                            },
+                            {
+                                "id": "GETDATA",
+                                "name": "GETDATA",
+                                "description": "Returns data for a given category.",
+                                "parameters": [
+                                    {
+                                        "name": "category",
+                                        "description": "The category to filter the data with",
+                                        "type": "string"
+                                    }
+                                ],
+                                "result": {
+                                    "dimensionality": "matrix"
+                                }
+                            }
+                        ],
+                        "namespace": {
+                            "id": "CONTOSOSHARE",
+                            "name": "CONTOSOSHARE"
+                        },
+                        "metadataUrl": "https://localhost:3000/src/functions/functions.json"
+                    }
+                }
+            ],
+            "ribbons": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "AddinCommands",
+                                "minVersion": "1.1"
+                            }
+                        ],
+                        "scopes": [
+                            "workbook"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "contexts": [
+                        "default"
+                    ],
+                    "tabs": [
+                        {
+                            "id": "ShareTime",
+                            "label": "Contoso Data",
+                            "groups": [
+                                {
+                                    "id": "ServiceGroup",
+                                    "label": "Services",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "BtnConnectService",
+                                            "type": "button",
+                                            "label": "Connect service",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Connect service",
+                                                "description": "Connect to backend data service"
+                                            },
+                                            "actionId": "btnconnectservice",
+                                            "enabled": true
+                                        },
+                                        {
+                                            "id": "BtnDisConnectService",
+                                            "type": "button",
+                                            "label": "Disconnect service",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Disconnect service",
+                                                "description": "Disconnect from backend data service"
+                                            },
+                                            "actionId": "btndisconnectservice",
+                                            "enabled": false
+                                        },
+                                        {
+                                            "id": "BtnInsertData",
+                                            "type": "button",
+                                            "label": "Insert data",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Insert data",
+                                                "description": "Insert data from backend data service"
+                                            },
+                                            "actionId": "btninsertdata",
+                                            "enabled": false
+                                        },
+                                        {
+                                            "id": "BtnSumData",
+                                            "type": "button",
+                                            "label": "Sum",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Sum",
+                                                "description": "Sum selected data"
+                                            },
+                                            "actionId": "btnsumdata",
+                                            "enabled": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "StartupGroup",
+                                    "label": "Startup behavior",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "BtnEnableAddinStart",
+                                            "type": "button",
+                                            "label": "Load on doc open",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Load on doc open",
+                                                "description": "Add-in will load and start running as soon as document opens."
+                                            },
+                                            "actionId": "btnenableaddinstart",
+                                            "enabled": true
+                                        },
+                                        {
+                                            "id": "BtnDisableAddinStart",
+                                            "type": "button",
+                                            "label": "No load behavior",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "No load behavior",
+                                                "description": "Add-in will have no load document load behavior."
+                                            },
+                                            "actionId": "btndisableaddinstart",
+                                            "enabled": false
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "TaskpaneGroup",
+                                    "label": "Task pane",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "BtnOpenTaskpane",
+                                            "type": "button",
+                                            "label": "Open task pane",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Open task pane",
+                                                "description": "Open the task pane"
+                                            },
+                                            "actionId": "btnopentaskpane",
+                                            "enabled": true
+                                        },
+                                        {
+                                            "id": "BtnCloseTaskpane",
+                                            "type": "button",
+                                            "label": "Close task pane",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Close task pane",
+                                                "description": "Close the task pane"
+                                            },
+                                            "actionId": "btnclosetaskpane",
+                                            "enabled": false
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "alternates": [
+                {
+                    "alternateIcons": {
+                        "icon": {
+                            "size": 32,
+                            "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        "highResolutionIcon": {
+                            "size": 64,
+                            "url": "https://localhost:3000/assets/icon-64.png"
+                        }
+                    }
+                }
+            ],
+            "getStartedMessages": [
+                {
+                    "requirements": {
+                        "scopes": [
+                            "workbook"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "title": "Contoso data add-in has loaded successfully.",
+                    "description": "Choose Open Add-in, then Connect to Office 365 to get started.",
+                    "learnMoreUrl": "https://go.microsoft.com/fwlink/?LinkId=276812"
+                }
+            ]
+        }
+    ]
+}
