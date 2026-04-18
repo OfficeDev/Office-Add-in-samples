@@ -170,9 +170,9 @@ npm run start:prod
 You can run this sample in Excel on the web. The add-in web files are served from this repo on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Open [Office on the web](https://office.live.com/).
-1. Choose **Excel**, and then open a new workbook.
-1. Open the **Insert** tab on the ribbon and choose **Office Add-ins**.
+1. Open [Excel on the web](https://excel.cloud.microsoft/).
+1. Open a new blank workbook.
+1. On the **Home** tab on the ribbon in the **Add-ins** section, select **Add-ins** and then **Advanced...**.
 1. On the **Office Add-ins** dialog, select the **MY ADD-INS** tab, choose **Manage My Add-ins**, and then **Upload My Add-in**.
    ![The Office Add-ins dialog with a drop-down in the upper right reading "Manage my add-ins" and a drop-down below it with the option "Upload My Add-in"](../../Samples/images/office-add-ins-my-account.png)
 1. Browse to the add-in manifest file, and then select **Upload**.
