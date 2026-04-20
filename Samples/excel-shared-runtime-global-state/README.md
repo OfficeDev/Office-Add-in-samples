@@ -19,7 +19,7 @@ description: "This sample shows how to share data across the ribbon, task pane, 
 
 ## Summary
 
-This sample shows how to set up a basic project that uses the shared runtime. The shared runtime runs all parts of the Excel add-in (ribbon buttons, task pane, custom functions) in a single browser runtime. This makes it easy to shared data through local storage or through global variables.
+This sample shows how to set up a basic project that uses the shared runtime. The shared runtime runs all parts of the Excel add-in (ribbon buttons, task pane, custom functions) in a single browser runtime. This makes it easy to share data through local storage or through global variables.
 
 ![Screen shot of the add-in with ribbon buttons enabled and disabled](excel-shared-runtime-global.png)
 
