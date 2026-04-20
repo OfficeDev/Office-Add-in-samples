@@ -64,7 +64,7 @@ This sample enables a user to store and retrieve key/value pairs by using the ta
 
 There are two types of manifests for Office Add-ins. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests).
 
-To use the unified manifest for Microsoft 365, follow the steps in [Run the sample with the unified manifest](#run-the-sample-with-the-unified-manifest). To use the add-in only manifest, follow the steps in [Run the sample with the XML manifest in Excel on the web](#run-the-sample-with-the-xml-manifest-in-excel-on-the-web) or [Run the sample with the XML manifest from localhost](#run-the-sample-with-the-xml-manifest-from-localhost).
+To use the unified manifest for Microsoft 365, follow the steps in [Run the sample with the unified manifest](#run-the-sample-with-the-unified-manifest). To use the XML manifest, follow the steps in [Run the sample with the XML manifest in Excel on the web](#run-the-sample-with-the-xml-manifest-in-excel-on-the-web) or [Run the sample with the XML manifest from localhost](#run-the-sample-with-the-xml-manifest-from-localhost).
 
 ### Global variable
 

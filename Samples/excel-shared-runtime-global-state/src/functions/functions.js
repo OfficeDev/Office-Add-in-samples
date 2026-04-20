@@ -25,5 +25,5 @@ function setValueForKeyCF(key, value) {
   return "Stored key/value pair";
 }
 
-CustomFunctions.associate("GETVALUEFORKEYCF",getValueForKeyCF);
-CustomFunctions.associate("SETVALUEFORKEYCF",setValueForKeyCF);
+CustomFunctions.associate("GETVALUEFORKEYCF", getValueForKeyCF);
+CustomFunctions.associate("SETVALUEFORKEYCF", setValueForKeyCF);
