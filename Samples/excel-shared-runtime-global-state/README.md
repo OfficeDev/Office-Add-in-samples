@@ -48,9 +48,9 @@ Office Add-in share global data with a shared runtime | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0 | 3-15-2020 | Initial release.
+1.0 | March 15, 2020 | Initial release.
 1.1 | May 26, 2021 | Update to use GitHub pages for hosting.
-1.2 | April 2026 | Add unified manifest support.
+1.2 | April 20, 2026 | Add unified manifest support.
 
 ----------
 
