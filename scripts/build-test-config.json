@@ -1,0 +1,65 @@
+{
+  "description": "Configuration for build tests - defines expected failures and samples to skip",
+  "skip": [
+    {
+      "path": "Samples/blazor-add-in",
+      "reason": ".NET Blazor samples require different build tooling (dotnet SDK)",
+      "pattern": "blazor-add-in"
+    },
+    {
+      "path": "manifest-configurations",
+      "reason": "Nested manifest-configurations are not meant to be built in place - files should be copied to parent directory",
+      "pattern": "manifest-configurations"
+    },
+    {
+      "path": "Samples/Excel.JsonToOfficeTable",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
+      "path": "Samples/Excel.TableBindingFormatting",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
+      "path": "Samples/Outlook.ConsumeGraphAPI",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
+      "path": "Samples/Outlook.MailCRM",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
+      "path": "Samples/Outlook.RelatedData",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
+      "path": "Samples/Outlook.UpsPackageTracker",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
+      "path": "Samples/Outlook.YouTubeApp",
+      "reason": "Archived sample - marked as [ARCHIVED] in README"
+    },
+    {
+      "path": "Samples/excel-custom-functions-sync",
+      "reason": "Preview sample missing package-lock.json file"
+    },
+    {
+      "path": "Samples/excel-add-in-shape-dashboard",
+      "reason": "Sample missing package-lock.json file"
+    },
+    {
+      "path": "Samples/excel-add-in-chart-analyze-data",
+      "reason": "Sample missing package-lock.json file"
+    },
+    {
+      "path": "Samples/word-ai-generated-content",
+      "reason": "Sample missing package-lock.json file"
+    }
+  ],
+  "expectedFailures": [],
+  "notes": [
+    "expectedFailures: Builds that are known to fail but should still be tested to detect if they get fixed",
+    "skip: Samples that should not be tested at all (different tech stack, etc.)",
+    "pattern: If specified, matches any path containing this string"
+  ]
+}
