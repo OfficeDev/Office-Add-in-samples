@@ -61,7 +61,7 @@
     "ie 11"
   ],
   "overrides": {
-    "tmp": "^0.2.3",
+    "tmp": "^0.2.5",
     "serialize-javascript": "^7.0.5",
     "handlebars": "^4.7.9",
     "fast-xml-parser": "^5.0.0",
