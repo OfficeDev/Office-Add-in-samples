@@ -21,7 +21,7 @@
     "pug": "^3.0.3",
     "@azure/msal-node": "5.0.2",
     "jwks-rsa": "^3.2.1",
-    "uuid": "^13.0.0"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "office-addin-dev-certs": "1.12.2"
