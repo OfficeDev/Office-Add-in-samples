@@ -3,6 +3,7 @@ page_type: sample
 urlFragment: office-add-in-keyboard-shortcuts
 products:
   - office-excel
+  - office-powerpoint
   - office-word
   - office
   - m365
@@ -22,11 +23,16 @@ description: "This sample shows how to add keyboard shortcuts to your Office Add
 
 This sample shows how to create custom keyboard shortcuts for an Office Add-in. Keyboard shortcuts let power users quickly use your add-in's features and give accessibility options to avoid using a mouse. In this sample, the following shortcuts are configured.
 
-- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Up arrow key</kbd>: Opens the add-in's task pane.
-- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Down arrow key</kbd>: Hides the add-in's task pane.
-- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Q</kbd>: Performs an action that's specific to the current Office host.
+- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Up arrow key</kbd> (Windows) or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>Up arrow key</kbd> (Mac): Opens the add-in's task pane.
+- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Down arrow key</kbd> (Windows) or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>Down arrow key</kbd> (Mac): Hides the add-in's task pane.
+- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Q</kbd> (Windows) or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>Q</kbd> (Mac): Performs an action that's specific to the current Office host.
   - **Excel**: Cycles through colors in the currently selected cell.
   - **Word**: Adds text to the document.
+  - **PowerPoint**: Adds a text box to the selected slide.
+- <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> (Windows) or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> (Mac): Adds a new item based on the current Office host.
+  - **Excel**: Adds a new worksheet.
+  - **Word**: Adds a page break.
+  - **PowerPoint**: Adds a new slide.
 
 Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 
@@ -41,15 +47,18 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 
 - Office on the web
   - Excel
+  - PowerPoint
   - Word
 
     > **Note**: The keyboard shortcut feature is currently being rolled out to Word on the web. If you test the feature in Word on the web at this time, the shortcuts may not work if they're activated from within the add-in's task pane. We recommend to periodically check [Keyboard Shortcuts requirement sets](https://learn.microsoft.com/javascript/api/requirement-sets/common/keyboard-shortcuts-requirement-sets) to find out when the feature is fully supported.
 
 - Office on Windows
   - Excel: Version 2111 (Build 14701.10000)
+  - PowerPoint: Version 2601 (Build 19628.20150)
   - Word: Version 2408 (Build 17928.20114)
 - Office on Mac
   - Excel: Version 16.55 (21111400)
+  - PowerPoint: Version 16.105 (26012530)
   - Word: Version 16.88 (24081116)
 
 ## Prerequisites
@@ -70,6 +79,7 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 | 1.1 | May 11, 2021 | Removed yo office and modified to be GitHub hosted |
 | 2.0 | September 27, 2024 | Added support for Word |
 | 2.1 | December 5, 2024 | Updated keyboard shortcuts |
+| 3.0 | February 5, 2026 | Added support for PowerPoint |
 
 ## Disclaimer
 
@@ -79,10 +89,10 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 
 ### Run the sample from GitHub
 
-Run this sample in Excel or Word. The add-in web files are served from this repository on GitHub.
+Run this sample in Excel, PowerPoint, or Word. The add-in web files are served from this repository on GitHub.
 
 1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the manifest file in Excel or Word. The sideloading process varies depending on your platform.
+1. Sideload the manifest file in Excel, PowerPoint, or Word. The sideloading process varies depending on your platform.
 
     - **Office on the web**: [Manually sideload an add-in to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing#manually-sideload-an-add-in-to-office-on-the-web)
     - **Office on Windows**: [Sideload Office Add-ins for testing from a network share](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
@@ -125,7 +135,7 @@ If you prefer to host the web server for the sample on your computer, follow the
 
     The http-server will run and host the current folder's files on localhost:3000.
 
-1. Sideload the **manifest-localhost.xml** file in Excel or Word. The sideloading process varies depending on your platform.
+1. Sideload the **manifest-localhost.xml** file in Excel, PowerPoint, or Word. The sideloading process varies depending on your platform.
 
     - **Office on the web**: [Manually sideload an add-in to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing#manually-sideload-an-add-in-to-office-on-the-web)
     - **Office on Windows**: [Sideload Office Add-ins for testing from a network share](https://learn.microsoft.com/office/dev/add-ins/testing/create-a-network-shared-folder-catalog-for-task-pane-and-content-add-ins)
@@ -137,10 +147,10 @@ If you prefer to host the web server for the sample on your computer, follow the
 
 Once the add-in is loaded, try out its functionality.
 
-1. Press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Up arrow key</kbd> on your keyboard to open the add-in's task pane.
+1. Press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Up arrow key</kbd> (Windows) or <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>Up arrow key</kbd> (Mac) on your keyboard to open the add-in's task pane.
 
   > [!NOTE]
-  > If the keyboard shortcut is already in use in Excel or Word, a dialog will be shown so that you can select which action you'd like to map to the shortcut. Once you select an action, you can change your preference by invoking the **Reset Office Add-in Shortcut Preferences** command from the search field.
+  > If the keyboard shortcut is already in use in Excel, PowerPoint, or Word, a dialog will be shown so that you can select which action you'd like to map to the shortcut. Once you select an action, you can change your preference by invoking the **Reset Office Add-in Shortcut Preferences** command from the search field.
   >
   > ![The Reset Office Add-in Shortcut Preferences option in Excel.](./assets/office-keyboard-shortcuts-reset.png)
 
