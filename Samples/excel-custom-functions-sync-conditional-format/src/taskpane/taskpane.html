@@ -1,0 +1,44 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Synchronous custom function with conditional formatting</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"/>
+
+    <style>
+        html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+        .ms-welcome__header { padding: 20px; padding-bottom: 30px; padding-top: 100px; display: flex; flex-direction: column; align-items: center; }
+        .ms-welcome__main { display: flex; flex-direction: column; flex-wrap: nowrap; align-items: center; flex: 1 0 0; padding: 10px 20px; }
+        .ms-welcome__main > h2 { width: 100%; text-align: center; }
+        .ms-font-m { margin-top: 15px; margin-bottom: 0px; }
+        .ms-Button { font-weight: bold; margin-top: 15px; color: #0078d7; }
+        .ms-Button:hover, .ms-Button:focus { color: #005a9e; cursor: pointer; }
+    </style>
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header class="ms-welcome__header ms-bgColor-neutralLighter">
+        <img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" />
+        <h1 class="ms-font-su">Welcome</h1>
+    </header>
+    <main id="app-body" class="ms-welcome__main">
+        <h2 class="ms-font-xl">Synchronous custom function with conditional formatting</h2>
+        <p class="ms-font-m">See how a synchronous custom function powers a conditional format rule that highlights cells dynamically.</p>
+        <p class="ms-font-m">Set up the sample data and then try changing the target value in cell A2.</p>
+          <button role="button" id="run" class="ms-Button ms-Button-label ms-font-l">Set up data and format</button>
+        <p id="status"></p>
+    </main>
+</body>
+
+</html>
