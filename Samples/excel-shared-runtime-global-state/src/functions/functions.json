@@ -14,7 +14,7 @@
             "result": {}
         },
         {
-            "description": "Get value for key",
+            "description": "Set value for key",
             "id": "SETVALUEFORKEYCF",
             "name": "SETVALUEFORKEYCF",
             "parameters": [
@@ -24,6 +24,7 @@
                     "type": "any"
                 },
                 {
+                    "description": "The value to store",
                     "name": "value",
                     "type": "any"
                 }

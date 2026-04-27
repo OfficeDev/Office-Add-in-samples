@@ -14,10 +14,11 @@ function getValueForKeyCF(key) {
 }
 
 /**
- * Get value for key
+ * Set value for key
  * @customfunction
  * @param key The key
- * @returns The value for the key.
+ * @param value The value to store
+ * @returns Confirmation message
  */
 function setValueForKeyCF(key, value) {
   setValueForKey(key, value);
@@ -25,4 +26,4 @@ function setValueForKeyCF(key, value) {
 }
 
 CustomFunctions.associate("GETVALUEFORKEYCF", getValueForKeyCF);
-CustomFunctions.associate("SETVALUEFORKEYCF",setValueForKeyCF);
+CustomFunctions.associate("SETVALUEFORKEYCF", setValueForKeyCF);

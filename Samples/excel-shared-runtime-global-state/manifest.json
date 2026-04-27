@@ -1,0 +1,236 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.25/MicrosoftTeams.schema.json",
+    "id": "a3b5c8d1-2e4f-4a6b-9c8d-1e2f3a4b5c6d",
+    "manifestVersion": "1.25",
+    "version": "1.0.0",
+    "name": {
+        "short": "Shared Runtime Sample",
+        "full": "Excel Shared Runtime Global State Sample"
+    },
+    "description": {
+        "short": "Share global data across add-in components using shared runtime.",
+        "full": "This sample shows how to set up a project that uses the shared runtime to share data across ribbon buttons, task pane, and custom functions."
+    },
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://www.contoso.com",
+        "privacyUrl": "https://www.contoso.com/privacy",
+        "termsOfUseUrl": "https://www.contoso.com/terms"
+    },
+    "icons": {
+        "outline": "assets/icon-32.png",
+        "color": "assets/icon-64.png"
+    },
+    "accentColor": "#230201",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us",
+        "additionalLanguages": []
+    },
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "Document.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "validDomains": [
+        "https://localhost:3000",
+        "contoso.com"
+    ],
+    "showLoadingIndicator": false,
+    "isFullScreen": false,
+    "defaultBlockUntilAdminAction": false,
+    "extensions": [
+        {
+            "requirements": {
+                "capabilities": [
+                    {
+                        "name": "SharedRuntime",
+                        "minVersion": "1.1"
+                    }
+                ],
+                "scopes": [
+                    "workbook"
+                ]
+            },
+            "runtimes": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "SharedRuntime",
+                                "minVersion": "1.1"
+                            }
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "id": "SharedRuntime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/src/taskpane/taskpane.html",
+                        "script": "https://localhost:3000/src/functions/functions.js"
+                    },
+                    "lifetime": "long",
+                    "actions": [
+                        {
+                            "id": "ShowTaskpane",
+                            "type": "openPage",
+                            "pinnable": false
+                        }
+                    ],
+                    "customFunctions": {
+                        "functions": [
+                            {
+                                "id": "GETVALUEFORKEYCF",
+                                "name": "GETVALUEFORKEYCF",
+                                "description": "Get value for key",
+                                "parameters": [
+                                    {
+                                        "name": "key",
+                                        "description": "The key",
+                                        "type": "any"
+                                    }
+                                ],
+                                "result": {
+                                    "dimensionality": "scalar"
+                                }
+                            },
+                            {
+                                "id": "SETVALUEFORKEYCF",
+                                "name": "SETVALUEFORKEYCF",
+                                "description": "Set value for key",
+                                "parameters": [
+                                    {
+                                        "name": "key",
+                                        "description": "The key",
+                                        "type": "any"
+                                    },
+                                    {
+                                        "name": "value",
+                                        "description": "The value",
+                                        "type": "any"
+                                    }
+                                ],
+                                "result": {
+                                    "dimensionality": "scalar"
+                                }
+                            }
+                        ],
+                        "namespace": {
+                            "id": "CONTOSO",
+                            "name": "CONTOSO"
+                        },
+                        "metadataUrl": "https://localhost:3000/src/functions/functions.json"
+                    }
+                }
+            ],
+            "ribbons": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "AddinCommands",
+                                "minVersion": "1.1"
+                            }
+                        ],
+                        "scopes": [
+                            "workbook"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "contexts": [
+                        "default"
+                    ],
+                    "tabs": [
+                        {
+                            "builtInTabId": "TabHome",
+                            "groups": [
+                                {
+                                    "id": "CommandsGroup",
+                                    "label": "Commands Group",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://localhost:3000/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://localhost:3000/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://localhost:3000/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "TaskpaneButton",
+                                            "type": "button",
+                                            "label": "Show Taskpane",
+                                            "icons": [
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
+                                            ],
+                                            "supertip": {
+                                                "title": "Show Taskpane",
+                                                "description": "Click to Show a Taskpane"
+                                            },
+                                            "actionId": "ShowTaskpane",
+                                            "enabled": true
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "alternates": [
+                {
+                    "alternateIcons": {
+                        "icon": {
+                            "size": 32,
+                            "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        "highResolutionIcon": {
+                            "size": 64,
+                            "url": "https://localhost:3000/assets/icon-64.png"
+                        }
+                    }
+                }
+            ],
+            "getStartedMessages": [
+                {
+                    "requirements": {
+                        "scopes": [
+                            "workbook"
+                        ],
+                        "formFactors": [
+                            "desktop"
+                        ]
+                    },
+                    "title": "Get started with your sample add-in!",
+                    "description": "Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Taskpane' button to get started.",
+                    "learnMoreUrl": "https://go.microsoft.com/fwlink/?LinkId=276812"
+                }
+            ]
+        }
+    ]
+}
