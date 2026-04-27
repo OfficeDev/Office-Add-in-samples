@@ -19,7 +19,7 @@ Office.onReady(async (info) => {
     document.getElementById("app-body").style.display = "flex";
     document.getElementById("import").onclick = importData;
 
-    //Create the contextual tab
+    // Create the contextual tab.
     let g = getGlobal(); 
     await Office.ribbon.requestCreateControls(g.contextualTab);
   }
@@ -31,7 +31,7 @@ Office.onReady(async (info) => {
  */
  async function importData() {
   try {
-    //Determine which data source the user selected from the radio buttons.
+    // Determine which data source the user selected from the radio buttons.
     let g = getGlobal(); 
     const radioExcel = document.getElementById('excelFile');
     if (radioExcel.checked) {
@@ -40,7 +40,7 @@ Office.onReady(async (info) => {
       g.mockDataSource = 'sqlMockData';
     }
 
-    //Create the sample worksheet and sales table.
+    // Create the sample worksheet and sales table.
     await createSampleWorkSheet();
     await createSampleTable(g.mockDataSource);
   } catch (error) {
