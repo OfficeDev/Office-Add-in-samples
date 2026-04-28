@@ -58,6 +58,10 @@ Use localhost to run the add-in.
 1. From a command prompt, go to the root of the project folder **Samples/office-contextual-tabs**.
 1. Run `npm install`.
 1. Run `npm start`. This starts the web server on localhost and sideloads the manifest file.
+
+    > **Tip**: To sideload an add-in that uses the add-in only manifest on other Excel clients, see the following:
+    > - [Sideload Office Add-ins to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing)
+    > - [Sideload Office Add-ins on Mac for testing](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-an-office-add-in-on-mac)
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 1. To stop the web server and uninstall the add-in, run `npm stop`.
 
