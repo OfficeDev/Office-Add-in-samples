@@ -79,7 +79,7 @@ Once the add-in is loaded, follow the steps to try out the functionality.
 
     > The **Table Data** tab appears in the ribbon.
 1. Select the **Table Data** tab from the ribbon. Then, select an action from the tab.
-    - **Import data** - Import sales data from an **External Excel file** or **SQL Database**.
+    - **Import data** - Imports sales data from an **External Excel file** or **SQL Database**.
     - **Refresh** - Imports data from the selected data source. Overwrites any changes you made to the table. The button is only available when you make changes to the table.
     - **Submit** - Submits your changes to the data source. The button is only available when you make changes to the table.
     - **Show task pane** - Opens the add-in's task pane.
