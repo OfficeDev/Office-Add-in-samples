@@ -63,7 +63,7 @@ jobs:
           retention-days: 30
 
       - name: Comment PR with results
-        if: always() && github.event_name == 'pull_request' && matrix.node-version == 'lts/*'
+        if: always() && github.event_name == 'pull_request' && matrix.node-version == 'lts'
         continue-on-error: true  # Don't fail workflow if commenting fails (e.g., permission issues)
         uses: actions/github-script@v7
         with:
