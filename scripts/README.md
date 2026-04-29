@@ -17,7 +17,7 @@ This suite provides automated build testing for all Office Add-in samples. Tests
 
 **What happens:** When your PR triggers testing, the following occurs:
 
-1. Tests run against Node.js 20, 22, and 24 (in parallel).
+1. Tests run against Node.js 22 and 24 (in parallel).
 1. A bot posts results to your PR (~15-20 minutes).
 1. ✅ Green check = All builds passed or failed as expected.
 1. ❌ Red X = An unexpected build failure occurred and needs fixing.
@@ -227,7 +227,7 @@ For detailed examples, see the main repository.
 
 ### Prerequisites
 
-- **Node.js** (version 20, 22, or 24)
+- **Node.js** (version 22 or 24)
 - **jq** - JSON processor
   - Ubuntu/Debian: `sudo apt-get install jq`
   - macOS: `brew install jq`
@@ -295,7 +295,7 @@ cat build-logs/Samples_excel-data-types-explorer.log
 
 **Node version problems:**
 
-- Matrix tests Node 20, 22, 24.
+- Matrix tests Node 22 and 24.
 - Ensure `package.json` has compatible engine requirements.
 
 ---
@@ -304,7 +304,7 @@ cat build-logs/Samples_excel-data-types-explorer.log
 
 **Typical run times:**
 
-- Per PR: About 15-20 minutes (three Node versions in parallel)
+- Per PR: About 15-20 minutes (two Node versions in parallel)
 - Per Node version: About 10-15 minutes
 - With cache hit: About 8-12 minutes
 - Single sample: About 15-30 seconds
@@ -317,7 +317,7 @@ cat build-logs/Samples_excel-data-types-explorer.log
 **Optimization:**
 
 - npm cache reuses downloads across samples
-- Parallel matrix testing (three jobs run simultaneously)
+- Parallel matrix testing (two jobs run simultaneously)
 - Individual logs capture install/build output for all samples
 
 ---
@@ -332,7 +332,7 @@ cat build-logs/Samples_excel-data-types-explorer.log
 
 ### Workflow features
 
-- **Matrix testing**: Node.js 20, 22, 24
+- **Matrix testing**: Node.js 22, 24
 - **Smart caching**: npm downloads with restore keys
 - **Artifact upload**: Results and logs with 30-day retention
 - **PR comments**: Auto-posted summaries
