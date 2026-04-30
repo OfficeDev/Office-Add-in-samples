@@ -56,6 +56,9 @@
   },
   "overrides": {
     "tmp": "^0.2.5",
-    "follow-redirects": "^1.16.0"
+    "follow-redirects": "^1.16.0",
+    "uuid": "^14.0.0",
+    "diff": "^9.0.0",
+    "serialize-javascript": "^7.0.5"
   }
 }

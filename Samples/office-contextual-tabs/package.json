@@ -58,5 +58,11 @@
   "browserslist": [
     "last 2 versions",
     "ie 11"
-  ]
+  ],
+  "overrides": {
+    "uuid": "^14.0.0",
+    "diff": "^9.0.0",
+    "serialize-javascript": "^7.0.5",
+    "tmp": "^0.2.5"
+  }
 }
