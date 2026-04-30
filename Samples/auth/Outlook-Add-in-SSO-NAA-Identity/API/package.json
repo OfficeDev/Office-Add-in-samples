@@ -20,7 +20,7 @@
     "lowdb": "^1.0.0",
     "morgan": "~1.10.0",
     "node-fetch": "^3.3.2",
-    "uuid": "^9.0.1"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^14.0.0",
