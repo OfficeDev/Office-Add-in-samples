@@ -5,12 +5,12 @@
   xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="MailApp">
   <Id>{C341AD31-BF7A-4C1D-99F1-D2E5896BEB0A}</Id>
   <Version>1.0</Version>
-  <ProviderName>Contoso</ProviderName>
+  <ProviderName>Ciellos</ProviderName>
   <DefaultLocale>en-us</DefaultLocale>
-  <DisplayName DefaultValue="Office Add-ins signature sample"/>
-  <Description DefaultValue="Insert your signature with ease."/>
-  <IconUrl DefaultValue="https://localhost:3000/assets/final_logo.png"/>
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/final_logo.jpg"/>
+  <DisplayName DefaultValue="Ciellos Signature"/>
+  <Description DefaultValue="Insert your Ciellos signature with ease."/>
+  <IconUrl DefaultValue="https://emailsignatureciellosdev.z13.web.core.windows.net/assets/Ciellos_Logo_2Colour-Blue.png"/>
+  <HighResolutionIconUrl DefaultValue="https://emailsignatureciellosdev.z13.web.core.windows.net/assets/Ciellos_Logo_2Colour-Blue.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
@@ -55,9 +55,7 @@
           <!-- Specify the runtime for event-based activation. -->
           <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch -->
           <Runtimes>
-            <Runtime resid="Autorun">
-              <Override type="javascript" resid="runtimeJs"/>
-            </Runtime>
+            <Runtime resid="Autorun"/>
           </Runtimes>
 
           <DesktopFormFactor>
@@ -121,7 +119,7 @@
       </Hosts>
       <Resources>
         <bt:Images>
-          <bt:Image id="Icon16x16" DefaultValue="https://localhost:3000/assets/final_logo.png"></bt:Image>
+          <bt:Image id="Icon16x16" DefaultValue="https://emailsignatureciellosdev.z13.web.core.windows.net/assets/Ciellos_Logo_2Colour-Blue.png"></bt:Image>
         </bt:Images>
         <bt:Urls>
           <bt:Url id="residUrl0" DefaultValue="https://localhost:3000/editsignature.html"></bt:Url>
@@ -129,7 +127,7 @@
           <bt:Url id="runtimeJs" DefaultValue="https://localhost:3000/autorunshared.js"></bt:Url>
         </bt:Urls>
         <bt:ShortStrings>
-          <bt:String id="residGL0" DefaultValue="Signature Injector"></bt:String>
+          <bt:String id="residGL0" DefaultValue="Ciellos Signature"></bt:String>
           <bt:String id="residStr0" DefaultValue="Set my signature"></bt:String>
         </bt:ShortStrings>
         <bt:LongStrings>

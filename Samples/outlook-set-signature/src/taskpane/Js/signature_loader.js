@@ -3,10 +3,9 @@
 
 let _user_info;
 
-Office.initialize = function(reason)
-{
+Office.onReady(function() {
   on_initialization_complete();
-}
+});
 
 function on_initialization_complete()
 {
@@ -66,27 +65,19 @@ function populate_template_C()
 
 function show_signature_settings()
 {
-  let val = Office.context.roamingSettings.get("newMail");
-  if (val)
-  {
-    $("#new_mail").val(val);
-  }
+  const rs = Office.context && Office.context.roamingSettings;
 
-  val = Office.context.roamingSettings.get("reply");
-  if (val)
-  {
-    $("#reply").val(val);
-  }
+  const get = (key) => rs ? rs.get(key) : localStorage.getItem(key);
 
-  val = Office.context.roamingSettings.get("forward");
-  if (val)
-  {
-    $("#forward").val(val);
-  }
+  let val = get("newMail");
+  if (val) { $("#new_mail").val(val); }
 
-  val = Office.context.roamingSettings.get("override_olk_signature");
-  if (val != null)
-  {
-    $("#checkbox_sig").prop('checked', val);
-  }
+  val = get("reply");
+  if (val) { $("#reply").val(val); }
+
+  val = get("forward");
+  if (val) { $("#forward").val(val); }
+
+  val = get("override_olk_signature");
+  if (val != null) { $("#checkbox_sig").prop('checked', val === true || val === 'true'); }
 }

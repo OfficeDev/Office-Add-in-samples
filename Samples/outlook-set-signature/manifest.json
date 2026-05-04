@@ -4,23 +4,23 @@
     "id": "B341AD31-BF7A-4C1D-99F1-D2E5896BEB0A",
     "version": "1.0.0.0",
     "name": {
-        "short": "Signature sample",
-        "full": "Signature sample"
+        "short": "Ciellos Signature",
+        "full": "Ciellos Signature"
     },
     "description": {
-        "short": "Insert your signature with ease.",
-        "full": "Insert your signature with ease."
+        "short": "Insert your Ciellos signature with ease.",
+        "full": "Insert your Ciellos signature with ease."
     },
     "icons": {
-        "outline": "assets/final_logo.png",
-        "color": "assets/final_logo.png"
+        "outline": "assets/Ciellos_Logo_2Colour-Blue.png",
+        "color": "assets/Ciellos_Logo_2Colour-Blue.png"
     },
-    "accentColor": "#230201",
+    "accentColor": "#0095FE",
     "developer": {
-        "name": "Contoso",
-        "websiteUrl": "https://www.contoso.com/help",
-        "privacyUrl": "https://www.contoso.com/help",
-        "termsOfUseUrl": "https://www.contoso.com/help"
+        "name": "Ciellos",
+        "websiteUrl": "https://emailsignatureciellosdev.z13.web.core.windows.net",
+        "privacyUrl": "https://emailsignatureciellosdev.z13.web.core.windows.net",
+        "termsOfUseUrl": "https://emailsignatureciellosdev.z13.web.core.windows.net"
     },
     "localizationInfo": {
         "defaultLanguageTag": "en-us"
@@ -36,7 +36,7 @@
         }
     },
     "validDomains": [
-        "https://localhost:3000"
+        "https://emailsignatureciellosdev.z13.web.core.windows.net"
     ],
     "extensions": [
         {
@@ -64,8 +64,7 @@
                     "id": "runtime_1",
                     "type": "general",
                     "code": {
-                        "page": "https://localhost:3000/autorunweb.html",
-                        "script": "https://localhost:3000/autorunshared.js"
+                        "page": "https://emailsignatureciellosdev.z13.web.core.windows.net/autorunweb.html"
                     },
                     "lifetime": "short",
                     "actions": [
@@ -88,7 +87,7 @@
                     "id": "runtime_2",
                     "type": "general",
                     "code": {
-                        "page": "https://localhost:3000/editsignature.html"
+                        "page": "https://emailsignatureciellosdev.z13.web.core.windows.net/editsignature.html"
                     },
                     "lifetime": "short",
                     "actions": [
@@ -134,7 +133,7 @@
                             "groups": [
                                 {
                                     "id": "mccsG0",
-                                    "label": "Signature Injector",
+                                    "label": "Ciellos Signature",
                                     "controls": [
                                         {
                                             "id": "MRCS_TpBtn0",
@@ -143,15 +142,15 @@
                                             "icons": [
                                                 {
                                                     "size": 16,
-                                                    "url": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://emailsignatureciellosdev.z13.web.core.windows.net/assets/Ciellos_Logo_2Colour-Blue.png"
                                                 },
                                                 {
                                                     "size": 32,
-                                                    "url": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://emailsignatureciellosdev.z13.web.core.windows.net/assets/Ciellos_Logo_2Colour-Blue.png"
                                                 },
                                                 {
                                                     "size": 80,
-                                                    "url": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://emailsignatureciellosdev.z13.web.core.windows.net/assets/Ciellos_Logo_2Colour-Blue.png"
                                                 }
                                             ],
                                             "supertip": {
@@ -192,7 +191,7 @@
                             "groups": [
                                 {
                                     "id": "aocsG0",
-                                    "label": "Signature Injector2",
+                                    "label": "Ciellos Signature",
                                     "controls": [
                                         {
                                             "id": "MRCS_TpBtn1",
@@ -201,15 +200,15 @@
                                             "icons": [
                                                 {
                                                     "size": 16,
-                                                    "url": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://emailsignatureciellosdev.z13.web.core.windows.net/assets/Ciellos_Logo_2Colour-Blue.png"
                                                 },
                                                 {
                                                     "size": 32,
-                                                    "url": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://emailsignatureciellosdev.z13.web.core.windows.net/assets/Ciellos_Logo_2Colour-Blue.png"
                                                 },
                                                 {
                                                     "size": 80,
-                                                    "url": "https://localhost:3000/assets/final_logo.png"
+                                                    "url": "https://emailsignatureciellosdev.z13.web.core.windows.net/assets/Ciellos_Logo_2Colour-Blue.png"
                                                 }
                                             ],
                                             "supertip": {
@@ -252,7 +251,7 @@
                     ]
                 }
             ],
-            "audienceClaimUrl": "https://localhost:3000/editsignature.html"
+            "audienceClaimUrl": "https://emailsignatureciellosdev.z13.web.core.windows.net/editsignature.html"
         }
     ],
     "showLoadingIndicator": false,

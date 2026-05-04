@@ -61,7 +61,7 @@
     width: 86px;
     height: 32px;
     color: white;
-    background: #005696 0% 0% no-repeat padding-box;
+    background: #0095FE 0% 0% no-repeat padding-box;
     border-radius: 2px;
     opacity: 1;
   }
@@ -133,10 +133,10 @@
     position: relative;
     left: 17px;
     width: 290px;
-    height: 136px;
+    min-height: 80px;
     border: 1px solid #DDDDDD;
     border-radius: 2px;
-    color: #573d3d;
+    color: #0095FE;
     padding: 5px;
     opacity: 1;
   }
@@ -145,10 +145,10 @@
     position: relative;
     left: 17px;
     width: 290px;
-    height: 106px;
+    min-height: 80px;
     border: 1px solid #DDDDDD;
     border-radius: 2px;
-    color: #573d3d;
+    color: #0095FE;
     padding: 5px;
     opacity: 1;
   }
@@ -157,10 +157,10 @@
     position: relative;
     left: 17px;
     width: 290px;
-    height: 65px;
+    min-height: 30px;
     border: 1px solid #DDDDDD;
     border-radius: 2px;
-    color: #573d3d;
+    color: #0095FE;
     padding: 5px;
     opacity: 1;
   }
@@ -205,11 +205,11 @@
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #0095FE;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #0095FE;
   }
   
   input:checked + .slider:before {
@@ -260,7 +260,8 @@
     width: 136px;
     height: 90px;
 
-    background: transparent url('img/sample-logo.png') 0% 0% no-repeat padding-box;
+    background: transparent url('https://emailsignatureciellosdev.z13.web.core.windows.net/assets/Ciellos_Logo_2Colour-Blue.png') 0% 0% no-repeat padding-box;
+    background-size: contain;
     opacity: 1;
   }
 
@@ -353,7 +354,8 @@
     width: 105px;
     height: 69px;
 
-    background: transparent url('img/sample-logo.png') 0% 0% no-repeat padding-box;
+    background: transparent url('https://emailsignatureciellosdev.z13.web.core.windows.net/assets/Ciellos_Logo_2Colour-Blue.png') 0% 0% no-repeat padding-box;
+    background-size: contain;
     opacity: 1;
   }
 

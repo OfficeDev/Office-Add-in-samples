@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+// Flushes in-memory roamingSettings to the server. Must be called after any .set() calls.
 function save_user_settings_to_roaming_settings()
 {
   Office.context.roamingSettings.saveAsync(function (asyncResult)
@@ -9,6 +10,7 @@ function save_user_settings_to_roaming_settings()
   });
 }
 
+// Tells Outlook to stop inserting its own default signature so ours takes precedence.
 function disable_client_signatures_if_necessary()
 {
   if ($("#checkbox_sig").prop("checked") === true)
@@ -22,31 +24,41 @@ function disable_client_signatures_if_necessary()
 
 function save_signature_settings()
 {
+  // user_info is written to localStorage by editsignature.html; if it's missing the user
+  // hasn't completed the profile form yet, so there's nothing to save.
   let user_info_str = localStorage.getItem('user_info');
 
   if (user_info_str)
   {
 	if (!_user_info)
 	{
-	  _user_info = JSON.parse(user_info_str); 
+	  _user_info = JSON.parse(user_info_str);
 	}
 
-	Office.context.roamingSettings.set('user_info', user_info_str);
-	Office.context.roamingSettings.set('newMail', $("#new_mail option:selected").val());
-	Office.context.roamingSettings.set('reply', $("#reply option:selected").val());
-	Office.context.roamingSettings.set('forward', $("#forward option:selected").val());
+	const newMail = $("#new_mail option:selected").val();
+	const reply   = $("#reply option:selected").val();
+	const forward = $("#forward option:selected").val();
+	const override = $("#checkbox_sig").prop('checked');
 
-	Office.context.roamingSettings.set('override_olk_signature', $("#checkbox_sig").prop('checked'));
+	// localStorage is always available (web, new Outlook, test harness outside Outlook).
+	localStorage.setItem('newMail', newMail);
+	localStorage.setItem('reply', reply);
+	localStorage.setItem('forward', forward);
+	localStorage.setItem('override_olk_signature', override);
 
-	save_user_settings_to_roaming_settings();
-
-	disable_client_signatures_if_necessary();
+	// roamingSettings syncs across devices via Exchange; only available in classic Outlook.
+	if (Office.context && Office.context.roamingSettings)
+	{
+	  Office.context.roamingSettings.set('user_info', user_info_str);
+	  Office.context.roamingSettings.set('newMail', newMail);
+	  Office.context.roamingSettings.set('reply', reply);
+	  Office.context.roamingSettings.set('forward', forward);
+	  Office.context.roamingSettings.set('override_olk_signature', override);
+	  save_user_settings_to_roaming_settings();
+	  disable_client_signatures_if_necessary();
+	}
 
 	$("#message").show("slow");
-  }
-  else
-  {
-	// TBD display an error somewhere?
   }
 }
 

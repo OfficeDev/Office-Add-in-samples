@@ -3,6 +3,10 @@
 
 // Contains code for event-based activation on Outlook on web, on Windows, and on Mac (new UI preview).
 
+var CIELLOS_LOGO_URL = "https://emailsignatureciellosdev.z13.web.core.windows.net/assets/Ciellos_Logo_2Colour-Blue.png";
+var CIELLOS_STYLE = "font-family:'Segoe UI',sans-serif;font-size:10pt;color:#0095FE;line-height:1.3";
+var CIELLOS_STYLE_INLINE = "font-family:'Segoe UI',sans-serif;font-size:10pt;color:#0095FE";
+
 /**
  * Checks if signature exists.
  * If not, displays the information bar for user.
@@ -157,84 +161,65 @@ function get_command_id() {
   return "MRCS_TpBtn0";
 }
 
-/**
- * Gets HTML string for template A
- * Embeds the signature logo image into the HTML string
- * @param {*} user_info Information details about the user
- * @returns Object containing:
- *  "signature": The signature HTML of template A,
-    "logoBase64": The base64 encoded logo image,
-    "logoFileName": The filename of the logo image
- */
+// Template A: New mail — logo (rowspan table), name + title, mobile + office, email, website
 function get_template_A_info(user_info) {
-  const logoFileName = "sample-logo.png";
-  let str = "";
-  if (is_valid_data(user_info.greeting)) {
-    str += user_info.greeting + "<br/>";
+  var nameCell = "<span style='" + CIELLOS_STYLE + "'><b>" + user_info.name;
+  if (is_valid_data(user_info.pronoun)) nameCell += " " + user_info.pronoun;
+  if (is_valid_data(user_info.job)) {
+    nameCell += " |</b></span> <span style='" + CIELLOS_STYLE + "'>" + user_info.job + "</span>";
+  } else {
+    nameCell += "</b></span>";
   }
 
-  str += "<table>";
-  str += "<tr>";
-  // Embed the logo using <img src='cid:...
-  str +=
-    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='cid:" +
-    logoFileName +
-    "' alt='MS Logo' width='24' height='24' /></td>";
-  str += "<td style='padding-left: 5px;'>";
-  str += "<strong>" + user_info.name + "</strong>";
-  str += is_valid_data(user_info.pronoun) ? "&nbsp;" + user_info.pronoun : "";
-  str += "<br/>";
-  str += is_valid_data(user_info.job) ? user_info.job + "<br/>" : "";
-  str += user_info.email + "<br/>";
-  str += is_valid_data(user_info.phone) ? user_info.phone + "<br/>" : "";
-  str += "</td>";
-  str += "</tr>";
-  str += "</table>";
+  var contactCell = "";
+  if (is_valid_data(user_info.phone)) {
+    contactCell += "<div style='" + CIELLOS_STYLE + "'>Mobile: " + user_info.phone + "</div>";
+  }
+  contactCell += "<div style='" + CIELLOS_STYLE + "'>Office: +1 (770) 799-8565</div>";
+  contactCell += "<div style='" + CIELLOS_STYLE + "'>E-mail: " + user_info.email + "</div>";
+  contactCell += "<div style='" + CIELLOS_STYLE + "'><a href='http://www.ciellos.com/' style='color:#0095FE'>www.ciellos.com</a></div>";
 
-  // return object with signature HTML, logo image base64 string, and filename to reference it with.
-  return {
-    signature: str,
-    logoBase64:
-      "iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAEeSURBVFhHzdhBEoIwDIVh4EoeQJd6YrceQM+kvo5hQNokLymO/4aF0/ajlBl1fL4bEp0uj3K9XQ/lGi0MEcB3UdD0uVK1EEj7TIuGeBaKYCgIswCLcUMid8mMcUEiCMk71oRYE+Etsd4UD0aFeBBSFtOEMAgpg6lCIggpitlAMggpgllBeiAkFjNDeiIkBlMgeyAkL6Z6WJdlEJJnjvF4vje/BvRALNN23tyRXzVpd22dHSZtLhjMHemB8cxRINZZyGCssbL2vCN7YLwItHo0PTEMAm3OSA8Mi0DVw5rBRBCoCkERTBSBmhDEYDII5PqlZy1iZSGQuiOSZ6JW3rEuCIpgmDFuCGImZuEUBHkWiOweDUHaQhEE+pM/aobhBZaOpYLJeeeoAAAAAElFTkSuQmCC",
-    logoFileName: logoFileName,
-  };
+  var str = "";
+  if (is_valid_data(user_info.greeting)) str += user_info.greeting + "<br/>";
+
+  str += "<table style='text-align:left;background-color:#fff;color:#0095FE;border-collapse:collapse;border-spacing:0;border:0'><tbody>";
+  str += "<tr>";
+  str +=   "<td rowspan='2' style='text-align:left;padding:0;width:150px;border:0'>";
+  str +=     "<img src='" + CIELLOS_LOGO_URL + "' alt='Ciellos logo' width='150' style='width:150px;height:auto;' />";
+  str +=   "</td>";
+  str +=   "<td style='text-align:left;padding:0 0.75pt 0.75pt 2pt;border:0'>" + nameCell + "</td>";
+  str += "</tr>";
+  str += "<tr>";
+  str +=   "<td style='text-align:left;padding:0.75pt 0.75pt 0 2pt;vertical-align:bottom;border:0'>" + contactCell + "</td>";
+  str += "</tr>";
+  str += "</tbody></table>";
+
+  return { signature: str, logoBase64: null, logoFileName: null };
 }
 
-/**
- * Gets HTML string for template B
- * References the signature logo image from the HTML
- * @param {*} user_info Information details about the user
- * @returns Object containing:
- *  "signature": The signature HTML of template B,
-    "logoBase64": null since this template references the image and does not embed it ,
-    "logoFileName": null since this template references the image and does not embed it
- */
+// Template B: Reply/forward — no logo, name (pronouns) + title, mobile + office, email, website
 function get_template_B_info(user_info) {
-  let str = "";
-  if (is_valid_data(user_info.greeting)) {
-    str += user_info.greeting + "<br/>";
+  var str = "";
+  if (is_valid_data(user_info.greeting)) str += user_info.greeting + "<br/>";
+
+  str += "<p style='margin:0'><span style='" + CIELLOS_STYLE_INLINE + "'><b>" + user_info.name;
+  if (is_valid_data(user_info.pronoun)) str += " " + user_info.pronoun;
+  if (is_valid_data(user_info.job)) {
+    str += " |</b></span> <span style='" + CIELLOS_STYLE_INLINE + "'>" + user_info.job + "</span>";
+  } else {
+    str += "</b></span>";
   }
+  str += "</p>";
 
-  str += "<table>";
-  str += "<tr>";
-  // Reference the logo using a URI to the web server <img src='https://...
-  str +=
-    "<td style='border-right: 1px solid #000000; padding-right: 5px;'><img src='https://officedev.github.io/Office-Add-in-samples/Samples/outlook-set-signature/assets/sample-logo.png' alt='Logo' /></td>";
-  str += "<td style='padding-left: 5px;'>";
-  str += "<strong>" + user_info.name + "</strong>";
-  str += is_valid_data(user_info.pronoun) ? "&nbsp;" + user_info.pronoun : "";
-  str += "<br/>";
-  str += user_info.email + "<br/>";
-  str += is_valid_data(user_info.phone) ? user_info.phone + "<br/>" : "";
-  str += "</td>";
-  str += "</tr>";
-  str += "</table>";
+  if (is_valid_data(user_info.phone)) {
+    str += "<div style='" + CIELLOS_STYLE + "'>Mobile: " + user_info.phone + " | Office: +1 (770) 799-8565</div>";
+  } else {
+    str += "<div style='" + CIELLOS_STYLE + "'>Office: +1 (770) 799-8565</div>";
+  }
+  str += "<div style='" + CIELLOS_STYLE + "'>E-mail: <span style='color:#0095FE'>" + user_info.email + "</span></div>";
+  str += "<div style='" + CIELLOS_STYLE + "'><a href='http://www.ciellos.com/' style='color:#0095FE'>www.ciellos.com</a></div>";
 
-  return {
-    signature: str,
-    logoBase64: null,
-    logoFileName: null,
-  };
+  return { signature: str, logoBase64: null, logoFileName: null };
 }
 
 /**
