@@ -1,6 +1,7 @@
 *.DS_Store
 .vscode/
 .claude/
+.github/copilot-instructions.md
 CLAUDE.md
 node_modules/
 dist/
