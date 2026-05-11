@@ -14,7 +14,6 @@ yarn-error.log*
 **/.env.production.local
 
 # Ignore build outputs
-**/dist/
 **/build/
 
 # Ignore IDE files

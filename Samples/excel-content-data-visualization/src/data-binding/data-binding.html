@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title></title>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+
+    <script src="../shared/shared.js" type="text/javascript"></script>
+    <script src="../shared/visualization.js" type="text/javascript"></script>
+    <script src="data-binding.js" type="text/javascript"></script>
+
+    <link href="../shared/shared.css" rel="stylesheet" type="text/css" />
+    <link href="data-binding.css" rel="stylesheet" type="text/css" />
+</head>
+<body dir="ltr">
+    <div id="content-main">
+        <div class="padding">
+            <br />
+            <h1>Bind to data</h1>
+            <p>Please choose from one of the following options.</p>
+            <ul>
+                <li>Bind to existing data and display it
+                    <span><button id="bind-to-existing-data">Bind to existing data</button></span>
+                </li>
+                <li>Insert sample data and display visualization
+                    <p id="insert-data-available" style="display: none;"><button id="insert-sample-data">Insert sample data</button></p>
+                    <p id="insert-data-unavailable"><i>Option not supported on this Excel version!</i></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="content-footer">
+        <div class="padding">
+            <a href="home.html">Back to Visualization</a>
+        </div>
+    </div>
+    <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-content-add-in-data-visualization-binding-run" />
+</body>
+</html>

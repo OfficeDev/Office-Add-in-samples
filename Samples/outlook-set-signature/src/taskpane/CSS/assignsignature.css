@@ -28,7 +28,7 @@
     bottom: 0;
     left : 15px;
     width: 100%;
-    height: 2.5rem;    
+    height: 2.5rem;
   }
 
   label{
@@ -64,6 +64,7 @@
     background: #005696 0% 0% no-repeat padding-box;
     border-radius: 2px;
     opacity: 1;
+    cursor: pointer;
   }
 
   .testBtn{
@@ -89,6 +90,7 @@
     border: 1px solid #8A8886;
     border-radius: 2px;
     opacity: 1;
+    cursor: pointer;
   }
 
   #message {
@@ -471,3 +473,7 @@
     font-size: 16px;
     text-align: left;
   }
+
+body {
+  background-color: white;
+}

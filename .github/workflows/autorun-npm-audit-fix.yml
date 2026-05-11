@@ -2,7 +2,7 @@ name: autorun-npm-audit-fix
 run-name: Automatically run npm audit fix
 on:
   schedule:
-    - cron: '45 08 15 * *' # Run at 1:45 AM PDT on the 15th of every month
+    - cron: '45 08 15 * *' # Run at 1:45 AM PDT on the 15th of every month.
   workflow_dispatch:
 jobs:
   autorun-npm-audit-fix:
@@ -15,13 +15,14 @@ jobs:
         working-directory: ./
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Make the script file executable
         run: chmod +x ./npm-audit-fix.sh
       - name: Set up node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '24'
+          # Use an Active LTS version of Node.js.
+          node-version: 'lts/*'
       - name: Run npm-audit-fix script
         run: |
           echo "Running npm-audit-fix script (breaking changes will need to be addressed manually)"

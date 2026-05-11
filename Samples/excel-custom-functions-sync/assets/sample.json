@@ -1,0 +1,35 @@
+[
+    {
+      "name": "excel-custom-functions-sync",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Synchronous custom function sample",
+      "shortDescription": "A synchronous custom function that reads a cell value in tandem with Excel's calculation process.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-custom-functions-sync",
+      "longDescription": [
+        "Shows how to create a synchronous custom function using the @supportSync tag that reads a cell value in tandem with Excel's calculation process."
+      ],
+      "creationDateTime": "2026-03-19",
+      "updateDateTime": "2026-03-19",
+      "products": [
+        "Office"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "TypeScript"
+        }
+      ],
+      "thumbnails": [
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+      ]
+    }
+  ]
