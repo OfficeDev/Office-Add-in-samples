@@ -3,11 +3,13 @@
  * See LICENSE in the project root for license information.
  */
 
+import { getValueForKey, setValueForKey } from "../shared/state";
+
 /**
  * Get value for key
  * @customfunction
- * @param key The key
- * @returns The value for the key.
+ * @param {string} key The key
+ * @returns {string} The value for the key.
  */
 function getValueForKeyCF(key) {
   return getValueForKey(key);
@@ -16,9 +18,9 @@ function getValueForKeyCF(key) {
 /**
  * Set value for key
  * @customfunction
- * @param key The key
- * @param value The value to store
- * @returns Confirmation message
+ * @param {string} key The key
+ * @param {string} value The value to store
+ * @returns {string} Confirmation message
  */
 function setValueForKeyCF(key, value) {
   setValueForKey(key, value);

@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-
 const devCerts = require("office-addin-dev-certs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -19,6 +18,7 @@ module.exports = async (env, options) => {
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
       taskpane: "./src/taskpane/taskpane.js",
+      commands: "./src/commands/commands.js",
       functions: "./src/functions/functions.js",
     },
     output: {
@@ -61,7 +61,7 @@ module.exports = async (env, options) => {
       new HtmlWebpackPlugin({
         filename: "src/taskpane/taskpane.html",
         template: "./src/taskpane/taskpane.html",
-        chunks: ["polyfill", "taskpane"],
+        chunks: ["polyfill", "taskpane", "functions"],
       }),
       new CopyWebpackPlugin({
         patterns: [
@@ -71,7 +71,7 @@ module.exports = async (env, options) => {
           },
           {
             from: "src/functions/functions.json",
-            to: "src/functions/functions.json",
+            to: "functions.json",
           },
           {
             from: "manifest*.json",
@@ -88,6 +88,9 @@ module.exports = async (env, options) => {
       }),
     ],
     devServer: {
+      client: false,
+      hot: false,
+      liveReload: false,
       headers: {
         "Access-Control-Allow-Origin": "*",
       },

@@ -1,8 +1,8 @@
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.25/MicrosoftTeams.schema.json",
-    "id": "a3b5c8d1-2e4f-4a6b-9c8d-1e2f3a4b5c6d",
-    "manifestVersion": "1.25",
-    "version": "1.0.0",
+    "$schema": "https://raw.githubusercontent.com/OfficeDev/microsoft-teams-app-schema/preview/DevPreview/MicrosoftTeams.schema.json",
+    "id": "3f20c8ab-6ee8-4dbf-9c6d-8f91c8e46a12",
+    "manifestVersion": "devPreview",
+    "version": "1.0.8",
     "name": {
         "short": "Shared Runtime Sample",
         "full": "Excel Shared Runtime Global State Sample"
@@ -46,12 +46,6 @@
     "extensions": [
         {
             "requirements": {
-                "capabilities": [
-                    {
-                        "name": "SharedRuntime",
-                        "minVersion": "1.1"
-                    }
-                ],
                 "scopes": [
                     "workbook"
                 ]
@@ -64,16 +58,13 @@
                                 "name": "SharedRuntime",
                                 "minVersion": "1.1"
                             }
-                        ],
-                        "formFactors": [
-                            "desktop"
                         ]
                     },
                     "id": "SharedRuntime",
                     "type": "general",
                     "code": {
                         "page": "https://localhost:3000/src/taskpane/taskpane.html",
-                        "script": "https://localhost:3000/src/functions/functions.js"
+                        "script": "https://localhost:3000/functions.js"
                     },
                     "lifetime": "long",
                     "actions": [
@@ -84,48 +75,12 @@
                         }
                     ],
                     "customFunctions": {
-                        "functions": [
-                            {
-                                "id": "GETVALUEFORKEYCF",
-                                "name": "GETVALUEFORKEYCF",
-                                "description": "Get value for key",
-                                "parameters": [
-                                    {
-                                        "name": "key",
-                                        "description": "The key",
-                                        "type": "any"
-                                    }
-                                ],
-                                "result": {
-                                    "dimensionality": "scalar"
-                                }
-                            },
-                            {
-                                "id": "SETVALUEFORKEYCF",
-                                "name": "SETVALUEFORKEYCF",
-                                "description": "Set value for key",
-                                "parameters": [
-                                    {
-                                        "name": "key",
-                                        "description": "The key",
-                                        "type": "any"
-                                    },
-                                    {
-                                        "name": "value",
-                                        "description": "The value",
-                                        "type": "any"
-                                    }
-                                ],
-                                "result": {
-                                    "dimensionality": "scalar"
-                                }
-                            }
-                        ],
                         "namespace": {
                             "id": "CONTOSO",
                             "name": "CONTOSO"
                         },
-                        "metadataUrl": "https://localhost:3000/src/functions/functions.json"
+                        "allowCustomDataForDataTypeAny": false,
+                        "metadataUrl": "https://localhost:3000/functions.json"
                     }
                 }
             ],

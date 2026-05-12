@@ -18,8 +18,8 @@ function action(event) {
   event.completed();
 }
 
-// The global variable
-const g = {};
+// The global variable - must use var (not const/let) so it is accessible as window.g across all scripts
+var g = {};
 
 // the add-in command functions need to be available in global scope
 g.action = action;
