@@ -38,7 +38,7 @@ export async function createSlide() {
 
             // Remove default placeholder shapes (deletes are batched with additions below)
             for (let i = shapes.items.length - 1; i >= 0; i--) {
-                shapes.items[i]!.delete();
+                shapes.items[i]?.delete();
             }
 
             var textbox: PowerPoint.Shape = shapes.addTextBox("Hello World!",

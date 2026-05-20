@@ -25,7 +25,7 @@ export async function createWeatherSlide(tableData: WeatherRow[]) {
             await context.sync();
 
             // Navigate to the new slide
-            goToLastSlide();
+            await goToLastSlide();
             console.log("Slide created successfully.");
 
             var slides = context.presentation.slides;
@@ -88,22 +88,28 @@ export async function createWeatherSlide(tableData: WeatherRow[]) {
                 );
 
             // Style each header cell with bold white text on dark background
-            for (let col = 0; col < columnCount; col++) {
-                specificCellProperties[0]![col] = {
-                    fill: { color: "#0F6CBD" },
-                    font: { bold: true, color: "white", size: 12 },
-                    horizontalAlignment: PowerPoint.ParagraphHorizontalAlignment.center
-                };
+            const headerRowProps = specificCellProperties[0];
+            if (headerRowProps) {
+                for (let col = 0; col < columnCount; col++) {
+                    headerRowProps[col] = {
+                        fill: { color: "#0F6CBD" },
+                        font: { bold: true, color: "white", size: 12 },
+                        horizontalAlignment: PowerPoint.ParagraphHorizontalAlignment.center
+                    };
+                }
             }
 
             // Style data rows with center alignment for numeric columns
             for (let row = 1; row < rowCount; row++) {
-                specificCellProperties[row]![1] = {
-                    horizontalAlignment: PowerPoint.ParagraphHorizontalAlignment.center
-                };
-                specificCellProperties[row]![2] = {
-                    horizontalAlignment: PowerPoint.ParagraphHorizontalAlignment.center
-                };
+                const dataRow = specificCellProperties[row];
+                if (dataRow) {
+                    dataRow[1] = {
+                        horizontalAlignment: PowerPoint.ParagraphHorizontalAlignment.center
+                    };
+                    dataRow[2] = {
+                        horizontalAlignment: PowerPoint.ParagraphHorizontalAlignment.center
+                    };
+                }
             }
 
             // Add the table to the slide using the PowerPoint Table API

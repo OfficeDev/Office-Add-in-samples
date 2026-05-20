@@ -41,8 +41,11 @@ public partial class Home : ComponentBase, IAsyncDisposable
     /// <summary>
     /// Function to create a new slide in the PowerPoint presentation.
     /// </summary>
-    private async Task CreateSlide() =>
-        await JSModule.InvokeVoidAsync("createSlide");
+    private async Task CreateSlide()
+    {
+        if (JSModule is not null)
+            await JSModule.InvokeVoidAsync("createSlide");
+    }
 
     // Static JSImport method to call into Home.razor.js (synchronous - returns string, not Promise)
     [JSImport("sayHelloFromJs", "Home")]

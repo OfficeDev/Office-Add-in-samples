@@ -70,7 +70,8 @@ public partial class Weather : ComponentBase, IAsyncDisposable
             Summary = f.Summary ?? ""
         }).ToArray();
 
-        await JSModule.InvokeVoidAsync("createWeatherSlide", (object)tableData);
+        if (JSModule is not null)
+            await JSModule.InvokeVoidAsync("createWeatherSlide", (object)tableData);
     }
 
     private async Task GetWeatherData()

@@ -266,7 +266,7 @@ async function removeSlidePlaceholders(shapes: PowerPoint.ShapeCollection): Prom
   await shapes.context.sync();
 
   for (let i = shapes.items.length - 1; i >= 0; i--) {
-    shapes.items[i]!.delete();
+    shapes.items[i]?.delete();
   }
   await shapes.context.sync();
 }
