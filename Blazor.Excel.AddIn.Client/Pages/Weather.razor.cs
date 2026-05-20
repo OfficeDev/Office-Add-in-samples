@@ -1,33 +1,32 @@
 /* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
 using Blazor.Excel.AddIn.Client.Model;
+using Blazor.Excel.AddIn.Client.Services;
 
 using Microsoft.AspNetCore.Components;
-
 using Microsoft.JSInterop;
 
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Versioning;
 
 namespace Blazor.Excel.AddIn.Client.Pages;
 
-public partial class Weather : ComponentBase
+[SupportedOSPlatform("browser")]
+public partial class Weather : ComponentBase, IAsyncDisposable
 {
-    private HostInformation hostInformation = new();
+    private bool _hostInformation;
 
-    [Inject, AllowNull]
-    private IJSRuntime JSRuntime { get; set; }
-    private IJSObjectReference JSModule { get; set; } = default!;
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; } = default!;
+    private IJSObjectReference? JSModule { get; set; }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            hostInformation = await JSRuntime.InvokeAsync<HostInformation>("Office.onReady");
-
-            Debug.WriteLine("Hit OnAfterRenderAsync in Weather.razor.cs!");
+            _hostInformation = await OfficeUtilities.IsRunningInHostAsync();
             Console.WriteLine("Hit OnAfterRenderAsync in Weather.razor.cs in Console!");
             JSModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./Pages/Weather.razor.js");
 
-            if (hostInformation.IsInitialized)
+            if (_hostInformation)
             {
                 StateHasChanged();
             }
@@ -56,8 +55,11 @@ public partial class Weather : ComponentBase
     /// <summary>
     /// Function to create a new slide in the Excel presentation.
     /// </summary>
-    private async Task CreateSlideButton() =>
+    private async Task CreateSlideButton()
+    {
+        if (JSModule is null) return;
         await JSModule.InvokeVoidAsync("createWeatherSlide");
+    }
 
     private async Task GetWeatherData()
     {
@@ -78,9 +80,14 @@ public partial class Weather : ComponentBase
 
     private async Task CopyButton()
     {
-        if (forecasts is null) return;
-        Console.WriteLine(forecasts);
+        if (forecasts is null || JSModule is null) return;
         IEnumerable<object[]> res = [.. forecasts.Select(x => new object[] { x.Date, x.TemperatureC, x.TemperatureF, x.Summary ?? "None" })];
         await JSModule.InvokeVoidAsync("copyButton", res);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (JSModule is not null)
+            await JSModule.DisposeAsync();
     }
 }

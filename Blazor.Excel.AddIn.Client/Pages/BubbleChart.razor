@@ -2,7 +2,9 @@
 @page "/bubblechart"
 @rendermode InteractiveWebAssembly
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Bubble Chart</PageTitle>
+
+<RenderModeInfo />
 
 <LoadingProgress>
     <FluentStack Orientation="Orientation.Vertical"
@@ -16,7 +18,7 @@
         </FluentStack>
         <FluentLabel>This sample shows how to create a bubble chart, with each chart series (or bubble) representing a single table row.</FluentLabel>
 
-        @if (!hostInformation.IsInitialized)
+        @if (!_hostInformation)
         {
             <FluentLabel Typo="Typography.H4">
                 Please <FluentAnchor Href="https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing" Appearance="Appearance.Hypertext" Target="_blank">sideload</FluentAnchor> your add-in to see app body.
