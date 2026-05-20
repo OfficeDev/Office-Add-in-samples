@@ -15,14 +15,22 @@ public partial class ContentControls : ComponentBase, IAsyncDisposable
     private bool HostInformation;
     private static bool _isImported = false;
 
+    private static async Task EnsureImportedAsync()
+    {
+        if (!_isImported)
+        {
+            await JSHost.ImportAsync("ContentControls", "../Pages/ContentControls.razor.js");
+            _isImported = true;
+        }
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             try
             {
-                await JSHost.ImportAsync("ContentControls", "../Pages/ContentControls.razor.js");
-                _isImported = true;
+                await EnsureImportedAsync();
                 Console.WriteLine($"Imported ContentControls module");
             }
             catch (Exception ex)
@@ -78,11 +86,7 @@ public partial class ContentControls : ComponentBase, IAsyncDisposable
     [JSInvokable]
     public static async Task PrepareDocument()
     {
-        if (!_isImported)
-        {
-            await JSHost.ImportAsync("ContentControls", "../Pages/ContentControls.razor.js");
-            _isImported = true;
-        }
+        await EnsureImportedAsync();
 
         await SetupDocument();
         await InsertContentControlsFunction();
