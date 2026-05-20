@@ -1,3 +1,5 @@
+using Blazor.Excel.AddIn.Client.Pages;
+
 using Microsoft.JSInterop;
 
 namespace Blazor.Excel.AddIn.Client.Services;
@@ -14,5 +16,17 @@ public class ServerCommandHandler
     {
         Console.WriteLine($"Invoking SayHelloServer {name}");
         return Task.FromResult($"Hello Server, {name} from the InteractiveServer ServerCommandHandler!");
+    }
+
+    /// <summary>
+    /// Delegates to the static Counter.SayHelloCounter method.
+    /// This allows JS to call via DotNetObjectReference (targeting the Server runtime)
+    /// while still going through Counter.razor.cs.
+    /// </summary>
+    [JSInvokable]
+    public Task<string> SayHelloCounter(string name)
+    {
+        Console.WriteLine($"ServerCommandHandler.SayHelloCounter delegating to Counter.SayHelloCounter");
+        return Counter.SayHelloCounter(name);
     }
 }
