@@ -1,6 +1,5 @@
 /* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
 using System.Diagnostics;
-
 using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
 
@@ -38,8 +37,11 @@ public partial class Home : ComponentBase, IAsyncDisposable
         }
     }
 
-    [JSImport("insertParagraph", "Home")]
-    internal static partial Task InsertParagraph();
+    private async Task InsertParagraph()
+    {
+        if (JSModule is not null)
+            await JSModule.InvokeVoidAsync("insertParagraph");
+    }
 
     // Static JSImport method to call into Home.razor.js (synchronous - returns string, not Promise)
     [JSImport("sayHelloFromJs", "Home")]
