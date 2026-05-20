@@ -19,7 +19,7 @@ public partial class Home : ComponentBase, IAsyncDisposable
     [Inject, AllowNull]
     private IJSRuntime JSRuntime { get; set; }
 
-    private IJSObjectReference JSModule { get; set; } = default!;
+    private IJSObjectReference? JSModule { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
