@@ -52,15 +52,6 @@ public partial class Weather : ComponentBase, IAsyncDisposable
     private async Task RefreshButton() =>
         await GetWeatherData();
 
-    /// <summary>
-    /// Function to create a new slide in the Excel presentation.
-    /// </summary>
-    private async Task CreateSlideButton()
-    {
-        if (JSModule is null) return;
-        await JSModule.InvokeVoidAsync("createWeatherSlide");
-    }
-
     private async Task GetWeatherData()
     {
         forecasts = null;
