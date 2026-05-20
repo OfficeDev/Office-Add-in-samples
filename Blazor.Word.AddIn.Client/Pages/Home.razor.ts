@@ -39,5 +39,6 @@ export async function insertParagraph() {
     });
   } catch (error) {
     console.error("Error creating welcome home: ", error);
+    throw error;
   }
 }

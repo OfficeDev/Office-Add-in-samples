@@ -47,5 +47,6 @@ export async function createWeatherTable(forecasts: any[]) {
         });
     } catch (error) {
         console.error("Error creating Weather Forecast table: ", error);
+        throw error;
     }
 }

@@ -26,7 +26,15 @@ public partial class WasmBridge : ComponentBase, IDisposable
         {
             Console.WriteLine("WasmBridge: Registering ClientCommandHandler with JavaScript");
             _dotNetRef = DotNetObjectReference.Create(Handler);
-            await JSRuntime.InvokeVoidAsync("window.signalDotNetReady", "wasm", _dotNetRef);
+            try
+            {
+                await JSRuntime.InvokeVoidAsync("window.signalDotNetReady", "wasm", _dotNetRef);
+            }
+            catch (JSException ex)
+            {
+                Console.WriteLine($"WasmBridge: Error signaling .NET ready: {ex.Message}");
+                throw;
+            }
         }
     }
 
