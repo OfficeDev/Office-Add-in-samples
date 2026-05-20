@@ -23,7 +23,7 @@ export async function setupDocument() {
         "With Word add-ins, you can use familiar web technologies such as HTML, CSS, and JavaScript to build a solution that can run in Word across multiple platforms, including on the web, Windows, Mac, and iPad. Learn how to build, test, debug, and publish Word add-ins.",
         "Replace"
       );
-  });
+  }).catch((error: any) => { console.error("Error in setupDocument: ", error); throw error; });
 }
 
 /**
@@ -67,7 +67,7 @@ export async function insertContentControls() {
     }
 
     await context.sync();
-  });
+  }).catch((error: any) => { console.error("Error in insertContentControls: ", error); throw error; });
 }
 
 /**
@@ -124,7 +124,7 @@ export async function tagContentControls() {
 
     await context.sync();
     console.log("Content controls tagged and handled: " + contentcontrolsTagged);
-  });
+  }).catch((error: any) => { console.error("Error in tagContentControls: ", error); throw error; });
 }
 
 /**
@@ -165,7 +165,7 @@ export async function modifyContentControls() {
     }
 
     await context.sync();
-  });
+  }).catch((error: any) => { console.error("Error in modifyContentControls: ", error); throw error; });
 }
 
 let eventContexts: any = [];
@@ -200,7 +200,7 @@ export async function registerEvents() {
 
       console.log("Added onDeleted and onSelectionChanged event handlers.");
     }
-  });
+  }).catch((error: any) => { console.error("Error in registerEvents: ", error); throw error; });
 }
 
 /**
@@ -220,7 +220,7 @@ export async function deleteContentControl() {
       contentControls.items[0]?.delete(false);
       await context.sync();
     }
-  });
+  }).catch((error: any) => { console.error("Error in deleteContentControl: ", error); throw error; });
 }
 
 /**
@@ -237,8 +237,8 @@ export async function deregisterEvents() {
 
     await context.sync();
 
-    eventContexts = null;
+    eventContexts = [];
     console.log("Remove the onDeleted and onSelectionChanged event handlers.");
-  });
+  }).catch((error: any) => { console.error("Error in deregisterEvents: ", error); throw error; });
 }
 

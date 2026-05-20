@@ -10,9 +10,10 @@ using Microsoft.JSInterop;
 namespace Blazor.Word.AddIn.Client.Pages;
 
 [SupportedOSPlatform("browser")]
-public partial class ContentControls : ComponentBase
+public partial class ContentControls : ComponentBase, IAsyncDisposable
 {
     private bool HostInformation;
+    private static bool _isImported = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -21,6 +22,7 @@ public partial class ContentControls : ComponentBase
             try
             {
                 await JSHost.ImportAsync("ContentControls", "../Pages/ContentControls.razor.js");
+                _isImported = true;
                 Console.WriteLine($"Imported ContentControls module");
             }
             catch (Exception ex)
@@ -76,11 +78,30 @@ public partial class ContentControls : ComponentBase
     [JSInvokable]
     public static async Task PrepareDocument()
     {
-        await JSHost.ImportAsync("ContentControls", "../Pages/ContentControls.razor.js");
+        if (!_isImported)
+        {
+            await JSHost.ImportAsync("ContentControls", "../Pages/ContentControls.razor.js");
+            _isImported = true;
+        }
 
         await SetupDocument();
         await InsertContentControlsFunction();
         await TagContentControlsFunction();
         await ModifyContentControlsFunction();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (_isImported)
+        {
+            try
+            {
+                await DeregisterContentControlsFunction();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error deregistering content controls: {ex.Message}");
+            }
+        }
     }
 }

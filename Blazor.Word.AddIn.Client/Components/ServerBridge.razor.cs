@@ -26,7 +26,15 @@ public partial class ServerBridge : ComponentBase, IDisposable
         {
             Console.WriteLine("ServerBridge: Registering ServerCommandHandler with JavaScript");
             _dotNetRef = DotNetObjectReference.Create(Handler);
-            await JSRuntime.InvokeVoidAsync("window.signalDotNetReady", "server", _dotNetRef);
+            try
+            {
+                await JSRuntime.InvokeVoidAsync("window.signalDotNetReady", "server", _dotNetRef);
+            }
+            catch (JSException ex)
+            {
+                Console.WriteLine($"ServerBridge: Error signaling .NET ready: {ex.Message}");
+                throw;
+            }
         }
     }
 

@@ -1,6 +1,6 @@
 /* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
+
 using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
 
@@ -16,8 +16,8 @@ public partial class Home : ComponentBase, IAsyncDisposable
 {
     private HostInformation hostInformation = new();
 
-    [Inject, AllowNull]
-    private IJSRuntime JSRuntime { get; set; }
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; } = default!;
 
     private IJSObjectReference JSModule { get; set; } = default!;
 

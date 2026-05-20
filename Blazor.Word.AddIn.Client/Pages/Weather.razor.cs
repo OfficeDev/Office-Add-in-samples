@@ -1,6 +1,5 @@
 /* Copyright(c) Maarten van Stam. All rights reserved. Licensed under the MIT License. */
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 
 using Blazor.Word.AddIn.Client.Model;
 
@@ -13,8 +12,8 @@ public partial class Weather : ComponentBase, IAsyncDisposable
 {
     private HostInformation hostInformation = new HostInformation();
 
-    [Inject, AllowNull]
-    private IJSRuntime JSRuntime { get; set; }
+    [Inject]
+    private IJSRuntime JSRuntime { get; set; } = default!;
     private IJSObjectReference JSModule { get; set; } = default!;
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
