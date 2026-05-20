@@ -22,6 +22,9 @@
     "validate-production": "office-addin-manifest validate ..\\Blazor.PowerPoint.AddIn\\Assets\\manifest.production.xml",
     "validate-local": "office-addin-manifest validate ..\\Blazor.PowerPoint.AddIn\\Assets\\manifest.local.xml"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "devDependencies": {
     "@types/office-js-preview": "^1.0.707",
     "office-addin-debugging": "^6.1.1",
