@@ -25,13 +25,13 @@ description: "Learn how to create an Outlook add-in that encrypts and decrypts m
 Implement custom encryption and decryption functionality in an Outlook add-in to secure email communications. The sample shows how to:
 
 - Encrypt message content and attachments before sending using the `OnMessageSend` event.
-- Automatically identify and decrypt encrypted messages when the recipient opens them using the `OnMessageRead` event.
+- Automatically identify and decrypt encrypted messages when the recipient opens them using the `OnMessageDecrypt` event.
 
 To learn about key components of this sample, see [Create an encryption Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/encryption-decryption).
 
 > [!NOTE]
 >
-> - The `OnMessageRead` event is in preview. Features in preview shouldn't be used in production add-ins.
+> - The `OnMessageDecrypt` event is in preview. Features in preview shouldn't be used in production add-ins.
 > - This sample uses simplified encryption and decryption protocols for demonstration purposes only. Don't use these protocols in production add-ins.
 
 ## Applies to
@@ -44,7 +44,7 @@ To learn about key components of this sample, see [Create an encryption Outlook 
 
     > **Note**: If you don't have a Microsoft 365 subscription, you might qualify for a free developer subscription that's renewable for 90 days and comes configured with sample data. For details, see the [Microsoft 365 Developer Program FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-).
 
-- To preview the `OnMessageRead` event in classic Outlook on Windows:
+- To preview the `OnMessageDecrypt` event in classic Outlook on Windows:
   1. Join the [Microsoft 365 Insider program](https://aka.ms/MSFT365InsiderProgram) and choose the **Beta Channel** in the Outlook client. Your client must be on **Version 2510 (Build 19312.20000)** or later.
   1. Configure your computer's registry to reference the local beta copy of the Office.js API:
         1. In the registry, navigate to `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Outlook\Options\WebExt\Developer`. If the key doesn't exist, create it.
@@ -104,7 +104,7 @@ Once the add-in is loaded in Outlook, use the following steps to try out its fun
 
 Select the encrypted message from the inbox.
 
-The `OnMessageRead` event occurs and decrypts the message content and its attachments. The following notification is displayed: "Office Add-ins Sample Encryption Add-in is decrypting your message".
+The `OnMessageDecrypt` event occurs and decrypts the message content and its attachments. The following notification is displayed: "Office Add-ins Sample Encryption Add-in is decrypting your message".
 
 Once decryption is complete, the message body and attachments are shown and the following notification is displayed: "Office Add-ins Sample Encryption Add-in has decrypted your message".
 
@@ -133,5 +133,6 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 | Version | Date | Comments |
 | ----- | ----- | ----- |
 | 1.0 | January 27, 2026 | Initial release |
+| 1.1 | May 26, 2026 | Update the event name |
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-encrypt-decrypt-messages" />
