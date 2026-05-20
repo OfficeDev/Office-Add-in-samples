@@ -168,7 +168,7 @@ export async function modifyContentControls() {
   }).catch((error: any) => { console.error("Error in modifyContentControls: ", error); throw error; });
 }
 
-let eventContexts: any = [];
+let eventContexts: any[] = [];
 
 /**
  * Step 5: Register the content controls for onDeleted and onSelectionChanged events
@@ -184,10 +184,6 @@ export async function registerEvents() {
     if (contentcontrols.items.length === 0) {
       console.log("There aren't any content controls in this document so can't register event handlers.");
     } else {
-      if (eventContexts === null) {
-        eventContexts = [];
-      }
-
       for (let i = 0; i < contentcontrols.items.length; i++) {
         eventContexts[i * 2] = contentcontrols.items[i]?.onDeleted.add(handleContentControlDeleted);
         console.log("Added onDeleted handler.");
