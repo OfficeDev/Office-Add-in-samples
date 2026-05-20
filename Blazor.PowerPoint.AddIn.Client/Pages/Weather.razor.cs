@@ -15,7 +15,7 @@ public partial class Weather : ComponentBase, IAsyncDisposable
 
     [Inject, AllowNull]
     private IJSRuntime JSRuntime { get; set; }
-    private IJSObjectReference JSModule { get; set; } = default!;
+    private IJSObjectReference? JSModule { get; set; }
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -70,7 +70,8 @@ public partial class Weather : ComponentBase, IAsyncDisposable
             Summary = f.Summary ?? ""
         }).ToArray();
 
-        await JSModule.InvokeVoidAsync("createWeatherSlide", (object)tableData);
+        if (JSModule is not null)
+            await JSModule.InvokeVoidAsync("createWeatherSlide", (object)tableData);
     }
 
     private async Task GetWeatherData()
