@@ -249,7 +249,7 @@ async function preloadDotNet(bridgeName: string, timeoutMs: number = 10000): Pro
       return false;
     }
 
-    let timeoutId: ReturnType<typeof setTimeout>;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
     const timeoutPromise = new Promise<never>((_, reject) => {
       timeoutId = setTimeout(() => {
         reject(new Error(`Timeout waiting for ${bridgeName} bridge`));

@@ -20,31 +20,39 @@ public static partial class OfficeUtilities
     /// Indicates whether the SharedUtils JavaScript module has been imported.
     /// </summary>
     private static bool _isImported = false;
+    private static readonly SemaphoreSlim _importLock = new(1, 1);
 
     /// <summary>
     /// Ensures the SharedUtils JavaScript module is imported before use.
     /// </summary>
     /// <remarks>
-    /// This method uses a guard pattern to prevent multiple imports of the same module.
+    /// Uses a double-check lock with <see cref="SemaphoreSlim"/> to prevent concurrent imports.
     /// The import is performed only once during the lifetime of the application.
     /// </remarks>
     /// <returns>A task that represents the asynchronous import operation.</returns>
     /// <exception cref="Exception">Thrown when the JavaScript module import fails.</exception>
     public static async Task EnsureImportedAsync()
     {
-        if (!_isImported)
+        if (_isImported) return;
+
+        await _importLock.WaitAsync();
+        try
         {
-            try
+            if (!_isImported)
             {
                 await JSHost.ImportAsync("SharedUtils", "/scripts/SharedUtils.js");
                 Console.WriteLine("Imported SharedUtils module");
                 _isImported = true;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error importing SharedUtils module: {ex.Message}");
-                throw;
-            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error importing SharedUtils module: {ex.Message}");
+            throw;
+        }
+        finally
+        {
+            _importLock.Release();
         }
     }
 

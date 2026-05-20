@@ -15,7 +15,7 @@ namespace Blazor.Excel.AddIn.Client.Pages;
 [SupportedOSPlatform("browser")]
 public partial class Home : ComponentBase
 {
-    private bool HostInformation;
+    private bool _hostInformation;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -31,10 +31,10 @@ public partial class Home : ComponentBase
                 Console.WriteLine($"Error importing Home module: {ex.Message}");
             }
 
-            HostInformation = await OfficeUtilities.IsRunningInHostAsync();
-            Console.WriteLine($"Home HostInformation: {HostInformation}");
+            _hostInformation = await OfficeUtilities.IsRunningInHostAsync();
+            Console.WriteLine($"Home HostInformation: {_hostInformation}");
 
-            if (HostInformation)
+            if (_hostInformation)
             {
                 StateHasChanged();
             }
