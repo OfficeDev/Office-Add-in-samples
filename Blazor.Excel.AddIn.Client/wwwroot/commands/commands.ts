@@ -249,15 +249,20 @@ async function preloadDotNet(bridgeName: string, timeoutMs: number = 10000): Pro
       return false;
     }
 
-    // Race between the bridge ready promise and a timeout
-    await Promise.race([
-      bridgePromise,
-      new Promise<never>((_, reject) => {
-        AbortSignal.timeout(timeoutMs).addEventListener("abort", () =>
-          reject(new Error(`Timeout waiting for ${bridgeName} bridge`))
-        );
-      }),
-    ]);
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const timeoutPromise = new Promise<never>((_, reject) => {
+      timeoutId = setTimeout(() => {
+        reject(new Error(`Timeout waiting for ${bridgeName} bridge`));
+      }, timeoutMs);
+    });
+
+    try {
+      // Race between the bridge ready promise and a timeout
+      await Promise.race([bridgePromise, timeoutPromise]);
+    } finally {
+      clearTimeout(timeoutId);
+    }
+
     console.log(`${bridgeName} bridge is ready`);
     return true;
 
