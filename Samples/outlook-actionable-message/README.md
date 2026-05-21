@@ -22,14 +22,14 @@ description: "Invoke an add-in from an actionable message and pass the initializ
 
 ## Summary
 
-Perform quick actions without leaving Outlook. This sample demonstrates how to send [actionable messages](https://learn.microsoft.com/outlook/actionable-messages/) that activate an add-in using [`Action.InvokeAddInCommand`](https://learn.microsoft.com/outlook/actionable-messages/invoke-add-in). The actionable message contains an [Adaptive Card](https://learn.microsoft.com/outlook/actionable-messages/adaptive-card) with initialization context, which is sent using [Nested App Authentication (NAA)](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in) and [Microsoft Graph](https://learn.microsoft.com/office/dev/add-ins/outlook/microsoft-graph). When the add-in is activated from the Adaptive Card, a task pane displays the context using the [getInitializationContextAsync](https://learn.microsoft.com/javascript/api/outlook/office.messageread#outlook-office-messageread-getinitializationcontextasync-member(1)) method.
+Perform quick actions without leaving Outlook. This sample demonstrates how to send [actionable messages](https://learn.microsoft.com/outlook/actionable-messages/) that activate an add-in using [Action.InvokeAddInCommand](https://learn.microsoft.com/outlook/actionable-messages/invoke-add-in). The actionable message contains an [Adaptive Card](https://learn.microsoft.com/outlook/actionable-messages/adaptive-card) with initialization context, which is sent using [Nested App Authentication (NAA)](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in) and [Microsoft Graph](https://learn.microsoft.com/office/dev/add-ins/outlook/microsoft-graph). When the add-in is activated from the Adaptive Card, a task pane displays the context using the [getInitializationContextAsync](https://learn.microsoft.com/javascript/api/outlook/office.messageread#outlook-office-messageread-getinitializationcontextasync-member(1)) method.
 
 ## Applies to
 
 - Outlook on the web
 - New Outlook on Windows
 - Classic Outlook on Windows starting in Version 1910 (Build 12130.20272)
-- Outlook on Mac (new UI) starting in Version 16.38.506.
+- Outlook on Mac (new UI) starting in Version 16.38.506
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ Perform quick actions without leaving Outlook. This sample demonstrates how to s
     npm -v
     ```
 
-- Administrator access to the [Azure portal](https://portal.azure.com/) to create an app registration needed for NAA.
+- Administrator access to the [Azure portal](https://portal.azure.com/) to register the add-in.
 
 ## Choose a manifest type
 
@@ -63,15 +63,13 @@ To switch back to the add-in only manifest, copy the files from the **manifest-c
 
 ## Set up the sample
 
-Because the sample uses NAA to make Microsoft Graph calls, you must first register it on the [Azure portal](https://portal.azure.com/).
+Because the sample uses NAA to make Microsoft Graph calls, you must first register it on the Azure portal.
 
-1. In your preferred browser, go to the [Azure portal](https://portal.azure.com/) and sign in with your administrator credentials. For guidance on how to register an add-in, see the "Add a trusted broker through SPA redirect" section of [Enable single sign-on in an Office Add-in with nested app authentication](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in#add-a-trusted-broker-through-spa-redirect). Use the following details for the registration:
-
-- **Name**: `Actionable Message Sample`
-- **Supported account types**: `Any Entra ID Tenant + Personal Microsoft accounts`
-- **Redirect URI platform**: `Single-page application (SPA)`
-- **Redirect URI**: `brk-multihub://localhost:3000`
-
+1. In your preferred browser, go to the [Azure portal](https://portal.azure.com/) and sign in with your administrator credentials. For guidance on how to register an add-in, see the "Add a trusted broker through SPA redirect" section of [Enable single sign-on in an Office Add-in with nested app authentication](https://learn.microsoft.com/office/dev/add-ins/develop/enable-nested-app-authentication-in-your-add-in#add-a-trusted-broker-through-spa-redirect). Use the following details for the registration.
+    - **Name**: `Actionable Message Sample`
+    - **Supported account types**: `Any Entra ID Tenant + Personal Microsoft accounts`
+    - **Redirect URI platform**: `Single-page application (SPA)`
+    - **Redirect URI**: `brk-multihub://localhost:3000`
 1. Copy the **Application (client) ID** value from the registration.
 1. In the sample's **src/send/send.js** file, update the `CLIENT_ID` variable with the copied ID.
 1. [Run the sample](#run-the-sample).
@@ -82,6 +80,8 @@ Because the sample uses NAA to make Microsoft Graph calls, you must first regist
 1. From a command prompt, go to the root of the project folder **Samples/outlook-actionable-message**.
 1. Run `npm install`.
 1. Run `npm start`. This starts the web server on localhost and sideloads the manifest file.
+
+   > **Note**: In Outlook on Mac, you must manually sideload the manifest after starting the web server. For guidance on sideloading, see [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#sideload-manually).
 1. Follow the steps in [Try it out](#try-it-out) to test the sample.
 1. To stop the web server and uninstall the add-in, run `npm stop`.
 
