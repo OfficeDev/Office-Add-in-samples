@@ -30,7 +30,6 @@
     "@types/office-js": "^1.0.378",
     "@types/react-hot-loader": "^4.1.1",
     "@types/webpack": "^5.28.5",
-    "@types/webpack-dev-server": "^4.7.1",
     "autoprefixer": "^10.4.19",
     "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^6.10.0",
