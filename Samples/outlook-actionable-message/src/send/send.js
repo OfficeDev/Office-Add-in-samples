@@ -85,7 +85,7 @@ function generateActionableMessageBody(context) {
   return (
     "<html><head>" +
     '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">' +
-    '<script type="application/ld+json">' +
+    '<script type="application/adaptivecard+json">' +
     JSON.stringify(adaptiveCard) +
     "</script></head><body>" +
     "<p>If you don't see a message card above with clickable buttons, " +

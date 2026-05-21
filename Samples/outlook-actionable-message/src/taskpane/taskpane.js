@@ -59,9 +59,11 @@ function fetchInitializationContext(retryCount) {
         document.getElementById("no-context").style.display = "block";
       }
     } else {
-      if (asyncResult.error.code === 9020 && retryCount < 3) {
+      const noContextCode = asyncResult.error.code === 9020 || asyncResult.error.code === 7000;
+
+      if (noContextCode && retryCount < 3) {
         setTimeout(function () { fetchInitializationContext(retryCount + 1); }, 1000);
-      } else if (asyncResult.error.code === 9020) {
+      } else if (noContextCode) {
         document.getElementById("no-context").style.display = "block";
       } else {
         showError(JSON.stringify(asyncResult.error, null, 2));

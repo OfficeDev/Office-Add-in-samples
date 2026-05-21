@@ -18,7 +18,7 @@ description: "Invoke an add-in from an actionable message and pass the initializ
 
 # Invoke an Outlook add-in from an actionable message
 
-**Applies to**: Outlook on the web | Outlook on Windows (new and classic) //TODO - Verify Mac
+**Applies to**: Outlook on the web | Outlook on Windows (new and classic) | Outlook on Mac
 
 ## Summary
 
@@ -29,7 +29,7 @@ Perform quick actions without leaving Outlook. This sample demonstrates how to s
 - Outlook on the web
 - New Outlook on Windows
 - Classic Outlook on Windows starting in Version 1910 (Build 12130.20272)
-- //TODO - Verify Mac support
+- Outlook on Mac (new UI) starting in Version 16.38.506.
 
 ## Prerequisites
 
@@ -48,9 +48,8 @@ Perform quick actions without leaving Outlook. This sample demonstrates how to s
 
 ## Choose a manifest type
 
-By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest for Microsoft 365. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the add-in only manifest, skip ahead to the [Run the sample](#run-the-sample) section.
+By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest for Microsoft 365. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the add-in only manifest, skip ahead to the [Set up the sample](#set-up-the-sample) section.
 
-//TODO - Verify Mac support
 > [!NOTE]
 > The unified manifest for Microsoft 365 isn't directly supported in Outlook on Mac. Run the sample with the add-in only manifest instead. For more information about clients and platforms supported by the unified manifest, see [Office Add-ins with the unified app manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview#client-and-platform-support).
 
