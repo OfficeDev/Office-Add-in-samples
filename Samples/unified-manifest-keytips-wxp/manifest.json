@@ -1,0 +1,378 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/vDevPreview/MicrosoftTeams.schema.json",
+    "manifestVersion": "devPreview",
+    "version": "1.1.0",
+    "id": "d6056c77-f8c8-4d19-9858-8e2fdf135792",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us",
+        "additionalLanguages": []
+    },
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://www.contoso.com",
+        "privacyUrl": "https://www.contoso.com/privacy",
+        "termsOfUseUrl": "https://www.contoso.com/servicesagreement"
+    },
+    "name": {
+        "short": "unified-manifest-keytips-wxp",
+        "full": "Contoso Task Pane Add-in"
+    },
+    "description": {
+        "short": "A template to get started.",
+        "full": "This is the template to get started."
+    },
+    "icons": {
+        "outline": "assets/outline.png",
+        "color": "assets/color.png"
+    },
+    "accentColor": "#230201",
+    "validDomains": [
+        "contoso.com",
+        "officedev.github.io"
+    ],
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "Document.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "extensions": [
+        {
+            "requirements": {
+                "scopes": [
+                    "workbook",
+                    "document",
+                    "presentation"
+                ]
+            },
+            "runtimes": [
+                {
+                    "id": "TaskPaneRuntime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/src/taskpane/taskpane.html"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "TaskPaneRuntimeShow",
+                            "type": "openPage",
+                            "pinnable": false,
+                            "view": "dashboard"
+                        }
+                    ]
+                },
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "AddinCommands",
+                                "minVersion": "1.1"
+                            }
+                        ]
+                    },
+                    "id": "CommandsRuntime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/src/commands/commands.html",
+                        "script": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/src/commands/commands.js"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "btn1Action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "btn2Action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "btn3Action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "btn4Action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "btn5Action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "btn6Action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "menuItem1Action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "menuItem2Action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "menuItem3Action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "menuItem4Action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "menuItem5Action",
+                            "type": "executeFunction"
+                        },
+                        {
+                            "id": "menuItem6Action",
+                            "type": "executeFunction"
+                        }
+                    ]
+                }
+            ],
+            "ribbons": [
+                {
+                    "contexts": [
+                        "default"
+                    ],
+                    "tabs": [
+                        {
+                            "id": "ContosoKeytipsTab",
+                            "label": "Contoso Keytips",
+                            "keytip": "CK",
+                            "groups": [
+                                {
+                                    "id": "KeytipGroup1",
+                                    "label": "Buttons 1",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "Btn1",
+                                            "type": "button",
+                                            "label": "Button 1",
+                                            "icons": [
+                                                { "size": 16, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-16.png" },
+                                                { "size": 32, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-32.png" },
+                                                { "size": 80, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-80.png" }
+                                            ],
+                                            "supertip": {
+                                                "title": "Button 1",
+                                                "description": "Runs Button 1 action."
+                                            },
+                                            "actionId": "btn1Action",
+                                            "keytip": "R"
+                                        },
+                                        {
+                                            "id": "Btn2",
+                                            "type": "button",
+                                            "label": "Button 2",
+                                            "icons": [
+                                                { "size": 16, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-16.png" },
+                                                { "size": 32, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-32.png" },
+                                                { "size": 80, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-80.png" }
+                                            ],
+                                            "supertip": {
+                                                "title": "Button 2",
+                                                "description": "Runs Button 2 action."
+                                            },
+                                            "actionId": "btn2Action",
+                                            "keytip": "O"
+                                        },
+                                        {
+                                            "id": "Btn3",
+                                            "type": "button",
+                                            "label": "Button 3",
+                                            "icons": [
+                                                { "size": 16, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-16.png" },
+                                                { "size": 32, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-32.png" },
+                                                { "size": 80, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-80.png" }
+                                            ],
+                                            "supertip": {
+                                                "title": "Button 3",
+                                                "description": "Runs Button 3 action."
+                                            },
+                                            "actionId": "btn3Action",
+                                            "keytip": "Y"
+                                        },
+                                        {
+                                            "id": "ContosoMenu",
+                                            "type": "menu",
+                                            "label": "Menu",
+                                            "icons": [
+                                                { "size": 16, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-16.png" },
+                                                { "size": 32, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-32.png" },
+                                                { "size": 80, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-80.png" }
+                                            ],
+                                            "supertip": {
+                                                "title": "Menu",
+                                                "description": "Menu with six items."
+                                            },
+                                            "keytip": "M",
+                                            "items": [
+                                                {
+                                                    "id": "MenuItem1",
+                                                    "type": "menuItem",
+                                                    "label": "Menu Item 1",
+                                                    "supertip": {
+                                                        "title": "Menu Item 1",
+                                                        "description": "Runs Menu Item 1 action."
+                                                    },
+                                                    "actionId": "menuItem1Action",
+                                                    "keytip": "P"
+                                                },
+                                                {
+                                                    "id": "MenuItem2",
+                                                    "type": "menuItem",
+                                                    "label": "Menu Item 2",
+                                                    "supertip": {
+                                                        "title": "Menu Item 2",
+                                                        "description": "Runs Menu Item 2 action."
+                                                    },
+                                                    "actionId": "menuItem2Action",
+                                                    "keytip": "C"
+                                                },
+                                                {
+                                                    "id": "MenuItem3",
+                                                    "type": "menuItem",
+                                                    "label": "Menu Item 3",
+                                                    "supertip": {
+                                                        "title": "Menu Item 3",
+                                                        "description": "Runs Menu Item 3 action."
+                                                    },
+                                                    "actionId": "menuItem3Action",
+                                                    "keytip": "M"
+                                                },
+                                                {
+                                                    "id": "MenuItem4",
+                                                    "type": "menuItem",
+                                                    "label": "Menu Item 4",
+                                                    "supertip": {
+                                                        "title": "Menu Item 4",
+                                                        "description": "Runs Menu Item 4 action."
+                                                    },
+                                                    "actionId": "menuItem4Action",
+                                                    "keytip": "L"
+                                                },
+                                                {
+                                                    "id": "MenuItem5",
+                                                    "type": "menuItem",
+                                                    "label": "Menu Item 5",
+                                                    "supertip": {
+                                                        "title": "Menu Item 5",
+                                                        "description": "Runs Menu Item 5 action."
+                                                    },
+                                                    "actionId": "menuItem5Action",
+                                                    "keytip": "B"
+                                                },
+                                                {
+                                                    "id": "MenuItem6",
+                                                    "type": "menuItem",
+                                                    "label": "Menu Item 6",
+                                                    "supertip": {
+                                                        "title": "Menu Item 6",
+                                                        "description": "Runs Menu Item 6 action."
+                                                    },
+                                                    "actionId": "menuItem6Action",
+                                                    "keytip": "G"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "id": "KeytipGroup2",
+                                    "label": "Buttons 2",
+                                    "icons": [
+                                        {
+                                            "size": 16,
+                                            "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-16.png"
+                                        },
+                                        {
+                                            "size": 32,
+                                            "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-32.png"
+                                        },
+                                        {
+                                            "size": 80,
+                                            "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-80.png"
+                                        }
+                                    ],
+                                    "controls": [
+                                        {
+                                            "id": "Btn4",
+                                            "type": "button",
+                                            "label": "Button 4",
+                                            "icons": [
+                                                { "size": 16, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-16.png" },
+                                                { "size": 32, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-32.png" },
+                                                { "size": 80, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-80.png" }
+                                            ],
+                                            "supertip": {
+                                                "title": "Button 4",
+                                                "description": "Runs Button 4 action."
+                                            },
+                                            "actionId": "btn4Action",
+                                            "keytip": "G"
+                                        },
+                                        {
+                                            "id": "Btn5",
+                                            "type": "button",
+                                            "label": "Button 5",
+                                            "icons": [
+                                                { "size": 16, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-16.png" },
+                                                { "size": 32, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-32.png" },
+                                                { "size": 80, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-80.png" }
+                                            ],
+                                            "supertip": {
+                                                "title": "Button 5",
+                                                "description": "Runs Button 5 action."
+                                            },
+                                            "actionId": "btn5Action",
+                                            "keytip": "B"
+                                        },
+                                        {
+                                            "id": "Btn6",
+                                            "type": "button",
+                                            "label": "Button 6",
+                                            "icons": [
+                                                { "size": 16, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-16.png" },
+                                                { "size": 32, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-32.png" },
+                                                { "size": 80, "url": "https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/assets/icon-80.png" }
+                                            ],
+                                            "supertip": {
+                                                "title": "Button 6",
+                                                "description": "Runs Button 6 action."
+                                            },
+                                            "actionId": "btn6Action",
+                                            "keytip": "P"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
