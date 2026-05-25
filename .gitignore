@@ -12,8 +12,8 @@
 
 **/wwwroot/*.module.js
 **/wwwroot/*.module.js.map
-**/wwwroot/Commands/**/*.js
-**/wwwroot/Commands/**/*.map
+**/wwwroot/commands/**/*.js
+**/wwwroot/commands/**/*.map
 
 # But keep specific JS files that are not generated
 !**/wwwroot/lib/**/*.js

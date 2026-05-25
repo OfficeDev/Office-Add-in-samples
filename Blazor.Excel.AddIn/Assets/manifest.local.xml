@@ -291,7 +291,7 @@
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>highlightSelectionHome</FunctionName>
+                    <FunctionName>insertNameFromHome</FunctionName>
                   </Action>
                 </Control>
 
@@ -311,7 +311,7 @@
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>highlightSelectionCounter</FunctionName>
+                    <FunctionName>insertNameFromCounter</FunctionName>
                   </Action>
                 </Control>
 
@@ -331,7 +331,7 @@
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>writeValue</FunctionName>
+                    <FunctionName>writeButtonId</FunctionName>
                   </Action>
                 </Control>
 
@@ -458,7 +458,6 @@
         <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Insert Name from Counter" />
         <bt:String id="Contoso.FunctionButton2.Label" DefaultValue="Write JS" />
         <bt:String id="Contoso.FunctionButton3.Label" DefaultValue="Bubbles" />
-        <bt:String id="Contoso.FunctionButton4.Label" DefaultValue="..." />
       </bt:ShortStrings>
 
       <!-- LongStrings max characters==250. -->
@@ -474,9 +473,8 @@
 
         <bt:String id="Contoso.FunctionButton0.Tooltip" DefaultValue="Click to insert text from Home Page" />
         <bt:String id="Contoso.FunctionButton1.Tooltip" DefaultValue="Click to insert text from Counter Page" />
-        <bt:String id="Contoso.FunctionButton3.Tooltip" DefaultValue="Click to insert text from commands.js" />
-        <bt:String id="Contoso.FunctionButton2.Tooltip" DefaultValue="Click to Run CreateBubbles from BubbleChart Page" />
-        <bt:String id="Contoso.FunctionButton4.Tooltip" DefaultValue="Click to insert name from Home" />
+        <bt:String id="Contoso.FunctionButton3.Tooltip" DefaultValue="Click to Run CreateBubbles from BubbleChart Page" />
+        <bt:String id="Contoso.FunctionButton2.Tooltip" DefaultValue="Click to insert text from commands.js" />
 
       </bt:LongStrings>
 

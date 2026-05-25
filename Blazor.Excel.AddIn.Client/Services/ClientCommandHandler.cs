@@ -29,4 +29,16 @@ public class ClientCommandHandler
         Console.WriteLine($"ClientCommandHandler.SayHelloHome delegating to Home.SayHelloHome");
         return Home.SayHelloHome(name);
     }
+
+    /// <summary>
+    /// Delegates to the static Home.SayHelloHome method.
+    /// This allows JS to call via DotNetObjectReference (targeting the WebAssembly runtime)
+    /// while still going through Home.razor.cs which uses JSImport to call Home.razor.js.
+    /// </summary>
+    [JSInvokable]
+    public async Task CreateBubbles()
+    {
+        Console.WriteLine($"ClientCommandHandler.CreateBubbles delegating to BubbleChart.CreateBubbles");
+        await BubbleChart.CreateBubbles();
+    }
 }

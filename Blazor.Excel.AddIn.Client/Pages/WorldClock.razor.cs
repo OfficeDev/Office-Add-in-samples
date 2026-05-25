@@ -79,11 +79,6 @@ public partial class WorldClock : ComponentBase, IDisposable
         CestTime = cestDateTime.ToString("dddd, MMMM dd, yyyy HH:mm:ss");
     }
 
-    private void RefreshTime()
-    {
-        UpdateTimes();
-    }
-
     /// <summary>
     /// JSInvokable method that can be called from JavaScript to force a refresh.
     /// This is useful when the ribbon button is clicked to show the taskpane.
