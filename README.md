@@ -39,7 +39,7 @@ This sample shows how to build a Word add-in using .NET Blazor Hybrid technologi
 ## Run the sample
 
 1. Download or clone the [Office Add-ins samples repository](https://github.com/OfficeDev/Office-Add-in-samples).
-1. Open Visual Studio 2022 and open the: **Office-Add-in-samples\Samples\blazor-add-in\Blazor.Word.AddIn\Blazor.Word.AddIn.sln** solution.
+1. Open Visual Studio 2026 and open the: **Office-Add-in-samples\Samples\blazor-add-in\Blazor.Word.AddIn\Blazor.Word.AddIn.slnx** solution.
 1. Choose **Debug** > **Start Debugging**. Or press <kbd>F5</kbd> to start the solution and sideload the Add-in and start Word.
 1. [Optionally] You can use the Terminal to sideload the Add-in and start Word using the command **npm run start-local** separately
 1. When Word opens, choose **Sample Add-in** > **Show task pane** (if not already open).
@@ -141,10 +141,10 @@ This sample shows how to use Blazor with custom buttons on the ribbon. The butto
 
 This sample is configured to support debugging both JavaScript and C# files. New Blazor projects need the following file updates to support C# debugging.
 
-1. In the **launchSettings.json** file of the web project, make sure all instances of `launchBrowser` are set to `false`.
-1. In the **<projectName>.csproj.user** file of the add-in project, add the `<BlazorAppUrl>` and `<InspectUri>` elements as shown in the following example XML.
+1. In the **launchSettings.json** file of the **Blazor.Word.AddIn** project, make sure all instances of `launchBrowser` are set to `false`.
+1. In the **Blazor.Word.AddIn.csproj.user** file of the **Blazor.Word.AddIn** project, add the `<BlazorAppUrl>` and `<InspectUri>` elements as shown in the following example XML.
 
-**Note:** The port number in the following XML is 7215. You must change it to the port number specified in the **launchSettings.json** file for your web project.
+**Note:** The port number in the following XML is 7215. You must change it to the port number specified in the **launchSettings.json** file of the **Blazor.Word.AddIn** project.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -163,8 +163,8 @@ This repo includes VS Code task and launch configurations under the `.vscode` fo
 - Build and restore (tasks or CLI):
 
 ```powershell
-dotnet restore .\Blazor.Word.AddIn.sln
-dotnet build .\Blazor.Word.AddIn.sln -c Debug
+dotnet restore .\Blazor.Word.AddIn.slnx
+dotnet build .\Blazor.Word.AddIn.slnx -c Debug
 ```
 
 - Run the server, sideload the add-in, and attach the debugger (recommended):

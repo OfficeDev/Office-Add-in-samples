@@ -5,7 +5,7 @@
       "label": "dotnet: Restore",
       "type": "process",
       "command": "dotnet",
-      "args": ["restore", "${workspaceFolder}/Blazor.Word.AddIn.sln"],
+      "args": ["restore", "${workspaceFolder}/Blazor.Word.AddIn.slnx"],
       "presentation": { "panel": "shared", "clear": true },
       "problemMatcher": []
     },
@@ -15,7 +15,7 @@
       "command": "dotnet",
       "args": [
         "build",
-        "${workspaceFolder}/Blazor.Word.AddIn.sln",
+        "${workspaceFolder}/Blazor.Word.AddIn.slnx",
         "--configuration",
         "Debug"
       ],
