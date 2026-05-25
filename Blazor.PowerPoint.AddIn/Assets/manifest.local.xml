@@ -400,8 +400,8 @@
 				<bt:String id="Contoso.Taskpane.Theme.Tooltip" DefaultValue="Click to Show Theme Taskpane" />
 
 				<bt:String id="Contoso.FunctionButton0.Tooltip" DefaultValue="Click to insert text in slide" />
-				<bt:String id="Contoso.FunctionButton3.Tooltip" DefaultValue="Click to do something" />
-				<bt:String id="Contoso.FunctionButton4.Tooltip" DefaultValue="Click to insert name from Home" />
+				<bt:String id="Contoso.FunctionButton3.Tooltip" DefaultValue="Click to do something from Server" />
+				<bt:String id="Contoso.FunctionButton4.Tooltip" DefaultValue="Click to insert name from WASM" />
 				<bt:String id="Contoso.FunctionButton5.Tooltip" DefaultValue="Click to insert text with render mode from Home" />
 
 				<bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the Sample Add-in tab and click the 'Show Taskpane' button to get started." />

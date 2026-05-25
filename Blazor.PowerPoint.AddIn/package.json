@@ -26,7 +26,7 @@
     "node": ">=20"
   },
   "devDependencies": {
-    "@types/office-js-preview": "^1.0.707",
+    "@types/office-js-preview": "^1.0.708",
     "office-addin-debugging": "^6.1.1",
     "office-addin-manifest": "^2.1.5"
   }
