@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Attach to .NET (server)",
+      "type": "coreclr",
+      "request": "attach",
+      "preLaunchTask": "Start: Server & Sideload",
+      "processId": "${command:pickProcess}"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Sideload & Attach (server)",
+      "configurations": ["Attach to .NET (server)"]
+    }
+  ]
+}
