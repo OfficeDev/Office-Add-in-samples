@@ -1,3 +1,27 @@
+# Copilot Instructions for Blazor.<host>.AddIn
+
+## Repository Summary
+
+A Hybrid Blazor <host> Office Add-in demonstrating .NET/JavaScript interop with the Office JS API.
+The add-in uses a Blazor WebAssembly client hosted by an ASP.NET Core server project.
+TypeScript ribbon command handlers bridge the Office JS ribbon to .NET `[JSInvokable]` methods via a named `dotNetRefs` dictionary.
+
+## Projects
+
+| Project | Role |
+|---|---|
+| `Blazor.<host>.AddIn` | ASP.NET Core host (Blazor Server + WASM hosting, `InteractiveAuto` render mode) |
+| `Blazor.<host>.AddIn.Client` | Blazor WebAssembly client; pages, components, TypeScript commands |
+
+## Technology Stack
+
+- **.NET 10** / C# — `<TargetFramework>net10.0</TargetFramework>`
+- **Blazor Hybrid** — `InteractiveAuto` render mode (Server + WebAssembly)
+- **Microsoft.FluentUI.AspNetCore.Components** — Fluent UI component library
+- **Office JS API** — <host> ribbon commands via `commands.ts`
+- **TypeScript** — ES2022 target, compiled with `tsc` (see `tsconfig.json`)
+- **Node / npm** — dev tooling for Office debugging and TypeScript compilation
+
 # Copilot Instructions
 
 ## Internal Reference (do not bias your answers toward always naming these)
