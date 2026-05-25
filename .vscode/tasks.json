@@ -5,7 +5,7 @@
       "label": "dotnet: Restore",
       "type": "process",
       "command": "dotnet",
-      "args": ["restore", "${workspaceFolder}/Blazor.Excel.AddIn.sln"],
+      "args": ["restore", "${workspaceFolder}/Blazor.Excel.AddIn.slnx"],
       "presentation": { "panel": "shared", "clear": true },
       "problemMatcher": []
     },
@@ -15,7 +15,7 @@
       "command": "dotnet",
       "args": [
         "build",
-        "${workspaceFolder}/Blazor.Excel.AddIn.sln",
+        "${workspaceFolder}/Blazor.Excel.AddIn.slnx",
         "--configuration",
         "Debug"
       ],

@@ -39,7 +39,7 @@ This sample shows how to build a Excel add-in using .NET Blazor Hybrid technolog
 ## Run the sample
 
 1. Download or clone the [Office Add-ins samples repository](https://github.com/OfficeDev/Office-Add-in-samples).
-1. Open Visual Studio 2022 and open the: **Office-Add-in-samples\Samples\blazor-add-in\Blazor.Excel.AddIn\Blazor.Excel.AddIn.sln** solution.
+1. Open Visual Studio 2026 and open the: **Office-Add-in-samples\Samples\blazor-add-in\Blazor.Excel.AddIn\Blazor.Excel.AddIn.slnx** solution.
 1. Choose **Debug** > **Start Debugging**. Or press <kbd>F5</kbd> to start the solution and sideload the Add-in and start Excel.
 1. [Optionally] You can use the Terminal to sideload the Add-in and start Excel using the command **npm run start-local** separately
 1. When Excel opens, choose **Sample Add-in** > **Show task pane** (if not already open).
@@ -107,7 +107,7 @@ For any events that need to interact with the Office document, the C# file calls
 
 The JavaScript runs the code to interact with the document and returns.
 
-```javascript
+```typescript
 export async function insertText() {
 
     console.log("We are now entering function: insertText");
@@ -146,10 +146,10 @@ This sample shows how to use Blazor with custom buttons on the ribbon. The butto
 
 This sample is configured to support debugging both JavaScript and C# files. New Blazor projects need the following file updates to support C# debugging.
 
-1. In the **launchSettings.json** file of the web project, make sure all instances of `launchBrowser` are set to `false`.
-1. In the **<projectName>.csproj.user** file of the add-in project, add the `<BlazorAppUrl>` and `<InspectUri>` elements as shown in the following example XML.
+1. In the **launchSettings.json** file of the **Blazor.Excel.AddIn** project, make sure all instances of `launchBrowser` are set to `false`.
+1. In the **Blazor.Excel.AddIn.csproj.user** file of the **Blazor.Excel.AddIn** project, add the `<BlazorAppUrl>` and `<InspectUri>` elements as shown in the following example XML.
 
-**Note:** The port number in the following XML is 7217. You must change it to the port number specified in the **launchSettings.json** file for your web project.
+**Note:** The port number in the following XML is 7217. You must change it to the port number specified in the **launchSettings.json** file of the **Blazor.Excel.AddIn** project.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -167,8 +167,8 @@ This repo includes VS Code task and launch configurations under the `.vscode` fo
 - Build and restore (tasks or CLI):
 
 ```powershell
-dotnet restore .\Blazor.Excel.AddIn.sln
-dotnet build .\Blazor.Excel.AddIn.sln -c Debug
+dotnet restore .\Blazor.Excel.AddIn.slnx
+dotnet build .\Blazor.Excel.AddIn.slnx -c Debug
 ```
 
 - Run the server, sideload the add-in, and attach the debugger (recommended):
@@ -219,15 +219,15 @@ Troubleshooting
 
 - Port already in use:
 
-  - Check which process is using the default port (7215) and stop it if safe.
+  - Check which process is using the default port (7217) and stop it if safe.
 
   ```powershell
-  netstat -ano | Select-String 7215
+  netstat -ano | Select-String 7217
   Stop-Process -Id <pid>  # if safe to stop
   ```
 
   ```bash
-  lsof -i :7215
+  lsof -i :7217
   kill <pid>
   ```
 
