@@ -185,8 +185,8 @@ function onMessageSendHandler(event) {
   );
 }
 
-// Handles the OnMessageRead event to decrypt the message body and attachments.
-function onMessageReadHandler(event) {
+// Handles the OnMessageDecrypt event to decrypt the message body and attachments.
+function onMessageDecryptHandler(event) {
   const attachments = Office.context.mailbox.item.attachments;
   if (attachments.length === 0) {
     console.log("No attachments found for decryption.");
@@ -389,4 +389,4 @@ function createDecryptedAttachment(decryptedDetails) {
 
 // IMPORTANT: To ensure your add-in is supported in Outlook, remember to map the event handler name specified in the manifest to its JavaScript counterpart.
 Office.actions.associate("onMessageSendHandler", onMessageSendHandler);
-Office.actions.associate("onMessageReadHandler", onMessageReadHandler);
+Office.actions.associate("onMessageDecryptHandler", onMessageDecryptHandler);
