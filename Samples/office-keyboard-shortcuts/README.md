@@ -53,13 +53,14 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
     > **Note**: The keyboard shortcut feature is currently being rolled out to Word on the web. If you test the feature in Word on the web at this time, the shortcuts may not work if they're activated from within the add-in's task pane. We recommend to periodically check [Keyboard Shortcuts requirement sets](https://learn.microsoft.com/javascript/api/requirement-sets/common/keyboard-shortcuts-requirement-sets) to find out when the feature is fully supported.
 
 - Office on Windows
-  - Excel: Version 2111 (Build 14701.10000)
-  - PowerPoint: Version 2601 (Build 19628.20150)
-  - Word: Version 2408 (Build 17928.20114)
+  - Excel: Version 2102 (Build 13801.20632) and later
+  - PowerPoint: Version 2601 (Build 19628.20150) and later
+  - PowerPoint (Monthly Enterprise Channel): Version 2604 (Build 19929.20172) and later
+  - Word: Version 2408 (Build 17928.20114) and later
 - Office on Mac
-  - Excel: Version 16.55 (21111400)
-  - PowerPoint: Version 16.105 (26012530)
-  - Word: Version 16.88 (24081116)
+  - Excel: Version 16.55 (21111400) and later
+  - PowerPoint: Version 16.105.2 (26012530) and later
+  - Word: Version 16.88 (24081116) and later
 
 ## Prerequisites
 
@@ -79,7 +80,7 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 | 1.1 | May 11, 2021 | Removed yo office and modified to be GitHub hosted |
 | 2.0 | September 27, 2024 | Added support for Word |
 | 2.1 | December 5, 2024 | Updated keyboard shortcuts |
-| 3.0 | February 5, 2026 | Added support for PowerPoint |
+| 3.0 | May 26, 2026 | Added support for PowerPoint |
 
 ## Disclaimer
 
