@@ -1,0 +1,85 @@
+body {
+  margin: 0;
+  padding: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  color: #333;
+  background-color: white;
+}
+
+#send-main {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+
+.field {
+  margin-bottom: 12px;
+}
+
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+#recipient {
+  font-weight: normal;
+}
+
+#context-input {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  padding: 8px;
+  border: 1px solid #c8c8c8;
+  border-radius: 2px;
+  resize: vertical;
+}
+
+#context-input:focus {
+  border-color: #0078d4;
+  outline: none;
+}
+
+#actions {
+  margin-top: 16px;
+}
+
+#send-btn {
+  background-color: #0078d4;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  font-size: 14px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+#send-btn:hover {
+  background-color: #106ebe;
+}
+
+#send-btn:disabled {
+  background-color: #c8c8c8;
+  cursor: default;
+}
+
+#status {
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+#status.error {
+  color: #a80000;
+}
+
+#status.success {
+  color: #107c10;
+}

@@ -77,6 +77,7 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | [Verify the sensitivity label of a message](Samples/outlook-verify-sensitivity-label/) | Uses the sensitivity label API in an event-based add-in to verify and apply the **Highly Confidential** sensitivity label to applicable outgoing messages. |
 | [Report spam or phishing emails in Outlook](Samples/outlook-spam-reporting/) | Builds an integrated spam-reporting add-in that's displayed in a prominent spot on the Outlook ribbon. |
 | [Encrypt and decrypt messages in Outlook](Samples/outlook-encrypt-decrypt-messages/) | Uses Outlook Smart Alerts and the `OnMessageDecrypt` event to encrypt and decrypt messages. |
+| [Invoke an Outlook add-in from an actionable message](Samples/outlook-actionable-message/) | Uses an Adaptive Card in an actionable message to activate an add-in and display initialization context data. |
 
 ## Excel
 

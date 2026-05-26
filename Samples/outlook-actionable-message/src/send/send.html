@@ -1,0 +1,28 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Send Actionable Message</title>
+  <link href="send.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+</head>
+<body>
+  <div id="send-main">
+    <h2>Send Actionable Message</h2>
+    <div class="field">
+      <label>To:</label>
+      <span id="recipient"></span>
+    </div>
+    <div class="field">
+      <label for="context-input">Initialization Context (JSON):</label>
+      <textarea id="context-input" rows="14" spellcheck="false"></textarea>
+    </div>
+    <div id="actions">
+      <button id="send-btn" type="button">Send</button>
+    </div>
+    <div id="status"></div>
+  </div>
+</body>
+</html>
