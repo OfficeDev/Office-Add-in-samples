@@ -45,6 +45,7 @@ echo ""
 echo "Base directory: $BASE_DIR"
 echo "Node version: $(node --version)"
 echo "npm version: $(npm --version)"
+echo "Disk space: $(df -h / | tail -1)"
 echo ""
 
 # Load configuration
@@ -142,6 +143,7 @@ test_sample() {
     UNEXPECTED_FAILURE_SAMPLES+=("$relative_path")
     echo -e "  ${RED}  ⚠ UNEXPECTED FAILURE - install should not fail${NC}"
 
+    rm -rf node_modules
     cd "$BASE_DIR"
     return
   fi
@@ -154,6 +156,7 @@ test_sample() {
     echo -e "  ${YELLOW}⊘ SKIPPED${NC}: No build scripts found"
     SKIPPED=$((SKIPPED + 1))
     SKIPPED_SAMPLES+=("$relative_path")
+    rm -rf node_modules
     cd "$BASE_DIR"
     return
   fi
@@ -207,6 +210,9 @@ test_sample() {
   fi
 
   cd "$BASE_DIR"
+
+  # Clean up node_modules to free disk space on CI runners (14GB SSD limit)
+  rm -rf "$sample_dir/node_modules"
 }
 
 # Find all samples with package.json
