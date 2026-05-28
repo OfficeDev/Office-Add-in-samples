@@ -1,7 +1,7 @@
 {
     "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.28/MicrosoftTeams.schema.json",
     "manifestVersion": "1.28",
-    "version": "1.1.0",
+    "version": "1.0.0",
     "id": "d6056c77-f8c8-4d19-9858-8e2fdf135792",
     "localizationInfo": {
         "defaultLanguageTag": "en-us",
@@ -49,22 +49,6 @@
                 ]
             },
             "runtimes": [
-                {
-                    "id": "TaskPaneRuntime",
-                    "type": "general",
-                    "code": {
-                        "page": "https://localhost:3000/taskpane.html"
-                    },
-                    "lifetime": "short",
-                    "actions": [
-                        {
-                            "id": "TaskPaneRuntimeShow",
-                            "type": "openPage",
-                            "pinnable": false,
-                            "view": "dashboard"
-                        }
-                    ]
-                },
                 {
                     "requirements": {
                         "capabilities": [
@@ -144,13 +128,13 @@
                     ],
                     "tabs": [
                         {
-                            "id": "ContosoKeytipsTab",
-                            "label": "Contoso Keytips",
+                            "id": "ContosoKeyTipsTab",
+                            "label": "Contoso KeyTips",
                             "keytip": "CK",
                             "groups": [
                                 {
-                                    "id": "KeytipGroup1",
-                                    "label": "Buttons 1",
+                                    "id": "KeyTipGroup1",
+                                    "label": "Colors Group 1",
                                     "icons": [
                                         {
                                             "size": 16,
@@ -169,15 +153,26 @@
                                         {
                                             "id": "Btn1",
                                             "type": "button",
-                                            "label": "Button 1",
+                                            "label": "Red",
                                             "icons": [
                                                 { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
                                                 { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
-                                                { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
                                             ],
                                             "supertip": {
-                                                "title": "Button 1",
-                                                "description": "Runs Button 1 action."
+                                                "title": "Red",
+                                                "description": "Changes the color to red."
                                             },
                                             "actionId": "btn1Action",
                                             "keytip": "R"
@@ -185,15 +180,24 @@
                                         {
                                             "id": "Btn2",
                                             "type": "button",
-                                            "label": "Button 2",
+                                            "label": "Orange",
                                             "icons": [
-                                                { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
-                                                { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
-                                                { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
                                             ],
                                             "supertip": {
-                                                "title": "Button 2",
-                                                "description": "Runs Button 2 action."
+                                                "title": "Orange",
+                                                "description": "Changes the color to orange."
                                             },
                                             "actionId": "btn2Action",
                                             "keytip": "O"
@@ -201,15 +205,24 @@
                                         {
                                             "id": "Btn3",
                                             "type": "button",
-                                            "label": "Button 3",
+                                            "label": "Yellow",
                                             "icons": [
-                                                { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
-                                                { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
-                                                { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
                                             ],
                                             "supertip": {
-                                                "title": "Button 3",
-                                                "description": "Runs Button 3 action."
+                                                "title": "Yellow",
+                                                "description": "Changes the color to yellow."
                                             },
                                             "actionId": "btn3Action",
                                             "keytip": "Y"
@@ -217,25 +230,34 @@
                                         {
                                             "id": "ContosoMenu",
                                             "type": "menu",
-                                            "label": "Menu",
+                                            "label": "More colors",
                                             "icons": [
-                                                { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
-                                                { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
-                                                { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
                                             ],
                                             "supertip": {
-                                                "title": "Menu",
-                                                "description": "Menu with six items."
+                                                "title": "More colors",
+                                                "description": "Additional color options."
                                             },
                                             "keytip": "M",
                                             "items": [
                                                 {
                                                     "id": "MenuItem1",
                                                     "type": "menuItem",
-                                                    "label": "Menu Item 1",
+                                                    "label": "Pink",
                                                     "supertip": {
-                                                        "title": "Menu Item 1",
-                                                        "description": "Runs Menu Item 1 action."
+                                                        "title": "Pink",
+                                                        "description": "Changes the color to pink."
                                                     },
                                                     "actionId": "menuItem1Action",
                                                     "keytip": "P"
@@ -243,10 +265,10 @@
                                                 {
                                                     "id": "MenuItem2",
                                                     "type": "menuItem",
-                                                    "label": "Menu Item 2",
+                                                    "label": "Cyan",
                                                     "supertip": {
-                                                        "title": "Menu Item 2",
-                                                        "description": "Runs Menu Item 2 action."
+                                                        "title": "Cyan",
+                                                        "description": "Changes the color to cyan."
                                                     },
                                                     "actionId": "menuItem2Action",
                                                     "keytip": "C"
@@ -254,10 +276,10 @@
                                                 {
                                                     "id": "MenuItem3",
                                                     "type": "menuItem",
-                                                    "label": "Menu Item 3",
+                                                    "label": "Magenta",
                                                     "supertip": {
-                                                        "title": "Menu Item 3",
-                                                        "description": "Runs Menu Item 3 action."
+                                                        "title": "Magenta",
+                                                        "description": "Changes the color to magenta."
                                                     },
                                                     "actionId": "menuItem3Action",
                                                     "keytip": "M"
@@ -265,10 +287,10 @@
                                                 {
                                                     "id": "MenuItem4",
                                                     "type": "menuItem",
-                                                    "label": "Menu Item 4",
+                                                    "label": "Lime",
                                                     "supertip": {
-                                                        "title": "Menu Item 4",
-                                                        "description": "Runs Menu Item 4 action."
+                                                        "title": "Lime",
+                                                        "description": "Changes the color to lime."
                                                     },
                                                     "actionId": "menuItem4Action",
                                                     "keytip": "L"
@@ -276,10 +298,10 @@
                                                 {
                                                     "id": "MenuItem5",
                                                     "type": "menuItem",
-                                                    "label": "Menu Item 5",
+                                                    "label": "Brown",
                                                     "supertip": {
-                                                        "title": "Menu Item 5",
-                                                        "description": "Runs Menu Item 5 action."
+                                                        "title": "Brown",
+                                                        "description": "Changes the color to brown."
                                                     },
                                                     "actionId": "menuItem5Action",
                                                     "keytip": "B"
@@ -287,10 +309,10 @@
                                                 {
                                                     "id": "MenuItem6",
                                                     "type": "menuItem",
-                                                    "label": "Menu Item 6",
+                                                    "label": "Gray",
                                                     "supertip": {
-                                                        "title": "Menu Item 6",
-                                                        "description": "Runs Menu Item 6 action."
+                                                        "title": "Gray",
+                                                        "description": "Changes the color to gray."
                                                     },
                                                     "actionId": "menuItem6Action",
                                                     "keytip": "G"
@@ -300,8 +322,8 @@
                                     ]
                                 },
                                 {
-                                    "id": "KeytipGroup2",
-                                    "label": "Buttons 2",
+                                    "id": "KeyTipGroup2",
+                                    "label": "Colors Group 2",
                                     "icons": [
                                         {
                                             "size": 16,
@@ -320,15 +342,24 @@
                                         {
                                             "id": "Btn4",
                                             "type": "button",
-                                            "label": "Button 4",
+                                            "label": "Green",
                                             "icons": [
-                                                { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
-                                                { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
-                                                { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
                                             ],
                                             "supertip": {
-                                                "title": "Button 4",
-                                                "description": "Runs Button 4 action."
+                                                "title": "Green",
+                                                "description": "Changes the color to green."
                                             },
                                             "actionId": "btn4Action",
                                             "keytip": "G"
@@ -336,15 +367,24 @@
                                         {
                                             "id": "Btn5",
                                             "type": "button",
-                                            "label": "Button 5",
+                                            "label": "Blue",
                                             "icons": [
-                                                { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
-                                                { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
-                                                { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
                                             ],
                                             "supertip": {
-                                                "title": "Button 5",
-                                                "description": "Runs Button 5 action."
+                                                "title": "Blue",
+                                                "description": "Changes the color to blue."
                                             },
                                             "actionId": "btn5Action",
                                             "keytip": "B"
@@ -352,15 +392,24 @@
                                         {
                                             "id": "Btn6",
                                             "type": "button",
-                                            "label": "Button 6",
+                                            "label": "Purple",
                                             "icons": [
-                                                { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
-                                                { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
-                                                { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                                                {
+                                                    "size": 16,
+                                                    "url": "https://localhost:3000/assets/icon-16.png"
+                                                },
+                                                {
+                                                    "size": 32,
+                                                    "url": "https://localhost:3000/assets/icon-32.png"
+                                                },
+                                                {
+                                                    "size": 80,
+                                                    "url": "https://localhost:3000/assets/icon-80.png"
+                                                }
                                             ],
                                             "supertip": {
-                                                "title": "Button 6",
-                                                "description": "Runs Button 6 action."
+                                                "title": "Purple",
+                                                "description": "Changes the color to purple."
                                             },
                                             "actionId": "btn6Action",
                                             "keytip": "P"
