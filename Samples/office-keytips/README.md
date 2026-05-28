@@ -15,12 +15,12 @@ extensions:
   technologies:
     - Add-ins
   createdDate: "05/20/2026 10:00:00 AM"
-description: "This sample shows how to define KeyTips for ribbon tabs, groups, buttons, menus, and menu items of an Office Add-in that uses the unified manifest for Microsoft 365."
+description: "This sample shows how to define KeyTips for ribbon tabs, buttons, and menus of an Office Add-in that uses the unified manifest for Microsoft 365."
 ---
 
 # Define KeyTips for the ribbon controls of an Office Add-in
 
-This sample shows how to define (KeyTips)[https://support.microsoft.com/office/954cd3f7-2f77-4983-978d-c09b20e31f0e] for custom ribbon controls of an Office Add-in that uses the unified manifest for Microsoft 365. KeyTips, also known as sequential key shortcuts or access keys, appear around the ribbon controls when <kbd>Alt</kbd> is pressed. They enable keyboard-based navigation of the ribbon, making the user experience more accessible and efficient.
+This sample shows how to define [KeyTips](https://support.microsoft.com/office/954cd3f7-2f77-4983-978d-c09b20e31f0e) for custom ribbon controls of an Office Add-in that uses the unified manifest for Microsoft 365. KeyTips, also known as sequential key shortcuts or access keys, appear around the ribbon controls when <kbd>Alt</kbd> is pressed. They enable keyboard-based navigation of the ribbon, making the user experience more accessible and efficient.
 
 In this sample, a custom ribbon tab named **Contoso KeyTips** contains buttons and menus to select a color option for the following host-specific actions.
 
@@ -28,9 +28,9 @@ In this sample, a custom ribbon tab named **Contoso KeyTips** contains buttons a
 -  **PowerPoint**: Inserts a text box with a fill.
 -  **Word**: Inserts colored text.
 
-Each tab, group, button, menu, and menu item is assigned a custom KeyTip in the manifest.
+Each tab, button, and menu is assigned a custom KeyTip in the manifest.
 
-To learn more about custom KeyTips for Office Add-ins, see [Add custom KeyTips to your Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/design/keytips).
+To learn more about custom KeyTips for Office Add-ins, see [Add custom KeyTips to your Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/design/add-custom-key-tips).
 
 ## Applies to
 
@@ -48,7 +48,7 @@ Custom KeyTips are supported in Excel, PowerPoint, and Word on the following pla
 
 | Version  | Date        | Comments        |
 |----------|-------------|-----------------|
-| 1.0      | 05-26-2026  | Initial release |
+| 1.0      | 05-28-2026  | Initial release |
 
 ## Solution
 
@@ -57,7 +57,6 @@ Custom KeyTips are supported in Excel, PowerPoint, and Word on the following pla
 | Define KeyTips for the ribbon controls of an Office Add-in | Microsoft |
 
 ## Run the sample
-
 
 Run this sample in Excel, Word, or PowerPoint. The add-in web files are served from `https://localhost:3000` on your computer.
 
@@ -83,6 +82,8 @@ Run this sample in Excel, Word, or PowerPoint. The add-in web files are served f
     ```
 
     Your preferred application opens and the add-in is sideloaded. When the add-in is sideloaded, the **Contoso KeyTips** tab appears on the ribbon.
+    
+    > **Tip**: To test the add-in in Office on the web, run the applicable command to sideload the add-in in your preferred desktop application. Once sideloaded, the add-in also appears on the web client.
 
 1. Follow the steps in [Try it out](#try-the-sample) to test the sample.
 
@@ -90,7 +91,7 @@ Run this sample in Excel, Word, or PowerPoint. The add-in web files are served f
 
 ```console
 npm stop
-```
+    
 
 ## Try the sample
 
@@ -111,9 +112,8 @@ npm stop
 
 Custom KeyTips are defined in the ["keytip"](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-ribbons-array-tabs-item#keytip) property of each ribbon control in the manifest. The `"keytip"` property is supported for the following controls.
 
-- [Custom tabs](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-ribbons-array-tabs-item)
+- [Built-in Office tabs and custom tabs](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-ribbons-array-tabs-item)
 - [Buttons and menus](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-common-custom-group-controls-item)
-- [Menu items](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-common-custom-control-menu-item)
 
 The following sample defines a KeyTip for the add-in's tab and button.
 
@@ -125,12 +125,14 @@ The following sample defines a KeyTip for the add-in's tab and button.
     "groups": [
         {
             "id": "KeyTipGroup1",
-            "label": "Buttons 1",
+            "label": "Colors Group 1",
+            ...
             "controls": [
                 {
                     "id": "Btn1",
                     "type": "button",
-                    "label": "Button 1",
+                    "label": "Red",
+                    ...
                     "actionId": "btn1Action",
                     "keytip": "R"
                 }
@@ -145,7 +147,7 @@ The following sample defines a KeyTip for the add-in's tab and button.
 - [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests)
 - [Unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview)
 - [Add-in commands](https://learn.microsoft.com/office/dev/add-ins/design/add-in-commands)
-- [Add custom KeyTips to your Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/design/keytips)
+- [Add custom KeyTips to your Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/design/add-custom-key-tips)
 
 ## Questions and feedback
 
