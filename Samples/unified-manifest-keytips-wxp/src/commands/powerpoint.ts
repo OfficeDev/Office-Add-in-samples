@@ -6,7 +6,7 @@
 /* global Office PowerPoint console */
 
 /**
- * Insert a text box on the selected slide with a colored fill.
+ * Inserts a text box with a colored fill on the selected slide.
  * @param event The add-in command event.
  * @param color The fill color to apply to the text box (CSS color name or hex string). Defaults to "white".
  */
@@ -25,6 +25,6 @@ export async function insertTextInPowerPoint(event: Office.AddinCommands.Event, 
     console.log("Error: " + error);
   }
 
-  // Be sure to indicate when the add-in command function is complete
+  // Be sure to indicate when the add-in command function is complete.
   event.completed();
 }

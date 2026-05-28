@@ -6,7 +6,7 @@
 /* global Office Word console */
 
 /**
- * Insert a colored paragraph in Word when the add-in command is executed.
+ * When the add-in command is selected, inserts a paragraph with colored text in Word.
  * @param event The add-in command event.
  * @param color The font color to apply to the inserted paragraph (CSS color name or hex string). Defaults to "blue".
  */
@@ -22,6 +22,6 @@ export async function insertBlueParagraphInWord(event: Office.AddinCommands.Even
     console.error(error);
   }
 
-  // Be sure to indicate when the add-in command function is complete
+  // Be sure to indicate when the add-in command function is complete.
   event.completed();
 }

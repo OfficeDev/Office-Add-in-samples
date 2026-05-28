@@ -1,7 +1,7 @@
 ---
-title: Define keytips for ribbon controls with the unified manifest
+title: Define KeyTips for the ribbon controls of an Office Add-in
 page_type: sample
-urlFragment: unified-manifest-keytips-wxp
+urlFragment: office-keytips
 products:
   - office-excel
   - office-word
@@ -15,76 +15,78 @@ extensions:
   technologies:
     - Add-ins
   createdDate: "05/20/2026 10:00:00 AM"
-description: "This sample shows how to define keytips (keyboard shortcuts shown on Alt) for ribbon tabs, groups, buttons, menus, and menu items in an Office Add-in that uses the unified manifest for Microsoft 365."
+description: "This sample shows how to define KeyTips for ribbon tabs, groups, buttons, menus, and menu items of an Office Add-in that uses the unified manifest for Microsoft 365."
 ---
 
-# Define keytips for ribbon controls with the unified manifest
+# Define KeyTips for the ribbon controls of an Office Add-in
 
-This sample shows how to define **keytips** for custom ribbon controls in an Office Add-in that uses the unified manifest for Microsoft 365. Keytips are the letters that appear next to ribbon controls when the user presses **Alt**, enabling keyboard-only navigation of the ribbon.
+This sample shows how to define (KeyTips)[https://support.microsoft.com/office/954cd3f7-2f77-4983-978d-c09b20e31f0e] for custom ribbon controls of an Office Add-in that uses the unified manifest for Microsoft 365. KeyTips, also known as sequential key shortcuts or access keys, appear around the ribbon controls when <kbd>Alt</kbd> is pressed. They enable keyboard-based navigation of the ribbon, making the user experience more accessible and efficient.
 
-The sample defines a custom ribbon tab named **Contoso Keytips** in Excel, Word, and PowerPoint, with two groups of buttons and a menu. Each tab, group, button, menu, and menu item has a `keytip` value assigned in the manifest.
+In this sample, a custom ribbon tab named **Contoso KeyTips** contains buttons and menus to select a color option for the following host-specific actions.
+
+- **Excel**: Changes the color of the selected cell.
+-  **PowerPoint**: Inserts a text box with a fill.
+-  **Word**: Inserts colored text.
+
+Each tab, group, button, menu, and menu item is assigned a custom KeyTip in the manifest.
+
+To learn more about custom KeyTips for Office Add-ins, see [Add custom KeyTips to your Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/design/keytips).
 
 ## Applies to
 
-- Excel, Word, and PowerPoint on Windows, Mac and the web.
+Custom KeyTips are supported in Excel, PowerPoint, and Word on the following platforms.
+- Web
+- Windows (Version 2603 (Build 19822.20000) and later)
+- Mac (Version 16.107 (Build 26030819) and later)
 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (the latest LTS version).
-- The latest version of [Yeoman](https://github.com/yeoman/yo) and the [Yeoman generator for Office Add-ins](https://github.com/OfficeDev/generator-office). To install these tools globally, run the following command via the command prompt:
-
-    ```console
-    npm install -g yo generator-office
-    ```
-
 - Office connected to a Microsoft 365 subscription (including Office on the web). Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
 ## Version history
 
 | Version  | Date        | Comments        |
 |----------|-------------|-----------------|
-| 1.0      | 05-20-2026  | Initial release |
+| 1.0      | 05-26-2026  | Initial release |
 
 ## Solution
 
 | Solution | Author(s) |
 |----------|-----------|
-| Define keytips for ribbon controls with the unified manifest | Microsoft |
+| Define KeyTips for the ribbon controls of an Office Add-in | Microsoft |
 
 ## Run the sample
 
-This sample is configured to run with the unified manifest for Microsoft 365. Two manifest files are provided:
 
-- **manifest.json** — references the add-in's web files hosted on GitHub Pages at `https://officedev.github.io/Office-Add-in-samples/Samples/unified-manifest-keytips-wxp/`.
-- **manifest-localhost.json** — references the add-in's web files served from `https://localhost:3000` for local development.
+Run this sample in Excel, Word, or PowerPoint. The add-in web files are served from `https://localhost:3000` on your computer.
 
-### Run the sample on localhost
-
-1. Clone or download this repo to your computer.
-1. In a console or terminal, navigate to the **Samples/unified-manifest-keytips-wxp** folder.
-1. Install dependencies.
+1. Clone or download this repository to your computer.
+1. In a console or terminal, go to the root of the project folder **Samples/office-keytips**.
+1. Run the following command to install dependencies.
 
     ```console
     npm install
     ```
 
-1. Start the local web server and sideload the add-in. This uses **manifest.json** by default; to use the localhost-only manifest, replace `manifest.json` with `manifest-localhost.json` in the `start` script or run the command directly.
+1. Run the following command to start the local web server and sideload the add-in in Excel.
 
     ```console
     npm start
     ```
 
-    Or to target a specific application:
+    If you want to run the add-in on Word or PowerPoint, run one of the following commands instead.
 
     ```console
-    npm run start:desktop:excel
     npm run start:desktop:word
     npm run start:desktop:powerpoint
     ```
 
-1. When the add-in loads, you'll see a new **Contoso Keytips** tab on the ribbon.
+    Your preferred application opens and the add-in is sideloaded. When the add-in is sideloaded, the **Contoso KeyTips** tab appears on the ribbon.
 
-### Stop the local web server
+1. Follow the steps in [Try it out](#try-the-sample) to test the sample.
+
+1. To stop the web server, run the following command.
 
 ```console
 npm stop
@@ -92,27 +94,37 @@ npm stop
 
 ## Try the sample
 
-1. Open Excel, Word, or PowerPoint with the add-in sideloaded.
-1. Press the **Alt** key. Keytip letters appear over each ribbon tab.
-1. Press **C** then **K** to navigate to the **Contoso Keytips** tab. (`CK` is the keytip assigned to the tab in this sample.)
-1. With the tab active, press **Alt** again (if keytips have disappeared) to view the keytips for the controls on the tab:
-    - **Buttons 1** group: `R` (Button 1), `O` (Button 2), `Y` (Button 3), `M` (Menu).
-    - Open the menu with `M`, then choose: `P`, `C`, `M`, `L`, `B`, or `G` to invoke a menu item.
-    - **Buttons 2** group: `G` (Button 4), `B` (Button 5), `P` (Button 6).
-1. Each button and menu item runs a function defined in **src/commands/commands.ts** that displays a notification message.
+1. In Excel, PowerPoint, or Word, press <kbd>Alt</kbd>.
+
+    KeyTips appear for each ribbon tab.
+1. Press <kbd>C</kbd> then <kbd>K</kbd> to open the **Contoso KeyTips** tab.
+1. With the **Contoso KeyTips** tab active, if the KeyTips have disappeared from the ribbon, press <kbd>Alt</kbd>+<kbd>CK</kbd> again. The KeyTips appear for the controls in the tab. Select the key for the color you want to apply to the host action.
+    - **Red**: <kbd>R</kbd>
+    - **Orange**: <kbd>O</kbd>
+    - **Yellow**: <kbd>Y</kbd>
+    - **More colors**: <kbd>M</kbd>
+    - **Green**: <kbd>G</kbd>
+    - **Blue**: <kbd>B</kbd>
+    - **Purple**: <kbd>P</kbd>   
 
 ## Key parts of the sample
 
-The keytip values are defined in **manifest.json** (and **manifest-localhost.json**) on each ribbon element:
+Custom KeyTips are defined in the ["keytip"](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-ribbons-array-tabs-item#keytip) property of each ribbon control in the manifest. The `"keytip"` property is supported for the following controls.
+
+- [Custom tabs](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-ribbons-array-tabs-item)
+- [Buttons and menus](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-common-custom-group-controls-item)
+- [Menu items](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-common-custom-control-menu-item)
+
+The following sample defines a KeyTip for the add-in's tab and button.
 
 ```json
 {
-    "id": "ContosoKeytipsTab",
-    "label": "Contoso Keytips",
+    "id": "ContosoKeyTipsTab",
+    "label": "Contoso KeyTips",
     "keytip": "CK",
     "groups": [
         {
-            "id": "KeytipGroup1",
+            "id": "KeyTipGroup1",
             "label": "Buttons 1",
             "controls": [
                 {
@@ -128,27 +140,12 @@ The keytip values are defined in **manifest.json** (and **manifest-localhost.jso
 }
 ```
 
-The `keytip` property is supported on the following elements in the unified manifest:
-
-- Custom ribbon `tabs`
-- `groups` within a tab
-- `controls` (buttons and menus)
-- `items` (menu items inside a menu)
-
-## Use the sample in your own project
-
-To add keytips to ribbon controls in your own add-in:
-
-1. Open your **manifest.json** file.
-1. Add a `"keytip"` property with a one-to-three character string on any custom ribbon `tab`, `group`, `control`, or menu `item`.
-1. Use unique keytip letters within each parent scope so each control can be selected unambiguously.
-
 ## Additional resources
 
 - [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests)
 - [Unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview)
 - [Add-in commands](https://learn.microsoft.com/office/dev/add-ins/design/add-in-commands)
-- [Keyboard shortcuts in Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/design/keyboard-shortcuts)
+- [Add custom KeyTips to your Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/design/keytips)
 
 ## Questions and feedback
 
@@ -162,4 +159,4 @@ Copyright (c) 2026 Microsoft Corporation. All rights reserved.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/unified-manifest-keytips-wxp" />
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/office-keytips" />

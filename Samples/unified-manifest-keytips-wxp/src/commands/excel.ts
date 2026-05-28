@@ -6,7 +6,7 @@
 /* global Office Excel console */
 
 /**
- * Set the selected range's fill color in Excel when the add-in command is executed.
+ * When the add-in command is selected, sets the selected range's fill color in Excel.
  * @param event The add-in command event.
  * @param color The fill color to apply (CSS color name or hex string). Defaults to "yellow".
  */
@@ -22,6 +22,6 @@ export async function setRangeColorInExcel(event: Office.AddinCommands.Event, co
     console.error(error);
   }
 
-  // Be sure to indicate when the add-in command function is complete
+  // Be sure to indicate when the add-in command function is complete.
   event.completed();
 }
