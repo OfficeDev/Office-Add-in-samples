@@ -14,7 +14,7 @@ extensions:
   contentType: samples
   technologies:
     - Add-ins
-  createdDate: "05/20/2026 10:00:00 AM"
+  createdDate: "05/28/2026 10:00:00 AM"
 description: "This sample shows how to define KeyTips for ribbon tabs, buttons, and menus of an Office Add-in that uses the unified manifest for Microsoft 365."
 ---
 
@@ -83,7 +83,7 @@ Run this sample in Excel, Word, or PowerPoint. The add-in web files are served f
 
     Your preferred application opens and the add-in is sideloaded. When the add-in is sideloaded, the **Contoso KeyTips** tab appears on the ribbon.
     
-    > **Tip**: To test the add-in in Office on the web, run the applicable command to sideload the add-in in your preferred desktop application. Once sideloaded, the add-in also appears on the web client.
+    > **Tip**: To test the add-in on Office on the web, run the applicable command to sideload the add-in in your preferred desktop application. Once sideloaded, the add-in also appears on the web client.
 
 1. Follow the steps in [Try it out](#try-the-sample) to test the sample.
 
