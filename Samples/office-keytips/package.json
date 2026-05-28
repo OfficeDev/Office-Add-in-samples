@@ -25,7 +25,6 @@
     "start:desktop:word": "office-addin-debugging start manifest.json desktop --app word",
     "start:desktop:excel": "office-addin-debugging start manifest.json desktop --app excel",
     "start:desktop:powerpoint": "office-addin-debugging start manifest.json desktop --app powerpoint",
-    "start:web": "office-addin-debugging start manifest.json web",
     "stop": "office-addin-debugging stop manifest.json",
     "validate": "office-addin-manifest validate manifest.json",
     "watch": "webpack --mode development --watch"
