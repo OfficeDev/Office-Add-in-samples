@@ -91,7 +91,7 @@ Run this sample in Excel, Word, or PowerPoint. The add-in web files are served f
 
 ```console
 npm stop
-    
+```
 
 ## Try the sample
 
