@@ -89,9 +89,9 @@ Run this sample in Excel, Word, or PowerPoint. The add-in web files are served f
 
 1. To stop the web server, run the following command.
 
-```console
-npm stop
-```
+    ```console
+    npm stop
+    ```
 
 ## Try the sample
 
