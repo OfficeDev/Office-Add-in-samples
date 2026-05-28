@@ -18,8 +18,8 @@
         "full": "Office Add-ins Custom KeyTips"
     },
     "description": {
-        "short": "A template to get started.",
-        "full": "This is the template to get started."
+        "short": "A sample that implements custom KeyTips for Office Add-ins.",
+        "full": "A sample that implements custom KeyTips for Office Add-ins."
     },
     "icons": {
         "outline": "assets/outline.png",
