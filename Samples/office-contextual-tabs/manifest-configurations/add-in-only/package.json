@@ -55,10 +55,12 @@
     "webpack-dev-server": "^5.2.3"
   },
   "overrides": {
-    "uuid": "^14.0.0",
+    "uuid": ">=11.1.1",
     "serialize-javascript": "^7.0.5",
     "diff": "^9.0.0",
-    "tmp": "^0.2.5"
+    "tmp": "^0.2.5",
+    "protobufjs": ">=8.0.2",
+    "qs": ">=6.15.2"
   },
   "prettier": "office-addin-prettier-config",
   "browserslist": [

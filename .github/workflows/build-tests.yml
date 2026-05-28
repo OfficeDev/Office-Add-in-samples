@@ -32,6 +32,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Update npm to consistent version
+        run: npm install -g npm@11
+
       - name: Cache npm downloads
         uses: actions/cache@v5
         with:
