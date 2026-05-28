@@ -11,7 +11,7 @@ import { insertTextInPowerPoint } from "./powerpoint";
  */
 function makeAction(controlId: string, color: string) {
   return async function (event: Office.AddinCommands.Event) {
-    console.log(`Keytip control invoked: ${controlId} (color: ${color})`);
+    console.log(`KeyTip control invoked: ${controlId} (color: ${color})`);
     switch (Office.context.host) {
       case Office.HostType.Excel:
         await setRangeColorInExcel(event, color);
