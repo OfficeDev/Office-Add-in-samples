@@ -7,7 +7,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "@azure/msal-node": "2.6.6",
+    "@azure/msal-node": "5.2.2",
     "cors": "^2.8.5",
     "debug": "~4.3.4",
     "dotenv": "^16.4.5",
