@@ -10,3 +10,5 @@ dist/
 build-logs/
 build-test-results.json
 build-test-summary.md
+
+agency.toml
