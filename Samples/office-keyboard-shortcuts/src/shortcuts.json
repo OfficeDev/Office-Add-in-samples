@@ -19,6 +19,11 @@
             "id": "TestConflict",
             "type": "ExecuteFunction",
             "name": "Test the conflict dialog"
+        },
+        {
+            "id": "AddNew",
+            "type": "ExecuteFunction",
+            "name": "Add a new item based on the Office host"
         }
 
     ],
@@ -26,25 +31,36 @@
         {
             "action": "ShowTaskpane",
             "key": {
-                "default": "Ctrl+Alt+Up"
+                "default": "Ctrl+Alt+Up",
+                "mac": "Command+Option+Up"
             }
         },
         {
             "action": "HideTaskpane",
             "key": {
-                "default": "Ctrl+Alt+Down"
+                "default": "Ctrl+Alt+Down",
+                "mac": "Command+Option+Down"
             }
         },
         {
             "action": "RunAction",
             "key": {
-                "default": "Ctrl+Alt+Q"
+                "default": "Ctrl+Alt+Q",
+                "mac": "Command+Option+Q"
             }
         },
         {
             "action": "TestConflict",
             "key": {
-                "default": "Ctrl+R"
+                "default": "Ctrl+A",
+                "mac": "Command+A"
+            }
+        },
+        {
+            "action": "AddNew",
+            "key": {
+                "default": "Ctrl+Alt+Shift+N",
+                "mac": "Command+Option+Shift+N"
             }
         }
     ]

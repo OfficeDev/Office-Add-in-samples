@@ -52,7 +52,7 @@
           <ExtensionPoint xsi:type="LaunchEvent">
             <LaunchEvents>
               <LaunchEvent Type="OnMessageSend" FunctionName="onMessageSendHandler" SendMode="SoftBlock" />
-              <LaunchEvent Type="OnMessageRead" FunctionName="onMessageReadHandler" HeaderName="contoso-encrypted"/>
+              <LaunchEvent Type="OnMessageDecrypt" FunctionName="onMessageDecryptHandler" HeaderName="contoso-encrypted"/>
             </LaunchEvents>
             <SourceLocation resid="WebViewRuntime.Url"/>
           </ExtensionPoint>
