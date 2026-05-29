@@ -1,0 +1,2 @@
+[mcps.servers]
+m365agentstoolkit = { args = ["@microsoft/m365agentstoolkit-mcp@latest", "server", "start"], command = "npx", tools = ["*"], type = "stdio" }
