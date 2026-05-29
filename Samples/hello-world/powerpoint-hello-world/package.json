@@ -49,11 +49,10 @@
     "webpack-dev-server": "^5.2.2"
   },
   "overrides": {
-    "serialize-javascript": "^7.0.5",
+    "tmp": ">=0.2.6",
+    "qs": ">=6.15.2",
     "uuid": ">=11.1.1",
-    "diff": "^9.0.0",
-    "tmp": "^0.2.5",
     "protobufjs": ">=8.0.2",
-    "qs": ">=6.15.2"
+    "serialize-javascript": ">=7.0.5"
   }
 }

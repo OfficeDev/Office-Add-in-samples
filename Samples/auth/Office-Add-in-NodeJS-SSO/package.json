@@ -27,18 +27,9 @@
     "office-addin-dev-certs": "1.12.2"
   },
   "overrides": {
-    "minimatch": "^10.2.5",
-    "lodash": "^4.18.1",
-    "diff": "^9.0.0",
-    "serialize-javascript": "^7.0.5",
-    "tmp": "^0.2.5",
-    "protobufjs": ">=8.0.2",
+    "tmp": ">=0.2.6",
     "qs": ">=6.15.2",
-    "@azure/msal-node": {
-      "uuid": ">=11.1.1"
-    },
-    "office-addin-usage-data": {
-      "uuid": ">=11.1.1"
-    }
+    "protobufjs": ">=8.0.2",
+    "serialize-javascript": ">=7.0.5"
   }
 }
