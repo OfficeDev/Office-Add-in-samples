@@ -30,6 +30,9 @@
     "tmp": ">=0.2.6",
     "qs": ">=6.15.2",
     "protobufjs": ">=8.0.2",
-    "serialize-javascript": ">=7.0.5"
+    "serialize-javascript": ">=7.0.5",
+    "lodash": ">=4.17.21",
+    "minimatch": ">=5.0.0",
+    "uuid": "$uuid"
   }
 }
