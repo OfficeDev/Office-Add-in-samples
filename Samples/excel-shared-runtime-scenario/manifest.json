@@ -119,43 +119,6 @@
                         }
                     ],
                     "customFunctions": {
-                        "functions": [
-                            {
-                                "id": "ADD",
-                                "name": "ADD",
-                                "description": "Adds two numbers.",
-                                "parameters": [
-                                    {
-                                        "name": "first",
-                                        "description": "First number",
-                                        "type": "number"
-                                    },
-                                    {
-                                        "name": "second",
-                                        "description": "Second number",
-                                        "type": "number"
-                                    }
-                                ],
-                                "result": {
-                                    "dimensionality": "scalar"
-                                }
-                            },
-                            {
-                                "id": "GETDATA",
-                                "name": "GETDATA",
-                                "description": "Returns data for a given category.",
-                                "parameters": [
-                                    {
-                                        "name": "category",
-                                        "description": "The category to filter the data with",
-                                        "type": "string"
-                                    }
-                                ],
-                                "result": {
-                                    "dimensionality": "matrix"
-                                }
-                            }
-                        ],
                         "namespace": {
                             "id": "CONTOSOSHARE",
                             "name": "CONTOSOSHARE"
