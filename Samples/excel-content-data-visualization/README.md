@@ -32,6 +32,7 @@ Learn how to build an Office content add-in that includes data visualization in 
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 02-06-2026 | Initial release |
+| 1.1 | 06-19-2026 | Updated to use Excel JavaScript API where possible |
 
 ## Prerequisites
 
@@ -58,29 +59,34 @@ function bindToExistingData() {
 }
 ```
 
-The content add-in displays a second button, **Insert sample data**, if the APIs used by its click handler are supported by the user's Excel client version. When the user chooses the **Insert sample data** button, the `getDataFromSelection()` function is called. This function calls `Office.context.document.setSelectedDataAsync()` to set generated sample data to a table binding. The content add-in then redirects from the "Bind to data" screen to display the data on the add-in's home screen.
+The content add-in also displays an **Insert sample data** button. When the user chooses this button, the `insertSampleData()` function is called. This function writes generated sample data into the selected range and creates a table from it. The content add-in then redirects from the "Bind to data" screen to display the data on the add-in's home screen.
 
 ```javascript
-// Inserts sample data into the current selection (if supported).
-function insertSampleData() {
-    Office.context.document.setSelectedDataAsync(visualization.generateSampleData(),
-        function (result) {
-            if (result.status === Office.AsyncResultStatus.Succeeded) {
-                Office.context.document.bindings.addFromSelectionAsync(
-                    Office.BindingType.Table, { id: shared.bindingID },
-                    function (result) {
-                        if (result.status === Office.AsyncResultStatus.Succeeded) {
-                            window.location.href = 'home.html';
-                        } else {
-                            shared.showNotification(result.error.name, result.error.message);
-                        }
-                    }
-                );
-            } else {
-                shared.showNotification(result.error.name, result.error.message);
-            }
-        }
-    );
+// Inserts sample data into the current selection and creates a binding.
+async function insertSampleData() {
+    try {
+        await Excel.run(async (context) => {
+            const range = context.workbook.getSelectedRange();
+            const sampleData = visualization.generateSampleData();
+
+             // Build a new range to fit the sample data and insert it into the worksheet.
+            const values = sampleData.headers.concat(sampleData.rows);
+            const targetRange = range.getResizedRange(
+                values.length - 1,
+                values[0].length - 1
+            );
+            targetRange.values = values;
+
+            // Create a table from the inserted data and bind to it.
+            const table = context.workbook.tables.add(targetRange, true /* hasHeaders */);
+            table.name = shared.bindingID;
+
+            await context.sync();
+            window.location.href = 'home.html';
+        });
+    } catch (error) {
+        shared.showNotification('Error', error.message);
+    }
 }
 ```
 
@@ -99,12 +105,11 @@ An Office Add-in requires you to configure a web server to provide all the resou
 1. Run the command `npm run build`.
 1. Run the command `npm run start:prod`.
 
-   After a few seconds, desktop Excel opens, and after a few seconds more, the content add-in appears over the current worksheet displaying a "Bind to data" screen and a **Bind to existing data** button. An **Insert sample data** button may also be displayed.
+   After a few seconds, desktop Excel opens, and after a few seconds more, the content add-in appears over the current worksheet displaying a "Bind to data" screen with **Bind to existing data** and **Insert sample data** buttons.
      - If the content add-in doesn't appear, use the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "Excel DV Content Add-in".
 
-1. Choose the **Insert sample data** button if available to add data to the worksheet and show the data visualization.
-1. Ensure that you have data on the worksheet. If the **Insert sample data** button isn't available, you'll need to manually add data to the sheet.
-1. Choose the **Bind to existing data** button to bind to data already on the worksheet and show visualization.
+1. Choose the **Insert sample data** button to add data to the worksheet and show the data visualization.
+1. Alternatively, if you have existing data on the worksheet, choose the **Bind to existing data** button to bind to it and show visualization.
 1. To try this out in Excel on the web:
    1. Open a workbook.
    1. Use the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "Excel DV Content Add-in". If the add-in is absent, select the **Manage** link then open the add-in from there.
@@ -121,12 +126,11 @@ If you prefer to configure a web server and host the add-in's web files from you
 
    - If you've never developed an Office Add-in on this computer before or it has been more than 30 days since you last did, you'll be prompted to delete an old security cert or install a new one. Agree to both prompts.
    - After a few seconds, a **webpack** dev-server window will open and your files will be hosted there on localhost:3000.
-   - When the server is successfully running, desktop Excel opens, and after a few seconds more, the content add-in appears over the current worksheet displaying a "Bind to data" screen and a **Bind to existing data** button. An **Insert sample data** button may also be displayed.
+   - When the server is successfully running, desktop Excel opens, and after a few seconds more, the content add-in appears over the current worksheet displaying a "Bind to data" screen with **Bind to existing data** and **Insert sample data** buttons.
      - If the content add-in doesn't appear, use the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "Excel DV Content Add-in".
 
-1. Choose the **Insert sample data** button if available to add data to the worksheet and show the data visualization.
-1. Ensure that you have data on the worksheet. If the **Insert sample data** button isn't available, you'll need to manually add data to the sheet.
-1. Choose the **Bind to existing data** button to bind to data already on the worksheet and show visualization.
+1. Choose the **Insert sample data** button to add data to the worksheet and show the data visualization.
+1. Alternatively, if you have existing data on the worksheet, choose the **Bind to existing data** button to bind to it and show visualization.
 1. To try this out in Excel on the web:
    1. Open a workbook.
    1. Use the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "Excel DV Content Add-in". If the add-in is absent, select the **Manage** link then open the add-in from there.

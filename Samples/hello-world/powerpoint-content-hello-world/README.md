@@ -32,6 +32,7 @@ Learn how to build an Office content add-in that displays details about the curr
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 02-03-2026 | Initial release |
+| 1.1 | 06-19-2026 | Updated to use PowerPoint JavaScript API |
 
 ## Prerequisites
 
@@ -39,26 +40,29 @@ Learn how to build an Office content add-in that displays details about the curr
 
 ### Display slide details
 
-When the user chooses the **Get slide details** button, the `getDataFromSelection()` function is called. This function calls `Office.context.document.getSelectedDataAsync()` to get some details about the current slide. "Hello, world!" and those slide details are then displayed in the content add-in.
+When the user chooses the **Get slide details** button, the `getDataFromSelection()` function is called. This function uses `Presentation.getSelectedSlides()` to get the selected slides and load their details. "Hello, world!" and those slide details are then displayed in the content add-in.
 
 For more information, see [Content add-ins](https://learn.microsoft.com/office/dev/add-ins/design/content-add-ins?tabs=jsonmanifest).
 
 ```javascript
 // Gets and displays some details about the current slide.
-function getDataFromSelection() {
-    if (Office.context.document.getSelectedDataAsync) {
-        Office.context.document.getSelectedDataAsync(Office.CoercionType.SlideRange,
-            function (result) {
-                if (result.status === Office.AsyncResultStatus.Succeeded) {
-                    document.getElementById("selected-data").textContent = 'Hello, world! Some slide details are: ' + JSON.stringify(result.value);
-                } else {
-                    document.getElementById("selected-data").textContent = 'Error getting slide details.';
-                    console.error('Error:', result.error.message);
-                }
-            });
-    } else {
-        document.getElementById("selected-data").textContent = 'Error: Getting slide details isn\'t supported by this host application.';
-        console.error('Error:', 'Getting slide details isn\'t supported by this host application.');
+async function getDataFromSelection() {
+    try {
+        await PowerPoint.run(async (context) => {
+            const slides = context.presentation.getSelectedSlides();
+            slides.load("items/id,items/index");
+            await context.sync();
+
+            const details = slides.items.map((slide) => ({
+                id: slide.id,
+                index: slide.index
+            }));
+            document.getElementById("selected-data").textContent =
+                'Hello, world! Some slide details are: ' + JSON.stringify(details);
+        });
+    } catch (error) {
+        document.getElementById("selected-data").textContent = 'Error getting slide details.';
+        console.error('Error:', error.message);
     }
 }
 ```
