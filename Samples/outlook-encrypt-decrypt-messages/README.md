@@ -16,9 +16,9 @@ extensions:
 description: "Learn how to create an Outlook add-in that encrypts and decrypts messages."
 ---
 
-# Encrypt and decrypt messages in Outlook (preview)
+# Encrypt and decrypt messages in Outlook
 
-**Applies to**: Outlook on Windows (classic)
+**Applies to**: Outlook on the web | Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic)
 
 ## Summary
 
@@ -31,24 +31,18 @@ To learn about key components of this sample, see [Create an encryption Outlook 
 
 > [!NOTE]
 >
-> - The `OnMessageDecrypt` event is in preview. Features in preview shouldn't be used in production add-ins.
-> - This sample uses simplified encryption and decryption protocols for demonstration purposes only. Don't use these protocols in production add-ins.
+> This sample uses simplified encryption and decryption protocols for demonstration purposes only. Don't use these protocols in production add-ins.
 
 ## Applies to
 
-- Classic Outlook on Windows starting in Version 2510 (Build 19312.20000)
+- Outlook on the web
+- Outlook on Windows (new and classic (starting in Version 2602, Build 19725.20126))
 
 ## Prerequisites
 
 - A Microsoft 365 subscription.
 
     > **Note**: If you don't have a Microsoft 365 subscription, you might qualify for a free developer subscription that's renewable for 90 days and comes configured with sample data. For details, see the [Microsoft 365 Developer Program FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-).
-
-- To preview the `OnMessageDecrypt` event in classic Outlook on Windows:
-  1. Join the [Microsoft 365 Insider program](https://aka.ms/MSFT365InsiderProgram) and choose the **Beta Channel** in the Outlook client. Your client must be on **Version 2510 (Build 19312.20000)** or later.
-  1. Configure your computer's registry to reference the local beta copy of the Office.js API:
-        1. In the registry, navigate to `HKEY_CURRENT_USER\SOFTWARE\Microsoft\Office\16.0\Outlook\Options\WebExt\Developer`. If the key doesn't exist, create it.
-        1. Create an entry named `EnableBetaAPIsInJavaScript` and set its value to `1`.
 
 - Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org) on your computer if you want to run the web server on localhost. To check if you've already installed these tools, from a command prompt, run the following commands.
 
@@ -87,7 +81,7 @@ Once the add-in is loaded in Outlook, use the following steps to try out its fun
 
 ### Encrypt a message
 
-1. In classic Outlook on Windows, create a new message.
+1. In Outlook, create a new message.
 1. Add recipients, a subject, and content to the message body.
 
    **Note**: The recipient must also have the add-in installed to decrypt the message. To test this sample, send the message to yourself.
@@ -134,5 +128,6 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 | ----- | ----- | ----- |
 | 1.0 | January 27, 2026 | Initial release |
 | 1.1 | May 26, 2026 | Update the event name |
+| 1.2 | June 23, 2026 | Updated to Mailbox requirement set 1.16 |
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-encrypt-decrypt-messages" />
