@@ -39,23 +39,16 @@
 
     // Queries the binding for its data, then delegates to the visualization script.
     async function displayDataForBinding(context, binding) {
-        const range = binding.getRange();
-        const visibleView = range.getVisibleView();
-        visibleView.load("rows/items/values");
-        range.load("values");
+        const table = binding.getTable();
+        const headerRange = table.getHeaderRowRange();
+        const bodyRange = table.getDataBodyRange();
+        headerRange.load("values");
+        bodyRange.load("values");
         await context.sync();
 
         // Build a data object compatible with the visualization.display function.
-        const allValues = range.values;
-        const headers = [allValues[0]];
-
-        // Use visible view rows if available, otherwise fall back to all rows.
-        let rows;
-        if (visibleView.rows && visibleView.rows.items.length > 0) {
-            rows = visibleView.rows.items.map((row) => row.values[0]);
-        } else {
-            rows = allValues.slice(1);
-        }
+        const headers = [headerRange.values[0]];
+        const rows = bodyRange.values;
 
         const data = { headers: headers, rows: rows };
         visualization.display(document.getElementById('display-data'), data, showError);
