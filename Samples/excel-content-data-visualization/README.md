@@ -69,7 +69,7 @@ async function insertSampleData() {
             const range = context.workbook.getSelectedRange();
             const sampleData = visualization.generateSampleData();
 
-             // Build a new range to fit the sample data and insert it into the worksheet.
+            // Build a new range to fit the sample data and insert it into the worksheet.
             const values = sampleData.headers.concat(sampleData.rows);
             const targetRange = range.getResizedRange(
                 values.length - 1,
