@@ -105,7 +105,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 1. To try this out in PowerPoint on the web:
    1. Open a presentation.
    1. Use the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "PowerPoint Content Add-in". If the add-in is absent, select the **Manage** link then open the add-in from there.
-      - **Note**: Depending on your machine's network or security settings, the add-in's web conent might not be accessible.
+      - **Note**: Depending on your machine's network or security settings, the add-in's web content might not be accessible.
 
 When you're finished working with the add-in, close PowerPoint, and then in the window where you ran the two npm commands, run `npm stop`.
 
