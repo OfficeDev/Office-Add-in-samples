@@ -32,6 +32,7 @@ Learn how to build an Office content add-in that gets and displays the text sele
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 02-04-2026 | Initial release |
+| 1.1 | 06-19-2026 | Updated to use Excel JavaScript API |
 
 ## Prerequisites
 
@@ -39,26 +40,26 @@ Learn how to build an Office content add-in that gets and displays the text sele
 
 ### Get and display selected text
 
-When the user chooses the **Get data from selection** button, the `getDataFromSelection()` function is called. This function calls `Office.context.document.getSelectedDataAsync()` to get the selected text from the worksheet. "Hello, world!" and the selected text are then displayed in the content add-in.
+When the user chooses the **Get data from selection** button, the `getDataFromSelection()` function is called. This function uses `Workbook.getSelectedRange()` to get the selected range and load its text. "Hello, world!" and the selected text are then displayed in the content add-in.
 
 For more information, see [Content add-ins](https://learn.microsoft.com/office/dev/add-ins/design/content-add-ins?tabs=jsonmanifest).
 
 ```javascript
 // Reads data from current document selection and displays it.
-function getDataFromSelection() {
-    if (Office.context.document.getSelectedDataAsync) {
-        Office.context.document.getSelectedDataAsync(Office.CoercionType.Text,
-            function (result) {
-                if (result.status === Office.AsyncResultStatus.Succeeded) {
-                    document.getElementById("selected-data").textContent = 'Hello, world! The selected text is: ' + result.value;
-                } else {
-                    document.getElementById("selected-data").textContent = 'Error getting selected text.';
-                    console.error('Error:', result.error.message);
-                }
-            });
-    } else {
-        document.getElementById("selected-data").textContent = 'Error: Reading selection data isn\'t supported by this host application.';
-        console.error('Error:', 'Reading selection data isn\'t supported by this host application.');
+async function getDataFromSelection() {
+    try {
+        await Excel.run(async (context) => {
+            const range = context.workbook.getSelectedRange();
+            range.load("text");
+            await context.sync();
+
+            // Join multi-cell selections into a single string.
+            const text = range.text.map((row) => row.join(", ")).join("; ");
+            document.getElementById("selected-data").textContent = 'Hello, world! The selected text is: ' + text;
+        });
+    } catch (error) {
+        document.getElementById("selected-data").textContent = 'Error getting selected text.';
+        console.error('Error:', error.message);
     }
 }
 ```
@@ -102,7 +103,7 @@ If you prefer to configure a web server and host the add-in's web files from you
 1. To try this out in Excel on the web:
    1. Open a workbook.
    1. Use the **Add-ins** button in the **Home** tab of the ribbon, then select the name of the content add-in, "Excel Content Add-in". If the add-in is absent, select the **Manage** link then open the add-in from there.
-      - **Note**: Depending on your machine's network or security settings, the add-in's web conent might not be accessible.
+      - **Note**: Depending on your machine's network or security settings, the add-in's web content might not be accessible.
 
 When you're finished working with the add-in, close Excel, and then in the window where you ran the two npm commands, run `npm stop`.
 

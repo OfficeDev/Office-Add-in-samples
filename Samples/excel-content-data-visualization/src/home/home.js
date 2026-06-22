@@ -10,40 +10,48 @@
 
     // Checks if a binding exists, and either displays the visualization
     //        or redirects to the data-binding page.
-    function displayDataOrRedirect() {
-        Office.context.document.bindings.getByIdAsync(
-            shared.bindingID,
-            function (result) {
-                if (result.status === Office.AsyncResultStatus.Succeeded) {
-                    const binding = result.value;
-                    let handler = function () { displayDataForBinding(binding); };
-                    binding.addHandlerAsync(
-                        Office.EventType.BindingDataChanged,
-                        handler,
-                        handler
-                    );
-                } else {
+    async function displayDataOrRedirect() {
+        try {
+            await Excel.run(async (context) => {
+                const binding = context.workbook.bindings.getItemOrNullObject(shared.bindingID);
+                await context.sync();
+
+                if (binding.isNullObject) {
                     window.location.href = 'data-binding.html';
+                    return;
                 }
+
+                // Display data immediately, then register for changes.
+                await displayDataForBinding(context, binding);
+
+                binding.onDataChanged.add(async () => {
+                    await Excel.run(async (ctx) => {
+                        const b = ctx.workbook.bindings.getItem(shared.bindingID);
+                        await displayDataForBinding(ctx, b);
+                    });
+                });
+                await context.sync();
             });
+        } catch (error) {
+            window.location.href = 'data-binding.html';
+        }
     }
 
     // Queries the binding for its data, then delegates to the visualization script.
-    function displayDataForBinding(binding) {
-        binding.getDataAsync(
-            {
-                coercionType: Office.CoercionType.Table,
-                valueFormat: Office.ValueFormat.Unformatted,
-                filterType: Office.FilterType.OnlyVisible
-            },
-            function (result) {
-                if (result.status === Office.AsyncResultStatus.Succeeded) {
-                    visualization.display(document.getElementById('display-data'), result.value, showError);
-                } else {
-                    showError('Could not read data.');
-                }
-            }
-        );
+    async function displayDataForBinding(context, binding) {
+        const table = binding.getTable();
+        const headerRange = table.getHeaderRowRange();
+        const bodyRange = table.getDataBodyRange();
+        headerRange.load("values");
+        bodyRange.load("values");
+        await context.sync();
+
+        // Build a data object compatible with the visualization.display function.
+        const headers = [headerRange.values[0]];
+        const rows = bodyRange.values;
+
+        const data = { headers: headers, rows: rows };
+        visualization.display(document.getElementById('display-data'), data, showError);
 
         function showError(message) {
             document.getElementById('display-data').innerHTML =

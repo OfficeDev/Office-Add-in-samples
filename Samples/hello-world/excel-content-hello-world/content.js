@@ -7,20 +7,20 @@
     });
 
     // Reads data from current document selection and displays it.
-    function getDataFromSelection() {
-        if (Office.context.document.getSelectedDataAsync) {
-            Office.context.document.getSelectedDataAsync(Office.CoercionType.Text,
-                function (result) {
-                    if (result.status === Office.AsyncResultStatus.Succeeded) {
-                        document.getElementById("selected-data").textContent = 'Hello, world! The selected text is: ' + result.value;
-                    } else {
-                        document.getElementById("selected-data").textContent = 'Error getting selected text.';
-                        console.error('Error:', result.error.message);
-                    }
-                });
-        } else {
-            document.getElementById("selected-data").textContent = 'Error: Reading selection data isn\'t supported by this host application.';
-            console.error('Error:', 'Reading selection data isn\'t supported by this host application.');
+    async function getDataFromSelection() {
+        try {
+            await Excel.run(async (context) => {
+                const range = context.workbook.getSelectedRange();
+                range.load("text");
+                await context.sync();
+
+                // Join multi-cell selections into a single string.
+                const text = range.text.map((row) => row.join(", ")).join("; ");
+                document.getElementById("selected-data").textContent = 'Hello, world! The selected text is: ' + text;
+            });
+        } catch (error) {
+            document.getElementById("selected-data").textContent = 'Error getting selected text.';
+            console.error('Error:', error.message);
         }
     }
 })();
