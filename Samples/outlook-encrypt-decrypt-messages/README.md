@@ -110,12 +110,6 @@ Once decryption is complete, the message body and attachments are shown and the 
 - We'd love to get your feedback about this sample. Go to our [Office samples survey](https://aka.ms/OfficeSamplesSurvey) to give feedback and suggest improvements.
 - For general questions about developing Office Add-ins, go to [Microsoft Q&A](https://learn.microsoft.com/answers/topics/office-js-dev.html) using the office-js-dev tag.
 
-## Copyright
-
-Copyright (c) 2026 Microsoft Corporation. All rights reserved.
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
 ## Solution
 
 | Solution | Author(s) |
@@ -129,5 +123,11 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 | 1.0 | January 27, 2026 | Initial release |
 | 1.1 | May 26, 2026 | Update the event name |
 | 1.2 | June 23, 2026 | Updated to Mailbox requirement set 1.16 |
+
+## Copyright
+
+Copyright (c) 2026 Microsoft Corporation. All rights reserved.
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-encrypt-decrypt-messages" />
