@@ -1,0 +1,67 @@
+﻿<!-- Copyright(c) Maarten van Stam All rights reserved. */ -->
+
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<TargetOfficeVersion>16.0</TargetOfficeVersion>
+
+    <!-- Build quality and determinism -->
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <Deterministic>true</Deterministic>
+    <IsPackable>false</IsPackable>
+    <!-- Optional: treat warnings as errors in Release -->
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Blazor.Excel.AddIn.Client\Blazor.Excel.AddIn.Client.csproj" />
+		
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.3" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.13.2" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.13.2" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <!-- Exclude npm files from output directory - they're only needed at build time -->
+    <Content Remove="..\Blazor.Excel.AddIn.Client\package.json" />
+    <Content Remove="..\Blazor.Excel.AddIn.Client\package-lock.json" />
+    <Content Remove="..\Blazor.Excel.AddIn.Client\node_modules\**\*" />
+  </ItemGroup>
+
+  <!-- Incremental, reproducible npm restore -->
+  <Target Name="NpmRestore" BeforeTargets="BeforeBuild;ResolveReferences" Condition="Exists('package.json') and Exists('package-lock.json')">
+    <PropertyGroup>
+      <NpmStampFile>node_modules/.package-lock.stamp</NpmStampFile>
+    </PropertyGroup>
+
+    <!-- Check if npm restore is needed -->
+    <PropertyGroup>
+      <!-- Always restore if stamp doesn't exist -->
+      <NpmRestoreNeeded Condition="!Exists('$(NpmStampFile)')">true</NpmRestoreNeeded>
+
+      <!-- Check if package-lock.json is newer than stamp (only if both exist) -->
+      <_PackageLockTime Condition="Exists('package-lock.json') AND Exists('$(NpmStampFile)')">$([System.IO.File]::GetLastWriteTime('package-lock.json').Ticks)</_PackageLockTime>
+      <_StampTime Condition="Exists('package-lock.json') AND Exists('$(NpmStampFile)')">$([System.IO.File]::GetLastWriteTime('$(NpmStampFile)').Ticks)</_StampTime>
+      <NpmRestoreNeeded Condition="'$(_PackageLockTime)' != '' AND '$(_StampTime)' != '' AND $(_PackageLockTime) &gt; $(_StampTime)">true</NpmRestoreNeeded>
+    </PropertyGroup>
+
+    <!-- Run npm ci if needed -->
+    <Message Importance="high" Text="Running npm ci (package-lock.json updated or first build)..." Condition="'$(NpmRestoreNeeded)' == 'true'" />
+    <Exec Command="npm ci" Condition="'$(NpmRestoreNeeded)' == 'true'" ConsoleToMSBuild="true" />
+    <Touch Files="$(NpmStampFile)" AlwaysCreate="true" Condition="'$(NpmRestoreNeeded)' == 'true'" />
+    <Message Importance="low" Text="Skipping npm ci - packages are up to date" Condition="'$(NpmRestoreNeeded)' != 'true'" />
+  </Target>
+
+  <!-- 
+  Only run npm start-local when in Debug configuration and building inside Visual Studio (F5)
+  There is no option to only check on actually running the project, so we approximate this by checking if building inside Visual Studio in Debug configuration.
+  -->
+  <Target Name="StartLocalDev" AfterTargets="Build">
+    <Message Importance="high" Text="Skipping Run Start Local: Configuration=$(Configuration), Building Inside VisualStudio=$(BuildingInsideVisualStudio), CI=$(CI)" Condition="'$(Configuration)'!='Debug' or '$(BuildingInsideVisualStudio)'!='true' or '$(CI)'=='true'" />
+
+    <Exec Command="npm run start-local" Condition="'$(Configuration)'=='Debug' and '$(BuildingInsideVisualStudio)'=='true' and '$(CI)'!='true'" />
+  </Target>
+</Project>

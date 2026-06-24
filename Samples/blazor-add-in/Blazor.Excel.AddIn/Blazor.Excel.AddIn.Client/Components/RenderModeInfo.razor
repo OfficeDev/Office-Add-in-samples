@@ -1,0 +1,21 @@
+@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+
+@*
+    Displays the current Blazor render mode as a small badge.
+    Drop <RenderModeInfo /> at the top of any page to visualise
+    Static → Server → WebAssembly transitions in real time.
+*@
+
+<div style="width: 100%; text-align: center;">
+    <FluentBadge Appearance="Appearance.Neutral"
+                 Style="font-size: 0.75rem; opacity: 0.8;">
+        @RenderModeName
+    </FluentBadge>
+</div>
+
+@code {
+    private string RenderModeName =>
+        RendererInfo.IsInteractive
+            ? $"Interactive {RendererInfo.Name}"
+            : "Static SSR";
+}
