@@ -1,0 +1,63 @@
+﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+@page "/contentcontrols"
+@rendermode InteractiveWebAssembly
+
+<PageTitle>Content control interactions</PageTitle>
+
+<RenderModeInfo />
+
+<LoadingProgress>
+    <FluentStack Orientation="Orientation.Vertical"
+                 HorizontalAlignment="HorizontalAlignment.Center"
+                 VerticalAlignment="VerticalAlignment.Center">
+        <FluentStack Orientation=Orientation.Horizontal
+                     HorizontalAlignment="HorizontalAlignment.Center"
+                     VerticalAlignment="VerticalAlignment.Center">
+            <FluentEmoji Value="@(new Emojis.Symbols.Color.Default.Gemini())" />
+            <FluentLabel Typo="Typography.H1">Controls!</FluentLabel>
+        </FluentStack>
+
+        @if (!HostInformation)
+        {
+            <FluentLabel Typo="Typography.H4">
+                Please <FluentAnchor Href="https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing" Appearance="Appearance.Hypertext" Target="_blank">sideload</FluentAnchor> your add-in to see app body.
+            </FluentLabel>
+        }
+        else
+        {
+            <FluentLabel Typo="Typography.Body" Alignment="HorizontalAlignment.Center">
+                The sample shows you how to add content controls to paragraphs, add event handlers, and change content control properties.
+            </FluentLabel>
+
+            <FluentLabel Typo="Typography.H5">Page setup</FluentLabel>
+            <FluentLabel Typo="Typography.Body" Alignment="HorizontalAlignment.Center">Add some initial paragraphs to the document.</FluentLabel>
+            <FluentButton OnClick="Setup" Appearance="Appearance.Accent">Set up document</FluentButton>
+
+            <FluentLabel Typo="Typography.H5">Create content controls</FluentLabel>
+            <FluentLabel Typo="Typography.Body" Alignment="HorizontalAlignment.Center">Surround each paragraph with a content control.</FluentLabel>
+            <FluentButton OnClick="InsertContentControls" Appearance="Appearance.Accent">Convert to content controls</FluentButton>
+
+
+            <FluentLabel Typo="Typography.H5">Tag content controls</FluentLabel>
+            <FluentLabel Typo="Typography.Body" Alignment="HorizontalAlignment.Center">Tag content controls, and mark them as odd or even.</FluentLabel>
+            <FluentButton OnClick="TagContentControls" Appearance="Appearance.Accent">Tag content controls</FluentButton>
+
+            <FluentLabel Typo="Typography.H5">Modify content controls</FluentLabel>
+            <FluentLabel Typo="Typography.Body" Alignment="HorizontalAlignment.Center">Modify content control appearance and content.</FluentLabel>
+            <FluentButton OnClick="ModifyContentControls" Appearance="Appearance.Accent">Modify content controls</FluentButton>
+
+            <FluentLabel Typo="Typography.H5">Register content controls for events</FluentLabel>
+            <FluentLabel Typo="Typography.Body" Alignment="HorizontalAlignment.Center">Add the onDeleted and onSelectionChanged event handlers to the content controls.</FluentLabel>
+            <FluentButton OnClick="RegisterContentControlsEvents" Appearance="Appearance.Accent">Register event handlers</FluentButton>
+
+            <FluentLabel Typo="Typography.H5">Delete content control</FluentLabel>
+            <FluentLabel Typo="Typography.Body" Alignment="HorizontalAlignment.Center">Delete the first content control that was tagged 'even'.</FluentLabel>
+            <FluentButton OnClick="DeleteContentControl" Appearance="Appearance.Accent">Delete first 'even' content control</FluentButton>
+
+            <FluentLabel Typo="Typography.H5">Deregister content controls for events</FluentLabel>
+            <FluentLabel Typo="Typography.Body" Alignment="HorizontalAlignment.Center">Remove the onDeleted and onSelectionChanged event handlers from the content controls.</FluentLabel>
+            <FluentButton OnClick="DeregisterContentControlEvents" Appearance="Appearance.Accent">Remove event handlers</FluentButton>
+        }
+
+    </FluentStack>
+</LoadingProgress>

@@ -1,0 +1,11 @@
+﻿﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+<FluentStack Orientation="Orientation.Vertical"
+             HorizontalAlignment="HorizontalAlignment.Center"
+             VerticalAlignment="VerticalAlignment.Center">
+    <FluentDesignTheme @bind-Mode="@Mode"
+                       OfficeColor="OfficeColor.Word"
+                       StorageName="theme" />
+
+    <FluentListbox Items="@(Enum.GetValues<DesignThemeModes>())"
+                   @bind-SelectedOption="@Mode" />
+</FluentStack>

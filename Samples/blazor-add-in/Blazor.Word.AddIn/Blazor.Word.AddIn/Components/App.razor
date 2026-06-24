@@ -1,0 +1,95 @@
+﻿﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="stylesheet" href="@Assets["/css/app.css"]" />
+    <link rel="stylesheet" href="@Assets["Blazor.Word.AddIn.styles.css"]" />
+    <ImportMap />
+    <link rel="icon" type="image/png" href="/Images/favicon.png" />
+
+    <!-- Set the default theme -->
+    <script src="_content/Microsoft.FluentUI.AspNetCore.Components/js/loading-theme.js" type="text/javascript"></script>
+    <loading-theme storage-name="theme"></loading-theme>
+
+    <script type="text/javascript">
+        // Ugly fix! See https://learn.microsoft.com/en-us/answers/questions/1150659/uncaught-typeerror-history-pushstate-is-not-a-func
+        // Office js deletes window.history.pushState and window.history.replaceState. Cache them and restore them
+        window._historyCache = {
+            replaceState: window.history.replaceState,
+            pushState: window.history.pushState
+        };
+    </script>
+
+    <!--
+        Office JavaScript API
+
+        There are debug versions of the Office JavaScript libraries. These versions are more human readable and easier to step through with a debugger. Use them when the Office JavaScript APIs aren't working as expected. Avoid using them when you publish and deploy your add-in.
+
+        The debug versions are found at the following CDN locations.
+
+        Office JavaScript API library: https://appsforoffice.microsoft.com/lib/1/hosted/office.debug.js
+        Office JavaScript API (preview) library: https://appsforoffice.microsoft.com/lib/beta/hosted/office.debug.js
+
+        The non-debug versions are found at the following CDN locations.
+
+        Office JavaScript API library: https://appsforoffice.microsoft.com/lib/1/hosted/office.js
+        Office JavaScript API (preview) library: https://appsforoffice.microsoft.com/lib/beta/hosted/office.js
+    -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/beta/hosted/office.debug.js"></script>
+
+    <script type="text/javascript">
+        // Ugly fix! See https://learn.microsoft.com/en-us/answers/questions/1150659/uncaught-typeerror-history-pushstate-is-not-a-func
+        // Office js deletes window.history.pushState and window.history.replaceState. Restore them
+        window.history.replaceState = window._historyCache.replaceState;
+        window.history.pushState = window._historyCache.pushState;
+    </script>
+
+    <HeadOutlet />
+</head>
+
+@using Blazor.Word.AddIn.Client.Components
+
+<body>
+    <Routes />
+    @* Bridge components register DotNetObjectReference handlers with JavaScript *@
+    <WasmBridge />
+    <ServerBridge />
+
+    <script type="text/javascript">
+        // Global bridge infrastructure: must load before blazor.web.js so that
+        // both Server and WebAssembly interactive runtimes can call signalDotNetReady.
+        // Each bridge gets its own promise so commands only wait for the bridge they need.
+        (function () {
+        console.log("[bridge] Initializing bridge infrastructure");
+        var dotNetRefs = new Map();
+        var resolvers = {};
+
+        window.dotNetReady = {
+        wasm: new Promise(function (resolve) { resolvers.wasm = resolve; }),
+        server: new Promise(function (resolve) { resolvers.server = resolve; })
+        };
+        window.dotNetRefs = dotNetRefs;
+
+        window.signalDotNetReady = function (name, dotNetRef) {
+        console.log("[bridge] signalDotNetReady: " + name + " bridge ready");
+        dotNetRefs.set(name, dotNetRef);
+        if (resolvers[name]) {
+        console.log("[bridge] Resolving " + name + " promise");
+        resolvers[name]();
+        } else {
+        console.warn("[bridge] No resolver found for: " + name);
+        }
+        };
+        console.log("[bridge] Infrastructure ready, waiting for bridges");
+        })();
+    </script>
+
+    <script src="_framework/blazor.web.js"></script>
+    <script src="./commands/commands.js" type="text/javascript"></script>
+</body>
+
+</html>
