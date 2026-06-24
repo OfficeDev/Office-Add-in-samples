@@ -1,0 +1,49 @@
+﻿﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+
+@page "/weather"
+@rendermode InteractiveServer
+@attribute [StreamRendering]
+
+<PageTitle>Weather</PageTitle>
+
+<RenderModeInfo />
+
+<FluentStack Orientation="Orientation.Vertical">
+
+    <FluentStack Orientation=Orientation.Horizontal
+                 HorizontalAlignment="HorizontalAlignment.Center"
+                 VerticalAlignment="VerticalAlignment.Center">
+        <FluentEmoji Value="@(new Emojis.TravelPlaces.Color.Default.SunWithFace())" />
+        <FluentLabel Typo="Typography.H1">Weather</FluentLabel>
+    </FluentStack>
+
+    <FluentStack Orientation=Orientation.Horizontal
+                 HorizontalAlignment="HorizontalAlignment.Center"
+                 VerticalAlignment="VerticalAlignment.Center">
+        <FluentLabel Typo="Typography.Body">This component demonstrates showing data.</FluentLabel>
+    </FluentStack>
+
+    <FluentDataGrid Id="weathergrid"
+                    Items="@forecasts?.AsQueryable()"
+                    GridTemplateColumns="1fr 1fr 1fr 1fr"
+                    TGridItem="WeatherForecast"
+                    style="width:100%"
+                    Loading=@IsLoading>
+        <PropertyColumn Title="Date" Property="@(c => c!.Date)" Sortable="true" Align="Align.Start" />
+        <PropertyColumn Title="Temp. (C)" Property="@(c => c!.TemperatureC)" Sortable="true" Align="Align.Center" />
+        <PropertyColumn Title="Temp. (F)" Property="@(c => c!.TemperatureF)" Sortable="true" Align="Align.Center" />
+        <PropertyColumn Title="Summary" Property="@(c => c!.Summary)" Sortable="true" Align="Align.End" />
+    </FluentDataGrid>
+
+    <FluentToolbar style="width:100%">
+        <FluentStack Orientation=Orientation.Horizontal
+                     HorizontalAlignment="HorizontalAlignment.Center"
+                     VerticalAlignment="VerticalAlignment.Center">
+            <FluentButton OnClick="RefreshButton" Disabled=@IsLoading Appearance="Appearance.Stealth">Refresh</FluentButton>
+            @if (hostInformation.IsInitialized)
+            {
+                <FluentButton OnClick="CreateSlideButton" Disabled=@IsLoading Appearance="Appearance.Stealth">Create Slide</FluentButton>
+            }
+        </FluentStack>
+    </FluentToolbar>
+</FluentStack>

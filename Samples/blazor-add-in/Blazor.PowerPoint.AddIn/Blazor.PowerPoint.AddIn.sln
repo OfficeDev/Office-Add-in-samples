@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.35806.103
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.PowerPoint.AddIn", "Blazor.PowerPoint.AddIn\Blazor.PowerPoint.AddIn.csproj", "{0B7325D0-6932-4BB3-AB6B-D4251AB0E82E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.PowerPoint.AddIn.Client", "Blazor.PowerPoint.AddIn.Client\Blazor.PowerPoint.AddIn.Client.csproj", "{D80C37F7-37D7-4011-ABC3-0086BB9678ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		assets\sample.json = assets\sample.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B7325D0-6932-4BB3-AB6B-D4251AB0E82E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B7325D0-6932-4BB3-AB6B-D4251AB0E82E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B7325D0-6932-4BB3-AB6B-D4251AB0E82E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B7325D0-6932-4BB3-AB6B-D4251AB0E82E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D80C37F7-37D7-4011-ABC3-0086BB9678ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D80C37F7-37D7-4011-ABC3-0086BB9678ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D80C37F7-37D7-4011-ABC3-0086BB9678ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D80C37F7-37D7-4011-ABC3-0086BB9678ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD1FE789-4288-4325-BE7E-0254CF1967AA}
+	EndGlobalSection
+EndGlobal
