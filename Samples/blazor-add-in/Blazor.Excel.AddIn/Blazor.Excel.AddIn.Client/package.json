@@ -1,0 +1,15 @@
+{
+  "name": "blazor.excel.addin",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/Office-Addin-TaskPane.git"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "author": "Maarten van Stam",
+  "devDependencies": {
+    "@types/office-js-preview": "^1.0.673"
+  }
+}

@@ -1,0 +1,35 @@
+﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+@page "/Error"
+@using System.Diagnostics
+
+<PageTitle>Error</PageTitle>
+
+<FluentStack Orientation="Orientation.Vertical"
+             HorizontalAlignment="HorizontalAlignment.Center"
+             VerticalAlignment="VerticalAlignment.Center">
+    <FluentLabel Typo="Typography.H1" Color="Color.Error">Error.</FluentLabel>
+    <FluentLabel Typo="Typography.H2" Color="Color.Error">An error occurred while processing your request.</FluentLabel>
+    @if (ShowRequestId)
+    {
+        <FluentLabel><strong>Request ID:</strong> <code>@RequestId</code></FluentLabel>
+    }
+    <FluentLabel Typo="Typography.H3">Development Mode</FluentLabel>
+    <FluentLabel>Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.</FluentLabel>
+    <FluentLabel><strong>The Development environment shouldn't be enabled for deployed applications.</strong></FluentLabel>
+    <FluentLabel>
+        It can result in displaying sensitive information from exceptions to end users.
+        For local debugging, enable the <strong>Development</strong> environment by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>
+        and restarting the app.
+    </FluentLabel>
+</FluentStack>
+
+@code {
+    [CascadingParameter]
+    private HttpContext? HttpContext { get; set; }
+
+    private string? RequestId { get; set; }
+    private bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+
+    protected override void OnInitialized() =>
+        RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier;
+}

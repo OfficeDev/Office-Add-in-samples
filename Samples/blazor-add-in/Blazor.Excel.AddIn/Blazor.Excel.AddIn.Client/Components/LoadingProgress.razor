@@ -1,0 +1,18 @@
+﻿@if (!OperatingSystem.IsBrowser())
+{
+    <FluentStack Orientation="Orientation.Vertical"
+                 HorizontalAlignment="HorizontalAlignment.Center"
+                 VerticalAlignment="VerticalAlignment.Center">
+        <FluentProgressRing style="width: 102px; height: 102px;"></FluentProgressRing>
+        <FluentLabel>Loading...</FluentLabel>
+    </FluentStack>
+}
+else
+{
+    @ChildContent
+}
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

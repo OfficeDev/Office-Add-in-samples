@@ -1,0 +1,33 @@
+﻿<!-- Copyright(c) Maarten van Stam All rights reserved. */ -->
+
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
+    <StaticWebAssetProjectMode>Default</StaticWebAssetProjectMode>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- Suppress CA1416: this is a Blazor WebAssembly project that runs exclusively in the browser -->
+    <NoWarn>$(NoWarn);CA1416</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.4" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.14.0" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Emoji" Version="4.14.0" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.14.0" />
+	<PackageReference Include="Microsoft.JSInterop.WebAssembly" Version="10.0.4" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.9.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <!-- Ensure TypeScript compiles before static web asset discovery so generated .js files are in the manifest -->
+  <PropertyGroup>
+    <ResolveStaticWebAssetsInputsDependsOn>CompileTypeScript;$(ResolveStaticWebAssetsInputsDependsOn)</ResolveStaticWebAssetsInputsDependsOn>
+  </PropertyGroup>
+
+</Project>

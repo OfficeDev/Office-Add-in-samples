@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="assets/sample.json" />
+    <File Path="global.json" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Blazor.Word.AddIn.Client/Blazor.Word.AddIn.Client.csproj" />
+  <Project Path="Blazor.Word.AddIn/Blazor.Word.AddIn.csproj" />
+</Solution>
