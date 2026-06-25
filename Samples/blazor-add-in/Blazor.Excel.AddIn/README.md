@@ -248,15 +248,15 @@ Troubleshooting
 
 ## Solution
 
-| Solution                            | Authors                                                                 |
-| ----------------------------------- | ----------------------------------------------------------------------- |
-| Create a Blazor Hybrid Excel add-in | [Maarten van Stam](https://mvp.microsoft.com/en-us/PublicProfile/33535) |
+| Solution file                  | Author                                                                  |
+| ----------------------------- | ----------------------------------------------------------------------- |
+| `Blazor.Excel.AddIn.slnx` | [Maarten van Stam](https://mvp.microsoft.com/en-us/PublicProfile/33535) |
 
 ## Version history
 
 | Version | Date              | Comments         |
 | ------- | ----------------- | ---------------- |
-| 1.0     | XXXXXXXX XX, 2025 | Work In Progress |
+| 1.0     | June 25, 2026     | Initial release  |
 
 ## Extra Credits
 
@@ -271,8 +271,4 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 **Note**: The index.html file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
 
-**TO DO: Update the image URL below with the correct telemetry URL.**
-
-<!--
-    <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/blazor-add-in/excel-blazor-hybrid-add-in" />
--->
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/blazor-add-in/excel-blazor-hybrid-add-in" />

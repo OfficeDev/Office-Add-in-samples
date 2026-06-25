@@ -1,7 +1,7 @@
 # Blazor Office Add-in samples
 
-Individual samples for Excel, Outlook, and Word that show how to use Blazor Webassembly to build your Office add-ins.
+These samples show how to use Blazor WebAssembly to build Office add-ins with shared patterns for hosting and runtime integration.
 
-- [Blazor Excel add-in](./excel-blazor-add-in/)
-- [Blazor Outlook add-in](./outlook-blazor-add-in/)
-- [Blazor Word add-in](./word-blazor-add-in/)
+- [Blazor.Excel.AddIn](./Blazor.Excel.AddIn/) - A Blazor WebAssembly Excel add-in sample for worksheet-focused task pane experiences.
+- [Blazor.PowerPoint.AddIn](./Blazor.PowerPoint.AddIn/) - A Blazor WebAssembly PowerPoint add-in sample for slide and presentation workflows.
+- [Blazor.Word.AddIn](./Blazor.Word.AddIn/) - A Blazor WebAssembly Word add-in sample for document-centric authoring scenarios.
