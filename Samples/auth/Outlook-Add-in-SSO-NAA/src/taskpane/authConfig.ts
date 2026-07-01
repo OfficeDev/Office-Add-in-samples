@@ -74,7 +74,7 @@ export class AccountManager {
    * @param scopes the minimum scopes needed.
    * @returns An access token.
    */
-  async ssoGetAccessToken(scopes: string[]) {
+  async ssoGetAccessToken(scopes: string[], claimsChallenge: string | null = null): Promise<string>  {
     if (this._dialogApiResult) {
       return this._dialogApiResult;
     }
@@ -83,27 +83,30 @@ export class AccountManager {
       throw new Error("AccountManager is not initialized!");
     }
 
+    // Construct the token request.
+    const activeAccount = this.pca.getActiveAccount() ? false : true;
+    let tokenRequest = getTokenRequest(scopes, activeAccount);
+      if (claimsChallenge) {
+        // Add the claims challenge to the request.
+        console.log("Adding claims challenge to token request.");
+        tokenRequest = { ...tokenRequest, claims: window.atob(claimsChallenge) };        
+      }
+
     try {
       console.log("Trying to acquire token silently...");
-      const authResult = await this.pca.acquireTokenSilent(getTokenRequest(scopes, false));
+      const authResult = await this.pca.acquireTokenSilent(tokenRequest);
       console.log("Acquired token silently.");
       return authResult.accessToken;
     } catch (error) {
       console.warn(`Unable to acquire token silently: ${error}`);
+      console.log(error);
     }
 
     // Acquire token silent failure. Send an interactive request via popup.
     try {
       console.log("Trying to acquire token interactively...");
-      const selectAccount = this.pca.getActiveAccount() ? false : true;
-      const authResult = await this.pca.acquireTokenPopup(getTokenRequest(scopes, selectAccount));
-      console.log("Acquired token interactively.");
-      if (selectAccount) {
-        this.pca.setActiveAccount(authResult.account);
-      }
-      if (!this.isNestedAppAuthSupported()) {
-        this.setSignOutButtonVisibility(true);
-      }
+      const authResult = await this.pca.acquireTokenPopup(tokenRequest);
+      console.log("Acquired token interactively.");      
       return authResult.accessToken;
     } catch (popupError) {
       // Optional fallback if about:blank popup should not be shown
