@@ -171,7 +171,7 @@ Also, the **commands.js** file contains the following helper functions.
 
 ## Known issues
 
-- In classic Outlook on Windows, the `OnMessageRecipientsChanged` event fires on reply or reply all. The expected behavior is implemented in Outlook on the web and new Outlook on Windows where this event doesn't fire in those cases.
+- In classic Outlook on Windows, the `OnMessageRecipientsChanged` event occurs again when sending a reply or reply-all message, even if there are no further changes to the recipients.
 
 ## Questions and feedback
 

@@ -14,11 +14,6 @@
 
     <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
     <link rel="stylesheet" href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css"/>
-
-    <script type="text/javascript" src="../commands/commands.js"></script>
-    <script type="text/javascript" src="helpers.js"></script>
-    <script type="text/javascript" src="../functions/functions.js"></script>
-    <script type="text/javascript" src="taskpane.js"></script>
     
     <!-- Template styles -->
     <link href="taskpane.css" rel="stylesheet" type="text/css" />
@@ -43,8 +38,8 @@
           <input type="text" id="txtKey" /><br />
           <label>Value:</label><br />
           <input type="text" id="txtValue" /><br />
-          <button id="btnStoreValue" onclick="storeKeyValuePair()">Store key/value pair</button>
-          <button id="btnGetValue" onclick="getValueForKey()">Get value for key</button>
+          <button id="btnStoreValue">Store key/value pair</button>
+          <button id="btnGetValue">Get value for key</button>
         </div>
         <p>Select type of storage to use:</p>
         <label> <input type="radio" name="storage" value="globalvar" id="globalvar" checked />Global variable </label>

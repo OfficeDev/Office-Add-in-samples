@@ -1,0 +1,34 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="//static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.0.0/css/fabric.min.css" rel="stylesheet">
+  <link href="taskpane.css" rel="stylesheet" type="text/css" />
+
+  <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+</head>
+
+<body>
+  <div id="content-main" class="ms-Fabric">
+    <div id="current-msg" class="ms-font-m">
+      <strong>Selected Message: </strong><span id="subject"></span>
+    </div>
+    <div id="error" class="ms-font-m ms-borderBase ms-borderColor-neutralTertiaryAlt ms-bgColor-error ms-fontColor-error">
+      <span class="icon ms-font-l"><i class="ms-Icon ms-Icon--Error" aria-hidden="true"></i></span>
+      <span class="ms-font-l ms-fontWeight-semibold">Error</span>
+      <pre><code id="error-msg"></code></pre>
+    </div>
+    <div id="no-context" class="ms-font-m ms-borderBase ms-borderColor-neutralTertiaryAlt ms-bgColor-warning ms-fontColor-warning">
+      No initialization context found. This task pane was opened from the ribbon or the context is not available on this platform. To load initialization data, open an "ACTIVATE YOUR ADD-IN" message and click the <strong>View Initialization Context</strong> button in the message card.
+    </div>
+    <div id="has-context" class="ms-font=m">
+      Thanks for activating! The actionable message button you used to activate included the following initialization context:
+      <pre><code id="init-context"></code></pre>
+    </div>
+  </div>
+</body>
+</html>

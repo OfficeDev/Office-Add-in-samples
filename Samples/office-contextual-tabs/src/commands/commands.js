@@ -16,8 +16,8 @@
 }
 
 /**
- * Handles all ribbon events from the Contoso contextual tab
- * @param  {} event: The event that was raised.
+ * Handles all ribbon events from the Contoso contextual tab.
+ * @param {} event: The event that was raised.
  */
 function runRibbonAction(event){
   switch(event.source.id){
@@ -35,17 +35,17 @@ function runRibbonAction(event){
 }
 
 /**
- * Submit data changes in table to data source
+ * Submit data changes in table to data source.
  */
 function runSubmitAction(){
   const g = getGlobal();
-  //Depending on which data source is in use, get data from the table, then update the mock data source.
+  // Depending on which data source is in use, get data from the table, then update the mock data source.
   if (g.mockDataSource==='sqlMockData'){
     getTableData().then ((response) => {g.sqlMockData.data = response});
   } else if (g.mockDataSource==='excelFileMockData'){
     getTableData().then ((response) => {g.excelFileMockData.data = response}); 
   }
-  //Turn off the Refresh and Submit buttons now that the table is in sync with data source.
+  // Turn off the Refresh and Submit buttons now that the table is in sync with data source.
   setSyncButtonEnabled(false);
   g.isTableDirty = false;
 }
@@ -54,31 +54,31 @@ function runSubmitAction(){
  * Refresh the data in the table from the data source.
  */
 function runRefreshAction(){
-  //Recreate the table and sales data from source
+  // Recreate the table and sales data from source.
   createSampleTable(g.mockDataSource);
   g.isTableDirty = false;
   setSyncButtonEnabled(false);
 }
 
 /**
- * Import data from mock External Excel file data source
+ * Import data from mock External Excel file data source.
  */
 function runImportExternalExcelFile(){
   g.mockDataSource = 'excelFileMockData';
-  //Just recreate the worksheet using the Excel file mock data source
+  // Just recreate the worksheet using the Excel file mock data source.
   createSampleTable('excelFileMockData');
 }
 
 /**
- * Import data from mock SQL database source
+ * Import data from mock SQL database source.
  */
 function runImportSQLDatabase(){
   g.mockDataSource = 'sqlMockData';
-  //Just recreate the worksheet using the SQL database source
+  // Just recreate the worksheet using the SQL database source.
   createSampleTable(g.mockDataSource); 
 }
 
-// the add-in command functions need to be available in global scope
+// The add-in command functions need to be available in global scope.
 // Globals
 const g = getGlobal();
 

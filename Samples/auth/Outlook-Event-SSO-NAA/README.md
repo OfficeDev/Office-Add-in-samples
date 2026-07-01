@@ -34,7 +34,7 @@ This sample demonstrates how to use single sign-on (SSO) in an Outlook add-in ev
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- [Node.js](https://nodejs.org/) version 16 or greater.
+- [Node.js](https://nodejs.org/) (latest recommended version).
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
 ## Build and run the solution
@@ -46,7 +46,7 @@ This sample demonstrates how to use single sign-on (SSO) in an Outlook add-in ev
 1. Select **New registration**. On the **Register an application** page, set the values as follows.
 
     - Set **Name** to `Outlook-Event-SSO-NAA`.
-    - Set **Supported account types** to **Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)**.
+    - Set **Supported account types** to **Any Entra ID Tenant + Personal Microsoft accounts**.
     - In the **Redirect URI** section, ensure that **Single-page application (SPA)** is selected in the drop down and then set the URI to `brk-multihub://localhost:3000`.
     - Select **Register**.
 

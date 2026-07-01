@@ -33,7 +33,7 @@ This sample shows how to use MSAL.js nested app authentication (NAA) in an Outlo
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- [Node.js](https://nodejs.org/) version 16 or greater.
+- [Node.js](https://nodejs.org/) (latest recommended version).
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
 ## Build and run the solution
@@ -54,7 +54,7 @@ This sample shows how to use MSAL.js nested app authentication (NAA) in an Outlo
 
    ![The redirect URIs link.](./assets/ui-add-redirect-link.png)
 
-1. In the **Single-page application Redirect URIs** section, select **Add URI**.
+1. In the **Single-page application Redirect URIs** section, select **Add Redirect URI**.
 
    ![The Add URI link.](./assets/ui-add-redirects-link.png)
 

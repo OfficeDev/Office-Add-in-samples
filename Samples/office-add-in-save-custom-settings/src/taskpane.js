@@ -15,34 +15,25 @@ const StorageManager = {
 };
 
 Office.onReady(() => {
-  // Initialize Fabric UI text fields.
-  const TextFieldElements = document.querySelectorAll(".ms-TextField");
-  for (let i = 0; i < TextFieldElements.length; i++) {
-    new fabric["TextField"](TextFieldElements[i]);
-  }
-
-  // Initialize Fabric UI button that saves a new setting.
-  let button = document.getElementById("saveSetting");
-  new fabric["Button"](button, () => {
+  // Initialize button that saves a new setting.
+  document.getElementById("saveSetting").onclick = () => {
     const name = document.getElementById("setName").value;
     const value = document.getElementById("setValue").value;
-    StorageManager.setSetting(name, value);
-  });
+    try {
+      StorageManager.setSetting(name, value);
+      displayStatusMessage("Saved setting KEY: " + name + " VALUE: " + value);
+    } catch (err) {
+      displayStatusMessage("Error saving: " + err.message);
+    }
+  };
 
-  //Initialize Fabric UI button that gets a setting value.
-  button = document.getElementById("getSetting");
-  new fabric["Button"](button, () => {
+  // Initialize button that gets a setting value.
+  document.getElementById("getSetting").onclick = () => {
     const name = document.getElementById("getName").value;
     const value = StorageManager.getSetting(name);
     displayStatusMessage("Retrieved setting information KEY: " + name + " VALUE: " + value);
-  });
+  };
 
-  // Initialize dropdown with storage options.
-  const DropdownHTMLElements = document.querySelectorAll(".ms-Dropdown");
-  for (let i = 0; i < DropdownHTMLElements.length; ++i) {
-    let Dropdown = new fabric["Dropdown"](DropdownHTMLElements[i]);
-    console.log(Dropdown);
-  }
   // Configure event handler for when storage options are changed.
   document.getElementById("storageOptions").onchange = setStorageMode;
 });
@@ -121,12 +112,23 @@ async function saveToPropertyBag(key, value) {
   // Need to check that the settings object is available before setting.
   if (Office.context.document.settings) {
     Office.context.document.settings.set(key, value);
-    await Office.context.document.settings.saveAsync();
+    return new Promise((resolve, reject) => {
+      Office.context.document.settings.saveAsync(function (asyncResult) {
+        if (asyncResult.status == Office.AsyncResultStatus.Failed) {
+          const error = new Error('Settings save failed. Error: ' + asyncResult.error.message);
+          displayStatusMessage(error.message);
+          reject(error);
+        } else {
+          resolve();
+        }
+      });
+    });
   } else {
     const unsupportedError = {
       name: "Error: Feature not supported",
       message: "The settings object is not supported in this host application.",
     };
+    displayStatusMessage(unsupportedError.name + ": " + unsupportedError.message);
     throw unsupportedError;
   }
 }
@@ -149,17 +151,22 @@ function getFromPropertyBag(key) {
 
 // Stores the settings as a browser cookie.
 function saveToBrowserCookies(key, value) {
-  document.cookie = key + "=" + value;
+  document.cookie = key + "=" + value + "; path=/; SameSite=None; Secure";
+  
+  // Verify the cookie was saved
+  const savedValue = getFromBrowserCookies(key);
+  if (savedValue === undefined) {
+    throw new Error("Cookie was blocked. Browser cookies may not work in this context due to third-party cookie restrictions.");
+  }
 }
 
 // Retrieves the specified setting from the browser cookies.
 function getFromBrowserCookies(key) {
-  const cookies = {};
   const all = document.cookie;
   let value;
 
   if (all === "") {
-    return cookies;
+    return undefined;
   } else {
     var list = all.split("; ");
     for (var i = 0; i < list.length; i++) {

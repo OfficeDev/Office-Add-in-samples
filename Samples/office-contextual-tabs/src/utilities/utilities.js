@@ -17,11 +17,11 @@ async function deleteSampleTable() {
       await context.sync();
     } catch (error) {
       if (error.code === "ItemNotFound") {
-        return; //The table did not exist so just return.
+        return; // The table doesn't exist so just return.
       } else {
         console.log("deleteSampleTable function failed");
         console.error(error);
-        throw error; //Unexpected error occurred.
+        throw error; // Unexpected error occurred.
       }
     }
   });
@@ -32,12 +32,12 @@ async function deleteSampleTable() {
  * @param  {string} mockDataSource Identifies which mock data source to use to create the table.
  */
  async function createSampleTable(mockDataSource) {
-  //Delete table if it already exists
+  // Delete table if it already exists.
   await deleteSampleTable();
   return Excel.run(async context => {
     let sheet = context.workbook.worksheets.getItem("Sample");
 
-    //Create title row above table
+    // Create title row above table.
     let range = sheet.getRange("A1");
     if (mockDataSource === "sqlMockData") {
       range.values = [["Data source: SQL Database"]];
@@ -46,14 +46,14 @@ async function deleteSampleTable() {
     }
     range.format.autofitColumns();
 
-    //Create table
+    // Create table.
     let salesTable = sheet.tables.add("A2:E2", true);
     salesTable.name = "SalesTable";
 
-    //Add table header
+    // Add table header.
     salesTable.getHeaderRowRange().values = [["Product", "Qtr1", "Qtr2", "Qtr3", "Qtr4"]];
 
-    //Add data rows depending on which data source is in use.
+    // Add data rows depending on which data source is in use.
     const g = getGlobal();
     if (mockDataSource === "sqlMockData") {
       salesTable.rows.add(null, g.sqlMockData.data);
@@ -67,7 +67,7 @@ async function deleteSampleTable() {
     sheet.getRange("A2").select();
     await context.sync();
 
-    //Add event handlers
+    // Add event handlers.
     salesTable.onSelectionChanged.add(onSelectionChange);
     salesTable.onChanged.add(onChanged);
 
@@ -81,15 +81,15 @@ async function deleteSampleTable() {
  async function createSampleWorkSheet() {
   Excel.run(async context => {
     try {
-      //Create sample worksheet
+      // Create sample worksheet.
       context.workbook.worksheets.add("Sample");
       await context.sync();
     } catch (error) {
       if (error.code === "ItemAlreadyExists") {
-        return; //The worksheet already exists so just return.
+        return; // The worksheet already exists so just return.
       } else {
         console.error(error);
-        throw error; //Unexpected error occurred.
+        throw error; // Unexpected error occurred.
       }
     }
   });
@@ -115,8 +115,8 @@ async function deleteSampleTable() {
 
 /**
  * Handles the onSelectionChange event. If selection is inside the table, the Contoso custom tab is shown.
- * Otherwise the Contoso custom tab is hidden.
- * @param  {} args The arguments for the selection changed event.
+ * Otherwise, the Contoso custom tab is hidden.
+ * @param {} args The arguments for the selection changed event.
  */
 function onSelectionChange(args) {
   let g = getGlobal();
@@ -128,22 +128,22 @@ function onSelectionChange(args) {
 
 /**
  * Handles the onChanged event. When data in the sales table is changed,
- * enable the refresh and submit buttons.
+ * enable the Refresh and Submit buttons.
  */
 function onChanged() {
   let g = getGlobal();
-  //check if dirty flag was set (flag avoids extra unnecessary ribbon operations)
+  // Check if dirty flag was set (flag avoids extra unnecessary ribbon operations).
   if (!g.isTableDirty) {
     g.isTableDirty = true;
 
-    //Enable the Refresh and Submit buttons
+    // Enable the Refresh and Submit buttons.
     setSyncButtonEnabled(true);
   }
 }
 
 /**
  * Shows or hides the contextual tab for Contoso depending on the visible parameter.
- * @param  {} visible true if the contextual tab is to be shown; otherwise, false.
+ * @param {} visible true if the contextual tab is to be shown; otherwise, false.
  */
 function setContextualTabVisibility(visible) {
   let g = getGlobal();
@@ -158,7 +158,7 @@ function setContextualTabVisibility(visible) {
 /**
  * Enables or disables the Refresh and Submit buttons for table data.
  *
- * @param  {boolean} visible true if the buttons should be enabled; otherwise, false.
+ * @param {boolean} visible true if the buttons should be enabled; otherwise, false.
  */
  function setSyncButtonEnabled(visible) {
   let g = getGlobal();

@@ -11,7 +11,7 @@
     "cookie-parser": "~1.4.6",
     "debug": "~4.3.4",
     "dotenv": "^16.4.5",
-    "express": "~4.21.2",
+    "express": "~4.22.1",
     "form-urlencoded": "^6.1.4",
     "http-errors": "~2.0.0",
     "jshint": "^2.13.6",
@@ -19,11 +19,19 @@
     "morgan": "~1.10.0",
     "node-fetch": "^3.3.2",
     "pug": "^3.0.3",
-    "@azure/msal-node": "2.6.6",
+    "@azure/msal-node": "^5.2.2",
     "jwks-rsa": "^3.1.0",
-    "uuid": "^9.0.1"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
-    "office-addin-dev-certs": "1.12.2"
+    "office-addin-dev-certs": "^2.0.9"
+  },
+  "overrides": {
+    "tmp": ">=0.2.6",
+    "qs": ">=6.15.2",
+    "protobufjs": ">=8.0.2",
+    "serialize-javascript": ">=7.0.5",
+    "lodash": ">=4.17.21",
+    "minimatch": ">=5.0.0"
   }
 }

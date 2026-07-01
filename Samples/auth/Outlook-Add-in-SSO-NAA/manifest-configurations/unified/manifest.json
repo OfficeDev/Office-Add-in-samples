@@ -1,8 +1,8 @@
 {
-    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.17/MicrosoftTeams.schema.json#",
-    "manifestVersion": "1.17",
-    "version": "1.0.0",
-    "id": "33f1ce9e-8a9f-4164-8d4b-16d52404404d",
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.22/MicrosoftTeams.schema.json#",
+    "manifestVersion": "1.22",
+    "version": "1.0.1",
+    "id": "43f1ce9e-8a9f-4164-8d4b-16d52404404d",
     "localizationInfo": {
         "defaultLanguageTag": "en-us"
     },
@@ -78,7 +78,6 @@
                         {
                             "id": "action_1",
                             "type": "openPage",
-                            "displayName": "action_1",
                             "pinnable": false,
                             "view": "view_1",
                             "multiselect": false,
@@ -136,9 +135,7 @@
                                                 "title": "Show task pane",
                                                 "description": "Opens a pane displaying all available properties."
                                             },
-                                            "actionId": "action_1",
-                                            "overriddenByRibbonApi": false,
-                                            "enabled": true
+                                            "actionId": "action_1"
                                         }
                                     ]
                                 }
