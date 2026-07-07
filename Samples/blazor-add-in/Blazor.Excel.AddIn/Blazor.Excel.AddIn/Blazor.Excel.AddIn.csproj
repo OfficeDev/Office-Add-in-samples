@@ -18,10 +18,10 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Blazor.Excel.AddIn.Client\Blazor.Excel.AddIn.Client.csproj" />
-		
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.3" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.13.2" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.13.2" />
+
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.9" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.14.3" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.14.3" />
 	</ItemGroup>
 
   <ItemGroup>
