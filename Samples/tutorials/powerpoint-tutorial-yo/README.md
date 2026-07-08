@@ -19,7 +19,7 @@ description: "A completed version of the step-by-step PowerPoint tutorial hosted
 
 ## Summary
 
-This sample is the result of completing the [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial?tabs=yeomangenerator). It was constructed with the [Yeoman generator for Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/yeoman-generator-overview).
+This sample is the result of completing the [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial-yo). It was constructed with the [Yeoman generator for Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/yeoman-generator-overview).
 
 The tutorial gives step-by-step instructions on how to add functionality alongside explanations as to why code is being added. Use this sample if you want to explore and try the completed code, or if you need to debug any issues you encountered while following the tutorial.
 
@@ -106,7 +106,7 @@ To switch back to the add-in only manifest, copy the files from the **manifest-c
 
 ## See also
 
-The version of this sample that you create step-by-step is found in the article [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial?tabs=yeomangenerator).
+The version of this sample that you create step-by-step is found in the article [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial-yo).
 
 ## Copyright
 
