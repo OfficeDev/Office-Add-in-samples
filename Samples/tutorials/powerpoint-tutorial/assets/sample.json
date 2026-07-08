@@ -39,7 +39,7 @@
         {
           "name": "Tutorial: Create a PowerPoint task pane add-in",
           "description": "Build a PowerPoint add-in that inserts an image, inserts text, gets slide metadata, and navigates between slides.",
-          "url": "https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial?tabs=visualstudio"
+          "url": "https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial-vs"
         }
       ]
     }
