@@ -1,0 +1,18 @@
+﻿﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+@page "/counter"
+@rendermode InteractiveAuto
+
+<PageTitle>Counter</PageTitle>
+
+<FluentStack Orientation="Orientation.Vertical"
+             HorizontalAlignment="HorizontalAlignment.Center"
+             VerticalAlignment="VerticalAlignment.Center">
+    <FluentStack Orientation=Orientation.Horizontal
+                 HorizontalAlignment="HorizontalAlignment.Center"
+                 VerticalAlignment="VerticalAlignment.Center">
+        <FluentEmoji Value="@(new Emojis.Symbols.Color.Default.InputNumbers())" />
+        <FluentLabel Typo="Typography.H1">Counter</FluentLabel>
+    </FluentStack>
+    <FluentLabel>Current count: <FluentBadge Appearance="Appearance.Neutral">@currentCount</FluentBadge></FluentLabel>
+    <FluentButton Appearance="Appearance.Accent" @onclick="IncrementCount">Click me</FluentButton>
+</FluentStack>

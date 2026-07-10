@@ -1,0 +1,33 @@
+{
+  "name": "blazor.powerpoint.addin",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/Office-Addin-TaskPane.git"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "author": "Maarten van Stam",
+  "config": {
+    "app_to_debug": "powerpoint",
+    "app_type_to_debug": "desktop",
+    "dev_server_port": 7214
+  },
+  "scripts": {
+    "start-production": "office-addin-debugging start ..\\Blazor.PowerPoint.AddIn\\Assets\\manifest.production.xml",
+    "start-local": "office-addin-debugging start ..\\Blazor.PowerPoint.AddIn\\Assets\\manifest.local.xml",
+    "stop": "office-addin-debugging stop manifest.xml",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "validate-production": "office-addin-manifest validate ..\\Blazor.PowerPoint.AddIn\\Assets\\manifest.production.xml",
+    "validate-local": "office-addin-manifest validate ..\\Blazor.PowerPoint.AddIn\\Assets\\manifest.local.xml"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/office-js-preview": "^1.0.717",
+    "office-addin-debugging": "^6.1.2",
+    "office-addin-manifest": "^2.1.6"
+  }
+}

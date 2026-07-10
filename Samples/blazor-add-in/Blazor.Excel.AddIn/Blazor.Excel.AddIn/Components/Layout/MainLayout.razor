@@ -1,0 +1,61 @@
+﻿﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+@inherits LayoutComponentBase
+
+<FluentLayout>
+
+    <!-- Header Area -->
+    <FluentHeader>
+        Blazor Excel Add-in
+    </FluentHeader>
+
+    <!-- Main Area -->
+    <FluentStack Class="main" Orientation="Orientation.Vertical" Width="100%">
+
+        <!-- Horizontal Area Full Filled -->
+        <FluentStack Orientation="Orientation.Horizontal"
+                     HorizontalAlignment="HorizontalAlignment.Stretch"
+                     VerticalAlignment="VerticalAlignment.Stretch"
+                     Style="flex-grow: 1;">
+
+            <!-- Menu Area Top Aligned -->
+            <FluentStack Orientation="Orientation.Vertical"
+                         VerticalAlignment="VerticalAlignment.Top"
+                         Width="auto">
+                <NavMenu />
+            </FluentStack>
+
+            <!-- Body Area Center Aligned -->
+            <FluentBodyContent Class="body-content"
+                               Style="display: flex; flex-grow: 1;">
+                <FluentStack Class="content"
+                             Orientation="Orientation.Vertical"
+                             HorizontalAlignment="HorizontalAlignment.Center"
+                             VerticalAlignment="VerticalAlignment.Center">
+                    @Body
+                </FluentStack>
+            </FluentBodyContent>
+        </FluentStack>
+    </FluentStack>
+
+    <!-- Footer Area -->
+    <FluentFooter>
+        <FluentStack Orientation="Orientation.Vertical"
+                     HorizontalAlignment="HorizontalAlignment.Center"
+                     VerticalAlignment="VerticalAlignment.Center">
+            <FluentLabel Typo="Typography.H5" Style="color: var(--fill-color)">@TrademarkMessage1</FluentLabel>
+            <FluentLabel Typo="Typography.H6" Style="color: var(--fill-color)">@TrademarkMessage2</FluentLabel>
+            <FluentLabel Typo="Typography.H6" Style="color: var(--fill-color)">Powered by: @FrameworkDescription</FluentLabel>
+        </FluentStack>
+    </FluentFooter>
+</FluentLayout>
+
+<div id="blazor-error-ui">
+    <FluentCard>
+        <FluentLabel>An unhandled error has occurred.</FluentLabel>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </FluentCard>
+</div>
+
+<FluentTooltipProvider />
+<FluentDialogProvider />
