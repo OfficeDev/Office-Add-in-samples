@@ -87,11 +87,13 @@
   <Target Name="AddTypeScriptWwwrootOutputsToContent"
           BeforeTargets="ResolveStaticWebAssetsInputs;GetCurrentProjectBuildStaticWebAssetItems;GetCurrentProjectPublishStaticWebAssetItems">
     <ItemGroup>
-      <Content Remove="wwwroot\commands\commands.js;wwwroot\commands\commands.js.map;wwwroot\scripts\SharedUtils.js;wwwroot\scripts\SharedUtils.js.map" />
-      <Content Include="wwwroot\commands\commands.js" Condition="Exists('wwwroot\commands\commands.js')" />
-      <Content Include="wwwroot\commands\commands.js.map" Condition="Exists('wwwroot\commands\commands.js.map')" />
-      <Content Include="wwwroot\scripts\SharedUtils.js" Condition="Exists('wwwroot\scripts\SharedUtils.js')" />
-      <Content Include="wwwroot\scripts\SharedUtils.js.map" Condition="Exists('wwwroot\scripts\SharedUtils.js.map')" />
+      <_GeneratedTypeScriptAssets Include="wwwroot\commands\commands.js" Condition="Exists('wwwroot\commands\commands.js')" />
+      <_GeneratedTypeScriptAssets Include="wwwroot\commands\commands.js.map" Condition="Exists('wwwroot\commands\commands.js.map')" />
+      <_GeneratedTypeScriptAssets Include="wwwroot\scripts\SharedUtils.js" Condition="Exists('wwwroot\scripts\SharedUtils.js')" />
+      <_GeneratedTypeScriptAssets Include="wwwroot\scripts\SharedUtils.js.map" Condition="Exists('wwwroot\scripts\SharedUtils.js.map')" />
+
+      <Content Remove="@(_GeneratedTypeScriptAssets)" />
+      <Content Include="@(_GeneratedTypeScriptAssets)" />
     </ItemGroup>
   </Target>
 
