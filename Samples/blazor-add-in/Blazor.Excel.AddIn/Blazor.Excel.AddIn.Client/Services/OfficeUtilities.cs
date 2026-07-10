@@ -40,7 +40,7 @@ public static partial class OfficeUtilities
         {
             if (!_isImported)
             {
-                await JSHost.ImportAsync("SharedUtils", "/scripts/SharedUtils.js");
+                await JSHost.ImportAsync("SharedUtils", "/generated-assets/scripts/SharedUtils.js");
                 Console.WriteLine("Imported SharedUtils module");
                 _isImported = true;
             }

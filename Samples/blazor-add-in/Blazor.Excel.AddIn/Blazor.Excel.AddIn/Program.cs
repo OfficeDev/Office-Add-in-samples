@@ -7,7 +7,7 @@ using Microsoft.Extensions.FileProviders;
 using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Logging.AddFilter("Microsoft.AspNetCore.Builder.StaticAssetDevelopmentRuntimeHandler", LogLevel.Error);
+builder.WebHost.UseStaticWebAssets();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -24,14 +24,14 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseWebAssemblyDebugging();
-    // Dev-time static file fallback: serve client wwwroot so TypeScript-compiled outputs are available
+    // Dev-time static file fallback: serve generated TypeScript outputs from client wwwroot
     var clientWwwroot = Path.Combine(app.Environment.ContentRootPath, "..", "Blazor.Excel.AddIn.Client", "wwwroot");
     if (Directory.Exists(clientWwwroot))
     {
         app.UseStaticFiles(new StaticFileOptions
         {
             FileProvider = new PhysicalFileProvider(clientWwwroot),
-            RequestPath = ""
+            RequestPath = "/generated-assets"
         });
     }
 }
