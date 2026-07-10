@@ -48,8 +48,13 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
-// Serves fingerprinted/cached assets from the build-time static web assets manifest
-app.MapStaticAssets();
+// In Development we serve client-generated assets via UseStaticFiles fallback above.
+// Mapping static-asset endpoints here causes noisy warnings for those generated files.
+if (!app.Environment.IsDevelopment())
+{
+    // Serves fingerprinted/cached assets from the build-time static web assets manifest.
+    app.MapStaticAssets();
+}
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
