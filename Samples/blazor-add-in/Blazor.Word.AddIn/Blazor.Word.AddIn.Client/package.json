@@ -10,6 +10,6 @@
   "keywords": [],
   "author": "Maarten van Stam",
   "devDependencies": {
-    "@types/office-js-preview": "^1.0.708"
+    "@types/office-js-preview": "^1.0.717"
   }
 }

@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@types/office-js-preview": "^1.0.717",
-    "office-addin-debugging": "^6.0.4",
+    "office-addin-debugging": "6.1.2",
     "office-addin-manifest": "^2.1.6"
   }
 }

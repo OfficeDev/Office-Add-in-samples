@@ -38,6 +38,15 @@ This sample shows how to build a Excel add-in using .NET Blazor Hybrid technolog
 
 ## Run the sample
 
+Running the sample will start two projects, the Blazor server project and the Excel add-in project. The Blazor server project will start a web server that hosts the add-in, and the Excel add-in project will sideload the add-in into Excel.
+
+Depending on the launch setting the server project will also launch a browser to show the 'hosted' Server.
+This can be set in the `launchSettings.json` file of the Blazor server project.
+The default setting is to launch a browser, but this can be changed to false if you don't want to launch a browser.
+
+      "comments": "launchBrowser is set to true for demo purposes to show behavior in and outside Office. Recommended to set to false",
+      "launchBrowser": true,
+
 ### Start the server and sideload the add-in
 
 1. Download or clone the [Office Add-ins samples repository](https://github.com/OfficeDev/Office-Add-in-samples).
@@ -47,9 +56,7 @@ This sample shows how to build a Excel add-in using .NET Blazor Hybrid technolog
    - On first run, required npm packages are restored automatically for both projects as part of the build (`npm ci`).  
    In case you get an error on this step, follow the instructions in the **Install npm packages after download or clone** section below.
    - The `Blazor.Excel.AddIn` server project starts and runs `npm run start-local` to sideload the add-in and launch Excel.
-1. If Excel opens, choose **Sample Add-in** > **Show task pane** (if not already open).
-1. Try out the controls on the task pane.
-1. Try out the custom buttons on the **Sample Add-in** tab on the ribbon.
+1. If Excel opens, select the **Sample Add-in** > tab and click the buttons to trigger the respective functions.
 
 ### Install npm packages after download or clone
 To run the sample for the first time it might help to first install the npm packages as they are used by the Office hosts to sideload the manifests:  

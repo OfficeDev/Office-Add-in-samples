@@ -18,6 +18,9 @@
 
     <TypeScriptNoEmitOnError>true</TypeScriptNoEmitOnError>
     <TypeScriptSkipLibCheck>true</TypeScriptSkipLibCheck>
+
+    <!-- Ensure TypeScript compiles before static web asset discovery so generated .js files are in the manifest -->
+    <ResolveStaticWebAssetsInputsDependsOn>CompileTypeScript;$(ResolveStaticWebAssetsInputsDependsOn)</ResolveStaticWebAssetsInputsDependsOn>
   </PropertyGroup>
 
   <!-- Blazor WASM Release optimizations -->
@@ -28,9 +31,14 @@
     <!-- Optional (requires cross-origin isolation): <WasmEnableThreads>true</WasmEnableThreads> -->
     <!-- Optional: <WasmEnableSIMD>true</WasmEnableSIMD> -->
   </PropertyGroup>
+  <!-- Ensure compiled JS assets are included when publishing -->
   <ItemGroup>
-    <None Include="wwwroot\scripts\SharedUtils.js" />
-    <None Include="wwwroot\scripts\SharedUtils.js.map" />
+    <Content Update="wwwroot\commands\**\*.*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\scripts\**\*.*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -77,6 +85,19 @@
     <Exec Command="npm ci" Condition="'$(NpmRestoreNeeded)' == 'true'" ConsoleToMSBuild="true" />
     <Touch Files="$(NpmStampFile)" AlwaysCreate="true" Condition="'$(NpmRestoreNeeded)' == 'true'" />
     <Message Importance="low" Text="Skipping npm ci - packages are up to date" Condition="'$(NpmRestoreNeeded)' != 'true'" />
+  </Target>
+
+  <!-- Note: client build step intentionally omitted. TypeScript MSBuild and existing NpmRestore handle necessary work.
+       If you need a custom npm build step, add it here and ensure package.json defines a "build" script. -->
+
+  <!-- Register TypeScript-compiled wwwroot JS files as static web assets.
+       commands.js is gitignored (generated at build time), so it won't be in the SDK Content glob unless
+       we add it here after TypeScript compiles it. -->
+  <Target Name="AddTypeScriptWwwrootOutputsToContent" AfterTargets="CompileTypeScript" BeforeTargets="ResolveStaticWebAssetsInputs">
+    <ItemGroup>
+      <Content Include="wwwroot\commands\commands.js" Condition="Exists('wwwroot\commands\commands.js')" />
+      <Content Include="wwwroot\commands\commands.js.map" Condition="Exists('wwwroot\commands\commands.js.map')" />
+    </ItemGroup>
   </Target>
 
 </Project>

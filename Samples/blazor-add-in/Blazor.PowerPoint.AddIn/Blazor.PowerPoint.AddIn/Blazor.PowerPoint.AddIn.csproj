@@ -12,9 +12,9 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Blazor.PowerPoint.AddIn.Client\Blazor.PowerPoint.AddIn.Client.csproj" />
 
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.4" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.14.0" />
-		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.14.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.9" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.14.3" />
+		<PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.14.3" />
 	</ItemGroup>
 
   <!-- 

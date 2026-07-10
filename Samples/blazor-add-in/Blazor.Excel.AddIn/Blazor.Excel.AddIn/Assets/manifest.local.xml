@@ -115,13 +115,16 @@
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
+                    
+                    <!-- .......................................... AutoShowTaskpaneWithDocument ......................................... -->
+                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>                                                       -->
+                    <!-- See: https://learn.microsoft.com/en-us/samples/officedev/office-add-in-samples/word-auto-open-with-document/      -->
+                    <!-- ................................................................................................................. -->                   
+                    
                     <TaskpaneId>GlobalTaskpaneID</TaskpaneId>
-                    <!-- Taskpane prepared to be activated as AutoOpen Taskpane -->
-                    <!-- See: Samples/office-add-in-commands/auto-open-task-pane -->
-                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>-->
-                    <SourceLocation resid="Contoso.Home.Url" />
-                    <!--<TaskpaneId>SampleAddinTaskpaneId</TaskpaneId>-->
+                    
                     <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
+                    <SourceLocation resid="Contoso.Home.Url" />
                   </Action>
                 </Control>
 
@@ -143,12 +146,7 @@
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>GlobalTaskpaneID</TaskpaneId>
-                    <!-- Taskpane prepared to be activated as AutoOpen Taskpane -->
-                    <!-- See: Samples/office-add-in-commands/auto-open-task-pane -->
-                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>-->
                     <SourceLocation resid="Contoso.Weather.Url" />
-                    <!--<TaskpaneId>SampleAddinTaskpaneId</TaskpaneId>-->
-                    <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
                   </Action>
                 </Control>
 
@@ -170,12 +168,7 @@
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>GlobalTaskpaneID</TaskpaneId>
-                    <!-- Taskpane prepared to be activated as AutoOpen Taskpane -->
-                    <!-- See: Samples/office-add-in-commands/auto-open-task-pane -->
-                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>-->
                     <SourceLocation resid="Contoso.Counter.Url" />
-                    <!--<TaskpaneId>SampleAddinTaskpaneId</TaskpaneId>-->
-                    <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
                   </Action>
                 </Control>
 
@@ -197,12 +190,7 @@
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>GlobalTaskpaneID</TaskpaneId>
-                    <!-- Taskpane prepared to be activated as AutoOpen Taskpane -->
-                    <!-- See: Samples/office-add-in-commands/auto-open-task-pane -->
-                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>-->
                     <SourceLocation resid="Contoso.Theme.Url" />
-                    <!--<TaskpaneId>SampleAddinTaskpaneId</TaskpaneId>-->
-                    <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
                   </Action>
                 </Control>
 
@@ -224,12 +212,7 @@
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>GlobalTaskpaneID</TaskpaneId>
-                    <!-- Taskpane prepared to be activated as AutoOpen Taskpane -->
-                    <!-- See: Samples/office-add-in-commands/auto-open-task-pane -->
-                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>-->
                     <SourceLocation resid="Contoso.Bubble.Url" />
-                    <!--<TaskpaneId>SampleAddinTaskpaneId</TaskpaneId>-->
-                    <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
                   </Action>
                 </Control>
 
@@ -251,12 +234,7 @@
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>GlobalTaskpaneID</TaskpaneId>
-                    <!-- Taskpane prepared to be activated as AutoOpen Taskpane -->
-                    <!-- See: Samples/office-add-in-commands/auto-open-task-pane -->
-                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>-->
                     <SourceLocation resid="Contoso.Clock.Url" />
-                    <!--<TaskpaneId>SampleAddinTaskpaneId</TaskpaneId>-->
-                    <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
                   </Action>
                 </Control>
 
@@ -462,19 +440,19 @@
 
       <!-- LongStrings max characters==250. -->
       <bt:LongStrings>
-        <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the Sample Add-in tab and click the 'Show Taskpane' button to get started." />
+        <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded successfully.\n\nGo to the Sample Add-in tab to get started." />
 
-        <bt:String id="Contoso.Taskpane.Home.Tooltip" DefaultValue="Click to Show Home Taskpane" />
-        <bt:String id="Contoso.Taskpane.Weather.Tooltip" DefaultValue="Click to Show Weather Taskpane" />
-        <bt:String id="Contoso.Taskpane.Counter.Tooltip" DefaultValue="Click to Show Counter Taskpane" />
-        <bt:String id="Contoso.Taskpane.Theme.Tooltip" DefaultValue="Click to Show Theme Taskpane" />
-        <bt:String id="Contoso.Taskpane.Bubble.Tooltip" DefaultValue="Click to Show Bubble Chart Taskpane" />
-        <bt:String id="Contoso.Taskpane.Clock.Tooltip" DefaultValue="Click to Show World Clock Taskpane" />
+        <bt:String id="Contoso.Taskpane.Home.Tooltip" DefaultValue="Click to show Home task pane" />
+        <bt:String id="Contoso.Taskpane.Weather.Tooltip" DefaultValue="Click to show Weather task pane" />
+        <bt:String id="Contoso.Taskpane.Counter.Tooltip" DefaultValue="Click to show Counter task pane" />
+        <bt:String id="Contoso.Taskpane.Theme.Tooltip" DefaultValue="Click to show Theme task pane" />
+        <bt:String id="Contoso.Taskpane.Bubble.Tooltip" DefaultValue="Click to show Bubble Chart task pane" />
+        <bt:String id="Contoso.Taskpane.Clock.Tooltip" DefaultValue="Click to show World Clock task pane" />
 
-        <bt:String id="Contoso.FunctionButton0.Tooltip" DefaultValue="Click to insert text from Home Page" />
-        <bt:String id="Contoso.FunctionButton1.Tooltip" DefaultValue="Click to insert text from Counter Page" />
-        <bt:String id="Contoso.FunctionButton3.Tooltip" DefaultValue="Click to Run CreateBubbles from BubbleChart Page" />
-        <bt:String id="Contoso.FunctionButton2.Tooltip" DefaultValue="Click to insert text from commands.js" />
+        <bt:String id="Contoso.FunctionButton0.Tooltip" DefaultValue="Click to insert text from Home page" />
+        <bt:String id="Contoso.FunctionButton1.Tooltip" DefaultValue="Click to insert text from Counter page" />
+        <bt:String id="Contoso.FunctionButton3.Tooltip" DefaultValue="Click to Run CreateBubbles from BubbleChart page" />
+        <bt:String id="Contoso.FunctionButton2.Tooltip" DefaultValue="Click to insert text from commands.ts" />
 
       </bt:LongStrings>
 

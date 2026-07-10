@@ -3,6 +3,8 @@ using Blazor.Excel.AddIn.Client.Services;
 using Blazor.Excel.AddIn.Components;
 
 using Microsoft.FluentUI.AspNetCore.Components;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +23,16 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseWebAssemblyDebugging();
+    // Dev-time static file fallback: serve client wwwroot so TypeScript-compiled outputs are available
+    var clientWwwroot = Path.Combine(app.Environment.ContentRootPath, "..", "Blazor.Excel.AddIn.Client", "wwwroot");
+    if (Directory.Exists(clientWwwroot))
+    {
+        app.UseStaticFiles(new StaticFileOptions
+        {
+            FileProvider = new PhysicalFileProvider(clientWwwroot),
+            RequestPath = ""
+        });
+    }
 }
 else
 {
