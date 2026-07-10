@@ -7,6 +7,7 @@ using Microsoft.Extensions.FileProviders;
 using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.AddFilter("Microsoft.AspNetCore.Builder.StaticAssetDevelopmentRuntimeHandler", LogLevel.Error);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -48,13 +49,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
-// In Development we serve client-generated assets via UseStaticFiles fallback above.
-// Mapping static-asset endpoints here causes noisy warnings for those generated files.
-if (!app.Environment.IsDevelopment())
-{
-    // Serves fingerprinted/cached assets from the build-time static web assets manifest.
-    app.MapStaticAssets();
-}
+// Serves fingerprinted/cached assets from the build-time static web assets manifest.
+app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
