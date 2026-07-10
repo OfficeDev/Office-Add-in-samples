@@ -38,13 +38,51 @@ This sample shows how to build a PowerPoint add-in using .NET Blazor Hybrid tech
 
 ## Run the sample
 
+Running the sample will start two projects, the Blazor server project and the PowerPoint add-in project. The Blazor server project will start a web server that hosts the add-in, and the PowerPoint add-in project will sideload the add-in into PowerPoint.
+
+Depending on the launch setting the server project will also launch a browser to show the 'hosted' Server.
+This can be set in the `launchSettings.json` file of the Blazor server project.
+The default setting is to launch a browser, but this can be changed to false if you don't want to launch a browser.
+
+      "comments": "launchBrowser is set to true for demo purposes to show behavior in and outside Office. Recommended to set to false",
+      "launchBrowser": true,
+
+### Start the server and sideload the add-in
+
 1. Download or clone the [Office Add-ins samples repository](https://github.com/OfficeDev/Office-Add-in-samples).
-1. Open Visual Studio 2026 and open the: **Office-Add-in-samples\Samples\blazor-add-in\Blazor.PowerPoint.AddIn\Blazor.PowerPoint.AddIn.slnx** solution.
-1. Choose **Debug** > **Start Debugging**. Or press <kbd>F5</kbd> to start the solution and sideload the Add-in and start PowerPoint.
-1. [Optionally] You can use the Terminal to sideload the Add-in and start PowerPoint using the command **npm run start-local** separately
-1. When PowerPoint opens, choose **Sample Add-in** > **Show task pane** (if not already open).
-1. Try out the controls on the task panes.
-1. Try out the custom buttons on the **Sample Add-in** tab on the ribbon.
+1. Open Visual Studio 2026 and open the **Office-Add-in-samples\Samples\blazor-add-in\Blazor.PowerPoint.AddIn\Blazor.PowerPoint.AddIn.slnx** solution.
+1. Ensure both startup projects are configured to **Start**:
+   - `Blazor.PowerPoint.AddIn` (server)
+   - `Blazor.PowerPoint.AddIn` sideload/npm startup action
+1. Choose **Debug** > **Start Debugging** (or press <kbd>F5</kbd>).
+   - On first run, required npm packages are restored automatically for both projects as part of the build (`npm ci`).  
+   In case you get an error on this step, follow the instructions in the **Install npm packages after download or clone** section below.
+   - The `Blazor.PowerPoint.AddIn` server project starts and runs `npm run start-local` to sideload the add-in and launch PowerPoint.
+1. If PowerPoint opens, select the **Sample Add-in** tab and click the buttons to trigger the respective functions.
+
+### Install npm packages after download or clone
+To run the sample for the first time it might help to first install the npm packages as they are used by the Office hosts to sideload the manifests:  
+
+npm --prefix .\Blazor.PowerPoint.AddIn install  
+npm --prefix .\Blazor.PowerPoint.AddIn.Client install  
+
+You should see two applications start:
+- The Blazor server application running in a console window.
+- PowerPoint running the add-in with Sample Add-in tab on the ribbon.
+
+If you for some reason don't see the two applications:
+- Right click the Addin Solution
+- Select **Configure Startup Projects**
+- Set both the Blazor server and PowerPoint add-in to **Start**.
+
+### Optional: run sideload manually from Terminal
+
+For a full manual run, use two terminals.
+
+1. Start the server from `Samples\blazor-add-in\Blazor.PowerPoint.AddIn`:
+   - `dotnet run --project .\Blazor.PowerPoint.AddIn\Blazor.PowerPoint.AddIn.csproj`
+2. After the server is ready, sideload from `Samples\blazor-add-in\Blazor.PowerPoint.AddIn\Blazor.PowerPoint.AddIn`:
+   - `npm run start-local`
 
 ## Understand an Office Add-in in a Hybrid Blazor Context
 An Office Add-in is a web application that extends Office with additional functionality for the user. For example, an add-in can add ribbon buttons, a task pane, or a content pane with the functionality you want. Because an Office Add-in is a web application, you must provide a web server to host the files.  
