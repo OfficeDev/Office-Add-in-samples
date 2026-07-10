@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!--TODO: Create Production Manifest-->
 <!--Created:ce44715c-8c4e-446b-879c-ea9ebe0f09c8-->
 <OfficeApp
           xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
@@ -57,7 +56,7 @@
     <!-- The Hosts node is required. -->
     <Hosts>
       <!-- Each host can have a different set of commands. -->
-      <!-- Excel host is Workbook, Word host is Document, and Word host is Presentation. -->
+      <!-- Excel host is Workbook, Word host is Document, and PowerPoint host is Presentation. -->
       <!-- Make sure the hosts you override match the hosts declared in the top section of the manifest. -->
       <Host xsi:type="Document">
         <Runtimes>
@@ -109,20 +108,23 @@
                     <Description resid="Contoso.Taskpane.Home.Tooltip" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Contoso.tpicon_16x16" />
-                    <bt:Image size="32" resid="Contoso.tpicon_32x32" />
-                    <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+                    <bt:Image size="16" resid="home_16_regular" />
+                    <bt:Image size="32" resid="home_32_regular" />
+                    <bt:Image size="80" resid="home_80_regular" />
                   </Icon>
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
+
+                    <!-- .......................................... AutoShowTaskpaneWithDocument ......................................... -->
+                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>                                                       -->
+                    <!-- See: https://learn.microsoft.com/en-us/samples/officedev/office-add-in-samples/word-auto-open-with-document/      -->
+                    <!-- ................................................................................................................. -->
+
                     <TaskpaneId>GlobalTaskpaneID</TaskpaneId>
-                    <!-- Taskpane prepared to be activated as AutoOpen Taskpane -->
-                    <!-- See: Samples/office-add-in-commands/auto-open-task-pane -->
-                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>-->
-                    <SourceLocation resid="Contoso.Home.Url" />
-                    <!--<TaskpaneId>SampleAddinTaskpaneId</TaskpaneId>-->
+
                     <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
+                    <SourceLocation resid="Contoso.Home.Url" />
                   </Action>
                 </Control>
 
@@ -136,20 +138,15 @@
                     <Description resid="Contoso.Taskpane.Weather.Tooltip" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Contoso.tpicon_16x16" />
-                    <bt:Image size="32" resid="Contoso.tpicon_32x32" />
-                    <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+                    <bt:Image size="16" resid="weather_partly_cloudy_day_16" />
+                    <bt:Image size="32" resid="weather_partly_cloudy_day_32" />
+                    <bt:Image size="80" resid="weather_partly_cloudy_day_80" />
                   </Icon>
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>GlobalTaskpaneID</TaskpaneId>
-                    <!-- Taskpane prepared to be activated as AutoOpen Taskpane -->
-                    <!-- See: Samples/office-add-in-commands/auto-open-task-pane -->
-                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>-->
                     <SourceLocation resid="Contoso.Weather.Url" />
-                    <!--<TaskpaneId>SampleAddinTaskpaneId</TaskpaneId>-->
-                    <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
                   </Action>
                 </Control>
 
@@ -163,20 +160,15 @@
                     <Description resid="Contoso.Taskpane.Weather.Tooltip" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Contoso.tpicon_16x16" />
-                    <bt:Image size="32" resid="Contoso.tpicon_32x32" />
-                    <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+                    <bt:Image size="16" resid="number_symbol_square_16" />
+                    <bt:Image size="32" resid="number_symbol_square_32" />
+                    <bt:Image size="80" resid="number_symbol_square_80" />
                   </Icon>
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>GlobalTaskpaneID</TaskpaneId>
-                    <!-- Taskpane prepared to be activated as AutoOpen Taskpane -->
-                    <!-- See: Samples/office-add-in-commands/auto-open-task-pane -->
-                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>-->
                     <SourceLocation resid="Contoso.Counter.Url" />
-                    <!--<TaskpaneId>SampleAddinTaskpaneId</TaskpaneId>-->
-                    <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
                   </Action>
                 </Control>
 
@@ -190,20 +182,15 @@
                     <Description resid="Contoso.Taskpane.Theme.Tooltip" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Contoso.tpicon_16x16" />
-                    <bt:Image size="32" resid="Contoso.tpicon_32x32" />
-                    <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+                    <bt:Image size="16" resid="dark_theme_16" />
+                    <bt:Image size="32" resid="dark_theme_32" />
+                    <bt:Image size="80" resid="dark_theme_80" />
                   </Icon>
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>GlobalTaskpaneID</TaskpaneId>
-                    <!-- Taskpane prepared to be activated as AutoOpen Taskpane -->
-                    <!-- See: Samples/office-add-in-commands/auto-open-task-pane -->
-                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>-->
                     <SourceLocation resid="Contoso.Theme.Url" />
-                    <!--<TaskpaneId>SampleAddinTaskpaneId</TaskpaneId>-->
-                    <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
                   </Action>
                 </Control>
 
@@ -217,20 +204,15 @@
                     <Description resid="Contoso.Taskpane.CC.Tooltip" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Contoso.tpicon_16x16" />
-                    <bt:Image size="32" resid="Contoso.tpicon_32x32" />
-                    <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+                    <bt:Image size="16" resid="settings_cog_multiple_16" />
+                    <bt:Image size="32" resid="settings_cog_multiple_32" />
+                    <bt:Image size="80" resid="settings_cog_multiple_80" />
                   </Icon>
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>GlobalTaskpaneID</TaskpaneId>
-                    <!-- Taskpane prepared to be activated as AutoOpen Taskpane -->
-                    <!-- See: Samples/office-add-in-commands/auto-open-task-pane -->
-                    <!--<TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>-->
                     <SourceLocation resid="Contoso.CC.Url" />
-                    <!--<TaskpaneId>SampleAddinTaskpaneId</TaskpaneId>-->
-                    <!-- Provide a URL resource id for the location that will be displayed on the task pane. -->
                   </Action>
                 </Control>
 
@@ -258,9 +240,9 @@
                     <Description resid="Contoso.FunctionButton0.Tooltip" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Contoso.tpicon_16x16" />
-                    <bt:Image size="32" resid="Contoso.tpicon_32x32" />
-                    <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+                    <bt:Image size="16" resid="Typescript_logo_16" />
+                    <bt:Image size="32" resid="Typescript_logo_32" />
+                    <bt:Image size="80" resid="Typescript_logo_80" />
                   </Icon>
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
@@ -283,6 +265,26 @@
                   <bt:Image size="80" resid="Contoso.tpicon_80x80" />
                 </Icon>
 
+                <Control xsi:type="Button" id="Contoso.FunctionButton1">
+                  <Label resid="Contoso.FunctionButton1.Label" />
+                  <Supertip>
+                    <!-- ToolTip title. resid must point to a ShortString resource. -->
+                    <Title resid="Contoso.FunctionButton1.Label" />
+                    <!-- ToolTip description. resid must point to a LongString resource. -->
+                    <Description resid="Contoso.FunctionButton1.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="blazor-16" />
+                    <bt:Image size="32" resid="blazor-32" />
+                    <bt:Image size="80" resid="blazor-80" />
+                  </Icon>
+
+                  <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>callBlazorServer</FunctionName>
+                  </Action>
+                </Control>
+
                 <Control xsi:type="Button" id="Contoso.FunctionButton3">
                   <Label resid="Contoso.FunctionButton3.Label" />
                   <Supertip>
@@ -292,14 +294,14 @@
                     <Description resid="Contoso.FunctionButton3.Tooltip" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Contoso.tpicon_16x16" />
-                    <bt:Image size="32" resid="Contoso.tpicon_32x32" />
-                    <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+                    <bt:Image size="16" resid="webassembly-16" />
+                    <bt:Image size="32" resid="webassembly-32" />
+                    <bt:Image size="80" resid="webassembly-80" />
                   </Icon>
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>callBlazorOnCounter</FunctionName>
+                    <FunctionName>callBlazorWasm</FunctionName>
                   </Action>
                 </Control>
 
@@ -312,14 +314,34 @@
                     <Description resid="Contoso.FunctionButton4.Tooltip" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Contoso.tpicon_16x16" />
-                    <bt:Image size="32" resid="Contoso.tpicon_32x32" />
-                    <bt:Image size="80" resid="Contoso.tpicon_80x80" />
+                    <bt:Image size="16" resid="webassembly-16" />
+                    <bt:Image size="32" resid="webassembly-32" />
+                    <bt:Image size="80" resid="webassembly-80" />
                   </Icon>
 
                   <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
                   <Action xsi:type="ExecuteFunction">
                     <FunctionName>callBlazorOnHome</FunctionName>
+                  </Action>
+                </Control>
+
+                <Control xsi:type="Button" id="Contoso.FunctionButton2">
+                  <Label resid="Contoso.FunctionButton2.Label" />
+                  <Supertip>
+                    <!-- ToolTip title. resid must point to a ShortString resource. -->
+                    <Title resid="Contoso.FunctionButton2.Label" />
+                    <!-- ToolTip description. resid must point to a LongString resource. -->
+                    <Description resid="Contoso.FunctionButton2.Tooltip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="document_text_16" />
+                    <bt:Image size="32" resid="document_text_32" />
+                    <bt:Image size="80" resid="document_text_80" />
+                  </Icon>
+
+                  <!-- This is what happens when the command is triggered (E.g. click on the Ribbon). Supported actions are ExecuteFunction or ShowTaskpane. -->
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>callBlazorPrepareDocument</FunctionName>
                   </Action>
                 </Control>
               </Group>
@@ -336,6 +358,42 @@
         <bt:Image id="Contoso.tpicon_16x16" DefaultValue="https://localhost:7215/Images/Button16x16.png" />
         <bt:Image id="Contoso.tpicon_32x32" DefaultValue="https://localhost:7215/Images/Button32x32.png" />
         <bt:Image id="Contoso.tpicon_80x80" DefaultValue="https://localhost:7215/Images/Button80x80.png" />
+
+        <bt:Image id="home_16_regular" DefaultValue="https://localhost:7215/Images/ic_fluent_home_16_regular.png" />
+        <bt:Image id="home_32_regular" DefaultValue="https://localhost:7215/Images/ic_fluent_home_32_regular.png" />
+        <bt:Image id="home_80_regular" DefaultValue="https://localhost:7215/Images/ic_fluent_home_80_regular.png" />
+
+        <bt:Image id="number_symbol_square_16" DefaultValue="https://localhost:7215/Images/ic_fluent_number_symbol_square_16_regular.png" />
+        <bt:Image id="number_symbol_square_32" DefaultValue="https://localhost:7215/Images/ic_fluent_number_symbol_square_32_regular.png" />
+        <bt:Image id="number_symbol_square_80" DefaultValue="https://localhost:7215/Images/ic_fluent_number_symbol_square_80_regular.png" />
+
+        <bt:Image id="weather_partly_cloudy_day_16" DefaultValue="https://localhost:7215/Images/ic_fluent_weather_partly_cloudy_day_16_regular.png" />
+        <bt:Image id="weather_partly_cloudy_day_32" DefaultValue="https://localhost:7215/Images/ic_fluent_weather_partly_cloudy_day_32_regular.png" />
+        <bt:Image id="weather_partly_cloudy_day_80" DefaultValue="https://localhost:7215/Images/ic_fluent_weather_partly_cloudy_day_80_regular.png" />
+
+        <bt:Image id="dark_theme_16" DefaultValue="https://localhost:7215/Images/ic_fluent_dark_theme_16_regular.png" />
+        <bt:Image id="dark_theme_32" DefaultValue="https://localhost:7215/Images/ic_fluent_dark_theme_32_regular.png" />
+        <bt:Image id="dark_theme_80" DefaultValue="https://localhost:7215/Images/ic_fluent_dark_theme_80_regular.png" />
+
+        <bt:Image id="settings_cog_multiple_16" DefaultValue="https://localhost:7215/Images/ic_fluent_settings_cog_multiple_16_regular.png" />
+        <bt:Image id="settings_cog_multiple_32" DefaultValue="https://localhost:7215/Images/ic_fluent_settings_cog_multiple_32_regular.png" />
+        <bt:Image id="settings_cog_multiple_80" DefaultValue="https://localhost:7215/Images/ic_fluent_settings_cog_multiple_80_regular.png" />
+
+        <bt:Image id="blazor-16" DefaultValue="https://localhost:7215/Images/blazor-16.png" />
+        <bt:Image id="blazor-32" DefaultValue="https://localhost:7215/Images/blazor-32.png" />
+        <bt:Image id="blazor-80" DefaultValue="https://localhost:7215/Images/blazor-80.png" />
+
+        <bt:Image id="Typescript_logo_16" DefaultValue="https://localhost:7215/Images/Typescript_logo_2020_16.png" />
+        <bt:Image id="Typescript_logo_32" DefaultValue="https://localhost:7215/Images/Typescript_logo_2020_32.png" />
+        <bt:Image id="Typescript_logo_80" DefaultValue="https://localhost:7215/Images/Typescript_logo_2020_80.png" />
+
+        <bt:Image id="webassembly-16" DefaultValue="https://localhost:7215/Images/webassembly-16.png" />
+        <bt:Image id="webassembly-32" DefaultValue="https://localhost:7215/Images/webassembly-32.png" />
+        <bt:Image id="webassembly-80" DefaultValue="https://localhost:7215/Images/webassembly-80.png" />
+
+        <bt:Image id="document_text_16" DefaultValue="https://localhost:7215/Images/ic_fluent_document_text_16_regular.png" />
+        <bt:Image id="document_text_32" DefaultValue="https://localhost:7215/Images/ic_fluent_document_text_32_regular.png" />
+        <bt:Image id="document_text_80" DefaultValue="https://localhost:7215/Images/ic_fluent_document_text_80_regular.png" />
       </bt:Images>
       <bt:Urls>
         <bt:Url id="Contoso.Shared.Url" DefaultValue="https://localhost:7215/" />
@@ -366,23 +424,27 @@
         <bt:String id="Contoso.Taskpane.Theme.Label" DefaultValue="Theme" />
         <bt:String id="Contoso.Taskpane.CC.Label" DefaultValue="Content Controls" />
 
-        <bt:String id="Contoso.FunctionButton0.Label" DefaultValue="Insert Text" />
-        <bt:String id="Contoso.FunctionButton3.Label" DefaultValue="Insert Name from Counter" />
-        <bt:String id="Contoso.FunctionButton4.Label" DefaultValue="Insert Name from Home" />
+        <bt:String id="Contoso.FunctionButton0.Label" DefaultValue="Insert text" />
+        <bt:String id="Contoso.FunctionButton1.Label" DefaultValue="Insert text from Server" />
+        <bt:String id="Contoso.FunctionButton2.Label" DefaultValue="Prepare document from ContentControls" />
+        <bt:String id="Contoso.FunctionButton3.Label" DefaultValue="Insert text from WASM" />
+        <bt:String id="Contoso.FunctionButton4.Label" DefaultValue="Insert name from Home" />
       </bt:ShortStrings>
 
       <!-- LongStrings max characters==250. -->
       <bt:LongStrings>
-        <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the Sample Add-in tab and click the 'Show Taskpane' button to get started." />
+        <bt:String id="Contoso.GetStarted.Description" DefaultValue="Your sample add-in loaded successfully.\n\nGo to the Sample Add-in tab to get started." />
 
-        <bt:String id="Contoso.Taskpane.Home.Tooltip" DefaultValue="Click to Show Home Taskpane" />
-        <bt:String id="Contoso.Taskpane.Weather.Tooltip" DefaultValue="Click to Show Weather Taskpane" />
-        <bt:String id="Contoso.Taskpane.Counter.Tooltip" DefaultValue="Click to Show Counter Taskpane" />
-        <bt:String id="Contoso.Taskpane.Theme.Tooltip" DefaultValue="Click to Show Theme Taskpane" />
-        <bt:String id="Contoso.Taskpane.CC.Tooltip" DefaultValue="Click to Show Content Controls Taskpane" />
+        <bt:String id="Contoso.Taskpane.Home.Tooltip" DefaultValue="Click to show Home task pane" />
+        <bt:String id="Contoso.Taskpane.Weather.Tooltip" DefaultValue="Click to show Weather task pane" />
+        <bt:String id="Contoso.Taskpane.Counter.Tooltip" DefaultValue="Click to show Counter task pane" />
+        <bt:String id="Contoso.Taskpane.Theme.Tooltip" DefaultValue="Click to show Theme task pane" />
+        <bt:String id="Contoso.Taskpane.CC.Tooltip" DefaultValue="Click to show Content Controls task pane" />
 
         <bt:String id="Contoso.FunctionButton0.Tooltip" DefaultValue="Click to insert text in slide" />
-        <bt:String id="Contoso.FunctionButton3.Tooltip" DefaultValue="Click to do something" />
+        <bt:String id="Contoso.FunctionButton1.Tooltip" DefaultValue="Click to do something from Server" />
+        <bt:String id="Contoso.FunctionButton2.Tooltip" DefaultValue="Click to Prepare Document" />
+        <bt:String id="Contoso.FunctionButton3.Tooltip" DefaultValue="Click to insert name from WASM" />
         <bt:String id="Contoso.FunctionButton4.Tooltip" DefaultValue="Click to insert name from Home" />
       </bt:LongStrings>
 

@@ -21,6 +21,8 @@
 
     <!-- Ensure TypeScript compiles before static web asset discovery so generated .js files are in the manifest -->
     <ResolveStaticWebAssetsInputsDependsOn>CompileTypeScript;$(ResolveStaticWebAssetsInputsDependsOn)</ResolveStaticWebAssetsInputsDependsOn>
+    <GetCurrentProjectBuildStaticWebAssetItemsDependsOn>CompileTypeScript;$(GetCurrentProjectBuildStaticWebAssetItemsDependsOn)</GetCurrentProjectBuildStaticWebAssetItemsDependsOn>
+    <GetCurrentProjectPublishStaticWebAssetItemsDependsOn>CompileTypeScript;$(GetCurrentProjectPublishStaticWebAssetItemsDependsOn)</GetCurrentProjectPublishStaticWebAssetItemsDependsOn>
   </PropertyGroup>
 
   <!-- Blazor WASM Release optimizations -->
@@ -76,15 +78,21 @@
     <Touch Files="$(NpmStampFile)" AlwaysCreate="true" Condition="'$(NpmRestoreNeeded)' == 'true'" />
     <Message Importance="low" Text="Skipping npm ci - packages are up to date" Condition="'$(NpmRestoreNeeded)' != 'true'" />
   </Target>
-  <!-- Register TypeScript-compiled wwwroot JS files as static web assets.
-       commands.js and SharedUtils.js are gitignored (generated at build time), so they won't be in the
-       SDK Content glob unless added here after TypeScript compiles them. -->
-  <Target Name="AddTypeScriptWwwrootOutputsToContent" AfterTargets="CompileTypeScript" BeforeTargets="ResolveStaticWebAssetsInputs">
+  <!-- Note: client build step intentionally omitted. TypeScript MSBuild and existing NpmRestore handle necessary work.
+       If you need a custom npm build step, add it here and ensure package.json defines a "build" script. -->
+  
+  <!-- Register TypeScript-compiled JS files as static web assets.
+       commands.js and SharedUtils.js are gitignored (generated at build time), so we add them after TS compilation. -->
+  <Target Name="AddTypeScriptWwwrootOutputsToContent"
+          BeforeTargets="ResolveStaticWebAssetsInputs;GetCurrentProjectBuildStaticWebAssetItems;GetCurrentProjectPublishStaticWebAssetItems">
     <ItemGroup>
-      <Content Include="wwwroot\commands\commands.js" Condition="Exists('wwwroot\commands\commands.js')" />
-      <Content Include="wwwroot\commands\commands.js.map" Condition="Exists('wwwroot\commands\commands.js.map')" />
-      <Content Include="wwwroot\scripts\SharedUtils.js" Condition="Exists('wwwroot\scripts\SharedUtils.js')" />
-      <Content Include="wwwroot\scripts\SharedUtils.js.map" Condition="Exists('wwwroot\scripts\SharedUtils.js.map')" />
+      <_GeneratedTypeScriptAssets Include="wwwroot\commands\commands.js" Condition="Exists('wwwroot\commands\commands.js')" />
+      <_GeneratedTypeScriptAssets Include="wwwroot\commands\commands.js.map" Condition="Exists('wwwroot\commands\commands.js.map')" />
+      <_GeneratedTypeScriptAssets Include="wwwroot\scripts\SharedUtils.js" Condition="Exists('wwwroot\scripts\SharedUtils.js')" />
+      <_GeneratedTypeScriptAssets Include="wwwroot\scripts\SharedUtils.js.map" Condition="Exists('wwwroot\scripts\SharedUtils.js.map')" />
+
+      <Content Remove="@(_GeneratedTypeScriptAssets)" />
+      <Content Include="@(_GeneratedTypeScriptAssets)" />
     </ItemGroup>
   </Target>
 
