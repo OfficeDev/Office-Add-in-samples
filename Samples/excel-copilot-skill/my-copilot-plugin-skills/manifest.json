@@ -1,0 +1,30 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.29/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.29",
+    "version": "1.0.0",
+    "id": "00000000-0000-0000-0000-000000000000",
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://www.contoso.com",
+        "privacyUrl": "https://www.contoso.com/privacy",
+        "termsOfUseUrl": "https://www.contoso.com/terms"
+    },
+    "name": {
+        "short": "Accelerating Growth Trends",
+        "full": "Accelerating Growth Trend Finder for Excel"
+    },
+    "description": {
+        "short": "Find Excel table rows with accelerating numeric growth.",
+        "full": "A Copilot skill for Excel that uses Office.js to find rows in a workbook table where values increase from left to right with increasingly larger increases."
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "accentColor": "#217346",
+    "agentSkills": [
+        {
+            "folder": "./skills/accelerating-growth-trend-finder"
+        }
+    ]
+}
