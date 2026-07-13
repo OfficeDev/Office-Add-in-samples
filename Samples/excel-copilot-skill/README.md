@@ -17,7 +17,7 @@ description: "Learn how to create create a custom skill for Copilot in Excel."
 ---
 
 
-# Skill for Copilot in Excel
+# Skill for Copilot in Excel (preview)
 
 This sample shows how to create a custom skill for Copilot in Excel that use the Excel-specific APIs in the Office JavaScript library to find and chart table rows which embody an accelerating growth trend. The skill does *not* run in standalone Microsoft 365 Copilot.
 
