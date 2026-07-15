@@ -21,8 +21,8 @@
         "full": "Sample on how to use NAA in Outlook events."
     },
     "icons": {
-        "outline": "assets/icon-32.png",
-        "color": "assets/logo-filled.png"
+        "outline": "assets/outline.png",
+        "color": "assets/color.png"
     },
     "accentColor": "#230201",
     "validDomains": [
@@ -78,11 +78,11 @@
                     "actions": [
                         {
                             "id": "onNewMessageComposeHandler",
-                            "type": "executeFunction",
+                            "type": "executeFunction"
                         },
                         {
                             "id": "onNewAppointmentComposeHandler",
-                            "type": "executeFunction",
+                            "type": "executeFunction"
                         }
                     ]
                 },
@@ -108,12 +108,12 @@
                         {
                             "id": "action_1",
                             "type": "openPage",
-                            "view": "view_1",
+                            "view": "view_1"
                         },
                         {
                             "id": "action_2",
                             "type": "openPage",
-                            "view": "view_2",
+                            "view": "view_2"
                         }
                     ]
                 }
@@ -223,7 +223,7 @@
                                                 "title": "Open task pane",
                                                 "description": "Opens the pane for the Office NAA sample."
                                             },
-                                            "actionId": "action_2",
+                                            "actionId": "action_2"
                                         }
                                     ]
                                 }
