@@ -1,0 +1,37 @@
+[
+    {
+      "name": "excel-copilot-skill",
+      "reponame": "office-add-in-samples",
+      "source": "officedev",
+      "title": "Skill for Copilot in Excel",
+      "shortDescription": "A custom skill for Copilot in Excel that uses the Excel-specific APIs in the Office JavaScript library.",
+      "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-copilot-skill",
+      "longDescription": [
+        "Shows how to create a custom skill for Copilot in Excel that uses the Excel-specific APIs in the Office JavaScript library to find and chart table rows which embody an accelerating growth trend.."
+      ],
+      "creationDateTime": "2026-07-15",
+      "updateDateTime": "2026-07-15",
+      "products": [
+        "Office",
+        "Excel",
+        "Copilot"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "JavaScript"
+        }
+      ],
+      "thumbnails": [
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "microsoft",
+          "pictureUrl": "https://github.com/microsoft.png",
+          "name": "Microsoft"
+        }
+      ],
+      "references": [
+      ]
+    }
+  ]
