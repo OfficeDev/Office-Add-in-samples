@@ -19,10 +19,10 @@ description: "Learn how to create create a custom skill for Copilot in Excel."
 
 # Skill for Copilot in Excel (preview)
 
-This sample shows how to create a custom skill for Copilot in Excel that use the Excel-specific APIs in the Office JavaScript library to find and chart table rows which embody an accelerating growth trend. The skill does *not* run in standalone Microsoft 365 Copilot.
+This sample shows how to create a custom skill for Copilot in Excel that uses the Excel-specific APIs in the Office JavaScript library to find and chart table rows which embody an accelerating growth trend. The skill does *not* run in standalone Microsoft 365 Copilot.
 
-![Screenshot showing Excel with a small table and a chart of the data in the first data row of the table](./images/accelerating-growth-skill-results.png)
-![Screenshot showing a Copilot in Excel chat a report of how Copilot used the skill to find and chart a table row](./images/accelerating-growth-skill-chat.png)
+![Screenshot showing Excel with a small table and a chart based on the first data row of the table.](./images/accelerating-growth-skill-results.png)
+![Screenshot showing a Copilot in Excel chat reporting how Copilot used the skill to find and chart a table row.](./images/accelerating-growth-skill-chat.png)
 
 > [!IMPORTANT]
 > Although this sample is packaged and sideloaded just like any other App for Microsoft 365, it doesn't have files that are hosted on a web server or cloud service. All the files for the skill are included in the app package. 
@@ -34,9 +34,9 @@ This sample shows how to create a custom skill for Copilot in Excel that use the
 
 ## Prerequisites
 
-- [Microsoft 365 Agents Toolkit CLI](https://learn.microsoft.com/en-us/microsoftteams/platform/toolkit/microsoft-365-agents-toolkit-cli)
+- [Microsoft 365 Agents Toolkit CLI](https://learn.microsoft.com/microsoftteams/platform/toolkit/microsoft-365-agents-toolkit-cli)
 - A Microsoft 365 Developer Account
-- Microsoft 365 on Windows version 2608 (Build 20305.20002) or later, or Microsoft 365 on Mac version 16.112.26070718 or later.
+- Microsoft 365 on Windows Version 2608 (Build 20305.20002) or later, or Microsoft 365 on Mac Version 16.112.26070718 or later.
 
    > **Note:** If you don't already have an Microsoft 365 subscription, you might qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 
@@ -48,9 +48,9 @@ This sample shows how to create a custom skill for Copilot in Excel that use the
    npm install -g @microsoft/m365agentstoolkit-cli
    ```
 
-   If you are prompted to sign in, use your Microsoft 365 developer account credentials. 
+   If you're prompted to sign in, use your Microsoft 365 developer account credentials. 
 
-1. In the window navigate to the root of this sample, and then install the agent package with the following command.
+1. In the same window, navigate to the root of this sample, and then install the agent package with the following command.
 
    ```bash
    atk install --file-path "my-copilot-plugin-skills.zip" --scope Personal
@@ -59,11 +59,11 @@ This sample shows how to create a custom skill for Copilot in Excel that use the
    A successful installation returns output that includes a TitleId and AppId for your account.
 
 1. Open the **Text.xlsx** file in the root of the sample. 
-1. Ensure that you are signed in to Excel with your developer account credentials.
+1. Ensure that you're signed in to Excel with your developer account credentials.
 1. Open Copilot in Excel, and verify that your skill is installed with the following steps.
 
     1. Select the **+** icon in the chat area.
-    1. The **All Skills** option in the dropdown that opens will be disabled at first. Wait until it is enabled and then select it.
+    1. The **All Skills** option in the dropdown that opens will be disabled at first. Wait until it's enabled and then select it.
     1. In the chat text box, start to type "@accelerating-growth-trend-finder". The skill should appear in the list of skills.
 
        ![A Copilot window in which the '@' symbol followed by the first few letters of the skill name accelerating-growth-trend-finder appear. Below this is a dropdown list of skills in which accelerating-growth-trend-finder is the only skill listed.](./images/accelerating-growth-skill-lookup.png)

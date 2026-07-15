@@ -148,7 +148,6 @@ await Excel.run(async (context) => {
         const worksheetRowNumber = dataRange.rowIndex + rowOffset + 1;
 
         // Create a line chart from the full table range.
-        //
         // ChartSeriesBy.rows means each data row becomes a chart series,
         // while the table headers provide the X-axis category labels.
         const chart = worksheet.charts.add(
@@ -161,7 +160,6 @@ await Excel.run(async (context) => {
         await context.sync();
 
         // Remove every series except the one for the matching row.
-        //
         // The rowOffset corresponds to the matching data row's series.
         for (let seriesIndex = chart.series.count - 1; seriesIndex >= 0; seriesIndex -= 1) {
             if (seriesIndex !== rowOffset) {
