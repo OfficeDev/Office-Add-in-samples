@@ -119,7 +119,7 @@ The sample, and the zipped package, has the following structure.
             |-- find-accelerating-growth-trend-rows.js
 ```
 
-The SKILL.md file contains the basic instructions to Copilot in Excel about when and how to invoke the skill. The two resource files put further constraints on the use of the skill. The script file contains the function that calls Office.js. For more information about all of these files, see [Create a Copilot skill for Excel that uses the Office JavaScript Library](https://learn.microsoft.com/en-us/office/dev/add-ins/excel/excel-copilot-skill).
+The SKILL.md file contains the basic instructions to Copilot in Excel about when and how to invoke the skill. The two resource files put further constraints on the use of the skill. The script file contains the function that calls Office.js. For more information about all of these files, see [Create a Copilot skill for Excel that uses the Office JavaScript Library](https://learn.microsoft.com/office/dev/add-ins/excel/excel-copilot-skill).
 
 ## Modify the sample
 
