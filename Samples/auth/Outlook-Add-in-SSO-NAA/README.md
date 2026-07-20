@@ -36,6 +36,15 @@ This sample shows how to use MSAL.js nested app authentication (NAA) in an Outlo
 - [Node.js](https://nodejs.org/) (latest recommended version).
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
+## Decide on a version of the manifest
+
+- Add-in only manifest
+  - By default, the sample supports the add-in only manifest, which is the **manifest.xml** file in the sample's root directory **samples/auth/outlook-add-in-sso-naa**. For convenience, a copy of the config files specific to this version can be found in the **manifest-configurations/add-in-only** subfolder.
+  - To continue with this version, skip to the [Create an application registration](#create-an-application-registration) section.
+- [Unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview)
+  - To run the unified manifest for Microsoft 365 (**manifest.json**), you need to copy the files from the **manifest-configurations/unified** subfolder to the sample's root directory, replacing the existing config files.
+  - Optionally, you can delete the **manifest.xml** file from root directory so only files needed for the unified manifest are present. For convenience, a copy of the .xml manifest is available in the **manifest-configurations/add-in-only** subfolder.
+
 ## Build and run the solution
 
 ### Create an application registration

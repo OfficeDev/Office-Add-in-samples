@@ -55,9 +55,9 @@ async function writeFileNames(fileNameList: string[]) {
 async function getUserData() {
   const userDataElement = document.getElementById("userData");
   // Specify minimum scopes for the token needed.
-  const accessToken = await accountManager.ssoGetAccessToken(["user.read"]);
+  const scopes = ["user.read"];
 
-  const response: { displayName: string; mail: string } = await makeGraphRequest(accessToken, "/me", "");
+  const response: { displayName: string; mail: string } = await makeGraphRequest(accountManager, scopes, "/me", "");
 
   if (userDataElement) {
     userDataElement.style.visibility = "visible";
@@ -89,9 +89,9 @@ async function getUserFiles() {
  */
 async function getFileNames(count = 10) {
   // Specify minimum scopes for the token needed.
-  const accessToken = await accountManager.ssoGetAccessToken(["Files.Read"]);
+  const scopes = ["Files.Read"];
   const response: { value: { name: string }[] } = await makeGraphRequest(
-    accessToken,
+    accountManager, scopes,
     "/me/drive/root/children",
     `?$select=name&$top=${count}`
   );

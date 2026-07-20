@@ -21,20 +21,18 @@
     "signin": "office-addin-dev-settings m365-account login",
     "signout": "office-addin-dev-settings m365-account logout",
     "start": "office-addin-debugging start manifest.xml",
-    "start:desktop": "office-addin-debugging start manifest.xml desktop",
-    "start:web": "office-addin-debugging start manifest.xml web",
     "stop": "office-addin-debugging stop manifest.xml",
     "validate": "office-addin-manifest validate manifest.xml",
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
-    "@azure/msal-browser": "^3.26.1",
+    "@azure/msal-browser": "^4.24.1",
     "core-js": "^3.38.1",
     "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "@babel/preset-typescript": "^7.24.7",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-typescript": "^7.23.3",
     "@types/office-js": "^1.0.441",
     "@types/office-runtime": "^1.0.35",
     "acorn": "^8.12.1",
