@@ -21,12 +21,18 @@ export async function makeGraphRequest(accountManager: AccountManager, scopes: s
   if (!path.startsWith("/")) throw new Error("path must start with '/'.");
   if (queryParams && !queryParams.startsWith("?")) throw new Error("queryParams must start with '?'.");
 
+
+  const callGraph = async (token: string) => {
+    const response = await fetch(`https://graph.microsoft.com/v1.0${path}${queryParams}`, {
+      headers: { Authorization: token },
+    });
+    return response;
+  };
+
   // Get the access token.
   let accessToken = await accountManager.ssoGetAccessToken(scopes);
 
-  const response = await fetch(`https://graph.microsoft.com/v1.0${path}${queryParams}`, {
-    headers: { Authorization: accessToken },
-  });
+  const response = await callGraph(accessToken);
 
   if (response.ok) {
     const data = await response.json();
@@ -36,13 +42,16 @@ export async function makeGraphRequest(accountManager: AccountManager, scopes: s
     // Check for continuous access evaluation (CAE) claims challenge.
     if (response.status === 401 && response.headers.get('www-authenticate')) {
       const authenticateHeader: string = response.headers.get('www-authenticate') as string;
-      const claimsChallenge = parseChallenges(authenticateHeader).claims;
+      const claimsChallenge = parseChallenges(authenticateHeader)["claims"];
+
+      if (!claimsChallenge) {
+        throw new Error(`Received 401 but no claims challenge in www-authenticate header.`);
+      }
+      
       // use the claims challenge to acquire a new access token.
       accessToken = await accountManager.ssoGetAccessToken(scopes, claimsChallenge);
       // Attempt the MS Graph call again.
-      const response2 = await fetch(`https://graph.microsoft.com/v1.0${path}${queryParams}`, {
-        headers: { Authorization: accessToken },
-      });
+      const response2 = await callGraph(accessToken);
 
       if (response2.ok) {
         const data = await response2.json();
@@ -65,8 +74,11 @@ function parseChallenges(header: string): { [key: string]: string } {
   const challengeMap: { [key: string]: string } = {};
 
   challenges.forEach((challenge) => {
-    const [key, value] = challenge.split('=');
-    challengeMap[key.trim()] = window.decodeURI(value.replace(/['"]+/g, ''));
+    const eqIndex = challenge.indexOf('=');
+    if (eqIndex === -1) return;
+    const key = challenge.substring(0, eqIndex).trim();
+    const value = challenge.substring(eqIndex + 1).replace(/['"]+/g, '');
+    challengeMap[key] = window.decodeURI(value);
   });
   return challengeMap;
 }
