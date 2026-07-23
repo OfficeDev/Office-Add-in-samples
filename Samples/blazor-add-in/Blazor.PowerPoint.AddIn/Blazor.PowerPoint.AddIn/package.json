@@ -32,6 +32,7 @@
   },
   "overrides": {
     "adm-zip": ">=0.6.0",
-    "uuid": ">=12.0.1"
+    "uuid": ">=12.0.1",
+    "@hono/node-server": ">=2.0.5"
   }
 }
