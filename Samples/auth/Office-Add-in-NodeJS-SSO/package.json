@@ -34,7 +34,6 @@
     "lodash": ">=4.17.21",
     "minimatch": ">=5.0.0",
     "uuid": "$uuid",
-    "body-parser": ">=1.20.6",
-    "brace-expansion": ">=5.0.7"
+    "body-parser": ">=1.20.6"
   }
 }

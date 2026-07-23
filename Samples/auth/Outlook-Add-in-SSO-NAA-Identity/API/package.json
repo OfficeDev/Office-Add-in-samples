@@ -33,7 +33,6 @@
     "serialize-javascript": ">=7.0.5",
     "lodash": ">=4.17.21",
     "minimatch": ">=5.0.0",
-    "uuid": "$uuid",
-    "brace-expansion": ">=5.0.7"
+    "uuid": "$uuid"
   }
 }
