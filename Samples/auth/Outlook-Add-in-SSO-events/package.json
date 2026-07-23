@@ -16,7 +16,7 @@
     "http-errors": "~2.0.0",
     "jshint": "^2.13.6",
     "jsonwebtoken": "^9.0.2",
-    "morgan": "~1.10.0",
+    "morgan": "^1.11.0",
     "node-fetch": "^3.3.2",
     "pug": "^3.0.3",
     "@azure/msal-node": "^5.2.2",
@@ -32,6 +32,7 @@
     "protobufjs": ">=8.0.2",
     "serialize-javascript": ">=7.0.5",
     "lodash": ">=4.17.21",
-    "minimatch": ">=5.0.0"
+    "minimatch": ">=5.0.0",
+    "brace-expansion": ">=5.0.7"
   }
 }
