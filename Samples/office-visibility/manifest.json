@@ -1,0 +1,382 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.28/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.28",
+  "version": "1.0.80",
+  "id": "bf035753-45b9-46f8-9f87-1d61f1b96481",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us",
+    "additionalLanguages": []
+  },
+  "developer": {
+    "name": "Contoso",
+    "websiteUrl": "https://www.contoso.com",
+    "privacyUrl": "https://www.contoso.com/privacy",
+    "termsOfUseUrl": "https://www.contoso.com/servicesagreement"
+  },
+  "name": {
+    "short": "Ribbon visibility sample",
+    "full": "Office Add-in ribbon visibility sample"
+  },
+  "description": {
+    "short": "Shows how to control custom ribbon visibility.",
+    "full": "Shows how to set initial ribbon visibility in the unified manifest and change group and control visibility at runtime."
+  },
+  "icons": {
+    "outline": "assets/outline.png",
+    "color": "assets/color.png"
+  },
+  "accentColor": "#230201",
+  "validDomains": [
+    "contoso.com"
+  ],
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Document.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": [
+          "workbook",
+          "document",
+          "presentation"
+        ],
+        "capabilities": [
+          {
+            "name": "AddinCommands",
+            "minVersion": "1.1"
+          },
+          {
+            "name": "SharedRuntime",
+            "minVersion": "1.1"
+          }
+        ]
+      },
+      "runtimes": [
+        {
+          "requirements": {
+            "capabilities": [
+              {
+                "name": "SharedRuntime",
+                "minVersion": "1.1"
+              }
+            ]
+          },
+          "id": "SharedRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/taskpane.html"
+          },
+          "lifetime": "long",
+          "actions": [
+            {
+              "id": "showTaskpane",
+              "type": "openPage",
+              "pinnable": false,
+              "view": "dashboard"
+            },
+            {
+              "id": "button1Action",
+              "type": "executeFunction",
+              "displayName": "Primary command"
+            },
+            {
+              "id": "button2Action",
+              "type": "executeFunction",
+              "displayName": "Initially hidden command"
+            },
+            {
+              "id": "secondaryOneAction",
+              "type": "executeFunction",
+              "displayName": "Secondary command one"
+            },
+            {
+              "id": "secondaryTwoAction",
+              "type": "executeFunction",
+              "displayName": "Secondary command two"
+            },
+            {
+              "id": "menuItemOneAction",
+              "type": "executeFunction",
+              "displayName": "Menu item one"
+            },
+            {
+              "id": "menuItemTwoAction",
+              "type": "executeFunction",
+              "displayName": "Menu item two"
+            }
+          ]
+        }
+      ],
+      "ribbons": [
+        {
+          "requirements": {
+            "capabilities": [
+              {
+                "name": "AddinCommands",
+                "minVersion": "1.1"
+              }
+            ],
+            "scopes": [
+              "workbook",
+              "document",
+              "presentation"
+            ]
+          },
+          "contexts": [
+            "default"
+          ],
+          "tabs": [
+            {
+              "id": "ContosoVisibilityTab",
+              "label": "Contoso Visibility",
+              "visible": true,
+              "groups": [
+                {
+                  "id": "TaskPaneGroup",
+                  "label": "Taskpane",
+                  "visible": true,
+                  "icons": [
+                    {
+                      "size": 16,
+                      "url": "https://localhost:3000/assets/icon-16.png"
+                    },
+                    {
+                      "size": 32,
+                      "url": "https://localhost:3000/assets/icon-32.png"
+                    },
+                    {
+                      "size": 80,
+                      "url": "https://localhost:3000/assets/icon-80.png"
+                    }
+                  ],
+                  "controls": [
+                    {
+                      "id": "ShowTaskpaneButton",
+                      "type": "button",
+                      "label": "Show taskpane",
+                      "visible": true,
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Show taskpane",
+                        "description": "Opens the ribbon visibility sample taskpane."
+                      },
+                      "actionId": "showTaskpane"
+                    }
+                  ]
+                },
+                {
+                  "id": "PrimaryGroup",
+                  "label": "Primary commands",
+                  "visible": true,
+                  "icons": [
+                    {
+                      "size": 16,
+                      "url": "https://localhost:3000/assets/icon-16.png"
+                    },
+                    {
+                      "size": 32,
+                      "url": "https://localhost:3000/assets/icon-32.png"
+                    },
+                    {
+                      "size": 80,
+                      "url": "https://localhost:3000/assets/icon-80.png"
+                    }
+                  ],
+                  "controls": [
+                    {
+                      "id": "Button1",
+                      "type": "button",
+                      "label": "Button 1",
+                      "visible": true,
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Button 1",
+                        "description": "A button that is initially visible."
+                      },
+                      "actionId": "button1Action"
+                    },
+                    {
+                      "id": "Button2",
+                      "type": "button",
+                      "label": "Button 2",
+                      "visible": false,
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Button 2",
+                        "description": "A button whose initial visibility is false in the manifest."
+                      },
+                      "actionId": "button2Action"
+                    },
+                    {
+                      "id": "SampleMenu",
+                      "type": "menu",
+                      "label": "Sample menu",
+                      "visible": true,
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Sample menu",
+                        "description": "A menu whose visibility can be changed as a control."
+                      },
+                      "items": [
+                        {
+                          "id": "MenuItemOne",
+                          "type": "menuItem",
+                          "label": "Menu item one",
+                          "supertip": {
+                            "title": "Menu item one",
+                            "description": "Runs the first sample menu action."
+                          },
+                          "actionId": "menuItemOneAction"
+                        },
+                        {
+                          "id": "MenuItemTwo",
+                          "type": "menuItem",
+                          "label": "Menu item two",
+                          "supertip": {
+                            "title": "Menu item two",
+                            "description": "Runs the second sample menu action."
+                          },
+                          "actionId": "menuItemTwoAction"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "SecondaryGroup",
+                  "label": "Secondary commands",
+                  "visible": false,
+                  "icons": [
+                    {
+                      "size": 16,
+                      "url": "https://localhost:3000/assets/icon-16.png"
+                    },
+                    {
+                      "size": 32,
+                      "url": "https://localhost:3000/assets/icon-32.png"
+                    },
+                    {
+                      "size": 80,
+                      "url": "https://localhost:3000/assets/icon-80.png"
+                    }
+                  ],
+                  "controls": [
+                    {
+                      "id": "SecondaryButtonOne",
+                      "type": "button",
+                      "label": "Secondary button one",
+                      "visible": true,
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Secondary button one",
+                        "description": "The first button in the initially hidden group."
+                      },
+                      "actionId": "secondaryOneAction"
+                    },
+                    {
+                      "id": "SecondaryButtonTwo",
+                      "type": "button",
+                      "label": "Secondary button two",
+                      "visible": true,
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Secondary button two",
+                        "description": "The second button in the initially hidden group."
+                      },
+                      "actionId": "secondaryTwoAction"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
