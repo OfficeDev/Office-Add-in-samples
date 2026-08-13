@@ -37,6 +37,7 @@ This sample shows how to create a custom skill for Copilot in Excel that uses th
 - [Microsoft 365 Agents Toolkit CLI](https://learn.microsoft.com/microsoftteams/platform/toolkit/microsoft-365-agents-toolkit-cli)
 - A Microsoft 365 Developer Account
 - Microsoft 365 on Windows Version 2608 (Build 20305.20002) or later, or Microsoft 365 on Mac Version 16.112.26070718 or later.
+- A Microsoft 365 subscription in the **Beta** or **Current Channel (Preview)** update channel. 
 
    > **Note:** If you don't already have an Microsoft 365 subscription, you might qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
 
