@@ -66,7 +66,7 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | [Save custom settings in your Office Add-in](Samples/office-add-in-save-custom-settings) | Shows how to save custom settings inside an Office Add-in. The add-in stores data as key/value pairs, using the JavaScript API for Office property bag, browser cookies, web storage (localStorage and sessionStorage), or by storing the data in a hidden div in the document. |
 | [Use keyboard shortcuts for Office Add-in actions](Samples/office-keyboard-shortcuts) | Shows how to create custom keyboard shortcuts to invoke certain actions for your Office Add-in. |
 | [Define KeyTips for the ribbon controls of an Office Add-in](Samples/office-keytips) | Shows how to define KeyTips for ribbon controls of an Office Add-in. |
-| [Show or hide controls on a custom ribbon tab](Samples/office-visibility) | Shows how to set the initial visibility of ribbon groups and controls and change their visibility at runtime. |
+| [Show or hide controls on a custom ribbon tab](Samples/office-visibility) | Shows how to set the initial visibility of groups and controls in a custom tab and change their visibility at runtime. |
 
 ## Outlook
 

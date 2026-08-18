@@ -28,6 +28,11 @@
     ],
     "references": [
       {
+        "name": "Show or hide add-in commands on a custom tab",
+        "description": "Learn how to programmatically show or hide buttons, menus, and groups on a custom ribbon tab in your Office Add-in.",
+        "url": "https://learn.microsoft.com/office/dev/add-ins/design/show-hide-controls-custom-tab"
+      },
+      {
         "name": "Add-in commands",
         "description": "Learn how to add custom commands to the Office ribbon.",
         "url": "https://learn.microsoft.com/office/dev/add-ins/design/add-in-commands"

@@ -24,14 +24,16 @@ This sample shows how to set the initial visibility of groups and controls on a 
 
 The **Contoso Visibility** tab contains the following UI.
 
-- A **Taskpane** group that always remains visible so the sample controls stay accessible.
-- A **Primary commands** group that is initially visible.
+- A **Task pane** group that always remains visible so the sample controls stay accessible.
+- A **Primary commands** group that's initially visible.
 - **Button 1**, which is initially visible.
-- **Button 2**, which uses `"visible": false` in the manifest.
+- **Button 2**, which is initially hidden.
 - A **Sample menu** whose visibility can be changed at runtime.
-- A **Secondary commands** group that uses `"visible": false` in the manifest.
+- A **Secondary commands** group that's initially hidden.
 
-The taskpane lets you show or hide any sample button or menu, show or hide entire groups, update several elements in one request, and restore the manifest defaults.
+The task pane lets you show or hide any sample button or menu, show or hide entire groups, update several elements in one request, and restore the manifest defaults.
+
+To learn more about managing the visibility of controls on a custom tab, see [Show or hide add-in commands on a custom tab](https://learn.microsoft.com/office/dev/add-ins/design/show-hide-controls-custom-tab).
 
 ## Applies to
 
@@ -41,11 +43,13 @@ This sample is supported in Excel, PowerPoint, and Word on the following platfor
 - Office on Windows: Version 2606 (Build 16.0.20112.15190) and later
 - Office on Mac: Version 16.109.1 (Build 260512.115) and later
 
+For more information, see [Ribbon API 1.3 requirement set](https://learn.microsoft.com/javascript/api/requirement-sets/common/ribbon-api-requirement-sets).
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (the latest LTS version).
-- Office connected to a Microsoft 365 subscription.
-- An Office version listed in [Applies to](#applies-to).
+- Office connected to a Microsoft 365 subscription. Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
+- A [supported Office version](#applies-to).
 
 ## Version history
 
@@ -85,7 +89,7 @@ The add-in web files are served from `https://localhost:3000` on your computer.
     ```
 
     To test in Office on the web, run the applicable command to sideload the add-in in your preferred desktop application. Once sideloaded, the add-in also appears on the web client.
-1. When the Office application opens, select the **Contoso Visibility** tab and then select **Show taskpane**.
+1. When the Office application opens, select the **Contoso Visibility** tab and then select **Show task pane**.
 1. Follow the steps in [Try the sample](#try-the-sample).
 1. To stop the web server, run the following command.
 
@@ -100,7 +104,7 @@ The add-in web files are served from `https://localhost:3000` on your computer.
     - **Button 1** is visible.
     - **Button 2** isn't visible.
     - The **Secondary commands** group isn't visible.
-1. In the taskpane, under **Control visibility**, select **Button 2**, and then select **Show control**.
+1. In the task pane, under **Control visibility**, select **Button 2**, and then select **Show control**.
 
     The button appears in the **Primary commands** group.
 1. Select **Sample menu**, and then select **Hide control**.
@@ -118,9 +122,9 @@ The add-in web files are served from `https://localhost:3000` on your computer.
 
 ### Set initial visibility in the manifest
 
-The `visible` property in **manifest.json** sets the initial visibility of a custom tab, group, button, or menu. The default value is `true`.
+The `visible` property in the **manifest.json** file sets the initial visibility of a group, button, or menu in a custom tab. The default value is `true`.
 
-The following example makes a button initially hidden.
+The following example initially hides a button.
 
 ```json
 {
@@ -132,11 +136,11 @@ The following example makes a button initially hidden.
 }
 ```
 
-Initial visibility is supported by version 1.28 and later of the unified manifest for Microsoft 365.
+The `visible` property is supported starting in Version 1.28 and later of the unified manifest for Microsoft 365.
 
 ### Change visibility at runtime
 
-The shared runtime calls `Office.ribbon.requestUpdate()` with the IDs from the manifest. The following example shows a control.
+The shared runtime calls `Office.ribbon.requestUpdate()` using the control IDs from the manifest. The following example shows how to set the visibility of a control using the `requestUpdate` method.
 
 ```typescript
 await Office.ribbon.requestUpdate({
@@ -159,7 +163,7 @@ await Office.ribbon.requestUpdate({
 });
 ```
 
-To show or hide a group, set `visible` on the group object.
+To show or hide a group, set the `visible` property on the applicable group object.
 
 ```typescript
 await Office.ribbon.requestUpdate({
@@ -181,13 +185,14 @@ Only the properties included in the request are changed. The sample batches rela
 
 ## Additional resources
 
+- [Show or hide add-in commands on a custom tab](https://learn.microsoft.com/office/dev/add-ins/design/show-hide-controls-custom-tab)
+-  [Ribbon API 1.3 requirement set](https://learn.microsoft.com/javascript/api/requirement-sets/common/ribbon-api-requirement-sets)
 - [Add-in commands](https://learn.microsoft.com/office/dev/add-ins/design/add-in-commands)
 - [Office.Ribbon interface](https://learn.microsoft.com/javascript/api/office/office.ribbon)
 - [Office.RibbonUpdaterData interface](https://learn.microsoft.com/javascript/api/office/office.ribbonupdaterdata?view=common-js-preview)
 - [Unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview)
-- [Ribbon tab schema](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-ribbons-array-tabs-item?view=m365-app-1.28)
-- [Ribbon group schema](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-ribbons-custom-tab-groups-item?view=m365-app-1.28)
-- [Ribbon control schema](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-common-custom-group-controls-item?view=m365-app-1.28)
+- [Ribbon group schema](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-ribbons-custom-tab-groups-item)
+- [Ribbon control schema](https://learn.microsoft.com/microsoft-365/extensibility/schema/extension-common-custom-group-controls-item)
 
 ## Questions and feedback
 

@@ -7,7 +7,6 @@ import "../commands/commands";
 
 /* global Office console document HTMLElement HTMLButtonElement HTMLSelectElement */
 
-// These ribbon visibility members are available in Office.js but aren't yet in @types/office-js.
 declare global {
   namespace Office {
     interface Control {
@@ -88,7 +87,7 @@ const selectableControls = controls;
 function getElement(id: string): HTMLElement {
   const element = document.getElementById(id);
   if (!element) {
-    throw new Error(`The taskpane element "${id}" wasn't found.`);
+    throw new Error(`The task pane element "${id}" wasn't found.`);
   }
 
   return element;
@@ -97,7 +96,7 @@ function getElement(id: string): HTMLElement {
 function getButton(id: string): HTMLButtonElement {
   const element = getElement(id);
   if (!(element instanceof HTMLButtonElement)) {
-    throw new Error(`The taskpane element "${id}" isn't a button.`);
+    throw new Error(`The task pane element "${id}" isn't a button.`);
   }
 
   return element;
@@ -106,7 +105,7 @@ function getButton(id: string): HTMLButtonElement {
 function getSelect(id: string): HTMLSelectElement {
   const element = getElement(id);
   if (!(element instanceof HTMLSelectElement)) {
-    throw new Error(`The taskpane element "${id}" isn't a select element.`);
+    throw new Error(`The task pane element "${id}" isn't a select element.`);
   }
 
   return element;
