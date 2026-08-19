@@ -1,0 +1,166 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ribbon visibility sample</title>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    <style>
+      :root {
+        color: #242424;
+        font-family: "Segoe UI", sans-serif;
+        font-size: 14px;
+      }
+
+      body {
+        margin: 0;
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 20px;
+        margin: 0 0 8px;
+      }
+
+      h2 {
+        font-size: 16px;
+        margin: 0 0 10px;
+      }
+
+      p {
+        line-height: 1.4;
+        margin: 0 0 12px;
+      }
+
+      .status,
+      .card {
+        border: 1px solid #d1d1d1;
+        border-radius: 4px;
+        margin-top: 12px;
+        padding: 12px;
+      }
+
+      .status {
+        background: #f5f5f5;
+      }
+
+      .status.success {
+        background: #dff6dd;
+        border-color: #107c10;
+      }
+
+      .status.error {
+        background: #fde7e9;
+        border-color: #a80000;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      select {
+        box-sizing: border-box;
+        margin-bottom: 8px;
+        padding: 7px;
+        width: 100%;
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      button {
+        background: #0f6cbd;
+        border: 1px solid #0f6cbd;
+        border-radius: 2px;
+        color: #ffffff;
+        cursor: pointer;
+        min-height: 32px;
+        padding: 6px 12px;
+      }
+
+      button.secondary {
+        background: #ffffff;
+        color: #242424;
+      }
+
+      button:disabled {
+        background: #e0e0e0;
+        border-color: #c8c8c8;
+        color: #707070;
+        cursor: default;
+      }
+
+      #log {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        font-family: Consolas, monospace;
+        font-size: 12px;
+        height: 180px;
+        margin-top: 8px;
+        overflow-y: auto;
+        padding: 8px;
+        white-space: pre-wrap;
+      }
+
+      .log-error {
+        color: #f48771;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Ribbon visibility</h1>
+      <p>Show or hide groups and controls on the <strong>Contoso Visibility</strong> tab.</p>
+
+      <div id="status" class="status" role="status" aria-live="polite">Waiting for Office to initialize...</div>
+
+      <section class="card" aria-labelledby="control-heading">
+        <h2 id="control-heading">Control visibility</h2>
+        <label for="control-select">Button or menu</label>
+        <select id="control-select"></select>
+        <div class="button-row">
+          <button id="show-control" data-ribbon-action disabled>Show control</button>
+          <button id="hide-control" data-ribbon-action disabled>Hide control</button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="group-heading">
+        <h2 id="group-heading">Group visibility</h2>
+        <label for="group-select">Group</label>
+        <select id="group-select"></select>
+        <div class="button-row">
+          <button id="show-group" data-ribbon-action disabled>Show group</button>
+          <button id="hide-group" data-ribbon-action disabled>Hide group</button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="batch-heading">
+        <h2 id="batch-heading">Batch operations</h2>
+        <div class="button-row">
+          <button id="show-all" data-ribbon-action disabled>Show all sample content</button>
+          <button id="hide-all" data-ribbon-action disabled>Hide all sample content</button>
+          <button id="restore-defaults" class="secondary" data-ribbon-action disabled>
+            Restore manifest defaults
+          </button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="log-heading">
+        <div class="button-row">
+          <h2 id="log-heading">Activity log</h2>
+          <button id="clear-log" class="secondary">Clear</button>
+        </div>
+        <div id="log" role="log" aria-live="polite"></div>
+      </section>
+    </main>
+  </body>
+</html>
