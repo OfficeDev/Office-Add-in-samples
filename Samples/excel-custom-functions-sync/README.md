@@ -36,14 +36,14 @@ This sample shows how to create a synchronous custom function that reads a cell 
 
 1. Open a Command Prompt, Terminal, or bash shell.
 1. Run `npm install`.
-1. Then the installation is finished, run `npm start`. A web server will launch and Excel will open. This may take several minutes.
+1. When the installation is finished, run `npm start`. A web server launches and Excel opens. This may take several minutes.
 1. See [Use the sample add-in](#use-the-sample-add-in) for instructions about running the add-in.
 
 > **Note**: It is important to uninstall the add-in completely after working with it. To do so, run `npm stop` in the same window that you ran `npm start`. Close Excel. We recommend that you [clear the office cache](https://learn.microsoft.com/office/dev/add-ins/testing/clear-cache).
 
 ## Use the sample add-in
 
-1. If the **Sync CF Sample** control group doesn't automatically appear on the Excel **Home** tab ribbon, select the **Add-ins** button on the **Home tab**. Select the add-in on the flyout that oopens. 
+1. If the **Sync CF Sample** control group doesn't automatically appear on the Excel **Home** tab ribbon, select the **Add-ins** button on the **Home tab**. Select the add-in on the flyout that opens. 
 1. Select the **Set up sample data** button in the task pane to populate the active worksheet with sample values.
 2. Cells B2 and B3 use the `GETCELLVALUE` synchronous custom function to read values from A2 and A3.
 3. Change the values in A2 or A3 to see the synchronous custom function update automatically during Excel's calculation.

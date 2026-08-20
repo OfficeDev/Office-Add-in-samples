@@ -43,7 +43,7 @@ This sample sends emails from inside Excel using the Microsoft Graph JavaScript 
 
 ## Use the sample add-in
 
-1. If the **Send Emails** button doesn't automatically appear on the Excel **Home** tab ribbon, select the **Add-ins** button on the **Home tab**. Select the add-in on the flyout that oopens. 
+1. If the **Send Emails** button doesn't automatically appear on the Excel **Home** tab ribbon, select the **Add-ins** button on the **Home tab**. Select the add-in on the flyout that opens. 
 
     <img src="./assets/thumbnail.png" width="800" altText="A workbook with mail merge add-in open.">
 
