@@ -33,7 +33,7 @@ The sample is configured to use the [unified manifest for Microsoft 365](https:/
 
 Event-based add-ins work only when deployed by an administrator. If users install them directly from AppSource or the Office Store, they will not automatically launch. Moreover, for add-ins that handle the `OnDocumentOpened` event, *the auto-open feature won't work on desktop, only in Office on the web.* Other features of the add-in do work on desktop.
 
-For the purposes of this sample, sideloading the manifest with the script `npm start` sideloads the add-in in Word desktop and in Word on the web But the auto-open feature won't work on desktop, only in Office on the web. 
+For the purposes of this sample, sideloading the manifest with the script `npm start` sideloads the add-in in Word desktop and in Word on the web. But the auto-open feature won't work on desktop, only in Office on the web. 
 
 If you prefer to perform an admin deployment rather than sideload, take the following steps in the Microsoft 365 admin center.
 
@@ -43,12 +43,12 @@ If you prefer to perform an admin deployment rather than sideload, take the foll
 
     - **Unified manifest for Microsoft 365**: 
         1. In the **App type** drop down box, select **Teams app**. *Not* **Office Add-in**!
-        1. Use the file chooser control to navigate and select the app package zip file.
+        1. Use the file chooser control to navigate to and select the app package zip file.
         1. Follow the instructions on the page to complete the installation.
 
     - **Add-in only manifest**: 
         1. In the **App type** drop down box, select **Office Add-in**.
-        1. Use the file chooser control to navigate and select the manifest.
+        1. Use the file chooser control to navigate to and select the manifest.
         1. Follow the instructions on the page to complete the installation.
 
 For more information about how to deploy an add-in, please refer to [Deploy and publish Office Add-ins in the Microsoft 365 admin center](https://learn.microsoft.com/microsoft-365/admin/manage/office-addins).
