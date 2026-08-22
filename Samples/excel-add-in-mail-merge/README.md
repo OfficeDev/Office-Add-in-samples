@@ -31,12 +31,13 @@ This sample sends emails from inside Excel using the Microsoft Graph JavaScript 
 
 - Node.js (the latest LTS version). Visit the [Node.js site](https://nodejs.org/) to download and install the right version for your operating system. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 - Microsoft Office connected to a Microsoft 365 subscription. You might qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program), see [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-) for details. Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try?rtc=1) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/buy/compare-all-microsoft-365-products).
+- A version of Excel that supports Office Add-ins with the unified manifest for Microsoft 365. See [client and platform support](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview#client-and-platform-support).
   
 ## Run the add-in
 
 1. Open a Command Prompt, Terminal, or bash shell.
 1. Run `npm install`.
-1. Then the installation is finished, run `npm start`. A web server will launch and Excel will open. This may take several minutes.
+1. When the installation is finished, run `npm start`. A web server will launch and Excel will open. This may take several minutes.
 1. See [Use the sample add-in](#use-the-sample-add-in) for instructions about running the add-in.
 
 > **Note**: It is important to uninstall the add-in completely after working with it. To do so, run `npm stop` in the same window that you ran `npm start`. Close Excel. We recommend that you [clear the office cache](https://learn.microsoft.com/office/dev/add-ins/testing/clear-cache).
@@ -49,16 +50,16 @@ This sample sends emails from inside Excel using the Microsoft Graph JavaScript 
 
 1. If you have an application ID already, please ensure: 
 
-    In [Microsoft Entra admin center](https://aad.portal.azure.com) under **Identity > Applications > App registrations**: 
+    In [Microsoft Entra admin center](https://aad.portal.azure.com) under **Entra ID > App registrations**: 
     - Navigate to **Redirect URI**, set the first drop-down to `Single-page application (SPA)` and its value to `https://localhost:3000/consent.html`.
 
     Otherwise, if you haven't registered a web application with the Azure Active Directory admin center, please follow the steps below:
     * Log into [Microsoft Entra admin center](
     https://aad.portal.azure.com) using a personal or business Microsoft account.
-    * In the navigation, select **Identity > Applications > App registrations**.
+    * In the navigation, select **Entra ID > App registrations**.
     * Choose **New registration**. On the **App registrations** page, configure the values as follows: 
         - Set **Name** to `Office Add-in Graph Tutorial`.
-        - Set **Supported account types** to **Accounts in any organizational directory and personal Microsoft accounts**.
+        - Set **Supported account types** to **Any Entra ID + Personal Microsoft accounts**.
         - Under **Redirect URI**, set the first drop-down to `Single-page application (SPA)` and set the value to `
     https://localhost:3000/consent.html`.
     * Click **Register** and copy the value of the **Application (client) ID**.
@@ -84,7 +85,7 @@ These are the important files in the sample project.
 |   | tasks.json                
 | assets/                       Static assets, such as images
 | babel.config.json
-| manifest.xml                  Manifest file
+| manifest.json                 Unified manifest for Microsoft 365
 | package.json                  
 | README.md                     
 | src/                          Add-in source code
@@ -188,3 +189,18 @@ Want to learn more about new features and best practices for the Office platform
 
 Copyright (c) 2024 Microsoft Corporation. All rights reserved.
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Solution
+
+Solution | Author(s)
+---------|----------
+Create custom skill for Copilot in Excel | Microsoft
+
+## Version history
+
+Version  | Date | Comments
+---------| -----| --------
+1.0  | November 11th, 2024 | Initial release
+2.0  | August 22nd, 2026 | Converted to unified manifest for Microsoft 365
+
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-mail-merge" />
