@@ -1,0 +1,192 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.30/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.30",
+  "version": "1.0.0",
+  "id": "3599bc90-084a-4944-b9e6-2792bbe1866b",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us",
+    "additionalLanguages": []
+  },
+  "developer": {
+    "name": "Contoso",
+    "websiteUrl": "https://www.contoso.com",
+    "privacyUrl": "https://www.contoso.com/privacy",
+    "termsOfUseUrl": "https://www.contoso.com/servicesagreement"
+  },
+  "name": {
+    "short": "Add headers",
+    "full": "Add labels to the header of a Word document"
+  },
+  "description": {
+    "short": "Add headers to Word documents as they are opened.",
+    "full": "Adds a sensitivity label to the header of a Word document. The label can be applied by an event handler when the document opens, or manually from the task pane."
+  },
+  "icons": {
+    "outline": "assets/icon-32.png",
+    "color": "assets/icon-192.png"
+  },
+  "accentColor": "#230201",
+  "validDomains": [
+    "contoso.com"
+  ],
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Document.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": [
+          "document"
+        ],
+        "capabilities": [
+          {
+            "name": "AddinCommands",
+            "minVersion": "1.1"
+          }
+        ]
+      },
+      "runtimes": [
+        {
+          "id": "TaskPaneRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/taskpane.html"
+          },
+          "lifetime": "long",
+          "actions": [
+            {
+              "id": "ShowTaskPane",
+              "type": "openPage",
+              "view": "AddHeaders"
+            }
+          ]
+        },
+        {
+          "id": "CommandsRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/commands.html",
+            "script": "https://localhost:3000/commands.js"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "changeHeader",
+              "type": "executeFunction"
+            },
+            {
+              "id": "registerOnParagraphChanged",
+              "type": "executeFunction"
+            }
+          ]
+        }
+      ],
+      "ribbons": [
+        {
+          "requirements": {
+            "formFactors": [
+              "desktop"
+            ]
+          },
+          "contexts": [
+            "default"
+          ],
+          "tabs": [
+            {
+              "builtInTabId": "TabHome",
+              "groups": [
+                {
+                  "id": "CommandsGroup",
+                  "label": "Event-based add-in activation",
+                  "icons": [
+                    {
+                      "size": 16,
+                      "url": "https://localhost:3000/assets/icon-16.png"
+                    },
+                    {
+                      "size": 32,
+                      "url": "https://localhost:3000/assets/icon-32.png"
+                    },
+                    {
+                      "size": 80,
+                      "url": "https://localhost:3000/assets/icon-80.png"
+                    }
+                  ],
+                  "controls": [
+                    {
+                      "id": "TaskpaneButton",
+                      "type": "button",
+                      "label": "My add-in",
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "My add-in",
+                        "description": "Click to show the task pane"
+                      },
+                      "actionId": "ShowTaskPane"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "autoRunEvents": [
+        {
+          "events": [
+            {
+              "type": "onDocumentOpened",
+              "actionId": "changeHeader"
+            }
+          ]
+        }
+      ],
+      "alternates": [
+        {
+          "alternateIcons": {
+            "icon": {
+              "size": 32,
+              "url": "https://localhost:3000/assets/icon-32.png"
+            },
+            "highResolutionIcon": {
+              "size": 64,
+              "url": "https://localhost:3000/assets/icon-64.png"
+            }
+          }
+        }
+      ],
+      "getStartedMessages": [
+        {
+          "requirements": {
+            "formFactors": [
+              "desktop"
+            ]
+          },
+          "title": "Get started with your sample add-in!",
+          "description": "Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Task Pane' button to get started.",
+          "learnMoreUrl": "https://go.microsoft.com/fwlink/?LinkId=276812"
+        }
+      ]
+    }
+  ]
+}
