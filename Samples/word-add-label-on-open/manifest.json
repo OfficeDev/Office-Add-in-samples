@@ -59,7 +59,7 @@
           "code": {
             "page": "https://localhost:3000/taskpane.html"
           },
-          "lifetime": "long",
+          "lifetime": "short",
           "actions": [
             {
               "id": "ShowTaskPane",

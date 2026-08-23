@@ -23,7 +23,6 @@
       <Hosts>
         <Host xsi:type="Document">
           <Runtimes>
-            <Runtime resid="Taskpane.Url" lifetime="long" />
             <Runtime resid="WebViewRuntime.Url">
               <Override type="javascript" resid="JsRuntimeWord.Url"/>
             </Runtime>
