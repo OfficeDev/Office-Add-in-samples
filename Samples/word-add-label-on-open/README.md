@@ -15,11 +15,13 @@ extensions:
 description: "Shows how to configure a Word add-in to activate when a document opens."
 ---
 
-# Automatically add labels with an add-in when a Word document opens
+# Automatically add labels with an add-in when any Word document opens
 
 ## Summary
 
-This sample shows how to configure an add-in to automatically run when a Word document opens. It adds a header to indicate the content's sensitivity.
+This sample shows how to configure an add-in to automatically run when any Word document opens. It adds a header to indicate the content's sensitivity. 
+
+> **Note**: Once this add-in is installed, it works on every document created or opened in Word. This is different from the per-document system of running code when a document opens that is described in [Run code in your Office Add-in when the document opens](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/run-code-on-document-open).
 
 ## Description
 
@@ -31,37 +33,16 @@ The sample is configured to use the [unified manifest for Microsoft 365](https:/
 
 ### Event-based activation deployment limitations
 
-Event-based add-ins work only when deployed by an administrator. If users install them directly from AppSource or the Office Store, they will not automatically launch. Moreover, for add-ins that handle the `OnDocumentOpened` event, *the auto-open feature won't work on desktop, only in Office on the web.* Other features of the add-in do work on desktop.
-
-For the purposes of this sample, sideloading the manifest with the script `npm start` sideloads the add-in in Word desktop and in Word on the web. But the auto-open feature won't work on desktop, only in Office on the web. 
-
-If you prefer to perform an admin deployment rather than sideload, take the following steps in the Microsoft 365 admin center.
-
-1. In the admin portal, expand the **Settings** section in the navigation pane then select **Integrated apps**.
-1. On the **Integrated apps** page, choose the **Upload custom apps** action.
-1. The next steps depend on what manifest is being used. 
-
-    - **Unified manifest for Microsoft 365**: 
-        1. In the **App type** drop down box, select **Teams app**. *Not* **Office Add-in**!
-        1. Use the file chooser control to navigate to and select the app package zip file.
-        1. Follow the instructions on the page to complete the installation.
-
-    - **Add-in only manifest**: 
-        1. In the **App type** drop down box, select **Office Add-in**.
-        1. Use the file chooser control to navigate to and select the manifest.
-        1. Follow the instructions on the page to complete the installation.
-
-For more information about how to deploy an add-in, please refer to [Deploy and publish Office Add-ins in the Microsoft 365 admin center](https://learn.microsoft.com/microsoft-365/admin/manage/office-addins).
+Event-based add-ins work only when deployed by a Microsoft 365 administrator. If users install them directly from AppSource or the Office Store, they will not automatically launch. Moreover, they cannot be sideloaded.
 
 ## Applies to
 
 - Word on the web
-- Word on Windows (with limited functionality)
+- Word on Windows
 
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- To sideload the unified manifest, Office on Windows Version 2501 (18407.20002) or later. For details, see [Sideload Office Add-ins that use the unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-add-in-with-unified-manifest).
 - [Node.js](https://nodejs.org/) (latest recommended version).
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
@@ -69,7 +50,7 @@ For more information about how to deploy an add-in, please refer to [Deploy and 
 
 | Solution | Authors |
 |----------|-----------|
-| How to configure a Word add-in to activate when a document opens. | Microsoft |
+| How to configure a Word add-in to activate when any document opens. | Microsoft |
 
 ## Version history
 
@@ -80,45 +61,91 @@ For more information about how to deploy an add-in, please refer to [Deploy and 
 
 ## Choose a manifest type
 
-By default, the sample uses the unified manifest for Microsoft 365 (**manifest.json**). However, you can switch the project between the unified manifest and the add-in only manifest (**manifest.xml**). For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the unified manifest, skip ahead to the [Run the sample](#run-the-sample) section.
+By default, the sample uses the unified manifest for Microsoft 365 (**manifest.json**). However, you can switch the project between the unified manifest and the add-in only manifest (**manifest.xml**). For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the unified manifest, skip ahead to the [Install the add-in](#install-the-add-in) section.
 
 ### To switch to the add-in only manifest
 
-Copy all the files from the **manifest-configurations/add-in-only** subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.json** file from the root folder, so only files needed for the add-in only manifest are present. Then, [run the sample](#run-the-sample).
+Copy all the files from the **manifest-configurations/add-in-only** subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.json** file from the root folder, so only files needed for the add-in only manifest are present. Then, continue with [Install the add-in](#install-the-add-in).
 
 ### To switch back to the unified manifest for Microsoft 365
 
 To switch back to the unified manifest, copy the files from the **manifest-configurations/unified** subfolder to the sample's root folder. We recommend that you delete the **manifest.xml** file from the root folder.
 
-## Start the sample
+## Install the add-in
 
-1. Close Word if it's running.
+You must install the add-in in the Microsoft 365 Admin Portal. It can't be sideloaded.
 
 1. Clone or download this repo.
+1. Navigate to the **Office-Add-in-samples\Samples\word-add-label-on-open** folder in a command prompt, terminal, or bash shell.
+1. Continue with the section below for your type of manifest.
 
-1. Go to the **Samples\word-add-label-on-open** folder via the command line.
+### Install the unified manifest version
 
+1. Using any zip utility, create an app package zip file that contains the manifest.json and the two icon files specified in the "icons" property of the manifest. The icon files must have the same relative path in the zip file as specified in the manifest. Since the path of the two image files is assets/icon-192.png and assets/icon-32.png, then you must include an assets folder with the two files in the zip package. 
+1. Sign in as an admin to your Microsoft 365 tenancy.
+1. In the admin portal, expand the **Settings** section in the navigation pane then select **Integrated apps**.
+1. On the **Integrated apps** page, choose the **Upload custom apps** action.
+1. In the **App type** drop down box, select **Teams app**. *Not* **Office Add-in**!
+1. Use the file chooser control to navigate to and select the app package zip file.
+1. Follow the instructions on the page to complete the installation.
+
+For more information about how to deploy an add-in, please refer to [Deploy and publish Office Add-ins in the Microsoft 365 admin center](https://learn.microsoft.com/microsoft-365/admin/manage/office-addins).
+
+### Install the add-in only manifest version
+
+1. Sign in as an admin to your Microsoft 365 tenancy.
+1. In the admin portal, expand the **Settings** section in the navigation pane then select **Integrated apps**.
+1. On the **Integrated apps** page, choose the **Upload custom apps** action. 
+1. In the **App type** drop down box, select **Office Add-in**.
+1. Use the file chooser control to navigate to and select the manifest.
+1. Follow the instructions on the page to complete the installation.
+
+For more information about how to deploy an add-in, please refer to [Deploy and publish Office Add-ins in the Microsoft 365 admin center](https://learn.microsoft.com/microsoft-365/admin/manage/office-addins).
+
+## Start the sample
+
+After you have installed the add-in, you can test it in Word on the web right away. You many need to wait as much as 24 hours to test it on Word on Windows. It is not supported on Mac or mobile.
+
+### Test on the web
+
+1. Navigate to the **Office-Add-in-samples\Samples\word-add-label-on-open** folder in a command prompt, terminal, or bash shell.
 1. Run `npm install`.
+1. Run `npm run build:dev`. This will create a **\dist** folder and put the **commands.js** file there. The **webpack.config.js** file gives this folder the alias **public**, which is where the manifest has told Word to expect it.
+1. Run `npm run dev-server`. This launches the server. 
+1. In a browser, open Word in your Microsoft 365 tenant, and then open a blank document. A header should immediately be inserted specifying that the document has "Public" sensitivity. If this doesn't happen with the very first document, select the **File** tab in Word on the web and open another blank document.
+1. Select the **File** tab in Word on the web and open a document that already has content. A header should immediately be inserted specifying that the document has "Highly Confidential" sensitivity.
+1. Select the **My add-in** button on the **Event-based add-in activation** in the **Home** tab to open the task pane.
+1. Select any of the sensitivity levels that are listed in the task pane to replace the header.
 
-1. Optionally, run `npm run signin` even if you are already signed in. Doing so again improves the chance that the add-in's button will appear on the ribbon, so you won't have to select the **Add-ins** button on the **Home** tab to open it. The command will open a signin prompt. Sign in with an account in your Microsoft 365 tenant. 
+> **Note**: When you are finished testing, run `npm stop` to stop the server. 
 
-1. Run `npm run build:dev`. This step puts the commands JavaScript file in a **\dist** folder from which the dev server will serve as a static file. 
+### Test on Windows
 
-1. Run `npm start` to build the project, sideload the add-in, and launch the web server. Sideloading the unified manifest on Windows also makes the add-in available in Office on the web.
+It may take up to 24 hours for your Word on Windows client to synchronize with app catalog in your Microsoft 365 tenant. 
 
-    When you are using the unified manifest, the command creates the app package (a zip file that contains **manifest.json** and the two icon files referenced by the manifest's `"icons"` property) and installs it for you.
+1. Cycle through the following deployment check steps periodically. 
 
-1. It may take as much as three minutes to sideload. Word desktop will open. *You can only test the task pane. The add-in's auto-open feature doesn't work on desktop clients.* To test the auto-open feature, see [Try it out](#try-it-out).
+    1. Close Word if it's running, and then immediately reopen it.
+    1. Navigate to the **Office-Add-in-samples\Samples\word-add-label-on-open** folder in a command prompt, terminal, or bash shell.
+    1. If you haven't already, run `npm install`.
+    1. Run `npm run signin`. You will be prompted to sign in to your Microsoft 365 tenant, even if you are already signed in. Follow the prompts to sign in.
+    1. Run `npm run build:dev`. This will create a **\dist** folder and put the **commands.js** file there. The **webpack.config.js** file gives this folder the alias **public**, which is where the manifest has told Word to expect it.
+    1. Run `npm run dev-server`. This launches the server.
+    1. Open Word, and then open a blank document.
+    1. The last deployment check step depends on whether the **Event-based add-in activation** group is on the **Home** tab of the ribbon or the add-in is listed in the flyout that opens when you click the **Add-ins** button.
+    
+      - If the group isn't on the ribbon and the add-in isn't listed on the flyout, run `npm stop`. Repeat these deployment check steps in a little while.
+       - If the group isn't on the **Home** tab, but the add-in is listed on the flyout, select it on the flyout to add it to the ribbon. Then go on to the next major step.
+       - If the group is on the ribbon, go on to the next major step. 
 
-## Try it out
+    > **Note**: If the add-in isn't installed in Word within 24 hours, force a synchronization with the Integrated Apps catalog: Open Word on your computer. Open the Admin portal and on the **Integrated Apps** page, open the add-ins listing. Edit the add-ins properties to change what users it is available to. For example, if it is initially available only to one user, change that to make it available to a group. Wait a minute and then reverse the change. Repeat the deployment check steps.
 
-1. *In Word on the web*, try opening both new and existing Word documents. Headers should automatically be added when the documents open. A new or empty document gets the "Public" header, and a document that already has content gets the "Highly Confidential" header.
+1. The handler for the **OnDocumentOpened** event doesn't run on the first document you open in Word on Windows. Select the **File** tab in Word and open another blank document. A header should immediately be inserted specifying that the document has "Public" sensitivity. 
+1. Select the **File** tab in Word on the web and open a document that already has content. A header should immediately be inserted specifying that the document has "Highly Confidential" sensitivity.
+1. Select the **My add-in** button on the **Event-based add-in activation** in the **Home** tab to open the task pane.
+1. Select any of the sensitivity levels that are listed in the task pane to replace the header.
 
-    If no header is added, see [Event-based activation deployment limitations](#event-based-activation-deployment-limitations).
-
-1. On the **Home** tab, in the **Event-based add-in activation** group, select **My add-in** to open the task pane.
-
-1. Select any sensitivity level in the task pane, and verify that the corresponding label replaces the header that the event handler added.
+> **Note**: When you are finished testing, run `npm stop` to stop the server. 
 
 ## Make it yours
 

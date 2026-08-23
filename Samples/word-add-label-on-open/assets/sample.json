@@ -3,7 +3,7 @@
       "name": "word-add-label-on-open",
       "reponame": "office-add-in-samples",
       "source": "officedev",
-      "title": "Add a label to a Word document on open",
+      "title": "Automatically add labels with an add-in when any Word document opens",
       "shortDescription": "A Word add-in that uses the OnDocumentOpen event.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/word-add-label-on-open",
       "longDescription": [
