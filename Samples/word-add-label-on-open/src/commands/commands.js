@@ -10,7 +10,7 @@ Office.onReady(() => {
 });
 
 async function changeHeader(event) {
-  Word.run(async (context) => {
+  await Word.run(async (context) => {
     const body = context.document.body;
     body.load("text");
     await context.sync();

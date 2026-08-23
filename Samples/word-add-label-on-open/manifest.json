@@ -73,7 +73,7 @@
           "type": "general",
           "code": {
             "page": "https://localhost:3000/commands.html",
-            "script": "https://localhost:3000/commands.js"
+            "script": "https://localhost:3000/public/commands.js"
           },
           "lifetime": "short",
           "actions": [

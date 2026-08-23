@@ -56,6 +56,7 @@ For more information about how to deploy an add-in, please refer to [Deploy and 
 ## Applies to
 
 - Word on the web
+- Word on Windows (with limited functionality)
 
 ## Prerequisites
 
@@ -91,21 +92,27 @@ To switch back to the unified manifest, copy the files from the **manifest-confi
 
 ## Start the sample
 
+1. Close Word if it's running.
+
 1. Clone or download this repo.
 
 1. Go to the **Samples\word-add-label-on-open** folder via the command line.
 
 1. Run `npm install`.
 
-1. Close Word if it's running, then run `npm start` to build the project, sideload the add-in, and launch the web server. Sideloading the unified manifest on Windows also makes the add-in available in Office on the web.
+1. Optionally, run `npm run signin` even if you are already signed in. Doing so again improves the chance that the add-in's button will appear on the ribbon, so you won't have to select the **Add-ins** button on the **Home** tab to open it. The command will open a signin prompt. Sign in with an account in your Microsoft 365 tenant. 
 
-    The command creates the app package (a zip file that contains **manifest.json** and the two icon files referenced by the manifest's `"icons"` property) and installs it for you.
+1. Run `npm run build:dev`. This step puts the commands JavaScript file in a **\dist** folder from which the dev server will serve as a static file. 
 
-1. It may take as much as three minutes to sideload. Word desktop will open. *Close it. The add-in's auto-open feature doesn't work on desktop clients.*
+1. Run `npm start` to build the project, sideload the add-in, and launch the web server. Sideloading the unified manifest on Windows also makes the add-in available in Office on the web.
+
+    When you are using the unified manifest, the command creates the app package (a zip file that contains **manifest.json** and the two icon files referenced by the manifest's `"icons"` property) and installs it for you.
+
+1. It may take as much as three minutes to sideload. Word desktop will open. *You can only test the task pane. The add-in's auto-open feature doesn't work on desktop clients.* To test the auto-open feature, see [Try it out](#try-it-out).
 
 ## Try it out
 
-1. *In Word on the web*, try opening both new and existing Word documents. Headers should automatically be added when they open. A new or empty document gets the "Public" header, and a document that already has content gets the "Highly Confidential" header.
+1. *In Word on the web*, try opening both new and existing Word documents. Headers should automatically be added when the documents open. A new or empty document gets the "Public" header, and a document that already has content gets the "Highly Confidential" header.
 
     If no header is added, see [Event-based activation deployment limitations](#event-based-activation-deployment-limitations).
 
