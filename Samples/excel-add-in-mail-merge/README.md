@@ -194,6 +194,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 Solution | Author(s)
 ---------|----------
+Use Excel and Microsoft Grpah to implement a bulk email add-in | Microsoft
 
 ## Version history
 
