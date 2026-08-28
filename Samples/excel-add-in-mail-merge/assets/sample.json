@@ -4,7 +4,7 @@
       "reponame": "office-add-in-samples",
       "source": "officedev",
       "title": "Mail merge in an Excel Add-in",
-      "shortDescription": "an Excel add-in that uses Microsoft Graph and Excel data to send bulk emails.",
+      "shortDescription": "An Excel add-in that uses Microsoft Graph and Excel data to send bulk emails.",
       "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/excel-add-in-mail-merge",
       "longDescription": [
         "Shows how to create an Excel add-in that uses Microsoft Graph and Excel data to send bulk emails."
