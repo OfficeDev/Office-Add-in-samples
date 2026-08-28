@@ -194,7 +194,6 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 Solution | Author(s)
 ---------|----------
-Create custom skill for Copilot in Excel | Microsoft
 
 ## Version history
 
