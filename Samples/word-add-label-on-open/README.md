@@ -25,8 +25,9 @@ This sample shows how to configure an add-in to automatically run when a Word do
 
 The add-in acts when the `OnDocumentOpened` event occurs. The `changeHeader` function is a JavaScript event handler for this event. It adds either a "Public" header to new documents or a "Highly Confidential" header to existing documents that already have content. Some of the functionality is duplicated in the task pane to allow for manual changes.
 
-![The top of a Word document with a hearder that reads "Public - The data is for the public and is shareable externally" There is a group on the ribbon called "Event-based add-in activation" with a button named "My add-in".](./ReadmeImages/OndocumentopenedPublic.png)
-![The top of a Word document with a hearder that reads "Highly Confidential - The data must be secret or in some way highly critical". The body of the document has text "This document has content." There is a group on the ribbon called "Event-based add-in activation" with a button named "My add-in".](.ReadmeImages/OndocumentopenedHighly.png)]
+![The top of a Word document with a header that reads "Public - The data is for the public and is shareable externally" There is a group on the ribbon called "Event-based add-in activation" with a button named "My add-in".](./ReadmeImages/OndocumentopenedPublic.png)
+
+![The top of a Word document with a header that reads "Highly Confidential - The data must be secret or in some way highly critical". The body of the document has text "This document has content." There is a group on the ribbon called "Event-based add-in activation" with a button named "My add-in".](.ReadmeImages/OndocumentopenedHighly.png)
 
 This sample is designed for Word, but the event-based activation architecture will also work for Excel and PowerPoint.
 
@@ -91,7 +92,7 @@ For more information, see [Deploy and publish Office Add-ins in the Microsoft 36
 
     > **Note:** If you save the document and reopen it, the event handler changes the header to "Public" or "Highly Confidential". See [Description](#description).
 
-    > **Important:** When you finish a testing session, run `npm stop` to shut down the server. When you are finished working with the sample, [uninstall it](#uninstall-the-add-in).
+> **Important:** When you finish a testing session, run `npm stop` to shut down the server. When you are finished working with the sample, [uninstall it](#uninstall-the-add-in).
 
 ## Make it yours
 
@@ -100,9 +101,9 @@ The following are a few suggestions for how you could tailor this to your scenar
 - Add more complex logic to categorize the headers based on the content of the file.
 - Apply the `OnDocumentOpened` event logic to an Excel or PowerPoint add-in.
 
-Whenever you make a change in the manifest, you must [uninstall the add-in](uninstall-the-add-in) and then reinstall it. This requires waiting for propagation twice. Uninstallation is not required for changes to any of the other files. If changes to those files don't seem to take effect, take the following steps in a command prompt in the root of the project.
+Whenever you make a change in the manifest, you must [uninstall the add-in](#uninstall-the-add-in) and then reinstall it. This requires waiting for propagation twice. Uninstallation is not required for changes to any of the other files. If changes to those files don't seem to take effect, take the following steps in a command prompt in the root of the project.
 
-1. Shutdown the server with `npm stop`.
+1. Shut down the server with `npm stop`.
 1. Run `npm run build:dev`.
 1. Run `npm run dev-server`.
 
@@ -125,8 +126,8 @@ To uninstall the add-in, take the following steps:
 The long wait for propagation after installation (or uninstallation) is only needed when you are testing changes to the `OnDocumentOpened` handler. If you only want to work with the task pane, you can sideload the add-in with these steps.
 
 1. [Uninstall the add-in](#uninstall-the-add-in). You must do this before sideloading to ensure that you aren't running two add-ins handling the same event. You will need to wait for propagation of the uninstallation, but then you can sideload and re-sideload as much as you want without further waiting.
-1. In a command prompt in the root of the project, run `npm start` to build the project, launch the web server, and sideload the add-in in Word.
-1. When you finish a testing session, run `npm stop` to unregister it and shutdown the server.
+1. When the uninstallation has propagated, open a command prompt in the root of the project and run `npm start` to build the project, launch the web server, and sideload the add-in in Word.
+1. When you finish a testing session, run `npm stop` to unregister the add-in and shut down the server.
 
 ## Related content
 
