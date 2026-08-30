@@ -10,7 +10,7 @@ Office.onReady(() => {
 });
 
 async function changeHeader(event) {
-  Word.run(async (context) => {
+  await Word.run(async (context) => {
     const body = context.document.body;
     body.load("text");
     await context.sync();
@@ -70,27 +70,13 @@ async function paragraphChanged() {
   });
 }
 async function registerOnParagraphChanged(event) {
-  Word.run(async (context) => {
+  await Word.run(async (context) => {
     let eventContext = context.document.onParagraphChanged.add(paragraphChanged);
     await context.sync();
   });
   // Calling event.completed is required. event.completed lets the platform know that processing has completed.
   event.completed();
 }
-
-function getGlobal() {
-  return typeof self !== "undefined"
-    ? self
-    : typeof window !== "undefined"
-    ? window
-    : typeof global !== "undefined"
-    ? global
-    : undefined;
-}
-
-const g = getGlobal();
-
-// The add-in command functions need to be available in global scope
 
 Office.actions.associate("changeHeader", changeHeader);
 Office.actions.associate("registerOnParagraphChanged", registerOnParagraphChanged);

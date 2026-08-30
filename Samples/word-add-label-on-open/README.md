@@ -25,16 +25,16 @@ This sample shows how to configure an add-in to automatically run when a Word do
 
 The add-in acts when the `OnDocumentOpened` event occurs. The `changeHeader` function is a JavaScript event handler for this event. It adds either a "Public" header to new documents or a "Highly Confidential" header to existing documents that already have content. Some of the functionality is duplicated in the task pane to allow for manual changes.
 
-This sample is designed for Word, but the event-based activation parts will also work for Excel and PowerPoint.
+![The top of a Word document with a hearder that reads "Public - The data is for the public and is shareable externally" There is a group on the ribbon called "Event-based add-in activation" with a button named "My add-in".](./ReadmeImages/OndocumentopenedPublic.png)
+![The top of a Word document with a hearder that reads "Highly Confidential - The data must be secret or in some way highly critical". The body of the document has text "This document has content." There is a group on the ribbon called "Event-based add-in activation" with a button named "My add-in".](.ReadmeImages/OndocumentopenedHighly.png)]
+
+This sample is designed for Word, but the event-based activation architecture will also work for Excel and PowerPoint.
 
 ### Event-based activation deployment limitations
 
-Event-based add-ins work only when deployed by an administrator. If users install them directly from AppSource or the Office Store, they will not automatically launch. For the purposes of this sample, sideloading the manifest in Word on the web should be sufficient to explore the functionality.  To perform an admin deployment, upload the manifest to the Microsoft 365 admin center by taking the following actions.
+Event-based activation works only when the add-in deployed by an administrator in the Microsoft 365 tenant Admin center. It doesn't work if the add-in is sideloaded or installed by a user from Microsoft Marketplace, although other features of the add-in would work.
 
-1. In the admin portal, expand the **Settings** section in the navigation pane then select **Integrated apps**.
-1. On the **Integrated apps** page, choose the **Upload custom apps** action.
-
-For more information about how to deploy an add-in, please refer to [Deploy and publish Office Add-ins in the Microsoft 365 admin center](https://learn.microsoft.com/microsoft-365/admin/manage/office-addins).
+For more information, see [Deploy and publish Office Add-ins in the Microsoft 365 admin center](https://learn.microsoft.com/microsoft-365/admin/manage/office-addins).
 
 ## Applies to
 
@@ -58,22 +58,40 @@ For more information about how to deploy an add-in, please refer to [Deploy and 
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 06-30-2025 | Initial release |
+| 1.1 | 09-01-2026 | Bug fixes |
 
-## Run the sample
+## Install the sample for testing
 
 1. Clone or download this repo.
-
-1. Go to the **Samples\word-add-label-on-open** folder via the command line.
-
+1. In a command prompt, navigate to the folder where you cloned or downloaded this repo and then to the **Samples\word-add-label-on-open** folder.
 1. Run `npm install`.
+1. Run `npm run build:dev`.
+1. Run `npm run dev-server`.
 
-1. Run `npm start` to build the project and launch the web server. **Ignore the Word document that is opened**.
+    > **Note**: Do *not* run `npm start`. You aren't sideloading the add-in, and attempting to sideload it could result in two copies of the add-in installed, and it is random which handler Word will run. It is For more information, see [Optionally sideload](#optionally-sideload).
 
-1. Manually sideload your add-in in Word on the web by following the guidance at [Sideload Office Add-ins to Office on the web](../testing/sideload-office-add-ins-for-testing.md#manually-sideload-an-add-in-to-office-on-the-web)
+1. In the Microsoft 365 admin portal, expand the **Settings** section in the navigation pane then select **Integrated apps**.
+1. On the **Integrated apps** page, choose the **Upload custom apps** action.
+1. On the **Upload Apps to deploy** page, select **Office Add-in** from the **App type** drop down.
+1. In the **Choose how to upload app** section, select **Upload manifest file (.xml) from device**.
+1. Use the file picker to navigate to the folder where you cloned or downloaded this repo and then to the **Samples\word-add-label-on-open** folder.
+1. Select the `manifest.xml` file.
+1. Select **Just me** as the user. 
+1. Follow the instructions on screen to finish the deployment.
+
+> :exclamation: **Important:** You cannot run the add-in until after it has propagated to a platform. Propogation to Word on the web can take several hours, typically 2 to 3 hours. Propogation to Word on Windows can take 24 hours, typically 6 to 12 hours.
+>
+> To test whether the add-in has propogated, see [Try it out](#try-it-out).
 
 ## Try it out
 
-1. Try opening both new and existing Word documents. Headers should automatically be added when they open.
+1. In either Word on the web or Word on Windows, try opening both new and existing Word documents. If the add-in has propagated to the platform, headers should automatically be added when the document opens, and there should be a **My Add-in** button in an **Event-activated add-in** group on the **Home** tab of the ribbon. If these things don't happen, propogation to the platform has not completed. Close Word and try again in a while.
+1. Select the **My add-ins** button to open the task pane.
+1. Select any of the links on the task pane to add/change the header.
+
+    > **Note:** If you save the document and reopen it, the event handler changes the header to "Public" or "Highly Confidential". See [Description](#description).
+
+    > **Important:** When you finish a testing session, run `npm stop` to shut down the server. When you are finished working with the sample, [uninstall it](#uninstall-the-add-in).
 
 ## Make it yours
 
@@ -81,6 +99,34 @@ The following are a few suggestions for how you could tailor this to your scenar
 
 - Add more complex logic to categorize the headers based on the content of the file.
 - Apply the `OnDocumentOpened` event logic to an Excel or PowerPoint add-in.
+
+Whenever you make a change in the manifest, you must [uninstall the add-in](uninstall-the-add-in) and then reinstall it. This requires waiting for propagation twice. Uninstallation is not required for changes to any of the other files. If changes to those files don't seem to take effect, take the following steps in a command prompt in the root of the project.
+
+1. Shutdown the server with `npm stop`.
+1. Run `npm run build:dev`.
+1. Run `npm run dev-server`.
+
+## Uninstall the add-in 
+
+To uninstall the add-in, take the following steps:
+
+1. In the Microsoft 365 admin portal, expand the **Settings** section in the navigation pane then select **Integrated apps**.
+1. On the **Integrated apps** page, select the add-in.
+1. On the add-in's flyout, select **Remove app**.
+1. On the **Remove apps** page, confirm that you want to remove the app and select **Remove**.
+1. On the **Successfully removed** page, select **Done**.
+
+> :exclamation: **Important:** Uninstallation must propagate to the platforms just as installation does. Propogation to Word on the web can take several hours, typically 2 to 3 hours. Propogation to Word on Windows can take 24 hours, typically 6 to 12 hours.
+>
+> To test if uninstallation has propagated, open a Word file on the platform. If the **My Add-in** button in an **Event-activated add-in** group is still on the **Home** tab of the ribbon, propagation has not happened. Close Word and try again in a while.
+
+## Optionally sideload
+
+The long wait for propagation after installation (or uninstallation) is only needed when you are testing changes to the `OnDocumentOpened` handler. If you only want to work with the task pane, you can sideload the add-in with these steps.
+
+1. [Uninstall the add-in](#uninstall-the-add-in). You must do this before sideloading to ensure that you aren't running two add-ins handling the same event. You will need to wait for propagation of the uninstallation, but then you can sideload and re-sideload as much as you want without further waiting.
+1. In a command prompt in the root of the project, run `npm start` to build the project, launch the web server, and sideload the add-in in Word.
+1. When you finish a testing session, run `npm stop` to unregister it and shutdown the server.
 
 ## Related content
 
