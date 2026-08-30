@@ -27,9 +27,7 @@ The add-in acts when the `OnDocumentOpened` event occurs. The `changeHeader` fun
 
 ![The top of a Word document with a header that reads "Public - The data is for the public and is shareable externally". There is a group on the ribbon called "Event-based add-in activation" with a button named "My add-in".](./ReadmeImages/OndocumentopenedPublic.png)
 
-![whatever](./ReadmeImages/OndocumentopenedHighly.png)
-
-![The top of a Word document with a header that reads "Highly Confidential - The data must be secret or in some way highly critical". The body of the document has text "This document has content." There is a group on the ribbon called "Event-based add-in activation" with a button named "My add-in".](.ReadmeImages/OndocumentopenedHighly.png)
+![The top of a Word document with a header that reads "Highly Confidential - The data must be secret or in some way highly critical". The body of the document has text "This document has content." There is a group on the ribbon called "Event-based add-in activation" with a button named "My add-in".](./ReadmeImages/OndocumentopenedHighly.png)
 
 This sample is designed for Word, but the event-based activation architecture will also work for Excel and PowerPoint.
 
