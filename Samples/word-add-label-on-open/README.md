@@ -25,7 +25,9 @@ This sample shows how to configure an add-in to automatically run when a Word do
 
 The add-in acts when the `OnDocumentOpened` event occurs. The `changeHeader` function is a JavaScript event handler for this event. It adds either a "Public" header to new documents or a "Highly Confidential" header to existing documents that already have content. Some of the functionality is duplicated in the task pane to allow for manual changes.
 
-![The top of a Word document with a header that reads "Public - The data is for the public and is shareable externally" There is a group on the ribbon called "Event-based add-in activation" with a button named "My add-in".](./ReadmeImages/OndocumentopenedPublic.png)
+![The top of a Word document with a header that reads "Public - The data is for the public and is shareable externally". There is a group on the ribbon called "Event-based add-in activation" with a button named "My add-in".](./ReadmeImages/OndocumentopenedPublic.png)
+
+![whatever](./ReadmeImages/OndocumentopenedHighly.png)
 
 ![The top of a Word document with a header that reads "Highly Confidential - The data must be secret or in some way highly critical". The body of the document has text "This document has content." There is a group on the ribbon called "Event-based add-in activation" with a button named "My add-in".](.ReadmeImages/OndocumentopenedHighly.png)
 
