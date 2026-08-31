@@ -77,18 +77,18 @@ For more information, see [Deploy and publish Office Add-ins in the Microsoft 36
 1. In the **Choose how to upload app** section, select **Upload manifest file (.xml) from device**.
 1. Use the file picker to navigate to the folder where you cloned or downloaded this repo and then to the **Samples\word-add-label-on-open** folder.
 1. Select the `manifest.xml` file.
-1. Select **Just me** as the user. 
+1. Select **Just me** as the user.
 1. Follow the instructions on screen to finish the deployment.
 
-> :exclamation: **Important:** You cannot run the add-in until after it has propagated to a platform. Propogation to Word on the web can take several hours, typically 2 to 3 hours. Propogation to Word on Windows can take 24 hours, typically 6 to 12 hours.
+> :exclamation: **Important:** You cannot run the add-in until after it has propagated to a platform. Propagation to Word on the web can take several hours, typically 2 to 3 hours. Propagation to Word on Windows can take 24 hours, typically 6 to 12 hours.
 >
-> To test whether the add-in has propogated, see [Try it out](#try-it-out).
+> To test whether the add-in has propagated, see [Try it out](#try-it-out).
 
 ## Try it out
 
-1. In either Word on the web or Word on Windows, try opening both new and existing Word documents. If the add-in has propagated to the platform, headers should automatically be added when the document opens, and there should be a **My Add-in** button in an **Event-activated add-in** group on the **Home** tab of the ribbon. If these things don't happen, propogation to the platform has not completed. Close Word and try again in a while.
+1. In either Word on the web or Word on Windows, try opening both new and existing Word documents. If the add-in has propagated to the platform, headers should automatically be added when the document opens, and there should be a **My Add-in** button in an **Event-activated add-in** group on the **Home** tab of the ribbon. If these things don't happen, propagation to the platform has not completed. Close Word and try again in a while.
 1. Select the **My add-ins** button to open the task pane.
-1. Select any of the links on the task pane to add/change the header.
+1. Select any of the links on the task pane to add or change the header.
 
     > **Note:** If you save the document and reopen it, the event handler changes the header to "Public" or "Highly Confidential". See [Description](#description).
 
@@ -107,7 +107,7 @@ Whenever you make a change in the manifest, you must [uninstall the add-in](#uni
 1. Run `npm run build:dev`.
 1. Run `npm run dev-server`.
 
-## Uninstall the add-in 
+## Uninstall the add-in
 
 To uninstall the add-in, take the following steps:
 
@@ -117,7 +117,7 @@ To uninstall the add-in, take the following steps:
 1. On the **Remove apps** page, confirm that you want to remove the app and select **Remove**.
 1. On the **Successfully removed** page, select **Done**.
 
-> :exclamation: **Important:** Uninstallation must propagate to the platforms just as installation does. Propogation to Word on the web can take several hours, typically 2 to 3 hours. Propogation to Word on Windows can take 24 hours, typically 6 to 12 hours.
+> :exclamation: **Important:** Uninstallation must propagate to the platforms just as installation does. Propagation to Word on the web can take several hours, typically 2 to 3 hours. Propagation to Word on Windows can take 24 hours, typically 6 to 12 hours.
 >
 > To test if uninstallation has propagated, open a Word file on the platform. If the **My Add-in** button in an **Event-activated add-in** group is still on the **Home** tab of the ribbon, propagation has not happened. Close Word and try again in a while.
 
