@@ -38,9 +38,6 @@ This sample demonstrates the basics of working with a compose message in Outlook
 - Office connected to a Microsoft 365 subscription (including Office on the web).
 - [Node.js](https://nodejs.org/) (latest recommended version).
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
-- [Showdown](https://github.com/showdownjs/showdown).
-- [URI.js](https://github.com/medialize/URI.js).
-- [jQuery](https://jquery.com/).
 - [Set up GitHub gists](https://learn.microsoft.com/office/dev/add-ins/tutorials/outlook-tutorial#setup) on your account.
 
 ## Choose a manifest type
@@ -76,12 +73,12 @@ To switch back to the add-in only manifest, copy the files from the **manifest-c
 
 1. In Outlook, compose a new message.
 
-1. In the message window, choose the **Insert default gist** button in the ribbon. This opens a dialog where you add your GitHub username and select the default gist.
+1. In the message window, choose **Insert default gist** from the ribbon. In the dialog that appears, enter your GitHub username, select <kbd>Tab</kbd>, then select your default gist. The next time you choose **Insert default gist**, your default gist will be added to the body of the message.
 
     > - For guidance on how to locate your add-in on the ribbon, see [Use add-ins in Outlook](https://support.microsoft.com/office/1ee261f9-49bf-4ba6-b3e2-2ba7bcab64c8).
     > - In classic Outlook on Windows, you may need to close and reopen the new message window to pick up the latest settings from the dialog.
 
-1. In the message window, choose the **Display gist list** button in ribbon. This opens a task pane where you select the GitHub gist you want to insert into the message body.
+1. In the message window, choose **Display gist list** from the ribbon. In the task pane that opens, select the GitHub gist you want to insert into the message body.
 
 ## See also
 
@@ -99,6 +96,7 @@ The version of this sample that you create step-by-step is found in the article 
 |----------|------|----------|
 | 1.0 | 9-12-2023 | Initial release |
 | 1.1 | 11-19-2025 | Added support for the unified manifest for Microsoft 365 |
+| 1.2 | 09-03-2026 | Removed outdated dependencies |
 
 ## Copyright
 
