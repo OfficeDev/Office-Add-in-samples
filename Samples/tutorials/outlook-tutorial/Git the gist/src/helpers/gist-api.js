@@ -83,7 +83,6 @@ function buildBodyContent(gist, callback) {
     if (gist.files.hasOwnProperty(filename)) {
       const file = gist.files[filename];
       if (!file.truncated) {
-        // We have a winner.
         switch (file.language) {
           case "HTML":
             // Insert as is.

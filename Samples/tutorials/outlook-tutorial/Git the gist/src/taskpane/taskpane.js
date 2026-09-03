@@ -4,7 +4,7 @@
   let config;
   let settingsDialog;
 
-  Office.onReady(function (reason) {
+  Office.onReady(function () {
     function initializeTaskPane() {
       config = getConfig();
 

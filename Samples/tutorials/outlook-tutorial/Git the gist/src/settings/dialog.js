@@ -2,7 +2,7 @@
   "use strict";
 
   // The Office initialize function must be run each time a new page is loaded.
-  Office.onReady(function (reason) {
+  Office.onReady(function () {
     function initializeDialog() {
       if (window.location.search) {
         // Check if warning should be displayed.
