@@ -8,7 +8,8 @@ html, body {
   
   body {
     position: relative;
-    font-size: 16px; }
+    font-size: 16px;
+    background-color: #ffffff; }
   
   main {
     height: 100%;
