@@ -86,7 +86,7 @@
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
-          <bt:String id="CommandsGroup.Label" DefaultValue="Event-based add-in activation"/>
+          <bt:String id="CommandsGroup.Label" DefaultValue="Event-activated add-in"/>
           <bt:String id="TaskpaneButton.Label" DefaultValue="My add-in"/>
         </bt:ShortStrings>
         <bt:LongStrings>

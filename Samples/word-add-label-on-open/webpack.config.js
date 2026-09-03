@@ -3,6 +3,7 @@
 const devCerts = require("office-addin-dev-certs");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
 
 const path = require("path");
 
@@ -84,6 +85,7 @@ module.exports = async (env, options) => {
       }),
     ],
     devServer: {
+      allowedHosts: "all",
       static: {
         directory: path.join(__dirname, "dist"),
         publicPath: "/public",
