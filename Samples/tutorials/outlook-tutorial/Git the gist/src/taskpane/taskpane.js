@@ -1,13 +1,11 @@
-(function(){
-  'use strict';
+(function () {
+  "use strict";
 
   let config;
   let settingsDialog;
 
-  Office.initialize = function(reason){
-
-    jQuery(document).ready(function(){
-
+  Office.onReady(function () {
+    function initializeTaskPane() {
       config = getConfig();
 
       // Check if add-in is configured.
@@ -16,85 +14,102 @@
         loadGists(config.gitHubUserName);
       } else {
         // Not configured yet.
-        $('#not-configured').show();
+        document.getElementById("not-configured").style.display = "";
       }
 
       // When insert button is selected, build the content
       // and insert into the body.
-      $('#insert-button').on('click', function(){
-        const gistId = $('.ms-ListItem.is-selected').val();
-        getGist(gistId, function(gist, error) {
+      document.getElementById("insert-button").addEventListener("click", function () {
+        const selectedGist = document.querySelector(".ms-ListItem.is-selected");
+        const gistId = selectedGist && selectedGist.value;
+        getGist(gistId, function (gist, error) {
           if (gist) {
             buildBodyContent(gist, function (content, error) {
               if (content) {
-                Office.context.mailbox.item.body.setSelectedDataAsync(content,
-                  {coercionType: Office.CoercionType.Html}, function(result) {
+                Office.context.mailbox.item.body.setSelectedDataAsync(
+                  content,
+                  { coercionType: Office.CoercionType.Html },
+                  function (result) {
                     if (result.status === Office.AsyncResultStatus.Failed) {
-                      showError('Could not insert gist: ' + result.error.message);
+                      showError("Could not insert gist: " + result.error.message);
                     }
-                });
+                  }
+                );
               } else {
-                showError('Could not create insertable content: ' + error);
+                showError("Could not create insertable content: " + error);
               }
             });
           } else {
-            showError('Could not retrieve gist: ' + error);
+            showError("Could not retrieve gist: " + error);
           }
         });
       });
 
       // When the settings icon is selected, open the settings dialog.
-      $('#settings-icon').on('click', function(){
+      document.getElementById("settings-icon").addEventListener("click", function () {
         // Display settings dialog.
-        let url = new URI('dialog.html').absoluteTo(window.location).toString();
+        const url = new URL("dialog.html", window.location.href);
         if (config) {
           // If the add-in has already been configured, pass the existing values
           // to the dialog.
-          url = url + '?gitHubUserName=' + config.gitHubUserName + '&defaultGistId=' + config.defaultGistId;
+          url.searchParams.set("gitHubUserName", config.gitHubUserName);
+          url.searchParams.set("defaultGistId", config.defaultGistId);
         }
 
         const dialogOptions = { width: 20, height: 40, displayInIframe: true };
 
-        Office.context.ui.displayDialogAsync(url, dialogOptions, function(result) {
+        Office.context.ui.displayDialogAsync(url.toString(), dialogOptions, function (result) {
           settingsDialog = result.value;
           settingsDialog.addEventHandler(Office.EventType.DialogMessageReceived, receiveMessage);
           settingsDialog.addEventHandler(Office.EventType.DialogEventReceived, dialogClosed);
         });
-      })
-    });
-  };
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initializeTaskPane);
+    } else {
+      initializeTaskPane();
+    }
+  });
 
   function loadGists(user) {
-    $('#error-display').hide();
-    $('#not-configured').hide();
-    $('#gist-list-container').show();
+    document.getElementById("error-display").style.display = "none";
+    document.getElementById("not-configured").style.display = "none";
+    document.getElementById("gist-list-container").style.display = "";
 
-    getUserGists(user, function(gists, error) {
+    getUserGists(user, function (gists, error) {
       if (error) {
-
       } else {
-        $('#gist-list').empty();
-        buildGistList($('#gist-list'), gists, onGistSelected);
+        const gistList = document.getElementById("gist-list");
+        gistList.textContent = "";
+        buildGistList(gistList, gists, onGistSelected);
       }
     });
   }
 
   function onGistSelected() {
-    $('#insert-button').removeAttr('disabled');
-    $('.ms-ListItem').removeClass('is-selected').removeAttr('checked');
-    $(this).children('.ms-ListItem').addClass('is-selected').attr('checked', 'checked');
+    document.getElementById("insert-button").disabled = false;
+    document.querySelectorAll(".ms-ListItem").forEach(function (item) {
+      item.classList.remove("is-selected");
+      item.checked = false;
+    });
+    const selectedItem = this.querySelector(".ms-ListItem");
+    selectedItem.classList.add("is-selected");
+    selectedItem.checked = true;
   }
 
   function showError(error) {
-    $('#not-configured').hide();
-    $('#gist-list-container').hide();
-    $('#error-display').text(error);
-    $('#error-display').show();
+    document.getElementById("not-configured").style.display = "none";
+    document.getElementById("gist-list-container").style.display = "none";
+    const errorDisplay = document.getElementById("error-display");
+    errorDisplay.textContent = error;
+    errorDisplay.style.display = "";
   }
 
   function receiveMessage(message) {
     config = JSON.parse(message.message);
-    setConfig(config, function(result) {
+    setConfig(config, function (result) {
       settingsDialog.close();
       settingsDialog = null;
       loadGists(config.gitHubUserName);
