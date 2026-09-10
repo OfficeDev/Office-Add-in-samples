@@ -46,6 +46,7 @@ To learn more about custom functions, see [Create custom functions in Excel](htt
 | ------- | ---------- | --------------- |
 | 1.0     | 12-16-2020 | Initial release |
 | 1.1     | 07-28-2022 | Update JavaScript variable declarations |
+| 1.2 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Disclaimer
 

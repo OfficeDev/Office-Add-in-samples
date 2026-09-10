@@ -5,5 +5,4 @@
 // /// <reference path="office/1.1/outlook-win32.debug.js" />
 // /// <reference path="office/1.1/office.js" />
 /* Use online copy of Office.js for intellisense */
-/// <reference path="https://appsforoffice.microsoft.com/lib/1.1/hosted/outlook-win32.debug.js" />
-/// <reference path="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" />
+/// <reference path="https://officeapis.public.onecdn.static.microsoft/1/office.js" />

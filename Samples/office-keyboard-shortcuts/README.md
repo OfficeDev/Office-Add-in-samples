@@ -81,6 +81,7 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 | 2.0 | September 27, 2024 | Added support for Word |
 | 2.1 | December 5, 2024 | Updated keyboard shortcuts |
 | 3.0 | May 26, 2026 | Added support for PowerPoint |
+| 3.1 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Disclaimer
 

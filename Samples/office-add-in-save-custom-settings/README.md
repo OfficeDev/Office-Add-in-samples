@@ -36,6 +36,7 @@ This sample shows how to save custom settings inside an Office Add-in. The add-i
 |----------|------|----------|
 | 1.0 | 08-26-2022 | Initial release |
 | 1.1 | 04-01-2026 | Add support for the unified manifest for Microsoft 365 |
+| 1.2 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Choose a manifest type
 

@@ -51,6 +51,7 @@ Version  | Date | Comments
 1.0 | 5-18-2021 | Initial release
 1.1 | 8-17-2023 | Fix localhost setup steps
 1.2 | 7-31-2024 | Use release version of office.js instead of preview
+1.3 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ----------
 

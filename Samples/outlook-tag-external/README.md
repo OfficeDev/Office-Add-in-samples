@@ -58,6 +58,7 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 |---------|------|---------|
 | 1.0 | 7-6-2021 | Initial release |
 | 1.1 | 11-1-2021 | Update for GA of SessionData API and OnMessageRecipientsChanged event |
+| 1.2 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ----------
 

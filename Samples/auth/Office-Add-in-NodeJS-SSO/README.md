@@ -182,6 +182,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 | 2.2 | July 7, 2022 | Fixed middle-tier token handling and MSAL fallback approach to be consistent with Microsoft identity platform guidance. |
 | 2.3 | February 16, 2023 | Refactored code to simplify. |
 | 2.4 | January 21, 2026 | Security reviewed. Updated as legacy content as MSAL SSO via nested app authentication is preferred. |
+| 2.5 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 **Note**: The index.pug file contains an image URL that tracks diagnostic data for this sample add-in. Please remove the image tag if you reuse this sample in your own code project.
 

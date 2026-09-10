@@ -57,6 +57,7 @@ The sample uses the [@orcid/bibtexParseJs](https://github.com/ORCID/bibtexParseJ
 |----------|------|----------|
 | 1.0 | 11-28-2023 | Initial release |
 | 1.1 | 7-7-2025 | Add support for the unified manifest for Microsoft 365 |
+| 1.2 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Decide on a version of the manifest
 

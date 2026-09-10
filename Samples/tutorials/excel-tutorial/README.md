@@ -52,6 +52,7 @@ Version  | Date | Comments
 1.0 | 1-13-2023 | Initial release
 1.1 | 12-17-2025 | Added support for the unified manifest for Microsoft 365
 1.2 | 3-12-2026 | Updated unified manifest for Microsoft 365 to include toggleProtection functionality
+1.3 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ## Choose a manifest type
 

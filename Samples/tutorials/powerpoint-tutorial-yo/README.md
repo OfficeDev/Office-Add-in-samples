@@ -51,6 +51,7 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 |----------|------|----------|
 | 1.0 | 9-25-2023 | Initial release |
 | 1.1 | 12-17-2025 | Added support for the unified manifest for Microsoft 365 |
+| 1.2 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Choose a manifest type
 

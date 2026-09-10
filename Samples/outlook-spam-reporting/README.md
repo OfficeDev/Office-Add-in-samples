@@ -198,5 +198,6 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 | 1.2 | September 11, 2024 | Correct the `Office.actions.associate` call and consolidate the JavaScript files |
 | 1.3 | February 28, 2025 | Add support for the unified manifest for Microsoft 365 |
 | 1.4 | August 26, 2025 | Note support for Outlook on Mac |
+| 1.5 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-spam-reporting" />

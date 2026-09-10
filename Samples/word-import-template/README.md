@@ -46,6 +46,7 @@ The user updates their Word document with the content from another Word document
 |----------|------|----------|
 | 1.0 | 03-08-2024 | Initial release |
 | 1.1 | 07-07-2025 | Add support for the unified manifest for Microsoft 365 |
+| 1.2 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Decide on a version of the manifest
 

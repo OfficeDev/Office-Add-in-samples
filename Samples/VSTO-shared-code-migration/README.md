@@ -62,6 +62,7 @@ Shared library VSTO migration | David Chesnut (**Microsoft**)
 Version  | Date | Comments
 ---------| -----| --------
 1.0  | December 2, 2019 | Initial release
+1.1 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ## Disclaimer
 

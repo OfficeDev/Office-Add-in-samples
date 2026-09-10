@@ -27,6 +27,7 @@ Outlook.AddInSample.sln | Paolo Pialorsi (PiaSys.com) | [@PaoloPia](https://twit
 Version  | Date | Comments
 ---------| -----| --------
 1.0  | June 28th 2016 | Initial release
+1.1 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ### Setup Instructions ###
 In order to play with this add-in, you need to:

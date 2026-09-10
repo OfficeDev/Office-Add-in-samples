@@ -123,6 +123,7 @@ Once decryption is complete, the message body and attachments are shown and the 
 | 1.0 | January 27, 2026 | Initial release |
 | 1.1 | May 26, 2026 | Update the event name |
 | 1.2 | June 23, 2026 | Updated to Mailbox requirement set 1.16 |
+| 1.3 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Copyright
 

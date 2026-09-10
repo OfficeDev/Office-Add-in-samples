@@ -49,6 +49,7 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 | Version  | Date | Comments |
 |----------|------|----------|
 | 1.0 | 9-19-2023 | Initial release |
+| 1.1 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Run the sample
 

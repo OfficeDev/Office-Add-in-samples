@@ -25,6 +25,7 @@ Outlook.MVCAddInTemplate | Jonathan Huss (**Microsoft**)
 Version  | Date | Comments
 ---------| -----| --------
 1.0 | November 14th, 2016 | Initial Release
+1.1 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ### Disclaimer ###
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**

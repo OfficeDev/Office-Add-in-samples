@@ -129,6 +129,7 @@ Version  | Date | Comments
 2.2 | June 15, 2021 | Updated NuGet packages and adjust code for breaking changes.
 3.0 | November 7, 2022 | Updated to use ASP.NET Core. Removed fallback dialog approach.
 3.1 | January 26, 2026 | Updated to reflect this is legacy code. No longer a walkthrough.
+3.2 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ## Security note
 

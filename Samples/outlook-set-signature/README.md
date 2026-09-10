@@ -68,6 +68,7 @@ For guidance on supported requirement sets, see [Outlook client support](https:/
 | 1.3 | 04-17-2023 | Add support for unified Microsoft 365 manifest |
 | 1.4 | 05-20-2024 | Normalize use of unified Microsoft 365 manifest |
 | 1.5 | 04-16-2026 | Reorganize the manifest files and apply fixes |
+| 1.6 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Scenario: Event-based activation
 

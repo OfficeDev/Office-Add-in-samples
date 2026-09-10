@@ -179,6 +179,7 @@ Demonstration video:
 | 1.0 | February 11, 2021 | Initial release |
 | 1.1 | May 11, 2021 | Removed yo office and modified to be GitHub hosted |
 | 1.2 | April 27, 2026 | Added support for the unified manifest for Microsoft 365 |
+| 1.3 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Copyright
 

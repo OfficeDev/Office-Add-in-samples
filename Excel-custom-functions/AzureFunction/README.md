@@ -52,6 +52,7 @@ Version  | Date | Comments
 ---------| -----| --------
 1.0  | October 2, 2019 | Initial release.
 1.1  | March 17, 2022 | Update to use JavaScript Azure Function, and GitHub hosting for add-in project.
+1.2 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ## Try out the Azure Function from localhost
 

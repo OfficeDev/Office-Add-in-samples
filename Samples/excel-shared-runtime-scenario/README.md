@@ -56,6 +56,7 @@ Version  | Date | Comments
 1.0 | 3-9-2020 | Initial release.
 1.1 | 8-5-2021 | Update to GitHub page hosting.
 1.2 | April 2026 | Add unified manifest support.
+1.3 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ## Scenario: A contextual add-in
 
