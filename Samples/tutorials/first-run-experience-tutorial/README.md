@@ -62,8 +62,8 @@ Learn the basics of implementing a first-run experience | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0 | 9-5-2024 | Initial release
-1.1 | 2-11-2026 | Added support for the unified manifest for Microsoft 365
+1.0 | September 5, 2024 | Initial release.
+1.1 | February 11, 2026 | Added support for the unified manifest for Microsoft 365.
 1.2 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ## Choose a manifest type

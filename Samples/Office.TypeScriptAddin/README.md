@@ -20,7 +20,7 @@ Office.TypeScriptAddin | Simon Jäger (**Microsoft**)
 ### Version history ###
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | December 10th 2015 | Initial release
+1.0  | December 10, 2015 | Initial release.
 1.1 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ### Disclaimer ###

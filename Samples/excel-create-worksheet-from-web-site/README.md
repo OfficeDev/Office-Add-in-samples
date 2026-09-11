@@ -54,8 +54,8 @@ This sample demonstrates how to create an Excel workbook from web site data usin
 
 | Version | Date | Comments |
 |---------|------|----------|
-| 1.0 | January 2023 | Initial release |
-| 2.0 | January 2026 | Refactored to Node.js with custom add-in and auto-open |
+| 1.0 | January 2023 | Initial release. |
+| 2.0 | January 2026 | Refactored to Node.js with custom add-in and auto-open. |
 | 2.1 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Set up the sample

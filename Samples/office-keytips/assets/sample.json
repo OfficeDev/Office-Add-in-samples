@@ -8,7 +8,7 @@
         "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-keytips",
         "longDescription": "This sample shows how to define custom KeyTips for the ribbon controls of an Office Add-in.",
         "creationDateTime": "2026-05-28",
-        "updateDateTime": "2026-05-28",
+        "updateDateTime": "2026-09-10",
         "products": [
             "Office"
         ],

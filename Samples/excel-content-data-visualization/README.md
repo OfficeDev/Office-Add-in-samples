@@ -31,8 +31,8 @@ Learn how to build an Office content add-in that includes data visualization in 
 
 | Version  | Date | Comments |
 |----------|------|----------|
-| 1.0 | 02-06-2026 | Initial release |
-| 1.1 | 06-19-2026 | Updated to use Excel JavaScript API where possible |
+| 1.0 | February 6, 2026 | Initial release. |
+| 1.1 | June 19, 2026 | Updated to use Excel JavaScript API where possible. |
 | 1.2 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Prerequisites

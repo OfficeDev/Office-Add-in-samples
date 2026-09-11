@@ -39,9 +39,9 @@ Using storage to share data between UI-less custom functions and the task pane |
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | May 1, 2019 | Initial release
-1.1 | May 26, 2021 | Update to use GitHub pages for hosting
-1.2 | July 28, 2022 | Update JavaScript variable declarations
+1.0  | May 1, 2019 | Initial release.
+1.1 | May 26, 2021 | Updated to use GitHub pages for hosting.
+1.2 | July 28, 2022 | Updated JavaScript variable declarations.
 1.3 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ## Sample: Sharing data between custom functions and the task pane

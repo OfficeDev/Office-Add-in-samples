@@ -42,8 +42,8 @@ Excel.OfflineStorageAddin | Nancy Wang, Albert Dotson (**Microsoft**)
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | July 19, 2019 | Initial release
-1.1  | July 21, 2025 | Added option for unified manifest
+1.0  | July 19, 2019 | Initial release.
+1.1  | July 21, 2025 | Added option for unified manifest.
 1.2 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ## Scenario: Storing data using local storage

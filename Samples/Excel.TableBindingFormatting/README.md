@@ -25,7 +25,7 @@ Excel.TableBindingFormatting.sln | Doug Perkes (**Microsoft**)
 ### Version history ###
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | April 23rd 2015 | Initial release
+1.0  | April 23, 2015 | Initial release.
 1.1 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ### Disclaimer ###

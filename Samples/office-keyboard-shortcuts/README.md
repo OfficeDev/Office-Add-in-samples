@@ -76,11 +76,11 @@ Keyboard shortcuts can be used to achieve any action within the add-in runtime.
 
 | Version | Date | Comments |
 | ------- | ---- | -------- |
-| 1.0 | 11-5-2020 | Initial release |
-| 1.1 | May 11, 2021 | Removed yo office and modified to be GitHub hosted |
-| 2.0 | September 27, 2024 | Added support for Word |
-| 2.1 | December 5, 2024 | Updated keyboard shortcuts |
-| 3.0 | May 26, 2026 | Added support for PowerPoint |
+| 1.0 | November 5, 2020 | Initial release. |
+| 1.1 | May 11, 2021 | Removed yo office and modified to be GitHub hosted. |
+| 2.0 | September 27, 2024 | Added support for Word. |
+| 2.1 | December 5, 2024 | Updated keyboard shortcuts. |
+| 3.0 | May 26, 2026 | Added support for PowerPoint. |
 | 3.1 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Disclaimer

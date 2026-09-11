@@ -36,7 +36,7 @@ Excel.JsonToOfficeTable | Richard diZerega (**Microsoft**)
 ### Version history ###
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | August 8th 2014 | Initial release
+1.0  | August 8, 2014 | Initial release.
 1.1 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ### Disclaimer ###

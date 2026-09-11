@@ -49,8 +49,8 @@ Office Add-in share global data with a shared runtime | Microsoft
 Version  | Date | Comments
 ---------| -----| --------
 1.0 | March 15, 2020 | Initial release.
-1.1 | May 26, 2021 | Update to use GitHub pages for hosting.
-1.2 | May 12, 2026 | Add unified manifest support.
+1.1 | May 26, 2021 | Updated to use GitHub pages for hosting.
+1.2 | May 12, 2026 | Added unified manifest support.
 1.3 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ----------

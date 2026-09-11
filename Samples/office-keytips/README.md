@@ -48,7 +48,7 @@ Custom KeyTips are supported in Excel, PowerPoint, and Word on the following pla
 
 | Version  | Date        | Comments        |
 |----------|-------------|-----------------|
-| 1.0      | 05-28-2026  | Initial release |
+| 1.0      | May 28, 2026 | Initial release. |
 | 1.1 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Solution

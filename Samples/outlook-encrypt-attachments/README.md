@@ -79,7 +79,7 @@ This sample showcases how to use event-based activation in an Outlook add-in whe
 
 | Version | Date       | Comments        |
 | ------- | ---------- | --------------- |
-| 1.0     | 10-14-2021 | Initial release |
+| 1.0     | October 14, 2021 | Initial release. |
 | 1.1 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Run the sample

@@ -272,10 +272,10 @@ A task pane is used to complement event-based activation by providing users with
 
 | Version | Date | Comments |
 | ------- | ----- | -------- |
-| 1.0 | 05-05-2022 | Initial release |
-| 1.1 | 09-08-2022 | Update for General Availability (GA) of OnMessageSend and OnAppointmentSend events |
-| 1.2 | 12-02-2022 | Add support for new Outlook on Mac |
-| 1.3 | 07-28-2025 | Add support for the unified manifest for Microsoft 365 |
+| 1.0 | May 5, 2022 | Initial release. |
+| 1.1 | September 8, 2022 | Updated for General Availability (GA) of OnMessageSend and OnAppointmentSend events. |
+| 1.2 | December 2, 2022 | Added support for new Outlook on Mac. |
+| 1.3 | July 28, 2025 | Added support for the unified manifest for Microsoft 365. |
 | 1.4 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Questions and feedback

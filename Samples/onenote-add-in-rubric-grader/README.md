@@ -48,7 +48,7 @@ The add-in helps teachers grade writing assignments based on a grading rubric. I
 
 | Version  | Date | Comments |
 |---------|------|---------|
-| 1.0 | 6-17-2025 | Initial release |
+| 1.0 | June 17, 2025 | Initial release. |
 | 1.1 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Run the sample

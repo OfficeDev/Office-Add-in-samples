@@ -62,12 +62,12 @@ For guidance on supported requirement sets, see [Outlook client support](https:/
 
 | Version | Date | Comments |
 | ------- | ---- | -------- |
-| 1.0 | 04-01-2021 | Initial release |
-| 1.1 | 06-01-2021 | Update for GA of setSignature API |
-| 1.2 | 07-27-2021 | Convert to GitHub hosting |
-| 1.3 | 04-17-2023 | Add support for unified Microsoft 365 manifest |
-| 1.4 | 05-20-2024 | Normalize use of unified Microsoft 365 manifest |
-| 1.5 | 04-16-2026 | Reorganize the manifest files and apply fixes |
+| 1.0 | April 1, 2021 | Initial release. |
+| 1.1 | June 1, 2021 | Updated for GA of setSignature API. |
+| 1.2 | July 27, 2021 | Converted to GitHub hosting. |
+| 1.3 | April 17, 2023 | Added support for unified Microsoft 365 manifest. |
+| 1.4 | May 20, 2024 | Normalized use of unified Microsoft 365 manifest. |
+| 1.5 | April 16, 2026 | Reorganized the manifest files and applied fixes. |
 | 1.6 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Scenario: Event-based activation

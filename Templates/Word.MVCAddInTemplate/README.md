@@ -24,7 +24,7 @@ Word.MVCAddInTemplate | Jonathan Huss (**Microsoft**)
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0 | November 14th, 2016 | Initial Release
+1.0 | November 14, 2016 | Initial release.
 1.1 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ### Disclaimer ###

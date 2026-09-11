@@ -10,7 +10,7 @@
         "This sample implements an Office Add-in that uses the getAccessToken API in Office.js to give the add-in access to Microsoft Graph data. This sample is built on ASP.NET and Microsoft Authentication Library (MSAL) .NET."
       ],
       "creationDateTime": "2017-05-10",
-      "updateDateTime": "2021-06-15",
+      "updateDateTime": "2026-09-10",
       "products": [
         "Office"
       ],
