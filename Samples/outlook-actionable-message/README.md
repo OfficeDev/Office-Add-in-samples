@@ -133,6 +133,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 | Version | Date | Comments |
 | ----- | ----- | ----- |
-| 1.0 | May 21, 2026 | Modernize archived sample |
+| 1.0 | May 21, 2026 | Modernized archived sample. |
+| 1.1 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-actionable-message" />

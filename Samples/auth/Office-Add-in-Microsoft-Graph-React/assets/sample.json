@@ -10,7 +10,7 @@
         "Learn how to build a Microsoft Office Add-in, as a single-page application (SPA) with no backend, that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into an Office document using Office.js."
       ],
       "creationDateTime": "2020-12-10",
-      "updateDateTime": "2021-01-14",
+      "updateDateTime": "2026-09-10",
       "products": [
         "Office",
         "Microsoft Graph"

@@ -55,7 +55,8 @@ For more information, see [Ribbon API 1.3 requirement set](https://learn.microso
 
 | Version | Date | Comments |
 | ------- | ---- | -------- |
-| 1.0 | 08-10-2026 | Initial release |
+| 1.0 | August 10, 2026 | Initial release. |
+| 1.1 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Solution
 

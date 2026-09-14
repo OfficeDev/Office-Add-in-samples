@@ -39,8 +39,9 @@ Custom function batching | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | April 5, 2019 | Initial release
-1.1 | June 1, 2021 | Update to use GitHub hosting
+1.0  | April 5, 2019 | Initial release.
+1.1 | June 1, 2021 | Updated to use GitHub hosting.
+1.2 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ## Scenario: Custom function batching
 

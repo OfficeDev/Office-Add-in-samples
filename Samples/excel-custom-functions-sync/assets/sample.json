@@ -10,7 +10,7 @@
         "Shows how to create a synchronous custom function using the @supportSync tag that reads a cell value in tandem with Excel's calculation process."
       ],
       "creationDateTime": "2026-03-19",
-      "updateDateTime": "2026-03-19",
+      "updateDateTime": "2026-09-10",
       "products": [
         "Office"
       ],

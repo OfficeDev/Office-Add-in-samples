@@ -8,7 +8,7 @@
         "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-tag-external",
         "longDescription": "Use insertWorksheetsFromBase64 to insert a worksheet from another Excel file into the open Excel file. Get JSON data and add it to the worksheet.",
         "creationDateTime": "2021-05-18",
-        "updateDateTime": "2021-05-18",
+        "updateDateTime": "2026-09-10",
         "products": [
             "Office"
         ],

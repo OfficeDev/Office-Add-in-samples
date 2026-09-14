@@ -94,9 +94,10 @@ The version of this sample that you create step-by-step is found in the article 
 
 | Version  | Date | Comments |
 |----------|------|----------|
-| 1.0 | 9-12-2023 | Initial release |
-| 1.1 | 11-19-2025 | Added support for the unified manifest for Microsoft 365 |
-| 1.2 | 09-03-2026 | Removed outdated dependencies |
+| 1.0 | September 12, 2023 | Initial release. |
+| 1.1 | November 19, 2025 | Added support for the unified manifest for Microsoft 365. |
+| 1.2 | September 3, 2026 | Removed outdated dependencies. |
+| 1.3 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Copyright
 

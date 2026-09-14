@@ -8,7 +8,7 @@
     "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-visibility",
     "longDescription": "This sample shows how to set initial ribbon visibility in the unified manifest and change group and control visibility at runtime with Office.ribbon.requestUpdate().",
     "creationDateTime": "2026-08-03",
-    "updateDateTime": "2026-08-03",
+    "updateDateTime": "2026-09-10",
     "products": [
       "Office"
     ],

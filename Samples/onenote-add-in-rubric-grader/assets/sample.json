@@ -10,7 +10,7 @@
         "The Rubric Grader sample shows you how to use the OneNote JavaScript API in a OneNote task pane add-in. The add-in gets page content, adds an outline to the page, and opens a different page. It helps teachers grade writing assignments based on a grading rubric and provides a standard template for adding feedback."
       ],
       "creationDateTime": "2025-06-17",
-      "updateDateTime": "2025-08-21",
+      "updateDateTime": "2026-09-10",
       "products": [
         "Office",
         "OneNote"

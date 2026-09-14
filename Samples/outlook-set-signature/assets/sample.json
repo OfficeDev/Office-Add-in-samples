@@ -10,7 +10,7 @@
             "This sample uses event-based activation to run an Outlook add-in when the user creates a new message or appointment. The add-in can respond to events, even when the task pane is not open. It also uses the setSignatureAsync API. If no signature is set, the add-in prompts the user to set a signature, and can then open the task pane for the user."
         ],
         "creationDateTime": "2021-04-01",
-        "updateDateTime": "2026-04-16",
+        "updateDateTime": "2026-09-10",
         "products": [
             "Office",
             "Teams",

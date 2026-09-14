@@ -51,7 +51,8 @@ Embed a content add-in in the Excel grid | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0 | 7-15-2025 | Ported this add-in to the main samples repo
+1.0 | July 15, 2025 | Ported this add-in to the main samples repo.
+1.1 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ----------
 

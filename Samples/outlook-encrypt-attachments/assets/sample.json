@@ -10,7 +10,7 @@
             "This sample showcases how to use event-based activation in an Outlook add-in when the user composes an email or appointment/meeting request. It demonstrates how to run tasks based on events that fire when certain data changes."
         ],
         "creationDateTime": "2021-10-14",
-        "updateDateTime": "2021-10-14",
+        "updateDateTime": "2026-09-10",
         "products": [
             "Office"
         ],

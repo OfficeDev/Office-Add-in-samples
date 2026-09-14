@@ -23,7 +23,7 @@ This sample shows how to create a synchronous custom function that reads a cell 
 - Create synchronous custom functions in Excel
 - Use the shared runtime
 
-> **Note:** Synchronous custom functions are currently in public preview and require the [preview version of the Office JavaScript API](https://appsforoffice.microsoft.com/lib/beta/hosted/office.js). Do not use this feature in a production add-in.
+> **Note:** Synchronous custom functions are currently in public preview and require the [preview version of the Office JavaScript API](https://officeapis.public.onecdn.static.microsoft/beta/office.js). Do not use this feature in a production add-in.
 
 ## How to run this sample
 

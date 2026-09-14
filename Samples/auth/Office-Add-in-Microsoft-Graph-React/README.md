@@ -74,6 +74,7 @@ Version  | Date | Comments
 1.0  | August 29th, 2019| Initial release
 1.1  | January 14th, 2021| Changed system for creating and installing the SSL certificates for HTTPS.
 1.2  | April 4th, 2024 | Updated to MSAL 3.7.1. Refactored code.
+1.3 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ----------
 

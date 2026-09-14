@@ -200,7 +200,8 @@ Use Excel and Microsoft Graph to implement a bulk email add-in | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | November 11th, 2024 | Initial release
-2.0  | August 22nd, 2026 | Converted to unified manifest for Microsoft 365
+1.0  | November 11, 2024 | Initial release.
+2.0  | August 22, 2026 | Converted to unified manifest for Microsoft 365.
+2.1 | September 10, 2026 | Updated the Office.js CDN URL.
 
 <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-mail-merge" />

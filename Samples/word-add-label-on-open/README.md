@@ -58,8 +58,9 @@ For more information, see [Deploy and publish Office Add-ins in the Microsoft 36
 
 | Version  | Date | Comments |
 |----------|------|----------|
-| 1.0 | 06-30-2025 | Initial release |
-| 1.1 | 09-01-2026 | Bug fixes |
+| 1.0 | June 30, 2025 | Initial release. |
+| 1.1 | September 1, 2026 | Applied bug fixes. |
+| 1.2 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Install the sample for testing
 

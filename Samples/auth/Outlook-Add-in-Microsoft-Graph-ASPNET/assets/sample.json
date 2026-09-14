@@ -10,7 +10,7 @@
       "Learn how to build a Microsoft Outlook Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into a new message compose form in Outlook."
     ],
     "creationDateTime": "2019-07-08",
-    "updateDateTime": "2019-07-08",
+    "updateDateTime": "2026-09-10",
     "products": [
       "Office",
       "Microsoft Graph"
