@@ -21,6 +21,8 @@ description: "Learn how to create a spreadsheet from your web page, populate it 
 
 This sample demonstrates how to create an Excel workbook from web site data using Node.js, and configure it so that a custom Office Add-in task pane automatically opens when the document is opened. This approach combines server-side workbook generation with the auto-open task pane feature.
 
+> **Note**: The autoopen feature isn't supported for add-ins published in the Microsoft Marketplace. The autoopen feature is supported only for add-ins that are centrally deployed or sideloaded.
+
 ![Screenshot showing Excel with auto-opened task pane](./images/open-in-excel-overview.png)
 
 ## Features
@@ -57,6 +59,7 @@ This sample demonstrates how to create an Excel workbook from web site data usin
 | 1.0 | January 2023 | Initial release. |
 | 2.0 | January 2026 | Refactored to Node.js with custom add-in and auto-open. |
 | 2.1 | September 10, 2026 | Updated the Office.js CDN URL. |
+| 2.2 | September 16, 2026 | Noted non-support in Microsoft Marketplace. |
 
 ## Set up the sample
 
