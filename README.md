@@ -39,9 +39,9 @@ The following samples are the completed versions of various tutorials for Office
 
 | Name           | Description  |
 | -------------- | ------------ |
-| [Create a Blazor WebAssembly Excel add-in](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/excel-blazor-add-in) | Uses .NET Blazor technologies to build an Excel add-in. |
-| [Create a Blazor WebAssembly Word add-in](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/word-blazor-add-in) | Uses .NET Blazor technologies to build a Word add-in. |
-| [Create a Blazor WebAssembly Outlook add-in](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/outlook-blazor-add-in) | Uses .NET Blazor technologies to build an Outlook add-in. |
+| [Create a Blazor WebAssembly Excel add-in](https://github.com/OfficeDev/Office-Add-in-samples/blob/main/Samples/blazor-add-in/Blazor.Excel.AddIn) | Uses .NET Blazor technologies to build an Excel add-in. |
+| [Create a Blazor WebAssembly PowerPoint add-in](https://github.com/OfficeDev/Office-Add-in-samples/blob/main/Samples/blazor-add-in/Blazor.PowerPoint.AddIn) | Uses .NET Blazor technologies to build a PowerPoint add-in. |
+| [Create a Blazor WebAssembly Word add-in](https://github.com/OfficeDev/Office-Add-in-samples/blob/main/Samples/blazor-add-in/Blazor.Word.AddIn) | Uses .NET Blazor technologies to build a Word add-in. |
 
 ## Authentication, authorization, and single sign-on (SSO)
 
