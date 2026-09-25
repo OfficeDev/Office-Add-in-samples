@@ -39,9 +39,9 @@
         ],
         "references": [
             {
-                "name": "Manage the sensitivity label of your message or appointment in compose mode",
+                "name": "Manage sensitivity labels in Office Add-ins",
                 "description": "Learn how to manage the sensitivity label of your message or appointment in compose mode.",
-                "url": "https://learn.microsoft.com/office/dev/add-ins/outlook/sensitivity-label"
+                "url": "https://learn.microsoft.com/office/dev/add-ins/develop/sensitivity-label"
             }
         ]
     }

@@ -44,7 +44,7 @@ This sample uses the sensitivity label API in an event-based add-in to verify an
 
 For documentation related to this sample, see the following:
 
-- [Manage the sensitivity label of your message or appointment in compose mode](https://learn.microsoft.com/office/dev/add-ins/outlook/sensitivity-label)
+- [Manage sensitivity labels in Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/sensitivity-label)
 - [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation)
 - [Handle OnMessageSend and OnAppointmentSend events in your Outlook add-in with Smart Alerts](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events)
 
