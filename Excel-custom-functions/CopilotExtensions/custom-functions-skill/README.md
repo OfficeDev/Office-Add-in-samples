@@ -82,7 +82,7 @@ The reporting currency and warning threshold come from the workbook's `Settings`
 
 ### Settings table
 
-The workbook must contain an Excel table named `Settings` with columns named `Setting` and `Value`. The values shown below are in the Test.xlsx, but you can change them.
+The workbook must contain an Excel table named `Settings` with columns named `Setting` and `Value`. The values shown below are in `Test.xlsx`, but you can change them.
 
 | Setting | Example value | Requirement |
 | --- | --- | --- |
@@ -123,12 +123,6 @@ When invoked, the skill adds missing output columns or updates existing columns 
    npm install
    ```
 
-1. Build the project with the following command.
-
-   ```bash
-   npm run build:dev
-   ```
-
 1. Start the server with the following command.
 
    ```bash
@@ -146,7 +140,7 @@ When invoked, the skill adds missing output columns or updates existing columns 
 1. Install the package with the following command.
 
    ```bash
-   atk install --file-path .\international-purchase-planner.zip --scope Personal
+   atk install --file-path ./international-purchase-planner.zip --scope Personal
    ```
 
    A successful installation returns output that includes a TitleId and AppId for your account.
@@ -156,7 +150,7 @@ When invoked, the skill adds missing output columns or updates existing columns 
 1. Open `Test.xlsx` from the **custom-functions-skill** sample root and ensure that you are signed into Excel with the same account used to install the package.
 1. Verify that the custom functions are installed by entering `=PUR` in the formula bar. You should see **PURCHASEPLANNER.BUDGETSTATUS**  and **PURCHASEPLANNER.FXRATE** in the autocomplete drop down that opens.
 
-   > [!NOTE]
+   > **Note**
    > If the custom functions do not appear in the autocomplete list, select **Home > Add-ins** and then select **Purchase Planner** on the flyout to activate the add-in. If **Purchase Planner** doesn't appear on the **Add-ins** flyout, close and reopen Excel, then *wait two minutes* and open the flyout again.
 
    ![Screenshot showing the Excel formula bar with the string =PUR and a drop down list containing two purchase planner funtions.](./images/custom-functions-in-formula-bar.png)
@@ -204,7 +198,7 @@ Use a copy of the workbook for these tests.
 1. Invoke the skill again.
 1. Verify that the skill does not modify the invalid table. If no other table qualifies, Copilot should report that no qualifying quote table was found.
 
-#### Invalid Settings table
+#### Invalid settings table
 
 1. Remove one of the required settings, enter an invalid currency code, or enter the warning threshold as text.
 1. Invoke the skill again.
@@ -222,7 +216,6 @@ custom-functions-skill/
 |-- README.md
 |-- Test.xlsx
 |-- international-purchase-planner.zip
-|-- .vscode/
 |-- appPackage/
 |   |-- assets/
 |   |-- manifest.json
@@ -253,7 +246,7 @@ custom-functions-skill/
 - `manifest.json` registers the skill, custom-functions runtime, metadata URL, and minimal activation surface.
 
 > [!NOTE]
-> There is a task pane runtime configured in the manifest, and task pane files in **/src/taskkpane**. These are required because custom functions in a JavaScript-only runtime aren't registered if there isn't also a browser-based runtime in the add-in. There is no ribbon button for the task pane. 
+> There is a task pane runtime configured in the manifest, and task pane files in **/src/taskpane**. These are required because custom functions in a JavaScript-only runtime aren't registered if there isn't also a browser-based runtime in the add-in. There is no ribbon button for the task pane. 
 
 For more information, see:
 
@@ -263,7 +256,7 @@ For more information, see:
 
 ## Modify the sample
 
-1. Open the **custom-functions-skill** sample root in Visual Studio Code.
+Open the **custom-functions-skill** sample root in Visual Studio Code.
 
 After changing custom-function TypeScript or JSDoc metadata, take the following steps:
 
@@ -287,13 +280,13 @@ After changing the manifest, skill instructions, resources, or skill script:
 1. Recreate the ZIP package with the following command.
 
    ```bash
-   atk package --manifest-file .\appPackage\manifest.json --output-package-file .\appPackage\build\international-purchase-planner.zip --output-folder .\appPackage\build
+   atk package --manifest-file ./appPackage/manifest.json --output-package-file ./appPackage/build/international-purchase-planner.zip --output-folder ./appPackage/build
    ```
 1. Completely uninstall the previous package. See [Uninstall the sample](#uninstall-the-sample).
 1. Install the updated package with the following command.
 
     ```bash
-   atk install --file-path .\appPackage\build\international-purchase-planner.zip --scope Personal
+   atk install --file-path ./appPackage/build/international-purchase-planner.zip --scope Personal
    ```
 
 1. Close and reopen Excel before retesting.
