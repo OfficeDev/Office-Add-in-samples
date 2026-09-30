@@ -30,7 +30,7 @@ The skill adds or updates three calculated columns:
 
 The sample runs from `https://localhost:3000`. The skill files are included in the app package, but the custom function JavaScript and metadata are served from localhost while the sample is running.
 
-> [!IMPORTANT]
+> **Important**:
 > The custom skill runs only in Copilot in Excel. It does not run in standalone Copilot, or Copilot in any other application.
 
 ## Applies to
@@ -75,9 +75,56 @@ The skill inserts formulas equivalent to:
 
 The reporting currency and warning threshold come from the workbook's `Settings` table.
 
+## Key project files
+
+Only the most important files and folders are shown here.
+
+```text
+custom-functions-skill/
+|-- README.md
+|-- Test.xlsx
+|-- international-purchase-planner.zip
+|-- appPackage/
+|   |-- assets/
+|   |-- manifest.json
+|   |-- skills/
+|       |-- international-purchase-planner/
+|           |-- SKILL.md
+|           |-- resources/
+|           |   |-- excel-vs-agent-execution.md
+|           |   |-- workbook-data-guardrails.md
+|           |-- scripts/
+|               |-- prepare-purchase-comparison.js
+|-- assets/
+|-- env/
+|-- images/
+|-- infra/
+|-- src/
+|   |-- functions/
+|   |   |-- functions.html
+|   |   |-- functions.ts
+|   |-- taskpane/
+|-- package.json
+```
+
+- `SKILL.md` tells Copilot when to use the skill and defines its workflow and response.
+- The resource files define workbook validation and execution boundaries.
+- `prepare-purchase-comparison.js` validates the workbook and inserts formulas and formatting with Office.js.
+- `functions.ts` implements `FXRATE` and `BUDGETSTATUS`.
+- `manifest.json` registers the skill, custom-functions runtime, metadata URL, and minimal activation surface.
+
+> **Note**:
+> There is a task pane runtime configured in the manifest, and task pane files in **/src/taskpane**. These are required because custom functions in a JavaScript-only runtime aren't registered if there isn't also a browser-based runtime in the add-in. There is no ribbon button for the task pane. 
+
+For more information, see:
+
+- [Create custom functions in Excel](https://learn.microsoft.com/office/dev/add-ins/excel/custom-functions-overview)
+- [Create a Copilot skill for Excel](https://learn.microsoft.com/office/dev/add-ins/excel/excel-skills)
+- [Create a Copilot skill for Excel that uses Office.js](https://learn.microsoft.com/office/dev/add-ins/excel/excel-copilot-skill)
+
 ## Workbook requirements
 
-> [!NOTE]
+> **Note**:
 > The sample includes `Test.xlsx` in the sample root **custom-functions-skill**. You can use it for testing or prepare another workbook that follows the same contract.
 
 ### Settings table
@@ -204,55 +251,8 @@ Use a copy of the workbook for these tests.
 1. Invoke the skill again.
 1. Verify that the skill stops without modifying the quote table and reports the settings error.
 
-> [!IMPORTANT]
+> **Important**:
 > Always uninstall the app completely when you are finished working with it. See [Uninstall the sample](#uninstall-the-sample).
-
-## Key project files
-
-Only the most important files and folders are shown here.
-
-```text
-custom-functions-skill/
-|-- README.md
-|-- Test.xlsx
-|-- international-purchase-planner.zip
-|-- appPackage/
-|   |-- assets/
-|   |-- manifest.json
-|   |-- skills/
-|       |-- international-purchase-planner/
-|           |-- SKILL.md
-|           |-- resources/
-|           |   |-- excel-vs-agent-execution.md
-|           |   |-- workbook-data-guardrails.md
-|           |-- scripts/
-|               |-- prepare-purchase-comparison.js
-|-- assets/
-|-- env/
-|-- images/
-|-- infra/
-|-- src/
-|   |-- functions/
-|   |   |-- functions.html
-|   |   |-- functions.ts
-|   |-- taskpane/
-|-- package.json
-```
-
-- `SKILL.md` tells Copilot when to use the skill and defines its workflow and response.
-- The resource files define workbook validation and execution boundaries.
-- `prepare-purchase-comparison.js` validates the workbook and inserts formulas and formatting with Office.js.
-- `functions.ts` implements `FXRATE` and `BUDGETSTATUS`.
-- `manifest.json` registers the skill, custom-functions runtime, metadata URL, and minimal activation surface.
-
-> [!NOTE]
-> There is a task pane runtime configured in the manifest, and task pane files in **/src/taskpane**. These are required because custom functions in a JavaScript-only runtime aren't registered if there isn't also a browser-based runtime in the add-in. There is no ribbon button for the task pane. 
-
-For more information, see:
-
-- [Create custom functions in Excel](https://learn.microsoft.com/office/dev/add-ins/excel/custom-functions-overview)
-- [Create a Copilot skill for Excel](https://learn.microsoft.com/office/dev/add-ins/excel/excel-skills)
-- [Create a Copilot skill for Excel that uses Office.js](https://learn.microsoft.com/office/dev/add-ins/excel/excel-copilot-skill)
 
 ## Modify the sample
 
@@ -291,7 +291,7 @@ After changing the manifest, skill instructions, resources, or skill script:
 
 1. Close and reopen Excel before retesting.
 
-> [!IMPORTANT]
+> **Important**:
 > Do not change the required folder structure under `appPackage\skills`. The package service and Copilot use that structure to discover the skill.
 
 ## Troubleshooting
