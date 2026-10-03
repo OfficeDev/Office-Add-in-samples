@@ -98,6 +98,7 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | [Excel content add-in with data visualization](Samples/excel-content-data-visualization) | Create an Excel content add-in that includes data visualization. |
 | [Synchronous custom function sample (preview)](Samples/excel-custom-functions-sync) | A synchronous custom function that reads a cell value in tandem with Excel's calculation process using `@supportSync.` This feature is in public preview. |
 | [Skill for Copilot in Excel (preview)](Samples/excel-copilot-skill) | Create a custom skill for Copilot in Excel that uses the Excel-specific APIs in the Office JavaScript library to find and chart table rows which embody an accelerating growth trend. This feature is in public preview. |
+| [Skill for custom functions (preview)](Excel-custom-functions\CopilotExtensions\custom-functions-skill) | Create a custom skill for Copilot in Excel that inserts custom functions into cells in a table to compare purchasing quotes. This feature is in public preview. |
 
 ## Word
 
