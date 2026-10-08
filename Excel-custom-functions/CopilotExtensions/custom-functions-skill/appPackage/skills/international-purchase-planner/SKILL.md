@@ -50,11 +50,8 @@ If no table qualifies or `Settings` is invalid, report the exact error returned 
 
 ## Common pitfalls to avoid
 
-- Do not use the selected table or selected range.
 - Do not process any table other than the first qualifying table in workbook order.
 - Do not infer or prompt for settings.
 - Do not process incomplete or incorrectly typed quote data.
-- Do not use historical exchange rates.
-- Do not add quote-date, tax, shipping, contingency, projected-cost, or summary output.
 - Do not replace formulas with static values.
 - Do not run the Office.js script outside Excel.
