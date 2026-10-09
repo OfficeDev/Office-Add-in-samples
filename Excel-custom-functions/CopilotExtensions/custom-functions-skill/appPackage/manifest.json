@@ -1,0 +1,98 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.30/MicrosoftTeams.schema.json",
+  "id": "c1b06178-4084-4a0e-8f1e-7acddec18831",
+  "manifestVersion": "1.30",
+  "version": "1.0.0",
+  "name": {
+    "short": "Purchase Planner",
+    "full": "International Purchase Planner for Excel"
+  },
+  "description": {
+    "short": "Compare vendor quotes in a common reporting currency.",
+    "full": "An educational Excel custom skill that converts complete vendor quotes with current exchange rates and identifies quotes near or over budget."
+  },
+  "developer": {
+    "name": "Contoso",
+    "websiteUrl": "https://www.contoso.com",
+    "privacyUrl": "https://www.contoso.com/privacy",
+    "termsOfUseUrl": "https://www.contoso.com/servicesagreement"
+  },
+  "icons": {
+    "outline": "assets/outline.png",
+    "color": "assets/color.png"
+  },
+  "accentColor": "#217346",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us",
+    "additionalLanguages": []
+  },
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Document.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "validDomains": [
+    "localhost",
+    "api.frankfurter.dev"
+  ],
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": [
+          "workbook"
+        ],
+        "capabilities": [
+          {
+            "name": "CustomFunctionsRuntime",
+            "minVersion": "1.1"
+          }
+        ]
+      },
+      "runtimes": [
+        {
+          "id": "TaskPaneRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/taskpane.html"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "TaskPaneRuntimeShow",
+              "type": "openPage",
+              "pinnable": false,
+              "view": "dashboard"
+            }
+          ]
+        },
+        {
+          "id": "FunctionsRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/functions.html",
+            "script": "https://localhost:3000/public/functions.js"
+          },
+          "lifetime": "short",
+          "customFunctions": {
+            "namespace": {
+              "id": "PURCHASEPLANNER",
+              "name": "PURCHASEPLANNER"
+            },
+            "allowCustomDataForDataTypeAny": false,
+            "metadataUrl": "https://localhost:3000/public/functions.json"
+          }
+        }
+      ]
+    }
+  ],
+  "agentSkills": [
+    {
+      "folder": "./skills/international-purchase-planner"
+    }
+  ]
+}
