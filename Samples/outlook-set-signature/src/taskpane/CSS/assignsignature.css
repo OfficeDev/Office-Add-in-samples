@@ -10,8 +10,19 @@
     opacity: 1;
   }
 
+  .dropdown {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-left: 17px;
+  }
+
   .dropdown label {
     font-size: 14px;
+    position: static;
+    width: 100px;
+    height: auto;
+    flex-shrink: 0;
   }
 
   .container {
@@ -189,7 +200,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #666;
     -webkit-transition: .264s;
     transition: .264s;
   }
@@ -207,11 +218,12 @@
   }
   
   input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #005696;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    outline: 2px solid #005696;
+    outline-offset: 2px;
   }
   
   input:checked + .slider:before {

@@ -21,16 +21,22 @@
   <div class="container">
     <h2>Add signature data</h2>
 
+    <label for="display_name">Name (required)</label>
     <input type="text" id="display_name" placeholder="Name*" onclick="this.select()" required />
 
+    <label for="email_id">Email address (required)</label>
     <input type="email" id="email_id" placeholder="Email address*" onclick="this.select()" required />
 
+    <label for="job_title">Title</label>
     <input type="text" id="job_title" placeholder="Title" />
 
+    <label for="phone_number">Phone number</label>
     <input type="text" id="phone_number" placeholder="Phone number" />
 
+    <label for="greeting_text">Greeting</label>
     <input type="text" placeholder="Eg: Thank you," id="greeting_text" />
 
+    <label for="preferred_pronoun">Preferred pronouns</label>
     <input type="text" placeholder="Eg: She, Her" id="preferred_pronoun" />
 
     <button id="next_button_t1" class="registerbtn" onclick="create_user_info()">Save</button>

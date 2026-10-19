@@ -8,6 +8,14 @@
   font-size: 20px;
 }
 
+label {
+  display: block;
+  width: 267px;
+  margin: 0 auto 4px;
+  color: #424242;
+  text-align: left;
+}
+
 input {
   height: 45px;
   width: 267px;
@@ -83,10 +91,11 @@ input[type=text], input[type=number], input[type=email] {
 }
  
 input[type=text]:focus, input[type=number]:focus, input[type=email]:focus {
-  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  outline: 2px solid #005696;
+  outline-offset: 2px;
   /*padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;*/
-  border: 1px solid rgba(81, 203, 238, 1);
+  border: 1px solid #005696;
 }
 
 body {
