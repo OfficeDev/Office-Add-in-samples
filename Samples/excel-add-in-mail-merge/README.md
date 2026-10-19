@@ -183,8 +183,6 @@ Once you understand the sample, make it your own! All the information about Offi
 
 Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
 
-Want to learn more about new features and best practices for the Office platform? [Join the Microsoft Office Add-ins community call](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins-community-call).
-
 ## Copyright
 
 Copyright (c) 2024 Microsoft Corporation. All rights reserved.
