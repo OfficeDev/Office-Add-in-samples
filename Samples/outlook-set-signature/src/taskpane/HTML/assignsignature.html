@@ -35,40 +35,37 @@
     <div style="height:35px;"><br/></div>
 
     <div class="dropdown">
-      <label for="templates">New Mail
-        <select style="margin-left:62px;" id="new_mail">
-          <option value="none">None</option>
-          <option value="templateA">Template A</option>
-          <option value="templateB">Template B</option>
-          <option value="templateC">Template C</option>
-        </select>
-      </label>
+      <label for="new_mail">New Mail</label>
+      <select id="new_mail">
+        <option value="none">None</option>
+        <option value="templateA">Template A</option>
+        <option value="templateB">Template B</option>
+        <option value="templateC">Template C</option>
+      </select>
     </div>
 
     <div style="height:20px;"><br></div>
 
     <div class="dropdown">
-      <label for="templates">Reply
-          <select style="margin-left:85px;" id="reply">
-            <option value="none">None</option>
-            <option value="templateA">Template A</option>
-            <option value="templateB">Template B</option>
-            <option value="templateC">Template C</option>
-          </select>
-        </label>
+      <label for="reply">Reply</label>
+      <select id="reply">
+        <option value="none">None</option>
+        <option value="templateA">Template A</option>
+        <option value="templateB">Template B</option>
+        <option value="templateC">Template C</option>
+      </select>
     </div>
 
     <div style="height:20px;"><br></div>
 
     <div class="dropdown">
-      <label for="templates">Forward
-        <select style="margin-left:71px;" id="forward">
-          <option value="none">None</option>
-          <option value="templateA">Template A</option>
-          <option value="templateB">Template B</option>
-          <option value="templateC">Template C</option>
-        </select>
-      </label>
+      <label for="forward">Forward</label>
+      <select id="forward">
+        <option value="none">None</option>
+        <option value="templateA">Template A</option>
+        <option value="templateB">Template B</option>
+        <option value="templateC">Template C</option>
+      </select>
     </div>
 
     <div style="height:15px;"><br></div>
@@ -80,7 +77,7 @@
     <p id="override_sig">Override Outlook signature</p>
 
     <label style = "position:relative; left:230px; top:2.5px;" class="switch">
-      <input id="checkbox_sig" type="checkbox" checked>
+      <input id="checkbox_sig" type="checkbox" aria-labelledby="override_sig" checked>
       <span class="slider round"></span>
     </label>
 

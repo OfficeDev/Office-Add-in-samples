@@ -13,7 +13,7 @@
     @Html.AntiForgeryToken()
     <fieldset>
 
-        Team Channel:
+        @Html.Label("channelSelection", "Team channel:")
 
         @Html.DropDownList("channelSelection")
         <p>

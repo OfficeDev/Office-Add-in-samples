@@ -116,7 +116,7 @@ ul.ordered-list {
 
 /* Overriding Fabric styles to format the Welcome page and workbook list page. */
 .ordered-list .ms-ListItem-primaryText {
-  color: rgba(0, 119, 214, 1);
+  color: #005a9e;
   background-color: rgba(198, 223, 243, 1);
   border-radius: 100%;
   font-size: 12pt;
@@ -189,4 +189,24 @@ ul.ordered-list {
 
 .file-item-status{
   padding-bottom: 20px;
+}
+
+.welcome .ms-fontColor-themePrimary {
+  color: #005a9e;
+}
+
+.homefooter .ms-Button.ms-Button--primary {
+  background-color: #005a9e;
+  border-color: #005a9e;
+}
+
+.homefooter .ms-Button.ms-Button--primary:hover,
+.homefooter .ms-Button.ms-Button--primary:focus {
+  background-color: #004578;
+  border-color: #004578;
+}
+
+.homefooter .ms-Button.ms-Button--primary:focus {
+  outline: 2px solid #323130;
+  outline-offset: 2px;
 }
