@@ -4,8 +4,8 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="PnP Tag External Recipients sample"/>
-  <Description DefaultValue="Updates the subject and adds a disclaimer if external recipients are included during message compose."/>
+  <DisplayName DefaultValue="External Recipient Notifier"/>
+  <Description DefaultValue="Adds an [External] subject tag and shows you a notification when an email includes external recipients."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
@@ -77,12 +77,9 @@
           <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/public/launchevents.js" />
         </bt:Urls>
         <bt:LongStrings>
-          <bt:String id="residAppDesc" DefaultValue="Update the subject and add a disclaimer if external recipients are included."></bt:String>
+          <bt:String id="residAppDesc" DefaultValue="Adds an [External] subject tag and shows you a notification when an email includes external recipients."></bt:String>
         </bt:LongStrings>
       </Resources>
-      <ExtendedPermissions>
-        <ExtendedPermission>AppendOnSend</ExtendedPermission>
-      </ExtendedPermissions>
     </VersionOverrides>
   </VersionOverrides>
 </OfficeApp>

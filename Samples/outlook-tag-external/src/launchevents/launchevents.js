@@ -3,6 +3,8 @@
  * See LICENSE in the project root for license information.
  */
 
+/* global Office, console */
+
 Office.onReady();
 
 function onMessageRecipientsChangedHandler(event) {
@@ -157,116 +159,117 @@ function _checkForExternal(event) {
 }
 /**
  * If there are any external recipients, prepends the subject of the Outlook item
- * with "[External]" and appends a disclaimer to the item body. If there are
- * no external recipients, ensures the tag is not present and clears the disclaimer.
+ * with "[External]" and displays a notification. If there are no external
+ * recipients, ensures the tag is not present and clears the notification.
  * @param {bool} hasExternal If there are any external recipients
  * @param {Office.MailboxEvent} event The OnMessageRecipientsChanged event
  */
 function _tagExternal(hasExternal, event) {
   const externalTag = "[External]";
 
+  Office.context.mailbox.item.subject.getAsync({ asyncContext: event }, function (asyncResult) {
+    const event = asyncResult.asyncContext;
+    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+      console.error(`Failed to get subject: ${asyncResult.error.message}`);
+      event.completed();
+      return;
+    }
+
+    const currentSubject = asyncResult.value;
+    let subject = currentSubject;
+    if (hasExternal && !currentSubject.includes(externalTag)) {
+      subject = `${externalTag} ${currentSubject}`;
+    } else if (!hasExternal && currentSubject.startsWith(externalTag)) {
+      subject = currentSubject.replace(externalTag, "").trim();
+    }
+
+    if (subject === currentSubject) {
+      _updateExternalNotification(hasExternal, event);
+      return;
+    }
+
+    Office.context.mailbox.item.subject.setAsync(
+      subject,
+      { asyncContext: event },
+      function (asyncResult) {
+        const event = asyncResult.asyncContext;
+        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+          console.error(`Failed to set subject: ${asyncResult.error.message}`);
+          event.completed();
+          return;
+        }
+
+        console.log("Set subject successfully.");
+        _updateExternalNotification(hasExternal, event);
+      }
+    );
+  });
+}
+
+/**
+ * Updates the sender's notification without changing the message body.
+ * @param {bool} hasExternal If there are any external recipients
+ * @param {Office.MailboxEvent} event The OnMessageRecipientsChanged event
+ */
+function _updateExternalNotification(hasExternal, event) {
+  const notificationKey = "tagExternalRecipients";
+  const notificationMessages = Office.context.mailbox.item.notificationMessages;
+
   if (hasExternal) {
-    // Ensure "[External]" is prepended to the subject.
-    Office.context.mailbox.item.subject.getAsync(
+    notificationMessages.replaceAsync(
+      notificationKey,
+      {
+        type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
+        message: "This email includes external recipients. Please review all recipients before sending.",
+        icon: "Icon.16x16",
+        persistent: true,
+      },
       { asyncContext: event },
       function (asyncResult) {
         const event = asyncResult.asyncContext;
         if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-          console.error(`Failed to get subject: ${asyncResult.error.message}`);
-          event.completed();
-          return;
-        }
-
-        let subject = asyncResult.value;
-        if (!subject.includes(externalTag)) {
-          subject = `${externalTag} ${subject}`;
-          Office.context.mailbox.item.subject.setAsync(
-            subject,
-            { asyncContext: event },
-            function (asyncResult) {
-              const event = asyncResult.asyncContext;
-              if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                console.error(`Failed to set Subject: ${asyncResult.error.message}`);
-                event.completed();
-                return;
-              }
-
-              console.log("Set subject successfully.");
-
-              // Append disclaimer in message body on send.
-              const disclaimer = '<p style="color:blue"><i>Caution: This email includes external recipients.</i></p>';
-              Office.context.mailbox.item.body.appendOnSendAsync(
-                disclaimer,
-                {
-                  asyncContext: event,
-                  coercionType: Office.CoercionType.Html
-                },
-                function (asyncResult) {
-                  const event = asyncResult.asyncContext;
-                  if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                    console.error(`Failed to set disclaimer via appendOnSend: ${asyncResult.error.message}`);
-                    event.completed();
-                    return;
-                  }
-
-                  console.log("Set disclaimer in the body successfully.");
-                  event.completed();  
-                }
-              );
-            }
+          console.error(
+            `Failed to set external recipient notification: ${asyncResult.error.message}`
           );
         }
+        event.completed();
       }
     );
-  } else {
-    // Ensure "[External]" is not part of the subject.
-    Office.context.mailbox.item.subject.getAsync(
-      { asyncContext: event },
-      function (asyncResult) {
-        const event = asyncResult.asyncContext;
-        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-          console.error(`Failed to get subject: ${asyncResult.error.message}`);
-          event.completed();
-          return;
-        }
-
-        const currentSubject = asyncResult.value;
-        if (currentSubject.startsWith(externalTag)) {
-          const updatedSubject = currentSubject.replace(externalTag, "");
-          const subject = updatedSubject.trim();
-          Office.context.mailbox.item.subject.setAsync(
-            subject,
-            { asyncContext: event },
-            function (asyncResult) {
-              const event = asyncResult.asyncContext;
-              if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                console.error(`Failed to set subject: ${asyncResult.error.message}`);
-                event.completed();
-                return;
-              }
-
-              // Clear disclaimer as there aren't any external recipients.
-              Office.context.mailbox.item.body.appendOnSendAsync(
-                null,
-                { asyncContext: event },
-                function (asyncResult) {
-                  const event = asyncResult.asyncContext;
-                  if (asyncResult.status === Office.AsyncResultStatus.Failed) {
-                    console.error(`Failed to clear disclaimer via appendOnSend. ${asyncResult.error.message}`);
-                    event.completed();
-                    return;
-                  }
-
-                  console.log("Cleared disclaimer from the body successfully.");
-                  event.completed();
-                }
-              );
-            }
-          );
-        }
-      }
-    );
+    return;
   }
+
+  notificationMessages.getAllAsync({ asyncContext: event }, function (asyncResult) {
+    const event = asyncResult.asyncContext;
+    if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+      console.error(`Failed to get notifications: ${asyncResult.error.message}`);
+      event.completed();
+      return;
+    }
+
+    // Removing a notification that doesn't exist returns an error.
+    if (
+      !asyncResult.value.some(function (notification) {
+        return notification.key === notificationKey;
+      })
+    ) {
+      event.completed();
+      return;
+    }
+
+    notificationMessages.removeAsync(
+      notificationKey,
+      { asyncContext: event },
+      function (asyncResult) {
+        const event = asyncResult.asyncContext;
+        if (asyncResult.status === Office.AsyncResultStatus.Failed) {
+          console.error(
+            `Failed to clear external recipient notification: ${asyncResult.error.message}`
+          );
+        }
+        event.completed();
+      }
+    );
+  });
 }
 
 Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipientsChangedHandler);

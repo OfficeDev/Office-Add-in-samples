@@ -4,10 +4,10 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="PnP Tag External Recipients sample"/>
-  <Description DefaultValue="Updates the subject and adds a disclaimer if external recipients are included during message compose."/>
-  <IconUrl DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-64.png"/>
-  <HighResolutionIconUrl DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-128.png"/>
+  <DisplayName DefaultValue="External Recipient Notifier"/>
+  <Description DefaultValue="Adds an [External] subject tag and shows you a notification when an email includes external recipients."/>
+  <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>https://www.contoso.com</AppDomain>
@@ -23,7 +23,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/launchevents/launchevents.html"/>
+        <SourceLocation DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/launchevents/launchevents.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -67,22 +67,19 @@
       </Hosts>
       <Resources>
         <bt:Images>
-          <bt:Image id="Icon.16x16" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-16.png"/>
-          <bt:Image id="Icon.32x32" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-32.png"/>
-          <bt:Image id="Icon.80x80" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-80.png"/>
+          <bt:Image id="Icon.16x16" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-16.png"/>
+          <bt:Image id="Icon.32x32" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-32.png"/>
+          <bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/launchevents/launchevents.html" />
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/launchevents/launchevents.html" />
           <!-- Entry needed for Outlook Desktop. -->
-          <bt:Url id="JSRuntime.Url" DefaultValue="https://samantharamon.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/launchevents/launchevents.js" />
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/launchevents/launchevents.js" />
         </bt:Urls>
         <bt:LongStrings>
-          <bt:String id="residAppDesc" DefaultValue="Update the subject and add a disclaimer if external recipients are included."></bt:String>
+          <bt:String id="residAppDesc" DefaultValue="Adds an [External] subject tag and shows you a notification when an email includes external recipients."></bt:String>
         </bt:LongStrings>
       </Resources>
-      <ExtendedPermissions>
-        <ExtendedPermission>AppendOnSend</ExtendedPermission>
-      </ExtendedPermissions>
     </VersionOverrides>
   </VersionOverrides>
 </OfficeApp>

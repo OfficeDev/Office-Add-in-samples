@@ -20,7 +20,6 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      launchevents: ["./src/launchevents/launchevents.js", "./src/launchevents/launchevents.html"]
     },
     output: {
       clean: true,
@@ -52,10 +51,18 @@ module.exports = async (env, options) => {
       ],
     },
     plugins: [
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            from: "./src/launchevents/launchevents.js",
+            to: "launchevents.js",
+          },
+        ],
+      }),
       new HtmlWebpackPlugin({
         filename: "launchevents.html",
         template: "./src/launchevents/launchevents.html",
-        chunks: ["polyfill", "launchevents"],
+        chunks: ["polyfill"],
       }),
       new CopyWebpackPlugin({
         patterns: [
@@ -64,7 +71,7 @@ module.exports = async (env, options) => {
             to: "assets/[name][ext][query]",
           },
           {
-            from: "manifest*.xml",
+            from: "manifest*.*",
             to: "[name]" + "[ext]",
             transform(content) {
               if (dev) {
