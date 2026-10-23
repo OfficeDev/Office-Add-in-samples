@@ -1,0 +1,39 @@
+﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+@page "/bubblechart"
+@rendermode InteractiveWebAssembly
+
+<PageTitle>Bubble Chart</PageTitle>
+
+<RenderModeInfo />
+
+<LoadingProgress>
+    <FluentStack Orientation="Orientation.Vertical"
+                 HorizontalAlignment="HorizontalAlignment.Center"
+                 VerticalAlignment="VerticalAlignment.Center">
+        <FluentStack Orientation=Orientation.Horizontal
+                     HorizontalAlignment="HorizontalAlignment.Center"
+                     VerticalAlignment="VerticalAlignment.Center">
+            <FluentEmoji Value="@(new Emojis.Activities.Color.Default.Balloon())" />
+            <FluentLabel Typo="Typography.H1">Bubbles!</FluentLabel>
+        </FluentStack>
+        <FluentLabel>This sample shows how to create a bubble chart, with each chart series (or bubble) representing a single table row.</FluentLabel>
+
+        @if (!HostInformation)
+        {
+            <FluentLabel Typo="Typography.H4">
+                Please <FluentAnchor Href="https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing" Appearance="Appearance.Hypertext" Target="_blank">sideload</FluentAnchor> your add-in to see app body.
+            </FluentLabel>
+        }
+        else
+        {
+            <FluentLabel Typo="Typography.H3" Alignment="HorizontalAlignment.Center">
+                Set up                
+            </FluentLabel>
+            <FluentButton OnClick="CreateTable" Appearance="Appearance.Accent">Create table</FluentButton>
+            <FluentLabel Typo="Typography.H3" Alignment="HorizontalAlignment.Center">
+                Try it out
+            </FluentLabel>
+            <FluentButton OnClick="CreateBubbleChart" Appearance="Appearance.Accent">Create a bubble chart</FluentButton>
+        }
+    </FluentStack>
+</LoadingProgress>

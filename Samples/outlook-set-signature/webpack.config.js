@@ -18,8 +18,14 @@ module.exports = async (env, options) => {
     devtool: "source-map",
     entry: {
       polyfill: ["core-js/stable", "regenerator-runtime/runtime"],
-      assignpane: ["./src/taskpane/Js/taskpane_main.js", "./src/taskpane/HTML/assignsignature.html"],
-      editpane: ["./src/taskpane/HTML/editsignature.html"],
+      assignpane: [
+        "./src/utilities.js",
+        "./src/taskpane/Js/signature_templates.js",
+        "./src/taskpane/Js/signature_loader.js",
+        "./src/taskpane/Js/taskpane_main.js",
+        "./src/taskpane/HTML/assignsignature.html",
+      ],
+      editpane: ["./src/taskpane/Js/taskpane_render.js", "./src/taskpane/HTML/editsignature.html"],
       autorun: ["./src/runtime/Js/autorunshared.js", "./src/runtime/HTML/autorunweb.html"],
     },
     output: {
@@ -77,7 +83,7 @@ module.exports = async (env, options) => {
             to: "assets/[name][ext][query]",
           },
           {
-            from: "manifest*.json",
+            from: "manifest*.*",
             to: "[name]" + "[ext]",
             transform(content) {
               if (dev) {

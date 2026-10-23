@@ -1,0 +1,37 @@
+﻿﻿@* Copyright (c) Maarten van Stam. All rights reserved. Licensed under the MIT License. *@
+@page "/"
+@page "/home"
+@rendermode InteractiveWebAssembly
+
+<PageTitle>Home</PageTitle>
+
+<RenderModeInfo />
+
+<LoadingProgress>
+    <FluentStack Orientation="Orientation.Vertical"
+                 HorizontalAlignment="HorizontalAlignment.Center"
+                 VerticalAlignment="VerticalAlignment.Center">
+        <FluentStack Orientation=Orientation.Horizontal
+                     HorizontalAlignment="HorizontalAlignment.Center"
+                     VerticalAlignment="VerticalAlignment.Center">
+            <FluentEmoji Value="@(new Emojis.TravelPlaces.Color.Default.Rocket())" />
+            <FluentLabel Typo="Typography.H1">Hello!</FluentLabel>
+        </FluentStack>
+        <FluentLabel>Welcome to your new Excel Add-in.</FluentLabel>
+
+        @if (!_hostInformation)
+        {
+            <FluentLabel Typo="Typography.H4">
+                Please <FluentAnchor Href="https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing" Appearance="Appearance.Hypertext" Target="_blank">sideload</FluentAnchor> your add-in to see app body.
+            </FluentLabel>
+        }
+        else
+        {
+            <FluentLabel Typo="Typography.Body" Alignment="HorizontalAlignment.Center">
+                Set cell A1 in the Excel sheet using JavaScript interop between Blazor and the Office JavaScript API.
+            </FluentLabel>
+            <FluentButton OnClick="InsertText" Appearance="Appearance.Accent">Say Hello World in Excel!</FluentButton>
+        }
+
+    </FluentStack>
+</LoadingProgress>

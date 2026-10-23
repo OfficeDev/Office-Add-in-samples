@@ -1,0 +1,99 @@
+﻿<!-- Copyright(c) Maarten van Stam All rights reserved. */ -->
+
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NoDefaultLaunchSettingsFile>true</NoDefaultLaunchSettingsFile>
+    <StaticWebAssetProjectMode>Default</StaticWebAssetProjectMode>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+
+    <!-- Build quality -->
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <Deterministic>true</Deterministic>
+    <IsPackable>false</IsPackable>
+
+    <TypeScriptNoEmitOnError>true</TypeScriptNoEmitOnError>
+    <TypeScriptSkipLibCheck>true</TypeScriptSkipLibCheck>
+
+    <!-- Ensure TypeScript compiles before static web asset discovery so generated .js files are in the manifest -->
+    <ResolveStaticWebAssetsInputsDependsOn>CompileTypeScript;$(ResolveStaticWebAssetsInputsDependsOn)</ResolveStaticWebAssetsInputsDependsOn>
+    <GetCurrentProjectBuildStaticWebAssetItemsDependsOn>CompileTypeScript;$(GetCurrentProjectBuildStaticWebAssetItemsDependsOn)</GetCurrentProjectBuildStaticWebAssetItemsDependsOn>
+    <GetCurrentProjectPublishStaticWebAssetItemsDependsOn>CompileTypeScript;$(GetCurrentProjectPublishStaticWebAssetItemsDependsOn)</GetCurrentProjectPublishStaticWebAssetItemsDependsOn>
+  </PropertyGroup>
+
+  <!-- Blazor WASM Release optimizations -->
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <PublishTrimmed>true</PublishTrimmed>
+    <RunAOTCompilation>true</RunAOTCompilation>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <!-- Optional (requires cross-origin isolation): <WasmEnableThreads>true</WasmEnableThreads> -->
+    <!-- Optional: <WasmEnableSIMD>true</WasmEnableSIMD> -->
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Exclude node_modules from TypeScript compilation tracking to prevent timestamp issues -->
+    <TypeScriptCompile Remove="node_modules/**/*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Exclude npm files from output directory - they're only needed at build time -->
+    <Content Remove="node_modules\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="10.0.9" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.14.3" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Emoji" Version="4.14.3" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.14.3" />
+    <PackageReference Include="Microsoft.JSInterop.WebAssembly" Version="10.0.9" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="6.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <!-- Incremental, reproducible npm restore -->
+  <Target Name="NpmRestore" BeforeTargets="BeforeBuild;ResolveReferences" Condition="Exists('package.json')">
+    <PropertyGroup>
+      <NpmStampFile>node_modules/.package-lock.stamp</NpmStampFile>
+    </PropertyGroup>
+    
+    <!-- Check if npm restore is needed -->
+    <PropertyGroup>
+      <!-- Always restore if stamp doesn't exist -->
+      <NpmRestoreNeeded Condition="!Exists('$(NpmStampFile)')">true</NpmRestoreNeeded>
+      
+      <!-- Check if package-lock.json is newer than stamp (only if both exist) -->
+      <_PackageLockTime Condition="Exists('package-lock.json') AND Exists('$(NpmStampFile)')">$([System.IO.File]::GetLastWriteTime('package-lock.json').Ticks)</_PackageLockTime>
+      <_StampTime Condition="Exists('package-lock.json') AND Exists('$(NpmStampFile)')">$([System.IO.File]::GetLastWriteTime('$(NpmStampFile)').Ticks)</_StampTime>
+      <NpmRestoreNeeded Condition="'$(_PackageLockTime)' != '' AND '$(_StampTime)' != '' AND $(_PackageLockTime) &gt; $(_StampTime)">true</NpmRestoreNeeded>
+    </PropertyGroup>
+    
+    <!-- Run npm ci if needed -->
+    <Message Importance="high" Text="Running npm ci (package-lock.json updated or first build)..." Condition="'$(NpmRestoreNeeded)' == 'true'" />
+    <Exec Command="npm ci" Condition="'$(NpmRestoreNeeded)' == 'true'" ConsoleToMSBuild="true" />
+    <Touch Files="$(NpmStampFile)" AlwaysCreate="true" Condition="'$(NpmRestoreNeeded)' == 'true'" />
+    <Message Importance="low" Text="Skipping npm ci - packages are up to date" Condition="'$(NpmRestoreNeeded)' != 'true'" />
+  </Target>
+  <!-- Note: client build step intentionally omitted. TypeScript MSBuild and existing NpmRestore handle necessary work.
+       If you need a custom npm build step, add it here and ensure package.json defines a "build" script. -->
+  
+  <!-- Register TypeScript-compiled JS files as static web assets.
+       commands.js and SharedUtils.js are gitignored (generated at build time), so we add them after TS compilation. -->
+  <Target Name="AddTypeScriptWwwrootOutputsToContent"
+          BeforeTargets="ResolveStaticWebAssetsInputs;GetCurrentProjectBuildStaticWebAssetItems;GetCurrentProjectPublishStaticWebAssetItems">
+    <ItemGroup>
+      <_GeneratedTypeScriptAssets Include="wwwroot\commands\commands.js" Condition="Exists('wwwroot\commands\commands.js')" />
+      <_GeneratedTypeScriptAssets Include="wwwroot\commands\commands.js.map" Condition="Exists('wwwroot\commands\commands.js.map')" />
+      <_GeneratedTypeScriptAssets Include="wwwroot\scripts\SharedUtils.js" Condition="Exists('wwwroot\scripts\SharedUtils.js')" />
+      <_GeneratedTypeScriptAssets Include="wwwroot\scripts\SharedUtils.js.map" Condition="Exists('wwwroot\scripts\SharedUtils.js.map')" />
+
+      <Content Remove="@(_GeneratedTypeScriptAssets)" />
+      <Content Include="@(_GeneratedTypeScriptAssets)" />
+    </ItemGroup>
+  </Target>
+
+</Project>

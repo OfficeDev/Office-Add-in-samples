@@ -36,6 +36,15 @@ This sample shows how to use MSAL.js nested app authentication (NAA) in an Outlo
 - [Node.js](https://nodejs.org/) (latest recommended version).
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
+## Decide on a version of the manifest
+
+- Add-in only manifest
+  - By default, the sample supports the add-in only manifest, which is the **manifest.xml** file in the sample's root directory **samples/auth/outlook-add-in-sso-naa**. For convenience, a copy of the config files specific to this version can be found in the **manifest-configurations/add-in-only** subfolder.
+  - To continue with this version, skip to the [Create an application registration](#create-an-application-registration) section.
+- [Unified manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/json-manifest-overview)
+  - To run the unified manifest for Microsoft 365 (**manifest.json**), you need to copy the files from the **manifest-configurations/unified** subfolder to the sample's root directory, replacing the existing config files.
+  - Optionally, you can delete the **manifest.xml** file from root directory so only files needed for the unified manifest are present. For convenience, a copy of the .xml manifest is available in the **manifest-configurations/add-in-only** subfolder.
+
 ## Build and run the solution
 
 ### Create an application registration
@@ -65,6 +74,20 @@ For more information on how to register your application, see [Register an appli
 1. Open the `src/taskpane/msalconfig.ts` file.
 1. Replace the placeholder "Enter_the_Application_Id_Here" with the Application ID that you copied.
 1. Save the file.
+
+## Choose a manifest type
+
+By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/en-us/office/dev/add-ins/develop/add-in-manifests).
+If you want to continue with the add-in only manifest, skip ahead to the [Run the sample](#run-the-sample) section.
+
+### To switch to the Unified manifest for Microsoft 365
+
+Copy all files from the **manifest-configurations/unified** subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.xml** file from the root folder, so only files needed for the unified manifest are present in the root. Then continue with the [Run the sample](#run-the-sample) section.
+
+### To switch back to the Add-in only manifest
+
+If you want to switch back to the add-in only manifest, copy the files in the **manifest-configurations/add-in-only** subfolder to the sample's root folder. We recommend that you delete the **manifest.json** file from the root folder.
+
 
 ## Run the sample
 

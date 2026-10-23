@@ -45,9 +45,11 @@
 <footer id="footer" class="homefooter ms-bgColor-neutralLight">
     <div class="container">
 
-        @* Button to sign in to Office 365 *@
+        @* Official Microsoft sign-in asset: https://learn.microsoft.com/entra/identity-platform/howto-add-branding-in-apps *@
         <p align="center">
-            <button id="loginO365PopupButton" class="popupButton ms-Button ms-Button--primary"><span class="ms-Button-label">Connect to Office 365</span></button>
+            <button type="button" id="loginO365PopupButton" class="popupButton microsoft-signin">
+                <img src="@Url.Content("~/Content/microsoft-signin.png")" alt="Sign in with Microsoft" />
+            </button>
         </p>
 
     </div>

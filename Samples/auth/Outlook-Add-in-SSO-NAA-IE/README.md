@@ -54,7 +54,7 @@ This sample shows how to use MSAL.js nested app authentication (NAA) in an Outlo
 
    ![The redirect URIs link.](./assets/ui-add-redirect-link.png)
 
-1. In the **Single-page application Redirect URIs** section, select **Add URI**.
+1. In the **Single-page application Redirect URIs** section, select **Add Redirect URI**.
 
    ![The Add URI link.](./assets/ui-add-redirects-link.png)
 

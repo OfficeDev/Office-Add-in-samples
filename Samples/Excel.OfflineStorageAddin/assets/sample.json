@@ -8,7 +8,7 @@
         "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/Excel.OfflineStorageAddin",
         "longDescription": "This sample demonstrates how you can implement localStorage to enable limited functionality for your Office Add-in when a user experiences lost connection.",
         "creationDateTime": "2019-07-19",
-        "updateDateTime": "2019-07-19",
+        "updateDateTime": "2026-09-10",
         "products": [
             "Office"
         ],

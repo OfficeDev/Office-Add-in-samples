@@ -3,24 +3,42 @@
  * See LICENSE in the project root for license information.
  */
 
+import { ensureState, getValueForKey, setValueForKey } from "../shared/state";
+
 Office.initialize = () => {
-  let keys = [];
-  let values = [];
+  ensureState();
 
-  // state object is used to track key/value pairs, and which storage type is in use
-  g.state = {
-    keys: keys,
-    values: values,
-    storageType: "globalvar"
-  };
+  // In shared runtime, this script can execute even when task pane UI is not active.
+  const sideloadMsg = document.getElementById("sideload-msg");
+  const appBody = document.getElementById("app-body");
+  const btnStore = document.getElementById("btnStoreValue");
+  const btnGet = document.getElementById("btnGetValue");
+  const globalVarRadio = document.getElementById("globalvar");
+  const localStorageRadio = document.getElementById("localstorage");
 
-  // Connect handlers
-  document.getElementById("sideload-msg").style.display = "none";
-  document.getElementById("app-body").style.display = "flex";
-  document.getElementById("btnStoreValue").onclick = btnStoreValue;
-  document.getElementById("btnGetValue").onclick = btnGetValue;
-  document.getElementById("globalvar").onclick = btnStorageChanged;
-  document.getElementById("localstorage").onclick = btnStorageChanged;
+  if (sideloadMsg) {
+    sideloadMsg.style.display = "none";
+  }
+
+  if (appBody) {
+    appBody.style.display = "flex";
+  }
+
+  if (btnStore) {
+    btnStore.onclick = btnStoreValue;
+  }
+
+  if (btnGet) {
+    btnGet.onclick = btnGetValue;
+  }
+
+  if (globalVarRadio) {
+    globalVarRadio.onclick = btnStorageChanged;
+  }
+
+  if (localStorageRadio) {
+    localStorageRadio.onclick = btnStorageChanged;
+  }
 };
 
 /***
@@ -29,6 +47,11 @@ Office.initialize = () => {
 function btnStoreValue() {
   const keyElement = document.getElementById("txtKey");
   const valueElement = document.getElementById("txtValue");
+
+  if (!keyElement || !valueElement) {
+    return;
+  }
+
   setValueForKey(keyElement.value, valueElement.value);
 }
 
@@ -37,7 +60,13 @@ function btnStoreValue() {
  */
 function btnGetValue() {
   const keyElement = document.getElementById("txtKey");
-  (document.getElementById("txtValue")).value = getValueForKey(keyElement.value);
+  const valueElement = document.getElementById("txtValue");
+
+  if (!keyElement || !valueElement) {
+    return;
+  }
+
+  valueElement.value = getValueForKey(keyElement.value);
 }
 
 /***
@@ -45,9 +74,12 @@ function btnGetValue() {
  * Updates a global variable that tracks which storage type is in use.
  */
 function btnStorageChanged() {
-  if ((document.getElementById("globalvar")).checked) {
-    g.state.storageType = "globalvar";
+  const state = ensureState();
+  const globalVarRadio = document.getElementById("globalvar");
+
+  if (globalVarRadio && globalVarRadio.checked) {
+    state.storageType = "globalvar";
   } else {
-    g.state.storageType = "localstorage";
+    state.storageType = "localstorage";
   }
 }

@@ -17,14 +17,11 @@ extensions:
 description: "This sample shows how to implement SSO in an Office Add-in by using nested app authentication."
 ---
 
-# Office Add-in with SSO using nested app authentication (preview)
+# Office Add-in with SSO using nested app authentication
 
 ## Summary
 
 This sample shows how to use MSAL.js nested app authentication (NAA) in an Office Add-in to access Microsoft Graph APIs for the signed in user. The sample displays the signed in user's name and email. It also inserts the names of files from the user's Microsoft OneDrive account into the document.
-
-> [!IMPORTANT]
-> Nested app authentication is currently in preview. To try this feature, you need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) and choose **Current Channel (Preview)**. Don't use NAA in production add-ins. We invite you to try out NAA in test or development environments and welcome feedback on your experience through GitHub (see https://github.com/OfficeDev/office-js/issues).
 
 ## Features
 
@@ -38,7 +35,6 @@ For a list of supported hosts, see [NAA supported accounts and hosts](https://le
 ## Prerequisites
 
 - Office connected to a Microsoft 365 subscription (including Office on the web).
-- You need to join the [Microsoft 365 Insider Program](https://insider.microsoft365.com/join) to use the NAA preview features. Choose the **Current Channel (Preview)** insider level.
 - [Node.js](https://nodejs.org/) (latest recommended version).
 - [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) version 8 or greater.
 
@@ -56,6 +52,11 @@ For a list of supported hosts, see [NAA supported accounts and hosts](https://le
     - Select **Register**.
 
 1. On the **Office-Add-in-SSO-NAA** page, copy and save the value for the **Application (client) ID**. You'll use it in the next section.
+1. Under **Manage** select **Authentication**.
+1. In the **Single-page application** pane, select **Add URI**.
+1. Enter the value `https://localhost:3000/auth.html` and select **Save**. This redirect handles the fallback scenario when browser auth is used from add-in.
+1. In the **Single-page application** pane, select **Add URI**.
+1. Enter the value `https://localhost:3000/dialog.html` and select **Save**. This redirect handles the fallback scenario when the Office dialog API is used.
 
 For more information on how to register your application, see [Register an application with the Microsoft Identity Platform](https://learn.microsoft.com/graph/auth-register-app-v2).
 
@@ -63,7 +64,7 @@ For more information on how to register your application, see [Register an appli
 
 1. Clone or download this repository.
 1. From the command line, or a terminal window, go to the root folder of this sample at `/samples/auth/Office-Add-in-SSO-NAA`.
-1. Open the `src/taskpane/authConfig.ts` file.
+1. Open the `src/taskpane/msalconfig.ts` file.
 1. Replace the placeholder "Enter_the_Application_Id_Here" with the Application ID that you copied.
 1. Save the file.
 
@@ -87,9 +88,9 @@ If you want to switch back to the add-in only manifest, copy the files in the **
 `npm install`
 `npm run start`
 
-This will start the web server and sideload the add-in to Excel.
+This will start the web server and sideload the add-in to Word.
 
-1. In Excel, look for the **Show task pane** button and select it.
+1. In Word, look for the **Show task pane** button and select it.
 1. When the task pane opens, there are two buttons: **Get user data** and **Get user files**.
 1. To see the signed in user's name and email, select **Get user data**.
 1. To insert the first 10 filenames from the signed in user's Microsoft OneDrive, select **Get user files**.
@@ -98,9 +99,9 @@ You'll be prompted to consent to the scopes the sample needs when you select the
 
 ## Selecting hosts and debugging steps
 
-If you want to choose Word or PowerPoint, modify the `start` command in the `package.json` file to match one of the following entries.
+If you want to choose Excel or PowerPoint, modify the `start` command in the `package.json` file to match one of the following entries.
 
-- For Word: `"start": "office-addin-debugging start manifest.xml desktop --app word",`
+- For Word: `"start": "office-addin-debugging start manifest.xml desktop --app excel",`
 - For PowerPoint: `"start": "office-addin-debugging start manifest.xml desktop --app powerpoint",`
 
 You can also debug the sample by opening the project in VS Code.
@@ -118,8 +119,7 @@ For more information on debugging with VS Code, see [Debugging](https://code.vis
 The `src/taskpane/authConfig.ts` file contains the MSAL code for configuring and using NAA. It contains a class named AccountManager which manages getting user account and token information.
 
 - The `initialize` function is called from Office.onReady to configure and initialize MSAL to use NAA.
-- The `ssoGetToken` function gets an access token for the signed in user to call Microsoft Graph APIs.
-- The `ssoGetUserIdentity` function gets the account information of the signed in user. This can be used to get user details such as name and email.
+- The `ssoGetAccessToken` function gets an access token for the signed in user to call Microsoft Graph APIs.
 
 The `src/taskpane/document.ts` file contains code to write a list of file names, retrieved from Microsoft Graph, into the document. This works for Word, Excel, and PowerPoint documents.
 

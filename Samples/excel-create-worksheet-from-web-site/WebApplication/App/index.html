@@ -42,10 +42,18 @@
             <a class="navbar-brand text-white" href="/">Contoso product sales</a>            
             <div class="navbar navbar-collapse">
 
+                <button type="button" id="downloadDirectlyBtn" disabled="true" class="btn btn-success me-2" onclick="downloadDirectly()" title="Download workbook with embedded add-in (bypasses OneDrive)">
+                    <img src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/excel_48x1.svg"
+                    width="48"
+                    height="48" 
+                    alt="Download Excel workbook with embedded add-in." >
+                    Download Directly
+                </button>
+
                 <button type="button" id="openInExcelIcon" disabled="true" class="btn btn-primary" onclick="openInExcel()"><img src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/brand-icons/product/svg/excel_48x1.svg"
                     width="48"
                     height="48" 
-                    alt="Open data in new Excel spreadsheet file." >
+                    alt="Upload to OneDrive and open in Excel." >
                 </img>Open in Microsoft Excel</button>
             
            

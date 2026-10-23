@@ -1,0 +1,68 @@
+﻿/* Page-specific styling */
+
+.padding {
+    padding: 15px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #f3f2f1;
+    padding: 10px;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+p {
+    margin: 0 0 10px 0;
+}
+
+button {
+    background-color: #f0f0f0;
+    color: #333333;
+    border: 1px solid #8a8a8a;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    min-width: 80px;
+    display: block;
+}
+
+    button:hover {
+        background-color: #e0e0e0;
+    }
+
+    button:active {
+        background-color: #d0d0d0;
+    }
+
+.notice {
+    padding: 10px 10px 25px 10px;
+    border: 2px solid black;
+}
+
+/* Formatting for the sample visualization */
+
+.visualization {
+    padding-bottom: 7px;
+    padding-right: 10px;
+}
+
+    .visualization td {
+        padding-bottom: 5px;
+    }
+
+    .visualization .bar {
+        background: darkgreen;
+        color: white;
+        text-align: center;
+        display: inline-block;
+    }

@@ -1,15 +1,26 @@
 # Office Add-ins code samples
 
+[![autorun-npm-audit-fix](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/autorun-npm-audit-fix.yml/badge.svg?branch=main)](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/autorun-npm-audit-fix.yml)
+[![Dependabot Updates](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/dependabot/dependabot-updates/badge.svg?branch=main)](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/dependabot/dependabot-updates)
+[![pages-build-deployment](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/pages/pages-build-deployment/badge.svg?branch=main)](https://github.com/OfficeDev/Office-Add-in-samples/actions/workflows/pages/pages-build-deployment)
+
 Office Add-ins code samples are provided in this repo to help you learn, study, and build great Office Add-ins!
 
 ## Getting started
 
 The following samples show how to build the simplest Office Add-in with only a manifest, HTML web page, and a logo. They will help you understand the fundamental parts of an Office Add-in. For additional getting started information, see our [quick starts](https://learn.microsoft.com/office/dev/add-ins/quickstarts/excel-quickstart-jquery) and [tutorials](https://learn.microsoft.com/search/?terms=tutorial&scope=Office%20Add-ins).
 
+### Task pane add-ins
+
 * [Excel "Hello world" add-in](Samples/hello-world/excel-hello-world)
 * [Outlook "Hello world" add-in](Samples/hello-world/outlook-hello-world)
 * [PowerPoint "Hello world" add-in](Samples/hello-world/powerpoint-hello-world)
 * [Word "Hello world" add-in](Samples/hello-world/word-hello-world)
+
+### Content add-ins
+
+* [Excel "Hello world" content add-in](Samples/hello-world/excel-content-hello-world/)
+* [PowerPoint "Hello world" content add-in](Samples/hello-world/powerpoint-content-hello-world/)
 
 ### Completed tutorials
 
@@ -19,8 +30,8 @@ The following samples are the completed versions of various tutorials for Office
 | -------------- | ------------ |
 | [Excel Tutorial - Completed](Samples/tutorials/excel-tutorial) | This sample is the completed version of the [Tutorial: Create an Excel task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/excel-tutorial) that shows how to create an Excel add-in with a task pane and command ribbon buttons. The add-in shows how to create and sort a table, make a chart, freeze a row, protect a worksheet, and display a dialog box. |
 | [Outlook Tutorial - Completed](Samples/tutorials/outlook-tutorial) | This sample is the completed version of the [Tutorial: Build a message compose Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/outlook-tutorial) that shows how to build an Outlook add-in that can be used in message compose mode to insert content into the body of a message. The add-in shows how to collect information from the user, fetch data from an external service, implement a function command, implement a task pane, and display a dialog box. |
-| [PowerPoint Tutorial (Visual Studio) - Completed](Samples/tutorials/powerpoint-tutorial) | This sample is the completed version of the [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorialtabs=visualstudio) that shows how to create a PowerPoint add-in with a task pane. The add-in shows how to add the [Bing](https://www.bing.com) photo of the day to a slide, add text to a slide, get slide metadata, and navigate between slides. |
-| [PowerPoint Tutorial (yo office) - Completed](Samples/tutorials/powerpoint-tutorial-yo) | This sample is the completed version of the [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial?tabs=yeomangenerator) that shows how to create a PowerPoint add-in with a task pane. The add-in shows how to add an image to a slide, add text to a slide, get slide metadata, and navigate between slides. |
+| [PowerPoint Tutorial (Visual Studio) - Completed](Samples/tutorials/powerpoint-tutorial) | This sample is the completed version of the [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial-vs) that shows how to create a PowerPoint add-in with a task pane. The add-in shows how to add the [Bing](https://www.bing.com) photo of the day to a slide, add text to a slide, get slide metadata, and navigate between slides. |
+| [PowerPoint Tutorial (yo office) - Completed](Samples/tutorials/powerpoint-tutorial-yo) | This sample is the completed version of the [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial-yo) that shows how to create a PowerPoint add-in with a task pane. The add-in shows how to add an image to a slide, add text to a slide, get slide metadata, and navigate between slides. |
 | [Word Tutorial - Completed](Samples/tutorials/word-tutorial) | This sample is the completed version of the [Tutorial: Create a Word task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/word-tutorial) that shows how to create a Word add-in with a task pane. The add-in shows how to insert and replace text ranges, paragraphs, images, HTML, tables, and content controls. The add-in also shows how to format text and how to manage content in content controls. |
 | [Office Add-in First-run Experience Tutorial - Completed](Samples/tutorials/first-run-experience-tutorial) | This sample is the result of completing the [Build an Office Add-in with a basic first-run experience](https://learn.microsoft.com/office/dev/add-ins/tutorials/first-run-experience-tutorial) that shows the basics of implementing a first-run experience (FRE). Excel is used in this sample but the pattern can be applied to other Office applications where Office Web Add-ins are supported. |
 
@@ -28,9 +39,9 @@ The following samples are the completed versions of various tutorials for Office
 
 | Name           | Description  |
 | -------------- | ------------ |
-| [Create a Blazor WebAssembly Excel add-in](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/excel-blazor-add-in) | Uses .NET Blazor technologies to build an Excel add-in. |
-| [Create a Blazor WebAssembly Word add-in](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/word-blazor-add-in) | Uses .NET Blazor technologies to build a Word add-in. |
-| [Create a Blazor WebAssembly Outlook add-in](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/blazor-add-in/outlook-blazor-add-in) | Uses .NET Blazor technologies to build an Outlook add-in. |
+| [Create a Blazor WebAssembly Excel add-in](https://github.com/OfficeDev/Office-Add-in-samples/blob/main/Samples/blazor-add-in/Blazor.Excel.AddIn) | Uses .NET Blazor technologies to build an Excel add-in. |
+| [Create a Blazor WebAssembly PowerPoint add-in](https://github.com/OfficeDev/Office-Add-in-samples/blob/main/Samples/blazor-add-in/Blazor.PowerPoint.AddIn) | Uses .NET Blazor technologies to build a PowerPoint add-in. |
+| [Create a Blazor WebAssembly Word add-in](https://github.com/OfficeDev/Office-Add-in-samples/blob/main/Samples/blazor-add-in/Blazor.Word.AddIn) | Uses .NET Blazor technologies to build a Word add-in. |
 
 ## Authentication, authorization, and single sign-on (SSO)
 
@@ -54,6 +65,8 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | -------------- | ------------ |
 | [Save custom settings in your Office Add-in](Samples/office-add-in-save-custom-settings) | Shows how to save custom settings inside an Office Add-in. The add-in stores data as key/value pairs, using the JavaScript API for Office property bag, browser cookies, web storage (localStorage and sessionStorage), or by storing the data in a hidden div in the document. |
 | [Use keyboard shortcuts for Office Add-in actions](Samples/office-keyboard-shortcuts) | Shows how to create custom keyboard shortcuts to invoke certain actions for your Office Add-in. |
+| [Define KeyTips for the ribbon controls of an Office Add-in](Samples/office-keytips) | Shows how to define KeyTips for ribbon controls of an Office Add-in. |
+| [Show or hide controls on a custom ribbon tab](Samples/office-visibility) | Shows how to set the initial visibility of groups and controls in a custom tab and change their visibility at runtime. |
 
 ## Outlook
 
@@ -65,19 +78,27 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | [Verify the color categories of a message or appointment before it's sent using Smart Alerts](Samples/outlook-check-item-categories/) | Uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent.|
 | [Verify the sensitivity label of a message](Samples/outlook-verify-sensitivity-label/) | Uses the sensitivity label API in an event-based add-in to verify and apply the **Highly Confidential** sensitivity label to applicable outgoing messages. |
 | [Report spam or phishing emails in Outlook](Samples/outlook-spam-reporting/) | Builds an integrated spam-reporting add-in that's displayed in a prominent spot on the Outlook ribbon. |
+| [Encrypt and decrypt messages in Outlook](Samples/outlook-encrypt-decrypt-messages/) | Uses Outlook Smart Alerts and the `OnMessageDecrypt` event to encrypt and decrypt messages. |
+| [Invoke an Outlook add-in from an actionable message](Samples/outlook-actionable-message/) | Uses an Adaptive Card in an actionable message to activate an add-in and display initialization context data. |
 
 ## Excel
 
 | Name           | Description  |
 | -------------- | ------------ |
+| [Create an Excel workbook from a web site with an auto-open task pane](Samples/excel-create-worksheet-from-web-site) | Shows how to create an Excel workbook from web site data using Node.js, and configure it so that a custom Office Add-in task pane automatically opens when the document is opened. |
 | [Data types explorer](Samples/excel-data-types-explorer) | Builds an Excel add-in that allows you to create and explore data types in your workbooks. Data types enable add-in developers to organize complex data structures as objects, such as formatted number values, web images, and entity values. |
 | [Open in Teams](Samples/excel-open-in-teams) | Creates a new Excel spreadsheet in Microsoft Teams containing data you define.|
 | [Insert an external Excel file and populate it with JSON data](Samples/excel-insert-file)  | Insert an existing template from an external Excel file into the currently open Excel file. Then retrieve data from a JSON web service and populate the template for the customer. |
+| [Mail merge with an Excel add-in](Samples/excel-add-in-mail-merge) | Shows how to create an Excel add-in that uses Microsoft Graph and Excel data to send bulk emails. |
 | [Create custom contextual tabs on the ribbon](Samples/office-contextual-tabs) | This sample shows how to create a custom contextual tab on the ribbon in the Office UI. The sample creates a table, and when the user moves the focus inside the table, the custom tab is displayed. When the user moves outside the table, the custom tab is hidden. |
 | [Custom function sample using web worker](Excel-custom-functions/web-worker) | Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in. |
 | [Use storage techniques to access data from an Office Add-in when offline](Samples/Excel.OfflineStorageAddin) | Demonstrates how you can implement localStorage to enable limited functionality for your Office Add-in when a user experiences lost connection. |
-| [Custom function batching pattern](Excel-custom-functions/Batching)| Batch multiple calls into a single call to reduce the number of network calls to a remote service.|
+| [Custom function batching pattern](Excel-custom-functions/Batching) | Batch multiple calls into a single call to reduce the number of network calls to a remote service. |
 | [Excel content add-in](Samples/excel-content-add-in) | Embed a content add-in in the Excel grid. |
+| [Excel content add-in with data visualization](Samples/excel-content-data-visualization) | Create an Excel content add-in that includes data visualization. |
+| [Synchronous custom function sample (preview)](Samples/excel-custom-functions-sync) | A synchronous custom function that reads a cell value in tandem with Excel's calculation process using `@supportSync.` This feature is in public preview. |
+| [Skill for Copilot in Excel (preview)](Samples/excel-copilot-skill) | Create a custom skill for Copilot in Excel that uses the Excel-specific APIs in the Office JavaScript library to find and chart table rows which embody an accelerating growth trend. This feature is in public preview. |
+| [Skill for custom functions (preview)](Excel-custom-functions\CopilotExtensions\custom-functions-skill) | Create a custom skill for Copilot in Excel that inserts custom functions into cells in a table to compare purchasing quotes. This feature is in public preview. |
 
 ## Word
 

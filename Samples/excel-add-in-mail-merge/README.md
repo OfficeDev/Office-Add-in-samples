@@ -29,56 +29,37 @@ This sample sends emails from inside Excel using the Microsoft Graph JavaScript 
 
 ### Prerequisites
 
-- Download and install [Visual Studio Code](https://visualstudio.microsoft.com/downloads/).
-- Install the latest version of the [Office Add-ins Development Kit](https://marketplace.visualstudio.com/items?itemName=msoffice.microsoft-office-add-in-debugger) into Visual Studio Code.
 - Node.js (the latest LTS version). Visit the [Node.js site](https://nodejs.org/) to download and install the right version for your operating system. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
 - Microsoft Office connected to a Microsoft 365 subscription. You might qualify for a Microsoft 365 E5 developer subscription through the [Microsoft 365 Developer Program](https://developer.microsoft.com/microsoft-365/dev-program), see [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-) for details. Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try?rtc=1) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/buy/compare-all-microsoft-365-products).
+- A version of Excel that supports Office Add-ins with the unified manifest for Microsoft 365. See [client and platform support](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview#client-and-platform-support).
   
-### Run the add-in from the Office Add-ins Development Kit
+## Run the add-in
 
-1. Create a new project with the sample code.
+1. Open a Command Prompt, Terminal, or bash shell.
+1. Run `npm install`.
+1. When the installation is finished, run `npm start`. A web server will launch and Excel will open. This may take several minutes.
+1. See [Use the sample add-in](#use-the-sample-add-in) for instructions about running the add-in.
 
-   Open the Office Add-ins Development Kit extension and view samples in the **Sample gallery**. Select the **Create** button in the top-right corner of the sample page. The new project will open in a second Visual Studio Code window. Close the original VSC window.
-   
-1. Open the Office Add-ins Development Kit.
-    
-    Select the <img src="./assets/Icon_Office_Add-ins_Development_Kit.png" width="30" alt="The Office Add-ins Development Kit icon in the activity bar of Visual Studio Code."/> icon in the **Activity Bar** to open the extension.
-
-1. Preview Your Office Add-in (F5).
-
-    Select **Preview Your Office Add-in(F5)** to launch the add-in and debug the code. In the drop down menu, select the option **Desktop (Edge Chromium)**.
-
-    <img src="./assets/devkit_preview.png" width="500" alt="The 'Preview your Office Add-in' option in the Office Add-ins Development Kit's task pane."/>
-
-    The extension checks that the prerequisites are met before debugging starts. The terminal will alert you to any issues with your environment. After this process, the Excel desktop application launches and opens a new workbook with the sample add-in sideloaded. The add-in automatically opens as well.
-
-    If this is the first time that you have sideloaded an Office Add-in on your computer (or the first time in over a month), you may be prompted to delete an old certificate and/or to install a new one. Agree to both prompts. The first run requires installing dependency of this project, which might take 2~3 minutes or longer. During this time, there might be a dialog pop up at the lower right of the VSC screen. You should not interact with this dialog before the Office application launched.
-
-1. Stop Previewing Your Office Add-in.
-
-    Once you are finished testing and debugging the add-in, select the <img src="./assets/Icon_Office_Add-ins_Development_Kit.png" width="30" alt="The Office Add-ins Development Kit icon in the activity bar of VSCode"/> icon and then select **Stop Previewing Your Office Add-in**. This closes the web server and removes the add-in from the registry and cache.
-
+> **Note**: It is important to uninstall the add-in completely after working with it. To do so, run `npm stop` in the same window that you ran `npm start`. Close Excel. We recommend that you [clear the office cache](https://learn.microsoft.com/office/dev/add-ins/testing/clear-cache).
 
 ## Use the sample add-in
 
-An Excel desktop application will be auto-launched and the Mail Merge add-in will be auto-run on the right task pane area. The sideload steps has been integrated into the process, eliminating the need for manual intervention.
+1. If the **Send Emails** button doesn't automatically appear on the Excel **Home** tab ribbon, select the **Add-ins** button on the **Home tab**. Select the add-in on the flyout that opens. 
 
-<img src="./assets/thumbnail.png" width="800" altText="A workbook with mail merge add-in open.">
-
-Please follow the steps below:
+    <img src="./assets/thumbnail.png" width="800" altText="A workbook with mail merge add-in open.">
 
 1. If you have an application ID already, please ensure: 
 
-    In [Microsoft Entra admin center](https://aad.portal.azure.com) under **Identity > Applications > App registrations**: 
+    In [Microsoft Entra admin center](https://aad.portal.azure.com) under **Entra ID > App registrations**: 
     - Navigate to **Redirect URI**, set the first drop-down to `Single-page application (SPA)` and its value to `https://localhost:3000/consent.html`.
 
     Otherwise, if you haven't registered a web application with the Azure Active Directory admin center, please follow the steps below:
     * Log into [Microsoft Entra admin center](
     https://aad.portal.azure.com) using a personal or business Microsoft account.
-    * In the navigation, select **Identity > Applications > App registrations**.
+    * In the navigation, select **Entra ID > App registrations**.
     * Choose **New registration**. On the **App registrations** page, configure the values as follows: 
         - Set **Name** to `Office Add-in Graph Tutorial`.
-        - Set **Supported account types** to **Accounts in any organizational directory and personal Microsoft accounts**.
+        - Set **Supported account types** to **Any Entra ID + Personal Microsoft accounts**.
         - Under **Redirect URI**, set the first drop-down to `Single-page application (SPA)` and set the value to `
     https://localhost:3000/consent.html`.
     * Click **Register** and copy the value of the **Application (client) ID**.
@@ -87,6 +68,8 @@ Please follow the steps below:
 3. Create sample data, including valid email address (required) and other information.
 4. Verify template and data. the To Line must contain the column name of the email address.
 5. Send email, which will pop up a dialog to get the consent of Microsoft Graph. After sign-in, the email will be sent. <br><img src="./assets/mail.png" width="600" altText="A mail to be sent">
+
+> **Note**: It is important to uninstall the add-in completely after working with it. To do so, run `npm stop` in the same window that you ran `npm start`. Close Excel. We recommend that you [clear the office cache](https://learn.microsoft.com/office/dev/add-ins/testing/clear-cache).
 
 ## Explore sample files
 
@@ -102,10 +85,9 @@ These are the important files in the sample project.
 |   | tasks.json                
 | assets/                       Static assets, such as images
 | babel.config.json
-| manifest.xml                  Manifest file
+| manifest.json                 Unified manifest for Microsoft 365
 | package.json                  
 | README.md                     
-| RUN_WITH_EXTENSION.md         
 | src/                          Add-in source code
 |   | taskpane/
 |   |   | consent.html          Consent HTML
@@ -184,7 +166,7 @@ These are the important files in the sample project.
 If you have problems running the sample, take the following steps.
 
 - Close any open instances of Excel.
-- Close the previous web server started for the sample with the **Stop Previewing Your Office Add-in** Office Add-ins Development Kit extension option.
+- Open a Command Prompt, Terminal, or bash shell in the project sample and run `npm stop`.
 - Try to run the sample again.
 
 If you still have problems, see [troubleshoot development errors](https://learn.microsoft.com//office/dev/add-ins/testing/troubleshoot-development-errors) or [create a GitHub issue](https://aka.ms/officedevkitnewissue) and we'll help you.  
@@ -195,17 +177,29 @@ For information on debugging on older versions of Office, see [Debug add-ins usi
 
 ## Make code changes
 
-Once you understand the sample, make it your own! All the information about Office Add-ins is found in our [official documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins). You can also explore more samples in the Office Add-ins Development Kit. Select **View Samples** to see more samples of real-world scenarios.
-
-If you edit the manifest as part of your changes, use the **Validate Manifest File** option in the Office Add-ins Development Kit. This shows you any errors in the manifest syntax.
+Once you understand the sample, make it your own! All the information about Office Add-ins is found in our [official documentation](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins). 
 
 ## Engage with the team
 
 Did you experience any problems with the sample? [Create an issue](https://github.com/OfficeDev/Office-Add-in-samples/issues/new/choose) and we'll help you out.
 
-Want to learn more about new features and best practices for the Office platform? [Join the Microsoft Office Add-ins community call](https://learn.microsoft.com/office/dev/add-ins/overview/office-add-ins-community-call).
-
 ## Copyright
 
 Copyright (c) 2024 Microsoft Corporation. All rights reserved.
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Solution
+
+Solution | Author(s)
+---------|----------
+Use Excel and Microsoft Graph to implement a bulk email add-in | Microsoft
+
+## Version history
+
+Version  | Date | Comments
+---------| -----| --------
+1.0  | November 11, 2024 | Initial release.
+2.0  | August 22, 2026 | Converted to unified manifest for Microsoft 365.
+2.1 | September 10, 2026 | Updated the Office.js CDN URL.
+
+<img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/excel-add-in-mail-merge" />

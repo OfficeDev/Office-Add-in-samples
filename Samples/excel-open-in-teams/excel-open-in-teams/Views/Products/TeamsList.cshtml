@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     <fieldset>
 
-        Team to open:
+        @Html.Label("teamIDSelection", "Team to open:")
 
         @Html.DropDownList("teamIDSelection")
 

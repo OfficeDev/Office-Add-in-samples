@@ -1,99 +1,105 @@
-(function(){
-    'use strict';
-  
-    // The Office initialize function must be run each time a new page is loaded.
-    Office.initialize = function(reason){
-      jQuery(document).ready(function(){
-        if (window.location.search) {
-          // Check if warning should be displayed.
-          const warn = getParameterByName('warn');
-          if (warn) {
-            $('.not-configured-warning').show();
-          } else {
-            // See if the config values were passed.
-            // If so, pre-populate the values.
-            const user = getParameterByName('gitHubUserName');
-            const gistId = getParameterByName('defaultGistId');
-  
-            $('#github-user').val(user);
-            loadGists(user, function(success){
-              if (success) {
-                $('.ms-ListItem').removeClass('is-selected');
-                $('input').filter(function() {
-                  return this.value === gistId;
-                }).addClass('is-selected').attr('checked', 'checked');
-                $('#settings-done').removeAttr('disabled');
-              }
-            });
-          }
-        }
-  
-        // When the GitHub username changes,
-        // try to load gists.
-        $('#github-user').on('change', function(){
-          $('#gist-list').empty();
-          const ghUser = $('#github-user').val();
-          if (ghUser.length > 0) {
-            loadGists(ghUser);
-          }
-        });
-  
-        // When the Done button is selected, send the
-        // values back to the caller as a serialized
-        // object.
-        $('#settings-done').on('click', function() {
-          const settings = {};
-  
-          settings.gitHubUserName = $('#github-user').val();
-  
-          const selectedGist = $('.ms-ListItem.is-selected');
-          if (selectedGist) {
-            settings.defaultGistId = selectedGist.val();
-  
-            sendMessage(JSON.stringify(settings));
-          }
-        });
-      });
-    };
-  
-    // Load gists for the user using the GitHub API
-    // and build the list.
-    function loadGists(user, callback) {
-      getUserGists(user, function(gists, error){
-        if (error) {
-          $('.gist-list-container').hide();
-          $('#error-text').text(JSON.stringify(error, null, 2));
-          $('.error-display').show();
-          if (callback) callback(false);
+(function () {
+  "use strict";
+
+  // The Office initialize function must be run each time a new page is loaded.
+  Office.onReady(function () {
+    function initializeDialog() {
+      if (window.location.search) {
+        // Check if warning should be displayed.
+        const warn = getParameterByName("warn");
+        if (warn) {
+          document.querySelector(".not-configured-warning").style.display = "block";
         } else {
-          $('.error-display').hide();
-          buildGistList($('#gist-list'), gists, onGistSelected);
-          $('.gist-list-container').show();
-          if (callback) callback(true);
+          // See if the config values were passed.
+          // If so, pre-populate the values.
+          const user = getParameterByName("gitHubUserName");
+          const gistId = getParameterByName("defaultGistId");
+
+          document.getElementById("github-user").value = user;
+          loadGists(user, function (success) {
+            if (success) {
+              document.querySelectorAll(".ms-ListItem").forEach(function (item) {
+                item.classList.remove("is-selected");
+                if (item.value === gistId) {
+                  item.classList.add("is-selected");
+                  item.checked = true;
+                }
+              });
+              document.getElementById("settings-done").disabled = false;
+            }
+          });
+        }
+      }
+
+      // When the GitHub username changes,
+      // try to load gists.
+      document.getElementById("github-user").addEventListener("change", function () {
+        document.getElementById("gist-list").textContent = "";
+        const ghUser = document.getElementById("github-user").value;
+        if (ghUser.length > 0) {
+          loadGists(ghUser);
+        }
+      });
+
+      // When the Done button is selected, send the
+      // values back to the caller as a serialized
+      // object.
+      document.getElementById("settings-done").addEventListener("click", function () {
+        const settings = {};
+
+        settings.gitHubUserName = document.getElementById("github-user").value;
+
+        const selectedGist = document.querySelector(".ms-ListItem.is-selected");
+        if (selectedGist) {
+          settings.defaultGistId = selectedGist.value;
+
+          sendMessage(JSON.stringify(settings));
         }
       });
     }
-  
-    function onGistSelected() {
-      $('.ms-ListItem').removeClass('is-selected').removeAttr('checked');
-      $(this).children('.ms-ListItem').addClass('is-selected').attr('checked', 'checked');
-      $('.not-configured-warning').hide();
-      $('#settings-done').removeAttr('disabled');
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initializeDialog);
+    } else {
+      initializeDialog();
     }
-  
-    function sendMessage(message) {
-      Office.context.ui.messageParent(message);
-    }
-  
-    function getParameterByName(name, url) {
-      if (!url) {
-        url = window.location.href;
+  });
+
+  // Load gists for the user using the GitHub API
+  // and build the list.
+  function loadGists(user, callback) {
+    getUserGists(user, function (gists, error) {
+      if (error) {
+        document.querySelector(".gist-list-container").style.display = "none";
+        document.getElementById("error-text").textContent = JSON.stringify(error, null, 2);
+        document.querySelector(".error-display").style.display = "block";
+        if (callback) callback(false);
+      } else {
+        document.querySelector(".error-display").style.display = "none";
+        buildGistList(document.getElementById("gist-list"), gists, onGistSelected);
+        document.querySelector(".gist-list-container").style.display = "block";
+        if (callback) callback(true);
       }
-      name = name.replace(/[\[\]]/g, "\\$&");
-      const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return '';
-      return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
-  })();
+    });
+  }
+
+  function onGistSelected() {
+    document.querySelectorAll(".ms-ListItem").forEach(function (item) {
+      item.classList.remove("is-selected");
+      item.checked = false;
+    });
+    const selectedItem = this.querySelector(".ms-ListItem");
+    selectedItem.classList.add("is-selected");
+    selectedItem.checked = true;
+    document.querySelector(".not-configured-warning").style.display = "none";
+    document.getElementById("settings-done").disabled = false;
+  }
+
+  function sendMessage(message) {
+    Office.context.ui.messageParent(message);
+  }
+
+  function getParameterByName(name, url) {
+    return new URL(url || window.location.href).searchParams.get(name);
+  }
+})();

@@ -57,16 +57,16 @@
                 <Control xsi:type="Button" id="ToggleProtection">
                   <Label resid="ProtectionButtonLabel" />
                   <Supertip>
-                    <Title resid="ProtectionButtonLabel" />
-                    <Description resid="ProtectionButtonToolTip" />
+                      <Title resid="ProtectionButtonLabel" />
+                      <Description resid="ProtectionButtonToolTip" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="Icon.16x16"/>
-                    <bt:Image size="32" resid="Icon.32x32"/>
-                    <bt:Image size="80" resid="Icon.80x80"/>
+                      <bt:Image size="16" resid="Icon.16x16"/>
+                      <bt:Image size="32" resid="Icon.32x32"/>
+                      <bt:Image size="80" resid="Icon.80x80"/>
                   </Icon>
                   <Action xsi:type="ExecuteFunction">
-                    <FunctionName>toggleProtection</FunctionName>
+                      <FunctionName>toggleProtection</FunctionName>
                   </Action>
                 </Control>
               </Group>
@@ -89,11 +89,11 @@
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Taskpane"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Task Pane"/>
         <bt:String id="ProtectionButtonLabel" DefaultValue="Toggle Worksheet Protection" />
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Taskpane' button to get started."/>
+        <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Task Pane' button to get started."/>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane"/>
         <bt:String id="ProtectionButtonToolTip" DefaultValue="Click to protect or unprotect the current worksheet." />
       </bt:LongStrings>

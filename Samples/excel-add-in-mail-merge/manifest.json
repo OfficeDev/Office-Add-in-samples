@@ -1,0 +1,181 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.30/MicrosoftTeams.schema.json#",
+  "manifestVersion": "1.30",
+  "version": "1.0.1",
+  "id": "1e3ecdca-1386-4184-b203-14c13fca3aef",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us",
+    "additionalLanguages": []
+  },
+  "developer": {
+    "name": "Contoso",
+    "websiteUrl": "https://www.contoso.com",
+    "privacyUrl": "https://www.contoso.com/privacy",
+    "termsOfUseUrl": "https://www.contoso.com/terms"
+  },
+  "name": {
+    "short": "Excel Mail Merge",
+    "full": "Mail Merge Add-in for Excel"
+  },
+  "description": {
+    "short": "Send mail merge emails from Excel with Microsoft Graph.",
+    "full": "This sample Office Add-in sends emails from inside Excel using the Microsoft Graph JavaScript SDK."
+  },
+  "icons": {
+    "outline": "assets/icon-32.png",
+    "color": "assets/icon-192.png"
+  },
+  "accentColor": "#230201",
+  "validDomains": [
+    "https://localhost:3000",
+    "https://www.contoso.com"
+  ],
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Document.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": [
+          "workbook"
+        ]
+      },
+      "runtimes": [
+        {
+          "requirements": {
+            "capabilities": [
+              {
+                "name": "AddinCommands",
+                "minVersion": "1.1"
+              }
+            ],
+            "formFactors": [
+              "desktop"
+            ]
+          },
+          "id": "TaskPaneRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/taskpane.html"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "OpenTaskPane",
+              "type": "openPage"
+            }
+          ]
+        }
+      ],
+      "ribbons": [
+        {
+          "requirements": {
+            "capabilities": [
+              {
+                "name": "AddinCommands",
+                "minVersion": "1.1"
+              }
+            ],
+            "scopes": [
+              "workbook"
+            ],
+            "formFactors": [
+              "desktop"
+            ]
+          },
+          "contexts": [
+            "default"
+          ],
+          "tabs": [
+            {
+              "builtInTabId": "TabHome",
+              "groups": [
+                {
+                  "id": "CommandsGroup",
+                  "label": "Mail Merge",
+                  "icons": [
+                    {
+                      "size": 16,
+                      "url": "https://localhost:3000/assets/icon-16.png"
+                    },
+                    {
+                      "size": 32,
+                      "url": "https://localhost:3000/assets/icon-32.png"
+                    },
+                    {
+                      "size": 80,
+                      "url": "https://localhost:3000/assets/icon-80.png"
+                    }
+                  ],
+                  "controls": [
+                    {
+                      "id": "TaskpaneButton",
+                      "type": "button",
+                      "label": "Send Emails",
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Send Emails",
+                        "description": "Open the Mail Merge task pane."
+                      },
+                      "actionId": "OpenTaskPane",
+                      "enabled": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "alternates": [
+        {
+          "alternateIcons": {
+            "icon": {
+              "size": 32,
+              "url": "https://localhost:3000/assets/icon-32.png"
+            },
+            "highResolutionIcon": {
+              "size": 64,
+              "url": "https://localhost:3000/assets/icon-64.png"
+            }
+          }
+        }
+      ],
+      "getStartedMessages": [
+        {
+          "requirements": {
+            "scopes": [
+              "workbook"
+            ],
+            "formFactors": [
+              "desktop"
+            ]
+          },
+          "title": "Get started with the Excel Graph Mail Merge add-in!",
+          "description": "Your sample add-in loaded successfully. Go to the Home tab and select the Send Emails button to get started.",
+          "learnMoreUrl": "https://go.microsoft.com/fwlink/?LinkId=276812"
+        }
+      ]
+    }
+  ]
+}

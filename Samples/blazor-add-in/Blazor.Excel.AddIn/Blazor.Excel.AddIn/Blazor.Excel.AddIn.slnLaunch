@@ -1,0 +1,11 @@
+[
+  {
+    "Name": "Blazor Excel Add-in",
+    "Projects": [
+      {
+        "Path": "Blazor.Excel.AddIn\\Blazor.Excel.AddIn.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

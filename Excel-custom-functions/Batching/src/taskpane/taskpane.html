@@ -13,7 +13,7 @@
     <title>Contoso Task Pane Add-in</title>
 
     <!-- Office JavaScript API -->
-    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script type="text/javascript" src="https://officeapis.public.onecdn.static.microsoft/1/office.js"></script>
     <script type="text/javascript" src="../functions/functions.js"></script>
     <script type="text/javascript" src="taskpane.js"></script>
     <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
@@ -48,9 +48,9 @@
             </li>
         </ul>
         <p class="ms-font-l">Modify the source files, then click <b>Run</b>.</p>
-        <div role="button" id="run" class="ms-welcome__action ms-Button ms-Button--hero ms-font-xl">
+        <button type="button" id="run" class="ms-welcome__action ms-Button ms-Button--hero ms-font-xl">
             <span class="ms-Button-label">Run</span>
-        </div>
+        </button>
     </main>
 </body>
 

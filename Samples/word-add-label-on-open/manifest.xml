@@ -23,7 +23,6 @@
       <Hosts>
         <Host xsi:type="Document">
           <Runtimes>
-            <Runtime resid="Taskpane.Url" lifetime="long" />
             <Runtime resid="WebViewRuntime.Url">
               <Override type="javascript" resid="JsRuntimeWord.Url"/>
             </Runtime>
@@ -83,11 +82,11 @@
           <bt:Url id="Commands.Url" DefaultValue="https://localhost:3000/commands.html"/>
           <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html"/>
           <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/commands.html"/>
-          <bt:Url id="JsRuntimeWord.Url" DefaultValue="https://localhost:3000/commands.js"/>
+          <bt:Url id="JsRuntimeWord.Url" DefaultValue="https://localhost:3000/public/commands.js"/>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
-          <bt:String id="CommandsGroup.Label" DefaultValue="Event-based add-in activation"/>
+          <bt:String id="CommandsGroup.Label" DefaultValue="Event-activated add-in"/>
           <bt:String id="TaskpaneButton.Label" DefaultValue="My add-in"/>
         </bt:ShortStrings>
         <bt:LongStrings>

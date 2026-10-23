@@ -10,7 +10,7 @@
         "Shows how to use web workers in custom functions to prevent blocking the UI of your Office Add-in."
       ],
       "creationDateTime": "2020-12-16",
-      "updateDateTime": "2022-07-28",
+      "updateDateTime": "2026-09-10",
       "products": [
         "Office"
       ],

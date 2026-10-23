@@ -10,7 +10,7 @@
         "Use a batching pattern to reduce the number of network calls your custom functions make to their remote web service. Batching the requests improves network performance."
       ],
       "creationDateTime": "2019-04-05",
-      "updateDateTime": "2021-06-01",
+      "updateDateTime": "2026-09-10",
       "products": [
         "Office"
       ],

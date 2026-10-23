@@ -10,7 +10,7 @@
         "Builds an integrated spam-reporting add-in that's displayed in a prominent spot on the Outlook ribbon."
       ],
       "creationDateTime": "2024-03-26",
-      "updateDateTime": "2025-02-28",
+      "updateDateTime": "2026-09-10",
       "products": [
         "Office",
         "Teams",

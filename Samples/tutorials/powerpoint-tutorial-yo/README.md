@@ -19,7 +19,7 @@ description: "A completed version of the step-by-step PowerPoint tutorial hosted
 
 ## Summary
 
-This sample is the result of completing the [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial?tabs=yeomangenerator). It was constructed with the [Yeoman generator for Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/yeoman-generator-overview).
+This sample is the result of completing the [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial-yo). It was constructed with the [Yeoman generator for Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/yeoman-generator-overview).
 
 The tutorial gives step-by-step instructions on how to add functionality alongside explanations as to why code is being added. Use this sample if you want to explore and try the completed code, or if you need to debug any issues you encountered while following the tutorial.
 
@@ -49,7 +49,24 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 
 | Version  | Date | Comments |
 |----------|------|----------|
-| 1.0 | 9-25-2023 | Initial release |
+| 1.0 | September 25, 2023 | Initial release. |
+| 1.1 | December 17, 2025 | Added support for the unified manifest for Microsoft 365. |
+| 1.2 | September 10, 2026 | Updated the Office.js CDN URL. |
+
+## Choose a manifest type
+
+By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest for Microsoft 365. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the add-in only manifest, skip ahead to the [Run the sample](#run-the-sample) section.
+
+> [!NOTE]
+> To run the sample in Outlook on Mac, use the add-in only manifest. For more information on manifests and their supported platforms, see [Office Add-in manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests).
+
+### To switch to the unified manifest for Microsoft 365
+
+Copy all the files from the **manifest-configurations/unified** subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.xml** file from the root folder, so only files needed for the unified manifest are present. Then, [run the sample](#run-the-sample).
+
+### To switch back to the add-in only manifest
+
+To switch back to the add-in only manifest, copy the files from the **manifest-configurations/add-in-only** subfolder to the sample's root folder. We recommend that you delete the **manifest.json** file from the root folder.
 
 ## Run the sample
 
@@ -84,13 +101,13 @@ This sample demonstrates the basics of working with a presentation in PowerPoint
 
       If your add-in doesn't sideload in the document, manually sideload it by following the instructions in [Manually sideload add-ins to Office on the web](https://learn.microsoft.com/office/dev/add-ins/testing/sideload-office-add-ins-for-testing).
 
-1. If the add-in task pane isn't already open in PowerPoint, go to the Home tab and choose the **Show Taskpane** button in the ribbon to open it.
+1. If the add-in task pane isn't already open in PowerPoint, go to the Home tab and choose the **Show Task Pane** button in the ribbon to open it.
 
 1. Use the buttons in the task pane to interact with the presentation through your add-in.
 
 ## See also
 
-The version of this sample that you create step-by-step is found in the article [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial?tabs=yeomangenerator).
+The version of this sample that you create step-by-step is found in the article [Tutorial: Create a PowerPoint task pane add-in](https://learn.microsoft.com/office/dev/add-ins/tutorials/powerpoint-tutorial-yo).
 
 ## Copyright
 

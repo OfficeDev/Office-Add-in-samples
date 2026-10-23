@@ -1,0 +1,35 @@
+[
+  {
+    "name": "custom-functions-skill",
+    "reponame": "office-add-in-samples",
+    "source": "officedev",
+    "title": "International Purchase Planner for Excel",
+    "shortDescription": "A custom skill for Copilot in Excel that uses JavaScript-only custom functions to compare international vendor quotes.",
+    "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/custom-functions-skill",
+    "longDescription": [
+      "Shows how to combine a custom skill for Copilot in Excel with JavaScript-only custom functions and the Excel APIs in the Office JavaScript library to convert international vendor quotes into a reporting currency and classify them against budget limits."
+    ],
+    "creationDateTime": "2026-09-28",
+    "updateDateTime": "2026-09-28",
+    "products": [
+      "Office",
+      "Excel",
+      "Copilot"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "JavaScript"
+      }
+    ],
+    "thumbnails": [],
+    "authors": [
+      {
+        "gitHubAccount": "microsoft",
+        "pictureUrl": "https://github.com/microsoft.png",
+        "name": "Microsoft"
+      }
+    ],
+    "references": []
+  }
+]

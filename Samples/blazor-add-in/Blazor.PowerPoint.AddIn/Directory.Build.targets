@@ -1,0 +1,27 @@
+<Project>
+
+  <!-- Incremental, reproducible npm restore (shared across all projects with a package.json) -->
+  <Target Name="NpmRestore" BeforeTargets="BeforeBuild;ResolveReferences" Condition="Exists('package.json') and Exists('package-lock.json')">
+    <PropertyGroup>
+      <NpmStampFile>node_modules/.package-lock.stamp</NpmStampFile>
+    </PropertyGroup>
+
+    <!-- Check if npm restore is needed -->
+    <PropertyGroup>
+      <!-- Always restore if stamp doesn't exist -->
+      <NpmRestoreNeeded Condition="!Exists('$(NpmStampFile)')">true</NpmRestoreNeeded>
+
+      <!-- Check if package-lock.json is newer than stamp (only if both exist) -->
+      <_PackageLockTime Condition="Exists('package-lock.json') AND Exists('$(NpmStampFile)')">$([System.IO.File]::GetLastWriteTime('package-lock.json').Ticks)</_PackageLockTime>
+      <_StampTime Condition="Exists('package-lock.json') AND Exists('$(NpmStampFile)')">$([System.IO.File]::GetLastWriteTime('$(NpmStampFile)').Ticks)</_StampTime>
+      <NpmRestoreNeeded Condition="'$(_PackageLockTime)' != '' AND '$(_StampTime)' != '' AND $(_PackageLockTime) &gt; $(_StampTime)">true</NpmRestoreNeeded>
+    </PropertyGroup>
+
+    <!-- Run npm ci if needed -->
+    <Message Importance="high" Text="Running npm ci (package-lock.json updated or first build)..." Condition="'$(NpmRestoreNeeded)' == 'true'" />
+    <Exec Command="npm ci" Condition="'$(NpmRestoreNeeded)' == 'true'" ConsoleToMSBuild="true" />
+    <Touch Files="$(NpmStampFile)" AlwaysCreate="true" Condition="'$(NpmRestoreNeeded)' == 'true'" />
+    <Message Importance="low" Text="Skipping npm ci - packages are up to date" Condition="'$(NpmRestoreNeeded)' != 'true'" />
+  </Target>
+
+</Project>

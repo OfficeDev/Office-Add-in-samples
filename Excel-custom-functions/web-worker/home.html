@@ -4,23 +4,26 @@
 <html>
     <head>
         <title>Custom functions using WebWorker</title>
-        <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js" type="text/javascript"></script>
+        <script src="https://officeapis.public.onecdn.static.microsoft/1/office.js" type="text/javascript"></script>
         <script src="functions.js" type="text/javascript"></script>
         <script type="text/javascript">
 
         let ballX = 100;
         let ballY = 10;
         let ballDirection = 'downRight';
+        let animationTimer;
 
-        Office.onReady(function() {
-            animate();
-            console.log("Office.onReady");
-        });
-
-        function animate() {
-            
-            setInterval(drawBall, 10);
-         }
+        function toggleAnimation() {
+            const button = document.getElementById('toggle-animation');
+            if (animationTimer === undefined) {
+                animationTimer = setInterval(drawBall, 10);
+                button.textContent = 'Pause animation';
+            } else {
+                clearInterval(animationTimer);
+                animationTimer = undefined;
+                button.textContent = 'Resume animation';
+            }
+        }
 
          const drawBall = () => {
             const canvas = document.getElementById('mycanvas');
@@ -98,9 +101,32 @@
             }
          }
 
+        function initializeAnimation() {
+            drawBall();
+            const button = document.getElementById('toggle-animation');
+            button.onclick = toggleAnimation;
+            button.disabled = false;
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                toggleAnimation();
+            }
+        }
+
+        Office.onReady(function() {
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initializeAnimation, { once: true });
+            } else {
+                initializeAnimation();
+            }
+            console.log("Office.onReady");
+        });
+
         </script>
     </head>
     <body>
-        <canvas id = "mycanvas" width = "200" height = "200"></canvas>
+        <canvas id="mycanvas" width="200" height="200" role="img"
+            aria-label="A bouncing ball demonstrates that the task pane stays responsive while custom functions run in a web worker.">
+            A bouncing ball demonstrates that the task pane stays responsive while custom functions run in a web worker.
+        </canvas>
+        <p><button type="button" id="toggle-animation" disabled>Resume animation</button></p>
     </body>
 </html>

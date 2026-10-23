@@ -198,6 +198,7 @@
     <Content Include="Content\Onedrive_Charts_icon_80x80px.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\microsoft-signin.png" />
     <Content Include="JSLintNet.json" />
     <None Include="Properties\PublishProfiles\PPTExcelREST.pubxml" />
     <Content Include="Scripts\Add-in-Authorize-Complete.js" />

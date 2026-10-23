@@ -1,0 +1,34 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch and Debug Hosted Blazor WebAssembly App",
+      "type": "blazorwasm",
+      "request": "launch",
+      "hosted": true,
+      "program": "${workspaceFolder}/bin/Debug/<target-framework>/<project-name.dll>",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Attach to .NET (server)",
+      "type": "coreclr",
+      "request": "attach",
+      "preLaunchTask": "Start: Server & Sideload",
+      "processId": "${command:pickProcess}"
+    },
+    {
+      "name": "Debug Ribbon Commands",
+      "type": "msedge",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}/Blazor.Word.AddIn.Client/wwwroot",
+      "sourceMaps": true
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Debug (Server + Ribbon)",
+      "configurations": ["Attach to .NET (server)", "Debug Ribbon Commands"]
+    }
+  ]
+}

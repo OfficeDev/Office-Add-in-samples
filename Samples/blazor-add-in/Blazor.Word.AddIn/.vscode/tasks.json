@@ -1,0 +1,105 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dotnet: Restore",
+      "type": "process",
+      "command": "dotnet",
+      "args": ["restore", "${workspaceFolder}/Blazor.Word.AddIn.slnx"],
+      "presentation": { "panel": "shared", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "dotnet: Build Solution",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/Blazor.Word.AddIn.slnx",
+        "--configuration",
+        "Debug"
+      ],
+      "dependsOn": ["dotnet: Restore"],
+      "presentation": { "panel": "shared", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run: Server",
+      "type": "process",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "${workspaceFolder}/Blazor.Word.AddIn/Blazor.Word.AddIn.csproj",
+        "--no-build"
+      ],
+      "isBackground": true,
+      "options": {
+        "env": {
+          "ASPNETCORE_ENVIRONMENT": "Development"
+        }
+      },
+      "presentation": { "panel": "dedicated", "clear": false },
+      "problemMatcher": {
+        "owner": "dotnet-server-ready",
+        "pattern": {
+          "regexp": ".*"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Now listening on:|Hosting environment:",
+          "endsPattern": "Application started. Press Ctrl\\+C to shut down\\."
+        }
+      }
+    },
+    {
+      "label": "Sideload: start-local",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "start-local"],
+      "options": { "cwd": "${workspaceFolder}/Blazor.Word.AddIn" },
+      "dependsOn": ["Run: Server"],
+      "presentation": { "panel": "dedicated", "clear": false },
+      "problemMatcher": []
+    },
+    {
+      "label": "npm: Install (Blazor Server)",
+      "type": "shell",
+      "command": "npm",
+      "args": ["install"],
+      "options": { "cwd": "${workspaceFolder}/Blazor.Word.AddIn" },
+      "presentation": { "panel": "dedicated", "clear": false },
+      "problemMatcher": []
+    },
+    {
+      "label": "npm: Install (Blazor Client)",
+      "type": "shell",
+      "command": "npm",
+      "args": ["install"],
+      "options": { "cwd": "${workspaceFolder}/Blazor.Word.AddIn.Client" },
+      "presentation": { "panel": "dedicated", "clear": false },
+      "problemMatcher": []
+    },
+    {
+      "label": "npm: Install (All)",
+      "type": "shell",
+      "command": "echo Installing all npm dependencies",
+      "dependsOn": [
+        "npm: Install (Blazor Server)",
+        "npm: Install (Blazor Client)"
+      ],
+      "dependsOrder": "parallel",
+      "presentation": { "panel": "dedicated", "clear": false },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start: Server & Sideload",
+      "type": "shell",
+      "command": "echo Starting server and sideload",
+      "dependsOn": ["Run: Server", "Sideload: start-local"],
+      "dependsOrder": "sequence",
+      "presentation": { "panel": "shared", "clear": false },
+      "problemMatcher": []
+    }
+  ]
+}

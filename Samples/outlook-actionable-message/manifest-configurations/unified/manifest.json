@@ -1,0 +1,163 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.27/MicrosoftTeams.schema.json",
+  "id": "527104a1-f1a5-475a-9199-7a968161c870",
+  "version": "1.0.0",
+  "manifestVersion": "1.27",
+  "name": {
+    "short": "Actionable Message Sample",
+    "full": "Actionable Message Sample"
+  },
+  "description": {
+    "short": "A sample add-in that activates from an actionable message.",
+    "full": "This add-in demonstrates how to send actionable messages with initialization context and activate an add-in from an actionable message button."
+  },
+  "developer": {
+    "name": "Outlook Dev Center",
+    "websiteUrl": "https://learn.microsoft.com/outlook/actionable-messages/invoke-add-in",
+    "privacyUrl": "https://www.contoso.com/privacy",
+    "termsOfUseUrl": "https://www.contoso.com/terms"
+  },
+  "icons": {
+    "outline": "assets/icon-32.png",
+    "color": "assets/icon-192.png"
+  },
+  "accentColor": "#0078D4",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us"
+  },
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Mailbox.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": ["mail"],
+        "capabilities": [
+          {
+            "name": "Mailbox",
+            "minVersion": "1.8"
+          }
+        ]
+      },
+      "runtimes": [
+        {
+          "id": "SendPaneRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/send.html"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "sendTaskPane",
+              "type": "openPage",
+              "pinnable": true
+            }
+          ]
+        },
+        {
+          "id": "TaskPaneRuntime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/taskpane.html"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "initContextTaskPane",
+              "type": "openPage",
+              "pinnable": true
+            }
+          ]
+        }
+      ],
+      "ribbons": [
+        {
+          "contexts": ["mailRead"],
+          "tabs": [
+            {
+              "builtInTabId": "TabDefault",
+              "groups": [
+                {
+                  "id": "msgReadCmdGroup",
+                  "label": "Actionable Messages",
+                  "icons": [
+                    {
+                      "size": 16,
+                      "url": "https://localhost:3000/assets/icon-16.png"
+                    },
+                    {
+                      "size": 32,
+                      "url": "https://localhost:3000/assets/icon-32.png"
+                    },
+                    {
+                      "size": 80,
+                      "url": "https://localhost:3000/assets/icon-80.png"
+                    }
+                  ],
+                  "controls": [
+                    {
+                      "id": "sendActionableMsg",
+                      "type": "button",
+                      "label": "Send Add-in Activation",
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "Send Add-in Activation",
+                        "description": "Opens a task pane to send an actionable message with initialization context."
+                      },
+                      "actionId": "sendTaskPane"
+                    },
+                    {
+                      "id": "showInitContext",
+                      "type": "button",
+                      "label": "View Initialization Context",
+                      "icons": [
+                        {
+                          "size": 16,
+                          "url": "https://localhost:3000/assets/icon-16.png"
+                        },
+                        {
+                          "size": 32,
+                          "url": "https://localhost:3000/assets/icon-32.png"
+                        },
+                        {
+                          "size": 80,
+                          "url": "https://localhost:3000/assets/icon-80.png"
+                        }
+                      ],
+                      "supertip": {
+                        "title": "View Initialization Context",
+                        "description": "Opens a task pane showing the initialization context from the actionable message button."
+                      },
+                      "actionId": "initContextTaskPane"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

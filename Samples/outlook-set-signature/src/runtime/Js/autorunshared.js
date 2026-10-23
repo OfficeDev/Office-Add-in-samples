@@ -53,6 +53,11 @@ function checkSignature(eventObj) {
  */
 function insert_auto_signature(compose_type, user_info, eventObj) {
   let template_name = get_template_name(compose_type);
+  if (!template_name || template_name === "none") {
+    // No template assigned for this compose type; skip signature insertion.
+    eventObj.completed();
+    return;
+  }
   let signature_info = get_signature_info(template_name, user_info);
   addTemplateSignature(signature_info, eventObj);
 }

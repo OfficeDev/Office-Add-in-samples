@@ -10,7 +10,7 @@
         "The getAccessToken API in Office.js enables users who are signed into Office to get access to an AAD-protected add-in and to Microsoft Graph without needing to sign-in again."
       ],
       "creationDateTime": "2017-05-10",
-      "updateDateTime": "2020-08-20",
+      "updateDateTime": "2026-09-10",
       "products": [
         "Office"
       ],

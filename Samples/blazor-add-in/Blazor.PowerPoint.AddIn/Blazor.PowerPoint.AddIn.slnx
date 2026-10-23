@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="assets/sample.json" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Blazor.PowerPoint.AddIn.Client/Blazor.PowerPoint.AddIn.Client.csproj" />
+  <Project Path="Blazor.PowerPoint.AddIn/Blazor.PowerPoint.AddIn.csproj" />
+</Solution>

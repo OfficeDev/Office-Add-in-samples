@@ -44,8 +44,9 @@ To learn more about custom functions, see [Create custom functions in Excel](htt
 
 | Version | Date       | Comments        |
 | ------- | ---------- | --------------- |
-| 1.0     | 12-16-2020 | Initial release |
-| 1.1     | 07-28-2022 | Update JavaScript variable declarations |
+| 1.0     | December 16, 2020 | Initial release. |
+| 1.1     | July 28, 2022 | Updated JavaScript variable declarations. |
+| 1.2 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Disclaimer
 
@@ -84,6 +85,8 @@ Now you can use the following custom functions:
 ```
 
 If you open the task pane you will see an animated bouncing ball. You can see the effect of blocking the UI thread by entering `=WebWorkerSample.TEST_UI_THREAD(50000)` into a cell. The bouncing ball will stop for a few seconds while the result is calculated.
+
+Use **Pause animation** or **Resume animation** to control the bouncing ball. If reduced motion is enabled in your accessibility settings, the animation starts paused.
 
 ## Run the sample from Localhost
 

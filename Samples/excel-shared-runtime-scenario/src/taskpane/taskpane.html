@@ -11,7 +11,7 @@
     <title>Contoso Data Importer</title>
 
     <!-- Office JavaScript API -->
-    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script type="text/javascript" src="https://officeapis.public.onecdn.static.microsoft/1/office.js"></script>
     <script type="text/javascript" src="../utilities/globals.js"></script>
     <script type="text/javascript" src="../utilities/office-apis-helpers.js"></script>
     <script type="text/javascript" src="../commands/commands.js"></script>
@@ -37,10 +37,12 @@
     <div id='filterSection'>
         <h3>Select filter:</h3>
         <div>
-            <input type="radio" id="communicationFilter" name="filter" value="communicationFilter">Communications</input>
+            <input type="radio" id="communicationFilter" name="filter" value="communicationFilter">
+            <label for="communicationFilter">Communications</label>
         </div>
         <div>
-            <input type="radio" id="groceriesFilter" name="filter" value="groceriesFilter">Groceries</input>
+            <input type="radio" id="groceriesFilter" name="filter" value="groceriesFilter">
+            <label for="groceriesFilter">Groceries</label>
         </div><br>
         <button id='selectFilter'>Insert filtered data</button>
 
@@ -49,7 +51,6 @@
     <div id='connectSection'>
         <button id='connectService'>Connect to service</button>
     </div>
-    </main>
 </body>
 
 </html>

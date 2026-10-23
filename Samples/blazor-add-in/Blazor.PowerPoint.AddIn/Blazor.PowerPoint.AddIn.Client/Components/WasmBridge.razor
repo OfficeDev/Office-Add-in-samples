@@ -1,0 +1,8 @@
+@*
+    Bridge component that registers the ClientCommandHandler with JavaScript
+    via DotNetObjectReference. Runs in InteractiveWebAssembly mode so that
+    JSInvokable methods execute in the browser's WebAssembly runtime.
+*@
+@rendermode @(new InteractiveWebAssemblyRenderMode(prerender: false))
+
+@* This component renders nothing visible - it only registers the handler with JS *@

@@ -36,7 +36,7 @@
         <AllFormFactors>
           <ExtensionPoint xsi:type="CustomFunctions">
             <Script>
-              <SourceLocation resid="Functions.Script.Url"/>
+              <SourceLocation resid="Shared.Url"/>
             </Script>
             <Page>
               <SourceLocation resid="Shared.Url"/>
@@ -92,8 +92,8 @@
         <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Functions.Script.Url" DefaultValue="https://localhost:3000/src/functions/functions.js"/>
-        <bt:Url id="Functions.Metadata.Url" DefaultValue="https://localhost:3000/src/functions/functions.json"/>
+        <bt:Url id="Functions.Script.Url" DefaultValue="https://localhost:3000/functions.js"/>
+        <bt:Url id="Functions.Metadata.Url" DefaultValue="https://localhost:3000/functions.json"/>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
 
         <bt:Url id="Shared.Url" DefaultValue="https://localhost:3000/src/taskpane/taskpane.html"/>

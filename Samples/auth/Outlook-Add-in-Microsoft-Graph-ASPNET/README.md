@@ -62,7 +62,8 @@ Outlook Add-in Microsoft Graph ASP.NET | Microsoft
 
 Version  | Date | Comments
 ---------| -----| --------
-1.0  | July 8th, 2019| Initial release
+1.0  | July 8, 2019| Initial release.
+1.1 | September 10, 2026 | Updated the Office.js CDN URL.
 
 ## Disclaimer
 

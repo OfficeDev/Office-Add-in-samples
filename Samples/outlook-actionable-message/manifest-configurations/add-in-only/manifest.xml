@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OfficeApp 
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xsi:type="MailApp">
+  <Id>527104a1-f1a5-475a-9199-7a968161c870</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Outlook Dev Center</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Actionable Message Sample"/>
+  <Description DefaultValue="A sample add-in that activates from an actionable message."/>
+  <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
+  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
+  <SupportUrl DefaultValue="https://learn.microsoft.com/outlook/actionable-messages/invoke-add-in"/>
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+  <Requirements>
+    <Sets>
+      <Set Name="MailBox" MinVersion="1.1"/>
+    </Sets>
+  </Requirements>
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://localhost:3000/taskpane.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+  <Permissions>ReadWriteMailbox</Permissions>
+  <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read"/>
+  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
+    <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
+      <Requirements>
+        <bt:Sets DefaultMinVersion="1.8">
+          <bt:Set Name="Mailbox" />
+        </bt:Sets>
+      </Requirements>
+      <Hosts>
+        <Host xsi:type="MailHost">
+          <DesktopFormFactor>
+            <ExtensionPoint xsi:type="MessageReadCommandSurface">
+              <OfficeTab id="TabDefault">
+                <Group id="msgReadCmdGroup">
+                  <Label resid="groupLabel"/>
+                  <Control xsi:type="Button" id="sendActionableMsg">
+                    <Label resid="sendButtonLabel"/>
+                    <Supertip>
+                      <Title resid="sendButtonTitle"/>
+                      <Description resid="sendButtonDesc"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="icon-16"/>
+                      <bt:Image size="32" resid="icon-32"/>
+                      <bt:Image size="80" resid="icon-80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="sendPaneUrl"/>
+                      <SupportsPinning>true</SupportsPinning>
+                    </Action>
+                  </Control>
+                  <Control xsi:type="Button" id="showInitContext">
+                    <Label resid="viewButtonLabel"/>
+                    <Supertip>
+                      <Title resid="viewButtonTitle"/>
+                      <Description resid="viewButtonDesc"/>
+                    </Supertip>
+                    <Icon>
+                      <bt:Image size="16" resid="icon-16"/>
+                      <bt:Image size="32" resid="icon-32"/>
+                      <bt:Image size="80" resid="icon-80"/>
+                    </Icon>
+                    <Action xsi:type="ShowTaskpane">
+                      <SourceLocation resid="taskPaneUrl"/>
+                      <SupportsPinning>true</SupportsPinning>
+                    </Action>
+                  </Control>
+                </Group>
+              </OfficeTab>
+            </ExtensionPoint>
+
+          </DesktopFormFactor>
+        </Host>
+      </Hosts>
+
+      <Resources>
+        <bt:Images>
+          <bt:Image id="icon-16" DefaultValue="https://localhost:3000/assets/icon-16.png"/>
+          <bt:Image id="icon-32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
+          <bt:Image id="icon-80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
+        </bt:Images>
+        <bt:Urls>
+          <bt:Url id="taskPaneUrl" DefaultValue="https://localhost:3000/taskpane.html"/>
+          <bt:Url id="sendPaneUrl" DefaultValue="https://localhost:3000/send.html"/>
+        </bt:Urls>
+        <bt:ShortStrings>
+          <bt:String id="groupLabel" DefaultValue="Actionable Message Activation"/>
+          <bt:String id="viewButtonLabel" DefaultValue="View Initialization Context"/>
+          <bt:String id="viewButtonTitle" DefaultValue="View Initialization Context"/>
+          <bt:String id="sendButtonLabel" DefaultValue="Send Add-in Activation"/>
+          <bt:String id="sendButtonTitle" DefaultValue="Send Add-in Activation"/>
+        </bt:ShortStrings>
+        <bt:LongStrings>
+          <bt:String id="viewButtonDesc" DefaultValue="Opens a task pane showing the initialization context from the actionable message button."/>
+          <bt:String id="sendButtonDesc" DefaultValue="Opens a task pane to send an actionable message with initialization context."/>
+        </bt:LongStrings>
+      </Resources>
+
+    </VersionOverrides>
+  </VersionOverrides>
+</OfficeApp>

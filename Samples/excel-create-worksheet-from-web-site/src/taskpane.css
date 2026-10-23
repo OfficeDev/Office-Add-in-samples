@@ -1,0 +1,68 @@
+/* Page-specific styling */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 60px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#content-main {
+    background: white;
+    position: relative;
+    overflow-y: auto;
+}
+
+.padding {
+    padding: 15px;
+}
+
+h1 {
+    color: #2b579a;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #333;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+fluent-button {
+    margin: 10px 10px 10px 0;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    background-color: #f3f2f1;
+    border-top: 1px solid #e1dfdd;
+    padding: 10px;
+    display: none;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+#message-text {
+    font-weight: bold;
+    color: #107c10;
+}
+
+#turn-off-message {
+    margin-top: 5px;
+}

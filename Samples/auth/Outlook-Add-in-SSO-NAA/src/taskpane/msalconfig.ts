@@ -14,6 +14,7 @@ export const msalConfig = {
     clientId,
     redirectUri: createLocalUrl("auth.html"),
     postLogoutRedirectUri: createLocalUrl("auth.html"),
+    clientCapabilities: ['CP1'], // this lets the resource owner know that this client is capable of handling claims challenge.
   },
   cache: {
     cacheLocation: "localStorage",

@@ -44,7 +44,7 @@ This sample uses the sensitivity label API in an event-based add-in to verify an
 
 For documentation related to this sample, see the following:
 
-- [Manage the sensitivity label of your message or appointment in compose mode](https://learn.microsoft.com/office/dev/add-ins/outlook/sensitivity-label)
+- [Manage sensitivity labels in Office Add-ins](https://learn.microsoft.com/office/dev/add-ins/develop/sensitivity-label)
 - [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation)
 - [Handle OnMessageSend and OnAppointmentSend events in your Outlook add-in with Smart Alerts](https://learn.microsoft.com/office/dev/add-ins/outlook/onmessagesend-onappointmentsend-events)
 
@@ -74,7 +74,7 @@ For documentation related to this sample, see the following:
 By default, the sample uses an add-in only manifest. However, you can switch the project between the add-in only manifest and the unified manifest for Microsoft 365. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the add-in only manifest, skip ahead to the [Run the sample](#run-the-sample) section.
 
 > [!NOTE]
-> To run the sample in Outlook on the web, on Mac, or in the new Outlook on Windows, use the [add-in only manifest](#run-with-the-add-in-only-manifest). For more information on manifests and their supported platforms, see [Office Add-in manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). For information about events and their supported platforms, see [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation#supported-events).
+> To run the sample in Outlook on Mac, use the add-in only manifest. For more information on manifests and their supported platforms, see [Office Add-in manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). For information about events and their supported platforms, see [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation#supported-events).
 
 ### To switch to the unified manifest for Microsoft 365
 
@@ -393,11 +393,13 @@ Office.context.mailbox.item.sensitivityLabel.setAsync(labelId, { asyncContext: e
 
 |Version|Date|Comments|
 |-------|----|--------|
-|1.0|April 18, 2023|Initial release|
-|1.1|May 19, 2023|Update for General Availability (GA) of the sensitivity label API|
-|1.2|October 12, 2023|Update supported version of Outlook on Mac|
-|1.3|January 11, 2024|Remove Microsoft 365 Insider Program requirement|
-|1.4|July 28, 2025|Add support for the unified manifest for Microsoft 365 and move add-in logic to other event handlers|
+|1.0|April 18, 2023|Initial release.|
+|1.1|May 19, 2023|Updated for General Availability (GA) of the sensitivity label API.|
+|1.2|October 12, 2023|Updated supported version of Outlook on Mac.|
+|1.3|January 11, 2024|Removed Microsoft 365 Insider Program requirement.|
+|1.4|July 28, 2025|Added support for the unified manifest for Microsoft 365 and moved add-in logic to other event handlers.|
+|1.5|December 17, 2025|Updated support for the unified manifest in Outlook on the web and the new Outlook on Windows.|
+| 1.6 | September 10, 2026 | Updated the Office.js CDN URL. |
 
 ## Copyright
 
