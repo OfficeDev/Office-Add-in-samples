@@ -200,7 +200,7 @@ In the unified manifest, the `extensions.runtimes` array defines the event-based
         "type": "general",
         "code": {
             "page": "https://localhost:3000/launchevents.html",
-            "script": "https://localhost:3000/public/launchevents.js"
+            "script": "https://localhost:3000/launchevents.js"
         },
         "lifetime": "short",
         "actions": [
