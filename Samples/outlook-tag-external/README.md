@@ -63,7 +63,7 @@ For documentation related to this sample, see [Activate add-ins with events](htt
 | 1.0 | July 6, 2021 | Initial release. |
 | 1.1 | November 1, 2021 | Updated for GA of SessionData API and OnMessageRecipientsChanged event. |
 | 1.2 | September 10, 2026 | Updated the Office.js CDN URL. |
-| 1.3 | October 23, 2026 | Use the unified manifest for Microsoft 365 by default and update sample functionality. |
+| 2.0 | October 23, 2026 | Use the unified manifest for Microsoft 365 by default and update sample functionality. |
 
 ----------
 
