@@ -4,8 +4,8 @@
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="PnP Tag External Recipients sample"/>
-  <Description DefaultValue="Updates the subject and adds a disclaimer if external recipients are included during message compose."/>
+  <DisplayName DefaultValue="External Recipient Notifier"/>
+  <Description DefaultValue="Adds an [External] subject tag and shows you a notification when an email includes external recipients."/>
   <IconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
@@ -17,13 +17,13 @@
   </Hosts>
   <Requirements>
     <Sets>
-      <Set Name="Mailbox" MinVersion="1.1"/>
+      <Set Name="Mailbox" MinVersion="1.11"/>
     </Sets>
   </Requirements>
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://www.contoso.com/commands.html"/>
+        <SourceLocation DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/launchevents/launchevents.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -37,14 +37,14 @@
     <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
       <Description resid="residAppDesc" />
       <Requirements>
-        <bt:Sets DefaultMinVersion="1.3">
+        <bt:Sets DefaultMinVersion="1.11">
           <bt:Set Name="Mailbox" />
         </bt:Sets>
       </Requirements>
       <Hosts>
         <Host xsi:type="MailHost">
           <!-- Event-based activation happens in a lightweight runtime.-->
-          <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch -->
+          <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation. -->
           <Runtimes>
             <!-- HTML file including reference to or inline JavaScript event handlers.
                 This is used by Outlook on the web and on Mac, and in new Outlook on Windows. -->
@@ -57,7 +57,7 @@
             <!-- Enable launching the add-in on the included events. -->
             <ExtensionPoint xsi:type="LaunchEvent">
               <LaunchEvents>
-                <LaunchEvent Type="OnMessageRecipientsChanged" FunctionName="tagExternal_onMessageRecipientsChangedHandler" />
+                <LaunchEvent Type="OnMessageRecipientsChanged" FunctionName="onMessageRecipientsChangedHandler" />
               </LaunchEvents>
               <!-- Identifies the runtime to be used (also referenced by the Runtime element). -->
               <SourceLocation resid="WebViewRuntime.Url"/>
@@ -72,17 +72,14 @@
           <bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/icon-80.png"/>
         </bt:Images>
         <bt:Urls>
-          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/commands/commands.html" />
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/launchevents/launchevents.html" />
           <!-- Entry needed for Outlook Desktop. -->
-          <bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/commands/commands.js" />
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/launchevents/launchevents.js" />
         </bt:Urls>
         <bt:LongStrings>
-          <bt:String id="residAppDesc" DefaultValue="Update the subject and add a disclaimer if external recipients are included."></bt:String>
+          <bt:String id="residAppDesc" DefaultValue="Adds an [External] subject tag and shows you a notification when an email includes external recipients."></bt:String>
         </bt:LongStrings>
       </Resources>
-      <ExtendedPermissions>
-        <ExtendedPermission>AppendOnSend</ExtendedPermission>
-      </ExtendedPermissions>
     </VersionOverrides>
   </VersionOverrides>
 </OfficeApp>

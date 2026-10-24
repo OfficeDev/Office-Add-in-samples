@@ -7,10 +7,10 @@
         "shortDescription": "This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message.",
         "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-tag-external",
         "longDescription": [
-            "This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the appendOnSendAsync API. If external recipients are added, the add-in prepends \"[External]\" to the message subject and appends a disclaimer to the message body on send."
+            "This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. If external recipients are added, the add-in prepends \"[External]\" to the message subject and displays an informational notification to the sender."
         ],
         "creationDateTime": "2021-07-06",
-        "updateDateTime": "2026-09-10",
+        "updateDateTime": "2026-10-23",
         "products": [
             "Office"
         ],
@@ -25,7 +25,7 @@
                 "type": "image",
                 "order": 100,
                 "url": "https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/assets/outlook-tag-external-overview.png",
-                "alt": "Screen shot of sample displaying an information bar prompting the user to set up signatures, and sample signature inserted into the email."
+                "alt": "Diagram showing how recipient changes activate the add-in to check recipients and add the External subject tag."
             }
         ],
         "authors": [

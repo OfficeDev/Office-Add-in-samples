@@ -1,0 +1,95 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.30/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.30",
+    "version": "1.0.0",
+    "id": "6ecb294c-97a5-4266-bd2f-1fb92050930c",
+    "localizationInfo": {
+        "defaultLanguageTag": "en-us",
+        "additionalLanguages": []
+    },
+    "developer": {
+        "name": "Contoso",
+        "websiteUrl": "https://www.contoso.com",
+        "privacyUrl": "https://www.contoso.com/privacy",
+        "termsOfUseUrl": "https://www.contoso.com/servicesagreement"
+    },
+    "name": {
+        "short": "External Recipient Notifier",
+        "full": "External Recipient Notification Sample"
+    },
+    "description": {
+        "short": "Notifies you when an email includes external recipients.",
+        "full": "Adds an [External] subject tag and shows you a notification when an email includes external recipients."
+    },
+    "icons": {
+        "outline": "assets/outline.png",
+        "color": "assets/color.png"
+    },
+    "accentColor": "#230201",
+    "validDomains": [
+        "contoso.com"
+    ],
+    "authorization": {
+        "permissions": {
+            "resourceSpecific": [
+                {
+                    "name": "MailboxItem.ReadWrite.User",
+                    "type": "Delegated"
+                }
+            ]
+        }
+    },
+    "extensions": [
+        {
+            "requirements": {
+                "capabilities": [
+                    {
+                        "name": "Mailbox",
+                        "minVersion": "1.11"
+                    }
+                ],
+                "scopes": [
+                    "mail"
+                ]
+            },
+            "runtimes": [
+                {
+                    "id": "autorun_runtime",
+                    "type": "general",
+                    "code": {
+                        "page": "https://localhost:3000/launchevents.html",
+                        "script": "https://localhost:3000/public/launchevents.js"
+                    },
+                    "lifetime": "short",
+                    "actions": [
+                        {
+                            "id": "onMessageRecipientsChangedHandler",
+                            "type": "executeFunction"
+                        }
+                    ]
+                }
+            ],
+            "autoRunEvents": [
+                {
+                    "requirements": {
+                        "capabilities": [
+                            {
+                                "name": "Mailbox",
+                                "minVersion": "1.11"
+                            }
+                        ],
+                        "scopes": [
+                            "mail"
+                        ]
+                    },
+                    "events": [
+                        {
+                            "type": "messageRecipientsChanged",
+                            "actionId": "onMessageRecipientsChangedHandler"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
