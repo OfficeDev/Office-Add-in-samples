@@ -18,33 +18,37 @@ description: "Use Outlook event-based activation to tag external recipients."
 
 # Identify and tag external recipients using Outlook event-based activation
 
-**Applies to:** Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic) | Outlook on the web
+**Applies to**: Outlook on the web | Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic) | Outlook on Mac
 
 ## Summary
 
-This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. The add-in also uses the [appendOnSendAsync API](https://learn.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-1.11#appendOnSendAsync_data__options__callback_). If external recipients are added, the add-in prepends "[External]" to the message subject and appends a disclaimer to the message body on send.
+This sample uses event-based activation to run an Outlook add-in when the user changes recipients while composing a message. If external recipients are added, the add-in prepends "[External]" to the message subject and uses the [notificationMessages](https://learn.microsoft.com/office/dev/add-ins/outlook/notifications) API to display an informational notification to the sender.
 
-![Screen shot of PnP sample displaying an information bar prompting the user to set up signatures, and sample signature inserted into the email.](./assets/outlook-tag-external-overview.png)
+![Diagram showing how recipient changes activate the add-in to check recipients and add the External subject tag.](./assets/outlook-tag-external-overview.png)
 
-For documentation related to this sample, see [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch).
+For documentation related to this sample, see [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation).
 
 ## Features
 
-- Use event-based activation to respond to changes in message recipients during compose mode.
+- Use event-based activation to respond to changes in the **To**, **Cc**, and **Bcc** fields during compose mode, including replies and forwards.
 - Update the message subject to indicate there are external recipients.
-- Add a disclaimer to messages sent to external recipients.
+- Display a persistent informational notification to the sender without changing the message body or duplicating the notification.
+- Remove the subject tag and notification when no external recipients remain.
 
 ## Applies to
 
 - Outlook
+  - Web
   - Windows (new and classic)
-  - web browser
+  - Mac
 
 ## Prerequisites
 
 - Microsoft 365
 
     > **Note**: If you don't have a Microsoft 365 subscription, you might qualify for a Microsoft 365 E5 developer subscription for development purposes through the [Microsoft 365 Developer Program](https://aka.ms/m365devprogram); for details, see the [FAQ](https://learn.microsoft.com/office/developer-program/microsoft-365-developer-program-faq#who-qualifies-for-a-microsoft-365-e5-developer-subscription-). Alternatively, you can [sign up for a 1-month free trial](https://www.microsoft.com/microsoft-365/try) or [purchase a Microsoft 365 plan](https://www.microsoft.com/microsoft-365/business/compare-all-microsoft-365-business-products-g).
+
+- To run the sample on localhost, install a recent version of [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com/get-npm). To check if you already have these tools installed, run `node -v` and `npm -v` from a command prompt.
 
 ## Solution
 
@@ -59,120 +63,195 @@ For documentation related to this sample, see [Configure your Outlook add-in for
 | 1.0 | July 6, 2021 | Initial release. |
 | 1.1 | November 1, 2021 | Updated for GA of SessionData API and OnMessageRecipientsChanged event. |
 | 1.2 | September 10, 2026 | Updated the Office.js CDN URL. |
+| 2.0 | October 23, 2026 | Use the unified manifest for Microsoft 365 by default and update sample functionality. |
 
 ----------
 
 ## Scenario: Event-based activation
 
-In this scenario, if the message has external recipients, the add-in prepends "[External]" to the message subject. When the user sends an email message that includes external recipients, the add-in appends a disclaimer to the message.
+In this scenario, if the message has external recipients, the add-in prepends "[External]" to the message subject and displays "This email includes external recipients. Please review all recipients before sending." above the message body. When all external recipients are removed, the add-in removes the subject tag and its notification.
+
+## Choose a manifest type
+
+By default, the sample uses the unified manifest for Microsoft 365. However, you can switch the project between the unified manifest and the add-in only manifest. For more information about the differences between them, see [Office Add-ins manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). To continue with the unified manifest, skip ahead to the [Run the sample](#run-the-sample) section.
+
+> [!NOTE]
+> To run the sample in Outlook on Mac, use the add-in only manifest. For more information on manifests and their supported platforms, see [Office Add-in manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). For information about events and their supported platforms, see [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation#supported-events).
+
+### To switch to the add-in only manifest
+
+Copy all the files from the [manifest-configurations/add-in-only](./manifest-configurations/add-in-only) subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.json** file from the root folder. Then, [run the sample](#run-the-sample) using the add-in only manifest instructions.
+
+### To switch back to the unified manifest for Microsoft 365
+
+To switch back to the unified manifest, copy all the files from the [manifest-configurations/unified](./manifest-configurations/unified) subfolder to the sample's root folder, replacing any existing files that have the same names. We recommend that you delete the **manifest.xml** and **manifest-localhost.xml** files from the root folder, so only files needed for the unified manifest are present. Then, [run the sample on localhost](#use-localhost).
+
+Both manifest types use the same **package.json**, **package-lock.json**, and **webpack.config.js** files in the sample's root folder.
 
 ## Run the sample
 
-You can run this sample in Outlook on Windows (new or classic) or in a browser. The add-in web files are served from this repo on GitHub.
+To run the sample, choose whether to host the add-in's web files on [localhost](#use-localhost) or on [GitHub](#use-github).
 
-1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on the web or on Windows (new or classic) by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+### Use localhost
+
+1. Clone or download this repository.
+1. From a command prompt, go to the root of the project folder **Samples/outlook-tag-external**.
+1. Run `npm install`.
+1. Start the development server and sideload the manifest using the instructions for your chosen manifest.
+
+    **Unified manifest for Microsoft 365 (default)**
+
+    ```console
+    npm start
+    ```
+
+    **Add-in only manifest (after switching manifest types)**
+
+    ```console
+    npm run start:xml
+    ```
+
+    The XML command uses **manifest-localhost.xml**. The **manifest.xml** file is for the [GitHub-hosted option](#use-github).
+
+1. Follow the steps in [Try it out](#try-it-out).
+1. To stop the web server and uninstall the add-in from Outlook, run the command for the manifest you used.
+
+    **Unified manifest for Microsoft 365 (default)**
+
+    ```console
+    npm stop
+    ```
+
+    **Add-in only manifest**
+
+    ```console
+    npm run stop:xml
+    ```
+
+### Use GitHub
+
+> [!NOTE]
+> The option to use GitHub as the web host only applies to the add-in only manifest.
+
+The quickest way to run the sample is to use GitHub as the web host. However, you can't debug or change the source code. The add-in web files are served from this GitHub repository.
+
+1. Download [manifest.xml](./manifest-configurations/add-in-only/manifest.xml) to a folder on your computer.
+1. Sideload the manifest by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Follow the steps in [Try it out](#try-it-out).
+1. To uninstall the add-in, follow [Remove a sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing#remove-a-sideloaded-add-in).
 
 ### Try it out
 
 Once the add-in is loaded, use the following steps to try out the functionality.
 
-1. Open Outlook on Windows (new or classic) or in a browser.
+1. Open Outlook on the web, on Windows (new or classic), or on Mac.
 1. Create a new message.
-1. Add a recipient email address that's external to your organization.
+1. Enter a subject and body, then add a recipient email address that's external to your organization to the **To** field.
 
-    > Notice that "[External]" is inserted at the beginning of the subject.
+    > Notice that "[External]" is inserted at the beginning of the subject and an informational notification displays "This email includes external recipients. Please review all recipients before sending." The message body is unchanged.
 
-1. Send the email.
+1. Add another external recipient to the **Cc** or **Bcc** field.
 
-    > Navigate to your **Sent Items** folder, open the email you sent, and notice the included disclaimer.
+    > The subject tag and notification aren't duplicated.
 
-## Run the sample from localhost
+1. Remove the external recipient from **To**, leaving an external recipient in **Cc** or **Bcc**.
 
-If you prefer to host the web server for the sample on your computer, follow these steps:
+    > The subject tag and notification remain while any of these fields contains an external recipient.
 
-1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
+1. Remove all remaining external recipients.
 
-    ```console
-    npm install --global http-server
-    ```
+    > The "[External]" subject tag and notification are removed.
 
-1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
-1. From a command prompt, go to the root folder and run the following command.
+1. Add an external recipient again and send the email.
 
-    ```console
-    http-server -S --cors . -p 3000
-    ```
+    > The sent message retains the subject tag.
 
-1. To reroute to localhost, run office-addin-https-reverse-proxy. If you haven't installed this, run the following command.
+## Configure event-based activation in the manifest
 
-    ```console
-    npm install --global office-addin-https-reverse-proxy 
-    ```
+### Add-in only manifest
 
-    To reroute, run the following in another command prompt.
-
-    ```console
-    office-addin-https-reverse-proxy --url http://localhost:3000 
-    ```
-
-1. Sideload `manifest-localhost.xml` in Outlook on the web or on Windows (new or classic) by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
-1. [Try out the sample!](#try-it-out)
-
-## Configure event-based activation and AppendOnSend in the manifest
-
-The manifest configures a runtime that is loaded specifically to handle event-based activation. The following `<Runtime>` element specifies an HTML page resource ID that loads the runtime in Outlook on the web and new Outlook on Windows. The `<Override>` element specifies the JavaScript file to load the runtime for classic Outlook on Windows because the client doesn't use the HTML page to load the runtime.
+The manifest configures a runtime that is loaded specifically to handle event-based activation. The following `<Runtime>` element specifies an HTML page resource ID that loads the runtime in Outlook on the web, on Mac, and the new Outlook on Windows. The `<Override>` element specifies the JavaScript file to load the runtime for classic Outlook on Windows because the client doesn't use the HTML page to load the runtime.
 
 ```xml
 <Runtime resid="WebViewRuntime.Url">
   <Override type="javascript" resid="JSRuntime.Url"/>
 </Runtime>
 ...
-<bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/commands.html" />
-<bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/commands/commands.js" />
+<bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/launchevents/launchevents.html" />
+<bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-tag-external/src/launchevents/launchevents.js" />
 ```
 
-The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the `tagExternal_onMessageRecipientsChangedHandler` function in the `commands.js` file.
+The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the `onMessageRecipientsChangedHandler` function in the `launchevents.js` file.
 
 ```xml
 <LaunchEvents>
-  <LaunchEvent Type="OnMessageRecipientsChanged" FunctionName="tagExternal_onMessageRecipientsChangedHandler" />
+  <LaunchEvent Type="OnMessageRecipientsChanged" FunctionName="onMessageRecipientsChangedHandler" />
 </LaunchEvents>
 ```
 
+### Unified manifest for Microsoft 365
+
+In the unified manifest, the `extensions.runtimes` array defines the event-based runtime. The `code.page` property specifies the HTML page for Outlook on the web and the new Outlook on Windows, while `code.script` specifies the JavaScript file for classic Outlook on Windows. The runtime declares an action whose `id` matches the handler registered in JavaScript.
+
+```json
+"runtimes": [
+    {
+        "id": "autorun_runtime",
+        "type": "general",
+        "code": {
+            "page": "https://localhost:3000/launchevents.html",
+            "script": "https://localhost:3000/launchevents.js"
+        },
+        "lifetime": "short",
+        "actions": [
+            {
+                "id": "onMessageRecipientsChangedHandler",
+                "type": "executeFunction"
+            }
+        ]
+    }
+]
+```
+
+The `extensions.autoRunEvents` array maps the `messageRecipientsChanged` event (the unified manifest counterpart of `OnMessageRecipientsChanged`) to that action using `actionId`.
+
+```json
+"autoRunEvents": [
+    {
+        "requirements": {
+            "capabilities": [
+                {
+                    "name": "Mailbox",
+                    "minVersion": "1.11"
+                }
+            ],
+            "scopes": [
+                "mail"
+            ]
+        },
+        "events": [
+            {
+                "type": "messageRecipientsChanged",
+                "actionId": "onMessageRecipientsChangedHandler"
+            }
+        ]
+    }
+]
+```
+
+## Register and handle the OnMessageRecipientsChanged event
+
+When the user composes a message (including replies and forwards) and changes any recipients, Outlook loads the files specified in the manifest to handle the `OnMessageRecipientsChanged` event. Outlook on the web, on Mac, and the new Outlook on Windows load the **launchevents.html** page, which then also loads **launchevents.js**. In classic Outlook on Windows, **launchevents.js** is loaded directly.
+
+The **launchevents.js** file defines the `onMessageRecipientsChangedHandler` function. Both manifest types use the same JavaScript registration to associate the handler name with its implementation.
+
 ```js
-Office.actions.associate("tagExternal_onMessageRecipientsChangedHandler", tagExternal_onMessageRecipientsChangedHandler);
+Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipientsChangedHandler);
 ```
-
-Since the add-in calls `Office.context.mailbox.item.body.appendOnSendAsync`, the `AppendOnSend` extended permission is declared in the manifest.
-
-```xml
-<ExtendedPermission>AppendOnSend</ExtendedPermission>
-```
-
-## Handle the OnMessageRecipientsChanged event, manage session data, and call the appendOnSendAsync API
-
-When the user composes a message (including replies and forwards) and changes any recipients, Outlook will load the files specified in the manifest to handle the `OnMessageRecipientsChanged` event. Outlook on the web and new Outlook on Windows load the **commands.html** page, which then also loads **commands.js**. In classic Outlook on Windows, **commands.js** is loaded directly but **commands.html** is not loaded.
-
-The **commands.js** file contains the `tagExternal_onMessageRecipientsChangedHandler` function that handles the `OnMessageRecipientsChanged` event from Outlook.
-
-Also, the **commands.js** file contains the following helper functions.
-
-- `checkForExternalTo`: Determines if there are any external users in the **To** field then sets a [SessionData](https://learn.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) key named **tagExternalTo**.
-- `checkForExternalCc`: Determines if there are any external users in the **Cc** field then sets a [SessionData](https://learn.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) key named **tagExternalCc**.
-- `checkForExternalBcc`: Determines if there are any external users in the **Bcc** field then sets a [SessionData](https://learn.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) key named **tagExternalBcc**.
-- `_checkForExternal`: Checks if any property is set to `true` in the [SessionData](https://learn.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#sessionData) property bag.
-- `_tagExternal`:
-  - Updates the [subject](https://learn.microsoft.com/javascript/api/outlook/office.messagecompose?view=outlook-js-1.11#subject) to prepend or remove the "[External]" tag.
-  - Calls the [appendOnSendAsync](https://learn.microsoft.com/javascript/api/outlook/office.body?view=outlook-js-1.11#appendOnSendAsync_data__options__callback_) to set or clear the disclaimer.
 
 > **Note**
 >
-> You can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web and new Outlook on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature).
-
-## Known issues
-
-- In classic Outlook on Windows, the `OnMessageRecipientsChanged` event occurs again when sending a reply or reply-all message, even if there are no further changes to the recipients.
+> You can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web, on Mac, and the new Outlook on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Set your signature using Outlook event-based activation](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-set-signature).
 
 ## Questions and feedback
 
