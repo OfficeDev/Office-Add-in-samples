@@ -191,7 +191,7 @@ The add-in handles the `OnMessageRecipientsChanged` event that is mapped to the 
 
 ### Unified manifest for Microsoft 365
 
-In the unified manifest, the `extensions.runtimes` array defines the event-based runtime. The `code.page` property specifies the HTML page for Outlook on the web, on Mac, and the new Outlook on Windows, while `code.script` specifies the JavaScript file for classic Outlook on Windows. The runtime declares an action whose `id` matches the handler registered in JavaScript.
+In the unified manifest, the `extensions.runtimes` array defines the event-based runtime. The `code.page` property specifies the HTML page for Outlook on the web and the new Outlook on Windows, while `code.script` specifies the JavaScript file for classic Outlook on Windows. The runtime declares an action whose `id` matches the handler registered in JavaScript.
 
 ```json
 "runtimes": [
@@ -251,7 +251,7 @@ Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipient
 
 > **Note**
 >
-> You can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web, on Mac, and the new Outlook on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-set-signature).
+> You can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web, on Mac, and the new Outlook on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Set your signature using Outlook event-based activation](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-set-signature).
 
 ## Questions and feedback
 
