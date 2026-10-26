@@ -90,7 +90,7 @@ Both manifest types use the same **package.json**, **package-lock.json**, and **
 
 ## Run the sample
 
-To run the sample, choose whether to host the add-in's web files on localhost or on GitHub.
+To run the sample, choose whether to host the add-in's web files on [localhost](#use-localhost) or on [GitHub](#use-github).
 
 ### Use localhost
 
@@ -251,7 +251,7 @@ Office.actions.associate("onMessageRecipientsChangedHandler", onMessageRecipient
 
 > **Note**
 >
-> You can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web, on Mac, and the new Outlook on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature).
+> You can use a different pattern to handle events if needed. For example, if you need code that applies only to Outlook on the web, on Mac, and the new Outlook on Windows, you can define separate JavaScript files. For a sample using this pattern, see [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-set-signature).
 
 ## Questions and feedback
 
