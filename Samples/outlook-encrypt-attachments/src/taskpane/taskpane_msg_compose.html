@@ -23,27 +23,27 @@
     <img src="https://pnptelemetry.azurewebsites.net/pnp-officeaddins/samples/outlook-encrypt-attachments-run" />
 
     <header class="ms-welcome__header ms-bgColor-info">
-        <h3 class="ms-font-xl" style="text-align: center;">Outlook Event-Based Activation Sample Add-in</h3>        
+        <h3 class="ms-font-xl" style="text-align: center;">Outlook Event-Based Activation Sample Add-in</h3>
     </header>
     <section id="sideload-msg" class="ms-welcome__main">
         <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
     </section>
     <main id="app-body" class="ms-welcome__main" style="display: none;">
         <h2 class="ms-font-xl ms-fontWeight-bold"> Demo Instructions </h2>
-        <p class="ms-font-m">This add-in will showcase how to use event-based activation to handle the <i>OnMessageComposeHandler</i> and <i>OnMessageAttachmentsChanged</i> event handlers.</p>
-        <p class="ms-font-m">For more information, see <a target="_blank" href="https://learn.microsoft.com/en-ca/office/dev/add-ins/outlook/autolaunch#event-based-activation-behavior-and-limitations">Configure your Outlook add-in for event-based activation</a></p>
+        <p class="ms-font-m">This add-in showcases how to use event-based activation to handle the <i>OnMessageComposeHandler</i> and <i>OnMessageAttachmentsChanged</i> events.</p>
+        <p class="ms-font-m">For more information, see <a target="_blank" href="https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation">Activate your add-in with events</a>.</p>
         <ul class="ms-List ms-welcome__features">
             <li class="ms-ListItem">
                 <i class="ms-Icon ms-Icon--Attach ms-font-m"></i><i class="ms-Icon ms-Icon--Add ms-font-m"></i>
-                <span class="ms-font-m">Add any attachment</span>
+                <span class="ms-font-m">Add any attachment.</span>
             </li>
             <li class="ms-ListItem">
                 <i class="ms-Icon ms-Icon--Attach ms-font-m"></i><i class="ms-Icon ms-Icon--Lock ms-font-m"></i>
-                <span class="ms-font-m">A copy of the attachment will be added with "encrypted_" prefixed to the original file name</span>
+                <span class="ms-font-m">A copy of the attachment will be added with "encrypted_" prefixed to the original file name. This uses insecure XOR obfuscation for demonstration only; do not use it in production. The original and decrypted copies remain unprotected.</span>
             </li>
             <li class="ms-ListItem">
                 <i class="ms-Icon ms-Icon--Attach ms-font-m"></i><i class="ms-Icon ms-Icon--Unlock ms-font-m"></i>
-                <span class="ms-font-m">The encrypted attachment will then be decrypted and added as a third attachment with "decrypted_" prefixed to the original file name</span>
+                <span class="ms-font-m">The encrypted attachment will then be decrypted and added as a third attachment with "decrypted_" prefixed to the original file name.</span>
             </li>
         </ul>
     </main>

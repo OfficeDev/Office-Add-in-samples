@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license.
  * See LICENSE in the project root for license information.
  */
@@ -10,12 +10,12 @@
      margin: 0;
      padding: 0;
  }
- 
+
  ul {
      margin: 0;
      padding: 0;
  }
- 
+
  .ms-welcome__header {
     padding: 20px;
     padding-bottom: 30px;
@@ -40,31 +40,31 @@
     flex: 1 0 0;
     padding: 10px 20px;
  }
- 
+
  .ms-welcome__main > h2 {
      width: 100%;
      text-align: center;
  }
- 
+
  .ms-welcome__features {
      list-style-type: none;
      margin-top: 20px;
  }
- 
+
  .ms-welcome__features.ms-List .ms-ListItem {
      padding-bottom: 20px;
      display: -webkit-flex;
      display: flex;
  }
- 
+
  .ms-welcome__features.ms-List .ms-ListItem > .ms-Icon {
      margin-right: 10px;
  }
- 
+
  .ms-welcome__action.ms-Button--hero {
      margin-top: 30px;
  }
- 
+
 .ms-Button.ms-Button--hero .ms-Button-label {
   color: #0078d7;
 }

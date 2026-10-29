@@ -3,14 +3,14 @@
         "name": "outlook-add-in-encrypt-attachments",
         "reponame": "OfficeDev",
         "source": "officedev",
-        "title": "Use Outlook event-based activation to encrypt attachments, process meeting request attendees and react to appointment date/time changes",
-        "shortDescription": "This sample showcases how to use event-based activation in an Outlook add-in when the user composes an email or appointment/meeting request. It demonstrates how to run tasks based on events that fire when certain data changes.",
+        "title": "Manage attachments and meeting details while composing in Outlook with event-based activation",
+        "shortDescription": "Manage attachments and meeting details while composing in Outlook with event-based activation, including attachment processing, attendee notifications, and meeting date and time changes.",
         "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/outlook-encrypt-attachments",
         "longDescription": [
-            "This sample showcases how to use event-based activation in an Outlook add-in when the user composes an email or appointment/meeting request. It demonstrates how to run tasks based on events that fire when certain data changes."
+            "This sample showcases how to use event-based activation in an Outlook add-in to manage attachments and meeting details while composing a message or meeting request. It demonstrates attachment processing, attendee notifications, and notifications about meeting date and time changes."
         ],
         "creationDateTime": "2021-10-14",
-        "updateDateTime": "2026-09-10",
+        "updateDateTime": "2026-10-27",
         "products": [
             "Office"
         ],
@@ -37,9 +37,9 @@
         ],
         "references": [
             {
-                "name": "Configure your Outlook add-in for event-based activation",
+                "name": "Activate add-ins with events",
                 "description": "Without the event-based activation feature, a user has to explicitly launch an add-in to complete their tasks. This feature enables your add-in to run tasks based on certain events, particularly for operations that apply to every item. You can also integrate with the task pane and UI-less functionality.",
-                "url": "https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch"
+                "url": "https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation"
             }
         ]
     }

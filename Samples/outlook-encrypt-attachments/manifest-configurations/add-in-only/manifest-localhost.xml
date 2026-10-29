@@ -25,7 +25,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="https://localhost:3000/src/commands/commands.html"/>
+        <SourceLocation DefaultValue="https://localhost:3000/commands/commands.html"/>
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -49,13 +49,13 @@
         <Host xsi:type="MailHost">
 
           <!-- Specify the runtime for event-based activation. -->
-          <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch -->
+          <!-- For more information, see https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation. -->
           <Runtimes>
             <!-- HTML file including reference to or inline JavaScript event handlers. This is used by Outlook on the web and on Mac, and in new Outlook on Windows. -->
-            <Runtime resid="WebViewRuntime.Url"> <!-- /src/commands/commands.html -->
+            <Runtime resid="WebViewRuntime.Url"> <!-- /commands/commands.html -->
               <!-- JavaScript file containing event handlers. This is used by classic Outlook on Windows. -->
-              <Override type="javascript" resid="JSRuntime.Url"/> 
-              <!-- /src/commands/commands.js -->
+              <Override type="javascript" resid="JSRuntime.Url"/>
+              <!-- /commands/commands.js -->
             </Runtime>
           </Runtimes>
 
@@ -77,7 +77,7 @@
                     </Icon>
                     <Action xsi:type="ShowTaskpane">
                       <SourceLocation resid="msgComposeTaskpane.Url"/>
-                      <!-- src/taskpane/taskpane_msg_compose.html -->
+                      <!-- /taskpane/taskpane_msg_compose.html -->
                     </Action>
                   </Control>
                 </Group>
@@ -110,11 +110,11 @@
             <!-- Specify function to call for new message and new appointment events -->
             <ExtensionPoint xsi:type="LaunchEvent">
               <LaunchEvents>
-                <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler" /> 
-                <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler" />                 
+                <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler" />
+                <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler" />
                 <LaunchEvent Type="OnAppointmentAttendeesChanged" FunctionName="onAppointmentAttendeesChangedHandler" />
-                <LaunchEvent Type="OnAppointmentTimeChanged" FunctionName="onAppointmentTimeChangedHandler" />                 
-                <LaunchEvent Type="OnMessageAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler" /> 
+                <LaunchEvent Type="OnAppointmentTimeChanged" FunctionName="onAppointmentTimeChangedHandler" />
+                <LaunchEvent Type="OnMessageAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler" />
                 <LaunchEvent Type="OnAppointmentAttachmentsChanged" FunctionName="onAppointmentAttachmentsChangedHandler" />
               </LaunchEvents>
               <SourceLocation resid="WebViewRuntime.Url" />
@@ -128,16 +128,16 @@
           <bt:Image id="Icon.32x32" DefaultValue="https://localhost:3000/assets/icon-32.png"/>
           <bt:Image id="Icon.64x64" DefaultValue="https://localhost:3000/assets/icon-64.png"/>
           <bt:Image id="Icon.80x80" DefaultValue="https://localhost:3000/assets/icon-80.png"/>
-          <bt:Image id="Icon.128x128" DefaultValue="https://localhost:3000/assets/icon-128.png"/>          
+          <bt:Image id="Icon.128x128" DefaultValue="https://localhost:3000/assets/icon-128.png"/>
         </bt:Images>
-        <bt:Urls>        
-          <!-- Separate page for compose messages-->
-          <bt:Url id="msgComposeTaskpane.Url" DefaultValue="https://localhost:3000/src/taskpane/taskpane_msg_compose.html"/>    
-          <!-- Separate page for appointments-->       
-          <bt:Url id="appOrgTaskPaneButton.Url" DefaultValue="https://localhost:3000/src/taskpane/taskpane_appt_compose.html"/>           
-          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.html" />
-          <!-- Entry needed for Outlook Desktop. -->
-          <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/src/commands/commands.js" />
+        <bt:Urls>
+          <!-- Separate page for compose messages. -->
+          <bt:Url id="msgComposeTaskpane.Url" DefaultValue="https://localhost:3000/taskpane/taskpane_msg_compose.html"/>
+          <!-- Separate page for appointments. -->
+          <bt:Url id="appOrgTaskPaneButton.Url" DefaultValue="https://localhost:3000/taskpane/taskpane_appt_compose.html"/>
+          <bt:Url id="WebViewRuntime.Url" DefaultValue="https://localhost:3000/commands/commands.html" />
+          <!-- Entry needed for classic Outlook on Windows. -->
+          <bt:Url id="JSRuntime.Url" DefaultValue="https://localhost:3000/commands/commands.js" />
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GroupLabel" DefaultValue="Event-based Activation Demo (localhost)"/>

@@ -1,5 +1,5 @@
 ---
-title: "Encrypt attachments, process meeting request attendees, and react to appointment date/time changes using Outlook event-based activation"
+title: "Manage attachments and meeting details while composing in Outlook with event-based activation"
 page_type: sample
 urlFragment: outlook-add-in-encrypt-attachments
 products:
@@ -13,143 +13,209 @@ extensions:
   technologies:
     - Add-ins
   createdDate: 10/14/2021 10:00:00 AM
-description: "Use Outlook event-based activation to encrypt attachments, process meeting request attendees, and react to appointment date/time changes."
+description: "Manage attachments and meeting details while composing in Outlook with event-based activation, including attachment processing, attendee notifications, and meeting date and time changes."
 ---
 
-# Encrypt attachments, process meeting request attendees, and react to appointment date/time changes using Outlook event-based activation
+# Manage attachments and meeting details while composing in Outlook with event-based activation
 
-**Applies to**: Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic) | Outlook on the web
+**Applies to**: Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic) | Outlook on the web | Outlook on Mac
 
 ![Message in compose mode with an attachment that has additional encrypted and decrypted versions created by the sample add-in.](./assets/readme/outlook-encrypt-attachments-overview.png)
 
 ## Summary
 
----
+This sample showcases how to use event-based activation in an Outlook add-in to run operations when the user:
 
-This sample showcases how to use event-based activation in an Outlook add-in when the user composes an email or appointment/meeting request.  It demonstrates how to run tasks based on events that fire when certain data changes when the user:
+- Composes an message or meeting request.
+- Adds an attachment to an message or meeting request.
+- Adds recipients or distributions lists as required or optional attendees to a meeting request.
+- Changes the start date, end date, or time in a meeting request.
 
-- Adds an attachment to an email or appointment/meeting request.
-- Adds recipients or distributions lists as required or optional attendees in a meeting request.
-- Changes the start date, end date, or time in an appointment/meeting request.
-- Adds a notification message to the item when a new email or appointment/meeting request is created, instructing the user to open the task pane for further information.
+To learn more about event-based activation, see [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation).
 
-## Features/Scenario
+## Features
 
-- **Encryption based on attachment change events.** This sample encrypts the first attachment that is added to a composed email or appointment, and adds it as another attachment with an "encrypted_" prefix on the file name. It then decrypts that attachment and adds it as another attachment with a "decrypted_" prefix on the file name.
+- **Encryption based on attachment additions.** This sample encrypts the first attachment added to a composed message or meeting, and adds it as another attachment with an "encrypted_" prefix on the file name. It then decrypts that attachment and adds it as another attachment with a "decrypted_" prefix on the file name.
 
   It also adds a notification message to the compose item to denote that encryption and decryption is in progress. When completed, that message is removed (it may only appear for a very brief time, depending on the complexity of the encryption process) and another notification message is added noting that the process has completed.
 
-    ![Message in compose mode with the sample add-in notification message and task pane displayed.](assets/readme/compose_email.png)
+  ![Message in compose mode with the sample add-in notification message and task pane displayed.](assets/readme/compose_email.png)
+
+  > [!NOTE]
+  > For demonstration purposes, this sample uses a repeating-key XOR transformation with a hard-coded demonstration key for attachment processing. It's reversible obfuscation, not a secure encryption protocol. Don't use it in a production add-in.
 
 - **Notifications based on recipient changes.** This sample adds notification messages to a meeting request when recipients are added or removed. The notification message are removed when there are no longer any recipients.
-  - Shows a message with a running tally of the number of required and optional attendees.
-  - Show a message with a warning if one or more distribution lists are invited as an attendee.
+  - Shows a notification with a running tally of the number of required and optional attendees.
+  - Shows a notification with a warning if one or more distribution lists are added as an attendee.
 
-- **Notifications based on date/time changes.** This sample adds a notification message to an appointment when the user changes the date/time, showing the original date/time that was set when the appointment was opened. The notification message provides a reference for further date/time edits.
+- **Notifications based on date or time changes.** This sample adds a notification message to a meeting when the user changes the date or time, showing the original date or time that was set when the meeting was created. The notification message provides a reference for further edits.
 
-  ![Message in compose mode with the sample add-in date/time change notification and task pane displayed.](assets/readme/appointment_outlook_desktop.png)
+  ![Message in compose mode with the sample add-in date or time change notification and task pane displayed.](assets/readme/appointment_outlook_desktop.png)
 
 ## Applies to
-
----
 
 - Outlook
   - Windows (new and classic)
   - web browser
+  - Mac
 
 ## Prerequisites
 
----
-
 - Microsoft 365
 
-> Note: If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
+  > Note: If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
 
-## Solution
+- To run on localhost, install a current LTS version of [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/get-npm).
+- To use the unified manifest for Microsoft 365, use a supported Microsoft 365 version of Outlook on Windows (new or classic) or on the web. See [Office Add-ins with the unified app manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview) for client and account requirements.
 
----
+## Choose a manifest type
 
-| Solution | Author(s) |
-| ---- | ---- |
-| Use Outlook event-based activation to process item attachments, meeting request recipients, and appointment date/time changes. | [Eric Legault](https://twitter.com/elegault) |
+The sample uses the unified manifest for Microsoft 365 by default. You can switch the project between the unified manifest and the add-in only manifest. Both manifest types use the same source files, **package.json**, **package-lock.json**, and **webpack.config.js**. To continue with the unified manifest, skip ahead to [run the sample using localhost](#use-localhost).
 
-## Version history
+> [!NOTE]
+> To run the sample in Outlook on Mac, use the add-in only manifest. For more information on manifests and their supported platforms, see [Office Add-in manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). For information about events and their supported platforms, see [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation#supported-events).
 
----
+### To switch to the add-in only manifest
 
-| Version | Date       | Comments        |
-| ------- | ---------- | --------------- |
-| 1.0     | October 14, 2021 | Initial release. |
-| 1.1 | September 10, 2026 | Updated the Office.js CDN URL. |
+Copy all files from [manifest-configurations/add-in-only](./manifest-configurations/add-in-only) to the sample's root folder and remove **manifest.json** from the root folder. The **manifest-localhost.xml** file points to [locally hosted web files](#use-localhost), while **manifest.xml** points to [GitHub-hosted web files](#use-github).
+
+### To switch back to the unified manifest for Microsoft 365
+
+Copy [manifest-configurations/unified/manifest.json](./manifest-configurations/unified/manifest.json) to the sample's root folder. Remove **manifest.xml** and **manifest-localhost.xml** from the root folder.
 
 ## Run the sample
 
----
+For this sample, the unified manifest supports only [localhost](#use-localhost). With the add-in only manifest, you can use either localhost or [GitHub-hosted web files](#use-github).
 
-Run this sample in Outlook on Windows or in a browser. The add-in web files are served from this repo on GitHub.
+### Use localhost
 
-1. Download the **manifest.xml** file from this sample to a folder on your computer.
-1. Sideload the add-in manifest in Outlook on the web or on Windows (new or classic) by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Clone or download this repository.
+1. From a terminal, go to **Samples/outlook-encrypt-attachments**.
+1. Run the following command to install the dependencies.
+
+    ```console
+    npm install
+    ```
+
+1. Run the command for your manifest type to start the HTTPS development server at `https://localhost:3000` and sideload the add-in.
+
+    **Unified manifest for Microsoft 365**
+
+    ```console
+    npm start
+    ```
+
+    **Add-in only manifest**
+
+    ```console
+    npm run start:xml
+    ```
+
+    On first run, accept the prompt to trust the Office Add-in development certificate. If prompted, sign in with your Microsoft 365 account to sideload the unified manifest.
+
+1. Follow the steps in [Try it out](#try-it-out).
+1. To stop the server and uninstall the add-in, run the command for your manifest type.
+
+    **Unified manifest for Microsoft 365**
+
+    ```console
+    npm stop
+    ```
+
+    **Add-in only manifest**
+
+    ```console
+    npm run stop:xml
+    ```
+
+### Use GitHub
+
+This option uses the add-in only manifest (**manifest.xml**). The web files are served from this repository on GitHub, so source changes on your computer won't affect the running add-in.
+
+1. Download **manifest.xml** to a folder on your computer.
+1. Sideload the add-in manifest by following the manual instructions in [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
+1. Follow the steps in [Try it out](#try-it-out).
+1. To uninstall the add-in, see [Remove a sideloaded add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing?tabs=xmlmanifest#remove-a-sideloaded-add-in).
 
 ### Try it out
 
 Once the add-in is loaded, use the following steps to try out the functionality.
 
-#### Manage attachments
+#### Create a new message or meeting
 
-1. Create a new message or appointment.
-    >A notification appears at the top of the message that reads **Open the task pane for details about running the Outlook event-based activation sample add-in**. | Open task pane | Dismiss
-1. Add an attachment.
-    > A notification appears at the top of the message that reads **The '{file name} attachment has been encrypted and decrypted and added as reference attachments for your review**. | Dismiss
+1. Create a new message or meeting in Outlook.
 
-#### Set up meetings
+    > A notification appears that reads **Learn how to run the Outlook Event-based Activation Sample Add-in**. It contains options to **Show task pane** and **Dismiss** the notification.
 
-1. Create a new meeting request. In Outlook on the web and new Outlook on Windows, choose **More options** to expand the request and include all details. Otherwise, you won't see the notifications in the next steps.
+1. Choose **Show task pane** from the notification to open the sample's instructions and reference information. You can also choose **Show task pane** from the ribbon.
+
+#### Manage an attachment
+
+In a new message or appointment, attach a local file of any type whose name doesn't start with `encrypted_` or `decrypted_`. Cloud attachments aren't supported. In Outlook on the web and the new Outlook on Windows, the **Upload to OneDrive** attachment option isn't supported.
+
+> Encrypted and decrypted copies of the attachment are added, with file names prefixed with `encrypted_` and `decrypted_`, respectively. The original attachment remains. A notification appears that reads **The '{file name} attachment has been encrypted and decrypted and added as reference attachments for your review.**
+
+> [!NOTE]
+> The sample processes only the first attachment added during the item's compose session. Adding another attachment after successful processing doesn't create more copies. The transformation uses demonstration-only XOR obfuscation, not secure encryption; the original and decrypted copies remain unprotected.
+
+#### Set up a meeting
+
+1. Create a new meeting request.
+
+    > A notification appears that reads **Learn how to run the Outlook Event-based Activation Sample Add-in**. It contains options to **Show task pane** and **Dismiss** the notification.
+
 1. Add a user as a required or optional attendee.
-    > A notification appears at the top of the message that reads **Your appointment has 1 required and 0 optional attendees**. | Dismiss
+
+    > A notification appears providing a tally of required and optional attendees.
+
 1. Add a distribution list as a required or optional attendee.
-    > A notification appears at the top of the message that reads **Warning! Your appointment has a distribution list! Make sure you have chosen the correct one!** | Dismiss
+
+    > A notification appears that reads **Warning: Your appointment has a distribution list. Make sure you have chosen the correct group.**
+
 1. Change the start or end date or time.
-    > A notification appears at the top of the message that reads **Original date/time: Start = ##/##/#### #:##:## ##; End = ##/##/#### #:##:## ##**. | Dismiss
 
-## Run the sample from localhost
-
-If you prefer to host the web server for the sample on your computer, follow these steps.
-
-1. Install a recent version of [npm](https://www.npmjs.com/get-npm) and [Node.js](https://nodejs.org/) on your computer. To verify if you've already installed these tools, run the commands `node -v` and `npm -v` in your terminal.
-1. You need http-server to run the local web server. If you haven't installed this yet, run the following command.
-
-    ```console
-    npm install --global http-server
-    ```
-
-1. Use a tool such as openssl to generate a self-signed certificate that you can use for the web server. Move the cert.pem and key.pem files to the root folder for this sample.
-1. From a command prompt, go to the root folder and run the following command.
-
-    ```console
-    http-server -S --cors . -p 3000
-    ```
-
-1. To reroute to localhost, run office-addin-https-reverse-proxy. If you haven't installed this, run the following command.
-
-    ```console
-    npm install --global office-addin-https-reverse-proxy 
-    ```
-
-    To reroute, run the following in another command prompt.
-
-    ```console
-    office-addin-https-reverse-proxy --url http://localhost:3000 
-    ```
-
-1. Sideload `manifest.xml` in Outlook on the web or on Windows (new or classic) by following the manual instructions in the article [Sideload Outlook add-ins for testing](https://learn.microsoft.com/office/dev/add-ins/outlook/sideload-outlook-add-ins-for-testing).
-1. [Try out the sample!](#try-it-out)
+    > A notification appears specifying the previous start and end dates and times.
 
 ## Key parts of this sample
 
 ### Configure event-based activation in the manifest
 
-The manifest configures a runtime that loads a single JavaScript file to handle event-based activation. The following `<Runtime>` element specifies a `commands.html` page resource ID that loads the `commands.js` file in Outlook on the web and new Outlook on Windows. The `<Override>` element directly specifies the `commands.js` JavaScript file to load when running on classic Outlook on Windows. Classic Outlook on Windows doesn't use the HTML page to load the JavaScript file.
+Both manifest types configure the same six events, using different event names. For more information about each event, see [Outlook events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation#outlook-events).
+
+| Add-in only manifest | Unified manifest |
+| --- | --- |
+| `OnNewMessageCompose` | `newMessageComposeCreated` |
+| `OnNewAppointmentOrganizer` | `newAppointmentOrganizerCreated` |
+| `OnAppointmentAttendeesChanged` | `appointmentAttendeesChanged` |
+| `OnAppointmentTimeChanged` | `appointmentTimeChanged` |
+| `OnMessageAttachmentsChanged` | `messageAttachmentsChanged` |
+| `OnAppointmentAttachmentsChanged` | `appointmentAttachmentsChanged` |
+
+The unified manifest uses `extensions.runtimes` to specify the code for event-based activation.
+
+- Outlook on the web and new Outlook on Windows use `code.page` to load the HTML page, which loads the event handler JavaScript file.
+- Classic Outlook on Windows uses `code.script` to load the event handler JavaScript file directly in a JavaScript-only runtime, without loading the HTML page.
+
+The `extensions.autoRunEvents` property maps events to actions. For example, the following runtime defines an action for the new-message compose event.
+
+```json
+{
+  "id": "event_runtime",
+  "type": "general",
+  "code": {
+    "page": "https://localhost:3000/commands/commands.html",
+    "script": "https://localhost:3000/commands/commands.js"
+  },
+  "lifetime": "short",
+  "actions": [
+    { "id": "onMessageComposeHandler", "type": "executeFunction" }
+  ]
+}
+```
+
+The unified manifest also defines separate task pane runtimes and ribbon controls for message compose and appointment organizer surfaces. The control IDs match the `commandId` values used by the notification messages.
+
+In the add-in only manifest, the following `<Runtime>` element specifies a `commands.html` page resource ID that loads the `commands.js` file in Outlook on the web, on Mac, and new Outlook on Windows. The `<Override>` element directly specifies the `commands.js` JavaScript file to load when running on classic Outlook on Windows. Classic Outlook on Windows doesn't use the HTML page to load the JavaScript file.
 
 ```xml
 <Runtime resid="WebViewRuntime.Url">
@@ -163,11 +229,11 @@ The add-in handles six events that are mapped to various functions.
 
 ```xml
 <LaunchEvents>
-  <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler" /> 
-  <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler" />                 
+  <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler" />
+  <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler" />
   <LaunchEvent Type="OnAppointmentAttendeesChanged" FunctionName="onAppointmentAttendeesChangedHandler" />
-  <LaunchEvent Type="OnAppointmentTimeChanged" FunctionName="onAppointmentTimeChangedHandler" /> 
-  <LaunchEvent Type="OnMessageAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler" /> 
+  <LaunchEvent Type="OnAppointmentTimeChanged" FunctionName="onAppointmentTimeChangedHandler" />
+  <LaunchEvent Type="OnMessageAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler" />
   <LaunchEvent Type="OnAppointmentAttachmentsChanged" FunctionName="onAppointmentAttachmentsChangedHandler" />
 </LaunchEvents>
 ```
@@ -177,49 +243,41 @@ The add-in handles six events that are mapped to various functions.
 When the user creates a new message or appointment, Outlook loads the `commands.js` file specified in the manifest to handle the following events.
 
 | Event | Handler |
-| --- | ---|
-| `OnNewMessageCompose` | onMessageComposeHandler |
-| `OnNewAppointmentOrganizer` | onAppointmentComposeHandler |
-| `OnAppointmentAttendeesChanged` | onAppointmentAttendeesChangedHandler |
-| `OnAppointmentTimeChanged` | onAppointmentTimeChangedHandler |
-| `OnMessageAttachmentsChanged` | *onItemAttachmentsChangedHandler |
-| `OnAppointmentAttachmentsChanged` | *onItemAttachmentsChangedHandler |
+| --- | --- |
+| `OnNewMessageCompose` | `onMessageComposeHandler` |
+| `OnNewAppointmentOrganizer` | `onAppointmentComposeHandler` |
+| `OnAppointmentAttendeesChanged` | `onAppointmentAttendeesChangedHandler` |
+| `OnAppointmentTimeChanged` | `onAppointmentTimeChangedHandler` |
+| `OnMessageAttachmentsChanged` | `onItemAttachmentsChangedHandler` |
+| `OnAppointmentAttachmentsChanged` | `onItemAttachmentsChangedHandler` |
 
-> [!NOTE]
-> The onItemAttachmentsChangedHandler function handles both OnMessageAttachmentsChanged and OnAppointmentAttachmentsChanged.
+Each event handler must be registered in `commands.js` with `Office.actions.associate` to map the manifest action to its JavaScript implementation. The first argument must match the action ID in the unified manifest or the `FunctionName` in the add-in only manifest. The second argument is the handler function. For example, `Office.actions.associate("onMessageAttachmentsChangedHandler", onItemAttachmentsChangedHandler);`.
 
-Outlook on the web and new Outlook on Windows load the `commands.html` page, which then also loads `commands.js`.
+### Attachment transformation
 
-### Task pane code
+The attachment event handler transforms the decoded file bytes with XOR, attaches the result using `addFileAttachmentFromBase64Async`, applies the same transformation again, and attaches the restored bytes.
 
-The task pane code is located under the `taskpane` folder of this project. The task pane HTML and JavaScript files only provide a UI with details about this sample.
+The sample attempts only the first attachment added during the item's compose session, recording that attempt in `sessionData` so subsequent event activations don't repeat it. A processing failure displays an Outlook error notification and releases the session marker so another attachment can be tried. Files with `encrypted_` or `decrypted_` prefixes are skipped to avoid processing the generated copies.
 
-- `taskpane_appt_compose.html` is loaded when the user chooses the **Open task pane** link in the notification message or chooses **Show task pane** in the ribbon.
-- `taskpane_msg_compose.html` is loaded when the user chooses the **Open task pane** link in the notification message or chooses **Show task pane** in the ribbon.
+## Solution
 
-## Known Issues
+| Solution | Authors |
+| ---- | ---- |
+| Use Outlook event-based activation to process item attachments, meeting request recipients, and meeting date and time changes. | [Eric Legault](https://twitter.com/elegault) |
 
-- At present, imports are not supported in the JavaScript file where you implement the handling for event-based activation. This means that external libraries (like the `crypto-js` library used in this sample) can't be required directly in the `commands.js` file and must be loaded in `commands.html`. Since classic Outlook on Windows only loads `commands.js`, the `crypto-js` library can't be loaded to perform the encryption of attachments. Only Outlook on the web and new Outlook on Windows can load supporting `.html` files with external library references. Therefore encryption is only implemented for that scenario.
-- `console.dir()` methods can't be used in event-based activation code in classic Outlook on Windows.
-- `window.localStorage` can't be used in event-based activation code in classic Outlook on Windows.
-- Choosing the **Open task pane** link in the InfoBar may not work in Outlook on the web and new Outlook on Windows. A fix has been deployed. For more information, see [Can't open task pane from link in Outlook NotificationMessages](https://github.com/OfficeDev/office-js/issues/2125) issue on GitHub.
+## Version history
+
+| Version | Date       | Comments        |
+| ------- | ---------- | --------------- |
+| 1.0     | October 14, 2021 | Initial release. |
+| 1.1 | September 10, 2026 | Updated the Office.js CDN URL. |
+| 2.0 | October 27, 2026 | Added a unified manifest for Microsoft 365 and updated the encryption protocol. |
 
 ## References
 
-- [Configure your Outlook add-in for event-based activation](https://learn.microsoft.com/office/dev/add-ins/outlook/autolaunch)
-- [Debug your event-based Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch)
-- Other samples:
-  - [Use Outlook event-based activation to set the signature](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-set-signature)
-  - [Use Outlook event-based activation to tag external recipients](https://github.com/OfficeDev/PnP-OfficeAddins/tree/main/Samples/outlook-tag-external)
-- [crypto-js](https://www.npmjs.com/package/crypto-js)
-- [Office.SessionData interface](https://learn.microsoft.com/javascript/api/outlook/office.sessiondata)
-- [Microsoft Office Add-in Debugger Extension for Visual Studio Code](https://learn.microsoft.com/office/dev/add-ins/testing/debug-with-vs-extension)
-- [Develop Office Add-ins with Visual Studio Code](https://learn.microsoft.com/office/dev/add-ins/develop/develop-add-ins-vscode)
-- [Office Add-ins with Visual Studio Code](https://code.visualstudio.com/docs/other/office)
-- [Debugging with Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging)
-- [Node.js debugging in VS Code](https://code.visualstudio.com/docs/nodejs/nodejs-debugging)
-- [Office-Addin-Debugging](https://www.npmjs.com/package/office-addin-debugging)
-- [Getting recipients and attendees Script Lab sample](https://raw.githubusercontent.com/OfficeDev/office-js-snippets/prod/samples/outlook/30-recipients-and-attendees/get-set-required-attendees-appointment-organizer.yaml)
+- [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation)
+- [Debug event-based or spam-reporting add-ins](https://learn.microsoft.com/office/dev/add-ins/outlook/debug-autolaunch)
+- [Create notifications for your Outlook add-in](https://learn.microsoft.com/office/dev/add-ins/outlook/notifications)
 
 ## Questions and feedback
 

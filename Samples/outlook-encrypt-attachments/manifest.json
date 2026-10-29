@@ -1,0 +1,211 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.30/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.30",
+  "version": "1.0.0",
+  "id": "93011807-161e-4cc1-846f-eb7721919e4e",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us"
+  },
+  "developer": {
+    "name": "Microsoft",
+    "websiteUrl": "https://learn.microsoft.com/office/dev/add-ins/",
+    "privacyUrl": "https://privacy.microsoft.com/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/servicesagreement"
+  },
+  "name": {
+    "short": "Event-based Activation Demo",
+    "full": "Outlook attachment encryption and appointment events sample"
+  },
+  "description": {
+    "short": "Encrypt attachments and respond to meeting attendee and date/time changes.",
+    "full": "Demonstrates Outlook event-based activation to encrypt and decrypt attachments, track meeting attendees, and display original appointment dates and times."
+  },
+  "icons": {
+    "outline": "assets/outline.png",
+    "color": "assets/color.png"
+  },
+  "accentColor": "#230201",
+  "validDomains": [
+    "localhost"
+  ],
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "MailboxItem.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "extensions": [
+    {
+      "requirements": {
+        "capabilities": [
+          {
+            "name": "Mailbox",
+            "minVersion": "1.11"
+          }
+        ],
+        "scopes": [
+          "mail"
+        ]
+      },
+      "runtimes": [
+        {
+          "id": "event_runtime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/commands/commands.html",
+            "script": "https://localhost:3000/commands/commands.js"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "onMessageComposeHandler",
+              "type": "executeFunction"
+            },
+            {
+              "id": "onAppointmentComposeHandler",
+              "type": "executeFunction"
+            },
+            {
+              "id": "onAppointmentAttendeesChangedHandler",
+              "type": "executeFunction"
+            },
+            {
+              "id": "onAppointmentTimeChangedHandler",
+              "type": "executeFunction"
+            },
+            {
+              "id": "onMessageAttachmentsChangedHandler",
+              "type": "executeFunction"
+            },
+            {
+              "id": "onAppointmentAttachmentsChangedHandler",
+              "type": "executeFunction"
+            }
+          ]
+        },
+        {
+          "id": "message_taskpane_runtime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/taskpane/taskpane_msg_compose.html"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "open_message_taskpane",
+              "type": "openPage"
+            }
+          ]
+        },
+        {
+          "id": "appointment_taskpane_runtime",
+          "type": "general",
+          "code": {
+            "page": "https://localhost:3000/taskpane/taskpane_appt_compose.html"
+          },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "open_appointment_taskpane",
+              "type": "openPage"
+            }
+          ]
+        }
+      ],
+      "ribbons": [
+        {
+          "contexts": [
+            "mailCompose"
+          ],
+          "tabs": [
+            {
+              "builtInTabId": "TabDefault",
+              "groups": [
+                {
+                  "id": "msgComposeGroup",
+                  "label": "Event-based Activation Demo",
+                  "icons": [
+                    { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
+                    { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
+                    { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                  ],
+                  "controls": [
+                    {
+                      "id": "msgComposeOpenPaneButton",
+                      "type": "button",
+                      "label": "Show task pane",
+                      "icons": [
+                        { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
+                        { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
+                        { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                      ],
+                      "supertip": {
+                        "title": "Show Taskpane",
+                        "description": "Show instructions for running the sample"
+                      },
+                      "actionId": "open_message_taskpane"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "contexts": [
+            "meetingDetailsOrganizer"
+          ],
+          "tabs": [
+            {
+              "builtInTabId": "TabDefault",
+              "groups": [
+                {
+                  "id": "appOrgGroup",
+                  "label": "Event-based Activation Demo",
+                  "icons": [
+                    { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
+                    { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
+                    { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                  ],
+                  "controls": [
+                    {
+                      "id": "appOrgTaskPaneButton",
+                      "type": "button",
+                      "label": "Show task pane",
+                      "icons": [
+                        { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
+                        { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
+                        { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                      ],
+                      "supertip": {
+                        "title": "Show Taskpane",
+                        "description": "Show instructions for running the sample"
+                      },
+                      "actionId": "open_appointment_taskpane"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "autoRunEvents": [
+        {
+          "events": [
+            { "type": "newMessageComposeCreated", "actionId": "onMessageComposeHandler" },
+            { "type": "newAppointmentOrganizerCreated", "actionId": "onAppointmentComposeHandler" },
+            { "type": "appointmentAttendeesChanged", "actionId": "onAppointmentAttendeesChangedHandler" },
+            { "type": "appointmentTimeChanged", "actionId": "onAppointmentTimeChangedHandler" },
+            { "type": "messageAttachmentsChanged", "actionId": "onMessageAttachmentsChangedHandler" },
+            { "type": "appointmentAttachmentsChanged", "actionId": "onAppointmentAttachmentsChangedHandler" }
+          ]
+        }
+      ]
+    }
+  ]
+}

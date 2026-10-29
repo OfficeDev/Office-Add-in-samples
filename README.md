@@ -72,7 +72,7 @@ The following samples show how to access and work with a user's Microsoft Graph 
 
 | Name           | Description  |
 | -------------- | ------------ |
-| [Encrypt attachments, process meeting request attendees, and react to appointment date/time changes using Outlook event-based activation](Samples/outlook-encrypt-attachments) | Shows how to use event-based activation to encrypt attachments when added by the user. Also shows event handling for recipients changed in a meeting request, and changes to the start or end date or time in a meeting request. |
+| [Manage attachments and meeting details while composing in Outlook with event-based activation](Samples/outlook-encrypt-attachments) | Shows how to use event-based activation to encrypt attachments when added by the user. Also shows event handling for recipients changed in a meeting request, and changes to the start or end date or time in a meeting request. |
 | [Identify and tag external recipients using Outlook event-based activation](Samples/outlook-tag-external) | Uses event-based activation to update the subject and display a sender notification when the user adds external recipients while composing a message.|
 | [Set your signature using Outlook event-based activation](Samples/outlook-set-signature) | Uses event-based activation to run an Outlook add-in when the user creates a new message or appointment.|
 | [Verify the color categories of a message or appointment before it's sent using Smart Alerts](Samples/outlook-check-item-categories/) | Uses Outlook Smart Alerts to verify that required color categories are applied to a new message or appointment before it's sent.|

@@ -3,32 +3,25 @@
  * Licensed under the MIT license.
 */
 
-var fileName;
-const secretKey = "secret key 123";
+Office.onReady();
+
+const demoXorKey = "sample only - not secure";
 const encryptedAttachmentPrefix = "encrypted_";
 const decryptedAttachmentPrefix = "decrypted_";
 var totalOptionalAttendees = 0;
 var totalRequiredAttendees = 0;
 var totalDistributionLists = 0;
-// eslint-disable-next-line no-unused-vars
-Office.initialize = function (reason) {
-  try {
-    console.log(`Office.initialize(): Huzzah!`);
-  }
-  catch(ex){
-    console.error(`Office.initialize(): Error! ${ex}`);
-  }  
-};
+
 /**
- * Method that fires when a appointment is being created or edited
- * @param {Office.AsyncResult} event default: Office.AsyncResult
+ * Runs when the user creates a new appointment as the organizer.
+ * @param {Office.MailboxEvent} event The event-based activation event.
  */
 function onAppointmentComposeHandler(event) {
-  //NOTE: Must call event.completed() when any logic below is finished!
+  // Call event.completed() after all asynchronous operations finish.
 
   console.log("onAppointmentComposeHandler(): entered!");
 
-  let originalAppointmentDate = {}; //Create an object to cache the original date/time and persist it to localStorage
+  let originalAppointmentDate = {}; // Store the original dates and times in sessionData.
 
   Office.context.mailbox.item.start.getAsync((asyncResult) => {
     if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
@@ -48,23 +41,22 @@ function onAppointmentComposeHandler(event) {
       originalAppointmentDate.end = asyncResult2.value;
 
       console.log(`onAppointmentComposeHandler(): Appointment ends: ${asyncResult2.value}`);
-      console.log("onAppointmentComposeHandler(): Setting SessionData...");     
+      console.log("onAppointmentComposeHandler(): Setting SessionData...");
 
       Office.context.mailbox.item.sessionData.setAsync("appointment_info", JSON.stringify(originalAppointmentDate), function(asyncResult3){
         if (asyncResult3.status === Office.AsyncResultStatus.Succeeded) {
           console.log("onAppointmentComposeHandler(): sessionData set");
-          //Add a notification message to ask the user to open the Task Pane to view additional information on the sample
-          //NOTE: Choosing the "Show task pane" link in the InfoBar doesn't work in Outlook on the web. A fix is in progress and being tested: https://github.com/OfficeDev/office-js/issues/2125
-                      
+          // Add a notification that prompts the user to open the task pane for sample instructions.
+
           console.log("onAppointmentComposeHandler(): Adding notification message...");
 
-          //NOTE: actions array only applicable to insightMessage types
+          // The actions array applies only to insightMessage notifications.
           Office.context.mailbox.item.notificationMessages.addAsync(
             "showInfoBarForSampleInstructions",
             {
               type: Office.MailboxEnums.ItemNotificationMessageType.InsightMessage,
               message:
-                "Open the Task Pane for details about running the Outlook Event-based Activation Sample Add-in",
+                "Open the task pane for details about running the Outlook Event-based Activation Sample Add-in.",
               icon: "Icon.16x16",
               actions: [
                 {
@@ -85,33 +77,32 @@ function onAppointmentComposeHandler(event) {
         }
         else {
           console.error(`onAppointmentComposeHandler(): Action failed with message ${asyncResult3.error.message}`);
-          event.completed();                     
-        }    
-      });          
+          event.completed();
+        }
+      });
     });
   });
 }
 /**
- * Method that fires when an email is being created 
- * @param {Office.AsyncResult} result default: Office.AsyncResult
+ * Runs when the user composes a new message.
+ * @param {Office.MailboxEvent} event The event-based activation event.
  */
 function onMessageComposeHandler(event) {
   console.log("onMessageComposeHandler(): entered!");
 
-  //Displays the InfoBar in the compose email. Purpose is to remind the user running this sample to open the Task Pane to display additional instructions and reference information
-  //NOTE: Choosing the "Show task pane" link in the InfoBar doesn't work in Outlook on the web. A fix is in progress and being tested: https://github.com/OfficeDev/office-js/issues/2125
-  //NOTE: actions array only applicable to insightMessage types
+  // Add a notification that prompts the user to open the task pane for sample instructions.
+  // The actions array applies only to insightMessage notifications.
   var options = { asyncContext: { callingEvent: event } };
   Office.context.mailbox.item.notificationMessages.addAsync(
     "showInfoBarForSampleInstructions",
     {
-      type: Office.MailboxEnums.ItemNotificationMessageType.InsightMessage, //"insightMessage"
-      message: "Open the Task Pane for details about running the Outlook Event-based Activation Sample Add-in",
+      type: Office.MailboxEnums.ItemNotificationMessageType.InsightMessage,
+      message: "Open the task pane for details about running the Outlook Event-based Activation Sample Add-in.",
       icon: "Icon.16x16",
       actions: [
         {
-          actionText: "Show Task Pane",
-          actionType: Office.MailboxEnums.ActionType.ShowTaskPane, //"showTaskPane"
+          actionText: "Show task pane",
+          actionType: Office.MailboxEnums.ActionType.ShowTaskPane,
           commandId: "msgComposeOpenPaneButton",
           contextData: "{''}",
         },
@@ -125,12 +116,12 @@ function onMessageComposeHandler(event) {
   );
 }
 /**
- * Method that fires when an attendee is added or removed from an appointment
- * @param {Office.AsyncResult} event default: Office.AsyncResult
+ * Runs when an attendee is added to or removed from an appointment.
+ * @param {Office.MailboxEvent} event The event-based activation event.
  */
 function onAppointmentAttendeesChangedHandler(event) {
-  
-  //NOTE: Must call event.completed() when any logic below is finished!
+
+  // Call event.completed() after all asynchronous operations finish.
 
   var totalOptionalAttendees = 0;
   var totalRequiredAttendees = 0;
@@ -138,82 +129,82 @@ function onAppointmentAttendeesChangedHandler(event) {
 
   console.log(`onAppointmentAttendeesChangedHandler(): type = ${event.type}; requiredAttendees: ${event.changedRecipientFields.requiredAttendees}; optionalAttendees: ${event.changedRecipientFields.optionalAttendees}; resources: ${event.changedRecipientFields.resources};`);
 
-  //Run a series of Office async calls to calculate the total number of current required and optional attendees as well as distribution lists. Then add, update or remove notification messages depending on the counts. These calls are carried out sequentially in nested callbacks but could be refactored to use closures or Promises for cleaner code.
+  // Use sequential asynchronous Office API calls to count required attendees, optional attendees, and distribution lists.
+  // Add, update, or remove notifications based on the counts.
 
-  //Get required attendees
+  // Get the required attendees.
   Office.context.mailbox.item.requiredAttendees.getAsync(function (asyncResult) {
-    console.log(`onAppointmentAttendeesChangedHandler(): getAsync => asyncResult.status: ${asyncResult.status}`);  
+    console.log(`onAppointmentAttendeesChangedHandler(): getAsync => asyncResult.status: ${asyncResult.status}`);
     if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
-      //Add to our total of required attendees and ensure that the current user isn't processed as an attendee
+      // Count the required attendees without including the current user.
       var apptRequiredAttendees = asyncResult.value;
 
-      for (var i = 0; i < apptRequiredAttendees.length; i++) {        
+      for (var i = 0; i < apptRequiredAttendees.length; i++) {
         console.log(
           `onAppointmentAttendeesChangedHandler(): Required attendee: ${apptRequiredAttendees[i].displayName} (${apptRequiredAttendees[i].emailAddress}) - type: ${apptRequiredAttendees[i].recipientType}`
         );
       }
 
-      //Get attendees except for the current user (which is only included in this array on Outlook on Windows, not on Outlook on the web.)
+      // Exclude the current user, who can appear in the attendee array in Outlook on Windows.
       console.log(`onAppointmentAttendeesChangedHandler(): Filtering out attendees for current user ${Office.context.mailbox.userProfile.emailAddress}...`);
       var apptRequiredAttendeesWithoutUser = apptRequiredAttendees.filter(function(attendee){return attendee.emailAddress !== Office.context.mailbox.userProfile.emailAddress;});
-      
+
       totalRequiredAttendees = apptRequiredAttendeesWithoutUser.length;
       currentDistributionLists = apptRequiredAttendees.filter(function(attendee){return attendee.recipientType === "distributionList";});
       if (currentDistributionLists.length !== 0){
         totalDistributionLists = totalDistributionLists + currentDistributionLists.length;
-      }     
+      }
 
       console.log(`onAppointmentAttendeesChangedHandler(): totalRequiredAttendees = ${totalRequiredAttendees}; totalDistributionLists = ${totalDistributionLists}`);
 
-      //Get optional attendees
+      // Get the optional attendees.
       Office.context.mailbox.item.optionalAttendees.getAsync(function (asyncResult2) {
-        console.log(`onAppointmentAttendeesChangedHandler(): getAsync => asyncResult2.status: ${asyncResult2.status}`);          
+        console.log(`onAppointmentAttendeesChangedHandler(): getAsync => asyncResult2.status: ${asyncResult2.status}`);
         if (asyncResult2.status === Office.AsyncResultStatus.Succeeded) {
-          //Add to our total of optional attendees and ensure that the current user isn't processed as an attendee
-          var apptOptionalAttendees = asyncResult2.value;          
-          //Get attendees except for the current user (which is only included in this array on Outlook on Windows, not on Outlook on the web.)
+          // Count the optional attendees without including the current user.
+          var apptOptionalAttendees = asyncResult2.value;
+          // Exclude the current user, who can appear in the attendee array in Outlook on Windows.
           var apptOptionalAttendeesWithoutUser = apptOptionalAttendees.filter(function(attendee){return attendee.emailAddress !== Office.context.mailbox.userProfile.emailAddress;});
 
-          totalOptionalAttendees = apptOptionalAttendeesWithoutUser.length;           
+          totalOptionalAttendees = apptOptionalAttendeesWithoutUser.length;
           currentDistributionLists = apptOptionalAttendees.filter(function(attendee){return attendee.recipientType === "distributionList";});
           if (currentDistributionLists.length !== 0){
             totalDistributionLists = totalDistributionLists + currentDistributionLists.length;
-          }          
-          
+          }
+
         } else {
           console.error(`onAppointmentAttendeesChangedHandler(): Error with item.optionalAttendees.getAsync(): ${asyncResult2.error}`);
         }
 
         console.log(`onAppointmentAttendeesChangedHandler(): totalRequiredAttendees = ${totalRequiredAttendees}; totalOptionalAttendees = ${totalOptionalAttendees}; totalDistributionLists = ${totalDistributionLists}`);
 
-        //Update notification messages
-        //=============================================================================================
+        // Update the notifications based on the attendee counts.
         if (totalOptionalAttendees === 0 && totalRequiredAttendees === 0) {
-          //Remove the info bar with the recipients tally and any distribution list warnings if there are no longer any recipients
+          // Remove the attendee count notification when no attendees remain.
           Office.context.mailbox.item.notificationMessages.removeAsync(
             "attendeesChanged",
             null,
             function (asyncResult3) {
-              console.log(`onAppointmentAttendeesChangedHandler() removeAsync:attendeesChanged => asyncResult3.status: ${asyncResult3.status}`);     
-              //No need to call if there are no more distribution lists; otherwise, remove the warning about distribution lists
+              console.log(`onAppointmentAttendeesChangedHandler() removeAsync:attendeesChanged => asyncResult3.status: ${asyncResult3.status}`);
+              // Remove the distribution list warning if distribution lists are still counted.
               if (asyncResult3.status === Office.AsyncResultStatus.Succeeded && totalDistributionLists !== 0) {
                 Office.context.mailbox.item.notificationMessages.removeAsync(
                   "distributionListWarning",
                   null,
                   function (asyncResultDLs) {
-                    console.log(`onAppointmentAttendeesChangedHandler() removeAsync:distributionListWarning => asyncResultDLs.status: ${asyncResultDLs.status}`);     
-                    event.completed(); //NOTE: Must call!
+                    console.log(`onAppointmentAttendeesChangedHandler() removeAsync:distributionListWarning => asyncResultDLs.status: ${asyncResultDLs.status}`);
+                    event.completed(); // Complete the event after the notification update.
                   }
                 );
               } else {
-                //No more attendees
-                event.completed(); //NOTE: Must call!
+                // Complete the event when no further notification updates are needed.
+                event.completed();
               }
             }
           );
-        } else 
+        } else
         {
-          //Update the info bar with the recipients tally
+          // Update the attendee count notification.
           Office.context.mailbox.item.notificationMessages.replaceAsync(
             "attendeesChanged",
             {
@@ -223,10 +214,10 @@ function onAppointmentAttendeesChangedHandler(event) {
               persistent: false,
             },
             function (asyncResult4) {
-              console.log(`onAppointmentAttendeesChangedHandler(): replaceAsync:attendeesChanged => asyncResult4.status: ${asyncResult4.status}`);   
-              if (asyncResult4.status === Office.AsyncResultStatus.Succeeded) {  
+              console.log(`onAppointmentAttendeesChangedHandler(): replaceAsync:attendeesChanged => asyncResult4.status: ${asyncResult4.status}`);
+              if (asyncResult4.status === Office.AsyncResultStatus.Succeeded) {
                 var anyExistingWarningMessages = false;
-  
+
                 Office.context.mailbox.item.notificationMessages.getAllAsync(function (asyncResult5) {
                   console.log(`onAppointmentAttendeesChangedHandler(): getAllAsync(): asyncResult5.status = ${asyncResult5.status}`);
                   if (asyncResult5.status === Office.AsyncResultStatus.Succeeded) {
@@ -240,13 +231,13 @@ function onAppointmentAttendeesChangedHandler(event) {
                     console.error(`onAppointmentAttendeesChangedHandler(): Error with item.notificationMessages.getAllAsync(): ${asyncResult5.error}`);
                   }
 
-                  if (totalDistributionLists === 0 && anyExistingWarningMessages === true) {        
-                    //Remove the warning about distribution lists            
+                  if (totalDistributionLists === 0 && anyExistingWarningMessages === true) {
+                    // Remove the warning when no distribution lists remain.
                     Office.context.mailbox.item.notificationMessages.removeAsync(
                       "distributionListWarning",
                       null,
                       function (asyncResult6) {
-                        console.log(`onAppointmentAttendeesChangedHandler() removeAsync:distributionListWarning => asyncResult6.status: ${asyncResult6.status}`);   
+                        console.log(`onAppointmentAttendeesChangedHandler() removeAsync:distributionListWarning => asyncResult6.status: ${asyncResult6.status}`);
                         if (asyncResult6.status === Office.AsyncResultStatus.Succeeded) {;
                           event.completed();
                           return;
@@ -256,16 +247,16 @@ function onAppointmentAttendeesChangedHandler(event) {
                       }
                     );
                   }
-    
+
                   if (totalDistributionLists !== 0) {
                     var warningMessage;
                     if (totalDistributionLists === 1) {
                       warningMessage = `Warning! Your appointment has a distribution list! Make sure you have chosen the correct one!`;
                     } else {
                       warningMessage = `Warning! Your appointment has ${totalDistributionLists} distribution lists! Make sure you have chosen the correct one!`;
-                    }    
+                    }
 
-                    //Update existing warning about distribution lists
+                    // Update the distribution list warning.
                     Office.context.mailbox.item.notificationMessages.replaceAsync(
                       "distributionListWarning",
                       {
@@ -275,15 +266,15 @@ function onAppointmentAttendeesChangedHandler(event) {
                         persistent: false
                       },
                       function (asyncResult7) {
-                        console.log(`onAppointmentAttendeesChangedHandler(): replaceAsync:distributionListWarning => asyncResult7.status: ${asyncResult7.status}`);                      
-                        event.completed(); //NOTE: Must call!
+                        console.log(`onAppointmentAttendeesChangedHandler(): replaceAsync:distributionListWarning => asyncResult7.status: ${asyncResult7.status}`);
+                        event.completed(); // Complete the event after the notification update.
                       }
                     );
-                  } 
-                  else{                  
-                    event.completed(); //NOTE: Must call! 
                   }
-                });      
+                  else{
+                    event.completed(); // Complete the event when no warning is needed.
+                  }
+                });
               }
               else {
                 console.error(`onAppointmentAttendeesChangedHandler(): Error with item.notificationMessages.replaceAsync(): ${asyncResult4.error}`);
@@ -291,135 +282,207 @@ function onAppointmentAttendeesChangedHandler(event) {
             }
           );
         }
-        //=============================================================================================
       });
     } else {
       console.error(`onAppointmentAttendeesChangedHandler(): Unexpected: asyncResult.status = ${asyncResult.status}`);
-      event.completed(); //NOTE: Must call!
+      event.completed(); // Complete the event if the attendee lookup fails.
     }
   });
 }
 /**
- * Method that fires when an attachment is being added or removed from the compose email or appointment
- * @param {Office.AsyncResult} event default: Office.AsyncResult
+ * Runs when an attachment is added to or removed from a message or appointment being composed.
+ * @param {Office.MailboxEvent} event The event-based activation event.
  */
 function onItemAttachmentsChangedHandler(event) {
-  if (Office.context.platform  !== Office.PlatformType.OfficeOnline){
-    console.warn(`onItemAttachmentsChangedHandler(): Unsupported platform for encrypting/decrypting attachments (${Office.context.platform}); leaving...`);
-    event.completed();
-    return;
-  }
-
   if (event.attachmentStatus === "removed"){
     console.log("onItemAttachmentsChangedHandler(): Not processing removed attachments; leaving...");
-    event.completed(); //NOTE: Must call!
+    event.completed(); // Complete the event without processing removed attachments.
     return;
   }
 
   console.log(`onItemAttachmentsChangedHandler(): ${event.attachmentDetails.name} (${event.attachmentStatus})`);
-  
-    if (event.attachmentDetails.name == `${decryptedAttachmentPrefix}${fileName}`) {
-    //Don't process any more events - we've already encrypted the attachment and added it as another attachment, then decrypted that attachment and added it as well
-    event.completed(); //NOTE: Must call!
-    return;
-  }
-  if (fileName !== undefined){
-    console.log("onItemAttachmentsChangedHandler(): Skipping processing of further attachments - demo is done!");
-    event.completed(); //NOTE: Must call!
+
+  const fileName = event.attachmentDetails.name;
+  if (fileName.startsWith(encryptedAttachmentPrefix) || fileName.startsWith(decryptedAttachmentPrefix)) {
+    event.completed();
     return;
   }
 
-  //Process the first attachment. We'll encrypt it and add it as another attachment, then decrypt that attachment and add it as well
-  fileName = event.attachmentDetails.name;
-  var item = Office.context.mailbox.item;
-  var options = { asyncContext: { currentItem: item, callingEvent: event } };    
-  item.getAttachmentsAsync(options, getAttachmentsCallback);
+  const item = Office.context.mailbox.item;
+  const context = { fileName: fileName, callingEvent: event };
+  // Store the processing marker in sessionData to enforce the one-attachment limit across event runtime activations.
+  item.sessionData.getAllAsync(function (result) {
+    if (result.status !== Office.AsyncResultStatus.Succeeded) {
+      failAttachmentProcessing(context, result.error.message);
+      return;
+    }
+    if (result.value.attachmentDemoStarted === "true") {
+      console.log("Attachment demonstration already started for this compose session.");
+      event.completed();
+      return;
+    }
+    item.sessionData.setAsync("attachmentDemoStarted", "true", function (setResult) {
+      if (setResult.status !== Office.AsyncResultStatus.Succeeded) {
+        failAttachmentProcessing(context, setResult.error.message);
+        return;
+      }
+      context.sessionMarked = true;
+      item.getAttachmentContentAsync(event.attachmentDetails.id, { asyncContext: context }, handleAttachmentsCallback);
+    });
+  });
 }
 /**
- * Processes the attachments in the current item. NOTE: Only the first attachment that's added will be processed
- * @param {Office.AsyncResult} result default: Office.AsyncResult
+ * Applies a reversible, insecure XOR transformation to Base64-encoded bytes.
+ * Applying the transformation twice restores the input.
+ * This is a demonstration only, not encryption suitable for production.
  */
-function getAttachmentsCallback(result) { 
-  var options = { asyncContext: { callingEvent: result.asyncContext.callingEvent } };    
-  //Only handle the first attachment (0 index in the array) - ignore the others
-  result.asyncContext.currentItem.getAttachmentContentAsync(result.value[0].id, options, handleAttachmentsCallback);
+function transformDemoAttachment(base64) {
+  if (typeof base64 !== "string" ||
+      !/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(base64)) {
+    throw new Error("Attachment content is not valid Base64.");
+  }
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  const output = [];
+  let byteIndex = 0;
+  for (let i = 0; i < base64.length; i += 4) {
+    const first = alphabet.indexOf(base64[i]);
+    const second = alphabet.indexOf(base64[i + 1]);
+    const third = base64[i + 2] === "=" ? 0 : alphabet.indexOf(base64[i + 2]);
+    const fourth = base64[i + 3] === "=" ? 0 : alphabet.indexOf(base64[i + 3]);
+    const bytes = [(first << 2) | (second >> 4)];
+    if (base64[i + 2] !== "=") {
+      bytes.push(((second & 15) << 4) | (third >> 2));
+    }
+    if (base64[i + 3] !== "=") {
+      bytes.push(((third & 3) << 6) | fourth);
+    }
+    for (let j = 0; j < bytes.length; j++) {
+      bytes[j] ^= demoXorKey.charCodeAt(byteIndex++ % demoXorKey.length);
+    }
+    output.push(
+      alphabet[bytes[0] >> 2],
+      alphabet[((bytes[0] & 3) << 4) | (bytes.length > 1 ? bytes[1] >> 4 : 0)],
+      bytes.length > 1 ? alphabet[((bytes[1] & 15) << 2) | (bytes.length > 2 ? bytes[2] >> 6 : 0)] : "=",
+      bytes.length > 2 ? alphabet[bytes[2] & 63] : "="
+    );
+  }
+  return output.join("");
+}
+
+function failAttachmentProcessing(context, message, removeProgress = false) {
+  console.error(`Attachment demonstration failed: ${message}`);
+  const item = Office.context.mailbox.item;
+  function showError() {
+    item.notificationMessages.replaceAsync("attachmentDemoError", {
+      type: Office.MailboxEnums.ItemNotificationMessageType.ErrorMessage,
+      message: `Attachment demo failed: ${message}`.slice(0, 150),
+    }, function (result) {
+      if (result.status !== Office.AsyncResultStatus.Succeeded) {
+        console.error(`Displaying attachment error failed: ${result.error.message}`);
+      }
+      context.callingEvent.completed();
+    });
+  }
+  function releaseSession() {
+    if (context.sessionMarked) {
+      item.sessionData.removeAsync("attachmentDemoStarted", function (result) {
+        if (result.status !== Office.AsyncResultStatus.Succeeded) {
+          console.error(`Resetting attachment demonstration failed: ${result.error.message}`);
+        }
+        showError();
+      });
+    } else {
+      showError();
+    }
+  }
+  if (removeProgress) {
+    item.notificationMessages.removeAsync("processingAttachments", function (result) {
+      if (result.status !== Office.AsyncResultStatus.Succeeded) {
+        console.error(`Removing attachment progress notification failed: ${result.error.message}`);
+      }
+      releaseSession();
+    });
+  } else {
+    releaseSession();
+  }
 }
 /**
- * Method that encrypts base64 file data using CryptoJS and attaches the file to the email. Cloud, .eml and .ICalendar attachments will not be processed.
- * @param {Office.AsyncResult} result default: Office.AsyncResult
+ * Demonstrates a file data transformation. Cloud, email message, and calendar item attachments are not processed.
+ * @param {Office.AsyncResult} result The attachment content and processing context.
  */
 function handleAttachmentsCallback(result) {
-
+  if (result.status !== Office.AsyncResultStatus.Succeeded) {
+    failAttachmentProcessing(result.asyncContext, result.error.message);
+    return;
+  }
+  const context = result.asyncContext;
+  const fileName = context.fileName;
   console.log(`handleAttachmentsCallback(): result.value.format = ${result.value.format}`);
-  // console.dir(result.value.content); //NOTE: If you want to see the base64 data output to the console, uncomment this line - but console.dir() functions cannot be used when runtime logging is enabled!!
+  // To log the Base64 content, uncomment the following line. Do not use console.dir() with runtime logging enabled.
+  // console.dir(result.value.content);
 
-  // Parse string to be a url, an .eml file, a base64-encoded string, or an .icalendar file.
+  // Process the attachment according to its content format.
   switch (result.value.format) {
     case Office.MailboxEnums.AttachmentContentFormat.Base64:
-      //Handle file attachment      
-      //Set a notification message that we're processing the attachment. Note that this will be removed immediately after the decrypted attachment is added, and it may not be displayed for very long
-      var options = { 'asyncContext': { base64: result.value.content, callingEvent: result.asyncContext.callingEvent } };
+      // The progress notification is removed after the decrypted attachment is added and may appear only briefly.
+      var options = { asyncContext: context };
+      const base64 = result.value.content;
       Office.context.mailbox.item.notificationMessages.addAsync("processingAttachments", {
         type: Office.MailboxEnums.ItemNotificationMessageType.ProgressIndicator,
         message: `Please wait while the '${fileName}' attachment is encrypted...`,
       }, options, function(asyncResult){
-          //Encrypt base64 file data using CryptoJS
           if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
+            let ciphertext;
             try {
-              var ciphertext = CryptoJS.AES.encrypt(asyncResult.asyncContext.base64, secretKey).toString();
-              //Then attaches the file to the email
-              console.log(`handleAttachmentsCallback(): starting processing of file '${fileName}'...`);
-              encryptAttachment(ciphertext, asyncResult.asyncContext.callingEvent);
+              ciphertext = transformDemoAttachment(base64);
             } catch (ex) {
-              console.error(`handleAttachmentsCallback(): Error: ${ex}`);
-              options = { 'asyncContext': { callingEvent: asyncResult.asyncContext.callingEvent } };
-              Office.context.mailbox.item.notificationMessages.removeAsync("processingAttachments", options, function (asyncResult2) {
-                console.log("handleAttachmentsCallback(): Notification message removed.");
-                asyncResult2.asyncContext.callingEvent.completed();
-              });              
+              failAttachmentProcessing(context, ex.message, true);
+              return;
             }
+            encryptAttachment(ciphertext, context);
           } else {
-            console.error(`handleAttachmentsCallback(): Unexpected - status is ${asyncResult.status}`);
-            asyncResult.asyncContext.callingEvent.completed();
-          }     
-      });      
+            failAttachmentProcessing(context, asyncResult.error.message);
+          }
+      });
       break;
     case Office.MailboxEnums.AttachmentContentFormat.Eml:
-      // Handle email item attachment.
+      // Skip email message attachments.
       console.log("handleAttachmentsCallback(): Attachment is a message.");
       result.asyncContext.callingEvent.completed();
       break;
     case Office.MailboxEnums.AttachmentContentFormat.ICalendar:
-      // Handle .icalender attachment.
+      // Skip calendar item attachments.
       console.log("handleAttachmentsCallback(): Attachment is a calendar item.");
       result.asyncContext.callingEvent.completed();
       break;
     case Office.MailboxEnums.AttachmentContentFormat.Url:
-      // Handle cloud attachment.
+      // Skip cloud attachments.
       console.log("handleAttachmentsCallback(): Attachment is a cloud attachment.");
       result.asyncContext.callingEvent.completed();
       break;
     default:
-      // Handle attachment formats that are not supported.
-      console.console.warn();("handleAttachmentsCallback(): Not handling unsupported attachment.");
+      // Skip unsupported attachment formats.
+      console.warn("handleAttachmentsCallback(): Not handling unsupported attachment.");
       result.asyncContext.callingEvent.completed();
       break;
   }
 }
 /**
- * Method that converts encrypted data to base64 and creates and adds a file attachment to the current email
- * @param {string} encryptedData default: "undefined"
- * @param {Office.AsyncResult} callingEvent default: Office.AsyncResult. The event parameter from the action event
+ * Adds the Base64-encoded XOR demonstration output as an attachment.
+ * @param {string} encryptedData The Base64-encoded transformation output.
+ * @param {object} context The attachment name, calling event, and session marker state.
  */
-function encryptAttachment(encryptedData, callingEvent) {
+function encryptAttachment(encryptedData, context) {
+  const fileName = context.fileName;
   console.log(`encryptAttachment(): Encrypting file '${fileName}'...`);
-  // console.dir(encryptedData); //NOTE: If you want to see the encrypted data output to the console, uncomment this line
+  // To log the transformed data, uncomment the following line.
+  // console.dir(encryptedData);
 
-  var base64EncryptedData = window.btoa(encryptedData);
+  var base64EncryptedData = encryptedData;
   var encryptedFileName = `${encryptedAttachmentPrefix}${fileName}`;
-  var options = { 'asyncContext': { encryptedFileName: encryptedFileName, callingEvent: callingEvent}, 'isInline': false };
+  var options = { asyncContext: context, isInline: false };
 
-  //NOTE: If you want to see the base64 data output to the console, uncomment these lines
+  // To log the Base64-encoded transformed data, uncomment the following lines.
   // console.log("encryptAttachment(): base64 encrypted data:");
   // console.dir(base64EncryptedData);
 
@@ -429,43 +492,68 @@ function encryptAttachment(encryptedData, callingEvent) {
     encryptedFileName,
     options,
     function (asyncResult) {
-      options = { 'asyncContext': { encryptedFileName: asyncResult.asyncContext.encryptedFileName, callingEvent: asyncResult.asyncContext.callingEvent, encryptedData: encryptedData} };
-      console.log(`encryptAttachment(): Added encrypted attachment '${asyncResult.asyncContext.encryptedFileName}'; now decrypting...`);
-      //console.dir(asyncResult); //NOTE: If you want to see the base64 data output to the console, uncomment this line
+      if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+        failAttachmentProcessing(context, asyncResult.error.message, true);
+        return;
+      }
+      options = { asyncContext: { fileName: fileName, encryptedFileName: encryptedFileName, callingEvent: context.callingEvent, encryptedData: encryptedData, sessionMarked: context.sessionMarked } };
+      console.log(`encryptAttachment(): Added encrypted attachment '${encryptedFileName}'; now decrypting...`);
+      // To log the attachment operation result, uncomment the following line.
+      // console.dir(asyncResult);
       decryptAttachment(options);
     }
   );
 }
 /**
- * Method that decrypts encrypted base64 file data using CryptoJS and attaches the file to the email
- * @param {Office.AsyncResult} result default: Office.AsyncResult. Object containing encryptedFileName, encryptedData and callingEvent properties in asyncContext property
+ * Reverses the XOR demonstration and attaches the restored file.
+ * @param {object} result An options object whose asyncContext property contains the attachment data and calling event.
  */
 function decryptAttachment(result) {
+  const fileName = result.asyncContext.fileName;
   console.log(`decryptAttachment(): Decrypting file '${result.asyncContext.encryptedFileName}'...`);
-  var bytes = CryptoJS.AES.decrypt(result.asyncContext.encryptedData, secretKey);
-  var originalText = bytes.toString(CryptoJS.enc.Utf8);
+  let originalText;
+  try {
+    originalText = transformDemoAttachment(result.asyncContext.encryptedData);
+  } catch (ex) {
+    failAttachmentProcessing(result.asyncContext, ex.message, true);
+    return;
+  }
   var decryptedFileName = `${decryptedAttachmentPrefix}${fileName}`;
 
-  // console.log(`decryptAttachment(): Original base64: ${originalText}`); //NOTE: If you want to see the base64 data output to the console, uncomment this line
+  // To log the restored Base64 content, uncomment the following line.
+  // console.log(`decryptAttachment(): Original base64: ${originalText}`);
   console.log(`decryptAttachment(): Adding decrypted file '${decryptedFileName}'...`);
 
-  var options = { 'asyncContext': { callingEvent: result.asyncContext.callingEvent} };
+  var options = { asyncContext: result.asyncContext };
   Office.context.mailbox.item.addFileAttachmentFromBase64Async(
     originalText,
     decryptedFileName,
     options,
     function (asyncResult) {
+      if (asyncResult.status !== Office.AsyncResultStatus.Succeeded) {
+        failAttachmentProcessing(result.asyncContext, asyncResult.error.message, true);
+        return;
+      }
       console.log(`decryptAttachment(): Added decrypted attachment '${decryptedFileName}'`);
-      // console.dir(asyncResult); //NOTE: If you want to see the base64 data output to the console, uncomment this line
+      // To log the attachment operation result, uncomment the following line.
+      // console.dir(asyncResult);
       Office.context.mailbox.item.notificationMessages.removeAsync("processingAttachments", options, function (asyncResult2) {
-        console.log("decryptAttachment(): Notification message removed.");        
+        if (asyncResult2.status !== Office.AsyncResultStatus.Succeeded) {
+          failAttachmentProcessing(result.asyncContext, asyncResult2.error.message);
+          return;
+        }
+        console.log("decryptAttachment(): Notification message removed.");
         Office.context.mailbox.item.notificationMessages.addAsync("attachmentsAdded", {
           type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
           message: `The '${fileName}' attachment has been encrypted and decrypted and added as reference attachments for your review.`,
           icon: "Icon.16x16",
           persistent: false,
         }, options, function(asyncResult3){
-          console.log("decryptAttachment(): All attachment processing operations completed!");        
+          if (asyncResult3.status !== Office.AsyncResultStatus.Succeeded) {
+            failAttachmentProcessing(result.asyncContext, asyncResult3.error.message);
+            return;
+          }
+          console.log("decryptAttachment(): All attachment processing operations completed!");
           asyncResult3.asyncContext.callingEvent.completed();
         });
       });
@@ -474,8 +562,8 @@ function decryptAttachment(result) {
 }
 
 /**
- * Method that fires when the user changes the date/time for an appointment
- * @param {Office.AsyncResul} result default: Office.AsyncResult
+ * Runs when the user changes the date or time of an appointment.
+ * @param {Office.MailboxEvent} event The event-based activation event.
  */
 function onAppointmentTimeChangedHandler(event) {
   console.log(`onAppointmentTimeChangedHandler(): type: ${event.type}; start: ${event.start}; end: ${event.end}`);
@@ -485,7 +573,7 @@ function onAppointmentTimeChangedHandler(event) {
       console.log(`onAppointmentTimeChangedHandler(): sessionData retrieved: ${asyncResult.value}`);
 
       try {
-        //Convert the start and end dates to appropriate formats
+        // Convert the original start and end dates and times to the client's local time.
         let originalAppointmentDate = JSON.parse(asyncResult.value);
         let originalAppointmentDateStartDate = new Date(originalAppointmentDate.start);
         let originalAppointmentDateStartEnd = new Date(originalAppointmentDate.end);
@@ -508,14 +596,14 @@ function onAppointmentTimeChangedHandler(event) {
           convertedToLocalEndUtc.minutes
         );
 
-        //Add a notification message with the original start/end date/time (if it hasn't already been added)
+        // Add a notification with the original start and end dates and times if the notification does not already exist.
         Office.context.mailbox.item.notificationMessages.getAllAsync(function (asyncResult2) {
           console.log(`getAllAsync(): asyncResult.status = ${asyncResult2.status}`);
           if (asyncResult2.status != "failed") {
             for (let index = 0; index < asyncResult2.value.length; index++) {
               const element = asyncResult2.value[index];
               if (element.key === "timeChanged") {
-                //Only need to set the message once
+                // Preserve the existing notification so it continues to show the original dates and times.
                 event.completed();
                 return;
               }
@@ -532,16 +620,16 @@ function onAppointmentTimeChangedHandler(event) {
               persistent: false,
             },
             function (asyncResult3) {
-              console.log("replaceAsync() for 'timeChanged' completed");                
+              console.log("replaceAsync() for 'timeChanged' completed");
               event.completed();
             }
           );
         });
-      } 
+      }
       catch (ex) {
-        console.error(`onAppointmentTimeChangedHandler(): Error! ${ex}`);  
+        console.error(`onAppointmentTimeChangedHandler(): Error! ${ex}`);
         event.completed();
-      }        
+      }
     } else {
       console.error(`onAppointmentTimeChangedHandler(): Action failed with message ${asyncResult.error.message}`);
       event.completed();
@@ -549,10 +637,10 @@ function onAppointmentTimeChangedHandler(event) {
   });
 }
 
-// 1st parameter: FunctionName of LaunchEvent in the manifest; 2nd parameter: Its implementation in this .js file.
+// Map each manifest action ID (unified manifest) or LaunchEvent FunctionName (add-in only manifest) to its handler.
 Office.actions.associate("onMessageComposeHandler", onMessageComposeHandler);
 Office.actions.associate("onAppointmentComposeHandler", onAppointmentComposeHandler);
 Office.actions.associate("onMessageAttachmentsChangedHandler", onItemAttachmentsChangedHandler);
-Office.actions.associate("onAppointmentAttachmentsChangedHandler", onItemAttachmentsChangedHandler);  
+Office.actions.associate("onAppointmentAttachmentsChangedHandler", onItemAttachmentsChangedHandler);
 Office.actions.associate("onAppointmentAttendeesChangedHandler", onAppointmentAttendeesChangedHandler);
 Office.actions.associate("onAppointmentTimeChangedHandler", onAppointmentTimeChangedHandler);

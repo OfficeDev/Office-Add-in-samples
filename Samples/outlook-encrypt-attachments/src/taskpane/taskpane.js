@@ -9,6 +9,6 @@ Office.onReady((info) => {
   console.log(`Office.onReady(): Host: ${Office.HostType.Outlook}`);
   if (info.host === Office.HostType.Outlook) {
     document.getElementById("sideload-msg").style.display = "none";
-    document.getElementById("app-body").style.display = "flex";     
+    document.getElementById("app-body").style.display = "flex";
   }
 });
