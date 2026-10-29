@@ -184,8 +184,8 @@ Both manifest types configure the same six events, using different event names. 
 
 | Add-in only manifest | Unified manifest |
 | --- | --- |
-| `OnNewMessageCompose` | `newMessageCompose` |
-| `OnNewAppointmentOrganizer` | `newAppointmentOrganizer` |
+| `OnNewMessageCompose` | `newMessageComposeCreated` |
+| `OnNewAppointmentOrganizer` | `newAppointmentOrganizerCreated` |
 | `OnAppointmentAttendeesChanged` | `appointmentAttendeesChanged` |
 | `OnAppointmentTimeChanged` | `appointmentTimeChanged` |
 | `OnMessageAttachmentsChanged` | `messageAttachmentsChanged` |

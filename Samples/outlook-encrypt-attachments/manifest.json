@@ -197,8 +197,8 @@
       "autoRunEvents": [
         {
           "events": [
-            { "type": "newMessageCompose", "actionId": "onMessageComposeHandler" },
-            { "type": "newAppointmentOrganizer", "actionId": "onAppointmentComposeHandler" },
+            { "type": "newMessageComposeCreated", "actionId": "onMessageComposeHandler" },
+            { "type": "newAppointmentOrganizerCreated", "actionId": "onAppointmentComposeHandler" },
             { "type": "appointmentAttendeesChanged", "actionId": "onAppointmentAttendeesChangedHandler" },
             { "type": "appointmentTimeChanged", "actionId": "onAppointmentTimeChangedHandler" },
             { "type": "messageAttachmentsChanged", "actionId": "onMessageAttachmentsChangedHandler" },
