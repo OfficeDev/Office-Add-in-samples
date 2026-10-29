@@ -3,6 +3,8 @@
  * Licensed under the MIT license.
 */
 
+Office.onReady();
+
 const demoXorKey = "sample only - not secure";
 const encryptedAttachmentPrefix = "encrypted_";
 const decryptedAttachmentPrefix = "decrypted_";
@@ -618,7 +620,7 @@ function onAppointmentTimeChangedHandler(event) {
               persistent: false,
             },
             function (asyncResult3) {
-              console.log("replaceAsync() for 'timeChanged' completed");                
+              console.log("replaceAsync() for 'timeChanged' completed");
               event.completed();
             }
           );
