@@ -54,7 +54,7 @@
             <!-- HTML file including reference to or inline JavaScript event handlers. This is used by Outlook on the web and on Mac, and in new Outlook on Windows. -->
             <Runtime resid="WebViewRuntime.Url"> <!-- /src/commands/commands.html -->
               <!-- JavaScript file containing event handlers. This is used by classic Outlook on Windows. -->
-              <Override type="javascript" resid="JSRuntime.Url"/> 
+              <Override type="javascript" resid="JSRuntime.Url"/>
               <!-- /src/commands/commands.js -->
             </Runtime>
           </Runtimes>
@@ -110,11 +110,11 @@
             <!-- Specify function to call for new message and new appointment events. -->
             <ExtensionPoint xsi:type="LaunchEvent">
               <LaunchEvents>
-                <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler" /> 
-                <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler" />                 
+                <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler" />
+                <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler" />
                 <LaunchEvent Type="OnAppointmentAttendeesChanged" FunctionName="onAppointmentAttendeesChangedHandler" />
-                <LaunchEvent Type="OnAppointmentTimeChanged" FunctionName="onAppointmentTimeChangedHandler" /> 
-                <LaunchEvent Type="OnMessageAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler" /> 
+                <LaunchEvent Type="OnAppointmentTimeChanged" FunctionName="onAppointmentTimeChangedHandler" />
+                <LaunchEvent Type="OnMessageAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler" />
                 <LaunchEvent Type="OnAppointmentAttachmentsChanged" FunctionName="onAppointmentAttachmentsChangedHandler" />
               </LaunchEvents>
               <SourceLocation resid="WebViewRuntime.Url" />
@@ -128,13 +128,13 @@
           <bt:Image id="Icon.32x32" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-encrypt-attachments/assets/icon-32.png"/>
           <bt:Image id="Icon.64x64" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-encrypt-attachments/assets/icon-64.png"/>
           <bt:Image id="Icon.80x80" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-encrypt-attachments/assets/icon-80.png"/>
-          <bt:Image id="Icon.128x128" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-encrypt-attachments/assets/icon-128.png"/>          
+          <bt:Image id="Icon.128x128" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-encrypt-attachments/assets/icon-128.png"/>
         </bt:Images>
-        <bt:Urls>        
+        <bt:Urls>
           <!-- Separate page for compose messages. -->
-          <bt:Url id="msgComposeTaskpane.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-encrypt-attachments/src/taskpane/taskpane_msg_compose.html"/>    
-          <!-- Separate page for appointments-->       
-          <bt:Url id="appOrgTaskPaneButton.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-encrypt-attachments/src/taskpane/taskpane_appt_compose.html"/>           
+          <bt:Url id="msgComposeTaskpane.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-encrypt-attachments/src/taskpane/taskpane_msg_compose.html"/>
+          <!-- Separate page for appointments-->
+          <bt:Url id="appOrgTaskPaneButton.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-encrypt-attachments/src/taskpane/taskpane_appt_compose.html"/>
           <bt:Url id="WebViewRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-encrypt-attachments/src/commands/commands.html" />
           <!-- Entry needed for classic Outlook on Windows. -->
           <bt:Url id="JSRuntime.Url" DefaultValue="https://officedev.github.io/Office-Add-in-samples/Samples/outlook-encrypt-attachments/src/commands/commands.js" />

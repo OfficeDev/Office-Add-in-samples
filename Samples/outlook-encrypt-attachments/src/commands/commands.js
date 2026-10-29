@@ -41,13 +41,13 @@ function onAppointmentComposeHandler(event) {
       originalAppointmentDate.end = asyncResult2.value;
 
       console.log(`onAppointmentComposeHandler(): Appointment ends: ${asyncResult2.value}`);
-      console.log("onAppointmentComposeHandler(): Setting SessionData...");     
+      console.log("onAppointmentComposeHandler(): Setting SessionData...");
 
       Office.context.mailbox.item.sessionData.setAsync("appointment_info", JSON.stringify(originalAppointmentDate), function(asyncResult3){
         if (asyncResult3.status === Office.AsyncResultStatus.Succeeded) {
           console.log("onAppointmentComposeHandler(): sessionData set");
           // Add a notification that prompts the user to open the task pane for sample instructions.
-                      
+
           console.log("onAppointmentComposeHandler(): Adding notification message...");
 
           // The actions array applies only to insightMessage notifications.
@@ -56,7 +56,7 @@ function onAppointmentComposeHandler(event) {
             {
               type: Office.MailboxEnums.ItemNotificationMessageType.InsightMessage,
               message:
-                "Open the Task Pane for details about running the Outlook Event-based Activation Sample Add-in",
+                "Open the task pane for details about running the Outlook Event-based Activation Sample Add-in.",
               icon: "Icon.16x16",
               actions: [
                 {
@@ -77,9 +77,9 @@ function onAppointmentComposeHandler(event) {
         }
         else {
           console.error(`onAppointmentComposeHandler(): Action failed with message ${asyncResult3.error.message}`);
-          event.completed();                     
-        }    
-      });          
+          event.completed();
+        }
+      });
     });
   });
 }
@@ -97,7 +97,7 @@ function onMessageComposeHandler(event) {
     "showInfoBarForSampleInstructions",
     {
       type: Office.MailboxEnums.ItemNotificationMessageType.InsightMessage,
-      message: "Open the Task Pane for details about running the Outlook Event-based Activation Sample Add-in",
+      message: "Open the task pane for details about running the Outlook Event-based Activation Sample Add-in.",
       icon: "Icon.16x16",
       actions: [
         {
@@ -120,7 +120,7 @@ function onMessageComposeHandler(event) {
  * @param {Office.MailboxEvent} event The event-based activation event.
  */
 function onAppointmentAttendeesChangedHandler(event) {
-  
+
   // Call event.completed() after all asynchronous operations finish.
 
   var totalOptionalAttendees = 0;
@@ -134,12 +134,12 @@ function onAppointmentAttendeesChangedHandler(event) {
 
   // Get the required attendees.
   Office.context.mailbox.item.requiredAttendees.getAsync(function (asyncResult) {
-    console.log(`onAppointmentAttendeesChangedHandler(): getAsync => asyncResult.status: ${asyncResult.status}`);  
+    console.log(`onAppointmentAttendeesChangedHandler(): getAsync => asyncResult.status: ${asyncResult.status}`);
     if (asyncResult.status === Office.AsyncResultStatus.Succeeded) {
       // Count the required attendees without including the current user.
       var apptRequiredAttendees = asyncResult.value;
 
-      for (var i = 0; i < apptRequiredAttendees.length; i++) {        
+      for (var i = 0; i < apptRequiredAttendees.length; i++) {
         console.log(
           `onAppointmentAttendeesChangedHandler(): Required attendee: ${apptRequiredAttendees[i].displayName} (${apptRequiredAttendees[i].emailAddress}) - type: ${apptRequiredAttendees[i].recipientType}`
         );
@@ -148,30 +148,30 @@ function onAppointmentAttendeesChangedHandler(event) {
       // Exclude the current user, who can appear in the attendee array in Outlook on Windows.
       console.log(`onAppointmentAttendeesChangedHandler(): Filtering out attendees for current user ${Office.context.mailbox.userProfile.emailAddress}...`);
       var apptRequiredAttendeesWithoutUser = apptRequiredAttendees.filter(function(attendee){return attendee.emailAddress !== Office.context.mailbox.userProfile.emailAddress;});
-      
+
       totalRequiredAttendees = apptRequiredAttendeesWithoutUser.length;
       currentDistributionLists = apptRequiredAttendees.filter(function(attendee){return attendee.recipientType === "distributionList";});
       if (currentDistributionLists.length !== 0){
         totalDistributionLists = totalDistributionLists + currentDistributionLists.length;
-      }     
+      }
 
       console.log(`onAppointmentAttendeesChangedHandler(): totalRequiredAttendees = ${totalRequiredAttendees}; totalDistributionLists = ${totalDistributionLists}`);
 
       // Get the optional attendees.
       Office.context.mailbox.item.optionalAttendees.getAsync(function (asyncResult2) {
-        console.log(`onAppointmentAttendeesChangedHandler(): getAsync => asyncResult2.status: ${asyncResult2.status}`);          
+        console.log(`onAppointmentAttendeesChangedHandler(): getAsync => asyncResult2.status: ${asyncResult2.status}`);
         if (asyncResult2.status === Office.AsyncResultStatus.Succeeded) {
           // Count the optional attendees without including the current user.
-          var apptOptionalAttendees = asyncResult2.value;          
+          var apptOptionalAttendees = asyncResult2.value;
           // Exclude the current user, who can appear in the attendee array in Outlook on Windows.
           var apptOptionalAttendeesWithoutUser = apptOptionalAttendees.filter(function(attendee){return attendee.emailAddress !== Office.context.mailbox.userProfile.emailAddress;});
 
-          totalOptionalAttendees = apptOptionalAttendeesWithoutUser.length;           
+          totalOptionalAttendees = apptOptionalAttendeesWithoutUser.length;
           currentDistributionLists = apptOptionalAttendees.filter(function(attendee){return attendee.recipientType === "distributionList";});
           if (currentDistributionLists.length !== 0){
             totalDistributionLists = totalDistributionLists + currentDistributionLists.length;
-          }          
-          
+          }
+
         } else {
           console.error(`onAppointmentAttendeesChangedHandler(): Error with item.optionalAttendees.getAsync(): ${asyncResult2.error}`);
         }
@@ -185,14 +185,14 @@ function onAppointmentAttendeesChangedHandler(event) {
             "attendeesChanged",
             null,
             function (asyncResult3) {
-              console.log(`onAppointmentAttendeesChangedHandler() removeAsync:attendeesChanged => asyncResult3.status: ${asyncResult3.status}`);     
+              console.log(`onAppointmentAttendeesChangedHandler() removeAsync:attendeesChanged => asyncResult3.status: ${asyncResult3.status}`);
               // Remove the distribution list warning if distribution lists are still counted.
               if (asyncResult3.status === Office.AsyncResultStatus.Succeeded && totalDistributionLists !== 0) {
                 Office.context.mailbox.item.notificationMessages.removeAsync(
                   "distributionListWarning",
                   null,
                   function (asyncResultDLs) {
-                    console.log(`onAppointmentAttendeesChangedHandler() removeAsync:distributionListWarning => asyncResultDLs.status: ${asyncResultDLs.status}`);     
+                    console.log(`onAppointmentAttendeesChangedHandler() removeAsync:distributionListWarning => asyncResultDLs.status: ${asyncResultDLs.status}`);
                     event.completed(); // Complete the event after the notification update.
                   }
                 );
@@ -202,7 +202,7 @@ function onAppointmentAttendeesChangedHandler(event) {
               }
             }
           );
-        } else 
+        } else
         {
           // Update the attendee count notification.
           Office.context.mailbox.item.notificationMessages.replaceAsync(
@@ -214,10 +214,10 @@ function onAppointmentAttendeesChangedHandler(event) {
               persistent: false,
             },
             function (asyncResult4) {
-              console.log(`onAppointmentAttendeesChangedHandler(): replaceAsync:attendeesChanged => asyncResult4.status: ${asyncResult4.status}`);   
-              if (asyncResult4.status === Office.AsyncResultStatus.Succeeded) {  
+              console.log(`onAppointmentAttendeesChangedHandler(): replaceAsync:attendeesChanged => asyncResult4.status: ${asyncResult4.status}`);
+              if (asyncResult4.status === Office.AsyncResultStatus.Succeeded) {
                 var anyExistingWarningMessages = false;
-  
+
                 Office.context.mailbox.item.notificationMessages.getAllAsync(function (asyncResult5) {
                   console.log(`onAppointmentAttendeesChangedHandler(): getAllAsync(): asyncResult5.status = ${asyncResult5.status}`);
                   if (asyncResult5.status === Office.AsyncResultStatus.Succeeded) {
@@ -231,13 +231,13 @@ function onAppointmentAttendeesChangedHandler(event) {
                     console.error(`onAppointmentAttendeesChangedHandler(): Error with item.notificationMessages.getAllAsync(): ${asyncResult5.error}`);
                   }
 
-                  if (totalDistributionLists === 0 && anyExistingWarningMessages === true) {        
+                  if (totalDistributionLists === 0 && anyExistingWarningMessages === true) {
                     // Remove the warning when no distribution lists remain.
                     Office.context.mailbox.item.notificationMessages.removeAsync(
                       "distributionListWarning",
                       null,
                       function (asyncResult6) {
-                        console.log(`onAppointmentAttendeesChangedHandler() removeAsync:distributionListWarning => asyncResult6.status: ${asyncResult6.status}`);   
+                        console.log(`onAppointmentAttendeesChangedHandler() removeAsync:distributionListWarning => asyncResult6.status: ${asyncResult6.status}`);
                         if (asyncResult6.status === Office.AsyncResultStatus.Succeeded) {;
                           event.completed();
                           return;
@@ -247,14 +247,14 @@ function onAppointmentAttendeesChangedHandler(event) {
                       }
                     );
                   }
-    
+
                   if (totalDistributionLists !== 0) {
                     var warningMessage;
                     if (totalDistributionLists === 1) {
                       warningMessage = `Warning! Your appointment has a distribution list! Make sure you have chosen the correct one!`;
                     } else {
                       warningMessage = `Warning! Your appointment has ${totalDistributionLists} distribution lists! Make sure you have chosen the correct one!`;
-                    }    
+                    }
 
                     // Update the distribution list warning.
                     Office.context.mailbox.item.notificationMessages.replaceAsync(
@@ -266,15 +266,15 @@ function onAppointmentAttendeesChangedHandler(event) {
                         persistent: false
                       },
                       function (asyncResult7) {
-                        console.log(`onAppointmentAttendeesChangedHandler(): replaceAsync:distributionListWarning => asyncResult7.status: ${asyncResult7.status}`);                      
+                        console.log(`onAppointmentAttendeesChangedHandler(): replaceAsync:distributionListWarning => asyncResult7.status: ${asyncResult7.status}`);
                         event.completed(); // Complete the event after the notification update.
                       }
                     );
-                  } 
-                  else{                  
+                  }
+                  else{
                     event.completed(); // Complete the event when no warning is needed.
                   }
-                });      
+                });
               }
               else {
                 console.error(`onAppointmentAttendeesChangedHandler(): Error with item.notificationMessages.replaceAsync(): ${asyncResult4.error}`);
@@ -301,7 +301,7 @@ function onItemAttachmentsChangedHandler(event) {
   }
 
   console.log(`onItemAttachmentsChangedHandler(): ${event.attachmentDetails.name} (${event.attachmentStatus})`);
-  
+
   const fileName = event.attachmentDetails.name;
   if (fileName.startsWith(encryptedAttachmentPrefix) || fileName.startsWith(decryptedAttachmentPrefix)) {
     event.completed();
@@ -442,8 +442,8 @@ function handleAttachmentsCallback(result) {
             encryptAttachment(ciphertext, context);
           } else {
             failAttachmentProcessing(context, asyncResult.error.message);
-          }     
-      });      
+          }
+      });
       break;
     case Office.MailboxEnums.AttachmentContentFormat.Eml:
       // Skip email message attachments.
@@ -542,7 +542,7 @@ function decryptAttachment(result) {
           failAttachmentProcessing(result.asyncContext, asyncResult2.error.message);
           return;
         }
-        console.log("decryptAttachment(): Notification message removed.");        
+        console.log("decryptAttachment(): Notification message removed.");
         Office.context.mailbox.item.notificationMessages.addAsync("attachmentsAdded", {
           type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
           message: `The '${fileName}' attachment has been encrypted and decrypted and added as reference attachments for your review.`,
@@ -553,7 +553,7 @@ function decryptAttachment(result) {
             failAttachmentProcessing(result.asyncContext, asyncResult3.error.message);
             return;
           }
-          console.log("decryptAttachment(): All attachment processing operations completed!");        
+          console.log("decryptAttachment(): All attachment processing operations completed!");
           asyncResult3.asyncContext.callingEvent.completed();
         });
       });
@@ -625,11 +625,11 @@ function onAppointmentTimeChangedHandler(event) {
             }
           );
         });
-      } 
+      }
       catch (ex) {
-        console.error(`onAppointmentTimeChangedHandler(): Error! ${ex}`);  
+        console.error(`onAppointmentTimeChangedHandler(): Error! ${ex}`);
         event.completed();
-      }        
+      }
     } else {
       console.error(`onAppointmentTimeChangedHandler(): Action failed with message ${asyncResult.error.message}`);
       event.completed();
@@ -641,6 +641,6 @@ function onAppointmentTimeChangedHandler(event) {
 Office.actions.associate("onMessageComposeHandler", onMessageComposeHandler);
 Office.actions.associate("onAppointmentComposeHandler", onAppointmentComposeHandler);
 Office.actions.associate("onMessageAttachmentsChangedHandler", onItemAttachmentsChangedHandler);
-Office.actions.associate("onAppointmentAttachmentsChangedHandler", onItemAttachmentsChangedHandler);  
+Office.actions.associate("onAppointmentAttachmentsChangedHandler", onItemAttachmentsChangedHandler);
 Office.actions.associate("onAppointmentAttendeesChangedHandler", onAppointmentAttendeesChangedHandler);
 Office.actions.associate("onAppointmentTimeChangedHandler", onAppointmentTimeChangedHandler);

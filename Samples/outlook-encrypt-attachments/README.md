@@ -18,7 +18,7 @@ description: "Manage attachments and meeting details while composing in Outlook 
 
 # Manage attachments and meeting details while composing in Outlook with event-based activation
 
-**Applies to**: Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic) | Outlook on the web
+**Applies to**: Outlook on Windows ([new](https://support.microsoft.com/office/656bb8d9-5a60-49b2-a98b-ba7822bc7627) and classic) | Outlook on the web | Outlook on Mac
 
 ![Message in compose mode with an attachment that has additional encrypted and decrypted versions created by the sample add-in.](./assets/readme/outlook-encrypt-attachments-overview.png)
 
@@ -57,6 +57,7 @@ To learn more about event-based activation, see [Activate add-ins with events](h
 - Outlook
   - Windows (new and classic)
   - web browser
+  - Mac
 
 ## Prerequisites
 
@@ -65,11 +66,14 @@ To learn more about event-based activation, see [Activate add-ins with events](h
   > Note: If you don't have a Microsoft 365 subscription, you can get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 subscription for development purposes.
 
 - To run on localhost, install a current LTS version of [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/get-npm).
-- To use the unified manifest for Microsoft 365, use a supported Microsoft 365 version of Outlook on Windows (new or classic) or Outlook on the web. See [Office Add-ins with the unified app manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview) for client and account requirements.
+- To use the unified manifest for Microsoft 365, use a supported Microsoft 365 version of Outlook on Windows (new or classic) or on the web. See [Office Add-ins with the unified app manifest for Microsoft 365](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview) for client and account requirements.
 
 ## Choose a manifest type
 
 The sample uses the unified manifest for Microsoft 365 by default. You can switch the project between the unified manifest and the add-in only manifest. Both manifest types use the same source files, **package.json**, **package-lock.json**, and **webpack.config.js**. To continue with the unified manifest, skip ahead to [run the sample using localhost](#use-localhost).
+
+> [!NOTE]
+> To run the sample in Outlook on Mac, use the add-in only manifest. For more information on manifests and their supported platforms, see [Office Add-in manifest](https://learn.microsoft.com/office/dev/add-ins/develop/add-in-manifests). For information about events and their supported platforms, see [Activate add-ins with events](https://learn.microsoft.com/office/dev/add-ins/develop/event-based-activation#supported-events).
 
 ### To switch to the add-in only manifest
 
@@ -113,7 +117,7 @@ For this sample, the unified manifest supports only [localhost](#use-localhost).
 1. To stop the server and uninstall the add-in, run the command for your manifest type.
 
     **Unified manifest for Microsoft 365**
-    
+
     ```console
     npm stop
     ```
@@ -141,7 +145,7 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 
 1. Create a new message or meeting in Outlook.
 
-    > A notification appears that reads **Learn how to run the Outlook Event-based Activation Sample Add-in**. It contains options to **Open task pane** and **Dismiss** the notification.
+    > A notification appears that reads **Learn how to run the Outlook Event-based Activation Sample Add-in**. It contains options to **Show task pane** and **Dismiss** the notification.
 
 1. Choose **Show task pane** from the notification to open the sample's instructions and reference information. You can also choose **Show task pane** from the ribbon.
 
@@ -156,8 +160,10 @@ In a new message or appointment, attach a local file of any type whose name does
 
 #### Set up a meeting
 
-1. Create a new meeting request. In Outlook on the web and new Outlook on Windows, choose **More options** to expand the request and include all details. Otherwise, you won't see the notifications in the next steps.
-1. Verify that a notification prompts you to open the task pane, then choose **Show task pane** to view the meeting-specific instructions.
+1. Create a new meeting request.
+
+    > A notification appears that reads **Learn how to run the Outlook Event-based Activation Sample Add-in**. It contains options to **Show task pane** and **Dismiss** the notification.
+
 1. Add a user as a required or optional attendee.
 
     > A notification appears providing a tally of required and optional attendees.
@@ -168,7 +174,7 @@ In a new message or appointment, attach a local file of any type whose name does
 
 1. Change the start or end date or time.
 
-    > A notification appears specifiying the previous start and end dates and times.
+    > A notification appears specifying the previous start and end dates and times.
 
 ## Key parts of this sample
 
@@ -209,7 +215,7 @@ The `extensions.autoRunEvents` property maps events to actions. For example, the
 
 The unified manifest also defines separate task pane runtimes and ribbon controls for message compose and appointment organizer surfaces. The control IDs match the `commandId` values used by the notification messages.
 
-In the add-in only manifest, the following `<Runtime>` element specifies a `commands.html` page resource ID that loads the `commands.js` file in Outlook on the web and new Outlook on Windows. The `<Override>` element directly specifies the `commands.js` JavaScript file to load when running on classic Outlook on Windows. Classic Outlook on Windows doesn't use the HTML page to load the JavaScript file.
+In the add-in only manifest, the following `<Runtime>` element specifies a `commands.html` page resource ID that loads the `commands.js` file in Outlook on the web, on Mac, and new Outlook on Windows. The `<Override>` element directly specifies the `commands.js` JavaScript file to load when running on classic Outlook on Windows. Classic Outlook on Windows doesn't use the HTML page to load the JavaScript file.
 
 ```xml
 <Runtime resid="WebViewRuntime.Url">
@@ -223,11 +229,11 @@ The add-in handles six events that are mapped to various functions.
 
 ```xml
 <LaunchEvents>
-  <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler" /> 
-  <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler" />                 
+  <LaunchEvent Type="OnNewMessageCompose" FunctionName="onMessageComposeHandler" />
+  <LaunchEvent Type="OnNewAppointmentOrganizer" FunctionName="onAppointmentComposeHandler" />
   <LaunchEvent Type="OnAppointmentAttendeesChanged" FunctionName="onAppointmentAttendeesChangedHandler" />
-  <LaunchEvent Type="OnAppointmentTimeChanged" FunctionName="onAppointmentTimeChangedHandler" /> 
-  <LaunchEvent Type="OnMessageAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler" /> 
+  <LaunchEvent Type="OnAppointmentTimeChanged" FunctionName="onAppointmentTimeChangedHandler" />
+  <LaunchEvent Type="OnMessageAttachmentsChanged" FunctionName="onMessageAttachmentsChangedHandler" />
   <LaunchEvent Type="OnAppointmentAttachmentsChanged" FunctionName="onAppointmentAttachmentsChangedHandler" />
 </LaunchEvents>
 ```
@@ -237,7 +243,7 @@ The add-in handles six events that are mapped to various functions.
 When the user creates a new message or appointment, Outlook loads the `commands.js` file specified in the manifest to handle the following events.
 
 | Event | Handler |
-| --- | ---|
+| --- | --- |
 | `OnNewMessageCompose` | `onMessageComposeHandler` |
 | `OnNewAppointmentOrganizer` | `onAppointmentComposeHandler` |
 | `OnAppointmentAttendeesChanged` | `onAppointmentAttendeesChangedHandler` |
