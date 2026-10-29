@@ -46,7 +46,7 @@ To learn more about event-based activation, see [Activate add-ins with events](h
 
 - **Notifications based on recipient changes.** This sample adds notification messages to a meeting request when recipients are added or removed. The notification message are removed when there are no longer any recipients.
   - Shows a notification with a running tally of the number of required and optional attendees.
-  - Show a notification with a warning if one or more distribution lists are added as an attendee.
+  - Shows a notification with a warning if one or more distribution lists are added as an attendee.
 
 - **Notifications based on date or time changes.** This sample adds a notification message to a meeting when the user changes the date or time, showing the original date or time that was set when the meeting was created. The notification message provides a reference for further edits.
 
@@ -153,7 +153,7 @@ Once the add-in is loaded, use the following steps to try out the functionality.
 
 In a new message or appointment, attach a local file of any type whose name doesn't start with `encrypted_` or `decrypted_`. Cloud attachments aren't supported. In Outlook on the web and the new Outlook on Windows, the **Upload to OneDrive** attachment option isn't supported.
 
-> Encrypted and decrypted copies of the attachment are added, with file names prefixed with `encrypted_` and `decrypted_`, respectively. The original attachment remains. A notification appears that reads **The '{file name} attachment has been encrypted and decrypted and added as reference attachments for your review.**.
+> Encrypted and decrypted copies of the attachment are added, with file names prefixed with `encrypted_` and `decrypted_`, respectively. The original attachment remains. A notification appears that reads **The '{file name} attachment has been encrypted and decrypted and added as reference attachments for your review.**
 
 > [!NOTE]
 > The sample processes only the first attachment added during the item's compose session. Adding another attachment after successful processing doesn't create more copies. The transformation uses demonstration-only XOR obfuscation, not secure encryption; the original and decrypted copies remain unprotected.
@@ -170,7 +170,7 @@ In a new message or appointment, attach a local file of any type whose name does
 
 1. Add a distribution list as a required or optional attendee.
 
-    > A notification appears that reads **Warning: Your appointment has a distribution list. Make sure you have chosen the correct group.**.
+    > A notification appears that reads **Warning: Your appointment has a distribution list. Make sure you have chosen the correct group.**
 
 1. Change the start or end date or time.
 
@@ -261,7 +261,7 @@ The sample attempts only the first attachment added during the item's compose se
 
 ## Solution
 
-| Solution | Author(s) |
+| Solution | Authors |
 | ---- | ---- |
 | Use Outlook event-based activation to process item attachments, meeting request recipients, and meeting date and time changes. | [Eric Legault](https://twitter.com/elegault) |
 
