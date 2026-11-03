@@ -147,7 +147,7 @@
         <bt:LongStrings>
           <bt:String id="msgComposeTaskPaneButton.Tooltip" DefaultValue="Show instructions for running the sample"/>
           <bt:String id="appOrgTaskPaneButton.Tooltip" DefaultValue="Show instructions for running the sample"/>
-          <bt:String id="residAppDesc" DefaultValue="PnP Event-based Activation Sample."></bt:String>
+          <bt:String id="residAppDesc" DefaultValue="Office Add-ins event-based activation sample."></bt:String>
         </bt:LongStrings>
       </Resources>
     </VersionOverrides>
