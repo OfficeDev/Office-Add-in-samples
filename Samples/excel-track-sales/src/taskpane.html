@@ -1,0 +1,70 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sales Tracker</title>
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <h1>Sales Tracker</h1>
+      <p>Explore sales in an Excel table and chart.</p>
+    </header>
+    <p id="sideload-msg">Open this add-in in Excel to get started.</p>
+    <main id="app-body" hidden>
+      <form id="sales-form">
+        <h2>Demo sales</h2>
+        <p>Sample data: November 1-12, 2026. Not live sales.</p>
+        <label for="product">Product</label>
+        <select id="product" required></select>
+        <label for="start-date">Start date</label>
+        <input id="start-date" type="date" required aria-describedby="date-help" />
+        <label for="end-date">End date</label>
+        <input id="end-date" type="date" required aria-describedby="date-help" />
+        <p id="date-help">
+          Includes sales on both dates. Choose a range within November 1-12, 2026.
+        </p>
+        <button type="submit">Get sales data</button>
+        <p>
+          Creates or refreshes the add-in's Sales Tracker table and chart. It resets table settings.
+        </p>
+      </form>
+      <fieldset id="settings" disabled>
+        <legend>Table and chart settings</legend>
+        <h2>Table</h2>
+        <p>
+          Choose columns to display. Hiding a column hides that worksheet column; the chart remains
+          visible.
+        </p>
+        <div id="columns"></div>
+        <label for="table-style">Table color</label>
+        <select id="table-style">
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="orange">Orange</option>
+        </select>
+        <button id="apply-table" type="button">Apply table settings</button>
+        <h2>Chart</h2>
+        <label for="chart-metric">Data source</label>
+        <select id="chart-metric"></select>
+        <label for="chart-type">Chart type</label>
+        <select id="chart-type">
+          <option value="line">Line</option>
+          <option value="column">Clustered column</option>
+          <option value="area">Area</option>
+        </select>
+        <label for="chart-theme">Chart theme</label>
+        <select id="chart-theme">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="blue">Blue</option>
+        </select>
+        <button id="apply-chart" type="button">Apply chart settings</button>
+      </fieldset>
+    </main>
+    <p id="status" role="status" aria-live="polite"></p>
+  </body>
+</html>
