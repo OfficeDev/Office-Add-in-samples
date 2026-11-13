@@ -105,6 +105,14 @@ For the workbook operations, see [sales-workbook.ts](src/sales-workbook.ts). The
 
 To understand batching, loading properties, and synchronization, see [Using the application-specific API model](https://learn.microsoft.com/office/dev/add-ins/develop/application-specific-api-model).
 
+## For VSTO developers
+
+Office Add-ins extend Excel on Windows, Mac, and the web, whereas VSTO add-ins run only on Windows. Familiar operations, such as styling tables, hiding columns, and changing chart types, use the Excel JavaScript object model. Unlike direct calls in VSTO, workbook operations are queued and submitted asynchronously.
+
+The [Key parts of the sample](#key-parts-of-the-sample) section explains these operations and links to their APIs. For broader guidance, see the [VSTO add-in developer's guide to Office Web Add-ins](https://learn.microsoft.com/office/dev/add-ins/overview/learning-path-transition).
+
+For a corresponding C# implementation, explore the archived [Tables and Charts VSTO sample](https://github.com/microsoftarchive/msdn-code-gallery-community-s-z/tree/master/VSTO%20-%20Generate%20tables%20and%20charts%20by%20using%20an%20Excel%20add-in). Use it as an object-model comparison rather than current setup guidance.
+
 ## Solution
 
 | Solution | Author(s) |
