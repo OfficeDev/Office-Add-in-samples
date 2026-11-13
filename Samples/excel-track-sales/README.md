@@ -36,7 +36,7 @@ The sample requires **ExcelApi 1.9** and uses a unified manifest for Microsoft 3
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org/) version 22 and npm, matching the sample's package configuration.
+- A current LTS version of [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/get-npm).
 - A supported Excel installation connected to a Microsoft 365 account. Get a [free developer sandbox](https://developer.microsoft.com/microsoft-365/dev-program#Subscription) that provides a renewable 90-day Microsoft 365 E5 developer subscription.
 
 ## Run the sample
