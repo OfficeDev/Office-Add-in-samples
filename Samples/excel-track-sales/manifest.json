@@ -58,8 +58,6 @@
                         {
                             "id": "TaskPaneRuntimeShow",
                             "type": "openPage",
-                            "pinnable": false,
-                            "view": "dashboard"
                         }
                     ]
                 }
