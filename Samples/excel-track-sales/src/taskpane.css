@@ -1,0 +1,81 @@
+/* Copyright (c) Microsoft Corporation. Licensed under the MIT License. */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  color: #242424;
+  background: #fafafa;
+  font:
+    14px "Segoe UI",
+    sans-serif;
+}
+
+h1 {
+  margin: 0;
+  color: #005a9e;
+  font-size: 26px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+p {
+  line-height: 1.5;
+}
+
+form,
+fieldset {
+  margin: 20px 0;
+  padding: 16px;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  background: #ffffff;
+  min-width: 0;
+}
+
+label {
+  display: block;
+  margin: 12px 0 6px;
+}
+
+select,
+input[type="date"],
+input[type="text"],
+button {
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 8px;
+  font: inherit;
+  border: 1px solid #616161;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 16px;
+  border-color: #005a9e;
+  background: #005a9e;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  background: #004578;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+:focus-visible {
+  outline: 2px solid #005a9e;
+  outline-offset: 3px;
+}
+
+.error {
+  color: #a4262c;
+}

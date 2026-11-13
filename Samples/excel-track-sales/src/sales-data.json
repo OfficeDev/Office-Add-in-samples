@@ -1,0 +1,482 @@
+[
+  {
+    "product": "Keyboard",
+    "date": "2026-11-01",
+    "units": 20,
+    "averageUnitPrice": 50,
+    "tax": 76,
+    "discount": 50,
+    "productSales": 950,
+    "serviceSales": 90
+  },
+  {
+    "product": "Keyboard",
+    "date": "2026-11-02",
+    "units": 21,
+    "averageUnitPrice": 50,
+    "tax": 79.8,
+    "discount": 52.5,
+    "productSales": 997.5,
+    "serviceSales": 94.5
+  },
+  {
+    "product": "Keyboard",
+    "date": "2026-11-03",
+    "units": 22,
+    "averageUnitPrice": 50,
+    "tax": 83.6,
+    "discount": 55,
+    "productSales": 1045,
+    "serviceSales": 99
+  },
+  {
+    "product": "Keyboard",
+    "date": "2026-11-04",
+    "units": 23,
+    "averageUnitPrice": 50,
+    "tax": 87.4,
+    "discount": 57.5,
+    "productSales": 1092.5,
+    "serviceSales": 103.5
+  },
+  {
+    "product": "Keyboard",
+    "date": "2026-11-05",
+    "units": 24,
+    "averageUnitPrice": 50,
+    "tax": 91.2,
+    "discount": 60,
+    "productSales": 1140,
+    "serviceSales": 108
+  },
+  {
+    "product": "Keyboard",
+    "date": "2026-11-06",
+    "units": 25,
+    "averageUnitPrice": 50,
+    "tax": 95,
+    "discount": 62.5,
+    "productSales": 1187.5,
+    "serviceSales": 112.5
+  },
+  {
+    "product": "Keyboard",
+    "date": "2026-11-07",
+    "units": 26,
+    "averageUnitPrice": 50,
+    "tax": 98.8,
+    "discount": 65,
+    "productSales": 1235,
+    "serviceSales": 117
+  },
+  {
+    "product": "Keyboard",
+    "date": "2026-11-08",
+    "units": 27,
+    "averageUnitPrice": 50,
+    "tax": 102.6,
+    "discount": 67.5,
+    "productSales": 1282.5,
+    "serviceSales": 121.5
+  },
+  {
+    "product": "Keyboard",
+    "date": "2026-11-09",
+    "units": 28,
+    "averageUnitPrice": 50,
+    "tax": 106.4,
+    "discount": 70,
+    "productSales": 1330,
+    "serviceSales": 126
+  },
+  {
+    "product": "Keyboard",
+    "date": "2026-11-10",
+    "units": 29,
+    "averageUnitPrice": 50,
+    "tax": 110.2,
+    "discount": 72.5,
+    "productSales": 1377.5,
+    "serviceSales": 130.5
+  },
+  {
+    "product": "Keyboard",
+    "date": "2026-11-11",
+    "units": 30,
+    "averageUnitPrice": 50,
+    "tax": 114,
+    "discount": 75,
+    "productSales": 1425,
+    "serviceSales": 135
+  },
+  {
+    "product": "Keyboard",
+    "date": "2026-11-12",
+    "units": 31,
+    "averageUnitPrice": 50,
+    "tax": 117.8,
+    "discount": 77.5,
+    "productSales": 1472.5,
+    "serviceSales": 139.5
+  },
+  {
+    "product": "Mouse",
+    "date": "2026-11-01",
+    "units": 20,
+    "averageUnitPrice": 20,
+    "tax": 30.4,
+    "discount": 20,
+    "productSales": 380,
+    "serviceSales": 90
+  },
+  {
+    "product": "Mouse",
+    "date": "2026-11-02",
+    "units": 21,
+    "averageUnitPrice": 20,
+    "tax": 31.92,
+    "discount": 21,
+    "productSales": 399,
+    "serviceSales": 94.5
+  },
+  {
+    "product": "Mouse",
+    "date": "2026-11-03",
+    "units": 22,
+    "averageUnitPrice": 20,
+    "tax": 33.44,
+    "discount": 22,
+    "productSales": 418,
+    "serviceSales": 99
+  },
+  {
+    "product": "Mouse",
+    "date": "2026-11-04",
+    "units": 23,
+    "averageUnitPrice": 20,
+    "tax": 34.96,
+    "discount": 23,
+    "productSales": 437,
+    "serviceSales": 103.5
+  },
+  {
+    "product": "Mouse",
+    "date": "2026-11-05",
+    "units": 24,
+    "averageUnitPrice": 20,
+    "tax": 36.48,
+    "discount": 24,
+    "productSales": 456,
+    "serviceSales": 108
+  },
+  {
+    "product": "Mouse",
+    "date": "2026-11-06",
+    "units": 25,
+    "averageUnitPrice": 20,
+    "tax": 38,
+    "discount": 25,
+    "productSales": 475,
+    "serviceSales": 112.5
+  },
+  {
+    "product": "Mouse",
+    "date": "2026-11-07",
+    "units": 26,
+    "averageUnitPrice": 20,
+    "tax": 39.52,
+    "discount": 26,
+    "productSales": 494,
+    "serviceSales": 117
+  },
+  {
+    "product": "Mouse",
+    "date": "2026-11-08",
+    "units": 27,
+    "averageUnitPrice": 20,
+    "tax": 41.04,
+    "discount": 27,
+    "productSales": 513,
+    "serviceSales": 121.5
+  },
+  {
+    "product": "Mouse",
+    "date": "2026-11-09",
+    "units": 28,
+    "averageUnitPrice": 20,
+    "tax": 42.56,
+    "discount": 28,
+    "productSales": 532,
+    "serviceSales": 126
+  },
+  {
+    "product": "Mouse",
+    "date": "2026-11-10",
+    "units": 29,
+    "averageUnitPrice": 20,
+    "tax": 44.08,
+    "discount": 29,
+    "productSales": 551,
+    "serviceSales": 130.5
+  },
+  {
+    "product": "Mouse",
+    "date": "2026-11-11",
+    "units": 30,
+    "averageUnitPrice": 20,
+    "tax": 45.6,
+    "discount": 30,
+    "productSales": 570,
+    "serviceSales": 135
+  },
+  {
+    "product": "Mouse",
+    "date": "2026-11-12",
+    "units": 31,
+    "averageUnitPrice": 20,
+    "tax": 47.12,
+    "discount": 31,
+    "productSales": 589,
+    "serviceSales": 139.5
+  },
+  {
+    "product": "Monitor",
+    "date": "2026-11-01",
+    "units": 20,
+    "averageUnitPrice": 200,
+    "tax": 304,
+    "discount": 200,
+    "productSales": 3800,
+    "serviceSales": 90
+  },
+  {
+    "product": "Monitor",
+    "date": "2026-11-02",
+    "units": 21,
+    "averageUnitPrice": 200,
+    "tax": 319.2,
+    "discount": 210,
+    "productSales": 3990,
+    "serviceSales": 94.5
+  },
+  {
+    "product": "Monitor",
+    "date": "2026-11-03",
+    "units": 22,
+    "averageUnitPrice": 200,
+    "tax": 334.4,
+    "discount": 220,
+    "productSales": 4180,
+    "serviceSales": 99
+  },
+  {
+    "product": "Monitor",
+    "date": "2026-11-04",
+    "units": 23,
+    "averageUnitPrice": 200,
+    "tax": 349.6,
+    "discount": 230,
+    "productSales": 4370,
+    "serviceSales": 103.5
+  },
+  {
+    "product": "Monitor",
+    "date": "2026-11-05",
+    "units": 24,
+    "averageUnitPrice": 200,
+    "tax": 364.8,
+    "discount": 240,
+    "productSales": 4560,
+    "serviceSales": 108
+  },
+  {
+    "product": "Monitor",
+    "date": "2026-11-06",
+    "units": 25,
+    "averageUnitPrice": 200,
+    "tax": 380,
+    "discount": 250,
+    "productSales": 4750,
+    "serviceSales": 112.5
+  },
+  {
+    "product": "Monitor",
+    "date": "2026-11-07",
+    "units": 26,
+    "averageUnitPrice": 200,
+    "tax": 395.2,
+    "discount": 260,
+    "productSales": 4940,
+    "serviceSales": 117
+  },
+  {
+    "product": "Monitor",
+    "date": "2026-11-08",
+    "units": 27,
+    "averageUnitPrice": 200,
+    "tax": 410.4,
+    "discount": 270,
+    "productSales": 5130,
+    "serviceSales": 121.5
+  },
+  {
+    "product": "Monitor",
+    "date": "2026-11-09",
+    "units": 28,
+    "averageUnitPrice": 200,
+    "tax": 425.6,
+    "discount": 280,
+    "productSales": 5320,
+    "serviceSales": 126
+  },
+  {
+    "product": "Monitor",
+    "date": "2026-11-10",
+    "units": 29,
+    "averageUnitPrice": 200,
+    "tax": 440.8,
+    "discount": 290,
+    "productSales": 5510,
+    "serviceSales": 130.5
+  },
+  {
+    "product": "Monitor",
+    "date": "2026-11-11",
+    "units": 30,
+    "averageUnitPrice": 200,
+    "tax": 456,
+    "discount": 300,
+    "productSales": 5700,
+    "serviceSales": 135
+  },
+  {
+    "product": "Monitor",
+    "date": "2026-11-12",
+    "units": 31,
+    "averageUnitPrice": 200,
+    "tax": 471.2,
+    "discount": 310,
+    "productSales": 5890,
+    "serviceSales": 139.5
+  },
+  {
+    "product": "Laptop",
+    "date": "2026-11-01",
+    "units": 20,
+    "averageUnitPrice": 1000,
+    "tax": 1520,
+    "discount": 1000,
+    "productSales": 19000,
+    "serviceSales": 90
+  },
+  {
+    "product": "Laptop",
+    "date": "2026-11-02",
+    "units": 21,
+    "averageUnitPrice": 1000,
+    "tax": 1596,
+    "discount": 1050,
+    "productSales": 19950,
+    "serviceSales": 94.5
+  },
+  {
+    "product": "Laptop",
+    "date": "2026-11-03",
+    "units": 22,
+    "averageUnitPrice": 1000,
+    "tax": 1672,
+    "discount": 1100,
+    "productSales": 20900,
+    "serviceSales": 99
+  },
+  {
+    "product": "Laptop",
+    "date": "2026-11-04",
+    "units": 23,
+    "averageUnitPrice": 1000,
+    "tax": 1748,
+    "discount": 1150,
+    "productSales": 21850,
+    "serviceSales": 103.5
+  },
+  {
+    "product": "Laptop",
+    "date": "2026-11-05",
+    "units": 24,
+    "averageUnitPrice": 1000,
+    "tax": 1824,
+    "discount": 1200,
+    "productSales": 22800,
+    "serviceSales": 108
+  },
+  {
+    "product": "Laptop",
+    "date": "2026-11-06",
+    "units": 25,
+    "averageUnitPrice": 1000,
+    "tax": 1900,
+    "discount": 1250,
+    "productSales": 23750,
+    "serviceSales": 112.5
+  },
+  {
+    "product": "Laptop",
+    "date": "2026-11-07",
+    "units": 26,
+    "averageUnitPrice": 1000,
+    "tax": 1976,
+    "discount": 1300,
+    "productSales": 24700,
+    "serviceSales": 117
+  },
+  {
+    "product": "Laptop",
+    "date": "2026-11-08",
+    "units": 27,
+    "averageUnitPrice": 1000,
+    "tax": 2052,
+    "discount": 1350,
+    "productSales": 25650,
+    "serviceSales": 121.5
+  },
+  {
+    "product": "Laptop",
+    "date": "2026-11-09",
+    "units": 28,
+    "averageUnitPrice": 1000,
+    "tax": 2128,
+    "discount": 1400,
+    "productSales": 26600,
+    "serviceSales": 126
+  },
+  {
+    "product": "Laptop",
+    "date": "2026-11-10",
+    "units": 29,
+    "averageUnitPrice": 1000,
+    "tax": 2204,
+    "discount": 1450,
+    "productSales": 27550,
+    "serviceSales": 130.5
+  },
+  {
+    "product": "Laptop",
+    "date": "2026-11-11",
+    "units": 30,
+    "averageUnitPrice": 1000,
+    "tax": 2280,
+    "discount": 1500,
+    "productSales": 28500,
+    "serviceSales": 135
+  },
+  {
+    "product": "Laptop",
+    "date": "2026-11-12",
+    "units": 31,
+    "averageUnitPrice": 1000,
+    "tax": 2356,
+    "discount": 1550,
+    "productSales": 29450,
+    "serviceSales": 139.5
+  }
+]
