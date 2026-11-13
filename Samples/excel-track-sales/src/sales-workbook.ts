@@ -8,8 +8,8 @@ const CHART_NAME = "SalesTrackerChart";
 
 export const TABLE_STYLES = {
   blue: "TableStyleMedium2",
-  green: "TableStyleMedium4",
-  orange: "TableStyleMedium9",
+  green: "TableStyleMedium7",
+  orange: "TableStyleMedium3",
 };
 
 export const CHART_TYPES = {
