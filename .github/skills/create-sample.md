@@ -23,6 +23,7 @@ This skill is intended for [OfficeDev/Office-Add-in-samples](https://github.com/
 
 - Read applicable repository and agent instructions, `CONTRIBUTING.md`, the current README template, and the pull request template if present. Follow destination-repository guidance rather than assuming a generated starter project's conventions apply.
 - Limit implementation and cleanup to the selected sample. Never delete or overwrite the repository root, shared files, or neighboring samples as part of cleaning up a generated starter project.
+- Before scaffolding, dependency installation, or validation, record whether `dist` and `node_modules` exist within the selected sample. Remove directories created by this run after validation and before completion without requiring a separate cleanup request. Preserve pre-existing directories unless their removal is explicitly approved.
 - Place new samples under `Samples/` using the contribution guidelines' lowercase naming convention, such as `<product>-<scenario>`. Follow existing folder conventions for modernization and obtain agreement before renaming a sample.
 - Before scaffolding or editing, search existing samples and related open or closed PRs by scenario, Office host, requested APIs or features, and proposed folder name. Inspect relevant matches rather than relying on names alone. Prefer extending or modernizing a suitable sample when the educational purpose overlaps.
 - Report the relevant matches and ask the user whether creation or modernization should proceed. When a match exists, offer to extend/modernize that sample, create a distinct sample with an agreed educational difference, or stop. When no match is found, report the search scope and ask whether to proceed with creation or the requested modernization. Use the question tool when available and wait for the user's decision before making changes. Reuse an explicit decision already given after these findings; if the search cannot be completed, disclose the gap rather than claiming no sample exists.
@@ -147,8 +148,8 @@ Verify prerequisites from a clean checkout of the sample. Avoid undocumented rel
 
 ### Manifest decision
 
-- Use the add-in-only XML manifest when broad client compatibility is the priority or required clients do not support the unified manifest. To verify supported clients and platforms, see [Client and platform support](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview#client-and-platform-support).
-- Use the unified JSON manifest when explicitly requested or needed for the scenario and its current client, platform, and feature support meets the agreed requirements. If it does not, explain the gap and ask whether to use the add-in-only manifest, maintain both manifest versions following Microsoft's linked guidance, or revise the supported clients and platforms. Do not silently drop required support or add a second manifest.
+- Use the unified JSON manifest by default when its current client, platform, and feature support meets the agreed requirements.
+- Use the add-in-only XML manifest when explicitly requested or when a verified requirement cannot be met by the unified manifest and the user approves that choice. Verify specific client, platform, and feature limitations using [Client and platform support](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview#client-and-platform-support). If a required capability is unsupported, explain the gap and ask whether to use the add-in-only manifest, maintain both manifest versions following existing samples in the repository, or revise the requirements. Do not silently drop required support or add a second manifest.
 - Do not assume that support for an API implies support for a particular manifest.
 - Do not change an existing project's manifest format solely to match a starter default.
 
@@ -207,7 +208,7 @@ Remove Toolkit provisioning files, infrastructure, editor launch files, and sepa
 
 If Babel's TypeScript preset is supplied inline in webpack, a duplicate Babel configuration can be removed. Babel strips types; preserve a separate type-check command. Removing `tsconfig.json` requires explicit compiler options and entry points in the npm type-check script. Confirm that lint still works without a project-specific configuration.
 
-Treat `dist` and `node_modules` as generated directories. Validate before removing them when cleanup is requested. Leave package manifests and the lockfile intact, and document how npm recreates generated files.
+Treat `dist` and `node_modules` as generated directories. After validation, remove those created by this run, resolving and inspecting each exact path within the selected sample before deletion. Preserve pre-existing directories unless removal is explicitly approved. Leave package manifests and the lockfile intact.
 
 ### Packaged Copilot skills for Excel
 
@@ -279,10 +280,10 @@ Create or update the sample's `assets/sample.json` discovery metadata. Refer to 
 - Reassess the cross-repository reference findings against the completed changes, including link targets and the accuracy of referring content. Report any required follow-up updates; do not imply that another repository was updated unless it was explicitly authorized and completed.
 - Test in the intended Office host where available; distinguish host testing from mocks or build checks.
 - Reconcile any directly dependent scripts after removing files.
-- If generated directories must be absent at delivery, remove only those explicitly approved paths after validation.
+- After validation, remove `dist` and `node_modules` directories created by this run within the selected sample. Resolve and inspect each exact cleanup path; preserve pre-existing directories unless removal is explicitly approved, and preserve required deployment packages and resources. Verify the run-created directories are absent before completion; report any cleanup failures or explicitly requested retention.
 - End every run with a concise completion summary containing:
   - **What was done:** the scenario implemented or modernized, selected solution workflow, Office.js features or APIs used, runtime choices, and significant project/package/documentation changes.
-  - **Validation:** checks performed and their results, distinguishing builds or mocks from actual Office-host testing.
+  - **Validation:** checks performed and their results, distinguishing builds or mocks from actual Office-host testing; generated-directory cleanup results and any retained pre-existing directories.
   - **Link/reference findings:** repositories, branches, and search terms checked; links to matching files; impact on links and referring content; and coordinated updates completed or still required. Explicitly state when no matches were found within the searched scope, the check was not applicable, or access/search limitations prevented completion.
   - **Items to confirm:** outstanding decisions, assumptions, prerequisites, or unverified behavior. State explicitly when there are no outstanding items.
   - **Testing reminder:** test the sample in every supported Office application and host/platform listed in the README, using versions that satisfy both manifest and API requirements. Include the relevant desktop and web clients where supported, and Copilot-in-Excel invocation for packaged skills; do not imply that testing one host validates the others.
