@@ -1,0 +1,44 @@
+[
+  {
+    "name": "word-document-assembly",
+    "reponame": "office-add-in-samples",
+    "source": "officedev",
+    "title": "Assemble a Statement of Work in Word",
+    "shortDescription": "Assemble a Statement of Work with reusable content, customer controls, project costs, and a configurable team.",
+    "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/word-document-assembly",
+    "longDescription": [
+      "Use a Word task-pane add-in to insert an OOXML template, append boilerplate, replace a logo, create and update customer content controls, insert a project-costs document, find currency amounts with wildcards, add a footer, and insert a customized team table."
+    ],
+    "creationDateTime": "2026-11-17",
+    "updateDateTime": "2026-11-17",
+    "products": ["Office", "Word"],
+    "metadata": [
+      { "key": "CLIENT-SIDE-DEV", "value": "TypeScript" }
+    ],
+    "thumbnails": [],
+    "authors": [
+      {
+        "gitHubAccount": "microsoft",
+        "pictureUrl": "https://github.com/microsoft.png",
+        "name": "Microsoft"
+      }
+    ],
+    "references": [
+      {
+        "name": "Use Office Open XML in Word add-ins",
+        "description": "Use OOXML to insert rich content and preserve document formatting.",
+        "url": "https://learn.microsoft.com/office/dev/add-ins/word/create-better-add-ins-for-word-with-office-open-xml"
+      },
+      {
+        "name": "Use search options in your Word add-in",
+        "description": "Find document text with search options and wildcards.",
+        "url": "https://learn.microsoft.com/office/dev/add-ins/word/search-option-guidance"
+      },
+      {
+        "name": "Word ContentControl API",
+        "description": "Create bounded document regions and replace their text or file content.",
+        "url": "https://learn.microsoft.com/javascript/api/word/word.contentcontrol"
+      }
+    ]
+  }
+]

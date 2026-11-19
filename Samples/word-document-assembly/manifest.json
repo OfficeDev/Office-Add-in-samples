@@ -1,0 +1,103 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.30/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.30",
+  "id": "c1b06178-4084-4a0e-8f1e-7acddec19930",
+  "version": "1.0.0",
+  "name": {
+    "short": "Document Assembly",
+    "full": "Assemble a Statement of Work in Word"
+  },
+  "description": {
+    "short": "Build a Statement of Work with reusable content and a project team.",
+    "full": "Assemble a Statement of Work using OOXML, boilerplate paragraphs, pictures, customer content controls, a project-costs document, wildcard search, a footer, and a configurable team table."
+  },
+  "developer": {
+    "name": "Microsoft",
+    "websiteUrl": "https://learn.microsoft.com/office/dev/add-ins/",
+    "privacyUrl": "https://privacy.microsoft.com/privacystatement",
+    "termsOfUseUrl": "https://www.microsoft.com/legal/terms-of-use"
+  },
+  "icons": {
+    "outline": "assets/outline.png",
+    "color": "assets/color.png"
+  },
+  "accentColor": "#185ABD",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us"
+  },
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        {
+          "name": "Document.ReadWrite.User",
+          "type": "Delegated"
+        }
+      ]
+    }
+  },
+  "validDomains": ["localhost"],
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": ["document"],
+        "capabilities": [
+          { "name": "WordApi", "minVersion": "1.3" }
+        ]
+      },
+      "runtimes": [
+        {
+          "id": "TaskPaneRuntime",
+          "type": "general",
+          "code": { "page": "https://localhost:3000/taskpane.html" },
+          "lifetime": "short",
+          "actions": [
+            {
+              "id": "ShowAssembly",
+              "type": "openPage",
+              "pinnable": false,
+              "view": "dashboard"
+            }
+          ]
+        }
+      ],
+      "ribbons": [
+        {
+          "contexts": ["default"],
+          "tabs": [
+            {
+              "builtInTabId": "TabHome",
+              "groups": [
+                {
+                  "id": "DocumentAssembly",
+                  "label": "Document Assembly",
+                  "icons": [
+                    { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
+                    { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
+                    { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                  ],
+                  "controls": [
+                    {
+                      "id": "OpenAssembly",
+                      "type": "button",
+                      "label": "Open Assembly",
+                      "icons": [
+                        { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
+                        { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
+                        { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                      ],
+                      "supertip": {
+                        "title": "Open Assembly",
+                        "description": "Assemble a Statement of Work and configure its project team."
+                      },
+                      "actionId": "ShowAssembly"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
