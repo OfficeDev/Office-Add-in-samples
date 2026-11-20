@@ -9,8 +9,8 @@
     "longDescription": [
       "Use a Word task-pane add-in to insert an OOXML template, append boilerplate, replace a logo, create and update customer content controls, insert a project-costs document, find currency amounts with wildcards, add a footer, and insert a customized team table."
     ],
-    "creationDateTime": "2026-11-17",
-    "updateDateTime": "2026-11-17",
+    "creationDateTime": "2026-11-20",
+    "updateDateTime": "2026-11-20",
     "products": ["Office", "Word"],
     "metadata": [
       { "key": "CLIENT-SIDE-DEV", "value": "TypeScript" }

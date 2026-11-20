@@ -110,6 +110,7 @@ The following samples show how to access and work with a user's Microsoft Graph 
 | [Import a Word document template with a Word add-in](Samples/word-import-template)| Shows how to import templates in a Word document.|
 | [Load and write Open XML in your Word add-in](Samples/word-add-in-load-and-write-open-xml) | Shows how to add a variety of rich content types to a Word document using the **setSelectedDataAsync** method with **ooxml** coercion type.|
 | [Manage citations with your Word add-in](Samples/word-citation-management)| Shows how to manage citations in a Word document.|
+| [Assemble a Statement of Work in Word](Samples/word-document-assembly) | Shows how to assemble a Statement of Work using reusable OOXML content, customer content controls, a bundled project-costs document, and a configurable project team table. |
 
 ## Shared JavaScript runtime
 

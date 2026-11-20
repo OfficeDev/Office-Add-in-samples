@@ -32,7 +32,12 @@ export async function insertTemplate(): Promise<string> {
   ]);
   await Word.run(async (context) => {
     const body = context.document.body;
-    body.insertOoxml(ooxml, Word.InsertLocation.replace);
+    const currentDate = new Date().toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    body.insertOoxml(ooxml.replace("July 23, 2015", currentDate), Word.InsertLocation.replace);
     const picture = body.insertInlinePictureFromBase64(logo, Word.InsertLocation.start);
     picture.altTextDescription = "Sample company logo";
     picture.width = 48;
