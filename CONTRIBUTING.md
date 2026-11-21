@@ -18,6 +18,9 @@ When you submit changes to this repository, please follow these recommendations.
 
 When you submit a new sample, follow these guidelines.
 
+> [!TIP]
+> To simplify creating or updating a sample with an AI coding assistant, see [Use the authoring skill (optional)](#use-the-authoring-skill-optional).
+
 ### Check for existing samples
 
 If a similar sample already exists in the repository, we'd prefer that you extend it rather than submit a new one.
@@ -54,6 +57,28 @@ Follow these guidelines to prepare your code for others to use.
 * Follow the code style that's appropriate for the platform and language that your sample uses.
 * Test your code.
 * Test the UI thoroughly to ensure the changes in your PR don't break existing functionality.
+
+## Use the authoring skill (optional)
+
+Optionally, use the [create-sample skill](.github/skills/create-sample.md) with an AI coding assistant to simplify creating or updating a sample. The skill helps apply this repository's guidelines, but isn't required to contribute.
+
+Open your local clone in your editor and include the skill file in the assistant's context, or explicitly ask the assistant to read and follow it.
+
+Describe the scenario, Office applications, Office.js APIs or features, and target platforms. To update an existing sample, provide the sample's folder and explain what should change and what behavior should be preserved. The skill guides the assistant through checking for related samples, confirming the scope with you, implementing the solution, validating it, and updating its README and repository listings.
+
+**Example prompt for a new sample**
+
+```
+Read and follow `.github/skills/create-sample.md` to create an Excel sample that lets users select a range and format it as a table using the Office.js Excel APIs. Target Excel on Windows, Mac, and the web. Check for related samples and confirm the scope with me before implementation.
+```
+
+**Example prompt for updating a sample**
+
+```
+Read and follow `.github/skills/create-sample.md` to modernize the sample in `Samples/<sample-folder>`. Replace obsolete tooling and UI dependencies while preserving its scenario, demonstrated Office.js APIs, and supported platforms. Report affected incoming references and confirm the scope with me before making changes.
+```
+
+Review the generated changes and test the sample in the supported Office clients before submitting a PR. Using the skill doesn't replace this repository's contribution requirements.
 
 ## Prepare your changes for a PR
 
