@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Document Assembly</title>
+    <link rel="stylesheet" href="./taskpane.css" />
+    <script src="https://officeapis.public.onecdn.static.microsoft/1/office.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1>Document Assembly</h1>
+      <p>Assemble an illustrative Statement of Work, then configure its project team.</p>
+      <p id="status" role="status" aria-live="polite">Open this add-in in Word to begin.</p>
+      <fieldset id="actions" disabled>
+        <legend>Statement of Work</legend>
+        <p>Use a blank or disposable document and run the numbered steps in order.</p>
+        <label class="confirmation">
+          <input id="replace-document" type="checkbox" />
+          I understand that inserting the template replaces the document body.
+        </label>
+        <button id="insert-template" type="button">1. Insert Template</button>
+        <button id="add-paragraphs" type="button">2. Add Paragraphs</button>
+        <button id="change-logo" type="button">3. Change Logo</button>
+        <button id="add-customer-controls" type="button">4. Add Customer Content Controls</button>
+        <label for="customer-name">Customer name</label>
+        <input id="customer-name" type="text" value="Fabrikam" maxlength="100" required />
+        <button id="change-customer" type="button">5. Change Customer</button>
+        <button id="insert-costs" type="button">6. Insert Project Costs File</button>
+        <button id="highlight-currency" type="button">7. Search with Wildcards</button>
+        <button id="insert-footer" type="button">8. Insert Footer</button>
+        <section aria-labelledby="team-heading">
+          <h2 id="team-heading">Team builder</h2>
+          <p>Demo consultants and hourly rates are synthetic. One consultant may fill multiple roles.</p>
+          <div id="team-fields"></div>
+          <label for="hours">Hours per person (greater than 0, up to 10,000)</label>
+          <input id="hours" type="number" value="16" min="0.01" max="10000" step="0.01" required />
+          <p>Team total (USD): <output id="team-total" for="hours">-</output></p>
+          <p>Place the Word cursor after the Project Team heading before inserting. Selected content is replaced.</p>
+          <button id="insert-team" type="button">Insert Team at Selection</button>
+        </section>
+      </fieldset>
+    </main>
+  </body>
+</html>
