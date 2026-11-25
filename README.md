@@ -63,6 +63,7 @@ The following samples show how to access and work with a user's Microsoft Graph 
 
 | Name           | Description  |
 | -------------- | ------------ |
+| [Open dialogs in Office Add-ins](Samples/office-dialog-api) | Shows how to open pop-up and iframe dialogs from a task pane or ribbon command, return a number, and handle dialog errors in Word, Excel, PowerPoint, and Outlook. |
 | [Save custom settings in your Office Add-in](Samples/office-add-in-save-custom-settings) | Shows how to save custom settings inside an Office Add-in. The add-in stores data as key/value pairs, using the JavaScript API for Office property bag, browser cookies, web storage (localStorage and sessionStorage), or by storing the data in a hidden div in the document. |
 | [Use keyboard shortcuts for Office Add-in actions](Samples/office-keyboard-shortcuts) | Shows how to create custom keyboard shortcuts to invoke certain actions for your Office Add-in. |
 | [Define KeyTips for the ribbon controls of an Office Add-in](Samples/office-keytips) | Shows how to define KeyTips for ribbon controls of an Office Add-in. |

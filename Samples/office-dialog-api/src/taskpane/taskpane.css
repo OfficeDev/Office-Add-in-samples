@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  color: #242424;
+  background: #ffffff;
+  font-family: "Segoe UI", sans-serif;
+}
+
+main {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+button {
+  margin: 4px 8px 8px 0;
+  padding: 10px 14px;
+  border: 1px solid #005a9e;
+  border-radius: 4px;
+  color: #ffffff;
+  background: #005a9e;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:disabled {
+  color: #616161;
+  background: #f0f0f0;
+  border-color: #616161;
+  cursor: default;
+}
+
+button:focus-visible {
+  outline: 2px solid #242424;
+  outline-offset: 3px;
+}
+
+#status {
+  padding: 12px;
+  border: 1px solid #616161;
+}
+
+.error {
+  color: #a4262c;
+}

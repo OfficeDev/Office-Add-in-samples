@@ -1,0 +1,171 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.30/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.30",
+  "version": "1.0.0",
+  "id": "c1b06178-4084-4a0e-8f1e-7acddec19930",
+  "name": {
+    "short": "Office dialog API",
+    "full": "Open dialogs in Office Add-ins"
+  },
+  "description": {
+    "short": "Open dialogs from a task pane or ribbon command and return a number.",
+    "full": "Pick a number in a pop-up or iframe dialog. Return the choice to a task pane, document selection, or Outlook message notification."
+  },
+  "developer": {
+    "name": "Microsoft",
+    "websiteUrl": "https://learn.microsoft.com/office/dev/add-ins/",
+    "privacyUrl": "https://privacy.microsoft.com/privacystatement",
+    "termsOfUseUrl": "https://github.com/OfficeDev/Office-Add-in-samples/blob/main/LICENSE"
+  },
+  "icons": {
+    "outline": "assets/outline.png",
+    "color": "assets/color.png"
+  },
+  "accentColor": "#005A9E",
+  "localizationInfo": {
+    "defaultLanguageTag": "en-us"
+  },
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        { "name": "Document.ReadWrite.User", "type": "Delegated" },
+        { "name": "MailboxItem.Read.User", "type": "Delegated" }
+      ]
+    }
+  },
+  "validDomains": ["https://localhost:3000"],
+  "extensions": [
+    {
+      "requirements": {
+        "scopes": ["document", "workbook", "presentation", "mail"]
+      },
+      "runtimes": [
+        {
+          "id": "DialogTaskpane",
+          "type": "general",
+          "code": { "page": "https://localhost:3000/taskpane.html" },
+          "lifetime": "short",
+          "actions": [{ "id": "showTaskpane", "type": "openPage", "view": "dialogTaskpane" }]
+        },
+        {
+          "id": "DialogCommands",
+          "type": "general",
+          "code": { "page": "https://localhost:3000/commands.html" },
+          "lifetime": "short",
+          "actions": [{ "id": "showDialog", "type": "executeFunction" }]
+        }
+      ],
+      "ribbons": [
+        {
+          "requirements": {
+            "scopes": ["document", "workbook", "presentation"],
+            "capabilities": [
+              { "name": "DialogApi", "minVersion": "1.1" },
+              { "name": "TextCoercion", "minVersion": "1.1" },
+              { "name": "AddinCommands", "minVersion": "1.1" }
+            ]
+          },
+          "contexts": ["default"],
+          "tabs": [
+            {
+              "builtInTabId": "TabHome",
+              "groups": [
+                {
+                  "id": "DocumentDialogGroup",
+                  "label": "Dialog API sample",
+                  "icons": [
+                    { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
+                    { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
+                    { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                  ],
+                  "controls": [
+                    {
+                      "id": "DocumentTaskpaneButton",
+                      "type": "button",
+                      "label": "Dialog from Task Pane",
+                      "icons": [
+                        { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
+                        { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
+                        { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                      ],
+                      "supertip": {
+                        "title": "Dialog from Task Pane",
+                        "description": "Open a task pane to try pop-up and iframe dialogs."
+                      },
+                      "actionId": "showTaskpane"
+                    },
+                    {
+                      "id": "DocumentFunctionButton",
+                      "type": "button",
+                      "label": "Dialog from Function",
+                      "icons": [
+                        { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
+                        { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
+                        { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                      ],
+                      "supertip": {
+                        "title": "Dialog from Function",
+                        "description": "Choose a number and insert the result at the document selection."
+                      },
+                      "actionId": "showDialog"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "requirements": {
+            "scopes": ["mail"],
+            "capabilities": [{ "name": "Mailbox", "minVersion": "1.4" }]
+          },
+          "contexts": ["mailRead"],
+          "tabs": [
+            {
+              "builtInTabId": "TabDefault",
+              "groups": [
+                {
+                  "id": "MailDialogGroup",
+                  "label": "Dialog API sample",
+                  "controls": [
+                    {
+                      "id": "MailTaskpaneButton",
+                      "type": "button",
+                      "label": "Dialog from Task Pane",
+                      "icons": [
+                        { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
+                        { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
+                        { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                      ],
+                      "supertip": {
+                        "title": "Dialog from Task Pane",
+                        "description": "Open a task pane to try pop-up and iframe dialogs."
+                      },
+                      "actionId": "showTaskpane"
+                    },
+                    {
+                      "id": "MailFunctionButton",
+                      "type": "button",
+                      "label": "Dialog from Function",
+                      "icons": [
+                        { "size": 16, "url": "https://localhost:3000/assets/icon-16.png" },
+                        { "size": 32, "url": "https://localhost:3000/assets/icon-32.png" },
+                        { "size": 80, "url": "https://localhost:3000/assets/icon-80.png" }
+                      ],
+                      "supertip": {
+                        "title": "Dialog from Function",
+                        "description": "Choose a number and show the result in a message notification."
+                      },
+                      "actionId": "showDialog"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

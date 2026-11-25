@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Office dialog API</title>
+    <link rel="stylesheet" href="taskpane.css" />
+    <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1>Pick a number</h1>
+      <p>Open a dialog and choose 1 or 2. Your choice appears here after the dialog closes.</p>
+      <button id="open-popup" type="button" disabled>Pick a number (pop-up)</button>
+      <button id="open-iframe" type="button" disabled>Pick a number (iframe)</button>
+      <p>The iframe option applies to Office on the web. Other clients use a separate dialog.</p>
+      <p>To see the already-open error, select either button again while a dialog is open.</p>
+      <p id="status" role="status" aria-live="polite">Waiting for Office...</p>
+    </main>
+  </body>
+</html>

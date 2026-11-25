@@ -1,0 +1,42 @@
+[
+  {
+    "name": "office-dialog-api",
+    "reponame": "office-add-in-samples",
+    "source": "officedev",
+    "title": "Open dialogs in Office Add-ins",
+    "shortDescription": "Open a number picker from a task pane or ribbon command in Word, Excel, PowerPoint, and Outlook.",
+    "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-dialog-api",
+    "longDescription": [
+      "Use the Office Dialog API to open pop-up and iframe dialogs, return a number with messageParent, and handle dialog errors and closure. Share the workflow across Word, Excel, PowerPoint, and Outlook with unified and add-in-only manifests."
+    ],
+    "creationDateTime": "2026-11-23",
+    "updateDateTime": "2026-11-23",
+    "products": ["Office", "Word", "Excel", "PowerPoint", "Outlook"],
+    "metadata": [{ "key": "CLIENT-SIDE-DEV", "value": "TypeScript" }],
+    "thumbnails": [],
+    "authors": [
+      {
+        "gitHubAccount": "microsoft",
+        "pictureUrl": "https://github.com/microsoft.png",
+        "name": "Microsoft"
+      }
+    ],
+    "references": [
+      {
+        "name": "Use the Office dialog API",
+        "description": "Open dialogs and exchange messages with their parent runtime.",
+        "url": "https://learn.microsoft.com/office/dev/add-ins/develop/dialog-api-in-office-add-ins"
+      },
+      {
+        "name": "Handle dialog errors and events",
+        "description": "Distinguish dialog creation errors from events raised after opening.",
+        "url": "https://learn.microsoft.com/office/dev/add-ins/develop/dialog-handle-errors-events"
+      },
+      {
+        "name": "Office.UI.displayDialogAsync",
+        "description": "Open an HTTPS page in an Office dialog.",
+        "url": "https://learn.microsoft.com/javascript/api/office/office.ui?view=common-js#office-office-ui-displaydialogasync-member(1)"
+      }
+    ]
+  }
+]
