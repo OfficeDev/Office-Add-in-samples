@@ -1,0 +1,45 @@
+{
+  "name": "office-dialog-api",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/Office-Add-in-samples.git",
+    "directory": "Samples/office-dialog-api"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "config": {
+    "app_to_debug": "word",
+    "app_type_to_debug": "desktop",
+    "dev_server_port": 3000
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "dev-server": "webpack serve --mode development",
+    "start": "office-addin-debugging start manifest.json desktop",
+    "start:outlook": "office-addin-debugging start manifest-configurations/add-in-only/manifest-outlook.xml desktop --app outlook",
+    "stop": "office-addin-debugging stop manifest.json",
+    "stop:outlook": "office-addin-debugging stop manifest-configurations/add-in-only/manifest-outlook.xml",
+    "validate": "npm run validate:outlook && npm run validate:unified",
+    "validate:outlook": "office-addin-manifest validate manifest-configurations/add-in-only/manifest-outlook.xml",
+    "validate:unified": "office-addin-manifest validate manifest.json"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-typescript": "^7.23.3",
+    "@types/office-js": "^1.0.377",
+    "babel-loader": "^9.1.3",
+    "copy-webpack-plugin": "^14.0.0",
+    "html-loader": "^5.0.0",
+    "html-webpack-plugin": "^5.6.0",
+    "office-addin-debugging": "^6.1.1",
+    "office-addin-dev-certs": "^2.0.9",
+    "office-addin-manifest": "^2.1.5",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^6.0.0"
+  }
+}
