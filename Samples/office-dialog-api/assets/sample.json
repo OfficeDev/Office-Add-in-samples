@@ -9,8 +9,8 @@
     "longDescription": [
       "Use the Office Dialog API to open pop-up and iframe dialogs, return a number with messageParent, and handle dialog errors and closure. Share the workflow across Word, Excel, PowerPoint, and Outlook with unified and add-in-only manifests."
     ],
-    "creationDateTime": "2026-11-23",
-    "updateDateTime": "2026-11-23",
+    "creationDateTime": "2026-11-25",
+    "updateDateTime": "2026-11-25",
     "products": ["Office", "Word", "Excel", "PowerPoint", "Outlook"],
     "metadata": [{ "key": "CLIENT-SIDE-DEV", "value": "TypeScript" }],
     "thumbnails": [],

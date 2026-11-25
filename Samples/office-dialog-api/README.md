@@ -16,7 +16,7 @@ extensions:
   contentType: samples
   technologies:
     - Add-ins
-  createdDate: "11/23/2026 12:00:00 AM"
+  createdDate: "11/25/2026 12:00:00 AM"
 description: "Open a number picker from a task pane or function command in Excel, Outlook, PowerPoint, and Word."
 ---
 
