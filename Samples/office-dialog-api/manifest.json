@@ -8,7 +8,7 @@
     "full": "Open dialogs in Office Add-ins"
   },
   "description": {
-    "short": "Open dialogs from a task pane or ribbon command and return a number.",
+    "short": "Open dialogs from a task pane or function command and return a number.",
     "full": "Pick a number in a pop-up or iframe dialog. Return the choice to a task pane, document selection, or Outlook message notification."
   },
   "developer": {
@@ -33,7 +33,7 @@
       ]
     }
   },
-  "validDomains": ["https://localhost:3000"],
+  "validDomains": ["contoso.com"],
   "extensions": [
     {
       "requirements": {

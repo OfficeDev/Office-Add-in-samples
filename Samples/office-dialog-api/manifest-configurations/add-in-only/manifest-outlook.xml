@@ -9,7 +9,7 @@
   <ProviderName>Microsoft</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Office dialog API"/>
-  <Description DefaultValue="Open dialogs from a task pane or ribbon command and return a number."/>
+  <Description DefaultValue="Open dialogs from a task pane or function command and return a number."/>
   <IconUrl DefaultValue="https://localhost:3000/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://github.com/OfficeDev/Office-Add-in-samples/issues"/>
