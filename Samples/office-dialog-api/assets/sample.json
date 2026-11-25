@@ -4,10 +4,10 @@
     "reponame": "office-add-in-samples",
     "source": "officedev",
     "title": "Open dialogs in Office Add-ins",
-    "shortDescription": "Open a number picker from a task pane or ribbon command in Word, Excel, PowerPoint, and Outlook.",
+    "shortDescription": "Open a number picker from a task pane or function command in Excel, Outlook, PowerPoint, and Word.",
     "url": "https://github.com/OfficeDev/Office-Add-in-samples/tree/main/Samples/office-dialog-api",
     "longDescription": [
-      "Use the Office Dialog API to open pop-up and iframe dialogs, return a number with messageParent, and handle dialog errors and closure. Share the workflow across Word, Excel, PowerPoint, and Outlook with unified and add-in-only manifests."
+      "Use the Office Dialog API to open pop-up and iframe dialogs, return a number with messageParent, and handle dialog errors and closure. Share the workflow across Excel, Outlook, PowerPoint, and Word with unified and add-in-only manifests."
     ],
     "creationDateTime": "2026-11-25",
     "updateDateTime": "2026-11-25",
