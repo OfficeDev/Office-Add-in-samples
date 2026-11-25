@@ -5,6 +5,7 @@
 
 /* global document, HTMLButtonElement, Office */
 
+import "../commands/commands.ts";
 import { getDialogSupportError, openNumberDialog } from "../dialog/dialog-service.ts";
 import type { DialogOutcome } from "../dialog/dialog-service.ts";
 

@@ -59,6 +59,5 @@ export function showDialog(event: Office.AddinCommands.Event): void {
   });
 }
 
-Office.onReady(() => {
-  Office.actions.associate("showDialog", showDialog);
-});
+Office.onReady();
+Office.actions.associate("showDialog", showDialog);
