@@ -48,8 +48,8 @@ The unified manifest uses the most recent generally available schema version. It
 
 - [Unified manifest support](https://learn.microsoft.com/office/dev/add-ins/develop/unified-manifest-overview#client-and-platform-support)
 - [Dialog API requirement sets](https://learn.microsoft.com/javascript/api/requirement-sets/common/dialog-api-requirement-sets)
-- [TextCoercion requirement set](https://learn.microsoft.com/en-us/javascript/api/requirement-sets/common/office-add-in-requirement-sets?view=word-js-preview#textcoercion)
-- [Add-in commands requirement sets](https://learn.microsoft.com/en-us/javascript/api/requirement-sets/common/add-in-commands-requirement-sets?view=word-js-preview)
+- [TextCoercion requirement set](https://learn.microsoft.com/en-us/javascript/api/requirement-sets/common/office-add-in-requirement-sets#textcoercion)
+- [Add-in commands requirement sets](https://learn.microsoft.com/en-us/javascript/api/requirement-sets/common/add-in-commands-requirement-sets)
 - [Outlook requirement sets](https://learn.microsoft.com/javascript/api/requirement-sets/outlook/outlook-api-requirement-sets)
 
 ## Prerequisites

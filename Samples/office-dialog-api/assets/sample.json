@@ -35,7 +35,7 @@
       {
         "name": "Office.UI.displayDialogAsync",
         "description": "Open an HTTPS page in an Office dialog.",
-        "url": "https://learn.microsoft.com/javascript/api/office/office.ui?view=common-js#office-office-ui-displaydialogasync-member(1)"
+        "url": "https://learn.microsoft.com/javascript/api/office/office.ui#office-office-ui-displaydialogasync-member(1)"
       }
     ]
   }
